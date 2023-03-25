@@ -1,0 +1,39 @@
+// https://containers.dev/implementors/json_reference/
+{
+  "name": "web-starter-kit:python",
+  // "dockerFile": "Dockerfile",
+  // "image": "ma3310/web-starter-kit:dev-python",
+  "image": "ma3310/ubuntu:22.04-devBox",
+  "workspaceFolder": "/root/p/${localWorkspaceFolderBasename}",
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/root/p/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "smulyono.reveal",
+        "mutantdino.resourcemonitor"
+      ]
+    }
+  },
+  "settings": {
+    "explorer.autoReveal": false,
+    "python.terminal.executeInFileDir": true,
+    "resmon.show.disk": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "resmon.disk.format": "PercentUsed"
+  },
+  "runArgs": [
+    // "--privileged",
+    "--network=host" // to access host network, like: 127.0.0.1:7081
+  ],
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.gitignore,target=/root/.gitignore,type=bind,consistency=cached"
+  ],
+  "forwardPorts": [
+    20080,
+    20443
+  ],
+  "remoteUser": "root"
+}

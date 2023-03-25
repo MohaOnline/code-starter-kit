@@ -1,0 +1,15 @@
+{
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "forwardPorts": [
+    20080,
+    20443
+  ],
+  "remoteUser": "root"
+}
