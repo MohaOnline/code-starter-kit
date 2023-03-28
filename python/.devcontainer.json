@@ -28,6 +28,7 @@
     "--network=host" // to access host network, like: 127.0.0.1:7081
   ],
   "mounts": [
+    "source=${localWorkspaceFolder}/../.git/,target=/root/p/.git/,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.gitignore,target=/root/.gitignore,type=bind,consistency=cached"
   ],
