@@ -2,7 +2,6 @@
 {
   "name": "web-starter-kit:python",
   // "dockerFile": "Dockerfile",
-  // "image": "ma3310/web-starter-kit:dev-python",
   "image": "ma3310/ubuntu:22.04-devBox",
   "workspaceFolder": "/root/p/${localWorkspaceFolderBasename}",
   "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/root/p/${localWorkspaceFolderBasename}",
