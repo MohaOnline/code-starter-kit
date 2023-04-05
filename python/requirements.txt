@@ -15,12 +15,12 @@ requests
 pytest
 
 ## Django Framework
-django
+django==4.1.*
 
 ## Data
 matplotlib
-plotly
 pandas
+plotly
 
 ## AI/ML
 torch
