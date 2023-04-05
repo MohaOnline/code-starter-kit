@@ -1,6 +1,9 @@
 # pip install --upgrade -r requirements.txt # Upgrade 3rd-part libraries.
 # python -m pip install --upgrade -r requirements.txt
 # pip install -r requirements.txt
+
+# Windows
+# python -m pip install --upgrade -r requirements.txt --proxy=http://192.168.1.166:7081
 pip
 autopep8
 requests
@@ -13,6 +16,11 @@ pytest
 
 ## Django Framework
 django
+
+## Data
+matplotlib
+plotly
+pandas
 
 ## AI/ML
 torch

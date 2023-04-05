@@ -1,4 +1,5 @@
 from h import *
 
+
 def test_greeting_string():
-    assert 1 == 1
+    assert greeting_string() == "world, how are you?"
