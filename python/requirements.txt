@@ -11,11 +11,16 @@ requests
 # 
 # pygame
 
-# 
+## Test Framework
 pytest
 
 ## Django Framework
-django==4.1.*
+django==4.2.*
+
+## Images
+numpy
+opencv-python
+pillow
 
 ## Data
 matplotlib

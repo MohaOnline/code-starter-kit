@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block Contents %}
+  <h2>Contents of Notebook: .</h2>
+  <ul>
+    {% for record in records %}
+      <li>{{ record.title }}</li>
+    {% empty %}
+      <li>No contents are in this notebook.</li>
+    {% endfor %}
+  </ul>
+{% endblock Contents %}
