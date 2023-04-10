@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-
+{% block Title %}{{ notebook.title }}{% endblock Title %}
 {% block Contents %}
-  <h2>Contents of Notebook: .</h2>
+  <h2>Contents of {{ notebook.title }}:</h2>
   <ul>
     {% for record in records %}
-      <li>{{ record.title }}</li>
+      <li><a target="_blank" href="{% url 'app_notebook:record' record.id %}">{{ record.title }}</a></li>
     {% empty %}
       <li>No contents are in this notebook.</li>
     {% endfor %}

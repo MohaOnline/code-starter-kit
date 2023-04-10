@@ -99,3 +99,7 @@ class Answer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+
+class English(models.Model):
+    pass
+

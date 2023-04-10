@@ -16,6 +16,9 @@ pytest
 
 ## Django Framework
 django==4.2.*
+django-ckeditor
+django-filer
+django-ckeditor-filebrowser-filer
 
 ## Images
 numpy

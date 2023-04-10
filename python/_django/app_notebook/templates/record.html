@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block Title %}{{ record.title }}{% endblock Title %}
+{% block Contents %}
+  {{ record.detail|safe }}
+  <h2>Related notebook(s): </h2>
+  <ul>
+    {% for notebook in notebooks %}
+      <li><a target="_blank" href="{% url 'app_notebook:user_notebook' user.id notebook.id  %}">{{ notebook.title }}</a></li>
+    {% empty %}
+      <li>This is orphan record. </li>
+    {% endfor %}
+  </ul>
+{% endblock Contents %}
