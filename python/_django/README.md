@@ -5,7 +5,7 @@ django-admin startproject __d .
 # 初始化 django 数据表，在 _django 下运行，初始状态生成 SQLite 数据库。
 python manage.py migrate 
 
-# 需要在命令行下运行
+# 需要在命令行下运行，创建管理员
 python manage.py createsuperuser
 
 # Control + Shift + Click URL to JavaScript in pycharm after lunching application.
@@ -18,6 +18,10 @@ python manage.py startapp app_notebook
 python manage.py makemigrations app_notebook
 python manage.py migrate app_notebook
 
+python manage.py migrate --help
+python manage.py migrate --fake app_notebook zero
+python manage.py migrate --fake-initial app_notebook
+
 # 联机调试 Django API。
 # Tune Django API on the fly.
 python manage.py shell
@@ -29,4 +33,26 @@ from app_notebook.models import Record
 for o in Record.objects.all():
   print(o.id, o.title)
 
+```
+
+```mysql
+# Migrate old data.
+INSERT INTO app_notebook_english(id, word, syllable, accent, phonetic_uk, phonetic_us, typescript, created, updated)
+SELECT id, word, word_syllable, word_accent , word_phonetic, word_phonetic_america, `word_pronounce_script`, now(), now()
+FROM english_words;
+
+INSERT INTO app_notebook_english_chinese(english_id, weight, part_of_speech, translation, typescript, created, updated)
+SELECT word_id, weight, part_of_speech, translation, typescript, now(), now()
+FROM english_words_chinese WHERE english_words_chinese.`word_id` in (select id from `app_notebook_english`);
+
+INSERT INTO app_notebook_book(id, name, weight, publishing_house, published_date, created, updated)
+select id, name, weight, publishing_house, published_date, now(), now()
+from english_words_sources;
+
+INSERT INTO app_notebook_english_chinese_books(chinese_id, book_id, page)
+SELECT id, source_id, source_number
+FROM english_words_chinese WHERE source_id IS NOT NULL;
+
+# 
+delete from `django_migrations` WHERE app = 'app_notebook';
 ```

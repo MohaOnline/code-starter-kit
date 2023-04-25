@@ -1,5 +1,5 @@
 # pip install --upgrade -r requirements.txt # Upgrade 3rd-part libraries.
-# python -m pip install --upgrade -r requirements.txt
+# python -m pip install --upgrade --use-pep517 -r requirements.txt
 # pip install -r requirements.txt
 
 # Windows
@@ -18,7 +18,16 @@ pytest
 django==4.2.*
 django-ckeditor
 django-filer
-django-ckeditor-filebrowser-filer
+djangocms-picture
+djangocms-file
+djangocms-link
+djangocms-video
+djangocms-bootstrap5 
+djangocms-text-ckeditor 
+djangocms-audio
+
+## Database
+mysqlclient
 
 ## Images
 numpy
