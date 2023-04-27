@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block Contents %}
+  <p>Add a new topic:</p>
+
+  <form action="{% url 'app_notebook:new_english_chinese_word' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button name="submit">Add topic</button>
+  </form>
+{% endblock Contents %}

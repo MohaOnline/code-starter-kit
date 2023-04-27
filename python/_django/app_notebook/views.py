@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user
 from django.shortcuts import render
 from .models import Record, Notebook
+from . import forms
 
 
 def notebooks(request):
@@ -31,3 +32,14 @@ def record(request, record_id):
         'record': r,
         'notebooks': nbs
     })
+
+
+def new_english_chinese_word(request):
+    """Create a new translation."""
+    if request.method != 'POST':
+        form = forms.EnglishChineseForm()
+    else:
+        form = forms.EnglishChineseForm()
+
+    context = {'form': form}
+    return render(request, 'english-chinese-form.html', context)
