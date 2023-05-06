@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user
 from django.shortcuts import render
-from .models import Record, Notebook
+from .models import Record, Notebook, English
 from . import forms
 
 
@@ -37,9 +37,16 @@ def record(request, record_id):
 def new_english_chinese_word(request):
     """Create a new translation."""
     if request.method != 'POST':
-        form = forms.EnglishChineseForm()
+        form = forms.EnglishChineseManualForm()
     else:
-        form = forms.EnglishChineseForm()
+        form = forms.EnglishChineseManualForm()
 
     context = {'form': form}
     return render(request, 'english-chinese-form.html', context)
+
+
+def new_english_word_chinese(request):
+    """Create a new English word/phase with Chinese."""
+    form = forms.EnglishForm()
+    formset = forms.EnglishChineseFormSet(prefix='translation',instance=English())
+    return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})

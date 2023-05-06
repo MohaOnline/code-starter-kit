@@ -28,4 +28,5 @@ urlpatterns = [
 
     # Create a new English word translation.
     path('english-chinese-word/new', views.new_english_chinese_word, name="new_english_chinese_word"),
+    path('english-word-chinese/new', views.new_english_word_chinese, name="new_english_word_chinese"),
 ]

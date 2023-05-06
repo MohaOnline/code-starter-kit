@@ -138,6 +138,7 @@ class Example(models.Model):
 
 
 class English(models.Model):
+    """English words."""
     word = models.CharField(max_length=255)
     syllable = models.CharField(max_length=255, null=True)
     accent = models.CharField(max_length=255, null=True)

@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from . import models
 
 
-class EnglishChineseForm(forms.Form):
+class EnglishChineseManualForm(forms.Form):
     # This class is used to create a form for
     word = forms.CharField()
     syllable = forms.CharField()
@@ -40,3 +40,15 @@ class EnglishChineseForm(forms.Form):
         else:
             # english with the given word exists
             pass
+
+
+class EnglishForm(forms.ModelForm):
+    class Meta:
+        model = models.English
+        fields = ['word', 'syllable', 'accent', 'phonetic_uk', 'phonetic_us', 'typescript']
+
+
+EnglishChineseFormSet = \
+    forms.inlineformset_factory(models.English, models.EnglishChinese,
+                                fields=['weight', 'part_of_speech', 'translation', 'typescript'],
+                                extra=1)
