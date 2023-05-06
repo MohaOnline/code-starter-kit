@@ -6,6 +6,15 @@ from django.db import models  # models: module name
 from django.utils.translation import gettext_lazy as _
 
 
+class Status(models.IntegerChoices):
+    DROPPED = -1, 'Dropped'
+    PENDING = 0, 'Pending'
+    PLANNING = 1, 'Planning'
+    WORKING = 2, 'Working'
+    DONE = 3, 'Done'
+    PUBLISHED = 4, 'Published'
+
+
 class Notebook(models.Model):
     """Notebook contains related Records."""
     title = models.CharField(max_length=255)
@@ -23,15 +32,6 @@ class Notebook(models.Model):
 class Record(models.Model):
     """A Record the user is working on."""
     title = models.CharField(max_length=255)
-
-    class Status(models.IntegerChoices):
-        DROPPED = -1, 'Dropped'
-        PENDING = 0, 'Pending'
-        PLANNING = 1, 'Planning'
-        WORKING = 2, 'Working'
-        DONE = 3, 'Done'
-        PUBLISHED = 4, 'Published'
-
     status = models.IntegerField(choices=Status.choices, default=Status.PENDING)
 
     class Type(models.IntegerChoices):
@@ -164,6 +164,7 @@ class EnglishChinese(models.Model):
     typescript = models.CharField(max_length=511, null=True, blank=True)
     examples = models.ManyToManyField(Example)
     books = models.ManyToManyField(Book, through='EnglishChineseBooks')
+    notebooks = models.ManyToManyField(Notebook, through='NotebookEnglishChinese')
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -182,5 +183,21 @@ class EnglishChineseBooks(models.Model):
     book = models.ForeignKey(Book, null=True, blank=True, on_delete=models.DO_NOTHING)
     page = models.CharField(max_length=15, null=True, blank=True)
 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         db_table = "app_notebook_english_chinese_books"
+
+
+class NotebookEnglishChinese(models.Model):
+    chinese = models.ForeignKey(EnglishChinese, null=True, blank=True, on_delete=models.DO_NOTHING)
+    notebook = models.ForeignKey(Notebook, null=True, blank=True, on_delete=models.DO_NOTHING)
+    weight = models.IntegerField(null=True)
+    status = models.IntegerField(choices=Status.choices, default=Status.WORKING)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "app_notebook_notebook_english_chinese"
