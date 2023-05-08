@@ -1,12 +1,12 @@
 from django.contrib.auth import get_user
 from django.shortcuts import render
 from .models import Record, Notebook, English
-from . import forms
+from . import forms, models
 
 
 def notebooks(request):
     """View of all notebooks for certain user."""
-    return render(request, 'notebooks.html')    # templates/index.html
+    return render(request, 'notebooks.html')  # templates/index.html
 
 
 def notebook(request, user_id, notebook_id):
@@ -48,5 +48,13 @@ def new_english_chinese_word(request):
 def new_english_word_chinese(request):
     """Create a new English word/phase with Chinese."""
     form = forms.EnglishForm()
-    formset = forms.EnglishChineseFormSet(prefix='translation',instance=English())
+    formset = forms.EnglishChineseFormSet(prefix='translation', instance=English())
     return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})
+
+
+def list_english_word_chinese(request):
+    """List all English words with Chinese."""
+    chinese = models.EnglishChinese.objects.all()
+    return render(request, 'english-chinese-list.html', {
+        'chinese': chinese,
+    })

@@ -16,17 +16,23 @@ from . import views
 app_name = 'app_notebook'
 urlpatterns = [
     # Certain user's Notebooks.
-    path('', views.notebooks, name='notebooks'),                            # app_notebook:notebooks
-    path('user/<int:user_id>', views.notebooks, name='user_notebooks'),     # app_notebook:user_notebooks
+    path('', views.notebooks, name='notebooks'),  # app_notebook:notebooks
+    path('user/<int:user_id>', views.notebooks, name='user_notebooks'),  # app_notebook:user_notebooks
 
     # Records of certain Notebook.
-    path('<int:notebook_id>', views.notebook, name='notebook'),             # app_notebook:notebook
+    path('<int:notebook_id>', views.notebook, name='notebook'),  # app_notebook:notebook
     path('user/<int:user_id>/<int:notebook_id>', views.notebook, name='user_notebook'),  # app_notebook:user_notebook
 
     # Details of certain Record.
     path('record/<int:record_id>', views.record, name='record'),
 
     # Create a new English word translation.
-    path('english-chinese-word/new', views.new_english_chinese_word, name="new_english_chinese_word"),
-    path('english-word-chinese/new', views.new_english_word_chinese, name="new_english_word_chinese"),
+    path('english-chinese-word/new', views.new_english_chinese_word, name="english_chinese_word_new"),
+    
+    # List all English words with Chinese.
+    path('english-word-chinese', views.list_english_word_chinese, name="english_word_chinese_list"),
+    # Base on formset.
+    path('english-word-chinese/new', views.new_english_word_chinese, name="english_word_chinese_new"),
+    path('english-word-chinese/edit/<int:english_id>', views.new_english_word_chinese,
+         name="english_word_chinese_edit"),
 ]

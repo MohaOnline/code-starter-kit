@@ -130,8 +130,8 @@ class Book(models.Model):
 
 
 class Example(models.Model):
-    sentence = models.CharField(max_length=1023)
-    chinese = models.CharField(max_length=1023)
+    sentence = models.CharField(max_length=2047)
+    chinese = models.CharField(max_length=2047, null=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
