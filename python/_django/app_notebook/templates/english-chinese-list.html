@@ -3,12 +3,13 @@
 {% block Contents %}
     <p></p>
     <table>
-        {% for word in chinese %}
+        {% for translation in chinese %}
             <tr>
-                <td>{{ word.english.phonetic_uk|default:word.english.phonetic_us|default:'' }}</td>
-                <td>{{ word.english.accent|default:word.english|safe }}</td>
-                <td>{{ word.part_of_speech|default:'' }}</td>
-                <td>{{ word.translation }}</td>
+                <td>{{ translation.english.phonetic_uk|default:translation.english.phonetic_us|default:'' }}</td>
+                <td>{{ translation.english.accent|default:translation.english|safe }}</td>
+                <td>{{ translation.part_of_speech|default:'' }}</td>
+                <td>{{ translation.translation }}</td>
+                <td><a href="{% url 'app_notebook:english_word_chinese_edit' translation.english.id %}">Edit</a></td>
             </tr>
         {% endfor %}
     </table>

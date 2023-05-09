@@ -28,11 +28,12 @@ urlpatterns = [
 
     # Create a new English word translation.
     path('english-chinese-word/new', views.new_english_chinese_word, name="english_chinese_word_new"),
-    
-    # List all English words with Chinese.
-    path('english-word-chinese', views.list_english_word_chinese, name="english_word_chinese_list"),
-    # Base on formset.
+
+    # English words with Chinese translation - List.
+    path('english-word-chinese/', views.list_english_word_chinese, name="english_word_chinese_list"),
+    # English words with Chinese translation - Create. Base on formset.
     path('english-word-chinese/new', views.new_english_word_chinese, name="english_word_chinese_new"),
-    path('english-word-chinese/edit/<int:english_id>', views.new_english_word_chinese,
-         name="english_word_chinese_edit"),
+    # English words with Chinese translation - Edit.
+    path('english-word-chinese/edit/<int:english_id>',
+         views.edit_english_word_chinese, name="english_word_chinese_edit"),
 ]

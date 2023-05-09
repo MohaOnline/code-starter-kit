@@ -45,6 +45,14 @@ def new_english_chinese_word(request):
     return render(request, 'english-chinese-form.html', context)
 
 
+def list_english_word_chinese(request):
+    """List all English words with Chinese."""
+    chinese = models.EnglishChinese.objects.all()
+    return render(request, 'english-chinese-list.html', {
+        'chinese': chinese,
+    })
+
+
 def new_english_word_chinese(request):
     """Create a new English word/phase with Chinese."""
     form = forms.EnglishForm()
@@ -52,9 +60,12 @@ def new_english_word_chinese(request):
     return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})
 
 
-def list_english_word_chinese(request):
-    """List all English words with Chinese."""
-    chinese = models.EnglishChinese.objects.all()
-    return render(request, 'english-chinese-list.html', {
-        'chinese': chinese,
-    })
+def edit_english_word_chinese(request, english_id=0):
+    """Edit an English word/phase with Chinese."""
+    if english_id == 0:
+        raise ValueError("Invalid english_id value. english_id cannot be 0.")
+
+    english = models.English.objects.get(id=english_id)
+    form = forms.EnglishForm(instance=english)
+    formset = forms.EnglishChineseFormSet(prefix='translation', instance=english)
+    return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})
