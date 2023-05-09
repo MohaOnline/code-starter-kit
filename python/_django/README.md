@@ -22,28 +22,49 @@ python manage.py migrate --help
 python manage.py migrate --fake app_notebook zero
 python manage.py migrate --fake-initial app_notebook
 
-# 联机调试 Django API。
+# 联机调试 Django API, 读取 App Model 之类，参考下面的 Python 代码：
 # Tune Django API on the fly.
 python manage.py shell
+```
+
+```python
+# 修整收录 NotebookEnglishChinese 的 weight
+from app_notebook import forms, models
+
+chinese = models.NotebookEnglishChinese.objects.filter(notebook_id=1).order_by('weight')
+i = 0
+for obj in chinese:
+    obj.weight = i
+    i += 1
+    obj.save()
+
 ```
 
 ```python
 from app_notebook.models import Record
 
 for o in Record.objects.all():
-  print(o.id, o.title)
-
+    print(o.id, o.title)
 ```
 
 ```mysql
 # Migrate old data.
 INSERT INTO app_notebook_english(id, word, syllable, accent, phonetic_uk, phonetic_us, typescript, created, updated)
-SELECT id, word, word_syllable, word_accent , word_phonetic, word_phonetic_america, `word_pronounce_script`, now(), now()
+SELECT id,
+       word,
+       word_syllable,
+       word_accent,
+       word_phonetic,
+       word_phonetic_america,
+       `word_pronounce_script`,
+       now(),
+       now()
 FROM english_words;
 
 INSERT INTO app_notebook_english_chinese(english_id, weight, part_of_speech, translation, typescript, created, updated)
 SELECT word_id, weight, part_of_speech, translation, typescript, now(), now()
-FROM english_words_chinese WHERE english_words_chinese.`word_id` in (select id from `app_notebook_english`);
+FROM english_words_chinese
+WHERE english_words_chinese.`word_id` in (select id from `app_notebook_english`);
 
 INSERT INTO app_notebook_book(id, name, weight, publishing_house, published_date, created, updated)
 select id, name, weight, publishing_house, published_date, now(), now()
@@ -51,8 +72,11 @@ from english_words_sources;
 
 INSERT INTO app_notebook_english_chinese_books(chinese_id, book_id, page)
 SELECT id, source_id, source_number
-FROM english_words_chinese WHERE source_id IS NOT NULL;
+FROM english_words_chinese
+WHERE source_id IS NOT NULL;
 
 # 
-delete from `django_migrations` WHERE app = 'app_notebook';
+delete
+from `django_migrations`
+WHERE app = 'app_notebook';
 ```

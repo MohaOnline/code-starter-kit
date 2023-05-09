@@ -9,7 +9,12 @@ def notebooks(request):
     return render(request, 'notebooks.html')  # templates/index.html
 
 
-def notebook(request, user_id, notebook_id):
+def notebook_user(request, user_id, notebook_id):
+    return notebook(request, notebook_id)
+    pass
+
+
+def notebook(request, notebook_id=0):
     """Contents(Records) of certain notebook."""
     records = Record.objects.filter(notebooks__id=notebook_id).order_by('-created')
     current_notebook = Notebook.objects.get(id=notebook_id)
@@ -45,6 +50,18 @@ def new_english_chinese_word(request):
     return render(request, 'english-chinese-form.html', context)
 
 
+def list_english_word_chinese_notebook(request, notebook_id=0):
+    """List all English words with Chinese in notebook."""
+    if notebook_id == 0:
+        raise ValueError("Invalid notebook_id value. Specified notebook doesn't exist.")
+
+    chinese = models.NotebookEnglishChinese.objects.filter(notebook_id=notebook_id).order_by('weight')
+    chinese = [obj.chinese for obj in chinese]
+    return render(request, 'english-chinese-list.html', {
+        'chinese': chinese,
+    })
+
+
 def list_english_word_chinese(request):
     """List all English words with Chinese."""
     chinese = models.EnglishChinese.objects.all()
@@ -67,5 +84,5 @@ def edit_english_word_chinese(request, english_id=0):
 
     english = models.English.objects.get(id=english_id)
     form = forms.EnglishForm(instance=english)
-    formset = forms.EnglishChineseFormSet(prefix='translation', instance=english)
+    formset = forms.EnglishChineseFormSet(instance=english, prefix='translation')
     return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})

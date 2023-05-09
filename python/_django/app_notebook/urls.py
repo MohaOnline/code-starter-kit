@@ -21,7 +21,8 @@ urlpatterns = [
 
     # Records of certain Notebook.
     path('<int:notebook_id>', views.notebook, name='notebook'),  # app_notebook:notebook
-    path('user/<int:user_id>/<int:notebook_id>', views.notebook, name='user_notebook'),  # app_notebook:user_notebook
+    # app_notebook:user_notebook
+    path('user/<int:user_id>/<int:notebook_id>', views.notebook_user, name='user_notebook'),
 
     # Details of certain Record.
     path('record/<int:record_id>', views.record, name='record'),
@@ -36,4 +37,8 @@ urlpatterns = [
     # English words with Chinese translation - Edit.
     path('english-word-chinese/edit/<int:english_id>',
          views.edit_english_word_chinese, name="english_word_chinese_edit"),
+
+    # English words with Chinese translation - notebook.
+    path('english-word-chinese/<int:notebook_id>', views.list_english_word_chinese_notebook,
+         name="english_word_chinese_notebook"),
 ]
