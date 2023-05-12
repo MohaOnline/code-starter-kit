@@ -144,7 +144,7 @@ class English(models.Model):
     accent = models.CharField(max_length=255, null=True)
     phonetic_uk = models.CharField(max_length=255, null=True)
     phonetic_us = models.CharField(max_length=255, null=True)
-    typescript = models.CharField(max_length=255, null=True)
+    typescript = models.CharField(max_length=255, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -180,6 +180,7 @@ class EnglishChinese(models.Model):
 
 
 class EnglishChineseBooks(models.Model):
+    """From which Book this translation was collected."""
     chinese = models.ForeignKey(EnglishChinese, null=True, blank=True, on_delete=models.DO_NOTHING)
     book = models.ForeignKey(Book, null=True, blank=True, on_delete=models.DO_NOTHING)
     page = models.CharField(max_length=15, null=True, blank=True)
@@ -192,6 +193,7 @@ class EnglishChineseBooks(models.Model):
 
 
 class NotebookEnglishChinese(models.Model):
+    """Notebook for English words/phrases."""
     chinese = models.ForeignKey(EnglishChinese, null=True, blank=True, on_delete=models.DO_NOTHING)
     notebook = models.ForeignKey(Notebook, null=True, blank=True, on_delete=models.DO_NOTHING)
     weight = models.IntegerField(null=True)

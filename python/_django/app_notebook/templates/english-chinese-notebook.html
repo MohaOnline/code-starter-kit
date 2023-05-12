@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block Contents %}
+    <p></p>
+    <table>
+        {% for vocabulary in chinese %}
+            {% with translation=vocabulary.chinese %}
+                <tr>
+                    <td>{{ translation.english.phonetic_uk|default:translation.english.phonetic_us|default:'' }}</td>
+                    <td>{{ translation.english.accent|default:translation.english|safe }}</td>
+                    <td>{{ translation.part_of_speech|default:'' }}</td>
+                    <td>{{ translation.translation }}</td>
+                    <td>
+                        {% if vocabulary.status == Status.DROPPED %}
+                            <span>✔</span>
+                        {% else %}
+                            <span>✗</span>
+                        {% endif %}
+                        ⇑ ↑ ↓ ⇓
+                    </td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+    </table>
+{% endblock Contents %}

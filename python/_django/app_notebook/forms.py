@@ -48,6 +48,7 @@ class EnglishForm(forms.ModelForm):
         fields = ['word', 'syllable', 'accent', 'phonetic_uk', 'phonetic_us', 'typescript']
 
 
+# Import 以后，和 English 配套的 Chinese 翻译 formset 可以直接引用。
 EnglishChineseFormSet = \
     forms.inlineformset_factory(models.English, models.EnglishChinese,
                                 fields=['weight', 'part_of_speech', 'translation', 'typescript'],

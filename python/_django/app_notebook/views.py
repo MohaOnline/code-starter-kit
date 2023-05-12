@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user
 from django.shortcuts import render
+from django.db.models import Q
 from .models import Record, Notebook, English
 from . import forms, models
 
@@ -51,20 +52,26 @@ def new_english_chinese_word(request):
 
 
 def list_english_word_chinese_notebook(request, notebook_id=0):
-    """List all English words with Chinese in notebook."""
+    """List all English words with Chinese of a notebook."""
     if notebook_id == 0:
         raise ValueError("Invalid notebook_id value. Specified notebook doesn't exist.")
 
-    chinese = models.NotebookEnglishChinese.objects.filter(notebook_id=notebook_id).order_by('weight')
-    chinese = [obj.chinese for obj in chinese]
-    return render(request, 'english-chinese-list.html', {
+    chinese = models.NotebookEnglishChinese.objects.filter(notebook_id=notebook_id).order_by('-status', 'weight')
+    # chinese = [obj.chinese for obj in chinese]
+    # queue = []
+    # for obj in chinese:
+    #     obj.chinese.status = obj.status
+    #     queue.append(obj.chinese)
+
+    return render(request, 'english-chinese-notebook.html', {
         'chinese': chinese,
+        'Status': models.Status
     })
 
 
 def list_english_word_chinese(request):
     """List all English words with Chinese."""
-    chinese = models.EnglishChinese.objects.all()
+    chinese = models.EnglishChinese.objects.all().order_by('english__word')
     return render(request, 'english-chinese-list.html', {
         'chinese': chinese,
     })
@@ -72,9 +79,19 @@ def list_english_word_chinese(request):
 
 def new_english_word_chinese(request):
     """Create a new English word/phase with Chinese."""
-    form = forms.EnglishForm()
-    formset = forms.EnglishChineseFormSet(prefix='translation', instance=English())
-    return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})
+    error = []
+    if request.method != 'POST':
+        form = forms.EnglishForm()
+        formset = forms.EnglishChineseFormSet(prefix='translation', instance=English())
+    else:
+        form = forms.EnglishForm(request.POST)
+        formset = forms.EnglishChineseFormSet(request.POST, instance=form)
+        if form.is_valid():
+            word = form.cleaned_data['word']
+            if models.English.objects.filter(word=word).exists():
+                error.append("Same word already exists.")
+
+    return render(request, 'english-word-translation.html', {'form': form, 'formset': formset, 'error': error})
 
 
 def edit_english_word_chinese(request, english_id=0):
@@ -83,6 +100,21 @@ def edit_english_word_chinese(request, english_id=0):
         raise ValueError("Invalid english_id value. english_id cannot be 0.")
 
     english = models.English.objects.get(id=english_id)
-    form = forms.EnglishForm(instance=english)
-    formset = forms.EnglishChineseFormSet(instance=english, prefix='translation')
+
+    if request.method != 'POST':
+        form = forms.EnglishForm(instance=english)
+        formset = forms.EnglishChineseFormSet(instance=english, prefix='translation')
+    else:
+        form = forms.EnglishForm(instance=english, data=request.POST)
+        if form.is_valid():
+            form.save()
+
+        formset = forms.EnglishChineseFormSet(data=request.POST, instance=english, prefix='translation')
+        if formset.is_valid():
+            formset.save()
+
+    # TODO 初始化 weight
+    for f in formset.forms:
+        pass
+
     return render(request, 'english-word-translation.html', {'form': form, 'formset': formset})
