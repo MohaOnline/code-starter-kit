@@ -2,39 +2,40 @@
 
 {% block Contents %}
 
-  <form method="post" id="englishForm">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    {{ formset.management_form }}
-    <div id="translationForms">
-      {% for form in formset %}
+    <form method="post" id="englishForm">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        {{ formset.management_form }}
+        <div id="translationForms">
+            {% for form in formset %}
+                <ul>
+                    {{ form.as_ul }}
+                </ul>
+            {% endfor %}
+        </div>
+        <button type="button" id="addTranslationBtn">Add Translation</button>
+        <input type="submit" value="Save">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var formCount = $('#id_translation_set-TOTAL_FORMS').val();
+            var translationForms = $('#translationForms');
+
+            $('#addTranslationBtn').click(function () {
+                let newForm = $('#emptyForm').html().replace(/__prefix__/g, formCount);
+                
+                translationForms.append(newForm);
+                formCount++;
+            });
+        });
+    </script>
+    <script id="emptyForm" type="text/template">
         <ul>
-          {{ form.as_ul }}
+            {{ formset.empty_form.as_ul }}
         </ul>
-      {% endfor %}
-    </div>
-    <button type="button" id="addTranslationBtn">Add Translation</button>
-    <input type="submit" value="Save">
-  </form>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-      $(document).ready(function () {
-          var formCount = $('#id_translation_set-TOTAL_FORMS').val();
-          var translationForms = $('#translationForms');
-
-          $('#addTranslationBtn').click(function () {
-              var newForm = $('#emptyForm').html().replace(/__prefix__/g, formCount);
-              translationForms.append(newForm);
-              formCount++;
-          });
-      });
-  </script>
-  <script id="emptyForm" type="text/template">
-    <ul>
-      {{ formset.empty_form.as_ul }}
-    </ul>
-  </script>
+    </script>
 {% endblock Contents %}

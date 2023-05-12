@@ -140,10 +140,10 @@ class Example(models.Model):
 class English(models.Model):
     """English words."""
     word = models.CharField(max_length=255)
-    syllable = models.CharField(max_length=255, null=True)
-    accent = models.CharField(max_length=255, null=True)
-    phonetic_uk = models.CharField(max_length=255, null=True)
-    phonetic_us = models.CharField(max_length=255, null=True)
+    syllable = models.CharField(max_length=255, null=True, blank=True)
+    accent = models.CharField(max_length=255, null=True, blank=True)
+    phonetic_uk = models.CharField(max_length=255, null=True, blank=True)
+    phonetic_us = models.CharField(max_length=255, null=True, blank=True)
     typescript = models.CharField(max_length=255, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)

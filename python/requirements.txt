@@ -22,9 +22,12 @@ djangocms-picture
 djangocms-file
 djangocms-link
 djangocms-video
-djangocms-bootstrap5 
-djangocms-text-ckeditor 
+djangocms-bootstrap5
+djangocms-text-ckeditor
 djangocms-audio
+### INSTALLED_APPS as bootstrap5
+### https://django-bootstrap-v5.readthedocs.io/en/latest/
+django-bootstrap-v5
 
 ## Database
 mysqlclient

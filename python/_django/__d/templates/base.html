@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}Notebook{% endblock Title %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+{% if not user.is_authenticated %}
+    <a href="{% url 'admin:login' %}">Login</a>
+{% endif %}
+<h2><a href="{% url 'app_notebook:english_word_chinese_list' %}">English Words</a></h2>
+<h3><a href="{% url 'app_notebook:english_word_chinese_notebook' notebook_id=1 %}">n</a></h3>
+<span><a href="{% url 'app_notebook:english_word_chinese_new' %}">Add</a></span>
+<h3><a href="{% url 'app_notebook:english_word_chinese_notebook' notebook_id=2 %}">N</a></h3>
+{% block Contents %}{% endblock Contents %}
+
+</body>
+</html>

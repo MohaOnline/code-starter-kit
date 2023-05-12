@@ -12,6 +12,7 @@ python manage.py createsuperuser
 python manage.py runserver
 
 # 
+python manage.py startapp __common
 python manage.py startapp app_notebook
 
 # 为当前 app 生成 DB 迁移文件，用于服务器 DB 结构更新
@@ -25,6 +26,13 @@ python manage.py migrate --fake-initial app_notebook
 # 联机调试 Django API, 读取 App Model 之类，参考下面的 Python 代码：
 # Tune Django API on the fly.
 python manage.py shell
+```
+
+```python
+# 获取密码的 Hash
+from django.contrib.auth.hashers import make_password
+
+make_password('password')
 ```
 
 ```python

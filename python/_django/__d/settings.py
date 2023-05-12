@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # UniversalFunc
+    # 3rd party libraries.
+    'bootstrap5',
+
+    # Customized Applications.
+    '__d',
     'app_notebook',
 ]
 
@@ -132,3 +136,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 成功登录后 Landing 页面。
+# LOGIN_REDIRECT_URL =

@@ -31,7 +31,7 @@ urlpatterns = [
     path('english-chinese-word/new', views.new_english_chinese_word, name="english_chinese_word_new"),
 
     # English words with Chinese translation - List.
-    path('english-word-chinese/', views.list_english_word_chinese, name="english_word_chinese_list"),
+    path('english-word-chinese/all', views.list_english_word_chinese, name="english_word_chinese_list"),
     # English words with Chinese translation - Create. Base on formset.
     path('english-word-chinese/new', views.new_english_word_chinese, name="english_word_chinese_new"),
     # English words with Chinese translation - Edit.
@@ -40,5 +40,8 @@ urlpatterns = [
 
     # English words with Chinese translation - notebook.
     path('english-word-chinese/<int:notebook_id>', views.list_english_word_chinese_notebook,
+         name="english_word_chinese_notebook"),
+    # TODO 列出所有当前用户的单词本
+    path('english-word-chinese/', views.list_english_word_chinese_notebook,
          name="english_word_chinese_notebook"),
 ]
