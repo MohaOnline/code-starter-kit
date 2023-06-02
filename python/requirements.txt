@@ -27,7 +27,11 @@ djangocms-text-ckeditor
 djangocms-audio
 ### INSTALLED_APPS as bootstrap5
 ### https://django-bootstrap-v5.readthedocs.io/en/latest/
-django-bootstrap-v5
+# django-bootstrap-v5
+
+### INSTALLED_APPS as django_bootstrap5
+### https://django-bootstrap5.readthedocs.io/en/latest/index.html
+django_bootstrap5
 
 ## Database
 mysqlclient

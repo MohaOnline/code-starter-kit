@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block Contents %}
 
     <form method="post" id="englishForm">
         {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
+        {% bootstrap_form form layout="horizontal" %}
         {{ formset.management_form }}
         <div id="translationForms">
-            {% for form in formset %}
-                <ul>
-                    {{ form.as_ul }}
-                </ul>
-            {% endfor %}
+            <ul>
+                {% bootstrap_formset formset layout="horizontal" %}
+            </ul>
         </div>
         <button type="button" id="addTranslationBtn">Add Translation</button>
         <input type="submit" value="Save">
@@ -27,7 +24,7 @@
 
             $('#addTranslationBtn').click(function () {
                 let newForm = $('#emptyForm').html().replace(/__prefix__/g, formCount);
-                
+
                 translationForms.append(newForm);
                 formCount++;
             });
@@ -35,7 +32,7 @@
     </script>
     <script id="emptyForm" type="text/template">
         <ul>
-            {{ formset.empty_form.as_ul }}
+            {% bootstrap_form formset.empty_form layout="horizontal" %}
         </ul>
     </script>
 {% endblock Contents %}

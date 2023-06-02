@@ -55,6 +55,15 @@ for o in Record.objects.all():
     print(o.id, o.title)
 ```
 
+```python
+# Fetch all users and their uid.
+from django.contrib.auth.models import User
+
+for u in User.objects.all():
+    print(u.username, u.id)
+
+```
+
 ```mysql
 # Migrate old data.
 INSERT INTO app_notebook_english(id, word, syllable, accent, phonetic_uk, phonetic_us, typescript, created, updated)
