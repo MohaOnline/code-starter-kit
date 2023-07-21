@@ -138,7 +138,7 @@ def edit_english_word_chinese(request, english_id=0):
             # return redirect("app_notebook:english_word_chinese_edit", args=[english.id])
             return HttpResponseRedirect(reverse("app_notebook:english_word_chinese_edit", args=[english.id]))
 
-    # TODO 初始化 weight
+    # TODO 初始化 weight, 或者改成如果没有 weight 按照提交顺序设置 weight。weight 在解释中并不重要。
     for f in formset.forms:
         pass
 

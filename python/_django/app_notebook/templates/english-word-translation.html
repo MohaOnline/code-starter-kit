@@ -19,8 +19,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            var formCount = $('#id_translation_set-TOTAL_FORMS').val();
-            var translationForms = $('#translationForms');
+            let formCount = $('#id_translation_set-TOTAL_FORMS').val();
+            let translationForms = $('#translationForms');
 
             $('#addTranslationBtn').click(function () {
                 let newForm = $('#emptyForm').html().replace(/__prefix__/g, formCount);
