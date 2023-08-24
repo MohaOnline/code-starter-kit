@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>{% block Title %}Django Application{% endblock Title %}</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+{% if not user.is_authenticated %}
+    <a href="{% url 'admin:login' %}">Login</a>
+{% endif %}
+{% block Contents %}{% endblock Contents %}
+
+{# 不转义 {{ }} #}
+{% verbatim %}
+<div class="container">
+    <div id="app">{{ message }}</div>
+</div>
+{% endverbatim %}
+
+<script>
+    const {createApp, ref} = Vue
+
+    createApp({
+        setup() {
+            const message = ref('Hello vue!')
+            return {
+                message
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

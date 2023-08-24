@@ -1,5 +1,9 @@
-```shell
+# _django 说明
 
+## 项目由来
+
+```shell
+# 初始化根项目
 django-admin startproject __d .
 
 # 初始化 django 数据表，在 _django 下运行，初始状态生成 SQLite 数据库。
@@ -14,6 +18,9 @@ python manage.py runserver
 # 
 python manage.py startapp __common
 python manage.py startapp app_notebook
+
+# 生成 password 应用
+python manage.py startapp app_password
 
 # 为当前 app 生成 DB 迁移文件，用于服务器 DB 结构更新
 python manage.py makemigrations app_notebook
@@ -92,8 +99,8 @@ SELECT id, source_id, source_number
 FROM english_words_chinese
 WHERE source_id IS NOT NULL;
 
-# 
-delete
-from `django_migrations`
+# 为重新生成数据库迁移记录准备
+DELETE
+FROM `django_migrations`
 WHERE app = 'app_notebook';
 ```

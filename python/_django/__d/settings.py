@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-!5er&j!mn#pkt59%(e1!(q!yt0-v)@abb*8pnuu#1+w9jvp*+h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allow all clients' requests.
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     # Customized Applications.
     '__d',
     'app_notebook',
+    'app_password',
 ]
 
 MIDDLEWARE = [
@@ -87,12 +90,14 @@ WSGI_APPLICATION = '__d.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
+        # Write configuration in source.
         # 'NAME': 'default',
         # 'USER': 'root',
         # 'PASSWORD': 'template',
         # 'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
         # 'PORT': '3306',
         "OPTIONS": {
+            # Read configuration from file.
             "read_default_file": os.path.join(BASE_PATH, "my.cnf"),
         },
     }
@@ -121,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
