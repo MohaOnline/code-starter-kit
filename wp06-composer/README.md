@@ -1,0 +1,1 @@
+composer require $(composer show -s --format=json | jq '.requires | keys | map(.+" ") | add' -r)
