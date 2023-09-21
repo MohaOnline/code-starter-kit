@@ -1,0 +1,1 @@
+composer update "drupal/core-*" --with-all-dependencies
