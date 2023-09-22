@@ -1,0 +1,3353 @@
+# Translation of Plugins - Tutor LMS &#8211; eLearning and online course solution - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Tutor LMS &#8211; eLearning and online course solution - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-11-18 16:07:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Tutor LMS &#8211; eLearning and online course solution - Stable (latest release)\n"
+
+#: classes/Withdraw.php:262
+msgid "Insufficient balance."
+msgstr "余额不足。"
+
+#: classes/Options_V2.php:1011
+msgid "Preferred Course Filters"
+msgstr "首选课程过滤器"
+
+#: templates/dashboard/withdraw.php:38
+msgid "Please contact the site administrator for more information."
+msgstr "请与站点管理员联系以获取更多信息。"
+
+#: templates/dashboard/withdraw.php:39
+msgid "Withdrawal request is pending for approval, please hold tight."
+msgstr "提款申请正在等待批准，请稍等。"
+
+#: templates/dashboard/withdraw.php:134
+msgid "Please check your transaction notification on your connected withdrawal method"
+msgstr "请检查您的关联提款方式的交易通知"
+
+#: templates/dashboard/withdraw.php:143
+msgid "Selected Payment Method"
+msgstr "选择付款方式"
+
+#: templates/dashboard/withdraw.php:183
+msgid "Submit Request"
+msgstr "提交请求"
+
+#: templates/dashboard/withdraw.php:201
+msgid "Withdrawal History"
+msgstr "提款历史"
+
+#: views/quiz/contexts.php:95
+msgid "No"
+msgstr "否"
+
+#: templates/modal/confirm.php:19
+msgid "Yes"
+msgstr "是"
+
+#: classes/Options_V2.php:996
+msgid "Course Filter"
+msgstr "课程筛选"
+
+#: classes/Options_V2.php:999
+msgid "Show sorting and filtering options on course archive page"
+msgstr "在课程归档页面上显示排序和过滤选项"
+
+#: classes/Options_V2.php:1158 templates/course-filter/filters.php:81
+#: templates/single/course/course-entry-box.php:52
+msgid "Level"
+msgstr "级别"
+
+#: templates/dashboard/withdraw.php:210
+msgid "Withdrawal Method"
+msgstr "提现方式"
+
+#: templates/dashboard/instructor/logged-in.php:27
+msgid "Your application will be reviewed and the results will be sent to you by email."
+msgstr "您的申请将被审核，审核结果将通过电子邮件发送给您。"
+
+#: templates/dashboard/instructor/logged-in.php:29
+msgid "Your application has been accepted. Further necessary details have been sent to your registered email account."
+msgstr "您的申请已被接受。更多必要的信息已发送至您注册的电子邮件账户。"
+
+#: templates/dashboard/instructor/logged-in.php:31
+msgid "You have been blocked from being an instructor."
+msgstr "您被禁止担任讲师。"
+
+#: templates/dashboard/instructor/logged-in.php:51
+msgid "Thank you for registering as an instructor! "
+msgstr "谢谢您注册成为讲师！ "
+
+#: templates/dashboard/instructor/logged-in.php:53
+msgid "Congratulations! You are now registered as an instructor."
+msgstr "恭喜您！您现在已经注册为讲师。您现在已经注册成为一名讲师。"
+
+#: templates/dashboard/instructor/logged-in.php:55
+msgid "Unfortunately, your instructor status has been removed."
+msgstr "不幸的是，您的讲师身份已被删除。"
+
+#: templates/dashboard/instructor/logged-in.php:64
+msgid "We've received your application, and we will review it soon. Please hang tight!"
+msgstr "我们已经收到你的申请，我们会尽快审核。请抓紧时间！"
+
+#: templates/dashboard/instructor/logged-in.php:66
+msgid "Start building your first course today and let your eLearning journey begin."
+msgstr "今天就开始构建您的第一个课程，让您的电子学习之旅开始。"
+
+#: templates/dashboard/instructor/logged-in.php:68
+msgid "Please contact the site administrator for further information."
+msgstr "更多信息请联系网站管理员。"
+
+#: templates/dashboard/instructor/logged-in.php:75
+msgid "Go to Dashboard"
+msgstr "转到仪表盘"
+
+#: templates/single/assignment/content.php:180
+#: templates/single/assignment/content.php:502
+msgid "You have missed the submission deadline. Please contact the instructor for more information."
+msgstr "您已经错过了提交截止日期。请与指导讲师联系，了解更多信息。"
+
+#: views/elements/filters.php:160
+msgid "Search..."
+msgstr "搜索…"
+
+#: classes/Course_Widget.php:175 classes/Options_V2.php:1015
+#: templates/course-filter/filters.php:53
+#: templates/shortcode/instructor-filter.php:58 views/elements/filters.php:113
+msgid "Category"
+msgstr "分类"
+
+#: classes/Options_V2.php:1016 templates/course-filter/filters.php:67
+msgid "Tag"
+msgstr "标签"
+
+#: classes/Withdraw.php:108
+msgid "We will use this email address to send the money to your Paypal account"
+msgstr "我们将使用这个邮箱地址将钱汇到您的Paypal账户。"
+
+#: classes/Options_V2.php:799 classes/Options_V2.php:800
+msgid "Preferred Video Source"
+msgstr "首选视频源"
+
+#: classes/Addons.php:94
+msgid "Tutor Zoom Integration"
+msgstr "Tutor Zoom集成"
+
+#: classes/Addons.php:95
+msgid "Connect Tutor LMS with Zoom to host live online classes. Students can attend live classes right from the lesson page."
+msgstr "将Tutor LMS与Zoom连接起来以主持实时在线课程。学员可以直接从课程页面参加实时课程。"
+
+#: classes/Addons.php:90
+msgid "Google Classroom Integration"
+msgstr "Google Classroom集成"
+
+#: classes/Addons.php:91
+msgid "Helps connect Google Classrooms with Tutor LMS courses, allowing you to use features like Classroom streams and files directly from the Tutor LMS course."
+msgstr "有助于将Google课堂与Tutor LMS课程联系起来，使您可以直接从Tutor LMS课程使用诸如课堂流和文档之类的功能。"
+
+#: restapi/REST_Rating.php:45
+msgid "Course rating retrieved successfully"
+msgstr "成功检索课程等级"
+
+#: restapi/REST_Rating.php:54
+msgid "Rating not found for given ID"
+msgstr "未找到给定ID的评级"
+
+#: restapi/REST_Course.php:79 restapi/REST_Course.php:193
+#: restapi/REST_Course.php:278
+msgid "Course retrieved successfully"
+msgstr "成功检索课程"
+
+#: restapi/REST_Course.php:88 restapi/REST_Course.php:287
+msgid "Course not found"
+msgstr "课程未找到"
+
+#: restapi/REST_Course.php:128
+msgid "Course detail retrieved successfully"
+msgstr "成功检索课程详情"
+
+#: restapi/REST_Course.php:135
+msgid "Detail not found for given ID"
+msgstr "未找到指定ID的详细信息"
+
+#: restapi/REST_Course.php:202
+msgid "Course not found for given terms"
+msgstr "未找到特定术语的课程"
+
+#: restapi/REST_Course.php:219
+msgid "Categories field is not an array"
+msgstr "分类字段不是一个数组"
+
+#: restapi/REST_Course.php:223
+msgid "Tags field is not an array"
+msgstr "标签字段不是一个数组"
+
+#: restapi/REST_Quiz.php:45
+msgid "Quiz retrieved successfully"
+msgstr "测验检索成功"
+
+#: restapi/REST_Quiz.php:53
+msgid "Quiz not found for given ID"
+msgstr "没有找到给定ID的测验"
+
+#: restapi/REST_Quiz.php:94
+msgid "Question retrieved successfully"
+msgstr "问题检索成功"
+
+#: restapi/REST_Quiz.php:103
+msgid "Question not found for given ID"
+msgstr "未找到给定ID的问题"
+
+#: restapi/REST_Quiz.php:140
+msgid "Quiz attempts retrieved successfully"
+msgstr "成功检索到的测验次数"
+
+#: restapi/REST_Quiz.php:148
+msgid "Quiz attempts not found for given ID"
+msgstr "未找到给定ID的测验尝试"
+
+#: restapi/REST_Author.php:35
+msgid "Author details retrieved successfully"
+msgstr "成功检索到作者详细信息"
+
+#: restapi/REST_Author.php:44
+msgid "Author not found"
+msgstr "未找到作者"
+
+#: restapi/REST_Lesson.php:55
+msgid "Lesson retrieved successfully"
+msgstr "成功检索课程"
+
+#: restapi/REST_Lesson.php:63
+msgid "Lesson not found for given topic ID"
+msgstr "未找到指定主题ID的课程"
+
+#: restapi/REST_Course_Announcement.php:38
+msgid "Announcement retrieved successfully"
+msgstr "公告检索成功"
+
+#: restapi/REST_Course_Announcement.php:47
+msgid "Announcement not found for given ID"
+msgstr "找不到指定ID的公告"
+
+#: restapi/REST_Topic.php:38
+msgid "Topic retrieved successfully"
+msgstr "成功检索到的主题"
+
+#: restapi/REST_Topic.php:46
+msgid "Topic not found for given ID"
+msgstr "未找到给定ID的主题"
+
+#: templates/single/assignment/content.php:143
+#: templates/single/course/course-topics.php:114
+msgid "Expired"
+msgstr "过期"
+
+#: templates/single/course/course-topics.php:116
+msgid "Live"
+msgstr "在线"
+
+#: templates/single/quiz/parts/open-ended.php:24
+#: templates/single/quiz/parts/short-answer.php:24
+msgid "characters remaining"
+msgstr "剩余字符"
+
+#: classes/Options_V2.php:639
+msgid "Course Content Access"
+msgstr "课程内容访问"
+
+#: classes/Options_V2.php:642
+msgid "Allow instructors and admins to view the course content without enrolling"
+msgstr "允许讲师和管理员在不注册的情况下查看课程内容"
+
+#: classes/Withdraw.php:308
+msgid "Withdrawal Request Sent!"
+msgstr "提款申请已发出!"
+
+#: templates/dashboard/dashboard.php:36
+#: templates/dashboard/notifications/profile-completion.php:20
+msgid "Complete Your Profile"
+msgstr "完善您的个人资料"
+
+#: templates/dashboard/notifications/profile-completion.php:22
+msgid "Complete your profile so people can know more about you! Go to Profile"
+msgstr "完成您的个人资料，让人们更了解您!进入个人资料"
+
+#: templates/dashboard/notifications/profile-completion.php:27
+msgid "Set Your"
+msgstr "设置您的"
+
+#: templates/dashboard/notifications/profile-completion.php:40
+msgid "% Complete"
+msgstr "% 完成"
+
+#: templates/dashboard/notifications/profile-completion.php:42
+msgid "You are almost done!"
+msgstr "快要大功告成了！"
+
+#: classes/Utils.php:8969
+msgid "Withdrawals"
+msgstr "提款"
+
+#: classes/Options_V2.php:1558
+msgid "Profile Completion"
+msgstr "个人资料完整度"
+
+#: classes/Options_V2.php:1561
+msgid "Enabling this feature will show a notification bar to students and instructors to complete their profile information"
+msgstr "启用此功能将显示一个通知栏给学员和讲师以完成他们的个人资料信息"
+
+#: views/quiz/instructor-feedback.php:23
+msgid "Instructor Feedback"
+msgstr "教练反馈"
+
+#: templates/dashboard/announcements/update.php:63
+#: views/pages/withdraw_requests.php:103 views/pages/withdraw_requests.php:257
+#: views/quiz/instructor-feedback.php:38
+msgid "Update"
+msgstr "更新"
+
+#: views/modal/edit_quiz.php:120
+msgid "Quiz Feedback Mode"
+msgstr "测验反馈模式"
+
+#: views/modal/edit_quiz.php:130
+msgid "Default"
+msgstr "默认"
+
+#: views/modal/edit_quiz.php:146
+msgid "Retry Mode"
+msgstr "重试模式"
+
+#: views/modal/edit_quiz.php:138
+msgid "Reveal Mode"
+msgstr "显示模式"
+
+#: views/quiz/contexts.php:21 views/quiz/contexts.php:72
+#: views/quiz/contexts.php:99
+msgid "Correct Answer"
+msgstr "正确答案"
+
+#: views/quiz/contexts.php:22 views/quiz/contexts.php:73
+msgid "Incorrect Answer"
+msgstr "不正确的答案"
+
+#: templates/dashboard/assignments.php:116
+#: templates/dashboard/assignments/submitted.php:104
+#: templates/instructor/cover.php:43 templates/instructor/default.php:37
+#: templates/instructor/minimal-horizontal.php:35
+#: templates/instructor/minimal.php:39
+#: templates/instructor/portrait-horizontal.php:40
+#: views/fragments/announcement-list.php:310 views/pages/students.php:152
+#: views/quiz/attempt-table.php:174 views/quiz/contexts.php:25
+msgid "Details"
+msgstr "细节"
+
+#: views/pages/course-list.php:248
+msgid "Quiz:"
+msgstr "测验："
+
+#: views/qna/qna-table.php:171
+msgid "Delete This Question?"
+msgstr "删除这个问题？"
+
+#: templates/dashboard/question-answer/answers.php:104
+#: templates/single/lesson/comments-loop.php:38
+#: templates/single/lesson/comments-loop.php:88 views/qna/contexts.php:18
+#: views/qna/qna-single.php:141 views/qna/qna-single.php:176
+#: views/qna/qna-table.php:122
+msgid "Reply"
+msgstr "回复"
+
+#: views/modal/edit_quiz.php:276
+msgid "Open-Ended/Essay questions answer character limit"
+msgstr "开放式/论文题答题字数限制"
+
+#: views/modal/edit_quiz.php:280
+msgid "Students will place the answer in the Open-Ended/Essay question type within this character limit."
+msgstr "学员将在此字符限制内将答案放在开放式/论文题型中。"
+
+#: templates/dashboard/settings/profile.php:175
+msgid "Display name publicly as"
+msgstr "公开显示为"
+
+#: templates/dashboard/settings/profile.php:188
+msgid "The display name is shown in all public fields, such as the author name, instructor name, student name, and name that will be printed on the certificate."
+msgstr "显示名称显示在所有公共字段中，如作者姓名、指导教师姓名、学员姓名和将打印在证书上的姓名。"
+
+#: classes/Options_V2.php:678
+msgid "Course Completion Process"
+msgstr "课程完成过程"
+
+#: classes/Addons.php:98
+msgid "Quiz Export/Import"
+msgstr "测验导出/导入"
+
+#: classes/Addons.php:99
+msgid "Save time by exporting/importing quiz data with easy options."
+msgstr "通过导出/导入具有简单选项的测验数据来节省时间。"
+
+#: classes/Tutor_Setup.php:168
+msgid "Reset Default"
+msgstr "重置默认"
+
+#: classes/Instructors_List.php:62 classes/Options_V2.php:592
+#: classes/Tutor_Setup.php:333 classes/Tutor_Setup.php:557
+#: classes/Utils.php:8939 templates/dashboard/question-answer.php:53
+msgid "Instructor"
+msgstr "讲师"
+
+#: classes/Tutor_Setup.php:338
+msgid "Admin / Owner"
+msgstr "管理员/所有者"
+
+#: classes/Tutor_Setup.php:466
+msgid "Show Instructor Bio"
+msgstr "讲师"
+
+#: classes/Tutor_Setup.php:467
+msgid "Let the students know the instructor(s). Display their credentials, professional experience, and more."
+msgstr "让学员认识讲师。展示他们的凭据、专业经验等。"
+
+#: classes/Tutor_Setup.php:471
+msgid "Question and Anwser"
+msgstr "问题和答案"
+
+#: classes/Tutor_Setup.php:472
+msgid "Allows a Q&A forum on each course."
+msgstr "允许在每门课程上设置问答论坛。"
+
+#: classes/Tutor_Setup.php:476
+msgid "Courses Per Row"
+msgstr "每行课程数量"
+
+#: classes/Tutor_Setup.php:477
+msgid "How many courses per row on the archive pages."
+msgstr "归档页面上每行有多少门课程。"
+
+#: classes/Tutor_Setup.php:482
+msgid "How many courses per page on the archive pages."
+msgstr "归档页面上每页有多少个课程。"
+
+#: classes/Options_V2.php:778
+msgid "Final Grade Calculation"
+msgstr "符合最终成绩电子邮件（％d）的资格"
+
+#: classes/Tutor_Setup.php:488
+msgid "Instructor Settings"
+msgstr "讲师"
+
+#: classes/Tutor_Setup.php:492
+msgid "New Signup"
+msgstr "注册新用户"
+
+#: classes/Tutor_Setup.php:493
+msgid "Choose between open and closed instructor signup. If you’re creating a course marketplace, instructor signup should be open."
+msgstr "在打开和关闭的讲师注册之间进行选择。如果要创建课程市场，应打开讲师注册。"
+
+#: classes/Tutor_Setup.php:498
+msgid "Enable earning for instructors?"
+msgstr "启用讲师赚钱？"
+
+#: classes/Tutor_Setup.php:504
+msgid "Payment Settings "
+msgstr "支付设置 "
+
+#: classes/Tutor_Setup.php:508
+msgid "Guest Checkout"
+msgstr "允许游客支付"
+
+#: classes/Tutor_Setup.php:509
+msgid "Allow users to buy and consume content without logging in."
+msgstr "允许用户购买和使用内容而不登录。"
+
+#: classes/Tutor_Setup.php:513 views/pages/instructors.php:124
+#: views/pages/instructors.php:173
+msgid "Commission Rate"
+msgstr "佣金比率"
+
+#: classes/Tutor_Setup.php:514
+msgid "Control revenue sharing between admin and instructor."
+msgstr "控制管理员和讲师之间的收入共享。"
+
+#: classes/Tutor_Setup.php:524
+msgid "Payment Withdrawal Method"
+msgstr "取款方式"
+
+#: classes/Tutor_Setup.php:525
+msgid "Choose your preferred withdrawal method from the options."
+msgstr "从选项中选择您首选的提款方法。"
+
+#: classes/Tutor_Setup.php:560
+msgid "Payment"
+msgstr "付款"
+
+#: classes/Tutor_Setup.php:584
+msgid "Congratulations, you’re all set!"
+msgstr "恭喜，您已准备就绪！"
+
+#: classes/Tutor_Setup.php:711 classes/Tutor_Setup.php:713
+msgid "A Powerful, Smart, and Scalable LMS Solution"
+msgstr "强大、智能、可扩展的LMS解决方案"
+
+#: classes/Tutor_Setup.php:715
+msgid "From individual instructors to vast eLearning platforms, Tutor LMS grows with you to create your ideal vision of an LMS website."
+msgstr "从单个讲师到庞大的电子学习平台，导师 LMS 与您一起成长，为您打造 LMS 网站的理想愿景。"
+
+#: classes/Tutor_Setup.php:720 classes/Tutor_Setup.php:722
+msgid "Extensive Course Builder"
+msgstr "使用前端课程生成器进行编辑"
+
+#: classes/Tutor_Setup.php:724
+msgid "Tutor LMS comes with a state-of-the-art frontend course builder. Construct rich and resourceful courses with ease."
+msgstr "导师 LMS 配备了最先进的前端课程构建器。轻松构建丰富而足智多谋的课程。"
+
+#: classes/Tutor_Setup.php:729 classes/Tutor_Setup.php:731
+msgid "Advanced Quiz Creator"
+msgstr "高级测验创建者"
+
+#: classes/Tutor_Setup.php:733
+msgid "Build interactive quizzes with the vast selection of question types and verify the learning of your students."
+msgstr "通过大量选择的问题类型构建交互式测验，并验证学员的学习情况。"
+
+#: classes/Tutor_Setup.php:738 classes/Tutor_Setup.php:740
+msgid "Freedom With eCommerce"
+msgstr "与电子商务自由"
+
+#: classes/Tutor_Setup.php:742
+msgid "Select an eCommerce plugin and sell courses any way you like and use any payment gateway you want!"
+msgstr "选择一个电子商务插件，以任何您喜欢的方式销售课程，并使用任何您想要的支付网关!"
+
+#: classes/Tutor_Setup.php:747 classes/Tutor_Setup.php:749
+msgid "Reports and Analytics"
+msgstr "报告和分析"
+
+#: classes/Tutor_Setup.php:759
+msgid "Let’s Start"
+msgstr "让我们开始"
+
+#: classes/Tutor_Setup.php:788
+msgid "Let’s get the platform up and running"
+msgstr "让我们启动并运行平台"
+
+#: classes/Tutor_Setup.php:789
+msgid "Pick a category for your LMS platform. You can always update this later."
+msgstr "为您的LMS平台选择一个类别。您可以随时更新这个。"
+
+#: classes/Tutor_Setup.php:802
+msgid "Individual"
+msgstr "个人"
+
+#: classes/Tutor_Setup.php:822
+msgid "Marketplace"
+msgstr "市场"
+
+#: classes/Tutor_Setup.php:861
+msgid "Tutor &rsaquo; Setup Wizard"
+msgstr "Tutor &rsaquo; 安装向导"
+
+#: classes/Tools_V2.php:346
+msgid "Setup Wizard"
+msgstr "设置向导"
+
+#: classes/Withdraw.php:102
+msgid "PayPal"
+msgstr "贝宝"
+
+#: classes/Tutor_Setup.php:751
+msgid "Track what type of courses sell the most! Gain insights on user purchases, manage reviews and track quiz attempts."
+msgstr "追踪最畅销的课程类​​型！获得有关用户购买的见解，管理评论并跟踪测验尝试。"
+
+#: templates/loop/add-to-cart-edd.php:26
+msgid "Purchase"
+msgstr "购买"
+
+#: templates/dashboard/withdraw.php:57
+msgid "Withdrawal"
+msgstr "提现"
+
+#: templates/dashboard/announcements/details.php:45
+#: templates/dashboard/reviews/given-reviews.php:76
+#: templates/single/assignment/content.php:525
+#: views/fragments/announcement-list.php:174
+#: views/fragments/announcement-list.php:322 views/modal/edit_quiz.php:60
+#: views/options/field-types/toggle_switch_button_thumb.php:28
+#: views/pages/course-list.php:353 views/pages/instructors.php:205
+msgid "Edit"
+msgstr "编辑"
+
+#: templates/dashboard/settings/reset-password.php:26
+#: templates/dashboard/settings/reset-password.php:27
+msgid "Current Password"
+msgstr "当前密码"
+
+#: classes/Options_V2.php:1174 templates/single/course/course-entry-box.php:36
+#: templates/single/course/course-entry-box.php:37
+msgid "Duration"
+msgstr "时效"
+
+#: classes/Addons.php:118
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#: classes/Addons.php:130
+msgid "Restrict Content Pro"
+msgstr "限制内容专业版"
+
+#: classes/Tutor_Setup.php:634 classes/Tutor_Setup.php:663
+#: templates/single/common/footer.php:34
+#: templates/single/next-previous-pagination.php:17
+msgid "Previous"
+msgstr "上一个"
+
+#: classes/Options_V2.php:1582
+msgid "Maintenance Mode"
+msgstr "维护模式"
+
+#: classes/Options_V2.php:1585
+msgid "Enabling the maintenance mode allows you to display a custom message on the frontend. During this time, visitors can not access the site content. But the wp-admin dashboard will remain accessible."
+msgstr "启用维护模式允许您在前端显示自定义消息。在此期间，访问者无法访问网站内容。但是，wp-admin 仪表板将保持可访问状态。"
+
+#: classes/Options_V2.php:1175 classes/Options_V2.php:1247
+msgid "Disable"
+msgstr "禁用"
+
+#: templates/template-part/form-retrieve-password.php:27
+msgid "Enter Password and Confirm Password to reset your password"
+msgstr "输入您的当前密码确认更改"
+
+#: templates/template-part/form-retrieve-password.php:45
+msgid "Confirm Password"
+msgstr "确认密码"
+
+#: templates/template-part/form-retrieve-password.php:59
+#: templates/template-part/retrieve-password.php:47
+#: templates/template-part/retrieve-password.php:48
+msgid "Reset password"
+msgstr "密码重置"
+
+#: templates/template-part/retrieve-password.php:29
+msgid "Lost your password? Please enter your username or email address. You will receive a link to create a new password via email."
+msgstr "忘记密码了？请输入您的用户名或邮箱地址。您将会收到一封带有重置密码链接的邮件。"
+
+#: templates/template-part/retrieve-password.php:34
+msgid "Username or email"
+msgstr "用户名或电子邮件"
+
+#: templates/email/send-reset-password.php:17
+msgid "Hi %s,"
+msgstr "嗨%s,"
+
+#: templates/email/send-reset-password.php:21
+msgid "Someone has requested a new password for the following account on %s:"
+msgstr "有人在%s为以下帐户请求了新密码："
+
+#: templates/email/send-reset-password.php:24
+msgid "Username: %s"
+msgstr "用户名：%s"
+
+#: templates/email/send-reset-password.php:26
+msgid "If you didn't make this request, just ignore this email. If you'd like to proceed:"
+msgstr "如果您未提出此请求，请忽略此电子邮件。如果您想继续："
+
+#: templates/email/send-reset-password.php:30
+msgid "Click here to reset your password"
+msgstr "点这里设置您的新密码"
+
+#: templates/email/send-reset-password.php:33
+msgid "Thanks for reading."
+msgstr "感谢阅读。"
+
+#: classes/Ajax.php:525
+msgid "Username is required."
+msgstr "用户名为必填。"
+
+#: classes/FormHandler.php:62
+msgid "Enter a username or email address."
+msgstr "请输入用户名或邮箱地址。"
+
+#: classes/FormHandler.php:84 classes/FormHandler.php:89
+msgid "Invalid username or email."
+msgstr "无效的用户名或邮箱地址。"
+
+#: classes/FormHandler.php:101
+msgid "Password reset is not allowed for this user"
+msgstr "不能重设该用户的密码"
+
+#: classes/FormHandler.php:128
+msgid "Check your E-Mail"
+msgstr "请确认您的邮箱"
+
+#: classes/FormHandler.php:164
+msgid "This key is invalid or has already been used. Please reset your password again if needed."
+msgstr "此key无效或已被使用，如有必要请重置您的密码。"
+
+#: classes/FormHandler.php:170
+msgid "Please enter your password."
+msgstr "请输入您的密码."
+
+#: classes/FormHandler.php:175
+msgid "Passwords do not match."
+msgstr "密码不匹配."
+
+#. translators: %s: site name
+#: classes/FormHandler.php:221
+msgid "Password Reset Request for %s"
+msgstr "%s的密码重置请求"
+
+#: classes/Utils.php:2842
+msgid "Retrieve Password"
+msgstr "找回密码"
+
+#: classes/Admin.php:134 views/options/tools.php:16 views/pages/tools.php:14
+msgid "Tools"
+msgstr "工具"
+
+#: classes/Admin.php:283 classes/Tools_V2.php:323
+#: views/options/template/tutor_pages.php:15
+msgid "Tutor Pages"
+msgstr "Tutor专业版许可证"
+
+#: templates/dashboard/announcements/details.php:44
+#: templates/dashboard/my-courses.php:268
+#: templates/dashboard/reviews/given-reviews.php:81
+#: templates/dashboard/settings/profile.php:98
+#: views/fragments/announcement-list.php:171
+#: views/fragments/announcement-list.php:328 views/modal/edit_quiz.php:66
+#: views/options/field-types/media.php:43
+#: views/options/template/import_export.php:118 views/qna/qna-single.php:81
+#: views/qna/qna-table.php:151
+msgid "Delete"
+msgstr "删除"
+
+#: views/options/template/tutor_pages.php:30
+#: views/pages/tools/tutor_pages.php:19
+msgid "Page Name"
+msgstr "页面名称"
+
+#: views/pages/tools/tutor_pages.php:46 views/pages/tools/tutor_pages.php:101
+msgid " Page not set"
+msgstr " 页面未设置"
+
+#: views/pages/tools/tutor_pages.php:53
+msgid " Page deleted, please set new one"
+msgstr " 页面已删除，请设置新的"
+
+#: views/pages/tools/tutor_pages.php:60
+msgid "Page visibility is not public"
+msgstr "页面未公开"
+
+#: views/options/template/tutor_pages.php:82
+#: views/pages/tools/tutor_pages.php:113
+msgid "Re-Generate Tutor Pages"
+msgstr "重新生成成绩簿"
+
+#: views/options/template/tutor_pages.php:18
+#: views/pages/tools/tutor_pages.php:121
+msgid "Note: This tool will install all the missing Tutor pages. Pages already defined and set up will not be replaced."
+msgstr "注意：此工具将安装所有缺少的导师页面。不会替换已定义和设置的页面。"
+
+#: views/metabox/course-topics.php:122
+msgid "Update Lesson"
+msgstr "更新课程"
+
+#: templates/dashboard/instructor/registration.php:83
+#: templates/dashboard/instructor/registration.php:86
+#: templates/dashboard/registration.php:83
+#: templates/dashboard/registration.php:86
+#: templates/dashboard/settings/profile.php:138
+#: views/pages/add_new_instructor.php:68 views/pages/add_new_instructor.php:74
+msgid "User Name"
+msgstr "用户名"
+
+#: templates/dashboard/instructor/registration.php:93
+#: templates/dashboard/instructor/registration.php:96
+#: templates/dashboard/registration.php:93
+#: templates/dashboard/registration.php:96
+#: views/pages/add_new_instructor.php:81 views/pages/add_new_instructor.php:87
+msgid "E-Mail"
+msgstr "邮箱"
+
+#: templates/dashboard/instructor/registration.php:116
+#: templates/dashboard/registration.php:116
+#: views/pages/add_new_instructor.php:120
+msgid "Password confirmation"
+msgstr "重复密码"
+
+#: templates/dashboard/instructor/registration.php:119
+#: templates/dashboard/registration.php:119
+#: views/pages/add_new_instructor.php:126
+msgid "Password Confirmation"
+msgstr "确认密码"
+
+#: templates/dashboard/dashboard.php:290
+msgid "Completed Lessons:"
+msgstr "已完成课程："
+
+#: templates/dashboard/registration.php:149
+msgid "Register"
+msgstr "注册"
+
+#: classes/Utils.php:9006 templates/dashboard/wishlist.php:23
+#: templates/single/course/lead-info.php:101
+msgid "Wishlist"
+msgstr "收藏"
+
+#: templates/single/course/add-to-cart-edd.php:20
+msgid "Please make sure that your EDD product exists and valid for this course"
+msgstr "请确保您的EDD商品存在且对本课程有效"
+
+#: templates/single/course/reviews.php:133
+msgid "Edit review"
+msgstr "编辑评价"
+
+#: templates/single/course/reviews.php:133
+msgid "Write a review"
+msgstr "写评价"
+
+#: templates/dashboard/reviews/edit-review-form.php:22
+#: templates/dashboard/reviews/given-reviews.php:115
+#: templates/single/course/reviews.php:177
+msgid "write a review"
+msgstr "写评价"
+
+#: templates/single/course/reviews.php:181
+msgid "Submit Review"
+msgstr "提交评价"
+
+#: classes/Admin.php:110 views/pages/course-list.php:169
+msgid "Categories"
+msgstr "分类"
+
+#: classes/Options_V2.php:1182 templates/single/course/course-entry-box.php:31
+#: templates/single/course/course-entry-box.php:32
+msgid "Total Enrolled"
+msgstr "注册总数"
+
+#: views/options/template/import_export.php:36
+msgid "Last Update"
+msgstr "上次更新"
+
+#: templates/single/course/course-content.php:30
+msgid "About Course"
+msgstr "关于课程"
+
+#: templates/single/course/material-includes.php:24
+msgid "Material Includes"
+msgstr "教材包括"
+
+#: templates/dashboard/dashboard.php:353
+msgid "Enrolled"
+msgstr "已报名"
+
+#: classes/Options_V2.php:1222 templates/single/assignment/content.php:191
+#: templates/single/assignment/content.php:369
+#: templates/single/assignment/content.php:581
+#: views/modal/question_form.php:145
+msgid "Description"
+msgstr "描述"
+
+#: classes/Options_V2.php:1246
+msgid "Target Audience"
+msgstr "目标听众"
+
+#: classes/Admin.php:101 classes/Course_List.php:54 classes/Post_types.php:99
+#: templates/archive-course-init.php:132
+#: templates/dashboard/announcements.php:91
+#: templates/dashboard/assignments.php:40
+#: templates/dashboard/elements/filters.php:26
+#: templates/instructor/cover.php:39 templates/instructor/default.php:33
+#: templates/instructor/minimal-horizontal.php:31
+#: templates/instructor/minimal.php:35
+#: templates/instructor/portrait-horizontal.php:36
+#: templates/public-profile.php:128 templates/public-profile.php:195
+msgid "Courses"
+msgstr "课程"
+
+#: templates/single/course/course-entry-box.php:149
+msgid "Complete Course"
+msgstr "完成课程"
+
+#: templates/single/course/q_and_a_turned_off.php:17
+msgid "This feature has been disabled by the administrator"
+msgstr "此功能已被管理员禁用"
+
+#: templates/single/course/add-to-cart-woocommerce.php:79
+msgid "Please make sure that your product exists and valid for this course"
+msgstr "请确保您的商品存在且对本课程有效"
+
+#: views/metabox/course-additional-data.php:37
+msgid "What Will I Learn?"
+msgstr "我将学习什幺？"
+
+#: views/modal/question_answer_form.php:108
+msgid "Question Title"
+msgstr "问题标题"
+
+#: templates/single/course/continue-lesson.php:40
+msgid "Continue to lesson"
+msgstr "继续上课"
+
+#: classes/Options_V2.php:1238
+#: templates/single/course/course-requirements.php:25
+msgid "Requirements"
+msgstr "要求"
+
+#: templates/single/lesson/sidebar_question_and_answer.php:45
+msgid "No questions yet"
+msgstr "还没有问题"
+
+#: classes/Post_types.php:98 includes/tutor-template-functions.php:1606
+#: templates/single/lesson/required-enroll.php:20
+#: views/pages/course-list.php:343
+msgid "View Course"
+msgstr "查看课程"
+
+#: classes/Options_V2.php:737 templates/single/quiz/top.php:43
+#: views/metabox/course-contents.php:142 views/metabox/course-contents.php:211
+#: views/metabox/course-topics.php:49
+#: views/quiz/header-context/backend-dashboard-students-attempts.php:28
+#: views/quiz/header-context/course-single-previous-attempts.php:23
+msgid "Quiz"
+msgstr "测验"
+
+#: templates/single/quiz/parts/meta.php:45 views/modal/edit_quiz.php:155
+msgid "Attempts Allowed"
+msgstr "允许重试"
+
+#: templates/single/quiz/top.php:101
+msgid "Passing Grade"
+msgstr "通过等级"
+
+#: templates/single/quiz/parts/question.php:117
+msgid "Marks : "
+msgstr "成绩： "
+
+#: classes/Lesson.php:405 classes/Options_V2.php:617 classes/Options_V2.php:976
+#: classes/Options_V2.php:1492 classes/Tutor_Setup.php:554
+#: templates/dashboard/announcements/details.php:31
+#: templates/dashboard/assignments.php:101
+#: templates/dashboard/assignments/review.php:49
+#: templates/dashboard/assignments/submitted.php:40
+#: templates/instructor/cover.php:39 templates/instructor/default.php:33
+#: templates/instructor/minimal-horizontal.php:31
+#: templates/instructor/minimal.php:35
+#: templates/instructor/portrait-horizontal.php:36
+#: templates/public-profile.php:128 views/elements/filters.php:92
+#: views/elements/search-filter.php:40
+#: views/fragments/announcement-list.php:144
+#: views/fragments/announcement-list.php:301 views/qna/qna-table.php:102
+#: views/quiz/contexts.php:18
+#: views/quiz/header-context/backend-dashboard-students-attempts.php:25
+#: views/quiz/header-context/frontend-dashboard-my-attempts.php:19
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:21
+msgid "Course"
+msgstr "教程"
+
+#: templates/single/quiz/parts/question.php:194
+#: templates/single/quiz/parts/question.php:212
+msgid "Submit Quiz"
+msgstr "提交测验"
+
+#: classes/Tutor_Setup.php:563 templates/single/quiz/body.php:73
+msgid "Finish"
+msgstr "完成"
+
+#: templates/single/quiz/previous-attempts.php:58
+#: templates/single/quiz/top.php:120
+msgid "Start Quiz"
+msgstr "开始测验"
+
+#: templates/dashboard/assignments/submitted.php:86
+#: templates/single/assignment/content.php:423 views/quiz/contexts.php:24
+#: views/quiz/contexts.php:75 views/quiz/contexts.php:100
+msgid "Result"
+msgstr "结果"
+
+#: templates/single/quiz/no_course_belongs.php:15
+msgid "No course found for this quiz"
+msgstr "未找到此测验的课程"
+
+#: templates/single/quiz/no_course_belongs.php:16
+msgid "It seems there is no course belongs with this quiz, you can not attempt on this quiz without a course belongs, please notify to your instructor to fix this issue."
+msgstr "似乎没有课程属于这个测验，您不能在没有课程属性的情况下尝试这个测验，请通知您的讲师解决这个问题。"
+
+#: classes/Quiz.php:700
+msgid "Quiz has been timeout already"
+msgstr "测验已超时"
+
+#: classes/Quiz.php:1256 views/modal/question_answer_form.php:37
+msgid "True"
+msgstr "是"
+
+#: classes/Quiz.php:1263 views/modal/question_answer_form.php:41
+msgid "False"
+msgstr "否"
+
+#: templates/dashboard/question-answer/answers.php:20
+#: views/modal/question_answer_list.php:36 views/pages/answer.php:18
+msgid "Answer"
+msgstr "回答"
+
+#: views/modal/question_answer_list.php:59
+#: views/modal/question_answer_list.php:65 views/quiz/attempt-details.php:722
+msgid "Mark as correct"
+msgstr "标记为正确"
+
+#: classes/Course_Settings_Tabs.php:125 classes/Options_V2.php:1143
+#: classes/Utils.php:8673 templates/dashboard.php:54
+msgid "Q&A"
+msgstr "问答"
+
+#: classes/Admin.php:120 classes/Announcements.php:52
+#: classes/Options_V2.php:1254 classes/Utils.php:8678 classes/Utils.php:8964
+#: views/fragments/announcement-list.php:253
+msgid "Announcements"
+msgstr "公告"
+
+#: classes/Utils.php:2447 templates/public-profile.php:147
+msgid "Course Enrolled"
+msgstr "课程已注册"
+
+#: classes/Backend_Page_Trait.php:104 classes/Course_List.php:151
+#: classes/Instructors_List.php:104 classes/Quiz_Attempts_List.php:229
+#: classes/Utils.php:2958 classes/Withdraw_Requests_List.php:85
+#: includes/translate-text.php:41 templates/dashboard/dashboard.php:153
+#: templates/dashboard/my-courses.php:60
+#: templates/dashboard/purchase_history.php:139
+#: templates/single/assignment/content.php:461
+#: templates/single/course/reviews-loop.php:41 views/pages/course-list.php:130
+#: views/pages/instructors.php:96 views/quiz/attempt-details.php:306
+#: views/quiz/attempt-details.php:707 views/quiz/attempt-table.php:156
+msgid "Pending"
+msgstr "待复审"
+
+#: classes/Utils.php:2959 classes/Withdraw_Requests_List.php:79
+#: includes/translate-text.php:61 views/pages/instructors.php:97
+msgid "Approved"
+msgstr "批准"
+
+#: classes/Utils.php:2960 includes/translate-text.php:85
+#: views/pages/instructors.php:98
+msgid "Blocked"
+msgstr "禁闭"
+
+#: classes/Utils.php:4855
+msgid "True/False"
+msgstr "是/否"
+
+#: classes/Utils.php:4860
+msgid "Single Choice"
+msgstr "单选"
+
+#: classes/Utils.php:4865
+msgid "Multiple Choice"
+msgstr "多项选择"
+
+#: classes/Utils.php:4880
+msgid "Short Answer"
+msgstr "简短答案"
+
+#: classes/Utils.php:4875
+msgid "Fill In The Blanks"
+msgstr "填空"
+
+#: classes/Utils.php:4885
+msgid "Matching"
+msgstr "匹配"
+
+#: classes/Utils.php:4890
+msgid "Image Matching"
+msgstr "图像匹配"
+
+#: classes/Utils.php:4895
+msgid "Image Answering"
+msgstr "图像答案"
+
+#: classes/Utils.php:4900
+msgid "Ordering"
+msgstr "订购"
+
+#: classes/Utils.php:5239
+msgid "All Levels"
+msgstr "所有级别"
+
+#: classes/Utils.php:5240
+msgid "Beginner"
+msgstr "初级"
+
+#: classes/Utils.php:5241
+msgid "Intermediate"
+msgstr "中级"
+
+#: classes/Utils.php:5242
+msgid "Expert"
+msgstr "专家"
+
+#: classes/Lesson.php:120 templates/dashboard/announcements/create.php:31
+#: templates/dashboard/announcements/update.php:32
+#: views/fragments/announcement-list.php:54 views/metabox/lesson-metabox.php:15
+msgid "Select Course"
+msgstr "选择课程"
+
+#: classes/Lesson.php:122
+msgid "Lesson Video"
+msgstr "课时视频"
+
+#: classes/Lesson.php:233
+msgid "Draft Lesson"
+msgstr "草稿课时"
+
+#: classes/Course.php:830 classes/Lesson.php:452
+msgid "Please Sign-In"
+msgstr "请先登录"
+
+#: views/pages/instructors.php:112
+msgid "Name"
+msgstr "名称"
+
+#: classes/Post_types.php:90
+msgctxt "post type general name"
+msgid "Courses"
+msgstr "课程"
+
+#: classes/Post_types.php:91
+msgctxt "post type singular name"
+msgid "Course"
+msgstr "教程"
+
+#: classes/Post_types.php:92
+msgctxt "admin menu"
+msgid "Courses"
+msgstr "课程"
+
+#: classes/Post_types.php:93
+msgctxt "add new on admin bar"
+msgid "Course"
+msgstr "课程"
+
+#: views/pages/course-list.php:49 views/pages/instructors.php:71
+#: views/pages/tools/manage-tokens.php:37
+msgid "Add New"
+msgstr "添加新的"
+
+#: classes/Post_types.php:95
+msgid "Add New Course"
+msgstr "添加新课程"
+
+#: classes/Dashboard.php:80 classes/Post_types.php:96
+msgid "New Course"
+msgstr "新课程"
+
+#: classes/Post_types.php:97
+msgid "Edit Course"
+msgstr "编辑课程"
+
+#: classes/Post_types.php:100
+msgid "Search Courses"
+msgstr "搜索课程"
+
+#: classes/Post_types.php:101
+msgid "Parent Courses:"
+msgstr "父级课程："
+
+#: classes/Post_types.php:102
+msgid "No courses found."
+msgstr "未找到课程。"
+
+#: classes/Post_types.php:103
+msgid "No courses found in Trash."
+msgstr "在回收站里没有找到新课程。"
+
+#: classes/Post_types.php:108 classes/Post_types.php:240
+#: classes/Post_types.php:306 classes/Post_types.php:346
+#: classes/Post_types.php:385 classes/Post_types.php:500
+msgid "Description."
+msgstr "描述。"
+
+#: classes/Post_types.php:146
+msgctxt "taxonomy general name"
+msgid "Course Categories"
+msgstr "课程分类"
+
+#: classes/Post_types.php:147
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr "分类"
+
+#: classes/Post_types.php:148
+msgid "Search Categories"
+msgstr "搜索分类"
+
+#: classes/Post_types.php:149
+msgid "Popular Categories"
+msgstr "热门分类"
+
+#: classes/Post_types.php:150
+msgid "All Categories"
+msgstr "全部"
+
+#: classes/Post_types.php:153
+msgid "Edit Category"
+msgstr "编辑类别"
+
+#: classes/Post_types.php:154
+msgid "Update Category"
+msgstr "更新类别"
+
+#: classes/Post_types.php:155
+msgid "Add New Category"
+msgstr "添加新类别"
+
+#: classes/Post_types.php:156
+msgid "New Category Name"
+msgstr "新类别名称"
+
+#: classes/Post_types.php:157
+msgid "Separate categories with commas"
+msgstr "用逗号分隔类别"
+
+#: classes/Post_types.php:158
+msgid "Add or remove categories"
+msgstr "添加或删除分类"
+
+#: classes/Post_types.php:159
+msgid "Choose from the most used categories"
+msgstr "从最常用的类别中选择"
+
+#: classes/Post_types.php:160
+msgid "No categories found."
+msgstr "找不到分类。"
+
+#: classes/Post_types.php:178
+msgctxt "taxonomy general name"
+msgid "Tags"
+msgstr "标签"
+
+#: classes/Post_types.php:179
+msgctxt "taxonomy singular name"
+msgid "Tag"
+msgstr "标签"
+
+#: classes/Post_types.php:189
+msgid "Separate Tags with commas"
+msgstr "用逗号分隔标签"
+
+#: classes/Post_types.php:191
+msgid "Choose from the most used Tags"
+msgstr "从常用标签中选择"
+
+#: classes/Post_types.php:222
+msgctxt "post type general name"
+msgid "Lessons"
+msgstr "课时"
+
+#: classes/Post_types.php:223
+msgctxt "post type singular name"
+msgid "Lesson"
+msgstr "课时"
+
+#: classes/Post_types.php:224
+msgctxt "admin menu"
+msgid "Lessons"
+msgstr "课时"
+
+#: classes/Post_types.php:225
+msgctxt "add new on admin bar"
+msgid "Lesson"
+msgstr "课时"
+
+#: classes/Post_types.php:227
+msgid "Add New Lesson"
+msgstr "添加课程"
+
+#: classes/Post_types.php:228
+msgid "New Lesson"
+msgstr "新课时"
+
+#: classes/Post_types.php:229
+msgid "Edit Lesson"
+msgstr "编辑课程"
+
+#: classes/Post_types.php:230
+msgid "View Lesson"
+msgstr "查看课时"
+
+#: classes/Course.php:658 classes/Post_types.php:231
+msgid "Lessons"
+msgstr "课时"
+
+#: classes/Post_types.php:232
+msgid "Search Lessons"
+msgstr "搜索课时"
+
+#: classes/Post_types.php:233
+msgid "Parent Lessons:"
+msgstr "父级课时："
+
+#: classes/Post_types.php:234
+msgid "No lessons found."
+msgstr "未找到课程。"
+
+#: classes/Post_types.php:235
+msgid "No lessons found in Trash."
+msgstr "回收站里没有找到课时。"
+
+#: classes/Post_types.php:288
+msgctxt "post type general name"
+msgid "Quizzes"
+msgstr "测试"
+
+#: classes/Post_types.php:289
+msgctxt "post type singular name"
+msgid "Quiz"
+msgstr "测验"
+
+#: classes/Post_types.php:290
+msgctxt "admin menu"
+msgid "Quizzes"
+msgstr "测试"
+
+#: classes/Post_types.php:291
+msgctxt "add new on admin bar"
+msgid "Quiz"
+msgstr "测验"
+
+#: classes/Post_types.php:293
+msgid "Add New Quiz"
+msgstr "添加新测验"
+
+#: classes/Post_types.php:294
+msgid "New Quiz"
+msgstr "新测试"
+
+#: classes/Post_types.php:295
+msgid "Edit Quiz"
+msgstr "编辑测验"
+
+#: classes/Post_types.php:296
+msgid "View Quiz"
+msgstr "查看测试"
+
+#: classes/Post_types.php:297
+msgid "Quizzes"
+msgstr "测试"
+
+#: classes/Post_types.php:298
+msgid "Search Quizzes"
+msgstr "搜索测验"
+
+#: classes/Post_types.php:299
+msgid "Parent Quizzes:"
+msgstr "父级测验："
+
+#: classes/Post_types.php:300
+msgid "No quizzes found."
+msgstr "没有找到测验。"
+
+#: classes/Post_types.php:301
+msgid "No quizzes found in Trash."
+msgstr "回收站里没有找到测验。"
+
+#: views/pages/instructors.php:168
+msgid "Total Course"
+msgstr "全部课程"
+
+#: classes/Admin.php:284 classes/Tools_V2.php:108
+#: templates/dashboard/purchase_history.php:100
+#: templates/dashboard/withdraw.php:219 views/options/template/status.php:13
+#: views/options/template/tutor_pages.php:33 views/pages/instructors.php:130
+#: views/pages/instructors.php:184 views/pages/instructors.php:203
+#: views/pages/tools/tutor_pages.php:20 views/pages/withdraw_requests.php:100
+#: views/pages/withdraw_requests.php:250 views/qna/contexts.php:20
+msgid "Status"
+msgstr "状态"
+
+#: classes/Tutor_Setup.php:385
+msgid "Unlimited"
+msgstr "不限制"
+
+#: classes/Course_Settings_Tabs.php:84 classes/Options_V2.php:533
+#: classes/TutorEDD.php:67 classes/Tutor_Setup.php:551
+msgid "General"
+msgstr "常规"
+
+#: classes/Course_Settings_Tabs.php:85 classes/Options_V2.php:535
+#: classes/Tutor_Setup.php:429
+msgid "General Settings"
+msgstr "常规设置"
+
+#: classes/Options_V2.php:634
+msgid "Students must be logged in to view course"
+msgstr "您必须登录才可参与课程"
+
+#: classes/Options_V2.php:1574
+msgid "Erase upon uninstallation"
+msgstr "卸载时擦除"
+
+#: classes/Options_V2.php:1577
+msgid "Delete all data during uninstallation"
+msgstr "卸载期间删除所有数据"
+
+#: classes/Course_Settings_Tabs.php:72 classes/Course_Settings_Tabs.php:165
+#: classes/Options_V2.php:619 classes/Tutor_Setup.php:462
+#: views/metabox/course/settings-tabs.php:25
+msgid "Course Settings"
+msgstr "课程设置"
+
+#: views/qna/qna-single.php:74 views/qna/qna-single.php:76
+#: views/qna/qna-table.php:132 views/qna/qna-table.php:135
+msgid "Archive"
+msgstr "归档"
+
+#: classes/Options_V2.php:1513
+msgid "Course Archive Page"
+msgstr "教程归档页"
+
+#: classes/Options_V2.php:983
+msgid "Column Per Row"
+msgstr "每行栏"
+
+#: classes/Options_V2.php:1004 classes/Tutor_Setup.php:481
+msgid "Courses Per Page"
+msgstr "每页课程数"
+
+#: classes/Options_V2.php:1537
+msgid "Lesson Permalink Base"
+msgstr "课程预览"
+
+#: views/modal/edit_quiz.php:90
+msgid "Time Limit"
+msgstr "时间限制"
+
+#: templates/single/quiz/top.php:77 views/modal/edit_quiz.php:103
+msgid "Weeks"
+msgstr "周"
+
+#: includes/translate-text.php:126 templates/single/assignment/content.php:62
+#: templates/single/quiz/top.php:76 views/modal/edit_quiz.php:102
+msgid "Days"
+msgstr "天"
+
+#: includes/translate-text.php:132 templates/single/assignment/content.php:62
+#: templates/single/quiz/top.php:75 views/modal/edit_quiz.php:101
+msgid "Hours"
+msgstr "小时"
+
+#: includes/translate-text.php:138 templates/single/quiz/top.php:74
+#: views/modal/edit_quiz.php:100
+msgid "Minutes"
+msgstr "分钟"
+
+#: includes/translate-text.php:144 templates/single/quiz/top.php:73
+#: views/modal/edit_quiz.php:99
+msgid "Seconds"
+msgstr "秒"
+
+#: classes/Options_V2.php:744
+msgid "When time expires"
+msgstr "当时间到期时"
+
+#: classes/Options_V2.php:750
+msgid "Attempts must be submitted before time expires, otherwise they will not be counted"
+msgstr "必须在时间到期之前提交尝试，否则不会计算"
+
+#: classes/Options_V2.php:782
+msgid "Highest Grade"
+msgstr "最高成绩"
+
+#: classes/Options_V2.php:783
+msgid "Average Grade"
+msgstr "平均成绩"
+
+#: classes/Options_V2.php:784
+msgid "First Attempt"
+msgstr "查看尝试"
+
+#: classes/Options_V2.php:785
+msgid "Last Attempt"
+msgstr "最后一次尝试"
+
+#: classes/Admin.php:117
+msgid "Instructors"
+msgstr "讲师"
+
+#: classes/Admin.php:114 classes/Course.php:659 classes/Students_List.php:62
+#: templates/public-profile.php:135 views/pages/students.php:84
+msgid "Students"
+msgstr "学员"
+
+#: classes/Ajax.php:320
+msgid "Course removed from wish list"
+msgstr "删除课程中的学员"
+
+#: classes/Ajax.php:328
+msgid "Course added to wish list"
+msgstr "课程已添加到心愿单"
+
+#: classes/Admin.php:112 classes/Post_types.php:193
+#: templates/single/course/tags.php:18
+msgid "Tags"
+msgstr "标签"
+
+#: classes/Admin.php:122
+msgid "Q & A"
+msgstr "问答"
+
+#: classes/Admin.php:122
+msgid "Q & A "
+msgstr "问答 "
+
+#: classes/Admin.php:124 classes/Quiz_Attempts_List.php:59
+#: classes/Utils.php:8974 templates/dashboard.php:54
+#: templates/dashboard/quiz-attempts.php:31
+msgid "Quiz Attempts"
+msgstr "查看尝试"
+
+#: classes/Admin.php:130 views/pages/tutor-pro-addons.php:55
+msgid "Add-ons"
+msgstr "附加组件"
+
+#: classes/Admin.php:432 includes/tutor-template-functions.php:1601
+#: templates/permission-denied.php:25
+#: templates/single/lesson/required-enroll.php:15
+msgid "Permission Denied"
+msgstr "权限被拒绝"
+
+#: classes/Instructor.php:222 classes/Template.php:258
+msgid "Permission denied"
+msgstr "许可否认"
+
+#: classes/Options_V2.php:1262 views/quiz/attempt-table.php:172
+#: views/quiz/contexts.php:101
+msgid "Review"
+msgstr "评论"
+
+#: classes/Lesson.php:590 classes/Utils.php:1683
+#: templates/single/lesson/comments-loop.php:30
+#: templates/single/lesson/comments-loop.php:63
+msgid " ago"
+msgstr " 之前"
+
+#: classes/Quiz.php:990 views/metabox/course-topics.php:64
+#: views/qna/contexts.php:17 views/quiz/contexts.php:19
+#: views/quiz/contexts.php:67
+msgid "Question"
+msgstr "问题"
+
+#: views/elements/filters.php:35 views/elements/search-filter.php:28
+#: views/elements/search-filter.php:48
+#: views/options/template/import_export.php:103
+msgid "Apply"
+msgstr "应用"
+
+#: templates/dashboard/assignments/review.php:60
+#: templates/dashboard/assignments/submitted.php:80
+#: templates/dashboard/question-answer.php:51
+#: templates/dashboard/reviews.php:54 templates/public-profile.php:135
+#: views/elements/search-filter.php:43 views/qna/contexts.php:16
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:31
+msgid "Student"
+msgstr "学员"
+
+#: classes/Instructor.php:92 classes/Instructor.php:247 classes/Student.php:65
+msgid "First name field is required"
+msgstr "姓氏为必填字段"
+
+#: classes/Instructor.php:93 classes/Instructor.php:248 classes/Student.php:66
+msgid "Last name field is required"
+msgstr "名字为必填字段"
+
+#: classes/Instructor.php:94 classes/Instructor.php:249 classes/Student.php:67
+msgid "E-Mail field is required"
+msgstr "邮箱为必填字段"
+
+#: classes/Instructor.php:95 classes/Instructor.php:250 classes/Student.php:68
+msgid "User Name field is required"
+msgstr "用户名为必填字段"
+
+#: classes/Instructor.php:96 classes/Instructor.php:251 classes/Student.php:69
+msgid "Password field is required"
+msgstr "密码字段为必填字段"
+
+#: classes/Instructor.php:97 classes/Student.php:70
+msgid "Password Confirmation field is required"
+msgstr "密码确认字段为必填字段"
+
+#: classes/Instructor.php:119 classes/Instructor.php:264 classes/Student.php:90
+msgid "Valid E-Mail is required"
+msgstr "电子邮箱（必填）"
+
+#: classes/Instructor.php:214
+msgid "Already applied for instructor"
+msgstr "此优惠码已被使用"
+
+#: classes/Instructor.php:308
+msgid "Instructor has been added successfully"
+msgstr "已成功添加答案"
+
+#: classes/Course.php:312 classes/Course.php:402
+msgid "Course Builder"
+msgstr "课程生成器页面徽标"
+
+#: classes/Course.php:314 classes/Course.php:405
+msgid "Additional Data"
+msgstr "附加数据"
+
+#: classes/Course.php:316 classes/Course.php:399 classes/Options_V2.php:791
+msgid "Video"
+msgstr "视频"
+
+#: classes/Course.php:660 templates/course-filter/filters.php:122
+#: templates/dashboard/purchase_history.php:97 views/pages/course-list.php:175
+msgid "Price"
+msgstr "价格"
+
+#: classes/Course.php:779
+msgid "Please Sign In first"
+msgstr "请先登录"
+
+#: classes/Tutor.php:963
+msgid "Student Registration"
+msgstr "学员注册"
+
+#: classes/Tutor.php:972
+msgid "Instructor Registration"
+msgstr "讲师"
+
+#: views/metabox/course/field-types/groups/select.php:15
+#: views/metabox/course/field-types/select.php:15
+#: views/options/field-types/radio.php:13
+#: views/options/field-types/select.php:22
+msgid "Select Option"
+msgstr "选择选项"
+
+#: views/options/options_generator.php:14
+msgid "Tutor Settings"
+msgstr "Tutor设置"
+
+#: views/options/options_generator.php:98
+msgid "Save Settings"
+msgstr "保持设置"
+
+#: views/metabox/user-profile-fields.php:14
+msgid "Tutor Fields"
+msgstr "Tutor字段"
+
+#: views/metabox/user-profile-fields.php:27
+msgid "Job Title"
+msgstr "工作名称"
+
+#: views/metabox/user-profile-fields.php:34
+msgid "Profile Bio"
+msgstr "个人资料"
+
+#: views/metabox/user-profile-fields.php:41
+msgid "Write a little bit more about you, it will show publicly."
+msgstr "写一点关于您的信息，它将公开展示。"
+
+#: views/metabox/user-profile-fields.php:58
+msgid "Upload"
+msgstr "上传"
+
+#: views/metabox/course-topics.php:21
+msgid "Add new topic"
+msgstr "添加话题"
+
+#: views/metabox/course-topics.php:30 views/metabox/course-topics.php:35
+msgid "Add Topic"
+msgstr "添加话题"
+
+#: views/modal/topic-form.php:29
+msgid "Topic Name"
+msgstr "话题名称"
+
+#: views/modal/topic-form.php:38
+msgid "Topic Summary"
+msgstr "话题摘要"
+
+#: views/modal/edit-lesson.php:63
+msgid "The idea of a summary is a short text to prepare students for the activities within the topic or week. The text is shown on the course page under the topic name."
+msgstr "摘要的想法是一个简短的文本，为学员准备话题或周内的活动。文本以话题名称显示在课程页面上。"
+
+#: views/metabox/instructors-metabox.php:51
+msgid "Add More Instructors"
+msgstr "讲师能添加学员"
+
+#: views/metabox/instructors-metabox.php:69
+msgid "Search instructors..."
+msgstr "搜索讲师…"
+
+#: views/metabox/instructors-metabox.php:74
+msgid "Add Instructors"
+msgstr "讲师"
+
+#: views/modal/edit_quiz.php:114
+msgid "Time limit for this quiz. 0 means no time limit."
+msgstr "此测验的时间限制。0 表示没有时间限制。"
+
+#: views/modal/edit_quiz.php:167
+msgid "Restriction on the number of attempts a student is allowed to take for this quiz. 0 for no limit"
+msgstr "允许限制学员参加此测验的尝试次数。0 表示无限制"
+
+#: views/modal/edit_quiz.php:179
+msgid "Set the passing percentage for this quiz"
+msgstr "设置此测验的通过百分比"
+
+#: views/metabox/course-additional-data.php:51
+msgid "Total Course Duration"
+msgstr "时间/期限"
+
+#: views/metabox/course-additional-data.php:73
+msgid "Requirements/Instructions"
+msgstr "要求/说明"
+
+#: views/metabox/course-additional-data.php:44
+msgid "Targeted Audience"
+msgstr "目标受众"
+
+#: views/metabox/course-additional-data.php:68
+msgid "A list of assets you will be providing for the students in this course (One per line)"
+msgstr "您将在本课程中为学员提供的资产列表（每行一个）"
+
+#: views/metabox/video-metabox.php:83
+msgid "Course Intro Video"
+msgstr "课程已注册"
+
+#: views/metabox/video-metabox.php:85
+msgid "Video Source"
+msgstr "视频来源"
+
+#: views/metabox/video-metabox.php:109
+msgid "Select Video Source"
+msgstr "选择视频来源"
+
+#: classes/Utils.php:9099
+msgid "HTML 5 (mp4)"
+msgstr "HTML 5 (mp4)"
+
+#: classes/Utils.php:9107
+msgid "Youtube"
+msgstr "Youtube"
+
+#: classes/Utils.php:9111
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: views/metabox/lesson-metabox.php:23
+msgid "Select a course"
+msgstr "选择一个课程"
+
+#: views/metabox/lesson-metabox.php:38
+msgid "Choose the course for this lesson"
+msgstr "选择本课时的课程"
+
+#: views/modal/question_form.php:32
+msgid "Write your question here"
+msgstr "在这里写下您的问题"
+
+#: views/modal/edit_quiz.php:82
+msgid "Add Question"
+msgstr "添加问题"
+
+#: views/metabox/product-selection.php:42
+msgid "Select product"
+msgstr "选择产品"
+
+#: views/metabox/product-selection.php:48
+msgid "Select a Product"
+msgstr "选择一个产品"
+
+#: classes/Course_Widget.php:150 views/pages/course-list.php:165
+msgid "Title"
+msgstr "标题"
+
+#: views/modal/edit-lesson.php:68
+msgid "Feature Image"
+msgstr "特色图片"
+
+#: views/modal/question_answer_form.php:52
+#: views/modal/question_answer_form.php:136
+#: views/modal/question_answer_form.php:159
+msgid "Answer title"
+msgstr "作业标题"
+
+#: views/modal/question_answer_form.php:86
+#: views/modal/question_answer_form.php:202
+msgid "Only text"
+msgstr "仅文本"
+
+#: views/modal/question_answer_form.php:92
+#: views/modal/question_answer_form.php:208
+msgid "Only Image"
+msgstr "仅图像"
+
+#: views/modal/question_answer_form.php:98
+#: views/modal/question_answer_form.php:214
+msgid "Text &amp; Image both"
+msgstr "图像和悬停效果"
+
+#: views/modal/question_answer_form.php:145
+#: views/modal/question_answer_form.php:168
+msgid "Matched Answer title"
+msgstr "匹配答案标题"
+
+#: views/modal/question_answer_form.php:240
+msgid "Image matched text"
+msgstr "抱歉，没有找到符合条件的内容"
+
+#: views/modal/question_answer_form.php:270
+msgid "Answer input value"
+msgstr "答案输入值"
+
+#: views/modal/question_answer_form.php:286
+msgid "Update Answer"
+msgstr "更新答案"
+
+#: templates/dashboard/assignments/review.php:42
+#: templates/dashboard/assignments/submitted.php:34
+#: templates/single/quiz/parts/question.php:188
+#: views/metabox/course-topics.php:87 views/modal/question_form.php:25
+#: views/qna/qna-single.php:56
+#: views/quiz/header-context/backend-dashboard-students-attempts.php:20
+#: views/quiz/header-context/course-single-previous-attempts.php:17
+#: views/quiz/header-context/frontend-dashboard-my-attempts.php:14
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:15
+msgid "Back"
+msgstr "返回"
+
+#: views/modal/edit_quiz.php:17
+msgid "Type your quiz title here"
+msgstr "在此处键入您的测验标题"
+
+#: views/modal/question_form.php:111
+msgid "Answer Required"
+msgstr "评价为必填字段"
+
+#: views/modal/question_form.php:117
+msgid "Randomize"
+msgstr "随机"
+
+#: views/modal/question_form.php:132
+msgid "set the mark ex. 10"
+msgstr "设置分数，例如 10"
+
+#: views/modal/question_form.php:145
+msgid "Optional"
+msgstr "可选"
+
+#: views/modal/question_answer_list.php:103
+msgid "Add An Option"
+msgstr "添加选项"
+
+#: views/metabox/course-topics.php:60 views/quiz/contexts.php:17
+msgid "Quiz Info"
+msgstr "信息"
+
+#: classes/Tutor_Setup.php:642 classes/Tutor_Setup.php:806
+#: classes/Tutor_Setup.php:826 templates/single/common/footer.php:40
+#: templates/single/next-previous-pagination.php:23
+msgid "Next"
+msgstr "下一个"
+
+#: views/modal/edit_quiz.php:109
+msgid "Hide quiz time - display"
+msgstr "隐藏答题用时 - 显示"
+
+#: views/modal/edit_quiz.php:219
+msgid "Quiz Auto Start"
+msgstr "测验自动启动"
+
+#: views/modal/edit_quiz.php:222
+msgid "If you enable this option, the quiz will start automatically after the page is loaded."
+msgstr "如果启用该选项，练习题将在页面加载后的自动显示。"
+
+#: views/modal/edit_quiz.php:228
+msgid "Question Layout"
+msgstr "问题布局"
+
+#: views/modal/edit_quiz.php:231
+msgid "Set question layout view"
+msgstr "设置问题布局视图"
+
+#: views/modal/edit_quiz.php:232
+msgid "Single Question"
+msgstr "单个问题"
+
+#: views/modal/edit_quiz.php:233
+msgid "Question Pagination"
+msgstr "问题分页"
+
+#: views/modal/edit_quiz.php:234
+msgid "Question below each other"
+msgstr "提问（对讲师）"
+
+#: views/modal/edit_quiz.php:253
+msgid "Hide question number"
+msgstr "隐藏问题编号"
+
+#: views/modal/edit_quiz.php:256
+msgid "Show/hide question number during attempt."
+msgstr "在尝试期间显示/隐藏问题编号。"
+
+#: views/modal/edit_quiz.php:262
+msgid "Short answer characters limit"
+msgstr "短答案字符限制"
+
+#: views/modal/edit_quiz.php:270
+msgid "Student will place answer in short answer question type within this characters limit."
+msgstr "学员将答案以简短的答案题类型放在此字符限制内。"
+
+#: views/pages/answer.php:38
+msgid "Write an answer here"
+msgstr "在这里写下答案"
+
+#: views/pages/answer.php:42
+msgid "Place answer"
+msgstr "放置答案"
+
+#: views/pages/answer.php:74
+msgid "on"
+msgstr "于"
+
+#: classes/Utils.php:9022 templates/dashboard/question-answer.php:43
+#: templates/single/course/enrolled/question_and_answer.php:114
+#: views/pages/question_answer.php:49
+msgid "Question & Answer"
+msgstr "问题与答案"
+
+#: templates/course-filter/filters.php:36 views/elements/filters.php:156
+msgid "Search"
+msgstr "搜索"
+
+#: views/pages/tools/status.php:13
+msgid "Tutor Environment Status"
+msgstr "Tutor环境状态"
+
+#: classes/Tools_V2.php:116 views/pages/tools/status.php:22
+msgid "WordPress environment"
+msgstr "WordPress环境"
+
+#: classes/Tools_V2.php:125 views/pages/tools/status.php:27
+msgid "Home URL"
+msgstr "首页网址"
+
+#: views/pages/tools/status.php:29
+msgid "The homepage URL of your site."
+msgstr "您站点的首页。"
+
+#: classes/Tools_V2.php:168 views/pages/tools/status.php:34
+msgid "Site URL"
+msgstr "网站网址"
+
+#: views/pages/tools/status.php:35
+msgid "The root URL of your site."
+msgstr "您的网站根网址"
+
+#: classes/Tools_V2.php:134 views/pages/tools/status.php:40
+msgid "WordPress version"
+msgstr "WordPress 版本"
+
+#: views/pages/tools/status.php:41
+msgid "The version of WordPress installed on your site."
+msgstr "您安装的 WordPress 版本。"
+
+#. Translators: %1$s: Current version, %2$s: New version
+#: views/pages/tools/status.php:60
+msgid "%1$s - There is a newer version of WordPress available (%2$s)"
+msgstr "%1$s - WordPress 推出了更新版本 (%2$s)"
+
+#: views/pages/tools/status.php:69
+msgid "Tutor Version"
+msgstr "Tutor LMS 专业版"
+
+#: views/pages/tools/status.php:70
+msgid "The version of tutor."
+msgstr "Tutor的版本。"
+
+#: classes/Tools_V2.php:142 views/pages/tools/status.php:75
+msgid "WordPress multisite"
+msgstr "WordPress 多站点"
+
+#: views/pages/tools/status.php:76
+msgid "Whether or not you have WordPress Multisite enabled."
+msgstr "您是否启用了WordPress的多站点功能。"
+
+#: classes/Tools_V2.php:186 views/pages/tools/status.php:80
+msgid "WordPress memory limit"
+msgstr "WordPress 内存限制"
+
+#: views/pages/tools/status.php:81
+msgid "The maximum amount of memory (RAM) that your site can use at one time."
+msgstr "您的网站一次最高可以使用的内存(RAM)量。"
+
+#. Translators: %1$s: Memory limit, %2$s: Docs link.
+#: classes/Tools_V2.php:459 views/pages/tools/status.php:86
+msgid "%1$s - We recommend setting memory to at least 64MB. See: %2$s"
+msgstr "%1$s - 我们推荐内存至少是64MB,查看:%2$s"
+
+#. Translators: %1$s: Memory limit, %2$s: Docs link.
+#: classes/Tools_V2.php:459 views/pages/tools/status.php:86
+msgid "Increasing memory allocated to PHP"
+msgstr "增加PHP可用的内存"
+
+#: classes/Tools_V2.php:150 views/pages/tools/status.php:94
+msgid "WordPress debug mode"
+msgstr "WordPress 调试模式"
+
+#: views/pages/tools/status.php:95
+msgid "Displays whether or not WordPress is in Debug Mode."
+msgstr "显示 WordPress 是否处于调试模式。"
+
+#: views/pages/tools/status.php:105
+msgid "WordPress cron"
+msgstr "WordPress cron"
+
+#: views/pages/tools/status.php:106
+msgid "Displays whether or not WP Cron Jobs are enabled."
+msgstr "显示WP Cron 是否已启用。"
+
+#: classes/Tools_V2.php:158 classes/Tools_V2.php:259
+#: views/pages/tools/status.php:116
+msgid "Language"
+msgstr "语言"
+
+#: views/pages/tools/status.php:117
+msgid "The current language used by WordPress. Default = English"
+msgstr "当前语言已被 WordPress 使用。默认=英语"
+
+#: classes/Tools_V2.php:202 views/pages/tools/status.php:121
+msgid "External object cache"
+msgstr "外部对象缓存"
+
+#: views/pages/tools/status.php:122
+msgid "Displays whether or not WordPress is using an external object cache."
+msgstr "显示 WordPress 是否使用外部对象缓存。"
+
+#: classes/Tools_V2.php:211 views/pages/tools/status.php:139
+msgid "Server environment"
+msgstr "服务器环境"
+
+#: classes/Tools_V2.php:219 views/pages/tools/status.php:145
+msgid "Server info"
+msgstr "服务器信息"
+
+#: views/pages/tools/status.php:146
+msgid "Information about the web server that is currently hosting your site."
+msgstr "当前托管您网站的Web服务器信息。"
+
+#: classes/Tools_V2.php:227 views/pages/tools/status.php:150
+msgid "PHP version"
+msgstr "PHP 版本"
+
+#: views/pages/tools/status.php:151
+msgid "The version of PHP installed on your hosting server."
+msgstr "您当前服务器的PHP版本信息。"
+
+#: classes/Tools_V2.php:471 views/pages/tools/status.php:160
+msgid "Tutor will run under this version of PHP, however, it has reached end of life. We recommend using PHP version 7.2 or above for greater performance and security."
+msgstr "导师将运行在这个版本的PHP下，然而，它已达到生命的尽头。我们建议使用 PHP 版本 7.2 或更高版本，以提高性能和安全性。"
+
+#: classes/Tools_V2.php:472 views/pages/tools/status.php:162
+msgid "We recommend using PHP version 7.2 or above for greater performance and security."
+msgstr "我们建议您使用 PHP 7.2 或更高版本，以实现更出色的性能和更高的安全性。"
+
+#: classes/Tools_V2.php:235 views/pages/tools/status.php:173
+msgid "PHP post max size"
+msgstr "PHP  post_max_size"
+
+#: views/pages/tools/status.php:174
+msgid "The largest filesize that can be contained in one post."
+msgstr "单篇文章可用的最大附件尺寸。"
+
+#: classes/Tools_V2.php:243 views/pages/tools/status.php:178
+msgid "PHP time limit"
+msgstr "PHP 时间限制"
+
+#: views/pages/tools/status.php:179
+msgid "The amount of time (in seconds) that your site will spend on a single operation before timing out (to avoid server lockups)"
+msgstr "服务器超时时间"
+
+#: views/pages/tools/status.php:183
+msgid "PHP max input vars"
+msgstr "PHP 最大输入变量"
+
+#: views/pages/tools/status.php:184
+msgid "The maximum number of variables your server can use for a single function to avoid overloads."
+msgstr "服务器可用的最大的变量值是一个用来避免过载的单独功能。"
+
+#: classes/Tools_V2.php:251 views/pages/tools/status.php:188
+msgid "cURL version"
+msgstr "c网址 版本"
+
+#: views/pages/tools/status.php:189
+msgid "The version of cURL installed on your server."
+msgstr "您服务器已安装的  c网址 版本。"
+
+#: views/pages/tools/status.php:193
+msgid "SUHOSIN installed"
+msgstr "安装SUHOSIN"
+
+#: views/pages/tools/status.php:194
+msgid "Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential unknown vulnerabilities within these applications or the PHP core itself. If enabled on your server, Suhosin may need to be configured to increase its data submission limits."
+msgstr "对于PHP安装Suhosin是一种先进的保护系统.这是为了保护您的服务器一方面对一些众所周知的PHP应用进程中的问题,另一方面反对潜在的未知漏洞在这些应用进程或PHP内核本身.如果您的服务器上启用,Suhosin可能需要配置为增加其数据提交的限制."
+
+#: classes/Tools_V2.php:269 views/pages/tools/status.php:208
+msgid "MySQL version"
+msgstr "MySQL 版本"
+
+#: views/pages/tools/status.php:209
+msgid "The version of MySQL installed on your hosting server."
+msgstr "您当前服务器的MySQL版本信息。"
+
+#: classes/Tools_V2.php:487 views/pages/tools/status.php:216
+msgid "%1$s - We recommend a minimum MySQL version of 5.6. See: %2$s"
+msgstr "%1$s - 我们推荐的Mysql最低版本是5.6，查看:  %2$s"
+
+#: classes/Tools_V2.php:487 views/pages/tools/status.php:216
+msgid "WordPress requirements"
+msgstr "WordPress 需求"
+
+#: views/pages/tools/status.php:226
+msgid "Max upload size"
+msgstr "最大上传大小"
+
+#: views/pages/tools/status.php:227
+msgid "The largest filesize that can be uploaded to your WordPress installation."
+msgstr "可以被上传至您的wordpress安装器的最大尺寸"
+
+#: classes/Tools_V2.php:276 views/pages/tools/status.php:231
+msgid "Default timezone is UTC"
+msgstr "默认时区是UTC"
+
+#: views/pages/tools/status.php:232
+msgid "The default timezone for your server."
+msgstr "服务器的默认时区"
+
+#. Translators: %s: default timezone..
+#: classes/Tools_V2.php:491 views/pages/tools/status.php:237
+msgid "Default timezone is %s - it should be UTC"
+msgstr "默认时区为%s - 它应该是UTC"
+
+#: classes/Tools_V2.php:283 views/pages/tools/status.php:245
+msgid "fsockopen/cURL"
+msgstr "fsockopen/c网址"
+
+#: views/pages/tools/status.php:246
+msgid "Payment gateways can use cURL to communicate with remote servers to authorize payments, other plugins may also use it when communicating with remote services."
+msgstr "支付网关可以使用curl与远程服务器进行通信来授权支付，其他插件也可以使用它与远程服务通信时。"
+
+#: classes/Tools_V2.php:496 views/pages/tools/status.php:254
+msgid "Your server does not have fsockopen or cURL enabled - PayPal IPN and other scripts which communicate with other servers will not work. Contact your hosting provider."
+msgstr "您的服务器不支持 fsockopen 或 c网址  - PayPal IPN和其它连接别的服务器的脚本将不会工作.请联系您的服务器提供商."
+
+#: classes/Tools_V2.php:290 views/pages/tools/status.php:261
+msgid "DOMDocument"
+msgstr "DOMDocument"
+
+#: views/pages/tools/status.php:262
+msgid "HTML/Multipart emails use DOMDocument to generate inline CSS in templates."
+msgstr "HTML/多部分邮件使用DOM文档生成模板内联CSS。"
+
+#: classes/Tools_V2.php:500 views/pages/tools/status.php:271
+msgid "Your server does not have the %s class enabled - HTML/Multipart emails, and also some extensions, will not work without DOMDocument."
+msgstr "您的服务器没有启用%s类，HTML/Multipart邮件，以及一些插件，没有DOMDocument的话将无法工作。"
+
+#: classes/Tools_V2.php:297 views/pages/tools/status.php:278
+msgid "GZip"
+msgstr "GZip"
+
+#: views/pages/tools/status.php:279
+msgid "GZip (gzopen) is used to open the GEOIP database from MaxMind."
+msgstr "GZip (gzopen) 用来打开来自MaxMind的GEOIP数据库"
+
+#: classes/Tools_V2.php:504 views/pages/tools/status.php:288
+msgid "Your server does not support the %s function - this is required to use the GeoIP database from MaxMind."
+msgstr "您的服务器不支持%s函数 - 从 MaxMind 获取GeoIP数据库需要这个。"
+
+#: classes/Tools_V2.php:304 views/pages/tools/status.php:295
+msgid "Multibyte string"
+msgstr "多字节字符串"
+
+#: views/pages/tools/status.php:296
+msgid "Multibyte String (mbstring) is used to convert character encoding, like for emails or converting characters to lowercase."
+msgstr "多字节字符串 (mbstring) 用于转换字符编码，例如邮件或者转换字符为小写。"
+
+#: classes/Tools_V2.php:508 views/pages/tools/status.php:307
+msgid "Your server does not support the %s functions - this is required for better character encoding. Some fallbacks will be used instead for it."
+msgstr "您的服务器不支持%s函数 - 它是更好的字符编码所必需的，一些回调函数将会取代它。"
+
+#: views/pages/add_new_instructor.php:13 views/pages/add_new_instructor.php:150
+msgid "Add new instructor"
+msgstr "添加讲师"
+
+#: views/pages/uninstall.php:15
+msgid "Uninstall Tutor"
+msgstr "卸载Tutor"
+
+#: views/pages/get-pro.php:13
+msgid "Get pro plugin from themeum.com"
+msgstr "从themeum.com获取专业插件"
+
+#: views/pages/instructors.php:245
+msgid "Add New Instructor"
+msgstr "添加讲师"
+
+#: views/pages/addons.php:16
+msgid "Tutor Add-ons"
+msgstr "Tutor附加组件"
+
+#: views/pages/addons.php:23
+msgid "Plugins"
+msgstr "插件"
+
+#: views/pages/addons.php:28
+msgid "Themes"
+msgstr "主题"
+
+#: templates/loop/add-to-cart-edd.php:26 views/pages/addons.php:85
+msgid "Buy Now"
+msgstr "立即购买"
+
+#: templates/single/quiz/top.php:81 views/quiz/contexts.php:68
+#: views/quiz/header-context/course-single-previous-attempts.php:38
+#: views/quiz/header-context/frontend-dashboard-my-attempts.php:29
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:34
+msgid "Quiz Time"
+msgstr "测验时间"
+
+#: views/quiz/contexts.php:69
+#: views/quiz/header-context/frontend-dashboard-my-attempts.php:32
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:37
+msgid "Attempt Time"
+msgstr "尝试时间"
+
+#: views/quiz/attempt-details.php:343
+msgid "Quiz Overview"
+msgstr "概述"
+
+#: views/quiz/contexts.php:96
+msgid "Type"
+msgstr "类型"
+
+#: views/quiz/attempt-details.php:726
+msgid "Mark as In correct"
+msgstr "标记为错误"
+
+#: classes/Admin.php:624
+msgid "<strong style=\"color: #03bd24\">Documentation</strong>"
+msgstr "<strong style=\"color: #03bd24\">文档</strong>"
+
+#: classes/Admin.php:629
+msgid "<strong style=\"color: #03bd24\">Get Support</strong>"
+msgstr "<strong style=\"color: #03bd24\">获取支持</strong>"
+
+#: classes/TutorEDD.php:63
+msgid "EDD"
+msgstr "EDD"
+
+#: classes/TutorEDD.php:68
+msgid "Tutor Course Attachments Settings"
+msgstr "Tutor课程附件设置"
+
+#: classes/TutorEDD.php:72
+msgid "Enable EDD"
+msgstr "EDD样式"
+
+#: classes/TutorEDD.php:73
+msgid "This will enable sell your product via EDD"
+msgstr "这样可以通过EDD销售您的商品"
+
+#: classes/TutorEDD.php:107 classes/WooCommerce.php:297
+msgid "Add Product"
+msgstr "添加产品"
+
+#: classes/WooCommerce.php:267
+msgid "For Tutor"
+msgstr "对于 Tutor"
+
+#: classes/WooCommerce.php:268
+msgid "This checkmark ensure that you will sell a specif course via this product."
+msgstr "此复选标记确保您通过此商品销售特定课程。"
+
+#: classes/WooCommerce.php:446
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: views/metabox/course-add-edd-product-metabox.php:14
+msgid "Sell your product, process by EDD"
+msgstr "通过EDD销售您的商品和流程"
+
+#: classes/Post_types.php:445 classes/Post_types.php:448
+msgid "Course updated."
+msgstr "课程已更新。"
+
+#: classes/Post_types.php:446
+msgid "Custom field updated."
+msgstr "自定义域更新。"
+
+#: classes/Post_types.php:447
+msgid "Custom field deleted."
+msgstr "自定义域删除。"
+
+#: classes/Post_types.php:450
+msgid "Course published."
+msgstr "课程已发布。"
+
+#: classes/Post_types.php:451
+msgid "Course saved."
+msgstr "课程已保存。"
+
+#: classes/Post_types.php:452
+msgid "Course submitted."
+msgstr "课程已提交。"
+
+#: classes/Post_types.php:439
+msgid "M j, Y @ G:i"
+msgstr "Y-m-d \\a\\t g:ia"
+
+#: classes/Post_types.php:454
+msgid "Course draft updated."
+msgstr "课程草案已更新。"
+
+#: classes/Post_types.php:460
+msgid "View course"
+msgstr "查看课程"
+
+#: classes/Post_types.php:466
+msgid "Preview course"
+msgstr "选择课程包"
+
+#: views/metabox/course-add-edd-product-metabox.php:15
+msgid "When selling the course"
+msgstr "销售课程时"
+
+#: classes/Tutor_Setup.php:497
+msgid "Earning"
+msgstr "收入"
+
+#: templates/dashboard/withdraw.php:158 templates/dashboard/withdraw.php:216
+#: views/pages/withdraw_requests.php:97 views/pages/withdraw_requests.php:245
+msgid "Amount"
+msgstr "金额"
+
+#: views/pages/withdraw_requests.php:91
+msgid "Withdraw Method"
+msgstr "提款方式"
+
+#: templates/dashboard/announcements.php:116
+#: templates/dashboard/assignments/submitted.php:77
+#: templates/dashboard/purchase_history.php:94
+#: templates/dashboard/reviews.php:57
+#: templates/single/assignment/content.php:411 views/elements/filters.php:149
+#: views/fragments/announcement-list.php:245
+#: views/fragments/announcement-list.php:249
+#: views/options/template/import_export.php:84 views/pages/course-list.php:178
+#: views/quiz/contexts.php:16 views/quiz/contexts.php:66
+msgid "Date"
+msgstr "时间"
+
+#: templates/dashboard/purchase_history.php:88
+msgid "Order ID"
+msgstr "订单ID"
+
+#: classes/Admin.php:127
+msgid "Withdraw Requests"
+msgstr "提现请求"
+
+#. translators: %s: plugin name
+#: classes/Admin.php:653
+msgid "If you like %1$s please leave us a %2$s rating. A huge thanks in advance!"
+msgstr "如果您喜欢%1$s 请留下我们 %2$s评分。先表示十分的谢意哦！"
+
+#: views/options/withdraw/withdraw_admin_options_generator.php:38
+msgid "Enable/Disable"
+msgstr "启用/禁用"
+
+#: classes/Options_V2.php:917
+msgid "Percent"
+msgstr "百分比"
+
+#: classes/Options_V2.php:918
+msgid "Fixed"
+msgstr "固定"
+
+#: classes/Options_V2.php:876
+msgid "Show Statement Per Page"
+msgstr "每页显示的产品数"
+
+#: classes/Options_V2.php:879
+msgid "Define the number of statements to show."
+msgstr "定义相关产品的数量。"
+
+#: classes/Withdraw.php:60
+msgid "Bank Transfer"
+msgstr "银行转账"
+
+#: classes/Withdraw.php:62
+msgid "Get your payment directly into your bank account"
+msgstr "将您的付款直接存入您的银行帐户"
+
+#: classes/Withdraw.php:67
+msgid "Account Name"
+msgstr "帐户名称"
+
+#: classes/Withdraw.php:71
+msgid "Account Number"
+msgstr "账户号码"
+
+#: classes/Withdraw.php:75
+msgid "Bank Name"
+msgstr "银行名"
+
+#: classes/Withdraw.php:79
+msgid "IBAN"
+msgstr "国际银行标准账号"
+
+#: classes/Withdraw.php:83
+msgid "BIC / SWIFT"
+msgstr "BIC / Swift"
+
+#: classes/Withdraw.php:95
+msgid "Your Physical Address"
+msgstr "您的家庭住址"
+
+#: classes/Withdraw.php:96
+msgid "We will send you an E-Check to this address directly."
+msgstr "我们将直接向您发送电子检查。"
+
+#: classes/Withdraw.php:107
+msgid "PayPal E-Mail Address"
+msgstr "PayPal邮箱地址"
+
+#: classes/Withdraw.php:251
+msgid "Please save withdraw method "
+msgstr "请保存提现方式 "
+
+#: classes/Tutor.php:954 classes/Utils.php:8994 templates/dashboard.php:48
+#: templates/dashboard/dashboard.php:136
+msgid "Dashboard"
+msgstr "仪表盘"
+
+#: classes/Utils.php:2818
+msgid "Logout"
+msgstr "退出"
+
+#: views/options/withdraw/withdraw_admin_options_generator.php:43
+msgid "Enable "
+msgstr "启用 "
+
+#: classes/Addons.php:106
+msgid "Tutor Certificate"
+msgstr "Tutor证书"
+
+#: classes/Addons.php:66
+msgid "Tutor Course Attachments"
+msgstr "Tutor课程附件"
+
+#: classes/Addons.php:62
+msgid "Tutor Course Preview"
+msgstr "Tutor课程预览"
+
+#: classes/Addons.php:78
+msgid "Tutor E-Mail"
+msgstr "Tutor电邮"
+
+#: classes/Addons.php:54
+msgid "Tutor Multi Instructors"
+msgstr "Tutor多讲师"
+
+#: classes/Addons.php:114
+msgid "Tutor Prerequisites"
+msgstr "Tutor预修条件"
+
+#: classes/Addons.php:74
+msgid "Tutor Report"
+msgstr "报告"
+
+#: views/modal/edit_quiz.php:175
+msgid "Passing Grade (%)"
+msgstr "及格分数 (%)"
+
+#: views/modal/question_form.php:96
+msgid "Pro version required"
+msgstr "专业版为必填字段"
+
+#: templates/dashboard/dashboard.php:208
+msgid "Total Students"
+msgstr "学员总数"
+
+#: templates/dashboard/dashboard.php:221 views/pages/instructors.php:120
+msgid "Total Courses"
+msgstr "课程总数"
+
+#: templates/dashboard/dashboard.php:234
+msgid "Total Earnings"
+msgstr "总计收入"
+
+#: templates/dashboard/dashboard.php:350
+#: templates/dashboard/purchase_history.php:91
+msgid "Course Name"
+msgstr "课程名称"
+
+#: classes/Utils.php:8549
+msgid "All Time"
+msgstr "所有时间"
+
+#: classes/Student.php:297
+msgid "Incorrect Previous Password"
+msgstr "您输入的旧密码不正确"
+
+#: classes/Student.php:300
+msgid "New Password Required"
+msgstr "密码为必填项"
+
+#: classes/Student.php:303
+msgid "Confirm Password Required"
+msgstr "确认密码为必填字段"
+
+#: classes/Student.php:306
+msgid "New password and confirm password does not matched"
+msgstr "新密码和确认密码不匹配"
+
+#: classes/Taxonomies.php:48 classes/Taxonomies.php:132
+#: classes/Taxonomies.php:265
+msgid "Thumbnail"
+msgstr "缩略图"
+
+#: classes/Taxonomies.php:52 classes/Taxonomies.php:139
+msgid "Upload/Add image"
+msgstr "上传/添加图像"
+
+#: classes/Taxonomies.php:53 classes/Taxonomies.php:140
+msgid "Remove image"
+msgstr "删除图片"
+
+#: classes/Taxonomies.php:77 classes/Taxonomies.php:164
+msgid "Choose an image"
+msgstr "选择一张图像"
+
+#: classes/Taxonomies.php:79 classes/Taxonomies.php:166
+msgid "Use image"
+msgstr "作为特色图像"
+
+#: classes/Taxonomies.php:236
+msgid "Image"
+msgstr "图片"
+
+#: classes/Post_types.php:180
+msgid "Search Tags"
+msgstr "搜索标签"
+
+#: classes/Post_types.php:181
+msgid "Popular Tags"
+msgstr "热门标签"
+
+#: classes/Post_types.php:182
+msgid "All Tags"
+msgstr "所有标签"
+
+#: classes/Post_types.php:185
+msgid "Edit Tag"
+msgstr "编辑标签"
+
+#: classes/Post_types.php:186
+msgid "Update Tag"
+msgstr "更新标签"
+
+#: classes/Post_types.php:187
+msgid "Add New Tag"
+msgstr "添加新标签"
+
+#: classes/Post_types.php:188
+msgid "New Tag Name"
+msgstr "新标签命名"
+
+#: classes/Post_types.php:190
+msgid "Add or remove Tags"
+msgstr "添加或删除标签"
+
+#: classes/Post_types.php:192
+msgid "No Tags found."
+msgstr "未找到标签。"
+
+#: classes/Utils.php:8669 classes/Utils.php:9010
+#: templates/dashboard/reviews.php:28
+#: templates/dashboard/reviews/given-reviews.php:27
+msgid "Reviews"
+msgstr "评论"
+
+#: templates/dashboard/instructor/registration.php:149
+msgid "Register as instructor"
+msgstr "仅注册用户"
+
+#: classes/Options_V2.php:1415
+msgid "Primary Color"
+msgstr "主要颜色"
+
+#: classes/Options_V2.php:1424
+msgid "Primary Hover Color"
+msgstr "主要悬停颜色"
+
+#: classes/Course_Widget.php:33
+msgid "Tutor Course"
+msgstr "课程"
+
+#: classes/Course_Widget.php:140
+msgid "New title"
+msgstr "新标题"
+
+#: classes/Course_Widget.php:161
+msgid "Place single course id or comma (,) separated course ids"
+msgstr "放置单个课程ID或逗号（,）分隔的课程ID"
+
+#: classes/Course_Widget.php:166
+msgid "Exclude IDS:"
+msgstr "排除ID："
+
+#: classes/Course_Widget.php:169
+msgid "Place comma (,) separated courses ids which you like to exclude from the query"
+msgstr "将逗号（,）分隔的课程ID放在查询中"
+
+#: classes/Course_Widget.php:179
+msgid "Place comma (,) separated category ids"
+msgstr "放置逗号（,）分隔的分类ID"
+
+#: classes/Course_Widget.php:185
+msgid "OrderBy"
+msgstr "排序依据"
+
+#: classes/Course_Widget.php:210
+msgid "Count:"
+msgstr "计数："
+
+#: classes/Course_Widget.php:213
+msgid "Total results you like to show"
+msgstr "您喜欢显示的总结果"
+
+#: classes/Course_Widget.php:157 views/options/template/tutor_pages.php:27
+#: views/pages/tools/tutor_pages.php:18
+msgid "ID"
+msgstr "ID"
+
+#: templates/dashboard/logged-in.php:14
+msgid "You are already logged in"
+msgstr "您已经登录"
+
+#: classes/Utils.php:8665
+msgid "Course Info"
+msgstr "课程信息"
+
+#: classes/Admin.php:75
+msgid "Pro"
+msgstr "专业版"
+
+#: templates/single/assignment/content.php:256
+msgid "Assignment answer form"
+msgstr "作业答题表单"
+
+#: templates/single/assignment/content.php:356
+msgid "Submit Assignment"
+msgstr "提交作业"
+
+#: templates/single/assignment/content.php:450
+msgid "Passed"
+msgstr "通过"
+
+#: templates/single/assignment/content.php:454
+msgid "Failed"
+msgstr "不及格"
+
+#: templates/single/assignment/content.php:477
+#: views/quiz/attempt-details.php:333
+msgid "Instructor Note"
+msgstr "讲师"
+
+#: classes/Admin.php:141 classes/Admin.php:598
+msgid "Upgrade to Pro"
+msgstr "升级至 Pro 版"
+
+#: classes/Options_V2.php:547 classes/Utils.php:7098
+msgid "Dashboard Page"
+msgstr "仪表盘页面"
+
+#: classes/Options_V2.php:550
+msgid "This page will be used for student and instructor dashboard"
+msgstr "此页面将用于学员和讲师仪表盘"
+
+#: classes/Course.php:1082 classes/Course_Settings_Tabs.php:92
+#: classes/Options_V2.php:1151 classes/Options_V2.php:1159
+#: classes/Options_V2.php:1167 classes/Options_V2.php:1183
+#: classes/Options_V2.php:1191 classes/Options_V2.php:1199
+#: classes/Options_V2.php:1207 classes/Options_V2.php:1215
+#: classes/Options_V2.php:1223 classes/Options_V2.php:1231
+#: classes/Options_V2.php:1239 classes/Options_V2.php:1255
+#: classes/Options_V2.php:1263 classes/User.php:354
+msgid "Enable"
+msgstr "启用"
+
+#: classes/Options_V2.php:631
+msgid "Course Visibility"
+msgstr "课程驱动可见性"
+
+#: classes/Options_V2.php:1499
+msgid "Gutenberg Editor"
+msgstr "古腾堡编辑"
+
+#: classes/Options_V2.php:1516
+msgid "This page will be used to list all the published courses."
+msgstr "此页将用于列出所有已发布的课程。"
+
+#: classes/Options_V2.php:1521 classes/Utils.php:7099
+msgid "Instructor Registration Page"
+msgstr "讲师注册页面"
+
+#: classes/Options_V2.php:1529 classes/Utils.php:7100
+msgid "Student Registration Page"
+msgstr "学员注册页面"
+
+#: classes/Options_V2.php:894
+msgid "Fees are charged from the entire sales amount. The remaining amount will be divided among admin and instructors."
+msgstr "费用从全部销售额中扣除。剩余金额将分配给管理员和讲师。"
+
+#: classes/Post_types.php:161
+msgid "Course Categories"
+msgstr "课程分类"
+
+#: classes/Post_types.php:367
+msgctxt "post type general name"
+msgid "Assignments"
+msgstr "作业"
+
+#: classes/Post_types.php:368
+msgctxt "post type singular name"
+msgid "Assignment"
+msgstr "分配"
+
+#: classes/Post_types.php:369
+msgctxt "admin menu"
+msgid "Assignments"
+msgstr "作业"
+
+#: classes/Post_types.php:370
+msgctxt "add new on admin bar"
+msgid "Assignment"
+msgstr "分配"
+
+#: classes/Post_types.php:372
+msgid "Add New Assignment"
+msgstr "添加新作业"
+
+#: classes/Post_types.php:373
+msgid "New Assignment"
+msgstr "新的作业"
+
+#: classes/Post_types.php:374
+msgid "Edit Assignment"
+msgstr "编辑作业"
+
+#: classes/Post_types.php:375
+msgid "View Assignment"
+msgstr "查看作业"
+
+#: classes/Post_types.php:376
+msgid "Assignments"
+msgstr "作业"
+
+#: classes/Post_types.php:377
+msgid "Search Assignments"
+msgstr "搜索作业"
+
+#: classes/Post_types.php:378
+msgid "Parent Assignments:"
+msgstr "父级作业："
+
+#: classes/Post_types.php:379
+msgid "No Assignments found."
+msgstr "没有找到任务。"
+
+#: classes/Post_types.php:380
+msgid "No Assignments found in Trash."
+msgstr "在回收站没有找到作业"
+
+#: includes/tutor-general-functions.php:118
+msgid "Search Course Category. ex. Design, Development, Business"
+msgstr "搜索课程类别。例如：设计，开发，业务"
+
+#: includes/tutor-general-functions.php:119
+msgid "Select a category"
+msgstr "选择一个分类"
+
+#: classes/Utils.php:8944
+msgid "Create Course"
+msgstr "创建课程"
+
+#: classes/Withdraw.php:90
+msgid "E-Check"
+msgstr "电子支票"
+
+#: classes/Options_V2.php:662
+msgid "Spotlight mode"
+msgstr "专注模式"
+
+#: classes/Options_V2.php:706 views/metabox/course-contents.php:176
+#: views/metabox/course-contents.php:206 views/metabox/course-topics.php:107
+msgid "Lesson"
+msgstr "课时"
+
+#: views/metabox/instructors-metabox.php:60
+msgid "Add instructors"
+msgstr "添加讲师"
+
+#: views/metabox/course-additional-data.php:75
+msgid "Additional requirements or special instructions for the students (One per line)"
+msgstr "对学员的其他要求或特殊说明（每行一条）"
+
+#: classes/Utils.php:9103
+msgid "External URL"
+msgstr "外部链接"
+
+#: classes/Utils.php:9115
+msgid "Embedded"
+msgstr "嵌入代码"
+
+#: templates/dashboard/assignments/review.php:81
+msgid "Assignment Description:"
+msgstr "任务描述："
+
+#: templates/dashboard/assignments/review.php:93
+msgid "Attach assignment file(s)"
+msgstr "上传作业附件"
+
+#: templates/dashboard/assignments/review.php:131
+msgid "Evaluation"
+msgstr "评价"
+
+#: templates/dashboard/assignments/review.php:155
+msgid "Evaluate this submission"
+msgstr "评估此提交"
+
+#: templates/dashboard/assignments/review.php:25
+msgid "Assignments submission not found or not completed"
+msgstr "未找到或未完成提交分配"
+
+#: templates/single/assignment/content.php:134
+#: templates/single/quiz/parts/meta.php:41
+msgid "No limit"
+msgstr "无限制"
+
+#: views/metabox/product-selection.php:25
+msgid "Course Type"
+msgstr "课程类型"
+
+#: templates/course-filter/filters.php:16
+#: views/metabox/product-selection.php:31
+msgid "Paid"
+msgstr "已付"
+
+#: views/metabox/video-metabox.php:128
+msgid "File Format: "
+msgstr "文档格式: "
+
+#: views/metabox/video-metabox.php:191
+msgid "Place your embedded code here"
+msgstr "将嵌入式代码放在这里"
+
+#: classes/TutorEDD.php:94
+msgid "Easy Digital Downloads"
+msgstr "Easy Digital Downloads"
+
+#: classes/Addons.php:126
+msgid "Paid Memberships Pro"
+msgstr "Paid Memberships Pro"
+
+#: classes/Addons.php:58
+msgid "Tutor Assignments"
+msgstr "Tutor 作业"
+
+#: classes/Options_V2.php:809
+msgid "Monetization"
+msgstr "赚钱化"
+
+#: classes/Options_V2.php:828
+msgid "Disable Monetization"
+msgstr "禁用赚钱化"
+
+#: classes/Options_V2.php:832
+msgid "Select a monetization option to generate revenue by selling courses. Supports: WooCommerce, Easy Digital Downloads, Paid Memberships Pro"
+msgstr "选择货币化选项以通过销售课程产生收入。支持：WooCommerce，Easy Digital Downloads，Paid Memberships Pro"
+
+#: classes/Addons.php:122
+msgid "WooCommerce Subscriptions"
+msgstr "WooCommerce Subscriptions 订阅"
+
+#: includes/translate-text.php:49 views/quiz/attempt-details.php:703
+msgid "Correct"
+msgstr "正确"
+
+#: views/quiz/attempt-details.php:711
+msgid "Incorrect"
+msgstr "错误"
+
+#: templates/dashboard/reviews.php:93
+msgid "Course:"
+msgstr "课程："
+
+#: templates/dashboard/reviews/edit-review-form.php:25
+#: templates/dashboard/reviews/given-reviews.php:122 views/modal/review.php:42
+msgid "Update Review"
+msgstr "更新评价"
+
+#: templates/single/lesson/required-enroll.php:17
+msgid "Course name : %s"
+msgstr "课程名字 :%s"
+
+#: classes/Options_V2.php:665
+msgid "This will hide the header and the footer and enable spotlight (full screen) mode when students view lessons."
+msgstr "这将隐藏标题和页脚，并在学员查看课程时启用聚光灯（全屏）模式。"
+
+#: classes/Options_V2.php:585
+msgid "Pagination"
+msgstr "分页"
+
+#: classes/Options_V2.php:748
+msgid "The current quiz answers are submitted automatically."
+msgstr "当前测验答案将自动提交。"
+
+#: classes/Options_V2.php:752
+msgid "Choose which action to follow when the quiz time expires."
+msgstr "选择测验时间到期时应遵循的操作。"
+
+#: classes/Options_V2.php:580
+msgid "Allow multiple instructors to upload their courses."
+msgstr "允许多个讲师上传课程。"
+
+#: classes/Options_V2.php:939
+msgid "Instructors should earn equal or above this amount to make a withdraw request."
+msgstr "讲师应赚取等额或超过此金额，以提出提款请求。"
+
+#: classes/Course_Widget.php:34
+msgid "Display courses wherever widget support is available."
+msgstr "在提供小部件支持的地方显示课程。"
+
+#: classes/Course.php:1081 classes/Options_V2.php:1017
+#: views/metabox/course-level-metabox.php:19
+msgid "Difficulty Level"
+msgstr "难度等级"
+
+#: views/modal/topic-form.php:33
+msgid "Topic titles are displayed publicly wherever required. Each topic may contain one or more lessons, quiz and assignments."
+msgstr "话题标题在需要时公开显示。每个话题可能包含一个或多个课程、测验和作业。"
+
+#: classes/Options_V2.php:1150 views/metabox/instructors-metabox.php:27
+#: views/pages/course-list.php:172
+msgid "Author"
+msgstr "作者"
+
+#: views/metabox/course-contents.php:97 views/metabox/course-contents.php:104
+msgid "Update Topic"
+msgstr "更新话题"
+
+#: views/metabox/course-additional-data.php:46
+msgid "Specify the target audience that will benefit the most from the course. (One line per target audience.)"
+msgstr "指定将从课程中受益最大的目标受众。（每个目标受众一行。"
+
+#: views/metabox/course-additional-data.php:66
+msgid "Materials Included"
+msgstr "包含的教材"
+
+#: views/metabox/video-metabox.php:201
+msgid "Video playback time"
+msgstr "视频播放时间"
+
+#: views/modal/question_answer_form.php:80
+#: views/modal/question_answer_form.php:196
+msgid "Display format for options"
+msgstr "选项的显示格式"
+
+#: views/modal/question_answer_form.php:121
+msgid "Correct Answer(s)"
+msgstr "正确答案"
+
+#: views/modal/question_answer_form.php:276
+msgid "The answers that students enter should match with this text. Write in <strong>small caps</strong>"
+msgstr "学员输入的答案应与本文本匹配。用<strong>小写写</strong>"
+
+#: views/modal/question_form.php:128
+msgid "Point(s) for this answer"
+msgstr "该答案的学分"
+
+#: views/modal/question_form.php:137
+msgid "Display Points"
+msgstr "总学分"
+
+#: views/modal/question_form.php:164
+msgid "Input options for the question and select the correct answer."
+msgstr "问题陈述：选择下面正确的答案。"
+
+#: views/modal/edit_quiz.php:240
+msgid "Questions Order"
+msgstr "问题排序"
+
+#: views/modal/edit_quiz.php:243
+msgid "Random"
+msgstr "随机"
+
+#: views/modal/edit_quiz.php:244
+msgid "Sorting"
+msgstr "排序"
+
+#: views/modal/edit_quiz.php:245
+msgid "Ascending"
+msgstr "升序"
+
+#: views/modal/edit_quiz.php:246
+msgid "Descending"
+msgstr "降序"
+
+#: views/modal/question_answer_form.php:32
+msgid "Select the correct option"
+msgstr "选择正确的选项"
+
+#: views/modal/question_answer_form.php:114
+msgid "Please make sure to use the <strong>{dash}</strong> variable in your question title to show the blanks in your question. You can use multiple <strong>{dash}</strong> variables in one question."
+msgstr "请确保使用问题标题中的<strong>{dash}</strong>变量来显示问题中的空白。您可以在一个问题中使用多个<strong>{dash}</strong>变量。"
+
+#: classes/Addons.php:50
+msgid "Content Drip"
+msgstr "内容包含"
+
+#: classes/Course_Settings_Tabs.php:91
+msgid "Maximum Students"
+msgstr "课程招生人数"
+
+#: classes/Addons.php:110
+msgid "Gradebook"
+msgstr "成绩单"
+
+#: classes/Utils.php:7053 includes/translate-text.php:69
+#: templates/dashboard/purchase_history.php:119
+msgid "Completed"
+msgstr "已完成"
+
+#: classes/Utils.php:7057
+msgid "In Progress"
+msgstr "进行中"
+
+#: classes/Utils.php:7059
+msgid "Not Taken"
+msgstr "没有采用"
+
+#: templates/dashboard/withdraw.php:213
+msgid "Requested On"
+msgstr "要求启用"
+
+#: views/modal/question_answer_form.php:127
+msgid "Separate multiple answers by a vertical bar <strong>|</strong>. 1 answer per <strong>{dash}</strong> variable is defined in the question. Example: Apple | Banana | Orange"
+msgstr "使用竖线 <strong>|</strong> 分隔多个答案。每个1个答案<strong>{dash}</strong>变量在问题中定义。示例：苹果 | 香蕉 | 橙子"
+
+#. Plugin Name of the plugin
+#: classes/Admin.php:91 classes/Admin.php:92 classes/Admin.php:654
+#: classes/Gutenberg.php:144
+msgid "Tutor LMS"
+msgstr "Tutor LMS"
+
+#. Author of the plugin
+msgid "Themeum"
+msgstr "Themeum"
+
+#. Author URI of the plugin
+msgid "https://themeum.com"
+msgstr "https://themeum.com"
+
+#: classes/Tutor.php:853 tutor.php:77
+msgid "Tutor Instructor"
+msgstr "Tutor讲师"
+
+#: templates/course-embed.php:99 templates/loop/course-author.php:36
+#: templates/loop/meta.php:57
+msgid "In"
+msgstr "在"
+
+#: templates/course-filter/filters.php:15
+#: templates/dashboard/my-courses.php:164 templates/loop/course-in-cart.php:19
+#: templates/single/course/course-entry-box.php:215
+#: templates/single/course/wc-price-html.php:20
+#: views/metabox/product-selection.php:35 views/pages/course-list.php:299
+msgid "Free"
+msgstr "免费"
+
+#: templates/dashboard/assignments/review.php:19
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "抱歉，您查找的内容不存在。"
+
+#: templates/profile/bio.php:24
+msgid "Bio data is empty"
+msgstr "简介数据是空的"
+
+#: templates/dashboard/instructor/registration.php:58
+#: templates/dashboard/instructor/registration.php:61
+#: templates/dashboard/my-profile.php:29
+#: templates/dashboard/registration.php:60
+#: templates/dashboard/registration.php:63
+#: templates/dashboard/settings/profile.php:122
+#: templates/dashboard/settings/profile.php:124
+#: views/pages/add_new_instructor.php:41 views/pages/add_new_instructor.php:47
+#: views/pages/instructors.php:258
+msgid "First Name"
+msgstr "名字"
+
+#: templates/dashboard/instructor/registration.php:68
+#: templates/dashboard/instructor/registration.php:71
+#: templates/dashboard/my-profile.php:30
+#: templates/dashboard/registration.php:70
+#: templates/dashboard/registration.php:73
+#: templates/dashboard/settings/profile.php:129
+#: templates/dashboard/settings/profile.php:131
+#: views/pages/add_new_instructor.php:55 views/pages/add_new_instructor.php:61
+#: views/pages/instructors.php:266
+msgid "Last Name"
+msgstr "姓氏"
+
+#: templates/dashboard/my-profile.php:33
+#: templates/dashboard/settings/profile.php:145
+#: templates/dashboard/settings/profile.php:147
+#: views/pages/add_new_instructor.php:94 views/pages/add_new_instructor.php:100
+#: views/pages/instructors.php:284
+msgid "Phone Number"
+msgstr "电话号码"
+
+#: templates/dashboard/instructor/registration.php:106
+#: templates/dashboard/instructor/registration.php:109
+#: templates/dashboard/registration.php:106
+#: templates/dashboard/registration.php:109
+#: templates/dashboard/settings/nav-bar.php:25 templates/login-form.php:63
+#: templates/template-part/form-retrieve-password.php:36
+#: views/pages/add_new_instructor.php:107
+#: views/pages/add_new_instructor.php:113 views/pages/instructors.php:309
+msgid "Password"
+msgstr "密码"
+
+#: templates/dashboard/settings/profile.php:163
+#: views/pages/add_new_instructor.php:133 views/pages/instructors.php:332
+msgid "Bio"
+msgstr "简介"
+
+#: classes/Utils.php:8954 templates/dashboard.php:48
+#: templates/dashboard/dashboard.php:338 templates/dashboard/my-courses.php:47
+msgid "My Courses"
+msgstr "我的课程"
+
+#: classes/Backend_Page_Trait.php:143
+#: templates/dashboard/announcements/create.php:65
+#: templates/dashboard/announcements/details.php:41
+#: templates/dashboard/announcements/update.php:64
+#: templates/dashboard/my-courses.php:298
+#: templates/dashboard/reviews/given-reviews.php:119
+#: templates/dashboard/withdraw.php:177 templates/modal/confirm.php:55
+#: views/elements/bulk-confirm-popup.php:33
+#: views/elements/common-confirm-popup.php:65
+#: views/fragments/announcement-list.php:88
+#: views/fragments/announcement-list.php:164
+#: views/fragments/announcement-list.php:217 views/metabox/course-topics.php:81
+#: views/metabox/course-topics.php:118 views/metabox/course-topics.php:146
+#: views/modal/review.php:39 views/modal/topic-form.php:51
+#: views/options/template/common/modal-confirm.php:38
+#: views/pages/instructors.php:347 views/pages/tools/manage-tokens.php:119
+#: views/pages/withdraw_requests.php:372 views/pages/withdraw_requests.php:430
+#: views/qna/qna-new.php:30 views/qna/qna-table.php:176
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/single/quiz/top.php:60 views/quiz/contexts.php:97
+#: views/quiz/header-context/course-single-previous-attempts.php:32
+msgid "Questions"
+msgstr "问题"
+
+#: templates/dashboard/assignments.php:80
+#: templates/single/assignment/content.php:414 views/quiz/contexts.php:20
+#: views/quiz/contexts.php:70
+#: views/quiz/header-context/course-single-previous-attempts.php:44
+msgid "Total Marks"
+msgstr "总分"
+
+#: templates/single/assignment/content.php:420 views/quiz/contexts.php:23
+#: views/quiz/contexts.php:74
+msgid "Earned Marks"
+msgstr "获得分"
+
+#: classes/Quiz_Attempts_List.php:217 includes/translate-text.php:45
+#: views/quiz/attempt-details.php:308 views/quiz/attempt-table.php:159
+msgid "Pass"
+msgstr "通过"
+
+#: classes/Quiz_Attempts_List.php:223 includes/translate-text.php:53
+#: views/quiz/attempt-details.php:310 views/quiz/attempt-table.php:160
+msgid "Fail"
+msgstr "失败"
+
+#: templates/dashboard/my-profile.php:28 views/pages/students.php:92
+msgid "Registration Date"
+msgstr "注册日期"
+
+#: templates/course-filter/course-archive-filter-bar.php:26
+msgid "Release Date (newest first)"
+msgstr "发布日期（从新到旧）"
+
+#: templates/course-filter/course-archive-filter-bar.php:29
+msgid "Release Date (oldest first)"
+msgstr "发布日期（从旧到新）"
+
+#: templates/course-filter/course-archive-filter-bar.php:32
+msgid "Course Title (a-z)"
+msgstr "课程名称(a-z)"
+
+#: templates/course-filter/course-archive-filter-bar.php:35
+msgid "Course Title (z-a)"
+msgstr "课程标题（z-a）"
+
+#: templates/login-form.php:59
+msgid "Username or Email Address"
+msgstr "用户名或邮箱地址"
+
+#: classes/Lesson.php:124 templates/single/assignment/content.php:206
+msgid "Attachments"
+msgstr "附件"
+
+#: classes/Admin.php:136 classes/Admin.php:603 classes/Utils.php:2814
+#: templates/dashboard/notifications/profile-completion.php:22
+#: templates/dashboard/settings.php:13
+#: templates/dashboard/settings/social-profile.php:15
+#: views/metabox/course-topics.php:68 views/options/settings.php:19
+msgid "Settings"
+msgstr "设置"
+
+#: templates/dashboard/dashboard.php:179
+#: templates/dashboard/enrolled-courses.php:21
+msgid "Active Courses"
+msgstr "启用课程"
+
+#: templates/dashboard/dashboard.php:192
+#: templates/dashboard/enrolled-courses.php:22
+msgid "Completed Courses"
+msgstr "已完成的课程"
+
+#: views/metabox/user-profile-fields.php:46
+msgid "Profile Photo"
+msgstr "头像"
+
+#: views/fragments/thumbnail-uploader.php:61
+#: views/modal/question_answer_form.php:61
+#: views/modal/question_answer_form.php:177
+#: views/modal/question_answer_form.php:223
+#: views/modal/question_answer_form.php:252
+#: views/options/field-types/upload_half.php:42
+msgid "Upload Image"
+msgstr "上传图片"
+
+#. Description of the plugin
+msgid "Tutor is a complete solution for creating a Learning Management System in WordPress way. It can help you to create small to large scale online education site very conveniently. Power features like report, certificate, course preview, private file sharing make Tutor a robust plugin for any educational institutes."
+msgstr "Tutor是一个完整的解决方案，在WordPress中创建一个学习管理系统的方式。它可以帮助您创建小型到大型的在线教育网站，非常方便。强大的功能，如报告，证书，课程预览，私人文档共享，使Tutor成为任何教育机构的强大插件。"
+
+#: classes/Utils.php:9014 templates/dashboard/my-quiz-attempts.php:35
+msgid "My Quiz Attempts"
+msgstr "我的测验尝试"
+
+#: templates/dashboard/settings/withdraw-settings.php:25
+msgid "Select a withdraw method"
+msgstr "选择提现方式"
+
+#: templates/dashboard/settings/withdraw-settings.php:50
+msgid "Min withdraw"
+msgstr "最小提现"
+
+#: templates/dashboard/settings/withdraw-settings.php:143
+msgid "Save Withdrawal Account"
+msgstr "存取款账户"
+
+#: classes/Utils.php:9002 templates/dashboard/dashboard.php:166
+#: templates/dashboard/enrolled-courses.php:20
+msgid "Enrolled Courses"
+msgstr "报名课程"
+
+#: views/elements/filters.php:97
+msgid "All Courses"
+msgstr "所有课程"
+
+#: classes/Options_V2.php:930 templates/dashboard/settings/nav-bar.php:30
+msgid "Withdraw"
+msgstr "提现"
+
+#: classes/Utils.php:8998 templates/dashboard/my-profile.php:39
+msgid "My Profile"
+msgstr "我的资料"
+
+#. Plugin URI of the plugin
+msgid "https://www.themeum.com/product/tutor-lms/"
+msgstr "https://www.themeum.com/product/tutor-lms/"
+
+#: templates/single/assignment/content.php:132
+msgid "Duration:"
+msgstr "持续时间："
+
+#: templates/dashboard/my-courses.php:293
+msgid "Delete This Course?"
+msgstr "确认删除课程吗？"
+
+#: templates/dashboard/settings/nav-bar.php:20
+msgid "Profile"
+msgstr "资料"
+
+#: templates/dashboard/settings/profile.php:197
+#: templates/dashboard/settings/social-profile.php:46
+msgid "Update Profile"
+msgstr "更新个人资料"
+
+#: templates/dashboard/settings/reset-password.php:87
+msgid "Reset Password"
+msgstr "重置密码"
+
+#: templates/dashboard/settings/reset-password.php:36
+msgid "New Password"
+msgstr "新密码"
+
+#: templates/dashboard/my-profile.php:31 views/pages/instructors.php:276
+msgid "Username"
+msgstr "用户名"
+
+#: templates/dashboard/my-profile.php:32 views/pages/instructors.php:116
+#: views/pages/instructors.php:162 views/pages/students.php:88
+msgid "Email"
+msgstr "电子邮件"
+
+#: templates/dashboard/reviews/given-reviews.php:59
+msgid "Course: "
+msgstr "课程： "
+
+#: templates/single/assignment/content.php:417 views/quiz/contexts.php:71
+msgid "Pass Marks"
+msgstr "通过标记"
+
+#: templates/dashboard/question-answer/answers.php:39
+#: templates/dashboard/question-answer/answers.php:73
+#: templates/single/course/enrolled/announcements.php:39
+#: templates/single/course/reviews-loop.php:33 views/pages/answer.php:62
+#: views/pages/answer.php:107
+msgid "%s ago"
+msgstr "%s前"
+
+#: templates/dashboard/reviews.php:40
+#: templates/dashboard/reviews/given-reviews.php:35
+msgid "Given"
+msgstr "特定"
+
+#: templates/dashboard/reviews.php:34
+#: templates/dashboard/reviews/given-reviews.php:32
+msgid "Received"
+msgstr "已收到"

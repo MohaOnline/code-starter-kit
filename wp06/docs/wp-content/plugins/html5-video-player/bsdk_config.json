@@ -1,0 +1,10 @@
+{
+  "prefix": "h5vp",
+  "blockHandler": false,
+  "permalinks": [],
+  "features": {
+    "license": false,
+    "optIn": true
+  },
+  "isBlock": false
+}

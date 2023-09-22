@@ -1,0 +1,516 @@
+# Translation of Plugins - Post Views Counter - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Post Views Counter - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-04-13 09:23:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Post Views Counter - Stable (latest release)\n"
+
+#: includes/class-dashboard.php:106
+msgid "Top Posts"
+msgstr "热门文章"
+
+#: includes/class-dashboard.php:526
+msgid "Post"
+msgstr "文章"
+
+#: includes/class-dashboard.php:107
+msgid "Displays the list of most viewed posts and pages on your website."
+msgstr "显示您网站上浏览次数最多的文章和页面的列表。"
+
+#: includes/class-dashboard.php:565 includes/class-widgets.php:72
+msgid "No most viewed posts found"
+msgstr "找不到最热门文章"
+
+#: includes/class-dashboard.php:101
+msgid "Displays the chart of most viewed post types for a selected time period."
+msgstr "显示选定时间段内查看最多的文章类型图表。"
+
+#: includes/class-columns.php:461
+msgid "%s post view"
+msgid_plural "%s post views"
+msgstr[0] "%s 次浏览"
+
+#: post-views-counter.php:301
+msgid "<a href=\"%s\" class=\"pvc-dismissible-notice\" target=\"_blank\" rel=\"noopener\">Ok, you deserve it</a><br /><a href=\"javascript:void(0);\" class=\"pvc-dismissible-notice pvc-delay-notice\" rel=\"noopener\">Nope, maybe later</a><br /><a href=\"javascript:void(0);\" class=\"pvc-dismissible-notice\" rel=\"noopener\">I already did</a>"
+msgstr "<a href=\"%s\" class=\"pvc-dismissible-notice\" target=\"_blank\" rel=\"noopener\">好的，这是你应得的</a><br /><a href=\"javascript:void(0);\" class=\"pvc-dismissible-notice pvc-delay-notice\" rel=\"noopener\">先不了</a><br /><a href=\"javascript:void(0);\" class=\"pvc-dismissible-notice\" rel=\"noopener\">已好评</a>"
+
+#: post-views-counter.php:301
+msgid "Your help is much appreciated. Thank you very much"
+msgstr "非常感谢您的帮助！"
+
+#: post-views-counter.php:301
+msgid "Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation."
+msgstr "能不能请你帮个小忙，在WordPress给个五星好评，让更多人看到他，也让我们更有动力完善这个插件。"
+
+#: post-views-counter.php:301
+msgid "Hey, you've been using <strong>Post Views Counter</strong> for more than %s."
+msgstr "嘿，您使用<strong>Post Views Counte</strong>已经%s了。"
+
+#. Author of the plugin
+msgid "Digital Factory"
+msgstr "Digital Factory"
+
+#: includes/class-admin.php:75 includes/class-admin.php:79
+#: includes/class-admin.php:112 includes/class-admin.php:116
+msgid "You are not allowed to edit this item."
+msgstr "您不能编辑此项目。"
+
+#: includes/class-widgets.php:179
+msgid "Display post author?"
+msgstr "显示文章作者？"
+
+#: includes/class-widgets.php:84
+msgid "Ordered list"
+msgstr "有序列表"
+
+#: includes/class-widgets.php:83
+msgid "Unordered list"
+msgstr "无序列表"
+
+#: includes/class-settings.php:209
+msgid "Strict counts"
+msgstr "严格计数"
+
+#: includes/class-settings.php:213
+msgid "Enable to prevent bypassing the counts interval (for e.g. using incognito browser window or by clearing cookies)."
+msgstr "防止绕过计数间隔（例如使用隐身浏览器窗口或清除Cookie）。"
+
+#: includes/class-update.php:86
+msgid "Run the Update"
+msgstr "运行更新程序"
+
+#: includes/class-update.php:85
+msgid "<strong>Post Views Counter</strong> - this version requires a database update. Make sure to back up your database first."
+msgstr "<strong>Post Views Counter</strong> - 此版本需要更新数据库，请先备份数据库。"
+
+#: includes/class-settings.php:817
+msgid "Delete views"
+msgstr "删除浏览量"
+
+#: includes/class-settings.php:815
+msgid "Override existing views data."
+msgstr "覆盖现有浏览量数据。"
+
+#: includes/class-settings.php:815
+msgid "Import views"
+msgstr "导入浏览量"
+
+#: includes/class-settings.php:217
+msgid "Tools"
+msgstr "工具"
+
+#: includes/class-settings-api.php:227
+msgid "Check out our other <a href=\"%s\" target=\"_blank\">WordPress plugins</a>."
+msgstr "查看我们的其他 <a href=\"%s\" target=\"_blank\">WordPress 插件</a>。"
+
+#: includes/class-settings-api.php:226
+msgid "Blog about it & link to the <a href=\"%s\" target=\"_blank\">plugin page</a>."
+msgstr "插件介绍博客 & <a href=\"%s\" target=\"_blank\">插件页面</a>链接。"
+
+#: includes/class-settings-api.php:225
+msgid "<a href=\"%s\" target=\"_blank\">Rate it 5</a> on WordPress.org"
+msgstr "在 WordPress.org 上 <a href=\"%s\" target=\"_blank\">给个5星好评</a>。"
+
+#: includes/class-settings-api.php:222
+msgid "If you are having problems with this plugin, please browse it's <a href=\"%s\" target=\"_blank\">Documentation</a> or talk about them in the <a href=\"%s\" target=\"_blank\">Support forum</a>"
+msgstr "如果使用插件时遇到了问题，请浏览<a href=\"%s\" target=\"_blank\">插件文档</a>或在<a href=\"%s\" target=\"_blank\">支持论坛</a>中讨论。"
+
+#: includes/class-settings.php:60
+msgid "REST API"
+msgstr "REST API"
+
+#: includes/class-counter.php:385
+msgid "Post type excluded."
+msgstr "排除的文章类型"
+
+#: includes/class-admin.php:108 includes/class-counter.php:378
+msgid "Invalid post ID."
+msgstr "文章ID无效。"
+
+#: includes/class-counter.php:371
+msgid "REST API method is disabled."
+msgstr "REST API 方法已禁用。"
+
+#: post-views-counter.php:656
+msgid "Are you sure you want to delete all existing data?"
+msgstr "确定删除所有数据吗？"
+
+#: includes/class-settings.php:410
+msgid "Error occurred. All existing data were not deleted."
+msgstr "发生错误，所有数据未删除。"
+
+#: includes/class-settings.php:408
+msgid "All existing data deleted succesfully."
+msgstr "成功删除所有数据。"
+
+#: includes/class-settings.php:151
+msgid "Count Interval"
+msgstr "计数间隔"
+
+#: includes/class-settings.php:257
+msgid "Select page types where the views count will be displayed."
+msgstr "选择需要显示浏览量的页面类型。"
+
+#: includes/class-settings.php:270
+msgid "User Type"
+msgstr "用户类型"
+
+#: includes/class-settings.php:253
+msgid "Page Type"
+msgstr "页面类型"
+
+#: includes/class-settings.php:244
+msgid "Post Type"
+msgstr "文章类型"
+
+#: includes/class-settings.php:264
+msgid "Search results"
+msgstr "搜索结果"
+
+#: includes/class-settings.php:263
+msgid "Single pages"
+msgstr "单页面"
+
+#: includes/class-settings.php:262
+msgid "Archives"
+msgstr "存档"
+
+#: includes/class-settings.php:261
+msgid "Home"
+msgstr "主页"
+
+#: includes/class-dashboard.php:227 includes/class-dashboard.php:230
+#: includes/class-dashboard.php:480 includes/class-dashboard.php:483
+#: includes/class-dashboard.php:616
+msgid "You do not have permission to access this page."
+msgstr "您无权查看此页面。"
+
+#: includes/class-dashboard.php:310 includes/class-dashboard.php:399
+msgid "Total Views"
+msgstr "总浏览量"
+
+#: includes/class-settings.php:401
+msgid "There was no post views data to import."
+msgstr "没有需要导入的浏览量数据。"
+
+#: includes/class-settings.php:853
+msgid "Use it to hide the post views counter from selected user roles."
+msgstr "使用此项隐藏来自指定角色的浏览量。"
+
+#: includes/class-settings.php:763 includes/class-settings.php:769
+msgid "Remove"
+msgstr "移除"
+
+#: includes/class-widgets.php:124
+msgid "Title"
+msgstr "标题"
+
+#. Description of the plugin
+msgid "Post Views Counter allows you to display how many times a post, page or custom post type had been viewed in a simple, fast and reliable way."
+msgstr "Post Views Counter 可以让您以简单、快速、可靠的方式显示文章，页面或自定义文章类型的浏览次数。"
+
+#: post-views-counter.php:705
+msgid "Settings"
+msgstr "设置"
+
+#: post-views-counter.php:722
+msgid "Support"
+msgstr "支持"
+
+#: post-views-counter.php:655
+msgid "Are you sure you want to reset these settings to defaults?"
+msgstr "您确定要将这些设置重置为默认值吗？"
+
+#: includes/class-widgets.php:184
+msgid "Thumbnail size"
+msgstr "缩略图大小"
+
+#: includes/class-widgets.php:181
+msgid "Display post thumbnail?"
+msgstr "显示文章缩略图？"
+
+#: includes/class-widgets.php:177
+msgid "Display post excerpt?"
+msgstr "显示文章摘要？"
+
+#: includes/class-widgets.php:175
+msgid "Display post views?"
+msgstr "显示文章浏览量？"
+
+#: includes/class-widgets.php:149
+msgid "Order"
+msgstr "排序"
+
+#: includes/class-widgets.php:145
+msgid "No posts message"
+msgstr "没有文章消息"
+
+#: includes/class-widgets.php:141
+msgid "Number of posts to show"
+msgstr "需要显示的文章数量"
+
+#: includes/class-widgets.php:128
+msgid "Post Types"
+msgstr "文章类型"
+
+#: includes/class-widgets.php:78
+msgid "Descending"
+msgstr "降序"
+
+#: includes/class-widgets.php:77
+msgid "Ascending"
+msgstr "升序"
+
+#: includes/class-widgets.php:56
+msgid "Displays a list of the most viewed posts"
+msgstr "显示一个浏览量最高的文章列表"
+
+#: includes/class-widgets.php:54 includes/class-widgets.php:62
+msgid "Most Viewed Posts"
+msgstr "浏览最多的文章"
+
+#: includes/class-settings.php:399
+msgid "Post views data imported succesfully."
+msgstr "成功导入文章浏览量数据。"
+
+#: includes/class-settings.php:844
+msgid "Use it to hide the post views counter from selected type of visitors."
+msgstr "使用此项隐藏来自指定浏览者类型的浏览量。"
+
+#: includes/class-settings.php:311
+msgid "Enter the post views icon class. Any of the <a href=\"%s\" target=\"_blank\">Dashicons</a> classes are available."
+msgstr "输入浏览量图标类，支持任何<a href=\"%s\" target=\"_blank\">Dashicons</a>类。"
+
+#: includes/class-settings.php:816
+msgid "Import post views data from WP-PostViews plugin."
+msgstr "从 WP-PostViews 插件导入浏览量数据。"
+
+#: includes/class-settings.php:775
+msgid "Enter the IP addresses to be excluded from post views count."
+msgstr "输入统计浏览量时需要排序的 IP 地址。"
+
+#: includes/class-settings.php:774
+msgid "Add new"
+msgstr "添加"
+
+#: includes/class-settings.php:308
+msgid "Icon Class"
+msgstr "图标类"
+
+#: includes/class-settings.php:122
+msgid "Select post types for which post views will be counted."
+msgstr "选择要统计浏览量的文章类型。"
+
+#: includes/class-settings.php:248
+msgid "Select post types for which the views count will be displayed."
+msgstr "选择需要显示浏览量的文章类型。"
+
+#: includes/class-settings.php:535
+msgid "Enter the time between single user visit count."
+msgstr "输入统计单个用户访问次数之间的时间。"
+
+#: includes/class-settings.php:295 includes/class-widgets.php:162
+msgid "Display Style"
+msgstr "显示类型"
+
+#: includes/class-settings.php:283
+msgid "Position"
+msgstr "位置"
+
+#: includes/class-settings-api.php:269
+msgid "Reset to defaults"
+msgstr "重置为默认值"
+
+#: includes/class-settings.php:118
+msgid "Post Types Count"
+msgstr "文章类型计数"
+
+#: includes/class-settings.php:127
+msgid "Counter Mode"
+msgstr "计数模式"
+
+#: includes/class-settings.php:143
+msgid "Restrict Edit"
+msgstr "限制编辑"
+
+#: includes/class-settings.php:135
+msgid "Post Views Column"
+msgstr "浏览量列"
+
+#: includes/class-settings.php:234
+msgid "Post Views Label"
+msgstr "浏览量标签"
+
+#: includes/class-settings.php:226
+msgid "Deactivation"
+msgstr "禁用"
+
+#: includes/class-settings.php:200
+msgid "Exclude IPs"
+msgstr "排除 IP"
+
+#: includes/class-settings.php:187
+msgid "Exclude Visitors"
+msgstr "排除访问者"
+
+#: includes/class-settings.php:175
+msgid "Flush Object Cache Interval"
+msgstr "缓存刷新间隔"
+
+#: includes/class-settings.php:163
+msgid "Reset Data Interval"
+msgstr "重置数据间隔"
+
+#: includes/class-settings-api.php:224
+msgid "Do you like this plugin?"
+msgstr "喜欢这个插件吗？"
+
+#: includes/class-settings-api.php:221
+msgid "Need support?"
+msgstr "需要技术支持？"
+
+#. Plugin Name of the plugin
+#: includes/class-dashboard.php:61 includes/class-settings.php:339
+msgid "Post Views Counter"
+msgstr "Post Views Counter"
+
+#: includes/class-settings.php:348
+msgid "Display"
+msgstr "显示"
+
+#: includes/class-settings.php:344
+msgid "General"
+msgstr "常规"
+
+#: includes/class-settings.php:303
+msgid "label"
+msgstr "标签"
+
+#: includes/class-settings.php:302
+msgid "icon"
+msgstr "图标"
+
+#: includes/class-settings.php:290
+msgid "manual"
+msgstr "手动"
+
+#: includes/class-settings.php:289
+msgid "after the content"
+msgstr "在内容之后"
+
+#: includes/class-settings.php:288
+msgid "before the content"
+msgstr "在内容之前"
+
+#: includes/class-settings.php:90
+msgid "selected user roles"
+msgstr "选择用户角色"
+
+#: includes/class-settings.php:89
+msgid "guests"
+msgstr "访客"
+
+#: includes/class-settings.php:88
+msgid "logged in users"
+msgstr "登录用户"
+
+#: includes/class-settings.php:87
+msgid "robots"
+msgstr "爬虫"
+
+#: includes/class-settings.php:82
+msgid "years"
+msgstr "年"
+
+#: includes/class-settings.php:81
+msgid "months"
+msgstr "月"
+
+#: includes/class-settings.php:80
+msgid "weeks"
+msgstr "周"
+
+#: includes/class-settings.php:79
+msgid "days"
+msgstr "天"
+
+#: includes/class-settings.php:78
+msgid "hours"
+msgstr "小时"
+
+#: includes/class-settings.php:77
+msgid "minutes"
+msgstr "分钟"
+
+#: includes/class-settings.php:55
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: includes/class-settings.php:54
+msgid "PHP"
+msgstr "PHP"
+
+#: includes/functions.php:489
+msgid "No Posts"
+msgstr "没有文章"
+
+#: includes/class-cron.php:83
+msgid "Post Views Counter cache flush interval"
+msgstr "浏览量缓存刷新间隔"
+
+#: includes/class-cron.php:78
+msgid "Post Views Counter reset daily counts interval"
+msgstr "浏览量计数器重置每日计数间隔"
+
+#: includes/class-admin.php:159 includes/class-columns.php:78
+msgid "Cancel"
+msgstr "取消"
+
+#: includes/class-columns.php:77
+msgid "OK"
+msgstr "确定"
+
+#: includes/class-admin.php:158 includes/class-columns.php:73
+msgid "Adjust the views count for this post."
+msgstr "修改此文章的浏览量。"
+
+#: includes/class-columns.php:69
+msgid "Edit"
+msgstr "编辑"
+
+#: includes/class-admin.php:157 includes/class-columns.php:60
+#: includes/class-columns.php:232 includes/class-columns.php:295
+#: includes/class-dashboard.php:100 includes/class-dashboard.php:264
+#: includes/class-dashboard.php:527
+msgid "Post Views"
+msgstr "浏览量"
+
+#: includes/class-settings.php:230
+msgid "Enable to delete all plugin data on deactivation."
+msgstr "在停用时删除所有插件数据。"
+
+#: includes/class-settings.php:147
+msgid "Enable to restrict post views editing to admins only."
+msgstr "仅允许管理员编辑文章浏览量。"
+
+#: includes/class-settings.php:139
+msgid "Enable to display post views count column for each of the selected post types."
+msgstr "在所选文章类型列表中显示浏览量数据列。"
+
+#: includes/class-settings.php:237
+msgid "Enter the label for the post views counter field."
+msgstr "输入浏览量计数器的标签。"
+
+#: includes/class-settings.php:298
+msgid "Choose how to display the post views counter."
+msgstr "选择文章浏览量的显示方式。"
+
+#: includes/class-settings.php:774
+msgid "Add my current IP"
+msgstr "添加当前IP"

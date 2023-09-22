@@ -1,0 +1,1537 @@
+# Translation of Plugins - WP Event Manager – Events Calendar, Registrations, Sell Tickets with WooCommerce - Development (trunk) in Chinese (China)
+# This file is distributed under the same license as the Plugins - WP Event Manager – Events Calendar, Registrations, Sell Tickets with WooCommerce - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-06-24 07:19:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - WP Event Manager – Events Calendar, Registrations, Sell Tickets with WooCommerce - Development (trunk)\n"
+
+#: wp-event-manager-template.php:388
+msgid "Confirm Password"
+msgstr "确认密码"
+
+#: admin/wp-event-manager-form-field-editor-field.php:58
+#: admin/wp-event-manager-form-field-editor-group-field.php:54
+msgid "Multiple Files?"
+msgstr "多个文件？"
+
+#: admin/wp-event-manager-form-field-editor-field.php:55
+#: admin/wp-event-manager-form-field-editor-group-field.php:51
+msgid "Pipe (|) separate options."
+msgstr "图形（|）分开选项。"
+
+#: admin/wp-event-manager-field-editor.php:76
+msgid "Are you sure you want to delete this row?"
+msgstr "您确定要删除这一行吗？"
+
+#: admin/wp-event-manager-field-editor.php:63
+msgid "Field Editor"
+msgstr "字段编辑器"
+
+#: admin/wp-event-manager-field-editor.php:77
+msgid "Are you sure you want to reset your changes? This cannot be undone."
+msgstr "您确定要重置您的更改吗？ 这将无法撤消。"
+
+#: admin/wp-event-manager-field-editor.php:30
+#: admin/wp-event-manager-field-editor.php:130
+#: admin/wp-event-manager-form-field-editor-field.php:129
+msgid "Text"
+msgstr "文本"
+
+#: admin/wp-event-manager-field-editor.php:32
+#: admin/wp-event-manager-field-editor.php:132
+#: admin/wp-event-manager-form-field-editor-field.php:131
+msgid "Checkbox"
+msgstr "复选框"
+
+#: admin/wp-event-manager-field-editor.php:33
+#: admin/wp-event-manager-field-editor.php:133
+#: admin/wp-event-manager-form-field-editor-field.php:132
+msgid "Date"
+msgstr "日期"
+
+#: admin/wp-event-manager-field-editor.php:35
+#: admin/wp-event-manager-field-editor.php:135
+#: admin/wp-event-manager-form-field-editor-field.php:134
+msgid "File"
+msgstr "文件"
+
+#: admin/wp-event-manager-field-editor.php:36
+#: admin/wp-event-manager-field-editor.php:136
+#: admin/wp-event-manager-form-field-editor-field.php:135
+msgid "Hidden"
+msgstr "隐藏"
+
+#: admin/wp-event-manager-field-editor.php:37
+#: admin/wp-event-manager-field-editor.php:137
+#: admin/wp-event-manager-form-field-editor-field.php:136
+msgid "Multiselect"
+msgstr "多选"
+
+#: admin/wp-event-manager-field-editor.php:38
+#: admin/wp-event-manager-field-editor.php:138
+#: admin/wp-event-manager-form-field-editor-field.php:137
+msgid "Number"
+msgstr "数字"
+
+#: admin/wp-event-manager-field-editor.php:40
+#: admin/wp-event-manager-field-editor.php:139
+#: admin/wp-event-manager-form-field-editor-field.php:139
+msgid "Radio"
+msgstr "无线电"
+
+#: admin/wp-event-manager-field-editor.php:140
+msgid "Repeated"
+msgstr "已重复"
+
+#: admin/wp-event-manager-field-editor.php:41
+#: admin/wp-event-manager-field-editor.php:141
+#: admin/wp-event-manager-form-field-editor-field.php:140
+msgid "Select"
+msgstr "选择"
+
+#: admin/wp-event-manager-field-editor.php:142
+msgid "Term Checklist"
+msgstr "项目清单"
+
+#: admin/wp-event-manager-field-editor.php:143
+msgid "Term Multiselect"
+msgstr "项目多选"
+
+#: admin/wp-event-manager-field-editor.php:144
+msgid "Term Select"
+msgstr "项目选择"
+
+#: admin/wp-event-manager-field-editor.php:42
+#: admin/wp-event-manager-field-editor.php:145
+#: admin/wp-event-manager-form-field-editor-field.php:141
+msgid "Textarea"
+msgstr "文本区域"
+
+#: admin/wp-event-manager-field-editor.php:146
+msgid "WP Editor"
+msgstr "WP编辑器"
+
+#: admin/wp-event-manager-field-editor.php:185
+#: admin/wp-event-manager-form-field-editor-field.php:153
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:7
+msgid "Field Label"
+msgstr "字段标签"
+
+#: admin/wp-event-manager-cpt.php:308
+#: admin/wp-event-manager-field-editor.php:186
+#: admin/wp-event-manager-form-field-editor-field.php:154
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:8
+msgid "Type"
+msgstr "类型"
+
+#: admin/wp-event-manager-field-editor.php:188
+#: admin/wp-event-manager-form-field-editor-field.php:156
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:10
+msgid "Placeholder / Options"
+msgstr "占位符/选项"
+
+#: admin/wp-event-manager-field-editor.php:191
+#: admin/wp-event-manager-form-field-editor-field.php:159
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:13
+msgid "Priority"
+msgstr "优先"
+
+#: admin/wp-event-manager-field-editor.php:192
+#: admin/wp-event-manager-form-field-editor-field.php:160
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:14
+msgid "Validation"
+msgstr "验证"
+
+#: admin/wp-event-manager-field-editor.php:199
+msgid "Add field"
+msgstr "添加字段"
+
+#: admin/wp-event-manager-field-editor.php:203
+msgid "Reset to default"
+msgstr "重置为默认"
+
+#: admin/wp-event-manager-field-editor.php:396
+msgid "The fields were successfully saved."
+msgstr "字段已成功保存。"
+
+#: admin/wp-event-manager-form-field-editor-field.php:31
+#: admin/wp-event-manager-form-field-editor-field.php:54
+#: admin/wp-event-manager-form-field-editor-field.php:92
+#: admin/wp-event-manager-form-field-editor-group-field.php:28
+#: admin/wp-event-manager-form-field-editor-group-field.php:50
+#: admin/wp-event-manager-form-field-editor-group-field.php:86
+msgid "N/A"
+msgstr "不适用"
+
+#: admin/wp-event-manager-form-field-editor-field.php:53
+#: admin/wp-event-manager-form-field-editor-group-field.php:48
+#: admin/wp-event-manager-form-field-editor-group-field.php:84
+#: templates/content-single-event_listing.php:175
+#: templates/content-single-event_listing.php:181
+#: templates/content-single-event_listing.php:187
+#: templates/content-single-event_listing.php:188
+#: templates/content-single-event_listing.php:194
+#: templates/content-single-event_listing.php:200
+#: templates/content-single-event_listing.php:207
+#: templates/content-single-event_listing.php:213
+#: templates/content-single-event_listing.php:218
+#: templates/content-single-event_listing.php:240
+#: templates/content-single-event_listing.php:266
+#: templates/content-single-event_listing.php:267
+#: templates/content-single-event_listing.php:278
+#: templates/content-single-event_listing.php:284
+#: templates/content-single-event_listing.php:286
+#: templates/content-single-event_listing.php:288
+#: templates/content-single-event_listing.php:295
+#: templates/content-single-event_listing.php:301
+#: templates/content-single-event_listing.php:306
+#: templates/content-single-event_listing.php:332
+#: templates/content-single-event_listing.php:344
+#: templates/event-listings-start.php:7
+#: templates/organizer/content-single-event-organizers.php:179
+#: templates/organizer/content-single-event_listing-organizer.php:143
+#: wp-event-manager-template.php:2494
+msgid "%s"
+msgstr "%s"
+
+#: admin/wp-event-manager-form-field-editor-field.php:104
+#: admin/wp-event-manager-form-field-editor-group-field.php:99
+msgid "Not Required"
+msgstr "不需要"
+
+#: admin/wp-event-manager-form-field-editor-field.php:109
+#: admin/wp-event-manager-form-field-editor-group-field.php:106
+msgid "Required"
+msgstr "需要"
+
+#: admin/wp-event-manager-settings.php:161
+#: external/elementor-widgets/elementor-event-listing.php:194
+msgid "Category Filter"
+msgstr "类别筛选"
+
+#: includes/wp-event-manager-post-types.php:283
+msgid "Preview <span class=\"count\">(%s)</span>"
+msgid_plural "Preview <span class=\"count\">(%s)</span>"
+msgstr[0] "预览<span class=\"count\">（%s）</span>"
+
+#: includes/wp-event-manager-ajax.php:290
+msgid "You must be logged in to upload files using this method."
+msgstr "您必须登录才能使用此方法上传文件。"
+
+#: forms/wp-event-manager-form-submit-event.php:629
+msgid "Passwords must match."
+msgstr "密码必须匹配。"
+
+#: forms/wp-event-manager-form-submit-event.php:636
+msgid "Password is not valid."
+msgstr "密码无效。"
+
+#: admin/wp-event-manager-settings.php:226
+msgid "If enabled, an email will be sent to the user with their username and a link to set their password. Otherwise, a password field will be shown and their email address won't be verified."
+msgstr "如果启用，电子邮件将以用户名和链接的形式发送给用户以设置其密码。 否则，密码字段将会显示，他们的电子邮件地址将不会被验证。"
+
+#: admin/wp-event-manager-settings.php:224
+msgid "Account Password"
+msgstr "账户密码"
+
+#: wp-event-manager-template.php:387 wp-event-manager-template.php:2183
+msgid "Verify Password"
+msgstr "验证密码"
+
+#: admin/wp-event-manager-field-editor.php:39
+#: admin/wp-event-manager-form-field-editor-field.php:138
+#: wp-event-manager-template.php:376 wp-event-manager-template.php:377
+#: wp-event-manager-template.php:2173
+msgid "Password"
+msgstr "密码"
+
+#: wp-event-manager-functions.php:1594
+msgid "Passwords must be at least 8 characters long."
+msgstr "密码必须至少8个字符。"
+
+#: includes/wp-event-manager-post-types.php:295
+msgid "Organizer Logo"
+msgstr "组织者标志"
+
+#: includes/wp-event-manager-post-types.php:296
+msgid "Set organizer logo"
+msgstr "设置组织者标志"
+
+#: includes/wp-event-manager-post-types.php:297
+msgid "Remove organizer logo"
+msgstr "移除组织者标志"
+
+#: includes/wp-event-manager-post-types.php:298
+msgid "Use as organizer logo"
+msgstr "用作组织者标志"
+
+#: templates/event-submit.php:19
+msgid "You are editing an existing event. %s"
+msgstr "您正在编辑现有活动。%s"
+
+#: templates/event-submit.php:19
+msgid "Create A New Event"
+msgstr "创建一个新活动"
+
+#: admin/wp-event-manager-settings.php:134
+msgid "Hide Expired Listings Content"
+msgstr "隐藏过期列表内容"
+
+#: admin/wp-event-manager-settings.php:125
+msgid "Hide Expired Listings"
+msgstr "隐藏过期列表"
+
+#: admin/wp-event-manager-settings.php:127
+msgid "If enabled, expired event listing is not searchable."
+msgstr "如果启用，则过期活动列表不可搜索。"
+
+#: admin/wp-event-manager-settings.php:46
+msgid "General"
+msgstr "总体"
+
+#: external/elementor-widgets/elementor-event-listing.php:127
+#: external/elementor-widgets/elementor-event-organizers.php:100
+#: external/elementor-widgets/elementor-event-venues.php:99
+#: external/elementor-widgets/elementor-past-event-listing.php:119
+#: external/elementor-widgets/elementor-upcoming-event-listing.php:110
+#: widgets/wp-event-manager-widgets.php:194
+#: widgets/wp-event-manager-widgets.php:303
+#: widgets/wp-event-manager-widgets.php:420
+#: widgets/wp-event-manager-widgets.php:568
+msgid "Descending  (DESC)"
+msgstr "降序（DESC）"
+
+#: external/elementor-widgets/elementor-event-listing.php:126
+#: external/elementor-widgets/elementor-event-organizers.php:99
+#: external/elementor-widgets/elementor-event-venues.php:98
+#: external/elementor-widgets/elementor-past-event-listing.php:118
+#: external/elementor-widgets/elementor-upcoming-event-listing.php:109
+#: widgets/wp-event-manager-widgets.php:193
+#: widgets/wp-event-manager-widgets.php:302
+#: widgets/wp-event-manager-widgets.php:419
+#: widgets/wp-event-manager-widgets.php:567 wp-event-manager-functions.php:1910
+#: wp-event-manager-functions.php:1917 wp-event-manager-functions.php:1924
+#: wp-event-manager-functions.php:1931
+msgid "Ascending (ASC)"
+msgstr "升序（ASC）"
+
+#: templates/event-dashboard.php:133 widgets/wp-event-manager-widgets.php:191
+#: widgets/wp-event-manager-widgets.php:300
+#: widgets/wp-event-manager-widgets.php:426
+#: widgets/wp-event-manager-widgets.php:574
+msgid "Order by"
+msgstr "按顺序排列"
+
+#: includes/wp-event-manager-ajax.php:248
+msgid "Search completed. Found %d matching record."
+msgid_plural "Search completed. Found %d matching records."
+msgstr[0] "搜索完成。找到 %d 个匹配记录。"
+
+#: admin/wp-event-manager-settings.php:423
+msgid "Date Format"
+msgstr "日期格式"
+
+#: admin/wp-event-manager-admin.php:321
+msgid "Dismiss"
+msgstr "忽略"
+
+#: wp-event-manager-template.php:405
+msgid "Posted on "
+msgstr "文章发表于"
+
+#: admin/wp-event-manager-writepanels.php:239
+#: admin/wp-event-manager-writepanels.php:307
+msgid "Most Used"
+msgstr "最常用"
+
+#: includes/wp-event-manager-post-types.php:275
+msgid "Expired <span class=\"count\">(%s)</span>"
+msgid_plural "Expired <span class=\"count\">(%s)</span>"
+msgstr[0] "已过期<span class=\"count\">（%s）</span>"
+
+#: forms/wp-event-manager-form-submit-event.php:140
+msgid "Registration URL"
+msgstr "注册 URL"
+
+#: templates/account-signin.php:7
+msgid "You are currently signed in as <strong>%s</strong>."
+msgstr "您当前登录为 <strong>%s</strong>。"
+
+#: admin/wp-event-manager-writepanels.php:772
+msgid "Enter the ID of the user, or leave blank if submitted by a guest."
+msgstr "输入用户的ID，如果是由访客提交，请留空。"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:269
+msgid "Any Date"
+msgstr "任何日期"
+
+#: external/elementor.php:127
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:270
+#: includes/wp-event-manager-filters.php:18 wp-event-manager.php:309
+msgid "Today"
+msgstr "今天"
+
+#: external/elementor.php:128
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:271
+#: includes/wp-event-manager-filters.php:19 wp-event-manager.php:310
+msgid "Tomorrow"
+msgstr "明天"
+
+#: external/elementor.php:129
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:272
+#: includes/wp-event-manager-filters.php:20 wp-event-manager.php:311
+msgid "This Week"
+msgstr "本周"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:273
+#: includes/wp-event-manager-filters.php:21
+msgid "This Weekend"
+msgstr "本周末"
+
+#: external/elementor.php:131
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:274
+#: includes/wp-event-manager-filters.php:22 wp-event-manager.php:313
+msgid "This Month"
+msgstr "本月"
+
+#: external/elementor.php:133
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:275
+#: includes/wp-event-manager-filters.php:23 wp-event-manager.php:315
+msgid "This Year"
+msgstr "今年"
+
+#: external/elementor.php:130
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:276
+#: includes/wp-event-manager-filters.php:24 wp-event-manager.php:312
+msgid "Next Week"
+msgstr "下周"
+
+#: external/elementor.php:132 external/elementor.php:134
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:278
+#: includes/wp-event-manager-filters.php:26 wp-event-manager.php:314
+msgid "Next Month"
+msgstr "下个月"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:279
+#: includes/wp-event-manager-filters.php:27 wp-event-manager.php:316
+msgid "Next Year"
+msgstr "明年"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:300
+#: includes/wp-event-manager-filters.php:48
+msgid "Any Ticket Price"
+msgstr "任何票价"
+
+#: includes/wp-event-manager-geocode.php:198
+msgid "No results found"
+msgstr "未找到结果"
+
+#: includes/wp-event-manager-geocode.php:202
+msgid "Query limit reached"
+msgstr "已达到查询限制"
+
+#: includes/wp-event-manager-geocode.php:211
+#: includes/wp-event-manager-geocode.php:215
+#: includes/wp-event-manager-geocode.php:219
+msgid "Geocoding error"
+msgstr "地理编码错误"
+
+#: admin/wp-event-manager-cpt.php:310
+#: forms/wp-event-manager-form-submit-event.php:323
+#: includes/wp-event-manager-install.php:119
+#: includes/wp-event-manager-post-types.php:287
+#: templates/organizer/content-single-event-organizers.php:21
+#: templates/organizer/content-single-event-organizers.php:159
+#: templates/organizer/content-single-event_listing-organizer.php:20
+#: templates/organizer/content-single-event_listing-organizer.php:123
+msgid "Organizer"
+msgstr "组织者"
+
+#: includes/wp-event-manager-post-types.php:104
+msgid "Event category"
+msgstr "活动类别"
+
+#: includes/wp-event-manager-post-types.php:105
+msgid "Event categories"
+msgstr "活动类别"
+
+#: admin/wp-event-manager-permalink-settings.php:90
+#: includes/wp-event-manager-post-types.php:1053
+msgctxt "Event category slug - resave permalinks after changing this"
+msgid "event-category"
+msgstr "活动类别"
+
+#: includes/wp-event-manager-post-types.php:150
+msgid "Event type"
+msgstr "活动类型"
+
+#: includes/wp-event-manager-post-types.php:151
+msgid "Event types"
+msgstr "活动类型"
+
+#: admin/wp-event-manager-permalink-settings.php:98
+#: includes/wp-event-manager-post-types.php:1054
+msgctxt "Event type slug - resave permalinks after changing this"
+msgid "event-type"
+msgstr "活动类型"
+
+#: includes/wp-event-manager-post-types.php:198
+msgid "Event"
+msgstr "活动"
+
+#: includes/wp-event-manager-post-types.php:199
+#: shortcodes/wp-event-manager-shortcodes.php:399
+#: shortcodes/wp-event-manager-shortcodes.php:534
+#: shortcodes/wp-event-manager-shortcodes.php:603
+#: templates/event-dashboard.php:11
+msgid "Events"
+msgstr "活动"
+
+#: includes/wp-event-manager-post-types.php:207
+msgctxt "Post type archive slug - resave permalinks after changing this"
+msgid "events"
+msgstr "活动"
+
+#: admin/wp-event-manager-permalink-settings.php:82
+#: includes/wp-event-manager-post-types.php:1052
+msgctxt "Event permalink - resave permalinks after changing this"
+msgid "event"
+msgstr "活动"
+
+#: includes/wp-event-manager-post-types.php:226
+msgid "Add New"
+msgstr "添加新的"
+
+#: includes/wp-event-manager-post-types.php:270
+#: wp-event-manager-functions.php:577
+msgctxt "post status"
+msgid "Expired"
+msgstr "已过期"
+
+#: forms/wp-event-manager-form-edit-event.php:49
+#: forms/wp-event-manager-form-edit-organizer.php:49
+#: forms/wp-event-manager-form-edit-venue.php:49
+msgid "Invalid listing"
+msgstr "无效列表"
+
+#: forms/wp-event-manager-form-edit-event.php:109
+#: forms/wp-event-manager-form-edit-organizer.php:95
+#: forms/wp-event-manager-form-edit-venue.php:96
+msgid "Save changes"
+msgstr "保存更改"
+
+#: forms/wp-event-manager-form-edit-event.php:136
+#: forms/wp-event-manager-form-edit-event.php:139
+#: forms/wp-event-manager-form-edit-organizer.php:126
+#: forms/wp-event-manager-form-edit-organizer.php:129
+#: forms/wp-event-manager-form-edit-venue.php:124
+#: forms/wp-event-manager-form-edit-venue.php:127
+msgid "Your changes have been saved."
+msgstr "您的更改已被保存。"
+
+#: forms/wp-event-manager-form-edit-event.php:136
+#: forms/wp-event-manager-form-edit-organizer.php:126
+#: forms/wp-event-manager-form-edit-venue.php:124
+msgid "View &rarr;"
+msgstr "查看&rarr;"
+
+#: forms/wp-event-manager-form-submit-event.php:30
+#: forms/wp-event-manager-form-submit-organizer.php:31
+#: forms/wp-event-manager-form-submit-venue.php:31
+msgid "Submit Details"
+msgstr "提交详细信息"
+
+#: forms/wp-event-manager-form-submit-event.php:37
+#: forms/wp-event-manager-form-submit-event.php:587
+#: templates/event-preview.php:19
+msgid "Preview"
+msgstr "预览"
+
+#: forms/wp-event-manager-form-submit-event.php:44
+#: forms/wp-event-manager-form-submit-organizer.php:37
+#: forms/wp-event-manager-form-submit-venue.php:37
+msgid "Done"
+msgstr "完成"
+
+#: forms/wp-event-manager-form-submit-event.php:136
+msgid "Registration email"
+msgstr "注册邮件"
+
+#: forms/wp-event-manager-form-submit-event.php:137
+#: wp-event-manager-template.php:360 wp-event-manager-template.php:2191
+msgid "you@yourdomain.com"
+msgstr "you@yourdomain.com"
+
+#: forms/wp-event-manager-form-submit-event.php:141
+msgid "http://"
+msgstr "http://"
+
+#: forms/wp-event-manager-form-submit-event.php:144
+msgid "Registration email/URL"
+msgstr "注册电子邮件/ URL"
+
+#: forms/wp-event-manager-form-submit-event.php:145
+msgid "Enter an email address or website URL"
+msgstr "输入电子邮件地址或网站地址"
+
+#: forms/wp-event-manager-form-submit-event.php:295
+msgid "Ticket Price"
+msgstr "门票价格"
+
+#: forms/wp-event-manager-form-submit-organizer.php:159
+#: forms/wp-event-manager-form-submit-venue.php:150
+#: templates/content-single-event_listing.php:537
+#: templates/organizer/content-single-event-organizers.php:94
+#: templates/organizer/content-single-event-organizers.php:203
+#: templates/organizer/content-single-event_listing-organizer.php:81
+#: templates/organizer/content-single-event_listing-organizer.php:167
+#: templates/organizer/content-single-event_organizer.php:62
+#: templates/organizer/organizer-dashboard.php:84
+#: templates/venue/content-single-event-venues.php:82
+#: templates/venue/content-single-event_listing-venue.php:89
+#: templates/venue/content-single-event_venue.php:55
+#: templates/venue/venue-dashboard.php:76
+msgid "Twitter"
+msgstr "Twitter"
+
+#: forms/wp-event-manager-form-submit-organizer.php:162
+msgid "Twitter URL e.g http://twitter.com/yourorganizer"
+msgstr "Twitter URL 例如 http://twitter.com/yourorganizer"
+
+#: forms/wp-event-manager-form-submit-event.php:618
+msgid "Please enter a username."
+msgstr "请输入用户名"
+
+#: forms/wp-event-manager-form-submit-event.php:621
+#: forms/wp-event-manager-form-submit-event.php:624
+msgid "Please enter your email address."
+msgstr "请输入您的电子邮件地址。"
+
+#: forms/wp-event-manager-form-submit-event.php:656
+msgid "You must be signed in to post a new listing."
+msgstr "您必须登录才能发布新的列表。"
+
+#: templates/event-preview.php:20
+msgid "Submit Listing →"
+msgstr "提交列表\t"
+
+#: templates/event-preview.php:18
+msgid "← Edit listing"
+msgstr "← 编辑列表"
+
+#: shortcodes/wp-event-manager-shortcodes.php:110
+#: shortcodes/wp-event-manager-shortcodes.php:308
+#: shortcodes/wp-event-manager-shortcodes.php:441
+msgid "Invalid ID"
+msgstr "无效ID"
+
+#: shortcodes/wp-event-manager-shortcodes.php:148
+#: shortcodes/wp-event-manager-shortcodes.php:322
+#: shortcodes/wp-event-manager-shortcodes.php:454
+msgid "Missing submission page."
+msgstr "缺少提交页面。"
+
+#: admin/wp-event-manager-cpt.php:306
+#: admin/wp-event-manager-shortcode-list.php:63
+#: external/elementor-widgets/elementor-event-listing.php:139
+#: external/elementor-widgets/elementor-event-organizers.php:112
+#: external/elementor-widgets/elementor-event-venues.php:110
+#: external/elementor-widgets/elementor-past-event-listing.php:130
+#: external/elementor-widgets/elementor-upcoming-event-listing.php:121
+#: shortcodes/wp-event-manager-shortcodes.php:260
+#: widgets/wp-event-manager-widgets.php:168
+#: widgets/wp-event-manager-widgets.php:287
+#: widgets/wp-event-manager-widgets.php:404
+#: widgets/wp-event-manager-widgets.php:428
+#: widgets/wp-event-manager-widgets.php:552
+#: widgets/wp-event-manager-widgets.php:576
+msgid "Title"
+msgstr "标题"
+
+#: shortcodes/wp-event-manager-shortcodes.php:264
+#: shortcodes/wp-event-manager-shortcodes.php:269
+msgid "Viewed"
+msgstr "已查看"
+
+#: admin/wp-event-manager-shortcode-list.php:65
+#: shortcodes/wp-event-manager-shortcodes.php:265
+#: shortcodes/wp-event-manager-shortcodes.php:400
+#: shortcodes/wp-event-manager-shortcodes.php:535
+msgid "Action"
+msgstr "行动"
+
+#: templates/event-listings-end.php:6
+msgid "Load more events"
+msgstr "加载更多活动"
+
+#: templates/event-listings-end.php:15
+msgid "Load more listings"
+msgstr "加载更多列表"
+
+#: templates/account-signin.php:5
+msgid "Your account"
+msgstr "您的账户"
+
+#: templates/account-signin.php:9
+msgid "Sign out"
+msgstr "登出"
+
+#: templates/account-signin.php:19 templates/organizer/organizer-submit.php:44
+msgid "Have an account?"
+msgstr "已经拥有账户？"
+
+#: shortcodes/wp-event-manager-shortcodes.php:356
+#: shortcodes/wp-event-manager-shortcodes.php:489
+#: templates/account-signin.php:21 templates/event-dashboard-login.php:5
+msgid "Sign in"
+msgstr "登录"
+
+#: templates/account-signin.php:23
+msgid "If you don&rsquo;t have an account with us, just enter your email address and create a new one.  You will receive your password shortly in your email."
+msgstr "如果您没有我们的账户，只需输入您的电子邮件地址并创建一个新账户。您将很快在电子邮件中收到您的密码。"
+
+#: wp-event-manager-template.php:368 wp-event-manager-template.php:2165
+msgid "Username"
+msgstr "用户名"
+
+#: templates/account-signin.php:24 templates/account-signin.php:34
+#: templates/event-submit.php:27 templates/event-submit.php:45
+#: templates/event-submit.php:65 templates/event-submit.php:117
+#: templates/event-submit.php:165 templates/form-fields/group-field.php:34
+#: templates/form-fields/group-field.php:83
+#: templates/form-fields/repeated-field.php:38
+#: templates/form-fields/repeated-field.php:96
+#: templates/organizer/organizer-submit.php:28
+#: templates/venue/venue-submit.php:20
+msgid "(optional)"
+msgstr "(可选的)"
+
+#: templates/content-no-events-found.php:3
+msgid "There are no events matching your search."
+msgstr "没有符合您搜索的活动。"
+
+#: includes/wp-event-manager-ajax.php:179
+#: shortcodes/wp-event-manager-shortcodes.php:769
+#: templates/content-no-events-found.php:7
+#: templates/content-widget-no-events-found.php:4
+msgid "There are currently no events."
+msgstr "当前没有任何活动。"
+
+#: templates/content-single-event_listing.php:461
+msgid "Registration End Date"
+msgstr "注册结束日期"
+
+#: templates/event-dashboard-login.php:3
+msgid "You need to be signed in to manage your listings."
+msgstr "您需要登录才能管理您的列表。"
+
+#: templates/event-dashboard.php:202
+msgid "Mark not cancelled"
+msgstr "标记无取消"
+
+#: templates/event-dashboard.php:207
+msgid "Mark cancelled"
+msgstr "标记已取消"
+
+#: templates/event-dashboard.php:212
+#: templates/organizer/organizer-dashboard.php:124
+#: templates/venue/venue-dashboard.php:115
+msgid "Duplicate"
+msgstr "复制"
+
+#: templates/event-dashboard.php:219
+msgid "Relist"
+msgstr "重新发布"
+
+#: templates/event-dashboard.php:128 templates/event-filters.php:17
+#: templates/event-filters.php:18
+msgid "Keywords"
+msgstr "关键词"
+
+#: templates/event-filters.php:73
+msgid "Any dates"
+msgstr "任何日期"
+
+#: templates/event-filters.php:90
+msgid "Category"
+msgstr "分类"
+
+#: admin/wp-event-manager-settings.php:322 templates/event-filters.php:139
+msgid "Ticket Prices"
+msgstr "门票价格"
+
+#: templates/event-filters.php:164
+msgid "Your browser does not support JavaScript, or it is disabled. JavaScript must be enabled in order to view listings."
+msgstr "您的浏览器不支持JavaScript或已被禁用。JavaScript必须启用才能查看列表。"
+
+#: templates/event-registration-email.php:2
+msgid "To register for this event <strong>email your details to</strong> <a class=\"event_registration_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+msgstr "要注册此活动<strong>请将您的详细信息发送至</strong> <a class=\"event_registration_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+
+#: templates/event-registration-email.php:6
+msgid "Register using webmail: "
+msgstr "使用网络邮箱注册："
+
+#: templates/event-registration-url.php:2
+msgid "To register for this event please visit the following URL:"
+msgstr "要注册参加此活动，请访问以下网址："
+
+#: templates/event-registration.php:8
+msgid "Register for event"
+msgstr "注册参加活动"
+
+#: templates/event-dashboard.php:286 templates/event-submit.php:16
+msgid "Event Details"
+msgstr "活动详情"
+
+#: templates/event-submit.php:42 templates/event-submit.php:109
+#: templates/organizer/organizer-submit.php:21
+msgid "Organizer Details"
+msgstr "组织者详情"
+
+#: templates/event-submitted.php:7
+msgid "%s listed successfully. To view your listing <a href=\"%s\">click here</a>."
+msgstr "成功列出%s。查看您的列表 <a href=\"%s\">click here</a>."
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: admin/wp-event-manager-shortcode-list.php:28
+msgid "WP Event Manager"
+msgstr "WP Event Manager（WP 活动管理器）"
+
+#: templates/event-submitted.php:10
+msgid "%s submitted successfully. Your listing will be visible once approved."
+msgstr "已成功提交%s。您的列表一旦获得批准即可见。"
+
+#: admin/wp-event-manager-setup.php:153
+msgid "WP Event Manager Setup"
+msgstr "WP Event Manager 设置"
+
+#: admin/wp-event-manager-settings.php:172
+msgid "Event Type Filter"
+msgstr "活动类型过滤器"
+
+#: admin/wp-event-manager-addons.php:21 admin/wp-event-manager-admin.php:142
+msgid "WP Event Manager Add-ons"
+msgstr "WP Event Manager附加组件"
+
+#: forms/wp-event-manager-form-submit-event.php:188
+msgid "No"
+msgstr "否"
+
+#: admin/wp-event-manager-settings.php:290
+msgid "Listing expire on Event End Date"
+msgstr "列表在活动结束日期过期"
+
+#: admin/wp-event-manager-settings.php:287
+msgid "You can set event submission expiry time either event end date or specific days."
+msgstr "您可以设置活动提交到期时间为活动结束日期或特定日期。"
+
+#: admin/wp-event-manager-settings.php:286
+msgid "Listing Expire"
+msgstr "列表过期"
+
+#: admin/wp-event-manager-settings.php:279
+msgid "If enabled, expired listings will automatically deleted after 30 days."
+msgstr "如果启用，过期列表将在30天后自动删除。"
+
+#: admin/wp-event-manager-settings.php:261
+msgid "If enabled, Multiple banner can add at frontend by user and backend side by admin."
+msgstr "如果启用，多个横幅可由用户在前端添加或由管理员在后台添加。"
+
+#: admin/wp-event-manager-settings.php:259
+msgid "Allow Multiple Banners"
+msgstr "允许多个横幅"
+
+#: admin/wp-event-manager-settings.php:252
+msgid "If enabled, submissions awaiting admin approval can be edited by the user."
+msgstr "如果启用，等待管理员批准的提交可以由用户编辑。"
+
+#: admin/wp-event-manager-settings.php:250
+msgid "Allow Pending Edits"
+msgstr "允许待处理编辑"
+
+#: admin/wp-event-manager-settings.php:243
+msgid "If enabled, new submissions will be inactive, pending admin approval."
+msgstr "如果启用，新的提交将处于非活动状态，需等待管理员批准。"
+
+#: admin/wp-event-manager-settings.php:241
+msgid "Moderate New Listings"
+msgstr "减少新列表"
+
+#: admin/wp-event-manager-settings.php:233
+msgid "Account Role"
+msgstr "账户角色"
+
+#: admin/wp-event-manager-settings.php:215
+msgid "Account Username"
+msgstr "账户用户名"
+
+#: admin/wp-event-manager-settings.php:217
+msgid "If enabled, a username will be generated from the first part of the user email address. Otherwise, a username field will be shown."
+msgstr "如果启用，用户名将从用户电子邮件地址的第一部分生成。 否则，用户名字段将会被显示。"
+
+#: admin/wp-event-manager-settings.php:208
+msgid "If enabled, non-logged in users will be able to create an account by entering their email address on the submission form."
+msgstr "如果启用，未登录的用户将能够通过在提交表单中输入他们的电子邮件地址来创建帐户。"
+
+#: admin/wp-event-manager-settings.php:206
+msgid "Account Creation"
+msgstr "账户创建"
+
+#: admin/wp-event-manager-settings.php:199
+msgid "If disabled, non-logged in users will be able to submit listings without creating an account."
+msgstr "如果禁用，未登录的用户将能够在无创建帐户的情况下提交列表。"
+
+#: admin/wp-event-manager-settings.php:197
+msgid "Account Required"
+msgstr "帐户必需"
+
+#: admin/wp-event-manager-settings.php:192
+msgid "Event Submission"
+msgstr "活动提交"
+
+#: admin/wp-event-manager-settings.php:152
+msgid "Multi-select Event Types"
+msgstr "多选活动类型"
+
+#: admin/wp-event-manager-settings.php:313
+#: templates/content-single-event_listing.php:490
+msgid "Event Types"
+msgstr "活动类型"
+
+#: admin/wp-event-manager-settings.php:304
+msgid "Categories"
+msgstr "类别"
+
+#: admin/wp-event-manager-settings.php:136
+msgid "If enabled, the content within expired listings will be hidden. Otherwise, expired listings will be displayed as normal (without the event registration area)."
+msgstr "如果启用，过期列表中的内容将被隐藏。 否则，过期列表将会正常显示（没有在活动注册区域）。"
+
+#: admin/wp-event-manager-settings.php:118
+msgid "If enabled, cancelled events will be hidden from archives."
+msgstr "如果启用，取消的活动将隐藏在档案中。"
+
+#: admin/wp-event-manager-settings.php:116
+msgid "Cancelled Events"
+msgstr "已取消活动"
+
+#: admin/wp-event-manager-settings.php:109
+msgid "How many listings should be shown per page by default?"
+msgstr "在默认情况下每页应显示多少列表？"
+
+#: admin/wp-event-manager-settings.php:108
+msgid "Listings Per Page"
+msgstr "每页列表"
+
+#: admin/wp-event-manager-settings.php:102
+msgid "Event Listings"
+msgstr "活动列表"
+
+#: forms/wp-event-manager-form-submit-event.php:203
+#: wp-event-manager-functions.php:1929
+msgid "Event Location"
+msgstr "活动地点"
+
+#: wp-event-manager-functions.php:1922
+msgid "Event End Date"
+msgstr "活动结束日期"
+
+#: admin/wp-event-manager-cpt.php:463
+msgid "Approve"
+msgstr "批准"
+
+#: templates/content-single-event_listing.php:76
+msgid "by %s"
+msgstr "由%s"
+
+#: admin/wp-event-manager-cpt.php:317
+msgid "Actions"
+msgstr "操作"
+
+#: forms/wp-event-manager-form-submit-event.php:173
+#: templates/content-single-event_listing.php:496
+msgid "Event Category"
+msgstr "活动类别"
+
+#: forms/wp-event-manager-form-submit-event.php:163
+#: templates/event-filters.php:121
+msgid "Event Type"
+msgstr "活动类型"
+
+#: admin/wp-event-manager-cpt.php:316
+msgid "Featured?"
+msgstr "精选？"
+
+#: admin/wp-event-manager-cpt.php:315
+msgid "Cancelled?"
+msgstr "取消？"
+
+#: admin/wp-event-manager-cpt.php:314
+msgid "Status"
+msgstr "状态"
+
+#: admin/wp-event-manager-cpt.php:288
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: admin/wp-event-manager-cpt.php:279
+msgid "Custom field updated."
+msgstr "自定义字段已更新。"
+
+#: admin/wp-event-manager-cpt.php:280
+msgid "Custom field deleted."
+msgstr "自定义字段已删除。"
+
+#: admin/wp-event-manager-admin.php:136 admin/wp-event-manager-settings.php:480
+#: admin/wp-event-manager-setup.php:301
+#: templates/form-fields/repeated-field.php:23
+#: templates/form-fields/repeated-field.php:81 wp-event-manager.php:422
+msgid "Settings"
+msgstr "设置"
+
+#: admin/wp-event-manager-admin.php:142
+msgid "Add-ons"
+msgstr "附加组件"
+
+#: admin/wp-event-manager-cpt.php:261
+#: forms/wp-event-manager-form-submit-event.php:155
+#: wp-event-manager-functions.php:1908
+msgid "Event Title"
+msgstr "活动标题"
+
+#: admin/wp-event-manager-cpt.php:215
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:158
+msgid "Select category"
+msgstr "选择类别"
+
+#. Author URI of the plugin
+msgid "https://www.wp-eventmanager.com"
+msgstr "https://www.wp-eventmanager.com"
+
+#. Plugin URI of the plugin
+msgid "https://www.wp-eventmanager.com/"
+msgstr "https://www.wp-eventmanager.com/"
+
+#: external/elementor.php:126 wp-event-manager.php:306 wp-event-manager.php:330
+#: wp-event-manager.php:338 wp-event-manager.php:347
+msgid "Cancel"
+msgstr "取消"
+
+#: wp-event-manager.php:265
+msgid "Invalid file type. Accepted types:"
+msgstr "文件类型无效。 接受的类型："
+
+#: wp-event-manager-template.php:359 wp-event-manager-template.php:2190
+msgid "Your email"
+msgstr "您的邮箱"
+
+#: wp-event-manager-template.php:145
+msgid "Inactive"
+msgstr "未启用"
+
+#: wp-event-manager-functions.php:837
+msgid "This email is already registered, please choose another one."
+msgstr "此电子邮件已注册，请选择另一个。"
+
+#: wp-event-manager-functions.php:833
+msgid "Your email address isn&#8217;t correct."
+msgstr "您的电子邮件地址不正确。"
+
+#: wp-event-manager-functions.php:825
+msgid "Invalid email address."
+msgstr "无效电子邮件地址。"
+
+#: wp-event-manager-functions.php:724
+msgid "RSS"
+msgstr "RSS"
+
+#: templates/event-dashboard.php:155 wp-event-manager-functions.php:720
+msgid "Reset"
+msgstr "重置"
+
+#: wp-event-manager-functions.php:581
+msgctxt "post status"
+msgid "Active"
+msgstr "启用"
+
+#: wp-event-manager-functions.php:580
+msgctxt "post status"
+msgid "Pending payment"
+msgstr "待付款"
+
+#: wp-event-manager-functions.php:579
+msgctxt "post status"
+msgid "Pending approval"
+msgstr "待批准"
+
+#: wp-event-manager-functions.php:578
+msgctxt "post status"
+msgid "Preview"
+msgstr "预览"
+
+#: wp-event-manager-functions.php:576
+msgctxt "post status"
+msgid "Draft"
+msgstr "草稿"
+
+#: widgets/wp-event-manager-widgets.php:396
+msgid "Display a list of upcoming listings on your site."
+msgstr "在您的站点显示即将推出的列表。"
+
+#: widgets/wp-event-manager-widgets.php:279
+msgid "Display a list of featured listings on your site."
+msgstr "在您的站点上显示精选列表。"
+
+#: widgets/wp-event-manager-widgets.php:186
+#: widgets/wp-event-manager-widgets.php:295
+#: widgets/wp-event-manager-widgets.php:412
+#: widgets/wp-event-manager-widgets.php:560
+msgid "Number of listings to show"
+msgstr "要显示的列表数量"
+
+#: widgets/wp-event-manager-widgets.php:173
+msgid "Keyword"
+msgstr "关键词"
+
+#: widgets/wp-event-manager-widgets.php:160
+msgid "Display a list of recent listings on your site, optionally matching a keyword and location."
+msgstr "在您的站点上显示近期列表，可选的匹配关键字和位置。"
+
+#: templates/form-fields/uploaded-file-html.php:14
+#: templates/form-fields/uploaded-file-html.php:19
+msgid "remove"
+msgstr "移除"
+
+#: templates/form-fields/group-field.php:25
+#: templates/form-fields/group-field.php:74
+#: templates/form-fields/repeated-field.php:76
+msgid "Remove"
+msgstr "移除"
+
+#: templates/event-filters.php:140
+#: templates/form-fields/multiselect-field.php:7
+msgid "Select Some Options"
+msgstr "选择一些选项"
+
+#: templates/event-filters.php:140
+#: templates/form-fields/multiselect-field.php:7
+#: wp-event-manager-functions.php:1161
+msgid "No results match"
+msgstr "无匹配结果"
+
+#: templates/form-fields/file-field.php:30
+msgid "Maximum file size: %s."
+msgstr "最大文件大小： %s."
+
+#: wp-event-manager.php:331
+msgid "Are you sure you want to delete this event?"
+msgstr "您确定要删除此活动吗？"
+
+#: templates/form-fields/repeated-field.php:18
+msgid "You can't delete ticket once it is added.You can make it private from settings tab."
+msgstr "一旦添加票据，您就无法删除。您可以通过设置选项将其设置为不公开。"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:277
+#: includes/wp-event-manager-filters.php:25
+msgid "Next Weekend"
+msgstr "下周末"
+
+#: admin/wp-event-manager-writepanels.php:124
+msgid "Listing Expiry Date"
+msgstr "列表到期日期"
+
+#: admin/wp-event-manager-writepanels.php:114
+msgid "Featured listings will be sticky during searches, and can be styled differently."
+msgstr "精选列表在搜索过程中将会被置顶，并可采用不同的风格。"
+
+#: admin/wp-event-manager-writepanels.php:112
+msgid "Featured Listing"
+msgstr "精选列表"
+
+#: forms/wp-event-manager-form-submit-organizer.php:145
+#: forms/wp-event-manager-form-submit-venue.php:136
+#: templates/organizer/content-single-event-organizers.php:88
+#: templates/organizer/content-single-event-organizers.php:200
+#: templates/organizer/content-single-event_listing-organizer.php:78
+#: templates/organizer/content-single-event_listing-organizer.php:164
+#: templates/organizer/content-single-event_organizer.php:56
+#: templates/organizer/organizer-dashboard.php:78
+#: templates/venue/content-single-event-venues.php:76
+#: templates/venue/content-single-event_listing-venue.php:83
+#: templates/venue/content-single-event_venue.php:50
+#: templates/venue/venue-dashboard.php:71
+msgid "Instagram"
+msgstr "Instagram"
+
+#: templates/content-single-event_listing.php:546
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: templates/content-single-event_listing.php:543
+msgid "Xing"
+msgstr "Xing"
+
+#: forms/wp-event-manager-form-submit-organizer.php:134
+msgid "Website URL e.g http://www.yourorganization.com"
+msgstr "网站 URL 例如 http://www.yourorganization.com"
+
+#: forms/wp-event-manager-form-submit-organizer.php:131
+#: forms/wp-event-manager-form-submit-venue.php:122
+#: templates/organizer/content-single-event-organizers.php:76
+#: templates/organizer/content-single-event-organizers.php:194
+#: templates/organizer/content-single-event_listing-organizer.php:72
+#: templates/organizer/content-single-event_listing-organizer.php:158
+#: templates/organizer/content-single-event_organizer.php:44
+#: templates/organizer/organizer-dashboard.php:66
+#: templates/venue/content-single-event-venues.php:64
+#: templates/venue/content-single-event_listing-venue.php:71
+#: templates/venue/content-single-event_venue.php:40
+#: templates/venue/venue-dashboard.php:61
+msgid "Website"
+msgstr "网站"
+
+#: forms/wp-event-manager-form-submit-organizer.php:127
+msgid "Enter your email address"
+msgstr "输入您的电子邮件地址"
+
+#: admin/wp-event-manager-cpt.php:485 templates/event-dashboard.php:235
+#: templates/organizer/organizer-dashboard.php:130
+#: templates/venue/venue-dashboard.php:121 wp-event-manager.php:329
+#: wp-event-manager.php:337 wp-event-manager.php:346
+msgid "Delete"
+msgstr "删除"
+
+#: admin/wp-event-manager-cpt.php:478
+#: includes/wp-event-manager-post-types.php:228
+#: templates/event-dashboard.php:197 templates/event-dashboard.php:228
+#: templates/organizer/organizer-dashboard.php:120
+#: templates/venue/venue-dashboard.php:111
+msgid "Edit"
+msgstr "编辑"
+
+#: admin/wp-event-manager-cpt.php:471
+msgid "View"
+msgstr "查看"
+
+#: admin/wp-event-manager-writepanels.php:768
+msgid "Change"
+msgstr "更改"
+
+#: admin/wp-event-manager-writepanels.php:765
+msgid "Guest User"
+msgstr "访客用户"
+
+#: admin/wp-event-manager-writepanels.php:377
+msgid "Add file"
+msgstr "添加文件"
+
+#: admin/wp-event-manager-writepanels.php:367
+#: admin/wp-event-manager-writepanels.php:374
+#: admin/wp-event-manager-writepanels.php:377
+msgid "Upload"
+msgstr "上传"
+
+#: admin/wp-event-manager-writepanels.php:367
+#: admin/wp-event-manager-writepanels.php:374
+#: admin/wp-event-manager-writepanels.php:377
+msgid "Use file"
+msgstr "使用文件"
+
+#: admin/wp-event-manager-writepanels.php:133
+#: admin/wp-event-manager-writepanels.php:1158
+#: admin/wp-event-manager-writepanels.php:1304
+msgid "Posted by"
+msgstr "发布者"
+
+#: templates/content-single-event_listing.php:540
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: forms/wp-event-manager-form-submit-organizer.php:138
+#: forms/wp-event-manager-form-submit-venue.php:129
+#: templates/content-single-event_listing.php:534
+#: templates/organizer/content-single-event-organizers.php:82
+#: templates/organizer/content-single-event_organizer.php:50
+#: templates/organizer/organizer-dashboard.php:72
+#: templates/venue/content-single-event-venues.php:70
+#: templates/venue/content-single-event_listing-venue.php:77
+#: templates/venue/content-single-event_venue.php:45
+#: templates/venue/venue-dashboard.php:66
+msgid "Facebook"
+msgstr "Facebook"
+
+#: forms/wp-event-manager-form-submit-organizer.php:152
+#: forms/wp-event-manager-form-submit-venue.php:143
+#: templates/organizer/content-single-event-organizers.php:99
+#: templates/organizer/content-single-event-organizers.php:206
+#: templates/organizer/content-single-event_listing-organizer.php:84
+#: templates/organizer/content-single-event_listing-organizer.php:170
+#: templates/organizer/content-single-event_organizer.php:67
+#: templates/organizer/organizer-dashboard.php:90
+#: templates/venue/content-single-event-venues.php:87
+#: templates/venue/content-single-event_listing-venue.php:95
+#: templates/venue/content-single-event_venue.php:60
+#: templates/venue/venue-dashboard.php:81
+msgid "Youtube"
+msgstr "Youtube"
+
+#: forms/wp-event-manager-form-submit-organizer.php:117
+msgid "Organizer Description"
+msgstr "组织者说明"
+
+#: forms/wp-event-manager-form-submit-organizer.php:102
+#: forms/wp-event-manager-form-submit-venue.php:107
+msgid "Logo"
+msgstr "标志"
+
+#: forms/wp-event-manager-form-submit-event.php:306
+msgid "Please enter registration deadline"
+msgstr "请输入注册截止日期"
+
+#: forms/wp-event-manager-form-submit-event.php:303
+msgid "Registration Deadline"
+msgstr "注册截止日期"
+
+#: forms/wp-event-manager-form-submit-event.php:296
+msgid "Please enter ticket price"
+msgstr "请输入门票价格"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:302
+#: forms/wp-event-manager-form-submit-event.php:288
+#: includes/wp-event-manager-filters.php:50 wp-event-manager-template.php:478
+msgid "Free"
+msgstr "免费"
+
+#: external/visual-composer/eventListing/eventListing/EventListingController.php:301
+#: forms/wp-event-manager-form-submit-event.php:287
+#: includes/wp-event-manager-filters.php:49 wp-event-manager-template.php:476
+msgid "Paid"
+msgstr "付费"
+
+#: forms/wp-event-manager-form-submit-event.php:283
+msgid "Ticket Options"
+msgstr "门票选择"
+
+#: forms/wp-event-manager-form-submit-event.php:276
+msgid "Please enter event end time"
+msgstr "请输入活动结束时间"
+
+#: forms/wp-event-manager-form-submit-event.php:275
+msgid "End Time"
+msgstr "结束时间"
+
+#: forms/wp-event-manager-form-submit-event.php:268
+msgid "Please enter event end date"
+msgstr "请输入活动结束日期"
+
+#: admin/wp-event-manager-cpt.php:312
+#: forms/wp-event-manager-form-submit-event.php:267
+#: shortcodes/wp-event-manager-shortcodes.php:263
+msgid "End Date"
+msgstr "结束日期"
+
+#: forms/wp-event-manager-form-submit-event.php:260
+msgid "Please enter event start time"
+msgstr "请输入活动开始时间"
+
+#: forms/wp-event-manager-form-submit-event.php:259
+msgid "Start Time"
+msgstr "开始时间"
+
+#: forms/wp-event-manager-form-submit-event.php:252
+msgid "Please enter event start date"
+msgstr "请输入活动开始日期"
+
+#: admin/wp-event-manager-cpt.php:311
+#: forms/wp-event-manager-form-submit-event.php:251
+#: shortcodes/wp-event-manager-shortcodes.php:262
+msgid "Start Date"
+msgstr "开始日期"
+
+#: admin/wp-event-manager-field-editor.php:187
+#: admin/wp-event-manager-form-field-editor-field.php:155
+#: admin/wp-event-manager-form-field-editor-group-field-row.php:9
+#: admin/wp-event-manager-shortcode-list.php:64
+#: forms/wp-event-manager-form-submit-event.php:227
+msgid "Description"
+msgstr "说明"
+
+#: forms/wp-event-manager-form-submit-event.php:211
+msgid "Event Banner"
+msgstr "活动横幅"
+
+#: admin/wp-event-manager-cpt.php:309
+#: external/elementor-widgets/elementor-event-listing.php:220
+#: external/elementor-widgets/elementor-past-event-listing.php:143
+#: external/elementor-widgets/elementor-upcoming-event-listing.php:134
+#: shortcodes/wp-event-manager-shortcodes.php:261
+#: templates/content-single-event_listing.php:468
+#: templates/event-dashboard.php:272 templates/event-filters.php:27
+#: templates/event-filters.php:28 widgets/wp-event-manager-widgets.php:178
+msgid "Location"
+msgstr "地理位置"
+
+#: forms/wp-event-manager-form-submit-venue.php:96
+msgid "Please enter the venue name"
+msgstr "请输入场地名称"
+
+#: forms/wp-event-manager-form-submit-venue.php:93
+msgid "Venue Name"
+msgstr "场地名称"
+
+#: forms/wp-event-manager-form-submit-event.php:187
+msgid "Yes"
+msgstr "是"
+
+#: forms/wp-event-manager-form-submit-event.php:183
+#: templates/event-dashboard.php:275 wp-event-manager-template.php:453
+msgid "Online Event"
+msgstr "在线活动"
+
+#: admin/wp-event-manager-setup.php:291
+msgid "All Done!"
+msgstr "全部完成！"
+
+#: admin/wp-event-manager-setup.php:280
+msgid "Skip this step"
+msgstr "跳过此步骤"
+
+#: admin/wp-event-manager-setup.php:218
+msgid "This page allows users to browse, search, and filter event listings on the front-end of your site."
+msgstr "此页面允许用户在您的站点的前端浏览，搜索和过滤活动列表。"
+
+#: admin/wp-event-manager-setup.php:217
+msgctxt "Default page title (wizard)"
+msgid "Events"
+msgstr "活动"
+
+#: admin/wp-event-manager-setup.php:211
+msgid "If you plan on managing all listings from the admin dashboard you can skip creating this page."
+msgstr "如果您计划在管理仪表盘中管理所有列表，则可以跳过创建此页面。"
+
+#: admin/wp-event-manager-setup.php:208
+msgctxt "Default page title (wizard)"
+msgid "Event Dashboard"
+msgstr "活动仪表盘"
+
+#: admin/wp-event-manager-setup.php:199
+msgctxt "Default page title (wizard)"
+msgid "Post an Event"
+msgstr "发布活动"
+
+#: admin/wp-event-manager-setup.php:192
+msgid "Page Description"
+msgstr "页面详情"
+
+#: admin/wp-event-manager-setup.php:191
+msgid "Page Title"
+msgstr "页面标题"
+
+#: admin/wp-event-manager-setup.php:183
+msgid "Page Setup"
+msgstr "页面设置"
+
+#: admin/wp-event-manager-setup.php:178
+msgid "Continue to page setup"
+msgstr "继续进行页面设置"
+
+#: admin/wp-event-manager-setup.php:172
+msgid "Setup Wizard Introduction"
+msgstr "安装向导简介"
+
+#: admin/wp-event-manager-setup.php:159 admin/wp-event-manager-setup.php:163
+#: admin/wp-event-manager-setup.php:167
+msgid "3. Done"
+msgstr "3.完成"
+
+#: admin/wp-event-manager-setup.php:158 admin/wp-event-manager-setup.php:162
+#: admin/wp-event-manager-setup.php:166
+msgid "2. Page Setup"
+msgstr "2.页面设置"
+
+#: admin/wp-event-manager-setup.php:157 admin/wp-event-manager-setup.php:161
+#: admin/wp-event-manager-setup.php:165
+msgid "1. Introduction"
+msgstr "1.介绍"
+
+#: admin/wp-event-manager-setup.php:37
+msgid "Setup"
+msgstr "设置"
+
+#: admin/wp-event-manager-field-editor.php:204
+#: admin/wp-event-manager-settings.php:638
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: admin/wp-event-manager-settings.php:583
+msgid "Select a page&hellip;"
+msgstr "选择一个页面&hellip;"
+
+#: admin/wp-event-manager-settings.php:579
+msgid "--no page--"
+msgstr "--无页面--"
+
+#: admin/wp-event-manager-settings.php:495
+msgid "Settings successfully saved"
+msgstr "设置已成功保存"
+
+#: admin/wp-event-manager-settings.php:350
+msgid "Event Listings Page"
+msgstr "活动列表页面"
+
+#: admin/wp-event-manager-settings.php:343
+msgid "Event Dashboard Page"
+msgstr "活动仪表盘页面"
+
+#: admin/wp-event-manager-settings.php:331
+msgid "Pages"
+msgstr "页面"
+
+#: admin/wp-event-manager-settings.php:336
+msgid "Submit Event Form Page"
+msgstr "提交活动表单页面"
+
+#: admin/wp-event-manager-settings.php:297
+msgid "Listing Duration"
+msgstr "列表时间"
+
+#: admin/wp-event-manager-settings.php:298
+msgid "How many <strong>days</strong> listings are live before expiring. Can be left blank to never expire."
+msgstr "在到期前的 <strong>天</strong> 的列表均为有效。 可以留空且永不过期。"
+
+#: admin/wp-event-manager-settings.php:291
+msgid "Listing expire on Specified Below Days"
+msgstr "列表在指定的以下日期过期"
+
+#: admin/wp-event-manager-settings.php:145
+#: admin/wp-event-manager-settings.php:162
+msgid "If enabled, the category select box will default to a multi select on the [events] shortcode."
+msgstr "如果启用，类别选择框将默认为[events]短代码上的多选。"
+
+#: admin/wp-event-manager-settings.php:154
+#: admin/wp-event-manager-settings.php:173
+msgid "If enabled, the event type select box will default to a multi select on the [events] shortcode."
+msgstr "如果启用，活动类型选择框将在[events]短代码上默认为多重选择。"
+
+#: admin/wp-event-manager-settings.php:337
+msgid "Select the page where you have placed the [submit_event_form] shortcode. This lets the plugin know where the form is located."
+msgstr "选择已放置[submit_event_form]短代码的页面。该插件将会检测到表单所在的位置。"
+
+#: admin/wp-event-manager-settings.php:344
+msgid "Select the page where you have placed the [event_dashboard] shortcode. This lets the plugin know where the dashboard is located."
+msgstr "选择您已放置[event_dashboard]短代码的页面。 该插件将会检测到仪表盘页面。"
+
+#: admin/wp-event-manager-settings.php:351
+msgid "Select the page where you have placed the [events] shortcode. This lets the plugin know where the event listings page is located."
+msgstr "选择您已放置[events]短代码的页面。 该插件将会检测到活动列表页面的位置。"
+
+#: admin/wp-event-manager-setup.php:193
+msgid "Content Shortcode"
+msgstr "内容短代码"

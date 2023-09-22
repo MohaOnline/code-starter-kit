@@ -1,0 +1,3004 @@
+# Translation of Plugins - Backup Migration - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Backup Migration - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-12-28 09:00:32+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Backup Migration - Stable (latest release)\n"
+
+#: includes/zipper/src/zip.php:818
+msgid "Extracting files into temporary directory (this process can take some time)..."
+msgstr "正将文件解压到临时文件夹（可能需要一段时间）……"
+
+#: includes/extracter/extract.php:1528
+msgid "Total size of the database: "
+msgstr "数据库大小："
+
+#: includes/extracter/extract.php:1529
+msgid "Table count to be imported: "
+msgstr "待导入表数："
+
+#: includes/extracter/extract.php:1527
+msgid "Partial files count after conversion: "
+msgstr "转换后子文件数："
+
+#: includes/extracter/extract.php:1524
+msgid "Calculaion completed, printing details."
+msgstr "完成计算，输出详细结果。"
+
+#: includes/extracter/extract.php:1486
+msgid "Converting database files into partial files."
+msgstr "把数据库文件分为子文件"
+
+#: includes/extracter/extract.php:855
+msgid "Checking the database structure..."
+msgstr "正检查数据库结构……"
+
+#: includes/extracter/extract.php:679
+msgid "All files restored successfully."
+msgstr "所有文件还原完成。"
+
+#: includes/extracter/extract.php:663
+msgid "Restoring files (this process may take a while)..."
+msgstr "正还原文件（可能需要一段时间）……"
+
+#: includes/database/smart-sort.php:542
+msgid "Finished part %part% of %table% table."
+msgstr "表%table%的第%part%部分已还原"
+
+#: includes/database/smart-sort.php:405
+msgid "Starting conversion of: %s table."
+msgstr "正转换表：%s"
+
+#: includes/database/smart-sort.php:358
+msgid "Finished %progress%: %filename% table, total of %parts% parts."
+msgstr "已完成%progress%：表%filename%，共%parts%个子文件"
+
+#: includes/database/better-restore.php:362
+msgid "Switching tables to new ones and removing old ones."
+msgstr "正添加新表，移除旧表"
+
+#: includes/dashboard/translations.php:162
+msgid "The process should be stopped now."
+msgstr "处理应当已停止"
+
+#: includes/dashboard/translations.php:159
+msgid "Stopping the process, it will be confirmed..."
+msgstr "正在停止处理，停止后会提示您……"
+
+#: includes/dashboard/translations.php:156
+msgid "We could not stop the process due to some issues on your server (maybe file permissions)."
+msgstr "因为您的服务器（可能是文件权限），无法停止处理。"
+
+#: includes/dashboard/chapter/troubleshooting.php:221
+msgid "Force the restoration to stop."
+msgstr "强行停止还原。"
+
+#: includes/dashboard/chapter/troubleshooting.php:216
+msgid "Force the process to stop."
+msgstr "强行停止。"
+
+#: includes/dashboard/chapter/troubleshooting.php:210
+msgid "Backup/restore process issues"
+msgstr "备份/还原问题"
+
+#: includes/dashboard/chapter/other_config.php:424
+msgid "Enable SQL-Splitting for migration process."
+msgstr "对迁移，启用分批处理（SQL-Splitting）。"
+
+#: includes/dashboard/chapter/other_config.php:387
+msgid "Queries per batch for import/export: "
+msgstr "导入/导出每批的语句数："
+
+#: includes/dashboard/chapter/other_config.php:380
+msgid "database"
+msgstr "数据库"
+
+#: includes/dashboard/chapter/other_config.php:380
+msgid "Adjust queries amount per batch for your "
+msgstr "设置每批语句数，用于"
+
+#: includes/ajax.php:1707
+msgid "The value for query amount cannot be larger than 15000."
+msgstr "语句数不能大于15000。"
+
+#: includes/ajax.php:1706
+msgid "The value for query amount cannot be smaller than 15."
+msgstr "语句数不能小于15。"
+
+#: includes/database/better-restore.php:374
+msgid "Tables replaced successfully."
+msgstr "表替换成功"
+
+#: includes/ajax.php:1142
+msgid "Restore process initialized successfully."
+msgstr "还原初始化成功。"
+
+#: includes/extracter/extract.php:1543
+msgid "The process may be less stable if the database is larger than usual."
+msgstr "如果数据库较大，解压可能不稳定"
+
+#: includes/extracter/extract.php:1542
+msgid "Ommiting database convert step as the database backup included was not made with V2 engine."
+msgstr "忽略数据库转换，因为包含的数据库不是用V2引擎备份的"
+
+#: includes/extracter/extract.php:1548
+msgid "Ommiting database convert step as there is no database backup included."
+msgstr "忽略数据库转换，因为不含数据库"
+
+#: includes/extracter/extract.php:1520
+msgid "Database convertion finished successfully."
+msgstr "数据库转换完成"
+
+#: includes/extracter/extract.php:1476
+msgid "Splitting process is disabled in the settings, omitting."
+msgstr "SQL按批处理的设置未启用，此步忽略"
+
+#: includes/dashboard/chapter/troubleshooting.php:224
+msgid "* If the process is still running after killing, that means it probably still running (for real), wait a bit for it to fail then."
+msgstr "* 如果强行停止，但仍显示在进行，也许确实在进行，请稍后，等待处理终止。"
+
+#: includes/dashboard/chapter/troubleshooting.php:214
+msgid "If you are sure the backup process is not running but you can't run it: "
+msgstr "如果确认备份没运行，并且运行不了："
+
+#: includes/dashboard/chapter/troubleshooting.php:219
+msgid "If you are sure the restore process is not running but you can't run it: "
+msgstr "如果确认还原没运行，并且运行不了："
+
+#: includes/dashboard/chapter/other_config.php:18
+msgid "This will split the SQL files (before migration or restore) into parts, which should make the process more stable and also allows to track the progress more precisely."
+msgstr "用于（在迁移/还原前）将SQL文件分成子文件，这样可以运行更稳定，更准确地跟踪进度。"
+
+#: includes/dashboard/chapter/what_backed_up.php:249
+#: includes/dashboard/chapter/what_backed_up.php:273
+msgid "You can use there constant %s as your root path."
+msgstr "您可以使用常量%s作为您的根路径"
+
+#: includes/dashboard/chapter/store_config.php:54
+msgid "16 character random hash"
+msgstr "16字符随机哈希函数"
+
+#: includes/zipper/src/zip.php:713
+msgid "ZipArchive is not available, using PclZIP."
+msgstr "不可用ZipArchive类，请使用PclZIP类"
+
+#: includes/zipper/src/zip.php:696
+msgid "Using ZipArchive, omiting memory limit calculations..."
+msgstr "使用ZipArchive类，忽略内存限制计算..."
+
+#: includes/extracter/extract.php:1308
+msgid "File extraction process failed."
+msgstr "文件提取失败"
+
+#: includes/extracter/extract.php:1252
+msgid "Secret key detected successfully (pong)!"
+msgstr "成功检测到密钥（pong）！"
+
+#: includes/extracter/extract.php:1210
+msgid " files inside the backup."
+msgstr "文件已经备份"
+
+#: includes/extracter/extract.php:1210
+msgid "Scan found "
+msgstr "扫描已发现"
+
+#: includes/extracter/extract.php:1197
+msgid "Secret key generated, it will be returned to you (ping)."
+msgstr "密钥已生成，将转到您手上（ping）"
+
+#: includes/extracter/extract.php:1194
+msgid "Making new secret key for current restore process."
+msgstr "正在为当前还原过程生成新密钥"
+
+#: includes/extracter/extract.php:907
+msgid "This backup does not contain database copy, omitting..."
+msgstr "这个备份文件不包含数据库副本，省略了..."
+
+#: includes/extracter/extract.php:566
+msgid "Extraction milestone: "
+msgstr "提取阶段："
+
+#: includes/extracter/extract.php:554
+msgid "Failed to extract the files..."
+msgstr "提取文件失败..."
+
+#: includes/extracter/extract.php:521
+msgid "Files exported per batch: "
+msgstr "每批导出的文件："
+
+#: includes/extracter/extract.php:520
+msgid "Preparing batching technique for extraction..."
+msgstr "正在为提取准备调度技术"
+
+#: includes/dashboard/chapter/other_config.php:343
+msgid "Disable PHP CLI Checking, try to use alternate methods."
+msgstr "禁用了PHP CLI模式检查，请试着用其他方法"
+
+#: includes/dashboard/chapter/other_config.php:335
+msgid "Please leave it empty if you do not know what you are doing, unless our support told you what it does."
+msgstr "如果你不知道要做什么，请留空。直到我们的技术支持人员告诉你要做什么"
+
+#: includes/dashboard/chapter/other_config.php:334
+msgid "This field has no effect if PHP CLI is not available on the server or it is disabled due to settings."
+msgstr "如果PHP CLI模式在服务器上不可用或由于设置而被禁用，则此字段无效"
+
+#: includes/dashboard/chapter/other_config.php:331
+msgid "Automatic"
+msgstr "自动"
+
+#: includes/dashboard/chapter/other_config.php:326
+msgid "PHP CLI executable path:"
+msgstr "PHP CLI可执行路径："
+
+#: includes/dashboard/chapter/other_config.php:321
+msgid "Backup & Restore – PHP CLI Settings (advanced)"
+msgstr "备份和恢复-PHP CLI 设置（高级）"
+
+#: includes/ajax.php:1705
+msgid "Path to executable that you provided for PHP CLI does not exist."
+msgstr "您提供给PHP CLI用于执行的路径不存在"
+
+#: includes/ajax.php:1280
+msgid "Restore process is currently running, please wait till it complete."
+msgstr "数据恢复程序正在运行，请耐心等候至其完成。"
+
+#: includes/ajax.php:1081
+msgid "Restore process initialized, restoring (non-cli mode)..."
+msgstr "数据恢复程序完成初始化，恢复（除CLI以外的模式）"
+
+#: includes/ajax.php:585
+msgid "PHP CLI file cannot be executed due to unknown reason."
+msgstr "PHP CLI文件因不明原因未能被执行"
+
+#: includes/ajax.php:133
+msgid "PHP CLI is disabled manually, plugin will omit all PHP CLI steps."
+msgstr "PHP CLI被手动禁用，插件会忽略所有的PHP CLI步骤"
+
+#: includes/extracter/extract.php:685
+msgid "Older backup detected, using V1 engine to restore database..."
+msgstr "检测到更久以前的备份，正在使用V1引擎恢复数据库..."
+
+#: includes/extracter/extract.php:783
+msgid "Successfully detected backup created with V2 engine, importing..."
+msgstr "成功检测到用V2引擎制作的备份，正在导入..."
+
+#: includes/ajax.php:1404
+msgid "Downloading via PHP CLI"
+msgstr "正在通过PHP CLI下载"
+
+#: includes/ajax.php:1078
+msgid "PHP CLI: Restore process initialized, restoring..."
+msgstr "PHP CLI：恢复程序已完成初始化，正在恢复"
+
+#: includes/ajax.php:1050
+msgid "No response from PHP CLI - plugin will try to recover the migration with traditional restore."
+msgstr "PHP CLI未响应-插件将尝试用传统恢复程序恢复迁移文件"
+
+#: includes/ajax.php:998
+msgid "The restore process is currently running, please wait till it end or once the lock file expire."
+msgstr "恢复程序正在运行，请耐心等待直至其结束或直到锁定文件过期。"
+
+#: includes/ajax.php:595
+msgid "Backup via PHP CLI initialized successfully."
+msgstr "通过PHP CLI备份的文件初始化成功"
+
+#: includes/ajax.php:583
+msgid "PHP CLI will not run due to user settings in plugin other options."
+msgstr "由于插件其他选项中的用户设置，PHP CLI将不会运行"
+
+#: includes/ajax.php:568
+msgid "Backup will not be continued due to manual abort by user."
+msgstr "由于用户手动中止，备份程序将不会继续运行"
+
+#: includes/ajax.php:563
+msgid "Something went wrong in PHP CLI process, backup will be continued with legacy methods."
+msgstr "由于PHP CLI程序中出现了问题，备份程序将以旧方法继续运行"
+
+#: includes/ajax.php:352
+msgid "Cleaning up exported files..."
+msgstr "正在清理导出的文件..."
+
+#: includes/ajax.php:278 includes/ajax.php:375
+msgid "#002"
+msgstr "#002"
+
+#: includes/ajax.php:164
+msgid "We properly detected PHP CLI executable file."
+msgstr "我们可能检测到了PHP CLI可执行文件"
+
+#: includes/ajax.php:161
+msgid "PHP CLI Version: "
+msgstr "PHP CLI版本："
+
+#: includes/ajax.php:162
+msgid "PHP CLI Memory limit: "
+msgstr "PHP CLI内存限制："
+
+#: includes/ajax.php:163
+msgid "PHP CLI Execution limit: "
+msgstr "PHP CLI执行限制："
+
+#: includes/ajax.php:160
+msgid "PHP CLI Filename: "
+msgstr "PHP CLI文件名："
+
+#: includes/ajax.php:150
+msgid "Could not find proper PHP CLI executable, this process may be unstable."
+msgstr "找不到合适的PHP CLI可执行文件，该过程可能不稳定"
+
+#: includes/ajax.php:148
+msgid "PHP CLI is disabled in your php.ini file, the process may be unstable."
+msgstr "PHP CLI在你的php.ini文件中被禁用，该过程可能不稳定"
+
+#: includes/ajax.php:138
+msgid "Looking for PHP CLI executable file."
+msgstr "正在查找PHP CLI可执行文件"
+
+#: includes/zipper/src/zip.php:421
+msgid "Backup is running under PHP CLI environment."
+msgstr "备份程序正在PHP CLI环境下运行"
+
+#: includes/zipper/src/zip.php:426
+msgid "Backup will run as single-request, may be unstable..."
+msgstr "备份程序将以单请求模式运行，可能出现不稳定"
+
+#: includes/dashboard/chapter/other_config.php:361
+msgid "Use direct downloading - that will remove .htaccess protection right before download (can solve download issues)."
+msgstr "使用直接下载模式-这将在下载之前移除.htaccess保护（可以解决下载问题）"
+
+#: includes/dashboard/chapter/other_config.php:354
+msgid "technique"
+msgstr "技术"
+
+#: includes/dashboard/chapter/other_config.php:354
+msgid "Backup downloading"
+msgstr "备份正在下载"
+
+#: includes/dashboard/chapter/other_config.php:350
+msgid "Change basic functions of the plugin"
+msgstr "更改插件的基本功能"
+
+#: includes/dashboard/modals/backup-success-modal.php:69
+#: includes/dashboard/modals/restore-success-modal.php:76
+msgid "Trouble logging in?"
+msgstr "登录时遇到问题？"
+
+#: includes/dashboard/modals/backup-success-modal.php:56
+#: includes/dashboard/modals/restore-success-modal.php:63
+msgid "Like how easy it was? Then <b>PLEASE</b> give us a nice rating so that others discover out plugin & benefit from it too. Thank you!!"
+msgstr "比如说，这插件有多方便？然后<b>请</b>给我们一个好评，让其他人也能发现这个插件并从中受益。非常感谢！"
+
+#: includes/dashboard/modals/backup-success-modal.php:62
+#: includes/dashboard/modals/restore-success-modal.php:69
+msgid "Sounds fair, let me give a rating"
+msgstr "好，让我来评分"
+
+#: includes/extracter/extract.php:1132
+msgid "Clearing elementor template cache..."
+msgstr "正在清除Elementor模板缓存"
+
+#: includes/extracter/extract.php:1135
+msgid "Elementor cache cleared!"
+msgstr "Elementor的缓存已清除！"
+
+#: includes/database/manager.php:276
+msgid "Importing failed - Cannot open SQL file..."
+msgstr "导入失败，无法打开SQL文件"
+
+#: includes/database/manager.php:275
+msgid "Cannot open SQL file..."
+msgstr "不能打开SQL文件"
+
+#: includes/database/manager.php:239
+msgid "Importing failed - cannot connect to the database."
+msgstr "导入失败-无法连接数据库"
+
+#: includes/database/manager.php:238
+msgid "Failed to connect to MySQL: "
+msgstr "无法连接到MySQL"
+
+#: includes/dashboard/translations.php:45
+msgid "Browser successfully received backup settings."
+msgstr "浏览器成功接收到备份设置"
+
+#: includes/dashboard/chapter/other_config.php:311
+msgid "Bypass web server limits - it will disable automatic backup and possibility to run it in the background"
+msgstr "绕过网络服务器限制-它将禁用自动备份和在后台运行它的可能性"
+
+#: includes/dashboard/chapter/other_config.php:301
+msgid "Bypass web server timeout directive - backup process may be slower"
+msgstr "绕过网络服务器超时指令-备份程序可能会比通常慢一些"
+
+#: includes/dashboard/chapter/other_config.php:291
+msgid "Do not change the default plugin functions - it may require to adjust your server for stable backup"
+msgstr "不要修改默认插件的功能-它可能会以稳定备份为由，要求调整你的服务器"
+
+#: includes/dashboard/chapter/other_config.php:282
+msgid "features"
+msgstr "特性"
+
+#: includes/dashboard/chapter/other_config.php:282
+msgid "experimental"
+msgstr "实验性的"
+
+#: includes/dashboard/chapter/other_config.php:282
+msgid "Some"
+msgstr "一些"
+
+#: includes/dashboard/chapter/other_config.php:278
+msgid "Change functionality of the plugin"
+msgstr "更改插件的功能"
+
+#: includes/dashboard/chapter/other_config.php:16
+msgid "This option will require you to not close the backup window since it will use your connection to keep the backup in parts, it will disable automatic backups. Use this only if all of the above does not work. Recommended for huge sites +100k files / 5+ GB."
+msgstr "此选项将要求您不要关闭备份窗口，因为它将使用您的连接保留备份，它将禁用自动备份功能。仅当上述所有操作均无效时才使用此选项。建议用于有10万文件/5GB以上大小的大型站点"
+
+#: includes/dashboard/chapter/other_config.php:15
+msgid "Use this option before the third one, it should work fine on SSD/NVMe hostings even for huge backups - but still may timeout if you are running on slow drive high I/O."
+msgstr "请在使用第三个选项之前使用此选项。即使对于大型备份，它在装有SSD/NVMe硬盘的主机上也可以正常工作-但如果在慢速硬盘上高速输入/输出运行，它仍可能超时。"
+
+#: includes/dashboard/chapter/other_config.php:14
+msgid "Use this option if you have full access to your server and you know how to make basic configuration of the server. Wrong configuration may give you hick-ups without error due to e.g. web server server timeout (for small sites below 300 MB this is the best option)."
+msgstr "如果您对服务器具有完全访问权限并且知道如何对服务器进行基本配置，请使用此选项。 错误的配置可能会给您带来没有报错的故障，例如网络服务器端服务器超时报错（对于 300MB以下的小型站点，该选项是最佳选择）。"
+
+#: includes/dashboard/chapter/other_config.php:13
+msgid "It will change some fundamental logics of the plugin"
+msgstr "它将改变插件的一些基本逻辑"
+
+#: includes/check/checker.php:49
+msgid "Checking this path/partition: "
+msgstr "检查此路径/分区"
+
+#: includes/check/checker.php:45
+msgid " bytes."
+msgstr "比特"
+
+#: includes/check/checker.php:45
+msgid "Requires at least "
+msgstr "至少需要"
+
+#: includes/ajax.php:2338
+msgid "This file is quite big consider to exclude it, if backup fails: "
+msgstr "这个文件很大，如果备份失败，可以考虑将它排除在外："
+
+#: includes/ajax.php:232 includes/ajax.php:303
+msgid "There was an error before request shutdown (but it was not logged to restore log)"
+msgstr "在请求关闭之前出现了一个错误（但它未被记录在恢复日志中）"
+
+#: includes/zipper/src/zip.php:505
+msgid " files."
+msgstr " 文件"
+
+#: includes/zipper/src/zip.php:505
+msgid "Chunks contain "
+msgstr "包含块结构"
+
+#: includes/zipper/src/zip.php:440 includes/zipper/src/zip.php:748
+msgid "Using dedicated PclZIP for Premium Users."
+msgstr "正在使用高级用户专用的PclZIP"
+
+#: includes/zipper/src/zip.php:406
+msgid "Still nothing backup probably is not running."
+msgstr "仍然没有备份，可能现在没有运行"
+
+#: includes/zipper/src/zip.php:399
+msgid "Could not find any response from the server, trying again in 3 seconds."
+msgstr "无法找到服务器的任何响应，3秒后将重试"
+
+#: includes/zipper/src/zip.php:385
+msgid "Starting background process on server-side..."
+msgstr "后台程序在服务器段启动"
+
+#: includes/zipper/src/zip.php:381
+msgid "Sending backup settings and identy to the browser"
+msgstr "正在向浏览器递送备份设置和身份识别文件"
+
+#: includes/zipper/src/zip.php:337
+msgid "Legacy setting: Using default modules depending on user server"
+msgstr "旧设置：根据用户服务器使用默认模块"
+
+#: includes/zipper/src/zip.php:334
+msgid "Legacy setting: Using user browser as middleware for full capabilities"
+msgstr "旧设置：使用用户浏览器作为中间件以获得全部权限"
+
+#: includes/zipper/src/zip.php:332
+msgid "Legacy setting: Using server-sided script and cURL based loop for better capabilities"
+msgstr "旧设置：正在使用服务器端脚本和基于cURL的循环以实现更好的功能"
+
+#: includes/zipper/src/zip.php:330
+msgid "Using PclZip module to create the backup"
+msgstr "正在使用PclZip模块以创建备份"
+
+#: includes/extracter/extract.php:686 includes/zipper/src/zip.php:132
+msgid "Database size: "
+msgstr "数据库大小："
+
+#: includes/zipper/src/zip.php:198
+msgid "WordPress memory limit: %s MBs"
+msgstr "WordPress内存限制：%s MBs"
+
+#: includes/zipper/zipping.php:49
+msgid "Something went wrong (pclzip) – removing backup files..."
+msgstr "出现了一些问题（pclzip）-正在清理备份文件"
+
+#: includes/initializer.php:355
+msgid "There was an error before request shutdown (but it was not logged to backup/restore log)"
+msgstr "请求关闭之前出现了一个错误（但没有被记录在备份文档/恢复日志中）"
+
+#: includes/initializer.php:432
+msgid "Aborting & unlocking restore process..."
+msgstr "正在中止和解锁恢复过程..."
+
+#: includes/initializer.php:371 includes/initializer.php:388
+msgid "You can get more pieces of information in troubleshooting log file."
+msgstr "您可以在疑难解答日志文件中获得更多信息"
+
+#: includes/dashboard/modals/freeze-loading.php:20
+#: includes/dashboard/translations.php:153
+msgid "Loading..."
+msgstr "正在加载……"
+
+#: includes/ajax.php:942
+msgid "This is a test email sent by the Backup Migration plugin via Troubleshooting options!"
+msgstr "这是一份由备份迁移插件通过疑难解答选项发送的测试电子邮件！"
+
+#: includes/constants.php:159
+msgid "Order it now at a big discount!"
+msgstr "现在大打折，马上下单！"
+
+#: includes/constants.php:151
+msgid "learn more"
+msgstr "了解更多"
+
+#: includes/dashboard/translations.php:150
+msgid "Operation failed, please try again."
+msgstr "操作失败，请再试一遍"
+
+#: includes/dashboard/translations.php:147
+msgid "Operation finished with success."
+msgstr "操作成功完成"
+
+#: includes/dashboard/translations.php:144
+msgid "Manually created backups are always locked."
+msgstr "手动创建的备份总是锁定的"
+
+#: includes/dashboard/translations.php:141
+msgid "There was an error sending the email, please use additional plugins to debug it or ask your hosting administrator for help."
+msgstr "发送电子邮件时出错，请使用其他插件调试该错误或向您的主机管理员寻求帮助"
+
+#: includes/dashboard/translations.php:138
+msgid "Email send successfully, check mailbox."
+msgstr "电子邮件成功发送，请检查邮箱"
+
+#: includes/dashboard/chapter/troubleshooting.php:247
+msgid "to send the mail."
+msgstr "发送电子邮件"
+
+#: includes/dashboard/chapter/troubleshooting.php:247
+msgid "Click here"
+msgstr "点击这里"
+
+#: includes/dashboard/chapter/troubleshooting.php:246
+msgid "other options"
+msgstr "其他选项"
+
+#: includes/dashboard/chapter/troubleshooting.php:246
+msgid "Message will be sent to e-mail you provided in the "
+msgstr "消息将被发送至你提供的邮箱"
+
+#: includes/dashboard/chapter/troubleshooting.php:245
+msgid "Check if the email is visible in your mailbox / spam folder."
+msgstr "请检查该邮件是否在您的邮箱/垃圾邮件文件夹中"
+
+#: includes/dashboard/chapter/troubleshooting.php:245
+msgid "Remember that even if you get success alert there still might be some issues."
+msgstr "请注意，即使您收到成功提醒，仍然可能存在一些问题"
+
+#: includes/dashboard/chapter/troubleshooting.php:244
+msgid "If you're willing to know if your server is properly configured to send emails, you can test it here."
+msgstr "如果您想知道您的服务器是否为发送电子邮件而被正确配置，可以在此处进行测试"
+
+#: includes/dashboard/chapter/troubleshooting.php:240
+msgid "Test email"
+msgstr "测试电子邮件"
+
+#: includes/dashboard/chapter/troubleshooting.php:236
+msgid "Restore original pclzip file (will work after first replacement)"
+msgstr "修复原始的pclzip文件（将会在第一次更换后工作）"
+
+#: includes/dashboard/chapter/troubleshooting.php:235
+msgid "You can also restore the changes with one click if something went wrong:"
+msgstr "如果出现差错，你也可以通过单击恢复这些更改"
+
+#: includes/dashboard/chapter/troubleshooting.php:234
+msgid "Replace php_uname function in pclzip file"
+msgstr "替换pclzip文件中的php_uname函数"
+
+#: includes/dashboard/chapter/troubleshooting.php:233
+msgid "You can automatically replace the function with compatible code:"
+msgstr "你可以在兼容代码中自动替代这些函数"
+
+#: includes/dashboard/chapter/troubleshooting.php:232
+msgid "Some hostings blocks php_uname function which is required by pclzip module included in WordPress."
+msgstr "一些主机阻止了包含在WordPress之中的pclzip模块所必需的php_uname函数。"
+
+#: includes/dashboard/chapter/troubleshooting.php:228
+msgid "Error: php_uname is disabled for security reasons"
+msgstr "错误：php_uname因安全原因被禁用"
+
+#: includes/dashboard/chapter/what_backed_up.php:399
+msgid "* At this moment excluded files are not counted here - yet (it will be in future of course!)."
+msgstr "* 目前排除的文件在这里并无计数 - 但是（当然，将来会计算！）。"
+
+#: includes/dashboard/modules/backup_controller.php:183
+msgid "so that the backup process gets triggered"
+msgstr "所以备份程序被触发了"
+
+#: includes/dashboard/modules/backup_controller.php:178
+msgid "time now:"
+msgstr "现在的时间："
+
+#: includes/ajax.php:941
+msgid "Backup Migration – Example email"
+msgstr "备份文件迁移-实例邮件"
+
+#: includes/ajax.php:642 includes/ajax.php:1138
+msgid "Premium version is enabled but not active, using free plugin."
+msgstr "高级版已启用但未被激活，正在使用免费版插件"
+
+#: includes/ajax.php:640 includes/ajax.php:1136
+msgid "Premium plugin is enabled and activated"
+msgstr "高级版插件已启用并已被激活"
+
+#: includes/ajax.php:647 includes/ajax.php:1107
+msgid "Initializing custom error handler"
+msgstr "正在初始化自定义错误处理程序"
+
+#: includes/ajax.php:618 includes/ajax.php:1124
+msgid "Max execution time (in seconds): "
+msgstr "最大执行时间（以秒为单位）："
+
+#: includes/ajax.php:616 includes/ajax.php:1122
+msgid "Web server: Not available"
+msgstr "网络服务器：不可用"
+
+#: includes/ajax.php:614 includes/ajax.php:1120
+msgid "Web server: "
+msgstr "网络服务器："
+
+#: includes/ajax.php:609 includes/ajax.php:1115
+msgid "PHP Version: "
+msgstr "PHP版本："
+
+#: includes/ajax.php:387 includes/ajax.php:388
+msgid "Exception: "
+msgstr "例外："
+
+#: includes/ajax.php:310
+msgid "There was an error/warning during restore process:"
+msgstr "修复程序中出现了一个错误/警告："
+
+#: includes/ajax.php:342
+msgid "There was an error during restore process:"
+msgstr "修复程序中出现了一个错误："
+
+#: includes/ajax.php:290 includes/ajax.php:291
+msgid "Restore exception: "
+msgstr "修复异常："
+
+#: includes/ajax.php:262 includes/ajax.php:338
+msgid "Cannot move: "
+msgstr "不能移动："
+
+#: includes/ajax.php:247 includes/ajax.php:253 includes/ajax.php:259
+#: includes/ajax.php:323 includes/ajax.php:329 includes/ajax.php:335
+msgid "Restore process was not aborted due to this error."
+msgstr "修复程序因这个错误未中止。"
+
+#: includes/ajax.php:243 includes/ajax.php:319
+msgid "Backup will not be aborted because of this."
+msgstr "备份程序因这个而未中止。"
+
+#: includes/ajax.php:240 includes/ajax.php:316
+msgid "Restore process was not aborted because this error is not related to Backup Migration."
+msgstr "因该错误与备份迁移无关，修复程序未中止。"
+
+#: includes/ajax.php:241 includes/ajax.php:317
+msgid "There was an error not related to Backup Migration Plugin."
+msgstr "出现了一个与备份迁移插件无关的错误。"
+
+#: includes/ajax.php:268 includes/ajax.php:312 includes/ajax.php:344
+msgid "File/line: "
+msgstr "文件/行"
+
+#: includes/ajax.php:242 includes/ajax.php:267 includes/ajax.php:311
+#: includes/ajax.php:318 includes/ajax.php:343
+msgid "Message: "
+msgstr "消息："
+
+#: includes/ajax.php:266
+msgid "There was an error during backup:"
+msgstr "备份时发生错误"
+
+#: includes/initializer.php:1192
+msgid "Plugin has been deactivated"
+msgstr "插件已经被取消激活"
+
+#: includes/initializer.php:1169
+msgid "[DOWNLOAD GENERATED] Last update (date): "
+msgstr "【下载生成】上次更新（日期）："
+
+#: includes/initializer.php:1168
+msgid " seconds ago "
+msgstr "秒之前"
+
+#: includes/initializer.php:1168
+msgid "[DOWNLOAD GENERATED] Last update (seconds): "
+msgstr "【下载生成】上次更新（秒）："
+
+#: includes/initializer.php:1167
+msgid "[DOWNLOAD GENERATED] File downloaded on (server time): "
+msgstr "【下载生成】文件下载时间（服务器时间）："
+
+#: includes/ajax.php:348
+msgid "Aborting restore process..."
+msgstr "中止修复程序..."
+
+#: includes/initializer.php:408
+msgid "Probably we could not increase the execution time, please edit your php.ini manually"
+msgstr "可能我们无法增加执行时间，请手动编辑您的php.ini"
+
+#: includes/ajax.php:269 includes/initializer.php:404
+msgid "Unfortunately we had to remove the backup (if partly created)."
+msgstr "遗憾的是，我们必须移除备份文件（如果有部分已被创建）"
+
+#: includes/initializer.php:403 includes/initializer.php:426
+msgid "Something bad happened on PHP side."
+msgstr "在PHP端发生了不幸的事。"
+
+#: includes/ajax.php:234 includes/ajax.php:305 includes/initializer.php:357
+#: includes/initializer.php:366 includes/initializer.php:383
+#: includes/initializer.php:406 includes/initializer.php:428
+msgid "Error file/line: "
+msgstr "错误文件/行："
+
+#: includes/ajax.php:233 includes/ajax.php:304 includes/initializer.php:356
+#: includes/initializer.php:365 includes/initializer.php:370
+#: includes/initializer.php:382 includes/initializer.php:387
+#: includes/initializer.php:405 includes/initializer.php:427
+msgid "Error message: "
+msgstr "错误消息："
+
+#: includes/initializer.php:364
+msgid "There was an error during backup"
+msgstr "备份时发生错误"
+
+#: includes/initializer.php:381
+msgid "There was an error during restore process"
+msgstr "修复过程中发生错误"
+
+#: includes/activation.php:26
+msgid "Plugin has been activated"
+msgstr "插件已被激活"
+
+#. Plugin Name of the plugin
+msgid "Backup Migration"
+msgstr "备份迁移"
+
+#: includes/extracter/extract.php:1155
+msgid "Something bad happened..."
+msgstr "不好的事情发生了"
+
+#: includes/extracter/extract.php:1826
+msgid "Restore process took: "
+msgstr "修复程序使用了："
+
+#: includes/extracter/extract.php:1145
+msgid "Temporary files cleaned"
+msgstr "临时文件已被清除"
+
+#: includes/extracter/extract.php:1142
+msgid "Cleaning temporary files..."
+msgstr "正在清除临时文件..."
+
+#: includes/extracter/extract.php:1109
+msgid "User should be logged in"
+msgstr "用户必须登录"
+
+#: includes/extracter/extract.php:1080
+msgid "Making new login session"
+msgstr "正在建立新的登录会话"
+
+#: includes/extracter/extract.php:694 includes/extracter/extract.php:723
+#: includes/extracter/extract.php:739 includes/extracter/extract.php:756
+#: includes/extracter/extract.php:848
+msgid "Database restored"
+msgstr "数据库已修复"
+
+#: includes/extracter/extract.php:1039
+msgid "Restoring wp-config file..."
+msgstr "正在修复wp-config文件"
+
+#: includes/extracter/extract.php:1053
+msgid "WP-Config restored"
+msgstr "WP-Config文件已修复"
+
+#: includes/extracter/extract.php:653
+msgid "Manifest loaded"
+msgstr "清单已加载"
+
+#: includes/extracter/extract.php:647
+msgid "Getting backup manifest..."
+msgstr "正在获取备份清单"
+
+#: includes/extracter/extract.php:637
+msgid "File wp-config saved"
+msgstr "wp-config文件已保存"
+
+#: includes/extracter/extract.php:633
+msgid "Saving wp-config file..."
+msgstr "正在保存wp-config文件"
+
+#: includes/extracter/extract.php:580
+msgid "Files extracted..."
+msgstr "文件已提取"
+
+#: includes/extracter/extract.php:1263
+msgid "Scanning archive..."
+msgstr "正在扫描存档..."
+
+#: includes/ajax.php:359 includes/extracter/extract.php:360
+msgid "Removing "
+msgstr "正在移除"
+
+#: includes/extracter/extract.php:1165
+msgid "Making temporary directory"
+msgstr "正在制作临时目录"
+
+#: includes/database/manager.php:286
+msgid "Importing finished. Now, Delete the import file."
+msgstr "导入完成。现在，删除导入文件。"
+
+#: includes/dashboard/modals/upload-wrong-file-modal.php:27
+msgid "All backup files are saved as zip."
+msgstr "所有备份文件都被以zip格式储存。"
+
+#: includes/dashboard/modals/upload-wrong-file-modal.php:26
+msgid "The file you tried to upload isn’t a zip-file."
+msgstr "您尝试上传的文件不是zip格式文件"
+
+#: includes/dashboard/modals/upload-wrong-file-modal.php:21
+msgid "Not right file type"
+msgstr "文件类型不正确"
+
+#: includes/dashboard/modals/backup-progress-modal.php:69
+msgid "Stop the backup process"
+msgstr "中止备份程序"
+
+#: includes/dashboard/modals/backup-progress-modal.php:64
+msgid "Minimize this window"
+msgstr "最小化该窗口"
+
+#: includes/dashboard/modals/backup-progress-modal.php:56
+msgid "Please don’t do any major modifications on your site while the backup is running."
+msgstr "备份程序运行时，请不要对您的网站进行重大修改。"
+
+#: includes/dashboard/modals/backup-progress-modal.php:37
+msgid "Preparing backup process..."
+msgstr "正在准备备份程序..."
+
+#: includes/dashboard/modals/backup-progress-modal.php:30
+#: includes/dashboard/modals/backup-progress-modal.php:33
+msgid "Hide live log"
+msgstr "隐藏实时日志"
+
+#: includes/dashboard/modals/backup-progress-modal.php:29
+msgid "Show live log"
+msgstr "显示实时日志"
+
+#: includes/dashboard/modals/backup-progress-modal.php:16
+msgid "Backup in progress"
+msgstr "正在进行备份"
+
+#: includes/dashboard/modals/after-logs-sent.php:74
+#: includes/dashboard/modals/backup-error-modal.php:54
+#: includes/dashboard/modals/backup-success-modal.php:93
+#: includes/dashboard/modals/restore-error-modal.php:54
+msgid "Close window"
+msgstr "关闭窗口"
+
+#: includes/dashboard/modals/backup-success-modal.php:87
+msgid "Download backup"
+msgstr "下载备份"
+
+#: includes/dashboard/modals/backup-success-modal.php:82
+msgid "- tab."
+msgstr "- 按下tab键"
+
+#: includes/dashboard/modals/backup-success-modal.php:80
+msgid "You can manage the backup on the"
+msgstr "你可以管理你的备份文件，在"
+
+#: includes/dashboard/modals/backup-success-modal.php:45
+msgid "- tab, and paste the link there."
+msgstr "- 按下tab，然后粘贴那的链接。"
+
+#: includes/dashboard/modals/backup-success-modal.php:44
+#: includes/dashboard/modals/backup-success-modal.php:81
+msgid "Manage & Restore Backups"
+msgstr "管理和修复备份文件"
+
+#: includes/dashboard/modals/backup-success-modal.php:28
+msgid "Your backup is now accessible at:"
+msgstr "你的备份文件现在已可访问，在："
+
+#: includes/dashboard/modals/backup-success-modal.php:19
+msgid "Backup successful!"
+msgstr "备份成功！"
+
+#: includes/dashboard/modals/backup-progress-modal.php:36
+#: includes/dashboard/modals/restore-progress-modal.php:35
+msgid "Step: "
+msgstr "步骤："
+
+#: includes/dashboard/modals/restore-progress-modal.php:20
+msgid "Do not close this window as long as the restoring process is ongoing"
+msgstr "修复程序正在运行时，请不要关闭这个窗口"
+
+#: includes/dashboard/modals/restore-progress-modal.php:16
+msgid "Restoring in progress"
+msgstr "修复正在进行"
+
+#: includes/dashboard/modals/upload-success-modal.php:27
+msgid "so that the file will show up in your list of backups."
+msgstr "这样文件就会显示在您的备份列表中。"
+
+#: includes/dashboard/modals/upload-success-modal.php:26
+msgid "We also triggered a rescan of your local folder automatically,"
+msgstr "我们还自动触发了对您本地文件夹的重新扫描，"
+
+#: includes/dashboard/modals/upload-success-modal.php:21
+msgid "Upload successful!"
+msgstr "上传成功!"
+
+#: includes/dashboard/modals/prenotice-modal.php:58
+msgid "Create the backup!"
+msgstr "创建此备份！"
+
+#: includes/dashboard/modals/prenotice-modal.php:57
+msgid "That’s all fine / I don’t care…"
+msgstr "没关系/我不在乎…"
+
+#: includes/dashboard/modals/prenotice-modal.php:48
+msgid "You selected only database to backup - without website files."
+msgstr "您只选择了要备份的数据库-没有选择网站文件。"
+
+#: includes/dashboard/modals/prenotice-modal.php:43
+msgid "You selected only files for backup - without database."
+msgstr "您只选择了要备份的文件-没有选择数据库。"
+
+#: includes/dashboard/modals/prenotice-modal.php:38
+msgid "You selected to only back up part of your site (not a complete backup)."
+msgstr "你选择只备份你网站的一部分（不是完整备份）"
+
+#: includes/dashboard/modals/prenotice-modal.php:33
+msgid " of data (unzipped) will be backed up."
+msgstr "数据（解压缩）将被备份。"
+
+#: includes/dashboard/modals/prenotice-modal.php:32
+msgid "Based on your selections "
+msgstr "基于你的选择"
+
+#: includes/dashboard/modals/prenotice-modal.php:27
+msgid "You may not have enough memory (RAM) to create the backup. You can still try, if it fails check out the troubleshooting section."
+msgstr "您也许没有足够的内存来创建备份文件。您可以继续尝试，如果失败，请查看故障排除部分。"
+
+#: includes/dashboard/modals/prenotice-modal.php:22
+msgid "You running quite low on space. Maybe it would be good to clear up some space before you do the backup."
+msgstr "您的空间太小了。也许在备份之前先清理一些空间会更好。"
+
+#: includes/dashboard/modals/prenotice-modal.php:17
+msgid "We noticed:"
+msgstr "我们注意到："
+
+#: includes/dashboard/modals/reset-confirm-modal.php:29
+msgid "Yes, reset"
+msgstr "对，重置"
+
+#: includes/dashboard/modals/reset-confirm-modal.php:22
+msgid "This action cannot be undone!"
+msgstr "此操作无法撤消！"
+
+#: includes/dashboard/modals/reset-confirm-modal.php:21
+msgid "Do you really want to reset the configuration?"
+msgstr "您真的要重置配置吗？"
+
+#: includes/dashboard/modals/backup-error-modal.php:30
+msgid "There were some hick-ups..."
+msgstr "遇到了一些问题..."
+
+#: includes/dashboard/modals/upload-exist-file-modal.php:29
+msgid "If you wish to have duplicate change name of the upload."
+msgstr "如果您希望上传有重复更改的名称。"
+
+#: includes/dashboard/modals/upload-exist-file-modal.php:28
+msgid "exist in your backup directory."
+msgstr "在您的备份目录中存在"
+
+#: includes/dashboard/modals/upload-exist-file-modal.php:27
+msgid "name and size of file which already,"
+msgstr "名称和文件大小已经，"
+
+#: includes/dashboard/modals/upload-exist-file-modal.php:26
+msgid "The file you tried to upload already match,"
+msgstr "您尝试上传的文件已经匹配，"
+
+#: includes/dashboard/modals/upload-exist-file-modal.php:21
+msgid "File already exist"
+msgstr "文件已经存在"
+
+#: includes/dashboard/modals/restore-success-modal.php:99
+msgid "of the restoration process"
+msgstr "在修复过程中"
+
+#: includes/dashboard/modals/restore-success-modal.php:99
+msgid "Download the log"
+msgstr "下载日志"
+
+#: includes/dashboard/modals/restore-success-modal.php:88
+msgid "Thank you!!"
+msgstr "谢谢您！"
+
+#: includes/dashboard/modals/restore-success-modal.php:48
+msgid "…to benefit from many cool features & support."
+msgstr "...从众多酷炫的功能和支持中获益"
+
+#: includes/dashboard/modals/restore-success-modal.php:47
+msgid "Get our Premium plugin"
+msgstr "获取我们的高级版插件"
+
+#: includes/dashboard/modals/restore-success-modal.php:35
+msgid "plugin & benefit from it too."
+msgstr "插件和获益也从中而来"
+
+#: includes/dashboard/modals/restore-success-modal.php:34
+msgid "…so that others discover our"
+msgstr "...所以其他人能发现我们的"
+
+#: includes/dashboard/modals/restore-success-modal.php:33
+msgid "Give us a nice rating"
+msgstr "给我们好评"
+
+#: includes/dashboard/modals/restore-success-modal.php:21
+msgid "development of our plugins by doing the following:"
+msgstr "通过以下操作来开发我们的插件："
+
+#: includes/dashboard/modals/restore-success-modal.php:20
+msgid "Liked how easy it was? Then PLEASE support the further"
+msgstr "您喜欢它给您带来的便利吗？那么请进一步支持我们"
+
+#: includes/dashboard/modals/pre-restore-modal.php:61
+msgid "* Only those folders, files & database will be replaced which also exist in the backup file."
+msgstr "*只有那些同样存在于备份文件中的文件夹、文件和数据库会被替换。"
+
+#: includes/dashboard/modals/pre-restore-modal.php:57
+msgid "Close window & do not restore"
+msgstr "关闭窗口&不进行还原"
+
+#: includes/dashboard/modals/pre-restore-modal.php:43
+msgid "Start restoring!"
+msgstr "开始还原！"
+
+#: includes/dashboard/modals/pre-restore-modal.php:36
+msgid "Yes, I understand that. I am sound in mind."
+msgstr "对，我明白。我心里有数。"
+
+#: includes/dashboard/modals/pre-restore-modal.php:27
+msgid "All existing folders, files & databases on this site will be overwritten and destroyed for good. *"
+msgstr "这个网站上所有存在的文件夹、文件和数据库将会被覆写并被永久销毁。*"
+
+#: includes/dashboard/modals/restore-success-modal.php:93
+#: includes/dashboard/modals/upload-exist-file-modal.php:34
+#: includes/dashboard/modals/upload-invalid-manifest-modal.php:32
+#: includes/dashboard/modals/upload-success-modal.php:32
+#: includes/dashboard/modals/upload-wrong-file-modal.php:32
+msgid "Ok, close"
+msgstr "好的，关闭"
+
+#: includes/dashboard/modals/upload-invalid-manifest-modal.php:27
+msgid "we removed the file from the server."
+msgstr "我们从服务器中移除了该文件。"
+
+#: includes/dashboard/modals/upload-invalid-manifest-modal.php:26
+msgid "Uploaded file is not valid backup,"
+msgstr "上传的文件不是有效的备份，"
+
+#: includes/dashboard/modals/upload-invalid-manifest-modal.php:21
+msgid "Invalid backup"
+msgstr "无效备份"
+
+#: includes/dashboard/modals/bfs-modal.php:69
+msgid "which makes it smaller so that you stay below this limit."
+msgstr "可以将它缩小，这样就能在该限制之下了"
+
+#: includes/dashboard/modals/bfs-modal.php:66
+msgid "exclude parts from backup"
+msgstr "从备份中排除部分"
+
+#: includes/dashboard/modals/bfs-modal.php:63
+msgid "Tip: You can also"
+msgstr "提示：你也可以"
+
+#: includes/dashboard/modals/bfs-modal.php:51
+msgid "(which includes other cool features too!)"
+msgstr "（也包含其他酷炫的功能！）"
+
+#: includes/dashboard/modals/bfs-modal.php:50
+msgid "Get premium"
+msgstr "获取高级版"
+
+#: includes/dashboard/modals/bfs-modal.php:49
+msgid "Yes, that’s fair…"
+msgstr "好，这很公平..."
+
+#: includes/dashboard/modals/bfs-modal.php:45
+msgid "We made it really affordable and it’s a great way to show your appreciation and support the further development of the plugin :) Thank you!"
+msgstr "我们设法让它变得非常实惠，您也能就此表达对我们工作的赞赏和对插件进一步开发的支持 :) 谢谢您！"
+
+#: includes/dashboard/modals/bfs-modal.php:40
+msgid "The plugin offers many features for free which other plugins don’t"
+msgstr "该插件提供了很多免费功能，其他插件是没有的"
+
+#: includes/dashboard/modals/bfs-modal.php:39
+msgid "We also need to buy food"
+msgstr "我们也需要恰饭的"
+
+#: includes/dashboard/modals/bfs-modal.php:38
+msgid "Big sites tend to be more support heavy"
+msgstr "大型网站往往更被重点支持"
+
+#: includes/dashboard/modals/bfs-modal.php:33
+msgid "For large sites (above %sGB) we point you to the premium plugin, because:"
+msgstr "对于大型网站（超过%sGB），我们建议使用高级版插件，因为："
+
+#: includes/dashboard/modals/bfs-modal.php:29
+msgid "FAT!"
+msgstr "FAT!"
+
+#: includes/dashboard/modals/bfs-modal.php:29
+msgid "Wow, your site is"
+msgstr "哇，你的网站是"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:68
+#: includes/dashboard/modals/reset-confirm-modal.php:32
+msgid "No, cancel"
+msgstr "不，取消"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:62
+msgid "Yes, kill it!"
+msgstr "对，结束进程！"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:31
+msgid "backups?"
+msgstr "备份？"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:30
+msgid "backup?"
+msgstr "备份？"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:28
+#: includes/dashboard/modals/delete-confirm-modal.php:36
+#: includes/dashboard/modals/delete-confirm-modal.php:44
+msgid "delete"
+msgstr "删除"
+
+#: includes/dashboard/modals/delete-confirm-modal.php:23
+msgid "delete this backup?"
+msgstr "删除该备份？"
+
+#: includes/dashboard/modals/after-logs-sent.php:63
+msgid "Your account on Wordpress.org (where you open a new support thread) is different to the one you login to your WordPress dashboard (where you are now). If you don't have a WordPress.org account yet, please sign up at the top right on here. It only takes a minute :) Thank you!"
+msgstr "您在Wordpress.org（你打开新线程支持的地方）上的账号与您在Wordpress仪表盘（你现在所处的位置）登录时使用的账号不一致。如果您还没有WordPress.org网站的账号，请在本页面顶部右侧处注册新账号，只会占用您一分钟的时间 :) 谢谢您！"
+
+#: includes/dashboard/modals/after-logs-sent.php:60
+msgid "Go to Support Forum"
+msgstr "前往支持论坛"
+
+#: includes/dashboard/modals/backup-success-modal.php:100
+msgid "Download logs"
+msgstr "下载日志"
+
+#: includes/dashboard/translations.php:129
+msgid "Settings updated successfully"
+msgstr "配置更新成功"
+
+#: includes/dashboard/translations.php:132
+msgid "Could not update CRON setting now, please check the logs."
+msgstr "现在不能更新CRON配置，请查看日志。"
+
+#: includes/dashboard/translations.php:126
+msgid "Next backup planned: "
+msgstr "下次备份计划于："
+
+#: includes/dashboard/translations.php:123
+msgid "Current server time: "
+msgstr "当前服务器时间："
+
+#: includes/dashboard/translations.php:120
+msgid "Backup process ended, we triggered backup list reload for your."
+msgstr "备份程序中止，我们为您重新加载了备份列表。"
+
+#: includes/dashboard/translations.php:117
+msgid "The URL you provided does not seems to be correct."
+msgstr "您提供的URL看起来并不正确。"
+
+#: includes/dashboard/translations.php:114
+msgid "There is nothing to backup. Please select database and / or files to backup."
+msgstr "没有需要备份的文件。请选择数据库和(或)文件进行备份"
+
+#: includes/dashboard/translations.php:111
+msgid "We are processing your files, please wait till it complete. You can check the progress in the \"What will be backed up?\" tab."
+msgstr "我们正在处理您的文件，请等待直至其完成。您可以在“哪些会被备份？”标签中查看进度。"
+
+#: includes/dashboard/translations.php:108
+msgid "Download process should start."
+msgstr "下载进程应该开始。"
+
+#: includes/dashboard/translations.php:105
+msgid "Could not lock this backup due to unknown error, please reload and try again."
+msgstr "因未知错误，未能锁定该备份文件，请重新加载或再试一遍。"
+
+#: includes/dashboard/translations.php:102
+msgid "File locked successfully."
+msgstr "文件成功锁定。"
+
+#: includes/dashboard/translations.php:99
+msgid "Could not unlock this backup due to unknown error, please reload and try again."
+msgstr "因未知错误，未能解锁该备份，请重新加载或再试一遍。"
+
+#: includes/dashboard/translations.php:96
+msgid "File unlocked successfully."
+msgstr "文件解锁成功。"
+
+#: includes/dashboard/translations.php:93
+msgid "Could not find this backup, it may be deleted or there was an error with getting the name."
+msgstr "未能找到该备份，它可能已被删除，或在获取名称时出错。"
+
+#: includes/dashboard/translations.php:90
+msgid "There was an issue during saving, some settings may stay unchanged."
+msgstr "在保存时出现问题，一些设置可能仍未被更改。"
+
+#: includes/dashboard/translations.php:87
+msgid "Configuration saved successfully."
+msgstr "配置成功保存"
+
+#: includes/dashboard/translations.php:84
+msgid "Cannot remove backup(s) file(s) due to unknown error."
+msgstr "由于未知错误，不能移除备份文件。"
+
+#: includes/dashboard/translations.php:81
+msgid "Backup(s) removed successfully."
+msgstr "备份已被成功移除"
+
+#: includes/dashboard/translations.php:78
+msgid "File already exist in backup directory."
+msgstr "文件已在备份目录中存在。"
+
+#: includes/dashboard/translations.php:75
+msgid "File has wrong type."
+msgstr "文件类型出错。"
+
+#: includes/dashboard/translations.php:72
+msgid "File has been uploaded successfully."
+msgstr "文件上传成功。"
+
+#: includes/dashboard/translations.php:69
+msgid "There was an error during file upload."
+msgstr "上传时发生错误。"
+
+#: includes/dashboard/translations.php:66
+msgid "File upload started."
+msgstr "文件开始上传。"
+
+#: includes/dashboard/translations.php:63
+msgid "You have to confirm that you understand the risk."
+msgstr "您必须确认您了解风险。"
+
+#: includes/dashboard/modals/restore-progress-modal.php:36
+#: includes/dashboard/translations.php:60
+msgid "Preparing restore process..."
+msgstr "正在准备还原进程..."
+
+#: includes/dashboard/translations.php:57
+msgid "Downloading backup file..."
+msgstr "正在下载备份文件..."
+
+#: includes/dashboard/translations.php:51
+msgid "Backup will be aborted in few seconds."
+msgstr "备份程序将在几秒钟后被中止。"
+
+#: includes/dashboard/translations.php:48
+msgid "Your browser does not support copying, please copy by hand"
+msgstr "您的浏览器不支持复制，请手动复制。"
+
+#: includes/dashboard/translations.php:42
+msgid "Text copied successfully"
+msgstr "已成功复制文本"
+
+#: includes/constants.php:150
+msgid "This feature isn’t ready yet in the premium plugin, that’s why you can buy it at a <b>big discount</b>"
+msgstr "高级版插件中的该功能仍未被准备好，这就是您可以获得<b>超值折扣</b>的原因"
+
+#: includes/dashboard/chapter/other_config.php:501
+msgid "troubleshooting"
+msgstr "故障排除"
+
+#: includes/dashboard/chapter/other_config.php:501
+msgid "If you're looking for other options not listed above, check out the"
+msgstr "如果您在找上列中没有出现的其他选项，请查看"
+
+#: includes/dashboard/chapter/other_config.php:494
+msgid "Delete all backups (created by this plugin)"
+msgstr "删除所有备份（由该插件创建的）"
+
+#: includes/dashboard/chapter/other_config.php:488
+msgid "Delete all plugins settings (this means if you install it again, you have to configure it again)"
+msgstr "删除所有插件设置（如果您重新安装插件，您将要重新配置它）"
+
+#: includes/dashboard/chapter/other_config.php:480
+msgid "de-installed:"
+msgstr "已解除安装："
+
+#: includes/dashboard/chapter/other_config.php:480
+msgid "When this plugins is"
+msgstr "当该插件在"
+
+#: includes/dashboard/chapter/other_config.php:476
+msgid "Clean-ups"
+msgstr "清理"
+
+#: includes/dashboard/chapter/other_config.php:271
+msgid "If you selected the \"schedule backups\" - option at the top of the plugin, and backups are not created, then please check out the Cron settings. Or just  ask us in the forum."
+msgstr "如果您选择“计划备份”-在插件顶部的选项，但备份没有被创建，请查看Cron设置或者直接在论坛上咨询我们。"
+
+#: includes/dashboard/chapter/other_config.php:268
+msgid "Trigger backups via WP CLI."
+msgstr "通过WP CLI触发备份。"
+
+#: includes/dashboard/chapter/other_config.php:264
+msgid "WP CLI"
+msgstr "WP CLI"
+
+#: includes/dashboard/chapter/other_config.php:248
+msgid "Change the key (which is part of above url) if you suspect an unauthorized person got access to it."
+msgstr "如果您怀疑有未经授权的人登入了此处，请修改密钥（上述url的一部分）。"
+
+#: includes/dashboard/chapter/other_config.php:239
+msgid "Key:"
+msgstr "密钥: "
+
+#: includes/dashboard/chapter/other_config.php:236
+msgid "Make sure you keep this url a secret. For safety reasons this only works once per hour & you’ll get emailed when it used."
+msgstr "确保您将此url保密。出于安全原因，这每小时只能运行一次，并且在被使用时您会收到电子邮件。"
+
+#: includes/dashboard/chapter/other_config.php:235
+msgid "Copy & paste this url into a browser and press enter to trigger the backup creation."
+msgstr "复制&粘贴这个url到浏览器，按下回车以触发备份创建。"
+
+#: includes/dashboard/chapter/other_config.php:229
+#: includes/dashboard/modals/after-logs-sent.php:45
+#: includes/dashboard/modals/backup-success-modal.php:35
+msgid "Copy"
+msgstr "复制"
+
+#: includes/dashboard/chapter/other_config.php:215
+msgid "Trigger by URI"
+msgstr "被URI触发"
+
+#: includes/dashboard/chapter/other_config.php:199
+msgid "Activate this so that a backup is created before there are automatic WordPress updates (WordPress core, plugins, themes, or language files)."
+msgstr "激活这个，以便在 WordPress 自动更新（WordPress 核心、插件、主题或语言文件）之前创建备份。"
+
+#: includes/dashboard/chapter/other_config.php:182
+msgid "Before updates"
+msgstr "在更新之前"
+
+#: includes/dashboard/chapter/other_config.php:169
+msgid "At the top of the plugin you can create a backup instantly (\"Create backup now\" - button), or schedule them. Here are more options which trigger the backup creation:"
+msgstr "在插件顶部您可以立刻创建一个备份（“立刻创建备份”-按钮），或者使用计划功能。以下是触发备份创建的更多选项："
+
+#: includes/dashboard/chapter/other_config.php:165
+msgid "Backup triggers"
+msgstr "备份触发"
+
+#: includes/dashboard/chapter/other_config.php:158
+msgid "If you want to also receive the backup file as attachment of the email (for backup notifications), please set this in chapter Where will backups be stored?."
+msgstr "如果您希望也以邮件附件的形式接收备份文件（作为备份通知），请在“备份存储在哪？”章节中设置。"
+
+#: includes/dashboard/chapter/other_config.php:134
+msgid "Add logs to emails?"
+msgstr "将日志添加到电子邮件？"
+
+#: includes/dashboard/chapter/other_config.php:117
+msgid "(Make sure that your hosting does not block mail functions, otherwise you have to configure SMTP mail.)"
+msgstr "（确保您的主机没有屏蔽邮件功能，否则您必须配置SMTP邮件。）"
+
+#: includes/dashboard/chapter/other_config.php:115
+msgid "There are (new) issues with scheduling (creating automatic backups)"
+msgstr "计划（创建自动备份）存在（新）问题"
+
+#: includes/dashboard/chapter/other_config.php:105
+#: includes/dashboard/modals/restore-error-modal.php:31
+msgid "Restore failed"
+msgstr "还原失败"
+
+#: includes/dashboard/chapter/other_config.php:98
+msgid "Restore succeeded"
+msgstr "还原成功"
+
+#: includes/dashboard/chapter/other_config.php:89
+msgid "Backup creation failed"
+msgstr "备份创建失败"
+
+#: includes/dashboard/chapter/other_config.php:82
+msgid "Backups was created successfully"
+msgstr "备份已成功创建"
+
+#: includes/dashboard/chapter/other_config.php:72
+msgid "You'll get an email if..."
+msgstr "您会接收到邮件，如果..."
+
+#: includes/dashboard/chapter/other_config.php:63
+msgid "This will show up as sender of the emails"
+msgstr "这将显示为电子邮件的发件人"
+
+#: includes/dashboard/chapter/other_config.php:56
+msgid "From field:"
+msgstr "从字段："
+
+#: includes/dashboard/chapter/other_config.php:48
+msgid "This is where the log files will be sent to. You can enter several email addresses, separated by comma."
+msgstr "这是日志文件将被发送到的地方。您可以输入多个邮箱地址，以逗号分隔。"
+
+#: includes/dashboard/chapter/other_config.php:35
+msgid "Email address:"
+msgstr "电子邮件地址："
+
+#: includes/dashboard/chapter/other_config.php:31
+msgid "Email notifications"
+msgstr "电子邮件通知"
+
+#: includes/dashboard/chapter/other_config.php:12
+msgid "This will be triggered on plugin removal via WordPress plugins tab"
+msgstr "这将在通过WordPress插件选项卡在删除插件时触发"
+
+#: includes/dashboard/chapter/other_config.php:244
+#: includes/dashboard/chapter/save-button.php:12
+msgid "Save"
+msgstr "保存"
+
+#: includes/dashboard/chapter/save-button.php:16
+#: includes/dashboard/chapter/troubleshooting.php:265
+msgid "Collapse this chapter"
+msgstr "折叠该章节"
+
+#: includes/dashboard/chapter/other_config.php:501
+#: includes/dashboard/chapter/troubleshooting.php:259
+msgid "chapter as they might be there."
+msgstr "章，他们可能在那里。"
+
+#: includes/dashboard/chapter/troubleshooting.php:259
+msgid "If you’re looking for other options not listed above, check out the"
+msgstr "如果您在寻找上列中未出现的其他选项，请查找"
+
+#: includes/dashboard/chapter/troubleshooting.php:255
+msgid "to reset plugin configuration."
+msgstr "来重置插件配置。"
+
+#: includes/dashboard/chapter/troubleshooting.php:255
+msgid "click here"
+msgstr "点击这里"
+
+#: includes/dashboard/chapter/troubleshooting.php:255
+msgid "Please"
+msgstr "请"
+
+#: includes/dashboard/chapter/troubleshooting.php:251
+msgid "Reset configuration"
+msgstr "重置配置"
+
+#: includes/dashboard/chapter/troubleshooting.php:205
+msgid "Download logs."
+msgstr "下载日志。"
+
+#: includes/dashboard/chapter/troubleshooting.php:202
+msgid "All backup creation & restore processes are documented in log files which to debug issues."
+msgstr "所有备份创建&还原过程都被记录在日志文件中，用于调试问题。"
+
+#: includes/dashboard/chapter/troubleshooting.php:198
+msgid "Logging"
+msgstr "记录中"
+
+#: includes/dashboard/chapter/troubleshooting.php:194
+msgid "(e.g. for easy sharing with us, so that we can debug)"
+msgstr "（例如，方便分享给我们，我们就能进行调试）"
+
+#: includes/dashboard/chapter/troubleshooting.php:194
+msgid "Download your site infos"
+msgstr "下载您的网站信息"
+
+#: includes/dashboard/chapter/troubleshooting.php:184
+#: includes/dashboard/chapter/troubleshooting.php:185
+msgid "See more"
+msgstr "查看更多"
+
+#: includes/dashboard/chapter/troubleshooting.php:131
+msgid "Here is some information about your site, which may help to debug if there is an issue:"
+msgstr "以下是有关您网站的一些信息，如果出现问题，这些信息可能有助于调试："
+
+#: includes/dashboard/chapter/troubleshooting.php:128
+msgid "Site information"
+msgstr "网站信息"
+
+#: includes/dashboard/chapter/troubleshooting.php:101
+msgid "Troubleshooting settings"
+msgstr "故障排除设置"
+
+#: includes/dashboard/chapter/troubleshooting.php:87
+msgid "Cannot log in there?"
+msgstr "不能在此登录？"
+
+#: includes/dashboard/chapter/troubleshooting.php:80
+msgid "...in an effort to fix it yourself. Be sure you know what you are doing!"
+msgstr "...为了自行修复它，请确保您知道您在做什么！"
+
+#: includes/dashboard/chapter/troubleshooting.php:76
+msgid "Check advanced options"
+msgstr "检查高级选项"
+
+#: includes/dashboard/chapter/troubleshooting.php:64
+msgid "...which includes support, so we can help you in more detail if you get stuck."
+msgstr "...包含技术支持，如果您遇到困难，我们可以为您提供更详细的帮助。"
+
+#: includes/dashboard/chapter/troubleshooting.php:60
+msgid "Get the Premium Plugin"
+msgstr "获取高级版插件"
+
+#: includes/dashboard/chapter/troubleshooting.php:47
+msgid "Your first port of call. We'll try to respond quickly!"
+msgstr "您的第一个落脚点。我们会尽快回复您！"
+
+#: includes/dashboard/chapter/troubleshooting.php:43
+msgid "Ask us in the Support forum"
+msgstr "在技术支持论坛中询问我们"
+
+#: includes/dashboard/chapter/troubleshooting.php:29
+msgid "If something doesn't work, you have several options - pick one:"
+msgstr "如果有部分不能正常工作，您有几种选择-请挑一个："
+
+#: includes/dashboard/chapter/troubleshooting.php:15
+#: includes/dashboard/modals/backup-success-modal.php:10
+msgid "Your account on Wordpress.org (where you open a new support thread) is different to the one you login to your WordPress dashboard (where you are now). If you don’t have a WordPress.org account yet, please sign up at the top right on the Support Forum page, and then scroll down on that page . It only takes a minute :) Thank you!"
+msgstr "您在Wordpress.org（你打开新线程支持的地方）上的账号与您在Wordpress仪表盘（你现在所处的位置）登录时使用的账号不一致。如果您还没有WordPress.org网站的账号，请在支持论坛页面顶部右侧处注册新账号，然后在该页面上向下滚动，只会占用您一分钟的时间 :) 谢谢您！"
+
+#: includes/constants.php:178
+msgid "stay tuned!"
+msgstr "敬请关注！"
+
+#: includes/constants.php:178
+msgid "Coming soon also in the free plugin"
+msgstr "免费版插件中也即将到来"
+
+#: includes/dashboard/chapter/where_config.php:76
+msgid "Select “Yes” if you want your (manually created) backups to be available via a direct link. This makes migration from one site to another super-fast."
+msgstr "如果您希望您的（手动创建的）备份文件能通过直接链接访问，请选择“是”。这将会使您从一个网站到另一个网站的迁移工作变得超级快。"
+
+#: includes/dashboard/chapter/where_config.php:55
+msgid "Accessible via direct link?"
+msgstr "能通过直接链接访问吗？"
+
+#: includes/dashboard/chapter/where_config.php:50
+msgid "That’s where your local backups will be stored. If you picked external storage this folder will also be used (to store your backup temporarily, until it is uploaded to the external storage)."
+msgstr "您的本地备份将被储存到这个地方。如果您选择外部存储，此文件夹也将被使用（临时存储您的备份，直到它上传到外部存储）。"
+
+#: includes/dashboard/chapter/where_config.php:44
+msgid "Backup directory path:"
+msgstr "备份目录路径："
+
+#: includes/dashboard/chapter/where_config.php:46
+msgid "Enter directory path"
+msgstr "输入目录路径"
+
+#: includes/dashboard/chapter/where_config.php:31
+msgid "(on this web server)"
+msgstr "（在这个网络服务器上）"
+
+#: includes/dashboard/chapter/where_config.php:17
+msgid "Select all the storage options you want to use:"
+msgstr "请选择所有您希望使用的存储选项："
+
+#: includes/dashboard/chapter/store_config.php:156
+msgid "chapter."
+msgstr "章节"
+
+#: includes/dashboard/chapter/store_config.php:156
+msgid "For other security settings, e.g. who can access your backup directories, please go to the"
+msgstr "至于其他安全设置，例如“谁能查看您的备份目录”，设置请到"
+
+#: includes/dashboard/chapter/store_config.php:134
+msgid "Do you want to encrypt and password protect your files?"
+msgstr "是否要对文件进行加密和密码保护？"
+
+#: includes/dashboard/chapter/store_config.php:130
+msgid "Encryption"
+msgstr "加密"
+
+#: includes/dashboard/chapter/store_config.php:112
+msgid "“ZIP” is the standard choice (compression level 1). Use “Tar” (compression level 2) or Tar.gz (compression level 5) if you want to have more compression (i.e. smaller file sizes). However, this will also put more load on the backup creation."
+msgstr "“ZIP”是标准选择（压缩等级1）。如果您想压缩更多（例如更小的文件大小），请使用“Tar”（压缩等级2）或者Tar.gz（压缩等级5）。但是，这也会增加备份创建的负载。"
+
+#: includes/dashboard/chapter/store_config.php:67
+msgid "Please select the compression method of your backup files:"
+msgstr "请选择备份文件的压缩方法："
+
+#: includes/dashboard/chapter/store_config.php:66
+msgid "Zipping"
+msgstr "正在压缩"
+
+#: includes/dashboard/chapter/store_config.php:58
+msgid "Hide"
+msgstr "隐藏"
+
+#: includes/dashboard/chapter/store_config.php:53
+msgid "Seconds with leading zeros"
+msgstr "带前导零的秒数"
+
+#: includes/dashboard/chapter/store_config.php:52
+msgid "Minutes with leading zeros"
+msgstr "带前导零的分钟数"
+
+#: includes/dashboard/chapter/store_config.php:51
+msgid "24-hour format of an hour with leading zeros"
+msgstr "带前导零的小时数（24小时制格式）"
+
+#: includes/dashboard/chapter/store_config.php:50
+msgid "12-hour format of an hour with leading zeros"
+msgstr "带前导零的小时数（12小时制格式）"
+
+#: includes/dashboard/chapter/store_config.php:49
+msgid "24-hour format of an hour without leading zeros"
+msgstr "不带前导零的小时数（24小时制格式）"
+
+#: includes/dashboard/chapter/store_config.php:48
+msgid "12-hour format of an hour without leading zeros"
+msgstr "不带前导零的小时数（12小时制格式）"
+
+#: includes/dashboard/chapter/store_config.php:47
+msgid "Swatch Internet time"
+msgstr "Swatch因特网时间"
+
+#: includes/dashboard/chapter/store_config.php:45
+msgid "Lowercase Ante meridiem and Post meridiem"
+msgstr "小写的am和pm"
+
+#: includes/dashboard/chapter/store_config.php:46
+msgid "Uppercase Ante meridiem and Post meridiem"
+msgstr "大写的AM和PM"
+
+#: includes/dashboard/chapter/store_config.php:44
+msgid "A two digit representation of a year"
+msgstr "表示年份的两位数"
+
+#: includes/dashboard/chapter/store_config.php:42
+msgid "Numeric representation of a month, without leading zeros"
+msgstr "没有前导零的月份数"
+
+#: includes/dashboard/chapter/store_config.php:41
+msgid "Numeric representation of a month, with leading zeros"
+msgstr "有前导零的月份数"
+
+#: includes/dashboard/chapter/store_config.php:40
+msgid "Day of the month without leading zeros"
+msgstr "没有前导零的日数"
+
+#: includes/dashboard/chapter/store_config.php:39
+msgid "Day of the month, 2 digits with leading zeros"
+msgstr "有前导零并表示日数的两位数"
+
+#: includes/dashboard/chapter/store_config.php:38
+msgid "A textual representation of a day, three letters"
+msgstr "以三个字母表示的星期几"
+
+#: includes/dashboard/chapter/store_config.php:37
+msgid "A short textual representation of a month, three letters"
+msgstr "以三个字母表示的月份"
+
+#: includes/dashboard/chapter/store_config.php:36
+#: includes/dashboard/chapter/store_config.php:43
+msgid "A full numeric representation of a year, 4 digits"
+msgstr "以四位数表示的完整年份"
+
+#: includes/dashboard/chapter/store_config.php:33
+msgid "We’re giving you maximum flexibility to automatically name your backup files in the way you want. Simply use below keys:"
+msgstr "我们为您提供了最大的灵活性，让您可以按照自己的方式自动命名备份文件。只需使用以下键："
+
+#: includes/dashboard/chapter/store_config.php:24
+msgid "Huh? Explain this please"
+msgstr "呃？麻烦解释一下这个"
+
+#: includes/dashboard/chapter/store_config.php:18
+msgid "Your backup(s) will be given the following file name(s)"
+msgstr "您的备份文件将被赋予以下文件名"
+
+#: includes/dashboard/chapter/store_config.php:17
+msgid "File name"
+msgstr "文件名"
+
+#: includes/dashboard/chapter/what_backed_up.php:398
+msgid "See the list of files you excluded."
+msgstr "查看您排除的文件列表。"
+
+#: includes/dashboard/chapter/what_backed_up.php:397
+msgid "large, unzipped."
+msgstr "庞大，未经压缩。"
+
+#: includes/dashboard/chapter/what_backed_up.php:397
+msgid "of data, which means your backup will be about"
+msgstr "数据，这意味着您的备份将"
+
+#: includes/dashboard/chapter/what_backed_up.php:397
+msgid "With above exclusion rules you excluded"
+msgstr "根据上述排除规则，您排除了"
+
+#: includes/dashboard/chapter/what_backed_up.php:393
+msgid "Summary / Sanity check"
+msgstr "摘要/完整性检查"
+
+#: includes/dashboard/chapter/what_backed_up.php:383
+msgid "post revisions"
+msgstr "文章修订"
+
+#: includes/dashboard/chapter/what_backed_up.php:379
+msgid "thumbnails"
+msgstr "缩略图"
+
+#: includes/dashboard/chapter/what_backed_up.php:375
+msgid "all non-used themes"
+msgstr "所有未使用的主题"
+
+#: includes/dashboard/chapter/what_backed_up.php:371
+msgid "debug logs"
+msgstr "调试日志"
+
+#: includes/dashboard/chapter/what_backed_up.php:367
+msgid "deactivated plugins"
+msgstr "已禁用插件"
+
+#: includes/dashboard/chapter/what_backed_up.php:363
+msgid "cache files"
+msgstr "缓存文件"
+
+#: includes/dashboard/chapter/what_backed_up.php:363
+#: includes/dashboard/chapter/what_backed_up.php:367
+#: includes/dashboard/chapter/what_backed_up.php:371
+#: includes/dashboard/chapter/what_backed_up.php:379
+msgid "Exclude all"
+msgstr "排除所有"
+
+#: includes/dashboard/chapter/what_backed_up.php:359
+msgid "spam comments"
+msgstr "垃圾评论"
+
+#: includes/dashboard/chapter/what_backed_up.php:359
+#: includes/dashboard/chapter/what_backed_up.php:375
+#: includes/dashboard/chapter/what_backed_up.php:383
+msgid "Exclude"
+msgstr "排除"
+
+#: includes/dashboard/chapter/what_backed_up.php:349
+msgid "With the \"Files\" and \"Databases\" options above you can already define what to include or exclude in your backup. However, you may want to exclude elements in your backups where you are not sure in which file or table they reside. For example, you may want to exclude all spam comments in your backups. This is what the \"smart\" exclusion rules are for. This is also a good way to clean your site of things you do not want."
+msgstr "有了上面的“文件”和“数据库”选项，您已经完全可以决定备份里包含哪些，排除哪些。但是，您可能想要排除备份中一些隐藏在文件或表格中的，尚不清楚地址的元素。比如说，您可能想要排除备份中所有的垃圾评论。这就是“智能排除规则”发挥作用的地方。这也是清理您网站中一些您不想要的东西的好方法。"
+
+#: includes/dashboard/chapter/what_backed_up.php:326
+msgid "Want to apply \"smart\" exclusions rules?"
+msgstr "您想要应用“智能排除规则吗”？"
+
+#: includes/dashboard/chapter/what_backed_up.php:312
+#: includes/dashboard/translations.php:13
+msgid "Exclude certain tables from backups"
+msgstr "从备份文件中排除特定表格"
+
+#: includes/dashboard/chapter/what_backed_up.php:301
+msgid "will be backed up unless you exclude them by defining exclusion rules."
+msgstr "将被备份，除非您通过定义排除规则来排除它们。"
+
+#: includes/dashboard/chapter/what_backed_up.php:301
+msgid "All databases (on the domain"
+msgstr "所有数据库（在域"
+
+#: includes/dashboard/chapter/what_backed_up.php:289
+msgid "Databases"
+msgstr "数据库"
+
+#: includes/dashboard/chapter/what_backed_up.php:258
+msgid "directory path"
+msgstr "目录路径"
+
+#: includes/dashboard/chapter/what_backed_up.php:240
+msgid "Examples:"
+msgstr "示例："
+
+#: includes/dashboard/chapter/what_backed_up.php:233
+msgid "file path"
+msgstr "文件路径"
+
+#: includes/dashboard/chapter/what_backed_up.php:223
+msgid "The folder where backups are stored (i.e. the backups which this plugin creates) is always excluded, to prevent you from taking backups of your own backups."
+msgstr "您的存储备份文件的文件夹（即该插件创建的备份文件）总是会被排除，避免您备份您的备份文件"
+
+#: includes/dashboard/chapter/what_backed_up.php:219
+msgid "File names include the extension, e.g. if you select to exclude all files which end with “.psd” at the end then all files in psd format will be excluded."
+msgstr "文件名包括扩展名，例如，如果您选择排除结尾以“.psd”结尾的所有文件，则psd格式的所有文件都将被排除。"
+
+#: includes/dashboard/chapter/what_backed_up.php:215
+msgid "Add an exclusion rule"
+msgstr "添加排除规则"
+
+#: includes/dashboard/chapter/what_backed_up.php:208
+msgid "(case-sensitive)"
+msgstr "（区分大小写的）"
+
+#: includes/dashboard/chapter/what_backed_up.php:208
+msgid "file / folder name"
+msgstr "文件/文件夹名"
+
+#: includes/dashboard/chapter/what_backed_up.php:198
+msgid "Do not backup files which are larger than"
+msgstr "不备份那些文件大小超过"
+
+#: includes/dashboard/chapter/what_backed_up.php:193
+msgid "file size"
+msgstr "文件大小"
+
+#: includes/dashboard/chapter/what_backed_up.php:193
+#: includes/dashboard/chapter/what_backed_up.php:208
+#: includes/dashboard/chapter/what_backed_up.php:233
+#: includes/dashboard/chapter/what_backed_up.php:258
+msgid "Exclude by"
+msgstr "排除"
+
+#: includes/dashboard/chapter/other_config.php:146
+#: includes/dashboard/chapter/store_config.php:145
+#: includes/dashboard/chapter/what_backed_up.php:177
+#: includes/dashboard/chapter/what_backed_up.php:337
+#: includes/dashboard/chapter/where_config.php:67
+msgid "Yes"
+msgstr "是"
+
+#: includes/dashboard/chapter/other_config.php:140
+#: includes/dashboard/chapter/store_config.php:140
+#: includes/dashboard/chapter/what_backed_up.php:172
+#: includes/dashboard/chapter/what_backed_up.php:331
+#: includes/dashboard/chapter/where_config.php:61
+msgid "No"
+msgstr "否"
+
+#: includes/dashboard/chapter/what_backed_up.php:168
+msgid "Want to exclude files based on filters?"
+msgstr "要根据筛选排除文件吗？"
+
+#: includes/dashboard/chapter/what_backed_up.php:151
+msgid "WordPress installation"
+msgstr "WordPress安装"
+
+#: includes/dashboard/chapter/what_backed_up.php:132
+msgid "Everything else in wp-content"
+msgstr "wp-content中的所有其他内容"
+
+#: includes/dashboard/chapter/what_backed_up.php:113
+msgid "Themes"
+msgstr "主题"
+
+#: includes/dashboard/chapter/what_backed_up.php:94
+msgid "Uploads"
+msgstr "上传"
+
+#: includes/dashboard/chapter/what_backed_up.php:81
+#: includes/dashboard/chapter/what_backed_up.php:100
+#: includes/dashboard/chapter/what_backed_up.php:119
+#: includes/dashboard/chapter/what_backed_up.php:138
+#: includes/dashboard/chapter/what_backed_up.php:157
+msgid "Details"
+msgstr "细节"
+
+#: includes/dashboard/chapter/what_backed_up.php:76
+msgid "Plugins"
+msgstr "插件"
+
+#: includes/dashboard/chapter/what_backed_up.php:68
+msgid "Select which files you want to have backed up."
+msgstr "选择您想要备份的文件。"
+
+#: includes/dashboard/chapter/what_backed_up.php:55
+msgid "Files"
+msgstr "文件"
+
+#: includes/dashboard/chapter/what_backed_up.php:47
+msgid "Here you can define what exactly will be included in the backup. If your site is very large it may make sense to only backup certain parts of it."
+msgstr "在这里您可以选择想要包含在备份文件中的文件。如果您的网站非常大，只备份其中一部分也是很合理的。"
+
+#: includes/dashboard/chapter/what_backed_up.php:24
+msgid "You can already exclude files based on filters (click on “Yes” below), however in the premium plugin you’ll also be able to browse through them."
+msgstr "您现在已经可以根据筛选排除部分文件了（点击下方的“是”），但在高级版插件中您将可以浏览它们。"
+
+#: includes/dashboard/chapter/what_backed_up.php:23
+msgid "Enter the paths to the directories/folders you want to exclude from your backup (one per line)."
+msgstr "输入您想从备份文件中排除的目录或文件夹的路径（每行输入一个）"
+
+#: includes/dashboard/chapter/what_backed_up.php:22
+msgid "Enter the paths to the files you want to exclude from your backup (one per line)."
+msgstr "输入您想从备份文件中排除的文件的路径（每行输入一个）"
+
+#: includes/dashboard/chapter/what_backed_up.php:20
+msgid "Here are stored all plugin, theme, WordPress installation files, but also files from Media library and other folders and files located in your server’s site directory. Note that WordPress keeps records of files such as Media library in the Databases, so you should also backup Databases if you want WordPress to “see” e.g. recovered media files. Size here is the total size you can get."
+msgstr "这里存储了所有插件、主题、WordPress安装文件，还有媒体库中的文件以及服务器站点目录中的其他文件夹和文件。请注意，WordPress在数据库中保留媒体库等文件的记录，因此，如果您希望WordPress“查看”例如恢复的媒体文件等一系列文件，则还应备份数据库。这里的“空间”是您拥有的全部空间。"
+
+#: includes/dashboard/modules/super-quick-migration.php:27
+msgid "Restore now!"
+msgstr "现在还原！"
+
+#: includes/dashboard/modules/super-quick-migration.php:21
+msgid "E.g."
+msgstr "例如"
+
+#: includes/dashboard/modules/super-quick-migration.php:18
+msgid "Paste here the url you got after creating a backup:"
+msgstr "在创建备份后，在此处粘贴您得到的url："
+
+#: includes/dashboard/modules/super-quick-migration.php:12
+msgid "Super-quick migration"
+msgstr "极速迁移"
+
+#: includes/dashboard/modules/backups-under-table.php:91
+msgid "Load more"
+msgstr "加载更多"
+
+#: includes/dashboard/modules/backups-under-table.php:84
+msgid "or remote storage, and then use the \"Rescan for backup files\" - option above to make them show up in the list."
+msgstr "或者远程存储，然后使用“重新扫描备份文件”-该选项位于上方，用于使它们在列表中出现。"
+
+#: includes/dashboard/modules/backups-under-table.php:84
+msgid "Alternatively, you can place the files (e.g. via FTP) into your local backup directory"
+msgstr "或者，您可以将文件（例如通过FTP）放入本地备份目录"
+
+#: includes/dashboard/modules/backups-under-table.php:78
+msgid "Cancel upload"
+msgstr "取消上传"
+
+#: includes/dashboard/modules/backups-under-table.php:68
+msgid "Upload in progress"
+msgstr "正在上传"
+
+#: includes/dashboard/modules/backups-under-table.php:56
+msgid "Browse for file"
+msgstr "浏览文件"
+
+#: includes/dashboard/modules/backups-under-table.php:52
+msgid "...or"
+msgstr "...或者"
+
+#: includes/dashboard/modules/backups-under-table.php:48
+msgid "Drag & drop your backup file here"
+msgstr "拖拽并放置您的备份文件到这里"
+
+#: includes/dashboard/modules/backups-under-table.php:38
+msgid "Delete all selected backups"
+msgstr "删除所有选中的备份文件"
+
+#: includes/dashboard/modules/backups-under-table.php:30
+msgid "Remotely"
+msgstr "远程的"
+
+#: includes/dashboard/chapter/where_config.php:30
+msgid "Locally"
+msgstr "本地的"
+
+#: includes/dashboard/modules/backups-under-table.php:28
+msgid "Rescan for backup files:"
+msgstr "重新扫描备份文件："
+
+#: includes/dashboard/modules/backups-under-table.php:19
+msgid "Upload backup files"
+msgstr "上传备份文件"
+
+#: includes/dashboard/modules/backup-ongoing.php:27
+msgid "Click to see status quo"
+msgstr "点击查看目前状态"
+
+#: includes/dashboard/modules/backup-ongoing.php:23
+msgid "Backup in progress!"
+msgstr "正在进行备份！"
+
+#: includes/dashboard/modules/email-errors.php:25
+msgid "Dismiss"
+msgstr "关闭"
+
+#: includes/dashboard/modules/email-errors.php:21
+#: includes/dashboard/modules/email-errors.php:22
+#: includes/dashboard/modules/quota-errors.php:21
+#: includes/dashboard/modules/quota-errors.php:22
+msgid "Expand"
+msgstr "展开"
+
+#: includes/dashboard/modules/email-errors.php:18
+msgid "We have some notices regarding most recent automated backup."
+msgstr "我们有一些关于最近自动备份的通知。"
+
+#: includes/dashboard/chapter/troubleshooting.php:184
+#: includes/dashboard/modules/backup_controller.php:207
+#: includes/dashboard/modules/email-errors.php:21
+#: includes/dashboard/modules/quota-errors.php:21
+msgid "Collapse"
+msgstr "折叠"
+
+#: includes/dashboard/modules/backup_controller.php:203
+msgid "here"
+msgstr "这里"
+
+#: includes/dashboard/modules/backup_controller.php:202
+msgid "when your backups are created, please go"
+msgstr "创建备份完成后，请继续"
+
+#: includes/dashboard/modules/backup_controller.php:201
+msgid "other triggers"
+msgstr "其他触发器"
+
+#: includes/dashboard/modules/backup_controller.php:200
+msgid "For"
+msgstr "对于"
+
+#: includes/dashboard/modules/backup_controller.php:197
+msgid "tab"
+msgstr "标签"
+
+#: includes/dashboard/modules/backup_controller.php:195
+msgid "You can change their lock status on the"
+msgstr "要更改它们的锁定状态，请使用"
+
+#: includes/dashboard/modules/backup_controller.php:194
+msgid "Manually created backups (i.e. those after click on \"Create backup now!\") are permanently locked, while automatically created backups are by default unlocked."
+msgstr "手动创建的备份文件（即点击“立刻创建备份！”后出现的）被永久锁定，自动创建的备份则默认处于解锁状态。"
+
+#: includes/dashboard/modules/backup_controller.php:192
+msgid "automatically. Those are indicated by a lock sign"
+msgstr "自动的。由上锁图标表示"
+
+#: includes/dashboard/modules/backup_controller.php:191
+msgid "Locked backups will <u>not</u> be deleted"
+msgstr "锁定的备份文件将<u>不会</u>被删除"
+
+#: includes/dashboard/modules/backup_controller.php:188
+msgid "otherwise you may run out of space."
+msgstr "否则您可能会空间不足"
+
+#: includes/dashboard/modules/backup_controller.php:187
+msgid "only keep 2 or 3 backups"
+msgstr "只保留两个或三个备份"
+
+#: includes/dashboard/modules/backup_controller.php:186
+msgid "We suggest to"
+msgstr "我们建议要"
+
+#: includes/dashboard/modules/backup_controller.php:182
+msgid "at least one visitor"
+msgstr "至少一个访客"
+
+#: includes/dashboard/modules/backup_controller.php:181
+msgid "There needs to be"
+msgstr "需要有"
+
+#: includes/dashboard/modules/backup_controller.php:177
+msgid "server times"
+msgstr "服务器时间"
+
+#: includes/dashboard/modules/backup_controller.php:176
+msgid "Above times are"
+msgstr "上方的时间是"
+
+#: includes/dashboard/modules/backup_controller.php:157
+msgid "backups that have been created automatically."
+msgstr "被自动创建的备份"
+
+#: includes/dashboard/modules/backup_controller.php:147
+msgid "...and keep the last"
+msgstr "...并保留最后一个"
+
+#: includes/dashboard/modules/backup_controller.php:136
+msgid "minutes"
+msgstr "分钟"
+
+#: includes/dashboard/modules/backup_controller.php:127
+msgid "hours and"
+msgstr "小时和"
+
+#: includes/dashboard/modules/backup_controller.php:118
+msgid "at"
+msgstr "在"
+
+#: includes/dashboard/modules/backup_controller.php:115
+msgid "Sunday"
+msgstr "星期日"
+
+#: includes/dashboard/modules/backup_controller.php:114
+msgid "Saturday"
+msgstr "星期六"
+
+#: includes/dashboard/modules/backup_controller.php:113
+msgid "Friday"
+msgstr "星期五"
+
+#: includes/dashboard/modules/backup_controller.php:112
+msgid "Thursday"
+msgstr "星期四"
+
+#: includes/dashboard/modules/backup_controller.php:111
+msgid "Wednesday"
+msgstr "星期三"
+
+#: includes/dashboard/modules/backup_controller.php:110
+msgid "Tuesday"
+msgstr "星期二"
+
+#: includes/dashboard/modules/backup_controller.php:109
+msgid "Monday"
+msgstr "星期一"
+
+#: includes/dashboard/modules/backup_controller.php:97
+msgid "on"
+msgstr "于"
+
+#: includes/dashboard/modules/backup_controller.php:94
+msgid "Day"
+msgstr "日"
+
+#: includes/dashboard/modules/backup_controller.php:93
+msgid "Week"
+msgstr "星期"
+
+#: includes/dashboard/modules/backup_controller.php:92
+msgid "Month"
+msgstr "月份"
+
+#: includes/dashboard/modules/backup_controller.php:89
+msgid "Create a backup every"
+msgstr "创建备份，每"
+
+#: includes/dashboard/chapter/other_config.php:191
+#: includes/dashboard/modules/backup_controller.php:77
+msgid "Off"
+msgstr "关闭"
+
+#: includes/dashboard/chapter/other_config.php:190
+#: includes/dashboard/modules/backup_controller.php:76
+msgid "On"
+msgstr "开启"
+
+#: includes/dashboard/modules/backup_controller.php:68
+msgid "Automatic backups creation"
+msgstr "自动创建备份"
+
+#: includes/dashboard/modules/backup_controller.php:57
+msgid "backups created automatically"
+msgstr "自动创建的备份"
+
+#: includes/dashboard/modules/backup_controller.php:56
+msgid "... or have"
+msgstr "...或者有"
+
+#: includes/dashboard/modules/backup_controller.php:39
+msgid "now!"
+msgstr "现在!"
+
+#: includes/dashboard/modules/backup_controller.php:39
+msgid "Create backup"
+msgstr "创建备份"
+
+#: includes/dashboard/modules/backup_controller.php:12
+msgid "th"
+msgstr "th"
+
+#: includes/dashboard/modules/backup_controller.php:12
+msgid "rd"
+msgstr "rd"
+
+#: includes/dashboard/modules/backup_controller.php:12
+msgid "nd"
+msgstr "nd"
+
+#: includes/dashboard/modules/backup_controller.php:12
+msgid "st"
+msgstr "st"
+
+#: includes/dashboard/modules/backups-table-header.php:42
+msgid "Actions"
+msgstr "操作"
+
+#: includes/dashboard/modules/backups-table-header.php:41
+msgid "Move over the icons to see what you can do with the backup(s)"
+msgstr "在图标上移动来查看您可以对备份执行的操作"
+
+#: includes/dashboard/modules/backups-table-header.php:36
+msgid "Locked backups can only be deleted manually. Unlocked backups get deleted automatically according to the deletion processes which you defined at the top of the &quot;Create backups&quot; - tab. Click on the icon(s) to change the lock status."
+msgstr "锁定的备份只能手动删除。未锁定的备份根据您在&quot;顶部设置的删除流程进行自动删除。创建备份&quot; - tab键。单击图标以改变锁定状态。"
+
+#: includes/dashboard/modules/backups-table-header.php:27
+msgid "Size"
+msgstr "大小"
+
+#: includes/dashboard/modules/backups-table-header.php:26
+msgid "Size of your backup file"
+msgstr "备份文件大小"
+
+#: includes/dashboard/modules/backups-table-header.php:22
+msgid "Filename"
+msgstr "文件名"
+
+#: includes/dashboard/modules/backups-table-header.php:21
+msgid "The name of your backup. To see the logic which default names your backups get, go to chapter &quot;How backups will be stored&quot;"
+msgstr "您的备份文件名。想要查看备份文件默认名称的命名规则，请到&quot;章节“备份如何被储存&quot;”"
+
+#: includes/dashboard/modules/backups-table-header.php:16
+msgid "Backup date"
+msgstr "备份日期"
+
+#: includes/dashboard/modules/backups-table-header.php:15
+msgid "When your backup was created, in server time"
+msgstr "您的备份何时被创建（服务器时间）"
+
+#: includes/dashboard/templates/backup-row-template.php:78
+msgid "Delete this backup"
+msgstr "删除此备份"
+
+#: includes/dashboard/templates/backup-row-template.php:75
+msgid "Restore"
+msgstr "还原"
+
+#: includes/dashboard/templates/backup-row-template.php:73
+msgid "Restore this backup on this site"
+msgstr "还原该网站的该备份"
+
+#: includes/dashboard/templates/backup-row-template.php:68
+msgid "Download log file which was created at time of backup"
+msgstr "下载备份时创建的日志文件"
+
+#: includes/dashboard/templates/backup-row-template.php:66
+msgid "Copy link to backup file for super-quick migration"
+msgstr "将链接复制到备份文件以实现极速迁移"
+
+#: includes/dashboard/templates/backup-row-template.php:64
+msgid "Download the backup file. Click on it downloads it"
+msgstr "下载备份文件。点击以下载它"
+
+#: includes/dashboard/templates/backup-row-template.php:58
+msgid "Unlock backup files"
+msgstr "解锁备份文件"
+
+#: includes/dashboard/templates/backup-row-template.php:57
+msgid "Lock backup files"
+msgstr "锁定备份文件"
+
+#: includes/constants.php:164
+msgid "Coming soon in the Premium Plugin"
+msgstr "在高级版插件中即将上线"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:28
+msgid "folder name"
+msgstr "文件夹名称"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:27
+msgid "file name"
+msgstr "文件名"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:21
+msgid "at the end of"
+msgstr "在结尾"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:20
+msgid "at the beginning of"
+msgstr "在开头"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:19
+msgid "anywhere in"
+msgstr "在任何地方"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:16
+msgid "appears"
+msgstr "出现"
+
+#: includes/dashboard/templates/exclusion-rule-template.php:14
+msgid "Exclude if string"
+msgstr "排除if字符串"
+
+#: includes/dashboard/settings.php:189 includes/dashboard/settings.php:191
+msgid "You have not created any backups yet."
+msgstr "您还未创建任何备份。"
+
+#: includes/dashboard/settings.php:156
+msgid "Your saved backups:"
+msgstr "您已经保存的备份："
+
+#: includes/dashboard/settings.php:129
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#: includes/dashboard/chapter/store_config.php:156
+#: includes/dashboard/chapter/troubleshooting.php:259
+#: includes/dashboard/settings.php:119
+msgid "Other options"
+msgstr "其他选项"
+
+#: includes/dashboard/settings.php:105
+msgid "How"
+msgstr "如何"
+
+#: includes/dashboard/modules/backup_controller.php:98
+#: includes/dashboard/templates/exclusion-rule-template.php:24
+msgid "the"
+msgstr "这"
+
+#: includes/dashboard/settings.php:93 includes/dashboard/settings.php:105
+msgid "shall the backup(s) be stored?"
+msgstr "是否应存储备份？"
+
+#: includes/dashboard/settings.php:93
+msgid "Where"
+msgstr "在哪"
+
+#: includes/dashboard/settings.php:81
+msgid "will be backed up?​"
+msgstr "会被备份？"
+
+#: includes/dashboard/settings.php:81
+msgid "What"
+msgstr "什么"
+
+#: includes/dashboard/settings.php:69
+msgid "Configuration options"
+msgstr "配置选项"
+
+#: includes/dashboard/settings.php:73
+msgid "+ Add / manage configuration set(s)​"
+msgstr "+ 添加 / 管理配置集"
+
+#: includes/dashboard/modules/backup_controller.php:196
+#: includes/dashboard/settings.php:52
+msgid "Manage & Restore Backup(s)"
+msgstr "管理&还原备份"
+
+#: includes/dashboard/settings.php:46
+msgid "Create backup(s)"
+msgstr "创建备份"
+
+#: includes/dashboard/settings.php:40
+msgid "Welcome to Backup & Migration!"
+msgstr "欢迎使用备份与迁移插件！"
+
+#: includes/dashboard/modules/backup_controller.php:163
+msgid "Learn more"
+msgstr "了解更多"
+
+#: includes/check/system_info.php:111 includes/check/system_info.php:128
+#: includes/check/system_info.php:235 includes/check/system_info.php:461
+#: includes/check/system_info.php:462 includes/check/system_info.php:463
+msgid "Blocked by hosting"
+msgstr "被主机阻止访问"
+
+#: includes/check/checker.php:63
+msgid "Using dummy file to check free space (it can take some time)."
+msgstr "使用虚拟文件检查可用空间（可能需要一些时间）。"
+
+#: includes/check/checker.php:53
+msgid "Great! We have enough space."
+msgstr "好极了！我们现在有了足够的空间。"
+
+#: includes/check/checker.php:51
+msgid " MB free."
+msgstr "MB 空余"
+
+#: includes/check/checker.php:51
+msgid "There is "
+msgstr "这有"
+
+#: includes/check/checker.php:48
+msgid "Disk free space function is not disabled - using it..."
+msgstr "返回硬盘可用空间功能未被禁用 - 正在使用..."
+
+#: includes/check/checker.php:62
+msgid "Disk free space function is disabled by hosting."
+msgstr "返回硬盘可用空间功能被主机禁用。"
+
+#: includes/ajax.php:2312
+msgid "Removing file from backup (due to path rules): "
+msgstr "正在从备份中移除文件（由于路径规则设置）："
+
+#: includes/ajax.php:2303
+msgid "Removing file from backup (due to exclude rules): "
+msgstr "正在从备份中移除文件（由于排除规则设置）："
+
+#: includes/ajax.php:2294
+msgid "Removing file from backup (too large) "
+msgstr "正在从备份中移除文件（过大）"
+
+#: includes/ajax.php:1981
+msgid "Entred file size limit, is not correct number."
+msgstr "输入的文件大小限制数字不正确。"
+
+#: includes/ajax.php:1867
+msgid "Your name contains character(s) that are not allowed in file names: "
+msgstr "您的命名中包含文件名中不允许使用的字符："
+
+#: includes/ajax.php:1866
+msgid "Please, do not use spaces in file name."
+msgstr "请不要在文件名中使用空格。"
+
+#: includes/ajax.php:1865
+msgid "Your name is too short, please create longer one."
+msgstr "您的命名太短了，请创建一个更长的名称。"
+
+#: includes/ajax.php:1864
+msgid "Your name is too long, please change the name."
+msgstr "您的命名太长了，请换一个名称。"
+
+#: includes/ajax.php:1863
+msgid "Name is required, please fill the input."
+msgstr "需要命名，请在输入框里输入。"
+
+#: includes/ajax.php:1704
+msgid "Email field cannot be empty, please fill it."
+msgstr "电子邮件地址栏不能为空，请填写。"
+
+#: includes/ajax.php:1703
+msgid "Title field is required, please fill it."
+msgstr "需要填写标题，请填写。"
+
+#: includes/ajax.php:1701
+msgid "Your email title is too long, please change the title (max 64 chars)."
+msgstr "您的电子邮件标题太长了，请换一个标题（最至多64个字符）"
+
+#: includes/ajax.php:1702
+msgid "Your email title is too short, please use longer one (at least 3 chars)."
+msgstr "您的电子邮件标题太短了，请使用一个更长的（至少3个字符）"
+
+#: includes/ajax.php:1700
+msgid "Provided email addess is not valid."
+msgstr "提供的电子邮箱地址无效。"
+
+#: includes/ajax.php:1691
+msgid "Entered path is not writable, cannot be used."
+msgstr "输入的路径不可写，不可被使用。"
+
+#: includes/ajax.php:1492
+msgid "...or provided URL is not a direct download of ZIP file."
+msgstr "...或者提供的URL不能直接下载ZIP文件。"
+
+#: includes/ajax.php:1491
+msgid "Downloaded backup may be incomplete (missing manifest)"
+msgstr "下载的备份文件可能是不完整的（遗失表单）"
+
+#: includes/extracter/extract.php:784
+msgid "Restoring database..."
+msgstr "正还原数据库……"
+
+#: includes/ajax.php:1490
+msgid "Manifest file does not exist"
+msgstr "表单文件不存在"
+
+#: includes/ajax.php:1488
+msgid "Missing manifest means that the backup is probably invalid."
+msgstr "遗失表单意味着备份文件可能失效。"
+
+#: includes/ajax.php:1487
+msgid "...or the manifest file does not exist in the backup."
+msgstr "...或者表单文件在备份中不存在。"
+
+#: includes/ajax.php:1485
+msgid "Backup does not exist under provided URL."
+msgstr "提供的URL中不存在备份文件。"
+
+#: includes/ajax.php:1486
+msgid "Please confirm that you can download the backup file via provided URL."
+msgstr "请确认您可以通过提供的URL下载备份文件。"
+
+#: includes/ajax.php:1483
+msgid "You can find the setting in \"Where shall the backup(s) be stored?\" section."
+msgstr "你可以在“备份储存在哪？”部分找到设置。"
+
+#: includes/ajax.php:1482
+msgid "Backup is locked on remote site, please unlock remote downloading."
+msgstr "备份在远端站点中是锁定的，请解锁远程下载。"
+
+#: includes/ajax.php:1480
+msgid "It is restricted by remote server configuration."
+msgstr "它受远程服务器配置的限制。"
+
+#: includes/ajax.php:1479
+msgid "Backup is not available to download (Error 403)."
+msgstr "备份文件不能被下载（403错误）。"
+
+#: includes/ajax.php:1459 includes/ajax.php:1466
+msgid "Error: "
+msgstr "错误："
+
+#: includes/ajax.php:1452
+msgid "Requesting restore process"
+msgstr "正在请求还原过程"
+
+#: includes/ajax.php:1444
+msgid "Manifest found remote name: "
+msgstr "找到清单远程名称："
+
+#: includes/ajax.php:1436
+msgid "Looking for backup manifest"
+msgstr "正在查找备份文件清单"
+
+#: includes/ajax.php:1435
+msgid "Download completed (took: "
+msgstr "下载完成（使用了："
+
+#: includes/ajax.php:1429
+msgid "Error"
+msgstr "错误"
+
+#: includes/ajax.php:1427
+msgid "Error: There is not enough space on the server"
+msgstr "错误：服务器没有足够空间"
+
+#: includes/ajax.php:1424
+msgid "Download error"
+msgstr "下载错误"
+
+#: includes/ajax.php:1422 includes/ajax.php:1460 includes/ajax.php:1467
+#: includes/ajax.php:1493
+msgid "Removing downloaded file"
+msgstr "正在移除已下载的文件"
+
+#: includes/ajax.php:1415
+msgid "Downloading remote file..."
+msgstr "正在下载远程文件..."
+
+#: includes/ajax.php:1414
+msgid "Downloading initialized"
+msgstr "已完成下载初始化"
+
+#: includes/ajax.php:1412
+msgid "Initializing download process"
+msgstr "正在初始化下载过程"
+
+#: includes/ajax.php:1410
+msgid "Creating lock file"
+msgstr "正在创建锁文件"
+
+#: includes/ajax.php:1297
+msgid "Initializing restore process..."
+msgstr "正在初始化还原过程..."
+
+#: includes/ajax.php:1263
+msgid "Backup process completed or is not running."
+msgstr "备份过程完成或未运行。"
+
+#: includes/ajax.php:1222
+msgid "Finalizing restored files"
+msgstr "正在定稿还原文件"
+
+#: includes/ajax.php:1221
+msgid "Restore process completed"
+msgstr "还原过程完成"
+
+#: includes/ajax.php:1175
+msgid "Error: Btw. because of this I also cannot check free space"
+msgstr "错误：Btw.因为这个我同样不能检查可用空间"
+
+#: includes/ajax.php:1174
+msgid "Error: Could not find manifest in backup, file may be broken"
+msgstr "错误：备份中不能找到表单，文件可能已经损坏"
+
+#: includes/ajax.php:1169
+msgid "Confirmed, there is enough space on the device, checked: "
+msgstr "已确认，设备中有足够二点空间，已检查："
+
+#: includes/ajax.php:1158 includes/ajax.php:1178 includes/ajax.php:1208
+#: includes/ajax.php:1223 includes/ajax.php:1418
+msgid "Unlocking migration"
+msgstr "正在解锁迁移"
+
+#: includes/ajax.php:1157 includes/ajax.php:1177 includes/ajax.php:1207
+msgid "Aborting..."
+msgstr "正在中止..."
+
+#: includes/ajax.php:1156
+msgid "Error: There is not enough space on the server, checked: "
+msgstr "错误：服务器上没有足够的空间，已检查："
+
+#: includes/ajax.php:1155 includes/ajax.php:1173
+msgid "Cannot start migration process"
+msgstr "不能开始迁移过程"
+
+#: includes/ajax.php:1150
+msgid "Checking if there is enough amount of free space"
+msgstr "正在检查是否有足够可用空间"
+
+#: includes/ajax.php:1149
+msgid "Free space checking..."
+msgstr "正在检查可用空间..."
+
+#: includes/ajax.php:1114
+msgid "Site which will be restored: "
+msgstr "将被还原的网址："
+
+#: includes/ajax.php:435 includes/ajax.php:1103
+msgid "Initializing restore process"
+msgstr "正在初始化还原过程"
+
+#: includes/ajax.php:1099
+msgid "Locking migration process"
+msgstr "正在锁定迁移过程"
+
+#: includes/ajax.php:1359
+msgid "Download process is currently running, please wait till it complete."
+msgstr "下载进程正在运行，请等待直至其完成。"
+
+#: includes/ajax.php:1095
+msgid "Restore process responded"
+msgstr "还原进程已响应"
+
+#: includes/ajax.php:898 includes/ajax.php:910
+msgid "New backup created and its name is: "
+msgstr "新备份已创建，名称为："
+
+#: includes/ajax.php:878
+msgid "This error may be related to missing space. (filled during backup)"
+msgstr "缺失的空间可能与这个错误有关。（在备份过程中被填充）"
+
+#: includes/ajax.php:877
+msgid "We could not find backup file when it already should be here."
+msgstr "我们找不到备份文件，但它应该已经在这里了。"
+
+#: includes/ajax.php:876
+msgid "There is no backup file..."
+msgstr "这里没有备份文件..."
+
+#: includes/ajax.php:570 includes/ajax.php:858 includes/ajax.php:863
+#: includes/ajax.php:866 includes/dashboard/translations.php:54
+msgid "Backup process aborted."
+msgstr "备份进程被中止。"
+
+#: includes/ajax.php:815
+msgid "Archive system initialized..."
+msgstr "存档系统完成初始化..."
+
+#: includes/ajax.php:769
+msgid "Initializing archiving system..."
+msgstr "正在初始化存档系统..."
+
+#: includes/ajax.php:768
+msgid "Backup initialized..."
+msgstr "备份完成初始化"
+
+#: includes/ajax.php:764
+msgid " files..."
+msgstr "文件..."
+
+#: includes/ajax.php:764
+msgid "Scanning done - found "
+msgstr "扫描完成 - 找到"
+
+#: includes/ajax.php:750
+msgid "Confirmed, there is more than enough space, checked: "
+msgstr "已确认，有足够的空间，已检查："
+
+#: includes/ajax.php:733 includes/ajax.php:750
+msgid " bytes"
+msgstr "字节"
+
+#: includes/ajax.php:733
+msgid "There is no space for that backup, checked: "
+msgstr "没有足够的空间分配给这个备份文件，已检查："
+
+#: includes/ajax.php:702
+msgid "Site weights more than %s GB."
+msgstr "站点权重大于 %s GB。"
+
+#: includes/ajax.php:277 includes/ajax.php:701 includes/ajax.php:732
+#: includes/ajax.php:826 includes/ajax.php:875 includes/initializer.php:418
+msgid "Aborting backup..."
+msgstr "正在中止备份..."
+
+#: includes/ajax.php:697
+msgid "Checking free space, reserving..."
+msgstr "正在检查可用空间，正在保留..."
+
+#: includes/ajax.php:687
+msgid "Omitting files (due to settings)..."
+msgstr "正在忽略文件（由于设置的原因）..."
+
+#: includes/ajax.php:683
+msgid "Scanning files..."
+msgstr "正在扫描文件..."
+
+#: includes/ajax.php:676
+msgid "Yup it is writable..."
+msgstr "是的，它是可写入的..."
+
+#: includes/ajax.php:659 includes/ajax.php:879
+msgid "Path: "
+msgstr "路径："
+
+#: includes/ajax.php:658
+msgid "Backup directory is not writable..."
+msgstr "备份目录是不可写的..."
+
+#: includes/ajax.php:632
+msgid "Checking if backup dir is writable..."
+msgstr "正在检查备份是否能写入..."
+
+#: includes/ajax.php:608
+msgid "Site which will be backed up: "
+msgstr "将被备份的站点："
+
+#: includes/ajax.php:607 includes/ajax.php:1104 includes/ajax.php:1409
+msgid "Backup & Migration version: "
+msgstr "备份&迁移插件版本："
+
+#: includes/ajax.php:428 includes/ajax.php:606
+msgid "Initializing backup..."
+msgstr "正在初始化备份..."
+
+#: includes/ajax.php:406 includes/ajax.php:811 includes/ajax.php:1251
+#: includes/ajax.php:1255
+msgid "Backup process already running, please wait till it complete."
+msgstr "备份进程已经在运行，请等待直至其完成。"
+
+#: includes/ajax.php:40
+msgid "Running POST Function: "
+msgstr "正在运行POST函数"
+
+#: includes/progress/logger-only.php:34 includes/progress/zip.php:109
+msgid "Unable to open file!"
+msgstr "未能打开文件！"
+
+#: includes/zipper/src/zip.php:569
+msgid "Closing files and archives"
+msgstr "正在关闭文件和存档"
+
+#: includes/zipper/src/zip.php:568
+msgid "Adding manifest..."
+msgstr "正在添加清单..."
+
+#: includes/zipper/src/zip.php:567
+msgid "Finalizing backup"
+msgstr "正在最后确定备份文件"
+
+#: includes/zipper/src/zip.php:565
+msgid " files took: "
+msgstr "文件耗费："
+
+#: includes/zipper/src/zip.php:565
+msgid "Archiving of "
+msgstr "存档"
+
+#: includes/ajax.php:359 includes/extracter/extract.php:360
+#: includes/zipper/src/zip.php:562
+msgid " files"
+msgstr " 文件"
+
+#: includes/zipper/src/zip.php:562
+msgid "Compressed "
+msgstr "压缩的"
+
+#: includes/zipper/src/zip.php:535 includes/zipper/src/zip.php:561
+msgid "Milestone: "
+msgstr "进度："
+
+#: includes/zipper/src/zip.php:343
+msgid "Compressing..."
+msgstr "正在压缩"
+
+#: includes/dashboard/translations.php:135 includes/zipper/src/zip.php:342
+msgid "Making archive"
+msgstr "正在归档"
+
+#: includes/zipper/src/zip.php:172
+msgid "Omitting database backup (due to settings)..."
+msgstr "正在忽略数据库备份（由于设置的原因）..."
+
+#: includes/zipper/src/zip.php:165
+msgid "Database backup finished"
+msgstr "数据库备份完成"
+
+#: includes/zipper/src/zip.php:154
+msgid "Iterating database..."
+msgstr "正在迭代数据库..."
+
+#: includes/zipper/src/zip.php:209 includes/zipper/src/zip.php:785
+msgid "Setting the safe limit to %s MB"
+msgstr "设置安全限制到 %s MB"
+
+#: includes/zipper/src/zip.php:197 includes/zipper/src/zip.php:770
+msgid "There is %s MBs of memory to use"
+msgstr "有 %s MBs 储存空间可用"
+
+#: includes/zipper/src/zip.php:188 includes/zipper/src/zip.php:761
+msgid "Smart memory calculation..."
+msgstr "智能储存计算"
+
+#: includes/zipper/src/zip.php:91
+msgid "Issues during restore process (extracting)..."
+msgstr "还原过程中出现的问题（正在提取）..."
+
+#: includes/zipper/src/zip.php:87
+msgid "There was an error during restore process (extracting)..."
+msgstr "还原过程中出现了一个错误（正在提取）..."
+
+#: includes/zipper/src/zip.php:81
+msgid "Issues during backup (packing)..."
+msgstr "备份中出现的问题（正在打包）..."
+
+#: includes/zipper/src/zip.php:77
+msgid "There was an error during backup (packing)..."
+msgstr "备份中出现了一个错误（正在打包）..."
+
+#: includes/zipper/zipping.php:59 includes/zipper/zipping.php:67
+msgid "There was an error during backup..."
+msgstr "备份时发生错误..."
+
+#: includes/zipper/zipping.php:58 includes/zipper/zipping.php:66
+msgid "Reverting backup, removing file..."
+msgstr "正在还原备份，正在移除文件..."
+
+#: includes/zipper/zipping.php:44
+msgid "Starting compression process..."
+msgstr "正在开始压缩进程..."
+
+#: includes/zipper/zipping.php:43
+msgid "Files prepared."
+msgstr "文件已备好。"
+
+#: includes/zipper/zipping.php:33
+msgid "Preparing map of files..."
+msgstr "正在准备映射文件..."
+
+#: includes/zipper/zipping.php:24
+msgid " files to backup."
+msgstr "要备份的文件。"
+
+#: includes/zipper/zipping.php:24
+msgid "Found "
+msgstr "找到"
+
+#: includes/zipper/zipping.php:23
+msgid "Creating backup "
+msgstr "正在创建备份"
+
+#: includes/initializer.php:1254
+msgid "Unknow AJAX Sanitize Type: "
+msgstr "未知的 Ajax Sanitize 类型"
+
+#: includes/initializer.php:1128 includes/initializer.php:1149
+#: includes/initializer.php:1175
+msgid "Human readable: file expired."
+msgstr "人类可读的：文件已过期。"
+
+#: includes/initializer.php:1127 includes/initializer.php:1148
+#: includes/initializer.php:1174
+msgid "Due to security reasons access to this file is disabled at this moment."
+msgstr "出于安全原因，目前无法访问该文件。"
+
+#: includes/initializer.php:1089
+msgid "There was an error during getting logs, this file is not right log file."
+msgstr "在获取日志时出现了一个错误，该文件不是正确的日志文件。"
+
+#: includes/initializer.php:1047
+msgid "Backup download is restricted (allowed for admins only)."
+msgstr "备份下载受到限制（仅允许管理员使用）。"
+
+#: includes/initializer.php:824
+msgid "Could not make the backup due to internal server error."
+msgstr "由于内部服务器错误，不能创建备份。"
+
+#: includes/initializer.php:817
+msgid "Automatic backup successed: "
+msgstr "自动备份成功："
+
+#: includes/initializer.php:803
+msgid "Could not make the backup: Backup already running, please wait till it complete."
+msgstr "不能创建备份文件：备份进程运行中，请耐心等待至其完成。"
+
+#: includes/initializer.php:792
+msgid "Automatic backup called at time: "
+msgstr "在以下时间调用自动备份："
+
+#: includes/initializer.php:684
+msgid "Removing backup due to keep rules: "
+msgstr "由于保存规则的原因，正在移除备份文件："
+
+#: includes/initializer.php:649 includes/initializer.php:654
+msgid "Couldn't send notification via email due to error, please check plugin logs for more details."
+msgstr "由于一个错误，无法发送通知邮件，请检查插件日志以获取更多细节信息。"
+
+#: includes/initializer.php:642
+msgid "Couldn't send notification via email, please check the email and your server settings."
+msgstr "无法发送通知邮件，请检查电子邮箱和您的服务器设置。"
+
+#: includes/initializer.php:637
+msgid "Sent email notification to: "
+msgstr "发送通知邮件到："
+
+#: includes/initializer.php:632
+msgid "Could not send the email notification about that fail"
+msgstr "无法发送关于该错误的通知邮件"
+
+#: includes/initializer.php:609
+msgid "There was an error during automatic backup, please check the logs."
+msgstr "在自动备份时出错，请检查日志。"
+
+#: includes/initializer.php:598
+msgid "Automatic backup failed at time: "
+msgstr "自动备份在以下时间出错："
+
+#: includes/initializer.php:548
+msgid "Message you missed because of this: "
+msgstr "由于以下原因，您错过了消息："
+
+#: includes/initializer.php:547
+msgid "Couldn't send mail to you, please check server configuration."
+msgstr "无法将邮件发送到您的邮箱，请检查服务器设置。"
+
+#: includes/initializer.php:543
+msgid "(server time)"
+msgstr "（服务器时间）"
+
+#: includes/initializer.php:542
+msgid ", but should be on: "
+msgstr "，但应在以下时间："
+
+#: includes/initializer.php:542
+msgid "Backup was made on: "
+msgstr "备份时间为："
+
+#: includes/initializer.php:541
+msgid "Automatic backup was not on time because there was no traffic on the site."
+msgstr "自动备份没有按时完成，因为与站点间没有流量。"
+
+#: includes/initializer.php:511
+msgid "check that."
+msgstr "检查这个。"
+
+#: includes/initializer.php:510
+msgid "There was an error during automated backup, please"
+msgstr "自动备份过程中出现了错误，请"
+
+#: includes/initializer.php:460
+msgid "Manage"
+msgstr "管理"
+
+#. Author URI of the plugin
+msgid "https://backupbliss.com/"
+msgstr "https://backupbliss.com/"
+
+#. Description of the plugin
+msgid "Most sophisticated backup & migration plugin for WordPress"
+msgstr "适用于 WordPress 的最先进的备份和迁移插件"
+
+#. Plugin URI of the plugin
+msgid "https://backupbliss.com"
+msgstr "https://backupbliss.com"
+
+#. Author of the plugin
+msgid "Migrate"
+msgstr "迁移"

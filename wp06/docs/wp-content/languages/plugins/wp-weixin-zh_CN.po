@@ -1,0 +1,890 @@
+# Translation of Plugins - WP Weixin - Development (trunk) in Chinese (China)
+# This file is distributed under the same license as the Plugins - WP Weixin - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-27 00:12:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - WP Weixin - Development (trunk)\n"
+
+#: inc/class-wp-weixin-settings.php:487
+msgid "Native Payment Callback URL: "
+msgstr "本地支付回调URL:"
+
+#: inc/templates/admin/wechat-link-metabox.php:18
+msgid "Leave empty to use the Post excerpt."
+msgstr "留空来使用文章摘要。"
+
+#: inc/templates/admin/wechat-link-metabox.php:13
+msgid "Leave empty to use the Post title."
+msgstr "留空以使用文章标题。"
+
+#: inc/templates/admin/wechat-link-metabox.php:11
+msgid "Title"
+msgstr "标题"
+
+#: inc/templates/admin/wechat-link-metabox.php:8
+msgid "Override the link title and description when sharing the Post on Wechat."
+msgstr "分享微信中的文章时，请覆盖链接标题和描述。"
+
+#: inc/templates/wp-weixin-account-form-password-notice.php:6
+msgid "If you do not know your current password, for security reasons, please make sure to fill the email address field above, save your account, log out, and click the \"Lost your password?\" link to set a new password in a web browser."
+msgstr "如果不知道当前密码，出于安全原因，请确保填写上面的电子邮件地址字段，保存您的帐户，然后注销，然后单击“忘记密码了？”链接以在网络浏览器中设置新密码。"
+
+#: inc/class-wp-weixin-metabox.php:39
+msgid "Wechat Links"
+msgstr "微信链接"
+
+#: inc/class-wp-weixin.php:593
+msgid "Female"
+msgstr "女"
+
+#: inc/class-wp-weixin.php:591
+msgid "Male"
+msgstr "男"
+
+#: inc/class-wp-weixin.php:589
+msgid "N/A"
+msgstr "N/A"
+
+#: inc/class-wp-weixin.php:527
+msgid "Latest known WeChat profile photo."
+msgstr "最新的微信个人资料照片。"
+
+#: inc/class-wp-weixin-settings.php:982
+msgid "Default - "
+msgstr "默认 -  "
+
+#: inc/class-wp-weixin-settings.php:967
+msgid "Default not forced (discouraged when more than 2 blogs need WeChat Pay)"
+msgstr "默认不强制（当超过2个博客需要微信支付时不鼓励）"
+
+#: inc/class-wp-weixin-settings.php:836 inc/class-wp-weixin-settings.php:845
+msgid "<em>This option is not editable because it has been set using the following filter: </em>"
+msgstr "<em>此选项不可编辑，因为它已使用以下过滤器设置： </em>"
+
+#: inc/class-wp-weixin-settings.php:799
+msgid "Connect the network of sites with WeChat - avoid having too many URLs to register in the WeChat backend."
+msgstr "在连接网络的网站与微信-避免在微信后台注册的网址过多。"
+
+#: inc/class-wp-weixin-settings.php:797
+msgid "Multisite Settings"
+msgstr "多站点设置"
+
+#: inc/class-wp-weixin-settings.php:795
+msgid "Blog to use as proxy when processing payments.<br/>Make sure WP Weixin is enabled and configured properly and all the required payment plugins are active on the chosen blog.<br/>If default, the JSAPI Payment Authorization URLs must be entered for all the blogs of the network doing payments, and the QR Payment callback URL must be capable of handling all the notifications coming from the WeChat Pay API.<br/><strong>This setting affects the entire multisite network.</strong>"
+msgstr "在处理付款时用作代理的博客。<br/>确保WP Weixin已正确启用和配置，所有必需的付款插件在所选博客上处于活动状态。<br/>如果是默认值，则必须为进行付款的网络的所有博客输入JSAPI支付授权URL ，并且QR Payment回调URL必须能够处理来自WeChat Pay API的所有通知。<br/><strong>此设置会影响整个多站点网络。</strong>"
+
+#: inc/class-wp-weixin-settings.php:791
+msgid "Force a blog for WeChat payments"
+msgstr "强制博客进行微信支付"
+
+#: inc/class-wp-weixin-settings.php:787
+msgid "Blog to use as proxy when authenticating users.<br/>Make sure WP Weixin is enabled and configured properly on the chosen blog.<br/><strong>This setting affects the entire multisite network.</strong>"
+msgstr "在验证用户身份时用作代理的博客。<br/>确保在所选博客上正确启用并配置了WP Weixin。<br/><strong>此设置会影响整个多站点网络。</strong>"
+
+#: inc/class-wp-weixin-settings.php:783
+msgid "Force a blog for authentication"
+msgstr "强制博客进行身份验证"
+
+#: inc/class-wp-weixin-settings.php:702
+msgid "Show a link to authenticate via QR code using a WeChat account on login forms."
+msgstr "在登录表单上使用微信账号显示通过QR码进行身份验证的链接。"
+
+#: inc/class-wp-weixin-settings.php:699
+msgid "Show WeChat Account authentication link"
+msgstr "显示微信账号认证链接"
+
+#: inc/class-wp-weixin-settings.php:695
+msgid "Show a link to bind or unbind a WordPress account with a WeChat account on user profile pages."
+msgstr "显示一个链接，用于在用户个人资料页面上使用微信帐户绑定或取消绑定WordPress帐户。"
+
+#: inc/class-wp-weixin-settings.php:692
+msgid "Show WeChat Account binding link"
+msgstr "显示微信账号绑定链接"
+
+#: inc/class-wp-weixin-settings.php:688
+msgid "Show the WeChat public information on user profile pages."
+msgstr "在用户个人资料页面上显示微信公众信息。"
+
+#: inc/class-wp-weixin-settings.php:685
+msgid "Show WeChat public info"
+msgstr "显示微信公众信息"
+
+#: inc/class-wp-weixin-settings.php:533
+msgid "Enable WeChat authentication"
+msgstr "启用微信认证"
+
+#: inc/templates/wp-weixin-bind-form-link.php:23
+msgid "A page will open in a new tab."
+msgstr "一个页面将打开一个新的标签。"
+
+#: inc/templates/wp-weixin-bind-form-link.php:16
+msgid "Account Binding"
+msgstr "帐户绑定"
+
+#: inc/templates/wp-weixin-subscribe.php:10
+msgid "Refresh"
+msgstr "刷新"
+
+#: inc/templates/wp-weixin-bind-page.php:56
+msgid "Scan the QR code with WeChat to bind your account."
+msgstr "使用微信扫描二维码以绑定您的帐户。"
+
+#: inc/templates/wp-weixin-bind-page.php:35
+msgid "This action cannot be canceled, but the WeChat account may be bound again afterward"
+msgstr "此操作无法取消，但之后可能会再次绑定微信帐户"
+
+#: inc/templates/wp-weixin-bind-page.php:30
+msgid "Unbind WeChat account"
+msgstr "取消绑定微信账号"
+
+#: inc/templates/wp-weixin-bind-page.php:18
+msgid "WeChat Account Bound"
+msgstr "微信账号绑定"
+
+#: inc/templates/wp-weixin-mobile-bind-check.php:30
+#: inc/templates/wp-weixin-bind-page.php:67
+msgid "Account binding failed"
+msgstr "帐户绑定失败"
+
+#: inc/templates/wp-weixin-mobile-bind-check.php:26
+#: inc/templates/wp-weixin-bind-page.php:63
+msgid "Account bound successfully"
+msgstr "帐户绑定成功"
+
+#: inc/templates/wp-weixin-public-info.php:76
+msgid "OpenID"
+msgstr "OpenID"
+
+#: inc/templates/wp-weixin-public-info.php:68
+msgid "UnionID"
+msgstr "UnionID"
+
+#: inc/templates/wp-weixin-public-info.php:60
+msgid "Country"
+msgstr "国家"
+
+#: inc/templates/wp-weixin-public-info.php:52
+msgid "Province"
+msgstr "省"
+
+#: inc/templates/wp-weixin-public-info.php:44
+msgid "City"
+msgstr "市"
+
+#: inc/templates/wp-weixin-public-info.php:36
+msgid "Language"
+msgstr "语言"
+
+#: inc/templates/wp-weixin-public-info.php:29
+msgid "Selected gender"
+msgstr "选择性别"
+
+#: inc/class-wp-weixin-wechat-singleton.php:227
+msgid "Please make sure <code>wp_weixin_get_access_info</code> and <code>wp_weixin_save_access_info</code> are implemented"
+msgstr "请确认 <code>wp_weixin_get_access_info</code> 和 <code>wp_weixin_save_access_info</code> 实施"
+
+#: inc/class-wp-weixin-bind.php:389
+msgid "The WeChat account has already been used for account binding"
+msgstr "微信帐号已用于帐户绑定"
+
+#: inc/class-wp-weixin-bind.php:341
+msgid "Unexpected binding error"
+msgstr "意外的绑定错误"
+
+#: inc/class-wp-weixin-bind.php:240 inc/templates/wp-weixin-bind-page.php:48
+msgid "Bind a WeChat Account"
+msgstr "绑定微信账号"
+
+#: inc/class-wp-weixin-bind.php:238
+msgid "Unbind WeChat Account"
+msgstr "取消绑定微信账号"
+
+#: inc/class-wp-weixin-bind.php:90
+msgid "Sorry, you are not allowed to access this page."
+msgstr "抱歉，您无权访问此页面。"
+
+#: inc/class-wp-weixin-settings.php:646
+msgid "The absolute path to the containing folder of the certificate files downloaded from <a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a> on the current file system. Example: <code>/home/user/wechat-certificates</code>. Must have read permissions for the user running PHP, and located outside of the web root. Required notably to handle refunds through WeChat Pay."
+msgstr "从中下载的证书文件的包含文件夹的绝对路径<a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a>在当前的文件系统上。例： <code>/home/user/wechat-certificates</code>。必须具有运行PHP的用户的读权限，并且位于Web根目录之外。特别要求通过微信支付处理退款。"
+
+#: inc/class-wp-weixin-settings.php:643
+msgid "PEM certificate files path"
+msgstr "PEM证书文件路径"
+
+#: inc/class-wp-weixin-settings.php:639
+msgid "The prefix of the certificate files downloaded from <a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a> - certificate files default prefix is <code>apiclient</code> (for <code>apiclient_cert.pem</code> and <code>apiclient_key.pem</code> files). Required notably to handle refunds through WeChat Pay."
+msgstr "从<a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a>下载证书文件的前缀  - 证书文件的默认前缀是<code>apiclient</code>（对于<code>apiclient_cert.pem</code>和<code>apiclient_key.pem</code>文件）。 特别要求通过微信支付处理退款。"
+
+#: inc/class-wp-weixin-settings.php:636
+msgid "PEM certificate prefix"
+msgstr "PEM证书前缀"
+
+#: inc/class-wp-weixin-settings.php:603
+msgid "Settings for the website to interact with the WeChat API.<br/>Enabling the Responder will remove the Official Account menu set in <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a>, and the Official Account menu can be set with \"Wechat menu (WeChat Official Account menu)\" in Appearance > Menu in WordPress."
+msgstr "网站与微信API交互的设置。<br/>启用响应将删除设置 <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a>公众号菜单, 公众号菜单可以使用WordPress中外观>菜单中的“微信菜单(微信公众号菜单)”设置。"
+
+#. translators: %s is "permalinks structure" with link to admin page
+#: inc/class-wp-weixin-settings.php:419
+msgid "Make sure the %s ends with a forward slash (\"/\") to ensure compatibility with WeChat Pay API."
+msgstr "确保%s以正斜杠（“/”）结尾，以确保与WeChat Pay API兼容。"
+
+#: inc/templates/wp-weixin-mobile-bind-check.php:41
+#: inc/templates/wp-weixin-mobile-auth-check.php:41
+msgid "Close"
+msgstr "关闭"
+
+#: inc/templates/wp-weixin-auth-page.php:36
+#: inc/templates/wp-weixin-mobile-auth-check.php:30
+msgid "Authentication failed"
+msgstr "验证失败"
+
+#: inc/templates/wp-weixin-auth-page.php:32
+#: inc/templates/wp-weixin-mobile-auth-check.php:26
+msgid "Authentication successful"
+msgstr "验证成功"
+
+#: inc/templates/wp-weixin-auth-page.php:33
+#: inc/templates/wp-weixin-auth-page.php:38
+#: inc/templates/wp-weixin-bind-page.php:64
+#: inc/templates/wp-weixin-bind-page.php:69
+msgid "Redirecting..."
+msgstr "重定向..."
+
+#: inc/templates/wp-weixin-auth-page.php:29
+#: inc/templates/wp-weixin-bind-page.php:60
+msgid "Network unavailable - attempting to reconnect..."
+msgstr "网络不可用 - 尝试重新连接..."
+
+#: inc/templates/wp-weixin-auth-page.php:28
+#: inc/templates/wp-weixin-bind-page.php:59
+msgid "Network available - waiting..."
+msgstr "网络可用 - 等待......"
+
+#: inc/templates/wp-weixin-auth-page.php:25
+msgid "If you do not have an account yet, you will be registered automatically."
+msgstr "如果您还没有帐户，您将自动注册。"
+
+#: inc/templates/wp-weixin-auth-page.php:25
+msgid "Scan the QR code with WeChat to authenticate."
+msgstr "使用微信扫描二维码进行身份验证。"
+
+#: inc/templates/wp-weixin-auth-page.php:17
+msgid "Authenticate with WeChat"
+msgstr "使用微信进行身份验证"
+
+#: inc/templates/wp-weixin-auth-form-link.php:9
+#: inc/templates/wp-weixin-auth-form-link.php:13
+msgid "WeChat QR code authentication"
+msgstr "微信二维码认证"
+
+#: inc/class-wp-weixin-bind.php:322 inc/class-wp-weixin-auth.php:902
+#: inc/class-wp-weixin.php:761 inc/class-wp-weixin.php:770
+#: inc/class-wp-weixin.php:795
+msgid "Unknown Error"
+msgstr "未知错误。"
+
+#: inc/class-wp-weixin-bind.php:374 inc/class-wp-weixin-auth.php:843
+msgid "The QR code is invalid"
+msgstr "二维码无效"
+
+#: inc/class-wp-weixin-bind.php:346 inc/class-wp-weixin-bind.php:381
+#: inc/class-wp-weixin-auth.php:847 inc/class-wp-weixin-auth.php:921
+msgid "The QR code is expired"
+msgstr "二维码已过期"
+
+#: inc/class-wp-weixin-bind.php:385 inc/class-wp-weixin-auth.php:851
+msgid "Authentication error - check mobile WeChat authentication is enabled"
+msgstr "验证错误 - 检查移动微信认证已启用。"
+
+#: inc/class-wp-weixin-settings.php:550
+msgid "Require the user to follow the Official Account before accessing the site with the WeChat browser (except administrators and admin interface)."
+msgstr "在使用微信浏览器（管理员和管理员界面除外）访问网站之前，要求用户关注官方帐户。"
+
+#: inc/class-wp-weixin-settings.php:557
+msgid "Send a welcome message when a user follows the Official Account. Requires using the WeChat Responder."
+msgstr "当用户关注官方帐户时发送欢迎消息。 需要使用微信响应者。"
+
+#: inc/class-wp-weixin-settings.php:543
+msgid "Make the website accessible only through the WeChat browser (except administrators and admin interface)."
+msgstr "只能通过微信浏览器访问网站（管理员和管理界面除外）。"
+
+#. Author URI of the plugin
+msgid "https://froger.me"
+msgstr "https://froger.me"
+
+#. Author of the plugin
+msgid "Alexandre Froger"
+msgstr "Alexandre Froger"
+
+#. Description of the plugin
+msgid "WordPress WeChat integration"
+msgstr "WordPress微信集成"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/froger-me/wp-weixin"
+msgstr "https://github.com/froger-me/wp-weixin"
+
+#: inc/class-wp-weixin-auth.php:327
+msgid "Please scan this QR Code to follow us before accessing this content."
+msgstr "在访问此内容之前，请扫描此QR码以关注我们。"
+
+#: inc/class-wp-weixin-auth.php:322
+msgid "Follow Us!"
+msgstr "关注我们！"
+
+#: inc/templates/wp-weixin-browser-qr.php:24
+msgid "Please scan the QR code with WeChat to access this page."
+msgstr "请用微信扫描二维码来访问此页面。"
+
+#: inc/templates/wp-weixin-browser-qr.php:17
+msgid "Open with WeChat"
+msgstr "用微信打开"
+
+#: inc/templates/admin/wp-weixin-settings.php:69
+msgid "Has to include the protocol (\"http://\" or \"https://\")."
+msgstr "必须包含协议(\"http://\" 或 \"https://\")."
+
+#: inc/templates/admin/wp-weixin-settings.php:68
+msgid "The URL the user will get to after scanning the code."
+msgstr "扫描代码后用户将访问的URL。"
+
+#: inc/templates/admin/wp-weixin-settings.php:56
+msgid "Custom QR code"
+msgstr "自定义二维码"
+
+#: inc/templates/admin/wp-weixin-settings.php:77
+msgid "Get QR code"
+msgstr "获取二维码"
+
+#: inc/templates/admin/wp-weixin-settings.php:59
+msgid "Impossible to generate the QR code"
+msgstr "无法生成二维码"
+
+#: inc/templates/admin/wp-weixin-settings.php:27
+msgid "Generate QR codes"
+msgstr "生成二维码"
+
+#. Plugin Name of the plugin
+#: inc/templates/admin/wp-weixin-settings.php:16
+msgid "WP Weixin"
+msgstr "WP微信"
+
+#: inc/templates/admin/wechat-public-info.php:6
+#: inc/templates/wp-weixin-public-info.php:7
+msgid "WeChat account information"
+msgstr "微信账号信息"
+
+#: inc/templates/admin/menu-item-meta-box.php:28
+msgid "Add to Menu"
+msgstr "添加到菜单"
+
+#: inc/templates/admin/menu-item-edit.php:160
+msgid "Cancel"
+msgstr "取消"
+
+#: inc/templates/admin/menu-item-edit.php:138
+msgid "Original: %s"
+msgstr "原文：%s"
+
+#: inc/templates/admin/menu-item-edit.php:132
+msgid "To the top"
+msgstr "到顶部"
+
+#: inc/templates/admin/menu-item-edit.php:129
+msgid "Down one"
+msgstr "到下一个"
+
+#: inc/templates/admin/menu-item-edit.php:128
+msgid "Up one"
+msgstr "上一个"
+
+#: inc/templates/admin/menu-item-edit.php:127
+msgid "Move"
+msgstr "移动"
+
+#: inc/templates/admin/menu-item-edit.php:122
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr "如果当前主题支持，说明将显示在菜单中。"
+
+#: inc/templates/admin/wechat-link-metabox.php:16
+#: inc/templates/admin/menu-item-edit.php:120
+msgid "Description"
+msgstr "描述"
+
+#: inc/templates/admin/menu-item-edit.php:114
+msgid "Link Relationship (XFN)"
+msgstr "链接关系（XFN）"
+
+#: inc/templates/admin/menu-item-edit.php:108
+msgid "CSS Classes (optional)"
+msgstr "CSS类（可选）"
+
+#: inc/templates/admin/menu-item-edit.php:103
+msgid "Open link in a new tab"
+msgstr "在新标签页中打开链接"
+
+#: inc/templates/admin/menu-item-edit.php:94
+msgid "Title Attribute"
+msgstr "标题属性"
+
+#: inc/templates/admin/menu-item-meta-box.php:15
+#: inc/templates/admin/menu-item-edit.php:79
+msgid "Type"
+msgstr "类型"
+
+#: inc/templates/admin/menu-item-meta-box.php:11
+#: inc/templates/admin/menu-item-edit.php:71
+#: inc/templates/wp-weixin-public-info.php:21
+msgid "Name"
+msgstr "名称"
+
+#: inc/templates/admin/menu-item-edit.php:69
+msgid "Navigation Label"
+msgstr "导航标签"
+
+#: inc/templates/admin/menu-item-meta-box.php:7
+#: inc/templates/admin/menu-item-edit.php:56
+msgid "Key"
+msgstr "Key"
+
+#: inc/templates/admin/wp-weixin-settings.php:64
+#: inc/templates/admin/menu-item-edit.php:54
+msgid "URL"
+msgstr "URL"
+
+#: inc/templates/admin/menu-item-edit.php:44
+msgid "Edit menu item"
+msgstr "编辑菜单项"
+
+#: inc/templates/admin/menu-item-edit.php:39
+msgid "Move down"
+msgstr "降序"
+
+#: inc/templates/admin/menu-item-edit.php:37
+msgid "Move up"
+msgstr "提升"
+
+#: inc/templates/admin/menu-item-edit.php:7
+msgid "sub item"
+msgstr "子项目"
+
+#: inc/templates/admin/menu-item-edit.php:160
+msgid "Remove"
+msgstr "去掉"
+
+#: inc/templates/admin/menu-item-edit.php:44
+msgid "Edit"
+msgstr "编辑"
+
+#: inc/class-wp-weixin.php:705
+msgid "WeChat Username"
+msgstr "微信用户名"
+
+#: inc/class-wp-weixin.php:584
+msgid "2 (F)"
+msgstr "2 (F)"
+
+#: inc/class-wp-weixin.php:582
+msgid "1 (M)"
+msgstr "1 (M)"
+
+#: inc/class-wp-weixin.php:580
+msgid "0 (N/A)"
+msgstr "0 (N/A)"
+
+#: inc/class-wp-weixin.php:138
+msgid "(minimum compatible version: 6.5.8)"
+msgstr "（最低兼容版本：6.5.8）"
+
+#: inc/class-wp-weixin.php:137
+msgid "Please update WeChat to a more recent version "
+msgstr "请将微信更新为最新版本"
+
+#: inc/class-wp-weixin.php:136
+msgid "WeChat version deprecated."
+msgstr "不推荐使用微信版。"
+
+#: inc/class-wp-weixin-wechat-singleton.php:231
+msgid "An unexpected configuration error has occured."
+msgstr "发生了意外的配置错误。"
+
+#: inc/class-wp-weixin-wechat-singleton.php:223
+msgid "Missing Merchant Key"
+msgstr "缺少商家Key"
+
+#: inc/class-wp-weixin-wechat-singleton.php:222
+msgid "Missing Merchant ID"
+msgstr "缺少商家ID"
+
+#: inc/class-wp-weixin-wechat-singleton.php:221
+msgid "Missing Token"
+msgstr "缺少令牌Token"
+
+#: inc/class-wp-weixin-wechat-singleton.php:220
+msgid "Missing AES Key"
+msgstr "缺少AESKey"
+
+#: inc/class-wp-weixin-wechat-singleton.php:219
+msgid "Missing App Secret"
+msgstr "缺少AppSecret"
+
+#: inc/class-wp-weixin-wechat-singleton.php:218
+msgid "Missing App ID"
+msgstr "缺少AppID"
+
+#: inc/class-wp-weixin-wechat-singleton.php:202
+msgid "WP Weixin is not configured properly. "
+msgstr "WP Weixin配置不正确。"
+
+#: inc/class-wp-weixin-wechat-singleton.php:201
+msgid "Configuration error"
+msgstr "配置错误"
+
+#: inc/class-wp-weixin-wechat-singleton.php:63
+msgid "Edit configuration"
+msgstr "编辑配置"
+
+#: inc/class-wp-weixin-wechat-singleton.php:62
+msgid "WP Weixin is not ready. "
+msgstr "WP Weixin尚未准备好。"
+
+#: inc/class-wp-weixin-settings.php:720
+msgid "Other configuration values."
+msgstr "其他配置值。"
+
+#: inc/class-wp-weixin-settings.php:718
+msgid "Miscellaneous Settings"
+msgstr "杂项设置"
+
+#: inc/class-wp-weixin-settings.php:716
+msgid "Use a custom persistence method for the Official Account access_token and its expiry timestamp.<br>Warning - requires the implementation of:<br>- <code>add_filter('wp_weixin_get_access_info', $access_info, 10, 0);</code><br>- <code>add_action('wp_weixin_save_access_info', $access_info, 10, 1);</code><br/>The parameter <code>$access_info</code> is an array with the keys <code>token</code> and <code>expiry</code>.<br/>Add the hooks above in a <code>plugins_loaded</code> action with a priority of <code>4</code> or less.<br/>Useful to avoid a race condition if the access_token information need to be shared between multiple platforms.<br>When unchecked, access_token &amp; expiry timestamp are stored in the Wordpress options table in the database."
+msgstr "对微信公众号access_token使用自定义持久性方法及其到期时间戳。<br>警告 - 要求执行：<br>-  <code>add_filter（'wp_weixin_get_access_info'，$ access_info，10,0）;</code><br>-  <code>add_action（'wp_weixin_save_access_info'，$ access_info，10,1）;</code><br/>参数 <code>$ access_info</code> 是一个带键的数组 <code>代币</code>和<code>到期</code>。<br/>在上面添加钩子 <code>plugins_loaded</code> 优先级为的行动 <code>4</code> 或更少。<br/>如果需要在多个平台之间共享access_token信息，则有助于避免竞争条件。<br>取消选中时，access_token＆amp; 到期时间戳存储在数据库的Wordpress选项表中。"
+
+#: inc/class-wp-weixin-settings.php:713
+msgid "Use custom persistence for access_token"
+msgstr "对access_token使用自定义持久性"
+
+#: inc/class-wp-weixin-settings.php:709
+msgid "Customise the menu of the Official Account depending on user's language.<br/>By default, the language of the menu corresponding to the website's default language is used."
+msgstr "根据用户的语言自定义官方帐户的菜单。<br/>默认情况下，使用与网站默认语言对应的菜单语言。"
+
+#: inc/class-wp-weixin-settings.php:706
+msgid "Official Account menu language awareness"
+msgstr "官方帐户菜单语言意识"
+
+#: inc/class-wp-weixin-settings.php:681
+msgid "Instead of the default Wordpress account name and avatar."
+msgstr "而不是默认的Wordpress帐户名和头像"
+
+#: inc/class-wp-weixin-settings.php:678
+msgid "Show WeChat name and picture in Users list page"
+msgstr "在用户列表页面显示微信名称和图片"
+
+#: inc/class-wp-weixin-settings.php:673
+msgid "A proxy may be needed if Wordpress is behind a firewall or within a company network."
+msgstr "如果Wordpress位于防火墙后面或公司网络内，则可能需要代理。"
+
+#: inc/class-wp-weixin-settings.php:671
+msgid "Proxy Settings"
+msgstr "代理设置"
+
+#: inc/class-wp-weixin-settings.php:667
+msgid "Proxy Port"
+msgstr "代理端口"
+
+#: inc/class-wp-weixin-settings.php:661
+msgid "Proxy Host"
+msgstr "代理主机"
+
+#: inc/class-wp-weixin-settings.php:655
+msgid "Use a proxy"
+msgstr "使用代理"
+
+#: inc/class-wp-weixin-settings.php:648
+msgid "WeChat Pay Settings"
+msgstr "微信支付设置"
+
+#: inc/class-wp-weixin-settings.php:632
+msgid "The Merchant Key in the backend at <a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a>."
+msgstr "后端的商家密钥 <a href=\"https://pay.weixin.qq.com/index.php/core/cert/api_cert\" target=\"_blank\">https://pay.weixin.qq.com/index.php/core/cert/api_cert</a>。"
+
+#: inc/class-wp-weixin-settings.php:629
+msgid "WeChat Merchant Key"
+msgstr "微信商家Key"
+
+#: inc/class-wp-weixin-settings.php:625
+msgid "The Merchant ID in the backend at <a href=\"https://pay.weixin.qq.com/index.php/extend/pay_setting\" target=\"_blank\">https://pay.weixin.qq.com/index.php/extend/pay_setting</a>."
+msgstr "商家ID在 <a href=\"https://pay.weixin.qq.com/index.php/extend/pay_setting\" target=\"_blank\">https://pay.weixin.qq.com/index.php/extend/pay_setting</a>后端。"
+
+#: inc/class-wp-weixin-settings.php:622
+msgid "WeChat Merchant ID"
+msgstr "微信商家ID"
+
+#: inc/class-wp-weixin-settings.php:618
+msgid "The AppID in the backend at <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://pay.weixin.qq.com/</a> - can be different from the WeChat App ID as the WeChat Pay account may be linked to a different AppID. Leave empty to use the WeChat App ID."
+msgstr "后端的AppID在 <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://pay.weixin.qq.com/</a> - 可以与微信App ID不同，因为微信支付账户可能链接到不同的AppID。留空以使用微信App ID。"
+
+#: inc/class-wp-weixin-settings.php:615
+msgid "WeChat Merchant App ID"
+msgstr "微信商家AppID"
+
+#: inc/class-wp-weixin-settings.php:611
+msgid "Allow users to send money to the Service Account with WeChat - an account at <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://pay.weixin.qq.com/</a> is necessary."
+msgstr "允许用户通过微信向服务帐户汇款 - <a href=\"https://pay.weixin.qq.com\" target=\"_blank\">https://pay.weixin.qq.com/</a>是必要的。"
+
+#: inc/class-wp-weixin-settings.php:608
+msgid "Use merchant platform"
+msgstr "使用商家平台"
+
+#: inc/class-wp-weixin-settings.php:601
+msgid "WeChat Responder Settings"
+msgstr "微信响应者设置"
+
+#. translators: %1$s is the default welcom image link
+#: inc/class-wp-weixin-settings.php:565
+msgid "A URL to the image used for the welcome message sent after a user follows the Official Account (external or from the Media Library).<br/>Default is %1$s"
+msgstr "用户跟随官方帐户（外部或媒体库）后发送的欢迎消息所用图像的URL。<br/>默认为%1$s"
+
+#: inc/class-wp-weixin-settings.php:561
+msgid "Welcome message image URL"
+msgstr "欢迎消息图片网址"
+
+#: inc/class-wp-weixin-settings.php:554
+msgid "Send welcome message"
+msgstr "发送欢迎信息"
+
+#: inc/class-wp-weixin-settings.php:599
+msgid "The EncodingAESKey in the backend at <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> under Development > Basic configuration."
+msgstr "后端的EncodingAESKey在<a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a>在开发>基本配置下。"
+
+#: inc/class-wp-weixin-settings.php:596
+msgid "WeChat AES Key"
+msgstr "微信AESKey"
+
+#: inc/class-wp-weixin-settings.php:592
+msgid "Encode the communication between the website and the WeChat API (recommended)."
+msgstr "编码网站与微信API之间的通信（推荐）。"
+
+#: inc/class-wp-weixin-settings.php:589
+msgid "Encode messages"
+msgstr "编码消息"
+
+#: inc/class-wp-weixin-settings.php:585
+msgid "The Token in the backend at <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> under Development > Basic configuration."
+msgstr "后端的令牌在<a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> 在开发>基本配置下，即Token。"
+
+#: inc/class-wp-weixin-settings.php:582
+msgid "WeChat Token"
+msgstr "微信令牌Token"
+
+#. translators: %1s is home_url( '/weixin-responder', 'https' )
+#: inc/class-wp-weixin-settings.php:578
+msgid "Allow the website to receive messages from the WeChat API and respond to them.<br/>Server configuration must be enabled and URL must be set to <code>%1$s</code> in <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> under Development > Basic configuration.<br/>Required if using \"Force follow\" option."
+msgstr "允许网站接收来自微信API的消息并回复它们。<br/>必须启用服务器配置，并且必须将URL设置为 <code>%1$s</code> 在 <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> 在开发>基本配置下。<br/>如果使用“强制关注”选项，则必需。"
+
+#: inc/class-wp-weixin-settings.php:574
+msgid "Use WeChat Responder"
+msgstr "使用微信响应者"
+
+#: inc/class-wp-weixin-settings.php:569
+msgid "Minimal required configuration to enable WP Weixin: \"WeChat App ID\", \"WeChat App Secret\"."
+msgstr "启用WP Weixin所需的基本配置：“微信AppID”，“微信AppSecret”。"
+
+#: inc/class-wp-weixin-settings.php:567
+msgid "Main Settings"
+msgstr "主要设置"
+
+#: inc/class-wp-weixin-settings.php:547
+msgid "Force follow (any page)"
+msgstr "强制关注（任何页面）"
+
+#: inc/class-wp-weixin-settings.php:540
+msgid "Force WeChat mobile"
+msgstr "强制微信移动"
+
+#: inc/class-wp-weixin-settings.php:536
+msgid "If enabled, users will be authenticated with their WeChat account in the WeChat browser.<br/>An account will be created in Wordpress with their openID if they do not have one already.<br/>If disabled, users will simply be identified with a cookie using their WeChat public information during their session, but not authenticated in Wordpress."
+msgstr "如果启用，将使用他们的微信帐户对用户进行身份验证。<br/>如果已经使用openID，则会在Wordpress中使用openID创建帐户。<br/>如果禁用，则只需使用cookie识别用户 他们在会话期间的微信公众信息，但未在Wordpress中进行身份验证。"
+
+#: inc/class-wp-weixin-settings.php:529
+msgid "A URL to the logo of the Official Account - you may enter any image URL, it is recommended to enter a URL of the actual square logo of the Official Account (external or from the Media Library)."
+msgstr "官方帐户徽标的URL - 您可以输入任何图像URL，建议输入官方帐户（外部或媒体库）的实际方形徽标的URL。"
+
+#: inc/class-wp-weixin-settings.php:526
+msgid "WeChat OA Logo URL"
+msgstr "微信OA徽标网址"
+
+#: inc/class-wp-weixin-settings.php:522
+msgid "The name of the Official Account - you may enter any value, it is recommended to enter the actual name of the Official Account."
+msgstr "官方帐户的名称 - 您可以输入任何值，建议输入官方帐户的实际名称。"
+
+#: inc/class-wp-weixin-settings.php:519
+msgid "WeChat OA Name"
+msgstr "微信OA名称"
+
+#: inc/class-wp-weixin-settings.php:515
+msgid "The AppSecret in the backend at <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> under Development > Basic configuration."
+msgstr "AppSecret在后端 <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> 在开发>基本配置下。"
+
+#: inc/class-wp-weixin-settings.php:512
+msgid "WeChat App Secret"
+msgstr "微信AppSecret"
+
+#: inc/class-wp-weixin-settings.php:508
+msgid "The AppId in the backend at <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> under Development > Basic configuration."
+msgstr "AppId在后端 <a href=\"https://mp.weixin.qq.com\" target=\"_blank\">https://mp.weixin.qq.com/</a> 在开发>基本配置下。"
+
+#: inc/class-wp-weixin-settings.php:505
+msgid "WeChat App ID"
+msgstr "微信AppID"
+
+#: inc/class-wp-weixin-settings.php:501
+msgid "Enable WP Weixin - requires a valid configuration."
+msgstr "启用WP Weixin - 需要有效的配置。"
+
+#: inc/class-wp-weixin-settings.php:498
+msgid "Enable"
+msgstr "启用"
+
+#: inc/class-wp-weixin-settings.php:471
+msgid "Please select one of the \"Language name added as a parameter\" or \"Different languages in directories\" options for the \"Language URL format\" setting in WPML."
+msgstr "请为WPML中的“语言URL格式”设置选择“作为参数添加的语言名称”或“目录中的不同语言”选项之一。"
+
+#: inc/class-wp-weixin-settings.php:469
+msgid "Multiple domains detected. With the current WPML configuration, WP Weixin will work only with the language of the main domain registered in the WeChat backends."
+msgstr "检测到多个域。 使用当前的WPML配置，WP Weixin将仅使用在WeChat后端中注册的主域的语言。"
+
+#. translators: %1$d is the number of URLs
+#: inc/class-wp-weixin-settings.php:460
+msgid "To free up slots and make sure the maximum amount of %1$d URLs is not exceeded, use the \"Language name added as a parameter\" option for the \"Language URL format\" setting in WPML."
+msgstr "要释放插槽并确保不超过%1$d URL的最大数量，请使用WPML中“语言URL格式”设置的“语言名称作为参数添加”选项。"
+
+#. translators: %1$d is the number of URLs
+#: inc/class-wp-weixin-settings.php:452
+msgid "With the current settings, it is not possible to register the %1$d URLs in the merchant platform backend."
+msgstr "使用当前设置，无法在商家平台后端中注册%1$d个URL。"
+
+#: inc/class-wp-weixin-settings.php:445
+msgid "To free up slots if needed by other services, it is recommended to use the \"Language name added as a parameter\" option for the \"Language URL format\" setting in WPML."
+msgstr "要在其他服务需要时释放插槽，建议在WPML中使用“语言名称添加为参数”选项作为“语言URL格式”设置。"
+
+#. translators: %1$d is the number of URLs
+#: inc/class-wp-weixin-settings.php:438
+msgid "Warning: Maximum amount of URLs reached. With the current settings, %1$d URLs need to be registered in the merchant platform backend."
+msgstr "警告：已达到的最大网址数量。 使用当前设置，%1$d URL需要在商家平台后端注册。"
+
+#. translators: CN is JSAPI支付授权目录, %1$d is the number of URLs
+#: inc/class-wp-weixin-settings.php:427
+msgid "JSAPI Payment Authorization URLs (max. %1$d URLs allowed):"
+msgstr "JSAPI付款授权URL（允许最多%1$d个URL）："
+
+#. translators: %s is backend URL
+#: inc/class-wp-weixin-settings.php:421
+msgid "The URLs in the merchant platform backend at %s should be configured as follows:"
+msgstr "商家平台后端%s的URL应配置如下："
+
+#: inc/class-wp-weixin-settings.php:416
+msgid "Settings to use with a WeChat Service Account."
+msgstr "用于微信服务帐户的设置。"
+
+#: inc/class-wp-weixin-bind.php:156 inc/class-wp-weixin-bind.php:179
+#: inc/class-wp-weixin-bind.php:289 inc/class-wp-weixin-auth.php:412
+#: inc/class-wp-weixin-auth.php:450 inc/class-wp-weixin-settings.php:382
+msgid "Invalid parameters"
+msgstr "参数无效"
+
+#: inc/templates/admin/wp-weixin-settings.php:22
+#: inc/class-wp-weixin-settings.php:196
+msgid "WP Weixin Settings"
+msgstr "WP Weixin设置"
+
+#: inc/class-wp-weixin-responder.php:217
+msgid " Open now to access our services."
+msgstr "立即打开以访问我们的服务。"
+
+#: inc/class-wp-weixin-responder.php:214
+msgid " Open now to access your personal account."
+msgstr "立即打开以访问您的个人帐户。"
+
+#: inc/class-wp-weixin-responder.php:208
+msgid " You may now use our services. Open to go back."
+msgstr "您现在可以使用我们的服务。 打开返回。"
+
+#. translators: 1:title of the post
+#: inc/class-wp-weixin-responder.php:202
+msgid " Open to go back to \"%1$s\"."
+msgstr "打开以返回“%1$s”。"
+
+#: inc/class-wp-weixin-responder.php:187
+msgid "Thank you for subscribing our official account!"
+msgstr "感谢您订阅我们的官方帐号！"
+
+#. translators: 1:WeChat Name
+#: inc/class-wp-weixin-responder.php:186
+msgid "Welcome %1$s!"
+msgstr "欢迎%1$s！"
+
+#: inc/class-wp-weixin-menu.php:433
+msgid "Invalid menu ID."
+msgstr "菜单ID无效。"
+
+#: inc/class-wp-weixin-menu.php:426
+msgid "The given object ID is not that of a menu item."
+msgstr "给定的对象ID不是菜单项的ID。"
+
+#: inc/templates/admin/menu-item-edit.php:10 inc/class-wp-weixin-menu.php:246
+msgid "WeChat Menu Item"
+msgstr "微信菜单项"
+
+#: inc/class-wp-weixin-menu.php:64
+msgid "WeChat Official Account menu"
+msgstr "微信官方账号菜单"
+
+#: inc/class-wp-weixin-auth.php:733
+msgid "Failed to create user, please refresh the page. "
+msgstr "无法创建用户，请刷新页面。"
+
+#: inc/class-wp-weixin-auth.php:708
+msgid "Access to user basic information failed. "
+msgstr "访问用户基本信息失败。"
+
+#. translators: Error message
+#: inc/class-wp-weixin-auth.php:706
+msgid "Access to user basic information failed: %1$s. "
+msgstr "访问用户基本信息失败：%1$s。"
+
+#. translators: Error message
+#: inc/class-wp-weixin-auth.php:564
+msgid "Access to user information failed: %1$s. "
+msgstr "访问用户信息失败：%1$s。"
+
+#: inc/class-wp-weixin-auth.php:238 inc/class-wp-weixin-auth.php:566
+#: inc/class-wp-weixin-auth.php:711 inc/class-wp-weixin-auth.php:734
+#: inc/class-wp-weixin-wechat-singleton.php:203
+msgid "If the problem persists, please contact an administrator."
+msgstr "如果问题仍然存在，请与管理员联系。"
+
+#: inc/class-wp-weixin-auth.php:237
+msgid "Invalid CSRF token. Please refresh the page. "
+msgstr "CSRF令牌无效。 请刷新页面。"
+
+#: inc/class-wp-weixin-auth.php:236 inc/class-wp-weixin-auth.php:562
+#: inc/class-wp-weixin-auth.php:700 inc/class-wp-weixin-auth.php:732
+msgid "System error."
+msgstr "系统错误。"
+
+#. translators: %s: title of menu item in draft status
+#: inc/class-walker-nav-menu-wechat-edit.php:107
+msgid "%s (Pending)"
+msgstr "%s (待定)"
+
+#. translators: %s: title of menu item which is invalid
+#: inc/class-walker-nav-menu-wechat-edit.php:103
+msgid "%s (Invalid)"
+msgstr "%s(无效)"

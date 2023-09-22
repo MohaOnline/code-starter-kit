@@ -1,0 +1,525 @@
+# Translation of Plugins - Easy Table of Contents - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Easy Table of Contents - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-02-24 06:21:53+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Easy Table of Contents - Stable (latest release)\n"
+
+#: includes/class.options.php:760
+msgid "This provides the same function as the Smooth Scroll Offset option above but applied when the user is visiting your site on a mobile device."
+msgstr "这提供了与上面的Smooth Scroll Offset选项相同的功能，但在用户在移动设备上访问您的 站点时应用。"
+
+#: includes/class.options.php:759
+msgid "Mobile Smooth Scroll Offset"
+msgstr "移动平滑滚动偏移"
+
+#: includes/class.options.php:561
+msgid "Bold"
+msgstr "粗"
+
+#: includes/class.options.php:559
+msgid "Medium"
+msgstr "中"
+
+#: includes/class.options.php:558
+msgid "Normal"
+msgstr "正常"
+
+#: includes/class.options.php:557
+msgid "Light"
+msgstr "轻"
+
+#: includes/class.options.php:556
+msgid "Extra Light"
+msgstr "超细"
+
+#: includes/class.options.php:560
+msgid "Semi Bold"
+msgstr "加粗"
+
+#: includes/class.options.php:555
+msgid "Thin"
+msgstr "细"
+
+#: includes/class.options.php:551
+msgid "Title Font Weight"
+msgstr "标题字体"
+
+#: includes/class.options.php:544
+msgid "Title Font Size"
+msgstr "标题字号"
+
+#: includes/class.options.php:563
+msgid "Heavy"
+msgstr "特粗"
+
+#: includes/class.options.php:562
+msgid "Extra Bold"
+msgstr "超粗"
+
+#: includes/class.admin.php:78 includes/inc.admin-options-page.php:11
+msgid "Settings"
+msgstr "设置"
+
+#: includes/class.admin.php:581
+msgid "Advanced:"
+msgstr "高级："
+
+#: includes/class.admin.php:588
+msgid "NOTE:"
+msgstr "备注："
+
+#: includes/class.admin.php:590
+msgid "Using the advanced options below will override the global advanced settings."
+msgstr "使用高级选项将会覆盖掉全局设置"
+
+#: includes/class.admin.php:599 includes/class.options.php:716
+msgid "Headings:"
+msgstr "标题："
+
+#: includes/class.admin.php:605 includes/class.options.php:717
+msgid "Select the heading to consider when generating the table of contents. Deselecting a heading will exclude it."
+msgstr "选择生成目录时想要的标题。取消选择标题将不会使用。"
+
+#: includes/class.admin.php:609 includes/class.options.php:722
+msgid "Heading 3 (h3)"
+msgstr "标题3（h3）"
+
+#: includes/class.admin.php:608 includes/class.options.php:721
+msgid "Heading 2 (h2)"
+msgstr "标题2（h2）"
+
+#: includes/class.admin.php:610 includes/class.options.php:723
+msgid "Heading 4 (h4)"
+msgstr "标题4（h4）"
+
+#: includes/class.admin.php:611 includes/class.options.php:724
+msgid "Heading 5 (h5)"
+msgstr "标题5（h5）"
+
+#: includes/class.admin.php:612 includes/class.options.php:725
+msgid "Heading 6 (h6)"
+msgstr "标题6（h6）"
+
+#: includes/class.admin.php:638
+msgid "Alternate Headings"
+msgstr "替换标题"
+
+#: includes/class.admin.php:661 includes/class.admin.php:695
+#: includes/class.options.php:740
+msgid "Examples:"
+msgstr "实例："
+
+#: includes/class.admin.php:665
+msgid "<strong>Note:</strong> This is case sensitive."
+msgstr "<strong>注意：</strong> 这是区分大小写的。"
+
+#: includes/class.admin.php:672 includes/class.options.php:731
+msgid "Exclude Headings"
+msgstr "排除标题"
+
+#: includes/class.admin.php:644
+msgid "Specify alternate table of contents header string. Add the header to be replaced and the alternate header on a single line separated with a pipe <code>|</code>. Put each additional original and alternate header on its own line."
+msgstr "指定备用目录标题字符串。将要替换的标头和备用标头添加到用管道分隔的单行上<code>|</code>。将每个额外的原始和备用标题放在它自己的行上。"
+
+#: includes/class.admin.php:678 includes/class.options.php:732
+msgid "Specify headings to be excluded from appearing in the table of contents. Separate multiple headings with a pipe <code>|</code>. Use an asterisk <code>*</code> as a wildcard to match other text."
+msgstr "指定要排除在目录中出现的标题。用管道分开多个标题<code>|</code>。使用星号<code>*</code> 作为匹配其他文本的通配符。"
+
+#: includes/class.admin.php:698 includes/class.options.php:743
+msgid "<code>*Fruit Diet*</code> Ignore headings with \"Fruit Diet\" somewhere in the heading."
+msgstr "<code>*水果饮食*</code> 忽略标题中某处的“水果饮食”标题。"
+
+#: includes/class.admin.php:699 includes/class.options.php:744
+msgid "<code>Apple Tree|Oranges|Yellow Bananas</code> Ignore headings that are exactly \"Apple Tree\", \"Oranges\" or \"Yellow Bananas\"."
+msgstr "<code>苹果树|橘子|黄香蕉</code> 忽略标题为“苹果树”，“橘子”或“黄香蕉”的标题。"
+
+#: includes/class.options.php:253
+msgid "Display Header Label"
+msgstr "显示标题标签"
+
+#: includes/class.options.php:246
+msgid "or more headings are present"
+msgstr "或有更多标题存在"
+
+#: includes/class.options.php:245
+msgid "Show when"
+msgstr "显示何时"
+
+#: includes/class.options.php:231
+msgid "Bottom"
+msgstr "底部"
+
+#: includes/class.options.php:222 includes/class.options.php:363
+msgid "Position"
+msgstr "位置"
+
+#: includes/class.options.php:214 includes/inc.admin-options-page.php:320
+msgid "Select the post types which will have the table of contents automatically inserted."
+msgstr "选择将自动插入目录的帖子类型。"
+
+#: includes/class.options.php:213 includes/class.options.php:841
+msgid "Auto Insert"
+msgstr "自动插入"
+
+#: includes/class.options.php:206
+msgid "Select the post types to enable the support for table of contents."
+msgstr "选择帖子类型以启用对目录的支持。"
+
+#: includes/class.options.php:205
+msgid "Enable Support"
+msgstr "启用支持"
+
+#: includes/class.admin.php:701 includes/class.options.php:746
+msgid "<strong>Note:</strong> This is not case sensitive."
+msgstr "<strong>注意：</strong> 这不区分大小写。"
+
+#: includes/class.options.php:324
+msgid "Smooth Scroll"
+msgstr "平滑滚动"
+
+#: includes/class.options.php:911
+msgid "Numeric"
+msgstr "数字"
+
+#: includes/class.options.php:924
+msgid "Decimal (default)"
+msgstr "十进制（默认）"
+
+#: includes/class.options.php:308
+msgid "Counter"
+msgstr "计数器"
+
+#: includes/class.options.php:903
+msgid "None"
+msgstr "没有"
+
+#: includes/class.options.php:301
+msgid "Show as Hierarchy"
+msgstr "显示为层次结构"
+
+#: includes/class.admin.php:629 includes/class.options.php:295
+msgid "Initially hide the table of contents."
+msgstr "最初隐藏目录。"
+
+#: includes/class.options.php:288
+msgid "Allow the user to toggle the visibility of the table of contents."
+msgstr "允许用户切换目录的可见性。"
+
+#: includes/class.options.php:287
+msgid "Toggle View"
+msgstr "切换视图"
+
+#: includes/class.options.php:270
+msgid "Contents"
+msgstr "内容"
+
+#: includes/class.options.php:268
+msgid "Eg: Contents, Table of Contents, Page Contents"
+msgstr "例如：内容，目录，页面内容"
+
+#: includes/class.options.php:267
+msgid "Header Label"
+msgstr "标题标签"
+
+#: includes/class.options.php:254
+msgid "Show header text above the table of contents."
+msgstr "在目录上方显示标题文本。"
+
+#: includes/class.options.php:592
+msgid "Grey"
+msgstr "灰色"
+
+#: includes/class.options.php:589
+msgid "The theme is only applied to the table of contents which is auto inserted into the post. The Table of Contents widget will inherit the theme widget styles."
+msgstr "该主题仅适用于被自动插入到该目录后。“目录” 窗口小部件将继承主题 窗口小部件样式。"
+
+#: includes/class.options.php:588
+msgid "Theme"
+msgstr "主题"
+
+#: includes/class.options.php:569
+msgid "Font Size"
+msgstr "字体大小"
+
+#: includes/class.options.php:492
+msgid "None (Default)"
+msgstr "无（默认）"
+
+#: includes/class.options.php:482
+msgid "Select the User Defined option from the Width option to utilitze the custom width."
+msgstr "从“宽度”选项中选择“用户定义”选项以使用自定义宽度。"
+
+#: includes/class.options.php:392 includes/class.options.php:481
+msgid "Custom Width"
+msgstr "自定义宽度"
+
+#: includes/class.options.php:386 includes/class.options.php:405
+#: includes/class.options.php:473
+msgid "User Defined"
+msgstr "用户自定义"
+
+#: includes/class.options.php:459
+msgid "Relative"
+msgstr "相对的"
+
+#: includes/class.options.php:445
+msgid "Fixed"
+msgstr "固定"
+
+#: includes/class.options.php:381 includes/class.options.php:440
+msgid "Width"
+msgstr "宽度"
+
+#: includes/class.options.php:674
+msgid "Hyphenate"
+msgstr "断字"
+
+#: includes/class.options.php:668
+msgid "Ensure anchors are in lowercase."
+msgstr "确保锚点为小写。"
+
+#: includes/class.options.php:667
+msgid "Lowercase"
+msgstr "小写"
+
+#: includes/class.options.php:644
+msgid "Link Visited Color"
+msgstr "链接访问的颜色"
+
+#: includes/class.options.php:637
+msgid "Link Hover Color"
+msgstr "链接悬停颜色"
+
+#: includes/class.options.php:630
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: includes/class.options.php:623
+msgid "Title Color"
+msgstr "标题颜色"
+
+#: includes/class.options.php:616
+msgid "Border Color"
+msgstr "边框颜色"
+
+#: includes/class.options.php:609
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: includes/class.options.php:604
+msgid "For the following settings to apply, select the Custom Theme option."
+msgstr "要应用以下设置，请选择“自定义主题”选项。"
+
+#: includes/class.options.php:603
+msgid "Custom Theme"
+msgstr "自定义主题"
+
+#: includes/class.options.php:596
+msgid "Transparent"
+msgstr "透明"
+
+#: includes/class.options.php:595
+msgid "Black"
+msgstr "黑色"
+
+#: includes/class.options.php:594
+msgid "White"
+msgstr "白色"
+
+#: includes/class.options.php:593
+msgid "Light Blue"
+msgstr "浅蓝"
+
+#: includes/class.options.php:783
+msgid "Widget Affix Selector"
+msgstr "小工具词缀选择器"
+
+#: includes/class.options.php:776
+msgid "This option normally applies to content written in character sets other than ASCII."
+msgstr "此选项通常适用于以ASCII以外的字符集编写的内容。"
+
+#: includes/class.options.php:775
+msgid "Anchor targets are restricted to alphanumeric characters as per HTML specification (see readme for more detail). The default anchor prefix will be used when no characters qualify. When left blank, a number will be used instead."
+msgstr "根据HTML规范，锚点目标仅限于字母数字字符（有关更多详细信息，请参阅自述文件）。没有字符限定时将使用默认锚点前缀。如果留空，则会使用一个数字。"
+
+#: includes/class.options.php:774
+msgid "Default Anchor Prefix"
+msgstr "默认锚点前缀"
+
+#: includes/class.options.php:767
+msgid "Limit Path"
+msgstr "限制路径"
+
+#: includes/class.options.php:752
+msgid "If you have a consistent menu across the top of your site, you can adjust the top offset to stop the headings from appearing underneath the top menu. A setting of 30 accommodates the WordPress admin bar. This setting only has an effect after you have enabled Smooth Scroll option."
+msgstr "如果您的网站顶部有通栏菜单，你可以调整顶部偏移出现顶部菜单的下方停止标题。设置为30可容纳WordPress管理栏。此设置只后效果您已经启用平滑滚动选项。"
+
+#: includes/class.options.php:751
+msgid "Smooth Scroll Offset"
+msgstr "平滑滚动偏移"
+
+#: includes/class.options.php:703
+msgid "Prevent the loading the core CSS styles. When selected, the appearance options from above will be ignored."
+msgstr "防止加载核心CSS样式。选中后，将忽略上面的外观选项。"
+
+#: includes/class.options.php:702
+msgid "CSS"
+msgstr "CSS"
+
+#: includes/class.options.php:682
+msgid "Show the table of contents for qualifying items on the homepage."
+msgstr "在主页上显示符合条件的项目的目录。"
+
+#: includes/class.options.php:681
+msgid "Homepage"
+msgstr "主页"
+
+#: includes/class.options.php:675
+msgid "Use - rather than _ in anchors."
+msgstr "使用 - 而不是_在锚点中。"
+
+#. Plugin Name of the plugin
+#: includes/inc.functions.php:143
+msgid "Easy Table of Contents"
+msgstr "简易目录"
+
+#: includes/inc.admin-options-page.php:227
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: includes/inc.admin-options-page.php:83
+#: includes/inc.admin-options-page.php:128
+msgid "Advanced"
+msgstr "高级"
+
+#: includes/inc.admin-options-page.php:83
+#: includes/inc.admin-options-page.php:109
+msgid "Appearance"
+msgstr "出现"
+
+#: includes/class.widget-toc.php:379
+msgid "If you choose to affix the widget, do not add any other widgets on the sidebar. Also, make sure you have only one instance Table of Contents widget on the page."
+msgstr "如果您选择粘贴窗口小工具，请不要在侧边栏上添加任何其他窗口小工具。此外，还要确保你只有一个内容实例表窗口小工具的上页。"
+
+#: includes/class.widget-toc.php:375
+msgid "Affix or pin the widget."
+msgstr "粘贴或固定小工具。"
+
+#: includes/class.widget-toc-sticky.php:489 includes/class.widget-toc.php:367
+msgid "Active Section Highlight Color:"
+msgstr "活动部分突出显示颜色："
+
+#: includes/class.widget-toc-sticky.php:482 includes/class.widget-toc.php:360
+msgid "Title"
+msgstr "标题"
+
+#: includes/class.widget-toc-sticky.php:26 includes/class.widget-toc.php:22
+msgid "Display the table of contents."
+msgstr "显示目录。"
+
+#: includes/class.options.php:1242
+msgid "The callback function used for the <strong>%s</strong> setting is missing."
+msgstr "用于的回调函数 <strong>%s</strong> 设置丢失。"
+
+#: includes/class.options.php:785
+msgid "Since every theme is different, this can not be determined automatically. If you are unsure how to find the sidebar's class or id, please ask the theme's support persons."
+msgstr "由于每个主题都不同，因此无法自动确定。如果您不确定如何找到侧栏的课程或ID，请询问主题的支持人员。"
+
+#: includes/class.options.php:784
+msgid "To enable the option to affix or pin the Table of Contents widget enter the theme's sidebar class or id."
+msgstr "要启用选项以粘贴或固定目录窗口小工具，请输入主题的侧边栏类或ID。"
+
+#. Description of the plugin
+msgid "Adds a user friendly and fully automatic way to create and display a table of contents generated from the page content."
+msgstr "添加用户友好且全自动的方式来创建和显示从页面内容生成的目录。"
+
+#: includes/class.admin.php:697 includes/class.options.php:742
+msgid "<code>Fruit*</code> Ignore headings starting with \"Fruit\"."
+msgstr "<code>Fruit*</code> 忽略以“Fruit”开头的标题"
+
+#: includes/class.admin.php:607 includes/class.options.php:720
+msgid "Heading 1 (h1)"
+msgstr "标题1  (h1)"
+
+#: includes/class.options.php:769
+msgid "Eg: /wiki/, /corporate/annual-reports/"
+msgstr "例如：/wiki/, /corporate/annual-reports/"
+
+#: includes/class.options.php:777
+msgid "Eg: i, toc_index, index, _"
+msgstr "例如：i, toc_index, index, _"
+
+#: includes/class.admin.php:663
+msgid "<code>Level [1.1]|Alternate TOC Header</code> Replaces Level [1.1] in the table of contents with Alternate TOC Header."
+msgstr "<code>等级[1.1] |备用目录标题</code> 用替代目录标题替换目录中的Level [1.1]。"
+
+#: includes/class.admin.php:569
+msgid "Insert table of contents."
+msgstr "插入目录"
+
+#: includes/class.admin.php:558
+msgid "Disable the automatic insertion of the table of contents."
+msgstr "禁用自动插入目录。"
+
+#: includes/class.admin.php:461 includes/class.admin.php:462
+#: includes/class.admin.php:514 includes/class.widget-toc.php:27
+#: includes/class.widget-toc.php:351
+msgid "Table of Contents"
+msgstr "目录"
+
+#: includes/inc.admin-options-page.php:83
+#: includes/inc.admin-options-page.php:91
+msgid "General"
+msgstr "常规"
+
+#: includes/class.options.php:786
+msgid "Eg: .widget-area or #sidebar"
+msgstr "例如：小工具区域 或 #侧边栏"
+
+#: includes/class.options.php:471 includes/class.options.php:597
+msgid "Custom"
+msgstr "自定义"
+
+#: includes/class.options.php:223
+msgid "Choose where where you want to display the table of contents."
+msgstr "选择目录的显示位置。"
+
+#: includes/class.options.php:227
+msgid "After first heading"
+msgstr "在第一个标题之后"
+
+#: includes/class.options.php:768
+msgid "Restrict generation of the table of contents to pages that match the required path. This path is from the root of your site and always begins with a forward slash."
+msgstr "将目录的生成限制为与所需路径匹配的页面。此路径从站点的根开始，并且始终以正斜杠开头。"
+
+#: includes/class.options.php:368 includes/class.options.php:494
+msgid "Right"
+msgstr "右侧"
+
+#: includes/class.options.php:367 includes/class.options.php:493
+msgid "Left"
+msgstr "左侧"
+
+#: includes/class.options.php:230
+msgid "Top"
+msgstr "顶部"
+
+#: includes/class.options.php:215 includes/inc.admin-options-page.php:321
+msgid "NOTE: The table of contents will only be automatically inserted on post types for which it has been enabled."
+msgstr "注意：目录只会自动插入已启用它的文章类型。"
+
+#: includes/class.options.php:226
+msgid "Before first heading (default)"
+msgstr "在第一个标题之前（默认）"
+
+#: includes/class.admin.php:622 includes/class.admin.php:628
+#: includes/class.options.php:294
+msgid "Initial View"
+msgstr "初始视图"

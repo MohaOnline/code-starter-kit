@@ -1,0 +1,885 @@
+# Translation of Themes - Newsup in Chinese (China)
+# This file is distributed under the same license as the Themes - Newsup package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-06-20 13:12:34+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Themes - Newsup\n"
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Newsup"
+msgstr "Newsup"
+
+#. Description of the theme
+#: inc/ansar/admin/getting-started.php:90
+#, gp-priority: high
+msgid "Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/"
+msgstr "Newsup 是一个快速、清爽、现代的最佳响应是新闻杂志 WordPress 主题。该主题已完全小工具化，因此用户可以通过易于使用的小工具来管理内容。Newsup 适用于动态新闻、报纸、杂志、出版商、博客、编辑、在线和游戏杂志，新闻门户、个人博客、报刊、出版和评价网站以及任何创意网站。Newsup 同时也为 SEO、WPML、Gutenberg、翻译和RTL 的兼容打好了基础。在线预览：https://demo.themeansar.com/newsup 文档：https://docs.themeansar.com/docs/newsup/"
+
+#: inc/ansar/admin/tabs/recommended-plugins-panel.php:28
+msgid "Ansar Demo Import"
+msgstr "Ansar演示导入"
+
+#: inc/ansar/customize/theme-options.php:1022
+msgid "Text Color"
+msgstr "文本颜色"
+
+#: inc/ansar/customize/theme-options.php:321
+#: inc/ansar/customize/theme-options.php:1275
+msgid "Telegram URL"
+msgstr "Telegram 网址"
+
+#: inc/ansar/template-tags.php:96 single.php:176
+msgid "Edit"
+msgstr "编辑"
+
+#: inc/ansar/customize/theme-options.php:795
+msgid "Hide/Show Sharing Icons"
+msgstr "隐藏/显示分享图标"
+
+#: inc/ansar/customize/theme-options.php:1332
+msgid "Post Image Settings"
+msgstr "文章图像设置"
+
+#: inc/ansar/customize/theme-options.php:1348
+msgid "Post Image display type:"
+msgstr "文章图片显示类型："
+
+#: inc/ansar/customize/theme-options.php:1350
+msgid "Fix Height Post Image"
+msgstr "固定高度文章图片"
+
+#: inc/ansar/customize/theme-options.php:1351
+msgid "Auto Height Post Image"
+msgstr "自动高度文章图片"
+
+#: inc/ansar/customize/theme-options.php:765
+msgid "Hide/Show Tag"
+msgstr "隐藏/显示标签"
+
+#: inc/ansar/customize/theme-options.php:82
+msgid "Theme Default Setting"
+msgstr "主题默认设置"
+
+#: inc/ansar/customize/theme-options.php:83
+msgid "From WordPress Setting"
+msgstr "从WordPress设置"
+
+#: inc/ansar/customize/theme-options.php:80
+msgid "Date / Time in header display type:"
+msgstr "页头显示类型中的日期/时间："
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: inc/ansar/template-functions.php:204
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "编辑 <span class=\"screen-reader-text\">%s</span>"
+
+#. Template Name of the theme
+msgid "Page Builder Template"
+msgstr "Page Builder 模板"
+
+#: inc/ansar/customize/theme-options.php:1037
+msgid "Select Column Layout"
+msgstr "选择栏布局"
+
+#: footer.php:168
+msgid "https://wordpress.org/"
+msgstr "https://cn.wordpress.org/"
+
+#. translators: placeholder replaced with string
+#: footer.php:177
+msgid "https://themeansar.com/"
+msgstr "https://themeansar.com/"
+
+#: inc/ansar/customize/theme-options.php:997
+msgid "Background Image"
+msgstr "背景图像"
+
+#: inc/ansar/customize/theme-options.php:968
+msgid "Footer Options"
+msgstr "页脚选项"
+
+#: inc/ansar/customize/theme-options.php:849
+msgid "Related Posts"
+msgstr "相关文章"
+
+#: inc/ansar/customize/theme-options.php:1243
+msgid "Pinterest URL"
+msgstr "Pinterest URL"
+
+#. translators: placeholder replaced with string
+#: footer.php:177
+msgid "Theme: %1$s by %2$s."
+msgstr "主题: %1$s 作者 %2$s"
+
+#: searchform.php:3
+msgctxt "placeholder"
+msgid "Search"
+msgstr "搜索"
+
+#. translators: placeholder replaced with string
+#: footer.php:171
+msgid "Proudly powered by %s"
+msgstr "自豪地采用%s"
+
+#: inc/ansar/customize/frontpage-options.php:24
+#: inc/ansar/customize/theme-options.php:1010
+msgid "Overlay Color"
+msgstr "叠加颜色"
+
+#. translators: %s: post title
+#: comments.php:32
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "在 &ldquo;%s&rdquo; 有 1 条评论"
+
+#: comments.php:58 comments.php:79
+msgid "Older Comments"
+msgstr "较早评论"
+
+#: comments.php:59 comments.php:80
+msgid "Newer Comments"
+msgstr "较新评论"
+
+#: inc/ansar/customize/theme-options.php:780
+msgid "Hide/Show Featured Image"
+msgstr "隐藏/显示特色图片"
+
+#: inc/ansar/customize/theme-options.php:750
+#: inc/ansar/customize/theme-options.php:885
+msgid "Hide/Show Date"
+msgstr "隐藏/显示日期"
+
+#: inc/ansar/customize/theme-options.php:672
+#: inc/ansar/customize/theme-options.php:914
+msgid "Hide/Show Comments"
+msgstr "隐藏/显示评论"
+
+#: inc/ansar/customize/theme-options.php:720
+#: inc/ansar/customize/theme-options.php:871
+msgid "Hide/Show Categories"
+msgstr "隐藏/显示分类"
+
+#: inc/ansar/customize/theme-options.php:899
+msgid "Hide/Show Author Name"
+msgstr "隐藏/显示作者名称"
+
+#: inc/ansar/customize/theme-options.php:735
+#: inc/ansar/customize/theme-options.php:809
+msgid "Hide/Show Author Details"
+msgstr "隐藏/显示作者详情"
+
+#: inc/ansar/customize/theme-options.php:841
+msgid "Enable Related Posts"
+msgstr "启用相关文章"
+
+#: comments.php:91
+msgid "Comments are closed."
+msgstr "评论已关闭。"
+
+#: comments.php:55 comments.php:76
+msgid "Comment navigation"
+msgstr "评论导航"
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:37
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "《%2$s》有%1$s条评论"
+
+#: inc/ansar/customize/theme-options.php:938
+msgid "Hide / Show You Missed Section"
+msgstr "隐藏/显示\"You Missed\"板块"
+
+#: inc/ansar/customize/theme-options.php:923
+msgid "You Missed Section"
+msgstr "You Missed 板块"
+
+#: inc/ansar/customize/theme-options.php:948
+msgid "You Missed"
+msgstr "您错过了"
+
+#: inc/ansar/customize/theme-options.php:13
+msgid "Theme Options"
+msgstr "主题选项"
+
+#: header.php:22
+msgid "Skip to content"
+msgstr "跳至内容"
+
+#: inc/ansar/widgets/widgets-base.php:197
+msgid "Select Image"
+msgstr "选择图像"
+
+#: functions.php:101
+msgid "Primary menu"
+msgstr "主要菜单"
+
+#: inc/ansar/admin/tabs/getting-started-panel.php:14
+msgid "Newsup Documentation"
+msgstr "Newsup 文档"
+
+#: 404.php:17
+msgid "Home"
+msgstr "首页"
+
+#: inc/ansar/customize/theme-options.php:658
+msgid "Hide All"
+msgstr "全部隐藏"
+
+#: inc/ansar/widgets/widgets-base.php:198
+msgid "Choose Image"
+msgstr "选择图像"
+
+#: 404.php:14 404.php:18
+msgid "404"
+msgstr "404"
+
+#: 404.php:33
+msgid "4"
+msgstr "4"
+
+#. translators: %1$s %2$s: about
+#: inc/ansar/admin/getting-started.php:19
+msgid "About %1$s %2$s"
+msgstr "关于 %1$s %2$s"
+
+#: inc/ansar/customize/frontpage-options.php:298
+msgid "Background image"
+msgstr "背景图像"
+
+#: functions.php:102
+msgid "Footer menu"
+msgstr "页脚菜单"
+
+#: inc/ansar/customize/theme-options.php:856
+#: inc/ansar/customize/theme-options.php:958
+#: inc/ansar/widgets/widget-design-slider.php:115
+#: inc/ansar/widgets/widget-posts-list.php:131
+#: inc/ansar/widgets/widget-posts-slider.php:116
+#: inc/ansar/widgets/widget-posts-tabbed.php:136
+#: inc/ansar/widgets/widget-posts-tabbed.php:139
+#: inc/ansar/widgets/widget-posts-tabbed.php:146
+msgid "Title"
+msgstr "标题"
+
+#: inc/ansar/widgets/featured-post-widget.php:26
+msgid "Title: "
+msgstr "标题："
+
+#: inc/ansar/widgets/widget-posts-double-category.php:236
+msgid "Title 2"
+msgstr "标题 2"
+
+#: inc/ansar/widgets/widget-posts-double-category.php:234
+msgid "Title 1"
+msgstr "标题 1"
+
+#: inc/ansar/admin/tabs/useful-plugin-panel.php:38
+msgid "To display the contact form, please install the Contact Form 7 plugin."
+msgstr "要显示联系表单，请安装Contact Form 7插件。"
+
+#: inc/ansar/admin/tabs/useful-plugin-panel.php:42
+msgid "To display the Woocommerce layout, please install the Woocommerce plugin."
+msgstr "要显示Woocommerce布局，请安装Woocommerce插件。"
+
+#: inc/ansar/admin/tabs/useful-plugin-panel.php:46
+msgid "To use the Elementor layouts and pages, install the Elementor plugin."
+msgstr "要使用Elementor布局和页面，请安装Elementor插件。"
+
+#: inc/ansar/widgets/widgets-base.php:196
+msgid "Upload"
+msgstr "上传"
+
+#: inc/ansar/customize/theme-options.php:163
+#: inc/ansar/customize/theme-options.php:1117
+msgid "Twitter URL"
+msgstr "Twitter网址"
+
+#: inc/ansar/widgets/widgets-base.php:209
+msgctxt "Remove"
+msgid "X"
+msgstr "X"
+
+#: inc/ansar/customize/theme-options.php:258
+#: inc/ansar/customize/theme-options.php:1212
+msgid "Youtube URL"
+msgstr "YouTube网址"
+
+#: inc/ansar/customize/frontpage-options.php:101
+msgid "URL Link"
+msgstr "URL链接"
+
+#: inc/ansar/customize/frontpage-options.php:116
+#: inc/ansar/customize/theme-options.php:145
+#: inc/ansar/customize/theme-options.php:177
+#: inc/ansar/customize/theme-options.php:209
+#: inc/ansar/customize/theme-options.php:241
+#: inc/ansar/customize/theme-options.php:272
+#: inc/ansar/customize/theme-options.php:304
+#: inc/ansar/customize/theme-options.php:336
+#: inc/ansar/customize/theme-options.php:435
+#: inc/ansar/customize/theme-options.php:1100
+#: inc/ansar/customize/theme-options.php:1132
+#: inc/ansar/customize/theme-options.php:1163
+#: inc/ansar/customize/theme-options.php:1195
+#: inc/ansar/customize/theme-options.php:1226
+#: inc/ansar/customize/theme-options.php:1257
+#: inc/ansar/customize/theme-options.php:1289
+msgid "Open link in a new tab"
+msgstr "在新标签页中打开链接"
+
+#: 404.php:35
+msgid "We are sorry, but the page you are looking for does not exist."
+msgstr "很抱歉，您要查找的页面不存在。"
+
+#: inc/ansar/widgets/widget-posts-list.php:131
+msgid "Posts List"
+msgstr "文章列表"
+
+#: inc/ansar/widgets/featured-post-widget.php:39
+msgid "Choose Category:"
+msgstr "选择分类:"
+
+#: inc/ansar/customize/customizer-control.php:108
+msgid "All"
+msgstr "全部"
+
+#: inc/ansar/admin/getting-started.php:37
+msgid "Activating "
+msgstr "正在激活"
+
+#: inc/ansar/admin/class-getting-start-plugin-helper.php:97
+msgid "Activate"
+msgstr "激活"
+
+#: inc/ansar/customize/theme-options.php:227
+#: inc/ansar/customize/theme-options.php:1181
+msgid "Instagram URL"
+msgstr "Instagram 网址"
+
+#. translators: %1$s %2$s: welcome message
+#: inc/ansar/admin/getting-started.php:89
+msgid "Welcome to %1$s - Version %2$s"
+msgstr "欢迎使用 %1$s - 版本 %2$s"
+
+#. translators: %1$s: welcome page
+#: inc/ansar/admin/getting-started.php:21
+msgid "Welcome to %1$s"
+msgstr "欢迎使用 %1$s"
+
+#: inc/ansar/admin/getting-started.php:113
+msgid "Useful Plugins"
+msgstr "有用的插件"
+
+#: inc/ansar/customize/theme-options.php:826 single.php:123
+msgid "Related Post"
+msgstr "相关文章"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:138
+msgid "Popular Posts"
+msgstr "热门文章"
+
+#: inc/ansar/customize/customizer-default.php:48 inc/ansar/hooks/hooks.php:100
+#: inc/ansar/widgets/widget-posts-tabbed.php:74
+#: inc/ansar/widgets/widget-posts-tabbed.php:139
+msgid "Popular"
+msgstr "热门"
+
+#: inc/ansar/customize/theme-options.php:289
+msgid "Pintrest URL"
+msgstr "Pintrest URL"
+
+#: inc/ansar/customize/customizer-default.php:29
+#: inc/ansar/customize/frontpage-options.php:128
+msgid "Top Tags"
+msgstr "热门标签"
+
+#: inc/ansar/customize/frontpage-options.php:164
+msgid "Section Title"
+msgstr "板块标题"
+
+#. translators: %s: search term
+#: search.php:28
+msgid "Search Results for: %s"
+msgstr "%s的搜索结果"
+
+#: inc/ansar/widgets/widget-design-slider.php:117
+#: inc/ansar/widgets/widget-latest-news.php:120
+#: inc/ansar/widgets/widget-posts-carousel.php:128
+#: inc/ansar/widgets/widget-posts-list.php:132
+#: inc/ansar/widgets/widget-posts-slider.php:118
+#: inc/ansar/widgets/widget-posts-tabbed.php:147
+msgid "Select category"
+msgstr "选择分类"
+
+#: inc/ansar/customize/theme-options.php:655
+msgid "Show Date and Author"
+msgstr "显示日期和作者"
+
+#: inc/ansar/customize/theme-options.php:656
+msgid "Show Date Only"
+msgstr "仅显示日期"
+
+#: template-parts/content-search.php:33
+msgid "Nothing Found"
+msgstr "未找到"
+
+#: inc/ansar/admin/getting-started.php:129
+msgid "Your feedback is valuable to us"
+msgstr "您的反馈对我们很有价值"
+
+#: inc/ansar/widgets/widget-design-slider.php:109
+#: inc/ansar/widgets/widget-latest-news.php:110
+#: inc/ansar/widgets/widget-posts-list.php:122
+#: inc/ansar/widgets/widget-posts-slider.php:109
+#: inc/ansar/widgets/widget-posts-tabbed.php:127
+msgid "Yes"
+msgstr "是"
+
+#: inc/ansar/admin/tabs/getting-started-panel.php:19
+msgid "Visit the Support"
+msgstr "访问技术支持"
+
+#: inc/ansar/template-tags.php:34
+msgid "View all posts in %s"
+msgstr "查看 %s 中所有文章"
+
+#: inc/ansar/customize/frontpage-options.php:444
+msgid "Trending Tab Title"
+msgstr "趋势标签标题"
+
+#: inc/ansar/customize/customizer-default.php:49
+#: inc/ansar/widgets/widget-posts-tabbed.php:55
+#: inc/ansar/widgets/widget-posts-tabbed.php:146
+msgid "Trending"
+msgstr "趋势"
+
+#: inc/ansar/admin/getting-started.php:166
+msgid "Thank you for choosing Newsup theme. To take full advantage of the complete features of the theme, you have to go to our %1$s welcome page %2$s."
+msgstr "感谢您选择Newsup主题。 要充分利用主题的全部功能，您要去我们的%1$s欢迎页面%2$s。"
+
+#: inc/ansar/admin/getting-started.php:130
+msgid "Submit a review"
+msgstr "提交评论"
+
+#: template-parts/content-search.php:35
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "抱歉，没有符合您搜索条件的结果。请换其它关键词再试。"
+
+#: inc/ansar/customize/theme-options.php:683
+#: inc/ansar/customize/theme-options.php:703
+msgid "Single Post"
+msgstr "单篇文章"
+
+#: inc/ansar/customize/theme-options.php:547
+msgid "Single Blog Pages"
+msgstr "单个博客页面"
+
+#: functions.php:216
+msgid "Sidebar Widget Area"
+msgstr "侧边栏小工具区"
+
+#: inc/ansar/widgets/featured-post-widget.php:35
+msgid "Show Posts from Category"
+msgstr "显示类别中的文章"
+
+#: inc/ansar/widgets/widget-latest-news.php:122
+msgid "Show excerpt"
+msgstr "显示摘要"
+
+#: inc/ansar/customize/theme-options.php:657
+msgid "Show Author Only"
+msgstr "仅显示作者"
+
+#: inc/ansar/hooks/hook-meta.php:23 inc/ansar/hooks/hook-meta.php:60
+msgid "Select category color class. You can set appropriate categories color on \"Categories\" section of the theme customizer."
+msgstr "选择类别颜色类。 您可以在主题自定义的“类别”部分上设置适当的类别颜色。"
+
+#: inc/ansar/widgets/widgets-common-functions.php:24
+msgid "Select Category"
+msgstr "选择分类"
+
+#: inc/ansar/widgets/widget-posts-double-category.php:235
+msgid "Select category 1"
+msgstr "选择分类 1"
+
+#: inc/ansar/widgets/widget-posts-double-category.php:237
+msgid "Select category 2"
+msgstr "选择分类 2"
+
+#: inc/ansar/customize/frontpage-options.php:346
+msgid "Slider Section "
+msgstr "滑块板块"
+
+#: inc/ansar/customize/frontpage-options.php:39
+msgid "Remove Image Overlay"
+msgstr "删除图像叠加"
+
+#: inc/ansar/customize/frontpage-options.php:80
+#: inc/ansar/customize/frontpage-options.php:299
+msgid "Recommended Size %1$s px X %2$s px"
+msgstr "建议的大小 %1$s px X %2$s px"
+
+#: inc/ansar/hooks/hooks.php:93 inc/ansar/widgets/widget-posts-tabbed.php:67
+msgid "Recent"
+msgstr "最近"
+
+#: inc/ansar/template-tags.php:105
+msgid "Read More"
+msgstr "阅读更多"
+
+#: inc/ansar/customize/frontpage-options.php:465
+msgid "Posts to be shown on trending tab"
+msgstr "要显示在趋势标签上的文章"
+
+#: inc/ansar/customize/frontpage-options.php:238
+msgid "Posts to be shown on trending posts "
+msgstr "文章将在趋势文章中显示"
+
+#: inc/ansar/customize/frontpage-options.php:368
+msgid "Posts to be shown on banner slider section"
+msgstr "文章显示在横幅滑块板块"
+
+#: single.php:39
+msgid "Permalink to: "
+msgstr "永久链接："
+
+#: template-parts/content-page.php:28
+msgid "Pages:"
+msgstr "页面："
+
+#: 404.php:34
+msgid "Oops! Page not found"
+msgstr "哎呀！ 未找到页面"
+
+#: inc/ansar/widgets/widget-design-slider.php:110
+#: inc/ansar/widgets/widget-latest-news.php:111
+#: inc/ansar/widgets/widget-posts-list.php:123
+#: inc/ansar/widgets/widget-posts-slider.php:110
+#: inc/ansar/widgets/widget-posts-tabbed.php:128
+msgid "No"
+msgstr "没有"
+
+#: inc/ansar/admin/getting-started.php:125
+msgid "Newsup Theme Support"
+msgstr "Newsup主题支持"
+
+#: inc/ansar/admin/tabs/getting-started-panel.php:15
+msgid "Newsup Support"
+msgstr "Newsup支持"
+
+#: inc/ansar/customize-pro/class-customize.php:64
+msgid "Newsup Pro Available!"
+msgstr "Newsup 专业版可用!"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:50
+msgid "NEWSUP Popular"
+msgstr "NEWSUP 热门"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:51
+msgid "NEWSUP Latest"
+msgstr "NEWSUP 最新"
+
+#: inc/ansar/customize/theme-options.php:194
+#: inc/ansar/customize/theme-options.php:1149
+msgid "Linkedin URL"
+msgstr "Linkedin 网址"
+
+#: inc/ansar/customize/theme-options.php:522
+#: inc/ansar/customize/theme-options.php:571
+#: inc/ansar/customize/theme-options.php:616
+msgid "Layout"
+msgstr "布局"
+
+#: inc/ansar/customize/frontpage-options.php:407
+msgid "Latest Tab Title"
+msgstr "最新选项卡标题"
+
+#: inc/ansar/customize/frontpage-options.php:237
+msgid "Latest Posts Category"
+msgstr "最新文章类别"
+
+#: inc/ansar/customize/frontpage-options.php:425
+msgid "Popular Tab Title"
+msgstr "热门选项卡标题"
+
+#: inc/ansar/customize/frontpage-options.php:179
+#: inc/ansar/widgets/featured-post-widget.php:32
+#: inc/ansar/widgets/widget-posts-tabbed.php:135
+msgid "Latest Posts"
+msgstr "最新文章"
+
+#: inc/ansar/customize/frontpage-options.php:216
+msgid "Latest Post Title"
+msgstr "最新文章标题"
+
+#: inc/ansar/customize/customizer-default.php:34
+msgid "Latest Post"
+msgstr "最新文章"
+
+#: inc/ansar/customize/customizer-default.php:47
+#: inc/ansar/widgets/widget-posts-tabbed.php:136
+msgid "Latest"
+msgstr "最新"
+
+#: inc/ansar/admin/class-getting-start-plugin-helper.php:93
+msgid "Install and activate"
+msgstr "安装并激活"
+
+#: inc/ansar/customize/frontpage-options.php:144
+msgid "Hide/Show Top Tags"
+msgstr "隐藏/显示热门标签"
+
+#: inc/ansar/customize/theme-options.php:65
+msgid "Hide / Show Time"
+msgstr "隐藏/显示时间"
+
+#: inc/ansar/customize/theme-options.php:113
+#: inc/ansar/customize/theme-options.php:1068
+msgid "Hide / Show Social Icon"
+msgstr "隐藏/显示社交图标"
+
+#: inc/ansar/customize/theme-options.php:51
+msgid "Hide / Show Date"
+msgstr "隐藏/显示日期"
+
+#: inc/ansar/customize/theme-options.php:21
+msgid "Header Options"
+msgstr "页头选项"
+
+#: inc/ansar/admin/tabs/getting-started-panel.php:18
+#: inc/ansar/admin/tabs/getting-started-panel.php:19
+msgid "Go to the Customizer"
+msgstr "转到自定义"
+
+#: inc/ansar/customize-pro/class-customize.php:65
+msgid "Go Pro"
+msgstr "获取专业版"
+
+#: 404.php:36
+msgid "Go Back"
+msgstr "返回"
+
+#: inc/ansar/admin/getting-started.php:100
+msgid "Getting Started"
+msgstr "开始体验吧"
+
+#: inc/ansar/admin/getting-started.php:126
+msgid "Get Support"
+msgstr "获取支持"
+
+#: inc/ansar/admin/getting-started.php:168
+msgid "Get started with Newsup"
+msgstr "开始使用Newsup"
+
+#: functions.php:236
+msgid "Front-page Sidebar Section"
+msgstr "主页侧边栏板块"
+
+#: inc/ansar/customize/frontpage-options.php:50
+msgid "Frontpage Options"
+msgstr "主页选项"
+
+#. Template Name of the theme
+msgid "Frontpage"
+msgstr "主页"
+
+#: functions.php:226
+msgid "Front-page Content Section"
+msgstr "主页内容板块"
+
+#: functions.php:246
+msgid "Footer Widget Area"
+msgstr "页脚挂件区"
+
+#: inc/ansar/customize/customizer-default.php:54
+msgid "Featured Story"
+msgstr "精选故事"
+
+#: inc/ansar/customize/theme-options.php:129
+#: inc/ansar/customize/theme-options.php:1086
+msgid "Facebook URL"
+msgstr "Facebook网址"
+
+#: inc/ansar/customize/frontpage-options.php:275
+msgid "Enable Slider Banner Section"
+msgstr "启用滑块横幅板块"
+
+#: inc/ansar/customize/frontpage-options.php:196
+msgid "Enable Latest Posts Section"
+msgstr "启用最新文章板块"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:145
+msgid "Enable Categorised Tab"
+msgstr "启用分类选项卡"
+
+#: inc/ansar/admin/tabs/getting-started-panel.php:15
+msgid "Documentation"
+msgstr "文档"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:21
+msgid "Displays tabbed posts lists from selected settings."
+msgstr "显示选定设置中的选项卡式文章列表。"
+
+#: inc/ansar/widgets/widget-design-slider.php:20
+#: inc/ansar/widgets/widget-posts-slider.php:20
+msgid "Displays posts slider from selected category."
+msgstr "显示所选类别的文章滑块。"
+
+#: inc/ansar/widgets/widget-latest-news.php:20
+msgid "Displays posts from selected category in single column."
+msgstr "在单栏中显示所选类别的文章。"
+
+#: inc/ansar/widgets/widget-posts-list.php:20
+msgid "Displays posts from selected category in a list."
+msgstr "在列表中显示选定类别的文章。"
+
+#: inc/ansar/widgets/widget-posts-double-category.php:20
+msgid "Displays posts from 2 selected categories in double column."
+msgstr "在双栏中显示2个选定类别的文章。"
+
+#: inc/ansar/widgets/widget-posts-carousel.php:20
+msgid "Displays posts carousel from selected category."
+msgstr "显示选定类别的文章轮播。"
+
+#: inc/ansar/widgets/featured-post-widget.php:6
+msgid "Display Featured Posts"
+msgstr "显示精选文章"
+
+#: inc/ansar/admin/getting-started.php:105
+#: inc/ansar/admin/tabs/getting-started-panel.php:10
+#: inc/ansar/admin/tabs/getting-started-panel.php:11
+msgid "Demo Content"
+msgstr "演示内容"
+
+#: inc/ansar/admin/class-getting-start-plugin-helper.php:112
+msgid "Deactivate"
+msgstr "停用"
+
+#: inc/ansar/customize/theme-options.php:632
+#: inc/ansar/customize/theme-options.php:651
+msgid "Date and Author"
+msgstr "日期和作者"
+
+#: inc/ansar/customize/theme-options.php:480
+msgid "Content Layout Settings"
+msgstr "内容布局设置"
+
+#: inc/ansar/admin/getting-started.php:164
+msgid "Congratulations, Welcome to %1$s Theme"
+msgstr "恭喜，欢迎使用 %1$s主题"
+
+#: inc/ansar/hooks/hook-meta.php:17 inc/ansar/hooks/hook-meta.php:45
+msgid "Color Class"
+msgstr "颜色类"
+
+#: inc/ansar/hooks/hook-meta.php:12 inc/ansar/hooks/hook-meta.php:52
+msgid "Category Color 4"
+msgstr "类别颜色4"
+
+#: inc/ansar/hooks/hook-meta.php:11 inc/ansar/hooks/hook-meta.php:51
+msgid "Category Color 3"
+msgstr "类别颜色3"
+
+#: inc/ansar/hooks/hook-meta.php:10 inc/ansar/hooks/hook-meta.php:50
+msgid "Category Color 2"
+msgstr "类别颜色2"
+
+#: inc/ansar/hooks/hook-meta.php:9 inc/ansar/hooks/hook-meta.php:49
+msgid "Category Color 1"
+msgstr "类别颜色1"
+
+#: inc/ansar/customize/frontpage-options.php:367
+#: inc/ansar/customize/frontpage-options.php:464
+msgid "Category"
+msgstr "类别"
+
+#: inc/ansar/hooks/hooks.php:108 inc/ansar/widgets/widget-posts-tabbed.php:83
+msgid "Categorised"
+msgstr "分类的"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:143
+msgid "Categorised Posts"
+msgstr "分类的文章"
+
+#: inc/ansar/customize/frontpage-options.php:60
+msgid "Banner Advertisement"
+msgstr "横幅广告"
+
+#: inc/ansar/customize/frontpage-options.php:79
+msgid "Banner Section Advertisement"
+msgstr "横幅板块广告"
+
+#: inc/ansar/customize/theme-options.php:498
+msgid "Archive Blog Pages"
+msgstr "存档博客页面"
+
+#: inc/ansar/widgets/widget-posts-tabbed.php:25
+msgid "AR: Tabbed Posts"
+msgstr "AR: 选项卡式文章"
+
+#: inc/ansar/widgets/widget-posts-slider.php:24
+msgid "AR: Posts Slider"
+msgstr "AR: 文章滑块"
+
+#: inc/ansar/widgets/widget-posts-list.php:24
+msgid "AR: Posts List"
+msgstr "AR: 文章列表"
+
+#: inc/ansar/widgets/widget-posts-carousel.php:24
+msgid "AR: Posts Carousel"
+msgstr "AR: 文章轮播"
+
+#: inc/ansar/widgets/widget-latest-news.php:24
+msgid "AR: Latest News Post"
+msgstr "AR: 最新新闻文章"
+
+#: inc/ansar/widgets/featured-post-widget.php:8
+msgid "AR: Featured Posts"
+msgstr "AR: 精选文章"
+
+#: inc/ansar/widgets/widget-posts-double-category.php:24
+msgid "AR: Double Categories Posts"
+msgstr "AR: 双类别文章"
+
+#: inc/ansar/widgets/widget-design-slider.php:24
+msgid "AR: 3 Column Posts Slider"
+msgstr "AR: 3 栏文章滑块"
+
+#: inc/ansar/customize/frontpage-options.php:389
+msgid "Tabbed Section "
+msgstr "选项卡式板块"
+
+#: inc/ansar/customize/customizer-default.php:73
+msgid "You may have missed"
+msgstr "您可能错过了"
+
+#: inc/ansar/customize/frontpage-options.php:256
+msgid "Slider Banner & Tab Section"
+msgstr "滑块横幅和选项卡板块"
+
+#: single.php:56 single.php:113
+msgid "By"
+msgstr "作者"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "Themeansar"
+msgstr "Themeansar"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://themeansar.com/free-themes/newsup/"
+msgstr "https://themeansar.com/free-themes/newsup/"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://themeansar.com"
+msgstr "https://themeansar.com"

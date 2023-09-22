@@ -1,0 +1,37 @@
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main;
+	font-size: 1rem;
+	line-height: $font__line-height-body;
+}
+
+.has-gigantic-font-size {
+	font-size: var( --bt-font-size-h1, 64px );
+}
+.has-huge-font-size {
+	font-size: var( --bt-font-size-h2, 48px );
+}
+.has-extra-large-font-size {
+	font-size: var( --bt-font-size-h3, 32px );
+}
+.has-larger-font-size {
+	font-size: var( --bt-font-size-h4, 24px );
+}
+.has-large-font-size {
+	font-size: var( --bt-font-size-h5, 18px );
+}
+.has-normal-font-size {
+	font-size: var( --bt-font-size-h6, 16px );
+}
+
+.smallmargin {
+	margin-bottom: 8px;
+}
+
+@import "headings";
+@import "copy";

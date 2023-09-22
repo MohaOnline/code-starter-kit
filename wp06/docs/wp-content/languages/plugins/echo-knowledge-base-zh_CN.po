@@ -1,0 +1,2397 @@
+# Translation of Plugins - Knowledge Base for Documentation, FAQs with AI Assistance - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Knowledge Base for Documentation, FAQs with AI Assistance - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-26 03:09:57+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Knowledge Base for Documentation, FAQs with AI Assistance - Stable (latest release)\n"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:347
+msgid "Import finished successfully"
+msgstr "已成功完成导入"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:174
+#: includes/admin/kb-configuration/class-epkb-export-import.php:180
+#: includes/admin/kb-configuration/class-epkb-export-import.php:187
+#: includes/admin/kb-configuration/class-epkb-export-import.php:194
+msgid "Import file format is not correct."
+msgstr "导入文件格式不正确。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:328
+msgid "Sub Category Filter"
+msgstr "子类别筛选"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:329
+msgid "New sub-category filter option to narrow down your search."
+msgstr "新的子类别筛选选项，缩小你的搜索范围。"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:200
+msgid "Knowledge Base data is missing"
+msgstr "知识库数据丢失"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:92
+#: includes/admin/kb-configuration/class-epkb-export-import.php:260
+msgid "Found invalid data."
+msgstr "找到无效的数据。"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:276
+msgid "Elegant Layouts needs to be active."
+msgstr "典雅布局必须处于启用状态。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1058
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3195
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3322
+msgid "Width (%)"
+msgstr "宽度(%)"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3371
+msgid "Text Alignment"
+msgstr "文本对齐"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:977
+msgid "What are you looking for?"
+msgstr "你在找什么？"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1638
+msgid "Table of Content"
+msgstr "目录"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:993
+msgid "Support Center"
+msgstr "支持中心"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:978
+msgid "Self Help Documentation"
+msgstr "自助文档"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:212
+msgid "Modern Style (Recommended)"
+msgstr "现代风格(推荐)"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:980
+msgid "Have a Question?"
+msgstr "有问题？"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:979
+msgid "Help Center"
+msgstr "帮助中心"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:211
+msgid "Legacy Style"
+msgstr "传统风格"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3127
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3255
+msgid "Border (px)"
+msgstr "边框(px)"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:487
+msgid "TOC Location"
+msgstr "目录位置"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:572
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:965
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:186
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:192
+#: includes/admin/pages/class-epkb-config-settings-page.php:1685
+#: includes/admin/pages/class-epkb-need-help-features.php:435
+msgid "Right Sidebar"
+msgstr "右侧栏"
+
+#: includes/class-epkb-core-utilities.php:565
+msgid "Get Additional Knowledge Bases"
+msgstr "获取其他知识库"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:436
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:830
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1141
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1156
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1167
+#: includes/admin/pages/class-epkb-config-settings-page.php:528
+msgid "Not displayed"
+msgstr "不显示"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:572
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:965
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:186
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:192
+#: includes/admin/pages/class-epkb-config-settings-page.php:1671
+#: includes/admin/pages/class-epkb-need-help-features.php:434
+msgid "Left Sidebar"
+msgstr "左侧边栏"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:959
+msgid "Clean"
+msgstr "清洁"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:239
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:281
+msgid "Width (Tablets)"
+msgstr "宽度(平板端)"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1158
+msgid "Title Text"
+msgstr "标题文字"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1706
+msgid "Starting Position (px)"
+msgstr "起始位置(像素)"
+
+#: includes/features/articles/class-epkb-articles-setup.php:1642
+msgid "Add your widgets here"
+msgstr "在此处添加小工具"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:270
+msgid "Width Units"
+msgstr "宽度单位"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:248
+msgid "Width - Units(Tablets)"
+msgstr "宽度-单位（平板端）"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:290
+msgid "Width - Units (Tablets)"
+msgstr "宽度-单位（平板端）"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:228
+msgid "Width - Units"
+msgstr "宽度-单位"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1291
+msgid "Widget Sidebar Styling"
+msgstr "小工具侧栏样式"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:396
+msgid "Tablet Width ( % )"
+msgstr "平板端宽度 ( % )"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3041
+msgid "Search Box Width"
+msgstr "搜索框宽度"
+
+#: includes/features/articles/class-epkb-articles-setup.php:1641
+msgid "No widgets"
+msgstr "没有小工具"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:339
+msgid "New article sidebars with the ability to add your own Widgets, TOC and custom code."
+msgstr "新的文章侧边栏，能够添加您自己的小工具，目录和自定义代码。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:387
+msgid "Desktop Width ( % )"
+msgstr "桌面端宽度 ( % )"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:338
+#: includes/admin/pages/class-epkb-need-help-features.php:432
+#: includes/admin/pages/class-epkb-need-help-features.php:1035
+msgid "Article Sidebars"
+msgstr "文章侧边栏"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:206
+msgid "Article Page Structure"
+msgstr "文章页面结构"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:28
+msgid "Custom - Drag and Drop Categories"
+msgstr "自定义-拖放类别"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:35
+msgid "Custom - Drag and Drop articles"
+msgstr "自定义-拖放文章"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1194
+msgid "Count Text"
+msgstr "计数文字"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:414
+msgid "Content Area Background"
+msgstr "内容区域背景"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:405
+msgid "Content Area Padding ( px )"
+msgstr "内容区域内边距( px )"
+
+#: includes/admin/admin-functions.php:249
+msgid "Restore"
+msgstr "恢复"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-global.php:252
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:244
+#: includes/system/scripts-registration-admin.php:331
+msgid "Loading..."
+msgstr "正在加载……"
+
+#: includes/admin/admin-functions.php:266
+msgid "Knowledge Base Page"
+msgstr "知识库页面"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-global.php:207
+msgid "kb-article"
+msgstr "kb-article"
+
+#: includes/admin/admin-functions.php:248
+msgid "We detected that you deleted KB Main Page \"%s\". If you did this by accident you can restore here: "
+msgstr "我们检测到您删除了知识库主页\"%s\"。 如果您不小心这样做了，可以在这里恢复："
+
+#: includes/features/kbs/class-epkb-kb-handler.php:374
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi. Sed nisi lacus sed viverra tellus in hac habitasse platea. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Eleifend donec pretium vulputate sapien nec."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi. Sed nisi lacus sed viverra tellus in hac habitasse platea. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Eleifend donec pretium vulputate sapien nec."
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:728
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3464
+msgid "No Shadow"
+msgstr "没有阴影"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:348
+msgid "This is a H2 heading"
+msgstr "这是H2标题"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:358
+msgid "This is a H3 heading"
+msgstr "这是H3标题"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:360
+msgid "This is a H4 heading"
+msgstr "这是H4标题"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:362
+msgid "This is an ordered list"
+msgstr "这是一个有序列表"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:350
+msgid "This is an un-ordered list"
+msgstr "这是一个无序列表"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:135
+msgid "Access Manager allows administrators, companies, and organizations to control and restrict access to their private Knowledge Base based on WordPress user accounts. Grant permission using roles and groups."
+msgstr "Access Manager允许管理员，公司和组织基于WordPress用户帐户来控制和限制对其私有知识库的访问。 使用角色和组授予权限。"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:232
+msgid "Tabs Layout uses top categories for its tabs, and therefore, it cannot contain articles. Add your articles to sub-categories."
+msgstr "“选项卡布局”的选项卡使用顶级类别，因此，它不能包含文章。 将您的文章添加到子类别。"
+
+#: includes/class-epkb-html-forms.php:363
+msgid "Accept"
+msgstr "接受"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:349
+msgid "Use Knowledge Base Wizard for an easy way to set up your KB and to choose from predefined Templates and colors."
+msgstr "使用知识库向导可以轻松设置知识库，并从预定义的模板和颜色中进行选择。"
+
+#: includes/class-epkb-input-filter.php:308
+msgid "The value \"%s\" is not a number"
+msgstr "值 \"%s\" 不是数字"
+
+#: includes/class-epkb-input-filter.php:293
+msgid "The value \"%s\" is not valid"
+msgstr "值 \"%s\"无效"
+
+#: includes/class-epkb-input-filter.php:271
+msgid "The value cannot be %s. %sValid values are: %s"
+msgstr "该值不能为 %s。  %s有效值是： %s"
+
+#: includes/class-epkb-input-filter.php:270
+#: includes/class-epkb-utilities.php:1035
+msgid "empty"
+msgstr "空"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:14
+msgid "Label"
+msgstr "标签"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:949
+msgid "Image"
+msgstr "图像"
+
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:109
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:207
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:209
+#: includes/admin/pages/class-epkb-config-settings-page.php:1406
+#: includes/system/scripts-registration-admin.php:371
+msgid "Navigation"
+msgstr "导航"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:1045
+#: includes/admin/pages/class-epkb-config-tools-page.php:1175
+msgid "No access"
+msgstr "无法访问"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:929
+msgid "Download System Information"
+msgstr "下载系统信息"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:121
+msgid "Only top-level categories have icons visible."
+msgstr "仅顶级类别的图标可见。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1253
+#: includes/admin/pages/class-epkb-config-settings-page.php:651
+msgid "Choose Template"
+msgstr "选择模板"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1234
+#: includes/admin/pages/class-epkb-config-settings-page.php:1043
+#: includes/admin/pages/class-epkb-config-settings-page.php:1052
+#: includes/admin/pages/class-epkb-config-settings-page.php:1062
+#: includes/admin/pages/class-epkb-config-settings-page.php:1319
+msgid "Category Archive Page"
+msgstr "分类存档页面"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1496
+msgid "Date:"
+msgstr "日期："
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1516
+msgid "Categories:"
+msgstr "分类："
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1520
+msgid "Date"
+msgstr "日期"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:62
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:116
+msgid "Sidebar Layout does not use icons for categories."
+msgstr "侧栏布局不使用类别的图标。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:90
+msgid "The icon will NOT show on the front-end KB pages for this category. "
+msgstr "该图标不会显示在该类别的知识库前端页面上。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:359
+msgid "Add Image icons to top categories in your theme. You can upload images or custom icons."
+msgstr "将图像图标添加到主题的顶级类别。 您可以上传图像或自定义图标。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:358
+msgid "Image Icons for Themes"
+msgstr "主题的图像图标"
+
+#: includes/system/scripts-registration-admin.php:115
+#: includes/system/scripts-registration-admin.php:143
+msgid "Loading Preview..."
+msgstr "正在加载预览…"
+
+#: includes/system/scripts-registration-admin.php:82
+#: includes/system/scripts-registration-admin.php:363
+msgid "Color value"
+msgstr "颜色值"
+
+#: includes/system/scripts-registration-admin.php:80
+#: includes/system/scripts-registration-admin.php:367
+msgid "Select default color"
+msgstr "选择默认颜色"
+
+#: includes/system/scripts-registration-admin.php:78
+msgid "Reset color"
+msgstr "重置颜色"
+
+#: includes/system/scripts-registration-admin.php:77
+msgid "Reset"
+msgstr "重置"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:438
+msgid "Search Results Include Category for Each Article"
+msgstr "搜索结果包括每篇文章的类别"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:428
+msgid "User Can Rate Articles and Submit Feedback"
+msgstr "用户可以对文章进行评分并提交反馈"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:419
+msgid "Configure article to display author and create date."
+msgstr "配置文章以显示作者并创建日期。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:418
+msgid "Articles Can Now Display Author and Creation Date"
+msgstr "文章现在可以显示作者和创建日期"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:409
+msgid "Articles can now display table of content (TOC) on either side. The TOC has a list of headings and subheading. Users can easily see the article structure and can navigate to any section of the article."
+msgstr "现在可以在文章的任一侧显示目录（TOC）。 目录包含标题和子标题的列表。 用户可以轻松查看文章结构，并可以导航到文章的任何部分。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:408
+msgid "Table of Content on Article Pages"
+msgstr "文章页面上的目录"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:398
+msgid "Three Additional Levels of Categories"
+msgstr "类别的三个附加层级"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:389
+msgid "On the Main Page (or Sidebar if you have the Elegant Layout add-on) the article can now be configured to appear above their peer categories and sub-categories."
+msgstr "现在，可以在主页（或侧栏，如果您具有Elegant Layout插件）上，将文章配置为显示在其对等类别和子类别上方。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:388
+msgid "New Option to Show Articles Above Categories"
+msgstr "显示在类别以上文章的新选项"
+
+#: includes/admin/pages/class-epkb-analytics-page.php:90
+msgid "View Articles"
+msgstr "查看文章"
+
+#: includes/admin/pages/class-epkb-analytics-page.php:87
+msgid "Article belongs to one or more categories or sub-categories."
+msgstr "文章属于一个或多个类别或子类别。"
+
+#: includes/admin/pages/class-epkb-analytics-page.php:79
+msgid "View Categories"
+msgstr "查看分类"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1479
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1486
+msgid "Read More"
+msgstr "阅读更多"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:447
+msgid "KB Groups for Access Manager"
+msgstr "KB Groups for Access Manager"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:439
+msgid "Search category filter now shows category hierarchy each found article is in."
+msgstr "搜索类别过滤器现在显示每个找到的文章所在的类别层次结构。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:369
+msgid "New layout that focuses on showing categories in a sidebar on both Category Archive and Article pages."
+msgstr "新的布局侧重于在“类别存档”和“文章页面”的边栏中显示类别。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:399
+msgid "You can now organize your categories and articles up to six levels deep, allowing you to have more complex documentation hierarchy."
+msgstr "现在，您可以最多组织类别和文章六个级别，从而使您具有更复杂的文档层次结构。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:448
+msgid "Search Easily for Users to Add to KB Groups"
+msgstr "轻松搜索用户添加到知识库组"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:368
+msgid "Categories Focused Layout"
+msgstr "分类集中布局"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:19
+#: includes/admin/pages/class-epkb-add-ons-features.php:37
+#: includes/admin/pages/class-epkb-add-ons-features.php:48
+#: includes/admin/pages/class-epkb-add-ons-features.php:58
+#: includes/admin/pages/class-epkb-add-ons-features.php:69
+#: includes/admin/pages/class-epkb-add-ons-features.php:79
+#: includes/admin/pages/class-epkb-add-ons-features.php:95
+#: includes/admin/pages/class-epkb-add-ons-features.php:116
+#: includes/admin/pages/class-epkb-add-ons-features.php:126
+#: includes/admin/pages/class-epkb-add-ons-features.php:136
+#: includes/admin/pages/class-epkb-add-ons-features.php:146
+#: includes/admin/pages/class-epkb-add-ons-features.php:166
+#: includes/admin/pages/class-epkb-add-ons-features.php:175
+#: includes/admin/pages/class-epkb-add-ons-features.php:184
+#: includes/admin/pages/class-epkb-add-ons-features.php:193
+#: includes/admin/pages/class-epkb-add-ons-features.php:225
+#: includes/admin/pages/class-epkb-add-ons-features.php:236
+#: includes/admin/pages/class-epkb-add-ons-features.php:245
+#: includes/admin/pages/class-epkb-add-ons-features.php:254
+#: includes/admin/pages/class-epkb-add-ons-features.php:263
+#: includes/admin/pages/class-epkb-add-ons-features.php:274
+#: includes/admin/pages/class-epkb-add-ons-features.php:285
+#: includes/admin/pages/class-epkb-add-ons-features.php:317
+#: includes/admin/pages/class-epkb-add-ons-features.php:337
+#: includes/admin/pages/class-epkb-add-ons-features.php:347
+#: includes/admin/pages/class-epkb-add-ons-features.php:357
+#: includes/admin/pages/class-epkb-add-ons-features.php:367
+#: includes/admin/pages/class-epkb-add-ons-features.php:387
+#: includes/admin/pages/class-epkb-add-ons-features.php:397
+#: includes/admin/pages/class-epkb-add-ons-features.php:407
+#: includes/admin/pages/class-epkb-add-ons-features.php:417
+msgid "KB Core"
+msgstr "KB Core"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1877
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2330
+#: includes/admin/pages/class-epkb-config-settings-page.php:1254
+#: includes/admin/pages/class-epkb-config-settings-page.php:1424
+msgid "Breadcrumb"
+msgstr "面包屑"
+
+#: includes/admin/editor/class-epkb-editor-view.php:136
+#: includes/admin/editor/class-epkb-editor-view.php:230
+#: includes/class-epkb-html-admin.php:642
+#: includes/class-epkb-html-forms.php:368
+#: includes/system/class-epkb-deactivate-feedback.php:99
+msgid "Cancel"
+msgstr "取消"
+
+#: includes/admin/editor/class-epkb-editor-view.php:135
+msgid "Update"
+msgstr "更新"
+
+#: includes/admin/editor/class-epkb-editor-view.php:456
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:211
+msgid "Help"
+msgstr "帮助"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:242
+msgid "For example, if you set the icon size to 50px, an image size of 50x50 will work the best."
+msgstr "例如，如果将图标大小设置为50px，则50x50的图像大小将是最好的。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:240
+msgid "This image should match the given setting for image icon size. If you choose a larger image, the image will be compressed to the icon size. This may cause unnecessary load time on the front-end."
+msgstr "此图像应与图像图标大小的给定设置匹配。 如果选择较大的图像，则图像将被压缩为图标大小。 这可能会导致前端不必要的加载时间。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:231
+msgid "Choose Category Icon"
+msgstr "选择分类图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:212
+msgid "Image Size:"
+msgstr "图像大小："
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:166
+msgid "Image Icon"
+msgstr "图像图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:80
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:143
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3843
+msgid "Category Icon"
+msgstr "分类图标"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:419
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:354
+msgid "Search Button"
+msgstr "搜索按钮"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:968
+msgid "Compact"
+msgstr "紧凑"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:214
+msgid "Full"
+msgstr "全部"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:140
+msgid "I want organize Categories and Articles"
+msgstr "我要组织类别和文章"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:163
+msgid "Font Icon"
+msgstr "字体图标"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:315
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:943
+msgid "Category Focused Layout"
+msgstr "分类集中布局"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:309
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:941
+msgid "Basic Layout"
+msgstr "基本布局"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:312
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:942
+msgid "Tabs Layout"
+msgstr "选项卡布局"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:969
+msgid "Plain"
+msgstr "朴素"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:966
+msgid "Collapsed"
+msgstr "已折叠"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:965
+msgid "Left Icon Style"
+msgstr "左图标样式"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:964
+msgid "Simple"
+msgstr "简约"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:961
+msgid "Minimalistic"
+msgstr "极简化"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:951
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:967
+msgid "Formal"
+msgstr "正式"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:952
+msgid "Bright"
+msgstr "明亮"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1461
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:946
+msgid "Standard"
+msgstr "标准"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:283
+msgid "Please refer to the %s documentation%s for help with your license account and any other issues."
+msgstr "请参阅%s 文档%s ，以获得有关您的许可证帐户和任何其他问题的帮助。"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:609
+msgid "New Add-on"
+msgstr "新的附加组件"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:596
+msgid "Core"
+msgstr "Core"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:956
+msgid "Organized 2"
+msgstr "组织 2"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:593
+msgid "Add-on"
+msgstr "附加组件"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:948
+msgid "Modern"
+msgstr "现代"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:287
+#: includes/admin/editor/class-epkb-editor-controller.php:303
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:188
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:383
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:399
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:368
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:384
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:777
+msgid "Configuration NOT saved due to following problem:"
+msgstr "由于以下问题，配置未保存："
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:957
+msgid "Icon Focused"
+msgstr "焦点时图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:53
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:88
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:123
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:158
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:193
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:234
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:254
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:276
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:296
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1052
+msgctxt "echo-knowledge-base"
+msgid "%"
+msgstr "%"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:251
+msgctxt "do not change again"
+msgid "uncategorized"
+msgstr "uncategorized"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:193
+msgid "Article B"
+msgstr "文章 B"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:182
+msgctxt "echo-knowledge-base"
+msgid "No Sidebar"
+msgstr "没有侧边栏"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:180
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:181
+msgctxt "echo-knowledge-base"
+msgid "Right Sidebar"
+msgstr "右侧栏"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:180
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:181
+msgctxt "echo-knowledge-base"
+msgid "Left Sidebar"
+msgstr "左侧边栏"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:174
+msgid "Product A"
+msgstr "产品 A"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:181
+msgid "Product B"
+msgstr "产品 B"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1080
+msgid "Content Background"
+msgstr "内容背景"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2449
+msgid "Breadcrumb Text"
+msgstr "面包屑文字"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:495
+msgid "Right Sidebar Background"
+msgstr "右侧边栏背景"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:52
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:87
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:122
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:157
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:192
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:233
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:253
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:275
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:295
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1051
+msgctxt "echo-knowledge-base"
+msgid "px"
+msgstr "像素"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1039
+msgid "Archive Container Width"
+msgstr "存档容器宽度"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:495
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1028
+msgid "Left Sidebar Background"
+msgstr "左侧边栏背景"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:176
+msgid "Article Sidebar Location"
+msgstr "文章侧边栏位置"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1047
+msgid "Archive Container Width Units"
+msgstr "存档容器宽度单位"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1020
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1072
+msgid "Padding ( px )"
+msgstr "内边距 ( px )"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1579
+msgid "CSS Class to exclude headers from the TOC"
+msgstr "CSS类从目录中排除标题"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:187
+msgid "Topic B"
+msgstr "主题 B"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1223
+#: includes/class-epkb-html-elements.php:320
+msgid "off"
+msgstr "关"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1222
+#: includes/class-epkb-html-elements.php:319
+msgid "on"
+msgstr "开"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1218
+msgid "Categories in URL"
+msgstr "URL中的类别"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1124
+msgid "Small Screen Break point ( px )"
+msgstr "小屏幕断点 ( px )"
+
+#: includes/admin/editor/class-epkb-editor-view.php:318
+#: includes/admin/wizard/class-epkb-kb-wizard-global.php:239
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:112
+msgid "Apply"
+msgstr "应用"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:173
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:196
+msgid "Knowledge Base Slug"
+msgstr "知识库别名"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1213
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1214
+#: includes/admin/pages/class-epkb-config-settings-page.php:143
+#: includes/admin/pages/class-epkb-config-settings-page.php:1418
+msgid "TOC"
+msgstr "目录"
+
+#: includes/system/scripts-registration-admin.php:79
+#: includes/system/scripts-registration-admin.php:365
+msgid "Default"
+msgstr "默认"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:76
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:231
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:288
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:322
+msgid "Configuration Saved"
+msgstr "配置已保存"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:923
+msgid "Output full debug information (after instructed by support staff)"
+msgstr "输出完整的调试信息（在技术支持人员的指导下）"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1276
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1281
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1851
+#: includes/admin/pages/class-epkb-config-settings-page.php:1225
+#: includes/admin/pages/class-epkb-config-tools-page.php:614
+msgid "Article Title"
+msgstr "文章标题"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:258
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:354
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:339
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:755
+msgid "Ensure that Multiple KB add-on is active and refresh this page"
+msgstr "确保多个KB附件组件处于启用状态，然后刷新此页面。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1499
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2126
+msgid "Author Text"
+msgstr "作者文字"
+
+#: includes/admin/editor/class-epkb-editor-view.php:460
+msgid "KB Documentation"
+msgstr "KB 文档"
+
+#: includes/features/layouts/class-epkb-layout.php:213
+msgid "Create Categories"
+msgstr "创建类别"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:220
+msgid "Add KB to Website Menu"
+msgstr "将KB添加到网站菜单"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:183
+msgid "The slug should not contain full KB URL."
+msgstr "该别名不应包含完整的知识库URL。"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:234
+msgid "Choose the website menu(s) where users will access the Knowledge Base. You can change it at any time in WordPress -> Appearance -> Menus."
+msgstr "选择网站菜单，用户通过它访问知识库。 您可以随时在WordPress->外观->菜单中更改它。"
+
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:382
+msgid "Category Box"
+msgstr "类别框"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1616
+msgid "Active Heading"
+msgstr "激活的标题"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3890
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3927
+msgid "How Can We Help?"
+msgstr "我们能帮你什么吗？"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:258
+msgid "Additional Resources"
+msgstr "其他资源"
+
+#: includes/class-epkb-html-admin.php:56
+msgid "View KB"
+msgstr "查看知识库"
+
+#: includes/system/scripts-registration-admin.php:55
+#: includes/system/scripts-registration-public.php:31
+msgid "Loading Template..."
+msgstr "正在加载模板..."
+
+#: includes/features/kbs/class-epkb-kb-handler.php:245
+msgid "About KB Add-ons"
+msgstr "关于KB插件"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:348
+msgid "Wizards"
+msgstr "向导"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1724
+msgid "Title (optional)"
+msgstr "标题（可选）"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1664
+msgid "Border Style"
+msgstr "边框样式"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1669
+msgid "Between Article and TOC"
+msgstr "在文章和目录之间"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:638
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3065
+msgid "Before Categories"
+msgstr "在分类前"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2892
+msgid "Article Meta Icon"
+msgstr "文章元图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1670
+msgid "Around TOC"
+msgstr "目录周围"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:639
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3066
+msgid "After Categories"
+msgstr "在分类后"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2174
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2246
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2318
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2884
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2896
+msgid "Show icon"
+msgstr "显示图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:634
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3061
+msgid "Show Articles"
+msgstr "显示文章"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3337
+msgid "Search Title Html Tag"
+msgstr "搜索标题html标签"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:118
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:130
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1668
+#: includes/admin/pages/class-epkb-config-settings-page.php:513
+#: includes/admin/pages/class-epkb-config-settings-page.php:545
+msgid "None"
+msgstr "无"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1659
+msgid "Middle"
+msgstr "中"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1653
+#: includes/admin/pages/class-epkb-config-settings-page.php:1628
+msgid "Location"
+msgstr "位置"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2175
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2247
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2319
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2885
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2897
+msgid "Hide icon"
+msgstr "隐藏图标"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:427
+#: includes/features/kbs/class-epkb-kb-handler.php:150
+msgid "Article Rating and Feedback"
+msgstr "文章评分和反馈"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:762
+msgid "New Features"
+msgstr "新功能"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2192
+msgid "Created On"
+msgstr "创建于"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:33
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:68
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:103
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:138
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:173
+#: includes/admin/pages/class-epkb-config-page.php:620
+#: includes/admin/pages/class-epkb-need-help-features.php:713
+#: includes/features/kbs/class-epkb-kb-handler.php:238
+msgid "FAQs"
+msgstr "常见问题"
+
+#: includes/features/kbs/class-epkb-kb-handler.php:231
+msgid "Category Hierarchy and Tabs Layout"
+msgstr "类别层次结构和选项卡布局 "
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2474
+msgid "Main"
+msgstr "主要"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:341
+msgid "Introduction"
+msgstr "介绍"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:64
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:70
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:75
+msgid "Could not save category sequence. Please try again later."
+msgstr "无法保存类别序列。请稍后再试。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1960
+msgid "All Topics"
+msgstr "所有主题"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:100
+msgid "Add-on Bundle"
+msgstr "附加捆绑包"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:101
+msgid "Save money with bundle discount"
+msgstr "使用捆绑折扣节省资金"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:103
+msgid "Save up to 50% when buying multiple add-ons together."
+msgstr "一起购买多个附加组件时，可节省 50% 的资金。"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:167
+msgid "General"
+msgstr "常规"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:81
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:314
+msgid "Resources"
+msgstr "资源"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:110
+msgid "More ways to design your KB"
+msgstr "设计知识库的更多方法"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:119
+msgid "Expand your documentation"
+msgstr "扩展你的文档"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:128
+msgid "Enhance and analyze user searches"
+msgstr "增强和分析用户搜索"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:165
+msgid "Protect your KB content"
+msgstr "保护您的知识库内容"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:156
+msgid "Link to PDFs, posts and pages"
+msgstr "链接到 PDF、文章和页面"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1476
+msgid "Category - "
+msgstr "分类 - "
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:117
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:129
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3075
+msgid "Top Categories"
+msgstr "顶级分类"
+
+#: includes/admin/pages/class-epkb-config-page.php:810
+msgid "Errors"
+msgstr "错误"
+
+#: includes/admin/pages/class-epkb-config-page.php:794
+msgid "License issue"
+msgstr "许可证问题"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1228
+msgid "Main Page Category Link"
+msgstr "主页类别链接"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:285
+#: includes/admin/editor/class-epkb-editor-controller.php:301
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:186
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:381
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:397
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:366
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:382
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:775
+msgid "Could not save the new configuration"
+msgstr "无法保存新配置"
+
+#: includes/admin/admin-menu.php:25
+msgid "Analytics - Echo Knowledge Base"
+msgstr "统计 - Echo Knowledge Base"
+
+#: includes/admin/pages/class-epkb-analytics-page.php:295
+msgid "KB Stats"
+msgstr "知识库统计"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3390
+msgid "No Icons"
+msgstr "无图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3385
+msgid "Icons Location"
+msgstr "图标位置"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3411
+msgid "Icon Size ( px )"
+msgstr "图标大小 （ px ）"
+
+#: includes/admin/pages/class-epkb-add-ons-features.php:202
+#: includes/admin/pages/class-epkb-add-ons-features.php:307
+#: includes/admin/pages/class-epkb-add-ons-features.php:327
+#: includes/admin/pages/class-epkb-add-ons-features.php:437
+#: includes/admin/pages/class-epkb-add-ons-page.php:127
+#: includes/admin/pages/class-epkb-config-tools-page.php:814
+#: includes/features/kbs/class-epkb-kb-handler.php:146
+msgid "Advanced Search"
+msgstr "高级搜索"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:331
+#: includes/features/kbs/class-epkb-kb-handler.php:208
+msgid "Overview"
+msgstr "概述"
+
+#: includes/admin/pages/class-epkb-need-help-features.php:123
+#: includes/class-epkb-html-forms.php:724
+msgid "Documentation"
+msgstr "文档"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:300
+#: includes/admin/pages/class-epkb-config-tools-page.php:1359
+#: includes/system/scripts-registration-admin.php:341
+msgid "Save"
+msgstr "保存"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1545
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1731
+msgid "Table of Contents"
+msgstr "目录"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:91
+#: includes/admin/pages/class-epkb-config-settings-page.php:997
+#: includes/admin/pages/class-epkb-config-settings-page.php:1007
+#: includes/admin/pages/class-epkb-need-help-features.php:252
+msgid "Main Page"
+msgstr "主页"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:903
+msgid "Enable Debug"
+msgstr "启用调试"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:764
+#: includes/admin/pages/class-epkb-config-tools-page.php:95
+#: includes/features/kbs/class-epkb-kb-handler.php:252
+#: includes/features/shortcodes/class-epkb-articles-index-shortcode.php:96
+#: includes/system/class-epkb-deactivate-feedback.php:204
+#: includes/system/class-epkb-deactivate-feedback.php:242
+msgid "Other"
+msgstr "其他"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2767
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:106
+#: includes/features/articles/class-epkb-articles-setup.php:673
+#: templates/archive-categories.php:506 templates/archive-categories.php:722
+msgid "Previous"
+msgstr "上一个"
+
+#: includes/admin/admin-menu.php:25
+msgid "Analytics"
+msgstr "分析"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1233
+#: includes/admin/pages/class-epkb-config-settings-page.php:106
+#: includes/admin/pages/class-epkb-config-settings-page.php:1020
+#: includes/admin/pages/class-epkb-config-settings-page.php:1030
+msgid "Article Page"
+msgstr "文章页面"
+
+#: includes/admin/editor/class-epkb-editor-view.php:647
+#: includes/features/layouts/class-epkb-layouts-setup.php:131
+msgid "Demo Article"
+msgstr "演示文章"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:32
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:37
+#: includes/admin/kb-configuration/class-epkb-kb-config-sequence.php:42
+msgid "Could not save article sequence"
+msgstr "无法保存文章序列"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1469
+msgid "Heading Description"
+msgstr "标题说明"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:903
+msgid "Disable Debug"
+msgstr "禁用调试"
+
+#: includes/class-epkb-html-forms.php:298
+msgid ". Database Error."
+msgstr "。数据库错误。"
+
+#: includes/system/scripts-registration-admin.php:52
+msgid "Sending feedback ..."
+msgstr "正在发送反馈..."
+
+#: includes/system/scripts-registration-admin.php:53
+msgid "Changing debug ..."
+msgstr "正在更改调试..."
+
+#: includes/system/scripts-registration-admin.php:54
+msgid "Help text is coming soon."
+msgstr "帮助文本即将推出。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2757
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:109
+#: includes/features/articles/class-epkb-articles-setup.php:674
+#: templates/archive-categories.php:507 templates/archive-categories.php:723
+msgid "Next"
+msgstr "下一个"
+
+#: templates/feature-breadcrumb.php:114
+msgid "Link "
+msgstr "链接 "
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1881
+#: includes/admin/pages/class-epkb-config-settings-page.php:1248
+#: includes/admin/pages/class-epkb-need-help-features.php:444
+msgid "Breadcrumbs"
+msgstr "面包屑"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1447
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1903
+#: includes/admin/pages/class-epkb-config-settings-page.php:1259
+#: includes/admin/pages/class-epkb-config-settings-page.php:1431
+#: includes/admin/pages/class-epkb-need-help-features.php:528
+msgid "Back Navigation"
+msgstr "返回导航"
+
+#: includes/class-epkb-utilities.php:24
+msgid "Trash"
+msgstr "回收站"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:115
+msgid "Archive Page"
+msgstr "存档页面"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:114
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:225
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:543
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:936
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1391
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1790
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1999
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:56
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:160
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:537
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:660
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:178
+msgid "Padding"
+msgstr "内边距"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1199
+msgid "List of Articles"
+msgstr "文章列表"
+
+#: includes/admin/pages/class-epkb-need-help-features.php:1087
+#: includes/system/scripts-registration-admin.php:338
+msgid "Advanced"
+msgstr "高级"
+
+#: includes/admin/editor/class-epkb-editor-view.php:266
+msgid "KB Template"
+msgstr "知识库模板"
+
+#: includes/system/scripts-registration-admin.php:336
+msgid "Style"
+msgstr "样式"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:955
+msgid "Organized"
+msgstr "组织"
+
+#: includes/admin/pages/class-epkb-analytics-page.php:75
+msgid "Categories help you to organize articles into groups and hierarchies."
+msgstr "类别可帮助您将文章组织为组和层次结构。"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:164
+#: includes/features/kbs/class-epkb-kb-handler.php:134
+msgid "Access Manager"
+msgstr "访问管理器"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:155
+#: includes/features/kbs/class-epkb-kb-handler.php:158
+msgid "Links Editor for PDFs and More"
+msgstr "链接编辑器，PDF以及更多"
+
+#: includes/system/class-epkb-upgrades.php:876
+msgctxt " version number, link to what is new page"
+msgid "plugin was updated to version %s."
+msgstr "插件已更新为版本 %s。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3204
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3331
+msgid "Search Results: Match Article Colors"
+msgstr "搜索结果：匹配文章颜色"
+
+#: includes/features/layouts/class-epkb-layouts-setup.php:117
+msgid "This knowledge base was archived."
+msgstr "此知识库已存档。"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:525
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:918
+#: includes/admin/pages/class-epkb-add-ons-features.php:28
+#: includes/admin/pages/class-epkb-add-ons-page.php:145
+#: includes/admin/pages/class-epkb-config-page.php:207
+#: includes/admin/pages/class-epkb-config-page.php:234
+#: includes/admin/pages/class-epkb-need-help-features.php:1077
+#: includes/features/kbs/class-epkb-kb-handler.php:154
+msgid "Widgets"
+msgstr "小工具"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3626
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3682
+msgid "Search Background"
+msgstr "搜索背景"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:82
+msgid "Debug"
+msgstr "调试"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:915
+msgid "Debug Information:"
+msgstr "调试信息:"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:146
+msgid "Shortcodes, Widgets, Sidebars"
+msgstr "短代码，小工具，侧边栏"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:143
+msgid "CPT Name"
+msgstr "CPT 名称"
+
+#: includes/admin/pages/class-epkb-config-tools-page.php:937
+#: includes/admin/pages/class-epkb-config-tools-page.php:1158
+msgid "Switching debug... "
+msgstr "切换调试.. "
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2264
+msgid "Last Updated On"
+msgstr "上次更新时间"
+
+#: templates/feature-comments.php:19
+msgid "This page is password protected. Enter the password to view comments."
+msgstr "此页受密码保护。输入密码以查看评论。"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:114
+msgctxt "taxonomy general name"
+msgid "Tags"
+msgstr "标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:115
+msgctxt "taxonomy singular name"
+msgid "Tag"
+msgstr "标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:116
+msgid "Search Tags"
+msgstr "搜索标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:117
+msgid "All Tags"
+msgstr "所有标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:118
+msgid "Parent Tag"
+msgstr "父标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:119
+msgid "Parent Tag:"
+msgstr "父标签："
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:120
+msgid "Edit Tag"
+msgstr "编辑标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:121
+msgid "Update Tag"
+msgstr "更新标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:122
+msgid "View Tag"
+msgstr "查看标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:123
+msgid "Separate Tags with commas"
+msgstr "用逗号分隔标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:124
+msgid "Add or remove Tags"
+msgstr "添加或删除标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:125
+msgid "Add New Tag"
+msgstr "添加新标签"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:126
+msgid "New Tag Name"
+msgstr "新标签名称"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:127
+msgid "Tags"
+msgstr "标签"
+
+#. translators: do NOT change this translation again. It will break links !!!
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:140
+msgctxt "taxonomy singular name"
+msgid "tag"
+msgstr "标签"
+
+#: templates/feature-tags.php:33
+msgctxt "Text used in front of tag names."
+msgid "Tags"
+msgstr "标签"
+
+#: includes/class-epkb-input-filter.php:225
+#: includes/class-epkb-input-filter.php:414
+msgid "The value is too long. Remove %d character."
+msgid_plural "The value is too long. Remove %d characters."
+msgstr[0] "该值太长。删除 %d 字符。"
+
+#: includes/class-epkb-input-filter.php:232
+#: includes/class-epkb-input-filter.php:421
+msgid "The value is too short. Add at least %d character."
+msgid_plural "The value is too short. Add at least %d characters."
+msgstr[0] "该值太短。添加至少 %d 字符。"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:142
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:253
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1418
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1818
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:1845
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:2027
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:84
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:188
+msgid "Margin"
+msgstr "外边距"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:821
+msgid "Between"
+msgstr "介于"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1270
+msgid "Comments"
+msgstr "评论"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2375
+msgid "Right Arrow"
+msgstr "右箭头"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2376
+msgid "Left Arrow"
+msgstr "左箭头"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2377
+msgid "Arrow Right Circle"
+msgstr "箭头右圆"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2378
+msgid "Arrow Left Circle"
+msgstr "箭头左圆"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1943
+msgid "Navigation Mode"
+msgstr "导航模式"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1947
+msgid "Browser Go Back Action"
+msgstr "浏览器返回操作"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2001
+msgid "Button Border"
+msgstr "按钮边框"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2011
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2584
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3504
+msgid "Border Radius"
+msgstr "边界半径"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2021
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2593
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3513
+msgid "Border Width"
+msgstr "边框宽度"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2370
+msgid "Breadcrumb Separator"
+msgstr "面包屑分离器"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2374
+msgid "-- No Icon --"
+msgstr "-- 没有图标 --"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2468
+msgid "Breadcrumb Home Text"
+msgstr "首页面包屑导航显示文本"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1948
+msgid "Redirect to KB Main Page"
+msgstr "重定向到知识库主页面"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2005
+msgid "-- No Border --"
+msgstr "-- 无边界 --"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2006
+msgid "Solid"
+msgstr "实线"
+
+#: templates/feature-breadcrumb.php:113
+msgid "KB Home"
+msgstr "知识首页"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1113
+#: includes/admin/pages/class-epkb-config-settings-page.php:1293
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:321
+msgid "Grid Layout"
+msgstr "网格布局"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:109
+#: includes/features/kbs/class-epkb-kb-handler.php:138
+msgid "Elegant Layouts"
+msgstr "优雅的布局"
+
+#: includes/admin/editor/class-epkb-editor-view.php:331
+#: includes/admin/kb-configuration/class-epkb-kb-config-layouts.php:17
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:954
+msgid "Basic"
+msgstr "基本"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:428
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:328
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:471
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:665
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:694
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:793
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1336
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1368
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1414
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1446
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1658
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2055
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2087
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2409
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2441
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2646
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2678
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2733
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3171
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3298
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3376
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3378
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3393
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3496
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3567
+#: includes/admin/pages/class-epkb-config-settings-page.php:496
+msgid "Right"
+msgstr "右"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:708
+msgid "Radius"
+msgstr "半径"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1119
+#: includes/class-epkb-utilities.php:2021 templates/archive-categories.php:508
+#: templates/archive-categories.php:724
+msgid "Page"
+msgstr "页面"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:162
+msgid "Main Page Layout"
+msgstr "主页布局"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:169
+msgid "Article Page Layout"
+msgstr "文章页面布局"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3421
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3816
+msgid "Divider"
+msgstr "分隔线"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:272
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:278
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:207
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:213
+#: includes/admin/pages/class-epkb-config-settings-page.php:124
+msgid "Search Box"
+msgstr "搜索框"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:950
+msgid "Informative"
+msgstr "内容丰富"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:463
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:670
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:769
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1312
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1344
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1390
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1422
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2031
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2063
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2385
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2417
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2622
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2654
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2709
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3147
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3179
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3274
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3306
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3391
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3472
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3543
+#: includes/admin/pages/class-epkb-config-settings-page.php:495
+msgid "Top"
+msgstr "上"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:336
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:479
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:678
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:777
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1320
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1352
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1398
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1430
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2039
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2071
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2393
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2425
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2630
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2662
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2717
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2902
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3155
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3187
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3282
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3314
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3467
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3480
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3551
+msgid "Bottom"
+msgstr "下"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1239
+msgid "Categories Sequence"
+msgstr "类别顺序"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1246
+msgid "Articles Sequence"
+msgstr "文章顺序"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:644
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3098
+msgid "Icon to Expand/Collapse Articles"
+msgstr "用于展开/折叠文章的图标"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:4017
+msgid "Choose a Main Topic"
+msgstr "选择一个主题"
+
+#. Plugin Name of the plugin
+msgid "Knowledge Base for Documents and FAQs"
+msgstr "文档和常见问题解答的知识库"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:26
+msgid "Alphabetical by Name"
+msgstr "名称按字母顺序排列"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:695
+msgid "Add-ons"
+msgstr "附加组件"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:899
+msgid "Licenses"
+msgstr "许可证"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1114
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:324
+msgid "Sidebar Layout"
+msgstr "侧边栏布局"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:118
+#: includes/admin/pages/class-epkb-need-help-features.php:932
+#: includes/features/kbs/class-epkb-kb-handler.php:142
+msgid "Multiple Knowledge Bases"
+msgstr "多个知识库"
+
+#: includes/admin/convert/class-epkb-convert.php:276
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:29
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:33
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:46
+#: includes/admin/pages/class-epkb-add-ons-features.php:230
+#: includes/admin/pages/class-epkb-add-ons-features.php:651
+#: includes/admin/pages/class-epkb-add-ons-page.php:78
+#: includes/admin/pages/class-epkb-config-page.php:311
+#: includes/admin/pages/class-epkb-config-page.php:396
+#: includes/admin/pages/class-epkb-config-settings-page.php:1864
+#: includes/admin/pages/class-epkb-config-settings-page.php:1871
+#: includes/admin/pages/class-epkb-config-settings-page.php:1878
+#: includes/admin/pages/class-epkb-config-settings-page.php:2046
+#: includes/class-epkb-html-elements.php:1014
+#: includes/class-epkb-html-forms.php:736
+#: includes/features/kbs/class-epkb-kb-handler.php:136
+#: includes/features/kbs/class-epkb-kb-handler.php:140
+#: includes/features/kbs/class-epkb-kb-handler.php:144
+#: includes/features/kbs/class-epkb-kb-handler.php:148
+#: includes/features/kbs/class-epkb-kb-handler.php:152
+#: includes/features/kbs/class-epkb-kb-handler.php:156
+#: includes/features/kbs/class-epkb-kb-handler.php:160
+#: includes/features/layouts/class-epkb-layout-tabs.php:584
+msgid "Learn More"
+msgstr "了解更多"
+
+#: includes/admin/admin-menu.php:20 includes/system/plugin-links.php:18
+msgid "Configuration"
+msgstr "配置"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:150
+#: includes/admin/pages/class-epkb-config-settings-page.php:908
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:153
+#: includes/admin/wizard/class-epkb-kb-wizard-setup.php:558
+#: includes/features/kbs/class-epkb-kb-handler.php:109
+#: includes/system/class-epkb-upgrades.php:875
+msgid "Knowledge Base"
+msgstr "知识库"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:264
+#: includes/admin/editor/class-epkb-editor-controller.php:270
+#: includes/admin/editor/class-epkb-editor-controller.php:272
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:360
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:366
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:368
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:345
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:351
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:353
+msgid "Error occurred. Please refresh your browser and try again."
+msgstr "发生了错误。 请刷新浏览器，然后重试。"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1882
+#: includes/admin/pages/class-epkb-need-help-contact-us.php:26
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:205
+#: includes/class-epkb-utilities.php:270 includes/class-epkb-utilities.php:294
+msgid "You do not have permission to edit this knowledge base"
+msgstr "您无权编辑此知识库"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar-ctrl.php:244
+msgid "Settings saved"
+msgstr "设置已保存"
+
+#: includes/class-epkb-utilities.php:326
+msgid "Cannot save your changes"
+msgstr "无法保存您的更改"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3466
+msgid "Medium"
+msgstr "中"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-tabs.php:36
+msgid "Down Pointer"
+msgstr "向下指针"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-tabs.php:64
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1176
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1953
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1963
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3751
+msgid "Text"
+msgstr "文本"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-tabs.php:73
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:832
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1972
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3798
+msgid "Background"
+msgstr "背景"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-tabs.php:82
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:908
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1675
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1981
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3644
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3662
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3700
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3718
+msgid "Border"
+msgstr "边框"
+
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:852
+#: includes/admin/editor/class-epkb-editor-view.php:340
+#: includes/admin/kb-configuration/class-epkb-kb-config-layouts.php:18
+#: includes/admin/pages/class-epkb-config-settings-page.php:1127
+msgid "Tabs"
+msgstr "标签"
+
+#: includes/system/scripts-registration-admin.php:350
+msgid "Edit"
+msgstr "编辑"
+
+#. translators: do NOT change this translation again. It will break links !!!
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:101
+msgctxt "taxonomy singular name"
+msgid "category"
+msgstr "分类"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:200
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:457
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3114
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3242
+#: includes/admin/pages/class-epkb-config-settings-page.php:1106
+msgid "Layout"
+msgstr "布局"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-global.php:96
+#: includes/admin/wizard/class-epkb-kb-wizard-ordering.php:69
+#: includes/system/scripts-registration-admin.php:50
+#: includes/system/scripts-registration-admin.php:113
+#: includes/system/scripts-registration-public.php:29
+msgid "Saving configuration"
+msgstr "保存配置"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:32
+msgid "Alphabetical by Title"
+msgstr "标题按字母顺序排列"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:153
+msgid "Common Path for Articles"
+msgstr "文章的共同路径"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:427
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:344
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:487
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:663
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:686
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:785
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1328
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1360
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1406
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1438
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1657
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2047
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2079
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2401
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2433
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2638
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2670
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2725
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3163
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3290
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3376
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3378
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3392
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3488
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3559
+#: includes/admin/pages/class-epkb-config-settings-page.php:494
+msgid "Left"
+msgstr "左"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3045
+msgid "Boxed Width"
+msgstr "盒装宽度"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3046
+msgid "Full Width"
+msgstr "全宽"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3081
+msgid "Number of Columns"
+msgstr "列数"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:261
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:469
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:625
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3089
+msgid "Number of Articles Listed"
+msgstr "列出的文章数量"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:647
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3101
+msgctxt "icon type"
+msgid "Plus Box"
+msgstr "加盒子"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:652
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3106
+msgctxt "icon type"
+msgid "Folder"
+msgstr "文件夹"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3118
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3246
+msgid "Rounded search button is on the right"
+msgstr "圆角搜索按钮位于右侧"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3121
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3249
+msgid "No search button"
+msgstr "没有搜索按钮"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3122
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3250
+msgid "No search box"
+msgstr "没有搜索框"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:219
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:261
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:716
+msgid "Width"
+msgstr "宽度"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:664
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3377
+msgid "Centered"
+msgstr "居中"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3427
+msgid "Divider Thickness ( px )"
+msgstr "分隔厚度（px）"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3460
+msgid "Article List Shadow"
+msgstr "文章列表阴影"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:731
+msgid "Bottom Shadow"
+msgstr "底部阴影"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:242
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:558
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:751
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3524
+msgid "Height Mode"
+msgstr "高度模式"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:246
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:562
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:755
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3528
+msgid "Variable"
+msgstr "变量"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:756
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3529
+msgid "Minimum"
+msgstr "最小"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:757
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3530
+msgid "Maximum"
+msgstr "最大"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:252
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:567
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:761
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3534
+msgid "Height ( px )"
+msgstr "高度（px）"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1598
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3617
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3673
+#: includes/admin/pages/class-epkb-config-settings-page.php:1649
+msgid "Title"
+msgstr "标题"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2170
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2242
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2314
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:2880
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3760
+msgid "Icon"
+msgstr "图标"
+
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:65
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:702
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:899
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3436
+msgid "Category Description"
+msgstr "分类描述"
+
+#: includes/admin/editor/class-epkb-editor-article-page-config.php:318
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:253
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3884
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3921
+msgid "Search Title"
+msgstr "搜索标题"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3893
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3930
+msgid "Search Hint"
+msgstr "搜索提示"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3899
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3936
+msgid "Search the documentation..."
+msgstr "在此输入关键字进行搜索……"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3902
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3939
+msgid "Search Button Name"
+msgstr "搜索按钮名称"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3911
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3948
+msgid "Search Results Message"
+msgstr "搜索结果消息"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3917
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3954
+msgid "Search Results for"
+msgstr "搜索结果"
+
+#: includes/admin/convert/class-epkb-convert.php:244
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:30
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:65
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:100
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:135
+#: includes/admin/kb-configuration/class-epkb-kb-config-layout-modular.php:170
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3908
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3945
+#: includes/admin/pages/class-epkb-need-help-features.php:637
+#: includes/admin/pages/class-epkb-need-help-features.php:1067
+msgid "Search"
+msgstr "搜索"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3958
+msgid "No Matches Found Text"
+msgstr "找不到匹配的文本"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3968
+msgid "No matches found"
+msgstr "找不到匹配项"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3971
+msgid "Minimum Search Word Size Message"
+msgstr "最小搜索字大小消息"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:958
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3984
+msgid "Empty Category Notice"
+msgstr "空类别通知"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:964
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3990
+msgid "Articles coming soon"
+msgstr "文章即将推出"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:967
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3993
+msgid "Collapse Articles Text"
+msgstr "折叠文章文本"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:973
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3999
+msgid "Collapse Articles"
+msgstr "折叠文章"
+
+#: includes/class-epkb-utilities.php:326
+msgid "You are not logged in. Refresh your page and log in."
+msgstr "您尚未登录。刷新页面并登录。"
+
+#: includes/admin/openai/class-epkb-ai-help-sidebar.php:388
+msgid "Feedback"
+msgstr "反馈"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:42
+#: includes/admin/kb-configuration/class-epkb-kb-config-category.php:523
+#: includes/class-epkb-utilities.php:21
+msgid "Draft"
+msgstr "草稿"
+
+#: includes/class-epkb-utilities.php:22
+msgid "Published"
+msgstr "已发布"
+
+#: includes/class-epkb-utilities.php:22
+msgid "Scheduled"
+msgstr "计划"
+
+#: includes/class-epkb-utilities.php:23
+msgid "Private"
+msgstr "私人"
+
+#: includes/class-epkb-utilities.php:219
+msgid "year"
+msgstr "年"
+
+#: includes/class-epkb-utilities.php:220
+msgid "month"
+msgstr "月"
+
+#: includes/class-epkb-utilities.php:221
+msgid "week"
+msgstr "周"
+
+#: includes/class-epkb-utilities.php:222
+msgid "day"
+msgstr "天"
+
+#: includes/class-epkb-utilities.php:223
+msgid "hour"
+msgstr "小时"
+
+#: includes/class-epkb-utilities.php:224
+msgid "min"
+msgstr "分钟"
+
+#: includes/class-epkb-utilities.php:225
+msgid "sec"
+msgstr "秒"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:79
+msgctxt "taxonomy general name"
+msgid "Categories"
+msgstr "分类"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:81
+msgid "Search Categories"
+msgstr "搜索分类"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:82
+msgid "All Categories"
+msgstr "所有分类"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:83
+msgid "Parent Category"
+msgstr "父类别"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:84
+msgid "Parent Category:"
+msgstr "父类别："
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:85
+msgid "Edit Category"
+msgstr "编辑类别"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1064
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:87
+msgid "Add New Category"
+msgstr "添加新类别"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:88
+msgid "New Category Name"
+msgstr "新类别名称"
+
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:439
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:441
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:131
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1288
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1532
+#: includes/admin/pages/class-epkb-analytics-page.php:72
+#: includes/admin/pages/class-epkb-config-settings-page.php:808
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:89
+msgid "Categories"
+msgstr "分类"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:156
+msgctxt "post type singular name"
+msgid "Article"
+msgstr "文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:157
+msgctxt "Articles"
+msgid "Add New Article"
+msgstr "添加新文章"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1032
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:158
+msgid "Add New Article"
+msgstr "添加新文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:159
+msgid "Edit Article"
+msgstr "编辑文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:160
+msgid "New Article"
+msgstr "新文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:161
+msgid "All Articles"
+msgstr "所有文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:162
+msgid "View Article"
+msgstr "查看文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:163
+msgid "Search in Articles"
+msgstr "在文章中搜索"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:164
+msgid "No Articles found"
+msgstr "找不到文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:165
+msgid "No Articles found in Trash"
+msgstr "在回收站中找不到文章"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:167
+msgctxt "admin menu"
+msgid "Knowledge Base"
+msgstr "知识库"
+
+#: includes/admin/editor/class-epkb-editor-main-page-config.php:764
+#: includes/admin/editor/class-epkb-editor-sidebar-config.php:280
+#: includes/admin/pages/class-epkb-analytics-page.php:84
+#: includes/admin/pages/class-epkb-config-settings-page.php:1392
+#: includes/admin/pages/class-epkb-need-help-features.php:253
+#: includes/admin/pages/class-epkb-need-help-features.php:1062
+#: includes/system/class-epkb-reset.php:147
+msgid "Articles"
+msgstr "文章"
+
+#: includes/features/layouts/class-epkb-layout-basic.php:221
+#: includes/features/layouts/class-epkb-layout-basic.php:271
+#: includes/features/layouts/class-epkb-layout-categories.php:247
+#: includes/features/layouts/class-epkb-layout-tabs.php:372
+msgid "Category."
+msgstr "类别。"
+
+#: includes/admin/editor/class-epkb-editor-view.php:464
+#: includes/system/plugin-links.php:19
+msgid "Support"
+msgstr "支持"
+
+#: includes/system/scripts-registration-admin.php:45
+#: includes/system/scripts-registration-admin.php:108
+#: includes/system/scripts-registration-admin.php:137
+#: includes/system/scripts-registration-admin.php:168
+#: includes/system/scripts-registration-public.php:24
+msgid "Please try again later."
+msgstr "请稍后再试。"
+
+#: includes/system/scripts-registration-admin.php:110
+#: includes/system/scripts-registration-admin.php:139
+msgid "Error occurred - configuration NOT saved (5)."
+msgstr "发生错误 - 配置未保存。"
+
+#: includes/system/scripts-registration-admin.php:51
+#: includes/system/scripts-registration-admin.php:114
+#: includes/system/scripts-registration-admin.php:142
+#: includes/system/scripts-registration-public.php:30
+msgid "Input is required"
+msgstr "输入是必需的"
+
+#: includes/admin/admin-menu.php:20
+msgid "Configuration - Echo Knowledge Base"
+msgstr "配置 - Echo Knowledge Base"
+
+#: includes/admin/pages/class-epkb-add-ons-page.php:266
+msgid "Licenses for add-ons"
+msgstr "附加组件许可证"
+
+#: includes/admin/convert/class-epkb-convert-ctrl.php:97
+#: includes/admin/convert/class-epkb-convert-ctrl.php:102
+#: includes/admin/convert/class-epkb-convert-ctrl.php:116
+msgid "Refresh your page"
+msgstr "刷新您的页面"
+
+#: includes/admin/kb-configuration/class-epkb-export-import.php:168
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:85
+msgid "You do not have permission."
+msgstr "你没有相应权限。"
+
+#: includes/admin/editor/class-epkb-editor-controller.php:30
+#: includes/admin/editor/class-epkb-editor-controller.php:36
+#: includes/admin/editor/class-epkb-editor-controller.php:42
+#: includes/admin/kb-configuration/class-epkb-kb-config-controller.php:216
+#: includes/admin/wizard/class-epkb-kb-wizard-cntrl.php:403
+msgid "Invalid parameters. Please refresh your page."
+msgstr "无效的参数。 请刷新您的页面。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:649
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3103
+msgctxt "icon type"
+msgid "Arrow Triangle"
+msgstr "箭头三角形"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:729
+msgid "Light Shadow"
+msgstr "浅阴影"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:730
+msgid "Medium Shadow"
+msgstr "中阴影"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:801
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3575
+msgid "Article Underline Hover"
+msgstr "文章悬停强调"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3977
+msgid "Enter a word with at least one character."
+msgstr "输入至少一个字符。"
+
+#: includes/class-epkb-utilities.php:21
+msgid "Pending"
+msgstr "待定"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:80
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr "类别"
+
+#: includes/admin/pages/class-epkb-config-settings-page.php:1861
+#: includes/features/kbs/class-epkb-kb-handler.php:201
+msgid "Getting Started"
+msgstr "入门"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.echoknowledgebase.com"
+msgstr "https://www.echoknowledgebase.com"
+
+#. Author of the plugin
+msgid "Echo Plugins"
+msgstr "Echo Plugins"
+
+#. translators: do NOT change this translation again. It will break links !!!
+#: includes/features/kbs/class-epkb-kb-handler.php:408
+msgctxt "slug"
+msgid "Knowledge Base"
+msgstr "Knowledge Base"
+
+#: includes/features/articles/class-epkb-articles-cpt-setup.php:86
+msgid "Update Category"
+msgstr "更新分类"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:648
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3102
+msgctxt "icon type"
+msgid "Plus Sign"
+msgstr "加标记"
+
+#: includes/system/scripts-registration-admin.php:49
+#: includes/system/scripts-registration-admin.php:112
+#: includes/system/scripts-registration-admin.php:141
+#: includes/system/scripts-registration-admin.php:167
+#: includes/system/scripts-registration-public.php:28
+msgid "Please reload the page and try again."
+msgstr "请重新加载页面，然后重试。"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:1012
+msgid "Width ( % )"
+msgstr "宽度(%)"
+
+#: includes/system/plugin-links.php:39
+msgid "What's New"
+msgstr "新内容"
+
+#: includes/class-epkb-utilities.php:376 includes/class-epkb-utilities.php:381
+#: includes/class-epkb-utilities.php:791 includes/class-epkb-utilities.php:853
+#: includes/class-epkb-utilities.php:897 includes/class-epkb-utilities.php:909
+#: includes/class-epkb-utilities.php:937 includes/class-epkb-utilities.php:941
+#: includes/class-epkb-utilities.php:954 includes/class-epkb-utilities.php:963
+#: includes/class-epkb-utilities.php:970 includes/class-epkb-utilities.php:975
+#: includes/class-epkb-utilities.php:981 includes/class-epkb-utilities.php:1629
+#: includes/class-epkb-utilities.php:1662
+#: includes/system/class-epkb-controller.php:95
+#: includes/system/scripts-registration-admin.php:46
+#: includes/system/scripts-registration-admin.php:47
+#: includes/system/scripts-registration-admin.php:109
+#: includes/system/scripts-registration-admin.php:138
+#: includes/system/scripts-registration-admin.php:169
+#: includes/system/scripts-registration-admin.php:378
+#: includes/system/scripts-registration-public.php:25
+#: includes/system/scripts-registration-public.php:26
+msgid "Error occurred"
+msgstr "发生错误"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3119
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3247
+msgid "Squared search Button is on the right"
+msgstr "方形搜索按钮在右侧"
+
+#: includes/admin/wizard/class-epkb-kb-wizard-themes.php:976
+msgid "Welcome to our Knowledge Base"
+msgstr "欢迎来到我们的知识库"
+
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3120
+#: includes/admin/kb-configuration/class-epkb-kb-config-specs.php:3248
+msgid "Search button is below"
+msgstr "搜索按钮在下面"

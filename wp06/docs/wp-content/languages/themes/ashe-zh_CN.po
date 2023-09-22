@@ -1,0 +1,1564 @@
+# Translation of Themes - Ashe in Chinese (China)
+# This file is distributed under the same license as the Themes - Ashe package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-01-12 08:06:34+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.6\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Themes - Ashe\n"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Personal and Multi-Author Free WordPress Blog Theme. Perfect for personal, lifestyle, health & fitness, food, cooking, bakery, travel, beauty, fashion, wedding, photography, news, quotes blog, auto blog, small business website and any other kind of amazing blogs. Minimal, elegant & mobile friendly layout with WooCommerce shop (storefront) support will WOW and inspire your visitors. Well documented and very easy to use even for WordPress beginners. Clean and Modern Responsive design will perfectly showcase your content on any device, even on tablet, mobile & retina displays. Very fast, compatibility with many popular plugins & of course translation & RTL (right to left language) ready, coded with best SEO practices. The theme has features like Text & Image logo, Fullscreen Slider, Header image, Instagram slider widget support, footer menu support, GDPR compatibility plugins support and many more. Works perfectly with all major drag and drop page builders like Elementor, Beaver Builder, Visual Composer, SiteOrigin, Divi. You just need to write and be awesome! TEMPLATE DEMO: https://ashe-free.wp-royal-themes.com/demo/"
+msgstr "一个个人或多作者免费的WordPress博客主题。适合个人，生活方式，健康和健身，食品，烹饪，面包店，旅游，美容，时尚，婚礼，摄影，新闻，报价博客，汽车博客，小型企业站点和任何其他类型的惊人的博客。 通过WooCommerce商店（店面）支持，极简，优雅和移动友好的布局将为您的访客带来惊喜和启发。记录良好，即使对于WordPress初学者也很容易使用。清洁和现代响应式设计将在任何设备上完美展示您的内容，甚至可以在平板电脑，移动和视网膜显示器上展示。加载速度极快，兼容许多流行的插件，当然还有翻译和RTL（从右到左的语言）的预备好，用最好的SEO实践编码。该主题具有文本和图像徽标，全屏滑块，页眉图像，Instagram滑块小工具支持，页脚菜单支持，GDPR兼容性插件支持等功能。与所有主要的拖放页面构建器完美配合，如Elementor，Beaver Builder，Visual Composer，SiteOrigin，Divi。您只要写出您最好的作品！模板演示：https://ashe-free.wp-royal-themes.com/demo/"
+
+#. Theme Name of the theme
+#: inc/about/about-ashe.php:437
+#, gp-priority: high
+msgid "Ashe"
+msgstr "Ashe"
+
+#: inc/customizer/customizer.php:910
+msgid "Exclude Slides without Images"
+msgstr "排除没有图像的幻灯片"
+
+#: inc/about/about-ashe.php:411 inc/customizer/customizer.php:386
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: inc/about/about-ashe.php:410 inc/customizer/customizer.php:385
+msgid "If you have any kind of theme related questions, feel free to ask."
+msgstr "如果您有任何与主题相关的问题，请随时提出。"
+
+#: inc/about/about-ashe.php:408
+msgid "Email Support"
+msgstr "电子邮件支持"
+
+#: inc/customizer/customizer.php:803
+msgid "Show Simple Header"
+msgstr "显示简易页眉"
+
+#: comments.php:44
+msgid "Post Comment"
+msgstr "发表评论"
+
+#: comments.php:43
+msgid "Comment"
+msgstr "评论"
+
+#: comments.php:42
+msgid "Leave a Reply"
+msgstr "留言"
+
+#: inc/about/about-ashe.php:417
+msgid "Child Theme"
+msgstr "子主题"
+
+#: inc/customizer/customizer.php:1365
+msgid "Menu Button Text"
+msgstr "菜单按钮文本"
+
+#: inc/customizer/customizer.php:1362
+msgid "Select Mobile Menu Icon"
+msgstr "选择移动设备菜单图标"
+
+#: inc/about/about-ashe.php:419
+msgid "The best way to customize Ashe Theme code."
+msgstr "定制Ashe主题代码的最佳方式。"
+
+#: templates/header/main-navigation.php:37
+msgid "To disable this option, navigate to Appearance > Customize > Skins section and uncheck \"Dark Mode Switcher\" option. Only logged-in admin level users can see this notice!"
+msgstr "要禁用此选项，请导航至“外观 > 自定义 > 样式”栏目，取消选中“深色模式切换按钮”选项。只有已登录的管理员级别用户才能看到此通知！"
+
+#: inc/customizer/customizer.php:549
+msgid "Switcher icon will be added to the right of the Navigation Menu. When the Dark Mode is enabled color controls will NOT work except Accent Color control. Dark Mode design reduces the light emitted by device screens while maintaining the minimum color contrast ratios required for readability."
+msgstr "切换按钮图标将添加到导航菜单的右侧。启用“深色模式”时，除“强调颜色”控件外，其它颜色控件将不起作用。深色模式设计减少了设备屏幕发出的光，同时维持了页面可读性所需的最小颜色对比度。"
+
+#: inc/about/about-ashe.php:420
+msgid "Download Now"
+msgstr "立即下载"
+
+#: inc/customizer/customizer.php:539
+msgid "Show Dark Mode Switcher"
+msgstr "显示深色模式切换按钮"
+
+#: inc/customizer/customizer.php:505
+msgid "Box"
+msgstr "方格"
+
+#: inc/customizer/customizer.php:992
+msgid "Feat. Links Options "
+msgstr "特色链接选项"
+
+#: inc/customizer/customizer.php:1028
+msgid "Show Drop Caps (First Big Letter)"
+msgstr "显示首字下沉（首个大字母）"
+
+#: inc/customizer/customizer.php:1100
+msgid "Show Featured Image"
+msgstr "显示特色图片"
+
+#: inc/about/about-ashe.php:75
+msgid "If you are a WordPress beginner it's highly recommended to install the theme Demo Content. This file includes: Menus, Posts, Pages, Widgets, etc."
+msgstr "如果您是WordPress初学者，则强烈建议您安装主题演示内容。该文件包括：菜单，帖子，页面，小部件等。"
+
+#: inc/about/about-ashe.php:86
+msgid "Demo Import Video Tutorial"
+msgstr "演示导入视频教程"
+
+#: inc/about/about-ashe.php:69
+msgid "Setup Instagram"
+msgstr "设置Instagram"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:36
+msgid "Add new field"
+msgstr "添加字段"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:41
+msgid "Customizer Repeater"
+msgstr "中继定制器"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:248
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:257
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:365
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:373
+msgid "Color"
+msgstr "颜色"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:272
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:388
+msgid "Subtitle"
+msgstr "字幕"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:279
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:395
+msgid "Description"
+msgstr "描述"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:286
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:402
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:430
+msgid "Button Text"
+msgstr "按钮文字"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:301
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:416
+msgid "Open Link in New Tab"
+msgstr "在新标签页打开链接"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:315
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:437
+msgid "Link"
+msgstr "链接"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:323
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:444
+msgid "Shortcode"
+msgstr "短代码"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:338
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:454
+msgid "Delete field"
+msgstr "删除字段"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:512
+msgid "Upload Image"
+msgstr "上传图像"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:519
+msgid "Image type"
+msgstr "图像类型"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:522
+msgid "Icon"
+msgstr "图标"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:532
+msgid "Social icons"
+msgstr "社交图标"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:550
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:579
+msgid "Remove Icon"
+msgstr "移除图标"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:555
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:587
+msgid "Add Icon"
+msgstr "添加图标"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:293
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:409
+msgid "Slide Link"
+msgstr "幻灯片链接"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:308
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:423
+msgid "Text"
+msgstr "文本"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:508
+msgid "Slide Background"
+msgstr "幻灯片背景"
+
+#: inc/customizer/customizer.php:428
+msgid "Please Note: "
+msgstr "请注意："
+
+#: inc/customizer/customizer.php:497 inc/customizer/customizer.php:563
+msgid "Skins"
+msgstr "样式"
+
+#: inc/customizer/customizer.php:509
+msgid "Select Theme Skin"
+msgstr "选择主题样式"
+
+#: inc/customizer/customizer.php:519
+msgid "After activating non-default skin, you will NOT be able to take control over skin colors. These options are only available in the Ashe PRO."
+msgstr "激活非默认样式后，您将无法控制样式颜色。这些选项仅适用于Ashe PRO。"
+
+#: inc/customizer/customizer.php:806
+msgid "Logo Upload"
+msgstr "标志上传"
+
+#: inc/customizer/customizer.php:809
+msgid "Logo Width"
+msgstr "标志宽度"
+
+#: inc/customizer/customizer.php:827 inc/customizer/customizer.php:949
+msgid "Front Page"
+msgstr "首页"
+
+#: inc/customizer/customizer.php:828 inc/customizer/customizer.php:950
+msgid "Posts Page"
+msgstr "文章页面"
+
+#: inc/customizer/customizer.php:829 inc/customizer/customizer.php:951
+msgid "Front and Posts Pages"
+msgstr "正面和文章页面"
+
+#: inc/customizer/customizer.php:833
+msgid "Display Slider on"
+msgstr "显示幻灯器"
+
+#: inc/customizer/customizer.php:836
+msgid "Custom"
+msgstr "自定义"
+
+#: inc/customizer/customizer.php:837
+msgid "Posts"
+msgstr "文章"
+
+#: inc/customizer/customizer.php:878
+msgid "Slider Item"
+msgstr "幻灯片项目"
+
+#: inc/customizer/customizer.php:955
+msgid "Display Featured Links on"
+msgstr "显示特色链接"
+
+#: inc/customizer/customizer.php:1043
+msgid "Show Facebook"
+msgstr "显示 Facebook"
+
+#: inc/customizer/customizer.php:1046
+msgid "Show Twitter"
+msgstr "显示 Twitter"
+
+#: inc/customizer/customizer.php:1049
+msgid "Show Pinterest"
+msgstr "显示 Pinterest"
+
+#: inc/customizer/customizer.php:1055
+msgid "Show Linkedin"
+msgstr "显示 Linkedin"
+
+#: inc/customizer/customizer.php:1058
+msgid "Show Reddit"
+msgstr "显示 Reddit"
+
+#: inc/customizer/customizer.php:1061
+msgid "Show Tumblr"
+msgstr "显示 Tumblr"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:346
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] "以下插件需要更新为最新版本，以确保与此主题的最大兼容性：%1$s。"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:364
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "以下的受推荐的插件目前处于未启用状态：％1$s。"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:358
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "以下所需的插件目前处于未启用状态：%1$s。"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:352
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "以下插件有可用的更新： %1$s。"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:340
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "此主题推荐安装以下插件：%1$s。"
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:334
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "此主题必须安装以下插件：%1$s。"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+msgid "%1$s installed and activated successfully."
+msgstr "安装并激活%1$s成功。"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "%1$s installed successfully."
+msgstr "%1$s 安装成功"
+
+#. translators: 1: install status, 2: update status
+#: inc/tgm/class-tgm-plugin-activation.php:2342
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%2$s %1$s"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2726
+msgid "Activate"
+msgstr "激活"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2614
+msgid "Activate %2$s"
+msgstr "激活%2$s"
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2388
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "全部 <span class=\"count\">(%s)</span>"
+
+#: inc/tgm/class-tgm-plugin-activation.php:3510
+msgid "All installations and activations have been completed."
+msgstr "所有安装和激活均已完成。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:3518
+msgid "All installations have been completed."
+msgstr "所有安装均已完成。"
+
+#. translators: 1: dashboard link.
+#: inc/tgm/class-tgm-plugin-activation.php:394
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "所有插件均被成功安装并激活。%1$s"
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/tgm/class-tgm-plugin-activation.php:3501
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "正在安装%1$s: <strong>%2$s</strong>时发生错误"
+
+#: inc/tgm/class-tgm-plugin-activation.php:1121
+#: inc/tgm/class-tgm-plugin-activation.php:2948
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "和"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2510
+msgid "Available version:"
+msgstr "可获得版本："
+
+#: inc/tgm/class-tgm-plugin-activation.php:380
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "开始激活插件"
+
+#: inc/tgm/class-tgm-plugin-activation.php:370
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "开始安装插件"
+
+#: inc/tgm/class-tgm-plugin-activation.php:375
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "开始更新插件"
+
+#: inc/tgm/class-tgm-plugin-activation.php:395
+msgid "Dismiss this notice"
+msgstr "关闭此通知"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2295
+msgid "External Source"
+msgstr "外部源"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "Hide Details"
+msgstr "隐藏详情"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2717
+msgid "Install"
+msgstr "安装"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2603
+msgid "Install %2$s"
+msgstr "安装%2$s"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2319
+msgid "Installed But Not Activated"
+msgstr "安装成功但未激活"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2490
+msgid "Installed version:"
+msgstr "已安装版本"
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3512
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "正在安装和激活插件%1$s (%2$d/%3$d)"
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3520
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "正在安装插件 %1$s (%2$d/%3$d)"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2498
+msgid "Minimum required version:"
+msgstr "最低需要版本："
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:390
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "无动作进行。插件%1$s已激活。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2934
+msgid "No plugins are available to be activated at this time."
+msgstr "当前无可激活插件。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2800
+msgid "No plugins are available to be installed at this time."
+msgstr "当前无可安装插件。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2802
+msgid "No plugins are available to be updated at this time."
+msgstr "现在没有需要更新的插件。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2533
+msgid "No plugins to install, update or activate."
+msgstr "没有插件来安装，更新或激活。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2908
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "未选中插件激活。无动作进行。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2757
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "未选中插件安装。无动作进行。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2759
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "未选中插件更新。无动作进行。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2315
+msgid "Not Installed"
+msgstr "未安装"
+
+#: inc/tgm/class-tgm-plugin-activation.php:397
+msgid "Please contact the administrator of this site for help."
+msgstr "请联系本网站管理员寻求帮助。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:934
+#: inc/tgm/class-tgm-plugin-activation.php:937
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr "请联系该插件提供者，请他们根据WordPress指导打包插件。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2547
+msgid "Plugin"
+msgstr "插件"
+
+#: inc/tgm/class-tgm-plugin-activation.php:387
+#: inc/tgm/class-tgm-plugin-activation.php:3159
+msgid "Plugin activated successfully."
+msgstr "插件激活成功。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:3158
+msgid "Plugin activation failed."
+msgstr "插件激活失败"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:392
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr "插件未激活。本主题需要更高版本的%s。请更新插件。 "
+
+#: inc/tgm/class-tgm-plugin-activation.php:2298
+msgid "Pre-Packaged"
+msgstr "预包装"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2276
+msgid "Recommended"
+msgstr "推荐"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2273
+msgid "Required"
+msgstr "必填"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2327
+msgid "Required Update not Available"
+msgstr "未获得所需更新"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2330
+msgid "Requires Update"
+msgstr "需要更新"
+
+#: inc/tgm/class-tgm-plugin-activation.php:385
+msgid "Return to Required Plugins Installer"
+msgstr "返回所需插件的安装页面。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:386
+#: inc/tgm/class-tgm-plugin-activation.php:827
+#: inc/tgm/class-tgm-plugin-activation.php:2533
+#: inc/tgm/class-tgm-plugin-activation.php:3580
+msgid "Return to the Dashboard"
+msgstr "返回主控页面"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "Show Details"
+msgstr "显示详情"
+
+#: inc/customizer/customizer.php:841
+#: inc/tgm/class-tgm-plugin-activation.php:2548
+msgid "Source"
+msgstr "源"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2554
+msgid "Status"
+msgstr "状态"
+
+#. translators: %s: version number
+#: inc/tgm/class-tgm-plugin-activation.php:1982
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: inc/tgm/class-tgm-plugin-activation.php:388
+#: inc/tgm/class-tgm-plugin-activation.php:2952
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "下列插件成功激活："
+
+#: inc/tgm/class-tgm-plugin-activation.php:3507
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "安装和激活过程即将开始。这个过程可能会持续一段时间，请保持耐心。"
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3503
+msgid "The installation of %1$s failed."
+msgstr "%1$s 安装失败"
+
+#: inc/tgm/class-tgm-plugin-activation.php:3515
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "安装过程即将开始。这个过程可能会持续一段时间，请保持耐心。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:937
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr "远程插件安装包中含有多个文件，这些文件不在一个文件夹中。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:934
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr "远程插件安装包中未包含所需slug的文件，重命名无效。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:396
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr "至少有一个必需或推荐的插件来安装，更新或激活。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:522
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr "该插件需要更新，以便与您的主题相兼容。"
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2400
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "激活 <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2392
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "安装<span class=\"count\">(%s)</span>"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2549
+msgid "Type"
+msgstr "类型"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2482
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "未知"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2723
+msgid "Update"
+msgstr "更新"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2608
+msgid "Update %2$s"
+msgstr "更新%2$s"
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2396
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "更新可用 <span class=\"count\">(%s)</span>"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2333
+msgid "Update recommended"
+msgstr "更新推荐"
+
+#: inc/tgm/class-tgm-plugin-activation.php:523
+msgid "Update Required"
+msgstr "必需更新"
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3498
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "正在升级%1$s插件（%2$d/%3$d）"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2684
+msgid "Upgrade message from the plugin author:"
+msgstr "来自插件制作者的升级信息。"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2553
+msgid "Version"
+msgstr "版本"
+
+#: inc/tgm/class-tgm-plugin-activation.php:2292
+msgid "WordPress Repository"
+msgstr "WordPress 库"
+
+#: inc/tgm/class-tgm-plugin-activation.php:328
+msgid "Install Plugins"
+msgstr "安装插件"
+
+#: inc/tgm/class-tgm-plugin-activation.php:327
+msgid "Install Required Plugins"
+msgstr "安装需要插件"
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:330
+msgid "Installing Plugin: %s"
+msgstr "正在安装插件：%s"
+
+#: inc/tgm/class-tgm-plugin-activation.php:333
+msgid "Something went wrong with the plugin API."
+msgstr "插件API发生错误。"
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:332
+msgid "Updating Plugin: %s"
+msgstr "升级插件：%s"
+
+#: inc/about/about-ashe.php:323
+msgid "Customize Blog Page"
+msgstr "自定义博客页面"
+
+#: inc/about/about-ashe.php:318
+msgid "Customize General Layouts"
+msgstr "自定义常规布局"
+
+#: inc/about/about-ashe.php:303
+msgid "Setup Random Header Images"
+msgstr "设置随机标题图像"
+
+#: inc/customizer/customizer.php:1344
+msgid "Merge Top and Main Menus"
+msgstr "合并顶部和主要菜单"
+
+#: inc/customizer/customizer.php:1336
+msgid "Responsive"
+msgstr "响应式"
+
+#: inc/customizer/customizer.php:1350
+msgid "Show Featured Links"
+msgstr "显示特色链接"
+
+#: inc/customizer/customizer.php:1347
+msgid "Show Featured Slider"
+msgstr "显示精选幻灯片"
+
+#: inc/customizer/customizer.php:1353
+msgid "Show Related Posts"
+msgstr "显示相关文章"
+
+#: inc/customizer/customizer.php:1297
+msgid "Show Scroll-Top Button"
+msgstr "显示返回顶部按钮"
+
+#: inc/customizer/customizer.php:1337
+msgid "These options will only apply to Mobile devices."
+msgstr "这些选项仅适用于移动设备。"
+
+#: inc/about/about-ashe.php:477
+msgid "Classic, List, Grid Layouts"
+msgstr "经典、列表、网格布局"
+
+#: 404.php:8
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "我们可能无法找到您需要的内容。或许搜索功能可以帮到您。"
+
+#: inc/about/about-ashe.php:505
+msgid "Premium Support 24/7"
+msgstr "付费支持 24/7"
+
+#: inc/about/about-ashe.php:470
+msgid "Unlimited Colors Options"
+msgstr "无限颜色选项"
+
+#: inc/about/about-ashe.php:515
+msgid "View Full Feature List"
+msgstr "查看完整功能列表"
+
+#. translators: %1$s: theme name, %2$s link, %3$s theme author
+#: footer.php:47
+msgid "%1$s Theme by <a href=\"%2$s\">%3$s.</a>"
+msgstr "%1$s 主题变换 <a href=\"%2$s\">%3$s.</a>"
+
+#. translators: %s theme name
+#: inc/about/about-ashe.php:118
+msgid "%s supports the Theme Customizer for all theme settings. Click \"Customize\" to personalize your site."
+msgstr "%s 支持使用主题定制器调整所有主题设置的。点击“自定义”来个性化您的站点。"
+
+#: inc/about/about-ashe.php:568
+msgid "..."
+msgstr "..."
+
+#. translators: %s link
+#: inc/about/about-ashe.php:153 inc/customizer/customizer.php:408
+msgid "Ashe Pro's powerful setup allows you to easily create unique looking sites. Here are a few included examples that can be installed with one click in the Pro Version. More details in the <a href=\"%s\" target=\"_blank\" >Theme Documentation</a>"
+msgstr "Ashe Pro的强大设置允许您轻松创建独特的外观站点。以下是一些包含的例子，可以通过单击Pro版本来安装。<a href=\"%s\" target=\"_blank\" >主题文档</a>中由更多细节"
+
+#: inc/customizer/customizer.php:589
+msgid "Header Background"
+msgstr "标题背景"
+
+#: functions.php:301
+msgid "Left Sidebar"
+msgstr "边栏在左侧"
+
+#: functions.php:291
+msgid "Right Sidebar"
+msgstr "边栏在右侧"
+
+#: inc/about/about-ashe.php:121
+msgid "Start Customizing"
+msgstr "开始自定义"
+
+#. translators: %1$s: theme name, %2$s link
+#: functions.php:106
+msgid "Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our <a href=\"%2$s\">Welcome page</a>"
+msgstr "谢谢您选择 %1$s！为了充分利用我们的主题所能提供的最好的服务，请确保您访问我们的 <a href=\"%2$s\">欢迎页</a>"
+
+#: inc/about/about-ashe.php:46
+msgid "Useful Plugins"
+msgstr "有用的插件"
+
+#: inc/about/about-ashe.php:401 inc/customizer/customizer.php:415
+msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
+msgstr "想要知道最新主题变化的要点？ 请参阅我们的下面的修订历史，以了解最近修复和功能的实现。"
+
+#. translators: %s theme name
+#: inc/about/about-ashe.php:20
+msgid "Welcome to %s"
+msgstr "欢迎使用 %s"
+
+#: inc/customizer/customizer.php:1257
+msgid "Italic"
+msgstr "斜体"
+
+#: inc/customizer/customizer.php:1260
+msgid "Uppercase"
+msgstr "大写"
+
+#: inc/about/about-ashe.php:81
+msgid "Activate Demo Import Plugin"
+msgstr "激活导入试用版插件"
+
+#: inc/customizer/customizer.php:390
+msgid "All you need for startup: Demo Import, Video Tutorials and more. To see what Ashe theme can offer, please visit a "
+msgstr "所有您需要的启动：演示导入，视频教程等。要了解Ashe主题能提供什么，请访问"
+
+#: inc/about/about-ashe.php:328
+msgid "Create Blog Post"
+msgstr "创建博客文章"
+
+#: inc/about/about-ashe.php:275 inc/about/about-ashe.php:280
+#: inc/about/about-ashe.php:285 inc/about/about-ashe.php:290
+#: inc/about/about-ashe.php:295 inc/about/about-ashe.php:300
+#: inc/about/about-ashe.php:305 inc/about/about-ashe.php:310
+#: inc/about/about-ashe.php:315 inc/about/about-ashe.php:320
+#: inc/about/about-ashe.php:325
+msgid "Customize"
+msgstr "自定义"
+
+#: inc/customizer/customizer.php:389
+msgid "Demo Import / Getting Started"
+msgstr "演示导入/入门"
+
+#: inc/customizer/customizer.php:390
+msgid "Demo Preview Page."
+msgstr "演示预览页面。"
+
+#: functions.php:52
+msgid "Footer Menu"
+msgstr "页脚菜单"
+
+#: inc/about/about-ashe.php:266 inc/customizer/customizer.php:391
+msgid "Get Started"
+msgstr "开始使用"
+
+#: inc/about/about-ashe.php:79
+msgid "Go to Import page"
+msgstr "转到“导入”页面"
+
+#: inc/about/about-ashe.php:83
+msgid "Install Demo Import Plugin"
+msgstr "安装导入试用版插件"
+
+#: inc/about/about-ashe.php:293
+msgid "Setup Colors"
+msgstr "设置颜色"
+
+#: inc/about/about-ashe.php:288
+msgid "Setup Copyright"
+msgstr "设置版权"
+
+#: inc/about/about-ashe.php:313
+msgid "Setup Featured Links"
+msgstr "安装特色链接"
+
+#: inc/about/about-ashe.php:308
+msgid "Setup Featured Slider"
+msgstr "设置特色滑块"
+
+#: inc/about/about-ashe.php:298
+msgid "Setup Header Image"
+msgstr "设置标头图像"
+
+#: inc/about/about-ashe.php:269
+msgid "Setup Instagram Widget"
+msgstr "安装 Instagram 小工具"
+
+#: inc/about/about-ashe.php:278
+msgid "Setup Logo Image"
+msgstr "设置标志图像"
+
+#: functions.php:355 functions.php:374 inc/about/about-ashe.php:273
+msgid "Setup Menu"
+msgstr "设置菜单"
+
+#: inc/about/about-ashe.php:283
+msgid "Setup Social Media"
+msgstr "建立社会媒体"
+
+#. translators: %s theme name
+#: inc/about/about-ashe.php:21
+msgid "Theme Demo Preview"
+msgstr "主题演示预览"
+
+#: inc/about/about-ashe.php:332
+msgid "Translate The Theme"
+msgstr "翻译主题"
+
+#: inc/about/about-ashe.php:43
+msgid "Video Tutorials"
+msgstr "视频教程"
+
+#: inc/about/about-ashe.php:265 inc/about/about-ashe.php:270
+#: inc/about/about-ashe.php:274 inc/about/about-ashe.php:279
+#: inc/about/about-ashe.php:284 inc/about/about-ashe.php:289
+#: inc/about/about-ashe.php:294 inc/about/about-ashe.php:299
+#: inc/about/about-ashe.php:304 inc/about/about-ashe.php:309
+#: inc/about/about-ashe.php:314 inc/about/about-ashe.php:319
+#: inc/about/about-ashe.php:324 inc/about/about-ashe.php:329
+#: inc/about/about-ashe.php:333
+msgid "Watch Video"
+msgstr "观看视频"
+
+#: inc/customizer/customizer.php:1294
+msgid "Your Copyright Text"
+msgstr "您的版权文本"
+
+#: inc/customizer/customizer.php:644
+msgid "1 Column"
+msgstr "1列"
+
+#: inc/customizer/customizer.php:736
+msgid "Header Options"
+msgstr "页头选项"
+
+#: inc/about/about-ashe.php:175
+msgid "Lifestyle"
+msgstr "生活方式"
+
+#: inc/customizer/customizer.php:645
+msgid "List Style"
+msgstr "列表样式"
+
+#: inc/customizer/customizer.php:1133
+msgid "Open Social Links in New Window"
+msgstr "在新窗口中打开社交链接 "
+
+#: inc/about/about-ashe.php:460 inc/customizer/customizer.php:405
+#: inc/customizer/customizer.php:411
+msgid "Predefined Styles"
+msgstr "预定义样式"
+
+#: inc/about/about-ashe.php:182 inc/customizer/customizer.php:504
+msgid "Dark"
+msgstr "深色"
+
+#: inc/about/about-ashe.php:168
+msgid "Food"
+msgstr "食物"
+
+#: inc/about/about-ashe.php:161
+msgid "Main"
+msgstr "主要"
+
+#: inc/about/about-ashe.php:158 inc/tgm/class-tgm-plugin-activation.php:2321
+msgid "Active"
+msgstr "已启用"
+
+#: inc/about/about-ashe.php:484
+msgid "Advanced Slider Options"
+msgstr "高级滑块选项"
+
+#: inc/customizer/customizer.php:1251 inc/customizer/customizer.php:1254
+msgid "Font Family"
+msgstr "字体"
+
+#: inc/customizer/customizer.php:1247
+msgid "Kalam"
+msgstr "Kalam"
+
+#: inc/customizer/customizer.php:1245
+msgid "Open Sans"
+msgstr "Open Sans"
+
+#: inc/customizer/customizer.php:1246
+msgid "Rokkitt"
+msgstr "Rokkitt"
+
+#: inc/customizer/customizer.php:1239
+msgid "Typography"
+msgstr "排版"
+
+#: inc/customizer/customizer.php:1271
+msgid "Typography Options"
+msgstr "排版选项"
+
+#: inc/customizer/customizer.php:1094
+msgid "Single Post"
+msgstr "文章页面"
+
+#: inc/about/about-ashe.php:150
+msgid "Ashe Pro - Predefined Styles"
+msgstr "Ashe Pro-预定义样式"
+
+#: inc/about/about-ashe.php:162 inc/about/about-ashe.php:169
+#: inc/about/about-ashe.php:176 inc/about/about-ashe.php:183
+#: inc/about/about-ashe.php:190 inc/about/about-ashe.php:197
+#: inc/about/about-ashe.php:204 inc/about/about-ashe.php:211
+#: inc/about/about-ashe.php:218 inc/about/about-ashe.php:225
+#: inc/about/about-ashe.php:232 inc/about/about-ashe.php:239
+#: inc/about/about-ashe.php:246 inc/about/about-ashe.php:253
+msgid "Live Preview"
+msgstr "实时预览"
+
+#: inc/about/about-ashe.php:189
+msgid "Style 1"
+msgstr "样式 1"
+
+#: inc/about/about-ashe.php:252
+msgid "Style 10"
+msgstr "样式 10"
+
+#: inc/about/about-ashe.php:196
+msgid "Style 2"
+msgstr "样式 2"
+
+#: inc/about/about-ashe.php:203
+msgid "Style 3"
+msgstr "样式 3"
+
+#: inc/about/about-ashe.php:210
+msgid "Style 4"
+msgstr "样式 4"
+
+#: inc/about/about-ashe.php:217
+msgid "Style 5"
+msgstr "样式 5"
+
+#: inc/about/about-ashe.php:224
+msgid "Style 6"
+msgstr "样式 6"
+
+#: inc/about/about-ashe.php:231
+msgid "Style 7"
+msgstr "样式 7"
+
+#: inc/about/about-ashe.php:238
+msgid "Style 8"
+msgstr "样式 8"
+
+#: inc/about/about-ashe.php:245
+msgid "Style 9"
+msgstr "样式 9"
+
+#: inc/customizer/customizer.php:765
+msgid "Logo Options"
+msgstr "徽标选项"
+
+#: inc/about/about-ashe.php:491
+msgid "Advanced WooCommerce Support"
+msgstr "高级WooCommerce支持"
+
+#: templates/sidebars/sidebar-alt.php:25
+msgid "No Widgets found in the Sidebar Alt!"
+msgstr "在备用侧边栏没有发现任何小工具！"
+
+#: single.php:34 templates/grid/blog-grid.php:116
+msgid "You May Also Like"
+msgstr "您可能也喜欢"
+
+#: inc/preview/demo-preview.php:74 inc/preview/demo-preview.php:81
+msgid "Archives"
+msgstr "文章归档"
+
+#: inc/preview/demo-preview.php:75
+msgid "Categories"
+msgstr "分类"
+
+#: inc/preview/demo-preview.php:80
+msgid "Pages"
+msgstr "页面"
+
+#: inc/preview/demo-preview.php:73
+msgid "Recent Posts"
+msgstr "近期文章"
+
+#: inc/preview/demo-preview.php:72 inc/preview/demo-preview.php:79
+msgid "Search"
+msgstr "搜索"
+
+#: comments.php:12
+msgid "% Comments"
+msgstr "%条评论"
+
+#: functions.php:759 functions.php:780
+msgid "&nbsp;at&nbsp;"
+msgstr "&nbsp;在&nbsp;"
+
+#: comments.php:12 templates/grid/blog-grid.php:65
+#: templates/grid/blog-grid.php:108 templates/grid/blog-list.php:68
+#: templates/single/post-content.php:50 templates/single/post-content.php:99
+msgid "0 Comments"
+msgstr "0评论"
+
+#: templates/grid/blog-grid.php:65 templates/grid/blog-grid.php:108
+#: templates/grid/blog-list.php:68 templates/single/post-content.php:50
+#: templates/single/post-content.php:99
+msgid "1 Comment"
+msgstr "一条评论"
+
+#: inc/about/about-ashe.php:444
+msgid "800+ Google Fonts"
+msgstr "800+ Google 字体"
+
+#: inc/about/about-ashe.php:5 inc/customizer/customizer.php:449
+msgid "About Ashe"
+msgstr "关于Ashe主题"
+
+#: inc/customizer/customizer.php:582
+msgid "Accent"
+msgstr "强调"
+
+#: functions.php:313
+msgid "Add widgets here to appear in your alternative/fixed sidebar."
+msgstr "在这里添加小工具，以显示在您的备用/固定侧栏中。"
+
+#: functions.php:323
+msgid "Add widgets here to appear in your footer."
+msgstr "在此向页脚中添加挂件。"
+
+#: functions.php:293 functions.php:303
+msgid "Add widgets here to appear in your sidebar."
+msgstr "在这里添加要放在侧栏的小工具。"
+
+#: inc/customizer/customizer.php:794
+msgid "Align"
+msgstr "对齐"
+
+#: inc/about/about-ashe.php:438
+msgid "Ashe Pro"
+msgstr "Ashe Pro"
+
+#: inc/customizer/customizer.php:726
+msgid "Background Image Size"
+msgstr "背景图片大小"
+
+#: inc/about/about-ashe.php:392
+msgid "Before asking a questions it's highly recommended to search on forums, but if you can't find the solution feel free to create a new topic."
+msgstr "在提出问题之前，强烈建议您在论坛上搜索，但如果找不到解决方案，可以自由地创建一个新的主题。"
+
+#: inc/customizer/customizer.php:1079
+msgid "Blog Options "
+msgstr "博客选项 "
+
+#: inc/customizer/customizer.php:649 inc/customizer/customizer.php:1005
+msgid "Blog Page"
+msgstr "博客页面"
+
+#: inc/customizer/customizer.php:654 inc/customizer/customizer.php:662
+msgid "Boxed"
+msgstr "盒装"
+
+#: templates/single/post-content.php:91
+msgid "By"
+msgstr "作者"
+
+#: inc/customizer/customizer.php:789
+msgid "Center"
+msgstr "中心"
+
+#: inc/about/about-ashe.php:399 inc/about/about-ashe.php:402
+#: inc/customizer/customizer.php:414 inc/customizer/customizer.php:416
+msgid "Changelog"
+msgstr "修订历史"
+
+#: inc/customizer/customizer.php:576 inc/customizer/customizer.php:617
+msgid "Colors"
+msgstr "颜色"
+
+#: templates/grid/blog-grid.php:65 templates/grid/blog-grid.php:108
+#: templates/grid/blog-list.php:68 templates/single/post-content.php:50
+#: templates/single/post-content.php:99
+msgid "Comments"
+msgstr "评论"
+
+#: inc/customizer/customizer.php:653
+msgid "Contained"
+msgstr "包含"
+
+#: inc/customizer/customizer.php:672
+msgid "Content Width"
+msgstr "内容宽度"
+
+#. translators: %s: Name of current post
+#: functions.php:394 functions.php:410
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "继续阅读<span class=\"screen-reader-text\">“%s”</span>"
+
+#: inc/customizer/customizer.php:721
+msgid "Cover"
+msgstr "叠加"
+
+#: inc/customizer/customizer.php:503 inc/customizer/customizer.php:1020
+msgid "Default"
+msgstr "默认"
+
+#: inc/about/about-ashe.php:73 inc/about/about-ashe.php:264
+msgid "Demo Content"
+msgstr "演示内容"
+
+#: inc/customizer/customizer.php:895
+msgid "Display Posts"
+msgstr "显示文章"
+
+#: inc/about/about-ashe.php:62 inc/customizer/customizer.php:394
+#: inc/customizer/customizer.php:402
+msgid "Documentation"
+msgstr "文档"
+
+#: inc/customizer/customizer.php:640
+msgid "Enable Sticky Sidebar"
+msgstr "启用粘性侧边栏"
+
+#: inc/customizer/customizer.php:940 inc/customizer/customizer.php:946
+msgid "Featured Links"
+msgstr "特色链接"
+
+#: inc/customizer/customizer.php:669
+msgid "Featured Links Width"
+msgstr "特色链接宽度"
+
+#: inc/customizer/customizer.php:818 inc/customizer/customizer.php:824
+msgid "Featured Slider"
+msgstr "特色滑块"
+
+#: inc/customizer/customizer.php:666
+msgid "Featured Slider Width"
+msgstr "特色滑块宽度"
+
+#: inc/customizer/customizer.php:1307
+msgid "Footer Options"
+msgstr "页脚选项"
+
+#: functions.php:321
+msgid "Footer Widgets"
+msgstr "页脚小工具"
+
+#: inc/customizer/customizer.php:678
+msgid "Footer Width"
+msgstr "页脚宽度"
+
+#: inc/about/about-ashe.php:390
+msgid "Forums"
+msgstr "论坛"
+
+#: inc/about/about-ashe.php:52
+msgid "Free vs Pro"
+msgstr "免费 vs Pro"
+
+#: inc/customizer/customizer.php:652 inc/customizer/customizer.php:661
+msgid "Full"
+msgstr "全部"
+
+#: inc/customizer/customizer.php:631
+msgid "General Layouts"
+msgstr "常规布局"
+
+#: inc/about/about-ashe.php:434 inc/customizer/customizer.php:381
+msgid "Get Ashe Pro"
+msgstr "购买Ashe Pro"
+
+#. translators: %s theme name
+#: functions.php:111
+msgid "Get started with %s"
+msgstr "与 %s 开始"
+
+#: inc/about/about-ashe.php:40
+msgid "Getting Started"
+msgstr "开始设置"
+
+#: inc/about/about-ashe.php:393
+msgid "Go to Support Forums"
+msgstr "转到支持论坛"
+
+#: inc/about/about-ashe.php:451
+msgid "Header Background Image/Color/Video"
+msgstr "页眉背景图像/颜色/视频"
+
+#: inc/customizer/customizer.php:658
+msgid "Header Width"
+msgstr "页眉宽度"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:523
+#: inc/customizer/customizer.php:964 inc/customizer/customizer.php:973
+#: inc/customizer/customizer.php:982
+msgid "Image"
+msgstr "图像"
+
+#: functions.php:168 inc/about/about-ashe.php:141 inc/about/about-ashe.php:563
+msgid "Install Now"
+msgstr "现在安装"
+
+#: inc/about/about-ashe.php:560
+msgid "Installed"
+msgstr "已安装"
+
+#: inc/customizer/customizer.php:688
+msgid "Layout Options"
+msgstr "布局选项"
+
+#: inc/customizer/customizer.php:788
+msgid "Left"
+msgstr "左"
+
+#: templates/grid/blog-pagination.php:76
+msgid "Load More"
+msgstr "加载更多"
+
+#: templates/grid/blog-pagination.php:31
+msgid "Loading..."
+msgstr "加载中..."
+
+#: functions.php:51
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: inc/customizer/customizer.php:779 inc/customizer/customizer.php:785
+msgid "Main Navigation"
+msgstr "主导航"
+
+#. translators: %s theme name
+#: inc/about/about-ashe.php:65 inc/customizer/customizer.php:399
+msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
+msgstr "需要更多细节吗？请检查我们的完整文档，了解如何使用的详细信息 %s。"
+
+#: comments.php:30
+msgid "Newer Comments"
+msgstr "较新评论"
+
+#: templates/grid/blog-pagination.php:70
+msgid "Newer Posts"
+msgstr "新文章"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:524
+#: inc/customizer/customizer.php:1011 inc/customizer/customizer.php:1064
+msgid "None"
+msgstr "无"
+
+#: templates/grid/blog-grid.php:133 templates/grid/blog-list.php:115
+msgid "Nothing Found!"
+msgstr "没有找到！"
+
+#: inc/customizer/customizer.php:907
+msgid "Number of Slides"
+msgstr "幻灯片数量"
+
+#: inc/customizer/customizer.php:1021
+msgid "Numeric"
+msgstr "数字型"
+
+#: comments.php:26
+msgid "Older Comments"
+msgstr "较早评论"
+
+#: templates/grid/blog-pagination.php:64
+msgid "Older Posts"
+msgstr "旧文章"
+
+#: functions.php:236 functions.php:244 functions.php:252 functions.php:260
+msgctxt "Google font: on or off"
+msgid "on"
+msgstr "off"
+
+#: comments.php:12
+msgid "One Comment"
+msgstr "一条评论"
+
+#: inc/customizer/customizer.php:1286
+msgid "Page Footer"
+msgstr "页脚"
+
+#: inc/customizer/customizer.php:718
+msgid "Page Header"
+msgstr "页眉"
+
+#: 404.php:5
+msgid "Page not found!"
+msgstr "页面未找到！"
+
+#: page.php:63 templates/single/post-content.php:68
+msgid "Pages:"
+msgstr "页码："
+
+#: inc/customizer/customizer.php:722
+msgid "Pattern"
+msgstr "模式"
+
+#: functions.php:757
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/customizer/customizer.php:1013
+msgid "Post Content"
+msgstr "文章内容"
+
+#: inc/customizer/customizer.php:1017
+msgid "Post Description"
+msgstr "文章描述"
+
+#: inc/customizer/customizer.php:1012
+msgid "Post Excerpt"
+msgstr "文章摘录"
+
+#: inc/customizer/customizer.php:1025
+msgid "Post Pagination"
+msgstr "文章分页"
+
+#: inc/customizer/customizer.php:1321
+msgid "Preloader"
+msgstr "预加载"
+
+#: inc/customizer/customizer.php:1327
+msgid "Preloading Animation"
+msgstr "预加载动画"
+
+#: inc/about/about-ashe.php:68
+msgid "Read Full Documentation"
+msgstr "阅读完整文档"
+
+#: templates/grid/blog-grid.php:89 templates/grid/blog-list.php:93
+#: templates/header/featured-slider.php:99
+msgid "read more"
+msgstr "阅读更多"
+
+#: inc/customizer/customizer.php:1065
+msgid "Related"
+msgstr "相关"
+
+#: inc/customizer/customizer.php:1069 inc/customizer/customizer.php:1118
+msgid "Related Posts - Display"
+msgstr "相关文章－显示"
+
+#: inc/customizer/customizer.php:790
+msgid "Right"
+msgstr "右"
+
+#: functions.php:659
+msgid "Search..."
+msgstr "搜索..."
+
+#: inc/customizer/customizer.php:298
+msgid "See Ashe PRO"
+msgstr "观看Ashe Pro"
+
+#: inc/customizer/customizer.php:904
+msgid "Select Category"
+msgstr "选择分类目录"
+
+#: inc/customizer/customizer.php:1210 inc/customizer/customizer.php:1216
+#: inc/customizer/customizer.php:1222 inc/customizer/customizer.php:1228
+msgid "Select Icon"
+msgstr "选择图标"
+
+#: inc/customizer/customizer.php:1040 inc/customizer/customizer.php:1112
+msgid "Show Author"
+msgstr "显示作者"
+
+#: inc/customizer/customizer.php:1115
+msgid "Show Author Description"
+msgstr "显示作者描述"
+
+#: inc/customizer/customizer.php:1031 inc/customizer/customizer.php:1103
+msgid "Show Categories"
+msgstr "显示分类"
+
+#: inc/customizer/customizer.php:1037 inc/customizer/customizer.php:1109
+msgid "Show Comments"
+msgstr "显示评论"
+
+#: inc/customizer/customizer.php:1034 inc/customizer/customizer.php:1106
+msgid "Show Date"
+msgstr "显示日期"
+
+#: inc/customizer/customizer.php:913
+msgid "Show Navigation Arrows"
+msgstr "显示导航箭头"
+
+#: inc/customizer/customizer.php:916
+msgid "Show Pagination Dots"
+msgstr "显示分页点"
+
+#: inc/customizer/customizer.php:797
+msgid "Show Search Icon"
+msgstr "显示搜索图标"
+
+#: inc/customizer/customizer.php:800
+msgid "Show Sidebar Icon"
+msgstr "显示边栏图标"
+
+#: functions.php:311
+msgid "Sidebar Alt"
+msgstr "备用侧栏"
+
+#: inc/customizer/customizer.php:637
+msgid "Sidebar Width"
+msgstr "侧边栏宽度"
+
+#: inc/customizer/customizer.php:675
+msgid "Single Content Width"
+msgstr "单一内容宽度"
+
+#: inc/customizer/customizer.php:926
+msgid "Slider Options "
+msgstr "滑块选项 "
+
+#: inc/customizer/customizer.php:1127
+msgid "Social Media"
+msgstr "社交媒体"
+
+#: templates/grid/blog-grid.php:134 templates/grid/blog-list.php:116
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "抱歉，没有符合您搜索条件的结果。请换其它关键词再试。"
+
+#: inc/about/about-ashe.php:498
+msgid "Sticky Navigation"
+msgstr "粘性导航"
+
+#: inc/about/about-ashe.php:49 inc/customizer/customizer.php:384
+msgid "Support"
+msgstr "支持"
+
+#: inc/about/about-ashe.php:115
+msgid "Theme Customizer"
+msgstr "主题定制器"
+
+#: inc/customizer/customizer.php:380
+msgid "There are lots of reasons to upgrade to Pro version. Unlimited custom Colors, rich Typography options, multiple variation of Blog Feed layout and way much more. Also Premium Support included."
+msgstr "有很多理由来升级到专业版。无限的自定义颜色，丰富的排版选项，博客源布局和方式的多种变化更多。还包括高级支持。"
+
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:265
+#: inc/customizer/customizer-repeater/class/customizer-repeater-control.php:381
+#: inc/customizer/customizer.php:958 inc/customizer/customizer.php:967
+#: inc/customizer/customizer.php:976
+msgid "Title"
+msgstr "标题"
+
+#: inc/customizer/customizer.php:702 inc/customizer/customizer.php:708
+msgid "Top Bar"
+msgstr "顶栏"
+
+#: functions.php:50
+msgid "Top Menu"
+msgstr "顶部菜单"
+
+#: functions.php:659
+msgid "Type then hit Enter..."
+msgstr "输入后按回车..."
+
+#: inc/customizer/customizer.php:379
+msgid "Upgrade"
+msgstr "升级"
+
+#: inc/customizer/customizer.php:961 inc/customizer/customizer.php:970
+#: inc/customizer/customizer.php:979 inc/customizer/customizer.php:1213
+#: inc/customizer/customizer.php:1219 inc/customizer/customizer.php:1225
+#: inc/customizer/customizer.php:1231
+msgid "URL"
+msgstr "URL"
+
+#: inc/customizer/customizer.php:750
+msgid "Width"
+msgstr "宽度"
+
+#: functions.php:792
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论正在等待审核。"
+
+#: functions.php:760 functions.php:783
+msgid "[Edit]"
+msgstr "[编辑]"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "WP Royal"
+msgstr "WP Royal"

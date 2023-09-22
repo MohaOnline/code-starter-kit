@@ -1,0 +1,31 @@
+.gform_wrapper .ginput_container_slider {
+    position: relative;
+}
+.gform_wrapper .gfield input.slider {
+	position: absolute;
+    left: -9999px;
+}
+.slider-display {
+	margin-top: 2.5em;
+}
+input[data-value-visibility="hidden"] + .slider-display {
+	margin-top: .25em;
+}
+input[data-value-visibility="hover-drag"] + .slider-display:not(:hover) .noUi-handle:not(:focus) .noUi-tooltip {
+	display: none;
+}
+input[data-value-visibility="hover-drag"] + .slider-display .noUi-active .noUi-tooltip {
+	display: block;
+}
+.slider-display span[class$='val-relation'] {
+	margin: .5em;
+}
+.min-val-relation {
+	float: left;
+}
+.max-val-relation {
+	float: right;
+}
+.noUi-base {
+	z-index: 1;
+}

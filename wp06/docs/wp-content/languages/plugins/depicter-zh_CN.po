@@ -1,0 +1,2777 @@
+# Translation of Plugins - Depicter Slider &#8211; Responsive Image Slider, Video Slider &amp; Post Slider - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Depicter Slider &#8211; Responsive Image Slider, Video Slider &amp; Post Slider - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-10-17 01:40:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.6\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Depicter Slider &#8211; Responsive Image Slider, Video Slider &amp; Post Slider - Stable (latest release)\n"
+
+#: app/src/Modules/Divi/includes/modules/depicter/depicter.php:62
+msgid "Slider ID"
+msgstr "滑块ID"
+
+#: app/src/Modules/Divi/includes/modules/depicter/depicter.php:74
+msgid "Publish or edit slider"
+msgstr "发布或编辑滑块"
+
+#: app/src/Dashboard/DashboardPage.php:49
+#: app/src/Dashboard/DashboardPage.php:50
+msgid "Dashboard"
+msgstr "仪表盘"
+
+#: app/src/Modules/Elementor/SliderWidget.php:186
+#: app/src/Modules/Oxygen/module.php:48
+msgid "Please select a Depicter slider"
+msgstr "请选择一个描述器滑块"
+
+#: app/src/Front/Render.php:73
+msgid "Slider ID is required."
+msgstr "滑块 ID 是必需的。"
+
+#: app/src/Modules/Elementor/SliderWidget.php:134
+msgid "Select a Depicter slider"
+msgstr "选择描述器滑块"
+
+#: app/src/Utility/Http.php:25
+msgid "Connection Error .."
+msgstr "连接错误"
+
+#: app/src/Modules/Divi/includes/modules/depicter/depicter.php:29
+#: app/src/Modules/Elementor/Module.php:83
+#: app/src/Modules/ModulesServiceProvider.php:79
+#: views/admin/notices/builders-draft-notice.php:18
+msgid "Published"
+msgstr "已发布"
+
+#: views/admin/notices/builders-draft-notice.php:22
+msgid "This slider is not published yet and is not visible to visitors. Open the editor and publish now. This notice is only visible to you."
+msgstr "此滑块尚未发布，访问者看不到。打开编辑器并立即发布。此通知仅对您可见。"
+
+#: views/admin/notices/builders-draft-notice.php:24
+#: views/admin/notices/slider-draft-notice.php:112
+msgid "This slider has unpublished changes. Publish the changes to see the final result."
+msgstr "此滑块有未发布的更改。发布更改以查看最终结果。"
+
+#: app/src/Modules/ModulesServiceProvider.php:117
+#: views/admin/notices/builders-draft-notice.php:33
+msgid "Publish Slider"
+msgstr "发布滑块"
+
+#: views/admin/notices/slider-draft-notice.php:110
+msgid "This slider is not published yet and is not visible to visitors."
+msgstr "此滑块尚未发布，访问者看不到。"
+
+#: views/admin/notices/slider-draft-notice.php:114
+msgid "Open the editor"
+msgstr "用编辑器打开"
+
+#: views/admin/notices/slider-draft-notice.php:114
+msgid "and publish now."
+msgstr "并立即发布。"
+
+#: views/admin/notices/slider-draft-notice.php:115
+msgid "This notice is only visible to you."
+msgstr "此通知仅对您可见。"
+
+#: app/src/Dashboard/DashboardSetting.php:58
+#: app/src/Modules/Beaver/module.php:118
+msgid "Depicter Settings"
+msgstr "描述器设置"
+
+#: app/src/Modules/WPBakery/module.php:34
+msgid "Make animated and interactive slider"
+msgstr "制作动画和交互式滑块"
+
+#: app/src/Front/Render.php:85
+msgid "Slider alias not found."
+msgstr "未找到滑块别名。"
+
+#: app/src/DataSources/Products.php:369 app/src/DataSources/Tags/Legacy.php:261
+#: app/src/DataSources/Tags/Product.php:318
+msgid "On backorder"
+msgstr "延迟交货"
+
+#: app/src/DataSources/Products.php:371 app/src/DataSources/Tags/Legacy.php:263
+#: app/src/DataSources/Tags/Product.php:320
+msgid "In stock"
+msgstr "库存充足"
+
+#: app/src/DataSources/Products.php:373 app/src/DataSources/Tags/Legacy.php:265
+#: app/src/DataSources/Tags/Product.php:322
+msgid "Out of stock"
+msgstr "无库存"
+
+#. Description of the plugin
+#: app/src/Modules/Beaver/module.php:15
+msgid "Make animated and interactive image slider, video slider, post slider and carousel which work smoothly across devices."
+msgstr "制作动画和交互式图像滑块、视频滑块、帖子滑块和轮播，它们可以在不同设备上流畅运行。"
+
+#: app/src/Controllers/Ajax/ExportAjaxController.php:22
+msgid "Document ID is required"
+msgstr "必须提供文档 ID"
+
+#: app/src/Middleware/CapabilityMiddleware.php:38
+msgid "Sorry, insufficient permission!"
+msgstr "抱歉，权限不足！"
+
+#. Plugin Name of the plugin
+#: app/src/Dashboard/DashboardPage.php:39
+#: app/src/Dashboard/DashboardPage.php:40 app/src/Editor/Editor.php:87
+#: app/src/Modules/Beaver/module.php:13 app/src/Modules/Beaver/module.php:17
+#: app/src/Modules/Divi/includes/modules/depicter/depicter.php:19
+#: app/src/Modules/Oxygen/module.php:21 app/src/Modules/WPBakery/module.php:31
+msgid "Depicter"
+msgstr "Depicter"
+
+#. Plugin URI of the plugin
+msgid "https://depicter.com"
+msgstr "https://depicter.com"
+
+#. Author of the plugin
+msgid "Averta"
+msgstr "Averta"
+
+#. Author URI of the plugin
+msgid "http://averta.net"
+msgstr "http://averta.net"
+
+#: app/requirement.php:31
+msgid "%1$s plugin requires PHP version %2$s but current version is %3$s. Please contact your host provider and ask them to upgrade PHP version."
+msgstr "%1$s 插件需要 PHP 版本 %2$s，但当前版本是 %3$s。请联系您的主机提供商并要求他们升级 PHP 版本。"
+
+#: app/src/Controllers/Ajax/EditorAjaxController.php:92
+msgid "Media files cannot be published due to lack of proper file permissions for uploads directory."
+msgstr "由于上传目录缺少适当的文件权限，无法发布媒体文件。"
+
+#: app/src/Controllers/Ajax/ImportAjaxController.php:28
+#: app/src/WordPress/FileUploaderService.php:22
+msgid "Cannot upload the file, because max permitted file upload size is %s."
+msgstr "无法上传文件，因为允许的最大文件上传大小为 %s。"
+
+#: app/src/Database/Repository/DocumentRepository.php:541
+#: app/src/Database/Repository/DocumentRepository.php:564
+msgid "Untitled Slider"
+msgstr "未命名滑块"
+
+#: app/src/Editor/EditorLocalization.php:11
+msgid "You don’t have any sliders yet"
+msgstr "您还没有任何滑块"
+
+#: app/src/Editor/EditorLocalization.php:12
+msgid "Create Slider"
+msgstr "创建滑块"
+
+#: app/src/Editor/EditorLocalization.php:13
+msgid "or"
+msgstr "或"
+
+#: app/src/Editor/EditorLocalization.php:14
+msgid "import slider"
+msgstr "导入幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:15
+msgid "Name"
+msgstr "名称"
+
+#: app/src/Editor/EditorLocalization.php:16
+msgid "Slides"
+msgstr "滑块"
+
+#: app/src/Editor/EditorLocalization.php:17
+msgid "Slug"
+msgstr "别名"
+
+#: app/src/Editor/EditorLocalization.php:18
+msgid "Last Modify"
+msgstr "最后修改"
+
+#: app/src/Editor/EditorLocalization.php:19
+msgid "Preview"
+msgstr "预览"
+
+#: app/src/Editor/EditorLocalization.php:20
+msgid "Edit"
+msgstr "编辑"
+
+#: app/src/Editor/EditorLocalization.php:21
+msgid "Delete"
+msgstr "删除"
+
+#: app/src/Editor/EditorLocalization.php:22
+msgid "Duplicate"
+msgstr "复制"
+
+#: app/src/Editor/EditorLocalization.php:23
+msgid "No matching document found."
+msgstr "未找到匹配的文档。"
+
+#: app/src/Editor/EditorLocalization.php:24
+msgid "Sort by Name"
+msgstr "按名称排序"
+
+#: app/src/Editor/EditorLocalization.php:25
+msgid "Sort by Date"
+msgstr "日期排序"
+
+#: app/src/Editor/EditorLocalization.php:26
+msgid "Sort by Slides"
+msgstr "按幻灯片排序"
+
+#: app/src/Editor/EditorLocalization.php:27
+msgid "Sort by Type"
+msgstr "根据类型排序"
+
+#: app/src/Editor/EditorLocalization.php:28
+msgid "What is legacy slider?"
+msgstr "什么是旧滑块？"
+
+#: app/src/Editor/EditorLocalization.php:29
+msgid "sample text for text section and lorem is perfect for new world to pay a new deivce over etchnology. when hear the buzz of the little world among the stalks, and familiar with the countless indescribable forms of the insects and flies."
+msgstr "sample text for text section and lorem is perfect for new world to pay a new deivce over etchnology. when hear the buzz of the little world among the stalks, and familiar with the countless indescribable forms of the insects and flies."
+
+#: app/src/Editor/EditorLocalization.php:30
+msgid "Install Legacy Slider"
+msgstr "安装旧版滑块"
+
+#: app/src/Editor/EditorLocalization.php:31
+msgid "Close"
+msgstr "关闭"
+
+#: app/src/Editor/EditorLocalization.php:32
+msgid "Are you sure you want to delete selected slider(s)?"
+msgstr "您确定要删除选定的滑块吗？"
+
+#: app/src/Editor/EditorLocalization.php:33
+msgid "Export"
+msgstr "导出"
+
+#: app/src/Editor/EditorLocalization.php:34
+msgid "Clear Selected"
+msgstr "清除所选图像"
+
+#: app/src/Editor/EditorLocalization.php:35
+msgid "Select All"
+msgstr "全部选择"
+
+#: app/src/Editor/EditorLocalization.php:36
+msgid "Import"
+msgstr "导入"
+
+#: app/src/Editor/EditorLocalization.php:37
+msgid "Search for slider …"
+msgstr "搜索滑块…"
+
+#: app/src/Editor/EditorLocalization.php:38
+msgid "Custom Slider"
+msgstr "自定义滑块"
+
+#: app/src/Editor/EditorLocalization.php:39
+msgid "Post Slider"
+msgstr "文章滑块"
+
+#: app/src/Editor/EditorLocalization.php:40
+msgid "Facebook Slider"
+msgstr "Facebook滑块"
+
+#: app/src/Editor/EditorLocalization.php:41
+msgid "Instagram Slider"
+msgstr "Instagram滑块"
+
+#: app/src/Editor/EditorLocalization.php:42
+msgid "Twitter Slider"
+msgstr "Twitter  滑块"
+
+#: app/src/Editor/EditorLocalization.php:43
+msgid "Flickr Slider"
+msgstr "Flickr滑块"
+
+#: app/src/DataSources/Tags/Product.php:26
+#: app/src/Editor/EditorLocalization.php:44
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: app/src/Editor/EditorLocalization.php:45
+msgid "Youtube Slider"
+msgstr "Youtube 滑块"
+
+#: app/src/Editor/EditorLocalization.php:46
+msgid "Back to sliders list"
+msgstr "返回滑块列表"
+
+#: app/src/Editor/EditorLocalization.php:47
+msgid "Choose the new slider type"
+msgstr "选择新的滑块类型"
+
+#: app/src/Editor/EditorLocalization.php:48
+msgid "Possession of my entire soul, like these sweet mornings of spring."
+msgstr "拥有我的整个灵魂，就像春天的这些甜蜜的早晨。"
+
+#: app/src/Editor/EditorLocalization.php:49
+msgid "Possession of my entire soul, like these sweet mornings of spring into the new way of presentation."
+msgstr "我整个灵魂的附体，就像春天的这些甜蜜的早晨进入了新的呈现方式。"
+
+#: app/src/Editor/EditorLocalization.php:50
+msgid "Possession of my entire soul, like these sweet."
+msgstr "我整个灵魂的占有，就像这些甜蜜。"
+
+#: app/src/Editor/EditorLocalization.php:51
+msgid "Blank Slider"
+msgstr "空白滑块"
+
+#: app/src/Editor/EditorLocalization.php:52
+msgid "Are you sure you want to close?"
+msgstr "确定要关闭吗？"
+
+#: app/src/Editor/EditorLocalization.php:53
+msgid "Importing Template"
+msgstr "导入模板"
+
+#: app/src/Editor/EditorLocalization.php:54
+msgid "Search for templates …"
+msgstr "搜索网格模板"
+
+#: app/src/Editor/EditorLocalization.php:55
+msgid "Sorry, we couldn't find any items here."
+msgstr "抱歉，我们在这里找不到任何商品。"
+
+#: app/src/Editor/EditorLocalization.php:56
+msgid "Go to slide"
+msgstr "跳转至滑块"
+
+#: app/src/Editor/EditorLocalization.php:57
+msgid "Scroll to"
+msgstr "在滚动"
+
+#: app/src/Editor/EditorLocalization.php:58
+msgid "by"
+msgstr "来自"
+
+#: app/src/Editor/EditorLocalization.php:59
+msgid "from"
+msgstr "从"
+
+#: app/src/Editor/EditorLocalization.php:60
+msgid "WordPress elements"
+msgstr "WordPress 元素"
+
+#: app/src/Editor/EditorLocalization.php:61
+msgid "WooCommerce elements"
+msgstr "WooCommerce 元素"
+
+#: app/src/Editor/EditorLocalization.php:62
+msgid "Instagram elements"
+msgstr "Instagram 元素"
+
+#: app/src/Editor/EditorLocalization.php:63
+msgid "Facebook elements"
+msgstr "Facebook元素"
+
+#: app/src/Editor/EditorLocalization.php:64
+msgid "Twitter elements"
+msgstr "Twitter元素"
+
+#: app/src/Editor/EditorLocalization.php:65
+msgid "Flickr elements"
+msgstr "Flickr 元素"
+
+#: app/src/Editor/EditorLocalization.php:66
+msgid "Templates"
+msgstr "邮箱模板选项"
+
+#: app/src/Editor/EditorLocalization.php:67
+msgid "Photos"
+msgstr "图像"
+
+#: app/src/Editor/EditorLocalization.php:68
+msgid "Texts"
+msgstr "文本"
+
+#: app/src/Editor/EditorLocalization.php:69
+msgid "Videos"
+msgstr "视频"
+
+#: app/src/Editor/EditorLocalization.php:70
+msgid "Shapes and Vectors"
+msgstr "形状和向量"
+
+#: app/src/Editor/EditorLocalization.php:71
+msgid "Buttons"
+msgstr "按键"
+
+#: app/src/Editor/EditorLocalization.php:72
+msgid "Controls"
+msgstr "控制"
+
+#: app/src/Editor/EditorLocalization.php:73
+msgid "Click Here"
+msgstr "点击这里"
+
+#: app/src/Editor/EditorLocalization.php:74
+msgid "Drag or click to create a button"
+msgstr "拖动或单击以创建按钮"
+
+#: app/src/Editor/EditorLocalization.php:75
+msgid "Controls set"
+msgstr "控件集"
+
+#: app/src/Editor/EditorLocalization.php:76
+msgid "Navigation arrows"
+msgstr "导航箭头"
+
+#: app/src/Editor/EditorLocalization.php:77
+msgid "Navigation bullets"
+msgstr "导航子菜单"
+
+#: app/src/Editor/EditorLocalization.php:78
+msgid "Line timer"
+msgstr "线路定时器"
+
+#: app/src/Editor/EditorLocalization.php:79
+msgid "Slideshow play and pause"
+msgstr "幻灯片播放和暂停"
+
+#: app/src/Editor/EditorLocalization.php:80
+msgid "Scroll down indicator"
+msgstr "向下滚动指示器"
+
+#: app/src/Editor/EditorLocalization.php:81
+msgid "Read More"
+msgstr "阅读更多"
+
+#: app/src/DataSources/Tags/Post.php:102
+#: app/src/Editor/EditorLocalization.php:82
+msgid "Featured Image"
+msgstr "特色图片"
+
+#: app/src/Editor/EditorLocalization.php:83
+msgid "Product Name"
+msgstr "商品名称"
+
+#: app/src/Editor/EditorLocalization.php:84
+msgid "Go to product page"
+msgstr "转到商品页面"
+
+#: app/src/Editor/EditorLocalization.php:85
+msgid "Description"
+msgstr "描述"
+
+#: app/src/DataSources/Tags/Product.php:187
+#: app/src/Editor/EditorLocalization.php:86
+msgid "SKU"
+msgstr "SKU"
+
+#: app/src/Editor/EditorLocalization.php:87
+msgid "Regular price"
+msgstr "常规售价"
+
+#: app/src/Editor/EditorLocalization.php:88
+msgid "Sale price"
+msgstr "促销价格"
+
+#: app/src/DataSources/Tags/Product.php:172
+#: app/src/Editor/EditorLocalization.php:89
+msgid "In stock quantity"
+msgstr "库存数量。"
+
+#: app/src/Editor/EditorLocalization.php:90
+msgid "Add to cart button"
+msgstr "添加到购物车按钮"
+
+#: app/src/Editor/EditorLocalization.php:91
+#: app/src/WordPress/ContentTypesServiceProvider.php:91
+msgid "Category"
+msgstr "分类"
+
+#: app/src/Editor/EditorLocalization.php:92
+msgid "Tags"
+msgstr "标签"
+
+#: app/src/Editor/EditorLocalization.php:93
+msgid "Date on sale from"
+msgstr "发售日期从"
+
+#: app/src/Editor/EditorLocalization.php:94
+msgid "Date on sale to"
+msgstr "销售价格的结束日期（GMT）。"
+
+#: app/src/Editor/EditorLocalization.php:95
+msgid "Total sales"
+msgstr "总销售额"
+
+#: app/src/Editor/EditorLocalization.php:96
+msgid "Rating counts"
+msgstr "评分计数"
+
+#: app/src/Editor/EditorLocalization.php:97
+msgid "Average rating"
+msgstr "平均评级"
+
+#: app/src/Editor/EditorLocalization.php:98
+msgid "Review counts"
+msgstr "评论计数"
+
+#: app/src/Editor/EditorLocalization.php:99
+msgid "Author Name"
+msgstr "作者姓名"
+
+#: app/src/Editor/EditorLocalization.php:100
+msgid "Go to author page"
+msgstr "转到作者页面"
+
+#: app/src/DataSources/Tags/Post.php:42
+#: app/src/Editor/EditorLocalization.php:101
+msgid "Title"
+msgstr "标题"
+
+#: app/src/Editor/EditorLocalization.php:102
+msgid "Go to post page"
+msgstr "前往发帖页面"
+
+#: app/src/DataSources/Tags/Post.php:72
+#: app/src/Editor/EditorLocalization.php:103
+msgid "Excerpt"
+msgstr "摘录"
+
+#: app/src/DataSources/Tags/Post.php:57
+#: app/src/Editor/EditorLocalization.php:104
+#: app/src/Modules/WPBakery/module.php:33
+msgid "Content"
+msgstr "内容"
+
+#: app/src/DataSources/Tags/Post.php:117
+#: app/src/Editor/EditorLocalization.php:105
+msgid "Date"
+msgstr "日期"
+
+#: app/src/Editor/EditorLocalization.php:106
+msgid "Read more button"
+msgstr "阅读更多按钮"
+
+#: app/src/Editor/EditorLocalization.php:107
+msgid "Stock Photos"
+msgstr "库存照片"
+
+#: app/src/Editor/EditorLocalization.php:108
+msgid "My Photos"
+msgstr "我的照片"
+
+#: app/src/Editor/EditorLocalization.php:109
+msgid "Upload or insert a photo"
+msgstr "上传或插入照片"
+
+#: app/src/Editor/EditorLocalization.php:110
+msgid "Shapes"
+msgstr "形状"
+
+#: app/src/Editor/EditorLocalization.php:111
+msgid "Stock Vectors"
+msgstr "库存矢量图"
+
+#: app/src/Editor/EditorLocalization.php:112
+msgid "My Vectors"
+msgstr "我的矢量图"
+
+#: app/src/Editor/EditorLocalization.php:113
+msgid "Upload or insert a vector image"
+msgstr "上传或插入矢量图像"
+
+#: app/src/Editor/EditorLocalization.php:114
+msgid "Add Heading Text"
+msgstr "添加标题文本"
+
+#: app/src/Editor/EditorLocalization.php:115
+msgid "Add Subheading Text"
+msgstr "添加副标题文本"
+
+#: app/src/Editor/EditorLocalization.php:116
+msgid "Add a body paragraph text"
+msgstr "添加正文段落文本"
+
+#: app/src/Editor/EditorLocalization.php:117
+msgid "Drag or click to add a text"
+msgstr "拖动或单击以添加文本"
+
+#: app/src/Editor/EditorLocalization.php:118
+msgid "Combination styles"
+msgstr "组合款式"
+
+#: app/src/Editor/EditorLocalization.php:119
+msgid "YouTube"
+msgstr "YouTube"
+
+#: app/src/Editor/EditorLocalization.php:120
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: app/src/Editor/EditorLocalization.php:121
+msgid "My Videos"
+msgstr "我的视频"
+
+#: app/src/Editor/EditorLocalization.php:122
+msgid "Upload or insert a video"
+msgstr "上传或插入视频"
+
+#: app/src/Editor/EditorLocalization.php:123
+msgid "Embed video"
+msgstr "嵌入视频"
+
+#: app/src/Editor/EditorLocalization.php:124
+msgid "Stock videos"
+msgstr "库存视频"
+
+#: app/src/Editor/EditorLocalization.php:125
+msgid "Search..."
+msgstr "输入关键词……"
+
+#: app/src/Editor/EditorLocalization.php:126
+msgid "Insert"
+msgstr "插入"
+
+#: app/src/Editor/EditorLocalization.php:127
+msgid "Upload"
+msgstr "上传"
+
+#: app/src/Editor/EditorLocalization.php:128
+msgid "Copy to clipboard"
+msgstr "复制到剪贴板"
+
+#: app/src/Editor/EditorLocalization.php:129
+msgid "back to dashboard"
+msgstr "返回到仪表板"
+
+#: app/src/Editor/EditorLocalization.php:130
+msgid "You can also find these settings in the options tab later."
+msgstr "您也可以稍后在选项选项卡中找到这些设置。"
+
+#: app/src/Editor/EditorLocalization.php:131
+msgid "Bring forward"
+msgstr "向上一层"
+
+#: app/src/Editor/EditorLocalization.php:132
+msgid "Bring to front"
+msgstr "移到上一层"
+
+#: app/src/Editor/EditorLocalization.php:133
+msgid "Send backward"
+msgstr "往后发送"
+
+#: app/src/Editor/EditorLocalization.php:134
+msgid " Send to back"
+msgstr "置于底层"
+
+#: app/src/Editor/EditorLocalization.php:135
+msgid "Show on all slides"
+msgstr "在所有幻灯片上显示"
+
+#: app/src/Editor/EditorLocalization.php:136
+msgid "Hide over this slide "
+msgstr "隐藏在这张幻灯片上"
+
+#: app/src/Editor/EditorLocalization.php:137
+msgid "Group"
+msgstr "分组"
+
+#: app/src/Editor/EditorLocalization.php:138
+msgid "Ungroup"
+msgstr "取消组合"
+
+#: app/src/Editor/EditorLocalization.php:139
+msgid "Lock"
+msgstr "锁定"
+
+#: app/src/Editor/EditorLocalization.php:140
+msgid "Unlock"
+msgstr "解锁​​​​"
+
+#: app/src/Editor/EditorLocalization.php:141
+msgid "Crop"
+msgstr "剪裁"
+
+#: app/src/Editor/EditorLocalization.php:142
+msgid "Set as slide background"
+msgstr "设置为幻灯片背景"
+
+#: app/src/Editor/EditorLocalization.php:143
+msgid "Reset crop"
+msgstr "重置裁切"
+
+#: app/src/Editor/EditorLocalization.php:144
+msgid "Copy"
+msgstr "复制"
+
+#: app/src/Editor/EditorLocalization.php:145
+msgid "Paste"
+msgstr "粘贴"
+
+#: app/src/Editor/EditorLocalization.php:146
+msgid "Copy styles"
+msgstr "复制样式"
+
+#: app/src/Editor/EditorLocalization.php:147
+msgid "Paste styles"
+msgstr "粘贴样式"
+
+#: app/src/Editor/EditorLocalization.php:148
+msgid "Copy position"
+msgstr "复制位置"
+
+#: app/src/Editor/EditorLocalization.php:149
+msgid "Paste position"
+msgstr "粘贴局面"
+
+#: app/src/Editor/EditorLocalization.php:150
+msgid "Copy animation"
+msgstr "复制动画"
+
+#: app/src/Editor/EditorLocalization.php:151
+msgid "Paste animation"
+msgstr "粘贴动画"
+
+#: app/src/Editor/EditorLocalization.php:152
+msgid "Copy/Paste special"
+msgstr "复制/粘贴特殊"
+
+#: app/src/Editor/EditorLocalization.php:153
+msgid "Reset responsive positions"
+msgstr "重置响应位置"
+
+#: app/src/Editor/EditorLocalization.php:154
+msgid "Reset responsive sizes"
+msgstr "重置响应尺寸"
+
+#: app/src/Editor/EditorLocalization.php:155
+msgid "Reset responsive animations"
+msgstr "重置响应动画"
+
+#: app/src/Editor/EditorLocalization.php:156
+msgid "Responsive"
+msgstr "自适应"
+
+#: app/src/Editor/EditorLocalization.php:157
+msgid "Select element"
+msgstr "选择元素"
+
+#: app/src/Editor/EditorLocalization.php:158
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: app/src/Editor/EditorLocalization.php:159
+msgid "Padding"
+msgstr "内距"
+
+#: app/src/Editor/EditorLocalization.php:160
+msgid "Corner Radius"
+msgstr "圆角半径"
+
+#: app/src/Editor/EditorLocalization.php:161
+msgid "Opacity"
+msgstr "不透明度"
+
+#: app/src/Editor/EditorLocalization.php:162
+msgid "Blending mode"
+msgstr "混合模式"
+
+#: app/src/Editor/EditorLocalization.php:163
+msgid "Fill Color"
+msgstr "填充颜色"
+
+#: app/src/Editor/EditorLocalization.php:164
+msgid "Stroke Color"
+msgstr "笔廓颜色"
+
+#: app/src/Editor/EditorLocalization.php:165
+msgid "Stroke width"
+msgstr "笔廓宽度"
+
+#: app/src/Editor/EditorLocalization.php:166
+msgid "Enable hover"
+msgstr "启用悬停"
+
+#: app/src/Editor/EditorLocalization.php:167
+msgid "Background color"
+msgstr "背景色"
+
+#: app/src/Editor/EditorLocalization.php:168
+msgid "Scale"
+msgstr "缩放"
+
+#: app/src/Editor/EditorLocalization.php:169
+msgid "Enable hover animation"
+msgstr "启用悬停动画"
+
+#: app/src/Editor/EditorLocalization.php:170
+msgid "Use group hit area"
+msgstr "使用组命中区域"
+
+#: app/src/Editor/EditorLocalization.php:171
+msgid "Element name"
+msgstr "组件名称"
+
+#: app/src/Editor/EditorLocalization.php:172
+msgid "Slide name is already exist please try another name"
+msgstr "幻灯片名称已存在，请尝试其他名称"
+
+#: app/src/Editor/EditorLocalization.php:173
+msgid "Tag"
+msgstr "标签"
+
+#: app/src/Editor/EditorLocalization.php:174
+msgid "Link element"
+msgstr "选项卡链接元素"
+
+#: app/src/Editor/EditorLocalization.php:175
+msgid "Open in new tab"
+msgstr "在新窗口打开"
+
+#: app/src/Editor/EditorLocalization.php:176
+msgid "Hide on mouse leaves the slider"
+msgstr "隐藏在鼠标离开滑块"
+
+#: app/src/Editor/EditorLocalization.php:177
+msgid "Custom style"
+msgstr "自定义样式"
+
+#: app/src/Editor/EditorLocalization.php:178
+msgid "Use \"selector\" to apply style to this element. Example:"
+msgstr "使用“选择器”将样式应用于此元素。例子："
+
+#: app/src/Editor/EditorLocalization.php:179
+msgid "Export Data"
+msgstr "导出数据"
+
+#: app/src/Editor/EditorLocalization.php:180
+msgid "X Position"
+msgstr "X 位置"
+
+#: app/src/Editor/EditorLocalization.php:181
+msgid "Y Position"
+msgstr "Y 位置"
+
+#: app/src/Editor/EditorLocalization.php:182
+msgid "Custom positioning origin"
+msgstr "自定义定位原点"
+
+#: app/src/Editor/EditorLocalization.php:183
+msgid "Enable this option if you need to change the positioning origin manually."
+msgstr "如果您需要手动更改定位原点，请启用此选项。"
+
+#: app/src/Editor/EditorLocalization.php:184
+msgid "Custom origin"
+msgstr "自定义来源"
+
+#: app/src/Editor/EditorLocalization.php:185
+msgid "Sets the origin point which the element positioning is applied."
+msgstr "设置应用元素定位的原点。"
+
+#: app/src/Editor/EditorLocalization.php:186
+msgid "Width"
+msgstr "宽度"
+
+#: app/src/Editor/EditorLocalization.php:187
+msgid "Height"
+msgstr "高度"
+
+#: app/src/Editor/EditorLocalization.php:188
+msgid "Rotation"
+msgstr "旋转"
+
+#: app/src/Editor/EditorLocalization.php:189
+msgid "Flip"
+msgstr "翻转"
+
+#: app/src/Editor/EditorLocalization.php:190
+msgid "Arrange"
+msgstr "矢量图形排列"
+
+#: app/src/Editor/EditorLocalization.php:191
+msgid "Wrapping"
+msgstr "包裹"
+
+#: app/src/Editor/EditorLocalization.php:192
+msgid "Responsive resize"
+msgstr "响应式调整大小"
+
+#: app/src/Editor/EditorLocalization.php:193
+msgid "Resizes the element between two breakpoints responsively. Enabling this option helps you to prevent overlapping elements in the smaller screen sizes."
+msgstr "响应地调整两个断点之间的元素大小。启用此选项可帮助您防止在较小的屏幕尺寸中重叠元素。"
+
+#: app/src/Editor/EditorLocalization.php:194
+msgid "Reset position"
+msgstr "重置位置"
+
+#: app/src/Editor/EditorLocalization.php:195
+msgid "Design"
+msgstr "设计"
+
+#: app/src/Editor/EditorLocalization.php:196
+msgid "Position"
+msgstr "位置"
+
+#: app/src/Editor/EditorLocalization.php:197
+msgid "Arrow Color"
+msgstr "箭头颜色"
+
+#: app/src/Editor/EditorLocalization.php:198
+msgid "Options"
+msgstr "选项"
+
+#: app/src/Editor/EditorLocalization.php:199
+msgid "Hover"
+msgstr "悬停"
+
+#: app/src/Editor/EditorLocalization.php:200
+msgid "Arrow color"
+msgstr "箭头颜色"
+
+#: app/src/Editor/EditorLocalization.php:201
+msgid "Animation"
+msgstr "动画"
+
+#: app/src/Editor/EditorLocalization.php:202
+msgid "Action"
+msgstr "操作"
+
+#: app/src/Editor/EditorLocalization.php:203
+msgid "Active bullet color"
+msgstr "活动项目符号颜色"
+
+#: app/src/Editor/EditorLocalization.php:204
+msgid "Bullets"
+msgstr "项目符号"
+
+#: app/src/Editor/EditorLocalization.php:205
+msgid "Bullet width"
+msgstr "子弹菜单宽度"
+
+#: app/src/Editor/EditorLocalization.php:206
+msgid "Bullet height"
+msgstr "子弹菜单高度"
+
+#: app/src/Editor/EditorLocalization.php:207
+msgid "Space"
+msgstr "间隔"
+
+#: app/src/Editor/EditorLocalization.php:208
+msgid "Bullet radius"
+msgstr "子弹菜单半径"
+
+#: app/src/Editor/EditorLocalization.php:209
+msgid "Typography"
+msgstr "字体"
+
+#: app/src/Editor/EditorLocalization.php:210
+msgid "Font Face"
+msgstr "字体风格"
+
+#: app/src/Editor/EditorLocalization.php:211
+msgid "Weight"
+msgstr "粗细"
+
+#: app/src/Editor/EditorLocalization.php:212
+msgid "Size"
+msgstr "大小"
+
+#: app/src/Editor/EditorLocalization.php:213
+msgid "Color"
+msgstr "颜色"
+
+#: app/src/Editor/EditorLocalization.php:214
+msgid "Line Height"
+msgstr "行高"
+
+#: app/src/Editor/EditorLocalization.php:215
+msgid "Letter space"
+msgstr "字母空间"
+
+#: app/src/Editor/EditorLocalization.php:216
+msgid "Alignment"
+msgstr "对齐"
+
+#: app/src/Editor/EditorLocalization.php:217
+msgid "Direction"
+msgstr "布局"
+
+#: app/src/Editor/EditorLocalization.php:218
+msgid "Transform"
+msgstr "转换"
+
+#: app/src/Editor/EditorLocalization.php:219
+msgid "Decoration"
+msgstr "装饰"
+
+#: app/src/Editor/EditorLocalization.php:220
+msgid "Text Wrapping"
+msgstr "文本换行"
+
+#: app/src/Editor/EditorLocalization.php:221
+msgid "hidden"
+msgstr "隐藏"
+
+#: app/src/Editor/EditorLocalization.php:222
+msgid "locked"
+msgstr "锁定"
+
+#: app/src/Editor/EditorLocalization.php:223
+msgid "Source not found"
+msgstr "未找到新的匹配的源字符串。"
+
+#: app/src/Editor/EditorLocalization.php:224
+msgid "You need to add a YouTube video link through the right panel."
+msgstr "您需要通过右侧面板添加 YouTube 视频链接。"
+
+#: app/src/Editor/EditorLocalization.php:225
+msgid "You need to add a Vimeo video link through the right panel."
+msgstr "您需要通过右侧面板添加 Vimeo 视频链接。"
+
+#: app/src/Editor/EditorLocalization.php:226
+msgid "You need to add a video link through the right panel."
+msgstr "您需要通过右侧面板添加视频链接。"
+
+#: app/src/Editor/EditorLocalization.php:227
+msgid "video settings"
+msgstr "视频设置"
+
+#: app/src/Editor/EditorLocalization.php:228
+msgid "Embed Video URL"
+msgstr "嵌入视频网址"
+
+#: app/src/Editor/EditorLocalization.php:229
+msgid "Autoplay"
+msgstr "自动进行游戏"
+
+#: app/src/Editor/EditorLocalization.php:230
+msgid "Disabling this option stops the video upon slide change. So that video starts from beginning next time."
+msgstr "禁用此选项会在幻灯片更改时停止视频。所以该视频从下一次开始。"
+
+#: app/src/Editor/EditorLocalization.php:231
+msgid "Pause on slide changes"
+msgstr "暂停幻灯片更改"
+
+#: app/src/Editor/EditorLocalization.php:232
+msgid "Mute video"
+msgstr "静音视频"
+
+#: app/src/Editor/EditorLocalization.php:233
+msgid "Show player controls"
+msgstr "显示播放器控件"
+
+#: app/src/Editor/EditorLocalization.php:234
+msgid "Limit related videos to the same channel"
+msgstr "将相关视频限制在同一频道"
+
+#: app/src/Editor/EditorLocalization.php:235
+msgid "Loading"
+msgstr "载入中"
+
+#: app/src/Editor/EditorLocalization.php:236
+msgid "Image source not found."
+msgstr "找不到图片来源。"
+
+#: app/src/Editor/EditorLocalization.php:237
+msgid "Line color"
+msgstr "线条颜色"
+
+#: app/src/Editor/EditorLocalization.php:238
+msgid "Thickness"
+msgstr "厚度"
+
+#: app/src/Editor/EditorLocalization.php:239
+msgid "Icon color"
+msgstr "图标颜色"
+
+#: app/src/Editor/EditorLocalization.php:240
+msgid "Enabling this option causes \"Video end\" action never triggers."
+msgstr "启用此选项会导致“视频结束”操作永远不会触发。"
+
+#: app/src/Editor/EditorLocalization.php:241
+msgid "Enable loop playback"
+msgstr "启用循环播放"
+
+#: app/src/Editor/EditorLocalization.php:242
+msgid "Go to URL"
+msgstr "跳转URL"
+
+#: app/src/Editor/EditorLocalization.php:243
+msgid "Show / Hide elements"
+msgstr "显示/隐藏元素"
+
+#: app/src/Editor/EditorLocalization.php:244
+msgid "Slideshow Control"
+msgstr "幻灯片控制风格？"
+
+#: app/src/Editor/EditorLocalization.php:245
+msgid "Background Video Playback"
+msgstr "背景视频播放"
+
+#: app/src/Editor/EditorLocalization.php:246
+msgid "Action type"
+msgstr "操作类型"
+
+#: app/src/Editor/EditorLocalization.php:247
+msgid "Trigger"
+msgstr "触发器"
+
+#: app/src/Editor/EditorLocalization.php:248
+msgid "Add Action"
+msgstr "添加操作"
+
+#: app/src/Editor/EditorLocalization.php:249
+msgid "Click"
+msgstr "点击"
+
+#: app/src/Editor/EditorLocalization.php:250
+msgid "Mouse In"
+msgstr "鼠标..."
+
+#: app/src/Editor/EditorLocalization.php:251
+msgid "Mouse Out"
+msgstr "鼠标移出"
+
+#: app/src/Editor/EditorLocalization.php:252
+msgid "Video In"
+msgstr "视频"
+
+#: app/src/Editor/EditorLocalization.php:253
+msgid "Video Out"
+msgstr "视频输出"
+
+#: app/src/Editor/EditorLocalization.php:254
+msgid "Video Start"
+msgstr "视频 - 开始时间"
+
+#: app/src/Editor/EditorLocalization.php:255
+msgid "Video Ended"
+msgstr "视频结束"
+
+#: app/src/Editor/EditorLocalization.php:256
+msgid "Video Paused"
+msgstr "视频暂停"
+
+#: app/src/Editor/EditorLocalization.php:257
+msgid "Resume video"
+msgstr "简历视频"
+
+#: app/src/Editor/EditorLocalization.php:258
+msgid "Pause video"
+msgstr "暂停视频"
+
+#: app/src/Editor/EditorLocalization.php:259
+msgid "Stop video"
+msgstr "停止视频"
+
+#: app/src/Editor/EditorLocalization.php:260
+msgid "Toggle video playback state"
+msgstr "切换视频播放状态"
+
+#: app/src/Editor/EditorLocalization.php:261
+msgid "Delay"
+msgstr "延时"
+
+#: app/src/Editor/EditorLocalization.php:262
+msgid "Show"
+msgstr "显示"
+
+#: app/src/Editor/EditorLocalization.php:263
+msgid "Hide"
+msgstr "隐藏"
+
+#: app/src/Editor/EditorLocalization.php:264
+msgid "Toggle visibility"
+msgstr "切换可见性"
+
+#: app/src/Editor/EditorLocalization.php:265
+msgid "Select element(s)"
+msgstr "选择元素"
+
+#: app/src/Editor/EditorLocalization.php:266
+msgid "Next slide"
+msgstr "下一张滑块"
+
+#: app/src/Editor/EditorLocalization.php:267
+msgid "Previous slide"
+msgstr "上一张滑块"
+
+#: app/src/Editor/EditorLocalization.php:268
+msgid "Slide name"
+msgstr "滑块名称"
+
+#: app/src/Editor/EditorLocalization.php:269
+msgid "Slide number"
+msgstr "滑块编号"
+
+#: app/src/Editor/EditorLocalization.php:270
+msgid "Pick slide"
+msgstr "选择幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:271
+msgid "Select number"
+msgstr "选择数字的颜色"
+
+#: app/src/Editor/EditorLocalization.php:272
+msgid "Address"
+msgstr "地址"
+
+#: app/src/Editor/EditorLocalization.php:273
+msgid "After the slider"
+msgstr "滑块之后"
+
+#: app/src/Editor/EditorLocalization.php:274
+msgid "To an HTML element"
+msgstr "HTML 元素"
+
+#: app/src/Editor/EditorLocalization.php:275
+msgid "CSS selector"
+msgstr "CSS 选择器"
+
+#: app/src/Editor/EditorLocalization.php:276
+msgid "Pause slideshow"
+msgstr "暂停放映"
+
+#: app/src/Editor/EditorLocalization.php:277
+msgid "Resume slideshow"
+msgstr "恢复幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:278
+msgid "Restart slideshow"
+msgstr "重新开始幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:279
+msgid "Toggle slideshow state"
+msgstr "切换幻灯片状态"
+
+#: app/src/Editor/EditorLocalization.php:280
+msgid "Origin"
+msgstr "起始"
+
+#: app/src/Editor/EditorLocalization.php:281
+msgid "Z Position"
+msgstr "Z 位置"
+
+#: app/src/Editor/EditorLocalization.php:282
+msgid "Selected element does not have any animation."
+msgstr "所选元素没有任何动画。"
+
+#: app/src/Editor/EditorLocalization.php:283
+msgid "Animation in options"
+msgstr "选项中的动画"
+
+#: app/src/Editor/EditorLocalization.php:284
+msgid "Animation out options"
+msgstr "动画输出选项"
+
+#: app/src/Editor/EditorLocalization.php:285
+msgid "Change animation"
+msgstr "幻灯片过渡动画"
+
+#: app/src/Editor/EditorLocalization.php:286
+msgid "Wait for an action"
+msgstr "等待操作"
+
+#: app/src/Editor/EditorLocalization.php:287
+msgid "You can control animation by actions. For example, you set to start the animation when user click on another element."
+msgstr "您可以通过动作控制动画。例如，您设置为在用户单击另一个元素时启动动画。"
+
+#: app/src/Editor/EditorLocalization.php:288
+msgid "Interactive animation"
+msgstr "互动动画"
+
+#: app/src/Editor/EditorLocalization.php:289
+msgid "By enabling this option, the element animation controls by the slide transition, swiping or scrolling."
+msgstr "通过启用此选项，元素动画由滑动过渡、滑动或滚动控制。"
+
+#: app/src/Editor/EditorLocalization.php:290
+msgid "Duration"
+msgstr "持续时长："
+
+#: app/src/Editor/EditorLocalization.php:291
+msgid "Clear Animation"
+msgstr "清晰的动画"
+
+#: app/src/Editor/EditorLocalization.php:292
+msgid "Preview Animation"
+msgstr "文章预览动画类型"
+
+#: app/src/Editor/EditorLocalization.php:293
+msgid "Preview All Animation"
+msgstr "预览所有动画"
+
+#: app/src/Editor/EditorLocalization.php:294
+msgid "Autostart animation out"
+msgstr "自动启动动画"
+
+#: app/src/Editor/EditorLocalization.php:295
+msgid "Element animation out starts right after the animation in ends."
+msgstr "元素动画在动画结束后立即开始。"
+
+#: app/src/Editor/EditorLocalization.php:296
+msgid "Top"
+msgstr "顶部"
+
+#: app/src/Editor/EditorLocalization.php:297
+msgid "Left"
+msgstr "左侧"
+
+#: app/src/Editor/EditorLocalization.php:298
+msgid "Bottom"
+msgstr "下边"
+
+#: app/src/Editor/EditorLocalization.php:299
+msgid "Right"
+msgstr "右侧"
+
+#: app/src/Editor/EditorLocalization.php:300
+msgid "Custom"
+msgstr "自定义"
+
+#: app/src/Editor/EditorLocalization.php:301
+msgid "Movement"
+msgstr "移动"
+
+#: app/src/Editor/EditorLocalization.php:302
+msgid "Perspective point"
+msgstr "透视点"
+
+#: app/src/Editor/EditorLocalization.php:303
+msgid "Fade animation"
+msgstr "淡入淡出"
+
+#: app/src/Editor/EditorLocalization.php:304
+msgid "Animation timing"
+msgstr "动画计时"
+
+#: app/src/Editor/EditorLocalization.php:305
+msgid "Rotate"
+msgstr "旋转"
+
+#: app/src/Editor/EditorLocalization.php:306
+msgid "Rotate X"
+msgstr "旋转X轴"
+
+#: app/src/Editor/EditorLocalization.php:307
+msgid "Rotate Y"
+msgstr "旋转Y轴"
+
+#: app/src/Editor/EditorLocalization.php:308
+msgid "Skew X"
+msgstr "倾斜 X"
+
+#: app/src/Editor/EditorLocalization.php:309
+msgid "Skew Y"
+msgstr "倾斜 Y"
+
+#: app/src/Editor/EditorLocalization.php:310
+msgid "Transform origin"
+msgstr "变换原点"
+
+#: app/src/Editor/EditorLocalization.php:311
+msgid "Animation in"
+msgstr "停用动画"
+
+#: app/src/Editor/EditorLocalization.php:312
+msgid "Animation out"
+msgstr "动画退出"
+
+#: app/src/Editor/EditorLocalization.php:313
+msgid "Apply"
+msgstr "应用"
+
+#: app/src/Editor/EditorLocalization.php:314
+msgid "Background blur"
+msgstr "背景模糊"
+
+#: app/src/Editor/EditorLocalization.php:315
+msgid "Reset"
+msgstr "重设"
+
+#: app/src/Editor/EditorLocalization.php:316
+msgid "Blur"
+msgstr "模糊"
+
+#: app/src/Editor/EditorLocalization.php:317
+msgid "Brightness"
+msgstr "亮度"
+
+#: app/src/Editor/EditorLocalization.php:318
+msgid "Box shadow"
+msgstr "盒子阴影"
+
+#: app/src/Editor/EditorLocalization.php:319
+msgid "Shadow color"
+msgstr "阴影颜色"
+
+#: app/src/Editor/EditorLocalization.php:320
+msgid "Shadow Position"
+msgstr "阴影位置"
+
+#: app/src/Editor/EditorLocalization.php:321
+msgid "Spread"
+msgstr "扩散"
+
+#: app/src/Editor/EditorLocalization.php:322
+msgid "ADD"
+msgstr "添加"
+
+#: app/src/Editor/EditorLocalization.php:323
+msgid "Remove"
+msgstr "移除"
+
+#: app/src/Editor/EditorLocalization.php:324
+msgid "After DOM ready"
+msgstr "DOM 准备好之后"
+
+#: app/src/Editor/EditorLocalization.php:325
+msgid "After slide init"
+msgstr "幻灯片初始化后"
+
+#: app/src/Editor/EditorLocalization.php:326
+msgid "Document visibility changed"
+msgstr "文档可见性已更改"
+
+#: app/src/Editor/EditorLocalization.php:327
+msgid "Slide background video started"
+msgstr "幻灯片背景视频已开始"
+
+#: app/src/Editor/EditorLocalization.php:328
+msgid "Slide background video paused"
+msgstr "幻灯片背景视频已暂停"
+
+#: app/src/Editor/EditorLocalization.php:329
+msgid "Slideshow timer started"
+msgstr "幻灯片计时器已启动"
+
+#: app/src/Editor/EditorLocalization.php:330
+msgid "Slideshow timer paused"
+msgstr "幻灯片计时器已暂停"
+
+#: app/src/Editor/EditorLocalization.php:331
+msgid "Slideshow timer value changed"
+msgstr "幻灯片计时器值已更改"
+
+#: app/src/Editor/EditorLocalization.php:332
+msgid "Slideshow timer reset"
+msgstr "幻灯片计时器重置"
+
+#: app/src/Editor/EditorLocalization.php:333
+msgid "Responsive breakpoint changed"
+msgstr "响应断点已更改"
+
+#: app/src/Editor/EditorLocalization.php:334
+msgid "Sliding change started"
+msgstr "滑动变化开始"
+
+#: app/src/Editor/EditorLocalization.php:335
+msgid "Sliding change ended"
+msgstr "滑动更改结束"
+
+#: app/src/Editor/EditorLocalization.php:336
+msgid "On swipe gesture start"
+msgstr "在滑动手势开始时"
+
+#: app/src/Editor/EditorLocalization.php:337
+msgid "On swipe gesture update"
+msgstr "滑动手势更新"
+
+#: app/src/Editor/EditorLocalization.php:338
+msgid "On swipe gesture ends"
+msgstr "滑动手势结束"
+
+#: app/src/Editor/EditorLocalization.php:339
+msgid "All changes are published"
+msgstr "所有更改均已发布"
+
+#: app/src/Editor/EditorLocalization.php:340
+msgid "Last publish"
+msgstr "上次发布"
+
+#: app/src/Editor/EditorLocalization.php:341
+msgid "Publish changes"
+msgstr "发布修改内容"
+
+#: app/src/Editor/EditorLocalization.php:342
+msgid "You have unpublished changes"
+msgstr "您有未发布的更改"
+
+#: app/src/Editor/EditorLocalization.php:343
+msgid "Dynamic source"
+msgstr "动态资源"
+
+#: app/src/Editor/EditorLocalization.php:344
+msgid "The Origin is the point around which a position is applied"
+msgstr "原点是应用位置的点"
+
+#: app/src/Editor/EditorLocalization.php:345
+msgid "Bring Forward"
+msgstr "向前移动"
+
+#: app/src/Editor/EditorLocalization.php:346
+msgid "Send Backward"
+msgstr "向后移动"
+
+#: app/src/Editor/EditorLocalization.php:347
+msgid "Bring to Front"
+msgstr "置于顶层"
+
+#: app/src/Editor/EditorLocalization.php:348
+msgid "Send to Back"
+msgstr "置于底层"
+
+#: app/src/Editor/EditorLocalization.php:349
+msgid "Border"
+msgstr "边框"
+
+#: app/src/Editor/EditorLocalization.php:350
+msgid "Border Color"
+msgstr "边框颜色"
+
+#: app/src/Editor/EditorLocalization.php:351
+msgid "Border style"
+msgstr "边框样式"
+
+#: app/src/Editor/EditorLocalization.php:352
+msgid "Border Size"
+msgstr "边框大小"
+
+#: app/src/Editor/EditorLocalization.php:353
+msgid "Ease"
+msgstr "缓冲"
+
+#: app/src/Editor/EditorLocalization.php:354
+msgid "Ease Type"
+msgstr "缓动类型"
+
+#: app/src/Editor/EditorLocalization.php:355
+msgid "Flip Horizontal"
+msgstr "水平翻转"
+
+#: app/src/Editor/EditorLocalization.php:356
+msgid "Flip Vertical"
+msgstr "垂直翻转"
+
+#: app/src/Editor/EditorLocalization.php:357
+msgid "Recently Used"
+msgstr "最近使用"
+
+#: app/src/Editor/EditorLocalization.php:358
+msgid "Fonts"
+msgstr "字体"
+
+#: app/src/Editor/EditorLocalization.php:359
+msgid "Hide over this slide"
+msgstr "隐藏在这张幻灯片上"
+
+#: app/src/Editor/EditorLocalization.php:360
+msgid "Center"
+msgstr "居中"
+
+#: app/src/Editor/EditorLocalization.php:361
+msgid "Justify"
+msgstr "调整"
+
+#: app/src/Editor/EditorLocalization.php:362
+msgid "Filter"
+msgstr "过滤"
+
+#: app/src/Editor/EditorLocalization.php:363
+msgid "Filter preset"
+msgstr "过滤器预设"
+
+#: app/src/Editor/EditorLocalization.php:364
+msgid "Contrast"
+msgstr "对比"
+
+#: app/src/Editor/EditorLocalization.php:365
+msgid "Saturation"
+msgstr "增大饱和度"
+
+#: app/src/Editor/EditorLocalization.php:366
+msgid "Hue"
+msgstr "色调"
+
+#: app/src/Editor/EditorLocalization.php:367
+msgid "Cali"
+msgstr "卡利"
+
+#: app/src/Editor/EditorLocalization.php:368
+msgid "Drama"
+msgstr "戏剧"
+
+#: app/src/Editor/EditorLocalization.php:369
+msgid "Edge"
+msgstr "Edge"
+
+#: app/src/Editor/EditorLocalization.php:370
+msgid "Festive"
+msgstr "节日"
+
+#: app/src/Editor/EditorLocalization.php:371
+msgid "Grayscale"
+msgstr "灰度"
+
+#: app/src/Editor/EditorLocalization.php:372
+msgid "Nordic"
+msgstr "日尔曼文"
+
+#: app/src/Editor/EditorLocalization.php:373
+msgid "Rosie"
+msgstr "罗西"
+
+#: app/src/Editor/EditorLocalization.php:374
+msgid "Street"
+msgstr "街道"
+
+#: app/src/Editor/EditorLocalization.php:375
+msgid "The Blues"
+msgstr "蓝调"
+
+#: app/src/Editor/EditorLocalization.php:376
+msgid "Vintage"
+msgstr "复古"
+
+#: app/src/Editor/EditorLocalization.php:377
+msgid "Text Shadow"
+msgstr "文本阴影"
+
+#: app/src/Editor/EditorLocalization.php:378
+msgid "Hide on"
+msgstr "隐藏"
+
+#: app/src/Editor/EditorLocalization.php:379
+msgid "Copy selected elements"
+msgstr "复制选定的元素"
+
+#: app/src/Editor/EditorLocalization.php:380
+msgid "Paste element here"
+msgstr "在此处粘贴元素"
+
+#: app/src/Editor/EditorLocalization.php:381
+msgid "Duplicate slide"
+msgstr "复制滑块"
+
+#: app/src/Editor/EditorLocalization.php:382
+msgid "Remove slide"
+msgstr "移除滑块"
+
+#: app/src/Editor/EditorLocalization.php:383
+msgid "Remove background"
+msgstr "去除背景"
+
+#: app/src/Editor/EditorLocalization.php:384
+msgid "Customize slide content size"
+msgstr "自定义幻灯片内容大小"
+
+#: app/src/Editor/EditorLocalization.php:385
+msgid "Slide content width"
+msgstr "幻灯片内容宽度"
+
+#: app/src/Editor/EditorLocalization.php:386
+msgid "Slide content height"
+msgstr "幻灯片内容高度"
+
+#: app/src/Editor/EditorLocalization.php:387
+msgid "Slide class name"
+msgstr "幻灯片类名"
+
+#: app/src/Editor/EditorLocalization.php:388
+msgid "This slide name is already exists. Please try another name."
+msgstr "此幻灯片名称已存在。请尝试其他名称。"
+
+#: app/src/Editor/EditorLocalization.php:389
+msgid "Background image fill mode"
+msgstr "背景图像填充模式"
+
+#: app/src/Editor/EditorLocalization.php:390
+msgid "Background position"
+msgstr "背景位置"
+
+#: app/src/Editor/EditorLocalization.php:391
+msgid "Background video fill mode"
+msgstr "背景视频填充模式"
+
+#: app/src/Editor/EditorLocalization.php:392
+msgid "Color overlay"
+msgstr "颜色叠加"
+
+#: app/src/Editor/EditorLocalization.php:393
+msgid "Image alt"
+msgstr "图片描述"
+
+#: app/src/Editor/EditorLocalization.php:394
+msgid "Remove background image"
+msgstr "移除背景图像"
+
+#: app/src/Editor/EditorLocalization.php:395
+msgid "Loop video"
+msgstr "循环播放视频"
+
+#: app/src/Editor/EditorLocalization.php:396
+msgid "Go to next slide (at the end)"
+msgstr "转到下一张幻灯片（最后）"
+
+#: app/src/Editor/EditorLocalization.php:397
+msgid "Pause on slide change"
+msgstr "幻灯片更改暂停"
+
+#: app/src/Editor/EditorLocalization.php:398
+msgid "Remove background video"
+msgstr "删除背景视频"
+
+#: app/src/Editor/EditorLocalization.php:399
+msgid "Link slide"
+msgstr "链接幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:400
+msgid "Stop slideshow on this slide"
+msgstr "在此幻灯片上停止幻灯片放映"
+
+#: app/src/Editor/EditorLocalization.php:401
+msgid "Slideshow Duration"
+msgstr "滑块轮换时间"
+
+#: app/src/Dashboard/DashboardPage.php:108
+#: app/src/Dashboard/DashboardSetting.php:131
+#: app/src/DataSources/Tags/Post.php:27
+#: app/src/Editor/EditorLocalization.php:402
+#: app/src/Modules/Beaver/module.php:115
+msgid "General"
+msgstr "常规设置"
+
+#: app/src/Editor/EditorLocalization.php:403
+msgid "Advanced"
+msgstr "高级设置"
+
+#: app/src/Editor/EditorLocalization.php:404
+msgid "Use \"selector\" to apply style to this section. Example:"
+msgstr "使用“选择器”将样式应用于此部分。例子："
+
+#: app/src/Editor/EditorLocalization.php:405
+msgid "Dynamic background image source not found."
+msgstr "未找到动态背景图像源。"
+
+#: app/src/Editor/EditorLocalization.php:406
+msgid "New Slide"
+msgstr "新滑块"
+
+#: app/src/Editor/EditorLocalization.php:407
+msgid "Close slides panel"
+msgstr "关闭幻灯片面板"
+
+#: app/src/Editor/EditorLocalization.php:408
+msgid "Open slides panel"
+msgstr "打开幻灯片面板"
+
+#: app/src/Editor/EditorLocalization.php:409
+msgid "Slider class name"
+msgstr "滑块类名"
+
+#: app/src/Editor/EditorLocalization.php:410
+msgid "Custom styles"
+msgstr "自定义样式"
+
+#: app/src/Editor/EditorLocalization.php:411
+msgid "Use \"selector\" to apply style to the  slider. Example:"
+msgstr "使用“选择器”将样式应用于滑块。例子："
+
+#: app/src/Editor/EditorLocalization.php:412
+msgid "Slider name"
+msgstr "滑块名称"
+
+#: app/src/Editor/EditorLocalization.php:413
+msgid "The entered name is not valid."
+msgstr "输入的名称无效。"
+
+#: app/src/Editor/EditorLocalization.php:414
+msgid "Slider slug"
+msgstr "滑块别名"
+
+#: app/src/Editor/EditorLocalization.php:415
+msgid "This slug is already exists. Please try another one."
+msgstr "此别名已经存在。请尝试另一个。"
+
+#: app/src/Editor/EditorLocalization.php:416
+msgid "Slider layout"
+msgstr "滑块布局"
+
+#: app/src/Editor/EditorLocalization.php:417
+msgid "Fullscreen margin"
+msgstr "全屏边距"
+
+#: app/src/Editor/EditorLocalization.php:418
+msgid "You can use this option to reserve space for other contents like the site menu to appear beside the slider."
+msgstr "您可以使用此选项为其他内容（例如显示在滑块旁边的站点菜单）保留空间。"
+
+#: app/src/Editor/EditorLocalization.php:419
+msgid "Content side space"
+msgstr "内容侧空间"
+
+#: app/src/Editor/EditorLocalization.php:420
+msgid "Specifies the minimum space on left and right sides of content wrapper. This space appears when the screen size becomes smaller that the content wrapper width."
+msgstr "指定内容包装器左右两侧的最小空间。当屏幕尺寸变得小于内容包装宽度时，就会出现此空间。"
+
+#: app/src/Editor/EditorLocalization.php:421
+msgid "Auto height"
+msgstr "自动高度"
+
+#: app/src/Editor/EditorLocalization.php:422
+msgid "Slider height automatically changes based on the active slide."
+msgstr "滑块高度会根据活动幻灯片自动更改。"
+
+#: app/src/Editor/EditorLocalization.php:423
+msgid "Keep aspect ratio on resize"
+msgstr "调整大小时保持纵横比"
+
+#: app/src/Editor/EditorLocalization.php:424
+msgid "Min Height"
+msgstr "最小高度"
+
+#: app/src/Editor/EditorLocalization.php:425
+msgid "Max Height"
+msgstr "最大高度"
+
+#: app/src/Editor/EditorLocalization.php:426
+msgid "Tablet content width"
+msgstr "平板电脑内容宽度"
+
+#: app/src/Editor/EditorLocalization.php:427
+msgid "Tablet content height"
+msgstr "平板电脑内容高度"
+
+#: app/src/Editor/EditorLocalization.php:428
+msgid "Mobile content width"
+msgstr "移动内容宽度"
+
+#: app/src/Editor/EditorLocalization.php:429
+msgid "Mobile content height"
+msgstr "移动内容高度"
+
+#: app/src/Editor/EditorLocalization.php:430
+msgid "Lazyload type"
+msgstr "延迟加载类型"
+
+#: app/src/Editor/EditorLocalization.php:431
+msgid "Load slides one after another"
+msgstr "一张一张地加载幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:432
+msgid "Load all slides concurrently"
+msgstr "同时加载所有幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:433
+msgid "Load nearby slides"
+msgstr "加载邻近滑块"
+
+#: app/src/Editor/EditorLocalization.php:434
+msgid "Number of nearby slides to load"
+msgstr "要加载的附近幻灯片的数量"
+
+#: app/src/Editor/EditorLocalization.php:435
+msgid "Loading symbol"
+msgstr "加载符号"
+
+#: app/src/Editor/EditorLocalization.php:436
+msgid "Swipe navigation"
+msgstr "滑动导航"
+
+#: app/src/Editor/EditorLocalization.php:437
+msgid "Mouse swipe gesture"
+msgstr "鼠标滑动手势"
+
+#: app/src/Editor/EditorLocalization.php:438
+msgid "Touch swipe gesture"
+msgstr "触摸滑动手势"
+
+#: app/src/Editor/EditorLocalization.php:439
+msgid "Keyboard navigation"
+msgstr "键盘导航"
+
+#: app/src/Editor/EditorLocalization.php:440
+msgid "Mouse wheel navigation"
+msgstr "滚轮导航"
+
+#: app/src/Editor/EditorLocalization.php:441
+msgid "Auto slideshow"
+msgstr "自动滑块"
+
+#: app/src/Editor/EditorLocalization.php:442
+msgid "Pause on hover"
+msgstr "鼠标悬停时暂停"
+
+#: app/src/Editor/EditorLocalization.php:443
+msgid "Pause at last slide"
+msgstr "在最后一张幻灯片上暂停"
+
+#: app/src/Editor/EditorLocalization.php:444
+msgid "Loop navigation"
+msgstr "循环播放"
+
+#: app/src/Editor/EditorLocalization.php:445
+msgid "Random order slides"
+msgstr "随机顺序幻灯片"
+
+#: app/src/Editor/EditorLocalization.php:446
+msgid "RTL"
+msgstr "右至左"
+
+#: app/src/Editor/EditorLocalization.php:447
+msgid "Start slider autoplay on appear"
+msgstr "开始滑块自动播放出现"
+
+#: app/src/Editor/EditorLocalization.php:448
+msgid "Enable deeplink"
+msgstr "启用深度链接"
+
+#: app/src/Editor/EditorLocalization.php:449
+msgid "Deeplink name"
+msgstr "深层链接名称"
+
+#: app/src/Editor/EditorLocalization.php:450
+msgid "Type of permalink"
+msgstr "固定链接类型"
+
+#: app/src/Editor/EditorLocalization.php:451
+msgid "Sliding transition type"
+msgstr "滑动过渡型"
+
+#: app/src/Editor/EditorLocalization.php:452
+msgid "Sliding direction"
+msgstr "滑动方向"
+
+#: app/src/Editor/EditorLocalization.php:453
+msgid "Horizontal"
+msgstr "横向"
+
+#: app/src/Editor/EditorLocalization.php:454
+msgid "Vertical"
+msgstr "垂直"
+
+#: app/src/Editor/EditorLocalization.php:455
+msgid "Space between slides"
+msgstr "滑块之间空间"
+
+#: app/src/Editor/EditorLocalization.php:456
+msgid "Light effect"
+msgstr "光效"
+
+#: app/src/Editor/EditorLocalization.php:457
+msgid "Dolly effect"
+msgstr "多莉效应"
+
+#: app/src/Editor/EditorLocalization.php:458
+msgid "Mask parallax effect"
+msgstr "遮罩视差效果"
+
+#: app/src/Editor/EditorLocalization.php:459
+msgid "Transform type"
+msgstr "变换类型"
+
+#: app/src/Editor/EditorLocalization.php:460
+msgid "Content wrapper size"
+msgstr "内容包装大小"
+
+#: app/src/Editor/EditorLocalization.php:461
+msgid "Responsive content sizes"
+msgstr "响应式内容大小"
+
+#: app/src/Editor/EditorLocalization.php:462
+msgid "Hide slider responsively"
+msgstr "响应地隐藏滑块"
+
+#: app/src/Editor/EditorLocalization.php:463
+msgid "Navigation"
+msgstr "导航栏"
+
+#: app/src/Editor/EditorLocalization.php:464
+msgid "Sliding animation"
+msgstr "滑动动画"
+
+#: app/src/Editor/EditorLocalization.php:465
+msgid "Sliding animation options"
+msgstr "滑动动画选项"
+
+#: app/src/Editor/EditorLocalization.php:466
+msgid "Loading options"
+msgstr "加载选项"
+
+#: app/src/Editor/EditorLocalization.php:467
+msgid "Callbacks"
+msgstr "回调"
+
+#: app/src/Editor/EditorLocalization.php:468
+msgid "Back to Settings"
+msgstr "返回设置"
+
+#: app/src/Editor/EditorLocalization.php:469
+msgid "*We value your privacy and we never share your information with any third parties. Also, You will be able to unsubscribe from the list at anytime."
+msgstr "*我们重视您的隐私，我们从不与任何第三方共享您的信息。此外，您可以随时取消订阅该列表。"
+
+#: app/src/Editor/EditorLocalization.php:470
+msgid "Thank you!"
+msgstr "谢谢！"
+
+#: app/src/Editor/EditorLocalization.php:471
+msgid "You have subscribed to the newsletter successfully."
+msgstr "您已成功订阅时事通讯。"
+
+#: app/src/Editor/EditorLocalization.php:472
+msgid "Stay Tuned"
+msgstr "敬请关注！"
+
+#: app/src/Editor/EditorLocalization.php:473
+msgid "Would like to be part of the early users special community?"
+msgstr "想成为早期用户特殊社区的一员吗？"
+
+#: app/src/Editor/EditorLocalization.php:474
+msgid "Subscribe to the newsletter to get access to templates, tutorials and unmissable offers before anyone else."
+msgstr "订阅时事通讯以先于其他人访问模板、教程和不容错过的优惠。"
+
+#: app/src/Editor/EditorLocalization.php:475
+msgid "Your email address"
+msgstr "您的邮箱地址"
+
+#: app/src/Editor/EditorLocalization.php:476
+msgid "Subscribe"
+msgstr "订阅"
+
+#: app/src/Editor/EditorLocalization.php:477
+msgid "Remind me later"
+msgstr "稍后提醒我"
+
+#: app/src/Editor/EditorLocalization.php:478
+msgid "Click to rename"
+msgstr "点击重命名"
+
+#: app/src/Editor/EditorLocalization.php:479
+msgid "Stop Animations"
+msgstr "停止动画"
+
+#: app/src/Editor/EditorLocalization.php:480
+msgid "Play Animations"
+msgstr "播放动画"
+
+#: app/src/Editor/EditorLocalization.php:481
+msgid "Invisible Hidden Elements"
+msgstr "不可见的隐藏元素"
+
+#: app/src/Editor/EditorLocalization.php:482
+msgid "Undo"
+msgstr "撤消"
+
+#: app/src/Editor/EditorLocalization.php:483
+msgid "Redo"
+msgstr "恢复"
+
+#: app/src/Editor/EditorLocalization.php:484
+msgid "Fit"
+msgstr "适应"
+
+#: app/src/Editor/EditorLocalization.php:485
+msgid "100%"
+msgstr "100%"
+
+#: app/src/Editor/EditorLocalization.php:486
+msgid "25%"
+msgstr "25%"
+
+#: app/src/Editor/EditorLocalization.php:487
+msgid "50%"
+msgstr "50%"
+
+#: app/src/Editor/EditorLocalization.php:488
+msgid "75%"
+msgstr "75%"
+
+#: app/src/Editor/EditorLocalization.php:489
+msgid "150%"
+msgstr "150%"
+
+#: app/src/Editor/EditorLocalization.php:490
+msgid "200%"
+msgstr "200%"
+
+#: app/src/Editor/EditorLocalization.php:491
+msgid "300%"
+msgstr "300%"
+
+#: app/src/Editor/EditorLocalization.php:492
+msgid "400%"
+msgstr "400%"
+
+#: app/src/Editor/EditorLocalization.php:493
+msgid "Feedback"
+msgstr "反馈"
+
+#: app/src/Editor/EditorLocalization.php:494
+msgid "Shortcode"
+msgstr "简码"
+
+#: app/src/Editor/EditorLocalization.php:495
+msgid "Paste shortcode into your posts or pages"
+msgstr "将简码粘贴到您的帖子或页面中"
+
+#: app/src/Editor/EditorLocalization.php:496
+msgid "PHP code"
+msgstr "PHP 代码"
+
+#: app/src/Editor/EditorLocalization.php:497
+msgid "Paste the PHP code into your theme’s file"
+msgstr "将 PHP 代码粘贴到您的主题文件中"
+
+#: app/src/Editor/EditorLocalization.php:498
+msgid "saved"
+msgstr "已保存"
+
+#: app/src/Editor/EditorLocalization.php:499
+msgid "save"
+msgstr "保存"
+
+#: app/src/Editor/EditorLocalization.php:500
+msgid "All changes saved"
+msgstr "所有更改已保存"
+
+#: app/src/Editor/EditorLocalization.php:501
+msgid "Saving changes..."
+msgstr "正在保存更改..."
+
+#: app/src/Editor/EditorLocalization.php:502
+msgid "Back to WordPress"
+msgstr "回到WordPress"
+
+#: app/src/Editor/EditorLocalization.php:503
+msgid "You have some unsaved changes. Leaving site?"
+msgstr "您有一些未保存的更改。离开现场？"
+
+#: app/src/Editor/EditorLocalization.php:504
+msgid "Are you sure you want to restore to last published version? This may remove some of the changes."
+msgstr "您确定要恢复到上次发布的版本吗？这可能会删除一些更改。"
+
+#: app/src/Editor/EditorLocalization.php:505
+msgid "We’re Sorry!"
+msgstr "很抱歉！"
+
+#: app/src/Editor/EditorLocalization.php:506
+msgid "Depicter faced a problem and crashed. We’ll restore your project when it reopens."
+msgstr "描述器遇到问题并坠毁。我们将在您的项目重新打开时恢复它。"
+
+#: app/src/Editor/EditorLocalization.php:507
+msgid "Tell us about this crash so we can fix it."
+msgstr "告诉我们这次崩溃，以便我们修复它。"
+
+#: app/src/Editor/EditorLocalization.php:508
+msgid "Details"
+msgstr "细节"
+
+#: app/src/Editor/EditorLocalization.php:509
+msgid "Add a description"
+msgstr "添加描述"
+
+#: app/src/Editor/EditorLocalization.php:510
+msgid "Allow us to contact you about this report"
+msgstr "允许我们就此报告与您联系"
+
+#: app/src/Editor/EditorLocalization.php:511
+msgid "Enter your email address here"
+msgstr "在此输入您的邮箱地址"
+
+#: app/src/Editor/EditorLocalization.php:512
+msgid "Your crash report will be submitted before you close or refresh."
+msgstr "您的崩溃报告将在您关闭或刷新之前提交。"
+
+#: app/src/Editor/EditorLocalization.php:513
+msgid "Back to Dashboard"
+msgstr "返回到仪表板"
+
+#: app/src/Editor/EditorLocalization.php:514
+msgid "Restore to Last Publish"
+msgstr "恢复到上次发布"
+
+#: app/src/Editor/EditorLocalization.php:515
+msgid "Restore Data"
+msgstr "恢复数据"
+
+#: app/src/Editor/EditorLocalization.php:516
+msgid "This slug is already in use."
+msgstr "此别名已经在使用了。"
+
+#: app/src/Editor/EditorLocalization.php:517
+msgid "Activate your license"
+msgstr "激活您的许可证"
+
+#: app/src/Editor/EditorLocalization.php:518
+msgid "Activate Envato Account"
+msgstr "激活 Envato 帐户"
+
+#: app/src/Editor/EditorLocalization.php:519
+msgid "OR"
+msgstr "或"
+
+#: app/src/Editor/EditorLocalization.php:520
+msgid "Activate by Purchase Code (Manual)"
+msgstr "通过购买代码激活（手动）"
+
+#: app/src/Editor/EditorLocalization.php:521
+msgid "Need a Pro License? "
+msgstr "需要专业许可证？"
+
+#: app/src/Editor/EditorLocalization.php:522
+msgid "Buy Now"
+msgstr "立即购买"
+
+#: app/src/Editor/EditorLocalization.php:523
+msgid "Element name is already exist please try another name"
+msgstr "元素名称已存在，请尝试其他名称"
+
+#: app/src/Editor/EditorLocalization.php:524
+msgid "Cancel"
+msgstr "取消"
+
+#: app/src/Editor/EditorLocalization.php:525
+msgid "Activate"
+msgstr "启用"
+
+#: app/src/Editor/EditorLocalization.php:526
+msgid "Awesome!"
+msgstr "好极了！"
+
+#: app/src/Editor/EditorLocalization.php:527
+msgid "You successfully activated your Master Slider Pro license."
+msgstr "您已成功激活 Master Slider Pro 许可证。"
+
+#: app/src/Editor/EditorLocalization.php:528
+msgid "Lets Start!"
+msgstr "开始吧！"
+
+#: app/src/Editor/EditorLocalization.php:529
+msgid "Unlock Unlimited Possibilities"
+msgstr "解锁无限可能"
+
+#: app/src/Editor/EditorLocalization.php:530
+msgid "- Premium media assets"
+msgstr "- 优质媒体资产"
+
+#: app/src/Editor/EditorLocalization.php:531
+msgid "One time purchase and lifetime free updates.upgrade."
+msgstr "一次性购买和终身免费更新。升级。"
+
+#: app/src/Editor/EditorLocalization.php:532
+msgid "Upgrade to Master Slider Pro"
+msgstr "升级到 Master Slider Pro"
+
+#: app/src/Editor/EditorLocalization.php:533
+msgid "Restore Purchase"
+msgstr "恢复购买"
+
+#: app/src/Editor/EditorLocalization.php:534
+msgid "How to upgrade after purchase."
+msgstr "购买后如何升级。"
+
+#: app/src/Editor/EditorLocalization.php:535
+msgid "Coming Soon"
+msgstr "即将推出"
+
+#: app/src/Editor/EditorLocalization.php:536
+msgid "Legacy Slider"
+msgstr "旧版滑块"
+
+#: app/src/Editor/EditorLocalization.php:537
+msgid "Not Activated"
+msgstr "已启用"
+
+#: app/src/Editor/EditorLocalization.php:538
+msgid "Pro"
+msgstr "专业版"
+
+#: app/src/Editor/EditorLocalization.php:539
+msgid "Documentation"
+msgstr "文档"
+
+#: app/src/Editor/EditorLocalization.php:540
+msgid "Newsletter subscription"
+msgstr "电子简报订阅"
+
+#: app/src/Editor/EditorLocalization.php:541
+msgid "Publish"
+msgstr "发布"
+
+#: app/src/Editor/EditorLocalization.php:542
+msgid "Upgrade to PRO"
+msgstr "升级到专业版"
+
+#: app/src/Editor/EditorLocalization.php:543
+msgid "Outset"
+msgstr "开始"
+
+#: app/src/Editor/EditorLocalization.php:544
+msgid "Inset"
+msgstr "插入"
+
+#: app/src/Editor/EditorLocalization.php:545
+msgid "Cover"
+msgstr "封面"
+
+#: app/src/Editor/EditorLocalization.php:546
+msgid "Contain"
+msgstr "包含"
+
+#: app/src/Editor/EditorLocalization.php:547
+msgid "Stretch"
+msgstr "拉伸"
+
+#: app/src/Editor/EditorLocalization.php:548
+msgid "Tile"
+msgstr "平铺"
+
+#: app/src/Editor/EditorLocalization.php:549
+msgid "Fullwidth"
+msgstr "全宽"
+
+#: app/src/Editor/EditorLocalization.php:550
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: app/src/Editor/EditorLocalization.php:551
+msgid "Boxed"
+msgstr "框式"
+
+#: app/src/Editor/EditorLocalization.php:552
+msgid "Underline"
+msgstr "下划线"
+
+#: app/src/Editor/EditorLocalization.php:553
+msgid "Strike through"
+msgstr "删除线"
+
+#: app/src/Editor/EditorLocalization.php:554
+msgid "Left to Right"
+msgstr "从左向右"
+
+#: app/src/Editor/EditorLocalization.php:555
+msgid "Right to Left"
+msgstr "从右到左"
+
+#: app/src/Editor/EditorLocalization.php:556
+msgid "Uppercase"
+msgstr "大写字母"
+
+#: app/src/Editor/EditorLocalization.php:557
+msgid "Capitalize"
+msgstr "大写字母"
+
+#: app/src/Editor/EditorLocalization.php:558
+msgid "Lowercase"
+msgstr "小写字母"
+
+#: app/src/Editor/EditorLocalization.php:559
+msgid "Normal"
+msgstr "常规"
+
+#: app/src/Editor/EditorLocalization.php:560
+msgid "Break Word"
+msgstr "单词打断"
+
+#: app/src/Editor/EditorLocalization.php:561
+msgid "Wrap"
+msgstr "环绕"
+
+#: app/src/Editor/EditorLocalization.php:562
+msgid "No Wrap"
+msgstr "无包裹"
+
+#: app/src/Editor/EditorLocalization.php:563
+msgid "Recent colors"
+msgstr "最近的颜色"
+
+#: app/src/Editor/EditorLocalization.php:564
+msgid "Load assets on all pages"
+msgstr "在所有页面上加载资产"
+
+#: app/src/Editor/EditorLocalization.php:565
+msgid "By default, MasterSlider will load corresponding JavaScript files on demand. but if you need to load assets on all pages, check this option. (For example, if you plan to load Master Slider via Ajax, you need to check this option)"
+msgstr "默认情况下，MasterSlider 会按需加载相应的 JavaScript 文件。但如果您需要在所有页面上加载资产，请选中此选项。 （例如，如果你打算通过 Ajax 加载 Master Slider，你需要勾选此选项）"
+
+#: app/src/Editor/EditorLocalization.php:566
+msgid "Enable"
+msgstr "启用"
+
+#: app/src/Editor/EditorLocalization.php:567
+msgid "Enable cache to make MasterSlider even more faster!"
+msgstr "启用缓存以使 MasterSlider 更快！"
+
+#: app/src/Editor/EditorLocalization.php:568
+msgid "Clear Cache"
+msgstr "清除缓存"
+
+#: app/src/Editor/EditorLocalization.php:569
+msgid "Cache refresh time"
+msgstr "缓存刷新时间"
+
+#: app/src/Editor/EditorLocalization.php:570
+msgid "Allow access"
+msgstr "允许访问"
+
+#: app/src/Editor/EditorLocalization.php:571
+msgid "Check the box to help us improve the MasterSlider plugin by allowing tracking of product usage stats. All data are stored securely and anonymously."
+msgstr "选中该框以通过允许跟踪产品使用统计信息来帮助我们改进 MasterSlider 插件。所有数据均以匿名方式安全存储。"
+
+#: app/src/Editor/EditorLocalization.php:572
+msgid "You license is activated"
+msgstr "您的许可证已激活"
+
+#: app/src/Editor/EditorLocalization.php:573
+msgid "Purchase code"
+msgstr "购买代码"
+
+#: app/src/Editor/EditorLocalization.php:574
+msgid "Deactivate License"
+msgstr "停用授权码"
+
+#: app/src/Editor/EditorLocalization.php:575
+msgid "By deactivating your license all pro features become unavailable."
+msgstr "通过停用您的许可证，所有专业功能都将变得不可用。"
+
+#: app/src/Editor/EditorLocalization.php:576
+msgid "You may need to"
+msgstr "您可能需要"
+
+#: app/src/Editor/EditorLocalization.php:577
+msgid "purchase another license here."
+msgstr "在这里购买另一个许可证。"
+
+#: app/src/Editor/EditorLocalization.php:578
+msgid "You may want to transfer your license,"
+msgstr "您可能想转让您的许可证，"
+
+#: app/src/Editor/EditorLocalization.php:579
+msgid "read more here."
+msgstr "在这里阅读更多。"
+
+#: app/src/Editor/EditorLocalization.php:580
+msgid "You have not activated any license yet, to unlock all pro features"
+msgstr "您尚未激活任何许可证，以解锁所有专业功能"
+
+#: app/src/Editor/EditorLocalization.php:581
+msgid "Activate your license here"
+msgstr "在此处激活您的许可证"
+
+#: app/src/Editor/EditorLocalization.php:582
+msgid "Don’t have the pro license?"
+msgstr "没有专业许可证？"
+
+#: app/src/Editor/EditorLocalization.php:583
+msgid "Buy it here."
+msgstr "此处购买。"
+
+#: app/src/Dashboard/DashboardPage.php:104
+#: app/src/Dashboard/DashboardSetting.php:59
+#: app/src/Editor/EditorLocalization.php:584
+msgid "Settings"
+msgstr "设置"
+
+#: app/src/Editor/EditorLocalization.php:585
+msgid "Fade"
+msgstr "淡化"
+
+#: app/src/Editor/EditorLocalization.php:586
+msgid "Move"
+msgstr "移动"
+
+#: app/src/Editor/EditorLocalization.php:587
+msgid "URL path style (/name/index/)"
+msgstr "路径样式(名称/索引)"
+
+#: app/src/Editor/EditorLocalization.php:588
+msgid "Query String"
+msgstr "查询字符串"
+
+#: app/src/Editor/EditorLocalization.php:589
+msgid "Hash"
+msgstr "Hash"
+
+#: app/src/Editor/EditorLocalization.php:590
+msgid "Please provide us some details about your feature request."
+msgstr "请向我们提供有关您的功能请求的一些详细信息。"
+
+#: app/src/Editor/EditorLocalization.php:591
+msgid "Send us feedback"
+msgstr "发送反馈意见"
+
+#: app/src/Editor/EditorLocalization.php:592
+msgid "Choose a subject"
+msgstr "选择主题…"
+
+#: app/src/Editor/EditorLocalization.php:593
+msgid "Related to"
+msgstr "相关"
+
+#: app/src/Editor/EditorLocalization.php:594
+msgid "Provide us the details"
+msgstr "向我们提供详细信息"
+
+#: app/src/Editor/EditorLocalization.php:595
+msgid "Please include \\n- A description of the issue \\n- Steps to reproduce (if possible) \\n- What results are expected"
+msgstr "请包含\\n- 问题描述\\n- 重现步骤（如果可能）\\n- 预期结果"
+
+#: app/src/Editor/EditorLocalization.php:596
+msgid "Email Address"
+msgstr "电子邮件地址"
+
+#: app/src/Editor/EditorLocalization.php:597
+msgid "Send"
+msgstr "发送"
+
+#: app/src/Dashboard/DashboardPage.php:66
+#: app/src/Dashboard/DashboardPage.php:67
+#: app/src/Editor/EditorLocalization.php:598
+msgid "Support"
+msgstr "支持"
+
+#: app/src/Editor/EditorLocalization.php:599
+msgid "Back"
+msgstr "返回"
+
+#: app/src/Editor/EditorLocalization.php:600
+msgid "Replay"
+msgstr "重播"
+
+#: app/src/Editor/EditorLocalization.php:601
+msgid "Desktop"
+msgstr "桌面端"
+
+#: app/src/Editor/EditorLocalization.php:602
+msgid "Tablet"
+msgstr "平板"
+
+#: app/src/Editor/EditorLocalization.php:603
+msgid "Mobile"
+msgstr "移动端"
+
+#: app/src/Editor/EditorLocalization.php:604
+msgid "Your sessions has been expired. please reload the page and try once again"
+msgstr "您的会话已过期。请重新加载页面并重试"
+
+#: app/src/Editor/EditorLocalization.php:605
+msgid "Reload"
+msgstr "重新加载"
+
+#: app/src/Front/Preview.php:34
+msgid "Depicter Preview"
+msgstr "描绘器预览"
+
+#: app/src/Front/Render.php:89
+msgid "Slider is not published yet and saved as \"draft\""
+msgstr "滑块尚未发布并保存为“草稿”"
+
+#: app/src/Media/Image/FileEdit.php:238
+msgid "File cannot be resized."
+msgstr "无法调整文件大小。"
+
+#: app/src/Modules/Elementor/SliderWidget.php:48
+msgid "Depicter Slider"
+msgstr "描绘者滑块"
+
+#: app/src/Modules/Beaver/module.php:76 app/src/Modules/Beaver/module.php:87
+#: app/src/Modules/Divi/includes/modules/depicter/depicter.php:52
+#: app/src/Modules/Elementor/SliderWidget.php:100
+#: app/src/Modules/ModulesServiceProvider.php:93
+#: app/src/Modules/Oxygen/module.php:55 app/src/Modules/Oxygen/module.php:73
+#: app/src/Modules/WPBakery/module.php:49
+#: app/src/Modules/WPBakery/module.php:62
+msgid "Select Slider"
+msgstr "选择滑块"
+
+#: app/src/Modules/Elementor/SliderWidget.php:127
+msgid "Slider"
+msgstr "滑块"
+
+#: app/src/Modules/ModulesServiceProvider.php:118
+#: views/admin/notices/builders-draft-notice.php:44
+msgid "Edit Slider"
+msgstr "编辑滑块"
+
+#: app/src/Modules/ModulesServiceProvider.php:135
+msgid "Slider ID required"
+msgstr "需要滑块 ID"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:53
+msgid "Projects"
+msgstr "项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:54
+msgid "Project"
+msgstr "项目"
+
+#: app/src/Dashboard/DashboardPage.php:57
+#: app/src/Dashboard/DashboardPage.php:58
+#: app/src/WordPress/ContentTypesServiceProvider.php:55
+msgid "Add New"
+msgstr "添加"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:56
+msgid "Add new Project"
+msgstr "添加新项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:57
+msgid "View Project"
+msgstr "查看项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:58
+msgid "Edit Project"
+msgstr "编辑项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:59
+msgid "New Project"
+msgstr "新建项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:60
+msgid "Search Projects"
+msgstr "搜索项目"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:61
+msgid "No Sliders found"
+msgstr "找不到幻灯"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:62
+msgid "No Sliders found in trash"
+msgstr "在回收站中找不到滑块"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:90
+#: app/src/WordPress/ContentTypesServiceProvider.php:101
+msgid "Categories"
+msgstr "类别"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:92
+msgid "Search Categories"
+msgstr "搜索分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:93
+msgid "All Categories"
+msgstr "所有类别"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:94
+msgid "Parent category"
+msgstr "父级分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:95
+msgid "Parent category:"
+msgstr "父级分类："
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:96
+msgid "View category"
+msgstr "查看分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:97
+msgid "Edit category"
+msgstr "编辑分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:98
+msgid "Update category"
+msgstr "更新分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:99
+msgid "Add New category"
+msgstr "添加新分类"
+
+#: app/src/WordPress/ContentTypesServiceProvider.php:100
+msgid "New category Name"
+msgstr "新分类名称"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:43
+msgid "I no longer need the plugin"
+msgstr "我不再需要插件了"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:48
+msgid "It broke my site"
+msgstr "它破坏了我的网站"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:53
+msgid "I found a better plugin or solution"
+msgstr "我找到了更好的插件或解决方案"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:54
+msgid "Please share which plugin?"
+msgstr "请分享哪个插件"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:58
+msgid "I couldn't get the plugin to work"
+msgstr "我无法让插件工作"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:59
+msgid "How we can improve it?"
+msgstr "我们如何改进它？"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:63
+msgid "It's a temporary deactivation"
+msgstr "临时停用"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:68
+msgid "Other"
+msgstr "其它"
+
+#: app/src/WordPress/DeactivationFeedbackService.php:69
+msgid "What we can do better?"
+msgstr "我们可以做的更好吗？"
+
+#: app/src/WordPress/FileUploaderService.php:32
+msgid "Cannot upload the file, uploading %s files are not allowed."
+msgstr "无法上传文件，不允许上传 %s 个文件。"
+
+#: app/src/WordPress/SystemCheckService.php:23
+msgid "Check to access depicter resources servers."
+msgstr "检查以访问描述者资源服务器。"
+
+#: app/src/WordPress/SystemCheckService.php:35
+#: app/src/WordPress/SystemCheckService.php:43
+msgid "Connecting to depicter resources servers passed successfully"
+msgstr "连接到描述器资源服务器成功通过"
+
+#: app/src/Dashboard/DashboardSetting.php:138
+#: app/src/WordPress/SystemCheckService.php:38
+msgid "Performance"
+msgstr "性能"
+
+#: app/src/WordPress/SystemCheckService.php:53
+#: app/src/WordPress/SystemCheckService.php:59
+msgid "Error while trying to connect to depicter resources servers"
+msgstr "尝试连接到描述器资源服务器时出错"
+
+#: app/src/WordPress/SystemCheckService.php:70
+msgid "Error"
+msgstr "错误"
+
+#: app/src/WordPress/SystemCheckService.php:71
+msgid "Your site cannot communicate securely with depicter services. Contact your host provider and ask them to whitelist <code>depicter.com</code> to gain access to assets library"
+msgstr "您的网站无法与描述者服务进行安全通信。联系您的主机提供商并要求他们将<code>depicter.com</code>列入白名单以访问资产库"
+
+#. Translators: %1$s = plugin or theme name; %2$s = minimum version number;
+#. %3$s = maximum version number; %4$s plugin or theme name; %5$s loaded
+#. version number.
+#: app/version.php:54
+msgid "%1$s requires WP Emerge version >= %2$s and < %3$s but %4$s has already loaded version %5$s."
+msgstr "%1$s 需要 WP Emerge 版本 >= %2$s 和 < %3$s，但 %4$s 已加载版本 %5$s。"
+
+#: views/admin/survey/feedback.php:23
+msgid "If you have a moment, please share why you are deactivating Depicter:"
+msgstr "如果您有时间，请分享您停用 Depicter 的原因："
+
+#: views/admin/survey/feedback.php:37
+msgid "Skip & Deactivate"
+msgstr "跳过与禁用"
+
+#: views/admin/survey/feedback.php:38
+msgid "Submit & Deactivate"
+msgstr "提交与禁用"
+
+#: app/src/Modules/Gutenberg/build/block.json
+#: app/src/Modules/Gutenberg/src/block.json
+msgctxt "block title"
+msgid "Depicter"
+msgstr "Depicter"
+
+#: app/src/Modules/Gutenberg/build/block.json
+#: app/src/Modules/Gutenberg/src/block.json
+msgctxt "block description"
+msgid "Add depicter sliders to the contents."
+msgstr "将Depicter描述滑块添加到内容中。"

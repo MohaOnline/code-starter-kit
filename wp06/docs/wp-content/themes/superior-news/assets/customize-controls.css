@@ -1,0 +1,4 @@
+li#accordion-section-random-news,
+li#accordion-section-random_news_banner_section {
+	display: none !important;
+}

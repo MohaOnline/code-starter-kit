@@ -1,0 +1,287 @@
+/*
+Theme Name: Newsgine
+Theme URI: https://themeansar.com/free-themes/newsgine/ 
+Author: Themeansar
+Author URI: https://themeansar.com
+Description: Newsgine is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsgine is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsgine is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://newsup.themeansar.com/newsgine/ and documentation at https://docs.themeansar.com/docs/newsup/
+Requires at least: 5.3
+Tested up to: 6.2.2
+Requires PHP: 5.6
+Version: 0.4
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Template: newsup
+Text Domain: newsgine
+Tags: blog, portfolio, news, grid-Layout, one-column, two-columns, three-columns, flexible-header, left-sidebar, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, post-formats, rtl-language-support, theme-options, sticky-post, threaded-comments, translation-ready, block-styles, wide-blocks
+
+Newsgine WordPress Theme is child theme of Newsup, Copyright 2020 Themeansar
+Newsgine is distributed under the terms of the GNU General Public License v3
+
+Newsgine is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+a:focus {
+    outline: 1px solid;
+}
+span.time {
+    margin-left: 5px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 35px;
+}
+.mg-headwidget .navbar-wp { 
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.mg-headwidget.center .heacent {
+    margin-top: unset !important;
+}
+.mg-headwidget.center .logo-center, .mg-headwidget.center .navbar-header, .mg-headwidget.center .site-branding-text  {
+    float: none;
+    text-align: center;
+}
+
+.mg-headwidget.center .navbar-brand {
+    float: none;
+    display: inline-block;
+    margin: 8px auto 0 auto;
+    font-weight: bold;
+}
+.mg-headwidget.center .heacent {
+    margin-top: 40px; 
+}
+.navbar-wp .dropdown-menu.searchinner .btn {
+    border: medium none;
+    border-radius: 0 4px 4px 0;
+    height: 40px;
+    line-height: 25px;
+    padding: 5px 15px;
+}
+.mg-search-box .dropdown-toggle::after {
+	display: none;
+}
+.m-header {
+	display: none;
+}
+.desk-header {
+	display: flex;
+}
+.mobilehomebtn {
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+}
+.logo-auto {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.mg-blog-post.md{
+	width: 49.8%;
+	float: left;
+	height: 236px;
+}
+.mg-blog-post.md .bottom h4 {
+    font-size: 26px;
+}
+.mb1px {
+	margin-bottom: 1px;
+}
+.mg-blog-post.lg.mins {
+	width: 100%;
+	height: 222.5px;
+	margin-bottom: 30px;
+}
+.mg-blog-post.lg.mins h4.title {
+	font-size: 22px;
+}
+.mg-fea-area .mg-blog-post.lg {
+    height: 514px;
+}
+.mg-fea-area .mg-blog-thumb {
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.mg-fea-area .mg-blog-thumb img { 
+    height: 120px;
+    object-fit: cover;
+    width: 100%;
+}
+.mg-fea-area .mg-blog-post-box .small {
+    padding: 10px;
+}
+.mg-latest-news .bn_title .title { 
+    padding: 0; 
+    color: #ff003c; 
+}
+.mg-latest-news-sec {
+    box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 30%);
+    position: relative;
+    box-shadow: 0 10px 10px #00000007;
+    box-shadow: 0 10px 10px #00000005;
+}
+/* ============================================= Responsive Part ======================================== */
+
+@media screen and (max-width: 767px) and (min-width: 240px) {
+    .mg-headwidget .navbar-wp .navbar-nav > li> a {
+        position: relative;
+        border-bottom: 1px solid rgba(225,225,225,0.4);
+    }
+}
+
+@media (max-width: 991px) {
+	.navbar-wp .navbar-nav > li> a i {
+    	display: none;
+	}	
+}
+
+@media (min-width: 1200px) {
+    .mg-blog-post.md .bottom h4 {
+        max-height: 65px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 991.98px) {
+    #menu-primary li.active.home {
+        display: none;
+    }
+    .m-header {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .desk-header {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+    .mg-fea-area .col-md-3 {
+        display: flex;
+    }
+    .mg-fea-area .mg-blog-post.lg.mins {
+        margin: 0 5px 30px 0;
+    }
+    .mg-fea-area .col-md-3.col-sm-6{
+        display: block;
+    }
+}
+@media (min-width: 240px) and (max-width: 576px){
+    .mg-fea-area .mg-blog-post.lg.mins,.mg-fea-area  .mg-posts-sec {
+        margin-bottom:20px;
+    }
+
+    .mg-fea-area .mr-bot60 {
+        margin-bottom: 50px;
+    }
+}
+
+.mg-blog-post-box .mg-header {
+    padding: 20px 20px;
+}
+
+footer .site-description {
+    letter-spacing: 1.2px;
+    margin-bottom: 0;
+}
+
+.mg-headwidget .site-branding-text .text-center {
+    color: #fff;
+    text-align: center;
+} 
+.small-post {
+    background: #fff;
+}
+.mg-latest-news .mg-latest-news-slider a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 8px;
+    object-fit: cover;
+}
+.mg-fea-area .mg-sec-title{
+    margin-bottom: 10px;
+}
+.mg-fea-area .mg-sec-title h4 {
+    background-color: transparent;
+    color: #ff003c;
+    padding: 0;
+}
+.mg-fea-area .mg-sec-title h4 i {
+    margin-right: 5px;
+}
+.mg-fea-area .mg-sec-title h4::before {
+    display: none;
+}
+li.active.home {
+    display: none;
+}
+.mg-latest-news .mg-latest-news-slider {
+    top: 0px;
+}
+ 
+.left-list-post .small-post{
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.left-list-post .mg-blog-meta { 
+    margin-bottom: 0; 
+}
+.left-list-post .small-list-post .title {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.right-list-post .inner {
+    background: #fff;
+    box-shadow: 0px 0px 40px 0px rgba(0,0,0,.1);
+    padding: 10px;
+}
+.right-list-post .title_small_post h5 {
+    font-size: 15px;
+}
+.right-list-post .small-post{
+    background: transparent;
+    box-shadow: none; 
+    margin-bottom: 0;
+    padding: 0px 6px;
+}
+.right-list-post .mg-blog-meta { 
+    margin-bottom: 0; 
+}
+.mg-latest-news .mg-latest-news-slider a::before {
+    display: none;
+}
+.mg-fea-area .comments-link {
+    display: none;
+}
+.mg-fea-area .mg-blog-post-box .title {
+    font-size: 16px;
+}
+.mg-fea-area {
+ border-top: none;
+}
+.mg-fea-area .overlay {
+    background: #fff;
+}
+
+.post-items ul:not(.post-categories) li a,.post-items ol:not(.post-categories) li a, .post-items table a, strong a, blockquote a, code a, .mg-card-box a, .navigation.posts-navigation .nav-links a:hover,
+.navigation.posts-navigation .nav-links a:hover, #cancel-comment-reply-link, .comment-reply-link,
+.page-content a,
+.entry-content a,
+.entry-summary a, 
+.widget_text a:not(.more-link):not(.button),
+.comment-content a,
+.theme-custom-block a, .comment-detail .edit-link a, 
+.comment-detail .reply a, 
+pre.wp-block-code a {
+    text-decoration: underline;
+}

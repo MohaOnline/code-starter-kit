@@ -1,0 +1,17 @@
+{
+  "admin.min.css": {
+    "src": "admin.min.css",
+    "integrity": "sha384-9tfNkTop/Fd237pCVexAdxq+NuEGjZASkO1u3wlX16xe60XOque8Jvb6Ab5zS0TB",
+    "hash": "d9b13c080114bcf25aaf"
+  },
+  "admin.min.js": {
+    "src": "admin.min.js",
+    "integrity": "sha384-4jGKxOLgxAEFOb/Qq9MjGtLKM8yc4ZDZc4e2pRvDg7wRemV9QjaAKQRI5SmnaMbh",
+    "hash": "8eb0de2c687503aa5383"
+  },
+  "admin.min.js.LICENSE.txt": {
+    "src": "admin.min.js.LICENSE.txt",
+    "integrity": "sha384-Zp5I5brSSaLHRgIhyAd7LOcdlnilXBJx6HCYx4/9cg83MZb+ycBbm9i8B54LTqip",
+    "hash": "c2ee8a1c6843805ba761"
+  }
+}

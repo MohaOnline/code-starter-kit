@@ -1,0 +1,507 @@
+# Translation of Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-09-19 06:59:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release)\n"
+
+#: views/partials/_sites.php:39
+msgid "200"
+msgstr "200"
+
+#: views/partials/_sites.php:38
+msgid "100"
+msgstr "100"
+
+#: views/partials/_sites.php:37
+msgid "50"
+msgstr "50"
+
+#: views/partials/_sites.php:36
+msgid "20"
+msgstr "20"
+
+#: views/partials/_sites.php:30
+msgid "Show Items:"
+msgstr "显示项目："
+
+#: views/partials/_sites.php:26
+msgid "No subsite found"
+msgstr "没有找到子站点"
+
+#: views/partials/_sites.php:21
+msgid "Search by domain name..."
+msgstr "按域名搜索..."
+
+#: views/partials/_sites.php:13
+msgid "0 selected"
+msgstr "已选择 0 个"
+
+#: views/partials/_disable.php:76
+msgid "Exclude Disable Comments Settings Based On User Roles"
+msgstr "根据用户角色排除禁用评论设置"
+
+#: views/partials/_disable.php:23
+msgid "Disable comments in the following sites:"
+msgstr "在以下站点中禁用评论："
+
+#: views/partials/_disable.php:17
+msgid "Enable Site Wise settings."
+msgstr "启用站点Wise设置。"
+
+#: views/partials/_delete.php:10
+msgid "Delete comments in the following sites:"
+msgstr "删除以下网站的评论："
+
+#: views/partials/_disable.php:91
+msgid "This will exclude all the above settings for the selected user roles."
+msgstr "这将排除所选用户角色的所有上述设置。"
+
+#: disable-comments.php:871
+msgid "Logged out users"
+msgstr "注销的用户"
+
+#: includes/cli.php:189
+msgid "Enabled Avatar on your entire site. "
+msgstr "在全站启用头像。 "
+
+#: includes/cli.php:186
+msgid "Disabled Avatar on your entire site. "
+msgstr "在全站禁用头像。 "
+
+#: includes/cli.php:180
+msgid "Enabled Comments via REST API. "
+msgstr "启用通过REST API启用评论。 "
+
+#: includes/cli.php:171
+msgid "Enabled Comments via XML-RPC. "
+msgstr "通过XML-RPC禁用评论。 "
+
+#: views/partials/_disable.php:132
+msgid "This will change Avatar state from your entire network. If you want to change the Avatar setting specifically on your subsites by enabling site-wise settings, select \"Don't change\" from here."
+msgstr "这将改变整个网络的头像状态。如果您想通过启用站点设置来专门更改子站点上的头像设置，请从此处选择“不更改”。"
+
+#: views/partials/_disable.php:122
+msgid "Enable Avatar"
+msgstr "启用头像"
+
+#: views/partials/_disable.php:116
+msgid "Don't Change"
+msgstr "不更改"
+
+#: views/partials/_disable.php:111
+msgid "Avatar settings:"
+msgstr "头像设置："
+
+#: views/partials/_disable.php:107
+msgid "This will change Avatar state from your entire site."
+msgstr "这项设置将更改整个网络的头像状态。"
+
+#: views/partials/_disable.php:103 views/partials/_disable.php:128
+msgid "Disable Avatar"
+msgstr "禁用头像"
+
+#: views/partials/_disable.php:28
+msgid "All the underneath settings (except Avatar settings) will be applied for these selected sub sites."
+msgstr "所有下面的设置（除了头像设置）都将应用于选中的子站点。"
+
+#: views/partials/_delete.php:64
+msgid "This will permanently delete spam comments everywhere on your website."
+msgstr "此操作将永久删除您网站上的所有垃圾评论。"
+
+#: views/partials/_delete.php:63
+msgid "Permanently delete all spam comments on your WordPress website"
+msgstr "永久删除您WordPress网站上的所有垃圾评论"
+
+#: views/partials/_delete.php:63
+msgid "Spam:"
+msgstr "垃圾评论："
+
+#: disable-comments.php:1194
+msgid "All spam comments have been deleted."
+msgstr "所有垃圾评论已被删除。"
+
+#: views/partials/_sites.php:12
+msgid "Select All"
+msgstr "全选"
+
+#: views/partials/_delete.php:15
+msgid "Select your sub-sites where you want to delete comments."
+msgstr "选择需要删除评论的子站点。"
+
+#: views/settings.php:12
+msgctxt "Tab Name"
+msgid "Delete Comments"
+msgstr "删除评论"
+
+#: views/settings.php:9
+msgctxt "Tab Name"
+msgid "Disable Comments"
+msgstr "禁用评论"
+
+#: views/partials/_disable.php:33
+msgid "This site will be controlled by the network admin until you click the \"Save Changes\" button."
+msgstr "在你奠基「保存修改」按钮之前，此站点的设置由网络管理员控制。"
+
+#: views/partials/_disable.php:19
+msgid "If you enable Site Wise settings, you need to configure your “Disable Comments” settings individually on every website in the network."
+msgstr "如果启用了站点智能设置，则需要在网络中的每个网站上单独配置禁用评论设置。"
+
+#: views/settings.php:6
+msgid "Version"
+msgstr "版本"
+
+#: views/partials/_disable.php:162
+msgid "Turning on these settings will disable any comments made on your website via XML-RPC or REST API specifications."
+msgstr "启用这些设置将禁用通过 XML-RPC 或 REST API 协议在您的网站上发表任何评论。"
+
+#: views/partials/_disable.php:158
+msgid "Disable Comments via REST API"
+msgstr "禁止通过 REST API 发表评论"
+
+#: views/partials/_disable.php:149
+msgid "Disable Comments via XML-RPC"
+msgstr "禁止通过XML-RPC发表评论"
+
+#: views/partials/_disable.php:15 views/partials/_disable.php:74
+#: views/partials/_disable.php:102 views/partials/_disable.php:147
+#: views/partials/_disable.php:157
+msgid "Off"
+msgstr "停用"
+
+#: views/partials/_disable.php:14 views/partials/_disable.php:73
+#: views/partials/_disable.php:101 views/partials/_disable.php:146
+#: views/partials/_disable.php:156
+msgid "On"
+msgstr "启用"
+
+#: views/partials/_disable.php:139
+msgid "You can disable comments made on your website using WordPress specifications."
+msgstr "您可以使用WordPress规范禁止在您网站上发表的评论。"
+
+#: views/partials/_disable.php:138
+msgid "Disable Comments With API"
+msgstr "禁止通过API发表评论"
+
+#: views/partials/_disable.php:64
+msgid "Disabling comments will also disable trackbacks and pingbacks. All comment-related fields will also be hidden from the edit/quick-edit screens of the affected posts. These settings cannot be overridden for individual posts. Comments will be visible on all other post types."
+msgstr "禁用评论也将禁用引用和 pingback。所有与评论相关的字段也将从对应文章的编辑/快速编辑屏幕中隐藏。不能为单个文章覆盖这些设置。评论将在所有其他文章类型上可见。"
+
+#: views/partials/_disable.php:45
+msgid "On Specific Post Types:"
+msgstr "指定文章类型："
+
+#: views/partials/_disable.php:41
+msgid "This will disable comments from every page and post on your website. Use this setting if you do not want to show comments anywhere."
+msgstr "此选项将禁用每个文章和页面上的评论。如果您不想在任何地方显示评论，请使用此设置。"
+
+#: views/partials/_disable.php:40
+msgid "Disable comments globally on your entire website"
+msgstr "在整个网站上全局禁用评论"
+
+#: views/partials/_disable.php:4
+msgid "Configure the settings below to disable comments globally or on specific types of posts."
+msgstr "设置在整个站点或指定的文章类型上禁用评论。"
+
+#: views/partials/_sidebar.php:128
+msgid "Disable Comments For WordPress Pages"
+msgstr "禁用WordPress页面上的评论"
+
+#: views/partials/_sidebar.php:118
+msgid "Disable Comment For WordPress Media Files"
+msgstr "禁用WordPress媒体文件上的评论"
+
+#: views/partials/_sidebar.php:95
+msgid "Disable Comments For Some Particular Post"
+msgstr "禁用特定文章类型的评论"
+
+#: views/partials/_sidebar.php:72
+msgid "How to Disable Comments on Specific Types Of Posts"
+msgstr "怎么禁用指定文章类型上的评论"
+
+#: views/partials/_sidebar.php:49
+msgid "How To Use Disable Comments Plugin With WP-CLI"
+msgstr "怎么通过WP-CLI禁用评论"
+
+#: views/partials/_sidebar.php:26
+msgid "What Does This Disable Comments Plugin Do"
+msgstr "禁用评论插件的作用"
+
+#: views/partials/_sidebar.php:3
+msgid "Read Our Tutorials"
+msgstr "参阅我们的教程"
+
+#: views/partials/_delete.php:50
+msgid "Delete Certain Comment Types:"
+msgstr "删除指定类型的评论："
+
+#: views/partials/_delete.php:46
+msgid "This will remove existing comment entries for the selected post type(s) in the database and cannot be reverted without a database backups."
+msgstr "此操作将删除数据库中所选文章类型的现有评论，在没有数据库备份的情况下无法恢复。"
+
+#: views/partials/_delete.php:23
+msgid "This will permanently delete comments everywhere on your website."
+msgstr "此操作将永久删除您网站上的所有评论。"
+
+#: views/partials/_delete.php:23 views/partials/_delete.php:46
+#: views/partials/_delete.php:59 views/partials/_delete.php:64
+#: views/partials/_disable.php:41
+msgid "Warnings:"
+msgstr "警告："
+
+#: views/partials/_delete.php:22
+msgid "Permanently delete all comments on your WordPress website"
+msgstr "永久删除您WordPress网站上的所有评论"
+
+#: views/partials/_delete.php:19
+msgid "These settings will permanently delete comments for your entire website, or for specific posts and comment types."
+msgstr "这些设置将永久删除整个网站或指定文章类型和评论类型的评论。"
+
+#: views/partials/_delete.php:15 views/partials/_delete.php:19
+#: views/partials/_disable.php:19 views/partials/_disable.php:28
+#: views/partials/_disable.php:33 views/partials/_disable.php:64
+#: views/partials/_disable.php:91 views/partials/_disable.php:107
+#: views/partials/_disable.php:132
+msgid "Note:"
+msgstr "注意："
+
+#: views/partials/_menu.php:8
+msgid "Privacy"
+msgstr "隐私权"
+
+#: views/partials/_menu.php:7
+msgid "Terms Of Service"
+msgstr "使用条款"
+
+#: views/partials/_menu.php:6
+msgid "Docs"
+msgstr "文档"
+
+#: views/partials/_menu.php:5
+msgid "Support Forum"
+msgstr "支持论坛"
+
+#: views/partials/_menu.php:4
+msgid "All Plugins"
+msgstr "所有插件"
+
+#: views/partials/_menu.php:3
+msgid "About Us"
+msgstr "关于我们"
+
+#: includes/class-plugin-usage-tracker.php:868
+msgid "Just Deactivate"
+msgstr "仅停用"
+
+#: includes/class-plugin-usage-tracker.php:868
+msgid "Submit and Deactivate"
+msgstr "提交并禁用"
+
+#: includes/class-plugin-usage-tracker.php:810
+msgid "Submitting form"
+msgstr "提交表单"
+
+#: includes/class-plugin-usage-tracker.php:768
+msgid "Please share the reason"
+msgstr "请告诉我们原因"
+
+#: includes/class-plugin-usage-tracker.php:767
+msgid "Other"
+msgstr "其他"
+
+#: includes/class-plugin-usage-tracker.php:765
+msgid "It's a temporary deactivation"
+msgstr "临时停用"
+
+#: includes/class-plugin-usage-tracker.php:764
+msgid "I couldn't get the plugin to work"
+msgstr "我无法让插件正常工作"
+
+#: includes/class-plugin-usage-tracker.php:762
+msgid "Please share which plugin"
+msgstr "请告诉我们是哪个插件"
+
+#: includes/class-plugin-usage-tracker.php:761
+msgid "I found a better plugin"
+msgstr "我找到了一个更好的插件"
+
+#: includes/class-plugin-usage-tracker.php:759
+msgid "I no longer need the plugin"
+msgstr "我不再需要这个插件了"
+
+#: includes/class-plugin-usage-tracker.php:756
+msgid "Before you deactivate the plugin, would you quickly give us your reason for doing so?"
+msgstr "在您停用插件之前，可要告诉我们停用的原因吗？"
+
+#: includes/class-plugin-usage-tracker.php:755
+msgid "Sorry to see you go"
+msgstr "很遗憾与您分别"
+
+#: includes/class-plugin-usage-tracker.php:662
+msgid "No Thanks."
+msgstr "不用了，谢谢。"
+
+#: includes/class-plugin-usage-tracker.php:661
+msgid "Sure, I'd like to help"
+msgstr "可以，我原意提供帮助"
+
+#: includes/class-plugin-usage-tracker.php:660
+msgid "What we collect."
+msgstr "我们收集哪些数据。"
+
+#: includes/class-plugin-usage-tracker.php:386
+msgid "We can't detect any plugin information. This is most probably because you have not included the code in the plugin main file."
+msgstr "我们无法检测到任何插件信息，这很可能是因为你没有包含代码到插件主文件中。"
+
+#: includes/cli.php:177
+msgid "Disable Comments via REST API. "
+msgstr "禁止通过 REST API 发表评论。"
+
+#: includes/cli.php:168
+msgid "Disable Comments via XML-RPC. "
+msgstr "禁止通过XML-RPC发表评论。"
+
+#. translators: %s: post types to be disabled in network
+#: includes/cli.php:162
+msgid "Custom post types: %s. "
+msgstr "自定义文章类型:  %s。"
+
+#. translators: %s: post types to be enabled
+#: includes/cli.php:151
+msgid "Comments enabled for %s. "
+msgstr "已为%s启用评论。"
+
+#. translators: %s: post types to be disabled
+#: includes/cli.php:142 includes/cli.php:146
+msgid "Comments disabled for %s. "
+msgstr "已为%s禁用评论。"
+
+#: includes/cli.php:136
+msgid "Comments is disabled everywhere. "
+msgstr "已停用全站评论功能。"
+
+#: disable-comments.php:1051
+msgid "Saved"
+msgstr "已保存。"
+
+#: disable-comments.php:161
+msgid "We collect non-sensitive diagnostic data and plugin usage information. Your site URL, WordPress & PHP version, plugins & themes and email address to send you the discount coupon. This data lets us make sure this plugin always stays compatible with the most popular plugins and themes. No spam, I promise."
+msgstr "我们收集非敏感诊断数据和插件使用信息。您的网站 URL、WordPress 和 PHP 版本、插件和主题以及用于向您发送折扣优惠券的电子邮件地址。这些数据让我们可以确保此插件始终与最流行的插件和主题保持兼容。我保证不会发送垃圾邮件。"
+
+#: disable-comments.php:160
+msgid "Want to help make Disable Comments even better?"
+msgstr "想要帮助禁用评论变得更好吗？"
+
+#: views/partials/_delete.php:59
+msgid "Deleting comments by comment type will remove existing comment entries of the selected comment type(s) in the database and cannot be reverted without a database backup."
+msgstr "按评论类型删除评论将删除数据库中所选评论类型的现有评论条目，如果没有数据库备份此操作将无法还原。"
+
+#: disable-comments.php:842
+msgid "Default (no type)"
+msgstr "默认（无类型）"
+
+#. Description of the plugin
+msgid "Allows administrators to globally disable comments on their site. Comments can be disabled according to post type. You could bulk delete comments using Tools."
+msgstr "允许管理员全局禁用其站点上的评论。可以根据文章类型禁用评论。您可以使用工具批量删除评论。"
+
+#: disable-comments.php:767
+msgctxt "settings menu title"
+msgid "Disable Comments"
+msgstr "禁用评论"
+
+#: disable-comments.php:758
+msgid "Tools"
+msgstr "工具"
+
+#: disable-comments.php:757 views/partials/_disable.php:3
+msgid "Settings"
+msgstr "设置"
+
+#. translators: %s: URL to Disabled Comment settings page.
+#: disable-comments.php:668
+msgid "The <strong>Disable Comments</strong> plugin is active, but isn't configured to do anything yet. Visit the <a href=\"%s\">configuration page</a> to choose which post types to disable comments on."
+msgstr "<strong>禁用评论</strong>插件已激活，但尚未设置执行任何操作。 访问<a href=\"%s\">配置页面</a>，选择要停用评论的文章类型。"
+
+#. translators: %s: disabled post types.
+#: disable-comments.php:632
+msgid ", "
+msgstr ", "
+
+#. translators: %s: disabled post types.
+#: disable-comments.php:632
+msgid "Note: The <em>Disable Comments</em> plugin is currently active, and comments are completely disabled on: %s. Many of the settings below will not be applicable for those post types."
+msgstr "注意：<em>禁用评论</em> 插件目前处于活动状态，评论已完全禁用：%s。 以下许多设置不适用于这些帖子类型。"
+
+#: disable-comments.php:517 disable-comments.php:677 disable-comments.php:684
+msgid "Comments are closed."
+msgstr "评论关闭了。"
+
+#. translators: %s: WordPress version no.
+#: disable-comments.php:173
+msgid "Disable Comments requires WordPress version %s or greater."
+msgstr "禁用评论需要WordPress版本 %s 或更高版本。"
+
+#: views/partials/_disable.php:167
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: views/partials/_delete.php:27
+msgid "On Certain Post Types:"
+msgstr "指定文章类型："
+
+#: views/partials/_delete.php:66
+msgid "Total Comments:"
+msgstr "总评论:"
+
+#: views/partials/_delete.php:43 views/partials/_disable.php:61
+msgid "Custom post types:"
+msgstr "自定义帖子类型:"
+
+#: views/partials/_delete.php:42 views/partials/_disable.php:60
+msgid "Only the built-in post types appear above. If you want to disable comments on other custom post types on the entire network, you can supply a comma-separated list of post types below (use the slug that identifies the post type)."
+msgstr "只有内置文章类型出现以上情况。 如果您想要禁用整个网络上其他自定义文章类型的评论，您可以在下面提供以逗号分隔的帖子类型列表（使用标识帖子类型的slug）。"
+
+#: views/partials/_delete.php:22 views/partials/_disable.php:40
+msgid "Everywhere:"
+msgstr "任何地方"
+
+#: disable-comments.php:1128 disable-comments.php:1132
+msgid "Internal error occured. Please try again later."
+msgstr "发生内部错误。请稍后再试。"
+
+#: disable-comments.php:1126 disable-comments.php:1160
+#: disable-comments.php:1183
+msgid "All comments have been deleted"
+msgstr "所有评论已被删除"
+
+#: views/partials/_delete.php:210
+msgid "No comments are available for deletion."
+msgstr "没有可删除的评论。"
+
+#: disable-comments.php:777 views/partials/_delete.php:72
+#: assets/js/disable-comments-settings-scripts.js:339
+msgid "Delete Comments"
+msgstr "删除评论"
+
+#. Author URI of the plugin
+msgid "https://wpdeveloper.com"
+msgstr "https://wpdeveloper.net"
+
+#. Author of the plugin
+msgid "WPDeveloper"
+msgstr "WPDeveloper"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/disable-comments/"
+msgstr "https://wordpress.org/plugins/disable-comments/"
+
+#. Plugin Name of the plugin
+#: disable-comments.php:369
+msgid "Disable Comments"
+msgstr "禁用评论"

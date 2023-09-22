@@ -1,0 +1,3412 @@
+# Translation of Themes - Hueman in Chinese (China)
+# This file is distributed under the same license as the Themes - Hueman package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-02-20 14:15:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Themes - Hueman\n"
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Hueman"
+msgstr "Hueman"
+
+#: functions/admin/class-admin-page.php:289
+msgid "With Hueman Pro, you get premium features like infinite scrolling, footer and header customization, font customizer and many more. In addition, our premium support will be there to help you resolve any issue you may have with the theme. When installing Hueman Pro, all your previous options used in Hueman free are kept."
+msgstr "使用 Hueman Pro，您可以获得无限滚动、页脚和页眉定制、字体定制器等高级功能。此外，我们的高级支持将帮助您解决您在主题方面可能遇到的任何问题。安装 Hueman Pro 时，您之前在 Hueman free 中使用的所有选项都将保留。"
+
+#: functions/admin/class-admin-page.php:310
+msgid "Share a review"
+msgstr "分享评论"
+
+#: functions/admin/class-admin-page.php:308
+msgid "Share your feedback"
+msgstr "分享您的反馈"
+
+#: functions/admin/class-admin-page.php:302
+msgid "We have prepared a complete online documentation of the theme."
+msgstr "我们准备了完整的主题在线文档。"
+
+#: functions/class-utils-settings-map.php:235
+msgid "On home page wrap the site title or logo in an H1 tag"
+msgstr "在主页上将站点标题或 logo 包装在 H1 标记中"
+
+#: functions/class-utils-settings-map.php:726
+msgid "Link the banner image to your home page"
+msgstr "将横幅图片链接到您的主页"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:214
+msgid "Color value"
+msgstr "颜色值"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:213
+msgid "Select Color"
+msgstr "选择颜色"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:212
+msgid "Select default color"
+msgstr "选择默认颜色"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:209
+msgid "Clear"
+msgstr "清除"
+
+#: functions/class-utils-settings-map.php:1343
+msgid "Display author"
+msgstr "显示作者"
+
+#: functions/class-utils-settings-map.php:1718
+msgid "Display social links in the footer"
+msgstr "在页脚上显示社交链接"
+
+#: functions/class-utils-settings-map.php:1606
+msgid "Display social links in the primary sidebar"
+msgstr "在主要边栏中显示社交链接"
+
+#: functions/class-utils-settings-map.php:718
+msgid "Use the original image height"
+msgstr "使用原始图片高度"
+
+#: functions/class-utils-settings-map.php:1159
+msgid "Display the post thumbnail"
+msgstr "显示文章缩略图"
+
+#: functions/class-utils-settings-map.php:1146
+msgid "Display your blog posts in full content"
+msgstr "以完整内容显示您的博客文章"
+
+#: functions/class-utils-settings-map.php:573
+msgid "Defer loading Font Awesome icons"
+msgstr "延迟加载 Font Awesome 图标"
+
+#: functions/class-utils-settings-map.php:1335
+msgid "Display post date"
+msgstr "显示发布日期"
+
+#: functions/class-utils-settings-map.php:1327
+msgid "Display categories"
+msgstr "显示分类"
+
+#: functions/class-utils-settings-map.php:1375
+msgid "Display the post's featured image when it is set. Note that audio and image post formats automatically display the featured image."
+msgstr "设置后会显示文章的特色图片。请注意，音频和图片发布形式会自动显示特色图片。"
+
+#: functions/class-utils-settings-map.php:1546
+msgid "Secondary sidebar title"
+msgstr "次要边栏标题"
+
+#: functions/class-utils-settings-map.php:1541
+#: functions/class-utils-settings-map.php:1551
+msgid "Html is allowed."
+msgstr "允许使用 HTML。"
+
+#: functions/class-utils-settings-map.php:1536
+msgid "Primary sidebar title"
+msgstr "主要边栏标题"
+
+#: functions/class-utils-settings-map.php:238
+msgid "For best SEO results, make sure your pages always include at least one H1 tag."
+msgstr "为获得最佳 SEO 效果，请确保您的页面始终包含至少一个 H1 标签。"
+
+#: functions/admin/class-plugin-rec.php:61
+msgid "The plugin is lightweight and has been designed to integrate seamlessly with Hueman and any WordPress theme."
+msgstr "该插件轻巧，旨在与Hueman和任何WordPress 主题无缝集成。"
+
+#: functions/admin/class-plugin-rec.php:59
+msgid "parallax effect"
+msgstr "视差效果"
+
+#: functions/admin/class-plugin-rec.php:58
+msgid "video backgrounds"
+msgstr "视频背景"
+
+#: functions/admin/class-plugin-rec.php:57
+msgid "You can insert simple text zones, but also create %1$s, insert post grids, column structures, buttons, widget zones, maps, icons, and much more, or use pre-designed sections with professional %2$s."
+msgstr "您可以插入简单的文本区域，也可以创建 %1$s，插入文章网格，列结构，按钮，小工具区域，地图，图标等，或使用具有专业知识的预先设计的部分%2$s。"
+
+#: functions/admin/class-plugin-rec.php:55
+msgid "It allows you to drag and drop mobile-ready sections on <i>really</i> any page of your site, including home, posts, pages, products, archives, 404, search pages, ..."
+msgstr "它允许您将移动专用部分拖放到 <i>真</i> 您网站的任何页面，包括首页，文章，页面，产品，存档，404，搜索页面，..."
+
+#: functions/admin/class-plugin-rec.php:54
+msgid "Developers of the Hueman theme have created Nimble Builder, a free, powerful yet easy-to-use page builder already active on 50K+ WordPress websites."
+msgstr "Hueman 主题的开发人员创建了Nimble Builder，这是一个免费，功能强大但易于使用的页面生成器，已经在40K + WordPress网站上启用。"
+
+#: header.php:23
+msgid "Skip to content"
+msgstr "跳至内容"
+
+#. translators: %s: Title emphasized
+#: option-tree/includes/ot-functions-admin.php:3028
+msgid "%s: Displayed as a contextual help menu item on the Theme Options page."
+msgstr "%s：在主题选项页上显示为上下文帮助菜单项。"
+
+#: option-tree/includes/ot-functions-admin.php:2870
+msgid "OptionTree->Documentation"
+msgstr "OptionTree->文档"
+
+#. translators: %s: Operator emphasized
+#: option-tree/includes/ot-functions-admin.php:2798
+msgid "%s: Choose the logical operator to compute the result of the conditions."
+msgstr "%s：选择逻辑运算符来计算条件的结果。"
+
+#. translators: %1$s: Min, Max, & Step emphasized, %2$s: format, %3$s: range,
+#. %4$s: minimum interval
+#: option-tree/includes/ot-functions-admin.php:2789
+msgid "%1$s: Add a comma separated list of options in the following format %2$s (slide from %3$s in intervals of %4$s). The three values represent the minimum, maximum, and step options and will only affect the Numeric Slider option type."
+msgstr "%1$s：以以下格式添加逗号分隔的选项列表 %2$s（从 %3$s 的间隔为 %4$s） 滑动。这三个值表示最小值、最大值和步长选项，并且仅影响数字滑块选项类型。"
+
+#. translators: %1$s: Standard emphasized, %2$s: visual path to documentation
+#: option-tree/includes/ot-functions-admin.php:2777
+msgid "%1$s: Setting the standard value for your option only works for some option types. Read the %2$s for more information on which ones."
+msgstr "%1$s：为选项设置标准值仅适用于某些选项类型。阅读 %2$s，了解有关哪些信息的详细信息。"
+
+#. translators: %s: Settings emphasized
+#: option-tree/includes/ot-functions-admin.php:2774
+msgid "%s: This will only affect the List Item option type."
+msgstr "%s：这仅会影响列表项选项类型。"
+
+#. translators: %s: Choices emphasized
+#: option-tree/includes/ot-functions-admin.php:2771
+msgid "%s: This will only affect the following option types: Checkbox, Radio, Select & Select Image."
+msgstr "%s：这仅影响以下选项类型：复选框、音频、选择和选择图像。"
+
+#. translators: %s: Type emphasized
+#: option-tree/includes/ot-functions-admin.php:2765
+msgid "%s: Choose one of the available option types from the dropdown."
+msgstr "%s：从下拉列表中选择一种可用的选项类型。"
+
+#. translators: %s: Label emphasized
+#: option-tree/includes/ot-functions-admin.php:2759
+msgid "%s: Displayed as the label of a form element on the Theme Options page."
+msgstr "%s：在\"主题选项\"页上显示为窗体元素的标签。"
+
+#: option-tree/includes/ot-functions-admin.php:2712
+msgid "Section ID"
+msgstr "部分ID"
+
+#: option-tree/includes/ot-functions-admin.php:2704
+msgid "Section Title"
+msgstr "章节标题"
+
+#. translators: %s: Section ID emphasized
+#. translators: %s: ID emphasized
+#: option-tree/includes/ot-functions-admin.php:2688
+#: option-tree/includes/ot-functions-admin.php:2762
+#: option-tree/includes/ot-functions-admin.php:3031
+msgid "%s: A unique lower case alphanumeric string, underscores allowed."
+msgstr "%s：允许使用唯一小写字母数字字符串。"
+
+#. translators: %s: Section Title emphasized
+#: option-tree/includes/ot-functions-admin.php:2685
+msgid "%s: Displayed as a menu item on the Theme Options page."
+msgstr "%s：在\"主题选项\"页上显示为菜单项。"
+
+#: option-tree/includes/ot-functions-admin.php:962
+msgid "Featured Image"
+msgstr "缩略图"
+
+#. translators: %1$s: the calling function, %2$s the filter name, %3$s the
+#. option type, %4$s the version number
+#: option-tree/includes/ot-functions-admin.php:746
+msgid "Notice: %1$s was called incorrectly. All stored data must be filtered through %2$s, the %3$s option type is not using this filter. This is required since version %4$s."
+msgstr "注意：%1$s 调用不正确。所有存储的数据都必须通过 %2$s 进行筛选，%3$s 选项类型不使用此筛选器。由于版本 %4$s，因此需要这样做。"
+
+#: option-tree/includes/ot-functions-admin.php:686
+msgid "slider"
+msgstr "幻灯片"
+
+#. translators: %s: the field id
+#: option-tree/includes/ot-functions-admin.php:538
+msgid "The %s Colorpicker only allows valid hexadecimal or rgba values depending on the setting type."
+msgstr "%s 颜色选取器仅允许有效的十六进制值或 rgba 值，具体取决于设置类型。"
+
+#: functions/class-utils-settings-map.php:1450
+msgid "Display the date below the post title."
+msgstr "在文章标题下方显示日期。"
+
+#: functions/class-utils-settings-map.php:1447
+msgid "Post date"
+msgstr "发布日期"
+
+#: functions/class-utils-settings-map.php:1441
+msgid "Display the author name below the post title."
+msgstr "在文章标题下方显示作者姓名。"
+
+#: functions/class-utils-settings-map.php:1438
+msgid "Post author name"
+msgstr "文章作者名字"
+
+#: functions/class-utils-settings-map.php:1326
+#: functions/class-utils-settings-map.php:1437
+msgid "Post Metas"
+msgstr "文章元数据"
+
+#: functions/class-utils-settings-map.php:1431
+msgid "Display the post tags after the post content."
+msgstr "在文章内容后显示文章标记。"
+
+#: functions/class-utils-settings-map.php:1428
+msgid "Post tags"
+msgstr "文章标签"
+
+#: functions/class-utils-settings-map.php:1427
+msgid "Post Tags"
+msgstr "文章标签"
+
+#: functions/admin/class-plugin-rec.php:34
+msgid "Install Nimble Builder Now"
+msgstr "立即安装 Nimble 生成器"
+
+#: functions/admin/class-plugin-rec.php:49
+msgid "Nimble Page Builder"
+msgstr "Nimble 页面生成器"
+
+#: functions/admin/class-plugin-rec.php:46
+msgid "Hueman theme recommends %1$s."
+msgstr "Hueman 主题建议 %1$s。"
+
+#: functions/class-utils-settings-map.php:1938
+msgid "Single Pages Settings"
+msgstr "单页设置"
+
+#: functions/class-utils-settings-map.php:1469
+msgid "Display the page's featured image when it is set"
+msgstr "设置页面特色图像时显示该页面"
+
+#: functions/class-utils-settings-map.php:1601
+msgid "Display the primary sidebar above the content column on smartphone mobile devices (480px)."
+msgstr "在智能手机移动设备 （480px） 上显示内容列上方的主侧边栏。"
+
+#: functions/class-utils-settings-map.php:1592
+msgid "Control how the sidebar content is displayed on smartphone mobile devices (480px)."
+msgstr "控制侧边栏内容在智能手机移动设备（480px）上的显示方式。"
+
+#: functions/class-utils-settings-map.php:1704
+msgid "Note : Html is allowed. The following template tags can be used : {{year}}, {{site_title}}, {{home_url}}."
+msgstr "注意：允许使用 Html。可以使用以下模板标记：_year}、{site_title}、{home_url}。"
+
+#: functions/admin/class-admin-page.php:287
+#: functions/class-utils-settings-map.php:639
+msgid "Hueman Pro"
+msgstr "Hueman Pro"
+
+#: functions/class-utils-settings-map.php:637
+msgid "This can be used to ensure your background colors are applied when designing a header with a background image in %1$s"
+msgstr "这可用于确保在设计具有 %1$s 背景图像的页眉时应用背景颜色"
+
+#: functions/class-utils-settings-map.php:633
+msgid "Apply your custom background colors in priority for the topbar and the mobile menu"
+msgstr "将自定义背景颜色应用于顶栏和移动菜单的优先级"
+
+#: functions/class-utils-settings-map.php:1119
+msgid "The category filter will not be applied when using the <strong>Classic grid</strong> post list design if the <strong>infinite scroll</strong> option is active."
+msgstr "如果使用<strong>经典网格</strong>后列表设计，如果<strong>无限滚动</strong>选项处于活动状态，则不会应用类别筛选器。"
+
+#: functions/class-utils-settings-map.php:1118
+msgid "Note for Pro users:"
+msgstr "专业用户注意事项："
+
+#: functions/class-utils-settings-map.php:1116
+msgid "Learn more about post categories in WordPress"
+msgstr "进一步了解WordPress文章分类目录"
+
+#: functions/class-utils-settings-map.php:1114
+msgid "Click inside the above field and pick post categories you want to display. No filter will be applied when empty."
+msgstr "单击上述字段内，选取要显示的文章类别。空时不会应用任何筛选器。"
+
+#: functions/class-utils-settings-map.php:1109
+msgid "Apply a category filter to your home / blog posts"
+msgstr "对主页/博客文章应用分类目录过滤器"
+
+#: functions/class-utils-settings-map.php:1556
+msgid "Sidebars background color"
+msgstr "侧栏背景颜色"
+
+#: functions/init-front.php:1254
+msgid "Collapse"
+msgstr "收起"
+
+#: functions/init-front.php:1253
+msgid "Expand"
+msgstr "展开"
+
+#: functions/class-utils-settings-map.php:913
+msgid "Expand submenus on click"
+msgstr "单击时展开子菜单"
+
+#: functions/admin/class-plugin-rec.php:28
+msgid "Activate Nimble Builder Now"
+msgstr "立即激活 Nimble 生成器"
+
+#: functions/admin/class-plugin-rec.php:95
+msgid "Nimble Builder"
+msgstr "Nimble 构建器"
+
+#: functions/class-utils-settings-map.php:1211
+msgid "In WordPress, archives are the pages listing posts by category, tag, author and date."
+msgstr "在 WordPress 中, 档案是按类别、标签、作者和日期列出文章的页面。"
+
+#: functions/class-utils-settings-map.php:1208
+msgid "Display the archive type and an icon next to the archive headings"
+msgstr "显示存档类型和存档标题旁边的图标"
+
+#: functions/class-utils-settings-map.php:1176
+msgid "When checked, the post featured image are displayed in their original size, instead of the optimized image sizes of the theme. Make sure your original images are not too large, it could slow down your website."
+msgstr "选中后，后期精选图像将以其原始大小显示，而不是主题的优化图像大小。 确保您的原始图片不是太大，这可能会减慢您的网站速度。"
+
+#: functions/class-utils-settings-map.php:1173
+msgid "Display featured images in their original dimensions in post lists"
+msgstr "在文章列表中以原始尺寸显示特色图像"
+
+#: functions/class-utils-settings-map.php:980
+msgid "The global layout will be applied on every pages, even when a specific layout is set."
+msgstr "即使设置了特定布局，全局布局也将应用于每个页面。"
+
+#: functions/class-utils-settings-map.php:977
+msgid "Force the global layout"
+msgstr "强制全局布局"
+
+#: functions.php:27
+msgid "The <strong>%1$s</strong> theme requires at least %2$s version %3$s"
+msgstr "<strong>%1$s</strong>主题至少需要%2$s版本 %3$s"
+
+#: functions.php:20
+msgid "WordPress"
+msgstr "WordPress"
+
+#: functions.php:16
+msgid "PHP"
+msgstr "PHP"
+
+#: functions/init-after-setup-theme.php:212
+msgid "Site Wide Body Background"
+msgstr "网站宽主体背景"
+
+#: functions/czr-modules/social-links/social_links_module.php:217
+msgid "Please fill the social link inputs with a valid URLs"
+msgstr "请用有效的url作为社交链接"
+
+#: functions/czr-modules/social-links/social_links_module.php:173
+msgid "An error occurred: malformed social links"
+msgstr "发生错误：社交链接格式错误"
+
+#: functions/czr-modules/social-links/social_links_module.php:98
+#: functions/czr-modules/social-links/social_links_module.php:119
+msgid "http://...,mailto:...,..."
+msgstr "http://...,mailto:...,..."
+
+#: functions/czr-base-fmk/czr-base-fmk.php:1989
+msgid "No results found."
+msgstr "未找到结果。"
+
+#. translators: %d: ID of a post
+#: functions/czr-base-fmk/czr-base-fmk.php:1846
+#: functions/czr-base-fmk/czr-base-fmk.php:2055
+msgid "#%d (no title)"
+msgstr "#%d (无标题)"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:1725
+#: functions/czr-base-fmk/czr-base-fmk.php:1925
+msgid "ajax_load_available_items => Security check failed."
+msgstr "ajax_load_available_items => 安全检查失败。"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:1691
+msgid "Set a custom url"
+msgstr "设置自定义网址"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:477
+msgid "ac_set_ajax_czr_tmpl => Security check failed."
+msgstr "ac_set_ajax_czr_tmpl => 安全检查失败。"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:286
+msgid "Customizing"
+msgstr "自定义"
+
+#: functions/czr/czr-resources.php:233
+msgid "is always customized sitewide."
+msgstr "始终在全站范围内定制。"
+
+#: functions/class-utils-settings-map.php:551
+msgid "When checked, this option loads a small javascript file ( 30 kb ) to detect if your site is being displayed by a mobile device like a phone or a tablet. It is recommended to check this option if you are using a cache plugin."
+msgstr "选中这个选项后，将加载一个小型JS文件（30kb）来探测您的网站是否正被手机、平板等设备浏览。如果您正使用缓存类插件，我们推荐您选中此项。"
+
+#: functions/class-utils-settings-map.php:548
+msgid "Mobile device detection"
+msgstr "识别移动设备"
+
+#: functions/admin/class-admin-page.php:309
+msgid "If you are happy with the theme, say it on wordpress.org and give Hueman a nice review!"
+msgstr "如果您认为Hueman主题很棒，请在wordpress.org上留言并给予好评！"
+
+#: functions/admin/class-admin-page.php:276
+msgid "Thank you for using"
+msgstr "感谢您的使用"
+
+#: footer.php:121
+msgid "Hueman theme"
+msgstr "Hueman主题"
+
+#: footer.php:121
+msgid "Designed with the"
+msgstr "使用此工具定制"
+
+#: footer.php:121
+msgid "https://wordpress.org/"
+msgstr "https://cn.wordpress.org/"
+
+#: footer.php:121
+msgid "Powered by WordPress"
+msgstr "使用WordPress制作"
+
+#: functions/class-utils-settings-map.php:179
+msgid "The site title is displayed when there is no logo uploaded"
+msgstr "当没有上传站点图标时，网站标题将被显示"
+
+#: functions/class-utils-settings-map.php:496
+msgid "This option is good if you want to display a perfect font-size for your headings on any mobile devices. Note : it might override the css rules previously set in your custom stylesheet."
+msgstr "如果您希望您的标题字体大小在任何设备上都能完美显示，请勾选此项。注意：这可能会覆盖您自定义的CSS规则。"
+
+#: functions/class-utils-settings-map.php:493
+msgid "Make font sizes flexible. Enable this option to achieve scalable headlines that fill the width of a parent element."
+msgstr "使用尺寸灵活的字体。选择此选项让标题可改变尺寸，以适配父级对象的宽度。"
+
+#: functions/init-plugins-compat.php:433
+msgid "Post/Page excerpt"
+msgstr "页面/文章摘要"
+
+#: functions/init-plugins-compat.php:432
+msgid "Post/Page content"
+msgstr "页面/文章内容"
+
+#: parts/header-nav-mobile.php:72
+msgid "No menu has been assigned for mobile devices yet. You can set it from the live customizer"
+msgstr "还没有为移动设备设置菜单。您可以在自定义面板中完成设置"
+
+#: functions/init-front.php:2129
+msgid "a short guide here."
+msgstr "在这有简单介绍。"
+
+#: functions/init-front.php:2127
+msgid "To help you getting started with Hueman, we have published"
+msgstr "为了帮助您掌握Hueman主题的使用，我们发布了"
+
+#: functions/init-front.php:2124
+msgid "Hueman Demo 2"
+msgstr "Hueman样例2"
+
+#: functions/init-front.php:2122
+msgid "Hueman Demo 1"
+msgstr "Hueman样例1"
+
+#: functions/init-front.php:2120
+msgid "If you need inspiration, you can visit our online demos"
+msgstr "如果您需要灵感，可以观看使用本模板的样例"
+
+#: functions/init-front.php:2117
+msgid "to let you create the best possible websites."
+msgstr "帮助您创建更好的网站。"
+
+#: functions/init-front.php:2116
+msgid "of customization options"
+msgstr "自定义设置"
+
+#: functions/init-front.php:2114
+msgid "The theme offers a wide range"
+msgstr "这个主题提供了大量的"
+
+#: functions/init-front.php:2111
+msgid "Welcome in the Hueman theme"
+msgstr "欢迎使用Hueman主题"
+
+#: functions/init-after-setup-theme.php:108
+msgid "Mobile. You can set a specific menu for mobile devices. If not set, the theme will use the menu assigned to the Topbar, or the Header."
+msgstr "您可以为移动设备设置特定的菜单。 如果未设置，则主题将使用分配给顶栏的菜单或页眉。"
+
+#: functions/init-after-setup-theme.php:107
+msgid "Topbar"
+msgstr "顶栏"
+
+#: functions/class-utils-settings-map.php:1981
+msgid "Mobile Devices"
+msgstr "移动设备"
+
+#: functions/class-utils-settings-map.php:1577
+msgid "Decide if your sidebars should be sticky on tablets and smartphones devices."
+msgstr "确定您的侧边栏是否应粘贴在平板电脑和智能手机设备上。"
+
+#: functions/class-utils-settings-map.php:1406
+msgid "Post navigation"
+msgstr "文章导航"
+
+#: functions/class-utils-settings-map.php:1390
+msgid "Related posts"
+msgstr "相关文章"
+
+#: functions/class-utils-settings-map.php:871
+msgid "If the selected menu location has no menu assigned, the theme will try to assign another menu in this order : topbar, mobile, header."
+msgstr "如果选定的菜单位置没有分配菜单，主题将尝试按此顺序分配另一个菜单：顶栏，移动设备，页眉。"
+
+#: functions/class-utils-settings-map.php:866
+msgid "Specific Mobile Menu"
+msgstr "特定的移动菜单"
+
+#: functions/class-utils-settings-map.php:749
+msgid "Set your logo, title and tagline"
+msgstr "设置您的标志，标题和标语"
+
+#: functions/class-utils-settings-map.php:743
+msgid "Display your logo or site title, and tagline on top of the header image"
+msgstr "在标题图片顶部显示您的标志或网站标题和标语"
+
+#: functions/class-utils-settings-map.php:686
+msgid "Apply a semi-transparent filter to the topbar and mobile menu on scroll"
+msgstr "在滚动的顶部栏和移动菜单上应用半透明过滤器"
+
+#: functions/class-utils-settings-map.php:509
+msgid "Include images in search results"
+msgstr "在搜索结果中包含图像"
+
+#: functions/class-utils-settings-map.php:224
+msgid "(in pixels)"
+msgstr "（像素）"
+
+#: functions/class-utils-settings-map.php:205
+msgid "Logo for mobiles"
+msgstr "移动设备的Logo"
+
+#: functions/class-utils-settings-map.php:204
+msgid "Use a specific logo for mobile devices"
+msgstr "为移动设备使用特定的徽标"
+
+#: functions/class-utils-settings-map.php:176
+msgid "Display the site title in the header"
+msgstr "在页眉显示站点标题"
+
+#: functions/init-plugins-compat.php:428
+msgid "Slider button"
+msgstr "滑块按钮"
+
+#: functions/czr/czr-resources.php:255
+msgid "can be customized with a specific set of options."
+msgstr "可以通过一组特定的选项进行定制。"
+
+#: functions/czr/czr-resources.php:253 functions/czr/czr-resources.php:256
+msgid "The options not customized at this level will inherit their value from"
+msgstr "未在此级别定制的选项将从中继承它们的值"
+
+#: functions/czr/czr-resources.php:252
+msgid "The current customizations will be applied to"
+msgstr "当前的自定义将应用于"
+
+#: functions/czr/czr-resources.php:251 functions/czr/czr-resources.php:254
+msgid "can be customized more specifically at the following level"
+msgstr "可以在以下级别更具体地进行定制"
+
+#: functions/czr/czr-resources.php:250
+msgid "The current context"
+msgstr "当前的上下文"
+
+#: functions/czr/czr-resources.php:249
+msgid "The customizations made site wide are inherited by all other levels of customization."
+msgstr "所有其他级别的定制都会继承自定义的网站范围。"
+
+#: functions/czr/czr-resources.php:246
+msgid "to understand how to fix the problem."
+msgstr "了解如何解决问题。"
+
+#: functions/czr/czr-resources.php:245
+msgid "this documentation page"
+msgstr "这页的文件"
+
+#: functions/czr/czr-resources.php:244
+msgid "Please refer to"
+msgstr "请参考"
+
+#: functions/czr/czr-resources.php:223
+msgid "Default sitewide value."
+msgstr "默认的网站范围值。"
+
+#: functions/class-utils-settings-map.php:2009
+msgid "Go Pro"
+msgstr "获得Pro版"
+
+#: functions/class-utils-settings-map.php:1913
+msgid "Header Menus : mobile settings, scroll behaviour, search button"
+msgstr "页头菜单：移动设置，滚动行为，搜索按钮"
+
+#: functions/class-utils-settings-map.php:1407
+msgid "Post navigation in single posts"
+msgstr "在单篇文章中显示导航"
+
+#: functions/class-utils-settings-map.php:849
+msgid "Display a search field in the header menu"
+msgstr "在页眉菜单中显示搜索字段"
+
+#: functions/class-utils-settings-map.php:848
+msgid "Display a search field in the top menu"
+msgstr "在顶部菜单中显示搜索字段"
+
+#: functions/class-utils-settings-map.php:847
+msgid "No search field"
+msgstr "没有搜索字段"
+
+#: functions/class-utils-settings-map.php:843
+#: functions/class-utils-settings-map.php:924
+msgid "display a search field"
+msgstr "显示在搜索字段"
+
+#: functions/class-utils-settings-map.php:832
+#: functions/class-utils-settings-map.php:888
+msgid "Always visible"
+msgstr "始终可见"
+
+#: functions/class-utils-settings-map.php:831
+#: functions/class-utils-settings-map.php:887
+msgid "Reveal on scroll up"
+msgstr "页面向上滚动时显示"
+
+#: functions/class-utils-settings-map.php:830
+#: functions/class-utils-settings-map.php:886
+msgid "Not visible when scrolling the page"
+msgstr "页面滚动时不可见"
+
+#: functions/class-utils-settings-map.php:826
+#: functions/class-utils-settings-map.php:882
+msgid "top menu visibility on scroll"
+msgstr "滚动菜单上的顶部菜单可见性"
+
+#: functions/class-utils-settings-map.php:825
+#: functions/class-utils-settings-map.php:859
+msgid "Menus settings for"
+msgstr "菜单设置"
+
+#: functions/class-utils-settings-map.php:2008
+msgid "Upgrade to Hueman Pro"
+msgstr "升级到Hueman Pro"
+
+#: functions/admin/class-admin-page.php:301
+msgid "Knowledge base"
+msgstr "知识库"
+
+#: functions/class-utils-settings-map.php:1898
+msgid "Header Design : colors and others"
+msgstr "页头设计：颜色和其他"
+
+#: functions/class-utils-settings-map.php:870
+msgid "When your visitors are using a smartphone or a tablet, the header becomes a thin bar on top, where the menu is revealed when clicking on the hamburger button. This option let you choose which menu will be displayed."
+msgstr "当您的访问者使用智能手机或平板电脑时，标题会变成顶部的细条，点击汉堡按钮时会显示菜单。 该选项可让您选择要显示的菜单。"
+
+#: functions/class-utils-settings-map.php:782
+msgid "This will display your widget zone on devices with a width smaller than 720 pixels : tablets, smartphones."
+msgstr "这将在宽度小于720像素的设备上显示您的小工具区域：平板电脑，智能手机。"
+
+#: functions/class-utils-settings-map.php:779
+msgid "Display the header widget zone on mobile devices"
+msgstr "在移动设备上显示标头小工具区域"
+
+#: functions/class-utils-settings-map.php:774
+msgid "This will display your widget zone on devices with a width greater than 720 pixels : laptops and desktops."
+msgstr "这将在宽度大于720像素的设备上显示您的小工具区域：笔记本电脑和台式机。"
+
+#: functions/class-utils-settings-map.php:771
+msgid "Display the header widget zone on desktop devices"
+msgstr "在桌面设备上显示标题小工具区域"
+
+#: parts/header-nav-topbar.php:23
+msgid "Collapse menu"
+msgstr "折叠菜单"
+
+#: parts/header-nav-topbar.php:22
+msgid "Expand menu"
+msgstr "展开菜单"
+
+#: functions/init-front.php:495 functions/init-front.php:501
+msgid "Home page"
+msgstr "首页"
+
+#: functions/class-utils-settings-map.php:1922
+msgid "Column layout for the main content"
+msgstr "主要内容的列布局"
+
+#: functions/class-utils-settings-map.php:1569
+msgid "Glues your website's sidebars on top of the page, making them permanently visible when scrolling up and down. Useful when a sidebar is too tall or too short compared to the rest of the content."
+msgstr "将网站的侧边栏粘贴在页面顶部，使其在滚动上下时永久可见。 与其他内容相比，边栏太高或太短时很有用。"
+
+#: functions/class-utils-settings-map.php:1566
+#: functions/class-utils-settings-map.php:1574
+msgid "make sidebars sticky on scroll"
+msgstr "使侧边栏随着屏幕滚动"
+
+#: functions/class-utils-settings-map.php:224
+#: functions/class-utils-settings-map.php:825
+#: functions/class-utils-settings-map.php:826
+#: functions/class-utils-settings-map.php:843
+#: functions/class-utils-settings-map.php:1566
+msgid "Desktop devices"
+msgstr "桌面设备"
+
+#: functions/class-utils-settings-map.php:963
+msgid "Columns layout for"
+msgstr "列布局"
+
+#: functions/class-utils-settings-map.php:903
+msgid "Simple"
+msgstr "简单"
+
+#: functions/class-utils-settings-map.php:902
+msgid "Animated"
+msgstr "动画"
+
+#: functions/class-utils-settings-map.php:898
+msgid "Style of the mobile menu button"
+msgstr "移动菜单按钮的风格"
+
+#: functions/class-utils-settings-map.php:867
+msgid "Topbar and header menus, logo centered"
+msgstr "顶部和标题菜单，Logo居中"
+
+#: functions/class-utils-settings-map.php:865
+msgid "Topbar Menu"
+msgstr "顶栏菜单"
+
+#: functions/class-utils-settings-map.php:860
+msgid "Select the menu(s) to use for mobile devices"
+msgstr "选择用于移动设备的菜单"
+
+#: functions/class-utils-settings-map.php:676
+msgid "Mobile Menu Background"
+msgstr "移动端菜单背景"
+
+#: functions/class-utils-settings-map.php:813
+msgid "Topbar menu"
+msgstr "Topbar菜单"
+
+#: functions/class-utils-settings-map.php:808
+msgid "The Hueman theme supports up to two menu locations in your header."
+msgstr "Hueman主题最多支持页眉中的两个菜单位置。"
+
+#: functions/czr-modules/social-links/social_links_module.php:104
+msgid "Size in px"
+msgstr "尺寸（像素）"
+
+#: functions/czr/czr-resources.php:243
+msgid "There was a problem when trying to load the customizer."
+msgstr "在加载自定义界面是存在问题。"
+
+#: functions/czr/czr-resources.php:240
+msgid "overridden by"
+msgstr "被覆盖"
+
+#: functions/czr/czr-resources.php:239
+msgid "inherits from"
+msgstr "继承自"
+
+#: functions/czr/czr-resources.php:238
+msgid "In this context :"
+msgstr "在该上下文："
+
+#: functions/czr/czr-resources.php:237
+msgid "Switch to scope"
+msgstr "切换至全局模式"
+
+#: functions/czr/czr-resources.php:235
+msgid "Widgets are created sitewide."
+msgstr "全站式小工具。"
+
+#: functions/czr/czr-resources.php:234
+msgid "Menus are created sitewide."
+msgstr "全站式菜单。"
+
+#: functions/czr/czr-resources.php:230
+msgid "is customized in"
+msgstr "自定义为"
+
+#: functions/czr/czr-resources.php:229
+msgid "is set in"
+msgstr "设置为"
+
+#: functions/czr/czr-resources.php:228
+msgid "The value that will be applied to"
+msgstr "属性值，将用于"
+
+#: functions/czr/czr-resources.php:227
+msgid "The value currently applied to"
+msgstr "属性值，已用于"
+
+#: functions/czr/czr-resources.php:225
+msgid "Currently inherited from"
+msgstr "当前继承自"
+
+#: functions/czr/czr-resources.php:224 functions/czr/czr-resources.php:226
+msgid "You can customize this specifically for"
+msgstr "您可以自定义该属性，尤其是"
+
+#: functions/czr/czr-resources.php:222
+msgid "Default website value applied sitewide."
+msgstr "全站使用的默认网站属性值。"
+
+#: functions/czr/czr-resources.php:221
+msgid "Customized and applied to"
+msgstr "自定义并用于"
+
+#: functions/czr/czr-resources.php:220
+msgid "Customized and applied sitewide."
+msgstr "自定义并全站使用。"
+
+#: functions/czr/czr-resources.php:219
+msgid "once published."
+msgstr "一旦发布。"
+
+#: functions/czr/czr-resources.php:218
+msgid "Customized. Will be applied to"
+msgstr "已设置，将用于"
+
+#: functions/czr/czr-resources.php:217
+msgid "Customized. Will be applied sitewide once published."
+msgstr "已设置，发布后将全站使用。"
+
+#: functions/czr/czr-resources.php:216
+msgid "This option is always customized sitewide and cannot be reset."
+msgstr "该选项往往全站设置并且不可被重置。"
+
+#: functions/czr/czr-resources.php:215
+msgid "Display informations about the scope of this option."
+msgstr "显示该选项的作用范围信息。"
+
+#: functions/czr/czr-resources.php:212
+msgid "The option has been reset"
+msgstr "该选项已被重置"
+
+#: functions/czr/czr-resources.php:211
+msgid "Please confirm that you want to reset this option in"
+msgstr "请确认是否需要重置该选项为"
+
+#: functions/czr/czr-resources.php:210
+msgid "Please confirm that you want to reset this option"
+msgstr "请确认是否需要重置该选项"
+
+#: functions/czr/czr-resources.php:209
+msgid "This WordPress setting can not be reset sitewide"
+msgstr "WordPress设置无法被全站式重置"
+
+#: functions/czr/czr-resources.php:208
+msgid "Your customizations have been reset"
+msgstr "您的自定义设置已被重置"
+
+#: functions/czr/czr-resources.php:207
+msgid "sitewide"
+msgstr "全站式"
+
+#: functions/czr/czr-resources.php:206
+msgid "Please confirm that you want to reset your current customizations for this option in"
+msgstr "请确认是否需要重置该选项的当前设置为"
+
+#: functions/czr/czr-resources.php:205
+msgid "Please confirm that you want to reset your current customizations for this option"
+msgstr "请确认是否需要重置该选项的当前设置"
+
+#: functions/czr/czr-resources.php:203
+msgid "Not customized yet, nothing to reset"
+msgstr "尚未进行自定义设置，无设置可重置"
+
+#: functions/czr/czr-resources.php:202 functions/czr/czr-resources.php:204
+msgid "Reset your customized ( but not yet published ) value"
+msgstr "重置您的自定义设置（尚未发布）"
+
+#: functions/czr/czr-resources.php:201
+msgid "Reset your customized ( and published ) value"
+msgstr "重置您的自定义设置（已发布）"
+
+#: functions/czr/czr-resources.php:198
+msgid "Your published customizations have been reset for"
+msgstr "您的已发布设置已被重置为"
+
+#: functions/czr/czr-resources.php:197
+msgid "Please confirm that you want to reset your published customizations for"
+msgstr "请确认是否需要重置您的已发布设置为"
+
+#: functions/czr/czr-resources.php:196
+msgid "Please confirm that you want to reset your sitewide published customizations. Note : this will not reset the customizations made in other option scopes"
+msgstr ""
+"请确认是否需要重置全站式已发布设置。\n"
+"注意：该功能不会重置其他选项范围中的设置"
+
+#: functions/czr/czr-resources.php:195
+msgid "Your customizations have been reset for"
+msgstr "您的自定义设置已被重置为"
+
+#: functions/czr/czr-resources.php:194
+msgid "Please confirm that you want to reset your current ( not published ) customizations for"
+msgstr "请确认是否需要重置您的当前（尚未发布）设置为"
+
+#: functions/czr/czr-resources.php:193
+msgid "Reset your website published options for"
+msgstr "重置网站已发布选项为"
+
+#: functions/czr/czr-resources.php:192
+msgid "Reset the theme options published sitewide"
+msgstr "重置全站已发布的主题选项"
+
+#: functions/czr/czr-resources.php:191
+msgid "Reset the current customizations for"
+msgstr "重置当前设置为"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:275
+#: functions/czr/czr-resources.php:187
+msgid "Options for"
+msgstr "选项"
+
+#: functions/class-utils-settings-map.php:284
+msgid "This option sets the default font size applied to any text element of your website, when no font size is already applied."
+msgstr "当未设置字体大小时，该选项将设置网站所以文本内容的默认字体大小。"
+
+#: functions/class-utils-settings-map.php:277
+msgid "Set your website default font size in pixels."
+msgstr "以像素为单位设置网站默认字体大小。"
+
+#: functions/class-utils-settings-map.php:195
+msgid "Set your logo below or"
+msgstr "在下方设置logo或者"
+
+#: footer.php:141 parts/header-nav-mobile.php:74 sidebar.php:29
+msgid "Customize now"
+msgstr "现在就进行自定义设置"
+
+#: footer.php:139 functions/init-front.php:277 sidebar.php:27
+msgid "You can set your social links here from the live customizer"
+msgstr "在实时自定义中您可以在这里设置社交链接"
+
+#: functions/czr/panels/class-panels.php:63
+msgid "Press return or enter to open this panel"
+msgstr "按回车以打开面板"
+
+#: functions/class-utils-settings-map.php:1788
+msgid "Performances, SEO, CSS, Scroll"
+msgstr "性能，SEO，CSS，滚动"
+
+#: functions/class-utils-settings-map.php:1780
+msgid "Logo, Layout, Menu"
+msgstr "Logo，布局，菜单"
+
+#: functions/class-utils-settings-map.php:1779
+msgid "Footer Design"
+msgstr "页脚设计"
+
+#: functions/class-utils-settings-map.php:1766
+msgid "Layout, Sidebars, Blog Posts, Thumbnails"
+msgstr "布局样式，侧边栏，博客文章，缩略图"
+
+#: functions/class-utils-settings-map.php:1765
+msgid "Main Body Design"
+msgstr "主体框架设计"
+
+#: functions/class-utils-settings-map.php:1758
+msgid "Header Image, Menu, Widget"
+msgstr "标题图片，菜单，小工具"
+
+#: functions/class-utils-settings-map.php:1757
+msgid "Header Design"
+msgstr "页眉设计"
+
+#: functions/class-utils-settings-map.php:1750
+msgid "Title, Logo, Fonts, Colors, Background, Socials, Links"
+msgstr "标题，Logo，字体， 颜色， 背景，社交，链接"
+
+#: functions/class-utils-settings-map.php:1749
+msgid "Web Page Design"
+msgstr "页面设计"
+
+#: functions/czr/czr-resources.php:73
+msgid "Header Panel"
+msgstr "顶部面板"
+
+#: functions/czr/czr-resources.php:70
+msgid "The menu currently displayed in your header is a default page menu, you can disable it in the %s."
+msgstr "目前在页眉中显示的菜单是一个默认页面菜单，您可以在 %s 中禁用它。"
+
+#: functions/class-utils-settings-map.php:1932
+msgid "Post Lists Design and Content : Blog, Archives, Search Results"
+msgstr "文章列表设计和内容︰ 博客，归档，搜索结果"
+
+#: functions/admin/class-admin-page.php:63
+msgid "Changelog"
+msgstr "修订历史"
+
+#: functions/czr/czr-resources.php:67
+msgid "blog design panel"
+msgstr "博客设计面板"
+
+#: functions/czr/czr-resources.php:64
+msgid "Jump to the %s."
+msgstr "跳转至 %s 。"
+
+#: functions/czr/class-czr-init.php:293
+msgid "A static page"
+msgstr "静态页面"
+
+#: functions/czr/class-czr-init.php:292
+msgid "Your latest posts"
+msgstr "您的最新文章"
+
+#: functions/czr/class-czr-init.php:291
+msgid "Don't show any posts or page"
+msgstr "不显示任何文章或页面"
+
+#: functions/czr/class-czr-init.php:282
+msgid "Front Page Content"
+msgstr "前台页面內容"
+
+#: functions/class-utils-settings-map.php:864
+msgid "Header Menu"
+msgstr "页头菜单"
+
+#: functions/class-utils-settings-map.php:793
+#: functions/class-utils-settings-map.php:1627
+msgid "You can create menus and set their locations %s."
+msgstr "您能建立菜单与设定它们的位置 %s 。"
+
+#: functions/class-utils-settings-map.php:1196
+msgid "custom excerpt"
+msgstr "自定义摘要"
+
+#: functions/class-utils-settings-map.php:1195
+msgid "The WordPress Excerpt is the summary or description of a post. By default, it will be the first words of a post, but you can write a %s if you want. You can set the number of words you want to display with this option."
+msgstr "WordPress文章摘要是摘记或描叙一篇文章。预设为一篇文章的第一段文字，但如果您想要也可以写%s。您可以在这个选项设定您想要显示的字数。"
+
+#: functions/class-utils-settings-map.php:1187
+msgid "Post Summary"
+msgstr "文章摘要"
+
+#: functions/class-utils-settings-map.php:1130
+msgid "Post List Design"
+msgstr "文章列表设计"
+
+#: functions/class-utils-settings-map.php:813
+#: functions/class-utils-settings-map.php:1653
+msgid "Use a default page menu if no menu has been assigned."
+msgstr "如果未指定任何菜单，将使用预设页面菜单。"
+
+#: functions/class-utils-settings-map.php:701
+msgid "Use a header banner image"
+msgstr "使用页头橫幅图片"
+
+#: functions/class-utils-settings-map.php:189
+msgid "Display a logo in the header"
+msgstr "在页头显示图标"
+
+#: functions/class-utils-settings-map.php:1371
+#: functions/class-utils-settings-map.php:1466
+msgid "Featured image"
+msgstr "特色图片"
+
+#: functions/init-plugins-compat.php:443
+msgid "Footer Social Links"
+msgstr "页脚社交链接"
+
+#: functions/init-plugins-compat.php:441
+msgid "Comments metas"
+msgstr "评论元数据"
+
+#: functions/init-plugins-compat.php:440
+msgid "Single post tags"
+msgstr "单篇文章标签"
+
+#: functions/init-plugins-compat.php:439
+msgid "Post list category meta"
+msgstr "文章列表目录元数据"
+
+#: functions/init-plugins-compat.php:438
+msgid "Post list post metas"
+msgstr "文章列表文章元数据"
+
+#: functions/init-plugins-compat.php:437
+msgid "Archive Type Title"
+msgstr "归档类型标题"
+
+#: functions/init-plugins-compat.php:436
+msgid "Single Post tags"
+msgstr "单篇文章标记"
+
+#: functions/init-plugins-compat.php:435
+msgid "Single Post Categories meta"
+msgstr "单篇文章目录元数据"
+
+#: functions/init-plugins-compat.php:434
+msgid "Lists in post/pages"
+msgstr "文章/页面列表"
+
+#: functions/init-plugins-compat.php:431
+msgid "Single Page titles"
+msgstr "单个页面标题"
+
+#: functions/init-plugins-compat.php:430
+msgid "Single Post titles"
+msgstr "单个文章标题"
+
+#: functions/init-plugins-compat.php:425
+msgid "Top-Menu items"
+msgstr "顶端菜单项"
+
+#: functions/init-plugins-compat.php:427
+msgid "Slider subtitle"
+msgstr "幻灯片副标"
+
+#: functions/init-plugins-compat.php:426
+msgid "Slider title"
+msgstr "幻灯片标题"
+
+#: functions/class-utils.php:215
+msgid "Page %s"
+msgstr "第%s页"
+
+#: functions/class-utils-settings-map.php:543
+msgid "Check this option to delay the loading of non visible images. Images below the viewport will be loaded dynamically on scroll. This can really boost speed performances by reducing the weight of long pages that include many images."
+msgstr "勾选该选项以延迟加载不可见的图像，视窗下方的图像将在滚动时进行加载。如此一来，通过减少包含大量图片的长文章加载负荷，可有效提升访问速度。"
+
+#: functions/class-utils-settings-map.php:540
+msgid "Load images on scroll"
+msgstr "滚动时载入图片"
+
+#: functions/class-utils-settings-map.php:392
+msgid "Open external links in a new tab"
+msgstr "以外部連結開启新页"
+
+#: functions/class-utils-settings-map.php:385
+#: functions/class-utils-settings-map.php:395
+msgid "This will be applied to the links included in post or page content only."
+msgstr "这仅用于文章或页面内容中的链接。"
+
+#: functions/class-utils-settings-map.php:382
+msgid "Display an icon next to external links"
+msgstr "在外部链接旁显示图标"
+
+#: functions/class-utils-settings-map.php:194
+#: functions/class-utils-settings-map.php:748
+#: functions/czr-modules/body-background/body_bg_module.php:136
+msgid "here"
+msgstr "这里"
+
+#: functions/czr-modules/body-background/body_bg_module.php:135
+msgid "Learn more"
+msgstr "查看详情"
+
+#: functions/czr-modules/body-background/body_bg_module.php:133
+msgid "The background-size CSS property specifies the size of the background images. The size of the image can be fully constrained or only partially in order to preserve its intrinsic ratio."
+msgstr "背景尺寸CSS属性指定背景图像的大小，图像尺寸可被完全或部分限定以保留原始比例。"
+
+#: functions/czr-modules/body-background/body_bg_module.php:99
+msgid "Right Bottom"
+msgstr "右下方"
+
+#: functions/czr-modules/body-background/body_bg_module.php:98
+msgid "Right Center"
+msgstr "右居中"
+
+#: functions/czr-modules/body-background/body_bg_module.php:97
+msgid "Right Top"
+msgstr "右上方"
+
+#: functions/czr-modules/body-background/body_bg_module.php:96
+msgid "Center Bottom"
+msgstr "下部居中"
+
+#: functions/czr-modules/body-background/body_bg_module.php:95
+msgid "Center Center"
+msgstr "中心居中"
+
+#: functions/czr-modules/body-background/body_bg_module.php:94
+msgid "Center Top"
+msgstr "顶部居中"
+
+#: functions/czr-modules/body-background/body_bg_module.php:93
+msgid "Left Bottom"
+msgstr "左下方"
+
+#: functions/czr-modules/body-background/body_bg_module.php:92
+msgid "Left Center"
+msgstr "左居中"
+
+#: functions/czr-modules/body-background/body_bg_module.php:91
+msgid "Left Top"
+msgstr "左上方"
+
+#: functions/czr-modules/body-background/body_bg_module.php:85
+msgid "Scroll"
+msgstr "滚动"
+
+#: functions/czr-modules/body-background/body_bg_module.php:84
+msgid "Fixed"
+msgstr "固定"
+
+#: functions/czr-modules/body-background/body_bg_module.php:79
+#: functions/czr-modules/body-background/body_bg_module.php:86
+msgid "Inherit"
+msgstr "继承"
+
+#: functions/czr-modules/body-background/body_bg_module.php:78
+msgid "Repeat Vertically"
+msgstr "竖直平铺"
+
+#: functions/czr-modules/body-background/body_bg_module.php:77
+msgid "Repeat Horizontally"
+msgstr "水平平铺"
+
+#: functions/czr-modules/body-background/body_bg_module.php:76
+msgid "Repeat All"
+msgstr "重复全部"
+
+#: functions/czr-modules/body-background/body_bg_module.php:75
+msgid "No Repeat"
+msgstr "不重复"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:284
+msgid "Choose Image"
+msgstr "选择图片"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:282
+msgid "No image selected"
+msgstr "未选择图片"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:279
+msgid "Change Image"
+msgstr "更换图片"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:278
+#: functions/czr-base-fmk/czr-base-fmk.php:283
+msgid "Select Image"
+msgstr "选择图片"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:81
+msgid "Widget Zone"
+msgstr "窗口小工具区"
+
+#: functions/czr/czr-resources.php:177
+msgid "Select position property"
+msgstr "选择位置"
+
+#: functions/czr/czr-resources.php:176
+msgid "Select attachment property"
+msgstr "选择附件的属性"
+
+#: functions/czr/czr-resources.php:175
+msgid "Select repeat property"
+msgstr "选择重复属性"
+
+#: functions/init-sidebars-widgets.php:81
+msgid "The Footer Widget Zone is located before the other footer widgets and takes 100% of the width. Very appropriate to display a Google Map or an advertisement banner."
+msgstr "页脚小工具区位于其他页脚小工具之前并占用满屏宽度，非常适合显示谷歌地图或广告横幅。"
+
+#: functions/init-sidebars-widgets.php:79
+#: functions/init-sidebars-widgets.php:155
+msgid "Footer Full Width"
+msgstr "页脚全宽"
+
+#: functions/init-sidebars-widgets.php:72
+msgid "The Header Widget Zone is located next to your logo or site title."
+msgstr "页眉小工具区位于站点logo或站点标题旁。"
+
+#: functions/init-sidebars-widgets.php:70
+#: functions/init-sidebars-widgets.php:154
+msgid "Header (next to logo / title)"
+msgstr "页头（位于logo/标题旁）"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:206
+msgid "Give it a name"
+msgstr "为其命名"
+
+#: functions/czr-modules/social-links/social_links_module.php:97
+#: functions/czr-modules/social-links/social_links_module.php:118
+msgid "Enter the full url of your social profile (must be valid url)."
+msgstr "输入您的社交资料的完整URL（必须是有效的URL）。"
+
+#: functions/czr-modules/social-links/social_links_module.php:96
+msgid "Social link url"
+msgstr "社交链接URL"
+
+#: functions/czr-modules/social-links/social_links_module.php:92
+msgid "Select an icon"
+msgstr "选择图标"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:554
+msgid "Add it"
+msgstr "添加"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:554
+msgid "Cancel"
+msgstr "取消"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:273
+#: functions/czr/czr-resources.php:185
+msgid "Learn more about this in the documentation"
+msgstr "在文档中了解详情"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:85
+msgid "A selected location is not available with the current settings."
+msgstr "选定的位置在当前设置下不可用。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:84
+msgid "Unavailable location. Some settings must be changed."
+msgstr "位置不可用，请调整设置。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:83
+msgid "Inactive in current context/location"
+msgstr "在当前环境/位置中未启用"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:82
+msgid "New Widget Zone created ! Scroll down to edit it."
+msgstr "新的小工具区已建立，向下滚动进行编辑。"
+
+#: functions/czr-modules/social-links/social_links_module.php:81
+#: functions/czr/czr-resources.php:173
+msgid "New Social Link created ! Scroll down to edit it."
+msgstr "新社交链接已创建，向下滚动进行编辑。"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:271
+#: functions/czr-modules/social-links/social_links_module.php:80
+#: functions/czr/czr-resources.php:172
+msgid "Done !"
+msgstr "完成！"
+
+#: functions/czr-modules/social-links/social_links_module.php:79
+#: functions/czr/czr-resources.php:171
+msgid "Follow us on"
+msgstr "关注我们"
+
+#: functions/czr-modules/social-links/social_links_module.php:78
+#: functions/czr/czr-resources.php:170
+msgid "Select a social icon"
+msgstr "选择社交图标"
+
+#: functions/class-utils-settings-map.php:1648
+msgid "This zone is located before the other footer widgets and takes 100% of the width. Very appropriate to display a Google Map or an advertisement banner."
+msgstr "该区域位于其他页脚小工具前并满屏宽度显示，非常适合显示谷歌地图或广告横幅。"
+
+#: functions/class-utils-settings-map.php:1645
+msgid "Display a full width widget area in your footer"
+msgstr "在页脚显示满屏宽度小工具区"
+
+#: functions/class-utils-settings-map.php:1269
+msgid "By default, your featured posts display the first words of their content ( the \"excerpt\"). Check this box to display the full content."
+msgstr "默认情况下，特色文章只显示其正文的第一部分内容（即“节选”）。勾选该选项可显示的全文。"
+
+#: functions/class-utils-settings-map.php:1266
+msgid "Display the full post content"
+msgstr "显示完整的文章内容"
+
+#: parts/single-author-date.php:29
+msgid "Published"
+msgstr "发布日期"
+
+#: functions/init-admin.php:105
+msgid "Notes : 1)This will override any default settings of the customizer options panel. 2) The secondary sidebar is placed on the right in a 3 columns layout."
+msgstr "注：1）自定义面板中的所有缺省设置将被覆盖。2）在三列版式中次侧边栏将位于右侧。"
+
+#: functions/init-admin.php:105
+msgid "Select a widget zone for the secondary sidebar."
+msgstr "选择次侧栏的窗口小工具区域。"
+
+#: functions/init-admin.php:99
+msgid "Notes : 1)This will override any default settings of the customizer options panel. 2) The primary sidebar is placed on the left in a 3 columns layout. It can be on the right in a 2 columns layout, when the content is on the left."
+msgstr "注：1）自定义面板中的所有缺省设置将被覆盖。2）在三列版式中主侧边栏将位于左侧。但在内容位于左侧的二列版式中，它位于右侧。"
+
+#: functions/init-admin.php:99
+msgid "Select a widget zone for the primary sidebar."
+msgstr "选择主侧边栏的小工具区域。"
+
+#: functions/init-sidebars-widgets.php:28
+msgid "Full width widget zone. Located in the right sidebar in a 3 columns layout."
+msgstr "全尺寸小工具区，在三列版式中位于右侧边栏。"
+
+#: functions/init-sidebars-widgets.php:19
+msgid "Full width widget zone. Located in the left sidebar in a 3 columns layout. Can be on the right of a 2 columns sidebar when content is on the left."
+msgstr "全尺寸小工具区，在三列版式中位于左侧，在内容居左的两列版式中位于右侧。"
+
+#: functions/class-utils-settings-map.php:1996
+msgid "Hueman Admin Settings"
+msgstr "Hueman管理设置"
+
+#: functions/class-utils-settings-map.php:1991
+msgid "Performances and SEO"
+msgstr "性能与SEO"
+
+#: functions/class-utils-settings-map.php:601
+msgid "This button links to the \"About Hueman\" page."
+msgstr "该按钮链接到“关于Hueman”页面。"
+
+#: functions/class-utils-settings-map.php:598
+msgid "Display a Help button in the admin bar"
+msgstr "在管理栏中显示帮助按钮"
+
+#: functions/class-utils-settings-map.php:593
+msgid "This page is intended to provide information about the Hueman theme : changelog, release note, documentation link. It also display information about your current install that can be useful if you need to report an issue."
+msgstr "本页面的主要用途是用于显示Hueman主题相关的信息：更新日志，发布说明，文档链接。当需要时，也可用于显示当前安装的信息，很有用。"
+
+#: functions/class-utils-settings-map.php:590
+msgid "Display the \"About Hueman\" page in the \"Appearance\" admin menu"
+msgstr "在“外观”管理菜单中显示“关于Hueman”页面"
+
+#: functions/class-utils-settings-map.php:535
+msgid "\"Structured data markup\" is a standard way to annotate your content so machines can understand it. Implementing it will help your website rank higher in search engines."
+msgstr "“结构化数据标记”是一种申明计算机可识别内容的标准方式。使用后可使您的网站在搜索引擎中取得更高的排名。"
+
+#: functions/class-utils-settings-map.php:532
+msgid "Use Structured Data Markup for your posts"
+msgstr "为文章使用结构化数据标记"
+
+#: functions/class-utils-settings-map.php:527
+msgid "Unchecking this option is not recommended. Minifying css stylesheets improves performance for your website overall by decreasing the load time."
+msgstr "建议不要取消此选项，精简CSS样式表通过减少加载时间可提高网站的整体性能。"
+
+#: functions/class-utils-settings-map.php:524
+msgid "Use a minified stylesheet"
+msgstr "使用缩减样式表"
+
+#: functions/class-utils-settings-map.php:1688
+msgid "Footer Background"
+msgstr "页脚背景图片"
+
+#: functions/class-utils-settings-map.php:1097
+msgid "Your blog sub-heading. Html is allowed. Note : write a blank space to hide the default content."
+msgstr "博客副标题允许使用HTML。注：内容留空将隐藏副标题。"
+
+#: functions/class-utils-settings-map.php:1082
+msgid "Your blog heading. Html is allowed. Note : write a blank space to hide the default content."
+msgstr "博客标题允许使用HTML。注：内容留空将隐藏副标题。"
+
+#: functions/czr-modules/social-links/social_links_module.php:77
+#: functions/czr/czr-resources.php:169
+msgid "Rss"
+msgstr "Rss"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:270
+#: functions/czr-modules/widget-zones/widget_zones_module.php:88
+#: functions/czr/czr-resources.php:168
+msgid "Not set"
+msgstr "尚未设置"
+
+#: functions/init-sidebars-widgets.php:149
+msgid "Secondary Sidebar (on the right in a 3 columns layout)"
+msgstr "次侧边栏（在三列布局样式中位于右侧）"
+
+#: functions/init-sidebars-widgets.php:148
+msgid "Primary Sidebar (on the left in a 3 columns layout)"
+msgstr "主侧边栏（在三列布局样式中位于左侧）"
+
+#: functions/init-sidebars-widgets.php:133
+msgid "Blog Page"
+msgstr "博客页面"
+
+#: functions/class-utils-settings-map.php:1237
+msgid "If no specific category is selected, the featured posts block will display your latest post(s) from all categories."
+msgstr "如未选定具体的类别，特色文章区域将显示所有类别的最新文章。"
+
+#: functions/class-utils-settings-map.php:1233
+msgid "Select a category to feature"
+msgstr "选择一个类别作为特色文章"
+
+#: functions/widgets/alx-video.php:23
+msgid "Display a responsive video with a YouTube or Vimeo link."
+msgstr "用YouTube或Vimeo链接显示响应式视频。"
+
+#: functions/widgets/alx-video.php:21
+msgid "Hueman Videos"
+msgstr "Hueman视频"
+
+#: functions/widgets/alx-tabs.php:23
+msgid "List posts, comments, and/or tags with or without tabs."
+msgstr "列出文章、评论、标记，带/不带标签页均可。"
+
+#: functions/widgets/alx-tabs.php:21
+msgid "Hueman Dynamic Tabs"
+msgstr "Hueman 动态标签页"
+
+#: functions/widgets/alx-posts.php:23
+msgid "Display posts from a category"
+msgstr "只显示某个类别的文章"
+
+#: functions/widgets/alx-posts.php:21
+msgid "Hueman Posts"
+msgstr "Hueman 文章"
+
+#: functions/init-admin.php:184
+msgid "Select a layout for this page."
+msgstr "选择此页的布局样式。"
+
+#: functions/init-admin.php:128
+msgid "Select a widget zone for the right sidebar."
+msgstr "选择右侧边栏小工具区域。"
+
+#: functions/init-admin.php:122 functions/init-admin.php:128
+#: functions/init-admin.php:184
+msgid "This will override any default settings of the customizer options panel."
+msgstr "这将覆盖自定义选项面板的所有缺省设置。"
+
+#: functions/init-admin.php:122
+msgid "Select a widget zone for the left sidebar."
+msgstr "选择左侧边栏的窗口小工具区域。"
+
+#: functions/init-front.php:237
+msgid "Add widgets to the zone :"
+msgstr "添加小工具到此区域："
+
+#: functions/init-front.php:231
+msgid "You can change or disable this setting by editing the options of the current post / page."
+msgstr "您可以通过编辑当前文章或页面的选项来修改或禁用此设置。"
+
+#: functions/init-front.php:230
+msgid "in this post or page options."
+msgstr "在该文章或页面选择中。"
+
+#: functions/init-front.php:228
+msgid "You have already assigned the following widget zone here : "
+msgstr "在此您已指定以下小工具区： "
+
+#: functions/init-front.php:200
+msgid "You can add Widget Areas here from the customizer, in the <strong>Dynamic Sidebars and Widgets</strong> panel, or you can change the layout to remove this sidebar in <strong>Content &raquo; Layout Options for the main content</strong>."
+msgstr "通过自定义菜单，在<strong>动态侧栏和小工具</strong>面板可添加小工具区，或在<strong>内容&raquo;主要内容布局样式</strong>面板修改布局样式可移除该侧边栏。"
+
+#: functions/init-front.php:199
+msgid "No widget zones available in this sidebar."
+msgstr "该侧栏无可用小工具区。"
+
+#: functions/init-sidebars-widgets.php:139
+msgid "404 Error Pages"
+msgstr "404 错误页面"
+
+#: functions/class-utils-settings-map.php:1986
+#: functions/init-sidebars-widgets.php:138
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: functions/init-sidebars-widgets.php:137
+msgid "Categories"
+msgstr "目录"
+
+#: functions/init-sidebars-widgets.php:136
+msgid "Archives"
+msgstr "存档"
+
+#: functions/init-sidebars-widgets.php:135
+msgid "Single Posts"
+msgstr "所有文章"
+
+#: functions/init-front.php:1835 functions/init-sidebars-widgets.php:134
+msgid "Pages"
+msgstr "页面"
+
+#: functions/init-sidebars-widgets.php:131
+msgid "All contexts"
+msgstr "各种情况下"
+
+#: functions/init-sidebars-widgets.php:64
+msgid "Widgetized footer 4"
+msgstr "小工具化的页脚 4"
+
+#: functions/init-sidebars-widgets.php:62
+#: functions/init-sidebars-widgets.php:153
+msgid "Footer 4"
+msgstr "页脚4"
+
+#: functions/init-sidebars-widgets.php:55
+msgid "Widgetized footer 3"
+msgstr "小工具化的页脚 3"
+
+#: functions/init-sidebars-widgets.php:53
+#: functions/init-sidebars-widgets.php:152
+msgid "Footer 3"
+msgstr "页脚3"
+
+#: functions/init-sidebars-widgets.php:46
+msgid "Widgetized footer 2"
+msgstr "小工具化的页脚 2"
+
+#: functions/init-sidebars-widgets.php:44
+#: functions/init-sidebars-widgets.php:151
+msgid "Footer 2"
+msgstr "页脚2"
+
+#: functions/init-sidebars-widgets.php:37
+msgid "Widgetized footer 1"
+msgstr "小工具化的页脚 1"
+
+#: functions/init-sidebars-widgets.php:35
+#: functions/init-sidebars-widgets.php:150
+msgid "Footer 1"
+msgstr "页脚1"
+
+#: functions/init-sidebars-widgets.php:26
+msgid "Secondary"
+msgstr "次级"
+
+#: functions/init-sidebars-widgets.php:17
+msgid "Primary"
+msgstr "主菜单"
+
+#: functions/init-core.php:81
+msgid "Theme Options [OLD]"
+msgstr "主题选项[旧]"
+
+#: functions/class-utils-settings-map.php:2117
+msgid "4 Columns"
+msgstr "4 列"
+
+#: functions/class-utils-settings-map.php:2113
+msgid "3 Columns"
+msgstr "3 列"
+
+#: functions/class-utils-settings-map.php:2109
+msgid "2 Columns"
+msgstr "2 列"
+
+#: functions/class-utils-settings-map.php:2083
+msgid "Inherit Global Layout"
+msgstr "继承全局布局样式"
+
+#: functions/class-utils-settings-map.php:2075
+msgid "3 Columns - Content Right"
+msgstr "3列 - 内容靠右"
+
+#: functions/class-utils-settings-map.php:2071
+msgid "3 Columns - Content Left"
+msgstr "3列 - 内容靠左"
+
+#: functions/class-utils-settings-map.php:2067
+msgid "3 Columns - Content Middle"
+msgstr "3列 - 内容居中"
+
+#: functions/class-utils-settings-map.php:2063
+msgid "2 Columns - Content Right"
+msgstr "2列 - 内容靠右"
+
+#: functions/class-utils-settings-map.php:2059
+msgid "2 Columns - Content Left"
+msgstr "2列 - 内容靠左"
+
+#: functions/class-utils-settings-map.php:2055
+#: functions/class-utils-settings-map.php:2105
+msgid "1 Column"
+msgstr "1 列"
+
+#: functions/class-utils-settings-map.php:2036
+msgid "Choose one "
+msgstr "请选择 "
+
+#: functions/class-utils-settings-map.php:1964
+msgid "Footer Design : Logo, layout, ..."
+msgstr "页脚设计：logo，布局，..."
+
+#: functions/class-utils-settings-map.php:1949
+msgid "Thumbnails Settings"
+msgstr "缩略图设置"
+
+#: functions/class-utils-settings-map.php:1943
+msgid "Single Posts Settings"
+msgstr "单篇文章设置"
+
+#: functions/class-utils-settings-map.php:1927
+msgid "Sidebars : Design and Mobile Settings"
+msgstr "侧边栏：设计和移动设置"
+
+#: functions/class-utils-settings-map.php:1908
+msgid "Header Advertisement Widget"
+msgstr "页眉广告小工具"
+
+#: functions/class-utils-settings-map.php:859
+#: functions/class-utils-settings-map.php:882
+#: functions/class-utils-settings-map.php:913
+#: functions/class-utils-settings-map.php:924
+#: functions/class-utils-settings-map.php:1574
+msgid "Mobile devices"
+msgstr "移动设备"
+
+#: functions/init-after-setup-theme.php:166
+msgid "Social links"
+msgstr "社交链接"
+
+#: functions/class-utils-settings-map.php:1881
+msgid "General Design Options : Font, Colors, ..."
+msgstr "通用设计选项：字体，颜色，..."
+
+#: functions/class-utils-settings-map.php:1871
+msgid "Site Identity : Logo, Title, Tagline and Site Icon"
+msgstr "网站身份：Logo，标题，标语和网站图标"
+
+#: functions/class-utils-settings-map.php:803
+#: functions/class-utils-settings-map.php:1637
+msgid "in the menu panel"
+msgstr "在菜单面板"
+
+#: functions/class-utils-settings-map.php:804
+#: functions/class-utils-settings-map.php:1638
+msgid "create/edit menus"
+msgstr "创建/编辑菜单"
+
+#: functions/class-utils-settings-map.php:1789
+msgid "Advanced settings for the Hueman theme."
+msgstr "Hueman主题的高级设置。"
+
+#: functions/class-utils-settings-map.php:1787
+msgid "Advanced options"
+msgstr "高级选项"
+
+#: functions/class-utils-settings-map.php:1781
+msgid "Footer settings for the Hueman theme."
+msgstr "Hueman主题的页脚设置。"
+
+#: functions/init-after-setup-theme.php:110
+msgid "Footer"
+msgstr "Footer"
+
+#: functions/class-utils-settings-map.php:1767
+msgid "Content settings for the Hueman theme."
+msgstr "Hueman主题的内容设置。"
+
+#: functions/class-utils-settings-map.php:1759
+msgid "Header settings for the Hueman theme."
+msgstr "Hueman主题的页头设置。"
+
+#: functions/init-after-setup-theme.php:109
+msgid "Header"
+msgstr "标题"
+
+#: functions/class-utils-settings-map.php:1751
+msgid "General settings for the Hueman theme : design, comments, mobile, ..."
+msgstr "Hueman主题常规设置：设计，评论，移动，..."
+
+#: functions/class-utils-settings-map.php:1709
+msgid "Footer credit text"
+msgstr "页脚版权"
+
+#: functions/class-utils-settings-map.php:1699
+msgid "Replace the footer copyright text"
+msgstr "替换页脚版权"
+
+#: functions/class-utils-settings-map.php:1671
+msgid "Upload your custom logo image"
+msgstr "上传您的自定义logo图片"
+
+#: functions/class-utils-settings-map.php:1667
+msgid "Recommended number of columns : 3"
+msgstr "推荐列数：3"
+
+#: functions/class-utils-settings-map.php:1662
+msgid "Select columns to enable footer widgets"
+msgstr "选择列启用页脚小工具"
+
+#: functions/class-utils-settings-map.php:1590
+msgid "Hide both sidebars"
+msgstr "隐藏侧边栏"
+
+#: functions/class-utils-settings-map.php:1589
+msgid "Hide secondary sidebar"
+msgstr "隐藏次侧边栏"
+
+#: functions/class-utils-settings-map.php:1588
+msgid "Hide primary sidebar"
+msgstr "隐藏主侧边栏"
+
+#: functions/class-utils-settings-map.php:1587
+msgid "Display both sidebars"
+msgstr "显示侧边栏"
+
+#: functions/class-utils-settings-map.php:1582
+msgid "Mobile Sidebar Content"
+msgstr "移动设备侧边栏内容"
+
+#: functions/class-utils-settings-map.php:1530
+msgid "Display boxes at the top of the sidebars"
+msgstr "在侧边栏的顶部显示方框"
+
+#: functions/class-utils-settings-map.php:1527
+#: functions/init-plugins-compat.php:442
+msgid "Sidebar Top Boxes"
+msgstr "侧边栏顶部方框"
+
+#: functions/class-utils-settings-map.php:1502
+msgid "Display comment count on thumbnails"
+msgstr "在缩略图上显示评论数"
+
+#: functions/class-utils-settings-map.php:1499
+msgid "Thumbnail Comment Count"
+msgstr "缩略图评论数"
+
+#: functions/class-utils-settings-map.php:1494
+msgid "Display featured image placeholders if no featured image is set"
+msgstr "如未设置特色图像则显示特色图像占位符"
+
+#: functions/class-utils-settings-map.php:1491
+msgid "Thumbnail Placeholder"
+msgstr "缩略图占位符"
+
+#: functions/class-utils-settings-map.php:1417
+msgid "Display links to the next and previous article"
+msgstr "显示链接到下一篇和上一篇文章的链接"
+
+#: functions/class-utils-settings-map.php:1415
+msgid "Below content"
+msgstr "下方内容"
+
+#: functions/class-utils-settings-map.php:1400
+msgid "Display randomized related articles below the post"
+msgstr "在文章下方显示随机相关的文章"
+
+#: functions/class-utils-settings-map.php:1398
+msgid "Related by tags"
+msgstr "按标签相关"
+
+#: functions/class-utils-settings-map.php:1397
+msgid "Related by categories"
+msgstr "类别相关"
+
+#: functions/class-utils-settings-map.php:1396
+#: functions/class-utils-settings-map.php:1412
+#: functions/class-utils-settings-map.php:2101
+msgid "Disable"
+msgstr "取消"
+
+#: functions/class-utils-settings-map.php:1391
+msgid "Single - Related Posts"
+msgstr "单个 - 相关文章"
+
+#: functions/class-utils-settings-map.php:1365
+msgid "Display post author description, if it exists"
+msgstr "如存在，则显示文章作者介绍"
+
+#: functions/class-utils-settings-map.php:1361
+msgid "Single - Author Bio"
+msgstr "单个 - 作者简介"
+
+#: functions/class-utils-settings-map.php:1315
+msgid "If this box is checked, your featured posts will be displayed both in the featured slider and in the post list below. Usually not recommended because a given post might appear two times on the same page."
+msgstr "如果选中该复选框，特色文章将同时在特色幻灯片滑块和下面的文章列表中显示。通常不建议这么做，因为特色文章可能重复出现在同一页面上。"
+
+#: functions/class-utils-settings-map.php:1312
+msgid "Display the featured posts also in the list of posts"
+msgstr "特色文章同时显示在文章列表中"
+
+#: functions/class-utils-settings-map.php:1301
+msgid "Speed of the automatic slideshow animation"
+msgstr "自动播放幻灯片动画的速度"
+
+#: functions/class-utils-settings-map.php:1295
+msgid "Featured Slideshow Speed"
+msgstr "特色幻灯片播放速度"
+
+#: functions/class-utils-settings-map.php:1283
+msgid "Enables the automatic animation of the featured posts carousel."
+msgstr "启用特色文章轮播自动播放功能。"
+
+#: functions/class-utils-settings-map.php:1280
+msgid "Animate your featured posts with a slideshow"
+msgstr "用幻灯片播放特色文章"
+
+#: functions/class-utils-settings-map.php:1255
+msgid "Max number of featured posts to display. <br /><i>Set to 1 and it will show it without any slider script</i><br /><i>Set it to 0 to disable</i>"
+msgstr "显示的特色文章最大数量。<br /><i>设置为1，无需任何滑块脚本即可显示</i><br /><i>设置为0，将禁止显示</i>"
+
+#: functions/class-utils-settings-map.php:1249
+msgid "Featured Post Count"
+msgstr "特色文章数量"
+
+#: functions/class-utils-settings-map.php:1222
+msgid "Check this box to display a selection of posts with a slideshow, on top of your blog."
+msgstr "勾选此选项，将在博客顶部以幻灯片形式显示所选部分文章。"
+
+#: functions/class-utils-settings-map.php:1219
+msgid "Feature posts on top of your blog"
+msgstr "位于博客顶部的特色文章"
+
+#: functions/class-utils-settings-map.php:1217
+msgid "Featured posts"
+msgstr "特色文章"
+
+#: functions/class-utils-settings-map.php:1134
+msgid "While the default blog design is a grid of posts, you can check this option and display one post per row, whith the thumbnail beside the text."
+msgstr "当博客文章默认展现样式为网格样式时，可选择此选项使文章以缩略图加文字的形式每一行显示一篇。"
+
+#: functions/class-utils-settings-map.php:1131
+msgid "Display your blog posts as a standard list."
+msgstr "以标准列表的形式显示博客文章。"
+
+#: functions/class-utils-settings-map.php:1189
+msgid "Excerpt Length"
+msgstr "节录长度"
+
+#: functions/class-utils-settings-map.php:1094
+msgid "Blog Sub-Heading"
+msgstr "博客副标题"
+
+#: functions/class-utils-settings-map.php:1092 functions/init-front.php:666
+msgid "Blog"
+msgstr "博客"
+
+#: functions/class-utils-settings-map.php:1065
+#: functions/class-utils-settings-map.php:1079
+msgid "Blog Heading"
+msgstr "博客标题"
+
+#: functions/class-utils-settings-map.php:1066
+msgid "Display a custom heading for your blog."
+msgstr "显示博客的自定义标题。"
+
+#: functions/class-utils-settings-map.php:1051
+msgid "[ <strong>is_page</strong> ] Default page layout - If a page has a set layout, it will override this."
+msgstr "[ <strong>is_page</strong> ] 默认页面布局样式 - 如果一个页面有一组布局样式，它将被覆盖。"
+
+#: functions/class-utils-settings-map.php:1047
+msgid "Default Page"
+msgstr "默认页面"
+
+#: functions/class-utils-settings-map.php:1042
+msgid "[ <strong>is_404</strong> ] Error 404 page layout"
+msgstr "[ <strong>is_404</strong> ]404错误页面布局样式"
+
+#: functions/class-utils-settings-map.php:1038
+msgid "Error 404"
+msgstr "Error 404"
+
+#: functions/class-utils-settings-map.php:1033
+msgid "[ <strong>is_search</strong> ] Search page layout"
+msgstr "[ <strong>is_search</strong> ]搜索页面布局样式"
+
+#: functions/class-utils-settings-map.php:1029
+msgid "Search"
+msgstr "查找"
+
+#: functions/class-utils-settings-map.php:1024
+msgid "[ <strong>is_category</strong> ] Category archive layout"
+msgstr "[ <strong>is_category</strong> ] 分类归档布局样式"
+
+#: functions/class-utils-settings-map.php:1020
+msgid "Archive - Category"
+msgstr "归档 - 分类"
+
+#: functions/class-utils-settings-map.php:1015
+msgid "[ <strong>is_archive</strong> ] Category, date, tag and author archive layout"
+msgstr "[ <strong>is_archive</strong> ]类别，日期，标记和作者归档布局样式"
+
+#: functions/class-utils-settings-map.php:1011
+msgid "Archive"
+msgstr "存档"
+
+#: functions/class-utils-settings-map.php:1002
+msgid "[ <strong>is_single</strong> ] Single post layout - If a post has a set layout, it will override this."
+msgstr "[ <strong>is_single</strong> ]单篇文章布局样式 - 如果一篇文章有一组布局样式，它将被覆盖。"
+
+#: functions/class-utils-settings-map.php:998
+msgid "Single"
+msgstr "文章页"
+
+#: functions/class-utils-settings-map.php:989
+msgid "[ <strong>is_home</strong> ] Posts homepage layout"
+msgstr "[ <strong>is_home</strong> ] 文章主页布局样式"
+
+#: functions/class-utils-settings-map.php:985 functions/init-front.php:1787
+#: functions/init-sidebars-widgets.php:132
+msgid "Home"
+msgstr "主页"
+
+#: functions/class-utils-settings-map.php:972
+msgid "Other layouts will override this option if they are set"
+msgstr "如果设置其他布局样式将覆盖该选项"
+
+#: functions/class-utils-settings-map.php:968
+msgid "Global Layout"
+msgstr "整体布局样式"
+
+#: functions/class-utils-settings-map.php:766
+msgid "Header widget area, perfect to insert advertisements. Note : this feature is not available when a header image is being displayed."
+msgstr "标题小工具区域，可完美插入广告。注：当已显示标题图片时，此功能将不可用。"
+
+#: functions/class-utils-settings-map.php:763
+msgid "Display a widget in your header"
+msgstr "在页头显示小工具"
+
+#: functions/class-utils-settings-map.php:704
+msgid "Upload a header image (supported formats : .jpg, .png, .gif, svg, svgz). This will disable header title/logo, site description, header ads widget"
+msgstr "上传网站标题图片后 (支持格式：.jpg, .png, .gif, svg, svgz)，将禁用网站标题/logo、网站介绍及标题广告小工具"
+
+#: functions/class-utils-settings-map.php:1903
+msgid "Header Image"
+msgstr "顶部图像"
+
+#: functions/class-utils-settings-map.php:624
+msgid "The description that appears next to your logo"
+msgstr "显示在LOGO旁的说明信息"
+
+#: functions/class-utils-settings-map.php:621
+msgid "Display your site's description (tagline)"
+msgstr "显示网站介绍信息（标语）"
+
+#: functions/class-utils-settings-map.php:224
+msgid "Header Logo Image Max-height"
+msgstr "标题LOGO最大高度"
+
+#: functions/class-utils-settings-map.php:217
+#: functions/class-utils-settings-map.php:1683
+#: functions/czr/class-czr-init.php:111
+msgid "Upload your custom logo image. Supported formats : .jpg, .png, .gif, svg, svgz"
+msgstr "上传自定义logo，格式支持：.jpg, .png, .gif, svg, svgz"
+
+#: functions/czr/class-czr-init.php:100
+msgid "Custom Header Logo"
+msgstr "自定义顶部Logo"
+
+#: functions/class-utils-settings-map.php:421
+#: functions/init-after-setup-theme.php:173
+msgid "Create and organize your social links"
+msgstr "新建并组织社交链接"
+
+#: functions/class-utils-settings-map.php:488
+msgid "Hueman is a mobile friendly WordPress theme out of the box. This means that it will adapt and render nicely on any devices : desktops, laptops, tablets, smartphones. <br/>If you uncheck this box, this adaptive (or reponsive) behaviour will not be working anymore. In most of the cases, you won't need to disable this option, and it is not recommended."
+msgstr "Hueman是一个非常棒的移动设备友好的WordPress主题。它能非常好地自适应任何设备，包括：台式机、笔记本电脑、平板电脑和智能手机。<br/>如果去除该选项，自适应（响应式）功能将不再有效。大多数情况下，您无需这么做，而且也不建议这么做。"
+
+#: functions/class-utils-settings-map.php:485
+msgid "Enable the Mobile Friendly (or Responsive) layout"
+msgstr "启用移动设备友好（响应式）布局"
+
+#: functions/class-utils-settings-map.php:452
+msgid "Comments on pages"
+msgstr "页面评论"
+
+#: functions/class-utils-settings-map.php:449
+msgid "Pages Comments"
+msgstr "页面评论"
+
+#: functions/class-utils-settings-map.php:443
+msgid "Comments on posts"
+msgstr "文章评论"
+
+#: functions/class-utils-settings-map.php:440
+msgid "Posts Comments"
+msgstr "文章评论"
+
+#: functions/class-utils-settings-map.php:350
+#: functions/init-after-setup-theme.php:213
+msgid "Set the website background color"
+msgstr "设置网站背景颜色"
+
+#: functions/class-utils-settings-map.php:349
+msgid "Body Background"
+msgstr "主体背景"
+
+#: functions/class-utils-settings-map.php:370
+msgid "Give your thumbnails and layout images rounded corners"
+msgstr "设置缩略图和布局图为圆角"
+
+#: functions/class-utils-settings-map.php:364
+msgid "Image Border Radius"
+msgstr "图像边界的半径"
+
+#: functions/class-utils-settings-map.php:666
+msgid "Header Menu Background"
+msgstr "标题菜单背景"
+
+#: functions/class-utils-settings-map.php:656
+msgid "Header Background"
+msgstr "页头背景"
+
+#: functions/class-utils-settings-map.php:646
+msgid "Topbar Background"
+msgstr "页头背景"
+
+#: functions/class-utils-settings-map.php:335
+msgid "Secondary Color"
+msgstr "备选颜色"
+
+#: functions/class-utils-settings-map.php:325
+msgid "Primary Color"
+msgstr "主色调"
+
+#: functions/class-utils-settings-map.php:316
+msgid "Change left and right sidebars padding"
+msgstr "修改左右边栏填充值"
+
+#: functions/class-utils-settings-map.php:314
+msgid "20px padding for widgets"
+msgstr "小工具的20像素填充距离"
+
+#: functions/class-utils-settings-map.php:313
+msgid "30px padding for widgets"
+msgstr "小工具的30像素填充距离"
+
+#: functions/class-utils-settings-map.php:309
+msgid "Sidebar Width"
+msgstr "侧边栏宽度"
+
+#: functions/class-utils-settings-map.php:296
+msgid "Max-width of the container. If you use 2 sidebars, your container should be at least 1200px.<br /><i>Note: For 720px content (default) use <strong>1380px</strong> for 2 sidebars and <strong>1120px</strong> for 1 sidebar. If you use a combination of both, try something inbetween.</i>"
+msgstr "容器最大宽度。如使用双侧边栏，容器应至少为1200像素<br /><i>注：对于720像素的内容（默认）双侧边栏使用<strong>1380像素</strong> ，单侧边栏使用<strong>1120像素</strong>。如两者结合，建议设置为中间值。</i>"
+
+#: functions/class-utils-settings-map.php:290
+msgid "Website Max-width"
+msgstr "网站最大宽度"
+
+#: functions/class-utils-settings-map.php:272
+msgid "Select a font for your website"
+msgstr "选择网站字体"
+
+#: functions/class-utils-settings-map.php:267
+msgid "Font"
+msgstr "字体"
+
+#: functions/class-utils-settings-map.php:304
+msgid "Use a boxed layout"
+msgstr "使用块状布局"
+
+#: functions/class-utils-settings-map.php:301
+msgid "Boxed Layout"
+msgstr "块状布局样式"
+
+#: functions/class-utils-settings-map.php:166
+msgid "FAVICON"
+msgstr "网站图标"
+
+#: functions/class-utils-settings-map.php:165
+msgid "Favicon Upload (supported formats : .ico, .png, .gif)"
+msgstr "网站图标上传（支持格式： .ico, .png, .gif）"
+
+#: functions/czr-modules/social-links/social_links_module.php:135
+msgid "Check this option to open the link in a another tab of the browser."
+msgstr "勾选该选项可在浏览器的新选项卡中打开链接。"
+
+#: functions/czr-modules/social-links/social_links_module.php:134
+msgid "Link target"
+msgstr "链接目标"
+
+#: functions/czr-modules/social-links/social_links_module.php:129
+msgid "Set a unique color for your icon."
+msgstr "设置图标的唯一颜色。"
+
+#: functions/czr-modules/social-links/social_links_module.php:128
+msgid "Icon color"
+msgstr "图标颜色"
+
+#: functions/czr-modules/social-links/social_links_module.php:124
+msgid "This is the text displayed on mouse over."
+msgstr "鼠标悬停时显示的文字。"
+
+#: functions/czr-modules/social-links/social_links_module.php:117
+msgid "Social link"
+msgstr "社交链接"
+
+#: functions/czr-modules/social-links/social_links_module.php:113
+msgid "Social icon"
+msgstr "社交图标"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:260
+msgid "Pick the context(s) where this widget area will be displayed."
+msgstr "选择该小工具显示的上下文。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:208
+#: functions/czr-modules/widget-zones/widget_zones_module.php:249
+msgid "Personalizing the name of the widget zone will help you identify it."
+msgstr "个性化定义小工具区域的名称以示区分。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:247
+msgid "Enter a name"
+msgstr "输入名称"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:87
+#: functions/czr-modules/widget-zones/widget_zones_module.php:259
+#: functions/czr/czr-resources.php:167
+msgid "Context(s)"
+msgstr "上下文"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:212
+#: functions/czr-modules/widget-zones/widget_zones_module.php:253
+msgid "Select the pre-defined location(s) in which you will embed this widget zone."
+msgstr "选择可嵌入该小工具区的预定义位置。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:86
+#: functions/czr-modules/widget-zones/widget_zones_module.php:211
+#: functions/czr-modules/widget-zones/widget_zones_module.php:252
+#: functions/czr/czr-resources.php:166
+msgid "Location(s)"
+msgstr "位置"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:242
+msgid "unique id"
+msgstr "唯一标识码"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:240
+msgid "id"
+msgstr "id"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:575
+msgid "Are you sure you want to remove : <strong>{{ data.title }} ?</strong>"
+msgstr "您确定要删除 : <strong>{{ data.title }} ?</strong>"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:280
+#: functions/czr-base-fmk/czr-base-fmk.php:567
+#: functions/czr/controls/class-upload-control.php:68
+msgid "Remove"
+msgstr "取消头像"
+
+#: functions/czr-modules/body-background/body_bg_module.php:115
+msgid "Background Image"
+msgstr "背景图片"
+
+#: functions/czr-modules/body-background/body_bg_module.php:131
+msgid "Background size"
+msgstr "背景大小"
+
+#: functions/czr-modules/body-background/body_bg_module.php:127
+msgid "Background position"
+msgstr "背景位置"
+
+#: functions/czr-modules/body-background/body_bg_module.php:123
+msgid "Background attachment"
+msgstr "背景附件"
+
+#: functions/czr-modules/body-background/body_bg_module.php:119
+msgid "Repeat"
+msgstr "重复"
+
+#: functions/czr-modules/body-background/body_bg_module.php:109
+msgid "Color"
+msgstr "颜色"
+
+#: functions/czr/sections/class-widgets-section.php:36
+msgid "Press return or enter to open this section"
+msgstr "按返回键或者回车以打开此部分"
+
+#: functions/admin/class-admin-update-notification.php:111
+msgid "close"
+msgstr "关闭"
+
+#: functions/admin/class-admin-page.php:67
+msgid "Read the latest release notes"
+msgstr "阅读最新的发布说明"
+
+#: functions/admin/class-admin-page.php:95
+msgid "To copy the system infos, click below then press Ctrl + C (PC) or Cmd + C (Mac)."
+msgstr "要复制系统信息，请点击下方内容后按Ctrl+ C键（PC）或Cmd + C键（MAC）。"
+
+#: functions/admin/class-admin-page.php:94
+msgid "Please include the following information when posting support requests"
+msgstr "发布支持请求时，请包括以下信息"
+
+#: functions/admin/class-admin-page.php:93
+msgid "System Information"
+msgstr "系统信息"
+
+#: functions/admin/class-admin-page.php:229
+msgid "About Hueman"
+msgstr "关于Hueman"
+
+#: functions/czr/czr-resources.php:165
+msgid "Your favicon is currently handled with an old method and will not be properly displayed on all devices. You might consider to re-upload your favicon with the new control below."
+msgstr "您的网站图标目前正在使用旧方法处理，因此可能不会在所有的设备上都正确显示。您可以考虑使用下方的新控制方式从新上传网站图标。"
+
+#: functions/czr/class-czr-init.php:528
+msgid "Dynamic Sidebars and Widgets"
+msgstr "动态侧边栏及小工具"
+
+#: functions/czr/class-czr-init.php:507
+msgid "Create and manage widget zones"
+msgstr "创建和管理小工具区"
+
+#: functions/czr/class-czr-init.php:496
+msgid "Create And Manage Widget Areas"
+msgstr "创建并管理小工具区"
+
+#: functions/czr/class-czr-init.php:469 functions/czr/class-czr-init.php:500
+#: functions/init-after-setup-theme.php:254
+msgid "You must save changes for the new areas to appear below. <br /><i>Warning: Make sure each area has a unique ID.</i>"
+msgstr "在新区域显示前，您必须先保存修改。<br /><i>警告：请确保每个区域都只有一个唯一ID。</i>"
+
+#: functions/czr/class-czr-init.php:465
+#: functions/init-after-setup-theme.php:252
+msgid "Create And Order Widget Areas"
+msgstr "创建并整理小工具区域"
+
+#: functions/czr/class-czr-init.php:408
+msgid "SITE ICON"
+msgstr "网站图标"
+
+#: parts/single-author-date.php:30
+msgid "Updated"
+msgstr "已更新"
+
+#: functions/admin/class-admin-update-notification.php:101
+msgid "version"
+msgstr "版本"
+
+#. Template Name of the theme
+msgid "Child Menu"
+msgstr "子菜单"
+
+#: tmpl/single-tmpl.php:61
+msgid "Tags:"
+msgstr "标签："
+
+#: page-templates/child-menu.php:28 tmpl/page-tmpl.php:15
+#: tmpl/single-tmpl.php:43
+msgid "Pages:"
+msgstr "页面："
+
+#: parts/post-list-author-date.php:12 parts/post-list-author-date.php:14
+#: parts/post-list-author-date.php:20 parts/single-author-date.php:14
+msgid "by"
+msgstr "由"
+
+#: functions/class-utils-settings-map.php:1535
+msgid "Follow:"
+msgstr "关注:"
+
+#: functions/class-utils-settings-map.php:1545
+msgid "More"
+msgstr "更多"
+
+#: sidebar-2.php:3 sidebar.php:6
+msgid "Expand Sidebar"
+msgstr "展开侧边栏"
+
+#: tmpl/search-tmpl.php:4
+msgid "Please try another search:"
+msgstr "请尝试其他搜索："
+
+#: tmpl/search-tmpl.php:2
+msgid "For the term"
+msgstr "本期"
+
+#: option-tree/includes/ot-functions-option-types.php:2348
+#: option-tree/includes/ot-functions-option-types.php:2411
+msgid "No Taxonomies Found"
+msgstr "没有找到分类"
+
+#: option-tree/includes/ot-functions-option-types.php:2233
+#: option-tree/includes/ot-functions-option-types.php:2284
+msgid "No Tags Found"
+msgstr "找不到标签"
+
+#: option-tree/includes/ot-functions-option-types.php:2150
+msgid "left"
+msgstr "左边"
+
+#: option-tree/includes/ot-functions-option-types.php:2142
+msgid "bottom"
+msgstr "底部"
+
+#: option-tree/includes/ot-functions-option-types.php:2134
+msgid "right"
+msgstr "正确的"
+
+#: option-tree/includes/ot-functions-option-types.php:2126
+msgid "top"
+msgstr "顶部"
+
+#: functions/class-utils-settings-map.php:2142
+#: option-tree/includes/ot-functions-option-types.php:2067
+msgid "No Sidebars"
+msgstr "无侧边栏"
+
+#: functions/class-utils-settings-map.php:2147
+#: option-tree/includes/ot-functions-option-types.php:2062
+msgid "Choose Sidebar"
+msgstr "选择侧边栏"
+
+#: option-tree/includes/ot-functions-option-types.php:1647
+#: option-tree/includes/ot-functions-option-types.php:1711
+msgid "No Pages Found"
+msgstr "找不到页面"
+
+#: option-tree/includes/ot-functions-option-types.php:1559
+msgid "Off"
+msgstr "关闭"
+
+#: option-tree/includes/ot-functions-option-types.php:1537
+msgid "On"
+msgstr "开启"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:549
+msgid "Add New"
+msgstr "新增"
+
+#: option-tree/includes/ot-functions-option-types.php:1346
+msgctxt "color picker"
+msgid "Focus"
+msgstr "焦点"
+
+#: option-tree/includes/ot-functions-option-types.php:1345
+msgctxt "color picker"
+msgid "Visited"
+msgstr "已访问"
+
+#: option-tree/includes/ot-functions-option-types.php:1344
+msgctxt "color picker"
+msgid "Active"
+msgstr "已启用"
+
+#: option-tree/includes/ot-functions-option-types.php:1343
+msgctxt "color picker"
+msgid "Hover"
+msgstr "悬浮"
+
+#: option-tree/includes/ot-functions-option-types.php:1342
+msgctxt "color picker"
+msgid "Standard"
+msgstr "标准"
+
+#: option-tree/includes/ot-functions-option-types.php:1260
+msgid "Add Google Font"
+msgstr "添加Google字体"
+
+#: option-tree/includes/ot-functions-option-types.php:1193
+#: option-tree/includes/ot-functions-option-types.php:1235
+msgid "Remove Google Font"
+msgstr "删除谷歌字体"
+
+#: option-tree/includes/ot-functions-option-types.php:1022
+msgid "height"
+msgstr "高度"
+
+#: option-tree/includes/ot-functions-option-types.php:785
+#: option-tree/includes/ot-functions-option-types.php:852
+#: option-tree/includes/ot-functions-option-types.php:1776
+#: option-tree/includes/ot-functions-option-types.php:1840
+msgid "No Posts Found"
+msgstr "找不到文章"
+
+#: option-tree/includes/ot-functions-option-types.php:560
+#: option-tree/includes/ot-functions-option-types.php:846
+#: option-tree/includes/ot-functions-option-types.php:1705
+#: option-tree/includes/ot-functions-option-types.php:1834
+#: option-tree/includes/ot-functions-option-types.php:2279
+#: option-tree/includes/ot-functions-option-types.php:2406
+msgid "Choose One"
+msgstr "选择一个"
+
+#: option-tree/includes/ot-functions-option-types.php:514
+#: option-tree/includes/ot-functions-option-types.php:565
+msgid "No Categories Found"
+msgstr "找不到类别"
+
+#: option-tree/includes/ot-functions-option-types.php:450
+msgid "spread-radius"
+msgstr "扩散半径"
+
+#: option-tree/includes/ot-functions-option-types.php:442
+msgid "blur-radius"
+msgstr "模糊半径"
+
+#: option-tree/includes/ot-functions-option-types.php:434
+msgid "offset-y"
+msgstr "偏移-Y"
+
+#: option-tree/includes/ot-functions-option-types.php:426
+msgid "offset-x"
+msgstr "偏移-X"
+
+#: option-tree/includes/ot-functions-option-types.php:338
+msgid "style"
+msgstr "样式"
+
+#: option-tree/includes/ot-functions-option-types.php:320
+#: option-tree/includes/ot-functions-option-types.php:1032
+#: option-tree/includes/ot-functions-option-types.php:1422
+#: option-tree/includes/ot-functions-option-types.php:2160
+msgid "unit"
+msgstr "单元"
+
+#: option-tree/includes/ot-functions-option-types.php:310
+#: option-tree/includes/ot-functions-option-types.php:1015
+msgid "width"
+msgstr "宽度"
+
+#: option-tree/includes/ot-functions-option-types.php:234
+#: option-tree/includes/ot-functions-option-types.php:2828
+msgid "Add Media"
+msgstr "添加媒体"
+
+#: option-tree/includes/ot-functions-option-types.php:231
+msgid "background-image"
+msgstr "背景图像"
+
+#: option-tree/includes/ot-functions-option-types.php:219
+msgid "background-size"
+msgstr "背景大小"
+
+#: option-tree/includes/ot-functions-option-types.php:170
+msgid "background-position"
+msgstr "背景位置"
+
+#: option-tree/includes/ot-functions-option-types.php:153
+msgid "background-attachment"
+msgstr "背景附件"
+
+#: option-tree/includes/ot-functions-option-types.php:137
+msgid "background-repeat"
+msgstr "背景重复"
+
+#: option-tree/includes/ot-functions-option-types.php:52
+msgid "Sorry, this function does not exist"
+msgstr "抱歉，此功能不存在"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:211
+#: functions/czr-base-fmk/czr-base-fmk.php:281
+#: functions/czr/controls/class-color-alpha-control.php:26
+msgid "Default"
+msgstr "默认"
+
+#: functions/czr-modules/social-links/social_links_module.php:128
+msgid "default:"
+msgstr "默认："
+
+#: option-tree/includes/ot-functions-admin.php:2926
+msgid "Operator"
+msgstr "操作者"
+
+#. translators: %1$s: Condition emphasized, %2$s: example value, %3$s: list of
+#. valid conditions
+#: option-tree/includes/ot-functions-admin.php:2795
+msgid "%1$s: Add a comma separated list (no spaces) of conditions in which the field will be visible, leave this setting empty to always show the field. In these examples, %2$s is a placeholder for your condition, which can be in the form of %3$s."
+msgstr "%1$s：添加字段可见的条件的逗号分隔列表（无空格），将此设置留空以始终显示该字段。在这些示例中，%2$s 是条件占位符，可以以 %3$s 的形式出现。"
+
+#: option-tree/includes/ot-functions-admin.php:2918
+msgid "Condition"
+msgstr "条件"
+
+#. translators: %s: CSS Class emphasized
+#: option-tree/includes/ot-functions-admin.php:2792
+msgid "%s: Add and optional class to this option type."
+msgstr "%s：将和可选类添加到此选项类型。"
+
+#: option-tree/includes/ot-functions-admin.php:2910
+msgid "CSS Class"
+msgstr "CSS 类"
+
+#: option-tree/includes/ot-functions-admin.php:2902
+msgid "Min, Max, & Step"
+msgstr "最小值，最大值，与步骤"
+
+#. translators: %s: Taxonomy emphasized
+#: option-tree/includes/ot-functions-admin.php:2786
+msgid "%s: Add a comma separated list of any registered taxonomy like 'category,post_tag'. This will only affect the following option types: Taxonomy Checkbox, & Taxonomy Select."
+msgstr "%s：添加任何已注册的分类的逗号分隔列表，如\"类别、post_tag\"。这将仅影响以下选项类型：分类复选框，= 分类选择。"
+
+#: option-tree/includes/ot-functions-admin.php:2894
+msgid "Taxonomy"
+msgstr "类别"
+
+#: option-tree/includes/ot-functions-admin.php:2886
+msgid "Post Type"
+msgstr "文章"
+
+#. translators: %s: Rows emphasized
+#: option-tree/includes/ot-functions-admin.php:2780
+msgid "%s: Enter a numeric value for the number of rows in your textarea. This will only affect the following option types: CSS, Textarea, & Textarea Simple."
+msgstr "%s：输入文本区域中行数的数值。这将仅影响以下选项类型：CSS、文本区域和文本区域简单。"
+
+#: option-tree/includes/ot-functions-admin.php:2878
+msgid "Rows"
+msgstr "行列"
+
+#: option-tree/includes/ot-functions-admin.php:2870
+msgid "Standard"
+msgstr "标准"
+
+#: option-tree/includes/ot-functions-admin.php:2848
+msgid "Choices"
+msgstr "选择"
+
+#. translators: %s: Description emphasized
+#: option-tree/includes/ot-functions-admin.php:2768
+msgid "%s: Enter a detailed description for the users to read on the Theme Options page, HTML is allowed. This is also where you enter content for both the Textblock & Textblock Titled option types."
+msgstr "%s：在\"主题选项\"页上输入用户阅读的详细说明，允许使用 HTML。这也是您为文本块和文本块标题选项类型输入内容的位置。"
+
+#: option-tree/includes/ot-functions-admin.php:2822
+#: option-tree/includes/ot-functions-admin.php:3058
+msgid "ID"
+msgstr "ID"
+
+#. translators: %1$s: link to WorPress Codex, %2$s: audio shortcode
+#: option-tree/includes/ot-functions-admin.php:4035
+msgid "Embed audio from services like SoundCloud and Radio. You can find a list of supported oEmbed sites in the %1$s. Alternatively, you could use the built-in %2$s shortcode."
+msgstr "嵌入来自SoundCloud和Radio等服务的音频。 您可以在%1$s中找到受支持的oEmbed网站的列表。 或者，您可以使用内置的%2$s简码"
+
+#: option-tree/includes/ot-functions-admin.php:4041
+msgid "Audio"
+msgstr "音频"
+
+#: option-tree/includes/ot-functions-admin.php:4000
+#: option-tree/includes/ot-functions-admin.php:4050
+msgid "WordPress Codex"
+msgstr "WordPress Codex"
+
+#. translators: %1$s: link to WorPress Codex, %2$s: video shortcode
+#: option-tree/includes/ot-functions-admin.php:3985
+msgid "Embed video from services like Youtube, Vimeo, or Hulu. You can find a list of supported oEmbed sites in the %1$s. Alternatively, you could use the built-in %2$s shortcode."
+msgstr "嵌入视频服务,如Youtube、Vimeo或Hulu。您可以在%1$s查找支持oEmbed网站的列表。或者，您可以使用内置的%2$s简码。"
+
+#: option-tree/includes/ot-functions-admin.php:3991
+msgid "Video"
+msgstr "视频"
+
+#: option-tree/includes/ot-functions-admin.php:3949
+msgid "Source Date"
+msgstr "来源日期"
+
+#: option-tree/includes/ot-functions-admin.php:3942
+msgid "Source Title (ex. book, song, movie)"
+msgstr "来源标题（例如书，歌曲，电影）"
+
+#: option-tree/includes/ot-functions-admin.php:3935
+msgid "Source URL"
+msgstr "来源网址"
+
+#: option-tree/includes/ot-functions-admin.php:3928
+msgid "Source Name (ex. author, singer, actor)"
+msgstr "来源名称（例如作者，歌手，演员）"
+
+#: option-tree/includes/ot-functions-admin.php:3919
+msgid "Quote"
+msgstr "引用"
+
+#: option-tree/includes/ot-functions-admin.php:3881
+msgid "Link Title"
+msgstr "链接标题"
+
+#: option-tree/includes/ot-functions-admin.php:3874
+msgid "Link URL"
+msgstr "链接网址"
+
+#: option-tree/includes/ot-functions-admin.php:3168
+msgid "New Layout"
+msgstr "新的布局"
+
+#: functions/czr-modules/social-links/social_links_module.php:123
+#: option-tree/includes/ot-functions-admin.php:3050
+msgid "Title"
+msgstr "标题"
+
+#: option-tree/includes/ot-functions-admin.php:3096
+msgid "Layout"
+msgstr "布局"
+
+#. translators: %s: Content emphasized
+#: option-tree/includes/ot-functions-admin.php:3034
+msgid "%s: Enter the HTML content about this contextual help item displayed on the Theme Option page for end users to read."
+msgstr "%s：输入有关主题选项页上显示的此上下文帮助项目的 HTML 内容，供最终用户阅读。"
+
+#: option-tree/includes/ot-functions-admin.php:2994
+msgid "Image Source (Radio Image only)"
+msgstr "图像源（只无线电图像）"
+
+#: option-tree/includes/ot-functions-admin.php:2984
+msgid "Value"
+msgstr "属性"
+
+#: option-tree/includes/ot-functions-admin.php:2814
+#: option-tree/includes/ot-functions-admin.php:2974
+msgid "Label"
+msgstr "标签"
+
+#: option-tree/includes/ot-functions-admin.php:2930
+msgid "or"
+msgstr "或"
+
+#. translators: %s: Post Type emphasized
+#: option-tree/includes/ot-functions-admin.php:2783
+msgid "%s: Add a comma separated list of post type like 'post,page'. This will only affect the following option types: Custom Post Type Checkbox, & Custom Post Type Select."
+msgstr "%s：添加逗号分隔的文章类型列表，如\"文章，页面\"。这将仅影响以下选项类型：自定义文章类型复选框，= 自定义文章类型选择。"
+
+#: option-tree/includes/ot-functions-admin.php:2864
+msgid "Add Setting"
+msgstr "添加设置"
+
+#: option-tree/includes/ot-functions-admin.php:2853
+msgid "Add Choice"
+msgstr "添加选择"
+
+#: option-tree/includes/ot-functions-admin.php:2697
+#: option-tree/includes/ot-functions-admin.php:2698
+#: option-tree/includes/ot-functions-admin.php:2807
+#: option-tree/includes/ot-functions-admin.php:2808
+#: option-tree/includes/ot-functions-admin.php:2967
+#: option-tree/includes/ot-functions-admin.php:2968
+#: option-tree/includes/ot-functions-admin.php:3043
+#: option-tree/includes/ot-functions-admin.php:3044
+#: option-tree/includes/ot-functions-admin.php:3101
+#: option-tree/includes/ot-functions-admin.php:3102
+msgid "Delete"
+msgstr "删除"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:268
+#: functions/czr-base-fmk/czr-base-fmk.php:567
+#: functions/czr-modules/widget-zones/widget_zones_module.php:227
+#: functions/czr/czr-resources.php:163
+#: option-tree/includes/ot-functions-admin.php:2695
+#: option-tree/includes/ot-functions-admin.php:2804
+#: option-tree/includes/ot-functions-admin.php:2805
+#: option-tree/includes/ot-functions-admin.php:2964
+#: option-tree/includes/ot-functions-admin.php:2965
+#: option-tree/includes/ot-functions-admin.php:3040
+#: option-tree/includes/ot-functions-admin.php:3041
+msgid "Edit"
+msgstr "编辑"
+
+#: option-tree/includes/ot-functions-admin.php:2694
+msgid "edit"
+msgstr "编辑"
+
+#. translators: %s: the http protocol
+#: option-tree/includes/ot-functions-admin.php:2483
+msgid "Enter a link to the profile or page on the social website. Remember to add the %s part to the front of the link."
+msgstr "在社交网站上输入指向个人资料或页面的链接。 请记住将 %s 部分添加到链接的前面。"
+
+#: option-tree/includes/ot-functions-admin.php:2498
+msgid "Enter the text shown in the title attribute of the link."
+msgstr "输入链接标题属性中显示的文本。"
+
+#: option-tree/includes/ot-functions-admin.php:2490
+msgid "Enter the name of the social website."
+msgstr "输入社交网站的名称。"
+
+#: functions/czr-modules/widget-zones/widget_zones_module.php:204
+#: functions/czr-modules/widget-zones/widget_zones_module.php:245
+#: option-tree/includes/ot-functions-admin.php:2489
+msgid "Name"
+msgstr "名称"
+
+#: option-tree/includes/ot-functions-admin.php:2371
+#: option-tree/includes/ot-functions-admin.php:2426
+#: option-tree/includes/ot-functions-admin.php:2840
+msgid "Description"
+msgstr "描述"
+
+#: option-tree/includes/ot-functions-admin.php:2360
+#: option-tree/includes/ot-functions-admin.php:2420
+#: option-tree/includes/ot-functions-admin.php:3865
+msgid "Link"
+msgstr "链接"
+
+#: option-tree/includes/ot-functions-admin.php:2314
+msgid "Right Dual Sidebar"
+msgstr "右侧双边栏"
+
+#: option-tree/includes/ot-functions-admin.php:2309
+msgid "Left Dual Sidebar"
+msgstr "左侧边栏"
+
+#: option-tree/includes/ot-functions-admin.php:2304
+msgid "Dual Sidebar"
+msgstr "双侧边栏"
+
+#: option-tree/includes/ot-functions-admin.php:2299
+msgid "Full Width (no sidebar)"
+msgstr "全宽（无侧边栏）"
+
+#: functions/class-utils-settings-map.php:1414
+#: option-tree/includes/ot-functions-admin.php:2294
+msgid "Right Sidebar"
+msgstr "边栏在右侧"
+
+#: functions/class-utils-settings-map.php:1413
+#: option-tree/includes/ot-functions-admin.php:2289
+msgid "Left Sidebar"
+msgstr "边栏在左侧"
+
+#: option-tree/includes/ot-functions-admin.php:1486
+msgid "Tab"
+msgstr "标签"
+
+#: option-tree/includes/ot-functions-admin.php:1483
+msgid "Slider"
+msgstr "滑块"
+
+#: option-tree/includes/ot-functions-admin.php:1416
+msgid "Layout activated."
+msgstr "布局已激活。"
+
+#: option-tree/includes/ot-functions-admin.php:1411
+msgid "Layouts have been deleted."
+msgstr "布局已被删除。"
+
+#: option-tree/includes/ot-functions-admin.php:1407
+msgid "Layouts could not be updated."
+msgstr "布局无法更新。"
+
+#: option-tree/includes/ot-functions-admin.php:1403
+msgid "Layouts Updated."
+msgstr "布局更新。"
+
+#: option-tree/includes/ot-functions-admin.php:1396
+msgid "Layouts could not be imported."
+msgstr "无法导入布局。"
+
+#: option-tree/includes/ot-functions-admin.php:1392
+msgid "Layouts Imported."
+msgstr "布局导入。"
+
+#: option-tree/includes/ot-functions-admin.php:1385
+msgid "Data could not be imported."
+msgstr "无法导入数据。"
+
+#: option-tree/includes/ot-functions-admin.php:1381
+msgid "Data Imported."
+msgstr "数据导入。"
+
+#: option-tree/includes/ot-functions-admin.php:1374
+msgid "Settings could not be imported."
+msgstr "无法导入设置。"
+
+#: option-tree/includes/ot-functions-admin.php:1370
+msgid "Settings Imported."
+msgstr "设置已导入。"
+
+#: option-tree/includes/ot-functions-admin.php:1363
+msgid "Settings could not be saved."
+msgstr "无法保存设置。"
+
+#: option-tree/includes/ot-functions-admin.php:1359
+msgid "Settings updated."
+msgstr "设置更新。"
+
+#: option-tree/includes/ot-functions-admin.php:963
+#: option-tree/includes/ot-functions-admin.php:2349
+#: option-tree/includes/ot-functions-admin.php:2414
+msgid "Image"
+msgstr "图片"
+
+#: functions/init-plugins-compat.php:456
+msgid "Featured pages"
+msgstr "特色页面"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:269
+#: functions/czr/czr-resources.php:164
+#: option-tree/includes/ot-functions-admin.php:961
+msgid "Close"
+msgstr "关闭"
+
+#: option-tree/includes/ot-functions-admin.php:960
+msgid "Now"
+msgstr "现在"
+
+#: option-tree/includes/ot-functions-admin.php:959
+msgid "Today"
+msgstr "今天"
+
+#: option-tree/includes/ot-functions-admin.php:958
+msgid "Are you sure you want to delete this Gallery?"
+msgstr "您确定要删除此图库吗？"
+
+#: option-tree/includes/ot-functions-admin.php:957
+#: option-tree/includes/ot-functions-option-types.php:1125
+msgid "Create Gallery"
+msgstr "创建图库"
+
+#: option-tree/includes/ot-functions-admin.php:956
+#: option-tree/includes/ot-functions-option-types.php:1118
+msgid "Edit Gallery"
+msgstr "编辑图库"
+
+#: option-tree/includes/ot-functions-admin.php:955
+#: option-tree/includes/ot-functions-option-types.php:1117
+msgid "Delete Gallery"
+msgstr "删除图库"
+
+#: option-tree/includes/ot-functions-admin.php:954
+msgid "Sorry, you can't have settings three levels deep."
+msgstr "抱歉，您不能有三个层次的设置。"
+
+#: option-tree/includes/ot-functions-admin.php:953
+msgid "Are you sure you want to activate this layout?"
+msgstr "您确定要激活此布局吗？"
+
+#: option-tree/includes/ot-functions-admin.php:952
+msgid "Are you sure you want to remove this?"
+msgstr "您确定要删除这个吗？"
+
+#: option-tree/includes/ot-functions-admin.php:951
+msgid "You can't remove this! But you can edit the values."
+msgstr "您不能删除这个！但您可以编辑的值。"
+
+#: option-tree/includes/ot-functions-admin.php:950
+msgid "Are you sure you want to reset back to the defaults?"
+msgstr "您确定要重置为默认值吗？"
+
+#: option-tree/includes/ot-functions-admin.php:949
+#: option-tree/includes/ot-functions-option-types.php:252
+#: option-tree/includes/ot-functions-option-types.php:2846
+msgid "Remove Media"
+msgstr "去除媒体"
+
+#. translators: %1$s: the input id, %2$s: the field id
+#: option-tree/includes/ot-functions-admin.php:466
+msgid "The %1$s input field for %2$s only allows numeric values."
+msgstr "%1$s 的输入字段%2$s仅允许数值。"
+
+#: option-tree/includes/ot-functions-admin.php:298
+msgid "What's a layout anyhow?"
+msgstr "什么是布局？"
+
+#: option-tree/includes/ot-functions-admin.php:292
+msgid "Code examples for front-end development."
+msgstr "前端开发的代码示例。"
+
+#: option-tree/includes/ot-functions-admin.php:274
+msgid "Function Reference:get_option_tree()"
+msgstr "函数参考：get_option_tree()"
+
+#: option-tree/includes/ot-functions-admin.php:268
+msgid "Function Reference:ot_get_option()"
+msgstr "函数参考：ot_get_option()"
+
+#: option-tree/includes/ot-functions-admin.php:262
+msgid "Option types in alphabetical order & hooks to filter them."
+msgstr "按字母顺序排列的选项类型和钩子来过滤它们。"
+
+#: option-tree/includes/ot-functions-admin.php:256
+msgid "Overview of available Theme Option fields."
+msgstr "可用主题选项字段的概述。"
+
+#: option-tree/includes/ot-functions-admin.php:250
+msgid "Layouts Overview"
+msgstr "布局概述"
+
+#: option-tree/includes/ot-functions-admin.php:246
+msgid "Code Examples"
+msgstr "代码示例"
+
+#: option-tree/includes/ot-functions-admin.php:242
+#: option-tree/includes/ot-functions-admin.php:286
+msgid "Meta Boxes"
+msgstr "元框"
+
+#: option-tree/includes/ot-functions-admin.php:238
+#: option-tree/includes/ot-functions-admin.php:280
+msgid "Theme Mode"
+msgstr "主题模式"
+
+#: option-tree/includes/ot-functions-admin.php:234
+msgid "Function References"
+msgstr "功能参考"
+
+#: option-tree/includes/ot-functions-admin.php:226
+msgid "Creating Options"
+msgstr "创建选项"
+
+#: option-tree/includes/ot-functions-admin.php:213
+#: option-tree/includes/ot-functions-admin.php:214
+msgid "Documentation"
+msgstr "文档"
+
+#: option-tree/includes/ot-functions-admin.php:204
+msgid "Layout Management"
+msgstr "布局管理"
+
+#: option-tree/includes/ot-functions-admin.php:180
+msgid "Settings PHP File"
+msgstr "设置PHP文件"
+
+#: option-tree/includes/ot-functions-admin.php:156
+msgid "Theme Options UI Builder"
+msgstr "主题选项UI构建器"
+
+#: option-tree/includes/ot-functions-admin.php:150
+#: option-tree/includes/ot-functions-admin.php:174
+#: option-tree/includes/ot-functions-admin.php:198
+msgid "Layouts"
+msgstr "布局"
+
+#: option-tree/includes/ot-functions-admin.php:146
+msgid "Export"
+msgstr "导出"
+
+#: option-tree/includes/ot-functions-admin.php:142
+msgid "Import"
+msgstr "导入"
+
+#: option-tree/includes/ot-functions-admin.php:138
+msgid "Theme Options UI"
+msgstr "主题选项UI"
+
+#: option-tree/includes/ot-functions-admin.php:133
+#: option-tree/includes/ot-functions-admin.php:221
+msgid "Save Settings"
+msgstr "保存设置"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:274
+#: functions/czr/czr-resources.php:186
+#: option-tree/includes/ot-functions-admin.php:125
+#: option-tree/includes/ot-functions-admin.php:126
+#: option-tree/includes/ot-functions-admin.php:162
+#: option-tree/includes/ot-functions-admin.php:186
+#: option-tree/includes/ot-functions-admin.php:2859
+msgid "Settings"
+msgstr "设置"
+
+#: option-tree/includes/ot-functions-admin.php:114
+#: option-tree/includes/ot-functions-admin.php:115
+msgid "OptionTree"
+msgstr "OptionTree"
+
+#: option-tree/includes/ot-functions-admin.php:104
+msgid "The Theme Options UI Builder is being overridden by a custom file in your theme. Any changes you make via the UI Builder will not be saved."
+msgstr "该主题选项UI生成器是由一个自定义的文件覆盖您的主题。您通过界面生成器创建的任何更改都不会保存。"
+
+#: option-tree/includes/ot-functions-admin.php:60
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: option-tree/includes/ot-functions-admin.php:59
+#: option-tree/includes/ot-functions-admin.php:132
+#: option-tree/includes/ot-functions-admin.php:220
+msgid "Theme Options reset."
+msgstr "主题选项重置。"
+
+#: option-tree/includes/ot-functions-admin.php:58
+#: option-tree/includes/ot-functions-admin.php:131
+#: option-tree/includes/ot-functions-admin.php:219
+msgid "Theme Options updated."
+msgstr "主题选项已更新。"
+
+#: option-tree/includes/ot-functions-admin.php:52
+#: option-tree/includes/ot-functions-admin.php:53
+#: option-tree/includes/ot-functions-admin.php:168
+#: option-tree/includes/ot-functions-admin.php:192
+#: option-tree/includes/ot-functions.php:363
+msgid "Theme Options"
+msgstr "主题选项"
+
+#: option-tree/includes/ot-functions-admin.php:948
+#: option-tree/ot-loader.php:705
+msgid "Send to OptionTree"
+msgstr "发送到OptionTree"
+
+#: functions/czr/controls/class-upload-control.php:67
+#: option-tree/includes/ot-functions-admin.php:1497
+msgid "Upload"
+msgstr "上传"
+
+#: option-tree/includes/ot-functions-admin.php:1496
+msgid "Typography"
+msgstr "版式"
+
+#: option-tree/includes/ot-functions-admin.php:1495
+msgid "Textblock Titled"
+msgstr "标题为文本区块"
+
+#: option-tree/includes/ot-functions-admin.php:1494
+msgid "Textblock"
+msgstr "文本区块"
+
+#: option-tree/includes/ot-functions-admin.php:1493
+msgid "Textarea Simple"
+msgstr "简单的文本区域"
+
+#: option-tree/includes/ot-functions-admin.php:1490
+msgid "Taxonomy Select"
+msgstr "分类选择"
+
+#: option-tree/includes/ot-functions-admin.php:1489
+msgid "Taxonomy Checkbox"
+msgstr "分类复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1488
+msgid "Tag Select"
+msgstr "标签选择"
+
+#: option-tree/includes/ot-functions-admin.php:1487
+msgid "Tag Checkbox"
+msgstr "标签复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1485
+msgid "Spacing"
+msgstr "间距"
+
+#: option-tree/includes/ot-functions-admin.php:1484
+msgid "Social Links"
+msgstr "社交链接"
+
+#: option-tree/includes/ot-functions-admin.php:1482
+msgid "Sidebar Select"
+msgstr "边栏选择"
+
+#: option-tree/includes/ot-functions-option-types.php:1195
+#: option-tree/includes/ot-functions-option-types.php:1237
+msgid "-- Choose One --"
+msgstr "-- 请选择 --"
+
+#: option-tree/includes/ot-functions-admin.php:1481
+msgid "Select"
+msgstr "选择"
+
+#: option-tree/includes/ot-functions-admin.php:1480
+msgid "Radio Image"
+msgstr "音频图像"
+
+#: option-tree/includes/ot-functions-admin.php:1479
+msgid "Radio"
+msgstr "音频"
+
+#: option-tree/includes/ot-functions-admin.php:1478
+msgid "Post Select"
+msgstr "文章选择"
+
+#: option-tree/includes/ot-functions-admin.php:1477
+msgid "Post Checkbox"
+msgstr "文章复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1476
+msgid "Page Select"
+msgstr "页面选择"
+
+#: option-tree/includes/ot-functions-admin.php:1475
+msgid "Page Checkbox"
+msgstr "页面复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1474
+msgid "On/Off"
+msgstr "开关"
+
+#: option-tree/includes/ot-functions-admin.php:1473
+msgid "Numeric Slider"
+msgstr "数值滑块"
+
+#: option-tree/includes/ot-functions-admin.php:1472
+msgid "Measurement"
+msgstr "测量"
+
+#: option-tree/includes/ot-functions-admin.php:3066
+msgid "Content"
+msgstr "内容"
+
+#: option-tree/includes/ot-functions-admin.php:1471
+msgid "List Item"
+msgstr "项目清单"
+
+#: option-tree/includes/ot-functions-admin.php:1470
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: option-tree/includes/ot-functions-admin.php:1469
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: option-tree/includes/ot-functions-admin.php:1468
+msgid "Google Fonts"
+msgstr "谷歌字体"
+
+#: option-tree/includes/ot-functions-admin.php:1466
+msgid "Dimension"
+msgstr "尺寸"
+
+#: option-tree/includes/ot-functions-admin.php:1465
+msgid "Date Time Picker"
+msgstr "日期时间选择器"
+
+#: option-tree/includes/ot-functions-admin.php:1464
+msgid "Date Picker"
+msgstr "日期选择器"
+
+#: option-tree/includes/ot-functions-admin.php:1463
+msgid "Custom Post Type Select"
+msgstr "自定义文章类型选择"
+
+#: option-tree/includes/ot-functions-admin.php:1462
+msgid "Custom Post Type Checkbox"
+msgstr "自定义文章类型复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1461
+msgid "CSS"
+msgstr "CSS"
+
+#: option-tree/includes/ot-functions-admin.php:1460
+msgid "Colorpicker Opacity"
+msgstr "拾色器不透明度"
+
+#: option-tree/includes/ot-functions-admin.php:1459
+msgid "Colorpicker"
+msgstr "颜色选择器"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:576
+msgid "Yes"
+msgstr "是"
+
+#: functions/czr-base-fmk/czr-base-fmk.php:576
+msgid "No"
+msgstr "否"
+
+#: option-tree/includes/ot-functions-admin.php:1458
+msgid "Checkbox"
+msgstr "复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1457
+msgid "Category Select"
+msgstr "类别选择"
+
+#: option-tree/includes/ot-functions-admin.php:1456
+msgid "Category Checkbox"
+msgstr "类别复选框"
+
+#: option-tree/includes/ot-functions-admin.php:1455
+msgid "Box Shadow"
+msgstr "盒子阴影"
+
+#: option-tree/includes/ot-functions-admin.php:1454
+msgid "Border"
+msgstr "边界"
+
+#: functions/czr/czr-resources.php:236
+#: option-tree/includes/ot-functions-admin.php:2929
+msgid "and"
+msgstr "并且"
+
+#: option-tree/includes/ot-functions-admin.php:1453
+msgid "Background"
+msgstr "背景"
+
+#: option-tree/includes/ot-functions-admin.php:230
+msgid "Option Types"
+msgstr "选项类型"
+
+#: option-tree/includes/ot-functions-admin.php:1492
+msgid "Textarea"
+msgstr "多行文本"
+
+#: option-tree/includes/ot-functions-admin.php:1491
+msgid "Text"
+msgstr "文本"
+
+#: option-tree/includes/ot-functions-admin.php:1467
+#: option-tree/includes/ot-functions-admin.php:3817
+msgid "Gallery"
+msgstr "画廊"
+
+#: parts/related-posts.php:20
+msgid "You may also like..."
+msgstr "您可能还喜欢..."
+
+#: parts/post-nav.php:16
+msgid "Previous story"
+msgstr "上一篇"
+
+#: parts/post-nav.php:12
+msgid "Next story"
+msgstr "下一篇"
+
+#: functions/init-front.php:648
+msgid "Yearly Archive:"
+msgstr "按年归档："
+
+#: functions/init-front.php:638
+msgid "Monthly Archive:"
+msgstr "按月归档："
+
+#: functions/init-front.php:628
+msgid "Daily Archive:"
+msgstr "每日归档："
+
+#: functions/init-front.php:609
+msgid "Tagged:"
+msgstr "标签："
+
+#: functions/init-front.php:600
+msgid "Category:"
+msgstr "分类："
+
+#: functions/init-front.php:582
+msgid "Author:"
+msgstr "作者："
+
+#: functions/init-front.php:567
+msgid "Page not found!"
+msgstr "页面未找到！"
+
+#: functions/init-front.php:566
+msgid "Error 404."
+msgstr "404错误。"
+
+#: functions/init-front.php:555
+msgid "Search results"
+msgstr "搜索结果"
+
+#: functions/init-front.php:553
+msgid "Search result"
+msgstr "搜索结果"
+
+#: functions/widgets/alx-tabs.php:252
+msgid "says:"
+msgstr "说:"
+
+#: functions/widgets/alx-tabs.php:69
+msgid "Tags"
+msgstr "标签"
+
+#: functions/widgets/alx-tabs.php:68
+msgid "Recent Comments"
+msgstr "近期评论"
+
+#: functions/widgets/alx-tabs.php:67
+msgid "Popular Posts"
+msgstr "热门文章"
+
+#: functions/widgets/alx-tabs.php:66
+msgid "Recent Posts"
+msgstr "近期文章"
+
+#: option-tree/includes/ot-functions-admin.php:2830
+msgid "Type"
+msgstr "类型"
+
+#: option-tree/includes/ot-functions-admin.php:3098
+#: option-tree/includes/ot-functions-admin.php:3099
+msgid "Activate"
+msgstr "启用"
+
+#: footer.php:121
+msgid "Powered by"
+msgstr "技术支持"
+
+#: functions/class-utils-settings-map.php:1698
+#: functions/czr/czr-resources.php:38
+msgid "All Rights Reserved."
+msgstr "版权所有。"
+
+#: comments.php:11
+msgid "Pingbacks"
+msgstr "引用通告"
+
+#: comments.php:10 functions/class-utils-settings-map.php:1954
+msgid "Comments"
+msgstr "评论"
+
+#: comments.php:7
+msgid "% Responses"
+msgstr "% 条回复"
+
+#: comments.php:7
+msgid "1 Response"
+msgstr "1 条回复"
+
+#: comments.php:7
+msgid "No Responses"
+msgstr "无回复"
+
+#: tmpl/404-tmpl.php:6
+msgid "The page you are trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for."
+msgstr "您试图访问的页面不存在或已被移除，请使用菜单或搜索框查找您需要的内容。"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://presscustomizr.com"
+msgstr "https://presscustomizr.com"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "nikeo"
+msgstr "nikeo"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://presscustomizr.com/hueman/"
+msgstr "http://www.weixiaoduo.com/themes/hueman/"

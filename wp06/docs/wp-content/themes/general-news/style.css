@@ -1,0 +1,61 @@
+/*
+Theme Name: General News
+Theme URI:  https://afthemes.com/products/generalnews/
+Author:     AF themes
+Author URI: https://afthemes.com/
+Description: General News is a high-quality WordPress theme designed for news, blog, and magazine websites. The theme includes several free demo sites that can be imported with a single click to build a wonderful news portal. The theme is entirely widgetized, allowing users to manage site content through the use of 9+ custom widgets and widget sections. It also has a variety of main banner choices, as well as a light and dark site mode for reading articles and blog entries in style. It also comes with a number of essential customizer options for constructing a visually appealing news site. You can configure it as you see fit before publishing any changes with the live customizer. The RTL supported theme is compatible with Elementor, Gutenberg blocks, and the WooCommerce plugin, allowing you to combine an online store with our newspaper theme. The theme is suitable for use on a news, journal, magazine, publication, or review website, as well as for blogging. It's well-designed to help the website rank better in search engines, and visitors will receive fantastic support from the team if they have any problems utilizing it. Find all demos and documentaion at https://afthemes.com/products/generalnews/
+Template: morenews
+Version: 1.0.1
+Requires PHP: 5.6
+Tested up to: 6.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: general-news
+Tags: news, blog, entertainment, one-column, two-columns, grid-layout, block-styles, left-sidebar, right-sidebar, custom-header, flexible-header, custom-background, custom-menu, featured-images, full-width-template, post-formats, rtl-language-support, footer-widgets, translation-ready, theme-options, threaded-comments
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+General News WordPress Theme, Copyright 2022 AF themes
+General News is distributed under the terms of the GNU GPL v2 or later.
+*/
+
+
+
+.exclusive-posts .exclusive-now{
+    background-color: #bb1919;
+}
+
+.main-navigation .menu-description{
+    background-color: #bb1919;
+}
+
+.main-navigation .menu-description:after{
+    border-top: 5px solid #bb1919;
+}
+
+.af-cat-widget-carousel a.morenews-categories.category-color-1{
+    background-color: #bb1919;
+
+}
+
+a.morenews-categories.category-color-1{
+    color: #bb1919;
+}
+
+.af-cat-widget-carousel a.morenews-categories.category-color-2 {
+    background-color: #0098fe;
+    
+}
+
+a.morenews-categories.category-color-2 {
+    color: #0098fe;
+}
+
+.af-cat-widget-carousel a.morenews-categories.category-color-3{
+    background-color: #353535;
+}
+
+a.morenews-categories.category-color-3 {
+    color: #353535;
+}

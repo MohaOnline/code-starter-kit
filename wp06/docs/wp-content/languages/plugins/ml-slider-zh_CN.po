@@ -1,0 +1,1017 @@
+# Translation of Plugins - Slider, Gallery, and Carousel by MetaSlider &#8211; Responsive WordPress Slideshows - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Slider, Gallery, and Carousel by MetaSlider &#8211; Responsive WordPress Slideshows - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-02 05:23:36+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Slider, Gallery, and Carousel by MetaSlider &#8211; Responsive WordPress Slideshows - Stable (latest release)\n"
+
+#: ml-slider.php:2395
+msgid "Add slideshow"
+msgstr "添加幻灯片"
+
+#: inc/metaslider.systemcheck.class.php:208
+msgid "Warning:"
+msgstr "警告："
+
+#: inc/metaslider.systemcheck.class.php:94
+msgid "this article"
+msgstr "本文"
+
+#: inc/metaslider.systemcheck.class.php:91
+msgid "Your settings might not be saving properly due to a configuration on your server. %s is currently set to %s, but we recommend a setting of 4000. Please see %s for more information. The php.ini file is being loaded from here: %s"
+msgstr "由于服务器上的配置，您的设置可能无法正确保存。%s目前设置为%s，但我们建议设置为4000。更多信息请参见%s。从这里加载php.ini文件:%s"
+
+#: admin/routes/api.php:653
+msgid "This was not a slideshow, so we cannot update the setting."
+msgstr "这不是幻灯片演示，因此我们无法更新设置。"
+
+#: themes/simply-dark/v1.0.0/theme.php:24
+msgid "Previous Slide"
+msgstr "上一张幻灯片"
+
+#: themes/simply-dark/v1.0.0/theme.php:26
+msgid "Next Slide"
+msgstr "下一张幻灯片"
+
+#: admin/views/pages/parts/shortcode.php:15
+msgid "Toggle title"
+msgstr "切换标题"
+
+#: admin/views/pages/parts/toolbar.php:89
+msgid "Add CSS"
+msgstr "添加CSS"
+
+#: admin/views/pages/parts/toolbar.php:85
+msgid "Add custom CSS"
+msgstr "添加自定义CSS"
+
+#: metagallery/resources/views/parts/save-button.php:37
+#: admin/assets/dist/js/app.js:2
+msgid "Saving..."
+msgstr "保存中…"
+
+#: admin/views/pages/parts/toolbar.php:34
+msgid "Save & open preview"
+msgstr "保存并打开预览"
+
+#: admin/views/pages/parts/toolbar.php:85
+msgid "press to learn more"
+msgstr "按下了解更多"
+
+#: ml-slider.php:2233
+msgid "Opacity of title and navigation, between 0 and 1"
+msgstr "标题和导航的不透明度，介于0和1之间"
+
+#: admin/views/pages/parts/toolbar.php:63
+msgid "New"
+msgstr "新建"
+
+#: admin/views/pages/parts/toolbar.php:68
+msgid "Duplicate this slideshow"
+msgstr "复制此幻灯片"
+
+#: admin/views/pages/parts/toolbar.php:80
+msgid "Duplicate"
+msgstr "重复"
+
+#: admin/views/pages/parts/shortcode.php:26
+msgid "Click shortcode to copy"
+msgstr "点击简码进行复制"
+
+#: ml-slider.php:1875
+msgid "100% width"
+msgstr "100％宽度"
+
+#: admin/slideshows/Themes.php:249
+msgid "We removed your selected theme as it could not be found. Was the folder deleted?"
+msgstr "我们删除了您选择的主题，因为找不到该主题。文件夹被删除了吗？"
+
+#: admin/lib/callout.php:191
+#: metagallery/resources/views/settings/gallery-settings.php:42
+#: metagallery/resources/views/settings/image-settings.php:62
+msgid "Close"
+msgstr "关闭"
+
+#: admin/routes/api.php:510
+msgid "This was not a slideshow, so we cannot delete it."
+msgstr "这不是幻灯片，所以我们不能删除它。"
+
+#: admin/Pages.php:76
+msgid "Please confirm that you would like to delete this slideshow."
+msgstr "请确认您要删除此幻灯片。"
+
+#: admin/views/pages/parts/toolbar.php:99
+msgid "Save slideshow"
+msgstr "保存幻灯片"
+
+#: ml-slider.php:2424
+msgctxt "Keep the plugin name \"MetaSlider\" when possible"
+msgid "Insert MetaSlider"
+msgstr "插入MetaSlider"
+
+#: ml-slider.php:2072 ml-slider.php:2092 ml-slider.php:2221 ml-slider.php:2253
+msgctxt "Short for milliseconds"
+msgid "ms"
+msgstr "ms"
+
+#: admin/views/pages/upgrade.php:44
+msgctxt "Keep the branding \"Smart Crop\" together when possible"
+msgid "Unique Smart Crop functionality ensures your slides are perfectly resized."
+msgstr "独特的智能剪裁功能可确保完美调整您的幻灯片大小。"
+
+#: admin/views/pages/upgrade.php:37
+msgctxt "Keep the plugin name \"MetaSlider\" when possible"
+msgid "Our word to keep MetaSlider compatible with the latest versions of WordPress."
+msgstr "我们的承诺是使MetaSlider与WordPress的最新版本兼容。"
+
+#: admin/views/pages/upgrade.php:30
+msgctxt "\"FlexSlider\" and \"Nivo Slider\" are plugin names."
+msgid "Including FlexSlider, Nivo Slider and we will soon be adding more."
+msgstr "包括FlexSlider，Nivo Slider，我们将很快添加更多功能。"
+
+#: admin/views/pages/upgrade.php:58
+msgctxt "\"YouTube\" and \"Vimeo\" are brand names."
+msgid "Easily include responsive high definition YouTube and Vimeo videos."
+msgstr "轻松包含响应式高清YouTube和Vimeo视频。"
+
+#: themes/manifest.php:75
+msgid "This theme places the controls vertically for a unique look."
+msgstr "此主题将控件垂直放置以具有独特的外观。"
+
+#: themes/manifest.php:133
+msgid "This theme has a unique design that gives it a sophisticated look."
+msgstr "该主题具有独特的设计，使其外观精致。"
+
+#: themes/manifest.php:102
+msgid "This theme has a special additional functionality that uses image titles as the slide navigation. "
+msgstr "该主题具有特殊的附加功能，该功能将图像标题用作幻灯片导航。"
+
+#: themes/manifest.php:93
+msgid "A simple theme that neatly blends into any existing website."
+msgstr "一个简单的主题，可以巧妙地融合到任何现有网站中。"
+
+#: themes/manifest.php:151
+msgid "A minimalist theme that gets out of the way so you can showcasing your beautiful pictures."
+msgstr "极简主义主题，您可以展示精美的图片。"
+
+#: themes/manifest.php:84
+msgid "A futuristic and linear design that goes will with a dark background."
+msgstr "未来的线性设计将带有深色背景。"
+
+#: themes/manifest.php:142
+msgid "A bold and clear design that works well on a darker images."
+msgstr "大胆而清晰的设计可以很好地处理较暗的图像。"
+
+#: themes/manifest.php:160
+msgid "The Nivo Light theme included here for legacy purposes. Note: only works with Nivo Slider"
+msgstr "Nivo Light主题在此处，以用于旧版。注意：仅适用于Nivo Slider"
+
+#: themes/manifest.php:176
+msgid "The Nivo Dark theme included here for legacy purposes. Note: only works with Nivo Slider"
+msgstr "Nivo Dark主题在此处，以用于旧版。注意：仅适用于Nivo Slider"
+
+#: themes/manifest.php:168
+msgid "The Nivo Bar theme included here for legacy purposes. Note: only works with Nivo Slider"
+msgstr "Nivo Bar主题在此处，以用于旧版。注意：仅适用于Nivo Slider"
+
+#: themes/manifest.php:16
+msgid "A simple, slick square design that looks good on darker images."
+msgstr "简单，光滑的方形设计，在较暗的图像上看起来不错。"
+
+#: themes/manifest.php:34
+msgid "A fun, circular design to brighten up your site. This theme works well with dark images"
+msgstr "一个有趣的圆形设计，可以照亮您的网站。此主题适用于深色图像"
+
+#: themes/manifest.php:25
+msgid "A clean, subtle theme that features block arrows and bold design."
+msgstr "干净，微妙的主题，带有空心箭头和大胆的设计。"
+
+#: admin/slideshows/Image.php:145
+msgid "We could not find any images to import."
+msgstr "我们找不到任何要导入的图像。"
+
+#: admin/views/pages/upgrade.php:93
+msgid "Toggle your slide's visibility"
+msgstr "切换幻灯片的可见性"
+
+#: admin/routes/api.php:381 admin/routes/api.php:503
+msgid "This slideshow is no longer available."
+msgstr "该幻灯片不再可用。"
+
+#: admin/routes/api.php:373
+msgid "The request format was not valid."
+msgstr "请求格式无效。"
+
+#: admin/slideshows/Themes.php:60
+msgid "No themes found."
+msgstr "找不到主题。"
+
+#: admin/views/slides/tabs/schedule.php:9
+msgid "Get it now!"
+msgstr "立即获取！"
+
+#: admin/views/pages/parts/shortcode.php:27
+msgid "Copy all code"
+msgstr "复制所有代码"
+
+#: admin/views/pages/upgrade.php:94
+msgid "Allows you to hide any slide, without having to delete them."
+msgstr "允许您隐藏任何幻灯片，而不必删除它们。"
+
+#: admin/views/pages/upgrade.php:86
+msgid "Add a start/end date to individual slides."
+msgstr "将开始/结束日期添加到各个幻灯片。"
+
+#: themes/manifest.php:43
+msgid "A minimalistic, no-frills design that was built to blend in with most themes."
+msgstr "简约，简洁的设计旨在融入大多数主题。"
+
+#: admin/routes/api.php:131
+msgid "You do not have access to this resource."
+msgstr "您无权访问此资源。"
+
+#: ml-slider.php:2001
+msgid "Fade in the first slide"
+msgstr "淡入第一张幻灯片"
+
+#: ml-slider.php:1996
+msgid "Fade in"
+msgstr "淡入"
+
+#: admin/views/slides/tabs/seo.php:8
+msgid "Use the image title"
+msgstr "使用图像标题"
+
+#: admin/views/slides/tabs/seo.php:18
+msgid "Use the image alt text"
+msgstr "使用图片替代文字"
+
+#: admin/views/slides/tabs/general.php:34
+msgid "Open in a new window"
+msgstr "在新窗口中打开"
+
+#: admin/views/slides/tabs/seo.php:7
+msgid "Enable this to inherit the image title"
+msgstr "启用它以继承图像标题"
+
+#: admin/views/slides/tabs/seo.php:17
+msgid "Enable this to inherit the image alt text"
+msgstr "启用它以继承图像替代文本"
+
+#: admin/views/notices/header-notice.php:21
+msgid "Dismiss"
+msgstr "忽略"
+
+#: admin/views/pages/parts/shortcode.php:11
+msgid "How to Use"
+msgstr "如何使用"
+
+#: admin/Pages.php:80 admin/assets/dist/js/app.js:2
+#: admin/assets/js/app/globals.js:105
+msgid "Success"
+msgstr "成功"
+
+#: admin/views/pages/parts/shortcode.php:21
+msgid "To display your slideshow, add the following shortcode (in orange) to your page. If adding the slideshow to your theme files, additionally include the surrounding PHP code (in gray).&lrm;"
+msgstr "要显示幻灯片，请在页面中添加以下简短代码（橙色）。如果要将幻灯片放到主题文件中，请另外包含周围的PHP代码（灰色）。"
+
+#: admin/Pages.php:81
+msgid "Item was copied to your clipboard"
+msgstr "项目已复制到剪贴板"
+
+#: admin/views/pages/parts/shortcode.php:31 admin/assets/dist/js/app.js:2
+msgid "Copy all"
+msgstr "全部复制"
+
+#: ml-slider.php:1865
+msgid "Click to toggle"
+msgstr "点击切换"
+
+#: admin/slideshows/Settings.php:59
+msgid "New Slideshow"
+msgstr "新幻灯片"
+
+#: ml-slider.php:589
+msgid "Add to slideshow"
+msgstr "添加到幻灯片"
+
+#: admin/views/pages/upgrade.php:100
+msgid "Premium support"
+msgstr "高级支持"
+
+#: admin/Table.php:58 admin/views/pages/parts/toolbar.php:43
+#: admin/assets/dist/js/app.js:2
+msgid "Preview"
+msgstr "预览"
+
+#: ml-slider.php:1797
+msgid "Thumbnail"
+msgstr "缩略图"
+
+#: admin/views/pages/upgrade.php:50
+msgid "Thumbnail navigation"
+msgstr "缩略图导航"
+
+#: inc/slide/metaslide.class.php:112
+msgid "The image was successfully updated."
+msgstr "图像已成功更新。"
+
+#: admin/views/pages/upgrade.php:24 admin/views/pages/upgrade.php:25
+#: admin/views/pages/upgrade.php:31 admin/views/pages/upgrade.php:32
+#: admin/views/pages/upgrade.php:38 admin/views/pages/upgrade.php:39
+#: admin/views/pages/upgrade.php:45 admin/views/pages/upgrade.php:46
+#: admin/views/pages/upgrade.php:53 admin/views/pages/upgrade.php:60
+#: admin/views/pages/upgrade.php:67 admin/views/pages/upgrade.php:74
+#: admin/views/pages/upgrade.php:81 admin/views/pages/upgrade.php:88
+#: admin/views/pages/upgrade.php:96 admin/views/pages/upgrade.php:103
+msgid "Yes"
+msgstr "是"
+
+#: ml-slider.php:1831
+msgid "View trashed slides"
+msgstr "查看已回收站的幻灯片"
+
+#: inc/slide/metaslide.class.php:409 inc/slide/metaslide.image.class.php:343
+msgid "Update slide image"
+msgstr "更新幻灯片图像"
+
+#: ml-slider.php:1576
+msgid "Trashed Slides"
+msgstr "回收站的幻灯片"
+
+#: inc/slide/metaslide.image.class.php:87
+msgid "This isn't an accepted image. Please try again."
+msgstr "这不是可接受的图像。请再试一次。"
+
+#: inc/slide/metaslide.class.php:302
+msgid "There was an error while updating the database. Please try again."
+msgstr "更新数据库时出错。请再试一次。"
+
+#: inc/slide/metaslide.class.php:120
+msgid "There was an error updating the image. Please try again"
+msgstr "更新图片时出错。请再试一次"
+
+#: ml-slider.php:841
+msgid "The slide was successfully trashed"
+msgstr "幻灯片已成功移至回收站"
+
+#: ml-slider.php:759
+msgid "The slide was successfully restored"
+msgstr "幻灯片已成功还原"
+
+#: inc/slide/metaslide.class.php:94
+msgid "The requested image does not exist. Please try again."
+msgstr "请求的图像不存在。请再试一次。"
+
+#: ml-slider.php:782
+msgid "The attempt to restore the slide failed."
+msgstr "尝试还原幻灯片失败。"
+
+#: ml-slider.php:2747
+msgid "Support"
+msgstr "技术支持"
+
+#: admin/Table.php:71 admin/Table.php:301 inc/slide/metaslide.class.php:387
+msgid "Restore"
+msgstr "恢复"
+
+#: admin/views/pages/upgrade.php:36
+msgid "Regular updates"
+msgstr "定期更新"
+
+#: admin/slideshows/Settings.php:81 inc/slider/metaslider.class.php:119
+msgid "Previous"
+msgstr "上一页"
+
+#: ml-slider.php:2737
+msgid "Premium Support"
+msgstr "高级支持"
+
+#: admin/views/pages/upgrade.php:52 admin/views/pages/upgrade.php:59
+#: admin/views/pages/upgrade.php:66 admin/views/pages/upgrade.php:73
+#: admin/views/pages/upgrade.php:80 admin/views/pages/upgrade.php:87
+#: admin/views/pages/upgrade.php:95 admin/views/pages/upgrade.php:102
+msgid "No"
+msgstr "没有"
+
+#: admin/views/pages/upgrade.php:29
+msgid "Multiple slideshow types"
+msgstr "多种幻灯片类型"
+
+#: ml-slider.php:2756
+msgid "Leave a review"
+msgstr "留下评论"
+
+#: admin/views/pages/upgrade.php:43
+msgid "Intelligent image cropping"
+msgstr "智能图像裁剪"
+
+#: admin/views/pages/upgrade.php:101
+msgid "Have your specific queries addressed directly by our experts"
+msgstr "我们的专家可以直接解决您的具体问题"
+
+#: ml-slider.php:1801
+msgid "Filmstrip"
+msgstr "电影胶片"
+
+#: admin/views/pages/upgrade.php:79
+msgid "Easily build slides based on your WordPress posts."
+msgstr "根据您的WordPress文章轻松构建幻灯片。"
+
+#: admin/views/pages/upgrade.php:51
+msgid "Easily allow users to navigate your slideshows by thumbnails."
+msgstr "轻松允许用户按缩略图浏览幻灯片。"
+
+#: ml-slider.php:2346
+msgid "Delete slideshow"
+msgstr "删除幻灯片"
+
+#: admin/Table.php:72 admin/Table.php:302 inc/slide/metaslide.class.php:397
+msgid "Delete Permanently"
+msgstr "永久删除"
+
+#: admin/views/pages/upgrade.php:65
+msgid "Create completely customized HTML slides using the inline editor."
+msgstr "使用内联编辑器创建完全自定义的HTML幻灯片。"
+
+#: admin/views/pages/upgrade.php:57
+msgid "Add video slides"
+msgstr "添加视频幻灯片"
+
+#: admin/views/pages/upgrade.php:71
+msgid "Add slide layers"
+msgstr "添加幻灯片图层"
+
+#: admin/views/pages/upgrade.php:72
+msgid "Add layers to your slides with over 50 available transition effects."
+msgstr "在幻灯片中添加图层，使用超过50种可用的过渡效果。"
+
+#: admin/views/pages/upgrade.php:10
+msgid "free"
+msgstr "免费"
+
+#: admin/Notices.php:462
+msgid "Read more"
+msgstr "阅读更多"
+
+#: admin/Pages.php:77
+msgid "Undo"
+msgstr "撤消"
+
+#: admin/views/pages/upgrade.php:17 admin/views/pages/upgrade.php:109
+msgid "Installed"
+msgstr "已安装"
+
+#: admin/views/pages/upgrade.php:18 admin/views/pages/upgrade.php:110
+msgid "Upgrade now"
+msgstr "立即升级"
+
+#: admin/Notices.php:513
+msgid "The option was successfully updated"
+msgstr "该选项已成功更新"
+
+#: admin/Notices.php:612
+msgid "The attempt to update the option failed."
+msgstr "尝试更新选项失败。"
+
+#: admin/Notices.php:436
+msgid "weeks"
+msgstr "周"
+
+#: admin/Notices.php:500
+msgid "This item does not exist. Please refresh the page and try again."
+msgstr "该项目不存在。请刷新页面，然后重试。"
+
+#: admin/Notices.php:476 admin/support/Analytics.php:66
+#: inc/slide/metaslide.class.php:134 inc/slide/metaslide.image.class.php:123
+#: inc/slide/metaslide.image.class.php:227 ml-slider.php:727 ml-slider.php:809
+#: ml-slider.php:921 ml-slider.php:2899 ml-slider.php:2940
+msgid "The security check failed. Please refresh the page and try again."
+msgstr "安全检查失败。请刷新页面，然后重试。"
+
+#: admin/Notices.php:587
+msgid "The requested data does not exist."
+msgstr "请求的数据不存在。"
+
+#: admin/Pages.php:78
+msgid "Slide restored"
+msgstr "幻灯片已还原"
+
+#: admin/Pages.php:79
+msgid "Slide deleted"
+msgstr "幻灯片已删除"
+
+#: admin/Pages.php:82
+msgid "Press to undo"
+msgstr "按下撤消"
+
+#: admin/slideshows/Settings.php:82 inc/slider/metaslider.class.php:120
+msgid "Next"
+msgstr "下一个"
+
+#: admin/views/notices/header-notice.php:8
+msgid "Logo"
+msgstr "徽标"
+
+#: ml-slider.php:1221
+msgid "Learn More"
+msgstr "了解更多"
+
+#: admin/views/pages/upgrade.php:22
+msgid "Create unlimited slideshows"
+msgstr "创建无限制的幻灯片"
+
+#: admin/views/pages/upgrade.php:23
+msgid "Create and manage as many slideshows as you need."
+msgstr "根据需要创建和管理任意数量的幻灯片。"
+
+#: admin/views/pages/upgrade.php:9
+msgid "Comparison Chart"
+msgstr "比较表"
+
+#: admin/Notices.php:134
+msgid "Can you translate? Want to improve MetaSlider for speakers of your language?"
+msgstr "你可以翻译吗？是否想为使用您的语言的人改进MetaSlider？"
+
+#: admin/views/pages/upgrade.php:11
+msgid "pro"
+msgstr "专业版"
+
+#: ml-slider.php:631
+msgid "YouTube"
+msgstr "YouTube"
+
+#: ml-slider.php:630
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ml-slider.php:632
+msgid "Layer Slide"
+msgstr "图层幻灯片"
+
+#: ml-slider.php:2231
+msgid "Opacity"
+msgstr "透明度"
+
+#: ml-slider.php:2247
+msgid "Caption speed"
+msgstr "速度"
+
+#: ml-slider.php:2249
+msgid "Set the fade in speed of the caption"
+msgstr "设置字幕渐隐的速度"
+
+#: ml-slider.php:2263
+msgid "Developer options"
+msgstr "开发人员选项"
+
+#: ml-slider.php:2268
+msgid "CSS classes"
+msgstr "CSS 类"
+
+#: ml-slider.php:2270
+msgid "Specify any custom CSS Classes you would like to be added to the slider wrapper"
+msgstr "指定的任何自定义CSS类"
+
+#: ml-slider.php:2281
+msgid "Print CSS"
+msgstr "打印CSS"
+
+#: ml-slider.php:2286
+msgid "Uncheck this is you would like to include your own CSS"
+msgstr "取消选中，则使用自己的CSS"
+
+#: ml-slider.php:2294
+msgid "Print JS"
+msgstr "打印JavaScript"
+
+#: ml-slider.php:2299
+msgid "Uncheck this is you would like to include your own Javascript"
+msgstr "取消选中，则使用自己的Javascript"
+
+#: ml-slider.php:2307
+msgid "No conflict mode"
+msgstr "无冲突模式"
+
+#: admin/Table.php:61
+msgid "Shortcode"
+msgstr "短代码"
+
+#: ml-slider.php:2393
+msgid "Select slideshow to insert into post"
+msgstr "选择要插入到博文的幻灯片"
+
+#: ml-slider.php:2430
+msgid "Choose slideshow"
+msgstr "选择幻灯片"
+
+#: ml-slider.php:2440
+msgid "Insert slideshow"
+msgstr "插入幻灯片"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.metaslider.com"
+msgstr "https://www.metaslider.com"
+
+#: ml-slider.php:2312
+msgid "Delay adding the flexslider class to the slideshow"
+msgstr "延迟将flexslider类添加到幻灯片中"
+
+#: ml-slider.php:2752
+msgid "Documentation"
+msgstr "文档"
+
+#: admin/Pages.php:73
+msgid "URL"
+msgstr "URL"
+
+#: admin/Pages.php:74 admin/assets/dist/js/app.js:2
+msgid "Caption"
+msgstr "标题"
+
+#: admin/Pages.php:75
+msgid "New Window"
+msgstr "新窗口"
+
+#: admin/Pages.php:84
+msgid "Select replacement image"
+msgstr "选择替代图像"
+
+#: admin/Pages.php:92
+msgid "Caution: This setting is for advanced developers only. If you're unsure, leave it checked."
+msgstr "注意：此设置仅适用于高级开发者。如果你不确定，请将他保持在未勾选的状态"
+
+#: ml-slider.php:588
+msgid "Image"
+msgstr "图像"
+
+#: admin/views/pages/parts/toolbar.php:59
+msgid "Add a new slideshow"
+msgstr "添加新的幻灯片"
+
+#: admin/views/pages/parts/toolbar.php:28
+msgid "Add Slide"
+msgstr "添加幻灯片"
+
+#: admin/views/pages/settings.php:42
+msgid "Settings"
+msgstr "设置"
+
+#: admin/views/pages/parts/toolbar.php:113
+#: metagallery/resources/views/parts/save-button.php:34
+#: admin/assets/dist/js/app.js:2
+msgid "Save"
+msgstr "保存"
+
+#: ml-slider.php:1666 ml-slider.php:2121
+msgid "Width"
+msgstr "宽度"
+
+#: ml-slider.php:1668 admin/assets/js/gutenberg/components/block-edit.js:57
+#: admin/assets/js/gutenberg/components/block-edit.js:82
+msgid "Slideshow width"
+msgstr "幻灯片宽度"
+
+#: ml-slider.php:1669 ml-slider.php:1682 ml-slider.php:1991
+msgid "px"
+msgstr "像素"
+
+#: ml-slider.php:1679 ml-slider.php:2137
+msgid "Height"
+msgstr "高度"
+
+#: ml-slider.php:1681
+msgid "Slideshow height"
+msgstr "幻灯片标高度"
+
+#: ml-slider.php:1688
+msgid "Effect"
+msgstr "效果"
+
+#: ml-slider.php:1690
+msgid "Slide transition effect"
+msgstr "幻灯片过渡效果"
+
+#: ml-slider.php:1694 ml-slider.php:2009
+msgid "Random"
+msgstr "随机"
+
+#: ml-slider.php:1698
+msgid "Swirl"
+msgstr "漩涡"
+
+#: ml-slider.php:1702
+msgid "Rain"
+msgstr "雨"
+
+#: ml-slider.php:1706
+msgid "Straight"
+msgstr "直"
+
+#: ml-slider.php:1714
+msgid "Slice Up"
+msgstr "切片"
+
+#: ml-slider.php:1734
+msgid "Fold"
+msgstr "折叠"
+
+#: ml-slider.php:1730
+msgid "Fade"
+msgstr "渐隐"
+
+#: ml-slider.php:1746
+msgid "Box Random"
+msgstr "随机"
+
+#: ml-slider.php:1750
+msgid "Box Rain"
+msgstr "箱式"
+
+#: ml-slider.php:1754
+msgid "Box Rain Reverse"
+msgstr "箱式"
+
+#: ml-slider.php:1766
+msgid "Slide"
+msgstr "滑动"
+
+#: ml-slider.php:1773
+msgid "Arrows"
+msgstr "箭头"
+
+#: ml-slider.php:1778
+msgid "Show the previous/next arrows"
+msgstr "显示 向后/向前 箭头"
+
+#: ml-slider.php:1786
+msgid "Navigation"
+msgstr "导航"
+
+#: ml-slider.php:1789
+msgid "Show the slide navigation bullets"
+msgstr "显示幻灯片导航的小圆点"
+
+#: ml-slider.php:1794
+msgid "Hidden"
+msgstr "隐藏"
+
+#: ml-slider.php:1795
+msgid "Dots"
+msgstr "点"
+
+#: admin/Table.php:59
+#: metagallery/resources/views/parts/create-gallery-simple.php:28
+#: admin/assets/dist/js/app.js:2
+msgid "Title"
+msgstr "标题"
+
+#: ml-slider.php:1866
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+#: ml-slider.php:1880
+msgid "Stretch the slideshow output to fill it's parent container"
+msgstr "拉伸幻灯片以填充其父容器"
+
+#: ml-slider.php:1888
+msgid "Center align"
+msgstr "居中对齐"
+
+#: ml-slider.php:1893
+msgid "Center align the slideshow"
+msgstr "居中对齐幻灯片"
+
+#: ml-slider.php:1901
+msgid "Auto play"
+msgstr "自动播放"
+
+#: ml-slider.php:1906
+msgid "Transition between slides automatically"
+msgstr "幻灯片间自动过渡"
+
+#: ml-slider.php:1914
+msgid "Image Crop"
+msgstr "图像裁剪"
+
+#: ml-slider.php:1919
+msgid "Smart Crop"
+msgstr "智能裁剪"
+
+#: ml-slider.php:1926
+msgid "Standard"
+msgstr "标准"
+
+#: ml-slider.php:1933
+msgid "Disabled"
+msgstr "禁用"
+
+#: ml-slider.php:1940
+msgid "Disabled (Smart Pad)"
+msgstr "禁用 (Smart Pad)"
+
+#: ml-slider.php:1947
+msgid "Smart Crop ensures your responsive slides are cropped to a ratio that results in a consistent slideshow size"
+msgstr "智能裁剪确保您的多张响应式幻灯片被剪裁到一个相同的比例，使他们能在幻灯片中保持同样的尺寸。"
+
+#: ml-slider.php:1968
+msgid "Carousel mode"
+msgstr "传送带模式"
+
+#: ml-slider.php:1973
+msgid "Display multiple slides at once. Slideshow output will be 100% wide."
+msgstr "立即显示多张幻灯片. 幻灯片放映会以100%的宽度输出"
+
+#: ml-slider.php:1984
+msgid "Carousel margin"
+msgstr "传送带模式边距"
+
+#: ml-slider.php:1987
+msgid "Pixel margin between slides in carousel."
+msgstr "传送带模式下幻灯片间间距"
+
+#: ml-slider.php:2014
+msgid "Randomise the order of the slides"
+msgstr "打乱幻灯片放映的顺序"
+
+#: ml-slider.php:2022
+msgid "Hover pause"
+msgstr "悬停时暂停"
+
+#: ml-slider.php:2027
+msgid "Pause the slideshow when hovering over slider, then resume when no longer hovering."
+msgstr "当鼠标悬停在图片上时暂停幻灯片放映（鼠标移开后恢复）"
+
+#: ml-slider.php:2035
+msgid "Reverse"
+msgstr "反向"
+
+#: ml-slider.php:2040
+msgid "Reverse the animation direction"
+msgstr "反转过渡效果的方向"
+
+#: ml-slider.php:2066
+msgid "Slide delay"
+msgstr "幻灯片播放间隔"
+
+#: ml-slider.php:2068
+msgid "How long to display each slide, in milliseconds"
+msgstr "幻灯片的播放间隔，单位是毫秒"
+
+#: ml-slider.php:2086
+msgid "Animation speed"
+msgstr "动画速度"
+
+#: ml-slider.php:2088
+msgid "Set the speed of animations, in milliseconds"
+msgstr "设置动画的速度，单位是毫秒"
+
+#: ml-slider.php:2106 ml-slider.php:2108
+msgid "Number of slices"
+msgstr "切片数"
+
+#: ml-slider.php:2118 ml-slider.php:2123 ml-slider.php:2134 ml-slider.php:2139
+msgid "Number of squares"
+msgstr "方格数"
+
+#: ml-slider.php:2145
+msgid "Slide direction"
+msgstr "滑动方向"
+
+#: ml-slider.php:2147
+msgid "Select the sliding direction"
+msgstr "选择的滑动方向"
+
+#: ml-slider.php:2154
+msgid "Horizontal"
+msgstr "横向"
+
+#: ml-slider.php:2161
+msgid "Vertical"
+msgstr "垂直"
+
+#: ml-slider.php:2172
+msgid "Easing"
+msgstr "松"
+
+#: ml-slider.php:2184
+msgid "Previous text"
+msgstr "表示“上一张”的文本"
+
+#: ml-slider.php:2186
+msgid "Set the text for the 'previous' direction item"
+msgstr "为幻灯片放映中的“上一张”按钮设置文本内容"
+
+#: ml-slider.php:2197
+msgid "Next text"
+msgstr "表示“下一张”的文本"
+
+#: ml-slider.php:2199
+msgid "Set the text for the 'next' direction item"
+msgstr "为幻灯片放映中的“下一张”按钮设置文本内容"
+
+#: ml-slider.php:2215
+msgid "Square delay"
+msgstr "延迟"
+
+#: ml-slider.php:2217
+msgid "Delay between squares in ms"
+msgstr "以毫秒为单位"
+
+#: inc/metaslider.widget.class.php:128 ml-slider.php:2445
+#: admin/assets/dist/js/app.js:2
+msgid "No slideshows found"
+msgstr "没有幻灯片"
+
+#: inc/metaslider.widget.class.php:115
+msgid "Title:"
+msgstr "标题："
+
+#: inc/metaslider.widget.class.php:118
+msgid "Select Slider:"
+msgstr "选择幻灯片："
+
+#: inc/slide/metaslide.image.class.php:317
+msgid "Image Slide"
+msgstr "图像幻灯片"
+
+#: inc/slide/metaslide.image.class.php:397
+msgid "Warning: The image data does not exist. Please re-upload the image."
+msgstr "警告：图像数据不存在。请重新上传图片。"
+
+#: admin/views/slides/tabs/seo.php:5
+msgid "Image Title Text"
+msgstr "图片的标题文字"
+
+#: admin/views/slides/tabs/seo.php:15
+msgid "Image Alt Text"
+msgstr "图片的替代文字(alt)"
+
+#: inc/slide/metaslide.image.class.php:408
+msgid "General"
+msgstr "通用"
+
+#: inc/slide/metaslide.image.class.php:412
+msgid "SEO"
+msgstr "SEO"
+
+#: admin/views/slides/tabs/crop.php:5
+msgid "Crop Position"
+msgstr "裁剪位置"
+
+#: admin/views/slides/tabs/crop.php:9
+msgid "Top Left"
+msgstr "顶部左对齐"
+
+#: admin/views/slides/tabs/crop.php:10
+msgid "Top Center"
+msgstr "顶部居中"
+
+#: admin/views/slides/tabs/crop.php:11
+msgid "Top Right"
+msgstr "顶部右对齐"
+
+#: admin/views/slides/tabs/crop.php:12
+msgid "Center Left"
+msgstr "水平左对齐"
+
+#: admin/views/slides/tabs/crop.php:13
+msgid "Center Center"
+msgstr "水平居中"
+
+#: admin/views/slides/tabs/crop.php:14
+msgid "Center Right"
+msgstr "水平右对齐"
+
+#: admin/views/slides/tabs/crop.php:15
+msgid "Bottom Left"
+msgstr "底部左对齐"
+
+#: admin/views/slides/tabs/crop.php:16
+msgid "Bottom Center"
+msgstr "底部居中"
+
+#: admin/views/slides/tabs/crop.php:17
+msgid "Bottom Right"
+msgstr "底部右对齐"
+
+#: inc/slide/metaslide.image.class.php:429
+msgid "Crop"
+msgstr "剪裁"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: admin/views/pages/upgrade.php:10 admin/views/pages/upgrade.php:11
+msgid "MetaSlider"
+msgstr "MetaSlider"
+
+#: inc/slide/metaslide.image.class.php:85
+msgid "Failed to add slide. Slide is not an image."
+msgstr "添加幻灯片失败。幻灯片不是图像。"

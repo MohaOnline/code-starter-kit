@@ -1,0 +1,2832 @@
+# Translation of Plugins - MainWP Child &#8211; Securely Connects Sites to the MainWP WordPress Manager Dashboard - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - MainWP Child &#8211; Securely Connects Sites to the MainWP WordPress Manager Dashboard - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-10-24 07:25:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - MainWP Child &#8211; Securely Connects Sites to the MainWP WordPress Manager Dashboard - Stable (latest release)\n"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3908
+msgid "(%1$s%%, file %2$s of %3$s)"
+msgstr "(%1$s%%，%3$s的%2$s号文件)"
+
+#: class/class-mainwp-child-server-information.php:790
+msgid "Active"
+msgstr "启用"
+
+#: class/class-mainwp-child-wordfence.php:3241
+msgid "IPs"
+msgstr "IP地址"
+
+#: class/class-mainwp-child-staging.php:168
+msgid "Please install WP Staging plugin on child website"
+msgstr "请在子网站上安装WP Staging插件"
+
+#: class/class-mainwp-child-wordfence.php:3243
+msgid "Used"
+msgstr "已使用"
+
+#: class/class-mainwp-child-server-information.php:630
+msgid "Version"
+msgstr "版本"
+
+#: class/class-mainwp-child-server-information.php:637
+msgid "WordPress"
+msgstr "WordPress"
+
+#: class/class-mainwp-child-server-information.php:773
+msgid "WordPress PLUGINS"
+msgstr "WordPress 插件"
+
+#: class/class-mainwp-child-branding.php:89
+msgid "Contact Support"
+msgstr "获取支持"
+
+#: class/class-mainwp-client-report-base.php:1011
+msgid "Delete all post revisions, except for the last:"
+msgstr "删除所有的文章修改，除了最后一个："
+
+#: class/class-mainwp-child-back-up-wordpress.php:1128
+#: class/class-mainwp-child-back-up-wordpress.php:1163
+msgid "Empty exclude directory path."
+msgstr "排除目录路径为空。"
+
+#: class/class-mainwp-client-report.php:146
+msgid "No MainWP Child Reports plugin installed."
+msgstr "没有安装MainWP子插件报表。"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1264
+#: class/class-mainwp-child-back-up-wordpress.php:1323
+msgid "Schedule data"
+msgstr "附表数据"
+
+#: class/class-mainwp-client-report-base.php:1012
+msgid "Delete all auto draft posts"
+msgstr "删除所有自动草稿文章"
+
+#: class/class-mainwp-client-report-base.php:1010
+msgid "Delete all post revisions"
+msgstr "删除所有文章修订"
+
+#: class/class-mainwp-client-report-base.php:1018
+msgid "Delete categories with 0 posts associated"
+msgstr "删除关联了0篇文章的类别"
+
+#: class/class-mainwp-client-report-base.php:1015
+msgid "Delete pending comments"
+msgstr "删除待审评论"
+
+#: class/class-mainwp-client-report-base.php:1014
+msgid "Delete spam comments"
+msgstr "删除垃圾评论"
+
+#: class/class-mainwp-client-report-base.php:1017
+msgid "Delete tags with 0 posts associated"
+msgstr "删除关联了0篇文章的标签"
+
+#: class/class-mainwp-client-report-base.php:1016
+msgid "Delete trash comments"
+msgstr "删除垃圾评论"
+
+#: class/class-mainwp-client-report-base.php:1013
+msgid "Delete trash posts"
+msgstr "删除垃圾文章"
+
+#: class/class-mainwp-client-report-base.php:1019
+msgid "Optimize database tables"
+msgstr "优化数据库表"
+
+#: class/class-mainwp-connect.php:162
+msgid "Authentication failed! Please deactivate & re-activate the MainWP Child plugin on this site and try again."
+msgstr "认证失败！请停用并重新激活本网站上的MainWP子插件，然后再试。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3202
+msgid "Remote storage: %s"
+msgstr "远程存储: %s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3201
+msgid "remote site"
+msgstr "远程站点"
+
+#: class/class-mainwp-child-branding-render.php:140
+msgid "From:"
+msgstr "来自："
+
+#: class/class-mainwp-wordpress-seo.php:127
+msgid "Settings could not be imported."
+msgstr "无法导入设置。"
+
+#: class/class-mainwp-child-wordfence.php:1864
+#: class/class-mainwp-child-wordfence.php:1869
+msgid "An error occurred: "
+msgstr "发生错误： "
+
+#: class/class-mainwp-child-wordfence.php:1893
+msgid "An error occurred: Invalid options format received."
+msgstr "发生错误：收到的选项格式无效。"
+
+#: class/class-mainwp-child-wordfence.php:1866
+msgid "Invalid response: "
+msgstr "无效响应： "
+
+#: class/class-mainwp-child-back-wp-up.php:1799
+msgid "Cannot save jobs: "
+msgstr "无法保存作业: "
+
+#: class/class-mainwp-child-back-wp-up.php:1890
+msgid "Cannot save settings: "
+msgstr "无法保存设置: "
+
+#: class/class-mainwp-child-back-wp-up.php:385
+msgid "Check database tables"
+msgstr "检查数据库表"
+
+#: class/class-mainwp-child-back-wp-up.php:381
+msgid "Database backup"
+msgstr "数据库备份"
+
+#: class/class-mainwp-child-back-wp-up.php:382
+msgid "File backup"
+msgstr "文件备份"
+
+#: class/class-mainwp-child-back-wp-up.php:384
+msgid "Installed plugins list"
+msgstr "安装的插件列表"
+
+#: class/class-mainwp-child-branding-render.php:195
+msgid "Message has been submitted successfully."
+msgstr "您的留言已发送成功。"
+
+#: class/class-mainwp-child-back-wp-up.php:383
+msgid "WordPress XML export"
+msgstr "WordPress XML导出"
+
+#: class/class-mainwp-child-timecapsule.php:1944
+msgid "Function Disabled"
+msgstr "功能已禁用"
+
+#: class/class-mainwp-child-back-up-buddy.php:536
+#: class/class-mainwp-child-back-up-wordpress.php:594
+#: class/class-mainwp-child-bulk-settings-manager.php:279
+msgid "Invalid data. Please check and try again."
+msgstr "数据无效。请检查并重试。"
+
+#: class/class-mainwp-child-timecapsule.php:1918
+msgid "WP Time Capsule version"
+msgstr "WP Time Capsule 时间胶囊版本"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2744
+msgid "As long as your web hosting allows http (i.e. non-SSL access) or will forward requests to https (which is almost always the case), this is no problem. If that is not yet set up, then you should set it up, or use %s so that the non-https links are automatically replaced."
+msgstr "只要您的 web 托管允许 http （即非 ssl 访问） 或将请求转发到 ps （几乎总是如此）, 这就没有问题。如果尚未设置, 则应对其进行设置, 或使用 %s, 以便自动替换非 ps 链接。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2897
+msgid "Go here for more information."
+msgstr "去帮助里获取更多信息."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3290
+msgid "Go to Restore"
+msgstr "转到恢复"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2804
+msgid "It will be imported as a new site."
+msgstr "它将作为新网站导入。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2804
+msgid "Please read this link for important information on this process."
+msgstr "有关此过程的重要信息, 请阅读此链接。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2876
+msgid "The database backup uses MySQL features not available in the old MySQL version (%s) that this site is running on."
+msgstr "数据库备份使用MySQL站点运行的旧MySQL版本（%s ）中不提供的MySQL功能。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2897
+msgid "The database server that this WordPress site is running on doesn't support the character set (%s) which you are trying to import."
+msgid_plural "The database server that this WordPress site is running on doesn't support the character sets (%s) which you are trying to import."
+msgstr[0] "此 WordPress 站点运行的数据库服务器不支持您尝试导入的字符集 （ %s）。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2933
+msgid "The database server that this WordPress site is running on doesn't support the collation (%s) used in the database which you are trying to import."
+msgid_plural "The database server that this WordPress site is running on doesn't support multiple collations (%s) used in the database which you are trying to import."
+msgstr[0] "此 WordPress 站点运行的数据库服务器不支持要导入的数据库中使用的排序规则 （ %s）。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2735
+msgid "The website address in the backup set (%1$s) is slightly different from that of the site now (%2$s). This is not expected to be a problem for restoring the site, as long as visits to the former address still reach the site."
+msgstr "备份集中的网站地址（%1$s）与现在的网站地址（%2$s）略有不同。只要访问以前的地址还能到达网站，这对于恢复网站来说应该不是问题。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2740
+msgid "This backup set is of this site, but at the time of the backup you were using %1$s, whereas the site now uses %2$s."
+msgstr "这个备份集是这个网站的，但是在备份的时候，您使用的是%1$s，而现在这个网站使用的是%2$s。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3005
+msgid "This database backup has the following WordPress tables excluded: %s"
+msgstr "此数据库备份具有以下排除的WordPress表：%s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2742
+msgid "This restoration will work if you still have an SSL certificate (i.e. can use https) to access the site. Otherwise, you will want to use %s to search/replace the site address so that the site can be visited without https."
+msgstr "如果您仍然有 SSL 证书 （即可以使用 ps） 访问该网站, 则此还原将起作用。否则, 您将需要使用 %s 来搜索/替换网站地址, 以便可以在没有 ps 的情况下访问该网站。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2806
+msgid "To import an ordinary WordPress site into a multisite installation requires %s."
+msgstr "要将普通WordPress站点导入到多站点安装中，需要%s."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2761
+msgid "You are using the %1$s webserver, but do not seem to have the %2$s module loaded."
+msgstr "您使用的是%1$s网站服务器，但似乎没有加载%2$s模块。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2897
+msgid "You can choose another suitable character set instead and continue with the restoration at your own risk."
+msgstr "您可以选择另一个合适的字符集, 并自行承担风险继续恢复。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2933
+msgid "You can choose another suitable collation instead and continue with the restoration (at your own risk)."
+msgstr "您可以选择另一个合适的排序规则, 然后继续进行还原 （由您自己承担风险）。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2756
+msgid "You can search and replace your database (for migrating a website to a new location/URL) with the Migrator add-on - follow this link for more information"
+msgstr "您可以使用迁移进程附加组件搜索和替换数据库 （用于将网站迁移到新的位置/url）-有关详细信息, 请点击此链接"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2876
+msgid "You must upgrade MySQL to be able to use this database."
+msgstr "必须升级 MySQL 才能使用此数据库。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2761
+msgid "You should enable %1$s to make any pretty permalinks (e.g. %2$s) work"
+msgstr "您应该启用%1$s来使任何漂亮的固定链接(例如%2$s)工作"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2907
+msgid "Your chosen character set to use instead:"
+msgstr "您选择的字符集改为使用："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2956
+msgid "Your chosen replacement collation"
+msgstr "您选择的替换排序规则"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2742
+#: class/class-mainwp-child-updraft-plus-backups.php:2744
+msgid "the migrator add-on"
+msgstr "迁移进程附加组件"
+
+#: class/class-mainwp-child-wordfence.php:2448
+msgid "An error occurred while saving the configuration."
+msgstr "保存配置时发生错误。"
+
+#: class/class-mainwp-child-wordfence.php:2427
+msgid "An error occurred while saving the configuration: %s"
+msgstr "保存配置时发生错误：%s"
+
+#: class/class-mainwp-child-wordfence.php:3616
+msgid "Cron Jobs"
+msgstr "定时任务"
+
+#: class/class-mainwp-child-wordfence.php:3670
+msgid "Database Tables"
+msgstr "资料库表"
+
+#: class/class-mainwp-child-wordfence.php:3671
+msgid "Database table names, sizes, timestamps, and other metadata."
+msgstr "数据库表名称，大小，时间戳和其他元数据。"
+
+#: class/class-mainwp-child-wordfence.php:2440
+msgid "Errors occurred while saving the configuration."
+msgstr "保存配置时发生错误。"
+
+#: class/class-mainwp-child-wordfence.php:2435
+msgid "Errors occurred while saving the configuration: %s"
+msgstr "保存配置时发生错误：%s"
+
+#: class/class-mainwp-child-wordfence.php:3229
+msgid "IP Detection"
+msgstr "IP检测"
+
+#: class/class-mainwp-child-wordfence.php:3617
+msgid "List of WordPress cron jobs scheduled by WordPress, plugins, or themes."
+msgstr "由WordPress，插件或主题安排的WordPress cron作业列表。"
+
+#: class/class-mainwp-child-wordfence.php:3721
+msgid "Log Files"
+msgstr "日志文件"
+
+#: class/class-mainwp-child-wordfence.php:3230
+msgid "Methods of detecting a visitor's IP address."
+msgstr "检测访问者IP地址的方法。"
+
+#: class/class-mainwp-child-wordfence.php:3539
+msgid "Must-Use WordPress Plugins"
+msgstr "必须使用的WordPress插件"
+
+#: class/class-mainwp-child-wordfence.php:2458
+msgid "No configuration changes were provided to save."
+msgstr "没有提供任何配置更改保存。"
+
+#: class/class-mainwp-child-wordfence.php:3722
+msgid "PHP error logs generated by your site, if enabled by your host."
+msgstr "您的站点生成的PHP错误日志（如果您的主机已启用）。"
+
+#: class/class-mainwp-child-wordfence.php:3504
+msgid "Status of installed plugins."
+msgstr "已安装插件的状态。"
+
+#: class/class-mainwp-child-wordfence.php:3578
+msgid "Status of installed themes."
+msgstr "已安装主题的状态。"
+
+#: class/class-mainwp-child-wordfence.php:3577
+msgid "Themes"
+msgstr "主题"
+
+#: class/class-mainwp-child-wordfence.php:3540
+msgid "WordPress \"mu-plugins\" that are always active, incluing those provided by hosts."
+msgstr "WordPress的 \"mu-plugins\"，包括那些由主机提供的插件，始终处于活跃状态。"
+
+#: class/class-mainwp-child-wordfence.php:3503
+msgid "WordPress Plugins"
+msgstr "WordPress 插件"
+
+#: class/class-mainwp-child-wordfence.php:3310
+msgid "WordPress Settings"
+msgstr "WordPress 设置"
+
+#: class/class-mainwp-child-wordfence.php:3311
+msgid "WordPress version and internal settings/constants."
+msgstr "WordPress版本和内部设置/常量。"
+
+#: class/class-mainwp-clone-page.php:182
+msgid "Select Source for clone"
+msgstr "选择克隆源"
+
+#: class/class-mainwp-client-report-base.php:983
+#: class/class-mainwp-client-report-base.php:990
+msgid "Site Blacklisted"
+msgstr "网站已列入黑名单"
+
+#: class/class-mainwp-client-report-base.php:985
+msgid "Site With Warnings"
+msgstr "网站与警告"
+
+#: class/class-mainwp-clone-page.php:197
+msgid "The site selected above will replace this site's files and database"
+msgstr "上面选择的网站将取代本网站的文件和数据库"
+
+#: class/class-mainwp-client-report-base.php:990
+msgid "Trusted"
+msgstr "信任"
+
+#: class/class-mainwp-client-report-base.php:988
+msgid "Verified Clear"
+msgstr "认证成功"
+
+#. translators: 1: user display name, 2: user login
+#: class/class-mainwp-child-ithemes-security.php:1643
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: class/class-mainwp-wordpress-seo.php:255
+msgid "Focus keyword not set."
+msgstr "没有设置目标关键词."
+
+#: class/class-mainwp-wordpress-seo.php:251
+msgid "Post is set to noindex."
+msgstr "文章被设置为不索引."
+
+#: class/class-mainwp-child-posts.php:748
+msgid "This content is currently locked. %s is currently editing."
+msgstr "此内容目前已被锁定。%s目前正在编辑。"
+
+#: class/class-mainwp-child-back-wp-up.php:1785
+msgid "Changes for job <i>%s</i> saved."
+msgstr "备份<i>%s </i>的更改已保存。"
+
+#: class/class-mainwp-child-back-wp-up.php:1785
+msgid "Jobs overview"
+msgstr "工作概述"
+
+#: class/class-mainwp-child-back-wp-up.php:1785
+msgid "Run now"
+msgstr "现在运行"
+
+#: class/class-mainwp-child-pagespeed.php:443
+msgid "The API is busy checking other pages, please try again later."
+msgstr "API正在忙于检查其他网页，请稍后再试。"
+
+#: class/class-mainwp-child-callable.php:182
+msgid "Required version has not been detected. Please, make sure that you are using the latest version of the MainWP Child plugin on your site."
+msgstr "未检测到所需版本。请确保您的网站上使用的是最新版本的MainWP子插件。"
+
+#: class/class-mainwp-clone.php:146
+msgid "Double request!"
+msgstr "双重要求！"
+
+#: class/class-mainwp-child-links-checker.php:712
+#: class/class-mainwp-child-links-checker.php:798
+msgid "Error: link_id is not specified."
+msgstr "错误：没有指定link_id。"
+
+#: class/class-mainwp-child-users.php:386
+msgid "<strong>ERROR</strong>: Passwords may not contain the character \"\\\"."
+msgstr "<strong>错误</strong>：密码中不能有“\\”字符。"
+
+#: class/class-mainwp-child-users.php:382
+msgid "<strong>ERROR</strong>: Please enter a password."
+msgstr "<strong>错误</strong>：请输入密码。"
+
+#: class/class-mainwp-child-users.php:374
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>错误</strong>: 请输入用户名。"
+
+#: class/class-mainwp-child-users.php:409
+msgid "<strong>ERROR</strong>: Please enter an email address."
+msgstr "<strong>错误</strong>： 请输入邮箱地址。"
+
+#: class/class-mainwp-child-users.php:390
+msgid "<strong>ERROR</strong>: Please enter the same password in both password fields."
+msgstr "<strong>错误</strong>：请在两个密码字段中输入同样的密码。"
+
+#: class/class-mainwp-child-users.php:403
+msgid "<strong>ERROR</strong>: Sorry, that username is not allowed."
+msgstr "<strong>错误</strong>：此用户名不被允许。"
+
+#: class/class-mainwp-child-users.php:411
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>错误</strong>: 该邮箱地址不存在。"
+
+#: class/class-mainwp-child-users.php:413
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>错误</strong>: 该邮箱已被注册，请选择其他的邮箱地址。"
+
+#: class/class-mainwp-child-users.php:521
+msgid "Administrator password could not be changed."
+msgstr "无法更改管理员密码。"
+
+#: class/class-mainwp-clone-page.php:163
+msgid "Clone/Restore website"
+msgstr "克隆/还原网站"
+
+#: class/class-mainwp-pages.php:481
+msgid "Connection Details"
+msgstr "连接细节"
+
+#: class/class-mainwp-clone-install.php:167
+msgid "Database backup is missing."
+msgstr "数据库备份丢失。"
+
+#: class/class-mainwp-connect.php:99
+msgid "The unique security ID mismatch! Please correct it before the connection can be established."
+msgstr "唯一安全 ID 不匹配 ！请在创建连接之前，更正它。"
+
+#: class/class-mainwp-clone-install.php:161
+#: class/class-mainwp-clone-install.php:164
+msgid "This is not a full backup."
+msgstr "完整备份运行的网站。"
+
+#: class/class-mainwp-child-stats.php:96
+msgid "This site already contains a link. Please deactivate and reactivate the MainWP plugin."
+msgstr "这个网站已经包含了一个链接，请停用并重新激活MainWP插件。请停用并重新激活MainWP插件。"
+
+#: class/class-mainwp-child-server-information.php:1414
+msgid "Administrator name"
+msgstr "管理员名称"
+
+#: class/class-mainwp-backup.php:191
+msgid "Another backup process is running. Please, try again later."
+msgstr "另一个备份进程正在运行。请稍后再试。"
+
+#: class/class-mainwp-child-server-information.php:1435
+#: class/class-mainwp-child-server-information.php:1436
+msgid "Auto Detect"
+msgstr "自动侦测"
+
+#: class/class-mainwp-child-server-information.php:1424
+msgid "Child unique security id"
+msgstr "子网站点唯一安全 ID"
+
+#: class/class-mainwp-child-server-information.php:1426
+msgid "Child unique security id is not required, however, since you have enabled it, you need to add it to your %s dashboard."
+msgstr "不需要子网站唯一安全ID，但是，由于已启用子项唯一安全ID，因此需要将其添加到%s仪表盘。"
+
+#: class/class-mainwp-child-server-information.php:1443
+msgid "Connection details"
+msgstr "连接细节"
+
+#: class/class-mainwp-child-back-up-wordpress.php:492
+msgid "Error while trying to trigger the schedule"
+msgstr "试图触发计划时出错"
+
+#: class/class-mainwp-child-server-information.php:1421
+msgid "For the friendly site name, you can use any name, this is just a suggestion."
+msgstr "友好的网站名称，您可以使用任何名称，这只是建议。"
+
+#: class/class-mainwp-child-server-information.php:1419
+msgid "Friendly site name"
+msgstr "网站名称"
+
+#: class/class-mainwp-child-server-information.php:1431
+msgid "If there is an issue with SSL certificate on this site, try to set this option to No."
+msgstr "如果本网站的SSL证书有问题，请尝试将此选项设置为否。"
+
+#: class/class-mainwp-child-server-information.php:1446
+msgid "If you are trying to connect this child site to your %s Dashboard, you can use following details to do that. Please note that these are only suggested values."
+msgstr "如果您试图将此子网站点连接到您的%s仪表板，您可以使用以下详细信息来实现。请注意，这些只是建议值。"
+
+#: class/class-mainwp-child-server-information.php:1425
+msgid "Leave the field blank"
+msgstr "此字段保留为空"
+
+#: class/class-mainwp-pages.php:111
+msgid "Please add this site to your "
+msgstr "请添加本站到您的 "
+
+#: class/class-mainwp-child-back-up-buddy.php:352
+msgid "Please install the BackupBuddy plugin on the child site."
+msgstr "请在子网站安装BackupBuddy插件。"
+
+#: class/class-mainwp-child-wordfence.php:552
+msgid "Please install the Wordfence plugin on the child site."
+msgstr "请在子网站上安装Wordfence插件。"
+
+#: class/class-mainwp-child-server-information.php:1434
+msgid "SSL version"
+msgstr "SSL 版本"
+
+#: class/class-mainwp-child-branding-render.php:198
+msgid "Sending email failed!"
+msgstr "发送邮件失败!"
+
+#: class/class-mainwp-child-server-information.php:1409
+msgid "Site URL"
+msgstr "网站链接"
+
+#: class/class-mainwp-child-server-information.php:1416
+msgid "This is your Administrator username, however, you can use any existing Administrator username."
+msgstr "这是您的管理员用户名，但是，您可以使用任何现有的管理员用户名。"
+
+#: class/class-mainwp-child-server-information.php:1429
+msgid "Verify certificate"
+msgstr "验证证书"
+
+#: class/class-mainwp-child-server-information.php:1430
+msgid "Yes"
+msgstr "是"
+
+#: class/class-mainwp-child-back-up-buddy.php:3011
+msgid " Blacklisting Status"
+msgstr " 黑名单状态"
+
+#: class/class-mainwp-child-back-up-buddy.php:3839
+msgid "%1$s could not be licensed due to an internal error. Please try to license %2$s again at a later time. If this problem continues, please contact iThemes support."
+msgstr "%1$s由于内部错误，无法获得授权。请稍后再次尝试授权%2$s。如果这个问题继续存在，请联系iThemes支持。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3836
+msgid "%1$s could not be licensed since the membership account is out of available licenses for this product. You can unlicense the product on other sites or upgrade your membership to one with a higher number of licenses in order to increase the amount of available licenses."
+msgstr "由于会员账号超出此产品的可用许可, 因此 %1$s 无法获得许可. 您可以在其他网站上取消许可产品或将您的会员资格升级为拥有更多许可的会员, 以增加可用许可的数量."
+
+#: class/class-mainwp-child-back-up-buddy.php:2785
+msgid "An error was encountered attempting to scan this site."
+msgstr "尝试扫描此网站时遇到错误。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2786
+msgid "An internet connection is required and this site must be accessible on the public internet."
+msgstr "需要互联网连接，并且必须在公共互联网上访问本网站。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3847
+msgid "An unknown error occurred. Please contact iThemes support. Error details: %s"
+msgstr "出现未知错误. 请联系 iThemes 支持. 错误详细信息: %s"
+
+#: class/class-mainwp-child-back-up-buddy.php:3845
+msgid "An unknown error relating to the %1$s product occurred. Please contact iThemes support. Error details: %2$s"
+msgstr "发生与 %1$s 产品有关的未知错误. 请联系 iThemes 支持. 错误详细信息: %2$s"
+
+#: class/class-mainwp-child-back-up-buddy.php:3681
+msgid "An unknown server error occurred. Please try to license your products again at another time."
+msgstr "发生未知服务器错误. 请尽量在其他时间再次许可您的产品."
+
+#: class/class-mainwp-child-back-up-buddy.php:3766
+msgid "An unknown server error occurred. Please try to remove licenses from your products again at another time."
+msgstr "发生未知服务器错误. 请尽量在其他时间再次从您的产品中移除许可."
+
+#: class/class-mainwp-child-back-up-buddy.php:2175
+msgid "Attempts"
+msgstr "尝试"
+
+#: class/class-mainwp-child-back-up-buddy.php:1783
+msgid "Backup Process Technical Details"
+msgstr "备份流程技术细节"
+
+#: class/class-mainwp-child-back-up-buddy.php:1681
+msgid "Backup Status"
+msgstr "备份状态"
+
+#: class/class-mainwp-child-back-up-buddy.php:2173
+msgid "Backup Steps"
+msgstr "备份步骤"
+
+#: class/class-mainwp-child-back-up-buddy.php:2835
+#: class/class-mainwp-child-back-up-buddy.php:2853
+#: class/class-mainwp-child-back-up-buddy.php:2955
+#: class/class-mainwp-child-back-up-buddy.php:2969
+#: class/class-mainwp-child-back-up-buddy.php:2983
+#: class/class-mainwp-child-back-up-buddy.php:2996
+#: class/class-mainwp-child-back-up-buddy.php:3010
+msgid "Click to toggle"
+msgstr "点击切换"
+
+#: class/class-mainwp-child-back-up-buddy.php:3056
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: class/class-mainwp-child-back-up-buddy.php:2907
+msgid "Details"
+msgstr "详情"
+
+#: class/class-mainwp-child-back-up-buddy.php:2775
+msgid "ERROR #24452. Unable to load Malware Scan results. Details:"
+msgstr "错误＃24452。 无法加载恶意软件扫描结果。 细节："
+
+#: class/class-mainwp-child-back-up-buddy.php:2741
+msgid "ERROR: You are currently running your site locally. Your site must be internet accessible to scan."
+msgstr "错误：您当前正在本地运行您的站点。 您的网站必须位于互联网才能进行扫描。"
+
+#: class/class-mainwp-child-back-up-buddy.php:1884
+msgid "Empty schedule ids"
+msgstr "空的时间表ID"
+
+#: class/class-mainwp-child-back-up-buddy.php:831
+msgid "Error: not found the backup schedule or invalid data"
+msgstr "错误：未找到备份计划或数据无效"
+
+#: class/class-mainwp-child-back-up-buddy.php:2933
+msgid "Errors"
+msgstr "错误"
+
+#: class/class-mainwp-child-back-up-buddy.php:2984
+msgid "External Javascript"
+msgstr "外部Javascript"
+
+#: class/class-mainwp-child-back-up-buddy.php:2322
+#: class/class-mainwp-child-back-up-buddy.php:2352
+msgid "Fatal Error #4344443: Backup failure. Please see any errors listed in the Status Log for details."
+msgstr "致命错误#4344443：备份失败。 有关详细信息，请参阅状态日志中列出的任何错误。"
+
+#: class/class-mainwp-child-back-up-buddy.php:1837
+msgid "File Size"
+msgstr "文件大小"
+
+#: class/class-mainwp-child-back-up-buddy.php:3057
+msgid "Full Backup"
+msgstr "完整备份"
+
+#: class/class-mainwp-child-back-up-buddy.php:2865
+msgid "Hostname"
+msgstr "主机名"
+
+#: class/class-mainwp-child-back-up-buddy.php:2874
+msgid "IP Address"
+msgstr "IP 地址"
+
+#: class/class-mainwp-child-back-up-buddy.php:2997
+msgid "Iframes Included"
+msgstr "包含iframe"
+
+#: class/class-mainwp-child-back-up-buddy.php:3826
+msgid "Incorrect password. Please make sure that you are supplying your iThemes membership username and password details."
+msgstr "密码错误。 请确保您提供您的iThemes会员用户名和密码详细信息。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2892
+msgid "Information"
+msgstr "信息"
+
+#: class/class-mainwp-child-back-up-buddy.php:2061
+msgid "Integrity Test"
+msgstr "完整性测试"
+
+#: class/class-mainwp-child-back-up-buddy.php:900
+msgid "Invalid profile data"
+msgstr "无效的资料数据"
+
+#: class/class-mainwp-child-back-up-buddy.php:859
+msgid "Invalid schedule data"
+msgstr "无效的时间表数据"
+
+#: class/class-mainwp-child-back-up-buddy.php:3830
+msgid "Invalid username. Please make sure that you are supplying your iThemes membership username and password details."
+msgstr "无效的用户名。 请确保您提供您的iThemes会员用户名和密码详细信息。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2956
+msgid "Links"
+msgstr "链接"
+
+#: class/class-mainwp-child-back-up-buddy.php:3318
+msgid "Live Database Backup paused."
+msgstr "活动数据库备份暂停。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3325
+msgid "Live Database Backup resumed."
+msgstr "活动数据库备份恢复。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3310
+msgid "Live File Backup has resumed."
+msgstr "实时文件备份已经恢复。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3298
+msgid "Live File Backup paused. It may take a moment for current processes to finish."
+msgstr "活动文件备份已暂停。 当前进程可能需要一段时间才能完成。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2970
+msgid "Local Javascript"
+msgstr "本地Javascript"
+
+#: class/class-mainwp-child-back-up-buddy.php:2838
+msgid "Malware"
+msgstr "恶意软件"
+
+#: class/class-mainwp-child-back-up-buddy.php:2836
+msgid "Malware Detection"
+msgstr "恶意软件检测"
+
+#: class/class-mainwp-child-back-up-buddy.php:2731
+msgid "Malware Scan URL"
+msgstr "恶意软件扫描URL"
+
+#: class/class-mainwp-child-back-up-buddy.php:763
+msgid "Never"
+msgstr "从不"
+
+#: class/class-mainwp-child-back-up-buddy.php:2179
+msgid "No step statistics were found for this backup."
+msgstr "未找到此备份的步骤统计信息。"
+
+#: class/class-mainwp-child-back-up-buddy.php:834
+msgid "Note: If there is no site activity there may be delays between steps in the backup. Access the site or use a 3rd party service, such as a free pinging service, to generate site activity."
+msgstr "注意：如果没有站点活动，备份中的步骤之间可能会有延迟。 访问该网站或使用第三方服务（如免费ping服务）来生成站点活动。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2601
+msgid "Nothing has been logged."
+msgstr "没有记录。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2925
+msgid "Notices"
+msgstr "通知"
+
+#: class/class-mainwp-child-back-up-buddy.php:825
+msgid "Only run for main site or standalone. Multisite subsites do not allow schedules"
+msgstr "只为主站点或独立站点运行。多站点的子网站点不允许使用计划表"
+
+#: class/class-mainwp-child-back-up-buddy.php:3290
+msgid "Please wait while we verify your backup is completely up to date before we create the Snapshot. This may take a few minutes..."
+msgstr "在我们创建快照之前，请稍候我们验证您的备份是否为最新。 这可能需要几分钟的时间..."
+
+#: class/class-mainwp-child-back-up-buddy.php:724
+msgid "Plugin settings have been reset to defaults."
+msgstr "插件设置已重置为默认值。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3058
+msgid "Plugins Backup"
+msgstr "插件备份"
+
+#: class/class-mainwp-child-back-up-buddy.php:1835
+msgid "Recently Made Backups (Start Time)"
+msgstr "最近制作备份（开始时间）"
+
+#: class/class-mainwp-child-back-up-buddy.php:715
+msgid "Remote destination settings were not reset."
+msgstr "远程目标设置未重置。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2827
+msgid "See details below."
+msgstr "详见下方细节。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2856
+msgid "Site"
+msgstr "网站"
+
+#: class/class-mainwp-child-back-up-buddy.php:3709
+msgid "Successfully licensed %l."
+msgstr "已成功许可 %l."
+
+#: class/class-mainwp-child-back-up-buddy.php:3793
+msgid "Successfully removed license from %l."
+msgid_plural "Successfully removed licenses from %l."
+msgstr[0] "已成功从%l中删除许可证。"
+
+#: class/class-mainwp-child-back-up-buddy.php:2883
+msgid "System details"
+msgstr "系统信息"
+
+#: class/class-mainwp-child-back-up-buddy.php:3833
+msgid "The licensing server reports that the %1$s (%2$s) product is unknown. Please contact support for assistance."
+msgstr "许可服务器报告 %1$s (%2$s) 产品未知. 请联系支持部门寻求帮助."
+
+#: class/class-mainwp-child-back-up-buddy.php:3059
+msgid "Themes Backup"
+msgstr "主题备份"
+
+#: class/class-mainwp-child-back-up-buddy.php:1838
+msgid "Trigger"
+msgstr "触发"
+
+#: class/class-mainwp-child-back-up-buddy.php:1836
+msgid "Type | Profile"
+msgstr "类型 | 简介"
+
+#: class/class-mainwp-child-back-up-buddy.php:1760
+#: class/class-mainwp-child-back-up-buddy.php:2001
+msgid "Unable to access fileoptions data file."
+msgstr "无法访问文件选项数据文件。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3715
+#: class/class-mainwp-child-back-up-buddy.php:3722
+msgid "Unable to license %1$s. Reason: %2$s"
+msgstr "无法许可%1$s。 原因：%2$s"
+
+#: class/class-mainwp-child-back-up-buddy.php:3799
+msgid "Unable to remove license from %1$s. Reason: %2$s"
+msgstr "无法从%1$s中删除许可。 原因：%2$s"
+
+#: class/class-mainwp-child-back-up-buddy.php:3788
+msgid "Unknown server error."
+msgstr "未知服务器错误。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3301
+msgid "Unpaused but not running now."
+msgstr "未启动，但现在没有运行。"
+
+#: class/class-mainwp-child-back-up-buddy.php:3290
+msgid "Verifying everything is up to date before Snapshot"
+msgstr "在快照之前验证一切都是最新的"
+
+#: class/class-mainwp-child-back-up-buddy.php:2916
+msgid "Versions"
+msgstr "版本"
+
+#: class/class-mainwp-child-back-up-buddy.php:1685
+#: class/class-mainwp-child-back-up-buddy.php:1787
+msgid "View Backup Log"
+msgstr "查看备份日志"
+
+#: class/class-mainwp-child-back-up-buddy.php:1681
+msgid "View Details"
+msgstr "查看详情"
+
+#: class/class-mainwp-child-back-up-buddy.php:2827
+msgid "Warning: Possible Malware Detected!"
+msgstr "警告：检测到可能的恶意软件！"
+
+#: class/class-mainwp-child-back-up-buddy.php:2942
+msgid "Warnings"
+msgstr "警告"
+
+#: class/class-mainwp-child-back-up-buddy.php:2905
+msgid "Web application"
+msgstr "Web应用进程"
+
+#: class/class-mainwp-child-back-up-buddy.php:2854
+msgid "Web server details"
+msgstr "Web服务器详情"
+
+#: class/class-mainwp-child-back-up-buddy.php:3702
+msgid "Your product subscription has expired"
+msgstr "您的产品订阅已过期"
+
+#: class/class-mainwp-child-back-up-buddy.php:2819
+#: class/class-mainwp-child-back-up-buddy.php:2844
+#: class/class-mainwp-child-back-up-buddy.php:2861
+#: class/class-mainwp-child-back-up-buddy.php:2870
+#: class/class-mainwp-child-back-up-buddy.php:2879
+#: class/class-mainwp-child-back-up-buddy.php:2888
+#: class/class-mainwp-child-back-up-buddy.php:2897
+#: class/class-mainwp-child-back-up-buddy.php:2912
+#: class/class-mainwp-child-back-up-buddy.php:2921
+#: class/class-mainwp-child-back-up-buddy.php:2930
+#: class/class-mainwp-child-back-up-buddy.php:2938
+#: class/class-mainwp-child-back-up-buddy.php:2947
+#: class/class-mainwp-child-back-up-buddy.php:2962
+#: class/class-mainwp-child-back-up-buddy.php:2976
+#: class/class-mainwp-child-back-up-buddy.php:2990
+#: class/class-mainwp-child-back-up-buddy.php:3003
+#: class/class-mainwp-child-back-up-buddy.php:3017
+msgid "none"
+msgstr "无"
+
+#: class/class-mainwp-child-ithemes-security.php:567
+msgctxt "%1$s is the input name. %2$s is the error message."
+msgid "The directory supplied in %1$s cannot be used as a valid directory. %2$s"
+msgstr "%1$s 提供的目录不能用作有效的目录。%2$s"
+
+#: class/class-mainwp-child-ithemes-security.php:572
+msgid "The directory supplied in %1$s is not writable. Please select a directory that can be written to."
+msgstr "%1$s 提供的目录不可写。请选择一个可以写入的目录。"
+
+#: class/class-mainwp-child-ithemes-security.php:411
+msgid "You must change <strong>WordPress permalinks</strong> to a setting other than \"Plain\" in order to use \"Hide Backend\" feature."
+msgstr "您必须将<strong>WordPress的permalinks</strong>改为\"Plain\"以外的设置，才能使用\"隐藏后台\"功能。"
+
+#: class/class-mainwp-custom-post-type.php:430
+msgid "Cannot add featured image"
+msgstr "不能添加特色图片"
+
+#: class/class-mainwp-custom-post-type.php:471
+msgid "Cannot add product image"
+msgstr "不能添加产品图片"
+
+#: class/class-mainwp-custom-post-type.php:117
+msgid "Cannot decode data"
+msgstr "无法解码数据"
+
+#: class/class-mainwp-custom-post-type.php:275
+msgid "Cannot delete old post meta values"
+msgstr "无法删除旧的文章元值"
+
+#: class/class-mainwp-custom-post-type.php:261
+msgid "Cannot get old post. Probably is deleted now. Please try again for create new post"
+msgstr "无法获得旧文章。 现在可能已删除。 请重试以创建新文章"
+
+#: class/class-mainwp-custom-post-type.php:442
+msgid "Error when adding post meta"
+msgstr "添加文章元时出错"
+
+#: class/class-mainwp-custom-post-type.php:380
+msgid "Error when adding taxonomy to post"
+msgstr "在发布分类法时出错"
+
+#: class/class-mainwp-custom-post-type.php:296
+msgid "Error when insert new post:"
+msgstr "插入新文章时出错。"
+
+#: class/class-mainwp-custom-post-type.php:232
+msgid "Missing"
+msgstr "缺少"
+
+#: class/class-mainwp-custom-post-type.php:109
+msgid "Missing data"
+msgstr "缺失数据"
+
+#: class/class-mainwp-custom-post-type.php:353
+msgid "Missing taxonomy"
+msgstr "缺少分类"
+
+#: class/class-mainwp-child-ithemes-security.php:510
+msgid "Not Updated"
+msgstr "尚未更新"
+
+#: class/class-mainwp-custom-post-type.php:245
+msgid "Please install"
+msgstr "请在子网站上安装Wordfence插件。"
+
+#: class/class-mainwp-custom-post-type.php:407
+msgid "Product SKU must be unique"
+msgstr "产品SKU必须是唯一的"
+
+#: class/class-mainwp-child-ithemes-security.php:911
+#: class/class-mainwp-child-ithemes-security.php:920
+msgid "Relative Path"
+msgstr "相对路径"
+
+#: class/class-mainwp-child-ithemes-security.php:907
+msgid "Reload File Permissions Details"
+msgstr "重新加载文件权限的详细信息"
+
+#: class/class-mainwp-child-ithemes-security.php:914
+#: class/class-mainwp-child-ithemes-security.php:923
+msgid "Result"
+msgstr "结果"
+
+#: class/class-mainwp-child-ithemes-security.php:912
+#: class/class-mainwp-child-ithemes-security.php:921
+msgid "Suggestion"
+msgstr "建议"
+
+#: class/class-mainwp-child-ithemes-security.php:805
+msgid "The WordPress salts were successfully regenerated."
+msgstr "WordPress salts 已成功重新生成。"
+
+#: class/class-mainwp-child-ithemes-security.php:766
+msgid "The backup request returned an unexpected response. It returned a response of type <code>%1$s</code>."
+msgstr "备份请求返回了意外的响应。其返回了一个类型为 <code>%1$s</code> 的响应。"
+
+#: class/class-mainwp-child-ithemes-security.php:1219
+msgid "The database table prefix was successfully changed to <code>%1$s</code>."
+msgstr "数据库数据表前缀已成功更改为 <code>%1$s</code>。"
+
+#: class/class-mainwp-custom-post-type.php:266
+msgid "This post is inside trash on child website. Please try publish it manually and try again."
+msgstr "这篇文章在子网站上的回收站里。请尝试手动发布它，然后重试。"
+
+#: class/class-mainwp-child-ithemes-security.php:894
+msgid "WARNING"
+msgstr "警告"
+
+#: class/class-mainwp-custom-post-type.php:232
+msgid "inside post data"
+msgstr "内部文章数据"
+
+#: class/class-mainwp-custom-post-type.php:245
+msgid "on child and try again"
+msgstr "在子网站点上，然后重试"
+
+#: class/class-mainwp-clone-page.php:306
+msgid "If you have a FULL backup created by basic MainWP Backup system you may restore it by uploading here. Backups created by 3rd party plugins will not work."
+msgstr "如果您有由默认MainWP Backup系统创建的完整备份，则可以通过在此处上传来恢复它。由第三方插件创建的备份将不起作用。"
+
+#: class/class-mainwp-clone-page.php:216
+msgid "If you have a FULL backup created by the default MainWP Backup system you may restore it by uploading here. Backups created by 3rd party plugins will not work."
+msgstr "如果您具有由默认的MainWP Backup系统创建的完整备份，则可以通过在此处上传将其还原。由第三方插件创建的备份将不起作用。"
+
+#: class/class-mainwp-pages.php:473
+msgid "Server information"
+msgstr "服务器信息"
+
+#: class/class-mainwp-child-wp-rocket.php:433
+msgid "Please install WP Rocket plugin on child website"
+msgstr "请在子网站上安装WP Rocket插件"
+
+#: class/class-mainwp-child-server-information.php:547
+msgid "Get system report"
+msgstr "获取系统报告"
+
+#: class/class-mainwp-child-server-information-base.php:757
+msgid "Not expected HTTP response body: %s"
+msgstr "没有预期的HTTP响应正文：%s"
+
+#: class/class-mainwp-child-server-information.php:943
+msgid "Server self connect"
+msgstr "服务器自连接"
+
+#: class/class-mainwp-child-server-information.php:542
+msgid "Please include this information when requesting support:"
+msgstr "请求支持时请带上这个信息："
+
+#: class/class-mainwp-child-server-information.php:544
+msgid "Hide"
+msgstr "隐藏"
+
+#: class/class-mainwp-child-branding-render.php:135
+msgid "Subject:"
+msgstr "主题："
+
+#: class/class-mainwp-child-branding-render.php:145
+msgid "Your message:"
+msgstr "您的消息："
+
+#: class/class-mainwp-child-back-up-wordpress.php:766
+msgid "Your Site"
+msgstr "您的网站"
+
+#: class/class-mainwp-child-stats.php:95
+msgid "Hint: Go to the child site, deactivate and reactivate the MainWP Child plugin and try again."
+msgstr "提示︰ 到子网站点，停用和重新激活 MainWP子插件，然后重试。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:484
+msgid "If you have forgotten your password, then go here to change your password on updraftplus.com."
+msgstr "如果您忘记了密码, 请在这里更改您在 UpdraftPlus.com 上的密码。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:487
+msgid "You entered an email address that was not recognised by UpdraftPlus.Com"
+msgstr "您输入的电子邮件地址未被 Updraftplus.com 识别"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:491
+msgid "Your email address and password were not recognised by UpdraftPlus.Com"
+msgstr "您的电子邮件地址和密码未被 UpdraftPlus.com 识别"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:406
+msgid "Disconnect"
+msgstr "断开连接"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:361
+msgid "An unknown error occurred when trying to connect to UpdraftPlus.Com"
+msgstr "尝试连接到 UpdraftPlus.com 时出现未知错误"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:452
+msgid "It appears that your web server's IP Address (%s) is blocked."
+msgstr "您的Web服务器的IP地址 （%s） 似乎被阻止。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:396
+msgid "Quota:"
+msgstr "配额："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:452
+msgid "This most likely means that you share a webserver with a hacked website that has been used in previous attacks."
+msgstr "这很可能意味着您与在以前的攻击中使用的被黑客攻击的网站共享一个 web 服务器。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:394
+msgid "This site is <strong>connected</strong> to UpdraftPlus Vault."
+msgstr "此站点<strong>连接到</strong>UpdraftPlus 保管库。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:452
+msgid "To remove the block, please go here."
+msgstr "要拆除方块, 请到这里去。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:454
+msgid "UpdraftPlus.Com returned a response which we could not understand (data: %s)"
+msgstr "UpdraftPlus.com 返回一个我们无法理解的响应（数据： %s）"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:478
+#: class/class-mainwp-child-updraft-plus-backups.php:495
+msgid "UpdraftPlus.Com returned a response, but we could not understand it"
+msgstr "Updraftplus.com 回复, 但我们无法理解"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:452
+msgid "UpdraftPlus.com has responded with 'Access Denied'."
+msgstr "UpdraftPlus.com 以 \"拒绝访问\" 作为回应。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:394
+msgid "Vault owner"
+msgstr "保险箱所有者"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:394
+msgid "Well done - there's nothing more needed to set up."
+msgstr "很好-这里没什幺需要设置的。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:476
+msgid "You do not currently have any UpdraftPlus Vault quota"
+msgstr "您目前没有任何 UpdraftPlus 保管库配额"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:484
+msgid "Your email address was valid, but your password was not recognised by UpdraftPlus.Com."
+msgstr "您的电子邮件地址有效, 但您的密码未被 UpdraftPlus.com 识别。"
+
+#: class/class-mainwp-helper.php:202
+msgid " Is its parent directory writable by the server?"
+msgstr " 服务器的父目录是否可写？"
+
+#: class/class-mainwp-clone-page.php:137 class/class-mainwp-clone-page.php:285
+#: class/class-mainwp-clone-page.php:1229
+msgid " to re-login to the admin and re-save permalinks."
+msgstr "要重新登录到管理员和重新保存的固定链接。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3464
+msgid "(%d archive(s) in set)."
+msgstr "（集合中的%d存档（s））。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3326
+msgid "(Not finished)"
+msgstr "（没完成）"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3288
+msgid "(backup set imported from remote storage)"
+msgstr "（从远程存储导入的备份集）"
+
+#: class/class-mainwp-clone-page.php:218 class/class-mainwp-clone-page.php:311
+msgid "A database only backup will not work."
+msgstr "只备份数据库将无法工作。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3879
+msgid "Backup begun"
+msgstr "备份开始"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3420
+msgid "Backup created by: %s."
+msgstr "由%s创建的备份。"
+
+#: class/class-mainwp-clone-page.php:604
+msgid "Backup created on %1$s total size to download: %2$dMB"
+msgstr "备份创建于%1$s下载总大小。%2$dMB"
+
+#: class/class-mainwp-clone-page.php:606
+msgid "Backup downloaded"
+msgstr "备份下载"
+
+#: class/class-mainwp-clone.php:768
+msgid "Backup file not found"
+msgstr "找不到备份文件"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3921
+msgid "Backup finished"
+msgstr "备份完成"
+
+#: class/class-mainwp-clone-page.php:1222
+msgid "Be sure to use a FULL backup created by your Network dashboard, if critical folders are excluded it may result in a not working installation."
+msgstr "请务必使用网络仪表板创建的完整备份，如果排除关键文件夹，则可能导致无法正常安装。"
+
+#: class/class-mainwp-clone-page.php:1226
+msgid "CAUTION: this will overwrite your existing site."
+msgstr "小心：这将覆盖您现有的网站。"
+
+#: class/class-mainwp-clone-install.php:223
+msgid "Cant read configuration file from the backup."
+msgstr "不能从备份中读取配置文件。"
+
+#: class/class-mainwp-utility.php:565
+msgid "Child plugin is disabled or the security key is incorrect. Please resync with your main installation."
+msgstr "子插件被禁用或安全密钥不正确。请与您的主站点重新同步。"
+
+#: class/class-mainwp-clone-page.php:201
+msgid "Clone website"
+msgstr "克隆网站"
+
+#: class/class-mainwp-clone-page.php:223 class/class-mainwp-clone-page.php:502
+msgid "Clone/Restore Website"
+msgstr "克隆/还原网站"
+
+#: class/class-mainwp-clone-page.php:116
+msgid "Cloning is currently off - To turn on return to your main dashboard and turn cloning on on the Clone page."
+msgstr "克隆目前处于关闭状态-要返回到您的主仪表板和轮对克隆迁移/克隆页面上打开。"
+
+#: class/class-mainwp-clone-page.php:175
+msgid "Cloning is currently on but no sites have been allowed, to allow sites return to your main dashboard and turn cloning on on the Clone page."
+msgstr "克隆是目前但是没有网站已获准，允许站点返回到您的主仪表板和打开克隆迁移/克隆页面上。"
+
+#: class/class-mainwp-clone-page.php:608
+msgid "Cloning process completed successfully!"
+msgstr "克隆过程已成功完成 ！"
+
+#: class/class-mainwp-clone-page.php:1188
+msgid "Cloning process completed successfully! Check and re-save permalinks "
+msgstr "克隆的过程已成功完成 ！请检查并重新保存固定链接 "
+
+#: class/class-mainwp-clone-page.php:135
+msgid "Cloning process completed successfully! You will now need to click "
+msgstr "克隆过程已成功完成 ！现在，您需要单击"
+
+#: class/class-mainwp-clone-page.php:404
+msgid "Content Folder"
+msgstr "内容文件夹"
+
+#: class/class-mainwp-clone-page.php:602
+msgid "Continue Anyway?"
+msgstr "仍要继续？"
+
+#: class/class-mainwp-clone.php:436
+msgid "Could not create backupfile on child"
+msgstr "不能创建子网站点备份文件"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4083
+msgid "Could not find that job - perhaps it has already finished?"
+msgstr "无法找到那份任务 - 也许它已经完成了？"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3936
+msgid "Created database backup"
+msgstr "创建数据库备份"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3897
+msgid "Created file backup zips"
+msgstr "创建文件备份压缩文件"
+
+#: class/class-mainwp-clone-page.php:603
+msgid "Creating backup on %1$s expected size: %2$dMB (estimated time: %3$d seconds)"
+msgstr "在%1$s上创建备份，预计大小：%2$dMB（预计时间：%3$d秒）。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3949
+msgid "Creating database backup"
+msgstr "创建数据库备份"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3883
+msgid "Creating file backup zips"
+msgstr "创建文件备份压缩文件"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3355
+msgid "Database (created by %s)"
+msgstr "数据库（由%s创建）"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3309
+msgid "Delete this backup set"
+msgstr "删除此备份集"
+
+#: class/class-mainwp-clone-page.php:181
+msgid "Display by:"
+msgstr "显示为："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4178
+msgid "Download failed"
+msgstr "下载失败"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4208
+msgid "Download in progress"
+msgstr "下载进度"
+
+#: class/class-mainwp-clone-page.php:605
+msgid "Downloading backup"
+msgstr "下载备份"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3976
+msgid "Encrypted database"
+msgstr "加密数据库"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3966
+msgid "Encrypting database"
+msgstr "加密数据库"
+
+#: class/class-mainwp-clone-install.php:390
+msgid "Error: unexpected end of file for database."
+msgstr "错误：数据库的文件意外结束。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4136
+msgid "Error: unexpected file read fail"
+msgstr "错误：意外文件读取失败"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3357
+msgid "External database"
+msgstr "外部数据库"
+
+#: class/class-mainwp-clone-page.php:607
+msgid "Extracting backup and updating your database, this might take a while. Please be patient."
+msgstr "提取备份和更新您的数据库，这可能需要一段时间。请耐心等待。"
+
+#: class/class-mainwp-clone-page.php:102 class/class-mainwp-clone-page.php:254
+msgid "File could not be uploaded."
+msgstr "文件无法上传"
+
+#: class/class-mainwp-clone-page.php:105 class/class-mainwp-clone-page.php:257
+msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"文件为空，请上传更多的东西。此错误也可能是由于 php.ini 中禁用了上传或\n"
+" post_max_size 被定义为小于 php.ini 中的 upload_max_filesize 引起的。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4196
+msgid "File ready."
+msgstr "文件已准备好."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3426
+msgid "Files and database WordPress backup (created by %s)"
+msgstr "文件和数据库WordPress备份（由%s创建）"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3426
+msgid "Files backup (created by %s)"
+msgstr "文件备份（由%s创建）"
+
+#: class/class-mainwp-client-report-base.php:895
+msgid "Guest"
+msgstr "访客"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3326
+msgid "If you are seeing more backups than you expect, then it is probably because the deletion of old backup sets does not happen until a fresh backup completes."
+msgstr "如果您看到的备份比预期的要多，那幺很可能是因为在新备份完成之前不会删除旧的备份集。"
+
+#: class/class-mainwp-clone-page.php:374
+msgid "If you have uploaded a FULL backup to your server (via FTP or other means) you can use this section to locate the zip file and select it. A database only backup will not work."
+msgstr "如果您已将完整的备份上传到您的服务器（通过 FTP 或其他方式），您可以使用此部分找到 zip 文件并选择它。仅数据库备份将无法使用。"
+
+#: class/class-mainwp-clone.php:496
+msgid "Invalid response"
+msgstr "无响应"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4009
+msgid "Job ID: %s"
+msgstr "任务 ID: %s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4071
+msgid "Job deleted"
+msgstr "删除任务"
+
+#. Author of the plugin
+msgid "MainWP"
+msgstr "MainWP"
+
+#. Plugin Name of the plugin
+msgid "MainWP Child"
+msgstr "MainWP子插件"
+
+#: class/class-mainwp-clone.php:645 class/class-mainwp-clone.php:760
+msgid "No download file found"
+msgstr "未找到下载文件"
+
+#: class/class-mainwp-clone.php:523
+msgid "No download link given"
+msgstr "未给出下载链接"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4211
+msgid "No local copy present."
+msgstr "不存在本地副本。"
+
+#: class/class-mainwp-clone.php:395 class/class-mainwp-clone.php:468
+msgid "No site given"
+msgstr "没有指定网站"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4015
+msgid "Note: the progress bar below is based on stages, NOT time. Do not stop the backup simply because it seems to have remained in the same place for a while - that is normal."
+msgstr "注意：下面的进度条是基于阶段，而不是时间。不要停止备份，仅仅因为它似乎已经在同一个地方停留了一段时间-这是正常的。"
+
+#: class/class-mainwp-clone-page.php:213 class/class-mainwp-clone-page.php:267
+msgid "Option 1:"
+msgstr "选项1："
+
+#: class/class-mainwp-clone-page.php:372
+msgid "Option 2:"
+msgstr "选项2："
+
+#: class/class-mainwp-clone-page.php:465
+msgid "Parent Folder"
+msgstr "父文件夹"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3458
+msgid "Press here to download"
+msgstr "按此下载"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3913
+msgid "Pruning old backup sets"
+msgstr "修剪旧备份集"
+
+#: class/class-mainwp-clone-page.php:418
+msgid "Quick Jump:"
+msgstr "快速跳转："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3290
+#: class/class-mainwp-clone-page.php:267 class/class-mainwp-clone-page.php:1218
+msgid "Restore"
+msgstr "恢复"
+
+#: class/class-mainwp-clone-page.php:291 class/class-mainwp-clone-page.php:315
+msgid "Restore Website"
+msgstr "还原网站"
+
+#: class/class-mainwp-clone-page.php:1234
+msgid "Restore process completed successfully!"
+msgstr "还原过程已完成 ！"
+
+#: class/class-mainwp-clone-page.php:1186
+msgid "Restore process completed successfully! Check and re-save permalinks "
+msgstr "恢复过程成功完成！ 检查并重新保存永久链接 "
+
+#: class/class-mainwp-clone-page.php:284 class/class-mainwp-clone-page.php:1228
+msgid "Restore process completed successfully! You will now need to click "
+msgstr "恢复过程成功完成！ 您现在需要单击 "
+
+#: class/class-mainwp-clone-page.php:372
+msgid "Restore/Clone From Server"
+msgstr "从服务器还原/克隆"
+
+#: class/class-mainwp-clone-page.php:213
+msgid "Restore/Clone from backup"
+msgstr "从备份还原/克隆"
+
+#: class/class-mainwp-clone-page.php:377
+msgid "Root directory is not readable. Please contact with site administrator to correct."
+msgstr "根目录不可读。 请联系网站管理员进行更正。"
+
+#: class/class-mainwp-clone-page.php:460
+msgid "Select File"
+msgstr "选择文件"
+
+#: class/class-mainwp-wordpress-seo.php:159
+#: class/class-mainwp-wordpress-seo.php:221
+#: class/class-mainwp-wordpress-seo.php:225
+#: class/class-mainwp-wordpress-seo.php:230
+#: class/class-mainwp-wordpress-seo.php:235
+msgid "Settings could not be imported:"
+msgstr "设置无法导入："
+
+#: class/class-mainwp-clone-page.php:181
+msgid "Site Name"
+msgstr "站点名称"
+
+#: class/class-mainwp-clone-page.php:398
+msgid "Site Root"
+msgstr "站点根目录"
+
+#: class/class-mainwp-clone.php:404 class/class-mainwp-clone.php:475
+#: class/class-mainwp-clone.php:533
+msgid "Site not found"
+msgstr "站点未找到"
+
+#: class/class-mainwp-utility.php:563
+msgid "Something went wrong while contacting the child site. Please check if there is an error on the child site. This error could also be caused by trying to clone or restore a site to large for your server settings."
+msgstr "同时接触子网站点，出了错。请检查是否有错误在子网站上。此错误也可能引起试图克隆或将网站恢复到大为您的服务器设置。"
+
+#: class/class-mainwp-clone-page.php:1225
+msgid "Start Restore"
+msgstr "开始还原"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3835
+msgid "The backup apparently succeeded and is now complete"
+msgstr "备份成功，现已完成"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4143
+#: class/class-mainwp-child-updraft-plus-backups.php:4146
+msgid "The log file could not be read."
+msgstr "无法读取日志文件."
+
+#: class/class-mainwp-clone-page.php:601
+msgid "This is a large site (%dMB), the restore process will more than likely fail."
+msgstr "这是一个大型站点 (%dMB)，以上还原过程可能会失败。"
+
+#: class/class-mainwp-clone-page.php:181
+msgid "URL"
+msgstr "链接地址"
+
+#: class/class-mainwp-helper.php:202
+msgid "Unable to create directory "
+msgstr "无法创建目录。"
+
+#: class/class-mainwp-child-back-up-buddy.php:768
+#: class/class-mainwp-child-updraft-plus-backups.php:398
+#: class/class-mainwp-child-updraft-plus-backups.php:3978
+msgid "Unknown"
+msgstr "未知"
+
+#: class/class-mainwp-wordpress-seo.php:230
+msgid "Unzipping failed with error \"%s\"."
+msgstr "上传失败！错误信息\"%s\"."
+
+#: class/class-mainwp-clone-page.php:215 class/class-mainwp-clone-page.php:300
+msgid "Upload backup in .zip format (Maximum filesize for your server settings: "
+msgstr "上传备份.zip 格式 (最大文件大小为您的服务器设置︰"
+
+#: class/class-mainwp-wordpress-seo.php:235
+msgid "Upload failed."
+msgstr "上传失败。"
+
+#: class/class-mainwp-clone-page.php:161 class/class-mainwp-clone-page.php:289
+msgid "Upload successful."
+msgstr "上传成功!"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3901
+msgid "Uploading files to remote storage"
+msgstr "将文件上传到远程存储"
+
+#: class/class-mainwp-clone-page.php:402
+msgid "Uploads Folder"
+msgstr "上传文件夹"
+
+#: class/class-mainwp-child-back-up-buddy.php:1685
+#: class/class-mainwp-child-back-up-buddy.php:1787
+#: class/class-mainwp-child-updraft-plus-backups.php:3545
+msgid "View Log"
+msgstr "查看日志"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3917
+msgid "Waiting until scheduled time to retry because of errors"
+msgstr "由于错误而等待预定时间重试"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3467
+msgid "You appear to be missing one or more archives from this multi-archive set."
+msgstr "您似乎缺少多个存档集合中的一个或多个存档。"
+
+#: class/class-mainwp-clone-page.php:130 class/class-mainwp-clone-page.php:280
+msgid "Your content directory is not writable. Please set 0755 permission to "
+msgstr "您的内容目录不可写。请将权限设置为 0755 "
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4015
+msgid "delete schedule"
+msgstr "删除进度表"
+
+#: class/class-mainwp-clone-page.php:136 class/class-mainwp-clone-page.php:285
+#: class/class-mainwp-clone-page.php:1191
+#: class/class-mainwp-clone-page.php:1229
+msgid "here"
+msgstr "此处"
+
+#. Author URI of the plugin
+msgid "https://mainwp.com"
+msgstr "https://mainwp.com"
+
+#. Plugin URI of the plugin
+msgid "https://mainwp.com/"
+msgstr "https://mainwp.com/"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3998
+msgid "last activity: %ss ago"
+msgstr "上次活动:%ss前"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3997
+msgid "next resumption: %1$d (after %2$ss)"
+msgstr "下一次恢复：%1$d (%2$s之后)"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:4012
+msgid "show log"
+msgstr "显示日志"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3951
+msgid "table: %s"
+msgstr "表：%s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3349
+#: class/class-mainwp-child-updraft-plus-backups.php:3422
+msgid "unknown source"
+msgstr "未知源"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1071
+msgid "%1$s total table(s) found; %2$s with the indicated prefix."
+msgstr "%1$s找到的总表；%2$s有前缀的表。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1063
+msgid "%s table(s) found."
+msgstr "找到%s 个表格。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2471
+#: class/class-mainwp-child-updraft-plus-backups.php:2723
+msgid "(version: %s)"
+msgstr "（版本：%s）"
+
+#: class/class-mainwp-child-server-information.php:978
+msgid "Accept Content"
+msgstr "接受内容"
+
+#: class/class-mainwp-child-server-information.php:983
+msgid "Accept-Charset Content"
+msgstr "接受字符集"
+
+#: class/class-mainwp-child-ithemes-security.php:1020
+msgid "Admin user ID already changes."
+msgstr "管理员用户ID已经更改。"
+
+#: class/class-mainwp-child-ithemes-security.php:1009
+msgid "Admin user already changes."
+msgstr "管理员用户已经更改。"
+
+#: class/class-mainwp-child-links-checker.php:630
+msgid "An unexpected error occurred!"
+msgstr "出现意外错误！"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2502
+#: class/class-mainwp-child-updraft-plus-backups.php:2791
+msgid "Any support requests to do with %s should be raised with your web hosting company."
+msgstr "任何与%s相关的支持请求都应该与您的Web托管公司一起提出。"
+
+#: class/class-mainwp-child-server-information.php:918
+msgid "Architecture"
+msgstr "架构"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1320
+#: class/class-mainwp-child-updraft-plus-backups.php:1406
+msgid "At the same time as the files backup"
+msgstr "同时作为文件备份"
+
+#: class/class-mainwp-child-server-information.php:749
+msgid "BACKUP ARCHIVE INFORMATION"
+msgstr "备份存档信息"
+
+#: class/class-mainwp-clone-page.php:399
+msgid "Backup"
+msgstr "备份"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2016
+#: class/class-mainwp-child-updraft-plus-backups.php:3423
+msgid "Backup created by unknown source (%s) - cannot be restored."
+msgstr "由未知来源 （%s）创建的备份无法恢复。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3167
+msgid "Backup data (click to download)"
+msgstr "备份数据（点击下载）"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3166
+msgid "Backup date"
+msgstr "备份日期"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2509
+#: class/class-mainwp-child-updraft-plus-backups.php:2798
+msgid "Backup label:"
+msgstr "备份标签："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2471
+#: class/class-mainwp-child-updraft-plus-backups.php:2723
+msgid "Backup of:"
+msgstr "备份："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1500
+msgid "Backup set not found"
+msgstr "未找到备份集"
+
+#: class/class-mainwp-child-server-information.php:968
+msgid "Complete URL"
+msgstr "完整网址"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1093
+msgid "Connection failed."
+msgstr "连接失败。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1043
+msgid "Connection failed: check your access details, that the database server is up, and that the network connection is not firewalled."
+msgstr "连接失败：检查您的访问详细信息，数据库服务器是否已启动，以及网络连接是否已防火墙。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1091
+msgid "Connection succeeded."
+msgstr "连接成功。"
+
+#: class/class-mainwp-child-server-information.php:555
+msgid "Cron Schedules"
+msgstr "Cron 时间表"
+
+#: class/class-mainwp-child-server-information.php:993
+msgid "Current Page URI"
+msgstr "当前页"
+
+#: class/class-mainwp-child-server-information.php:988
+msgid "Currently Executing Script Pathname"
+msgstr "当前正在执行的脚本的路径名"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1428
+#: class/class-mainwp-child-updraft-plus-backups.php:2010
+#: class/class-mainwp-child-updraft-plus-backups.php:3355
+msgid "Database"
+msgstr "数据库"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2388
+#: class/class-mainwp-child-updraft-plus-backups.php:2644
+msgid "Decryption failed. The database file is encrypted, but you have no encryption key entered."
+msgstr "解密失败。数据库文件已加密，但没有输入加密密钥."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2390
+#: class/class-mainwp-child-updraft-plus-backups.php:2646
+msgid "Decryption failed. The database file is encrypted."
+msgstr "解密失败。数据库文件被加密。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2407
+#: class/class-mainwp-child-updraft-plus-backups.php:2656
+msgid "Decryption failed. The most likely cause is that you used the wrong key."
+msgstr "解密失败。最有可能的原因是您用错了钥匙。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2180
+msgid "Delete Old Directories"
+msgstr "删除旧目录"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1261
+msgid "Download log file"
+msgstr "下载日志文件"
+
+#: class/class-mainwp-child-server-information.php:1240
+msgid "Error"
+msgstr "错误"
+
+#: class/class-mainwp-child-server-information.php:557
+msgid "Error Log"
+msgstr "错误日志"
+
+#: class/class-mainwp-child-server-information.php:1264
+msgid "Error logging disabled."
+msgstr "错误日志记录已禁用。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2388
+#: class/class-mainwp-child-updraft-plus-backups.php:2390
+#: class/class-mainwp-child-updraft-plus-backups.php:2517
+#: class/class-mainwp-child-updraft-plus-backups.php:2523
+#: class/class-mainwp-child-updraft-plus-backups.php:2644
+#: class/class-mainwp-child-updraft-plus-backups.php:2646
+#: class/class-mainwp-child-updraft-plus-backups.php:2806
+#: class/class-mainwp-child-updraft-plus-backups.php:2876
+msgid "Error: %s"
+msgstr "错误：%s"
+
+#: class/class-mainwp-child-links-checker.php:755
+msgid "Error: link_id not specified."
+msgstr "错误：未指定link_id。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1690
+msgid "Existing Backups"
+msgstr "现有备份"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2247
+#: class/class-mainwp-child-updraft-plus-backups.php:2295
+#: class/class-mainwp-child-updraft-plus-backups.php:2304
+msgid "Failed"
+msgstr "失败订单"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2424
+#: class/class-mainwp-child-updraft-plus-backups.php:2671
+msgid "Failed to open database file."
+msgstr "打开数据库文件失败。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2401
+msgid "Failed to write out the decrypted database to the filesystem."
+msgstr "未能将解密后的数据库写入文件系统。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1005
+#: class/class-mainwp-child-updraft-plus-backups.php:1012
+#: class/class-mainwp-child-updraft-plus-backups.php:1019
+msgid "Failure: No %s was given."
+msgstr "失败：未给出%s。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2061
+msgid "File (%1$s) was found, but has a different size (%2$s) from what was expected (%3$s) - it may be corrupt."
+msgstr "找到了文件(%1$s)，但文件的大小(%2$s)与预期的大小(%3$s)不同--可能已经损坏。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2054
+msgid "File not found (you need to upload it): %s"
+msgstr "找不到文件（您需要上传）: %s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2056
+msgid "File was found, but is zero-sized (you need to re-upload it): %s"
+msgstr "找到了文件，但是它是零大小的（您需要重新上传它）: %s"
+
+#: class/class-mainwp-child-server-information.php:644
+msgid "FileSystem Method"
+msgstr "文件系统方式"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1427
+msgid "Files"
+msgstr "文件"
+
+#: class/class-mainwp-child-server-information.php:958
+msgid "Gateway Interface"
+msgstr "网关接口"
+
+#: class/class-mainwp-child-server-information.php:933
+msgid "HTTP Host"
+msgstr "HTTP 主机"
+
+#: class/class-mainwp-child-server-information.php:938
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: class/class-mainwp-child-server-information.php:1056
+msgid "Hook"
+msgstr "钩子"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2528
+#: class/class-mainwp-child-updraft-plus-backups.php:2810
+msgid "If you want to restore a multisite backup, you should first set up your WordPress installation as a multisite."
+msgstr "如果要还原多站点备份，应首先将WordPress安装设置为多站点。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1597
+msgid "Local archives deleted: %d"
+msgstr "删除了本地存档: %d"
+
+#: class/class-mainwp-child-server-information.php:963
+msgid "Memory Usage"
+msgstr "内存使用"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1078
+msgid "Messages:"
+msgstr "消息："
+
+#: class/class-mainwp-child-server-information.php:856
+msgid "MySQL Client Encoding"
+msgstr "MySQL 客户端编码"
+
+#: class/class-mainwp-child-server-information.php:847
+msgid "MySQL INFORMATION"
+msgstr "MySQL 信息"
+
+#: class/class-mainwp-child-server-information.php:851
+msgid "MySQL Mode"
+msgstr "MySQL 模式"
+
+#: class/class-mainwp-child-server-information.php:745
+msgid "MySQL SETTINGS"
+msgstr "MySQL 设置"
+
+#: class/class-mainwp-child-actions.php:863
+#: class/class-mainwp-child-server-information-base.php:554
+#: class/class-mainwp-child-server-information-base.php:703
+msgid "N/A"
+msgstr "N/A"
+
+#: class/class-mainwp-child-server-information-base.php:621
+#: class/class-mainwp-child-server-information-base.php:633
+#: class/class-mainwp-child-server-information-base.php:645
+msgid "NO"
+msgstr "否"
+
+#: class/class-mainwp-child-server-information-base.php:597
+msgid "NOT SET"
+msgstr "未设置"
+
+#: class/class-mainwp-child-server-information.php:1054
+msgid "Next due"
+msgstr "截止日期"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1265
+msgid "No backup has been completed."
+msgstr "没有备份完成."
+
+#: class/class-mainwp-child-server-information-base.php:246
+msgid "No functions disabled"
+msgstr "没有禁用的函数"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1962
+msgid "No such backup set exists"
+msgstr "没有这样的备份集"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1328
+#: class/class-mainwp-child-updraft-plus-backups.php:1396
+#: class/class-mainwp-child-updraft-plus-backups.php:1416
+msgid "Nothing currently scheduled"
+msgstr "目前没有安排"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1200
+msgid "Nothing yet logged"
+msgstr "还没有记录"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2197
+msgid "Now press Restore again to proceed."
+msgstr "现在再次按下恢复进行。"
+
+#: class/class-mainwp-child-server-information-base.php:575
+#: class/class-mainwp-child-server-information-base.php:609
+#: class/class-mainwp-child-server-information-base.php:731
+msgid "OFF"
+msgstr "关闭"
+
+#: class/class-mainwp-child-ithemes-security.php:897
+#: class/class-mainwp-child-updraft-plus-backups.php:2250
+#: class/class-mainwp-child-updraft-plus-backups.php:2297
+#: class/class-mainwp-child-updraft-plus-backups.php:2301
+msgid "OK"
+msgstr "确定"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1132
+msgid "OK. You should soon see activity in the \"Last log message\" field below."
+msgstr "好。 您很快就会在下面的“上次日志消息”字段中看到活动。"
+
+#: class/class-mainwp-child-server-information-base.php:573
+#: class/class-mainwp-child-server-information-base.php:607
+#: class/class-mainwp-child-server-information-base.php:731
+msgid "ON"
+msgstr "开启"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2196
+msgid "Old directories successfully removed."
+msgstr "成功删除旧目录。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2200
+msgid "Old directory removal failed for some reason. You may want to do this manually."
+msgstr "由于某些原因，旧目录删除失败。您可能需要手动完成此操作。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2000
+msgid "Only the WordPress database can be restored; you will need to deal with the external database manually."
+msgstr "只能恢复WordPress数据库; 您需要手动处理外部数据库。"
+
+#: class/class-mainwp-child-server-information.php:817
+msgid "PHP Allow URL fopen"
+msgstr "PHP 允许 URL fopen"
+
+#: class/class-mainwp-child-server-information.php:837
+msgid "PHP Disabled Functions"
+msgstr "禁用 PHP 函数"
+
+#: class/class-mainwp-child-server-information.php:822
+msgid "PHP Exif Support"
+msgstr "PHP Exif 支持"
+
+#: class/class-mainwp-child-server-information.php:813
+msgid "PHP INFORMATION"
+msgstr "PHP 信息"
+
+#: class/class-mainwp-child-server-information.php:827
+msgid "PHP IPTC Support"
+msgstr "PHP IPTC 支持"
+
+#: class/class-mainwp-child-server-information.php:842
+msgid "PHP Loaded Extensions"
+msgstr "PHP 加载扩展"
+
+#: class/class-mainwp-child-server-information.php:681
+msgid "PHP SETTINGS"
+msgstr "PHP 设置"
+
+#: class/class-mainwp-child-server-information.php:686
+msgid "PHP Safe Mode Disabled"
+msgstr "PHP 禁用安全模式"
+
+#: class/class-mainwp-child-server-information.php:832
+msgid "PHP XML Support"
+msgstr "PHP XML 支持"
+
+#: class/class-mainwp-child-server-information.php:998
+msgid "Remote Address"
+msgstr "远端地址"
+
+#: class/class-mainwp-child-server-information.php:1003
+msgid "Remote Host"
+msgstr "远程主机"
+
+#: class/class-mainwp-child-server-information.php:1008
+msgid "Remote Port"
+msgstr "远端端口"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1598
+msgid "Remote archives deleted: %d"
+msgstr "已删除远程存档: %d"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2193
+msgid "Remove old directories"
+msgstr "删除旧目录"
+
+#: class/class-mainwp-child-server-information.php:973
+msgid "Request Time"
+msgstr "请求时间"
+
+#: class/class-mainwp-child-server-information.php:589
+msgid "Required value"
+msgstr "必要值"
+
+#: class/class-mainwp-child-server-information.php:894
+msgid "SERVER INFORMATION"
+msgstr "服务器信息"
+
+#: class/class-mainwp-child-server-information.php:1055
+msgid "Schedule"
+msgstr "计划"
+
+#: class/class-mainwp-child-server-information.php:923
+msgid "Server IP"
+msgstr "服务器 IP"
+
+#: class/class-mainwp-child-server-information.php:553
+msgid "Server Information"
+msgstr "服务器信息"
+
+#: class/class-mainwp-child-server-information.php:903
+msgid "Server Name"
+msgstr "服务器名称"
+
+#: class/class-mainwp-child-server-information.php:953
+msgid "Server Port"
+msgstr "服务器端口"
+
+#: class/class-mainwp-child-server-information.php:928
+msgid "Server Protocol"
+msgstr "服务器协议"
+
+#: class/class-mainwp-child-server-information.php:908
+msgid "Server Software"
+msgstr "服务器软件"
+
+#: class/class-mainwp-child-server-information.php:588
+msgid "Server configuration"
+msgstr "服务器配置"
+
+#: class/class-mainwp-child.php:487 class/class-mainwp-pages.php:457
+msgid "Settings"
+msgstr "设置"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2534
+#: class/class-mainwp-child-updraft-plus-backups.php:2818
+msgid "Site information:"
+msgstr "网站信息："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1132
+#: class/class-mainwp-child-updraft-plus-backups.php:1143
+msgid "Start backup"
+msgstr "开始备份"
+
+#: class/class-mainwp-child-branding-render.php:166
+msgid "Submit"
+msgstr "提交"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1981
+msgid "The PHP setup on this webserver allows only %s seconds for PHP to run, and does not allow this limit to be raised. If you have a lot of data to import, and if the restore operation times out, then you will need to ask your web hosting company for ways to raise this limit (or attempt the restoration piece-by-piece)."
+msgstr "此Web服务器上的PHP设置仅允许 %s 秒运行PHP，并且不允许引发此限制. 如果要导入大量数据，并且还原操作超时，则需要向您的Web托管公司询问提高此限制的方法（或逐个尝试恢复）."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3076
+#: class/class-mainwp-child-updraft-plus-backups.php:3100
+msgid "The attempt to undo the double-compression failed."
+msgstr "撤销双重压缩的尝试失败。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3102
+msgid "The attempt to undo the double-compression succeeded."
+msgstr "撤销双重压缩的尝试成功了。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2093
+msgid "The backup archive files have been processed, but with some errors. You will need to cancel and correct any problems before retrying."
+msgstr "备份存档文件已处理完毕，但有一些错误。 在重试之前，您需要取消并更正任何问题。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2091
+msgid "The backup archive files have been processed, but with some warnings. If all is well, then now press Restore again to proceed. Otherwise, cancel and correct any problems first."
+msgstr "已处理备份存档文件，但有一些警告。 如果一切正常，那幺现在再次按“还原”继续。 否则，请先取消并更正任何问题。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2089
+msgid "The backup archive files have been successfully processed. Now press Restore again to proceed."
+msgstr "备份存档文件已成功处理。 现在再次按“还原”继续。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1907
+msgid "The backup archive for this file could not be found. The remote storage method in use (%s) does not allow us to retrieve files. To perform any restoration using UpdraftPlus, you will need to obtain a copy of this file and place it inside UpdraftPlus's working folder"
+msgstr "找不到此文件的备份存档。 正在使用的远程存储方法（%s）不允许我们检索文件。 要使用UpdraftPlus执行任何恢复，您需要获取此文件的副本并将其放在UpdraftPlus的任务文件夹中"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1596
+msgid "The backup set has been removed."
+msgstr "备份集已被删除。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3069
+msgid "The database file appears to have been compressed twice - probably the website you downloaded it from had a mis-configured webserver."
+msgstr "数据库文件似乎已经被压缩了两次——可能是您从其中下载的网站有一个配置错误的web服务器。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2415
+#: class/class-mainwp-child-updraft-plus-backups.php:2663
+msgid "The database is too small to be a valid WordPress database (size: %s Kb)."
+msgstr "数据库太小，不能成为一个有效的WordPress数据库（大小：%s KB）。"
+
+#: class/class-mainwp-child-ithemes-security.php:1477
+msgid "The selected lockouts have been cleared."
+msgstr "所选的锁定已清除。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2502
+#: class/class-mainwp-child-updraft-plus-backups.php:2791
+msgid "The site in this backup was running on a webserver with version %1$s of %2$s. "
+msgstr "本次备份中的网站运行在版本为%1$s的%2$s的web服务器上。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2475
+#: class/class-mainwp-child-updraft-plus-backups.php:2485
+#: class/class-mainwp-child-updraft-plus-backups.php:2753
+#: class/class-mainwp-child-updraft-plus-backups.php:2772
+msgid "This backup set is from a different site - this is not a restoration, but a migration. You need the Migrator add-on in order to make this work."
+msgstr "这个备份集来自一个不同的站点——这不是一个恢复，而是一个迁移。为了完成这项工作，需要迁移器附加进程。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1985
+msgid "This backup set was not known by UpdraftPlus to be created by the current WordPress installation, but was found in remote storage."
+msgstr "UpdraftPlus不知道此备份集是由当前的CMS安装创建的，而是在远程存储中找到的。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2567
+#: class/class-mainwp-child-updraft-plus-backups.php:3002
+msgid "This database backup is missing core WordPress tables: %s"
+msgstr "此数据库备份缺少核心WordPress表：%s"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2502
+#: class/class-mainwp-child-updraft-plus-backups.php:2791
+msgid "This is significantly newer than the server which you are now restoring onto (version %s)."
+msgstr "这明显比您现在恢复到版本（%s）的服务器更新。"
+
+#: class/class-mainwp-child-links-checker.php:788
+msgid "This link was manually marked as working by the user."
+msgstr "该链接被手动标记为用户工作。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2084
+msgid "This multi-archive backup set appears to have the following archives missing: %s"
+msgstr "此多存档备份集似乎缺少以下存档: %s"
+
+#: class/class-mainwp-child-back-up-buddy.php:2174
+#: class/class-mainwp-child-server-information.php:1239
+msgid "Time"
+msgstr "时间"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1429
+msgid "Time now"
+msgstr "现在时间"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2523
+msgid "To import an ordinary WordPress site into a multisite installation requires both the multisite and migrator add-ons."
+msgstr "将普通站点导入多站点安装需要多站点和迁移器附加组件。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2572
+#: class/class-mainwp-child-updraft-plus-backups.php:3010
+msgid "UpdraftPlus was unable to find the table prefix when scanning the database backup."
+msgstr "在扫描数据库备份时，UpdraftPlus无法找到表前缀。"
+
+#: class/class-mainwp-child-server-information.php:948
+msgid "User Agent"
+msgstr "浏览器User-Agent"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2528
+#: class/class-mainwp-child-updraft-plus-backups.php:2810
+msgid "Warning:"
+msgstr "警告："
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1245
+#: class/class-mainwp-child-updraft-plus-backups.php:2475
+#: class/class-mainwp-child-updraft-plus-backups.php:2485
+#: class/class-mainwp-child-updraft-plus-backups.php:4021
+msgid "Warning: %s"
+msgstr "警告: %s"
+
+#: class/class-mainwp-child-server-information.php:898
+msgid "WordPress Root Directory"
+msgstr "WordPress 根目录"
+
+#: class/class-mainwp-child-server-information-base.php:619
+#: class/class-mainwp-child-server-information-base.php:631
+#: class/class-mainwp-child-server-information-base.php:643
+msgid "YES"
+msgstr "是"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2496
+#: class/class-mainwp-child-updraft-plus-backups.php:2785
+msgid "You are importing from a newer version of WordPress (%1$s) into an older one (%2$s). There are no guarantees that WordPress can handle this."
+msgstr "您正在从WordPress的新版本(%1$s)导入到旧版本(%2$s)。我们不能保证WordPress可以处理这个问题。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2517
+#: class/class-mainwp-child-updraft-plus-backups.php:2804
+msgid "You are running on WordPress multisite - but your backup is not of a multisite site."
+msgstr "您正在运行WordPress多站点-但您的备份不是一个多站点的网站。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3148
+msgid "You have not yet made any backups."
+msgstr "您还没有做任何备份。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1985
+msgid "You should make sure that this really is a backup set intended for use on this website, before you restore (rather than a backup set of an unrelated website that was using the same storage location)."
+msgstr "在恢复之前，您应确保这确实是用于本网站的备份集（而不是使用相同存储位置的无关网站的备份集）。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2502
+#: class/class-mainwp-child-updraft-plus-backups.php:2791
+msgid "You should only proceed if you cannot update the current server and are confident (or willing to risk) that your plugins/themes/etc. are compatible with the older %s version."
+msgstr "如果您不能更新当前服务器，并且确信（或愿意冒风险）您的插件/主题/等与较旧的%s版本兼容，则应该继续进行。"
+
+#: class/class-mainwp-child-ithemes-security.php:709
+msgid "Your IP Address"
+msgstr "您的 IP 地址"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:2528
+#: class/class-mainwp-child-updraft-plus-backups.php:2810
+msgid "Your backup is of a WordPress multisite install; but this site is not. Only the first site of the network will be accessible."
+msgstr "您的备份是多站点安装，但这个站点不是。只有网络的第一个站点将是可访问的。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3035
+msgid "Your hosting company must enable these functions before %s can work."
+msgstr "您的托管公司必须在%s可以任务之前启用这些功能。"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3035
+msgid "Your web server's PHP installation has these functions disabled: %s."
+msgstr "您的Web服务器的PHP安装已禁用这些功能: %s."
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1035
+msgid "database connection attempt failed"
+msgstr "数据库连接尝试失败"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1019
+msgid "database name"
+msgstr "数据库名称"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1012
+msgid "host"
+msgstr "主机"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1233
+msgid "incremental backup; base backup: %s"
+msgstr "增量备份; 基本备份: %s"
+
+#: class/class-mainwp-child-ithemes-security.php:710
+msgid "is whitelisted for"
+msgstr "是白色的"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:3035
+msgid "restoration"
+msgstr "恢复"
+
+#: class/class-mainwp-child-updraft-plus-backups.php:1005
+msgid "user"
+msgstr "用户"
+
+#: class/class-mainwp-child-back-up-wordpress.php:713
+#: class/class-mainwp-child-back-up-wordpress.php:719
+#: class/class-mainwp-child-server-information.php:544
+msgid "Download"
+msgstr "下载"
+
+#: class/class-mainwp-pages.php:608
+msgid "Save changes"
+msgstr "保存更改"
+
+#: class/class-mainwp-child-back-up-wordpress.php:724
+#: class/class-mainwp-child-updraft-plus-backups.php:2244
+#: class/class-mainwp-child-updraft-plus-backups.php:2290
+#: class/class-mainwp-child-updraft-plus-backups.php:3309
+msgid "Delete"
+msgstr "删除"
+
+#: class/class-mainwp-child-back-wp-up.php:629
+#: class/class-mainwp-child-back-wp-up.php:633
+#: class/class-mainwp-child-back-wp-up.php:638
+msgid "On"
+msgstr "开启"
+
+#: class/class-mainwp-child-back-wp-up.php:629
+#: class/class-mainwp-child-back-wp-up.php:635
+#: class/class-mainwp-child-back-wp-up.php:640
+msgid "Off"
+msgstr "关闭"
+
+#: class/class-mainwp-child-back-up-wordpress.php:639
+#: class/class-mainwp-child-back-up-wordpress.php:899
+msgid "Size"
+msgstr "尺寸"
+
+#: class/class-mainwp-child-back-up-wordpress.php:797
+msgid "Done"
+msgstr "完成"
+
+#: class/class-mainwp-child-back-wp-up.php:900
+#: class/class-mainwp-child-back-wp-up.php:941
+msgid "%1$s at %2$s"
+msgstr "%1$s %2$s"
+
+#: class/class-mainwp-child-back-wp-up.php:932
+msgid "%1$s at %2$s by WP-Cron"
+msgstr "%1$s在%2$s由WP-Cron"
+
+#: class/class-mainwp-child-back-wp-up.php:652
+msgid "%s hours"
+msgstr "%s小时"
+
+#: class/class-mainwp-child-back-up-wordpress.php:641
+#: class/class-mainwp-child-updraft-plus-backups.php:3168
+msgid "Actions"
+msgstr "操作"
+
+#: class/class-mainwp-child-back-wp-up.php:633
+#: class/class-mainwp-child-back-wp-up.php:635
+msgid "Alternative WP Cron"
+msgstr "选择WP Cron"
+
+#: class/class-mainwp-connect.php:650
+msgid "Authentication failed! Please deactivate and re-activate the MainWP Child plugin on this site."
+msgstr "身份验证失败 ！请停用并重新激活此站点上的 MainWP子插件。"
+
+#: class/class-mainwp-child-back-wp-up.php:569
+msgid "BackWPup Pro version"
+msgstr "BackWPup 专业版"
+
+#: class/class-mainwp-child-back-wp-up.php:1375
+msgid "BackWPup archive sending TEST Message"
+msgstr "BackWPup存档发送TEST消息"
+
+#: class/class-mainwp-child-back-wp-up.php:567
+msgid "BackWPup version"
+msgstr "BackWPup版本"
+
+#: class/class-mainwp-child-back-up-wordpress.php:678
+#: class/class-mainwp-child-back-up-wordpress.php:683
+msgid "Backups will be compressed and should be smaller than this."
+msgstr "备份将被压缩，应小于此值。"
+
+#: class/class-mainwp-child-back-wp-up.php:650
+#: class/class-mainwp-child-timecapsule.php:1960
+msgid "Blog Time"
+msgstr "网站时间"
+
+#: class/class-mainwp-child-back-wp-up.php:652
+msgid "Blog Time offset"
+msgstr "网站时间偏移"
+
+#: class/class-mainwp-child-back-wp-up.php:651
+msgid "Blog Timezone"
+msgstr "网站的时区"
+
+#: class/class-mainwp-child-back-wp-up.php:657
+#: class/class-mainwp-child-timecapsule.php:1965
+msgid "Blog charset"
+msgstr "网站字符集"
+
+#: class/class-mainwp-child-back-wp-up.php:653
+#: class/class-mainwp-child-timecapsule.php:1961
+msgid "Blog language"
+msgstr "网站语言"
+
+#: class/class-mainwp-child-back-wp-up.php:643
+#: class/class-mainwp-child-back-wp-up.php:645
+#: class/class-mainwp-child-timecapsule.php:1953
+#: class/class-mainwp-child-timecapsule.php:1955
+msgid "CHMOD Dir"
+msgstr "CHMOD Dir"
+
+#: class/class-mainwp-child-back-wp-up.php:736
+msgid "Cannot delete job"
+msgstr "无法删除"
+
+#: class/class-mainwp-child-misc.php:455
+msgid "Cannot destroy sessions"
+msgstr "不能破坏会议"
+
+#: class/class-mainwp-child-misc.php:445
+msgid "Cannot get user_id"
+msgstr "无法获取用户ID"
+
+#: class/class-mainwp-pages.php:586
+msgid "Connection settings"
+msgstr "连接设置"
+
+#: class/class-mainwp-child-back-wp-up.php:628
+#: class/class-mainwp-child-timecapsule.php:1949
+msgid "Current PHP user"
+msgstr "当前PHP用户"
+
+#: class/class-mainwp-child-back-up-wordpress.php:761
+msgid "Currently Excluded"
+msgstr "目前排除"
+
+#: class/class-mainwp-child-back-up-wordpress.php:842
+msgid "Default rule"
+msgstr "默认规则"
+
+#: class/class-mainwp-child-back-up-wordpress.php:844
+msgid "Defined in wp-config.php"
+msgstr "定义在 wp-config.php"
+
+#: class/class-mainwp-child-back-wp-up.php:707
+msgid "Directory not writable:"
+msgstr "目录不可写："
+
+#: class/class-mainwp-child-back-wp-up.php:666
+#: class/class-mainwp-child-timecapsule.php:1975
+msgid "Disabled PHP Functions:"
+msgstr "禁用PHP函数："
+
+#: class/class-mainwp-child-back-wp-up.php:638
+#: class/class-mainwp-child-back-wp-up.php:640
+msgid "Disabled WP Cron"
+msgstr "禁用WP Cron"
+
+#: class/class-mainwp-child-back-wp-up.php:1392
+msgid "Email sent."
+msgstr "邮件已发送。"
+
+#: class/class-mainwp-child-back-wp-up.php:1390
+msgid "Error while sending email!"
+msgstr "发送电子邮件时出错！"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1091
+msgid "Exclude &rarr;"
+msgstr "拒绝 &rarr;"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1081
+msgid "Excluded"
+msgstr "排除"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1073
+msgid "File"
+msgstr "文件"
+
+#: class/class-mainwp-child-back-up-wordpress.php:958
+#: class/class-mainwp-child-back-up-wordpress.php:1071
+msgid "Folder"
+msgstr "文件夹"
+
+#: class/class-mainwp-child-back-wp-up.php:567
+msgid "Get pro."
+msgstr "获取专业版。"
+
+#: class/class-mainwp-child-back-up-wordpress.php:767
+msgid "Here's a directory listing of all files on your site, you can browse through and exclude files or folders that you don't want included in your backup."
+msgstr "以下是站点上所有文件的目录列表，您可以浏览并排除不希望包括在备份中的文件或文件夹。"
+
+#: class/class-mainwp-child-back-wp-up.php:1378
+msgid "If this message reaches your inbox, sending backup archives via email should work for you."
+msgstr "如果此消息到达您的收件箱，则通过电子邮件发送备份存档将适用于您。"
+
+#: class/class-mainwp-child-back-wp-up.php:937
+#: class/class-mainwp-child-server-information.php:790
+msgid "Inactive"
+msgstr "未启用"
+
+#: class/class-mainwp-child-back-wp-up.php:1755
+#: class/class-mainwp-child-back-wp-up.php:1863
+msgid "Install BackWPup on child website"
+msgstr "在子网站上安装BackWPup"
+
+#: class/class-mainwp-child-misc.php:460
+msgid "Invalid action"
+msgstr "无效的操作"
+
+#: class/class-mainwp-child-back-wp-up.php:768
+msgid "Invalid dest class."
+msgstr "无效的目的地类。"
+
+#: class/class-mainwp-child-updates.php:142
+#: class/class-mainwp-child-updates.php:283
+#: class/class-mainwp-child-updates.php:405
+#: class/class-mainwp-child-updates.php:484
+#: class/class-mainwp-child-updates.php:545 class/class-mainwp-clone.php:135
+msgid "Invalid request!"
+msgstr "无效的请求!"
+
+#: class/class-mainwp-child-back-wp-up.php:671
+#: class/class-mainwp-child-timecapsule.php:1981
+msgid "Loaded PHP Extensions:"
+msgstr "加载PHP扩展："
+
+#: class/class-mainwp-child-back-wp-up.php:805
+msgid "Log file doesn't exists"
+msgstr "日志文件不存在"
+
+#: class/class-mainwp-child-back-wp-up.php:620
+msgid "Log folder %s is not writable."
+msgstr "日志文件夹%s不可写。"
+
+#: class/class-mainwp-child-back-wp-up.php:613
+msgid "Log folder:"
+msgstr "日志文件夹："
+
+#: class/class-mainwp-child-back-wp-up.php:618
+msgid "Logs folder %s not exist."
+msgstr "日志文件夹 %s不存在。"
+
+#: class/class-mainwp-child-back-wp-up.php:631
+#: class/class-mainwp-child-timecapsule.php:1950
+msgid "Maximum execution time"
+msgstr "最大执行时间"
+
+#: class/class-mainwp-child-back-wp-up.php:661
+#: class/class-mainwp-child-timecapsule.php:1969
+msgid "Memory in use"
+msgstr "已用内存"
+
+#: class/class-mainwp-child-misc.php:463
+msgid "Missing action"
+msgstr "缺少操作"
+
+#: class/class-mainwp-child-back-wp-up.php:205
+msgid "Missing action."
+msgstr "缺少操作。"
+
+#: class/class-mainwp-child-back-wp-up.php:1567
+#: class/class-mainwp-child-back-wp-up.php:1743
+#: class/class-mainwp-child-back-wp-up.php:1859
+msgid "Missing array settings"
+msgstr "缺少阵列设定"
+
+#: class/class-mainwp-child-back-wp-up.php:753
+msgid "Missing backupfile."
+msgstr "缺少备份文件。"
+
+#: class/class-mainwp-child-back-wp-up.php:757
+msgid "Missing dest."
+msgstr "缺少目的地。"
+
+#: class/class-mainwp-child-back-wp-up.php:1312
+msgid "Missing email address."
+msgstr "邮箱地址缺失。"
+
+#: class/class-mainwp-child-back-wp-up.php:1174
+#: class/class-mainwp-child-back-wp-up.php:1571
+#: class/class-mainwp-child-back-wp-up.php:1751
+msgid "Missing job_id"
+msgstr "缺少job_id"
+
+#: class/class-mainwp-child-back-wp-up.php:729
+msgid "Missing job_id."
+msgstr "缺少job_id。"
+
+#: class/class-mainwp-child-back-wp-up.php:1114
+msgid "Missing logfile or logpos."
+msgstr "缺少日志文件或日志记录。"
+
+#: class/class-mainwp-child-back-wp-up.php:697
+#: class/class-mainwp-child-back-wp-up.php:797
+msgid "Missing logfile."
+msgstr "缺少日志文件。"
+
+#: class/class-mainwp-child-back-wp-up.php:1598
+msgid "Missing new job_id"
+msgstr "缺少新的job_id"
+
+#: class/class-mainwp-child-back-wp-up.php:1747
+msgid "Missing tab"
+msgstr "缺少标签"
+
+#: class/class-mainwp-child-back-wp-up.php:845
+msgid "Missing type."
+msgstr "缺少类型。"
+
+#: class/class-mainwp-child-back-wp-up.php:849
+msgid "Missing website id."
+msgstr "缺少网站ID。"
+
+#: class/class-mainwp-child-back-wp-up.php:654
+#: class/class-mainwp-child-timecapsule.php:1962
+msgid "MySQL Client encoding"
+msgstr "MySQL客户端编码"
+
+#: class/class-mainwp-child-back-wp-up.php:573
+#: class/class-mainwp-child-timecapsule.php:1929
+msgid "MySQL version"
+msgstr "MySQL版本"
+
+#: class/class-mainwp-child-back-up-wordpress.php:898
+msgid "Name"
+msgstr "名称"
+
+#: class/class-mainwp-child-back-wp-up.php:710
+msgid "Not file:"
+msgstr "没有文件："
+
+#: class/class-mainwp-child-back-wp-up.php:934
+msgid "Not scheduled!"
+msgstr "不安排！"
+
+#: class/class-mainwp-child-back-wp-up.php:626
+#: class/class-mainwp-child-server-information.php:913
+#: class/class-mainwp-child-timecapsule.php:1941
+msgid "Operating System"
+msgstr "操作系统"
+
+#: class/class-mainwp-child-back-wp-up.php:658
+#: class/class-mainwp-child-timecapsule.php:1966
+msgid "PHP Memory limit"
+msgstr "PHP内存限制"
+
+#: class/class-mainwp-child-back-wp-up.php:627
+#: class/class-mainwp-child-timecapsule.php:1942
+msgid "PHP SAPI"
+msgstr "PHP SAPI"
+
+#: class/class-mainwp-child-callable.php:888
+msgid "PHP Version %s is unsupported."
+msgstr "PHP版本%s不受支持。"
+
+#: class/class-mainwp-child-back-wp-up.php:572
+#: class/class-mainwp-child-timecapsule.php:1928
+msgid "PHP version"
+msgstr "PHP 版本"
+
+#: class/class-mainwp-child-users.php:566
+msgid "Password: %s"
+msgstr "密码：%s"
+
+#: class/class-mainwp-child-back-up-wordpress.php:901
+msgid "Permissions"
+msgstr "权限"
+
+#: class/class-mainwp-child-back-wp-up.php:197
+msgid "Please install BackWPup plugin on child website"
+msgstr "请在子网站上安装BackWPup插件"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1053
+msgid "Recalculate the size of this directory"
+msgstr "重新计算这个目录的大小"
+
+#: class/class-mainwp-child-back-up-wordpress.php:946
+#: class/class-mainwp-child-back-up-wordpress.php:1053
+msgid "Refresh"
+msgstr "刷新"
+
+#: class/class-mainwp-pages.php:598
+msgid "Require unique security ID"
+msgstr "需要唯一安全 ID"
+
+#: class/class-mainwp-child-back-wp-up.php:597
+#: class/class-mainwp-child-server-information-base.php:761
+msgid "Response Test O.K."
+msgstr "响应测试成功。"
+
+#: class/class-mainwp-child-back-wp-up.php:943
+msgid "Runtime: %d seconds"
+msgstr "运行时间： %d 秒"
+
+#: class/class-mainwp-child-back-wp-up.php:630
+msgid "Safe Mode"
+msgstr "安全模式"
+
+#: class/class-mainwp-child-back-wp-up.php:625
+#: class/class-mainwp-child-timecapsule.php:1940
+msgid "Server"
+msgstr "服务器"
+
+#: class/class-mainwp-child-back-wp-up.php:649
+#: class/class-mainwp-child-timecapsule.php:1959
+msgid "Server Time"
+msgstr "服务时间"
+
+#: class/class-mainwp-child-back-wp-up.php:583
+msgid "Server self connect:"
+msgstr "服务器自连接："
+
+#: class/class-mainwp-child-back-wp-up.php:563
+#: class/class-mainwp-child-back-wp-up.php:564
+#: class/class-mainwp-child-timecapsule.php:1916
+msgid "Setting"
+msgstr "设置"
+
+#: class/class-mainwp-child-back-up-buddy.php:1839
+#: class/class-mainwp-child-back-up-buddy.php:2062
+#: class/class-mainwp-child-back-up-wordpress.php:903
+#: class/class-mainwp-child-ithemes-security.php:915
+#: class/class-mainwp-child-ithemes-security.php:924
+#: class/class-mainwp-child-server-information.php:591
+msgid "Status"
+msgstr "状态"
+
+#: class/class-mainwp-child-back-up-wordpress.php:846
+msgid "Stop excluding"
+msgstr "停止排除"
+
+#: class/class-mainwp-child-back-up-wordpress.php:956
+#: class/class-mainwp-child-back-up-wordpress.php:1068
+msgid "Symlink"
+msgstr "符号链接"
+
+#: class/class-mainwp-child-back-wp-up.php:605
+msgid "Temp folder %s doesn't exist."
+msgstr "Temp文件夹 %s 不存在。"
+
+#: class/class-mainwp-child-back-wp-up.php:603
+msgid "Temp folder:"
+msgstr "临时文件夹："
+
+#: class/class-mainwp-child-back-wp-up.php:607
+msgid "Temporary folder %s is not writable."
+msgstr "临时文件夹 %s 不可写。"
+
+#: class/class-mainwp-child-back-wp-up.php:593
+msgid "The BackWPup HTTP response header returns a false value: \"%s\""
+msgstr "BackWPup HTTP响应头返回一个非法值： \"%s\""
+
+#: class/class-mainwp-child-back-wp-up.php:589
+#: class/class-mainwp-child-server-information-base.php:753
+msgid "The HTTP response test get a false http status (%s)"
+msgstr "HTTP响应测试得到一个错误的HTTP状态(%s)"
+
+#: class/class-mainwp-child-back-wp-up.php:587
+#: class/class-mainwp-child-server-information-base.php:749
+msgid "The HTTP response test get an error \"%s\""
+msgstr "HTTP响应测试得到错误 \"%s\""
+
+#: class/class-mainwp-pages.php:589
+msgid "The unique security ID adds additional protection between the child plugin and your Dashboard. The unique security ID will need to match when being added to the Dashboard. This is additional security and should not be needed in most situations."
+msgstr "唯一安全 ID 在子插件和您的仪表盘之间添加了额外的保护。在添加到仪表盘时，唯一安全ID将需要匹配。这是额外的安全性，在大多数情况下不应该需要。"
+
+#: class/class-mainwp-connect.php:97
+msgid "This child site is set to require a unique security ID. Please enter it before the connection can be established."
+msgstr "此子网站设置为需要一个唯一安全ID。请可以创建连接之前，输入它。"
+
+#: class/class-mainwp-child-back-up-wordpress.php:657
+msgid "This is where your backups will appear once you have some."
+msgstr "这是您的备份一旦出现就会出现的地方。"
+
+#: class/class-mainwp-child-back-up-wordpress.php:640
+#: class/class-mainwp-child-back-up-wordpress.php:902
+msgid "Type"
+msgstr "类型"
+
+#: class/class-mainwp-child-users.php:552
+msgid "Undefined error!"
+msgstr "未定义错误!"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1079
+msgid "Unreadable"
+msgstr "不可读"
+
+#: class/class-mainwp-child-back-up-wordpress.php:1079
+msgid "Unreadable files won't be backed up."
+msgstr "无法读取不可读取的文件。"
+
+#: class/class-mainwp-child-users.php:565
+msgid "Username: %s"
+msgstr "用户名：%s"
+
+#: class/class-mainwp-child-back-wp-up.php:563
+#: class/class-mainwp-child-back-wp-up.php:564
+#: class/class-mainwp-child-ithemes-security.php:913
+#: class/class-mainwp-child-ithemes-security.php:922
+#: class/class-mainwp-child-server-information.php:590
+#: class/class-mainwp-child-timecapsule.php:1916
+#: class/class-mainwp-child-wordfence.php:3242
+msgid "Value"
+msgstr "属性"
+
+#: class/class-mainwp-child-back-wp-up.php:660
+#: class/class-mainwp-child-timecapsule.php:1968
+msgid "WP maximum memory limit"
+msgstr "WP最大内存限制"
+
+#: class/class-mainwp-child-back-wp-up.php:659
+#: class/class-mainwp-child-timecapsule.php:1967
+msgid "WP memory limit"
+msgstr "WP内存限制"
+
+#: class/class-mainwp-child-back-wp-up.php:581
+msgid "WP-Cron url:"
+msgstr "WP-Cron链接："
+
+#: class/class-mainwp-child-back-up-wordpress.php:762
+msgid "We automatically detect and ignore common <abbr title=\"Version Control Systems\">VCS</abbr> folders and other backup plugin folders."
+msgstr "我们自动检测并忽略常见的<abbr title=\"版本控制系统\">VCS</abbr>文件夹和其他备份插件文件夹。"
+
+#: class/class-mainwp-helper.php:321
+msgid "WordPress Filesystem error: "
+msgstr "WordPress 文件系统错误： "
+
+#: class/class-mainwp-child-back-wp-up.php:565
+#: class/class-mainwp-child-timecapsule.php:1917
+msgid "WordPress version"
+msgstr "WordPress 版本"
+
+#: class/class-mainwp-child-back-wp-up.php:282
+msgid "Wrong action."
+msgstr "错误操作。"
+
+#: class/class-mainwp-child-back-wp-up.php:1867
+msgid "You try to use pro version settings in non pro plugin version. Please install pro version on child and try again."
+msgstr "您尝试在非专业版插件版本中使用专业版设置。请在子网站上安装专业版，然后重试。"
+
+#: class/class-mainwp-pages.php:603
+msgid "Your unique security ID is:"
+msgstr "您的唯一安全 ID 是："
+
+#: class/class-mainwp-child-users.php:569
+msgid "[%s] Your username and password"
+msgstr "[%s] 您的用户名和密码"
+
+#: class/class-mainwp-child-back-wp-up.php:577
+#: class/class-mainwp-child-timecapsule.php:1934
+msgid "cURL SSL version"
+msgstr "cURL SSL版本"
+
+#: class/class-mainwp-child-back-wp-up.php:576
+#: class/class-mainwp-child-back-wp-up.php:579
+#: class/class-mainwp-child-timecapsule.php:1933
+#: class/class-mainwp-child-timecapsule.php:1936
+msgid "cURL version"
+msgstr "cURL 版本"
+
+#: class/class-mainwp-child-back-up-wordpress.php:687
+msgid "calculating the size of your backup&hellip;"
+msgstr "计算备份和hellip的大小;"
+
+#: class/class-mainwp-child-back-wp-up.php:946
+msgid "not yet"
+msgstr "还没有"
+
+#: class/class-mainwp-child-back-wp-up.php:631
+#: class/class-mainwp-child-timecapsule.php:1950
+msgid "seconds"
+msgstr "秒"
+
+#: class/class-mainwp-child-back-up-wordpress.php:687
+msgid "this shouldn't take long&hellip;"
+msgstr "这不会花很长时间&hellip;"
+
+#: class/class-mainwp-child-back-wp-up.php:579
+#: class/class-mainwp-child-timecapsule.php:1936
+msgid "unavailable"
+msgstr "不可用的"
