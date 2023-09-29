@@ -21,9 +21,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="ExamplesAppXIBmacOSSwift" id="1Xt-HY-uBw">
+                <menuItem title="ExamplesApp" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="ExamplesAppXIBmacOSSwift" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="ExamplesApp" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
                             <menuItem title="About ExamplesAppXIBmacOSSwift" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -696,6 +696,9 @@
                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5rB-2a-NFI">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="generatePasswordAction:" target="Voe-Tx-rLC" id="lB7-I3-Qwi"/>
+                            </connections>
                         </buttonCell>
                     </button>
                 </subviews>

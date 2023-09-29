@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,7 @@
 		732AC0F12AC583000035506B /* ExamplesAppXIBmacOSSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExamplesAppXIBmacOSSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		732AC0F52AC583000035506B /* ExamplesAppXIBmacOSSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesAppXIBmacOSSwiftUITests.swift; sourceTree = "<group>"; };
 		732AC0F72AC583000035506B /* ExamplesAppXIBmacOSSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesAppXIBmacOSSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7344D1FD2AC6355900CA8CD0 /* Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Examples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 				732AC0D62AC582FE0035506B /* Products */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 1;
 		};
 		732AC0D62AC582FE0035506B /* Products */ = {
 			isa = PBXGroup;
@@ -100,6 +102,7 @@
 				732AC0DF2AC583000035506B /* MainMenu.xib */,
 				732AC0E22AC583000035506B /* ExamplesAppXIBmacOSSwift.entitlements */,
 				732AC0DA2AC582FE0035506B /* ExamplesAppXIBmacOSSwift.xcdatamodeld */,
+				7344D1FD2AC6355900CA8CD0 /* Examples.playground */,
 			);
 			path = ExamplesAppXIBmacOSSwift;
 			sourceTree = "<group>";
@@ -201,7 +204,7 @@
 				};
 			};
 			buildConfigurationList = 732AC0D02AC582FE0035506B /* Build configuration list for PBXProject "ExamplesAppXIBmacOSSwift" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
