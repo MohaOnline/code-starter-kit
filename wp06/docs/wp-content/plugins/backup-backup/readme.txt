@@ -2,8 +2,8 @@
 Contributors: Migrate
 Tags: Backup, Migration, Migrate, Backups, Restore, All In One, Duplicate, Clone, Import, Export, Transfer
 Requires at least: 4.6
-Tested up to: 6.3.1
-Stable tag: 1.3.2
+Tested up to: 6.4
+Stable tag: 1.3.3
 License: GPLv3
 Requires PHP: 5.6
 
@@ -61,8 +61,6 @@ Migrate (or clone) a WordPress site by creating a full backup on the site that y
 - To migrate the website **indirectly**: Go to the BackupBliss - Backup Migration Staging plugin screen, then to the Manage & Restore Backup(s) tab, and click on the “Upload backup files” button. After the upload, click on the Restore button next to the backup you would like to restore.
 
 - To migrate the website with *Google Drive*: Go to the BackupBliss - Backup Migration Staging plugin screen, then to the plugin section “Where shall the backup(s) be stored?”, turn ON the Google Drive option, and connect to your account. After that, the plugin will sync the available backup files in the plugin section “Manage & Restore Backups” from where you will be able to run Restore.
-
-
 
 = Where can I find my backups? =
 
@@ -164,6 +162,30 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 5. The plugin should be shown below the settings menu.
 
 == Changelog ==
+
+= 1.3.3 =
+- By default config files with these extensions will be excluded: .tmp, .zip, .tr, .gz (can be modified in settings)
+- Modified default search replace page size to 50 from 300 (only for new installations)
+- Fixed console error logger, now it will display all relevant details
+- Added hard exclusion of third party plugin as it causes issue with compression
+- Propagated new method to slash fixer to other modules of our plugin
+- Refactored way of loading WordPress in outside processing (PHP CLI, PHP CLI within browser, browser backup method)
+- Default backup method now will validate if the file is readable or not, otherwise will exclude it out of the box
+- Fixed error handler during PHP error during PHP CLI restoration 
+- Fixed deprecation issues with PHP 8.2 during Super-Quick Migration
+- Added new hints in live-log for Super-Quick Migration
+- Improved logger for Super-Quick Migration
+- Download progress now will be logged in live-log (restoration by URL)
+- Super-Quick Restoration (URL) via terminal and PHP CLI will now start restoration automatically
+- Added much better explanation for "php -f ./includes/cli-handler.php" command
+- Improved table prefix detection, now it will adjust case-sensitivity of the prefix
+- Added logging for file replacement process (restoration)
+- Added try...catch for unzipping process to catch any failed entries to throw an error
+- Fixed global logs and background logs, file will be now created properly for debug purposes
+- Replaced PHP and WP version verification method with dedicated one
+- Decreased sleep time between cURL requests (server side backup method)
+- Fixed issue when our plugin tried to resolve backup same directories
+- Tested with PHP 8.2 and WP 6.4-beta1 down to PHP 5.6 and WP 4.6
 
 = 1.3.2 =
 - Fixed upload process on sites with upload size limit lower than 5 MBs
@@ -615,18 +637,27 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 
 == Upgrade Notice ==
 
-= 1.3.2 =
-What's new in 1.3.2?
-- Fixed upload process on sites with upload size limit lower than 5 MBs
-- Speed up upload process on sites where it is allowed
-- Fixed restoration process on Windows with PHP 8 and above
-- Added more details to browser console log on process failure
-- Staging site name will be automatically incremented after staging site creation
-- Added current table prefix to debug log 
-- Updated carrousel banner – now it's fully compatible with PHP 8 and above
-- Added verbose logs for table prefix during restoration - useful for supporters
-- Refactored fixSlash function to work better on Windows
-- Fixed issue where making backup on staging site was impossible without reinstallation
-- Resolved all known deprecation errors in PHP 8.2 and PHP 8.1
-- Fixed issues with alternate backup method while security was present (apache2 only)
-- Fixed backup download on Microsoft related systems servers
+= 1.3.3 =
+What's new in 1.3.3?
+- By default config files with these extensions will be excluded: .tmp, .zip, .tr, .gz (can be modified in settings)
+- Modified default search replace page size to 50 from 300 (only for new installations)
+- Fixed console error logger, now it will display all relevant details
+- Added hard exclusion of third party plugin as it causes issue with compression
+- Propagated new method to slash fixer to other modules of our plugin
+- Refactored way of loading WordPress in outside processing (PHP CLI, PHP CLI within browser, browser backup method)
+- Default backup method now will validate if the file is readable or not, otherwise will exclude it out of the box
+- Fixed error handler during PHP error during PHP CLI restoration 
+- Fixed deprecation issues with PHP 8.2 during Super-Quick Migration
+- Added new hints in live-log for Super-Quick Migration
+- Improved logger for Super-Quick Migration
+- Download progress now will be logged in live-log (restoration by URL)
+- Super-Quick Restoration (URL) via terminal and PHP CLI will now start restoration automatically
+- Added much better explanation for "php -f ./includes/cli-handler.php" command
+- Improved table prefix detection, now it will adjust case-sensitivity of the prefix
+- Added logging for file replacement process (restoration)
+- Added try...catch for unzipping process to catch any failed entries to throw an error
+- Fixed global logs and background logs, file will be now created properly for debug purposes
+- Replaced PHP and WP version verification method with dedicated one
+- Decreased sleep time between cURL requests (server side backup method)
+- Fixed issue when our plugin tried to resolve backup same directories
+- Tested with PHP 8.2 and WP 6.4-beta1 down to PHP 5.6 and WP 4.6

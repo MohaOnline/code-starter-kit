@@ -35,6 +35,7 @@
     public $zip_progress;
     public $migration_progress;
     public $lock_cli;
+    public $lastCurlCode;
 
     public function __construct($initializedWithCLI = false) {
 
@@ -57,6 +58,12 @@
       // Create backup folder
       if (!file_exists(BMI_BACKUPS)) {
         mkdir(BMI_BACKUPS, 0755, true);
+      }
+      
+      // Create background logs file
+      $backgroundLogsPath = BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'background-errors.log';
+      if (!file_exists($backgroundLogsPath)) {
+        @touch($backgroundLogsPath);
       }
 
       // Handle User Request If Known And Sanitize Response
@@ -480,13 +487,15 @@
       $completeLogsPath = BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log';
       if (file_exists($completeLogsPath) && (filesize($completeLogsPath) / 1024 / 1024) >= 3) {
         @unlink($completeLogsPath);
-        @touch($completeLogsPath);
       }
+      
       $backgroundLogsPath = BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'background-errors.log';
       if (file_exists($backgroundLogsPath) && (filesize($backgroundLogsPath) / 1024 / 1024) >= 3) {
         @unlink($backgroundLogsPath);
-        @touch($backgroundLogsPath);
       }
+      
+      @touch($completeLogsPath);
+      @touch($backgroundLogsPath);
 
       // Require logs
       require_once BMI_INCLUDES . '/progress/zip.php';
@@ -1280,6 +1289,7 @@
           }
         } else {
           $migration->log(__('Cannot start migration process', 'backup-backup'), 'ERROR');
+          $migration->log(__('Error: File may not exist, check file name and if it still exist', 'backup-backup'), 'ERROR');
           $migration->log(__('Error: Could not find manifest in backup, file may be broken', 'backup-backup'), 'ERROR');
           $migration->log(__('Error: Btw. because of this I also cannot check free space', 'backup-backup'), 'ERROR');
           $migration->log(__('Used path: ', 'backup-backup') . $zippath, 'ERROR');
@@ -1416,8 +1426,9 @@
       }
     }
 
-    public function downloadFile($url, $dest, $progress, $lock) {
+    public function downloadFile($url, $dest, $progress, $lock, &$logger) {
       $current_percentage = 0;
+      $previous_logged = 0;
       $fp = fopen($dest, 'w+');
 
       $progressfile = $progress;
@@ -1432,14 +1443,19 @@
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
       curl_setopt($ch, CURLOPT_NOPROGRESS, false);
-      curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($resource, $download_size, $downloaded) use (&$current_percentage, &$lockfile, &$progressfile) {
+      curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($resource, $download_size, $downloaded) use (&$current_percentage, &$lockfile, &$progressfile, &$logger, &$previous_logged) {
         if ($download_size > 0) {
           $new_percentage = intval(($downloaded / $download_size) * 100);
-
+          
           if (intval($current_percentage) != intval($new_percentage)) {
+            $logger->progress($new_percentage);
+            
+            if ($current_percentage == 0 || ($new_percentage % 5 == 0) || $new_percentage > 99) {
+              $logger->log(sprintf(__('Download progress: %s/%s MB (%s%%)', 'backup-backup'), round($downloaded / 1024 / 1024), round($download_size / 1024 / 1024), $new_percentage), 'INFO');
+              $previous_logged = $new_percentage;
+            }
+            
             $current_percentage = $new_percentage;
-            file_put_contents($progressfile, $current_percentage);
-            touch($lockfile);
           }
         }
       });
@@ -1523,7 +1539,7 @@
       $migration->log(__('Downloading initialized', 'backup-backup'), 'SUCCESS');
       $migration->log(__('Downloading remote file...', 'backup-backup'), 'STEP');
       $migration->log(__('Used URL: ', 'backup-backup') . sanitize_text_field($url), 'INFO');
-      $fileError = $this->downloadFile($url, $dest, $progress, $lock);
+      $fileError = $this->downloadFile($url, $dest, $progress, $lock, $migration);
       $migration->log(__('Unlocking migration', 'backup-backup'), 'INFO');
       if (file_exists($lock)) @unlink($lock);
 
@@ -1561,9 +1577,15 @@
             $migration->log(__('Requesting restore process', 'backup-backup'), 'STEP');
             $migration->progress(0);
             file_put_contents(BMI_BACKUPS . '/' . '.cli_download_last', $prepared_name);
-
             $migration->log('#205', 'END-CODE');
-            return ['status' => 'success', 'name' => $prepared_name];
+
+            if (defined('BMI_USING_CLI_FUNCTIONALITY')) { 
+              $this->post['file'] = '.cli_download';
+              $this->post['remote'] = true;
+              return $this->restoreBackup();
+            } else { 
+              return ['status' => 'success', 'name' => $prepared_name];
+            }
           } catch (\Exception $e) {
             $migration->log(__('Error: ', 'backup-backup') . $e, 'ERROR');
             $migration->log(__('Removing downloaded file', 'backup-backup'), 'ERROR');
@@ -2230,6 +2252,7 @@
       $ignored_paths_default[] = "***ABSPATH***/wp-content/uploads/backupbuddy_backups";
       $ignored_paths_default[] = "***ABSPATH***/wp-content/uploads/wp-file-manager-pro";
       $ignored_paths_default[] = "***ABSPATH***/wp-content/uploads/wp-file-manager";
+      $ignored_paths_default[] = "***ABSPATH***/wp-content/plugins/akeebabackupwp";
       
       // Exclude cache directory permanently as it's just cache
       $ignored_paths_default[] = "***ABSPATH***/wp-content/cache";

@@ -1,133 +1,137 @@
 wordpress-6.3.1
 
 == Plugins ==
-+---------------------------------------------------+-------------+-------------+---------+
-| name                                              | old_version | new_version | status  |
-+---------------------------------------------------+-------------+-------------+---------+
-| acf-openstreetmap-field                           | 1.4.3       | 1.5.0       | Updated |
-| acf-views                                         | 1.9.9       | 2.1.1       | Updated |
-| ad-inserter                                       | 2.7.30      | 2.7.31      | Updated |
-| admin-menu-editor                                 | 1.11.1      | 1.11.2      | Updated |
-| admin-site-enhancements                           | 5.7.0       | 5.7.1       | Updated |
-| advanced-access-manager                           | 6.9.14      | 6.9.16      | Updated |
-| advanced-custom-fields                            | 6.2.0       | 6.2.1       | Updated |
-| advanced-responsive-video-embedder                | 9.10.9      | 9.10.12     | Updated |
-| advanced-sidebar-menu                             | 9.0.11      | 9.1.0       | Updated |
-| ai-engine                                         | 1.9.2       | 1.9.84      | Updated |
-| akismet                                           | 5.2         | 5.3         | Updated |
-| all-in-one-seo-pack                               | 4.4.5.1     | 4.4.7       | Updated |
-| antispam-bee                                      | 2.11.3      | 2.11.5      | Updated |
-| astra-sites                                       | 3.4.0       | 3.4.3       | Updated |
-| automatorwp                                       | 2.7.7       | 3.0.0       | Updated 
-| backup-backup                                     | 1.2.9       | 1.3.2       | Updated |
-| better-search-replace                             | 1.4.2       | 1.4.3       | Updated |
-| calculated-fields-form                            | 1.2.24      | 1.2.28      | Updated |
-| click-to-chat-for-whatsapp                        | 3.29.4      | 3.30        | Updated |
-| code-block-pro                                    | 1.23.0      | 1.24.0      | Updated |
-| code-snippets                                     | 3.4.2       | 3.5.0       | Updated |
-| coming-soon                                       | 6.15.13.1   | 6.15.15.3   | Updated |
-| complianz-gdpr                                    | 6.5.3       | 6.5.4       | Updated |
-| contact-form-7                                    | 5.8         | 5.8.1       | Updated |
-| cookie-law-info                                   | 3.1.3       | 3.1.4       | Updated |
-| creame-whatsapp-me                                | 5.0.8       | 5.0.19      | Updated |
-| customer-reviews-woocommerce                      | 5.33.0      | 5.36.0      | Updated |
-| duplicator                                        | 1.5.5.1     | 1.5.6       | Updated |
-| elementor                                         | 3.15.3      | 3.16.4      | Updated |
-| embedpress                                        | 3.8.4       | 3.8.5       | Updated |
-| essential-addons-for-elementor-lite               | 5.8.7       | 5.8.9       | Updated |
-| estatik                                           | 4.0.7       | 4.1.0       | Updated |
-| ewww-image-optimizer                              | 7.2.0       | 7.2.1       | Updated |
-| feeds-for-youtube                                 | 2.1         | 2.1.3       | Updated |
-| fg-drupal-to-wp                                   | 3.61.0      | 3.63.1      | Updated |
-| file-manager-advanced                             | 5.1.1       | 5.1.2       | Updated |
-| fileorganizer                                     | 1.0.2       | 1.0.4       | Updated |
-| folders                                           | 2.9.6       | 2.9.8       | Updated |
-| forminator                                        | 1.25.2      | 1.26.0      | Updated |
-| gallery-videos                                    | 1.9.9       | 2.0.2       | Updated |
-| google-listings-and-ads                           | 2.5.5       | 2.5.7       | Updated |
-| google-site-kit                                   | 1.108.0     | 1.110.0     | Updated |
-| gutenberg                                         | 16.5.1      | 16.7.0      | Updated |
-| header-footer-elementor                           | 1.6.15      | 1.6.16      | Updated |
-| html5-video-player                                | 2.5.11      | 2.5.14      | Updated |
-| imagify                                           | 2.1.1       | 2.1.2       | Updated |
-| insert-headers-and-footers                        | 2.1.2       | 2.1.3.1     | Updated |
-| instagram-feed                                    | 6.2.1       | 6.2.2       | Updated |
-| jetpack                                           | 12.5        | 12.6.2      | Updated |
-| keydatas                                          | 2.4.9       | 2.5.2       | Updated |
-| learning-management-system                        | 1.6.14      | 1.6.15      | Updated |
-| learnpress                                        | 4.2.3.4     | 4.2.3.6     | Updated |
-| license-manager-for-woocommerce                   | 2.2.10      | 2.2.11      | Updated |
-| limit-login-attempts-reloaded                     | 2.25.24     | 2.25.25     | Updated |
-| mailpoet                                          | 4.26.0      | 4.29.0      | Updated |
-| media-library-assistant                           | 3.10        | 3.11        | Updated |
-| megamenu                                          | 3.2.2       | 3.2.3       | Updated |
-| members                                           | 3.2.7       | 3.2.8       | Updated |
-| meta-box                                          | 5.7.5       | 5.8.1       | Updated |
-| miniorange-login-with-eve-online-google-facebook  | 6.24.9      | 6.24.10     | Updated |
-| ml-slider                                         | 3.37.0      | 3.40.0      | Updated |
-| nextgen-gallery                                   | 3.37        | 3.41        | Updated |
-| ninja-forms                                       | 3.6.29      | 3.6.32      | Updated |
-| performance-lab                                   | 2.6.0       | 2.6.1       | Updated |
-| permalink-manager                                 | 2.4.1.3     | 2.4.1.5     | Updated |
-| pods                                              | 2.9.19      | 3.0.4       | Updated |
-| premium-addons-for-elementor                      | 4.10.7      | 4.10.11     | Updated |
-| presto-player                                     | 2.0.1       | 2.0.5       | Updated |
-| quadmenu                                          | 3.0.5       | 3.0.6       | Updated |
-| quick-adsense-reloaded                            | 2.0.75      | 2.0.76      | Updated |
-| real-media-library-lite                           | 4.21.9      | 4.21.11     | Updated |
-| really-simple-ssl                                 | 7.0.8       | 7.0.9       | Updated |
-| redux-framework                                   | 4.4.5       | 4.4.7       | Updated |
-| resmushit-image-optimizer                         | 0.4.11      | 0.4.12      | Updated |
-| rollback-update-failure                           | 6.2.0       | 6.3.1       | Updated |
-| royal-elementor-addons                            | 1.3.76      | 1.3.77      | Updated |
-| seo-by-rank-math                                  | 1.0.122     | 1.0.201.2   | Updated |
-| sg-cachepress                                     | 7.4.0       | 7.4.2       | Updated |
-| sg-security                                       | 1.4.5       | 1.4.6       | Updated |
-| simple-floating-menu                              | 1.2.5       | 1.2.6       | Updated |
-| siteorigin-panels                                 | 2.25.3      | 2.26.1      | Updated |
-| so-widgets-bundle                                 | 1.54.0      | 1.55.1      | Updated |
-| tenweb-speed-optimizer                            | 2.23.16     | 2.23.18     | Updated |
-| the-events-calendar                               | 6.2.0.1     | 6.2.2.1     | Updated |
-| tutor                                             | 2.2.4       | 2.3.0       | Updated |
-| ultimate-addons-for-gutenberg                     | 2.7.7       | 2.7.11      | Updated |
-| ultimate-member                                   | 2.6.10      | 2.6.11      | Updated |
-| unlimited-elements-for-elementor                  | 1.5.82      | 1.5.85      | Updated |
-| updraftplus                                       | 1.23.9      | 1.23.10     | Updated |
-| w3-total-cache                                    | 2.4.1       | 2.5.0       | Updated |
-| woocommerce                                       | 8.0.3       | 8.1.1       | Updated |
-| woocommerce-gateway-stripe                        | 7.5.0       | 7.6.0       | Updated |
-| woocommerce-payments                              | 6.4.1       | 6.5.1       | Updated |
-| woocommerce-paypal-payments                       | 2.2.2       | 2.3.1       | Updated |
-| woocommerce-pdf-invoices-packing-slips            | 3.6.2       | 3.6.3       | Updated |
-| woocommerce-services                              | 2.3.4       | 2.3.5       | Updated |
-| wordfence                                         | 7.10.3      | 7.10.4      | Updated |
-| wordpress-seo                                     | 21.0        | 21.2        | Updated |
-| wp-event-manager                                  | 3.1.37.1    | 3.1.38      | Updated |
-| wp-fastest-cache                                  | 1.1.8       | 1.1.9       | Updated |
-| wp-optimize                                       | 3.2.18      | 3.2.19      | Updated |
-| wp-statistics                                     | 14.1.6      | 14.1.6.2    | Updated |
-| wpdiscuz                                          | 7.6.3       | 7.6.10      | Updated |
-| wpforms-lite                                      | 1.8.3.1     | 1.8.4       | Updated |
-| yith-woocommerce-wishlist                         | 3.24.0      | 3.25.0      | Updated |
-+---------------------------------------------------+-------------+-------------+---------+
++---------------------------------------------------+-------------+
+| name                                              | version     |
++---------------------------------------------------+-------------+
+| acf-extended                                      | 0.8.9.4     |
+| acf-openstreetmap-field                           | 1.5.0       |
+| acf-views                                         | 2.1.1       |
+| ad-inserter                                       | 2.7.31      |
+| admin-menu-editor                                 | 1.11.2      |
+| admin-site-enhancements                           | 5.7.1       |
+| advanced-access-manager                           | 6.9.16      |
+| advanced-custom-fields                            | 6.2.1       |
+| advanced-responsive-video-embedder                | 9.10.12     |
+| advanced-sidebar-menu                             | 9.1.0       |
+| ai-engine                                         | 1.9.85      |
+| akismet                                           | 5.3         |
+| all-in-one-seo-pack                               | 4.4.7       |
+| antispam-bee                                      | 2.11.5      |
+| astra-sites                                       | 3.4.3       |
+| automatorwp                                       | 3.0.0       |
+| backup-backup                                     | 1.3.3       |
+| better-search-replace                             | 1.4.3       |
+| calculated-fields-form                            | 1.2.29      |
+| click-to-chat-for-whatsapp                        | 3.30        |
+| code-block-pro                                    | 1.24.0      |
+| code-snippets                                     | 3.5.0       |
+| coming-soon                                       | 6.15.15.3   |
+| complianz-gdpr                                    | 6.5.4       |
+| contact-form-7                                    | 5.8.1       |
+| cookie-law-info                                   | 3.1.4       |
+| creame-whatsapp-me                                | 5.0.19      |
+| customer-reviews-woocommerce                      | 5.36.0      |
+| duplicator                                        | 1.5.6       |
+| elementor                                         | 3.16.4      |
+| embedpress                                        | 3.8.5       |
+| essential-addons-for-elementor-lite               | 5.8.9       |
+| estatik                                           | 4.1.0       |
+| ewww-image-optimizer                              | 7.2.1       |
+| feeds-for-youtube                                 | 2.1.3       |
+| fg-drupal-to-wp                                   | 3.63.1      |
+| file-manager-advanced                             | 5.1.2       |
+| fileorganizer                                     | 1.0.4       |
+| folders                                           | 2.9.8       |
+| forminator                                        | 1.26.0      |
+| gallery-videos                                    | 2.0.2       |
+| google-listings-and-ads                           | 2.5.7       |
+| google-site-kit                                   | 1.110.0     |
+| gutenberg                                         | 16.7.0      |
+| header-footer-elementor                           | 1.6.16      |
+| html5-video-player                                | 2.5.14      |
+| imagify                                           | 2.1.2       |
+| insert-headers-and-footers                        | 2.1.3.1     |
+| instagram-feed                                    | 6.2.2       |
+| jetpack                                           | 12.6.2      |
+| keydatas                                          | 2.5.2       |
+| learning-management-system                        | 1.6.15      |
+| learnpress                                        | 4.2.3.6     |
+| license-manager-for-woocommerce                   | 2.2.11      |
+| limit-login-attempts-reloaded                     | 2.25.25     |
+| mailpoet                                          | 4.29.0      |
+| media-library-assistant                           | 3.11        |
+| megamenu                                          | 3.2.3       |
+| members                                           | 3.2.8       |
+| meta-box                                          | 5.8.1       |
+| miniorange-login-with-eve-online-google-facebook  | 6.24.10     |
+| ml-slider                                         | 3.40.0      |
+| nextgen-gallery                                   | 3.41        |
+| ninja-forms                                       | 3.6.32      |
+| optinmonster                                      | 2.14.0      |
+| performance-lab                                   | 2.6.1       |
+| permalink-manager                                 | 2.4.1.5     |
+| pods                                              | 3.0.4       |
+| premium-addons-for-elementor                      | 4.10.11     |
+| presto-player                                     | 2.0.6       |
+| quadmenu                                          | 3.0.6       |
+| quick-adsense-reloaded                            | 2.0.76      |
+| real-media-library-lite                           | 4.21.12     |
+| really-simple-ssl                                 | 7.0.9       |
+| redux-framework                                   | 4.4.7       |
+| resmushit-image-optimizer                         | 0.4.12      |
+| rollback-update-failure                           | 6.3.1       |
+| royal-elementor-addons                            | 1.3.77      |
+| seo-by-rank-math                                  | 1.0.201.2   |
+| sg-cachepress                                     | 7.4.2       |
+| sg-security                                       | 1.4.6       |
+| simple-floating-menu                              | 1.2.6       |
+| siteorigin-panels                                 | 2.26.1      |
+| so-widgets-bundle                                 | 1.55.1      |
+| tenweb-speed-optimizer                            | 2.23.18     |
+| the-events-calendar                               | 6.2.2.1     |
+| tutor                                             | 2.3.0       |
+| ultimate-addons-for-gutenberg                     | 2.7.11      |
+| ultimate-member                                   | 2.6.11      |
+| unlimited-elements-for-elementor                  | 1.5.85      |
+| updraftplus                                       | 1.23.10     |
+| w3-total-cache                                    | 2.5.0       |
+| woocommerce                                       | 8.1.1       |
+| woocommerce-gateway-stripe                        | 7.6.0       |
+| woocommerce-payments                              | 6.5.1       |
+| woocommerce-paypal-payments                       | 2.3.1       |
+| woocommerce-pdf-invoices-packing-slips            | 3.6.3       |
+| woocommerce-services                              | 2.3.5       |
+| wordfence                                         | 7.10.4      |
+| wordpress-seo                                     | 21.2        |
+| wp-event-manager                                  | 3.1.38      |
+| wp-fastest-cache                                  | 1.1.9       |
+| wp-menu-icons                                     | 3.1.7       |
+| wp-optimize                                       | 3.2.19      |
+| wp-statistics                                     | 14.1.6.2    |
+| wpdiscuz                                          | 7.6.10      |
+| wpforms-lite                                      | 1.8.4       |
+| yith-woocommerce-wishlist                         | 3.25.0      |
++---------------------------------------------------+-------------+
 
 == Themes ==
-+--------------+-------------+-------------+---------+
-| name         | old_version | new_version | status  |
-+--------------+-------------+-------------+---------+
-| astra        | 4.3.0       | 4.3.1       | Updated |
-| blocksy      | 1.9.4       | 1.9.7       | Updated |
-| blogus       | 1.0.0.48    | 1.0.0.51    | Updated |
-| botiga       | 2.1.1       | 2.1.3       | Updated |
-| chromenews   | 4.6.1       | 4.6.4.1     | Updated |
-| colormag     | 3.0.5       | 3.0.6       | Updated |
-| glowing-blog | 1.0.1       | 1.0.2       | Updated |
-| inspiro      | 1.7.12      | 1.7.13      | Updated |
-| lightning    | 15.10.6     | 15.12.1     | Updated |
-| neve         | 3.6.7       | 3.7.0       | Updated |
-| newsmatic    | 1.2.12      | 1.2.14      | Updated |
-| newsup       | 3.0.0.103   | 3.0.0.106   | Updated |
-| niche-blog   | 0.0.5       | 0.0.6       | Updated |
-| ogma-blog    | 1.0.5       | 1.0.8       | Updated |
-| storefront   | 4.5.2       | 4.5.3       | Updated |
-+--------------+-------------+-------------+---------+
++---------------+-------------+
+| name          | version     |
++---------------+-------------+
+| astra         | 4.3.1       |
+| blocksy       | 1.9.7       |
+| blogus        | 1.0.0.51    |
+| botiga        | 2.1.3       |
+| chromenews    | 4.6.4.1     |
+| colormag      | 3.0.6       |
+| glowing-blog  | 1.0.2       |
+| inspiro       | 1.7.13      |
+| lightning     | 15.12.1     |
+| neve          | 3.7.0       |
+| newsmatic     | 1.2.14      |
+| newsup        | 3.0.0.106   |
+| niche-blog    | 0.0.6       |
+| niche-blog    | 0.0.7       |
+| ogma-blog     | 1.0.9       |
+| storefront    | 4.5.3       |
++---------------+-------------+

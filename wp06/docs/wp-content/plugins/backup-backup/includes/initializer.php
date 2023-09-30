@@ -441,6 +441,7 @@
 
       if ($progress) {
         $progress->log(__("Aborting backup...", 'backup-backup'), 'step');
+        $progress->log('#002', 'END-CODE');
         $progress->end();
       }
     }

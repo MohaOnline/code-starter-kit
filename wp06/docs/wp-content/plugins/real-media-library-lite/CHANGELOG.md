@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.21.12 (2023-09-29)
+
+
+### chore
+
+* review 1 (CU-85ztzbdjt)
+
+
+### docs
+
+* remove not understandable commit messages from changelog (CU-861n7an31)
+
+
+
+
+
 ## 4.21.11 (2023-09-21)
 
 **Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
@@ -1185,11 +1201,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 4.13.5 (2021-04-27)
 
 
-### chore
-
-* **release :** publish [ci skip]
-
-
 ### ci
 
 * push plugin artifacts to GitLab Generic Packages registry (CU-hd6ef6)
@@ -1371,8 +1382,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### chore
 
-* **release :** publish [ci skip]
-* **release :** publish [ci skip]
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
 
 
 
@@ -1411,7 +1421,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * update to cypress v6 (CU-7gmaxc)
 * update to webpack v5 (CU-4akvz6)
 * updates typings and min. Node.js and Yarn version (CU-9rq9c7)
-* **release :** publish [ci skip]
 
 
 ### fix
@@ -1431,7 +1440,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * update dependencies (CU-3cj43t)
 * update major dependencies (CU-3cj43t)
 * update to composer v2 (CU-4akvjg)
-* **release :** publish [ci skip]
 
 
 ### refactor
@@ -1661,11 +1669,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## 4.9.4 (2020-08-26)
-
-
-### chore
-
-* **release :** publish [ci skip]
 
 
 ### ci
@@ -2015,8 +2018,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### chore
 
 * update dependencies (#3cj43t)
-* **release :** publish [ci skip]
-* **release :** publish [ci skip]
 
 
 ### ci

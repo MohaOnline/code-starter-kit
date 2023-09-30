@@ -273,8 +273,12 @@
           rename($src, $fileDest);
         }
 
-        if ($i % 100 === 0) {
+        if ($i % 100 === 0 || ($i == ($max - 1))) {
           $this->migration->progress(25 + intval((($i / $max) * 100) / 4));
+          if ($i != 0 && ($i % 500 === 0 || ($i == ($max - 1)))) {
+            if ($i == ($max - 1)) $i++;
+            $this->migration->log(sprintf(__('File replacement progress: %s/%s (%s%%)', 'backup-backup'), $i, $max, intval(($i / $max) * 100)));
+          }
         }
       }
     }
@@ -523,6 +527,26 @@
       if (!(file_exists($tmp) && is_dir($tmp))) {
         return $manifestPrefix;
       }
+      
+      $originalPrefix = [
+        file_exists($tmp . DIRECTORY_SEPARATOR . $manifestPrefix . 'options.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . $manifestPrefix . 'users.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . $manifestPrefix . 'usermeta.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . $manifestPrefix . 'posts.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . $manifestPrefix . 'postmeta.sql')
+      ];
+      
+      $lowerPrefix = [
+        file_exists($tmp . DIRECTORY_SEPARATOR . strtolower($manifestPrefix) . 'options.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . strtolower($manifestPrefix) . 'users.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . strtolower($manifestPrefix) . 'usermeta.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . strtolower($manifestPrefix) . 'posts.sql'),
+        file_exists($tmp . DIRECTORY_SEPARATOR . strtolower($manifestPrefix) . 'postmeta.sql')
+      ];
+      
+      if (count(array_filter($lowerPrefix)) == 5 || count(array_filter($originalPrefix)) == 5) {
+        return $manifestPrefix;
+      }
 
       $files = scandir($tmp);
       $prefixes = [];
@@ -654,7 +678,11 @@
           $i = $recent_seek + 1;
           $milestone = intval((($i / $total_lines) * 100) / 4);
           $this->migration->progress($milestone);
-          $this->migration->log(__('Extraction milestone: ', 'backup-backup') . $i . '/' . $total_lines . ' (' . number_format(($i / $total_lines) * 100, 2) . '%)', 'INFO');
+          
+          $plus = -1;
+          if ($shouldRepeat != true) $plus = 0;
+          
+          $this->migration->log(__('Extraction milestone: ', 'backup-backup') . ($i + $plus) . '/' . $total_lines . ' (' . number_format(($i / $total_lines) * 100, 2) . '%)', 'INFO');
 
         }
 
@@ -1404,7 +1432,16 @@
         if ($this->isCLI || $this->batchStep == 3) {
 
           // UnZIP the backup
-          $unzipped = $this->makeUnZIP();
+          try {
+            $unzipped = $this->makeUnZIP();
+          } catch (\Exception $e) {
+            $this->handleError($e);
+            return;
+          } catch (\Throwable $t) {
+            $this->handleError($t);
+            return;
+          }
+          
           if ($unzipped === false) {
 
             $this->handleError(__('File extraction process failed.', 'backup-backup'));

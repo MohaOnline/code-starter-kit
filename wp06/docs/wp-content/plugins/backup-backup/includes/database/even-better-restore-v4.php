@@ -534,6 +534,63 @@ class BMI_Even_Better_Database_Restore {
     return $status;
 
   }
+  
+  public function is_valid_plugin($plugin) {
+    
+    global $wp_version;
+    
+    $default_headers = array( 'wp'  => 'Requires at least', 'php' => 'Requires PHP' );
+    
+    $wp = false;
+    $php = false;
+    
+    $detectedwp = '0.0.0';
+    $detectedphp = '0.0.0';
+    
+    try {
+    
+      $plugin_file = BMP::fixSlashes(WP_PLUGIN_DIR . '/' . $plugin);
+      $plugin_readme = BMP::fixSlashes(WP_PLUGIN_DIR . '/' . dirname($plugin) . '/readme.txt');
+      if (!file_exists($plugin_readme)) $plugin_readme = BMP::fixSlashes(WP_PLUGIN_DIR . '/' . dirname($plugin) . '/README.txt');
+      
+      if (file_exists($plugin_file)) {
+        $plugin_data = get_file_data($plugin_file, $default_headers, 'plugin');
+        if (!empty($plugin_data['wp']) && version_compare($plugin_data['wp'], $wp_version, '<=')) {
+          $detectedwp = $plugin_data['wp'];
+          $wp = true;
+        }
+        if (!empty($plugin_data['php']) && version_compare($plugin_data['php'], PHP_VERSION, '<=')) {
+          $detectedphp = $plugin_data['php'];
+          $php = true;
+        }
+      }
+      
+      if (file_exists($plugin_readme)) {
+        $readme_data = get_file_data($plugin_readme, $default_headers, 'plugin');
+        if (!empty($readme_data['wp']) && version_compare($readme_data['wp'], $wp_version, '<=')) {
+          $detectedwp = $readme_data['wp'];
+          $wp = true;
+        }
+        
+        if (!empty($readme_data['php']) && version_compare($readme_data['php'], PHP_VERSION, '<=')) {
+          $detectedphp = $readme_data['php'];
+          $php = true;
+        }
+      }
+      
+      $this->logger->log(sprintf('Detected version WP/PHP for plugin: %s, is (%s/%s)', $plugin, $detectedwp, $detectedphp), 'VERBOSE');
+      
+      if ($plugin == 'hello.php') return true;
+      if ($php && $wp) return true;
+      else return false;
+          
+    } catch (Error $e) {
+      return false;
+    }
+    
+    return false;
+    
+  }
 
   private function try_activate_plugins($plugins, $sucstr_source, $failstr_source, $failed_plugins = []) {
 
@@ -560,6 +617,8 @@ class BMI_Even_Better_Database_Restore {
       if (empty($plugin_name)) {
         $shouldActivate = false;
         $plugin_display = '(---)';
+      } else if ($plugin_name == 'hello.php') {
+        $shouldActivate = true;
       } else if (strpos($plugin_name, '/') === false) {
         $shouldActivate = false;
       }
@@ -570,7 +629,7 @@ class BMI_Even_Better_Database_Restore {
       if ($shouldActivate) {
         try {
 
-          if (validate_plugin_requirements($plugin_name) && !in_array($plugin_name, $disallowed_plugins)) {
+          if ($this->is_valid_plugin($plugin_name) && !in_array($plugin_name, $disallowed_plugins)) {
 
             $resultWP = activate_plugin($plugin_name, '', true, true);
 

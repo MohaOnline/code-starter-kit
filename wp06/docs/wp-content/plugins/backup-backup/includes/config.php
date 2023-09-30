@@ -176,7 +176,9 @@
               rename($prev_path . DIRECTORY_SEPARATOR . $file, $localStoragePath . DIRECTORY_SEPARATOR . $file);
             }
           }
-          @rmdir($prev_path_backups);
+          if ($prev_path != $localStoragePath && sizeof(scandir($prev_path_backups)) <= 2) {
+            @rmdir($prev_path_backups);
+          }
         }
 
         if (file_exists($prev_path) && is_dir($prev_path)) {
@@ -186,7 +188,9 @@
               rename($prev_path . DIRECTORY_SEPARATOR . $file, $localStoragePath . DIRECTORY_SEPARATOR . $file);
             }
           }
-          @rmdir($prev_path);
+          if ($localStoragePath != $prev_path && sizeof(scandir($prev_path)) <= 2) { 
+            @rmdir($prev_path);
+          }
         }
 
         update_option('BMI::STORAGE::LOCAL::PATH', $localStoragePath);

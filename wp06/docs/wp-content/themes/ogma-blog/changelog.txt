@@ -1,3 +1,7 @@
+== 1.0.9: 2023-09-29 ==
+- Fix: Single post layout two no thumbnail design issue fixed.
+Design enhancement done.
+
 == 1.0.8: 2023-09-22 ==
 - New: Bounce ball preloader added.
 Header background image design enhancement done.

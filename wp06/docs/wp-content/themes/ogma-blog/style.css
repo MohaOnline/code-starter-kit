@@ -4,7 +4,7 @@ Theme URI:    https://ogma.mysterythemes.com/ogma-blog
 Author:       Mystery Themes
 Author URI:   https://mysterythemes.com
 Description:  Ogma Blog is a blogging WordPress theme with a one-click demo import feature which is a highly versatile and user-friendly theme explicitly designed for blog websites, and content-heavy blogs. It offers a range of advanced features and customization options to help you create a professional and engaging online publication. It offers Google fonts, text, and categories color options and layout options for Header, Single Posts, Related Posts, and Archives Posts. It has 8 Widget areas including one sticky sidebar enabled from the primary header. It has all the necessary features like WooCommerce Compatibility, RTL ready, Gutenberg, Elementor compatibility, GDPR compliant, and many more. This theme is optimized for search engines, ensuring your content is easily discoverable by search engines like Google. This helps to drive organic traffic to your website and increase your online visibility. You can check demos here which can be easily imported by the Mystery Themes Demo Importer plugin. Also, You can check Demo here:https://ogma.mysterythemes.com/demos/ogma-blog/ & Documentation here: https://docs.mysterythemes.com/ogma/
-Version:      1.0.8
+Version:      1.0.9
 Tested up to: 6.3
 Requires PHP: 7.2
 License:      GNU General Public License v2 or later
@@ -3256,6 +3256,11 @@ Archive layout CSS
   margin: 0;
 }
 
+.archive-description {
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
+
 .ogma-blog-site-layout--separate .page-header {
   padding: 20px 20px;
 }
@@ -3576,9 +3581,7 @@ Single Post Layout CSS
 
 .single .ogma-blog-post-content-wrap .entry-title {
   font-size: 38px;
-}
-
-.single-posts-layout--two .ogma-blog-post-title-wrap {
+}.single-posts-layout--two .ogma-blog-post-title-wrap {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -3633,6 +3636,31 @@ Single Post Layout CSS
   font-weight: 500;
 }
 
+.single-posts-layout--two .no-thumbnail .ogma-blog-post-title-wrap {
+  position: static;
+  background: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.single-posts-layout--two .no-thumbnail .post-thumbnail-wrap .post-min-read {
+  position: static;
+}
+
+.single-posts-layout--two .no-thumbnail .ogma-blog-post-title-wrap .entry-meta span a,
+.single-posts-layout--two .no-thumbnail .ogma-blog-post-title-wrap .entry-meta span::before,
+.single-posts-layout--two .no-thumbnail .ogma-blog-post-title-wrap .entry-meta span {
+  color: #565656;
+}
+
+.single-posts-layout--two .no-thumbnail .ogma-blog-post-content-wrap {
+  padding-top: 0;
+}
+
+.single-posts-layout--two .no-thumbnail .entry-title {
+  color: #333;
+}
+
 .single-related-posts {
   margin-top: 30px;
 }
@@ -3653,7 +3681,7 @@ Single Post Layout CSS
   margin-top: 15px;
 }
 
-.related-posts-wrapper .post-meta-wrap > span {
+.related-posts-wrapper .post-meta-wrap>span {
   margin-right: 10px;
 }
 
@@ -3777,7 +3805,7 @@ Dark mode CSS
   background: #111111;
 }
 
-.dark-mode #site-navigation ul.sub-menu, 
+.dark-mode #site-navigation ul.sub-menu,
 .dark-mode #site-navigation ul.children {
   background: #212121 !important;
 }
@@ -3844,7 +3872,7 @@ body.dark-mode,
 .dark-mode .sticky-header-widget-wrapper .widget,
 .dark-mode .banner-tabbed-wrapper .single-post-wrap,
 .dark-mode .banner-tabbed-wrapper ul.banner-tabs li a,
-.dark-mode.ogma-blog-site-layout--separate .archive-content-wrapper article{
+.dark-mode.ogma-blog-site-layout--separate .archive-content-wrapper article {
   background: #1C1C1C;
 }
 
@@ -3852,7 +3880,7 @@ body.dark-mode,
 .dark-mode .post-meta-wrap span,
 .dark-mode .ogma-blog-post-content-wrap .entry-meta span a,
 .dark-mode .breadcrumb-trail.breadcrumbs ul li a,
-.dark-mode .ogma-blog-post-content-wrap .entry-meta span::before, 
+.dark-mode .ogma-blog-post-content-wrap .entry-meta span::before,
 .dark-mode .ogma-blog-post-content-wrap .entry-meta span,
 .dark-mode .entry-footer a {
   color: #bfbfbf;
@@ -3929,7 +3957,7 @@ body.dark-mode,
 }
 
 .dark-mode .site-info {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /*--------------------------------------------------------------

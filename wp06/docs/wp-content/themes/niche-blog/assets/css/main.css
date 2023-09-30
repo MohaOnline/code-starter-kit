@@ -1027,6 +1027,7 @@ svg {
 .site-main .post-navigation a {
 	color: #000;
 	text-decoration: none;
+	word-wrap: break-word;
 }
 
 .site-main .comment-navigation a:hover, 
@@ -1140,16 +1141,16 @@ span.post-page-numbers.current {
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
-	position: absolute !important;
+	position: absolute;
 	width: 1px;
-	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+	word-wrap: normal; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
+	clip: auto;
 	clip-path: none;
 	color: #21759b;
 	display: block;
@@ -1250,7 +1251,6 @@ span.post-page-numbers.current {
 	position: relative;
 	margin: 0 0 20px;
 	padding: 0 10px 20px;
-    border: 1px solid #efefef;
 	/* Make sure select elements fit in widgets. */
 }
 
@@ -1382,9 +1382,9 @@ span.post-page-numbers.current {
 
 .wp-block-tag-cloud a {
     display: inline-block;
-    font-size: 14px !important;
+    font-size: 14px;
     margin: 0 10px 10px 0;
-    color: #333 !important;
+    color: #333;
     border: 1px solid #ddd;
     text-decoration: none;
     padding: 5px 10px;
@@ -1394,13 +1394,13 @@ span.post-page-numbers.current {
 
 .wp-block-tag-cloud a:hover,
 .wp-block-tag-cloud a:focus {
-    color: #fff !important;
+    color: #fff;
     background-color: #054e6d;
     border-color: #054e6d;
 }
 
 #colophon .wp-block-tag-cloud a {
-	color: #fff !important;
+	color: #fff;
 }
 
 .wp-block-search__button {
@@ -1900,7 +1900,7 @@ object {
 }
 
 .search-no-results .blog-archive.grid.columns-5.clear {
-    height: auto !important;
+    height: auto;
 }
 
 .no-results.not-found {
@@ -2271,17 +2271,17 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 
 #colophon a:hover,
 #colophon a:focus {
-	color: #054e6d;
+	color: #bbbbbb;
 }
 
 #colophon .tagcloud a {
     border-color: rgba(255, 255, 255, 0.10);
-    color: #ccc !important;
+    color: #ccc;
 }
 
 #colophon .tagcloud a:hover,
 #colophon .tagcloud a:focus {
-	color: #fff !important;
+	color: #fff;
 }
 
 .site-info {
@@ -2998,7 +2998,7 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 
 	.niche-blog-navigation-menu .nav-menu li:hover ul,
 	.niche-blog-navigation-menu .nav-menu li.focus ul {
-		display: block !important;
+		display: block;
 	}
 
 	.niche-blog-navigation-menu ul ul ul {
@@ -3030,7 +3030,7 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 	#masthead .nav-menu,
 	#masthead .nav-menu > ul {
 	    border-top: none;
-        display: block !important;
+        display: block;
         text-align: center;
         padding: 0;
 	}

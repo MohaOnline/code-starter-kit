@@ -13,13 +13,11 @@
 
     public static function append($type, $log) {
 
-      if (file_exists(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log')) {
-        $date = '[' . date('Y-m-d H:i:s') . '] ';
-        $file = fopen(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log', 'a');
-                fwrite($file, $date . $type . ' ' . $log . "\n");
-                fclose($file);
-      }
-
+      $date = '[' . date('Y-m-d H:i:s') . '] ';
+      $file = fopen(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log', 'a');
+              fwrite($file, $date . $type . ' ' . $log . "\n");
+              fclose($file);
+              
     }
 
     public static function log($log) {

@@ -44,6 +44,7 @@
 .presto-audio__title {
   margin: calc(var(--plyr-control-spacing, 10px) / 2);
   margin-top: 0;
+  text-wrap: wrap;
 }
 .presto-audio__poster-wrapper {
   position: relative;

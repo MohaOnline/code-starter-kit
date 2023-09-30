@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator,calculated,quote calculator,forms,form editor,advanced forms,payment calculator,payment,recurring payment,quote,fields,calculated field,price calculator,email,form design,paypal,equation editor,formula,equation,quote calculator,post,posts,plugin,widget,admin,sidebar,images,image,page,shortcode,products form,woocommerce,addons,layout,session,post,cookie,get,webhook,Dropbox,pdf,language
 Requires at least: 3.0.5
 Tested up to: 6.3
-Stable tag: 1.2.28
+Stable tag: 1.2.29
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -298,13 +298,13 @@ The plugin includes the shortcode [CP_CALCULATED_FIELDS_VAR] to generate JavaScr
 
 `[CP_CALCULATED_FIELDS_VAR name="..."]`
 
-In the shortcode, you must replace the "..." symbols with the name of the parameter or variable. It will be the same name for the JavaScript variable.
+In the shortcode, you must replace the "..." symbols with the name of the parameter or variable. The variables are created as properties of the cff_var variable. For example, in the [CP_CALCULATED_FIELDS_VAR name="my_var"] shortcode, you can access the variable value from the equations by using cff_var['my_var'], or cff_var.my_var
 
 For example:
 
 `[CP_CALCULATED_FIELDS_VAR name="varname"]`
 
-You can use the variables generated through the shortcode [CP_CALCULATED_FIELDS_VAR] in the formulas of the calculated fields: `fieldname1*varname`
+You can use the variables generated through the shortcode [CP_CALCULATED_FIELDS_VAR] in the formulas of the calculated fields: `fieldname1*cff_var.varname`
 
 The complete list of parameters accepted by the variables shortcode is available at the following link: [CLICK HERE](http://cff.dwbooster.com/documentation#javascript-variables)
 
@@ -999,6 +999,12 @@ A: Please, follow the steps below:
 
 == Changelog ==
 
+= 1.2.29 =
+
+* Prevents that variables included with the CP_CALCULATED_FIELDS_VAR shortcode overwrite global and other context variables (Thanks to NGÔ THIÊN AN (ancorn_ from VNPT-VCI)).
+* Modifies the CFFCHART operation to allow the use of ChartJS 4.X.X API versions (Developer and Platinum versions of the plugin).
+* Modifies the WebHook add-on (Developer and Platinum versions of the plugin).
+
 = 1.2.28 =
 
 * Loads the default values after completing the form rendering.
@@ -1045,8 +1051,3 @@ A: Please, follow the steps below:
 
 * Fixes an issue in the RESETFORM operation that was not resettings the values of the calculated field.
 * Modifies the database data source in the DS fields set to include the Distinct attribute (Developer and Platinum versions of the plugin).
-
-= 1.2.20 =
-
-* Implements the asynchronous attribute in the forms shortcodes to combine with the iframe attribute. It improves the loading speed process of pages with forms loaded into iframes.
-* Modifies the reCAPTCHA add-on to allow multiple forms protected with reCAPTCHA on the same page (Developer and Platinum versions of the plugin).

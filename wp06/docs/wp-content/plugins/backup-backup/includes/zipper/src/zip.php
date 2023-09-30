@@ -536,6 +536,14 @@ class Zip {
           }
 
           $chunk = $chunks[$i];
+          $chunk = array_filter($chunk, function ($path) {
+            if (is_readable($path)) return true;
+            else {
+              $this->zip_progress->log(sprintf(__("Excluding file that cannot be read: %s", 'backup-backup'), $path), 'warn');
+              return false;
+            }
+          });
+          
           $back = $lib->add($chunk, PCLZIP_OPT_REMOVE_PATH, $abs, PCLZIP_OPT_ADD_PATH, 'wordpress' . DIRECTORY_SEPARATOR/*, PCLZIP_OPT_ADD_TEMP_FILE_ON*/, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $safe_limit);
           if ($back == 0) {
             $this->zip_failed($lib->errorInfo(true));

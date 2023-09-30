@@ -4,7 +4,7 @@ Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, po
 Requires at least: 4.7.0
 Tested up to: 6.3
 Requires PHP: 5.3
-Stable tag: 2.13.8
+Stable tag: 2.14.0
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -460,6 +460,12 @@ Syed Balkhi
 == Changelog ==
 
 **Most Recent Changes:**
+
+= Popup Builder 2.14.0 =
+* UI updates and improvements to template filtering.
+* Update to allow a new integrations to be set as the default integration during creation.
+* Fixed an issue where an integration using Google Analytics 4 could not be created from within the plugin.
+* Fixed an issue where negative numbers could be entered for cookie duration values.
 
 = Popup Builder 2.13.8 =
 * Declares compatibility with WooCommerce High-Performance Order Storage

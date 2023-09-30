@@ -114,8 +114,39 @@ if ( ! function_exists( 'niche_blog_setup' ) ) :
 	           	'color' => '#82868b',
 	       	),
 	   	));
+		   add_theme_support(
+			'editor-gradient-presets',
+			array(
+				array(
+					'name'     => esc_attr__( 'Vivid cyan blue to vivid purple', 'niche-blog' ),
+					'gradient' => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+					'slug'     => 'vivid-cyan-blue-to-vivid-purple'
+				),
+				array(
+					'name'     => esc_attr__( 'Vivid green cyan to vivid cyan blue', 'niche-blog' ),
+					'gradient' => 'linear-gradient(135deg,rgba(0,208,132,1) 0%,rgba(6,147,227,1) 100%)',
+					'slug'     =>  'vivid-green-cyan-to-vivid-cyan-blue',
+				),
+				array(
+					'name'     => esc_attr__( 'Light green cyan to vivid green cyan', 'niche-blog' ),
+					'gradient' => 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
+					'slug'     => 'light-green-cyan-to-vivid-green-cyan',
+				),
+				array(
+					'name'     => esc_attr__( 'Luminous vivid amber to luminous vivid orange', 'niche-blog' ),
+					'gradient' => 'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
+					'slug'     => 'luminous-vivid-amber-to-luminous-vivid-orange',
+				),
+				array(
+					'name'     => esc_attr__( 'Luminous vivid orange to vivid red', 'niche-blog' ),
+					'gradient' => 'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
+					'slug'     => 'luminous-vivid-orange-to-vivid-red',
+				),
+			)
+		);
 
 		add_theme_support( 'align-wide' );
+		add_theme_support( 'appearance-tools' );
 		add_theme_support( 'editor-font-sizes', array(
 		   	array(
 		       	'name' => esc_html__( 'small', 'niche-blog' ),
@@ -143,7 +174,7 @@ if ( ! function_exists( 'niche_blog_setup' ) ) :
 		   	)
 		));
 		add_theme_support('editor-styles');
-		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'wp-block-styles' );		
 	}
 endif;
 add_action( 'after_setup_theme', 'niche_blog_setup' );

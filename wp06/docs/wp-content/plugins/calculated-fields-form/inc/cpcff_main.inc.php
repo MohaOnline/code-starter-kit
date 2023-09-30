@@ -683,7 +683,8 @@ if ( ! class_exists( 'CPCFF_MAIN' ) ) {
 					return '
 					<script>
 						try{
-						window["' . esc_js( $var ) . '"]=' . $value . ';
+						if( ! ( "cff_var" in window ) )	window["cff_var"] = {};
+						window["cff_var"]["'.esc_js($var).'"]='.$value.';
 						}catch( err ){}
 					</script>
 					';

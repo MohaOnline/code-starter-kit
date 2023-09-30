@@ -10,6 +10,7 @@
   use BMI\Plugin\Dashboard as Dashboard;
   use BMI\Plugin\Database\BMI_Database as Database;
   use BMI\Plugin\Database\BMI_Database_Exporter as BetterDatabaseExport;
+  use BMI\Plugin AS BMI;
 
   // Exit on direct access
   if (!(defined('BMI_CURL_REQUEST') || defined('ABSPATH'))) exit;
@@ -408,7 +409,7 @@
         }
 
         fclose($file);
-        sleep(2);
+        usleep(100);
         if (file_exists($this->fileList)) @unlink($this->fileList);
 
       } else {
@@ -947,17 +948,28 @@
 
     }
 
-    public function fixSlashes($str) {
-      $str = str_replace('\\\\', DIRECTORY_SEPARATOR, $str);
-      $str = str_replace('\\', DIRECTORY_SEPARATOR, $str);
-      $str = str_replace('\/', DIRECTORY_SEPARATOR, $str);
-      $str = str_replace('/', DIRECTORY_SEPARATOR, $str);
+    public function fixSlashes($str, $slash = false) {
+      // Old version
+      // $str = str_replace('\\\\', DIRECTORY_SEPARATOR, $str);
+      // $str = str_replace('\\', DIRECTORY_SEPARATOR, $str);
+      // $str = str_replace('\/', DIRECTORY_SEPARATOR, $str);
+      // $str = str_replace('/', DIRECTORY_SEPARATOR, $str);
 
-      if ($str[strlen($str) - 1] == DIRECTORY_SEPARATOR) {
-        $str = substr($str, 0, -1);
-      }
+      // if ($str[strlen($str) - 1] == DIRECTORY_SEPARATOR) {
+      //   $str = substr($str, 0, -1);
+      // }
+      
+      // Since 1.3.2
+      $protocol = '';
+      if ($slash == false) $slash = DIRECTORY_SEPARATOR;
+      if (substr($str, 0, 7) == 'http://') $protocol = 'http://';
+      else if (substr($str, 0, 8) == 'https://') $protocol = 'https://';
+      
+      $str = substr($str, strlen($protocol));
+      $str = preg_replace('/[\\\\\/]+/', $slash, $str);
+      $str = rtrim($str, '/\\' );
 
-      return $str;
+      return $protocol . $str;
     }
 
     // Database batch maker and dumper
@@ -966,11 +978,7 @@
 
       if ($this->dbit === -1) return;
 
-      define('WP_USE_THEMES', false);
-
-      // Use WP Globals and load WordPress
-      global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
-      require_once $this->bmi_find_wordpress_base_path() . DIRECTORY_SEPARATOR . 'wp-load.php';
+      $this->loadWordPressAndBackupPlugin();
 
       // DB File Name for that type of backup
       $dbbackupname = 'bmi_database_backup.sql';
@@ -1063,99 +1071,139 @@
       }
 
     }
-
-    public function sendTroubleshootingDetails($send_type = 'manual', $blocking = true) {
-
+    
+    public function loadWordPressAndBackupPlugin() {
+      
+      // Define how WP should load
       define('WP_USE_THEMES', false);
+      define('SHORTINIT', true);
+      
+      // Set path to our plugin's main file
+      $bmiPluginPathToLoad = $this->fixSlashes(dirname(__DIR__) . '/backup-backup.php');
+      $bmiPluginPathToLoadPro = $this->fixSlashes(dirname(dirname(__DIR__)) . '/backup-backup-pro/backup-backup-pro.php');
 
       // Use WP Globals and load WordPress
       global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
       require_once $this->bmi_find_wordpress_base_path() . DIRECTORY_SEPARATOR . 'wp-load.php';
-      require_once BMI_INCLUDES . DIRECTORY_SEPARATOR . 'check' . DIRECTORY_SEPARATOR . 'system_info.php';
-
-      $bmiSiteData = new SI();
-      $bmiSiteData = $bmiSiteData->to_array();
-
-      $latestBackupLogs = 'does_not_exist';
-      $latestBackupProgress = 'does_not_exist';
-      $latestRestorationLogs = 'does_not_exist';
-      $latestRestorationProgress = 'does_not_exist';
-      $currentPluginConfig = 'does_not_exist';
-      $pluginGlobalLogs = 'does_not_exist';
-      $backgroundErrors = 'does_not_exist';
-
-      if (file_exists(BMI_BACKUPS . '/latest.log')) {
-        $latestBackupLogs = file_get_contents(BMI_BACKUPS . '/latest.log');
+      global $wp_version;
+      
+      // Load directory WordPress constants 
+      require_once ABSPATH . WPINC . '/formatting.php';
+      require_once ABSPATH . WPINC . '/meta.php';
+      wp_plugin_directory_constants();
+      
+      // Allow to register activation hook and realpath
+      $GLOBALS['wp_plugin_paths'] = array();
+      $GLOBALS['shortcode_tags'] = array();
+      
+      // Load all dependencies of WordPress for Backup plugin
+      $dependencies = [
+        ABSPATH . WPINC . '/l10n.php',
+        ABSPATH . WPINC . '/plugin.php',
+        ABSPATH . WPINC . '/link-template.php',
+        ABSPATH . WPINC . '/class-wp-textdomain-registry.php',
+        ABSPATH . WPINC . '/class-wp-locale.php',
+        ABSPATH . WPINC . '/class-wp-locale-switcher.php',
+        ABSPATH . WPINC . '/session.php',
+        ABSPATH . WPINC . '/pluggable.php',
+        ABSPATH . WPINC . '/class-wp-ajax-response.php',
+        ABSPATH . WPINC . '/capabilities.php',
+        ABSPATH . WPINC . '/class-wp-roles.php',
+        ABSPATH . WPINC . '/class-wp-role.php',
+        ABSPATH . WPINC . '/class-wp-user.php',
+        ABSPATH . WPINC . '/class-wp-query.php',
+        ABSPATH . WPINC . '/query.php',
+        ABSPATH . WPINC . '/general-template.php',
+        ABSPATH . WPINC . '/http.php',
+        ABSPATH . WPINC . '/class-http.php',
+        ABSPATH . WPINC . '/class-wp-http.php',
+        ABSPATH . WPINC . '/class-wp-http-streams.php',
+        ABSPATH . WPINC . '/class-wp-http-curl.php',
+        ABSPATH . WPINC . '/class-wp-http-proxy.php',
+        ABSPATH . WPINC . '/class-wp-http-cookie.php',
+        ABSPATH . WPINC . '/class-wp-http-encoding.php',
+        ABSPATH . WPINC . '/class-wp-http-response.php',
+        ABSPATH . WPINC . '/class-wp-http-requests-response.php',
+        ABSPATH . WPINC . '/class-wp-http-requests-hooks.php',
+        ABSPATH . WPINC . '/class-wp-user-request.php',
+        ABSPATH . WPINC . '/user.php',
+        ABSPATH . WPINC . '/class-wp-user-query.php',
+        ABSPATH . WPINC . '/class-wp-session-tokens.php',
+        ABSPATH . WPINC . '/class-wp-user-meta-session-tokens.php',
+        ABSPATH . WPINC . '/rest-api.php',
+        ABSPATH . WPINC . '/kses.php',
+        ABSPATH . WPINC . '/theme.php',
+        ABSPATH . WPINC . '/rewrite.php',
+        ABSPATH . WPINC . '/class-wp-block-editor-context.php',
+        ABSPATH . WPINC . '/class-wp-block-type.php',
+        ABSPATH . WPINC . '/class-wp-block-pattern-categories-registry.php',
+        ABSPATH . WPINC . '/class-wp-block-patterns-registry.php',
+        ABSPATH . WPINC . '/class-wp-block-styles-registry.php',
+        ABSPATH . WPINC . '/class-wp-block-type-registry.php',
+        ABSPATH . WPINC . '/class-wp-block.php',
+        ABSPATH . WPINC . '/class-wp-block-list.php',
+        ABSPATH . WPINC . '/class-wp-block-parser-block.php',
+        ABSPATH . WPINC . '/class-wp-block-parser-frame.php',
+        ABSPATH . WPINC . '/class-wp-block-parser.php',
+        ABSPATH . WPINC . '/blocks.php',
+        ABSPATH . WPINC . '/blocks/index.php',
+      ];
+      
+      for ($i = 0; $i < sizeof($dependencies); ++$i) { 
+        $dependency = $dependencies[$i];
+        if (strpos($dependency, 'class-http.php') && version_compare($wp_version, '5.9.0', '>=')) {
+          continue;
+        }
+        if (strpos($dependency, 'session.php') && version_compare($wp_version, '4.7.0', '>=')) {
+          continue;
+        }
+        if (file_exists($dependency)) require_once $dependency;
       }
-
-      if (file_exists(BMI_BACKUPS . '/latest_progress.log')) {
-        $latestBackupProgress = file_get_contents(BMI_BACKUPS . '/latest_progress.log');
+      
+      // Load Cookie Constants
+      wp_cookie_constants();
+      
+      // Load SSL Constants for DB export
+      wp_ssl_constants();
+      
+      // Register Translation
+      if (class_exists('WP_Textdomain_Registry')) {
+        $GLOBALS['wp_textdomain_registry'] = new \WP_Textdomain_Registry();
       }
-
-      if (file_exists(BMI_BACKUPS . '/latest_migration.log')) {
-        $latestRestorationLogs = file_get_contents(BMI_BACKUPS . '/latest_migration.log');
+      
+      if (is_readable($bmiPluginPathToLoadPro)) {
+        wp_register_plugin_realpath($bmiPluginPathToLoadPro);
+        include_once $bmiPluginPathToLoadPro;
+        
+        require_once BMI_PRO_ROOT_DIR . '/classes/core' . ((BMI_PRO_DEBUG) ? '.to-enc' : '') . '.php';
+        $bmi_pro_instance = new BMI_Pro_Core();
+        $bmi_pro_instance->initialize();
       }
+      
+      // Register our backup plugin and load its contents
+      wp_register_plugin_realpath($bmiPluginPathToLoad);
+      include_once $bmiPluginPathToLoad;
+      
+      // Enable our plugin WITHOUT calling plugins_loaded hook – it's important
+      require_once BMI_ROOT_DIR . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'constants.php';
 
-      if (file_exists(BMI_BACKUPS . '/latest_migration_progress.log')) {
-        $latestRestorationProgress = file_get_contents(BMI_BACKUPS . '/latest_migration_progress.log');
+      // Initialize backup-migration
+      if (!class_exists('Backup_Migration_Plugin')) {
+
+        // Require initializator
+        require_once BMI_ROOT_DIR . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'initializer.php';
+
+        // Initialize entire plugin
+        $bmi_instance = new BMI\Backup_Migration_Plugin();
+        $bmi_instance->initialize();
+
       }
-
-      if (file_exists(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . '/config.json')) {
-        $currentPluginConfig = file_get_contents(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . '/config.json');
-      }
-
-      if (file_exists(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log')) {
-        $pluginGlobalLogs = file_get_contents(BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'complete_logs.log');
-      }
-
-      $backgroundLogsPath = BMI_CONFIG_DIR . DIRECTORY_SEPARATOR . 'background-errors.log';
-      if (file_exists($backgroundLogsPath)) {
-        if ((filesize($backgroundLogsPath) / 1024 / 1024) <= 4) {
-          $backgroundErrors = file_get_contents($backgroundLogsPath);
-        } else $backgroundErrors = 'file_too_large';
-      }
-
-      $url = 'https://' . BMI_API_BACKUPBLISS_PUSH . '/v1' . '/push';
-      $response = wp_remote_post($url, array(
-        'method' => 'POST',
-        'timeout' => 15,
-        'blocking' => $blocking,
-        'sslverify' => false,
-        'send_type' => $send_type,
-        'body' => array(
-          'admin_url' => admin_url(),
-          'home_url' => home_url(),
-          'site_url' => get_site_url(),
-          'is_multisite' => is_multisite() ? "yes" : "no",
-          'is_abspath_writable' => is_writable(ABSPATH) ? "yes" : "no",
-          'site_information' => $bmiSiteData,
-          'latest_backup_logs' => $latestBackupLogs,
-          'latest_backup_progress' => $latestBackupProgress,
-          'latest_restoration_logs' => $latestRestorationLogs,
-          'latest_restoration_progress' => $latestRestorationProgress,
-          'current_plugin_config' => $currentPluginConfig,
-          'plugin_global_logs' => $pluginGlobalLogs,
-          'background_errors' => $backgroundErrors,
-          'triggered_by' => 'backup',
-          'is_cli' => BMI_CLI_REQUEST
-        )
-      ));
-
+      
     }
 
     public function actionsAfterProcess($success = false) {
 
       return null;
-
-      // REMOVED CODE:
-      // $canShare = $this->shareallowed;
-      // if ($canShare === 'allowed') {
-      //
-      //   $send_type = 'error';
-      //   if ($success) $send_type = 'success';
-      //   $this->sendTroubleshootingDetails($send_type, false);
-      //
-      // }
 
     }
 
