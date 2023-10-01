@@ -32,6 +32,7 @@ wordpress-6.3.1
 | cookie-law-info                                   | 3.1.4       |
 | creame-whatsapp-me                                | 5.0.19      |
 | customer-reviews-woocommerce                      | 5.36.0      |
+| debug-bar                                         | 1.1.4       |
 | duplicator                                        | 1.5.6       |
 | elementor                                         | 3.16.4      |
 | embedpress                                        | 3.8.5       |
