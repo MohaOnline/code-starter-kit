@@ -4,8 +4,8 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 3.0.0.106
-Tested up to: 6.3.1
+Version: 3.0.0.111
+Tested up to: 6.3.2
 Requires PHP: 7.0
 Requires at least: 5.4
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -1149,7 +1149,7 @@ footer .wp-block-group__inner-container{
     height: 100%;
 }
 .mg-blog-post .mg-blog-img img {
-	    margin: 0 auto;
+	margin: 0 auto;
     opacity: .9;
     position: absolute;
     left: -9999px;
@@ -1760,13 +1760,11 @@ footer .wp-block-group__inner-container{
 .mg-posts-modul-1 .mg-blog-post-3 .mg-blog-img.smminh img{
 	min-height: 160px;
 }
-
 .mg-posts-modul-4 .small-post.mg-post-1 .img-small-post, .mg-posts-modul-4 .small-post.mg-post-1 img {
     height: auto;
     width: 100%;
     float: none;
 }
-
 .mg-sec-title {
 	font-weight: bold;
 	padding-bottom: 0;
@@ -1826,6 +1824,20 @@ footer .wp-block-group__inner-container{
 }
 .mg-sidebar .widget_post_list .widget_post_list_inner{
 	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.widget_post_list.mg-posts-sec {
+	margin-bottom: 10px;
+}
+/* Tabbed widget  */
+.mg-sidebar .newsup_tabbed_posts_widget .tabbed-head ul li {
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+.top-right-area .nav-tabs li.tab-categorised a{
+	border-top-width: 1px; 
+	border-right-width: 1px; 
+	border-left-width: 1px; 
 }
 /*blocks Posts*/
 .mg-posts-sec{
@@ -3097,13 +3109,11 @@ address i {
     line-height: 29px;
     text-align: center;
 }
-
 .post-share {
     display: flex;
     width: 100%;
     justify-content: flex-end;
 }
-
 .post-share-icons i {
     line-height: inherit;
     color:#fff;
@@ -3114,6 +3124,10 @@ address i {
     justify-content: space-between;
     width: 100%;
     flex-flow: row-reverse;
+}
+.featured-image-caption{
+	display: block;
+	text-align: center;
 }
 .nav-links a, .single-nav-links a {
     font-size: 1.2rem;

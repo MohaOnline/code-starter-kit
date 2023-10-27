@@ -49,6 +49,13 @@ if ( ! class_exists( 'SiteGround_Data/Settings' ) ) {
 		public $tracking_option = 'siteground_last_data_tracking';
 
 		/**
+		 * The date user has given their consent.
+		 *
+		 * @var string
+		 */
+		public $siteground_data_consent = 'siteground_data_consent';
+
+		/**
 		 * The options we want to track.
 		 *
 		 * @var array
@@ -109,6 +116,7 @@ if ( ! class_exists( 'SiteGround_Data/Settings' ) ) {
 		 * @since  1.0.0
 		 */
 		public function stop_collecting_data() {
+			delete_option( 'siteground_data_consent' );
 			delete_option( 'siteground_email_consent' );
 			delete_option( 'siteground_settings_optimizer' );
 			delete_option( 'siteground_settings_security' );
@@ -256,7 +264,9 @@ if ( ! class_exists( 'SiteGround_Data/Settings' ) ) {
 			$data = array(
 				'url'                     => home_url(),
 				'email_consent'           => intval( get_option( 'siteground_email_consent', 0 ) ),
-				'email_consent_timestamp' => get_option( 'siteground_data_consent_timestamp', 0 ),
+				'data_consent'            => intval( get_option( 'siteground_email_consent', 0 ) ),
+				'email_consent_timestamp' => get_option( 'siteground_email_consent_timestamp', 0 ),
+				'data_consent_timestamp'  => get_option( 'siteground_data_consent_timestamp', 0 ),
 				'admin_email'             => get_option( 'admin_email' ),
 				'php_version'             => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
 				'php_max_exec_time'       => ini_get( 'max_execution_time' ),

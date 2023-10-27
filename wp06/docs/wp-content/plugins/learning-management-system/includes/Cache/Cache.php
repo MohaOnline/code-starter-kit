@@ -58,7 +58,7 @@ class Cache implements CacheInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int|string $key   The key under which the cache contents are stored.
+	 * @param int|string|array $key   The key under which the cache contents are stored.
 	 * @param string $group     Where the cache contents are grouped
 	 * @param bool $force       Whether to force an update of the local cache from the persistent cache.
 	 * @param bool $found       Whether the key was found in the cache (passed by reference). Disambiguates a return of false, a storable value.
@@ -66,7 +66,7 @@ class Cache implements CacheInterface {
 	 * @return mixed|false The cache contents on success, false on failure to retrieve contents.
 	 */
 	public function get( $key, $group = '', $force = false, $found = null ) {
-		return wp_cache_get( $key, $group, $force, $found );
+		return wp_cache_get( $this->make_cache_key( $key ), $group, $force, $found );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class Cache implements CacheInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int|string $key   The cache key to use for retrieval later.
+	 * @param int|string|array $key   The cache key to use for retrieval later.
 	 * @param mixed      $data       The contents to store in the cache.
 	 * @param string     $group     Where to group the cache contents. Enables the same key to be used across groups.
 	 * @param int        $expire       When to expire the cache contents, in seconds. Default 0 (no expiration).
@@ -82,7 +82,7 @@ class Cache implements CacheInterface {
 	 * @return bool True on success, false on failure.
 	 */
 	public function set( $key, $data, $group = '', $expire = 0 ) {
-		return wp_cache_set( $key, $data, $group, $expire );
+		return wp_cache_set( $this->make_cache_key( $key ), $data, $group, $expire );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Cache implements CacheInterface {
 	 * @since 1.0.0
 	 * @since 1.4.12 Added default value zero to expire parameter.
 	 *
-	 * @param int|string $key   The cache key to use for retrieval later.
+	 * @param int|string|array $key   The cache key to use for retrieval later.
 	 * @param mixed $data       The data to add to the cache.
 	 * @param string $group     Where to group the cache contents. Enables the same key to be used across groups.
 	 * @param int $expire       When to expire the cache contents, in seconds. Default 0 (no expiration).
@@ -99,7 +99,7 @@ class Cache implements CacheInterface {
 	 * @return bool True on success, false if cache key and group already exist.
 	 */
 	public function add( $key, $data, $group = '', $expire = 0 ) {
-		return wp_cache_add( $key, $data, $group, $expire );
+		return wp_cache_add( $this->make_cache_key( $key ), $data, $group, $expire );
 	}
 
 	/**
@@ -108,7 +108,7 @@ class Cache implements CacheInterface {
 	 * @since 1.0.0
 	 * @since 1.4.12 Added default value zero to expire parameter.
 	 *
-	 * @param int|string $key   The cache key to use for retrieval later.
+	 * @param int|string|array $key   The cache key to use for retrieval later.
 	 * @param mixed $data       The new data to store in the cache.
 	 * @param string $group     Where to group the cache contents. Enables the same key to be used across groups.
 	 * @param int $expire       When to expire the cache contents, in seconds. Default 0 (no expiration).
@@ -116,7 +116,7 @@ class Cache implements CacheInterface {
 	 * @return bool  False if original value does not exist, true if contents were replaced
 	 */
 	public function replace( $key, $data, $group = '', $expire = 0 ) {
-		return wp_cache_replace( $key, $data, $group, $expire );
+		return wp_cache_replace( $this->make_cache_key( $key ), $data, $group, $expire );
 	}
 
 	/**
@@ -124,12 +124,12 @@ class Cache implements CacheInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int|string $key   What the contents in the cache are called.
+	 * @param int|string|array $key   What the contents in the cache are called.
 	 * @param string $group Where the cache contents are grouped.
 	 * @return void
 	 */
 	public function delete( $key, $group = '' ) {
-		return wp_cache_delete( $key, $group );
+		return wp_cache_delete( $this->make_cache_key( $key ), $group );
 	}
 
 	/**
@@ -141,5 +141,37 @@ class Cache implements CacheInterface {
 	 */
 	public function flush() {
 		return wp_cache_flush();
+	}
+
+	/**
+	 * Removes all cache items of a group.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @param string $group Where the cache contents are grouped.
+	 *
+	 * @return bool True on success, false on failure.
+	 */
+	public function flush_group( $group ) {
+		if ( function_exists( 'wp_cache_flush_group' ) ) {
+			return wp_cache_flush_group( $group );
+		}
+		return wp_cache_flush();
+	}
+
+	/**
+	 * Make a proper and valid cache key.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @param int|string|array $key The cache key to use for retrieval later.
+	 *
+	 * @return int|string
+	 */
+	public function make_cache_key( $key ) {
+		if ( ! is_scalar( $key ) ) {
+			$key = maybe_serialize( $key );
+		}
+		return $key;
 	}
 }

@@ -108,7 +108,7 @@ $wp_customize->add_control(new Blogus_Dropdown_Taxonomies_Control($wp_customize,
 
         //slider Overlay 
        $wp_customize->add_setting(
-            'blogus_slider_overlay_color', array( 'sanitize_callback' => 'sanitize_text_field','default' => '#00000099',
+            'blogus_slider_overlay_color', array( 'sanitize_callback' => 'blogus_sanitize_alpha_color','default' => '#00000099',
             
         ) );
         

@@ -1,5 +1,4 @@
 <?php
-
 // don't load directly 
 if (!defined('ABSPATH')) {
 	header('Status: 403 Forbidden');
@@ -46,7 +45,7 @@ function redirect_to_wpemaddons() {
 
 			$location = '';
 
-			$actioned = array_multi_key_exists(array('error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce'), $_REQUEST, false);
+			$actioned = array_multi_key_exists(array('error', 'deleted', 'activate', 'activate-selected', 'activate-multi', 'deactivate', 'deactivate-selected', 'deactivate-multi', '_error_nonce'), $_REQUEST, false);
 			if (( isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'page=wpemaddons') ) && $actioned) {
 				$location = add_query_arg('page', 'wpemaddons', $location);
 				if (!headers_sent()) {
@@ -75,14 +74,35 @@ function wpe_addon_admin_menu() {
 		wpe_include_plugins();
 		return false;
 	}
-	if (!empty($_REQUEST['action']) && $_REQUEST['action'] == 'delete-selected') {
+
+	// Process Bulk actions
+	if (!empty($_REQUEST['action'])) {
+		// List of checked plugin rows
 		$plugins = isset($_REQUEST['checked']) ? (array) wp_unslash($_REQUEST['checked']) : array();
-		$plugins = array_filter($plugins, 'is_plugin_inactive'); // Do not allow to delete Activated plugins.
-		if (empty($plugins)) {
-			wpe_include_plugins();
-			return false;
+
+		if ($_REQUEST['action'] == 'delete-selected') {
+			$plugins = array_filter($plugins, 'is_plugin_inactive'); // Do not allow to delete Activated plugins.
+			if (empty($plugins)) {
+				wpe_include_plugins();
+				return false;
+			}
+		}
+		if ($_REQUEST['action'] == 'activate-selected') {
+			$plugins = array_filter($plugins, 'is_plugin_active'); // Do not allow to activate Activated plugins.
+			if (empty($plugins)) {
+				wpe_include_plugins();
+				return false;
+			}
+		}
+		if ($_REQUEST['action'] == 'deactivate-selected') {
+			$plugins = array_filter($plugins, 'is_plugin_inactive'); // Do not allow to deactivate inactive plugins.
+			if (empty($plugins)) {
+				wpe_include_plugins();
+				return false;
+			}
 		}
 	}
+
 	$update_wpematico_addons = wpematico_get_addons_update();
 	$count_menu				 = '';
 	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
@@ -124,7 +144,6 @@ function WPeAddon_admin_head() {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$('.wrap h1').html('WPeMatico Add-Ons Plugins');
 				var $all = $('.subsubsub .all a').attr('href');
 				var $act = $('.subsubsub .active a').attr('href');
 				var $ina = $('.subsubsub .inactive a').attr('href');
@@ -148,7 +167,6 @@ function WPeAddon_admin_head() {
 			}
 		</style>
 		<?php
-
 	}
 }
 
@@ -156,24 +174,54 @@ add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
 
 function wpematico_activate_deactivate_plugins() {
 	global $plugins, $status, $wp_list_table;
-	if (!defined('WPEM_ADMIN_DIR')) {
-		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
-	}
+
+	if (wp_doing_ajax() or wp_doing_cron())
+		return;
+
 	$accepted_actions	 = array();
+	$accepted_actions[]	 = 'deactivate';
+	$accepted_actions[]	 = 'activate';
 	$accepted_actions[]	 = 'deactivate-selected';
 	$accepted_actions[]	 = 'activate-selected';
 
-	if (isset($_REQUEST['checked']) && isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpemaddons' && in_array($_REQUEST['action'], $accepted_actions) !== false) {
-		$status			 = 'all';
-		$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-		$plugins['all']	 = get_plugins();
+	// Get the current whole URL
+	$current_url = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
-		require WPEM_ADMIN_DIR . '/plugins.php';
-		exit;
+	// Get the params and componets of the URL
+	$parsed_url = parse_url($current_url);
+
+	$get_action = get_option('action_notice_wpematico_addons');
+	if (isset($parsed_url['query'])) {
+		if (strpos($current_url, 'wpemaddons') !== false || strpos($parsed_url['query'], 'wpematico') !== false) {
+			if ($get_action === 'deactivate-addon' or $get_action === 'deactivate-selected-addon') {
+				?>
+				<div id="message" class="updated notice is-dismissible"><p><?php _e('Addon deactivated.', 'wpematico'); ?></p></div>
+				<?php
+				delete_option('action_notice_wpematico_addons');
+			} elseif ($get_action === 'activate-addon' or $get_action === 'activate-selected-addon') {
+				?>
+				<div id="message" class="updated notice is-dismissible"><p><?php _e('Addon activated.', 'wpematico'); ?></p></div>
+				<?php
+				delete_option('action_notice_wpematico_addons');
+			}
+		}
+	}
+	// Get the querys params 
+	if (isset($parsed_url['query'])) {
+		parse_str($parsed_url['query'], $query_params);
+		// Continue using $query_params
+		$action = isset($query_params['action']) ? $query_params['action'] : '';
+		if (strpos($parsed_url['query'], 'wpematico') !== false || strpos($parsed_url['query'], 'wpemaddons') !== false) {
+			if (in_array($action, $accepted_actions)) {
+				update_option('action_notice_wpematico_addons', $action . '-addon');
+			}
+		}
 	}
 }
 
 function add_admin_plugins_page() {
+	global $s, $plugins, $status, $wp_list_table;
+
 	if (!defined('WPEM_ADMIN_DIR')) {
 		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
 	}
@@ -186,14 +234,34 @@ function add_admin_plugins_page() {
 		require WPEM_ADMIN_DIR . '/includes/class-wp-plugins-list-table.php';
 	}
 
-	global $plugins, $status, $wp_list_table;
-	$status			 = 'all';
-	$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-	$plugins['all']	 = get_plugins();
+	$s					 = (!isset($s) || is_null($s)) ? '' : $s;
+	$status				 = 'all';
+	$page				 = (!isset($page) or is_null($page)) ? 1 : $page;
+	$plugins['all']		 = get_plugins();
 	wp_update_plugins();
 	wp_clean_plugins_cache(false);
-	require WPEM_ADMIN_DIR . '/plugins.php';
-	exit;
+	$plugins_list_table	 = new WP_Plugins_List_Table();
+	$plugins_list_table->prepare_items();
+
+	echo '<div class="wrap">';
+	echo '<h1 class="wp-heading-inline">' . __('WPeMatico Add-Ons Plugins', 'wpematico') . '</h1>';
+	echo '<hr class="wp-header-end">';
+	// Output the list table HTML
+	$plugins_list_table->views();
+
+	echo '<form class="search-form search-plugins" method="get">';
+	$plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
+	echo '</form>';
+	?>
+	<form method="post" id="bulk-action-form">
+		<input type="hidden" name="plugin_status" value="<?php echo esc_attr($status); ?>" />
+		<input type="hidden" name="paged" value="<?php echo esc_attr($page); ?>" />
+		<?php
+		$plugins_list_table->display();
+		?>
+	</form>
+	<?php
+	echo '</div>';
 }
 
 add_filter("manage_plugins_page_wpemaddons_columns", 'wpematico_addons_get_columns');
@@ -339,52 +407,53 @@ function wpematico_get_addons_maybe_fetch() {
 	$cached = get_transient('etruel_wpematico_addons_data');
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
-		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 100);
+		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 200);
+		$addon		 = array();
+		if (!is_wp_error($addonitems)) {
+			foreach ($addonitems->get_items() as $item) {
+				$itemtitle	 = $item->get_title();
+				$versions	 = $item->get_item_tags('', 'version');
+				$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
+				$memberships = $item->get_item_tags('', 'membership');
+				$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
 
-		$addon = array();
-		foreach ($addonitems->get_items() as $item) {
-			$itemtitle	 = $item->get_title();
-			$versions	 = $item->get_item_tags('', 'version');
-			$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
-			$memberships = $item->get_item_tags('', 'membership');
-			$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
-
-			$guid		 = $item->get_item_tags('', 'guid');
-			$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
-			$download_id = 0;
-			wp_parse_str($guid, $query);
-			if (isset($query) && !empty($query)) {
-				if (isset($query['p'])) {
-					$download_id = $query['p'];
+				$guid		 = $item->get_item_tags('', 'guid');
+				$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
+				$download_id = 0;
+				wp_parse_str($guid, $query);
+				if (isset($query) && !empty($query)) {
+					if (isset($query['p'])) {
+						$download_id = $query['p'];
+					}
 				}
-			}
 
-			$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
-			$img					 = $item->get_enclosure()->link;
-			$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
-			$addon[$plugindirname]	 = Array(
-				'Name'			 => $itemtitle,
-				'icon'			 => $icon,
-				'PluginURI'		 => $item->get_permalink(),
-				'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
-				'Version'		 => $version, // $item->get_date('U'),
-				'Description'	 => $item->get_description(),
-				'Author'		 => 'Etruel Developments LLC',
-				'AuthorURI'		 => 'https://etruel.com',
-				'TextDomain'	 => '',
-				'DomainPath'	 => '',
-				'Network'		 => '',
-				'Title'			 => $itemtitle,
-				'AuthorName'	 => 'etruel',
-				'Remote'		 => true,
-				'memberships'	 => $memberships,
-				'id'			 => $download_id
-			);
+				$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
+				$img					 = $item->get_enclosure()->link;
+				$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
+				$addon[$plugindirname]	 = Array(
+					'Name'			 => $itemtitle,
+					'icon'			 => $icon,
+					'PluginURI'		 => $item->get_permalink(),
+					'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
+					'Version'		 => $version, // $item->get_date('U'),
+					'Description'	 => $item->get_description(),
+					'Author'		 => 'Etruel Developments LLC',
+					'AuthorURI'		 => 'https://etruel.com',
+					'TextDomain'	 => '',
+					'DomainPath'	 => '',
+					'Network'		 => '',
+					'Title'			 => $itemtitle,
+					'AuthorName'	 => 'etruel',
+					'Remote'		 => true,
+					'memberships'	 => $memberships,
+					'id'			 => $download_id
+				);
+			}
+			$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
+			$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
+			set_transient('etruel_wpematico_addons_data', $addons, $length);
+			$cached	 = $addons;
 		}
-		$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
-		$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
-		set_transient('etruel_wpematico_addons_data', $addons, $length);
-		$cached	 = $addons;
 	}
 	return $cached;
 }

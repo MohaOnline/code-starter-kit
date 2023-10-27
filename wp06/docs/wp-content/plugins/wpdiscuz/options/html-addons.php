@@ -25,7 +25,7 @@ if (!defined("ABSPATH")) {
                             <?php esc_html_e("All wpDiscuz addons are being developed by wpDiscuz developers at gVectors Team. These addons help us to keep top level development of the free wpDiscuz plugin. All essential and even dozens of extra-cool features are already available for free in the core wpDiscuz plugin. There are not any limits, any pro and paid versions of wpDiscuz. We have another dozens of awesome features in our to-do list which will be added for free in the future releases.","wpdiscuz");?>
                             <br />
                             <p style="font-size:10px; color:#B1B1B1; font-style:italic; text-align:right; line-height:12px; padding-top:6px; margin:0px;">
-                               <?php _e(" Thank you!<br/> Sincerely yours,<br/> gVectors Team&nbsp;","wpdiscuz");?>
+                               <?php echo wp_kses_post(__(" Thank you!<br/> Sincerely yours,<br/> gVectors Team&nbsp;","wpdiscuz"));?>
                             </p>
                         </td>
                     </tr>

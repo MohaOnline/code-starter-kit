@@ -303,17 +303,25 @@
         $name = $tableObject->name;
         $size = $tableObject->size;
 
-        if (substr($name, 0, strlen($table_prefix)) != $table_prefix) continue;
+        if (substr($name, 0, strlen($table_prefix)) != $table_prefix) {
+          $this->log('Ommiting this table: ' . $name, 'verbose');
+          continue;
+        } else {
+          $this->log('Adding this table: ' . $name, 'verbose');
+        }
 
         $tableOfStagingSite = false;
         for ($i = 0; $i < sizeof($currentPrefixes); ++$i) {
           $subPrefix = $currentPrefixes[$i];
-          if (substr($name, 0, strlen($subPrefix)) == $subPrefix) {
+          if ($table_prefix != $subPrefix && substr($name, 0, strlen($subPrefix)) == $subPrefix) {
             $tableOfStagingSite = true;
             break;
           }
         }
-        if ($tableOfStagingSite) continue;
+        if ($tableOfStagingSite) {
+          $this->log('Excluding this table as part of staging site: ' . $name, 'verbose');
+          continue;
+        }
 
         $this->siteConfig['total_db_size'] += intval($size);
         $relatedTables[$name] = $this->siteConfig['db_prefix'] . substr($name, strlen($table_prefix));
@@ -340,7 +348,17 @@
       if ($wpdb->last_error !== '') {
         $translated = __('There was an error during update of user roles:', 'backup-backup') . ' ' . $wpdb->last_error;
         $english = 'There was an error during update of user roles:' . ' ' . $wpdb->last_error;
-        $this->returnError($translated, $english);
+        return $this->returnError($translated, $english);
+      }
+      
+      $sql = "DELETE FROM %i WHERE `option_name` = 'BMI::STORAGE::LOCAL::PATH';";
+      $sql = $wpdb->prepare($sql, [$newOptionTable]);
+      $wpdb->query($sql);
+
+      if ($wpdb->last_error !== '') {
+        $translated = __('There was an error during BMI config hard removal:', 'backup-backup') . ' ' . $wpdb->last_error;
+        $english = 'There was an error during BMI config hard removal:' . ' ' . $wpdb->last_error;
+        return $this->returnError($translated, $english);
       }
 
     }
@@ -835,7 +853,7 @@
           if (file_exists($sourceRoot . $path) && !file_exists($stagingRoot . $path)) {
             $arrayWithExtension = explode('.', $path);
             $ext = strtolower(array_pop($arrayWithExtension));
-            if (!in_array($ext, $disallowedExtensions)) {
+            if (!in_array($ext, $disallowedExtensions) && strpos($path, 'backup-migration-config.php') === false) {
               @copy($sourceRoot . $path, $stagingRoot . $path);
             }
           }

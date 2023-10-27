@@ -119,7 +119,7 @@ class Scripts
             'hls.js',
             PRESTO_PLAYER_PLUGIN_URL . 'src/libraries/hls.min.js',
             [],
-            '0.14.17',
+            '1.4.8',
             true
         );
 

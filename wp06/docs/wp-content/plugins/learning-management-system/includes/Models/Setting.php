@@ -50,10 +50,21 @@ class Setting extends Model {
 					'page_id'      => 'absint',
 					'custom_url'   => 'string',
 				),
+				'instructors_list_page_id'        => 'absint',
 			),
 			'course_access' => array(
 				'enable_course_content_access_without_enrollment' => 'masteriyo_string_to_bool',
 				'restrict_instructors' => 'masteriyo_string_to_bool',
+			),
+		),
+		'learn_page'     => array(
+			'general' => array(
+				'logo'                   => 'absint',
+				'auto_load_next_content' => 'masteriyo_string_to_bool',
+
+			),
+			'display' => array(
+				'enable_questions_answers' => 'masteriyo_string_to_bool',
 			),
 		),
 		'payments'       => array(
@@ -123,6 +134,9 @@ class Setting extends Model {
 			),
 		),
 		'quiz'           => array(
+			'display' => array(
+				'quiz_completion_button' => 'masteriyo_string_to_bool',
+			),
 			'styling' => array(
 				'questions_display_per_page' => 'absint',
 			),
@@ -219,7 +233,7 @@ class Setting extends Model {
 				'enable'  => 'masteriyo_string_to_bool',
 				'message' => 'sanitize_text_field',
 			),
-			'openai'    => array(
+			'openai'             => array(
 				'api_key' => 'sanitize_text_field',
 			),
 			'email_verification' => array(
@@ -253,6 +267,7 @@ class Setting extends Model {
 					'page_id'      => 0,
 					'custom_url'   => '',
 				),
+				'instructors_list_page_id'        => '',
 			),
 			'course_access' => array(
 				'enable_course_content_access_without_enrollment' => false,
@@ -307,7 +322,9 @@ class Setting extends Model {
 		),
 		'learn_page'     => array(
 			'general' => array(
-				'logo_id' => '',
+				'logo_id'                => '',
+				'auto_load_next_content' => false,
+
 			),
 			'display' => array(
 				'enable_questions_answers' => true,
@@ -371,6 +388,9 @@ class Setting extends Model {
 			),
 		),
 		'quiz'           => array(
+			'display' => array(
+				'quiz_completion_button' => false,
+			),
 			'styling' => array(
 				'questions_display_per_page' => 5,
 			),
@@ -491,7 +511,7 @@ class Setting extends Model {
 				'enable'  => false,
 				'message' => "Check the box to confirm you've read our",
 			),
-			'openai'     => array(
+			'openai'             => array(
 				'api_key' => '',
 			),
 			'email_verification' => array(

@@ -296,7 +296,22 @@ function newsup_theme_option( $wp_customize )
 
 	    )
 	);
+    $wp_customize->remove_control('background_color');
 
+	$wp_customize->add_setting(
+        'background_color', 
+		array( 
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'newsup_alpha_color_custom_sanitization_callback',
+			'default' => '#eee',
+		) 
+	);
+    $wp_customize->add_control(new Newsup_Customize_Alpha_Color_Control( $wp_customize,'background_color', 
+	array(
+			'label'      => __('Background Color', 'newsup' ),
+			'section' => 'colors',
+		)
+    ) );
 
 /*--- Get Site info control ---*/
 $wp_customize->get_control( 'header_textcolor')->section = 'title_tagline';

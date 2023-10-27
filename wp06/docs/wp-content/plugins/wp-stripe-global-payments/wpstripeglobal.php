@@ -3,7 +3,7 @@
  * Plugin Name: China Payments Plugin
  * Plugin URI: https://chinapaymentsplugin.com
  * Description: Easily accept WeChat Pay & Alipay payments from Chinese customers. 
- * Version: 3.3.2
+ * Version: 3.3.3
  * Author: China Plugins
  * Author URI: https://chinaplugins.com
  * License: GPLv3
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 
 if( !function_exists( '_china_payments_init' ) ) {
   function _china_payments_init() {
-    define( "CHINA_PAYMENTS_VERSION", '3.3.2' );
+    define( "CHINA_PAYMENTS_VERSION", '3.3.3' );
     define( "CHINA_PAYMENTS_BASE_FILE_PATH", __FILE__ );
     define( "CHINA_PAYMENTS_BASE_PATH", dirname( CHINA_PAYMENTS_BASE_FILE_PATH ) );
     define( "CHINA_PAYMENTS_PLUGIN_IDENTIFIER", ltrim( str_ireplace( dirname( CHINA_PAYMENTS_BASE_PATH ), '', CHINA_PAYMENTS_BASE_FILE_PATH ), '/' ) );

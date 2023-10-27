@@ -83,6 +83,16 @@ class PostType {
 	const WITHDRAW = 'mto-withdraw';
 
 	/**
+	 * Course announcement post type.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @var string
+	 */
+	const COURSEANNOUNCEMENT = 'mto-announcement';
+
+
+	/**
 	 * Post slug.
 	 *
 	 * @since 1.0.0

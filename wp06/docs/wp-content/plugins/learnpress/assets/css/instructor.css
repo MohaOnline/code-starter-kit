@@ -53,6 +53,11 @@ body .wp-site-blocks {
   font-size: 1.4em;
   font-weight: bold;
 }
+.lp-single-instructor .wrapper-instructor-total-courses, .lp-single-instructor .wrapper-instructor-total-students {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .lp-single-instructor__info {
   border: 1px solid var(--lp-instructor-border-color);
   margin-bottom: 50px;

@@ -101,7 +101,8 @@ class BackendApi
         $this->add_route('/remove/products_meta/(?P<form_id>[0-9]+)', 'remove_products_meta', 'POST');
         $this->add_route('/purge_caches/', 'purge_caches', 'POST');
 
-
+        $this->add_route('/get_order_meta/(?P<item_id>[0-9]+)', 'get_order_items', 'GET');
+        $this->add_route('/get_order_meta/(?P<item_id>[0-9]+)', 'save_order_items', 'POST');
 
     }
 
@@ -381,7 +382,30 @@ class BackendApi
 
         return new WP_REST_Response($fields, 200);
     }
+    public function save_order_items($data)
+    {
+        if (!isset($data['item_id'])) {
+            return new WP_REST_Response(false, 400);
+        }
+        $item_id = $data['item_id'];
+        $post_data = $data->get_params();
+        $order = new Order();
+        $res = $order->saveOrderMeta($item_id, $post_data['fields']);
 
+        return new WP_REST_Response($res, 200);
+    }
+
+    public function get_order_items($data)
+    {
+        if (!isset($data['item_id'])) {
+            return new WP_REST_Response(false, 400);
+        }
+        $item_id = $data['item_id'];
+        $order = new Order();
+        $fields = $order->getOrderMeta($item_id);
+
+        return new WP_REST_Response($fields, 200);
+    }
     /**
      * get global settings
      */

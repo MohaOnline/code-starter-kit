@@ -146,28 +146,22 @@ class LP_Template_Course extends LP_Abstract_Template {
 		learn_press_get_template( 'courses-top-bar' );
 	}
 
+	/**
+	 * Display price, free of course
+	 *
+	 * @return void
+	 */
 	public function course_pricing() {
-		$can_show   = true;
-		$course     = learn_press_get_course();
-		$user       = learn_press_get_current_user();
-		$price_html = '';
+		$course = learn_press_get_course();
+		$user   = learn_press_get_current_user();
 
-		try {
-			if ( $user && ! $user->can_purchase_course() ) {
-				throw new Exception( 'The user has enrolled in the course' );
-			}
-
-			$price_html = $course->get_course_price_html();
-		} catch ( Throwable $e ) {
-			$can_show = false;
-		}
-
+		$can_show = $user->can_purchase_course();
 		$can_show = apply_filters( 'learnpress/course/template/price/can-show', $can_show, $user, $course );
-
-		if ( ! $can_show ) {
+		if ( is_wp_error( $can_show ) ) {
 			return;
 		}
 
+		$price_html = $course->get_course_price_html();
 		learn_press_get_template( 'single-course/price', compact( 'course', 'user', 'price_html' ) );
 	}
 
@@ -186,20 +180,19 @@ class LP_Template_Course extends LP_Abstract_Template {
 		}
 		$user = learn_press_get_current_user();
 
-		try {
-			if ( ! $user || ! $course ) {
-				throw new Exception( 'User or Course is not exists' );
-			}
+		if ( ! $user || ! $course ) {
+			$can_show = false;
+		}
 
-			if ( ! $user->can_purchase_course( $course->get_id() ) ) {
-				throw new Exception( 'You can not purchase course' );
+		$can_purchase = $user->can_purchase_course( $course->get_id() );
+		if ( is_wp_error( $can_purchase ) ) {
+			if ( in_array( $can_purchase->get_error_code(), [ 'order_processing', 'course_out_of_stock' ] ) ) {
+				learn_press_display_message( $can_purchase->get_error_message(), 'warning' );
 			}
-		} catch ( Throwable $e ) {
 			$can_show = false;
 		}
 
 		$can_show = apply_filters( 'learnpress/course/template/button-purchase/can-show', $can_show, $user, $course );
-
 		if ( ! $can_show ) {
 			return;
 		}
@@ -481,7 +474,7 @@ class LP_Template_Course extends LP_Abstract_Template {
 		$completed_items = 0;
 		$course_data     = $user->get_course_data( $course->get_id() );
 
-		if ( $course_data && ! $course->is_no_required_enroll() ) {
+		if ( $course_data && ! empty( $course_data->get_user_id() ) && ! $course->is_no_required_enroll() ) {
 			$course_results  = $course_data->get_result();
 			$completed_items = $course_results['completed_items'];
 			$total_items     = $course_results['count_items'];
@@ -736,7 +729,9 @@ class LP_Template_Course extends LP_Abstract_Template {
 	public function item_lesson_material() {
 		$user   = learn_press_get_current_user();
 		$course = learn_press_get_course();
-		if ( ! $course ) {
+
+		$file_per_page = LP_Settings::get_option( 'material_file_per_page', -1 );
+		if ( ! $course || (int) $file_per_page === 0 ) {
 			return;
 		}
 		try {
@@ -872,7 +867,6 @@ class LP_Template_Course extends LP_Abstract_Template {
 
 			learn_press_get_template( 'single-course/extra-info', $box );
 		}
-
 	}
 
 	public function metarials() {
@@ -983,9 +977,8 @@ class LP_Template_Course extends LP_Abstract_Template {
 		}
 	}
 
-	public function course_comment_template() {
-		 global $post;
 
+	public function course_comment_template() {
 		if ( comments_open() || get_comments_number() ) {
 			add_filter( 'deprecated_file_trigger_error', '__return_false' );
 			comments_template();

@@ -2,9 +2,9 @@
 Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, ignatggeorgiev
 Tags: security, firewall, malware scanner, web application firewall, two factor authentication, block hackers, country blocking, clean hacked site, blocklist, waf, login security
 Requires at least: 4.7
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.0
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,25 +12,31 @@ Secure your WordPress site from brute-force attacks, threats, malware, and bots.
 
 == Description ==
 
-Bulletproof your WordPress security in a few clicks against a range of security breaches, including brute-force attacks, malware threats, bots, etc. Proactively monitor your site’s security to detect any suspicious activity and take immediate actions to safeguard your site and prevent further damage with these essential features:
+**Secure your WordPress site from brute-force attacks, threats, malware, and bots. Free to use and easy to set up. Bulletproof your WordPress security in a few clicks against a range of security breaches, including brute-force attacks, malware threats, bots, etc.**
+Proactively monitor your site’s security to detect any suspicious activity and take immediate actions to safeguard your site and prevent further damage with these essential features:
 
 
-*Enable **Two-Factor Authentication** for an extra layer of security
-*Set **Limit Login Attempts** to deter malicious login attempts and brute-force attacks
-*Change your default login URL to **Custom Login URL** to avoid attacks
-*Activate **Advanced XSS Protection** to fortify your website against malicious attacks
-* **Lock and Protect System Folders** to ensure no unauthorized or malicious scripts can be *executed in your system folders
+* Enable **Two-Factor Authentication** for an extra layer of security
+* Set **Limit Login Attempts** to deter malicious login attempts and brute-force attacks
+* Change your default login URL to **Custom Login URL** to avoid attacks
+* Activate **Advanced XSS Protection** to fortify your website against malicious attacks
+* **Lock and Protect System Folders** to ensure no unauthorized or malicious scripts can be executed in your system folders
 * **Disable Themes & Plugins Editor** to safeguard your website from unauthorized access via the WordPress editor
 * **Hide WordPress Version** effortlessly, keeping it hidden from prying eyes
-*Use **Activity Log** to monitor your site and quickly prevent malicious actions
+* Use **Activity Log** to monitor your site and quickly prevent malicious actions
 * **Post-Hack Actions** to take immediate actions and prevent further damages
 
 Developed by the security experts at [SiteGround](https://www.siteground.com/wordpress-plugins/siteground-security) and trusted by over 900,000 webmasters, for its robust security shield and ease of use to secure WordPress applications from possible attacks on any hosting platform.
-AWARDS:
 
-[Monster Awards 2022](https://www.templatemonster.com/awards/category/security-wordpress-plugins/): Best WordPress Security Plugin 🥇
+= AWARDS: =
+
+[Monster Awards 2022](https://www.templatemonster.com/awards/winners-2022/): Best WordPress Security Plugin 🥇
 [Monster Awards 2021](https://www.templatemonster.com/awards/winners-2021/): Best WordPress Security Plugin 🥇
 
+= Plugin Video = 
+[youtube https://www.youtube.com/watch?v=FOheCz7sm9A]
+
+= Plugin Tutorial =
 
 All-inclusive Security Plugin by SiteGround for Every WordPress Site
 Unveil the vast array of features and unleash the full potential of our plugin in our [Security Optimizer Tutorial](https://www.siteground.com/tutorials/wordpress/sg-security/).
@@ -68,6 +74,8 @@ Add an extra layer of security against cross-site scripting (XSS) attacks by ena
 = Delete Default Readme.html =
 
 Eliminate potential vulnerabilities by deleting the default readme.txt file, which contains information about your website. By removing this file, you reduce the risk of your site being listed in vulnerable sites targeted by hackers.
+
+== Login Security ==
 
 = Custom Login Url =
 
@@ -117,7 +125,7 @@ To prevent any further unauthorized activities by users or attackers, you can ch
 
 By enforcing a password reset, you can ensure that all users are prompted to change their passwords during their next login. This not only strengthens the security of their accounts but also immediately logs out all currently logged-in users.
 
-= Requirements =
+## Requirements ##
 * WordPress 4.7
 * PHP 7.0
 * Working .htaccess file
@@ -141,10 +149,20 @@ By enforcing a password reset, you can ensure that all users are prompted to cha
 
 == Changelog ==
 
+= Version 1.4.7 =
+Release Date: Oct 24th, 2023
+
+* Data collection opt out option
+* Readme file formatting improvements
+* Plugin name formatting improvements
+* Weekly Activity Report Sending Schedule Randomisation
+
+
 = Version 1.4.6 =
 Release Date: Sept 26th, 2023
 
-* Internal configuration improvements
+* Changing the name we use inside the plugin from SiteGround Security to Security Optimizer
+* Updating data collection process and Introducing a link in the plugin interface to the Plugin Privacy notice
 
 = Version 1.4.5 =
 Release Date: May 4th, 2023
@@ -369,3 +387,7 @@ Release Date: July 27th, 2021
 
 = Version 0.1 =
 * Initial release.
+
+## Data Collection ##
+
+By default the plugin collects the information [listed here](https://www.siteground.com/kb/what-information-wp-plugins-collect). This data is collected only for technical analysis, improvements and the possibility to contact the plugin user in case urgent issues need to be fixed (for example a critical security release that needs to be communicated to site owners). The plugin user may opt out from the WP admin from the collection of this data, but we do not recommend this, as it may negatively impact the plugin performance. You may find more information on data collection in our [Plugins Privacy Notice](https://www.siteground.com/viewtos/siteground_plugins_privacy_notice).

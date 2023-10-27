@@ -28,7 +28,7 @@
 								$('#fbuilder .cff-qrcode-container[id="'+me.name+'_qrcontainer"]').html() == ''
 							) {
 								( new Html5QrcodeScanner( me.name+'_qrcontainer', { fps: 10 }, false ) ).render(
-									function(decodedText, decodedResult){me.setVal(decodedText);},
+									function(decodedText, decodedResult){me.setVal(decodedText);$('#html5-qrcode-button-camera-stop').click();},
 									function(error){console.warn(`Code scan error = ${error}`);}
 								);
 							}

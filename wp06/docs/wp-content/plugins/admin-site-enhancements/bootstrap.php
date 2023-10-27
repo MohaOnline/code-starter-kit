@@ -56,8 +56,13 @@ class Admin_Site_Enhancements
         }
         // Mark that a user have sponsored ASE (via AJAX)
         add_action( 'wp_ajax_have_sponsored', 'asenha_have_sponsored' );
+        // Dismiss upgrade nudge (via AJAX)
+        add_action( 'wp_ajax_dismiss_upgrade_nudge', 'asenha_dismiss_upgrade_nudge' );
         // Dismiss sponsorship nudge (via AJAX)
         add_action( 'wp_ajax_dismiss_sponsorship_nudge', 'asenha_dismiss_sponsorship_nudge' );
+        if ( function_exists( 'bwasenha_fs' ) ) {
+            bwasenha_fs()->add_filter( 'plugin_icon', 'fs_custom_optin_icon__premium_only' );
+        }
         // ===== Activate features based on settings =====
         // Get all WP Enhancements options, default to empty array in case it's not been created yet
         $options = get_option( ASENHA_SLUG_U, array() );
@@ -340,12 +345,20 @@ class Admin_Site_Enhancements
             
             if ( array_key_exists( 'custom_login_slug', $options ) && !empty($options['custom_login_slug']) ) {
                 add_action( 'init', [ $login_logout, 'redirect_on_custom_login_url' ] );
+                add_filter( 'lostpassword_url', [ $login_logout, 'customize_lost_password_url' ] );
                 add_action( 'login_head', [ $login_logout, 'redirect_on_default_login_urls' ] );
                 add_action( 'wp_login_failed', [ $login_logout, 'redirect_to_custom_login_url_on_login_fail' ] );
                 add_action( 'wp_logout', [ $login_logout, 'redirect_to_custom_login_url_on_logout_success' ] );
             }
         
         }
+        // Use Site Identity on the Login Page
+        
+        if ( array_key_exists( 'site_identity_on_login', $options ) && $options['site_identity_on_login'] ) {
+            add_action( 'login_head', [ $login_logout, 'use_site_icon_on_login' ] );
+            add_filter( 'login_headerurl', [ $login_logout, 'use_site_url_on_login' ] );
+        }
+        
         // Enable Login Logout Menu
         
         if ( array_key_exists( 'enable_login_logout_menu', $options ) && $options['enable_login_logout_menu'] ) {
@@ -623,6 +636,12 @@ class Admin_Site_Enhancements
             if ( array_key_exists( 'disable_head_generator_tag', $options ) && $options['disable_head_generator_tag'] ) {
                 remove_action( 'wp_head', 'wp_generator' );
             }
+            
+            if ( array_key_exists( 'disable_resource_version_number', $options ) && $options['disable_resource_version_number'] ) {
+                add_filter( 'style_loader_src', [ $disable_components, 'remove_resource_version_number' ], PHP_INT_MAX );
+                add_filter( 'script_loader_src', [ $disable_components, 'remove_resource_version_number' ], PHP_INT_MAX );
+            }
+            
             if ( array_key_exists( 'disable_head_wlwmanifest_tag', $options ) && $options['disable_head_wlwmanifest_tag'] ) {
                 remove_action( 'wp_head', 'wlwmanifest_link' );
             }
@@ -645,6 +664,9 @@ class Admin_Site_Enhancements
             }
             if ( array_key_exists( 'disable_emoji_support', $options ) && $options['disable_emoji_support'] ) {
                 add_action( 'init', [ $disable_components, 'disable_emoji_support' ] );
+            }
+            if ( array_key_exists( 'disable_jquery_migrate', $options ) && $options['disable_jquery_migrate'] ) {
+                add_action( 'wp_default_scripts', [ $disable_components, 'disable_jquery_migrate' ] );
             }
         }
         

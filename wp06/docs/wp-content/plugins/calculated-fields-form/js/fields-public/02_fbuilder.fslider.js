@@ -265,7 +265,9 @@
 				set_step:function(v, ignore)
 					{
 						try{
-							if(ignore) v = 1;
+							if(ignore) v = this.step;
+							else this.step = v;
+
 							if(this.logarithmic) { // TO CHECK
 								this.calc_step = v;
 								v = Math.min(v,1);

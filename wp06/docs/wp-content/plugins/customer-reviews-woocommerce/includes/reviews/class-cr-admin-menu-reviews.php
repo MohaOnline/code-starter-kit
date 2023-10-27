@@ -613,7 +613,7 @@ if ( ! class_exists( 'Ivole_Reviews_Admin_Menu' ) ):
 			if ( isset( $comment->user_id ) && 0 < $comment->user_id ) {
 				if ( user_can( $comment->user_id, 'manage_woocommerce' ) ) {
 					$options['manager'] = __(
-						apply_filters( 'cr_reviews_store_manager', 'Store manager' ),
+						apply_filters( 'cr_reviews_store_manager', __( 'Store manager', 'customer-reviews-woocommerce' ) ),
 						'customer-reviews-woocommerce'
 					);
 					$selected = 'manager';
@@ -622,7 +622,7 @@ if ( ! class_exists( 'Ivole_Reviews_Admin_Menu' ) ):
 				$user = get_user_by( 'email', $comment->comment_author_email );
 				if ( $user && user_can( $user->ID, 'manage_woocommerce' ) ) {
 					$options['manager'] = __(
-						apply_filters( 'cr_reviews_store_manager', 'Store manager' ),
+						apply_filters( 'cr_reviews_store_manager', __( 'Store manager', 'customer-reviews-woocommerce' ) ),
 						'customer-reviews-woocommerce'
 					);
 				}

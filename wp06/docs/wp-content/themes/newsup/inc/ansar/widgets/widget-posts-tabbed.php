@@ -65,7 +65,7 @@ if (!class_exists('Newsup_Tab_Posts')) :
                         <li class="tab tab-recent new-item active">
                             <a href="#<?php echo esc_attr($tab_id); ?>-recent"
                                aria-controls="<?php esc_attr_e('Recent', 'newsup'); ?>" role="tab"
-                               data-toggle="tab" class="font-family-1 nav-link">
+                               data-toggle="tab" class="font-family-1 nav-link active">
                                 <i class="fas fa-bolt" aria-hidden="true"></i>  <?php echo esc_html($latest_title); ?>
                             </a>
                         </li>
@@ -81,7 +81,7 @@ if (!class_exists('Newsup_Tab_Posts')) :
                             <li class="tab tab-categorised">
                                 <a href="#<?php echo esc_attr($tab_id); ?>-categorised"
                                    aria-controls="<?php esc_attr_e('Categorised', 'newsup'); ?>" role="tab"
-                                   data-toggle="tab" class="font-family-1">
+                                   data-toggle="tab" class="font-family-1 nav-link">
                                    <i class="fas fa-fire" aria-hidden="true"></i>  <?php echo esc_html($categorised_title); ?>
                                 </a>
                             </li>

@@ -1,4 +1,7 @@
 <?php
+
+use AdvancedAds\Utilities\WordPress;
+
 /**
  * User interface for managing the 'ads.txt' file.
  */
@@ -355,7 +358,7 @@ class Advanced_Ads_Ads_Txt_Admin {
 
 		check_ajax_referer( 'advanced-ads-admin-ajax-nonce', 'nonce' );
 
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options') ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_manage_options') ) {
 			return;
 		}
 

@@ -159,6 +159,7 @@ add_action( 'admin_bar_menu', 'monsterinsights_add_admin_bar_menu', 999 );
  *
  */
 function monsterinsights_frontend_admin_bar_scripts() {
+	global $current_user;
 	if ( monsterinsights_prevent_loading_frontend_reports() ) {
 		return;
 	}
@@ -208,6 +209,8 @@ function monsterinsights_frontend_admin_bar_scripts() {
 				'getting_started_url'  => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/about/getting-started' ) : admin_url( 'admin.php?page=monsterinsights_settings#/about/getting-started' ),
 				'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
 				'roles_manage_options' => monsterinsights_get_manage_options_roles(),
+				'user_roles'   => $current_user->roles,
+				'roles_view_reports'   => monsterinsights_get_option('view_reports'),
 			)
 		);
 	}

@@ -1,4 +1,8 @@
 <?php
+// phpcs:ignoreFile
+
+use AdvancedAds\Entities;
+use AdvancedAds\Utilities\Conditional;
 
 /**
  * Class Advanced_Ads_AdSense_Admin
@@ -92,8 +96,8 @@ class Advanced_Ads_AdSense_Admin {
 	public function print_scripts() {
 		global $pagenow, $post_type;
 		if (
-				( 'post-new.php' === $pagenow && Advanced_Ads::POST_TYPE_SLUG === $post_type ) ||
-				( 'post.php' === $pagenow && Advanced_Ads::POST_TYPE_SLUG === $post_type && isset( $_GET['action'] ) && 'edit' === $_GET['action'] )
+				( 'post-new.php' === $pagenow && Entities::POST_TYPE_AD === $post_type ) ||
+				( 'post.php' === $pagenow && Entities::POST_TYPE_AD === $post_type && isset( $_GET['action'] ) && 'edit' === $_GET['action'] )
 		) {
 			$db     = Advanced_Ads_AdSense_Data::get_instance();
 			$pub_id = $db->get_adsense_id();
@@ -117,12 +121,12 @@ class Advanced_Ads_AdSense_Admin {
 		$screen = get_current_screen();
 		$plugin = Advanced_Ads_Admin::get_instance();
 
-		if ( Advanced_Ads_Admin::screen_belongs_to_advanced_ads() ) {
+		if ( Conditional::is_screen_advanced_ads() ) {
 			self::enqueue_connect_adsense();
 		}
 		if (
-				( 'post-new.php' === $pagenow && Advanced_Ads::POST_TYPE_SLUG === $post_type ) ||
-				( 'post.php' === $pagenow && Advanced_Ads::POST_TYPE_SLUG === $post_type && isset( $_GET['action'] ) && 'edit' === $_GET['action'] )
+				( 'post-new.php' === $pagenow && Entities::POST_TYPE_AD === $post_type ) ||
+				( 'post.php' === $pagenow && Entities::POST_TYPE_AD === $post_type && isset( $_GET['action'] ) && 'edit' === $_GET['action'] )
 		) {
 			$scripts = [];
 

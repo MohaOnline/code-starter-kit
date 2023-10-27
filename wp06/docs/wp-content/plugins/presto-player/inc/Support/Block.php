@@ -158,12 +158,6 @@ class Block
      */
     public function middleware($attributes, $content)
     {
-        if (LearnDash::isEnabled()) {
-            if (!LearnDash::shouldVideoLoad()) {
-                return false;
-            }
-        }
-
         return true;
     }
 
@@ -482,6 +476,12 @@ class Block
 
         if (is_feed()) {
             return $this->getFeedHtml($attributes);
+        }
+
+        if (LearnDash::isEnabled()) {
+            if (!LearnDash::shouldVideoLoad()) {
+                return false;
+            }
         }
 
         // let integrations filter loading capabilities

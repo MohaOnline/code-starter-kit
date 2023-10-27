@@ -121,6 +121,15 @@
     background-size: 12px;
     background-position: 13px center;
 }
+.two-desc-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+.two-desc-block .two-empty-desc{
+    min-width: 180px;
+}
 @media screen and (max-width: 675px) {
     .two-white-label-settup,.two-white-label-apply-on {
         flex-wrap: wrap;

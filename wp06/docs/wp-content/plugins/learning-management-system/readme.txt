@@ -1,10 +1,10 @@
 === LMS by Masteriyo - WordPress Learning Management System, eLearning Platform, Online Education System & Online Course Builder  ===
 Contributors: Masteriyo, sanjiv-saha
-Tags: LMS, eLearning, online course, online course builder, Learning Management System 
+Tags: LMS, eLearning, online course, course, Learning Management System 
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.2
-Stable tag: 1.6.15
+Stable tag: 1.6.16
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,11 +70,49 @@ Here’s a brief detail of each feature offered by this WordPress online course 
 
 * **Responsive Design:** It doesn't matter whether your students browse your eLearning website from laptops, desktops, or various hand-held devices like mobiles, iPhones, tablets, etc. Your LMS website is sure to look pixel-perfect with our fully responsive WordPress LMS plugin.
 
+* **Dashboard Analytics:** Get detailed course reports that include an overall count of courses, enrolled courses, lessons, quizzes, questions, instructors, students, Q&A, and reviews. Also, keep track of the enrollment data over time and sales stats.
+
+* **Review System:**  Let the logged-in students provide honest feedback about your courses. Easily manage reviews (view, edit, trash, or mark spam) from one place and apply a filter to find reviews. You can also approve and reply to the approved reviews according to your need.
+
+* **External URL Video Support [Premium]:** Seamlessly integrate video links from external sources, such as Google Drive, OneDrive, and so on, to enrich your content.
+
+* **Webhooks:** Automatically send your data to the specified URL whenever the chosen events take place on your LMS website with webhooks. You can give a name and add a description to the webhook. You can also choose the destination URL to send data and select an event to trigger the webhook.
+
+* **Elementor Compatible:** The compatibility of Masteriyo with the popular Elementor page builder plugin enables you to design visually appealing courses to captivate your students.
+
+* **Support for SEO Plugins:** Ensure that your courses are search engine-friendly for higher rankings in search result pages with support for popular SEO plugins like Yoast SEO and Rank Math.
+
+* **Compatible with Cache Plugins:** Masteriyo also seamlessly integrates with WordPress cache plugins like Hummingbird, LiteSpeed, W3TotalCache, WPOptimize, WPRocket, etc., for a blazing fast LMS website with consistent performance.
+
+* **WordPress Block Editor Ready:** Utilize the power of Gutenberg blocks to create attractive course pages easily. Masteriyo comes with two custom blocks: Course List and Course Categories, for effective course organization. Besides, you can also leverage the four different certificate blocks for building stunning certificates.
+
+* **Email Verification:** Masteriyo has built-in email verification for new user registrations. This adds an extra layer of security by confirming the email address is valid. Users must click a verification link sent to their inbox before accessing your LMS site.
+
+* **Translation Ready:** Effortlessly translate your LMS website into multiple languages to reach students across diverse geographical locations.
+
+* **Course Visibility Option:** In Masteriyo, you have the option to enable or disable course visibility to the logged in students. This feature allows instructors and administrators to have control over who can view the course.
+
+* **Quiz Import/Export:** Ensure a smooth and error-free import and export of all your existing quizzes within Masteriyo in JSON format. Easily transfer course quizzes from your old site to your new one without any hassle.
+
+* **Advanced Email Settings [Premium]:** Effortlessly toggle email notifications on or off for different situations. Simply decide if Site Admins, Instructors, and Students get emails when new orders come in, when new instructors join, or when students sign up or have their instructor applications declined. Further, you can also personalize the email content to match your branding.
+
+* **Course Subscription or Recurring Prices [Premium]:** Give your students the choice of course subscriptions or recurring payments through PayPal and Stripe. Simplify payment processing for both parties and ensure a steady income for your eLearning business.
+
+* **User Import/Export System:** Masteriyo simplifies administrative tasks with its CSV-based user import export feature. Users can bulk upload and update by mapping CSV columns to fields, and the export function provides basic user details like name and username.
+
+* **Course Content Access:** Allows admins and instructors to preview course content without enrolling. This eliminates the need for full enrollment, simplifying oversight and readiness checks.
+
+* **Bulk Students and Instructors Export to CSV [Premium]:** Enables administrators to effortlessly export student, instructor, and user lists to CSV files. With just one click, users can export any user list page into a spreadsheet-friendly format, facilitating easy bulk data transfer for analysis.
+
+* **GDPR Compliance:** Masteriyo is fully GDPR compliant, ensuring all essential user data privacy regulations are met. It enables you to manage privacy policy consent messages easily. Besides, it also allows linking the Privacy Policy Page to the consent message for an in-depth understanding of your LMS site’s policy.
+
 ### ALL FEATURES OF THE MASTERIYO LMS PLUGIN
 * Unlimited Courses
 * Unlimited Sections
 * Unlimited Lessons
 * Unlimited Quiz
+* Unlimited Assignments [Premium]
+* Unlimited Zooms [Premium]
 * Fully Responsive Design
 * Inside Course
   * Course Name
@@ -83,6 +121,8 @@ Here’s a brief detail of each feature offered by this WordPress online course 
   * Course Live Preview
   * Course Category
   * Course Featured Image
+  * Course Featured Video [Premium]
+	* Featured Course [Premium]
   * Course Builder
   * Course Difficulty
   * Course Curriculum Visibility Option
@@ -95,17 +135,25 @@ Here’s a brief detail of each feature offered by this WordPress online course 
   * Lesson Featured Image
   * Lesson Video
   * Video Support for YouTube, Vimeo and Self-hosted Videos
+	* External URL video support [Premium]
+	* Lesson Video Preview [Premium]
 * Quiz Builder
   * Quiz Name
   * Quiz Description
   * True/False Question
   * Single Choice Question
   * Multiple Choice Question
+	* Sortable Question [Premium]
+	* Match the following Question [Premium]
+	* Text Answer Question [Premium]
+	* Audio/Video Question [Premium]
+	* Matching Question [Premium]
   * Points System for Questions
   * Course Full Mark and Pass Mark
   * Time Limit for Quizzes
   * Quiz Attempts Limit
-* Questions Pagination
+	* Questions Pagination
+	* Quiz Review System [Premium] and many more.
 * Free Course with Registration
 * Open Free Course (No Registration Required)
 * Closed Free Course (Registration Required)
@@ -114,6 +162,7 @@ Here’s a brief detail of each feature offered by this WordPress online course 
   * Inbuilt Order System
   * Supports PayPal Gateway
   * Offline Payment
+* Subscription or Recurring Payment [Premium]
 * Interactive Learning page
   * Distraction Free Learning Page
   * Course Navigation Section
@@ -170,6 +219,102 @@ PayPal Integration allows your students to make secure payments for course enrol
 
 Google reCAPTCHA is a security integration that helps in the prevention of spam and bots on your website. You may add an extra degree of protection to the registration and login forms by integrating Google reCAPTCHA with Masteriyo LMS plugin.
 
+#### Course FAQ
+
+Investing time frequently addressing common student queries can be inefficient. A more effective approach to tackling this issue is adding an FAQ section within courses. This task becomes effortless with Masteriyo's Course FAQs add-on. By doing so, students can readily get answers to common course-related queries, thereby streamlining their experience.
+
+#### Manual Enrollment
+
+Authorize admin and instructors to manually enroll students to the specific courses without having them go through the usual checkout process. Manual Enrollment add-on enables admins and instructors to select a course and the student they want to enroll in that course directly from the WordPress dashboard.
+
+#### Content Drip
+
+With the Content Drip feature, you can release your course content at a scheduled time interval instead of making it available all at once. As a result, students can go through the courses at their own pace and return for more afterward. This keeps your students engaged and committed to your LMS site.
+
+#### Certificate Builder
+
+Create professional certificates to reward deserving students for their achievements. You can design certificates from scratch or customize a pre-defined template as you see fit. Also, you can utilize the three default Gutenberg blocks for building certificates: Course Title, Student’s Name, and Course Completion Date.
+
+#### Assignments
+
+Create and assign tasks to assess the student’s grasp of the course content. Set the task deadlines and limit the file upload size for submitting assignments. Also, define the total and pass points for each assignment with ease.
+
+#### Download Materials
+
+Elevate your students' learning journey by providing downloadable resources for each lesson. You can supplement your lessons by attaching materials in formats like PDF, Zip, PowerPoint, MS Word, MS Excel, and more. Likewise, students can easily access these downloadable materials and even preview them before downloading.
+
+#### Course Attachments
+
+Attach unlimited supplementary materials for your students to download and study offline. You can upload up to nineteen file formats, like PDFs, MS Word, MS Excel, and PowerPoint, to enhance your course offerings. Students also have the option to preview these files to quickly assess the study materials before downloading.
+
+#### Course Prerequisites
+
+Add a distinct set of courses that students must successfully finish prior to enrolling in a new course with Course Prerequisite add-on. This addresses any knowledge gap, ensuring complete understanding and success of the subsequent course.
+
+#### Course Preview
+
+Allow the potential students to explore the portion of course’s video content to give them a rough idea of what they can expect from your courses. This can have a remarkable impact in encouraging prospective students to enroll in your course.
+
+#### Multiple Instructors
+
+Enable multiple instructors to collaborate on the same course for efficient course creation and management. Select the preferred instructors contributing to the course and assign the nickname for easy identification.
+
+#### Social Share
+
+Integrate social sharing functionalities to your individual course page. Empower students to spread the word about your courses on various social media platforms including Facebook, Twitter, and LinkedIn.
+
+#### White Label
+
+Personalize your eLearning platform using Masteriyo's White Label add-on. Make it distinctively yours by adding unique brand titles, logos, and customizable icons that resonate with your brand.
+
+#### Wishlist
+
+Enable students to mark the courses as their favorite. It allows listing the courses on their account page so that they can easily find and enroll in them at their preferred schedule.
+
+#### Password Strength Checker
+
+Help your users choose a strong password with a combination of numbers, capital letters, and unique symbols while registering and logging into your site. Set the criteria like minimum and maximum password length to enhance password security. You can also determine how strong you want the Password strength to be among four options: very low, low, medium, or high.
+
+#### Gradebook
+
+Create a complete gradebook system for accessing your students' performance. Educators can record, track, and manage student grades effectively. Likewise, students can access the individual rate for the submitted quiz and assignments and the course's final grade from their account dashboard.
+
+#### Coupons
+
+Generate limitless coupon code for special offers/discounts to make potential students feel valued and encourage them to make a purchase. Effortlessly define the usage limit of coupons, specify expiry dates, and configure discount structures as a fixed cart or percent cart. Additionally, monitor and manage all generated coupons seamlessly from a single place.
+
+#### Revenue Sharing
+
+Delivers an easy way for course creators to set up customized revenue agreements with collaborators like co-instructors and editors. These agreements facilitate the automatic distribution of earnings shares and affiliate commissions, thereby eliminating the payment hassle.
+
+#### Public Profile
+
+Allows users to create public-facing profile pages to showcase their skills, courses, and achievements. Instructors can highlight the courses they teach, while students can display their enrollments and certificates, enabling both to emphasize their expertise and milestones.
+
+#### Zoom
+
+Set up a virtual online classroom right from your LMS environment for streamlining the teaching and learning process. Efficiently schedule, launch, and manage virtual classes to enhance the interaction between instructors and students.
+
+#### GamiPress Integration
+
+Deep integration of Masteriyo with GamiPress enables you to effortlessly gamify your eLearning site using points, badges, ranks, and leaderboards. These gamification features enhance student motivation and engagement.
+
+#### Divi Builder Integration
+
+Integration of Masteriyo with Divi's intuitive drag-and-drop builder gives you flexibility to customize your LMS site’s design to meet your specific needs. It offers custom modules for course grids, forms, and several pre-made templates.
+
+#### Paid Membership Pro Integration
+
+Masteriyo integrates smoothly with Paid Membership Pro, making it easy to manage user access based on membership levels. Seamlessly track revenue, user engagement, and payments effectively, whenever you monetize your course content.
+
+#### EDD Integration
+
+Masteriyo seamlessly integrates with Easy Digital Downloads, empowering you to easily create, manage, sell, and deliver digital learning products like online courses directly from your Masteriyo site.
+
+#### OpenAI ChatGPT Integration
+
+Masteriyo streamlines the process of course creation by leveraging OpenAI's ChatGPT. It efficiently produces customized courses by autonomously creating outlines and detailed content, guaranteeing adaptability and top-notch quality in course design.
+
 ### WHO CAN USE MASTERIYO LMS PLUGIN?
 Masteriyo LMS is suitable for anyone who wants to share their knowledge or skills online and sell courses to earn good revenue. It can be used by both an individual instructor as well as a well-established institution, educational consultant, and so on.
 
@@ -206,6 +351,14 @@ So, let's explore these exclusive features provided by the plugin.
 * **Intuitive Quiz Builder:** Quizzes can make your courses even more interactive and effective. Our intuitive quiz builder allows you to create questions easily and quickly on a single screen. Further, you get the option to set different quiz types like True/False, Single Choices, and Multiple Choices.
 
 * **Backed Up by Masteriyo Team:** Even though Masteriyo LMS is a free LMS plugin, you can remain assured to get great customer service. Our dedicated team of experts will help you build your dream LMS website.
+
+* **Compatibility with Other WordPress Themes and Plugins:** Masteriyo is fully compatible with all themes and plugins designed according to WordPress standards. It works seamlessly with free and premium WordPress themes so you can use it with your theme of choice. Hassle-free compatibility allows you to customize your learning site just the way you want.
+
+* **Secure Code:** Masteriyo uses clean and secure coding, confirming top-tier WordPress and security protocols.
+
+* **Regular Updates:** The Masteriyo team frequently releases updates with new features and fixes. This ensures you always have the latest functionality. Updates contain security patches and improvements too. With Masteriyo, you'll never be stuck on an outdated version.
+
+* **Secured LMS Site:** Masteriyo is a securely coded LMS plugin updated regularly to prevent possible vulnerabilities. It’s also GDPR compliant, safeguarding users' privacy. Besides, it has advanced security features like Google reCAPTCHA and Password Strength Checker for ensuring real users and strong passwords while signing in. Thus, you can trust Masteriyo for a secure LMS site.
 
 ### What our user says:
 
@@ -261,6 +414,25 @@ You can request a new feature on Masteriyo by contacting our team. [Feature Requ
 You can stay up-to-date by checking the Masteriyo [Changelog](https://masteriyo.com/changelog/) and [Blog](https://masteriyo.com/blog/) regularly.
 
 == Changelog ==
+
+= 1.6.16 - 16-10-2023 =
+- Feature - Oxygen builder integration addon.
+- Feature - Course announcements.
+- Feature - Added Instructors list page and Instructors listing shortcode `[masteriyo_instructors_list]`.
+- Enhancement - Added global settings for auto load next content on completing content.
+- Enhancement - Added global setting option to disable 'Complete Quiz' button if students didn't pass quiz.
+- Enhancement - Added filter options on addons page.
+- Enhancement - Show icon based on template source (like Elementor, Divi, Masteriyo) on the settings page.
+- Enhancement - Show create new template link below template options in Elementor.
+- Enhancement - Add “Use template for Masteriyo” action in templates list table showed by Elementor.
+- Refactor - Implement basic caching on user courses to eliminate duplicate queries.
+- Fix - PHP 8 Deprecated Parameter Order in OpenAI.
+- Fix - Random 0 on the learn page.
+- Fix - Preview permalink of quiz and lesson.
+- Fix - Font CSS issue on learn page quiz description.
+- Fix - To admin email gap issue on global email settings.
+- Fix - Import popup showing up on unrelated pages in Elementor
+- Fix - Unusable widgets showing up everywhere in Elementor.
 
 = 1.6.15 - 27-09-2023 =
 - Feature - Open AI Chat GPT Integration.

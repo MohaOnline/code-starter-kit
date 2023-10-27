@@ -1,13 +1,19 @@
 :root {
-	--advads-ci-lightblue: #0474A2;
+	--advads-ci-lightblue: #0474a2;
 	--advads-ci-darkblue: #1B183A;
 }
 /**
 * DASHBOARD WIDGET
 */
-#advads_dashboard_widget h4 { margin-top: .5em; }
-#advads_dashboard_widget a.rsswidget { font-weight: 400; }
-#advads_dashboard_widget .rss-widget ul li { margin-bottom: 6px; }
+#advads_dashboard_widget h4 {
+	margin-top: .5em;
+}
+#advads_dashboard_widget a.rsswidget {
+	font-weight: 400;
+}
+#advads_dashboard_widget .rss-widget ul li {
+	margin-bottom: 6px;
+}
 
 /**
 * OVERVIEW PAGE
@@ -68,7 +74,7 @@
 .post-type-advanced_ads #screen-meta { position: absolute; z-index: 1000; border-color: #000; }
 .post-type-advanced_ads #adv-settings .submit button { margin-left: 10px; }
 .post-type-advanced_ads #advads-show-filters span { line-height: 30px; }
-.post-type-advanced_ads .button:not(.button-primary):not(.advads-button-primary):not(:hover) { border-color: #0474A2; color: #0474A2; }
+.post-type-advanced_ads .button:not(.button-primary):not(.advads-button-primary):not(:hover) { border-color: #0474a2; color: #0474a2; }
 .post-type-advanced_ads .wp-list-table thead tr .dashicons-edit { float: right; visibility: hidden; cursor: pointer; }
 .post-type-advanced_ads .wp-list-table thead tr:hover .dashicons-edit { visibility: visible; }
 .post-type-advanced_ads .column-ad_type { width: 50px; }
@@ -367,8 +373,8 @@ body.rtl .aa-select-list .aa-select-list-update { left: 47px; right: auto;}
 #advads-ad-group-list .row-actions span + span::before { content: '|'; padding: 0 3px; }
 #advads-ad-group-list ul, #advads-ad-group-list ol { margin: 0; list-style-position: inside; }
 #advads-ad-group-list .advads-group-ads tr:nth-child(odd) { background: #f9f9f9; }
-#advads-ad-group-list .column-group-type { width: 50px; }
-#advads-ad-group-list .column-group-type img { width: 50px; height: 50px; }
+#advads-ad-group-list .column-type { width: 50px; }
+#advads-ad-group-list .column-type img { width: 50px; height: 50px; }
 .advads-ad-group-list-ads > div { margin: 0; padding: 3px 0; }
 .advads-ad-group-list-ads > div:hover { background: #eee; }
 .advads-ad-group-list-ads-weight { text-align: right; }
@@ -866,7 +872,7 @@ a.advads-modal-close-background {
 .advanced-ads-feedback-review { background-color: #fbfbfb; border: 1px solid #eee; padding: 0.5em; }
 .advanced-ads-feedback-review-text { font-size: 1.2em; font-weight: 400; }
 .advanced-ads-feedback-review .dashicons { color: #ffb900; }
-.row-actions .aa-get-pro { font-weight: bold; color: #0474A2; }
+.row-actions .aa-get-pro { font-weight: bold; color: #0474a2; }
 
 /**
 - GENERAL
@@ -905,7 +911,7 @@ p:hover > .advads-help:before,
 td:hover > .advads-help:before, /* for settings page */
 li:hover > .advads-help:before,
 h3:hover > .advads-help:before {
-	color: #0474A2;
+	color: #0474a2;
 }
 .advads-help .advads-tooltip {
 	display: none;
@@ -933,8 +939,8 @@ h3:hover > .advads-help:before {
 	border-left-color: #1B183A;
 }
 .wp-core-ui .notice.advads-notice .button, .wp-core-ui  .notice.advads-notice p button {
-	background-color: #0474A2;
-	border-color: #0474A2;
+	background-color: #0474a2;
+	border-color: #0474a2;
 	color: #FFF;
 }
 
@@ -969,7 +975,7 @@ h3:hover > .advads-help:before {
 }
 .advads-notice-block:before {
 	font-family: dashicons;
-	color: #0474A2;
+	color: #0474a2;
 	position: absolute;
 	top: 25px; left: 16px;
 	margin-right: 5px;
@@ -990,7 +996,7 @@ span.advads-notice-inline {
 }
 .advads-notice-inline:before {
 	font-family: dashicons;
-	color: #0474A2;
+	color: #0474a2;
 	float: left;
 	margin-right: 5px;
 	line-height: 1;
@@ -1307,39 +1313,47 @@ tr.advads-clickable-row:hover{
 /**
  * Buttons
  */
-.button.advads-button-primary {
-	background-color: #0474A2;
+.button.advads-button-primary, .post-type-advanced_ads .button.button-primary {
+	background-color: #0474a2;
 	color: #fff;
-	border: 1px solid #0474A2;
+	border: 1px solid #0474a2;
 }
+
 .button.advads-button-primary a {
 	color: #fff;
 }
+
 .button.advads-button-secondary {
-	border-color: #0474A2;
-	color: #0474A2;
+	border-color: #0474a2;
+	color: #0474a2;
 	background-color: #fff;
 }
+
 .button.advads-button-secondary a {
-	color: #0474A2;
-	color: #0474A2;
+	color: #0474a2;
+	color: #0474a2;
 }
-.button.advads-button-primary:hover {
+
+.button.advads-button-primary:hover, .post-type-advanced_ads .button.button-primary:hover {
 	background-color: #1B183A;
 	border-color: #1B183A;
 	color: #fff;
 }
+
 .button.advads-button-secondary:hover {
 	background-color: #fff;
 	border-color: #1B183A;
 	color: #1B183A;
 }
+
 .button.advads-button-primary:hover a {
 	color: #fff;
 }
+
 .button.advads-button-secondary:hover a {
 	color: #1B183A;
 }
+
 /* Actionable buttons have icons on the left */
 .advads-button-primary .dashicons,
 .advads-button-secondary .dashicons {
@@ -1347,6 +1361,7 @@ tr.advads-clickable-row:hover{
 	margin-left: -5px;
 	padding-right: 5px;
 }
+
 /* Decorative icons are on the right */
 .advads-button-icon-right .dashicons {
 	line-height: 30px;
@@ -1355,6 +1370,7 @@ tr.advads-clickable-row:hover{
 	margin-right: -5px;
 	padding-left: 5px;
 }
+
 .button .dashicons.dashicons-star-filled {
 	margin-top: -2px;
 }
@@ -1381,5 +1397,10 @@ Gutenberg block
  * DEPRECATED
  */
 /* use "advads-notice-inline advads-error" classes instead */
-.advads-error-message { color: #dc3232 !important; }
-.advads-error-message a { color: #dc3232; text-decoration: underline; }
+.advads-error-message {
+	color: #dc3232 !important;
+}
+.advads-error-message a {
+	color: #dc3232;
+	text-decoration: underline;
+}

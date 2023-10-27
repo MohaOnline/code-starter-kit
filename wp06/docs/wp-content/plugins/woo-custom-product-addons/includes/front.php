@@ -346,7 +346,14 @@ class Front
             $init_triggers = [$init_triggers];
         }
 
-        $wcpa_global_vars['init_triggers'] = array_unique(array_merge($init_triggers, array(
+        $init_triggers2 = Config::get_config('plugin_init_triggers');
+        if (!empty($init_triggers2)) {
+            $init_triggers2 = explode(',', $init_triggers2);
+        } else {
+            $init_triggers2 = [];
+        }
+        $wcpa_global_vars['init_triggers'] = array_unique(array_merge($init_triggers,$init_triggers2, array(
+            'wcpt_product_modal_ready',
             'qv_loader_stop',
             'quick_view_pro:load',
             'elementor/popup/show',

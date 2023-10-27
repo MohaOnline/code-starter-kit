@@ -1,0 +1,52 @@
+<?php return array(
+    'root' => array(
+        'name' => 'webgilde/advanced-ads',
+        'pretty_version' => '1.42.1',
+        'version' => '1.42.1.0',
+        'reference' => NULL,
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'advanced-ads/framework' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '5e2d8de7095a3f9c18c92872abbe239698405771',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../advanced-ads/framework',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'mobiledetect/mobiledetectlib' => array(
+            'pretty_version' => '2.8.41',
+            'version' => '2.8.41.0',
+            'reference' => 'fc9cccd4d3706d5a7537b562b59cc18f9e4c0cb1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mobiledetect/mobiledetectlib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'webgilde/advanced-ads' => array(
+            'pretty_version' => '1.42.1',
+            'version' => '1.42.1.0',
+            'reference' => NULL,
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'yoast/i18n-module' => array(
+            'pretty_version' => '3.1.1',
+            'version' => '3.1.1.0',
+            'reference' => '9d0a2f6daea6fb42376b023e7778294d19edd85d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../yoast/i18n-module',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

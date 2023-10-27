@@ -5,7 +5,7 @@
 
     var adminNotices = {
         'radius': 'radius_notice',
-        'carousel': 'advanced_carousel',
+        'divider': 'shape_divider',
     };
 
     if (undefined !== notice) {

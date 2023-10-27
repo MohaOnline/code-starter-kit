@@ -24,7 +24,7 @@ class Advanced_Ads_Gutenberg {
 		}
 
 		register_block_type( 'advads/gblock', [
-			'editor_script' => ADVADS_BASE . '/gutenberg-ad',
+			'editor_script' => ADVADS_PLUGIN_BASENAME . '/gutenberg-ad',
 			'render_callback' => [ $this, 'render_ad_selector' ],
 		] );
 
@@ -51,7 +51,7 @@ class Advanced_Ads_Gutenberg {
 		}
 
 		wp_register_script(
-			ADVADS_BASE . '/gutenberg-ad',
+			ADVADS_PLUGIN_BASENAME . '/gutenberg-ad',
 			ADVADS_BASE_URL . 'modules/gutenberg/js/advanced-ads.block.js',
 			[ 'wp-dom-ready', 'wp-blocks', 'wp-element' ]
 		);
@@ -108,8 +108,8 @@ class Advanced_Ads_Gutenberg {
 		);
 
 		// put the inline code with the global variable right before the block's JS file
-		wp_add_inline_script( ADVADS_BASE . '/gutenberg-ad', 'var advadsGutenberg = ' . $inline_script, 'before' );
-		wp_enqueue_script( ADVADS_BASE . '/gutenberg-ad' );
+		wp_add_inline_script( ADVADS_PLUGIN_BASENAME . '/gutenberg-ad', 'var advadsGutenberg = ' . $inline_script, 'before' );
+		wp_enqueue_script( ADVADS_PLUGIN_BASENAME . '/gutenberg-ad' );
 	}
 
 	/**

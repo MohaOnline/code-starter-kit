@@ -4,18 +4,18 @@ Tags: nginx, caching, speed, memcache, memcached, performance, siteground, nginx
 Requires at least: 4.7
 Requires PHP: 7.0
 Tested up to: 6.3
-Stable tag: 7.4.2
+Stable tag: 7.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 == Description ==
 
-**The award-winning Speed Optimizer plugin is a free WordPress performance-boosting solution to improve user experience, increase conversion rates and drive more traffic.** Achieve better SEO rankings, improve Core Web Vitals, and your Google Page Speed Insights.
+**The award-winning Speed Optimizer plugin is a free WordPress performance-boosting solution to improve user experience, increase conversion rates and drive more traffic. Achieve better SEO rankings, improve Core Web Vitals, and your Google Page Speed Insights.**
 
-Developed by the WordPress speed experts at [SiteGround](https://www.siteground.com/wordpress-plugins/siteground-security), our free plugin is actively used and trusted by more than 2 million website owners. It’s specially designed to be easy to use, allowing users of all skill levels to make complex speed optimizations in a few clicks.
+Developed by the WordPress speed experts at [SiteGround](https://www.siteground.com/wordpress-plugins/siteground-optimizer), our free plugin is actively used and trusted by more than 2 million website owners. It’s specially designed to be easy to use, allowing users of all skill levels to make complex speed optimizations in a few clicks.
 
 Install our plugin now to dramatically improve your WordPress performance on any hosting platform:
 
-Essential Speed-boosting Features:
+= Essential Speed-boosting Features: =
 
 * **Powerful Caching**  for up to 20% website loading speed increase
 * **Frontend Optimizations** to reduce wait time due to the number of scripts and characters in your code
@@ -25,69 +25,70 @@ Essential Speed-boosting Features:
 
 Don't let a slow website compromise your online success. Join the millions of satisfied website owners and see the difference with the free Speed Optimizer plugin.
 
-AWARDS:
+= AWARDS: =
+[Monster Awards 2022](https://www.templatemonster.com/awards/winners-2022/): Best WordPress Optimization Plugin 🥈
 
-[Monster Awards 2022](https://www.templatemonster.com/awards/category/optimization-wordpress-plugins/): Best WordPress Optimization Plugin 🥈
-
+= Plugin Video =
 [youtube https://www.youtube.com/watch?v=8grmZSkStak]
+
+= Plugin Tutorial =
 To gain in-depth knowledge about our plugin and its functionalities, check our [Speed Optimizer Tutorial](https://www.siteground.com/tutorials/wordpress/sg-optimizer/). It provides detailed information on how each aspect works and maximizes your website's performance.
-== SITE OPTIMIZATION FEATURES ==
-= DASHBOARD PAGE =
-Experience a bird's-eye view of your website's optimization status through our Dashboard. This intuitive page offers a quick overview of the current optimization status and provides convenient shortcuts to relevant optimization pages. We go the extra mile by ensuring that your WordPress application, plugins, and themes are up to date, as it significantly impacts both website speed and security. To keep you informed, the Dashboard includes notifications if any updates are required for your WordPress core or plugins.
-= CACHING =
+
+== CACHING ==
 The Caching page gives you full control of your website’s cache, allowing you to enhance its performance significantly. Take advantage of the powerful caching options available to boost your website’s speed:
-**Dynamic Caching**:
+= DYNAMIC CACHING: =
 By enabling Dynamic Caching, all non-static resources of your website are intelligently cached, eliminating the need for repetitive database queries and enhancing page loading speed and TTFB (time to first byte). This default feature is available exclusively for SiteGround servers, ensuring optimal performance.
-**File-Based Caching**:
+= FILE-BASED CACHING: =
 By activating file-based caching, your website generates and stores static HTML versions, ensuring faster loading times and an improved user experience. This efficient caching method stores the cached files conveniently in the browser's memory, allowing future visitors to access your site swiftly and seamlessly.
-**Memcached**:
+= MEMCACHED: =
 Unleash the power of object caching for your WordPress website. Memcached revolutionizes website performance by storing frequently executed queries in your databases and reusing them for lightning-fast results. This powerful feature is exclusively available in the SiteGround environment.
-**Caching settings**:
-*Automatic Cache Purge: ensure the cache is cleared whenever necessary
-*Manual Cache Purge: purge cache manually if you are editing new material and do not have automatic purge activated.
-*Browser-specific Caching: generate caching separately for different browsers
-*Exclude Post Types from Caching: exclude specific post types from being cached
-*Exclude URLs from Caching: exclude specific URLs or utilize wildcards to exclude any sub-pages of a designated "parent-page."
-*Test URL Caching Status: verify if dynamic caching is actively running on specific URLs
+= CACHING SETTINGS: =
+* Automatic Cache Purge: ensure the cache is cleared whenever necessary
+* Manual Cache Purge: purge cache manually if you are editing new material and do not have automatic purge activated.
+* Browser-specific Caching: generate caching separately for different browsers
+* Exclude Post Types from Caching: exclude specific post types from being cached
+* Exclude URLs from Caching: exclude specific URLs or utilize wildcards to exclude any sub-pages of a designated "parent-page."
+* Test URL Caching Status: verify if dynamic caching is actively running on specific URLs
 
 
-= ENVIRONMENT OPTIMIZATIONS =
+== ENVIRONMENT OPTIMIZATIONS ==
 Optimize and fine-tune your website's environment for optimal performance:
-**HTTPS Enforce**:
+= HTTPS Enforce: =
 Ensure a secure browsing experience for your visitors by effortlessly enabling HTTPS for your site. Say goodbye to insecure content errors and build trust with your audience.
-**Scheduled Database Maintenance**:
+= Scheduled Database Maintenance: =
 Take control of your database by activating the Database Optimization feature. This functionality removes unnecessary items and optimizes your database tables, leading to improved efficiency and performance. If you're using the InnoDB storage engine, table optimization is automatically handled by the engine itself.
-**Heartbeat Control**:
+= Heartbeat Control: =
 Manage the frequency of the WP Heartbeat for different areas of your website. By default, the WordPress Heartbeat API checks for scheduled tasks every 15 seconds on post edit pages and every 60 seconds on the dashboard and front end. With Heartbeat Control, you can adjust the frequency of these checks or even disable them entirely, providing you with greater control over resource allocation.
-= FRONTEND OPTIMIZATIONS =
+== FRONTEND OPTIMIZATIONS ==
 Enhance and fine-tune the performance of your website's front end:
-**CSS Tab**:
+= CSS Tab: =
 Enable CSS file minification, activate or deactivate CSS combinations to reduce server requests, and even preload combined CSS for optimized performance. Additionally, you can exclude specific styles from being combined or minified, giving you complete control over your CSS optimization.
-**JavaScript Tab**:
+= JavaScript Tab: =
 Activate or deactivate JS minification and combination to reduce script sizes and a lower number of server requests. You can also defer render-blocking JavaScript to expedite the initial site load. Furthermore, you have the ability to exclude specific scripts from various optimization processes, providing flexibility in optimizing your JavaScript resources.
-**General Tab**:
+= General Tab: =
 Further optimization options include:
-*Web Fonts Optimization: Enhance the loading of Google fonts by adding a preconnect link in your head tag. This informs the browser to establish a connection to Google's font repository as quickly as possible. Additionally, all other local fonts will be preloaded, resulting in faster caching and rendering. When combined with CSS Combination, we also modify the font-display property to improve rendering speed.
-*Fonts Preloading: With locally hosted fonts being preloaded, you’re allowing browsers to cache and render them at an accelerated pace.
-*Remove Query Strings from Static Resources: Improve caching efficiency by removing query strings from static resources, optimizing their caching capabilities.
-*Disable Emojis:  Prevent WordPress from detecting and generating emojis on your pages by disabling emojis support. This helps streamline your pages and improve performance.
-*DNS Pre-fetch for External Domains: Enabling the DNS Pre-fetch for a domain will resolve it before resources from it get requested making those resources load faster.
-= MEDIA OPTIMIZATIONS =
+
+* Web Fonts Optimization: Enhance the loading of Google fonts by adding a preconnect link in your head tag. This informs the browser to establish a connection to Google's font repository as quickly as possible. Additionally, all other local fonts will be preloaded, resulting in faster caching and rendering. When combined with CSS Combination, we also modify the font-display property to improve rendering speed.
+* Fonts Preloading: With locally hosted fonts being preloaded, you’re allowing browsers to cache and render them at an accelerated pace.
+* Remove Query Strings from Static Resources: Improve caching efficiency by removing query strings from static resources, optimizing their caching capabilities.
+* Disable Emojis:  Prevent WordPress from detecting and generating emojis on your pages by disabling emojis support. This helps streamline your pages and improve performance.
+* DNS Pre-fetch for External Domains: Enabling the DNS Pre-fetch for a domain will resolve it before resources from it get requested making those resources load faster.
+== MEDIA OPTIMIZATIONS ==
 Optimize your website media by reducing image size by up to 85% times while maintaining top-notch quality.
-**Image Compression**:
+= Image Compression: =
 Effortlessly configure image compression to resize your existing images and reduce the space they occupy on your server. The dimensions of the images will remain unchanged, allowing for optimized storage. Fine-tune the compression level and choose whether to create backups of the original images. Please note that this feature is exclusive to the SiteGround Environment.
-**WebP Images**:
+= WebP Images: =
 Leverage the power of WebP, a cutting-edge image format supported by modern browsers, to significantly reduce the size of your images. If a browser doesn't support WebP, the original images will be loaded.
-**Lazy Load Media**:
+= Lazy Load Media: =
 Take control of your website's asset loading with the ability to enable or disable Lazy Load for various assets. You can exclude specific assets such as iframes, videos, thumbnails, widgets, and shortcodes from the dropdown menu. Additionally, you have the option to exclude specific images from Lazy Loading by adding their respective class in the dedicated tab.
-**Maximum Image Width**:
+= Maximum Image Width: =
 If you frequently upload large images to your website, you can enable the Maximum Image Width option that automatically resizes existing and future images whose width exceeds 2560 pixels. By optimizing image sizes, you can enhance performance and reduce bandwidth usage.
 You can customize your media optimization to your specific needs using the filters, we’ve designed for this purpose - link to tutorial.
-= SPEED TEST =
+== SPEED TEST ==
 Evaluate the optimization level of your website with Speed Optimizer’s Speed test tool. Our performance check utilizes the robust capabilities of Google PageSpeed to provide comprehensive insights into your site's optimization.
 By conducting the speed test, you will receive detailed results highlighting areas that can be further optimized for enhanced performance. These insights will empower you to fine-tune your website and unlock its maximum potential and increase conversions.
 
-= Requirements =
+## Requirements ##
 
 In order to work correctly, this plugin requires that your server meets the following criteria:
 
@@ -114,10 +115,19 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+= Version 7.4.3 =
+Release Date: Oct 24th , 2023
+
+* Data collection opt out option
+* Readme file formatting improvements
+* Plugin name formatting improvements
+* Exclude from Deferral compatibility issue with themes twentytwentytwo and twentytwentythree is fixed
+
 = Version 7.4.2 =
 Release Date: Sept 26th, 2023
 
-* Internal configuration improvements
+* Changing the name we use inside the plugin from SiteGround Optimizer to Speed Optimizer
+* Updating data collection process and introducing a link in the plugin interface to the Plugin Privacy notice
 
 = Version 7.4.1 =
 Release Date: Sept 12th, 2023
@@ -1081,9 +1091,6 @@ Release Date: November 8th, 2021
 = 1.0 =
 * Plugin created.
 
-== Credits ==
-Photo credits to Anna Shvets https://www.pexels.com/@shvetsa
-
 == Screenshots ==
 
 1. The SiteGround Optimizer Dashboard Page offers a quick look at the current optimization status of your website, along with shortcuts to the relevant optimization pages.
@@ -1092,3 +1099,11 @@ Photo credits to Anna Shvets https://www.pexels.com/@shvetsa
 4. The SiteGround Optimizer Frontend Optimization Page allows you to Minify HTML, CSS & JS, as well as to remove query strings from your static resources and disable the Emoji support.
 5. The SiteGround Optimizer Media Page allows you to optimize your Media Library images, as well as adds Lazy Loading functionality for your site.
 6. The SiteGround Optimizer Speed Test Page, allows you to test your site loading speed, as well as additional tips on improving your site performance.
+
+## Data Collection ##
+
+By default the plugin collects the information [listed here](https://www.siteground.com/kb/what-information-wp-plugins-collect). This data is collected only for technical analysis, improvements and the possibility to contact the plugin user in case urgent issues need to be fixed (for example a critical security release that needs to be communicated to site owners). The plugin user may opt out from the WP admin from the collection of this data, but we do not recommend this, as it may negatively impact the plugin performance. You may find more information on data collection in our [Plugins Privacy Notice](https://www.siteground.com/viewtos/siteground_plugins_privacy_notice).
+
+## Credits ##
+
+Photo credits to Anna Shvets https://www.pexels.com/@shvetsa

@@ -77,8 +77,8 @@ if (!function_exists('newspaperex_front_page_banner_section')) :
                 <div class="container-fluid">
                     <div class="row">
                         <?php do_action('newspaperex_action_front_page_editor_section');?>
-                        <div class="col-md-6 col-sm-6">
-                            <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10"> 
+                        <div class="col-md-6">
+                            <div id="homemain"class="homemain owl-carousel mr-bot60"> 
                                 <?php newsup_get_block('list', 'banner'); ?>
                             </div>
                         </div> 
@@ -118,7 +118,7 @@ if (!function_exists('newspaperex_banner_tabbed_posts')):
             $category = newsup_get_option('select_trending_tab_news_category');
             $tab_id = 'tan-main-banner-latest-trending-popular'
             ?>
-            <div class="col-md-3 col-sm-6 top-right-area">
+            <div class="col-md-3 top-right-area">
                     <div id="exTab2" >
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
@@ -194,9 +194,9 @@ if (!function_exists('newspaperex_right_banner_advertisement')):
             if(newsup_get_option('banner_advertisement_section'))
             {
             ?>
-            <div class="col-md-4 col-sm-8">
+            <div class="col-md-4">
             <?php } else { ?>
-             <div class="col-md-8 col-sm-8">
+             <div class="col-md-8">
              <?php } } else { ?>    
              <div class="col-8 text-center mx-auto">
                 <?php } if (('' != newsup_get_option('banner_right_advertisement_section'))):
@@ -204,12 +204,12 @@ if (!function_exists('newspaperex_right_banner_advertisement')):
                     $newsup_right_banner_advertisement = newsup_get_option('banner_right_advertisement_section');
                     $newsup_right_banner_advertisement = absint($newsup_right_banner_advertisement);
                     $newsup_right_banner_advertisement = wp_get_attachment_image($newsup_right_banner_advertisement, 'full');
-                    $banner_right_advertisement_section_url = newsup_get_option('banner_advertisement_section_url');
+                    $banner_right_advertisement_section_url = newsup_get_option('banner_left_advertisement_section_url');
                     $banner_right_advertisement_section_url = isset($banner_right_advertisement_section_url) ? esc_url($banner_right_advertisement_section_url) : '#';
                     $newsup_right_open_on_new_tab = get_theme_mod('newsup_right_open_on_new_tab',true);
                     ?>
                     <div class="header-ads">
-                        <a class="pull-right" <?php echo esc_url($banner_right_advertisement_section_url); ?> href="<?php echo $banner_right_advertisement_section_url; ?>"
+                        <a class="pull-right" href="<?php echo $banner_right_advertisement_section_url; ?>"
                             <?php if($newsup_right_open_on_new_tab) { ?>target="_blank" <?php } ?> >
                             <?php echo $newsup_right_banner_advertisement; ?>
                         </a>
@@ -246,9 +246,9 @@ if (!function_exists('newspaperex_left_banner_advertisement')):
             if(newsup_get_option('banner_right_advertisement_section'))
             {
             ?>
-            <div class="col-md-4 col-sm-8">
+            <div class="col-md-4">
             <?php } else { ?>
-             <div class="col-md-8 col-sm-8">
+             <div class="col-md-8">
              <?php } } else { ?>    
              <div class="col-8 text-center mx-auto">
                 <?php } if (('' != newsup_get_option('banner_advertisement_section'))):
@@ -256,12 +256,12 @@ if (!function_exists('newspaperex_left_banner_advertisement')):
                     $newsup_banner_advertisement = newsup_get_option('banner_advertisement_section');
                     $newsup_banner_advertisement = absint($newsup_banner_advertisement);
                     $newsup_banner_advertisement = wp_get_attachment_image($newsup_banner_advertisement, 'full');
-                    $newsup_banner_advertisement_url = newsup_get_option('banner_left_advertisement_section_url');
+                    $newsup_banner_advertisement_url = newsup_get_option('banner_right_advertisement_section_url');
                     $newsup_banner_advertisement_url = isset($newsup_banner_advertisement_url) ? esc_url($newsup_banner_advertisement_url) : '#';
                     $newsup_open_on_new_tab = get_theme_mod('newsup_open_on_new_tab',true);
                     ?>
                     <div class="header-ads">
-                        <a class="pull-right" <?php echo esc_url($newsup_banner_advertisement_url); ?> href="<?php echo $newsup_banner_advertisement_url; ?>"
+                        <a class="pull-right" href="<?php echo $newsup_banner_advertisement_url; ?>"
                             <?php if($newsup_open_on_new_tab) { ?>target="_blank" <?php } ?> >
                             <?php echo $newsup_banner_advertisement; ?>
                         </a>

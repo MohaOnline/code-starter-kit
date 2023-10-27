@@ -4,8 +4,8 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 3.0.0.106
-Tested up to: 6.3
+Version: 3.0.0.111
+Tested up to: 6.3.2
 Requires PHP: 7.0
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
 License: GNU General Public License v3 or later
@@ -348,6 +348,10 @@ Text Domain: newsup
 	line-height: 20px;
 	padding: 15px 0;
 	transition: all 0.25s ease-out 0s;
+}
+.nav.navbar-nav.sm-collapsible .has-submenu {
+    padding-left: 3em;
+	padding-right: 15px;
 }
 /*---------------------------------------
 	1.3.Theme Menu Center 
@@ -1499,9 +1503,9 @@ button.mfp-close:hover, button.mfp-close:focus {
     box-sizing: border-box;
     z-index: 50;
 }
-
 .top-right-area .mg-posts-sec {
     padding: 0;
+	margin: 0;
 }
 .top-right-area .nav-tabs {
     border-bottom: none;
@@ -1608,6 +1612,9 @@ button.mfp-close:hover, button.mfp-close:focus {
     width: 100%;
     float: none;
 }
+.mg-sidebar .mg-sec-title { 
+    margin: -10px -20px 20px -20px;
+}
 .mg-sec-title {
 	font-weight: bold;
 	padding-bottom: 0;
@@ -1621,7 +1628,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 2.2;
-	padding: 0 7px 0 15px;
+	padding: 0 15px 0 7px;
     width: auto;
     height: auto;
 	min-height: 40px;
@@ -1669,6 +1676,20 @@ button.mfp-close:hover, button.mfp-close:focus {
 }
 .mg-sidebar .widget_post_list .widget_post_list_inner{
 	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.widget_post_list.mg-posts-sec {
+	margin-bottom: 10px;
+}
+/* Tabbed widget  */
+.mg-sidebar .newsup_tabbed_posts_widget .tabbed-head ul li {
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+.top-right-area .nav-tabs li.tab-categorised a{
+	border-top-width: 1px; 
+	border-right-width: 1px; 
+	border-left-width: 1px; 
 }
 /*blocks Posts*/
 .mg-posts-sec{
@@ -1734,7 +1755,7 @@ button.mfp-close:hover, button.mfp-close:focus {
    margin-bottom: 0px;
 }
 .mg-posts-sec-inner .small-list-post .mg-blog-category {
-	margin: 0 0 5px 0;
+	margin: 10px 0 5px 0;
 }
 .mg-posts-sec-inner .small-list-post img {
   height: 100%;
@@ -3339,6 +3360,10 @@ footer .info-right {
     justify-content: space-between;
     width: 100%;
     flex-flow: row-reverse;
+}
+.featured-image-caption{
+	display: block;
+	text-align: center;
 }
 .nav-links a, .single-nav-links a {
     font-size: 1.2rem;

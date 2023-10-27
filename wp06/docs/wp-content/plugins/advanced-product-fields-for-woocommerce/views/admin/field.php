@@ -8,34 +8,28 @@ use SW_WAPF\Includes\Classes\Html;
     <div class="wapf-field__header">
         <div class="wapf-field__icon">
             <div rv-show="field.type | eq 'url'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M14.9 1.1c-1.4-1.4-3.7-1.4-5.1 0l-4.4 4.3c-1.4 1.5-1.4 3.7 0 5.2 0.1 0.1 0.3 0.2 0.4 0.3l1.5-1.5c-0.1-0.1-0.3-0.2-0.4-0.3-0.6-0.6-0.6-1.6 0-2.2l4.4-4.4c0.6-0.6 1.6-0.6 2.2 0s0.6 1.6 0 2.2l-1.3 1.3c0.4 0.8 0.5 1.7 0.4 2.5l2.3-2.3c1.5-1.4 1.5-3.7 0-5.1z" ></path><path d="M10.2 5.1l-1.5 1.5c0 0 0.3 0.2 0.4 0.3 0.6 0.6 0.6 1.6 0 2.2l-4.4 4.4c-0.6 0.6-1.6 0.6-2.2 0s-0.6-1.6 0-2.2l1.3-1.3c-0.4-0.8-0.1-1.3-0.4-2.5l-2.3 2.3c-1.4 1.4-1.4 3.7 0 5.1s3.7 1.4 5.1 0l4.4-4.4c1.4-1.4 1.4-3.7 0-5.1-0.2-0.1-0.4-0.3-0.4-0.3z" ></path></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="#828282" stroke-width="2" d="M9 17H7A5 5 0 0 1 7 7h2m6 10h2a5 5 0 0 0 0-10h-2m-8 5h10"/></svg>            </div>
             <div rv-show="field.type | eq 'email'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M0 3h16v2.4l-8 4-8-4z" ></path><path d="M0 14l5.5-4.8 2.5 1.4 2.5-1.4 5.5 4.8z" ></path><path d="M4.6 8.8l-4.6-2.3v6.5z" ></path><path d="M11.4 8.8l4.6-2.3v6.5z" ></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="#828282" stroke-width="2" d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm0 0v1.5a2.5 2.5 0 0 0 2.5 2.5v0a2.5 2.5 0 0 0 2.5-2.5V12a9 9 0 1 0-9 9h4"/></svg>
             </div>
             <div rv-show="field.type | eq 'textarea'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M2 2h1v4h-1v-4z" ></path><path d="M1 0c-0.6 0-1 0.4-1 1v14c0 0.6 0.4 1 1 1h15v-16h-15zM13 15h-12v-14h12v14zM15 15v0h-1v-1h1v1zM15 13h-1v-10h1v10zM15 2h-1v-1h1v1z" ></path></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M2 5V3a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V4h-7v16h3a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h3V4H4v1a1 1 0 0 1-2 0Z"/></svg><svg xmlns="http://www.w3.org/2000/svg" style="margin-left: -5px" width="12" height="12" viewBox="0 0 24 24"><path d="M2 5V3a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V4h-7v16h3a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h3V4H4v1a1 1 0 0 1-2 0Z"/></svg>            </div>
             <div rv-show="field.type | eq 'text'">
-                <svg height="18" width="18" viewBox="0 0 16 16"><path d="M16 5c0-0.6-0.4-1-1-1h-14c-0.6 0-1 0.4-1 1v6c0 0.6 0.4 1 1 1h14c0.6 0 1-0.4 1-1v-6zM15 11h-14v-6h14v6z" ></path><path d="M2 6h1v4h-1v-4z" ></path></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M2 5V3a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V4h-7v16h3a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h3V4H4v1a1 1 0 0 1-2 0Z"/></svg>            </div>
             <div rv-show="field.type | eq 'number'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M15 6v-2h-2.6l0.6-2.8-2-0.4-0.7 3.2h-3l0.7-2.8-2-0.4-0.7 3.2h-3.3v2h2.9l-0.9 4h-3v2h2.6l-0.6 2.8 2 0.4 0.7-3.2h3l-0.7 2.8 2 0.4 0.7-3.2h3.3v-2h-2.9l0.9-4h3zM9 10h-3l1-4h3l-1 4z" ></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20 14h-4.3l.73-4H20a1 1 0 0 0 0-2h-3.21l.69-3.81A1 1 0 0 0 16.64 3a1 1 0 0 0-1.22.82L14.67 8h-3.88l.69-3.81A1 1 0 0 0 10.64 3a1 1 0 0 0-1.22.82L8.67 8H4a1 1 0 0 0 0 2h4.3l-.73 4H4a1 1 0 0 0 0 2h3.21l-.69 3.81A1 1 0 0 0 7.36 21a1 1 0 0 0 1.22-.82L9.33 16h3.88l-.69 3.81a1 1 0 0 0 .84 1.19 1 1 0 0 0 1.22-.82l.75-4.18H20a1 1 0 0 0 0-2zM9.7 14l.73-4h3.87l-.73 4z"/></svg>
             </div>
             <div rv-show="field.type | eq 'true-false'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M14 6.2v7.8h-12v-12h10.5l1-1h-12.5v14h14v-9.8z" ></path><path d="M7.9 10.9l-4.2-4.2 1.5-1.4 2.7 2.8 6.7-6.7 1.4 1.4z" ></path></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5zm6.003 11L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/></svg>            </div>
             <div rv-show="field.type | eq 'checkboxes'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M14 6.2v7.8h-12v-12h10.5l1-1h-12.5v14h14v-9.8z" ></path><path d="M7.9 10.9l-4.2-4.2 1.5-1.4 2.7 2.8 6.7-6.7 1.4 1.4z" ></path></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5zm6.003 11L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/></svg>            </div>
             <div rv-show="field.type | eq 'select'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M15 4h-14c-0.6 0-1 0.4-1 1v6c0 0.6 0.4 1 1 1h14c0.6 0 1-0.4 1-1v-6c0-0.6-0.4-1-1-1zM10 11h-9v-6h9v6zM13 8.4l-2-1.4h4l-2 1.4z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="24" height="24"><path fill="#828282" d="m44.48 36.82 5.2-6.15H39.2l5.27 6.15Z"/><path fill="none" stroke="#828282" stroke-width="4" d="M54.5 41.56c0 1.89-1.74 3.42-3.88 3.42H12.94c-2.15 0-3.88-1.53-3.88-3.42V26.22c0-1.88 1.73-3.41 3.88-3.41h37.68c2.14 0 3.88 1.53 3.88 3.41v15.34Z"/></svg>
             </div>
             <div rv-show="field.type | eq 'radio'">
-                <svg height="16" width="16" viewBox="0 0 16 16"><path d="M8 4c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"></path><path d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"></path></svg>
-            </div>
+                <svg height="15" width="15" viewBox="0 0 16 16"><path d="M8 4c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"></path><path d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"></path></svg>            </div>
             <div rv-show="field.type | eq 'content'">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 179 179"><path d="M0,3.416h143.082v36.929l-22.313-0.064v-9.083c0-4.645-3.609-8.447-8.235-8.699H84.061V145.17	c0.199,5.258,4.458,9.365,9.727,9.365h7.896l0.065,20.299h-60.38l0.067-20.299h7.894c5.192,0,9.442-4.038,9.72-9.21V22.498h-28.5c-4.626,0.252-8.235,4.055-8.235,8.699v9.083L0,40.345V3.416z M163.541,175.125h15V3.416h-15V175.125z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="#828282" stroke-width="2" d="M12 18 8 5H7L3 18m1.23-4h6.54m3.73-4C16 9 20 8 20 11.5V18m0-5.5c-1.5.5-6 .5-6 3.5s4.5 2 6-.5"/></svg>
             </div>
         </div>
         <div class="wapf-field__label" rv-on-click="setActiveField">

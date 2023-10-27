@@ -191,7 +191,7 @@ if (! function_exists('blocksy_post_meta')) {
 							]);
 						}
 
-						echo $icon;
+						echo trim($icon);
 					}
 
 					global $authordata;
@@ -230,7 +230,7 @@ if (! function_exists('blocksy_post_meta')) {
 								]);
 							}
 
-							echo $icon;
+							echo trim($icon);
 						}
 
 						$meta_label = $args['prefix'] ? blocksy_translate_dynamic(
@@ -285,7 +285,7 @@ if (! function_exists('blocksy_post_meta')) {
 								]);
 							}
 
-							echo $icon;
+							echo trim($icon);
 						}
 
 						$meta_label = $args['prefix'] ? blocksy_translate_dynamic(
@@ -351,7 +351,7 @@ if (! function_exists('blocksy_post_meta')) {
 							]);
 						}
 
-						echo $icon;
+						echo trim($icon);
 					}
 
 				?><a href="<?php echo esc_attr(get_permalink()); ?>#comments"><?php
@@ -432,7 +432,7 @@ if (! function_exists('blocksy_post_meta')) {
 						]);
 					}
 
-					echo $icon;
+					echo trim($icon);
 				}
 
 				if (

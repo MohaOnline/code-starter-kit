@@ -46,7 +46,7 @@ Advanced_Ads_Ad_Health_Notices::get_instance()->display_notices();
 <?php
 
 if ( Advanced_Ads_Ad_Health_Notices::has_visible_problems() ) {
-	include ADVADS_BASE_PATH . 'admin/views/support-callout.php';
+	include ADVADS_ABSPATH . 'admin/views/support-callout.php';
 }
 
 ?>

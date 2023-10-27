@@ -344,7 +344,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 					wp_enqueue_style( 'photoswipe-default-skin' );
 				}
 				wp_register_style( 'ivole-frontend-css', plugins_url( '/css/frontend.css', dirname( dirname( __FILE__ ) ) ), array(), $assets_version, 'all' );
-				wp_register_script( 'cr-frontend-js', plugins_url( '/js/frontend.js', dirname( dirname( __FILE__ ) ) ), array(), $assets_version, true );
+				wp_register_script( 'cr-frontend-js', plugins_url( '/js/frontend.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), $assets_version, true );
 				wp_enqueue_style( 'ivole-frontend-css' );
 				wp_localize_script(
 					'cr-frontend-js',
@@ -353,8 +353,6 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'ivole_recaptcha' => self::is_captcha_enabled() ? 1 : 0,
 						'ivole_disable_lightbox' => ( $this->disable_lightbox ? 1 : 0 ),
-						'ivole_allow_empty_comment' => ( apply_filters( 'cr_allow_empty_comment', false ) ? 1 : 0 ),
-						'ivole_allow_empty_comment_alert' => __( 'Please type your review text', 'customer-reviews-woocommerce' ),
 						'cr_upload_initial' => sprintf( __( 'Upload up to %d images or videos', 'customer-reviews-woocommerce' ), $this->limit_file_count ),
 						'cr_upload_error_file_type' => __( 'Error: accepted file types are PNG, JPG, JPEG, GIF, MP4, MPEG, OGG, WEBM, MOV, AVI', 'customer-reviews-woocommerce' ),
 						'cr_upload_error_too_many' => sprintf( __( 'Error: You tried to upload too many files. The maximum number of files that can be uploaded is %d.', 'customer-reviews-woocommerce' ), $this->limit_file_count ),
@@ -374,7 +372,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 				wp_register_script(
 					$script_id,
 					plugins_url( 'js/' . $script_file_basename . '.js', dirname( dirname( __FILE__ ) ) ),
-					array(),
+					array( 'jquery' ),
 					'4.9',
 					true
 				);

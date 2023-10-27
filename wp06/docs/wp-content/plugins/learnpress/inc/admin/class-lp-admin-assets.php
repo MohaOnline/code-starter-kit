@@ -28,15 +28,15 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 		$current_screen = get_current_screen();
 
 		return array(
-			'learn-press-global'         => learn_press_global_script_params(),
-			'learn-press-meta-box-order' => apply_filters(
+			'learn-press-global'              => learn_press_global_script_params(),
+			'learn-press-meta-box-order'      => apply_filters(
 				'learn-press/meta-box-order/script-data',
 				array(
 					'i18n_error' => esc_html__( 'Oops! Error.', 'learnpress' ),
 					'i18n_guest' => esc_html__( 'Guest', 'learnpress' ),
 				)
 			),
-			'learn-press-update'         => apply_filters(
+			'learn-press-update'              => apply_filters(
 				'learn-press/upgrade/script-data',
 				array(
 					'i18n_confirm' => esc_html__(
@@ -45,7 +45,7 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					),
 				)
 			),
-			'lp-admin'                   => apply_filters(
+			'lp-admin'                        => apply_filters(
 				'learn-press/admin/script-data',
 				array(
 					'ajax'                 => admin_url( 'admin-ajax.php' ),
@@ -54,6 +54,7 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					'screen'               => $current_screen,
 				)
 			),
+			'learn-press-admin-course-editor' => $this->get_course_data_for_editor_vue(),
 		);
 	}
 
@@ -65,7 +66,7 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 	protected function _get_scripts(): array {
 		$lp_admin_js = new LP_Asset_Key(
 			$this->url( self::$_folder_source . 'js/admin/admin' . self::$_min_assets . '.js' ),
-			array( 'learn-press-global', 'lp-utils', 'wp-color-picker', 'jspdf', 'vue-libs', 'wp-i18n' ),
+			array( 'learn-press-global', 'lp-utils', 'wp-color-picker', 'vue-libs', 'wp-i18n' ),
 			array(),
 			0,
 			1
@@ -79,7 +80,7 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 				'vue-libs'                          => new LP_Asset_Key( $this->url( 'js/vendor/vue/vue_libs.js' ) ),
 				'select2'                           => new LP_Asset_Key( $this->url( 'src/js/vendor/select2.full.min.js' ) ),
 				'jquery-tipsy'                      => new LP_Asset_Key( $this->url( 'src/js/vendor/jquery/jquery-tipsy.js' ) ),
-				'jspdf'                             => new LP_Asset_Key( $this->url( 'src/js/vendor/jspdf.min.js' ) ),
+				'html2pdf'                          => new LP_Asset_Key( $this->url( 'src/js/vendor/html2pdf.bundle.min.js' ) ),
 				'chart'                             => new LP_Asset_Key( $this->url( 'src/js/vendor/chart.min.js' ) ),
 				'dropdown-pages'                    => new LP_Asset_Key( $this->url( self::$_folder_source . 'js/admin/share/dropdown-pages' . self::$_min_assets . '.js' ) ),
 				'jquery-ui-timepicker-addon'        => new LP_Asset_Key(
@@ -165,6 +166,13 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					0,
 					1
 				),
+				'lp-admin-order'                    => new LP_Asset_Key(
+					$this->url( 'js/dist/admin/admin-order' . self::$_min_assets . '.js' ),
+					array( 'html2pdf' ),
+					array( LP_ORDER_CPT ),
+					0,
+					1
+				),
 				'learn-press-sync-data'             => new LP_Asset_Key(
 					$this->url( 'js/dist/admin/pages/sync-data' . self::$_min_assets . '.js' ),
 					array(),
@@ -212,20 +220,6 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					1,
 					1
 				),
-				/*'lp-admin-tabs'                     => new LP_Asset_Key(
-					$this->url( self::$_folder_source . 'js/admin/share/admin-tabs' . self::$_min_assets . '.js' ),
-					array( 'jquery' ),
-					array( LP_COURSE_CPT ),
-					0,
-					1
-				),*/
-				/*'lp-admin-notice'                   => new LP_Asset_Key(
-					$this->url( self::$_folder_source . 'js/admin/share/admin-notice' . self::$_min_assets . '.js' ),
-					array( 'jquery' ),
-					array(),
-					0,
-					1
-				),*/
 				'lp-modal-search-users'             => new LP_Asset_Key(
 					$this->url( self::$_folder_source . 'js/admin/share/modal-search-users' . self::$_min_assets . '.js' ),
 					array( 'jquery' ),
@@ -283,6 +277,24 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					0,
 					1
 				),
+				/*'lp-tools-assign-course'            => new LP_Asset_Key(
+					$this->url( 'src/apps/js/admin/admin-tools-assign-course.js' ),
+					array(
+						'jquery',
+					),
+					array( 'learnpress_page_learn-press-tools' ),
+					0,
+					1
+				),*/
+				'lp-admin-tools'            => new LP_Asset_Key(
+					$this->url( 'js/dist/admin/admin-tools' . self::$_min_assets . '.js' ),
+					array(
+						'jquery',
+					),
+					array( 'learnpress_page_learn-press-tools' ),
+					0,
+					1
+				),
 			)
 		);
 
@@ -327,6 +339,12 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 					array( 'learners_page_learn-press-statistics' ),
 					0
 				),
+				'lp-tom-select' => new LP_Asset_Key(
+					'https://cdn.jsdelivr.net/npm/tom-select@2.2.3/dist/css/tom-select.css',
+					[],
+					array( 'learnpress_page_learn-press-tools' ),
+					0
+				),
 			)
 		);
 	}
@@ -349,16 +367,6 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 	}
 
 	/**
-	 * Register and enqueue a custom stylesheet in the WordPress admin.
-	 *
-	 * @author
-	 */
-	public function wpdocs_enqueue_custom_admin_style() {
-		wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/admin-style.css', false, '1.0.0' );
-		wp_enqueue_style( 'custom_wp_admin_css' );
-	}
-
-	/**
 	 * Show overlay
 	 */
 	public function add_elements_global() {
@@ -370,6 +378,64 @@ class LP_Admin_Assets extends LP_Abstract_Assets {
 
 		// Added notify message when action done.
 		Template::instance()->get_admin_template( 'global/notify-action.php' );
+	}
+
+	/**
+	 * Get course data for Vue Editor Course use.
+	 *
+	 * @return array|mixed|null
+	 */
+	public function get_course_data_for_editor_vue() {
+		global $post, $pagenow;
+
+		if ( empty( $post ) || ( get_post_type() !== LP_COURSE_CPT ) || ! in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
+			return [];
+		}
+
+		$course          = learn_press_get_course( $post->ID );
+		$hidden_sections = get_post_meta( $post->ID, '_admin_hidden_sections', true );
+
+		return apply_filters(
+			'learn-press/admin-localize-course-editor',
+			array(
+				'root'        => array(
+					'course_id'          => $post->ID,
+					'auto_draft'         => get_post_status( $post->ID ) == 'auto-draft',
+					'ajax'               => admin_url( 'index.php' ),
+					'disable_curriculum' => false,
+					'action'             => 'admin_course_editor',
+					'nonce'              => wp_create_nonce( 'learnpress_update_curriculum' ),
+				),
+				'chooseItems' => array(
+					'types'      => learn_press_course_get_support_item_types(),
+					'open'       => false,
+					'addedItems' => array(),
+					'items'      => array(),
+				),
+				'i18n'        => array(
+					'item'                   => __( 'item', 'learnpress' ),
+					'new_section_item'       => __( 'Create a new', 'learnpress' ),
+					'back'                   => __( 'Back', 'learnpress' ),
+					'selected_items'         => __( 'Selected items', 'learnpress' ),
+					'confirm_remove_item'    => __( 'Do you want to remove the "{{ITEM_NAME}}" item from the course?', 'learnpress' ),
+					'confirm_trash_item'     => __( 'Do you want to move the "{{ITEM_NAME}}" item to the trash?', 'learnpress' ),
+					'item_labels'            => array(
+						'singular' => __( 'Item', 'learnpress' ),
+						'plural'   => __( 'Items', 'learnpress' ),
+					),
+					'notice_sale_price'      => __( 'The course sale price must be less than the regular price', 'learnpress' ),
+					'notice_price'           => __( 'The course price must be greater than the sale price', 'learnpress' ),
+					'notice_sale_start_date' => __( 'The sale start date must be before the sale end date', 'learnpress' ),
+					'notice_sale_end_date'   => __( 'The sale end date must be after the sale start date', 'learnpress' ),
+					'notice_invalid_date'    => __( 'Invalid date', 'learnpress' ),
+				),
+				'sections'    => array(
+					'sections'        => $course->get_curriculum_raw(),
+					'hidden_sections' => ! empty( $hidden_sections ) ? $hidden_sections : array(),
+					'urlEdit'         => admin_url( 'post.php?action=edit&post=' ),
+				),
+			)
+		);
 	}
 
 	public static function instance() {

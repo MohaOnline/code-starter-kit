@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views;
 
-use org\wplake\acf_views\AcfCard\{AcfCardFactory, AcfCards, CardMarkup, QueryBuilder};
-use org\wplake\acf_views\AcfGroups\{AcfCardData, AcfViewData, Field, Item, MetaField, RepeaterField, TaxField};
-use org\wplake\acf_views\AcfView\{AcfViewFactory, AcfViews, Post, ViewMarkup};
+use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 
 defined('ABSPATH') || exit;
 
 class Plugin
 {
-    const SHORTCODE = AcfViews::NAME;
-    const SHORTCODE_CARDS = AcfCards::NAME;
-
     const DOCS_URL = 'https://docs.acfviews.com/getting-started/acf-views-for-wordpress';
     const PRO_VERSION_URL = 'https://wplake.org/acf-views-pro/';
     const PRO_PRICING_URL = 'https://wplake.org/acf-views-pro/#pricing';
@@ -25,67 +20,16 @@ class Plugin
 
     protected string $slug = 'acf-views/acf-views.php';
     protected string $shortSlug = 'acf-views';
-    protected string $version = '2.1.1';
+    protected string $version = '2.3.2';
     protected bool $isProVersion = false;
+    protected bool $isSwitchingVersions;
 
-    /**
-     * @var ViewMarkup
-     */
-    protected $viewMarkup;
-    /**
-     * @var CardMarkup
-     */
-    protected $cardMarkup;
-    protected QueryBuilder $queryBuilder;
     protected Options $options;
-    protected Cache $cache;
-    protected Twig $twig;
-    /**
-     * @var AcfViewFactory
-     */
-    protected $acfViewFactory;
-    /**
-     * @var AcfCardFactory
-     */
-    protected $acfCardFactory;
-    // used to avoid recursion with post_object/relationship fields
-    protected array $displayingView;
-    protected int $queryLoopPostId;
-    protected int $bufferLevel;
 
-    public function __construct(
-        ViewMarkup $viewMarkup,
-        CardMarkup $cardMarkup,
-        Options $options,
-        Cache $cache,
-        AcfViewFactory $acfViewFactory,
-        AcfCardFactory $acfCardFactory
-    ) {
-        $this->viewMarkup = $viewMarkup;
-        $this->cardMarkup = $cardMarkup;
-        $this->options = $options;
-        $this->cache = $cache;
-        $this->acfViewFactory = $acfViewFactory;
-        $this->acfCardFactory = $acfCardFactory;
-
-        $this->displayingView = [];
-        // don't use '0' as the default, because it can be 0 in the 'render_callback' hook
-        $this->queryLoopPostId = -1;
-        $this->bufferLevel = 0;
-    }
-
-    protected static function getErrorMarkup(string $shortcode, array $args, string $error): string
+    public function __construct(Options $options)
     {
-        $attrs = [];
-        foreach ($args as $name => $value) {
-            $attrs[] = sprintf('%s="%s"', $name, $value);
-        }
-        return sprintf(
-            "<p style='color:red;'>%s %s %s</p>",
-            __('Shortcode error:', 'acf-views'),
-            $error,
-            sprintf('(%s %s)', $shortcode, implode(' ', $attrs))
-        );
+        $this->options = $options;
+        $this->isSwitchingVersions = false;
     }
 
     // static, as called also in AcfGroup
@@ -94,244 +38,26 @@ class Plugin
         return class_exists('acf_pro');
     }
 
-    protected function getViewPreviewJsData(): array
+    public static function getThemeTextDomain(): string
     {
-        $jsData = [
-            'HTML' => '',
-            'CSS' => '',
-        ];
-
-        global $post;
-
-        if (!$this->isCPTScreen(AcfViews::NAME) ||
-            'publish' !== $post->post_status) {
-            return $jsData;
-        }
-
-        $acfViewData = $this->cache->getAcfViewData($post->ID);
-        $previewPostId = $acfViewData->previewPost ?: 0;
-
-        if ($previewPostId) {
-            // without minify, it's a preview
-            $viewHTML = $this->acfViewFactory->createAndGetHtml(
-                new Post($previewPostId),
-                $post->ID,
-                0,
-                false
-            );
-        } else {
-            // $this->viewMarkup->getMarkup give TWIG, there is no sense to show it
-            // so the HTML is empty until the preview Post ID is selected
-            $viewHTML = '';
-        }
-
-        // amend to allow work the '#view' alias
-        $viewHTML = str_replace('class="acf-view ', 'id="view" class="acf-view ', $viewHTML);
-        $jsData['HTML'] = htmlentities($viewHTML, ENT_QUOTES);
-
-        $jsData['CSS'] = htmlentities($acfViewData->getCssCode(false, true), ENT_QUOTES);
-        $jsData['HOME'] = get_site_url();
-
-        return $jsData;
+        return (string)wp_get_theme()->get('TextDomain');
     }
 
-    protected function getCardPreviewJsData(): array
+    public static function getLabelTranslation(string $label, string $textDomain = ''): string
     {
-        $jsData = [
-            'HTML' => '',
-            'CSS' => '',
-        ];
+        $textDomain = $textDomain ?: self::getThemeTextDomain();
 
-        global $post;
+        // escape quotes to keep compatibility with the generated translation file
+        // (quotes there escaped to prevent breaking the PHP string)
+        $label = str_replace("'", "&#039;", $label);
+        $label = str_replace('"', "&quot;", $label);
 
-        if (!$this->isCPTScreen(AcfCards::NAME) ||
-            'publish' !== $post->post_status) {
-            return $jsData;
-        }
+        $translation = __($label, $textDomain);
 
-        $acfCardData = $this->cache->getAcfCardData($post->ID);
-        $acfCardHtml = $this->acfCardFactory->createAndGetHtml($acfCardData, 1, false);
-        $acfViewData = $this->cache->getAcfViewData($acfCardData->acfViewId);
+        $translation = str_replace("&#039;", "'", $translation);
+        $translation = str_replace("&quot;", '"', $translation);
 
-        // amend to allow work the '#card' alias
-        $viewHTML = str_replace(
-            'class="acf-card ',
-            'id="card" class="acf-card ',
-            $acfCardHtml
-        );
-        $jsData['HTML'] = htmlentities($viewHTML, ENT_QUOTES);
-        // Card CSS without minification as it's for views' purposes
-        $jsData['CSS'] = htmlentities($acfCardData->getCssCode(false, true), ENT_QUOTES);
-        $jsData['VIEW_CSS'] = htmlentities($acfViewData->getCssCode(), ENT_QUOTES);
-        $jsData['HOME'] = get_site_url();
-
-        return $jsData;
-    }
-
-    protected function enqueueAdminAssets(string $currentBase, array $jsData = []): void
-    {
-        // add, edit pages
-        if ('post' === $currentBase) {
-            $jsData = array_merge_recursive($jsData, [
-                'markupTextarea' => [
-                    [
-                        'idSelector' => AcfViewData::getAcfFieldName(AcfViewData::FIELD_MARKUP),
-                        'isReadOnly' => true,
-                        'mode' => '_twig',
-                    ],
-                    [
-                        'idSelector' => AcfViewData::getAcfFieldName(AcfViewData::FIELD_CSS_CODE),
-                        'isReadOnly' => false,
-                        'mode' => '_css',
-                    ],
-                    [
-                        'idSelector' => AcfViewData::getAcfFieldName(AcfViewData::FIELD_JS_CODE),
-                        'isReadOnly' => false,
-                        'mode' => '_js',
-                    ],
-                    [
-                        'idSelector' => AcfViewData::getAcfFieldName(AcfViewData::FIELD_CUSTOM_MARKUP),
-                        'isReadOnly' => false,
-                        'mode' => '_twig',
-                    ],
-                    [
-                        'idSelector' => AcfViewData::getAcfFieldName(AcfViewData::FIELD_PHP_VARIABLES),
-                        'isReadOnly' => false,
-                        'mode' => '_php',
-                    ],
-                    [
-                        'idSelector' => AcfCardData::getAcfFieldName(AcfCardData::FIELD_MARKUP),
-                        'isReadOnly' => true,
-                        'mode' => '_twig',
-                    ],
-                    [
-                        'idSelector' => AcfCardData::getAcfFieldName(AcfCardData::FIELD_CSS_CODE),
-                        'isReadOnly' => false,
-                        'mode' => '_css',
-                    ],
-                    [
-                        'idSelector' => AcfCardData::getAcfFieldName(AcfCardData::FIELD_JS_CODE),
-                        'isReadOnly' => false,
-                        'mode' => '_js',
-                    ],
-                    [
-                        'idSelector' => AcfCardData::getAcfFieldName(
-                            AcfCardData::FIELD_CUSTOM_MARKUP
-                        ),
-                        'isReadOnly' => false,
-                        'mode' => '_twig',
-                    ],
-                    [
-                        'idSelector' => AcfCardData::getAcfFieldName(AcfCardData::FIELD_QUERY_PREVIEW),
-                        'isReadOnly' => true,
-                        'mode' => '_twig',
-                    ],
-                ],
-                'fieldSelect' => [
-                    [
-                        'mainSelectId' => Item::getAcfFieldName(Item::FIELD_GROUP),
-                        'subSelectId' => Field::getAcfFieldName(Field::FIELD_KEY),
-                        'identifierInputId' => Field::getAcfFieldName(Field::FIELD_ID),
-                    ],
-                    [
-                        'mainSelectId' => AcfCardData::getAcfFieldName(
-                            AcfCardData::FIELD_ORDER_BY_META_FIELD_GROUP
-                        ),
-                        'subSelectId' => AcfCardData::getAcfFieldName(AcfCardData::FIELD_ORDER_BY_META_FIELD_KEY),
-                        'identifierInputId' => '',
-                    ],
-                    [
-                        'mainSelectId' => Field::getAcfFieldName(Field::FIELD_KEY),
-                        'subSelectId' => RepeaterField::getAcfFieldName(RepeaterField::FIELD_KEY),
-                        'identifierInputId' => RepeaterField::getAcfFieldName(RepeaterField::FIELD_ID),
-                    ],
-                    [
-                        'mainSelectId' => MetaField::getAcfFieldName(MetaField::FIELD_GROUP),
-                        'subSelectId' => MetaField::getAcfFieldName(MetaField::FIELD_FIELD_KEY),
-                        'identifierInputId' => '',
-                    ],
-                    [
-                        'mainSelectId' => TaxField::getAcfFieldName(TaxField::FIELD_TAXONOMY),
-                        'subSelectId' => TaxField::getAcfFieldName(TaxField::FIELD_TERM),
-                        'identifierInputId' => '',
-                    ],
-                ],
-                'viewPreview' => $this->getViewPreviewJsData(),
-                'cardPreview' => $this->getCardPreviewJsData(),
-            ]);
-
-            wp_enqueue_style(
-                AcfViews::NAME . '_cpt-item',
-                $this->getAssetsUrl('admin/cpt-item.min.css'),
-                [],
-                $this->getVersion()
-            );
-            // jquery is necessary for select2 events
-            wp_enqueue_script(
-                AcfViews::NAME . '_cpt-item',
-                $this->getAssetsUrl('admin/cpt-item.min.js'),
-                ['jquery',],
-                $this->getVersion(),
-                [
-                    'in_footer' => true,
-                    // in footer, so if we need to include others, like 'ace.js' we can include in header
-                ]
-            );
-            wp_localize_script(AcfViews::NAME . '_cpt-item', 'acf_views', $jsData);
-        }
-
-        // 'dashboard' for all the custom pages (but not for edit/add pages)
-        if (0 === strpos($currentBase, 'acf_views_page_')) {
-            wp_enqueue_style(
-                AcfViews::NAME . '_page',
-                $this->getAssetsUrl('admin/dashboard.min.css'),
-                [],
-                $this->getVersion()
-            );
-        }
-
-        // plugin-header for all the pages without exception
-        wp_enqueue_style(
-            AcfViews::NAME . '_plugin-header',
-            $this->getAssetsUrl('admin/plugin-header.min.css'),
-            [],
-            $this->getVersion()
-        );
-    }
-
-    protected function printPluginsCSS(): string
-    {
-        return '';
-    }
-
-    public function isShortcodeAvailableForUser(array $userRoles, array $shortcodeArgs): bool
-    {
-        $userWithRoles = (string)($shortcodeArgs['user-with-roles'] ?? '');
-        $userWithRoles = trim($userWithRoles);
-        $userWithRoles = $userWithRoles ?
-            explode(',', $userWithRoles) :
-            [];
-
-        $userWithoutRoles = (string)($shortcodeArgs['user-without-roles'] ?? '');
-        $userWithoutRoles = trim($userWithoutRoles);
-        $userWithoutRoles = $userWithoutRoles ?
-            explode(',', $userWithoutRoles) :
-            [];
-
-        if (!$userWithRoles &&
-            !$userWithoutRoles) {
-            return true;
-        }
-
-        $userHasAllowedRoles = !!array_intersect($userWithRoles, $userRoles);
-        $userHasDeniedRoles = !!array_intersect($userWithoutRoles, $userRoles);
-
-        if (($userWithRoles && !$userHasAllowedRoles) ||
-            ($userWithoutRoles && $userHasDeniedRoles)) {
-            return false;
-        }
-
-        return true;
+        return $translation;
     }
 
     public function getName(): string
@@ -363,12 +89,12 @@ class Plugin
 
     public function getAssetsUrl(string $file): string
     {
-        return plugin_dir_url(__FILE__) . 'assets/' . $file;
+        return plugin_dir_url(__FILE__) . 'Assets/' . $file;
     }
 
     public function getAcfProAssetsUrl(string $file): string
     {
-        return plugin_dir_url(__FILE__) . 'AcfPro/' . $file;
+        return plugin_dir_url(__FILE__) . 'AcfPro/assets/' . $file;
     }
 
     public function isAcfPluginAvailable(bool $isProOnly = false): bool
@@ -376,17 +102,6 @@ class Plugin
         // don't use 'is_plugin_active()' as the function available lately
         return static::isAcfProPluginAvailable() ||
             (!$isProOnly && class_exists('ACF'));
-    }
-
-    public function startBuffering(): void
-    {
-        ob_start();
-        $this->bufferLevel = ob_get_level();
-    }
-
-    public function printStylesStub(): void
-    {
-        echo '<!--acf-views-styles-->';
     }
 
     public function showWarningAboutInactiveAcfPlugin(): void
@@ -440,321 +155,6 @@ class Plugin
         );
     }
 
-    public function acfCardsShortcode($attrs): string
-    {
-        $attrs = $attrs ?
-            (array)$attrs :
-            [];
-
-        if (!$this->isShortcodeAvailableForUser(wp_get_current_user()->roles, $attrs)) {
-            return '';
-        }
-
-        $cardId = (int)($attrs['card-id'] ?? 0);
-        $acfCardPost = $cardId ?
-            get_post($cardId) :
-            null;
-
-        if (!$acfCardPost ||
-            !in_array($acfCardPost->post_type, [AcfCards::NAME,], true) ||
-            'publish' !== $acfCardPost->post_status
-        ) {
-            return self::getErrorMarkup(
-                self::SHORTCODE_CARDS,
-                $attrs,
-                __('card-id attribute is missing or wrong', 'acf-views')
-            );
-        }
-
-        $acfCardData = $this->cache->getAcfCardData($cardId);
-
-        return $this->acfCardFactory->createAndGetHtml($acfCardData, 1);
-    }
-
-    /**
-     * The issue that for now (6.3), Gutenberg shortcode element doesn't support context.
-     * So if you place shortcode in the Query Loop template, it's impossible to get the post ID.
-     * Furthermore, it seems Gutenberg renders all the shortcodes at once, before blocks parsing.
-     * Which means even hooking into 'register_block_type_args' won't work by default, because in the 'render_callback'
-     * it'll receive already rendered shortcode's content. So having the postId is too late here.
-     *
-     * https://github.com/WordPress/gutenberg/issues/43053
-     * https://support.advancedcustomfields.com/forums/topic/add-custom-field-to-query-loop/
-     * https://wptavern.com/wordpress-6-2-2-restores-shortcode-support-in-block-templates-fixes-security-issue
-     */
-    public function extendGutenbergShortcode(array $args, string $name): array
-    {
-        if (!wp_is_block_theme() ||
-            'core/shortcode' !== $name) {
-            return $args;
-        }
-
-        $args['usesContext'] = $args['usesContext'] ?? [];
-        $args['usesContext'][] = 'postId';
-        $args['render_callback'] = function ($attributes, $content, $block) {
-            // can be 0, if the shortcode is outside of the query loop
-            $postId = (int)($block->context['postId'] ?? 0);
-
-            if (false === strpos($content, '[' . Plugin::SHORTCODE)) {
-                return $content;
-            }
-
-            $this->queryLoopPostId = $postId;
-
-            $content = do_shortcode($content);
-
-            // don't use '0' as the default, because it can be 0 in the 'render_callback' hook
-            $this->queryLoopPostId = -1;
-
-            return $content;
-        };
-
-        return $args;
-    }
-
-    public function acfViewsShortcode($attrs): string
-    {
-        $attrs = $attrs ?
-            (array)$attrs :
-            [];
-
-        // a. dataPostId from the shortcode argument
-        $dataPostId = (string)($attrs['object-id'] ?? 0);
-
-        $isMountPoint = isset($attrs['mount-point']);
-
-        /**
-         * block theme: skip execution for the Gutenberg common call, as query-loop may be used, and the post id won't be available yet
-         * Exceptions:
-         * 1. if the object-id is set, e.g. as part of the Card shortcode
-         * 2. If mount-point is set, e.g. as part of the MountPoint functionality
-         */
-        if (wp_is_block_theme() &&
-            -1 === $this->queryLoopPostId &&
-            !$dataPostId &&
-            !$isMountPoint) {
-            $stringAttrs = array_map(
-                function ($key, $value) {
-                    return sprintf('%s="%s"', $key, $value);
-                },
-                array_keys($attrs),
-                array_values($attrs)
-            );
-
-            return sprintf('[%s %s]', self::SHORTCODE, implode(' ', $stringAttrs));
-        }
-
-        if (!$this->isShortcodeAvailableForUser(wp_get_current_user()->roles, $attrs)) {
-            return '';
-        }
-
-        // equals to 0 on WooCommerce Shop Page, but in this case pageID can't be gotten with built-in WP functions
-        $currentPageId = get_queried_object_id();
-        $viewId = (int)($attrs['view-id'] ?? 0);
-        $acfViewPost = $viewId ?
-            get_post($viewId) :
-            null;
-
-        if (!$acfViewPost ||
-            !in_array($acfViewPost->post_type, [AcfViews::NAME,], true) ||
-            'publish' !== $acfViewPost->post_status
-        ) {
-            return self::getErrorMarkup(
-                self::SHORTCODE,
-                $attrs,
-                __('view-id attribute is missing or wrong', 'acf-views')
-            );
-        }
-
-        global $post;
-
-        if (in_array($dataPostId, ['$user$', 'options',], true)) {
-            $dataPostId = '$user$' === $dataPostId ?
-                'user_' . get_current_user_id() :
-                $dataPostId;
-        } else {
-            $dataPostId = (int)$dataPostId;
-
-            // b. from the Gutenberg query loop
-
-            if (!in_array($this->queryLoopPostId, [-1, 0,], true)) {
-                $dataPostId = $dataPostId ?: $this->queryLoopPostId;
-            }
-
-            // c. dataPostId from the current loop (WordPress posts, WooCommerce products...)
-
-            $dataPostId = $dataPostId ?: ($post->ID ?? 0);
-
-            // d. dataPostId from the current page
-
-            $dataPostId = $dataPostId ?: $currentPageId;
-
-            // validate the ID
-
-            $dataPostId = get_post($dataPostId) ?
-                $dataPostId :
-                0;
-        }
-
-        if (!$dataPostId) {
-            return self::getErrorMarkup(
-                self::SHORTCODE,
-                $attrs,
-                __('object-id argument contains the wrong value', 'acf-views')
-            );
-        }
-
-        // recursionKey must consist from both. It's allowed to use the same View for a post_object field, but with another id
-        $recursionKey = $viewId . '-' . $dataPostId;
-
-        /*
-         * In case with post_object and relationship fields can be a recursion
-         * e.g. There is a post_object field. PostA contains link to PostB. PostB contains link to postA. View displays PostA...
-         * In this case just return empty string, without any error message (so user can display PostB in PostA without issues)
-         */
-        if (isset($this->displayingView[$recursionKey])) {
-            return '';
-        }
-
-        $this->displayingView[$recursionKey] = true;
-
-        $html = $this->acfViewFactory->createAndGetHtml(new Post($dataPostId), $viewId, $currentPageId);
-
-        unset($this->displayingView[$recursionKey]);
-
-        return $html;
-    }
-
-    public function enqueueAdminScripts(): void
-    {
-        $currentScreen = get_current_screen();
-        if (!$currentScreen ||
-            (!in_array($currentScreen->id, [AcfViews::NAME, AcfCards::NAME,], true) &&
-                !in_array($currentScreen->post_type, [AcfViews::NAME, AcfCards::NAME], true))) {
-            return;
-        }
-
-        $this->enqueueAdminAssets($currentScreen->base);
-    }
-
-    public function printCustomAssets(): void
-    {
-        $allJsCode = '';
-        $allCssCode = $this->printPluginsCSS();
-
-        $views = $this->acfViewFactory->getRenderedViews();
-        foreach ($views as $view) {
-            $cssCode = $view->getCssCode();
-
-            // 'minify' JS
-            $jsCode = str_replace(["\t", "\n", "\r"], '', $view->jsCode);
-            $jsCode = trim($jsCode);
-
-            // no escaping, it's a CSS code, so e.g '.a > .b' shouldn't be escaped
-            $allCssCode .= $cssCode ?
-                sprintf("\n/*view-%s*/\n%s", $view->getSource(), $cssCode) :
-                '';
-            $allJsCode .= $jsCode ?
-                sprintf("\n/*view-%s*/\n%s", $view->getSource(), $jsCode) :
-                '';
-        }
-
-        $cards = $this->acfCardFactory->getRenderedCards();
-        foreach ($cards as $card) {
-            $cssCode = $card->getCssCode();
-
-            // 'minify' JS
-            $jsCode = str_replace(["\t", "\n", "\r"], '', $card->jsCode);
-            $jsCode = trim($jsCode);
-
-            // no escaping, it's a CSS code, so e.g '.a > .b' shouldn't be escaped
-            $allCssCode .= $cssCode ?
-                sprintf("\n/*card-%s*/\n%s", $card->getSource(), $cssCode) :
-                '';
-            $allJsCode .= $jsCode ?
-                sprintf("\n/*card-%s*/\n%s", $card->getSource(), $jsCode) :
-                '';
-        }
-
-        if (!$allCssCode &&
-            !$allJsCode) {
-            // do not close the buffer, if it's not ours
-            // (then ours will be closed automatically with the end of script execution)
-            if (ob_get_level() === $this->bufferLevel) {
-                echo ob_get_clean();
-            }
-
-            return;
-        }
-
-        // close previous buffers. Some plugins may not close, if detect that ob_get_level() is another than was
-        // e.g. 'lightbox-photoswipe'
-        while (ob_get_level() > $this->bufferLevel) {
-            echo ob_get_clean();
-        }
-
-        $pageContent = ob_get_clean();
-        $cssTag = $allCssCode ?
-            sprintf("<style data-acf-views-css='css'>%s</style>", $allCssCode) :
-            '';
-        $pageContent = str_replace('<!--acf-views-styles-->', $cssTag, $pageContent);
-
-        echo $pageContent;
-
-        if ($allJsCode) {
-            printf("<script data-acf-views-js='js'>(function (){%s}())</script>", $allJsCode);
-        }
-    }
-
-    public function enqueueGoogleMapsJS(): void
-    {
-        if (!function_exists('acf_get_setting') ||
-            !$this->acfViewFactory->getMaps()) {
-            return;
-        }
-
-        $apiData = apply_filters('acf/fields/google_map/api', []);
-
-        $key = $apiData['key'] ?? '';
-
-        $key = !$key ?
-            acf_get_setting('google_api_key') :
-            $key;
-
-        if (!$key) {
-            return;
-        }
-
-        wp_enqueue_script(
-            AcfViews::NAME . '_maps',
-            $this->getAssetsUrl('front/maps.min.js'),
-            [],
-            $this->getVersion(),
-            [
-                'in_footer' => true,
-            ]
-        );
-
-        wp_localize_script(
-            AcfViews::NAME . '_maps',
-            'acfViewsMaps',
-            $this->acfViewFactory->getMaps()
-        );
-
-        wp_enqueue_script(
-            AcfViews::NAME . '_google-maps',
-            sprintf('https://maps.googleapis.com/maps/api/js?key=%s&callback=acfViewsGoogleMaps', $key),
-            [
-                // setup deps, to make sure loaded only after plugin's maps.min.js
-                AcfViews::NAME . '_maps',
-            ],
-            null,
-            [
-                'in_footer' => true,
-            ]
-        );
-    }
-
     public function isCPTScreen(string $cptName, array $targetBase = ['post', 'add',]): bool
     {
         $currentScreen = get_current_screen();
@@ -800,6 +200,9 @@ class Plugin
                 $deactivatedNoticeId,
                 1 * HOUR_IN_SECONDS
             );
+            // flag that allows to detect this switching. E.g. Twig won't remove the templates dir
+            $this->isSwitchingVersions = true;
+
             deactivate_plugins($pluginBasename);
 
             return;
@@ -901,22 +304,9 @@ class Plugin
         return $wrapper;
     }
 
-    public function makeEnqueueJSAsync(string $tag, string $handle): string
-    {
-        if (!in_array($handle, [
-            AcfViews::NAME . '_maps',
-            AcfViews::NAME . '_google-maps'
-        ], true)) {
-            return $tag;
-        }
-
-        // defer, not async as order should be kept (google-maps will call a callback from maps' js)
-        return str_replace(' src', ' defer src', $tag);
-    }
-
     public function getAdminUrl(
         string $page = '',
-        string $cptName = AcfViews::NAME,
+        string $cptName = ViewsCpt::NAME,
         string $base = 'edit.php'
     ): string {
         $pageArg = $page ?
@@ -929,58 +319,20 @@ class Plugin
         return $pageUrl . $cptName . $pageArg;
     }
 
-    public function printSurveyLink(string $html): string
+    public function isSwitchingVersions(): bool
     {
-        if (!$this->isCPTScreen(AcfViews::NAME, ['post', 'add', 'edit',]) &&
-            !$this->isCPTScreen(AcfCards::NAME, ['post', 'add', 'edit',])) {
-            return $html;
-        }
-
-        $content = sprintf(
-            '%s <a target="_blank" href="%s">%s</a> %s <a target="_blank" href="%s">%s</a>.',
-            __('Thank you for creating with', 'acf-views'),
-            'https://wordpress.org/',
-            __('WordPress', 'acf-views'),
-            __('and', 'acf-views'),
-            self::BASIC_VERSION_URL,
-            __('ACF Views', 'acf-views')
-        );
-        $content .= " " . sprintf(
-                "<span>%s <a target='_blank' href='%s'>%s</a> %s</span>",
-                __('Take', 'acf-views'),
-                self::SURVEY_URL,
-                __('2 minute survey', 'acf-views'),
-                __('to improve the ACF Views plugin.', 'acf-views')
-            );
-
-        return sprintf(
-            '<span id="footer-thankyou">%s</span>',
-            $content
-        );
+        return $this->isSwitchingVersions;
     }
 
     public function setHooks(): void
     {
         add_action('admin_notices', [$this, 'showWarningAboutInactiveAcfPlugin']);
         add_action('admin_notices', [$this, 'showWarningAboutOpcacheIssue']);
-        add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
-        add_action('wp_footer', [$this, 'enqueueGoogleMapsJS']);
-        // printCustomAssets() contains ob_get_clean, so must be executed after all other scripts
-        add_action('wp_footer', [$this, 'printCustomAssets'], 9999);
+
         add_action('activated_plugin', [$this, 'deactivateOtherInstances']);
         add_action('pre_current_active_plugins', [$this, 'showPluginDeactivatedNotice']);
-        add_action('wp_head', [$this, 'printStylesStub']);
-        // don't use 'get_header', as it doesn't work in blocks theme
-        add_action('template_redirect', [$this, 'startBuffering']);
-
-        add_shortcode(Plugin::SHORTCODE, [$this, 'acfViewsShortcode']);
-        add_shortcode(Plugin::SHORTCODE_CARDS, [$this, 'acfCardsShortcode']);
 
         add_filter('acf/prepare_field', [$this, 'amendProFieldLabelAndInstruction']);
         add_filter('acf/field_wrapper_attributes', [$this, 'addClassToAdminProFieldClasses'], 10, 2);
-        add_filter('script_loader_tag', [$this, 'makeEnqueueJSAsync'], 10, 2);
-        add_filter('admin_footer_text', [$this, 'printSurveyLink']);
-
-        add_filter('register_block_type_args', [$this, 'extendGutenbergShortcode'], 10, 2);
     }
 }

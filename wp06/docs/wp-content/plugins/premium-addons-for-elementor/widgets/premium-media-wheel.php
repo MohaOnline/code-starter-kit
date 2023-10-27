@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Media_Wheel extends Widget_Base {
 
-	/**
+    /**
 	 * Template Instance
 	 *
 	 * @var template_instance

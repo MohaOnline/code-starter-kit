@@ -3,8 +3,8 @@ Contributors: codepeople
 Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator,calculated,quote calculator,forms,form editor,advanced forms,payment calculator,payment,recurring payment,quote,fields,calculated field,price calculator,email,form design,paypal,equation editor,formula,equation,quote calculator,post,posts,plugin,widget,admin,sidebar,images,image,page,shortcode,products form,woocommerce,addons,layout,session,post,cookie,get,webhook,Dropbox,pdf,language
 Requires at least: 3.0.5
-Tested up to: 6.3
-Stable tag: 1.2.29
+Tested up to: 6.4
+Stable tag: 1.2.35
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -999,6 +999,36 @@ A: Please, follow the steps below:
 
 == Changelog ==
 
+= 1.2.35 =
+
+* Modifies the Phone control.
+* Fixes a conflict with third-party code in the browser persistence module.
+* Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
+
+= 1.2.34 =
+
+* Fixes an issue with the maxlength attribute of fields.
+* Fixes a conflict on pages that load multiple jQuery versions.
+* Implements the JSONTOCSV operation to generate a CSV file directly on the client side.
+* Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
+
+= 1.2.33 =
+
+* Fixes a minor issue with the set_step method in the slider controls.
+
+= 1.2.32 =
+
+* Fixes an issue in the tooltips.
+
+= 1.2.31 =
+
+* Implements the Cookies Operations modules to write, read, check, and delete cookies.
+* Modifies the QR control to stop the camera once it scans the QR code.
+
+= 1.2.30 =
+
+* Modifies the Checkbox control to allow configuring a minimum number of choice to select, and not only a maximum.
+
 = 1.2.29 =
 
 * Prevents that variables included with the CP_CALCULATED_FIELDS_VAR shortcode overwrite global and other context variables (Thanks to NGÔ THIÊN AN (ancorn_ from VNPT-VCI)).
@@ -1016,38 +1046,3 @@ A: Please, follow the steps below:
 = 1.2.27 =
 
 * Modifies the require_once instructions to load the files with absolute paths.
-
-= 1.2.26 =
-
-* Paginates the list of forms and sorts them in descending order, putting the newest forms first.
-* Make minor changes in tabs' styles in the forms builder.
-
-= 1.2.25 =
-
-* Improves the integration with LiteSpeed Cache.
-* Browsers in Android devices ignore the maxlength attributes. The current update modifies this behavior.
-
-= 1.2.24 =
-
-* Assigns the cff-form-title class name to the form title and cff-form-description to its description to facilitate their design modification.
-* Assigns the cff-fieldset-field class name to the Fieldset control and cff-div-field to the Div control.
-* Implements the validate attribute in the calculated fields to validate the equations' results immediately after their evaluation.
-* Modifies the CFF - WooCommerce add-on to fix a conflict with third-party themes (Developer and Platinum plugin versions).
-
-= 1.2.23 =
-
-* Implements the LEADINGZERO operation in the Date/Time operations module.
-* Fixes deprecated notices in the latest PHP version.
-* Modifies the Users Permissions add-on to improve the user experience by deselecting items from the roles and users lists (Developer and Platinum versions of the plugin).
-
-= 1.2.22 =
-
-* Modifies the AI Assistance integration module.
-* Modifies the Date control to make it easier to leave the field empty or to select the current date.
-* Modifies the sanitize module to improve the plugin security. It forces removing the script tags from data, even if they were added to the allowed tags list by third-party plugins.
-* Modifies the Checkbox DS and Radio Button DS controls to avoid displaying the undefined text when data source records do not include the columns used for the choices texts or values  (Developer and Platinum versions of the plugin).
-
-= 1.2.21 =
-
-* Fixes an issue in the RESETFORM operation that was not resettings the values of the calculated field.
-* Modifies the database data source in the DS fields set to include the Distinct attribute (Developer and Platinum versions of the plugin).

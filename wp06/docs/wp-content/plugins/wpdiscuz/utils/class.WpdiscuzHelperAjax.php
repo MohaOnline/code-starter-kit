@@ -38,7 +38,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
             add_action("wp_ajax_wpdDeleteComment", [&$this, "deleteComment"]);
             add_action("wp_ajax_wpdCancelSubscription", [&$this, "deleteSubscription"]);
             add_action("wp_ajax_wpdCancelFollow", [&$this, "deleteFollow"]);
-            add_action("wp_ajax_wpdEmailDeleteLinks", [&$this, "emailDeleteLinks"]);
+            add_action("wp_ajax_wpdEmailDeleteLinks", [&$this->helperEmail, "emailDeleteLinksAction"]);
             add_action("wp_ajax_nopriv_wpdGuestAction", [&$this, "guestAction"]);
         }
         if ($this->options->content["commentReadMoreLimit"]) {
@@ -279,48 +279,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
         }
     }
 
-    public function emailDeleteLinks() {
-        global $wp_rewrite;
-        $this->helper->validateNonce();
-        $postId = WpdiscuzHelper::sanitize(INPUT_POST, "postId", FILTER_SANITIZE_NUMBER_INT, 0);
-        $post = get_post($postId);
-        $currentUser = WpdiscuzHelper::getCurrentUser();
-        if ($post && $currentUser->exists()) {
-            $currentUserEmail = $currentUser->user_email;
-
-            if ($currentUserEmail) {
-                $siteUrl = get_site_url();
-                $blogTitle = html_entity_decode(get_option("blogname"), ENT_QUOTES);
-                $hashValue = $this->generateUserActionHash($currentUserEmail);
-                $mainUrl = !$wp_rewrite->using_permalinks() ? get_permalink($post) . "&" : get_permalink($post) . "?";
-                $deleteCommentsUrl = $mainUrl . "wpdiscuzUrlAnchor&deleteComments=$hashValue";
-                $unsubscribeUrl = $mainUrl . "wpdiscuzUrlAnchor&deleteSubscriptions=$hashValue";
-                $unfollowUrl = $mainUrl . "wpdiscuzUrlAnchor&deleteFollows=$hashValue";
-
-                $subject = $this->options->getPhrase("wc_user_settings_delete_links");
-
-                $message = str_replace(["[SITE_URL]", "[BLOG_TITLE]", "[DELETE_COMMENTS_URL]"], [$siteUrl, $blogTitle, $deleteCommentsUrl], $this->options->getPhrase("wc_user_settings_delete_all_comments_message"));
-
-                $message .= $this->options->getPhrase("wc_user_settings_delete_all_subscriptions_message");
-
-                if (strpos($message, "[DELETE_SUBSCRIPTIONS_URL]") !== false) {
-                    $message = str_replace("[DELETE_SUBSCRIPTIONS_URL]", $unsubscribeUrl, $message);
-                }
-
-                $message .= $this->options->getPhrase("wc_user_settings_delete_all_follows_message");
-
-                if (strpos($message, "[DELETE_FOLLOWS_URL]") !== false) {
-                    $message = str_replace("[DELETE_FOLLOWS_URL]", $unfollowUrl, $message);
-                }
-
-                $this->userActionMail($currentUserEmail, $subject, $message);
-            }
-        }
-        wp_die();
-    }
-
     public function guestAction() {
-        global $wp_rewrite;
         $this->helper->validateNonce();
         $guestEmail = isset($_COOKIE["comment_author_email_" . COOKIEHASH]) ? $_COOKIE["comment_author_email_" . COOKIEHASH] : "";
         $guestAction = WpdiscuzHelper::sanitize(INPUT_POST, "guestAction", "FILTER_SANITIZE_STRING");
@@ -331,14 +290,14 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
             "message" => "<div class='wpd-guest-action-message wpd-guest-action-error'>" . esc_html($this->options->getPhrase("wc_user_settings_email_error")) . "</div>"
         ];
         if ($post && $guestEmail) {
-            $hashValue = $this->generateUserActionHash($guestEmail);
-            $mainUrl = !$wp_rewrite->using_permalinks() ? get_permalink($post) . "&" : get_permalink($post) . "?";
+            $hashValue = $this->helperEmail->generateUserActionHash($guestEmail);
+            $mainUrl = site_url("/wpdiscuzsubscription/");
             $link = "";
             $message = "";
             $siteUrl = get_site_url();
             $blogTitle = html_entity_decode(get_option("blogname"), ENT_QUOTES);
             if ($guestAction === "deleteComments") {
-                $link = $mainUrl . "wpdiscuzUrlAnchor&deleteComments=$hashValue";
+                $link = $mainUrl . "deleteComments/?key=$hashValue";
                 $subject = $this->options->getPhrase("wc_user_settings_delete_all_comments");
                 $message = $this->options->getPhrase("wc_user_settings_delete_all_comments_message");
                 if (strpos($message, "[DELETE_COMMENTS_URL]") !== false) {
@@ -346,7 +305,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
                 }
             } elseif ($guestAction === "deleteSubscriptions") {
                 $subject = $this->options->getPhrase("wc_user_settings_delete_all_subscriptions");
-                $link = $mainUrl . "wpdiscuzUrlAnchor&deleteSubscriptions=$hashValue";
+                $link = $mainUrl . "/deleteSubscriptions/?key=$hashValue";
                 $message = $this->options->getPhrase("wc_user_settings_delete_all_subscriptions_message");
                 if (strpos($message, "[DELETE_SUBSCRIPTIONS_URL]") !== false) {
                     $message = str_replace("[DELETE_SUBSCRIPTIONS_URL]", $link, $message);
@@ -356,7 +315,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
             $subject = str_replace(["[SITE_URL]", "[BLOG_TITLE]"], [$siteUrl, $blogTitle], $subject);
             $message = str_replace(["[SITE_URL]", "[BLOG_TITLE]"], [$siteUrl, $blogTitle], $message);
 
-            if ($this->userActionMail($guestEmail, $subject, $message)) {
+            if ($this->helperEmail->userActionMail($guestEmail, $subject, $message)) {
                 $response["code"] = 1;
                 $parts = explode("@", $guestEmail);
                 $guestEmail = substr($parts[0], 0, min(1, strlen($parts[0]) - 1)) . str_repeat("*", max(1, strlen($parts[0]) - 1)) . "@" . $parts[1];
@@ -364,28 +323,6 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
             }
         }
         wp_die(json_encode($response));
-    }
-
-    private function generateUserActionHash($email) {
-        $hashedEmail = hash_hmac("sha256", $email, get_option(self::OPTION_SLUG_HASH_KEY));
-        $hashKey = self::TRS_USER_HASH . $hashedEmail;
-        $hashExpire = apply_filters("wpdiscuz_delete_all_content", 3 * DAY_IN_SECONDS);
-        set_transient($hashKey, $email, $hashExpire);
-        return $hashedEmail;
-    }
-
-    private function userActionMail($email, $subject, $message) {
-        $siteUrl = get_site_url();
-        $blogTitle = get_option("blogname");
-        $fromName = html_entity_decode($blogTitle, ENT_QUOTES);
-        $parsedUrl = parse_url($siteUrl);
-        $domain = isset($parsedUrl["host"]) ? WpdiscuzHelper::fixEmailFrom($parsedUrl["host"]) : "";
-        $fromEmail = "no-reply@" . $domain;
-        $headers[] = "Content-Type: text/html; charset=UTF-8";
-        $headers[] = "From: " . $fromName . " <" . $fromEmail . "> \r\n";
-        $subject = html_entity_decode($subject, ENT_QUOTES);
-        $message = html_entity_decode($message, ENT_QUOTES);
-        return wp_mail($email, $subject, do_shortcode($message), $headers);
     }
 
     public function followUser() {

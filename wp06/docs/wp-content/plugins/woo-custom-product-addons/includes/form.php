@@ -1136,7 +1136,12 @@ class Form
     public function get_wcpaProducts()
     {
         global $wpdb;
-        $pro_ids_main = get_transient(WCPA_PRODUCTS_TRANSIENT_KEY);
+        $cacheKey = WCPA_PRODUCTS_TRANSIENT_KEY;
+
+        if ($this->ml->is_active()) {
+            $cacheKey = $cacheKey . '_' . $this->ml->current_language();
+        }
+        $pro_ids_main = get_transient($cacheKey);
 
         if (false === $pro_ids_main) {
             $pro_ids_main  = array('full' => [], 'direct_purchasable' => []);
@@ -1168,6 +1173,10 @@ class Form
 
             foreach ($post_ids_main as $key => $post_ids) {
                 if ($post_ids && count($post_ids)) {
+                    if($this->ml->is_active()){
+                        $post_ids = $this->ml->lang_object_ids($post_ids,'post',true);
+                    }
+                    // get all products matching forms assigned categories
                     $query = "SELECT
 distinct object_id from $wpdb->term_relationships
  where term_taxonomy_id"
@@ -1208,11 +1217,14 @@ distinct object_id from $wpdb->term_relationships
                 } else {
                     $pro_ids = array();
                 }
+                if($this->ml->is_active()){
+                    $pro_ids = $this->ml->lang_object_ids($pro_ids,'post',false);
+                }
                 $pro_ids_main[$key] = $pro_ids;
             }
 
 //            set_transient(WCPA_PRODUCTS_TRANSIENT_KEY, $pro_ids_main, 24 * HOUR_IN_SECONDS);
-            set_transient(WCPA_PRODUCTS_TRANSIENT_KEY, $pro_ids_main); //TODO to check expiration
+            set_transient($cacheKey, $pro_ids_main); //TODO to check expiration
         }
 
         return $pro_ids_main;

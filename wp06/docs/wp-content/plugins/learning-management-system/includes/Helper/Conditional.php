@@ -1198,3 +1198,36 @@ if ( ! function_exists( 'masteriyo_user_must_login_to_view_course' ) ) {
 		return ! is_user_logged_in() && ! $is_public && masteriyo_is_course_visibility_enable();
 	}
 }
+
+if ( ! function_exists( 'masteriyo_is_instructors_list_page' ) ) {
+
+	/**
+	 * Check if the current page is instructors list page.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @return boolean
+	 */
+	function masteriyo_is_instructors_list_page() {
+		global $post;
+
+		$page_id = 0;
+		$is_page = false;
+
+		if ( $post instanceof \WP_Post ) {
+			$page_id = masteriyo_get_page_id( 'instructors-list' );
+
+			$is_page = $post->ID === $page_id;
+		}
+
+		/**
+		 * Filters boolean: true if current page is instructors list page.
+		 *
+		 * @since 1.6.16
+		 *
+		 * @param boolean $is_page true if current page is instructors list page.
+		 * @param integer|null $page_id Instructors list page ID.
+		 */
+		return apply_filters( 'masteriyo_is_instructors_list_page', $is_page, $page_id );
+	}
+}

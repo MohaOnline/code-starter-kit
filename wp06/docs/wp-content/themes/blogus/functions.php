@@ -132,6 +132,7 @@ function blogus_setup() {
 	
 	/* Add theme support for gutenberg block */
 	add_theme_support( 'align-wide' );
+	add_theme_support( 'responsive-embeds' );
 
 	//Custom logo
 	add_theme_support( 'custom-logo');

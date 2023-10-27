@@ -59,7 +59,9 @@
                               <?php endif; ?>
                                 </div>
                             </div>
-                           <?php do_action('newsup_action_banner_advertisement'); ?>
+                           <?php 
+                           $newsup_banner_advertisement = newsup_get_option('banner_advertisement_section');
+                          if(!empty($newsup_banner_advertisement)) { do_action('newsup_action_banner_advertisement'); } ?>
 
                         </div>
                     </div>

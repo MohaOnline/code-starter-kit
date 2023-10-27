@@ -36,15 +36,15 @@ msgstr ""
 msgid "https://siteorigin.com"
 msgstr ""
 
-#: siteorigin-panels.php:405
+#: siteorigin-panels.php:409
 msgid "Read More"
 msgstr ""
 
-#: siteorigin-panels.php:588
+#: siteorigin-panels.php:592
 msgid "Edit Home Page"
 msgstr ""
 
-#: siteorigin-panels.php:608, tpl/js-templates.php:39, tpl/js-templates.php:41
+#: siteorigin-panels.php:612, tpl/js-templates.php:39, tpl/js-templates.php:41
 msgid "Live Editor"
 msgstr ""
 
@@ -535,7 +535,7 @@ msgstr ""
 msgid "The supplied nonce is invalid."
 msgstr ""
 
-#: inc/admin.php:1365, inc/admin.php:1844, inc/styles-admin.php:26
+#: inc/admin.php:1365, inc/admin.php:1854, inc/styles-admin.php:26
 msgid "Invalid nonce."
 msgstr ""
 
@@ -605,7 +605,7 @@ msgstr ""
 msgid "Upload multiple image frames at once to Widgets Bundle Slider and Image Grid type widgets with %link%."
 msgstr ""
 
-#: inc/admin.php:1550, inc/admin.php:1555, inc/admin.php:1585, inc/admin.php:1590, inc/admin.php:1595
+#: inc/admin.php:1550, inc/admin.php:1555, inc/admin.php:1585, inc/admin.php:1590, inc/admin.php:1595, inc/admin.php:1600, inc/admin.php:1605
 msgid "SiteOrigin Premium"
 msgstr ""
 
@@ -657,23 +657,31 @@ msgstr ""
 msgid "Add widget, cell, and row Retina background images for high-pixel-density displays with %link%."
 msgstr ""
 
-#: inc/admin.php:1601
-msgid "Get the %link%. Create custom templates for the Product, Archives, Shop, Cart, and Checkout pages."
+#: inc/admin.php:1598
+msgid "Upgrade to %link% and copy-paste rows and widgets between domains to build pages faster."
 msgstr ""
 
 #: inc/admin.php:1603
+msgid "Boost your page-building speed by upgrading to %link% – copy and paste rows and widgets across domains with ease!"
+msgstr ""
+
+#: inc/admin.php:1611
+msgid "Get the %link%. Create custom templates for the Product, Archives, Shop, Cart, and Checkout pages."
+msgstr ""
+
+#: inc/admin.php:1613
 msgid "WooCommerce Templates Addon"
 msgstr ""
 
-#: inc/admin.php:1810
+#: inc/admin.php:1820
 msgid "Toggle editor selection menu"
 msgstr ""
 
-#: inc/admin.php:1811, inc/admin.php:1875, inc/settings.php:229, settings/tpl/settings.php:9
+#: inc/admin.php:1821, inc/admin.php:1885, inc/settings.php:229, settings/tpl/settings.php:9
 msgid "SiteOrigin Page Builder"
 msgstr ""
 
-#: inc/admin.php:1812
+#: inc/admin.php:1822
 msgid "Block Editor"
 msgstr ""
 
@@ -1129,11 +1137,11 @@ msgstr ""
 msgid "Off"
 msgstr ""
 
-#: inc/styles-admin.php:717, widgets/widgets.php:855
+#: inc/styles-admin.php:728, widgets/widgets.php:855
 msgid "Full"
 msgstr ""
 
-#: inc/styles-admin.php:718
+#: inc/styles-admin.php:729
 msgid "Thumbnail (Theme-defined)"
 msgstr ""
 

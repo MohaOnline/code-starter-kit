@@ -3,7 +3,7 @@
  * Plugin Name: 10Web Booster
  * Plugin URI: https://10web.io/page-speed-booster/
  * Description: Optimize your website speed and performance with 10Web Booster by compressing CSS and JavaScript.
- * Version: 2.23.18
+ * Version: 2.24.18
  * Author: 10Web - Website speed optimization team
  * Author URI: https://10web.io/
  * Text Domain: tenweb-speed-optimizer
@@ -72,12 +72,12 @@ if (is_multisite() && !TENWEB_SO_HOSTED_ON_10WEB) {
 }
 
 if (defined('TWO_INCOMPATIBLE_ERROR') && TWO_INCOMPATIBLE_ERROR) {
+    if (is_plugin_active('airlift/airlift.php')) {
+        two_incompatible_admin_requirements();
+        add_action('wp_ajax_two_deactivate_plugins', [ '\TenWebOptimizer\OptimizerAdmin', 'two_deactivate_plugin' ]);
+    }
     add_action('admin_menu', function () {
-        require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerOnInit.php';
-        require_once TENWEB_SO_PLUGIN_DIR . 'OptimizerAdmin.php';
-        require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerUtils.php';
-        require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerWhiteLabel.php';
-
+        two_incompatible_admin_requirements();
         two_define_so_organization_name();
         add_menu_page(
             TWO_SO_ORGANIZATION_NAME . ' Booster',
@@ -130,6 +130,13 @@ if (defined('TWO_INCOMPATIBLE_ERROR') && TWO_INCOMPATIBLE_ERROR) {
         register_activation_hook(__FILE__, ['\TenWebOptimizer\OptimizerAdmin', 'two_activate']);
         add_action('plugins_loaded', 'two_init');
     }
+}
+
+function two_incompatible_admin_requirements() {
+    require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerOnInit.php';
+    require_once TENWEB_SO_PLUGIN_DIR . 'OptimizerAdmin.php';
+    require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerUtils.php';
+    require_once TENWEB_SO_PLUGIN_DIR . '/includes/OptimizerWhiteLabel.php';
 }
 
 if (defined('TWO_SO_COMPANY_NAME') && get_option('two_so_organization_name') === false) {
@@ -274,10 +281,10 @@ function two_init() {
 function two_init_flow_score() {
     if (isset($_POST['nonce'])) { // phpcs:ignore
         $p_nonce = sanitize_text_field($_POST['nonce']); // phpcs:ignore
-        $nonce = get_option($p_nonce);
-        delete_option($p_nonce);
+        $nonce = get_option('wp_two_nonce_two_init_flow_score');
+        delete_option('wp_two_nonce_two_init_flow_score');
 
-        if ($p_nonce === $nonce) {
+        if ($p_nonce === $nonce && OptimizerUtils::check_admin_capabilities()) {
             OptimizerUtils::init_flow_score_check();
         }
     }
@@ -285,8 +292,8 @@ function two_init_flow_score() {
 function two_activate_score_check() {
     if (isset($_POST['nonce'])) { // phpcs:ignore
         $p_nonce = sanitize_text_field($_POST['nonce']); // phpcs:ignore
-        $nonce = get_option($p_nonce);
-        delete_option($p_nonce);
+        $nonce = get_option('two_activate_score_check_nonce_data');
+        delete_option('two_activate_score_check_nonce_data');
 
         if ($p_nonce === $nonce) {
             // Check already optimized pages scores before and after optimize.
@@ -367,7 +374,7 @@ function two_set_critical() {
 function two_optimize_page() {
     $nonce = isset($_GET['nonce']) ? sanitize_text_field($_GET['nonce']) : '';
 
-    if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+    if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
         die('Permission Denied.');
     }
 

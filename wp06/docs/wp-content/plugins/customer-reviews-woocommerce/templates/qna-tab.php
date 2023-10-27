@@ -64,8 +64,8 @@ if( $attributes ) {
 				<p class="cr-qna-new-q-form-title"><?php _e( 'Ask a question', 'customer-reviews-woocommerce' ); ?></p>
 				<p class="cr-qna-new-q-form-text"><?php _e( 'Your question will be answered by a store representative or other customers.', 'customer-reviews-woocommerce' ); ?></p>
 				<textarea name="question" class="cr-qna-new-q-form-q" rows="3" placeholder="<?php _e( 'Start your question with \'What\', \'How\', \'Why\', etc.', 'customer-reviews-woocommerce' ); ?>"></textarea>
-				<input type="text" name="name" class="cr-qna-new-q-form-name" placeholder="<?php _e( 'Your name', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_name;?>">
-				<input type="email" name="email" class="cr-qna-new-q-form-email" placeholder="<?php _e( 'Your email', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_email;?>">
+				<input type="text" name="name" class="cr-qna-new-q-form-name" placeholder="<?php _e( 'Your name', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_name;?>" autocomplete="name">
+				<input type="email" name="email" class="cr-qna-new-q-form-email" placeholder="<?php _e( 'Your email', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_email;?>" autocomplete="email">
 				<div class="cr-qna-new-q-form-s">
 					<?php
 					if( 0 < strlen( $cr_recaptcha ) ) {
@@ -108,8 +108,8 @@ if( $attributes ) {
 				<p class="cr-qna-new-q-form-title"><?php _e( 'Add an answer', 'customer-reviews-woocommerce' ); ?></p>
 				<p class="cr-qna-new-q-form-text"></p>
 				<textarea name="question" class="cr-qna-new-q-form-q" rows="3" placeholder="<?php _e( 'Write your answer', 'customer-reviews-woocommerce' ); ?>"></textarea>
-				<input type="text" name="name" class="cr-qna-new-q-form-name" placeholder="<?php _e( 'Your name', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_name;?>">
-				<input type="email" name="email" class="cr-qna-new-q-form-email" placeholder="<?php _e( 'Your email', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_email;?>">
+				<input type="text" name="name" class="cr-qna-new-q-form-name" placeholder="<?php _e( 'Your name', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_name;?>" autocomplete="name">
+				<input type="email" name="email" class="cr-qna-new-q-form-email" placeholder="<?php _e( 'Your email', 'customer-reviews-woocommerce' ); ?>" value="<?php echo $user_email;?>" autocomplete="email">
 				<div class="cr-qna-new-q-form-s">
 					<?php
 					if( 0 < strlen( $cr_recaptcha ) ) {

@@ -185,8 +185,8 @@ trait Helper
             ?>
             <div class="eael-load-more-button-wrap<?php echo "eael-dynamic-filterable-gallery" == $this->get_name() ? " dynamic-filter-gallery-loadmore" : ""; echo esc_attr( $show_or_hide ); ?>">
                 <button <?php $this->print_render_attribute_string( 'load-more' ); ?>>
-                    <div class="eael-btn-loader button__loader"></div>
-                    <span><?php echo esc_html($settings['show_load_more_text']) ?></span>
+                    <span class="eael-btn-loader button__loader"></span>
+                    <span class="eael_load_more_text"><?php echo esc_html($settings['show_load_more_text']) ?></span>
                 </button>
             </div>
         <?php }
@@ -490,7 +490,7 @@ trait Helper
 		?>
         <div id="eael-admin-promotion-message" class="eael-admin-promotion-message">
             <i class="e-notice__dismiss eael-admin-promotion-close" role="button" aria-label="Dismiss" tabindex="0"></i>
-			<?php printf( __( "<p> <i>📣</i> NEW: Essential Addons Pro 5.6 is here, with new '<a target='_blank' href='%s'>Woo Cross Sells</a>' widget & more! Check out the <a target='_blank' href='%s'>Changelog</a> for more details 🎉</p>", "essential-addons-for-elementor-lite" ), esc_url( 'https://essential-addons.com/elementor/woo-cross-sells' ), esc_url( 'https://essential-addons.com/elementor/changelog/' ) ); ?>
+			<?php printf( __( "<p> <i>📣</i> NEW: Essential Addons Pro 5.8 is here, with new '<a target='_blank' href='%s'>Fancy Chart</a>' widget & more! Check out the <a target='_blank' href='%s'>Changelog</a> for more details 🎉</p>", "essential-addons-for-elementor-lite" ), esc_url( 'https://essential-addons.com/elementor/fancy-chart/' ), esc_url( 'https://essential-addons.com/elementor/changelog/' ) ); ?>
         </div>
 		<?php
 	}
@@ -660,6 +660,14 @@ trait Helper
             </div>
         </script>
 		<?php
+	}
+
+	public function eael_post_view_count() {
+		if ( is_single() ) {
+			$post_id    = get_the_ID();
+			$view_count = absint( get_post_meta( $post_id, '_eael_post_view_count', true ) );
+			update_post_meta( $post_id, '_eael_post_view_count', ++ $view_count );
+		}
 	}
 }
 

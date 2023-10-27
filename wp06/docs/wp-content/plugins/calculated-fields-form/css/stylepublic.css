@@ -468,7 +468,7 @@ body{
 #fbuilder input[type='checkbox']{width:auto;height:auto;}
 #fbuilder input[type='radio']:after,
 #fbuilder input[type='checkbox']:after{display:none;}
-.ui-tooltip.uh-tooltip{width:auto;max-width:250px;font-size:10px;font-weight:normal;padding:5px 10px;z-index:999999999 !important;box-shadow:none;background:white;opacity:1;}
+.ui-tooltip.uh-tooltip{width:auto;max-width:250px;font-size:10px;font-weight:normal;padding:5px 10px;z-index:999999999 !important;box-shadow:none;background:white;opacity:1;pointer-events:none;}
 .ui-tooltip img{max-width:100%;}
 #fbuilder input[type="checkbox"]{-webkit-appearance:checkbox!important;}
 #fbuilder input[type="radio"]{-webkit-appearance:radio!important;}

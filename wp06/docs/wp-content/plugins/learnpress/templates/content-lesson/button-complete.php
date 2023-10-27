@@ -28,12 +28,12 @@ if ( $completed ) :
 		return;
 	}
 	?>
-	<div>
+	<div class="learn-press-message success">
 		<?php
 		echo sprintf(
 			'%s %s',
 			esc_html__( 'You have completed this lesson at ', 'learnpress' ),
-			$user_item_data->get_end_time()->format( 'i18n_has_time' )
+			$user_item_data->get_end_time()->format( LP_Datetime::I18N_FORMAT_HAS_TIME )
 		)
 		?>
 	</div>

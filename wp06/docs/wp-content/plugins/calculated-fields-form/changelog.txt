@@ -1,5 +1,35 @@
 == Changelog ==
 
+= 1.2.35 =
+
+* Modifies the Phone control.
+* Fixes a conflict with third-party code in the browser persistence module.
+* Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
+
+= 1.2.34 =
+
+* Fixes an issue with the maxlength attribute of fields.
+* Fixes a conflict on pages that load multiple jQuery versions.
+* Implements the JSONTOCSV operation to generate a CSV file directly on the client side.
+* Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
+
+= 1.2.33 =
+
+* Fixes a minor issue with the set_step method in the slider controls.
+
+= 1.2.32 =
+
+* Fixes an issue in the tooltips.
+
+= 1.2.31 =
+
+* Implements the Cookies Operations modules to write, read, check, and delete cookies.
+* Modifies the QR control to stop the camera once it scans the QR code.
+
+= 1.2.30 =
+
+* Modifies the Checkbox control to allow configuring a minimum number of choice to select, and not only a maximum.
+
 = 1.2.29 =
 
 * Prevents that variables included with the CP_CALCULATED_FIELDS_VAR shortcode overwrite global and other context variables (Thanks to NGÔ THIÊN AN (ancorn_ from VNPT-VCI)).

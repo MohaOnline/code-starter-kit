@@ -801,3 +801,12 @@ function monsterinsights_empty_measurement_protocol_token()
 
 add_action( 'admin_notices', 'monsterinsights_empty_measurement_protocol_token' );
 add_action( 'network_admin_notices', 'monsterinsights_admin_setup_notices' );
+
+/**
+ * Check if the plugin is MI Lite.
+ *
+ * @return bool
+ */
+function check_is_it_monsterinsights_lite() {
+    return 'googleanalytics.php' == basename( MONSTERINSIGHTS_PLUGIN_FILE );
+}

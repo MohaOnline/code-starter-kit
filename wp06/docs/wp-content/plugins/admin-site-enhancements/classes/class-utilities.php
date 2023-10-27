@@ -687,9 +687,10 @@ class Utilities {
 
 		// When site visitor has entered correct password
 		$auth_cookie = isset( $_COOKIE['asenha_password_protection'] ) ? $_COOKIE['asenha_password_protection'] : '';
-
-		if ( 'authenticated' == $auth_cookie ) {
-			return; // Do not load login form or perform redirection to the login form
+		
+		// Compared against random string set in maybe_process_login()
+		if ( wp_check_password( 'MOeldTVhGnL18VfbDtXM7znSYXIUQn3z', $auth_cookie ) ) {
+			return; // Do not load login form or perform redirection to the login form			
 		}
 
 		if ( isset( $_REQUEST['protected-page'] ) && 'view' == $_REQUEST['protected-page'] ) {// Show login form
@@ -742,7 +743,8 @@ class Utilities {
 					// Set auth cookie
 					// $expiration = time() + DAY_IN_SECONDS; // in 24 hours
 					$expiration = 0; // by the end of browsing session
-					setcookie( 'asenha_password_protection', 'authenticated', $expiration, COOKIEPATH, COOKIE_DOMAIN, false, true );
+					$hashed_cookie_value = wp_hash_password( 'MOeldTVhGnL18VfbDtXM7znSYXIUQn3z' ); // random string
+					setcookie( 'asenha_password_protection', $hashed_cookie_value, $expiration, COOKIEPATH, COOKIE_DOMAIN, false, true );
 
 					// Redirect
 					$redirect_to_url = isset( $_REQUEST['source'] ) ? $_REQUEST['source'] : '';

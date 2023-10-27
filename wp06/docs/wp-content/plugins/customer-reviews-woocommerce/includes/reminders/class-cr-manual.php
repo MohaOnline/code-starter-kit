@@ -352,7 +352,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 
 		public function include_scripts( $hook ) {
 			if ( 'edit.php' == $hook || 'woocommerce_page_wc-orders' === $hook ) {
-				wp_register_script( 'cr-manual-review-reminder', plugins_url( 'js/admin-manual.js', dirname( dirname( __FILE__ ) ) ), array(), Ivole::CR_VERSION, false );
+				wp_register_script( 'cr-manual-review-reminder', plugins_url( 'js/admin-manual.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), Ivole::CR_VERSION, false );
 
 				$send_button = '<ul class="cr-send-menu">';
 				$send_button .= '<li class="cr-send-email">' . __( 'Email', 'customer-reviews-woocommerce' );

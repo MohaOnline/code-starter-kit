@@ -237,7 +237,7 @@ class OptimizerOnInit {
     public function two_optimized_notif_closed() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
 
@@ -252,7 +252,7 @@ class OptimizerOnInit {
     public function two_is_page_optimized() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
 
@@ -270,7 +270,7 @@ class OptimizerOnInit {
     public function two_recount_score() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
 
@@ -285,7 +285,7 @@ class OptimizerOnInit {
     public function two_get_page_score() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || ! OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
 
@@ -304,7 +304,7 @@ class OptimizerOnInit {
     public function two_get_optimized_images() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
 

@@ -120,29 +120,70 @@
 				},
 			setVal:function(v)
 				{
+					let me = this;
+
+					function setPrefix( v, last ) {
+						let r = '', p = '';
+
+						last = last || false;
+
+						if( $('select[id*="'+me.name+'_"] option[value="'+v+'"]').length ) {
+							$('select[id*="'+me.name+'_"]').val(v);
+							return r;
+
+						}
+
+						if ( last ) p = v;
+						else r  = v;
+
+						while ( last ? p.length : r.length ) {
+							if ( last ) {
+								r += p.substring( p.length - 1 );
+								p  = p.substring( 0, p.length - 1 );
+							} else {
+								p += r.substring(0, 1);
+								r  = r.substring(1);
+							}
+							if( $('select[id*="'+me.name+'_"] option[value="'+p+'"]').length ) {
+								$('select[id*="'+me.name+'_"]').val(p);
+								return r;
+							}
+						}
+						return v;
+					};
+
 					v = (new String(v)).replace(/^\s+/, '').replace(/\s+$/, '');
+					$('input[id*="'+me.name+'_"]').val('');
+
                     if(v.length)
                     {
-                        var d = this.dformat.split(/\s+/g),
-                            f = v.substr(0,1),
-                            r = '(.*)',
-                            c;
+                        let d = me.dformat.split(/\s+/g),
+                            f = v.substr(0,1), n = 0;
 
-                        for(var i in d) r += '(.{'+d[i].length+'})';
-                        r = new RegExp(r+'$');
+                        v = ( f != '+' ) ? v.replace(/[^\d]/g, '') : f+v.substr(1).replace(/[^\d]/g, '');
 
-                        v = f+v.substr(1).replace(/[^\d]/g, '');
-                        c = r.exec(v);
+                        for ( let i in d ) {
+							d[i] = d[i].length;
+							n += d[i];
+						}
 
-                        if(c != null)
-                        {
-                            for(var i = c.length-1; 0<i; i--)
-                                $('[id="'+this.name+'_'+(i-1)+'"]').val(c[i]);
-                        }
-                        else $('input[id*="'+this.name+'_"]:eq(0)').val(v);
-                    }
+						if ( f == '+' && $('select[id*="'+me.name+'_"]').length ) {
+							if ( n < v.length ) {
+								let p = v.substring(0, v.length - n );
+								v = v.substring( v.length - n );
+								v = setPrefix( p, true ) + v;
+							} else {
+								v = setPrefix( v, false );
+							}
+						}
 
-                    $('[name="'+this.name+'"]').val(v);
+						for ( let i in d ) {
+							$('input[id*="'+me.name+'_"]:eq(' + i + ')').val(v.substring( 0, d[i] ) );
+							v = v.substring( d[i] );
+						}
+					}
+
+                    $('[name="'+me.name+'"]').val(v);
 				}
 		}
 	);

@@ -68,7 +68,7 @@ class CreateLessonsContentJob {
 		}
 
 		foreach ( $lessons as $lesson ) {
-			$lessons_content_prompt = generate_lesson_content_prompt( $lesson, $course_title, $course_idea, $num_lesson_description_paragraphs );
+			$lessons_content_prompt = masteriyo_generate_lesson_content_prompt( $lesson, $course_title, $course_idea, $num_lesson_description_paragraphs );
 			$response_text          = masteriyo_openai_retry( array( $chatgpt, 'send_prompt' ), array( $lessons_content_prompt ), 2 ); // Max retry time 2.
 
 			if ( ! is_null( $response_text ) || ! is_wp_error( $response_text ) || ! empty( $response_text ) ) {

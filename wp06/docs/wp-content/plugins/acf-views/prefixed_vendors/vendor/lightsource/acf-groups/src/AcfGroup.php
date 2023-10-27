@@ -1,12 +1,14 @@
 <?php
 
 declare (strict_types=1);
+
 namespace org\wplake\acf_views\vendors\LightSource\AcfGroups;
 
 use Exception;
 use org\wplake\acf_views\vendors\LightSource\AcfGroups\Interfaces\AcfGroupInterface;
 use org\wplake\acf_views\vendors\LightSource\AcfGroups\Interfaces\CreatorInterface;
 use org\wplake\acf_views\vendors\LightSource\AcfGroups\Interfaces\FieldInfoInterface;
+
 abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
 {
     /**
@@ -19,6 +21,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
     private bool $isLoaded;
     private CreatorInterface $creator;
     private ?array $externalData;
+
     /**
      * @throws Exception
      */
@@ -33,14 +36,19 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         $this->fieldsInfo = static::getFieldsInfo();
         $this->setDefaultValuesForFields();
     }
+
     /**
      * 'getFieldValues()' method is designed to work with update_field() (for repeaters)
      * if you want to use (replace) values from 'acf/pre_load_value' or 'acf/pre_update_value' hooks you have to use this method
      * 'pre_update_value' = before saving, to get the AcfGroup (current class) format, which means after you can pass the array into the 'load()' method
      * 'pre_load_value' = before loading, mark '$isFromAcfFormat=false', it'll convert the AcfGroup (current class) format to ACF, and ACF (UI and others) will understand it
      */
-    public static function convertRepeaterFieldValues(string $repeaterFieldName, array $rows, bool $isFromAcfFormat = \true, bool $isSkipIndexUpdate = \false) : array
-    {
+    public static function convertRepeaterFieldValues(
+        string $repeaterFieldName,
+        array $rows,
+        bool $isFromAcfFormat = \true,
+        bool $isSkipIndexUpdate = \false
+    ): array {
         $newValue = [];
         $prefix = $repeaterFieldName . '_item_';
         foreach ($rows as $index => $row) {
@@ -51,9 +59,16 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
                 continue;
             }
             foreach ($row as $itemFieldName => $itemFieldValue) {
-                $newItemFieldName = $isFromAcfFormat ? \substr($itemFieldName, \strlen($prefix)) : $prefix . $itemFieldName;
+                $newItemFieldName = $isFromAcfFormat ? \substr(
+                    $itemFieldName,
+                    \strlen($prefix)
+                ) : $prefix . $itemFieldName;
                 $fieldNameToFixArray = $isFromAcfFormat ? $newItemFieldName : $itemFieldName;
-                $newRow[$newItemFieldName] = \is_array($itemFieldValue) ? static::convertRepeaterFieldValues($fieldNameToFixArray, $itemFieldValue, $isFromAcfFormat) : $itemFieldValue;
+                $newRow[$newItemFieldName] = \is_array($itemFieldValue) ? static::convertRepeaterFieldValues(
+                    $fieldNameToFixArray,
+                    $itemFieldValue,
+                    $isFromAcfFormat
+                ) : $itemFieldValue;
             }
             if (!$isSkipIndexUpdate) {
                 $newIndex = $isFromAcfFormat ? \str_replace('row-', '', $index) : 'row-' . $index;
@@ -64,12 +79,16 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $newValue;
     }
+
     /**
      * 'getFieldValues()' method is designed to work with update_field() (for repeaters)
      * if you want to use (replace) values from 'acf/pre_load_value' or 'acf/pre_update_value' hooks you have to use this method
      */
-    public static function convertCloneField(string $cloneFieldName, array $fields, bool $isFromAcfFormat = \true) : array
-    {
+    public static function convertCloneField(
+        string $cloneFieldName,
+        array $fields,
+        bool $isFromAcfFormat = \true
+    ): array {
         if (!$isFromAcfFormat) {
             return static::convertRepeaterFieldValues($cloneFieldName, $fields, $isFromAcfFormat);
         }
@@ -82,14 +101,21 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
                 $newFields[$newCloneFieldName] = $cloneFieldValue;
                 continue;
             }
-            $newFields[$cloneSubFieldName] = static::convertRepeaterFieldValues($newCloneFieldName, $cloneFieldValue, $isFromAcfFormat, \true);
+            $newFields[$cloneSubFieldName] = static::convertRepeaterFieldValues(
+                $newCloneFieldName,
+                $cloneFieldValue,
+                $isFromAcfFormat,
+                \true
+            );
         }
         return $newFields;
     }
-    protected function getCreator() : CreatorInterface
+
+    protected function getCreator(): CreatorInterface
     {
         return $this->creator;
     }
+
     /**
      * @throws Exception
      */
@@ -119,35 +145,39 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $fieldValue;
     }
+
     /**
      * @throws Exception
      */
-    protected function isDefaultValue(FieldInfoInterface $fieldInfo, $fieldValue) : bool
+    protected function isDefaultValue(FieldInfoInterface $fieldInfo, $fieldValue): bool
     {
         if (isset($fieldInfo->getArguments()['default_value'])) {
             return $fieldInfo->getArguments()['default_value'] === $fieldValue;
         }
         return $fieldValue === $this->getDefaultValue($fieldInfo);
     }
+
     /**
      * @throws Exception
      */
-    protected function setDefaultValueForField(FieldInfoInterface $fieldInfo) : void
+    protected function setDefaultValueForField(FieldInfoInterface $fieldInfo): void
     {
         $fieldName = $fieldInfo->getName();
         $this->{$fieldName} = $this->getDefaultValue($fieldInfo);
         // null, because we don't know what is in DB
         $this->originalFieldValues[$fieldName] = null;
     }
+
     /**
      * @throws Exception
      */
-    protected function setDefaultValuesForFields() : void
+    protected function setDefaultValuesForFields(): void
     {
         foreach ($this->fieldsInfo as $fieldInfo) {
             $this->setDefaultValueForField($fieldInfo);
         }
     }
+
     /**
      * @return mixed
      */
@@ -162,21 +192,24 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return \function_exists('get_field') ? \get_field($acfFieldName, $this->source) : null;
     }
-    protected function setAcfFieldValue(string $acfFieldName, $value) : void
+
+    protected function setAcfFieldValue(string $acfFieldName, $value): void
     {
         if (!\function_exists('update_field')) {
             return;
         }
         \update_field($acfFieldName, $value, $this->source);
     }
-    protected function getAcfFieldNameWithClonePrefix(string $fieldName) : string
+
+    protected function getAcfFieldNameWithClonePrefix(string $fieldName): string
     {
         return $this->clonePrefix . $this->getAcfFieldName($fieldName);
     }
+
     /**
      * @throws Exception
      */
-    protected function loadRepeaterField(FieldInfoInterface $fieldInfo) : array
+    protected function loadRepeaterField(FieldInfoInterface $fieldInfo): array
     {
         $itemClass = $fieldInfo->getArguments()['item'] ?? '';
         if (!$itemClass) {
@@ -206,10 +239,11 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $fieldValue;
     }
+
     /**
      * @throws Exception
      */
-    protected function loadCloneField(FieldInfoInterface $fieldInfo) : AcfGroupInterface
+    protected function loadCloneField(FieldInfoInterface $fieldInfo): AcfGroupInterface
     {
         $acfFieldName = $this->getAcfFieldNameWithClonePrefix($fieldInfo->getName());
         $fieldValue = $this->creator->create($fieldInfo->getType());
@@ -218,26 +252,27 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         $fieldValue->load($this->source, $acfFieldName . '_', $this->externalData);
         return $fieldValue;
     }
+
     /**
      * @throws Exception
      */
-    protected function loadField(FieldInfoInterface $fieldInfo) : void
+    protected function loadField(FieldInfoInterface $fieldInfo): void
     {
         $fieldName = $fieldInfo->getName();
         $acfFieldName = $this->getAcfFieldNameWithClonePrefix($fieldInfo->getName());
         $fieldValue = null;
         switch ($fieldInfo->getType()) {
             case 'bool':
-                $fieldValue = (bool) $this->getAcfFieldValue($fieldInfo);
+                $fieldValue = (bool)$this->getAcfFieldValue($fieldInfo);
                 break;
             case 'int':
-                $fieldValue = (int) $this->getAcfFieldValue($fieldInfo);
+                $fieldValue = (int)$this->getAcfFieldValue($fieldInfo);
                 break;
             case 'float':
-                $fieldValue = (float) $this->getAcfFieldValue($fieldInfo);
+                $fieldValue = (float)$this->getAcfFieldValue($fieldInfo);
                 break;
             case 'string':
-                $fieldValue = (string) $this->getAcfFieldValue($fieldInfo);
+                $fieldValue = (string)$this->getAcfFieldValue($fieldInfo);
                 break;
             case 'array':
                 if ($this->isRepeaterField($fieldName)) {
@@ -256,7 +291,8 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         // will be used for comparison in the save method to avoid unnecessary db requests
         $this->originalFieldValues[$fieldName] = $fieldValue;
     }
-    protected function isRepeaterField(string $fieldName) : bool
+
+    protected function isRepeaterField(string $fieldName): bool
     {
         foreach ($this->fieldsInfo as $fieldInfo) {
             if ($fieldInfo->getName() !== $fieldName) {
@@ -266,6 +302,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return \false;
     }
+
     /**
      * @param string $acfFieldName
      * @param AcfGroupInterface[] $newFieldValue
@@ -274,8 +311,12 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
      *
      * @return bool
      */
-    protected function saveRepeater(string $acfFieldName, array &$newFieldValue, ?array $originalFieldValue, bool $isForce) : bool
-    {
+    protected function saveRepeater(
+        string $acfFieldName,
+        array &$newFieldValue,
+        ?array $originalFieldValue,
+        bool $isForce
+    ): bool {
         $countOfItems = \count($newFieldValue);
         $countOfOriginalItems = $originalFieldValue ? \count($originalFieldValue) : 0;
         $isRepeaterHasChanges = $countOfItems !== $countOfOriginalItems || $isForce;
@@ -301,6 +342,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         $this->setAcfFieldValue($acfFieldName, $dataArray);
         return \true;
     }
+
     /**
      * @param false|string|int $source
      * @param string $clonePrefix
@@ -308,7 +350,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
      *
      * @throws Exception
      */
-    public function load($source = \false, string $clonePrefix = '', ?array $externalData = null) : bool
+    public function load($source = \false, string $clonePrefix = '', ?array $externalData = null): bool
     {
         $this->source = $source;
         $this->clonePrefix = $clonePrefix;
@@ -319,7 +361,8 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         $this->isLoaded = \true;
         return \true;
     }
-    public function loadFromPostContent(int $postId) : bool
+
+    public function loadFromPostContent(int $postId): bool
     {
         global $wpdb;
         if (!$wpdb) {
@@ -331,15 +374,18 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         $content = \json_decode($content, \true) ?: [];
         return $this->load($postId, '', $content);
     }
-    public function isExternalSource() : bool
+
+    public function isExternalSource(): bool
     {
         return \is_array($this->externalData);
     }
-    public function isLoaded() : bool
+
+    public function isLoaded(): bool
     {
         return $this->isLoaded;
     }
-    public function isHasChanges() : bool
+
+    public function isHasChanges(): bool
     {
         foreach ($this->originalFieldValues as $fieldName => $originalFieldValue) {
             $newFieldValue = $this->{$fieldName};
@@ -364,7 +410,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
     }
     // can be used to recognize fields which need to apply 'convertRepeaterFieldValues()' method,
     // as not every array field is a repeater (can be plain field with return-type = array)
-    public function getRepeaterFieldNames() : array
+    public function getRepeaterFieldNames(): array
     {
         $repeaterFieldNames = [];
         foreach ($this->fieldsInfo as $fieldInfo) {
@@ -375,8 +421,9 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $repeaterFieldNames;
     }
+
     // can be used to recognize fields which need to apply 'convertCloneField()' method
-    public function getCloneFieldNames() : array
+    public function getCloneFieldNames(): array
     {
         $cloneFieldNames = [];
         foreach ($this->fieldsInfo as $fieldInfo) {
@@ -389,13 +436,15 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $cloneFieldNames;
     }
-    public function refreshFieldValuesCache() : void
+
+    public function refreshFieldValuesCache(): void
     {
         foreach ($this->originalFieldValues as $fieldName => $originalFieldValue) {
             $this->originalFieldValues[$fieldName] = $this->{$fieldName};
         }
     }
-    public function save(bool $isForce = \false) : bool
+
+    public function save(bool $isForce = \false): bool
     {
         $isHasChangedFields = \false;
         foreach ($this->originalFieldValues as $fieldName => $originalFieldValue) {
@@ -426,6 +475,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $isHasChangedFields;
     }
+
     /**
      * @param array $postFields Can be used to update other post fields (in the same query)
      * @param bool $isSkipDefaults
@@ -433,24 +483,28 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
      * @return bool
      * @throws Exception
      */
-    public function saveToPostContent(array $postFields = [], bool $isSkipDefaults = \false) : bool
+    public function saveToPostContent(array $postFields = [], bool $isSkipDefaults = \false): bool
     {
         global $wpdb;
         if (!$wpdb) {
             return \false;
         }
         // don't escape slashes and line terminators
-        $json = \json_encode($this->getFieldValues('', $isSkipDefaults), \JSON_HEX_APOS | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_LINE_TERMINATORS);
+        $json = \json_encode(
+            $this->getFieldValues('', $isSkipDefaults),
+            \JSON_HEX_APOS | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_LINE_TERMINATORS
+        );
         $postFields = \array_merge($postFields, ['post_content' => $json]);
         // don't use 'wp_update_post' to avoid the kses issue https://core.trac.wordpress.org/ticket/38715
         $wpdb->update($wpdb->posts, $postFields, ['ID' => $this->getSource()]);
         return \true;
     }
+
     /**
      * Designed to work with update_field() (for repeaters)
      * @throws Exception
      */
-    public function getFieldValues(string $clonePrefix = '', bool $isSkipDefaults = \false) : array
+    public function getFieldValues(string $clonePrefix = '', bool $isSkipDefaults = \false): array
     {
         $fieldValues = [];
         foreach ($this->fieldsInfo as $fieldInfo) {
@@ -494,6 +548,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $fieldValues;
     }
+
     /**
      * @return int|string|false
      */
@@ -501,23 +556,27 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
     {
         return $this->source;
     }
-    public function getExternalData() : ?array
+
+    public function getExternalData(): ?array
     {
         return $this->externalData;
     }
-    public function getClonePrefix() : string
+
+    public function getClonePrefix(): string
     {
         return $this->clonePrefix;
     }
-    public function setClonePrefix(string $clonePrefix) : void
+
+    public function setClonePrefix(string $clonePrefix): void
     {
         $this->clonePrefix = $clonePrefix;
     }
+
     /**
      * get deeps clone unlike the std 'clone'
      * @return static
      */
-    public function getDeepClone() : AcfGroupInterface
+    public function getDeepClone(): AcfGroupInterface
     {
         $clone = clone $this;
         foreach ($this->fieldsInfo as $fieldInfo) {
@@ -529,6 +588,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
         }
         return $clone;
     }
+
     /**
      * This method for tests only! Isn't declared in the Interface and shouldn't be used in code
      *
@@ -536,7 +596,7 @@ abstract class AcfGroup extends GroupInfo implements AcfGroupInterface
      *
      * @return void
      */
-    public function setSource($source) : void
+    public function setSource($source): void
     {
         $this->source = $source;
     }

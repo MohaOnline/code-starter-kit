@@ -48,7 +48,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_email_message"], "wc_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_email_message"]), "wc_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row">
@@ -81,7 +81,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_all_comment_new_reply_message"], "wc_all_comment_new_reply_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_all_comment_new_reply_message"]), "wc_all_comment_new_reply_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row">
@@ -113,7 +113,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_new_reply_email_message"], "wc_new_reply_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_new_reply_email_message"]), "wc_new_reply_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>            
             <tr valign="top">
                 <th scope="row">
@@ -140,7 +140,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_confirm_email_message"], "wc_confirm_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_confirm_email_message"]), "wc_confirm_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row">
@@ -170,7 +170,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_comment_approved_email_message"], "wc_comment_approved_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_comment_approved_email_message"]), "wc_comment_approved_email_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row"><label for="wc_unsubscribe"><?php esc_html_e("Unsubscribe", "wpdiscuz"); ?></label></th>
@@ -206,7 +206,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_mentioned_email_message"], "wc_mentioned_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_mentioned_email_message"]), "wc_mentioned_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
             </tr>
         </tbody>
     </table>

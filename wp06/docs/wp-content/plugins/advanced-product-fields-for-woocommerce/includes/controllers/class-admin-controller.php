@@ -45,9 +45,20 @@ namespace SW_WAPF\Includes\Controllers {
             add_action('wp_ajax_wapf_search_cat',                               [$this, 'search_woo_categories']);
             add_action('wp_ajax_wapf_search_variations',                        [$this, 'search_woo_variations']);
 
+            add_filter('admin_footer_text',                                     [$this, 'change_footer']);
+
         }
 
         #region Basics
+
+        public function change_footer() {
+            if(
+                (isset($_GET['page']) && $_GET['page'] === 'wapf-field-groups') ||
+                $this->is_screen(wapf_get_setting('cpts'))
+            ) {
+                return 'Made with ❤️ by <a style="color:inherit;font-weight: bold;text-decoration: none;" href="https://www.studiowombat.com/" target="_blank">Studio Wombat</a>. If you like APF, <a style="color:inherit;font-weight: bold;text-decoration: none;" href="https://wordpress.org/support/plugin/advanced-product-fields-for-woocommerce/reviews/#new-post" target="_blank">please rate us ⭐⭐⭐⭐⭐</a>';
+            }
+        }
 
         public function register_assets() {
 

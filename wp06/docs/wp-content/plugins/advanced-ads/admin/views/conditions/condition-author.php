@@ -27,7 +27,7 @@
 						   value="<?php echo absint( $_author->ID ); ?>">
 			<?php
 		}
-		include ADVADS_BASE_PATH . 'admin/views/conditions/not-selected.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/not-selected.php';
 		?>
 	</div>
 <?php

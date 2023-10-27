@@ -1,4 +1,5 @@
 <?php
+
 if (!defined("ABSPATH")) {
     exit();
 }
@@ -24,34 +25,204 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $this->options = $options;
         $this->dbManager = $dbManager;
         $this->helper = $helper;
-        add_action("init", [&$this, "subscriptionRequests"]);
+        add_action("init", [&$this, "addSubscriptionRewriteRule"]);
         add_action("wp_ajax_wpdAddSubscription", [&$this, "addSubscription"]);
         add_action("wp_ajax_nopriv_wpdAddSubscription", [&$this, "addSubscription"]);
         add_action("wp_ajax_wpdCheckNotificationType", [&$this, "checkNotificationType"]);
         add_action("wp_ajax_nopriv_wpdCheckNotificationType", [&$this, "checkNotificationType"]);
         add_action("comment_post", [&$this, "notificationFromDashboard"], 10, 2);
+        add_filter("template_include", [&$this, "subscriptionRequestsActions"]);
+        add_filter("query_vars", [&$this, "addQueryVars"]);
     }
 
-    public function subscriptionRequests() {
-        if ((strpos($_SERVER['REQUEST_URI'], "wpdiscuzsubscription/unsubscribe") !== false) && isset($_GET["wpdiscuzSubscribeID"]) && isset($_GET["key"]) && isset($_GET["post"])) {
-            $this->dbManager->unsubscribe(sanitize_text_field($_GET["wpdiscuzSubscribeID"]), sanitize_text_field($_GET["key"]));
-            $postID = sanitize_text_field($_GET["post"]);
-            $post = get_post($postID);
-            $url = site_url();
-            if ($post) {
-                $url = get_permalink($postID);
-            }
-            get_header();
-            echo '<h2>' . esc_html__($this->options->getPhrase("wc_unsubscribe_message")) . '</h2>';
-            ?>
-            <script>
-                setTimeout(function () {
-                    location.href = '<?php echo $url;  ?>';
-                }, 3000);
-            </script>
-            <?php
-            get_footer();
+    public function addSubscriptionRewriteRule() {
+
+        $rules = get_option("rewrite_rules", []);
+        $regex = "wpdiscuzsubscription/([a-z0-9-]+)[/]?$";
+        add_rewrite_rule($regex, 'index.php?wpdiscuzsubscription=$matches[1]', "top");
+
+        if (!isset($rules[$regex])) {
+            flush_rewrite_rules();
         }
+    }
+
+    public function addQueryVars($query_vars) {
+        if (!in_array("wpdiscuzsubscription", $query_vars)) {
+            $query_vars[] = "wpdiscuzsubscription";
+        }
+
+        return $query_vars;
+    }
+
+    public function subscriptionRequestsActions($template) {
+        global $wpDiscuzSubscriptionMessage;
+        $wpDiscuzSubscriptionMessage = "";
+        $action = get_query_var("wpdiscuzsubscription");
+        if (!$action) {
+            return $template;
+        }
+
+        if ($action === "confirm" && isset($_GET["wpdiscuzConfirmID"]) && isset($_GET["wpdiscuzConfirmKey"]) && isset($_GET["wpDiscuzComfirm"])) {
+            $this->dbManager->notificationConfirm(sanitize_text_field($_GET["wpdiscuzConfirmID"]), sanitize_text_field($_GET["wpdiscuzConfirmKey"]));
+            $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_comfirm_success_message");
+        } else if ($action === "unsubscribe" && isset($_GET["wpdiscuzSubscribeID"]) && isset($_GET["key"])) {
+            $this->dbManager->unsubscribe(sanitize_text_field($_GET["wpdiscuzSubscribeID"]), sanitize_text_field($_GET["key"]));
+            $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_unsubscribe_message");
+        } else if ($action === "deletecomments" && isset($_GET["key"])) {
+            $decodedEmail = get_transient(self::TRS_USER_HASH . trim(sanitize_text_field($_GET["key"])));
+            if ($decodedEmail) {
+                $comments = get_comments(["author_email" => $decodedEmail, "status" => "all", "fields" => "ids"]);
+                if ($comments) {
+                    foreach ($comments as $k => $cid) {
+                        wp_delete_comment($cid, true);
+                    }
+                }
+                $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_comments_are_deleted");
+            }
+        } else if ($action === "deletesubscriptions" && isset($_GET["key"])) {
+
+            $decodedEmail = get_transient(self::TRS_USER_HASH . trim(sanitize_text_field($_GET["key"])));
+            if ($decodedEmail) {
+                $this->dbManager->unsubscribeByEmail($decodedEmail);
+            }
+
+            $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_cancel_subs_success");
+        } else if ($action === "deletefollows" && isset($_GET["key"])) {
+
+            $decodedEmail = get_transient(self::TRS_USER_HASH . trim(sanitize_text_field($_GET["key"])));
+            if ($decodedEmail) {
+                $this->dbManager->unfollowByEmail($decodedEmail);
+            }
+
+            $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_cancel_follows_success");
+        } else if ($action === "follow") {
+            if (isset($_GET["wpdiscuzFollowID"]) && isset($_GET["wpdiscuzFollowKey"]) && isset($_GET["wpDiscuzComfirm"])) {
+                if ($_GET["wpDiscuzComfirm"]) {
+                    $this->dbManager->confirmFollow(sanitize_text_field($_GET["wpdiscuzFollowID"]), sanitize_text_field($_GET["wpdiscuzFollowKey"]));
+                    $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_follow_confirm_success");
+                } else {
+                    $this->dbManager->cancelFollow(sanitize_text_field($_GET["wpdiscuzFollowID"]), sanitize_text_field($_GET["wpdiscuzFollowKey"]));
+                    $wpDiscuzSubscriptionMessage = $this->options->getPhrase("wc_follow_cancel_success");
+                }
+            }
+        } else if ($action === "bulkmanagement") {
+            $wpDiscuzSubscriptionMessage = esc_html__("Something is wrong.", "wpdiscuz");
+            if ($this->emailDeleteLinks()) {
+                $wpDiscuzSubscriptionMessage = esc_html__("Email sent successfully.", "wpdiscuz");
+            }
+        } else {
+            return $template;
+        }
+
+        return WPDISCUZ_DIR_PATH . "/themes/unsubscription.php";
+    }
+
+    private function sendBulkManagementEmail() {
+        $this->helper->validateNonce();
+        $currentUser = WpdiscuzHelper::getCurrentUser();
+        if ($currentUser->exists()) {
+            $currentUserEmail = $currentUser->user_email;
+
+            if ($currentUserEmail) {
+                $siteUrl = site_url();
+                $blogTitle = html_entity_decode(get_option("blogname"), ENT_QUOTES);
+                $hashValue = $this->generateUserActionHash($currentUserEmail);
+                $deleteCommentsUrl = $siteUrl . "/wpdiscuzsubscription/deletecomments/?key=$hashValue";
+                $unsubscribeUrl = $siteUrl . "/wpdiscuzsubscription/deletesubscriptions/?key=$hashValue";
+                $unfollowUrl = $siteUrl . "/wpdiscuzsubscription/deletefollows/?key=$hashValue";
+
+                $subject = $this->options->getPhrase("wc_user_settings_delete_links");
+
+                $message = str_replace(["[SITE_URL]", "[BLOG_TITLE]", "[DELETE_COMMENTS_URL]"], [$siteUrl, $blogTitle, $deleteCommentsUrl], $this->options->getPhrase("wc_user_settings_delete_all_comments_message"));
+
+                $message .= $this->options->getPhrase("wc_user_settings_delete_all_subscriptions_message");
+
+                if (strpos($message, "[DELETE_SUBSCRIPTIONS_URL]") !== false) {
+                    $message = str_replace("[DELETE_SUBSCRIPTIONS_URL]", $unsubscribeUrl, $message);
+                }
+
+                $message .= $this->options->getPhrase("wc_user_settings_delete_all_follows_message");
+
+                if (strpos($message, "[DELETE_FOLLOWS_URL]") !== false) {
+                    $message = str_replace("[DELETE_FOLLOWS_URL]", $unfollowUrl, $message);
+                }
+
+                $this->userActionMail($currentUserEmail, $subject, $message);
+            }
+        }
+    }
+
+    public function emailDeleteLinksAction() {
+        $this->emailDeleteLinks();
+        wp_die();
+    }
+
+    private function emailDeleteLinks() {
+        $this->helper->validateNonce();
+        $currentUser = WpdiscuzHelper::getCurrentUser();
+        $currentUserEmail = "";
+        $isGuest = true;
+
+        if ($currentUser->exists()) {
+            $currentUserEmail = $currentUser->user_email;
+            $isGuest = false;
+        } else {
+            $currentUserEmail = isset($_COOKIE["comment_author_email_" . COOKIEHASH]) ? $_COOKIE["comment_author_email_" . COOKIEHASH] : "";
+        }
+
+
+        if ($currentUserEmail) {
+            $siteUrl = site_url();
+            $blogTitle = html_entity_decode(get_option("blogname"), ENT_QUOTES);
+            $hashValue = $this->generateUserActionHash($currentUserEmail);
+            $deleteCommentsUrl = $siteUrl . "/wpdiscuzsubscription/deletecomments/?key=$hashValue";
+            $unsubscribeUrl = $siteUrl . "/wpdiscuzsubscription/deletesubscriptions/?key=$hashValue";
+            $unfollowUrl = $siteUrl . "/wpdiscuzsubscription/deletefollows/?key=$hashValue";
+
+            $subject = $this->options->getPhrase("wc_user_settings_delete_links");
+
+            $message = str_replace(["[SITE_URL]", "[BLOG_TITLE]", "[DELETE_COMMENTS_URL]"], [$siteUrl, $blogTitle, $deleteCommentsUrl], $this->options->getPhrase("wc_user_settings_delete_all_comments_message"));
+
+            $message .= $this->options->getPhrase("wc_user_settings_delete_all_subscriptions_message");
+
+            if (strpos($message, "[DELETE_SUBSCRIPTIONS_URL]") !== false) {
+                $message = str_replace("[DELETE_SUBSCRIPTIONS_URL]", $unsubscribeUrl, $message);
+            }
+
+            if (!$isGuest) {
+                $message .= $this->options->getPhrase("wc_user_settings_delete_all_follows_message");
+            }
+
+            if (strpos($message, "[DELETE_FOLLOWS_URL]") !== false) {
+                $message = str_replace("[DELETE_FOLLOWS_URL]", $unfollowUrl, $message);
+            }
+
+            return $this->userActionMail($currentUserEmail, $subject, $message);
+        }
+
+        return false;
+    }
+
+    public function userActionMail($email, $subject, $message) {
+        $siteUrl = get_site_url();
+        $blogTitle = get_option("blogname");
+        $fromName = html_entity_decode($blogTitle, ENT_QUOTES);
+        $parsedUrl = parse_url($siteUrl);
+        $domain = isset($parsedUrl["host"]) ? WpdiscuzHelper::fixEmailFrom($parsedUrl["host"]) : "";
+        $fromEmail = "no-reply@" . $domain;
+        $headers[] = "Content-Type: text/html; charset=UTF-8";
+        $headers[] = "From: " . $fromName . " <" . $fromEmail . "> \r\n";
+        $subject = html_entity_decode($subject, ENT_QUOTES);
+        $message = html_entity_decode($message, ENT_QUOTES);
+        return wp_mail($email, $subject, do_shortcode($message), $headers);
+    }
+
+    public function generateUserActionHash($email) {
+        $hashedEmail = hash_hmac("sha256", $email, get_option(self::OPTION_SLUG_HASH_KEY));
+        $hashKey = self::TRS_USER_HASH . $hashedEmail;
+        $hashExpire = apply_filters("wpdiscuz_delete_all_content", 3 * DAY_IN_SECONDS);
+        set_transient($hashKey, $email, $hashExpire);
+        return $hashedEmail;
     }
 
     public function addSubscription() {
@@ -169,9 +340,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
             return;
         }
         if ($sendMail) {
-            $unsubscribeUrl = get_permalink($comment->comment_post_ID);
-            $unsubscribeUrl = $unsubscribeUrl . (parse_url($unsubscribeUrl, PHP_URL_QUERY) ? "&" : "?");
-            $unsubscribeUrl .= "wpdiscuzUrlAnchor&wpdiscuzSubscribeID=" . $emailData["id"] . "&key=" . $emailData["activation_key"] . "&#wc_unsubscribe_message";
+            $unsubscribeUrl = site_url('/wpdiscuzsubscription/unsubscribe/');
+            $unsubscribeUrl .= "?wpdiscuzSubscribeID=" . $emailData["id"] . "&key=" . $emailData["activation_key"];
 
             $siteUrl = get_site_url();
             $blogTitle = get_option("blogname");
@@ -404,8 +574,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
     }
 
     public function followConfirmEmail($postId, $id, $key, $email) {
-        $confirmUrl = $this->dbManager->followConfirmLink($postId, $id, $key);
-        $cancelUrl = $this->dbManager->followCancelLink($postId, $id, $key);
+        $confirmUrl = $this->dbManager->followConfirmLink($id, $key);
+        $cancelUrl = $this->dbManager->followCancelLink($id, $key);
         $siteUrl = get_site_url();
         $blogTitle = get_option("blogname");
         $postTitle = get_the_title($postId);
@@ -477,8 +647,6 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $subject = apply_filters("wpdiscuz_follow_email_subject", $subject, $postId, $email);
         $message = apply_filters("wpdiscuz_follow_email_content", $message, $postId, $email);
 
-        global $wp_rewrite;
-        $cancelLink = !$wp_rewrite->using_permalinks() ? $postUrl . "&" : $postUrl . "?";
         $fromName = html_entity_decode($blogTitle, ENT_QUOTES);
         $parsedUrl = parse_url($siteUrl);
         $domain = isset($parsedUrl["host"]) ? WpdiscuzHelper::fixEmailFrom($parsedUrl["host"]) : "";
@@ -497,15 +665,15 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
             }
             $subject = str_replace(["[COMMENT_AUTHOR]"], [$followerData["user_name"]], $subject);
             $body = str_replace(["[COMMENT_AUTHOR]", "[FOLLOWER_NAME]"], [$followerData["user_name"], $followerData["follower_name"]], $message);
-            $this->emailToFollower($followerData, $comment, $subject, $body, $cancelLink, $data);
+            $this->emailToFollower($followerData, $comment, $subject, $body, $data);
             do_action("wpdiscuz_notify_followers", $comment, $followerData);
         }
     }
 
-    private function emailToFollower($followerData, $comment, $subject, $message, $cancelLink, $data) {
+    private function emailToFollower($followerData, $comment, $subject, $message, $data) {
         $sendMail = apply_filters("wpdiscuz_follow_email_notification", true, $followerData, $comment);
         if ($sendMail) {
-            $cancelLink .= "wpdiscuzUrlAnchor&wpdiscuzFollowID={$followerData["id"]}&wpdiscuzFollowKey={$followerData["activation_key"]}&wpDiscuzComfirm=0#wc_follow_message";
+            $cancelLink = site_url("/wpdiscuzsubscription/follow/") . "?wpdiscuzFollowID={$followerData["id"]}&wpdiscuzFollowKey={$followerData["activation_key"]}&wpDiscuzComfirm=0";
             if (strpos($message, "[CANCEL_URL]") === false) {
                 $message .= "<br/><br/><a href='$cancelLink'>" . esc_html__("Unfollow", "wpdiscuz") . "</a>";
             } else {
@@ -546,7 +714,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $message = apply_filters("wpdiscuz_mentioned_user_email_content_pre_replace", $message, $postId);
 
         $subject = str_replace(["[BLOG_TITLE]", "[POST_TITLE]"], [$blogTitle, $postTitle], $subject);
-        //$message = wpautop($this->options->subscription["emailContentUserMentioned"]);
+//$message = wpautop($this->options->subscription["emailContentUserMentioned"]);
 
         $search = ["[SITE_URL]", "[POST_URL]", "[BLOG_TITLE]", "[POST_TITLE]", "[MENTIONED_USER_NAME]", "[COMMENT_URL]", "[COMMENT_AUTHOR]"];
         $replace = [$siteUrl, $postUrl, $blogTitle, $postTitle, "", $commentUrl, $commentAuthor];

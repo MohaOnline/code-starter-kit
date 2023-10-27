@@ -3,7 +3,7 @@
 
 use Masteriyo\Enums\QuestionType;
 
-if ( ! function_exists( 'generate_course_outline_prompt' ) ) {
+if ( ! function_exists( 'masteriyo_generate_course_outline_prompt' ) ) {
 	/**
 	 * Generate a course outline prompt.
 	 *
@@ -16,7 +16,7 @@ if ( ! function_exists( 'generate_course_outline_prompt' ) ) {
 	 *
 	 * @return string Generated prompt.
 	 */
-	function generate_course_outline_prompt( $course_title, $course_idea, $num_sections = 4, $num_lessons = 3 ) {
+	function masteriyo_generate_course_outline_prompt( $course_title, $course_idea, $num_sections = 4, $num_lessons = 3 ) {
 		$prompt = "Please design an outline for a course titled '{$course_title}'";
 
 		if ( ! empty( $course_idea ) ) {
@@ -32,7 +32,7 @@ if ( ! function_exists( 'generate_course_outline_prompt' ) ) {
 	}
 }
 
-if ( ! function_exists( 'generate_course_content_prompt' ) ) {
+if ( ! function_exists( 'masteriyo_generate_course_content_prompt' ) ) {
 	/**
 	 * Generate a course description and highlight prompt.
 	 *
@@ -46,7 +46,7 @@ if ( ! function_exists( 'generate_course_content_prompt' ) ) {
 	 *
 	 * @return string Generated prompt.
 	 */
-	function generate_course_content_prompt( $course_title, $course_idea, $num_of_paragraphs = 2, $course_highlight_points = 4, $lesson_names ) {
+	function masteriyo_generate_course_content_prompt( $course_title, $course_idea, $lesson_names, $num_of_paragraphs = 2, $course_highlight_points = 4 ) {
 		$prompt = "Please write a description for the course '{$course_title}' in {$num_of_paragraphs} paragraphs";
 
 		if ( ! empty( $course_idea ) ) {
@@ -67,7 +67,7 @@ if ( ! function_exists( 'generate_course_content_prompt' ) ) {
 	}
 }
 
-if ( ! function_exists( 'generate_lesson_content_prompt' ) ) {
+if ( ! function_exists( 'masteriyo_generate_lesson_content_prompt' ) ) {
 	/**
 	 * Generate lesson description prompt.
 	 *
@@ -80,7 +80,7 @@ if ( ! function_exists( 'generate_lesson_content_prompt' ) ) {
 	 *
 	 * @return string Generated prompt.
 	 */
-	function generate_lesson_content_prompt( $lesson, $course_title, $course_idea, $num_of_paragraphs = 4 ) {
+	function masteriyo_generate_lesson_content_prompt( $lesson, $course_title, $course_idea, $num_of_paragraphs = 4 ) {
 		$lesson_name = $lesson->get_name();
 		$prompt      = "Please compose a {$num_of_paragraphs}-paragraph description for the lesson titled '{$lesson_name}', which is part of the course '{$course_title}'";
 
@@ -95,7 +95,7 @@ if ( ! function_exists( 'generate_lesson_content_prompt' ) ) {
 }
 
 
-if ( ! function_exists( 'generate_section_quizzes_prompt' ) ) {
+if ( ! function_exists( 'masteriyo_generate_section_quizzes_prompt' ) ) {
 	/**
 	 * Generate quizzes for a section of the course prompt.
 	 *
@@ -111,7 +111,7 @@ if ( ! function_exists( 'generate_section_quizzes_prompt' ) ) {
 	 *
 	 * @return string Generated prompt.
 	 */
-	function generate_section_quizzes_prompt( $section_title, $course_title, $course_idea, $number_of_quizzes = 1, $num_of_questions = 2, $question_type = 'multiple-choice', $points = 1 ) {
+	function masteriyo_generate_section_quizzes_prompt( $section_title, $course_title, $course_idea, $number_of_quizzes = 1, $num_of_questions = 2, $question_type = 'multiple-choice', $points = 1 ) {
 		$prompt = "Please create {$number_of_quizzes} quizzes for the section titled '{$section_title}', which is part of the course '{$course_title}'";
 
 		if ( ! empty( $course_idea ) ) {

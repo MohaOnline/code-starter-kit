@@ -397,18 +397,17 @@ class LP_REST_Courses_Controller extends LP_Abstract_REST_Controller {
 				throw new Exception( __( 'Error: No Course available.', 'learnpress' ) );
 			}
 
-			$user = learn_press_get_current_user();
-			if ( ! $user->can_purchase_course( $course_id ) ) {
-				throw new Exception( esc_html__( 'Error: Cannot purchase the course!', 'learnpress' ) );
+			$user         = learn_press_get_current_user();
+			$can_purchase = $user->can_purchase_course( $course_id );
+			if ( is_wp_error( $can_purchase ) ) {
+				throw new Exception( $can_purchase->get_error_message() );
 			}
 
+			$filter              = new LP_User_Items_Filter();
+			$filter->user_id     = get_current_user_id();
+			$filter->item_id     = $course_id;
+			$course_item         = $lp_user_items_db->get_last_user_course( $filter );
 			$latest_user_item_id = 0;
-
-			$filter          = new LP_User_Items_Filter();
-			$filter->user_id = get_current_user_id();
-			$filter->item_id = $course_id;
-			$course_item     = $lp_user_items_db->get_last_user_course( $filter );
-
 			if ( $course_item && isset( $course_item->user_item_id ) ) {
 				$latest_user_item_id = $course_item->user_item_id;
 			}
@@ -422,7 +421,7 @@ class LP_REST_Courses_Controller extends LP_Abstract_REST_Controller {
 							<li>
 								<label>
 									<input name="_lp_allow_repurchase_type" value="reset" type="radio"
-										   checked="checked"/>
+										checked="checked"/>
 									<?php esc_html_e( 'Reset Course progress', 'learnpress' ); ?>
 								</label>
 							</li>
@@ -446,15 +445,9 @@ class LP_REST_Courses_Controller extends LP_Abstract_REST_Controller {
 				}
 			}
 
-			//LearnPress::instance()->session->set( 'order_awaiting_payment', '' );
-
 			$cart = LearnPress::instance()->cart;
-			//$checkout = LP_Checkout::instance();
-
 			if ( ! learn_press_enable_cart() ) {
-				//$order_awaiting_payment = LearnPress::instance()->session->order_awaiting_payment;
 				$cart->empty_cart();
-				//LearnPress::instance()->session->order_awaiting_payment = $order_awaiting_payment;
 			}
 
 			do_action( 'learnpress/rest-api/courses/purchase/before-add-to-cart' );

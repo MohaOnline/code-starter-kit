@@ -4,7 +4,7 @@ Donate link: https://prestoplayer.com
 Tags: video, audio, youtube, vimeo, lms, elementor, learndash, beaver builder, lifterlms
 Requires at least: 5.6
 Tested up to: 6.2
-Stable tag: 2.0.6
+Stable tag: 2.0.8
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,12 @@ It is also important to point out that BunnyNet has a $1 per month minimum.
 
 
 == Changelog ==
+
+= 2.0.8 = 
+* Fix: Issue with Learndash video progression in newer versions of Learndash for lessons with "Display Timing" set to "After completing sub-steps".
+
+= 2.0.7 = 
+* Fix: Update hls.js to fix issue with HLS streams not playing on some android devices.
 
 = 2.0.6 = 
 * Fix: Audio title text overflow issue.

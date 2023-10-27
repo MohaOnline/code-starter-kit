@@ -2,14 +2,100 @@
 # This file is distributed under the same license as the Plugins - Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-29 13:54:09+0000\n"
+"PO-Revision-Date: 2023-10-23 20:04:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.9\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth - Stable (latest release)\n"
+
+#: _inc/blocks/tock/block.json
+msgctxt "block description"
+msgid "Reserve a table at your restaurant with Tock."
+msgstr "使用 Tock 在您的餐厅预订桌位。"
+
+#: _inc/blocks/paywall/block.json
+msgctxt "block description"
+msgid "Limit access to the content below this block to chosen subscribers."
+msgstr "限制所选定的订阅者可访问此区块下方的内容。"
+
+#: _inc/blocks/paywall/block.json
+msgctxt "block title"
+msgid "Paywall"
+msgstr "付费墙"
+
+#: _inc/blocks/payment-buttons/block.json
+msgctxt "block description"
+msgid "Sell products and subscriptions."
+msgstr "销售产品和订阅。"
+
+#: _inc/blocks/opentable/block.json
+msgctxt "block description"
+msgid "Book a reservation with OpenTable."
+msgstr "使用 OpenTable 预订。"
+
+#: _inc/blocks/markdown/block.json
+msgctxt "block description"
+msgid "Add headings, lists, or links to plain text with ease."
+msgstr "轻松在纯文本中添加标题、列表或链接。"
+
+#: _inc/blocks/blogroll/block.json
+msgctxt "block description"
+msgid "Share the sites you follow with your users."
+msgstr "与用户分享您关注的站点。"
+
+#: _inc/blocks/ai-chat/block.json
+msgctxt "block description"
+msgid "Provide a summarized answer to questions, trained on the sites content. Powered by AI."
+msgstr "根据站点内容培训，提供问题的概要回答。 由 AI 提供支持。"
+
+#: _inc/blocks/ai-assistant/block.json
+msgctxt "block description"
+msgid "Elevate your content creation with our AI-powered Gutenberg Block, offering seamless customization and generation. Bear in mind that, as an evolving tool, occasional imprecision may occur. Your feedback is valuable in our commitment to refine and improve this feature."
+msgstr "运用我们由 AI 提供支持的“古腾堡区块”，实现无缝定制和生成，从而提升您的内容创作水平。 请注意，该工具仍在不断发展中，因此偶尔可能会出现不精确的情况。 感谢您的宝贵意见，我们将持续改进和完善此项功能。"
+
+#: modules/sharedaddy/sharing-sources.php:1369
+msgid "Click to share on X"
+msgstr "点击以分享到 X"
+
+#: modules/module-info.php:476
+msgid ""
+"Improve your site's speed by only loading images visible on the screen.\n"
+"\t\tModern browsers now support lazy loading, and WordPress itself bundles lazy loading features for images and videos.\n"
+"\t\tThis feature will consequently be removed from Jetpack in November 2023."
+msgstr ""
+"通过仅加载在屏幕上可见的图片提高站点加载速度。\n"
+"\t\t现代浏览器如今支持延迟加载，WordPress 自身也捆绑了针对图片和视频的延迟加载功能。\n"
+"\t\t因此，Jetpack 将在 2023 年 11 月移除此功能。"
+
+#: modules/module-headings.php:101
+msgctxt "Module Description"
+msgid "Improve your site's speed by only loading images visible on the screen. Modern browsers now support lazy loading, and WordPress itself bundles lazy loading features for images and videos. This feature will consequently be removed from Jetpack in November 2023."
+msgstr "通过仅加载在屏幕上可见的图片提高站点加载速度。 现代浏览器如今支持延迟加载，WordPress 自身也捆绑了针对图片和视频的延迟加载功能。 因此，Jetpack 将在 2023 年 11 月移除此功能。"
+
+#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:223
+msgid "Specified file failed upload test."
+msgstr "指定的文件未通过上传测试。"
+
+#. translators: %1$s is a domain name.
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2206
+msgid "IP address `%1$s` just failed is_usable_domain check as it is in the private network."
+msgstr "IP 地址‘%1$s’刚刚未通过“is_usable_domain”检查，因为其位于私人网络上。"
+
+#. translators: %s is the name of the site.
+#: extensions/blocks/subscriptions/subscriptions.php:1182
+msgid "Upgrade to get access to the rest of this post and other exclusive content."
+msgstr "升级以查看本文章剩余内容以及其他专享内容。"
+
+#: extensions/blocks/subscriptions/subscriptions.php:1176
+msgid "Upgrade to continue reading"
+msgstr "升级以继续阅读"
+
+#: extensions/blocks/blogroll/blogroll-item/blogroll-item.php:71
+msgid "Subscribed"
+msgstr "已订阅"
 
 #: _inc/blocks/create-with-voice/block.json
 msgctxt "block description"
@@ -35,24 +121,19 @@ msgstr "答案反馈的缓存上下文无效。"
 msgid "Invalid response from the server."
 msgstr "服务器响应无效。"
 
-#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:137
+#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:136
 msgid "Subscribe now to keep reading and get access to the full archive."
 msgstr "立即订阅以继续阅读并访问完整档案。"
 
-#: modules/module-headings.php:101
-msgctxt "Module Description"
-msgid "Most modern browsers already support lazy loading. With over 90% of current browsers offering native support, enabling this feature may be unnecessary."
-msgstr "大多数现代浏览器已经支持延迟加载。 目前超过 90% 的浏览器都提供本地支持，因此可能没有必要启用此功能。"
-
 #. translators: %s: number of folks following the blog, thousands(K) with one
 #. decimal. i.e. 1.1
-#: modules/memberships/class-jetpack-memberships.php:641
+#: modules/memberships/class-jetpack-memberships.php:674
 msgid "Join %sK other subscribers"
 msgstr "加入 %s 千其他订阅者"
 
 #. translators: %s: number of folks following the blog, millions(M) with one
 #. decimal. i.e. 1.1
-#: modules/memberships/class-jetpack-memberships.php:637
+#: modules/memberships/class-jetpack-memberships.php:670
 msgid "Join %sM other subscribers"
 msgstr "加入 %s 百万其他订阅者"
 
@@ -61,32 +142,30 @@ msgid "Site Monitoring"
 msgstr "站点监控"
 
 #: modules/masterbar/admin-menu/class-admin-menu.php:114
+#: modules/masterbar/admin-menu/class-domain-only-admin-menu.php:66
 msgid "My Mailboxes"
 msgstr "我的邮箱"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1108
+#: extensions/blocks/subscriptions/subscriptions.php:1232
 msgid "Please check your inbox to confirm your subscription."
 msgstr "请查看您的收件箱，以确认您的订阅。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1106
+#: extensions/blocks/subscriptions/subscriptions.php:1230
 msgid "Verify your email and continue reading"
 msgstr "验证您的电子邮件并继续阅读"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1066
+#: extensions/blocks/subscriptions/subscriptions.php:1189
 msgid "Already a subscriber?"
 msgstr "已经是订阅者？"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1065
+#: extensions/blocks/subscriptions/subscriptions.php:1188
 msgid "Already a paid subscriber?"
 msgstr "已经是付费订阅者？"
 
-#: extensions/blocks/ai-chat/ai-chat.php:62 _inc/blocks/editor-beta.js:6
+#: extensions/blocks/ai-chat/ai-chat.php:52 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 msgid "Ask a question about this site."
 msgstr "询问有关此站点的问题。"
-
-#: extensions/blocks/ai-chat/ai-chat.php:40
-msgid "Override for the Jetpack AI prompt in the Jetpack AI Search feature."
-msgstr "覆盖“Jetpack AI Search”功能中的 Jetpack AI 提示。"
 
 #: _inc/blocks/wordads/block.json
 msgctxt "block keyword"
@@ -112,11 +191,6 @@ msgstr "通过在文章中添加优质广告赚取收入。"
 msgctxt "block title"
 msgid "Ad"
 msgstr "广告"
-
-#: _inc/blocks/tock/block.json
-msgctxt "block description"
-msgid "Allow visitors to reserve a table at your restaurant with Tock."
-msgstr "允许访客使用 Tock 在您的餐厅预订桌位。"
 
 #: _inc/blocks/tock/block.json
 msgctxt "block title"
@@ -180,8 +254,8 @@ msgstr "紧凑"
 
 #: _inc/blocks/subscriptions/block.json
 msgctxt "block description"
-msgid "Let readers subscribe to this blog's posts as a newsletter."
-msgstr "让读者以时事通讯的方式订阅此博客的文章。"
+msgid "Subscribe to this blog's posts as a newsletter."
+msgstr "以时事通讯的方式订阅此博客的文章。"
 
 #: _inc/blocks/subscriptions/block.json
 msgctxt "block title"
@@ -225,8 +299,8 @@ msgstr "幻灯片"
 
 #: _inc/blocks/simple-payments/block.json
 msgctxt "block description"
-msgid "Lets you add credit and debit card payment buttons with minimal setup. Good for collecting donations or payments for products and services."
-msgstr "让您以最少的设置添加信用卡和借记卡支付按钮。 有利于收取捐赠或产品和服务的付款。"
+msgid "Add credit and debit card payment buttons with minimal setup. Good for collecting donations or payments for products and services."
+msgstr "以最少的设置添加信用卡和借记卡付款按钮。 有利于收集捐赠或为产品和服务支付的款项。"
 
 #: _inc/blocks/simple-payments/block.json
 msgctxt "block title"
@@ -458,16 +532,6 @@ msgctxt "block keyword"
 msgid "more"
 msgstr "更多"
 
-#: _inc/blocks/paywall/block.json
-msgctxt "block description"
-msgid "Content before this block will be shown in the excerpt on your archives page."
-msgstr "在此区块之前的内容都会显示在存档页面的摘录中。"
-
-#: _inc/blocks/paywall/block.json
-msgctxt "block title"
-msgid "Paywall (Beta)"
-msgstr "付费墙（测试版）"
-
 #: _inc/blocks/payment-buttons/block.json
 #: _inc/blocks/premium-content/block.json
 #: _inc/blocks/recurring-payments/block.json
@@ -547,11 +611,6 @@ msgid "buy"
 msgstr "购买"
 
 #: _inc/blocks/payment-buttons/block.json
-msgctxt "block description"
-msgid "Prompt visitors to purchase your products and subscriptions with a group of buttons."
-msgstr "使用一组按钮提示访客购买您的商品和订阅。"
-
-#: _inc/blocks/payment-buttons/block.json
 msgctxt "block title"
 msgid "Payment Buttons"
 msgstr "付款按钮"
@@ -572,11 +631,6 @@ msgid "booking"
 msgstr "预订"
 
 #: _inc/blocks/opentable/block.json
-msgctxt "block description"
-msgid "Allow visitors to book a reservation with OpenTable"
-msgstr "允许访客使用 OpenTable 预订"
-
-#: _inc/blocks/opentable/block.json
 msgctxt "block title"
 msgid "OpenTable"
 msgstr "OpenTable"
@@ -595,11 +649,6 @@ msgstr "语法"
 msgctxt "block keyword"
 msgid "formatting"
 msgstr "格式"
-
-#: _inc/blocks/markdown/block.json
-msgctxt "block description"
-msgid "Use regular characters and punctuation to style text, links, and lists."
-msgstr "使用常规字符和标点符号来设置文本、链接和列表的样式。"
 
 #: _inc/blocks/markdown/block.json
 msgctxt "block title"
@@ -644,8 +693,8 @@ msgstr "订阅"
 
 #: _inc/blocks/mailchimp/block.json
 msgctxt "block description"
-msgid "A form enabling readers to join a Mailchimp audience."
-msgstr "使读者能加入Mailchimp 受众的表单。"
+msgid "Allow readers to join a Mailchimp audience."
+msgstr "让读者加入 Mailchimp 受众。"
 
 #: _inc/blocks/mailchimp/block.json
 msgctxt "block title"
@@ -734,8 +783,8 @@ msgstr "Google Docs（测试版）"
 
 #: _inc/blocks/google-calendar/block.json
 msgctxt "block description"
-msgid "Embed a Google Calendar"
-msgstr "嵌入 Google 日历"
+msgid "Embed a Google Calendar."
+msgstr "嵌入 Google 日历。"
 
 #: _inc/blocks/google-calendar/block.json
 msgctxt "block title"
@@ -974,8 +1023,8 @@ msgstr "cookie"
 
 #: _inc/blocks/cookie-consent/block.json
 msgctxt "block description"
-msgid "Displays a customizable cookie consent banner. To display this block on all pages of your site, please add it inside a Template Part that is present on all your templates, like a Header or a Footer."
-msgstr "显示可定制的 cookie 同意横幅。 要在您站点的所有页面上显示此区块，请将其添加到“模板部分”内，这一部分会显示在您的所有模板上，例如页眉或页脚。"
+msgid "Display a customizable cookie consent banner. To display this block on all pages of your site, please add it inside a Template Part that is present on all your templates, like a Header or a Footer."
+msgstr "显示可定制的 cookie 同意横幅。 要在您站点的所有页面上显示此区块，请将其添加到“模板部分”内，这一部分会显示在您的所有模板上，例如标题或页脚。"
 
 #: _inc/blocks/cookie-consent/block.json
 msgctxt "block title"
@@ -994,8 +1043,8 @@ msgstr "电话"
 
 #: _inc/blocks/contact-info/block.json
 msgctxt "block description"
-msgid "Lets you add an email address, phone number, and physical address with improved markup for better SEO results."
-msgstr "允许您添加电子邮件地址、电话号码和实际地址，通过经过改进的标记获得更好的 SEO 结果。"
+msgid "Add an email address, phone number, and physical address with improved markup for better SEO results."
+msgstr "添加电子邮件地址、电话号码和实际地址，通过经过改进的标记获得更好的 SEO 结果。"
 
 #: _inc/blocks/contact-info/block.json
 msgctxt "block title"
@@ -1025,8 +1074,8 @@ msgstr "日历"
 
 #: _inc/blocks/calendly/block.json
 msgctxt "block description"
-msgid "Embed a calendar for customers to schedule appointments"
-msgstr "嵌入日历，使客户可以安排预约"
+msgid "Embed a calendar for customers to schedule appointments."
+msgstr "嵌入日历，使客户可以安排预约。"
 
 #: _inc/blocks/calendly/block.json
 msgctxt "block title"
@@ -1083,11 +1132,6 @@ msgstr "每天回复一个新的启发性写作提示。"
 msgctxt "block title"
 msgid "Writing Prompt"
 msgstr "写作提示"
-
-#: _inc/blocks/blogroll/block.json
-msgctxt "block description"
-msgid "Select the sites you follow and share them with your users."
-msgstr "选择您关注的站点并与您的用户分享。"
 
 #: _inc/blocks/amazon/block.json
 msgctxt "block keyword"
@@ -1149,16 +1193,6 @@ msgctxt "block keyword"
 msgid "Chat"
 msgstr "聊天"
 
-#: _inc/blocks/ai-chat/block.json
-msgctxt "block description"
-msgid "Provides summarized chat across a site’s content, powered by AI magic."
-msgstr "借助 AI magic 提供站点内容的汇总聊天。"
-
-#: _inc/blocks/ai-chat/block.json
-msgctxt "block title"
-msgid "AI Chat (Beta)"
-msgstr "AI 聊天（测试版）"
-
 #: _inc/blocks/ai-assistant/block.json _inc/blocks/create-with-voice/block.json
 msgctxt "block keyword"
 msgid "assistant"
@@ -1193,11 +1227,6 @@ msgstr "GPT"
 msgctxt "block keyword"
 msgid "AI"
 msgstr "AI"
-
-#: _inc/blocks/ai-assistant/block.json
-msgctxt "block description"
-msgid "Automatically generate and modify content, powered by AI magic. The AI Assistant can be imprecise with information about people, places, or facts. We are experimenting with this feature and can tweak or remove it at any point."
-msgstr "借助 AI magic 自动生成和修改内容。 AI Assistant 对人物、地点或事实的信息可能不精确。 我们正在试验此功能，可以随时调整或删除。"
 
 #: _inc/blocks/ai-assistant/block.json
 msgctxt "block title"
@@ -1236,7 +1265,7 @@ msgctxt "block title"
 msgid "Form"
 msgstr "表单"
 
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:483
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:491
 msgid "Product not found."
 msgstr "未找到任何产品。"
 
@@ -1284,25 +1313,24 @@ msgstr "URL 密钥不存在。"
 msgid "Lead Capture Form"
 msgstr "销售线索收集表单"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1139
+#: extensions/blocks/subscriptions/subscriptions.php:1263
 msgid "Upgrade subscription"
 msgstr "升级订阅"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1137
+#: extensions/blocks/subscriptions/subscriptions.php:1261
 msgid "You're currently a free subscriber. Upgrade your subscription to get access to the rest of this post and other paid-subscriber only content."
 msgstr "您当前是免费订阅者。 升级订阅以查看本文章剩余内容以及其他付费订阅者专享内容。"
 
 #. translators: %s is the name of the site.
-#: extensions/blocks/subscriptions/subscriptions.php:1062
+#: extensions/blocks/subscriptions/subscriptions.php:1185
 msgid "Subscribe to get access to the rest of this post and other subscriber-only content."
 msgstr "订阅以查看本文章剩余内容以及其他订阅者专享内容。"
 
-#. translators: %s is the name of the site.
-#: extensions/blocks/subscriptions/subscriptions.php:1060
+#: extensions/blocks/subscriptions/subscriptions.php:1183
 msgid "Become a paid subscriber to get access to the rest of this post and other exclusive content."
 msgstr "成为付费订阅者，以查看本文章剩余内容以及其他专属内容。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1056
+#: extensions/blocks/subscriptions/subscriptions.php:1177
 msgid "Subscribe to continue reading"
 msgstr "订阅以继续阅读"
 
@@ -1316,28 +1344,28 @@ msgid "earn, paypal, stripe, payments, pay"
 msgstr "赚取收益、PayPal、Stripe、付款、支付"
 
 #. translators: %s is the name of the site.
-#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:136
+#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:135
 msgid "Continue Reading"
 msgstr "继续阅读"
 
 #. translators: %s is the name of the site.
-#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:135
+#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:134
 msgid "Discover more from %s"
 msgstr "了解 %s 的更多信息"
 
-#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:122
+#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:121
 msgid "A subscribe form that pops up when someone visits your site"
 msgstr "当有人访问您的站点时弹出的订阅表单"
 
-#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:118
+#: modules/subscriptions/subscribe-modal/class-jetpack-subscribe-modal.php:117
 msgid "Jetpack Subscribe modal"
 msgstr "Jetpack 订阅模式"
 
-#: modules/subscriptions.php:499
+#: modules/subscriptions.php:502
 msgid "Show a popup subscribe modal to readers."
 msgstr "向读者显示弹出式订阅模式。"
 
-#: modules/subscriptions.php:364
+#: modules/subscriptions.php:367
 msgid "Enable Subscribe Modal"
 msgstr "启用订阅模式"
 
@@ -1402,7 +1430,7 @@ msgstr "无法创建订阅者。"
 msgid "Your email address must be verified."
 msgstr "您的电子邮件地址必须经过验证。"
 
-#: modules/sharedaddy/sharing-sources.php:3086
+#: modules/sharedaddy/sharing-sources.php:3262
 msgid "Click to share on Nextdoor"
 msgstr "点击可在 Nextdoor 上共享"
 
@@ -1438,6 +1466,10 @@ msgstr "在设置 Tock 商家名称之前，该区块不会向您的站点访客
 #: class.jetpack-gutenberg.php:1270
 msgid "This block is no longer supported. Its contents will no longer be displayed to your visitors and as such this block should be removed."
 msgstr "该区块不再受支持。 该区块的内容将不再向您的访客显示，因此应删除它。"
+
+#: extensions/blocks/blogroll/blogroll.php:81
+msgid "Site Recommendations"
+msgstr "站点推荐"
 
 #: jetpack_vendor/automattic/jetpack-backup/build/index.js:15
 #: jetpack_vendor/automattic/jetpack-backup/src/js/components/backup-storage-space/storage-help-popover/index.jsx:108
@@ -1754,11 +1786,11 @@ msgstr "URL 参数为必填项"
 msgid "Invalid response from WPCOM API while polling for speed scores"
 msgstr "在为速度得分投票时，WPCOM API 的响应无效"
 
-#: extensions/blocks/subscriptions/subscriptions.php:165
+#: extensions/blocks/subscriptions/subscriptions.php:181
 msgid "Paid Subscribers"
 msgstr "付费订阅者"
 
-#: extensions/blocks/ai-chat/ai-chat.php:61
+#: extensions/blocks/ai-chat/ai-chat.php:51
 msgid "Ask"
 msgstr "询问"
 
@@ -1896,14 +1928,14 @@ msgstr "提示的标签。"
 
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v3-endpoint-blogging-prompts.php:306
 #: jetpack_vendor/automattic/jetpack-forms/dist/dashboard/jetpack-forms-dashboard.js:2
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor.js:8
+#: _inc/blocks/editor-beta.js:19 _inc/blocks/editor-experimental.js:19
+#: _inc/blocks/editor.js:9
 msgid "View all responses"
 msgstr "查看所有回复"
 
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v3-endpoint-blogging-prompts.php:274
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor.js:8
+#: _inc/blocks/editor-beta.js:19 _inc/blocks/editor-experimental.js:19
+#: _inc/blocks/editor.js:9
 msgid "Daily writing prompt"
 msgstr "每日写作提示"
 
@@ -1928,7 +1960,7 @@ msgid "Highlights"
 msgstr "亮点"
 
 #. translators: %1$s is a link to the WordPress.com account settings page.
-#: modules/sso.php:100
+#: modules/sso.php:123
 msgid "If you are on a shared computer, remember to also <a href=\"%1$s\">log out of WordPress.com</a>."
 msgstr "如果您使用的是共享计算机，最好同时<a href=\"%1$s\">注销 WordPress.com</a>。"
 
@@ -2163,17 +2195,17 @@ msgstr "我们已添加新的统计信息和数据分析，提供更现代和更
 msgid "Explore the new Jetpack Stats"
 msgstr "探索新的 Jetpack Stats"
 
-#: modules/sharedaddy/sharing-sources.php:2974
+#: modules/sharedaddy/sharing-sources.php:3150
 msgid "Click to share on Mastodon"
 msgstr "点击以在 Mastodon 上共享"
 
-#: modules/sharedaddy/sharing-sources.php:2973
+#: modules/sharedaddy/sharing-sources.php:3149
 msgctxt "share to"
 msgid "Mastodon"
 msgstr "Mastodon"
 
-#: modules/sharedaddy/sharing-sources.php:2960 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor.js:6
+#: modules/sharedaddy/sharing-sources.php:3136 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 #: _inc/build/admin.js:16
 msgid "Mastodon"
 msgstr "Mastodon"
@@ -2211,11 +2243,11 @@ msgstr "反馈"
 msgid "Response Date"
 msgstr "回答日期"
 
-#: extensions/blocks/subscriptions/subscriptions.php:171
+#: extensions/blocks/subscriptions/subscriptions.php:187
 msgid "Everybody"
 msgstr "所有人"
 
-#: extensions/blocks/subscriptions/subscriptions.php:142
+#: extensions/blocks/subscriptions/subscriptions.php:158
 #: modules/masterbar/admin-menu/class-admin-menu.php:374
 #: modules/masterbar/admin-menu/class-jetpack-admin-menu.php:273
 #: _inc/build/admin.js:67 _inc/build/admin.js:77
@@ -2328,7 +2360,7 @@ msgid "#%d (no title)"
 msgstr "#%d（无标题）"
 
 #. translators: %s is the permalink url to the current post.
-#: extensions/blocks/subscriptions/subscriptions.php:950
+#: extensions/blocks/subscriptions/subscriptions.php:1026
 msgid "<p><a href='%s'>View post</a> to subscribe to site newsletter.</p>"
 msgstr "<p><a href='%s'>查看文章</a>，订阅站点电子报。</p>"
 
@@ -2426,7 +2458,7 @@ msgstr "帖子是否已被分享。"
 msgid "Blaze &#8220;%s&#8221; to Tumblr and WordPress.com audiences."
 msgstr "向 Tumblr 和 WordPress.com 的受众大力宣传“%s”。"
 
-#: class.jetpack.php:6786
+#: class.jetpack.php:6792
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-security.php:39
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-security.php:48
 #: modules/stats/class-jetpack-stats-upgrade-nudges.php:409
@@ -2596,7 +2628,7 @@ msgstr "VaultPress Backup"
 msgid "Jetpack Akismet Anti-spam"
 msgstr "Jetpack Akismet Anti-spam"
 
-#: class-jetpack-stats-dashboard-widget.php:210 class.jetpack.php:6772
+#: class-jetpack-stats-dashboard-widget.php:210 class.jetpack.php:6778
 #: jetpack_vendor/automattic/jetpack-admin-ui/src/class-admin-menu.php:63
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-anti-spam.php:52
 #: modules/stats/class-jetpack-stats-upgrade-nudges.php:455
@@ -2616,9 +2648,9 @@ msgid "Jetpack VaultPress Backup"
 msgstr "Jetpack VaultPress Backup"
 
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-util.php:46
-#: modules/contact-form.php:60 _inc/blocks/editor-beta.js:78
-#: _inc/blocks/editor-experimental.js:75
-#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:65
+#: modules/contact-form.php:60 _inc/blocks/editor-beta.js:80
+#: _inc/blocks/editor-experimental.js:79
+#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:69
 msgid "Forms"
 msgstr "表单"
 
@@ -2666,7 +2698,7 @@ msgstr "Jetpack - 安全、备份、加速和发展工具"
 msgid "Purchase a Business Plan to<br> activate CSS customization"
 msgstr "购买商务版套餐以<br>激活 CSS 定制功能"
 
-#: modules/subscriptions.php:1063
+#: modules/subscriptions.php:1066
 msgid "Whether the post was ever published."
 msgstr "此文章是否曾经发布过。"
 
@@ -2973,7 +3005,7 @@ msgstr "Google 文档嵌入"
 msgid "This document is private. To view the document, login to a Google account that the document has been shared with and then refresh this page."
 msgstr "此文档是私人的。 要查看文档，请登录到已共享此文档的 Google 账户，然后刷新此页面。"
 
-#: class.jetpack.php:6735
+#: class.jetpack.php:6741
 msgid "* Subject to your usage and storage limit."
 msgstr "* 具体取决于您的使用和存储容量限制。"
 
@@ -3062,7 +3094,7 @@ msgid "You cannot view this video."
 msgstr "您无法查看此视频。"
 
 #. translators: Both %1$s and %2$s is site address
-#: modules/subscriptions.php:629 modules/subscriptions/views.php:1032
+#: modules/subscriptions.php:632 modules/subscriptions/views.php:1032
 msgid ""
 "Howdy,\n"
 "You recently subscribed to <a href='%1$s'>%2$s</a> and we need to verify the email you provided. Once you confirm below, you'll be able to receive and read new posts.\n"
@@ -3179,7 +3211,7 @@ msgstr "Jetpack Protect"
 msgid "Your plan does not support %s."
 msgstr "您的套餐不支持 %s。"
 
-#: class.jetpack.php:6752
+#: class.jetpack.php:6758
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:82
 msgctxt "Scan Product Feature"
 msgid "Access to latest Firewall rules"
@@ -3428,7 +3460,7 @@ msgstr "上传处理程序无法上传文件"
 msgid "All Jetpack’s great features await you and we’ll recommend some of our favorites"
 msgstr "Jetpack 有大量出色功能等待您来体验，我们还会推荐一些我们最喜欢的功能"
 
-#: extensions/blocks/subscriptions/subscriptions.php:590
+#: extensions/blocks/subscriptions/subscriptions.php:642
 #: _inc/blocks/editor-beta.js:51 _inc/blocks/editor-beta.js:52
 #: _inc/blocks/editor-experimental.js:50 _inc/blocks/editor-experimental.js:51
 #: _inc/blocks/editor.js:40 _inc/blocks/editor.js:41
@@ -3789,7 +3821,7 @@ msgstr "许可证附加请求失败。"
 msgid "Jetpack doesn't have a connected owner."
 msgstr "Jetpack 没有已连接的所有者。"
 
-#: jetpack_vendor/automattic/jetpack-lazy-images/src/lazy-images.php:535
+#: jetpack_vendor/automattic/jetpack-lazy-images/src/lazy-images.php:602
 msgid "Images are still loading. Please cancel your print and try again."
 msgstr "图像仍在加载中。 请取消打印，然后重试。"
 
@@ -4050,28 +4082,28 @@ msgstr "%s 必须为非负整数。"
 msgid "Missing parameter \"last_detached_count\"."
 msgstr "缺少参数“last_detached_count”。"
 
-#: class.jetpack.php:6793
+#: class.jetpack.php:6799
 msgctxt "Security Tier 1 Feature"
 msgid "Real-time cloud backups with 10GB storage"
 msgstr "实时云备份（10GB 存储空间）"
 
-#: class.jetpack.php:6788
+#: class.jetpack.php:6794
 msgid "Comprehensive site security, including Backup, Scan, and Anti-spam."
 msgstr "全面的站点安全，包括备份、扫描和反垃圾邮件。"
 
-#: class.jetpack.php:6731
+#: class.jetpack.php:6737
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-backup.php:99
 msgctxt "Backup Product Feature"
 msgid "30-day archive & activity log*"
 msgstr "30 天存档和动态记录*"
 
-#: class.jetpack.php:6730
+#: class.jetpack.php:6736
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-backup.php:98
 msgctxt "Backup Product Feature"
 msgid "10GB of backup storage"
 msgstr "10GB 备份存储空间"
 
-#: class.jetpack.php:6729
+#: class.jetpack.php:6735
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-backup.php:97
 msgctxt "Backup Product Feature"
 msgid "Real-time cloud backups"
@@ -4134,142 +4166,142 @@ msgstr "通过专为 WordPress 打造的优质无广告视频吸引访客。"
 msgid "Whether or not the Share Post feature is enabled."
 msgstr "无论是否启用“共享文章”功能。"
 
-#: class.jetpack.php:6811
+#: class.jetpack.php:6817
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:110
 msgctxt "VideoPress Product Feature"
 msgid "Unlimited users"
 msgstr "用户数不受限"
 
-#: class.jetpack.php:6810
+#: class.jetpack.php:6816
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:109
 msgctxt "VideoPress Product Feature"
 msgid "Ad-free and customizable player"
 msgstr "无广告、可定制的播放器"
 
-#: class.jetpack.php:6809
+#: class.jetpack.php:6815
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:108
 msgctxt "VideoPress Product Feature"
 msgid "Built into WordPress editor"
 msgstr "内置在 WordPress 编辑器中"
 
-#: class.jetpack.php:6808
+#: class.jetpack.php:6814
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:107
 msgctxt "VideoPress Product Feature"
 msgid "1TB of storage"
 msgstr "1TB 的存储空间"
 
-#: class.jetpack.php:6796
+#: class.jetpack.php:6802
 msgctxt "Security Daily Plan Feature"
 msgid "Comment & form spam protection"
 msgstr "垃圾评论和表单保护"
 
-#: class.jetpack.php:6795
+#: class.jetpack.php:6801
 msgctxt "Security Daily Plan Feature"
 msgid "One-click fixes for most threats"
 msgstr "一键修复大多数威胁"
 
-#: class.jetpack.php:6794
+#: class.jetpack.php:6800
 msgctxt "Security Daily Plan Feature"
 msgid "Automated real-time malware scan"
 msgstr "自动实时扫描恶意软件"
 
-#: class.jetpack.php:6781
+#: class.jetpack.php:6787
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-anti-spam.php:91
 msgctxt "Anti-Spam Product Feature"
 msgid "Advanced stats"
 msgstr "高级统计"
 
-#: class.jetpack.php:6780
+#: class.jetpack.php:6786
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-anti-spam.php:90
 msgctxt "Anti-Spam Product Feature"
 msgid "Block spam without CAPTCHAs"
 msgstr "不需要输入 Captcha 也能阻挡垃圾邮件"
 
-#: class.jetpack.php:6779
+#: class.jetpack.php:6785
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-anti-spam.php:89
 msgctxt "Anti-Spam Product Feature"
 msgid "Comment and form spam protection"
 msgstr "垃圾评论和表单保护"
 
-#: class.jetpack.php:6774
+#: class.jetpack.php:6780
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-anti-spam.php:79
 msgid "Save time and get better responses by automatically blocking spam from your comments and forms."
 msgstr "通过自动阻止来自您的评论和表单的垃圾邮件，节省时间并获得更好的回复。"
 
-#: class.jetpack.php:6767
+#: class.jetpack.php:6773
 msgctxt "Search Product Feature"
 msgid "Spelling correction"
 msgstr "拼写校正"
 
-#: class.jetpack.php:6766
+#: class.jetpack.php:6772
 msgctxt "Search Product Feature"
 msgid "Supports 38 languages"
 msgstr "支持 38 种语言"
 
-#: class.jetpack.php:6765
+#: class.jetpack.php:6771
 msgctxt "Search Product Feature"
 msgid "Powerful filtering"
 msgstr "强大的过滤器"
 
-#: class.jetpack.php:6764
+#: class.jetpack.php:6770
 msgctxt "Search Product Feature"
 msgid "Instant search and indexing"
 msgstr "即时搜索和编目"
 
-#: class.jetpack.php:6759
+#: class.jetpack.php:6765
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-search.php:101
 msgid "Help your site visitors find answers instantly so they keep reading and buying. Great for sites with a lot of content."
 msgstr "帮助您的站点访客找到答案，以便他们可以继续阅读和购买。 非常适合内容丰富的站点。"
 
-#: class.jetpack.php:6757
+#: class.jetpack.php:6763
 msgid "Jetpack Site Search"
 msgstr "Jetpack 站点搜索"
 
-#: class.jetpack.php:6751
+#: class.jetpack.php:6757
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:81
 msgctxt "Scan Product Feature"
 msgid "Instant email notifications"
 msgstr "即时电子邮件通知"
 
-#: class.jetpack.php:6750
+#: class.jetpack.php:6756
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:80
 msgctxt "Scan Product Feature"
 msgid "One-click fixes for most issues"
 msgstr "一键修复大多数问题"
 
-#: class.jetpack.php:6749
+#: class.jetpack.php:6755
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:79
 msgctxt "Scan Product Feature"
 msgid "Automated daily scanning"
 msgstr "每日自动扫描"
 
-#: class.jetpack.php:6744
+#: class.jetpack.php:6750
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:69
 msgid "Automatic scanning and one-click fixes keep your site one step ahead of security threats and malware."
 msgstr "自动扫描和一键修复可让您的站点领先一步防范安全威胁和恶意软件。"
 
-#: class.jetpack.php:6826
+#: class.jetpack.php:6832
 msgctxt "Backup Product Feature"
 msgid "Unlimited backup storage"
 msgstr "无限的备份存储空间"
 
-#: class.jetpack.php:6732 class.jetpack.php:6825
+#: class.jetpack.php:6738 class.jetpack.php:6831
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-backup.php:100
 msgctxt "Backup Product Feature"
 msgid "One-click restores"
 msgstr "一键还原"
 
-#: class.jetpack.php:6824
+#: class.jetpack.php:6830
 msgctxt "Backup Product Feature"
 msgid "Automated daily backups (off-site)"
 msgstr "每日自动备份（离线）"
 
-#: class.jetpack.php:6724 class.jetpack.php:6819
+#: class.jetpack.php:6730 class.jetpack.php:6825
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-backup.php:87
 msgid "Never lose a word, image, page, or time worrying about your site with automated backups & one-click restores."
 msgstr "借助自动备份和一键式还原功能，您不会再为担心您的站点而花费任何文字、图像、页面或时间。"
 
-#: class.jetpack.php:6801
+#: class.jetpack.php:6807
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:79
 #: jetpack_vendor/automattic/jetpack-videopress/src/class-admin-ui.php:38
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:8
@@ -4278,7 +4310,7 @@ msgstr "借助自动备份和一键式还原功能，您不会再为担心您的
 msgid "Jetpack VideoPress"
 msgstr "Jetpack VideoPress"
 
-#: class.jetpack.php:6803
+#: class.jetpack.php:6809
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-videopress.php:97
 #: _inc/build/admin.js:65
 msgid "High-quality, ad-free video built specifically for WordPress."
@@ -4352,7 +4384,6 @@ msgid "Hulu no longer allows embedding content."
 msgstr "Hulu 不再允许嵌入内容。"
 
 #: jetpack_vendor/automattic/jetpack-forms/src/dashboard/class-dashboard-view-switch.php:62
-#: modules/masterbar/admin-menu/class-domain-only-admin-menu.php:66
 #: jetpack_vendor/automattic/jetpack-forms/dist/dashboard/jetpack-forms-dashboard.js:2
 msgid "Inbox"
 msgstr "收件箱"
@@ -4393,8 +4424,8 @@ msgstr "激活 CRM"
 #. translators: "Boost" action on a Mastodon post
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-boost.php:59
 #: modules/stats/class-jetpack-stats-upgrade-nudges.php:504
-#: _inc/blocks/editor-beta.js:163 _inc/blocks/editor-experimental.js:160
-#: _inc/blocks/editor.js:150 _inc/build/admin.js:151
+#: _inc/blocks/editor-beta.js:166 _inc/blocks/editor-experimental.js:165
+#: _inc/blocks/editor.js:155 _inc/build/admin.js:151
 msgid "Boost"
 msgstr "提升"
 
@@ -4442,8 +4473,8 @@ msgstr "点赞或转载"
 
 #. translators: Placeholder is a link to a support document.
 #: jetpack.php:172
-msgid "Your installation of Jetpack is incomplete. If you installed Jetpack from GitHub, please refer to <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">this document</a> to set up your development environment. Jetpack must have Composer dependencies installed and built via the build command."
-msgstr "您的 Jetpack 安装不完整。 如果您从 GitHub 安装 Jetpack，请参阅<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">此文档</a>来设置您的开发环境。 Jetpack 必须通过 build 命令安装和构建 Composer 依赖项。"
+msgid "Your installation of Jetpack is incomplete. If you installed Jetpack from GitHub, please refer to <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">this document</a> to set up your development environment. Jetpack must have Composer dependencies installed and built via the build command: <code>jetpack build plugins/jetpack --with-deps</code>"
+msgstr "您的 Jetpack 安装不完整。 如果您从 GitHub 安装 Jetpack，请参阅<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">此文档</a>来设置您的开发环境。 Jetpack 必须通过 build 命令安装和构建 Composer 依赖项：<code>jetpack build plugins/jetpack --with-deps</code>"
 
 #: class.jetpack-gutenberg.php:570
 msgid "No map preview available. Publish and refresh to see this widget."
@@ -4584,8 +4615,8 @@ msgstr "产品（面向 WooCommerce 商店）"
 msgid "Expanded (shows images)"
 msgstr "已展开（显示图片）"
 
-#: class.jetpack-admin.php:144 class.jetpack-admin.php:147
-#: class.jetpack-admin.php:150 class.jetpack-admin.php:152
+#: class.jetpack-admin.php:148 class.jetpack-admin.php:151
+#: class.jetpack-admin.php:154 class.jetpack-admin.php:156
 #: modules/masterbar/admin-menu/class-wpcom-admin-menu.php:335
 #: modules/masterbar/nudges/additional-css/class-css-customizer-nudge.php:126
 msgid "Additional CSS"
@@ -4656,23 +4687,23 @@ msgstr "首页元数据说明。"
 msgid "Facebook Domain Verification"
 msgstr "Facebook 域名验证"
 
-#: class.jetpack-admin.php:487
+#: class.jetpack-admin.php:491
 msgid "Not supported by current plan"
 msgstr "当前套餐不支持"
 
-#: class.jetpack-admin.php:480
+#: class.jetpack-admin.php:484
 msgid "Requires a connected WordPress.com account"
 msgstr "需要已连接的WordPress.com帐户"
 
-#: class.jetpack-admin.php:473
+#: class.jetpack-admin.php:477
 msgid "Jetpack is not connected"
 msgstr "Jetpack未连接"
 
-#: class.jetpack-admin.php:465
+#: class.jetpack-admin.php:469
 msgid "Offline mode"
 msgstr "离线模式"
 
-#: class.jetpack-admin.php:456
+#: class.jetpack-admin.php:460
 msgid "Requires WooCommerce 3+ plugin"
 msgstr "要求WooCommerce 3+插件"
 
@@ -4684,9 +4715,9 @@ msgstr "由 WordPress 专家打造的安全、性能和营销工具。Jetpack �
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1072
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-experimental.js:37
-#: _inc/blocks/editor.js:27
+#: extensions/blocks/subscriptions/subscriptions.php:1196
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-experimental.js:39
+#: _inc/blocks/editor.js:29
 msgid "Log in"
 msgstr "登录"
 
@@ -4705,7 +4736,7 @@ msgstr "免费"
 msgid "WP Admin"
 msgstr "WP 管理"
 
-#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:721
+#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:726
 msgid "Invalid Cloudflare Analytics ID"
 msgstr "Cloudflare Analytics ID 无效"
 
@@ -4780,7 +4811,7 @@ msgstr "连接到 Stripe 以在您的站点上使用此区块。"
 msgid "Log In"
 msgstr "登录"
 
-#: modules/seo-tools/class-jetpack-seo.php:165
+#: modules/seo-tools/class-jetpack-seo.php:164
 msgid "the author"
 msgstr "作者"
 
@@ -5066,9 +5097,9 @@ msgstr "该文章是否应视为 Twitter 会话。"
 msgid "The Jetpack Forms extension could not be activated."
 msgstr "无法激活 Jetpack 表单扩展程序。"
 
-#: extensions/blocks/eventbrite/eventbrite.php:114 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:6
+#: extensions/blocks/eventbrite/eventbrite.php:114 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:7
 msgid "Expand"
 msgstr "展开"
 
@@ -5076,9 +5107,9 @@ msgstr "展开"
 msgid "Jetpack is not connected. No blog token to check."
 msgstr "未连接 Jetpack。 没有要检查的博客令牌。"
 
-#: extensions/blocks/donations/donations.php:72 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:72 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Choose an amount"
 msgstr "选择金额"
 
@@ -5153,61 +5184,61 @@ msgstr "WordPress.org插件目录别名。"
 msgid "There was an error installing Creative Mail."
 msgstr "安装创意邮件时出错。"
 
-#: extensions/blocks/donations/donations.php:116 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:8
-#: _inc/blocks/editor.js:10
+#: extensions/blocks/donations/donations.php:116 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:20
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:10
+#: _inc/blocks/editor.js:12
 msgid "One-Time"
 msgstr "一次性"
 
-#: extensions/blocks/donations/donations.php:63 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:63 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Donate yearly"
 msgstr "每年捐赠"
 
-#: extensions/blocks/donations/donations.php:52 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:52 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Donate monthly"
 msgstr "每月捐赠"
 
-#: extensions/blocks/donations/donations.php:41 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:41 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Donate"
 msgstr "捐赠"
 
 #: extensions/blocks/donations/donations.php:40
 #: extensions/blocks/donations/donations.php:51
-#: extensions/blocks/donations/donations.php:62 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:62 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Your contribution is appreciated."
 msgstr "感谢您的贡献。"
 
-#: extensions/blocks/donations/donations.php:76 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:76 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Or enter a custom amount"
 msgstr "或输入自定义金额"
 
-#: extensions/blocks/donations/donations.php:61 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:61 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Make a yearly donation"
 msgstr "每年捐赠"
 
-#: extensions/blocks/donations/donations.php:50 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:50 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Make a monthly donation"
 msgstr "每月捐赠"
 
-#: extensions/blocks/donations/donations.php:39 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/donations/donations.php:39 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Make a one-time donation"
 msgstr "单次捐赠"
 
@@ -5309,8 +5340,8 @@ msgstr "显示最新的 Instagram 照片。"
 
 #: modules/widgets/class-jetpack-instagram-widget.php:43
 #: modules/widgets/class-jetpack-instagram-widget.php:72
-#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-experimental.js:6
-#: _inc/blocks/editor.js:6 _inc/build/admin.js:16
+#: _inc/blocks/editor-beta.js:7 _inc/blocks/editor-experimental.js:7
+#: _inc/blocks/editor.js:7 _inc/build/admin.js:16
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -5375,7 +5406,7 @@ msgstr "正在加载新页面"
 msgid "Excluded Post Types"
 msgstr "排除的文章类型"
 
-#: modules/sharedaddy/sharing-service.php:1160
+#: modules/sharedaddy/sharing-service.php:1161
 msgid "Customize buttons"
 msgstr "定制按钮"
 
@@ -5402,6 +5433,10 @@ msgstr "%1$s 文件将从版本 %2$s 的 Jetpack 插件中删除。"
 msgid "The %1$s function will be removed from the Jetpack plugin in version %2$s."
 msgstr "%1$s 功能将从版本 %2$s 的 Jetpack 插件中删除 。"
 
+#: class.jetpack-admin.php:98
+msgid "Anti-Spam"
+msgstr "反垃圾信息"
+
 #: class.jetpack.php:1696
 msgid "The jetpack_offline_mode filter is set to true."
 msgstr "jetpack_offline_mode 过滤器设置为 true。"
@@ -5419,8 +5454,8 @@ msgid "Jetpack is not in Offline Mode."
 msgstr "Jetpack 未处于离线模式。"
 
 #: modules/widgets/class-jetpack-instagram-widget.php:577
-#: _inc/blocks/editor-beta.js:126 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:128 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 msgid "Images"
 msgstr "图片"
 
@@ -5504,17 +5539,17 @@ msgstr "自定义 ads.txt"
 msgid "Failed fetching site data from WordPress.com. If the problem persists, try reconnecting Jetpack."
 msgstr "从 WordPress.com 获取站点数据失败。 如果问题仍然存在，请尝试重新连接 Jetpack。"
 
-#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:244
+#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:250
 msgid "You have used your space quota. Please delete files before uploading."
 msgstr "您已经用尽了您的空间配额，请在上传前删除一些文件。"
 
 #. translators: %s: Maximum allowed file size in kilobytes.
-#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:240
+#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:246
 msgid "This file is too big. Files must be less than %s KB in size."
 msgstr "此文件太大，文件必须小于%s KB。"
 
 #. translators: %s: Required disk space in kilobytes.
-#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:230
+#: json-endpoints/class.wpcom-json-api-upload-media-v1-1-endpoint.php:236
 msgid "Not enough space to upload. %s KB needed."
 msgstr "上传空间不足，需要%s KB。"
 
@@ -5768,8 +5803,8 @@ msgid "Rating: %1$s out of %2$s."
 msgstr "评分：%1$s 分，总分为 %2$s 分。"
 
 #: modules/widgets/class-jetpack-instagram-widget.php:475
-#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:21
-#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:11
+#: _inc/blocks/editor-beta.js:24 _inc/blocks/editor-experimental.js:23
+#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:13
 msgid "Connecting…"
 msgstr "正在连接…"
 
@@ -5794,7 +5829,7 @@ msgstr "有多少篇 Instagram 文章？"
 msgid "An Instagram Keyring access token."
 msgstr "Instagram 密钥环访问令牌。"
 
-#: class.jetpack.php:6742
+#: class.jetpack.php:6748
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-scan.php:51
 #: _inc/build/admin.js:65 _inc/build/admin.js:81
 msgid "Jetpack Scan"
@@ -5832,15 +5867,15 @@ msgid "Your site is not connected to Jetpack"
 msgstr "您的站点未连接 Jetpack"
 
 #: extensions/blocks/google-calendar/google-calendar.php:68
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-experimental.js:20
-#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:10
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:22
+#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:12
 msgid "Google Calendar"
 msgstr "Google 日历"
 
 #: modules/masterbar/admin-menu/class-admin-menu.php:344
 #: modules/masterbar/admin-menu/class-jetpack-admin-menu.php:251
-#: _inc/blocks/editor-beta.js:78 _inc/blocks/editor-experimental.js:75
-#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:65
+#: _inc/blocks/editor-beta.js:80 _inc/blocks/editor-experimental.js:79
+#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:69
 #: _inc/build/admin.js:59
 msgid "Earn"
 msgstr "赚取收入"
@@ -5870,15 +5905,15 @@ msgstr "您的播客 URL 无效，无法嵌入。请仔细检查您的 URL。"
 msgid "No Podcast URL provided. Please enter a valid Podcast RSS feed URL."
 msgstr "未提供播客 URL。请输入有效的播客 RSS 源 URL。"
 
-#: modules/sso.php:981
+#: modules/sso.php:1004
 msgid "Account not found. If you already have an account, make sure you have connected to WordPress.com."
 msgstr "未找到帐户。如果您已经有帐户，请确保您已连接到 WordPress.com。"
 
-#: modules/sso.php:820
+#: modules/sso.php:843
 msgid "Something got a little mixed up and an unexpected WordPress.com user logged in."
 msgstr "出错了，意想不到的 WordPress.com 用户已登录。"
 
-#: modules/sso.php:805
+#: modules/sso.php:828
 msgid "You must have Two-Step Authentication enabled on your WordPress.com account."
 msgstr "您必须在 WordPress.com 帐户中启用两步验证。"
 
@@ -5945,8 +5980,8 @@ msgstr "播客音频类型无效。"
 msgid "Podcast audio RSS feed has no tracks."
 msgstr "播客音频 RSS 源没有曲目。"
 
-#: _inc/lib/class-jetpack-podcast-helper.php:359 _inc/blocks/editor-beta.js:38
-#: _inc/blocks/editor-experimental.js:37 _inc/blocks/editor.js:27
+#: _inc/lib/class-jetpack-podcast-helper.php:359 _inc/blocks/editor-beta.js:40
+#: _inc/blocks/editor-experimental.js:39 _inc/blocks/editor.js:29
 msgid "Your podcast couldn't be embedded. Please double check your URL."
 msgstr "无法嵌入您的播客。请仔细检查您的 URL。"
 
@@ -6148,9 +6183,9 @@ msgstr "API 密钥来源默认到“站点”"
 msgid "The status code of the URL's response."
 msgstr "URL 响应的状态代码。"
 
-#: extensions/blocks/calendly/calendly.php:141 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:8
+#: extensions/blocks/calendly/calendly.php:141 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:10
 msgid "Schedule time with me"
 msgstr "与我一起规划时间"
 
@@ -6164,7 +6199,7 @@ msgstr "当有人关注我的博客时发送电子邮件通知"
 
 #. translators: this is a label for a setting that starts with "Email me
 #. whenever"
-#: modules/subscriptions.php:381 modules/subscriptions.php:544
+#: modules/subscriptions.php:384 modules/subscriptions.php:547
 msgid "Someone follows my blog"
 msgstr "有人关注我的博客时"
 
@@ -6324,7 +6359,7 @@ msgstr "联系表单反馈"
 msgid "The number of times Jetpack has backed up your site and kept it safe"
 msgstr "Jetpack 备份您的站点并保证其安全的次数"
 
-#: class.jetpack.php:6722 class.jetpack.php:6817
+#: class.jetpack.php:6728 class.jetpack.php:6823
 #: _inc/lib/core-api/class.jetpack-core-api-site-endpoints.php:202
 msgid "Jetpack Backup"
 msgstr "Jetpack Backup"
@@ -6333,11 +6368,11 @@ msgstr "Jetpack Backup"
 msgid "People subscribed to your updates through Jetpack"
 msgstr "通过 Jetpack 订阅您的更新的用户"
 
-#: extensions/blocks/subscriptions/subscriptions.php:168
+#: extensions/blocks/subscriptions/subscriptions.php:184
 #: modules/masterbar/admin-menu/class-atomic-admin-menu.php:117
 #: modules/masterbar/admin-menu/class-jetpack-admin-menu.php:196
 #: modules/masterbar/admin-menu/class-wpcom-admin-menu.php:355
-#: modules/subscriptions.php:1112 modules/subscriptions.php:1113
+#: modules/subscriptions.php:1115 modules/subscriptions.php:1116
 #: _inc/lib/core-api/class.jetpack-core-api-site-endpoints.php:188
 msgid "Subscribers"
 msgstr "订阅者"
@@ -6492,7 +6527,7 @@ msgstr "在 Medium.com 上查看此库"
 msgid "Unknown security token."
 msgstr "未知的安全令牌。"
 
-#: modules/memberships/class-jetpack-memberships.php:204
+#: modules/memberships/class-jetpack-memberships.php:220
 msgid "Recurring Payments plans"
 msgstr "“定期付款”套餐"
 
@@ -6536,19 +6571,19 @@ msgstr "正在登录…"
 msgid "Before we continue, please log in to your Jetpack site."
 msgstr "您必须先登录 Jetpack 站点才能继续。"
 
-#: extensions/blocks/donations/donations.php:134 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:8
-#: _inc/blocks/editor.js:10
+#: extensions/blocks/donations/donations.php:134 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:20
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:10
+#: _inc/blocks/editor.js:12
 msgid "Yearly"
 msgstr "每年"
 
-#: extensions/blocks/donations/donations.php:125 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:8
-#: _inc/blocks/editor.js:10
+#: extensions/blocks/donations/donations.php:125 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:20
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:10
+#: _inc/blocks/editor.js:12
 msgid "Monthly"
 msgstr "每月"
 
@@ -6595,44 +6630,44 @@ msgid "WooCommerce auth data is already set."
 msgstr "已设置 WooCommerce 身份验证数据。"
 
 #: extensions/blocks/business-hours/business-hours.php:150
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-experimental.js:18
-#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:8
+#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-experimental.js:20
+#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:10
 msgid "Closed"
 msgstr "暂停营业"
 
-#: extensions/blocks/mailchimp/mailchimp.php:200 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:200 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Whoops! There was an error and we couldn't process your subscription. Please reload the page and try again."
 msgstr "糟糕！出现错误，我们无法处理您的订阅。请重新加载此页面并重试。"
 
-#: extensions/blocks/mailchimp/mailchimp.php:199 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:199 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Success! You're on the list."
 msgstr "成功！您已在列表中。"
 
-#: extensions/blocks/mailchimp/mailchimp.php:198 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:198 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Processing…"
 msgstr "正在处理…"
 
-#: extensions/blocks/mailchimp/mailchimp.php:197 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:197 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "By clicking submit, you agree to share your email address with the site owner and Mailchimp to receive marketing, updates, and other emails from the site owner. Use the unsubscribe link in those emails to opt out at any time."
 msgstr "点击“提交”即表示，您同意与站点所有者和 MailChimp 共享您的电子邮件地址，以接收站点所有者发送的关于营销、更新等内容的电子邮件。 使用这些电子邮件中的退订链接可以随时退出。"
 
-#: extensions/blocks/mailchimp/mailchimp.php:238 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:238 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Join my email list"
 msgstr "加入我的邮件列表"
 
-#: extensions/blocks/mailchimp/mailchimp.php:196 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: extensions/blocks/mailchimp/mailchimp.php:196 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Enter your email"
 msgstr "输入您的电子邮件地址"
 
@@ -7210,25 +7245,25 @@ msgstr "是否分享到此连接"
 msgid "Message instructing the user to refresh their Connection to the Jetpack Social service"
 msgstr "指导用户刷新与 Jetpack Social 服务连接的消息"
 
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:231
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:386
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:421
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:239
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:394
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:429
 msgid "Could not connect to WordPress.com"
 msgstr "无法连接到 WordPress.com"
 
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v2-endpoint-send-email-preview.php:77
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v2-endpoint-send-email-preview.php:92
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:229
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:384
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:419
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:237
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:392
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:427
 msgid "Please connect your user account to WordPress.com"
 msgstr "请将您的用户帐户连接到 WordPress.com"
 
-#: _inc/lib/core-api/wpcom-endpoints/memberships.php:499
+#: _inc/lib/core-api/wpcom-endpoints/memberships.php:507
 msgid "Creating product has failed."
 msgstr "未能创建产品。"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2538
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2555
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v2-endpoint-mailchimp.php:90
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v2-endpoint-mailchimp.php:121
 msgid "Sorry, something is wrong with your Jetpack connection."
@@ -7326,7 +7361,7 @@ msgstr "使用 Jetpack 简化站点的安全和性能。"
 msgid "You’re almost done. Set up Jetpack to enable powerful security and performance tools for WordPress."
 msgstr "您即将大功告成。设置 Jetpack，为 WordPress 启用强大的安全和性能工具。"
 
-#: class.jetpack-admin.php:560 _inc/lib/debugger/class-jetpack-debugger.php:52
+#: class.jetpack-admin.php:564 _inc/lib/debugger/class-jetpack-debugger.php:52
 msgid "Debugging Center"
 msgstr "调试中心"
 
@@ -7393,8 +7428,8 @@ msgid "Activating"
 msgstr "正在激活"
 
 #: modules/plugin-search.php:244 modules/plugin-search.php:544
-#: modules/plugin-search.php:581 _inc/blocks/editor-beta.js:24
-#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor.js:13
+#: modules/plugin-search.php:581 _inc/blocks/editor-beta.js:80
+#: _inc/blocks/editor-experimental.js:79 _inc/blocks/editor.js:69
 msgid "Get started"
 msgstr "从这里开始"
 
@@ -7410,7 +7445,7 @@ msgstr "通过 Jetpack（已安装）"
 msgid "The card could not be dismissed"
 msgstr "无法注销此卡"
 
-#: modules/sharedaddy/sharing.php:762
+#: extensions/plugins/sharing/sharing.php:44 modules/sharedaddy/sharing.php:762
 msgid "Are sharing buttons enabled?"
 msgstr "是否启用分享按钮？"
 
@@ -7532,13 +7567,13 @@ msgstr ""
 "在 WordPress.com. 上快速访问您的统计信息、通知、文章等。\n"
 "\t\t站点上所有连接至 WordPress.com 的用户都能看到此工具栏。"
 
-#: modules/memberships/class-jetpack-memberships.php:386
+#: modules/memberships/class-jetpack-memberships.php:402
 msgid "Your contribution"
 msgstr "您的贡献"
 
 #. translators: %1$s: Number of posts published. %2$l: Post author. %3$s: A
 #. month/day/year date.
-#: modules/seo-tools/class-jetpack-seo.php:218
+#: modules/seo-tools/class-jetpack-seo.php:217
 msgctxt "10 posts published by John on May 30, 2012"
 msgid "%1$s post published by %2$l on %3$s"
 msgid_plural "%1$s posts published by %2$l on %3$s"
@@ -7546,7 +7581,7 @@ msgstr[0] "%2$l 在 %3$s发表了 %1$s 篇文章"
 
 #. translators: %1$s: Number of posts published. %2$l: Post author. %3$s: A
 #. month/year date.
-#: modules/seo-tools/class-jetpack-seo.php:204
+#: modules/seo-tools/class-jetpack-seo.php:203
 msgctxt "10 posts publishes by John during May 2012"
 msgid "%1$s post published by %2$l during %3$s"
 msgid_plural "%1$s posts published by %2$l during %3$s"
@@ -7554,7 +7589,7 @@ msgstr[0] "%2$l 在 %3$s期间发表了 %1$s 篇文章"
 
 #. translators: %1$s: Number of posts published. %2$l: Post author. %3$s: A
 #. year date.
-#: modules/seo-tools/class-jetpack-seo.php:193
+#: modules/seo-tools/class-jetpack-seo.php:192
 msgctxt "10 posts published by John in the year 2012"
 msgid "%1$s post published by %2$l in the year %3$s"
 msgid_plural "%1$s posts published by %2$l in the year %3$s"
@@ -7587,7 +7622,7 @@ msgid "Widget title for non-followers:"
 msgstr "面向非粉丝的小工具标题："
 
 #. translators: %s: number of folks following the blog
-#: extensions/blocks/subscriptions/subscriptions.php:785
+#: extensions/blocks/subscriptions/subscriptions.php:849
 msgid "Join %s other follower"
 msgid_plural "Join %s other followers"
 msgstr[0] "加入另外 %s 位粉丝"
@@ -7626,7 +7661,7 @@ msgstr "您的 LinkedIn 关联需要重新验证才能继续使用，请前往�
 msgid "Please select a Facebook Page to publish updates."
 msgstr "请选择要发布更新的 Facebook 页面。"
 
-#: modules/sso.php:247
+#: modules/sso.php:270
 msgid "Secure Sign On"
 msgstr "安全登录"
 
@@ -7717,7 +7752,7 @@ msgid "Please specify a Gist URL or ID."
 msgstr "请指定 Gist URL 或 ID。"
 
 #. translators: %s is a URL
-#: class.jetpack.php:5446
+#: class.jetpack.php:5448
 msgid "Your site is incorrectly double-encoding redirects from http to https. This is preventing Jetpack from authenticating your connection. Please visit our <a href=\"%s\">support page</a> for details about how to resolve this."
 msgstr "您的站点错误地使用双重编码从 http 重定向至 https。这会导致 Jetpack 无法验证您的连接。请访问我们的<a href=\"%s\">支持页面</a>，详细了解如何解决此问题。"
 
@@ -8092,7 +8127,7 @@ msgstr "UTC%s"
 msgid "Social Media Icons (Deprecated)"
 msgstr "社交媒体图标（已弃用）"
 
-#: modules/widgets/social-icons.php:771
+#: modules/widgets/social-icons.php:776
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
@@ -8132,10 +8167,10 @@ msgstr "向您的站点添加社交媒体图标。"
 #. https://subscribe.wordpress.com/, 2: Description of this link.
 #: modules/subscriptions/views.php:215
 msgid "You have already subscribed to this site. Please check your email inbox. You can manage your preferences from the <a href=\"%1$s\" title=\"%2$s\" target=\"_blank\">Subscriptions Manager</a>."
-msgstr "您已订阅此站点。 请查看您的电子邮件收件箱。 您可以在<a href=\"%1$s\" title=\"%2$s\" target=\"_blank\">订阅管理器</a>中管理偏好设置。"
+msgstr "您已订阅此站点。 请查看您的电子邮件收件箱。 您可以在<a href=\"%1$s\" title=\"%2$s\" target=\"_blank\">订阅管理器</a>中管理您的偏好设置。"
 
 #. translators: Message shown after a post is published
-#: modules/subscriptions.php:238
+#: modules/subscriptions.php:241
 msgid "Post published and sending emails to subscribers."
 msgstr "文章已发布，向订阅者发送电子邮件。"
 
@@ -8167,7 +8202,7 @@ msgid "View project"
 msgstr "查看项目"
 
 #: jetpack_vendor/automattic/jetpack-publicize/src/class-publicize-base.php:1410
-#: modules/subscriptions.php:233
+#: modules/subscriptions.php:236
 msgid "View post"
 msgstr "查看文章"
 
@@ -8366,16 +8401,6 @@ msgstr "年"
 msgctxt "label for filtering posts"
 msgid "Year Updated"
 msgstr "更新年份"
-
-#: modules/module-info.php:476
-msgid ""
-"Improve your site's speed by only loading images visible on the screen.\n"
-"\t\tNew images will load just before they scroll into view. This prevents viewers\n"
-"\t\tfrom having to download all the images on a page all at once, even ones they can't see."
-msgstr ""
-"通过仅加载在屏幕上可见的图片来提升站点速度。\n"
-"\t\t新图片将在即将滚动进入视野之前加载。这样可以防止查看者\n"
-"\t\t一次性下载页面中的所有图片，甚至包括那些他们看不到的。"
 
 #: modules/module-info.php:456
 msgid ""
@@ -9486,8 +9511,8 @@ msgstr "添加"
 
 #. translators: category of images
 #: modules/masterbar/masterbar/class-masterbar.php:1272
-#: _inc/blocks/editor-beta.js:116 _inc/blocks/editor-experimental.js:113
-#: _inc/blocks/editor-no-post-editor.js:67 _inc/blocks/editor.js:103
+#: _inc/blocks/editor-beta.js:118 _inc/blocks/editor-experimental.js:117
+#: _inc/blocks/editor-no-post-editor.js:67 _inc/blocks/editor.js:107
 msgid "People"
 msgstr "人员"
 
@@ -9524,7 +9549,7 @@ msgid "Configure"
 msgstr "配置"
 
 #: modules/masterbar/masterbar/class-masterbar.php:961
-#: modules/memberships/class-jetpack-memberships.php:203
+#: modules/memberships/class-jetpack-memberships.php:219
 msgid "Plan"
 msgstr "套餐"
 
@@ -9566,8 +9591,8 @@ msgstr "管理购买"
 
 #: modules/masterbar/admin-menu/class-admin-menu.php:324
 #: modules/masterbar/masterbar/class-masterbar.php:708
-#: _inc/blocks/editor-beta.js:21 _inc/blocks/editor-experimental.js:20
-#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:10
+#: _inc/blocks/editor-beta.js:23 _inc/blocks/editor-experimental.js:22
+#: _inc/blocks/editor-no-post-editor.js:4 _inc/blocks/editor.js:12
 msgid "Account Settings"
 msgstr "帐户设置"
 
@@ -9734,8 +9759,8 @@ msgstr "必须提供站点 ID 才能注册子站点。"
 #: class.jetpack-network-sites-list-table.php:87
 #: _inc/lib/admin-pages/class.jetpack-settings-page.php:111
 #: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:16
-#: _inc/blocks/editor-beta.js:126 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:128 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 msgid "View"
 msgstr "查看"
 
@@ -9857,10 +9882,10 @@ msgstr "时"
 
 #: jetpack_vendor/automattic/jetpack-search/src/widgets/class-search-widget.php:1052
 #: modules/widgets/milestone/class-milestone-widget.php:681
-#: _inc/blocks/editor-beta.js:78 _inc/blocks/editor-beta.js:126
-#: _inc/blocks/editor-experimental.js:75 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:65
-#: _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:80 _inc/blocks/editor-beta.js:128
+#: _inc/blocks/editor-experimental.js:79 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:69
+#: _inc/blocks/editor.js:117
 msgid "Year"
 msgstr "年"
 
@@ -9870,10 +9895,10 @@ msgstr "日"
 
 #: jetpack_vendor/automattic/jetpack-search/src/widgets/class-search-widget.php:1049
 #: modules/widgets/milestone/class-milestone-widget.php:661
-#: _inc/blocks/editor-beta.js:78 _inc/blocks/editor-beta.js:126
-#: _inc/blocks/editor-experimental.js:75 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:65
-#: _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:80 _inc/blocks/editor-beta.js:128
+#: _inc/blocks/editor-experimental.js:79 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:69
+#: _inc/blocks/editor.js:117
 msgid "Month"
 msgstr "月"
 
@@ -9910,9 +9935,9 @@ msgstr "视频宽度:"
 msgid "Image missing or invalid URL. Please check the Image widget URL in your <a href=\"%s\">widget settings</a>."
 msgstr "图像丢失或 URL 无效。请在<a href=\"%s\">小工具设置</a>中检查图像小工具 URL。"
 
-#: modules/widgets/google-translate.php:53 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor.js:6
+#: modules/widgets/google-translate.php:53 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor-no-post-editor.js:2
+#: _inc/blocks/editor.js:7
 msgid "Translate"
 msgstr "翻译"
 
@@ -9920,9 +9945,9 @@ msgstr "翻译"
 msgid "Provide your readers with the option to translate your site into their preferred language."
 msgstr "为您的读者提供将您的站点翻译成其首选语言的选项。"
 
-#: modules/widgets/facebook-likebox.php:297 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:21 _inc/blocks/editor-no-post-editor.js:5
-#: _inc/blocks/editor.js:11
+#: modules/widgets/facebook-likebox.php:297 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:5
+#: _inc/blocks/editor.js:13
 msgid "Height in pixels"
 msgstr "高度（像素）"
 
@@ -10002,8 +10027,8 @@ msgid "Display on blog and archives"
 msgstr "在博客和归档页面上显示"
 
 #: modules/theme-tools/content-options/customizer.php:268
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-experimental.js:37
-#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:27
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-experimental.js:39
+#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:29
 msgid "Display author"
 msgstr "显示作者"
 
@@ -10016,8 +10041,8 @@ msgid "Display categories"
 msgstr "显示类别"
 
 #: modules/theme-tools/content-options/customizer.php:202
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-experimental.js:37
-#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:27
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-experimental.js:39
+#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:29
 msgid "Display date"
 msgstr "显示日期"
 
@@ -10545,14 +10570,14 @@ msgid "Sorry, that Pinterest URL was not recognized."
 msgstr "抱歉，未能识别该 Pinterest URL。"
 
 #. translators: %1$s: A post category. %2$l: Post authors.
-#: modules/seo-tools/class-jetpack-seo.php:183
+#: modules/seo-tools/class-jetpack-seo.php:182
 msgctxt "Posts about Category written by John and Bob"
 msgid "Posts about %1$s written by %2$l"
 msgstr "%2$l 撰写的有关 %1$s 的文章"
 
 #. translators: first property is an user's display name, the second is the
 #. site's title.
-#: modules/seo-tools/class-jetpack-seo.php:164
+#: modules/seo-tools/class-jetpack-seo.php:163
 msgctxt "Read all of the posts by Author Name on Blog Title"
 msgid "Read all of the posts by %1$s on %2$s"
 msgstr "阅读 %1$s 在 %2$s 上发布的所有文章"
@@ -10592,16 +10617,16 @@ msgstr "创建主题下载文件时出现问题"
 msgid "This theme does not exist"
 msgstr "此主题不存在"
 
-#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:942
+#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:947
 msgid "Invalid SEO title format."
 msgstr "搜索引擎优化标题格式无效。"
 
-#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:923
+#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:928
 msgid "Invalid SEO meta description value."
 msgstr "搜索引擎优化元数据说明值无效。"
 
-#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:919
-#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:938
+#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:924
+#: json-endpoints/class.wpcom-json-api-site-settings-endpoint.php:943
 #: json-endpoints/class.wpcom-json-api-update-post-endpoint.php:756
 #: json-endpoints/class.wpcom-json-api-update-post-v1-1-endpoint.php:834
 #: json-endpoints/class.wpcom-json-api-update-post-v1-2-endpoint.php:805
@@ -10610,7 +10635,7 @@ msgstr "无法为此站点启用搜索引擎优化工具。"
 
 #. translators: URL string
 #. translators: %s: URL to parse.
-#: class.jetpack.php:5692
+#: class.jetpack.php:5694
 #: jetpack_vendor/automattic/jetpack-identity-crisis/src/class-identity-crisis.php:459
 msgid "Cannot parse URL %s"
 msgstr "无法解析 URL %s"
@@ -10682,8 +10707,8 @@ msgid "Jetpack has been placed into <a href=\"%1$s\">Safe mode</a> because we no
 msgstr "已将 Jetpack 置于<a href=\"%1$s\">安全模式</a>，因为我们注意到这是 <a href=\"%2$s\">%3$s</a> 的精确副本。"
 
 #: jetpack_vendor/automattic/jetpack-identity-crisis/src/class-identity-crisis.php:734
-#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-experimental.js:6
-#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:6
+#: _inc/blocks/editor-beta.js:7 _inc/blocks/editor-experimental.js:7
+#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:7
 msgid "Try Again"
 msgstr "重试"
 
@@ -11016,7 +11041,7 @@ msgstr ""
 "\t\t您的安全和数据的未经授权或可疑修改。许多情况下，我们可以自动修复\n"
 "\t\t这些问题（并将通知您）。如果无法修复，我们会为您提供专家支持。"
 
-#: class.jetpack-modules-list-table.php:358
+#: class.jetpack-modules-list-table.php:359
 msgid "Feature Info"
 msgstr "功能信息"
 
@@ -11449,8 +11474,10 @@ msgstr "Android 版 WordPress 应用程序外观有大变动"
 
 #: jetpack_vendor/automattic/jetpack-videopress/src/class-admin-ui.php:393
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:10
-#: _inc/blocks/editor-beta.js:78 _inc/blocks/editor-experimental.js:75
-#: _inc/blocks/editor.js:65 _inc/build/admin.js:113 _inc/build/admin.js:117
+#: _inc/blocks/editor-beta.js:2 _inc/blocks/editor-beta.js:80
+#: _inc/blocks/editor-experimental.js:2 _inc/blocks/editor-experimental.js:79
+#: _inc/blocks/editor.js:2 _inc/blocks/editor.js:69 _inc/build/admin.js:113
+#: _inc/build/admin.js:117
 msgid "Copied!"
 msgstr "已复制！"
 
@@ -11475,6 +11502,11 @@ msgstr "WordPress.com 服务条款"
 #: _inc/build/admin.js:5
 msgid "Automattic's Privacy Policy"
 msgstr "Automattic 的隐私政策"
+
+#: extensions/blocks/subscriptions/subscriptions.php:643
+#: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:16
+msgid "Upgrade"
+msgstr "升级"
 
 #: modules/masterbar/admin-menu/class-atomic-admin-menu.php:366
 #: modules/masterbar/admin-menu/class-atomic-admin-menu.php:367
@@ -11562,25 +11594,25 @@ msgstr "需要有 WordPress.com 帐户才能访问此站点。点击下面的按
 msgid "You already have an account on this site. Please <a href=\"%1$s\">sign in</a> with your username and password and then connect to WordPress.com."
 msgstr "您在此站点上已经有帐户。请使用您的用户名和密码<a href=\"%1$s\">登录</a>，然后连接到 WordPress.com。"
 
-#: modules/sso.php:601
+#: modules/sso.php:624
 msgid "Log in with username and password"
 msgstr "使用用户名和密码登录"
 
-#: modules/sso.php:596
+#: modules/sso.php:619
 msgid "Or"
 msgstr "或者"
 
 #. Translators: %s is the name of the site.
-#: modules/sso.php:573
+#: modules/sso.php:596
 msgid "You can now save time spent logging in by connecting your WordPress.com account to %s."
 msgstr "现在，您可以通过将 WordPress.com 帐户关联到 %s 来节省登录时间。"
 
-#: modules/sso.php:555
+#: modules/sso.php:578
 msgid "Log in as a different WordPress.com user"
 msgstr "以不同的 WordPress.com 用户身份登录"
 
 #. translators: %s a user display name.
-#: modules/sso.php:540
+#: modules/sso.php:563
 msgid "Log in as <span>%s</span>"
 msgstr "以 <span>%s</span> 身份登录"
 
@@ -11622,29 +11654,31 @@ msgctxt "recipe"
 msgid "Servings"
 msgstr "服务"
 
-#: modules/sharedaddy/sharing-sources.php:2874
+#: modules/sharedaddy/sharing-sources.php:3050
 msgid "Click to share on WhatsApp"
 msgstr "点击分享到WhatsApp"
 
-#: modules/sharedaddy/sharing-sources.php:2874
+#: modules/sharedaddy/sharing-sources.php:3050
 msgctxt "share to"
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: modules/sharedaddy/sharing-sources.php:2863
+#: modules/sharedaddy/sharing-sources.php:3039 _inc/blocks/editor-beta.js:5
+#: _inc/blocks/editor-experimental.js:5 _inc/blocks/editor.js:5
+#: _inc/build/admin.js:15
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: modules/sharedaddy/sharing-sources.php:2806
+#: modules/sharedaddy/sharing-sources.php:2982
 msgid "Click to share on Telegram"
 msgstr "点击分享到Telegram"
 
-#: modules/sharedaddy/sharing-sources.php:2806
+#: modules/sharedaddy/sharing-sources.php:2982
 msgctxt "share to"
 msgid "Telegram"
 msgstr "Telegram"
 
-#: modules/sharedaddy/sharing-sources.php:2778
+#: modules/sharedaddy/sharing-sources.php:2954
 msgid "Telegram"
 msgstr "Telegram"
 
@@ -11681,21 +11715,21 @@ msgstr "文件夹档案内容"
 msgid "Portfolio Archive Title"
 msgstr "文件夹档案标题"
 
-#: class.jetpack.php:6457
+#: class.jetpack.php:6463
 msgid "This user is linked and ready to fly with Jetpack."
 msgstr "此用户已关联并准备好使用 Jetpack。"
 
-#: class.jetpack.php:5051
+#: class.jetpack.php:5053
 msgid "Checking"
 msgstr "正在检查"
 
 #. translators: Both are URLs. First for the connection debug tool and the
 #. second for a support page.
-#: class.jetpack.php:5036
+#: class.jetpack.php:5038
 msgid "For more help, try our <a href=\"%1$s\">connection debugger</a> or <a href=\"%2$s\" target=\"_blank\">troubleshooting tips</a>."
 msgstr "要获得更多帮助，请尝试我们的<a href=\"%1$s\">连接调试程序</a>或<a href=\"%2$s\" target=\"_blank\">问题排查提示</a>。"
 
-#: class.jetpack.php:5029 class.jetpack.php:5060
+#: class.jetpack.php:5031 class.jetpack.php:5062
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:8
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:9
 #: _inc/blocks/editor-beta.js:66 _inc/blocks/editor-experimental.js:65
@@ -11703,23 +11737,23 @@ msgstr "要获得更多帮助，请尝试我们的<a href=\"%1$s\">连接调试�
 msgid "Try again"
 msgstr "重试"
 
-#: class.jetpack.php:5028
+#: class.jetpack.php:5030
 msgid "Jetpack will re-test for HTTPS support once a day, but you can click here to try again immediately: "
 msgstr "Jetpack 将每天重新测试一次 HTTPS 支持，但您可以点击此处立即重试："
 
-#: class.jetpack.php:5026
+#: class.jetpack.php:5028
 msgid "Your site could not connect to WordPress.com via HTTPS. This could be due to any number of reasons, including faulty SSL certificates, misconfigured or missing SSL libraries, or network issues."
 msgstr "您的站点无法通过 HTTPS 连接到 WordPress.com。这可能是由许多原因造成的，包括 SSL 证书有误、SSL 库配置不当或缺失，或网络问题。"
 
-#: class.jetpack.php:5025
+#: class.jetpack.php:5027
 msgid "Outbound HTTPS not working"
 msgstr "出站 HTTPS 不起作用"
 
-#: class.jetpack.php:5001
+#: class.jetpack.php:5003
 msgid "Response was not OK: "
 msgstr "响应不是 OK："
 
-#: class.jetpack.php:4993 class.jetpack.php:4998
+#: class.jetpack.php:4995 class.jetpack.php:5000
 msgid "WordPress reports no SSL support"
 msgstr "WordPress 报告不支持 SSL"
 
@@ -11798,6 +11832,7 @@ msgid "An error occurred while downloading blog information"
 msgstr "下载博客信息时出错"
 
 #: modules/widgets/top-posts.php:145
+#: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:29
 msgid "Views"
 msgstr "查看"
 
@@ -11868,11 +11903,11 @@ msgstr "社交菜单"
 msgid "XML Sitemap"
 msgstr "XML站点地图"
 
-#: modules/sharedaddy/sharing-sources.php:2932
+#: modules/sharedaddy/sharing-sources.php:3108
 msgid "Skype"
 msgstr "Skype"
 
-#: modules/sharedaddy/sharing-sources.php:1687
+#: modules/sharedaddy/sharing-sources.php:1863
 msgid "Click to share on Facebook"
 msgstr "点击分享到 Facebook "
 
@@ -12082,18 +12117,18 @@ msgstr "开始使用 Jetpack 多站点"
 msgid "Activated"
 msgstr "已激活"
 
-#: class.jetpack.php:6736 modules/plugin-search.php:592
+#: class.jetpack.php:6742 modules/plugin-search.php:592
 #: modules/stats/class-jetpack-stats-upgrade-nudges.php:385
 #: jetpack_vendor/automattic/jetpack-search/build/dashboard/jp-search-dashboard.js:9
 #: jetpack_vendor/automattic/jetpack-search/build/dashboard/jp-search-dashboard.js:36
-#: _inc/blocks/editor-beta.js:3 _inc/blocks/editor-beta.js:20
-#: _inc/blocks/editor-beta.js:23 _inc/blocks/editor-experimental.js:3
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-experimental.js:22
+#: _inc/blocks/editor-beta.js:3 _inc/blocks/editor-beta.js:22
+#: _inc/blocks/editor-beta.js:25 _inc/blocks/editor-experimental.js:3
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-experimental.js:24
 #: _inc/blocks/editor-no-post-editor.js:4
 #: _inc/blocks/editor-no-post-editor.js:6 _inc/blocks/editor.js:3
-#: _inc/blocks/editor.js:10 _inc/blocks/editor.js:12 _inc/build/admin.js:58
-#: _inc/build/admin.js:86 _inc/build/admin.js:101 _inc/build/admin.js:102
-#: _inc/build/admin.js:117
+#: _inc/blocks/editor.js:12 _inc/blocks/editor.js:14 _inc/build/admin.js:58
+#: _inc/build/admin.js:69 _inc/build/admin.js:86 _inc/build/admin.js:101
+#: _inc/build/admin.js:102 _inc/build/admin.js:117
 msgid "Learn more"
 msgstr "了解更多"
 
@@ -12323,8 +12358,8 @@ msgstr "如果留空，我们将尝试设置图片尺寸"
 msgid "Image Alignment:"
 msgstr "图片对齐方式:"
 
-#: modules/widgets/image-widget.php:259 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor.js:8
+#: modules/widgets/image-widget.php:259 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor.js:10
 msgid "Right"
 msgstr "右"
 
@@ -12332,8 +12367,8 @@ msgstr "右"
 msgid "Center"
 msgstr "中"
 
-#: modules/widgets/image-widget.php:257 _inc/blocks/editor-beta.js:18
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor.js:8
+#: modules/widgets/image-widget.php:257 _inc/blocks/editor-beta.js:20
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor.js:10
 msgid "Left"
 msgstr "左"
 
@@ -12616,10 +12651,10 @@ msgstr "显示包含您的位置、时间和联系信息的地图。"
 #: modules/widget-visibility/widget-conditions.php:621
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:10
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:6
-#: _inc/blocks/editor-beta.js:69 _inc/blocks/editor-beta.js:179
-#: _inc/blocks/editor-experimental.js:68 _inc/blocks/editor-experimental.js:176
+#: _inc/blocks/editor-beta.js:69 _inc/blocks/editor-beta.js:182
+#: _inc/blocks/editor-experimental.js:68 _inc/blocks/editor-experimental.js:181
 #: _inc/blocks/editor-no-post-editor.js:31 _inc/blocks/editor.js:58
-#: _inc/blocks/editor.js:166 _inc/build/admin.js:167
+#: _inc/blocks/editor.js:171 _inc/build/admin.js:167
 msgid "Delete"
 msgstr "删除"
 
@@ -12678,8 +12713,8 @@ msgstr "作者"
 #: jetpack_vendor/automattic/jetpack-search/build/instant-search/jp-search.chunk-main-payload.js:1
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:3
 #: jetpack_vendor/automattic/jetpack-wordads/build/dashboard/jp-wordads-dashboard.js:2
-#: _inc/blocks/editor-beta.js:126 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:128 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 #: _inc/build/admin.js:5 _inc/build/widget-visibility/editor/index.js:1
 msgid "Category"
 msgstr "分类"
@@ -12707,10 +12742,10 @@ msgid "%s if:"
 msgstr "%s 如果："
 
 #: modules/widget-visibility/widget-conditions.php:532
-#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-beta.js:72
-#: _inc/blocks/editor-experimental.js:39 _inc/blocks/editor-experimental.js:71
+#: _inc/blocks/editor-beta.js:42 _inc/blocks/editor-beta.js:72
+#: _inc/blocks/editor-experimental.js:41 _inc/blocks/editor-experimental.js:71
 #: _inc/blocks/editor-no-post-editor.js:9
-#: _inc/blocks/editor-no-post-editor.js:34 _inc/blocks/editor.js:29
+#: _inc/blocks/editor-no-post-editor.js:34 _inc/blocks/editor.js:31
 #: _inc/blocks/editor.js:61 _inc/build/widget-visibility/editor/index.js:1
 msgid "Visibility"
 msgstr "可见性"
@@ -12984,7 +13019,7 @@ msgstr "向您的读者显示的可选文本："
 msgid "Widget title:"
 msgstr "小工具标题："
 
-#: extensions/blocks/subscriptions/subscriptions.php:595
+#: extensions/blocks/subscriptions/subscriptions.php:647
 #: modules/subscriptions/views.php:691 _inc/blocks/editor-beta.js:51
 #: _inc/blocks/editor-beta.js:52 _inc/blocks/editor-experimental.js:50
 #: _inc/blocks/editor-experimental.js:51 _inc/blocks/editor.js:40
@@ -12992,15 +13027,16 @@ msgstr "小工具标题："
 msgid "Success! An email was just sent to confirm your subscription. Please find the email now and click 'Confirm Follow' to start subscribing."
 msgstr "成功！系统刚刚向您发送了一封电子邮件来确认您的订阅。请立即找到该邮件，点击“确认关注”以开始订阅。"
 
+#: extensions/blocks/blogroll/blogroll-item/blogroll-item.php:58
 #: extensions/blocks/premium-content/_inc/legacy-buttons.php:55
-#: extensions/blocks/subscriptions/subscriptions.php:591
+#: extensions/blocks/subscriptions/subscriptions.php:643
 #: modules/subscriptions/views.php:690
 #: jetpack_vendor/automattic/jetpack-forms/dist/blocks/editor.js:6
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-beta.js:51
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-beta.js:51
 #: _inc/blocks/editor-beta.js:52 _inc/blocks/editor-beta.js:53
-#: _inc/blocks/editor-experimental.js:37 _inc/blocks/editor-experimental.js:50
+#: _inc/blocks/editor-experimental.js:39 _inc/blocks/editor-experimental.js:50
 #: _inc/blocks/editor-experimental.js:51 _inc/blocks/editor-experimental.js:52
-#: _inc/blocks/editor.js:27 _inc/blocks/editor.js:40 _inc/blocks/editor.js:41
+#: _inc/blocks/editor.js:29 _inc/blocks/editor.js:40 _inc/blocks/editor.js:41
 #: _inc/blocks/editor.js:42
 msgid "Subscribe"
 msgstr "订阅"
@@ -13020,7 +13056,7 @@ msgstr "电子邮箱地址："
 
 #. translators: %s: number of folks following the blog
 #. translators: Placeholder is a number of subscribers.
-#: modules/memberships/class-jetpack-memberships.php:645
+#: modules/memberships/class-jetpack-memberships.php:678
 #: _inc/blocks/editor-beta.js:53 _inc/blocks/editor-experimental.js:52
 #: _inc/blocks/editor.js:42
 msgid "Join %s other subscriber"
@@ -13039,15 +13075,15 @@ msgstr "博客订阅"
 msgid "Add an email signup form to allow people to subscribe to your blog."
 msgstr "添加一个电邮订阅注册表单，以让他人订阅您的博客。"
 
-#: modules/subscriptions.php:875
+#: modules/subscriptions.php:878
 msgid "Notify me of new posts by email."
 msgstr "通过邮件通知我有新文章"
 
-#: modules/subscriptions.php:856
+#: modules/subscriptions.php:859
 msgid "Notify me of follow-up comments by email."
 msgstr "通过邮件通知我后续评论"
 
-#: modules/subscriptions.php:630 modules/subscriptions/views.php:1033
+#: modules/subscriptions.php:633 modules/subscriptions/views.php:1033
 msgid ""
 "Howdy.\n"
 "\n"
@@ -13061,61 +13097,61 @@ msgstr ""
 "\n"
 "要激活，请点击下方的“确认”。如果您认为这是一个错误，请忽略此邮件，我们将永远不再打扰您。"
 
-#: modules/subscriptions.php:617
+#: modules/subscriptions.php:620
 msgid "Introduction text sent when someone follows a post on your blog. (Site and confirmation details will be automatically added for you.)"
 msgstr "当有人关注您博客上的某篇文章时向其发送的介绍文本。（系统会自动为您添加站点和确认详细信息。）"
 
-#: modules/subscriptions.php:608
+#: modules/subscriptions.php:611
 msgid "Introduction text sent when someone follows your blog. (Site and confirmation details will be automatically added for you.)"
 msgstr "当有人关注您的博客时向其发送的介绍文本。（系统会自动为您添加站点和确认详细信息。）"
 
-#: modules/subscriptions.php:598
+#: modules/subscriptions.php:601
 msgid "These settings change emails sent from your blog to followers."
 msgstr "这些设置可更改从您的博客发送给粉丝的电子邮件。"
 
-#: modules/subscriptions.php:477
+#: modules/subscriptions.php:480
 #: _inc/lib/class.core-rest-api-endpoints.php:2600
 msgid "Show a <em>'follow comments'</em> option in the comment form"
 msgstr "在评论表单中显示<em>“关注评论”</em>选项"
 
-#: modules/subscriptions.php:454
+#: modules/subscriptions.php:457
 #: _inc/lib/class.core-rest-api-endpoints.php:2593
 msgid "Show a <em>'follow blog'</em> option in the comment form"
 msgstr "在评论表单中显示<em>“关注博客”</em>选项"
 
-#: modules/subscriptions.php:437
+#: modules/subscriptions.php:440
 msgid "Change whether your visitors can subscribe to your posts or comments or both."
 msgstr "更改您的访客是否可以订阅您的文章和/或评论。"
 
-#: modules/subscriptions.php:425
+#: modules/subscriptions.php:428
 msgid "Comment follow email text"
 msgstr "评论关注电子邮件文本"
 
-#: modules/subscriptions.php:417
+#: modules/subscriptions.php:420
 msgid "Blog follow email text"
 msgstr "博客关注电子邮件文本"
 
-#: modules/subscriptions.php:410
+#: modules/subscriptions.php:413
 msgid "Follower Settings"
 msgstr "关注者设置"
 
-#: modules/subscriptions.php:347
+#: modules/subscriptions.php:350
 msgid "Follow Comments"
 msgstr "关注评论"
 
-#: modules/subscriptions.php:332 modules/subscriptions/views.php:60
+#: modules/subscriptions.php:335 modules/subscriptions/views.php:60
 msgid "Follow Blog"
 msgstr "关注博客"
 
-#: modules/subscriptions.php:323
+#: modules/subscriptions.php:326
 msgid "Jetpack Subscriptions Settings"
 msgstr "Jetpack 订阅设置"
 
-#: modules/subscriptions.php:186
+#: modules/subscriptions.php:189
 msgid "Don&#8217;t send this to subscribers"
 msgstr "不要发送给订阅者"
 
-#: modules/subscriptions.php:184
+#: modules/subscriptions.php:187
 msgid "Jetpack Subscriptions:"
 msgstr "Jetpack 订阅："
 
@@ -13142,16 +13178,17 @@ msgid "%1$s %2$s View"
 msgid_plural "%1$s %2$s Views"
 msgstr[0] "%1$s %2$s 查看"
 
+#: extensions/blocks/blogroll/blogroll-item/blogroll-item.php:59
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-contact-form.php:133
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-editor-view.php:119
 #: modules/contact-form/grunion-contact-form.php:2699
 #: modules/contact-form/grunion-editor-view.php:117 modules/stats.php:1199
 #: modules/videopress/class.videopress-player.php:310
 #: jetpack_vendor/automattic/jetpack-forms/dist/blocks/editor.js:6
-#: _inc/blocks/ai-chat/view.js:2 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-beta.js:59 _inc/blocks/editor-experimental.js:6
+#: _inc/blocks/ai-chat/view.js:2 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-beta.js:59 _inc/blocks/editor-experimental.js:7
 #: _inc/blocks/editor-experimental.js:58 _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor-no-post-editor.js:21 _inc/blocks/editor.js:6
+#: _inc/blocks/editor-no-post-editor.js:21 _inc/blocks/editor.js:7
 #: _inc/blocks/editor.js:48
 msgid "Submit"
 msgstr "提交"
@@ -13236,19 +13273,19 @@ msgstr "在启用 JavaScript 的情况下Jetpack 统计功能可更好地运行 
 msgid "Loading&hellip;"
 msgstr "载入中&hellip;"
 
-#: modules/sso.php:607 modules/sso.php:1013
+#: modules/sso.php:630 modules/sso.php:1036
 msgid "Log in with WordPress.com"
 msgstr "使用 WordPress.com 帐户登录"
 
-#: modules/sso.php:478
+#: modules/sso.php:501
 msgid "Cannot deal with cookie redirects, as headers are already sent."
 msgstr "由于标题已发送，因此，无法处理 Cookie 重定向。"
 
-#: modules/sso.php:335 _inc/lib/class.core-rest-api-endpoints.php:2584
+#: modules/sso.php:358 _inc/lib/class.core-rest-api-endpoints.php:2584
 msgid "Match by Email"
 msgstr "按电子邮件匹配"
 
-#: modules/sso.php:303 _inc/lib/class.core-rest-api-endpoints.php:2577
+#: modules/sso.php:326 _inc/lib/class.core-rest-api-endpoints.php:2577
 msgid "Require Two-Step Authentication"
 msgstr "需要两步认证"
 
@@ -13402,63 +13439,63 @@ msgstr "如果没有多字节支持，此插件也能运行；但<a href=\"%s\" 
 msgid "Warning! Multibyte support missing!"
 msgstr "警告！缺少多字节支持！"
 
-#: modules/sharedaddy/sharing-sources.php:2694
+#: modules/sharedaddy/sharing-sources.php:2870
 msgid "Click to share on Pocket"
 msgstr "点击分享到Pocket"
 
-#: modules/sharedaddy/sharing-sources.php:2694
+#: modules/sharedaddy/sharing-sources.php:2870
 msgctxt "share to"
 msgid "Pocket"
 msgstr "Pocket"
 
-#: modules/sharedaddy/sharing-sources.php:2656
-#: modules/sharedaddy/sharing-sources.php:2689
+#: modules/sharedaddy/sharing-sources.php:2832
+#: modules/sharedaddy/sharing-sources.php:2865
 msgid "Pocket"
 msgstr "Pocket"
 
-#: modules/sharedaddy/sharing-sources.php:2493
+#: modules/sharedaddy/sharing-sources.php:2669
 msgid "Click to share on Pinterest"
 msgstr "点击分享到Pinterest"
 
-#: modules/sharedaddy/sharing-sources.php:2493
+#: modules/sharedaddy/sharing-sources.php:2669
 msgctxt "share to"
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: modules/sharedaddy/sharing-sources.php:2404 _inc/blocks/editor-beta.js:24
-#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-no-post-editor.js:7
-#: _inc/blocks/editor.js:13
+#: modules/sharedaddy/sharing-sources.php:2580 _inc/blocks/editor-beta.js:26
+#: _inc/blocks/editor-experimental.js:25 _inc/blocks/editor-no-post-editor.js:7
+#: _inc/blocks/editor.js:15
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: modules/sharedaddy/sharing-sources.php:2321
+#: modules/sharedaddy/sharing-sources.php:2497
 msgid "Click to share on Tumblr"
 msgstr "点击分享到Tumblr"
 
-#: modules/sharedaddy/sharing-sources.php:2321
+#: modules/sharedaddy/sharing-sources.php:2497
 msgctxt "share to"
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: modules/sharedaddy/sharing-sources.php:2317
+#: modules/sharedaddy/sharing-sources.php:2493
 msgid "Share on Tumblr"
 msgstr "分享到 Tumblr "
 
-#: modules/sharedaddy/sharing-sources.php:2281 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor.js:6
+#: modules/sharedaddy/sharing-sources.php:2457 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 #: _inc/build/admin.js:16
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: modules/sharedaddy/sharing-sources.php:2146
+#: modules/sharedaddy/sharing-sources.php:2322
 msgid "Remove Service"
 msgstr "移除服务"
 
-#: modules/sharedaddy/sharing-sources.php:2138
+#: modules/sharedaddy/sharing-sources.php:2314
 msgid "Icon"
 msgstr "图标"
 
-#: modules/sharedaddy/sharing-sources.php:2133
+#: modules/sharedaddy/sharing-sources.php:2309
 #: modules/sitemaps/sitemap-stylist.php:68
 msgid "URL"
 msgstr "URL"
@@ -13466,72 +13503,72 @@ msgstr "URL"
 #. translators: placeholder is a service name, such as "Twitter" or "Facebook".
 #. Translators: placeholder is the name of a social network.
 #: modules/sharedaddy/sharing-sources.php:462
-#: modules/sharedaddy/sharing-sources.php:2049
+#: modules/sharedaddy/sharing-sources.php:2225
 msgid "Click to share on %s"
 msgstr "点击分享到%s"
 
-#: modules/sharedaddy/sharing-sources.php:1930
+#: modules/sharedaddy/sharing-sources.php:2106
 msgid "Click to Press This!"
 msgstr "点击以按下此键！"
 
-#: modules/sharedaddy/sharing-sources.php:1930
+#: modules/sharedaddy/sharing-sources.php:2106
 msgctxt "share to"
 msgid "Press This"
 msgstr "快捷发布"
 
-#: modules/sharedaddy/sharing-sources.php:1867
+#: modules/sharedaddy/sharing-sources.php:2043
 msgid "Press This"
 msgstr "快捷发布"
 
-#: modules/sharedaddy/sharing-sources.php:1810
+#: modules/sharedaddy/sharing-sources.php:1986
 msgid "Click to print"
 msgstr "点击以打印"
 
-#: modules/sharedaddy/sharing-sources.php:1810
+#: modules/sharedaddy/sharing-sources.php:1986
 msgctxt "share to"
 msgid "Print"
 msgstr "打印"
 
-#: modules/sharedaddy/sharing-sources.php:1799
+#: modules/sharedaddy/sharing-sources.php:1975
 msgid "Print"
 msgstr "打印"
 
-#: modules/sharedaddy/sharing-sources.php:1687
+#: modules/sharedaddy/sharing-sources.php:1863
 msgctxt "share to"
 msgid "Facebook"
 msgstr "Facebook"
 
-#: modules/sharedaddy/sharing-sources.php:1603 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor.js:6
+#: modules/sharedaddy/sharing-sources.php:1779 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 #: _inc/build/admin.js:16 _inc/build/admin.js:112
 msgid "Facebook"
 msgstr "Facebook"
 
-#: modules/sharedaddy/sharing-sources.php:1460
+#: modules/sharedaddy/sharing-sources.php:1636
 msgid "Click to share on LinkedIn"
 msgstr "点击分享到 LinkedIn"
 
-#: modules/sharedaddy/sharing-sources.php:1460
+#: modules/sharedaddy/sharing-sources.php:1636
 msgctxt "share to"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: modules/sharedaddy/sharing-sources.php:1434 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor.js:6
+#: modules/sharedaddy/sharing-sources.php:1610 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 #: _inc/build/admin.js:16
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: modules/sharedaddy/sharing-sources.php:1358
+#: modules/sharedaddy/sharing-sources.php:1534
 msgid "Click to share on Reddit"
 msgstr "点击分享到Reddit"
 
-#: modules/sharedaddy/sharing-sources.php:1357
+#: modules/sharedaddy/sharing-sources.php:1533
 msgctxt "share to"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: modules/sharedaddy/sharing-sources.php:1344
+#: modules/sharedaddy/sharing-sources.php:1520
 msgid "Reddit"
 msgstr "Reddit"
 
@@ -13544,8 +13581,8 @@ msgctxt "share to"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: modules/sharedaddy/sharing-sources.php:1100 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor.js:6
+#: modules/sharedaddy/sharing-sources.php:1100 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor.js:7
 #: _inc/build/admin.js:16 _inc/build/admin.js:112
 msgid "Twitter"
 msgstr "Twitter"
@@ -13562,11 +13599,11 @@ msgstr "电子邮件"
 #: extensions/blocks/eventbrite/eventbrite.php:196
 #: modules/wordads/php/class-wordads-california-privacy.php:263
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:14
-#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-beta.js:71
-#: _inc/blocks/editor-beta.js:73 _inc/blocks/editor-experimental.js:6
+#: _inc/blocks/editor-beta.js:7 _inc/blocks/editor-beta.js:71
+#: _inc/blocks/editor-beta.js:73 _inc/blocks/editor-experimental.js:7
 #: _inc/blocks/editor-experimental.js:70 _inc/blocks/editor-experimental.js:72
 #: _inc/blocks/editor-no-post-editor.js:2
-#: _inc/blocks/editor-no-post-editor.js:33 _inc/blocks/editor.js:6
+#: _inc/blocks/editor-no-post-editor.js:33 _inc/blocks/editor.js:7
 #: _inc/blocks/editor.js:60 _inc/blocks/editor.js:62 _inc/build/admin.js:16
 msgid "Close"
 msgstr "关闭"
@@ -13583,20 +13620,20 @@ msgstr "（在新窗口中打开）"
 #. translators: Facebook "Share" action
 #. translators: "Share" action on a Tumblr post
 #: modules/sharedaddy/services/class-jetpack-mastodon-modal.php:188
-#: modules/sharedaddy/sharing-service.php:1144
+#: modules/sharedaddy/sharing-service.php:1145
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:10
-#: _inc/blocks/editor-beta.js:137 _inc/blocks/editor-beta.js:185
-#: _inc/blocks/editor-experimental.js:134
-#: _inc/blocks/editor-experimental.js:182 _inc/blocks/editor.js:124
-#: _inc/blocks/editor.js:172 _inc/build/admin.js:125 _inc/build/admin.js:173
+#: _inc/blocks/editor-beta.js:140 _inc/blocks/editor-beta.js:188
+#: _inc/blocks/editor-experimental.js:139
+#: _inc/blocks/editor-experimental.js:187 _inc/blocks/editor.js:129
+#: _inc/blocks/editor.js:177 _inc/build/admin.js:125 _inc/build/admin.js:173
 msgid "Share"
 msgstr "分享"
 
 #. translators: "More" menu on a Mastodon post
-#: modules/sharedaddy/sharing-service.php:1142
+#: modules/sharedaddy/sharing-service.php:1143
 #: modules/sharedaddy/sharing.php:469 modules/sharedaddy/sharing.php:506
-#: _inc/blocks/editor-beta.js:169 _inc/blocks/editor-experimental.js:166
-#: _inc/blocks/editor.js:156 _inc/build/admin.js:157
+#: _inc/blocks/editor-beta.js:172 _inc/blocks/editor-experimental.js:171
+#: _inc/blocks/editor.js:161 _inc/build/admin.js:157
 msgid "More"
 msgstr "更多"
 
@@ -13723,8 +13760,8 @@ msgstr "自定义消息："
 #: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:11
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:2
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:8
-#: _inc/blocks/editor-beta.js:84 _inc/blocks/editor-experimental.js:81
-#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:71
+#: _inc/blocks/editor-beta.js:86 _inc/blocks/editor-experimental.js:85
+#: _inc/blocks/editor-no-post-editor.js:35 _inc/blocks/editor.js:75
 #: _inc/build/admin.js:6 _inc/build/admin.js:16 _inc/build/admin.js:18
 #: _inc/build/admin.js:23 _inc/build/admin.js:31 _inc/build/admin.js:58
 msgid "Connect"
@@ -13862,13 +13899,13 @@ msgstr "请解决此数学问题以证明您不是机器人。解决此问题后
 msgid "<strong>You failed to correctly answer the math problem.</strong> This is used to combat spam when Jetpack’s Brute Force Attack Protection API is unavailable. Please use your browser’s back button to return to the login form, press the \"refresh\" button to generate a new math problem, and try to log in again."
 msgstr "<strong>您给出的数学题答案有误。</strong> 如果 Jetpack 的 Brute Force Attack Protection API 不可用，这可用于抵御垃圾邮件。 请使用浏览器的“返回”按钮返回到登录表单，并按下“刷新”按钮生成新的数学题，然后重新尝试登录。"
 
-#: modules/sharedaddy/sharing-sources.php:2145
+#: modules/sharedaddy/sharing-sources.php:2321
 #: modules/widgets/simple-payments/form.php:206
 #: jetpack_vendor/automattic/jetpack-search/build/customberg/jp-search-configure.js:10
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:8
-#: _inc/blocks/editor-beta.js:5 _inc/blocks/editor-beta.js:71
-#: _inc/blocks/editor-experimental.js:5 _inc/blocks/editor-experimental.js:70
-#: _inc/blocks/editor-no-post-editor.js:33 _inc/blocks/editor.js:5
+#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-beta.js:71
+#: _inc/blocks/editor-experimental.js:6 _inc/blocks/editor-experimental.js:70
+#: _inc/blocks/editor-no-post-editor.js:33 _inc/blocks/editor.js:6
 #: _inc/blocks/editor.js:60 _inc/build/admin.js:15 _inc/build/admin.js:116
 msgid "Save"
 msgstr "保存"
@@ -13913,9 +13950,9 @@ msgstr "开启邮件发布文章"
 #: modules/post-by-email/class-jetpack-post-by-email.php:106
 #: modules/subscriptions/views.php:689
 #: _inc/lib/class.core-rest-api-endpoints.php:2456
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-beta.js:52
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-experimental.js:51
-#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:8
+#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:52
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-experimental.js:51
+#: _inc/blocks/editor-no-post-editor.js:2 _inc/blocks/editor.js:10
 #: _inc/blocks/editor.js:41
 msgid "Email Address"
 msgstr "电子邮箱地址"
@@ -13981,8 +14018,8 @@ msgid "Site icon"
 msgstr "站点图标"
 
 #: modules/related-posts/class.related-posts-customize.php:55
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-experimental.js:37
-#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:27
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-experimental.js:39
+#: _inc/blocks/editor-no-post-editor.js:7 _inc/blocks/editor.js:29
 #: _inc/build/admin.js:77
 msgid "Related Posts"
 msgstr "相关文章"
@@ -14018,9 +14055,9 @@ msgstr ""
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-protect.php:181
 #: modules/masterbar/masterbar/class-masterbar.php:513
 #: modules/masterbar/masterbar/class-masterbar.php:519
-#: modules/masterbar/masterbar/class-masterbar.php:744 modules/notes.php:191
-#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:21
-#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:11
+#: modules/masterbar/masterbar/class-masterbar.php:744 modules/notes.php:198
+#: _inc/blocks/editor-beta.js:24 _inc/blocks/editor-experimental.js:23
+#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:13
 msgid "Notifications"
 msgstr "通知"
 
@@ -14120,8 +14157,8 @@ msgstr "短代码嵌入"
 
 #: modules/module-headings.php:176
 msgctxt "Module Description"
-msgid "Add Twitter and Facebook buttons at the bottom of each post, making it easy for visitors to share your content."
-msgstr "在每篇文章底部添加 Twitter 和 Facebook 按钮，方便访客分享您的内容。"
+msgid "Add sharing buttons at the bottom of each post, making it easy for visitors to share your content."
+msgstr "在每篇文章底部添加分享按钮，方便访客分享您的内容。"
 
 #: modules/module-headings.php:175
 msgctxt "Module Name"
@@ -14271,9 +14308,9 @@ msgid "Use Markdown for posts and pages."
 msgstr "将 Markdown 用于文章和页面。"
 
 #: modules/markdown/easy-markdown.php:283
-#: modules/markdown/easy-markdown.php:285 _inc/blocks/editor-beta.js:23
-#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-no-post-editor.js:6
-#: _inc/blocks/editor.js:12
+#: modules/markdown/easy-markdown.php:285 _inc/blocks/editor-beta.js:25
+#: _inc/blocks/editor-experimental.js:24 _inc/blocks/editor-no-post-editor.js:6
+#: _inc/blocks/editor.js:14
 msgid "Markdown"
 msgstr "Markdown"
 
@@ -14290,10 +14327,10 @@ msgstr "正在加载……"
 
 #. translators: Facebook "Like" action
 #. translators: "Like" action on a Tumblr post
-#: modules/likes.php:450 _inc/blocks/editor-beta.js:133
-#: _inc/blocks/editor-beta.js:191 _inc/blocks/editor-experimental.js:130
-#: _inc/blocks/editor-experimental.js:188 _inc/blocks/editor.js:120
-#: _inc/blocks/editor.js:178 _inc/build/admin.js:121 _inc/build/admin.js:179
+#: modules/likes.php:450 _inc/blocks/editor-beta.js:136
+#: _inc/blocks/editor-beta.js:194 _inc/blocks/editor-experimental.js:135
+#: _inc/blocks/editor-experimental.js:193 _inc/blocks/editor.js:125
+#: _inc/blocks/editor.js:183 _inc/build/admin.js:121 _inc/build/admin.js:179
 msgid "Like"
 msgstr "赞"
 
@@ -14382,7 +14419,7 @@ msgstr "WordPress.com 点赞"
 msgid "Someone likes one of my posts"
 msgstr "有人为我的博文点“赞”时"
 
-#: modules/likes.php:191 modules/subscriptions.php:388
+#: modules/likes.php:191 modules/subscriptions.php:391
 msgid "Email me whenever"
 msgstr "发送邮件通知我"
 
@@ -14401,6 +14438,7 @@ msgstr "显示点赞数。"
 
 #: modules/likes.php:390 modules/likes/jetpack-likes-settings.php:60
 #: modules/widgets/top-posts.php:144
+#: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:29
 msgid "Likes"
 msgstr "喜欢"
 
@@ -14871,12 +14909,12 @@ msgstr "排序"
 #: modules/custom-post-types/nova.php:1337
 #: modules/custom-post-types/nova.php:1356
 #: modules/widgets/simple-payments/form.php:138 _inc/blocks/editor-beta.js:45
-#: _inc/blocks/editor-beta.js:48 _inc/blocks/editor-beta.js:78
+#: _inc/blocks/editor-beta.js:48 _inc/blocks/editor-beta.js:80
 #: _inc/blocks/editor-experimental.js:44 _inc/blocks/editor-experimental.js:47
-#: _inc/blocks/editor-experimental.js:75
+#: _inc/blocks/editor-experimental.js:79
 #: _inc/blocks/editor-no-post-editor.js:12
 #: _inc/blocks/editor-no-post-editor.js:15 _inc/blocks/editor.js:34
-#: _inc/blocks/editor.js:37 _inc/blocks/editor.js:65
+#: _inc/blocks/editor.js:37 _inc/blocks/editor.js:69
 msgid "Price"
 msgstr "价格"
 
@@ -15312,9 +15350,9 @@ msgstr "转换为漫画"
 msgid "Show more"
 msgstr "显示更多"
 
-#: modules/custom-post-types/comics.php:354 _inc/blocks/editor-beta.js:16
-#: _inc/blocks/editor-beta.js:23 _inc/blocks/editor-experimental.js:22
-#: _inc/blocks/editor-no-post-editor.js:6 _inc/blocks/editor.js:12
+#: modules/custom-post-types/comics.php:354 _inc/blocks/editor-beta.js:17
+#: _inc/blocks/editor-beta.js:25 _inc/blocks/editor-experimental.js:24
+#: _inc/blocks/editor-no-post-editor.js:6 _inc/blocks/editor.js:14
 msgid "Preview"
 msgstr "预览"
 
@@ -15324,6 +15362,7 @@ msgstr "预览"
 msgid "None"
 msgstr "无"
 
+#: extensions/blocks/blogroll/blogroll-item/blogroll-item.php:60
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-editor-view.php:317
 #: modules/contact-form/grunion-editor-view.php:315
 #: modules/widgets/simple-payments/form.php:207
@@ -15333,11 +15372,11 @@ msgstr "无"
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:10
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:8
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:9
-#: _inc/blocks/editor-beta.js:5 _inc/blocks/editor-beta.js:24
-#: _inc/blocks/editor-beta.js:66 _inc/blocks/editor-experimental.js:5
-#: _inc/blocks/editor-experimental.js:23 _inc/blocks/editor-experimental.js:65
-#: _inc/blocks/editor-no-post-editor.js:28 _inc/blocks/editor.js:5
-#: _inc/blocks/editor.js:13 _inc/blocks/editor.js:55 _inc/build/admin.js:6
+#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-beta.js:26
+#: _inc/blocks/editor-beta.js:66 _inc/blocks/editor-experimental.js:6
+#: _inc/blocks/editor-experimental.js:25 _inc/blocks/editor-experimental.js:65
+#: _inc/blocks/editor-no-post-editor.js:28 _inc/blocks/editor.js:6
+#: _inc/blocks/editor.js:15 _inc/blocks/editor.js:55 _inc/build/admin.js:6
 #: _inc/build/admin.js:15 _inc/build/admin.js:116 _inc/build/plugins-page.js:2
 msgid "Cancel"
 msgstr "取消"
@@ -15355,8 +15394,8 @@ msgstr "确定"
 msgid "Default"
 msgstr "默认"
 
-#: class.jetpack-admin.php:144 class.jetpack-admin.php:147
-#: class.jetpack-admin.php:150 class.jetpack-admin.php:152
+#: class.jetpack-admin.php:148 class.jetpack-admin.php:151
+#: class.jetpack-admin.php:154 class.jetpack-admin.php:156
 #: modules/custom-css/custom-css.php:156 modules/custom-css/custom-css.php:266
 msgid "CSS"
 msgstr "CSS"
@@ -15490,7 +15529,7 @@ msgstr "新字段"
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-form-view.php:225
 #: modules/contact-form/grunion-editor-view.php:238
 #: modules/contact-form/grunion-form-view.php:212
-#: modules/sharedaddy/sharing-sources.php:2128
+#: modules/sharedaddy/sharing-sources.php:2304
 #: jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/index.js:7
 #: _inc/blocks/editor-beta.js:70 _inc/blocks/editor-experimental.js:69
 #: _inc/blocks/editor-no-post-editor.js:32 _inc/blocks/editor.js:59
@@ -15760,10 +15799,10 @@ msgstr "反馈已作废。"
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-contact-form-plugin.php:733
 #: modules/contact-form/grunion-contact-form.php:986
 #: _inc/lib/core-api/wpcom-endpoints/class-wpcom-rest-api-v2-endpoint-instagram-gallery.php:121
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:22
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-experimental.js:21
-#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:10
-#: _inc/blocks/editor.js:11
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-beta.js:24
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-experimental.js:23
+#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:12
+#: _inc/blocks/editor.js:13
 msgid "An error occurred. Please try again later."
 msgstr "出现了错误。请稍后重试。"
 
@@ -15850,8 +15889,8 @@ msgstr "从回收站中恢复该条目"
 #: modules/widgets/milestone/class-milestone-widget.php:659
 #: jetpack_vendor/automattic/jetpack-forms/dist/blocks/editor.js:6
 #: jetpack_vendor/automattic/jetpack-forms/dist/dashboard/jetpack-forms-dashboard.js:2
-#: _inc/blocks/editor-beta.js:126 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:128 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 #: _inc/build/admin.js:112 _inc/build/widget-visibility/editor/index.js:1
 msgid "Date"
 msgstr "日期"
@@ -15973,8 +16012,9 @@ msgstr "问候文本"
 #: modules/carousel/jetpack-carousel.php:1312 modules/comments/admin.php:93
 #: modules/masterbar/admin-menu/class-jetpack-admin-menu.php:136
 #: modules/masterbar/masterbar/class-masterbar.php:1083
-#: modules/widgets/rsslinks-widget.php:144 _inc/build/admin.js:16
-#: _inc/build/admin.js:59
+#: modules/widgets/rsslinks-widget.php:144
+#: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:29
+#: _inc/build/admin.js:16 _inc/build/admin.js:59
 msgid "Comments"
 msgstr "评论"
 
@@ -16111,12 +16151,12 @@ msgstr "网站地址"
 #: modules/widgets/social-icons.php:581
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1193
 #: jetpack_vendor/automattic/jetpack-forms/dist/blocks/editor.js:6
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-beta.js:45
-#: _inc/blocks/editor-beta.js:48 _inc/blocks/editor-experimental.js:18
+#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:45
+#: _inc/blocks/editor-beta.js:48 _inc/blocks/editor-experimental.js:20
 #: _inc/blocks/editor-experimental.js:44 _inc/blocks/editor-experimental.js:47
 #: _inc/blocks/editor-no-post-editor.js:2
 #: _inc/blocks/editor-no-post-editor.js:12
-#: _inc/blocks/editor-no-post-editor.js:15 _inc/blocks/editor.js:8
+#: _inc/blocks/editor-no-post-editor.js:15 _inc/blocks/editor.js:10
 #: _inc/blocks/editor.js:34 _inc/blocks/editor.js:37
 msgid "Email"
 msgstr "电子邮箱地址"
@@ -16193,8 +16233,8 @@ msgid "Post Comment"
 msgstr "发表评论"
 
 #. translators: Facebook "Comment" action
-#: modules/carousel/jetpack-carousel.php:440 _inc/blocks/editor-beta.js:135
-#: _inc/blocks/editor-experimental.js:132 _inc/blocks/editor.js:122
+#: modules/carousel/jetpack-carousel.php:440 _inc/blocks/editor-beta.js:138
+#: _inc/blocks/editor-experimental.js:137 _inc/blocks/editor.js:127
 #: _inc/build/admin.js:123
 msgid "Comment"
 msgstr "评论"
@@ -16208,9 +16248,10 @@ msgid "Add"
 msgstr "添加"
 
 #: modules/masterbar/masterbar/class-masterbar.php:491
-#: _inc/blocks/editor-beta.js:23 _inc/blocks/editor-beta.js:73
-#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-no-post-editor.js:6
-#: _inc/blocks/editor.js:12
+#: _inc/blocks/editor-beta.js:25 _inc/blocks/editor-beta.js:73
+#: _inc/blocks/editor-experimental.js:24 _inc/blocks/editor-experimental.js:72
+#: _inc/blocks/editor-no-post-editor.js:6 _inc/blocks/editor.js:14
+#: _inc/blocks/editor.js:62
 msgid "Language"
 msgstr "语言"
 
@@ -16417,9 +16458,9 @@ msgstr "在遇到意外错误时自动保存"
 msgid "(no title)"
 msgstr "（无标题）"
 
-#: class-jetpack-gallery-settings.php:108 _inc/blocks/editor-beta.js:126
-#: _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: class-jetpack-gallery-settings.php:108 _inc/blocks/editor-beta.js:128
+#: _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 msgid "Type"
 msgstr "类型"
 
@@ -16441,43 +16482,43 @@ msgid "Blocked malicious login attempts"
 msgstr "已阻止恶意登录尝试"
 
 #. translators: Name/image of the client requesting authorization
-#: class.jetpack.php:5607
+#: class.jetpack.php:5609
 msgid "%s wants to access your site’s data. Log in to authorize that access."
 msgstr "%s想访问您站点的数据。登录以对该访问授权。"
 
-#: class.jetpack.php:5543
+#: class.jetpack.php:5545
 msgid "The authorization process expired. Please go back and try again."
 msgstr "授权程序已过期。请返回再次重试。"
 
-#: class.jetpack.php:5434
+#: class.jetpack.php:5436
 msgid "Someone may be trying to trick you into giving them access to your site. Or it could be you just encountered a bug :).  Either way, please close this window."
 msgstr "有人可能试图欺骗您向其授予您站点的访问权限。也可能是您遇到了错误。无论如何，请关闭此窗口。"
 
-#: class.jetpack.php:5431
+#: class.jetpack.php:5433
 msgid "You must connect your Jetpack plugin to WordPress.com to use this feature."
 msgstr "您必须将您的 Jetpack 插件连接到 WordPress.com 才能使用该功能。"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2318
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2335
 msgid "The Client ID/WP.com Blog ID of this site"
 msgstr "此站点的客户端 ID/WP.com 博客 ID"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2312
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2329
 msgid "Jetpack Plugin Version"
 msgstr "Jetpack插件版本"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2290
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2307
 msgid "The number of sites of the connected WP.com user"
 msgstr "WP.com 连接用户的站点数量"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2285
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2302
 msgid "The WP.com user email of the connected user"
 msgstr "WP.com 连接用户的用户电子邮件"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2280
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2297
 msgid "The WP.com username of the connected user"
 msgstr "WP.com 连接用户的用户名"
 
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2275
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2292
 msgid "The WP.com user ID of the connected user"
 msgstr "WP.com 连接用户的用户 ID"
 
@@ -16496,7 +16537,7 @@ msgstr "错误详情：Jetpack ID 不是标量。不要公开发布此错误消�
 msgid "Error Details: Jetpack ID is empty. Do not publicly post this error message! %s"
 msgstr "错误详情：Jetpack ID 是空的。不要公开发布此错误消息！%s"
 
-#: class.jetpack.php:4317
+#: class.jetpack.php:4319
 msgctxt "%l = list of Jetpack module/feature names"
 msgid "Deactivate %l"
 msgstr "取消激活 %l"
@@ -16542,8 +16583,8 @@ msgid "<strong>Jetpack is activated!</strong> Each site on your network must be 
 msgstr "<strong>Jetpack 已激活！</strong>您网络上的每个站点都必须由该站点上的管理员逐一进行连接。"
 
 #: jetpack_vendor/automattic/jetpack-connection/src/class-connection-notice.php:206
-#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-experimental.js:21
-#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:11
+#: _inc/blocks/editor-beta.js:24 _inc/blocks/editor-experimental.js:23
+#: _inc/blocks/editor-no-post-editor.js:5 _inc/blocks/editor.js:13
 msgid "Connect to WordPress.com"
 msgstr "连接至 WordPress.com"
 
@@ -16637,10 +16678,10 @@ msgstr "视频发布人：%s。"
 #. translators: %s is the post author
 #. translators: Default description for a Facebook post
 #: class.jetpack-twitter-cards.php:161 class.jetpack-twitter-cards.php:168
-#: functions.opengraph.php:529 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-beta.js:131 _inc/blocks/editor-experimental.js:6
-#: _inc/blocks/editor-experimental.js:128 _inc/blocks/editor.js:6
-#: _inc/blocks/editor.js:118 _inc/build/admin.js:16 _inc/build/admin.js:119
+#: functions.opengraph.php:529 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-beta.js:134 _inc/blocks/editor-experimental.js:7
+#: _inc/blocks/editor-experimental.js:133 _inc/blocks/editor.js:7
+#: _inc/blocks/editor.js:123 _inc/build/admin.js:16 _inc/build/admin.js:119
 msgid "Visit the post for more."
 msgstr "访问文章了解更多信息。"
 
@@ -16655,14 +16696,14 @@ msgstr "Jetpack 站点"
 #. translators: "Edit" action on a Tumblr post
 #: class.jetpack-network-sites-list-table.php:85
 #: jetpack_vendor/automattic/jetpack-publicize/src/class-publicize-ui.php:498
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-beta.js:48
-#: _inc/blocks/editor-beta.js:59 _inc/blocks/editor-beta.js:181
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-experimental.js:47
-#: _inc/blocks/editor-experimental.js:58 _inc/blocks/editor-experimental.js:178
+#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:48
+#: _inc/blocks/editor-beta.js:59 _inc/blocks/editor-beta.js:184
+#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-experimental.js:47
+#: _inc/blocks/editor-experimental.js:58 _inc/blocks/editor-experimental.js:183
 #: _inc/blocks/editor-no-post-editor.js:2
 #: _inc/blocks/editor-no-post-editor.js:15
-#: _inc/blocks/editor-no-post-editor.js:21 _inc/blocks/editor.js:8
-#: _inc/blocks/editor.js:37 _inc/blocks/editor.js:48 _inc/blocks/editor.js:168
+#: _inc/blocks/editor-no-post-editor.js:21 _inc/blocks/editor.js:10
+#: _inc/blocks/editor.js:37 _inc/blocks/editor.js:48 _inc/blocks/editor.js:173
 #: _inc/build/admin.js:116 _inc/build/admin.js:169
 msgid "Edit"
 msgstr "编辑"
@@ -16679,15 +16720,15 @@ msgstr "路径"
 msgid "Site Name"
 msgstr "站点名称"
 
-#: class.jetpack-modules-list-table.php:146
+#: class.jetpack-modules-list-table.php:147
 msgid "No Modules Found"
 msgstr "模块未找到"
 
 #: class-jetpack-stats-dashboard-widget.php:202
 #: class-jetpack-stats-dashboard-widget.php:233
-#: class.jetpack-modules-list-table.php:133
-#: class.jetpack-modules-list-table.php:280
-#: class.jetpack-modules-list-table.php:376
+#: class.jetpack-modules-list-table.php:134
+#: class.jetpack-modules-list-table.php:281
+#: class.jetpack-modules-list-table.php:377
 #: jetpack_vendor/automattic/jetpack-jitm/src/class-jitm.php:156
 #: _inc/lib/admin-pages/class-jetpack-about-page.php:367
 #: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:8
@@ -16696,15 +16737,15 @@ msgstr "模块未找到"
 msgid "Activate"
 msgstr "启用"
 
-#: class.jetpack-modules-list-table.php:131
-#: class.jetpack-modules-list-table.php:281
-#: class.jetpack-modules-list-table.php:388
+#: class.jetpack-modules-list-table.php:132
+#: class.jetpack-modules-list-table.php:282
+#: class.jetpack-modules-list-table.php:389
 #: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:7
 #: _inc/build/admin.js:6 _inc/build/plugins-page.js:2
 msgid "Deactivate"
 msgstr "禁用"
 
-#: class.jetpack-modules-list-table.php:268
+#: class.jetpack-modules-list-table.php:269
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-contact-form.php:157
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-contact-form.php:861
 #: jetpack_vendor/automattic/jetpack-forms/src/contact-form/class-editor-view.php:114
@@ -16719,8 +16760,8 @@ msgstr "禁用"
 #: modules/custom-post-types/nova.php:1273
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1193
 #: jetpack_vendor/automattic/jetpack-forms/dist/blocks/editor.js:6
-#: _inc/blocks/editor-beta.js:78 _inc/blocks/editor-experimental.js:75
-#: _inc/blocks/editor.js:65
+#: _inc/blocks/editor-beta.js:80 _inc/blocks/editor-experimental.js:79
+#: _inc/blocks/editor.js:69
 msgid "Name"
 msgstr "显示名称"
 
@@ -16783,17 +16824,17 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr "您没有足够的权限访问该页面。"
 
 #. translators: %1$s is a domain name.
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2183
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2182
 msgid "Domain `%1$s` just failed is_usable_domain check as it is a subdomain of WordPress.com."
 msgstr "域“%1$s”未能完成 is_usable_domain 检查，因为它是 WordPress.com 的子域。"
 
 #. translators: %1$s is a domain name.
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2168
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2167
 msgid "Domain `%1$s` just failed is_usable_domain check as it uses an invalid top level domain."
 msgstr "域“%1$s”未能完成 is_usable_domain 检查，因为它使用了无效的顶级域。"
 
 #. translators: %1$s is a domain name.
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2153
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2152
 msgid "Domain `%1$s` just failed is_usable_domain check as it is in the forbidden array."
 msgstr "域“%1$s”未能完成 is_usable_domain 检查，因为该域是被禁止的阵列。"
 
@@ -16803,7 +16844,7 @@ msgid "Domain `%1$s` just failed is_usable_domain check as it is empty."
 msgstr "域“%1$s”未能完成 is_usable_domain 检查，因为该域是空白域。"
 
 #. translators: Error description string.
-#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2467
+#: jetpack_vendor/automattic/jetpack-connection/src/class-manager.php:2484
 #: jetpack_vendor/automattic/jetpack-connection/src/class-tokens.php:225
 msgid "Error Details: %s"
 msgstr "错误详情：%s"
@@ -16998,7 +17039,7 @@ msgstr "Jetpack 未与 WordPress.com 建立连接"
 msgid "Jetpack Debugging Center"
 msgstr "Jetpack Debug 中心"
 
-#: class.jetpack-admin.php:350 modules/plugin-search.php:242
+#: class.jetpack-admin.php:354 modules/plugin-search.php:242
 #: modules/plugin-search.php:572 modules/stats.php:444 modules/stats.php:1202
 msgid "Configure"
 msgstr "配置"
@@ -17033,11 +17074,11 @@ msgstr "未激活"
 msgid "Active"
 msgstr "已激活"
 
-#: class.jetpack-modules-list-table.php:170
+#: class.jetpack-modules-list-table.php:171
 #: modules/widgets/upcoming-events.php:90
 #: _inc/lib/admin-pages/class.jetpack-settings-page.php:120
-#: _inc/blocks/editor-beta.js:126 _inc/blocks/editor-experimental.js:123
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:113
+#: _inc/blocks/editor-beta.js:128 _inc/blocks/editor-experimental.js:127
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:117
 msgid "All"
 msgstr "全部"
 
@@ -17051,11 +17092,11 @@ msgstr "全部"
 #: _inc/lib/core-api/class.jetpack-core-api-site-endpoints.php:290
 #: jetpack_vendor/automattic/jetpack-search/build/customberg/jp-search-configure.js:16
 #: jetpack_vendor/automattic/jetpack-search/build/instant-search/jp-search.chunk-main-payload.js:5
-#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:126
-#: _inc/blocks/editor-experimental.js:20 _inc/blocks/editor-experimental.js:123
+#: _inc/blocks/editor-beta.js:22 _inc/blocks/editor-beta.js:128
+#: _inc/blocks/editor-experimental.js:22 _inc/blocks/editor-experimental.js:127
 #: _inc/blocks/editor-no-post-editor.js:4
-#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:10
-#: _inc/blocks/editor.js:113 _inc/build/admin.js:23
+#: _inc/blocks/editor-no-post-editor.js:77 _inc/blocks/editor.js:12
+#: _inc/blocks/editor.js:117 _inc/build/admin.js:23
 msgid "Search"
 msgstr "搜索"
 
@@ -17063,9 +17104,10 @@ msgstr "搜索"
 msgid "Jetpack Settings"
 msgstr "Jetpack 设置"
 
-#: jetpack_vendor/automattic/jetpack-my-jetpack/src/class-initializer.php:65
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/class-initializer.php:66
+#: jetpack_vendor/automattic/jetpack-my-jetpack/src/class-initializer.php:67
 #: jetpack_vendor/automattic/jetpack-my-jetpack/src/products/class-product.php:530
+#: jetpack_vendor/automattic/jetpack-my-jetpack/build/index.js:13
 msgid "My Jetpack"
 msgstr "我的 Jetpack"
 
@@ -17087,6 +17129,7 @@ msgid "Feedback"
 msgstr "反馈"
 
 #: class.jetpack-network.php:287 class.jetpack.php:3717 class.jetpack.php:3762
+#: jetpack_vendor/automattic/jetpack-jitm/src/class-jitm.php:159
 #: jetpack_vendor/automattic/jetpack-publicize/src/class-publicize-ui.php:498
 #: jetpack_vendor/automattic/jetpack-publicize/src/class-publicize-ui.php:504
 #: modules/masterbar/admin-menu/class-jetpack-admin-menu.php:266
@@ -17096,22 +17139,24 @@ msgstr "反馈"
 #: _inc/lib/admin-pages/class.jetpack-react-page.php:159
 #: _inc/lib/admin-pages/class.jetpack-settings-page.php:36
 #: jetpack_vendor/automattic/jetpack-videopress/build/admin/index.js:11
-#: _inc/blocks/editor-beta.js:5 _inc/blocks/editor-beta.js:6
-#: _inc/blocks/editor-beta.js:18 _inc/blocks/editor-beta.js:23
-#: _inc/blocks/editor-beta.js:38 _inc/blocks/editor-beta.js:42
+#: _inc/blocks/editor-beta.js:6 _inc/blocks/editor-beta.js:7
+#: _inc/blocks/editor-beta.js:20 _inc/blocks/editor-beta.js:25
+#: _inc/blocks/editor-beta.js:40 _inc/blocks/editor-beta.js:42
 #: _inc/blocks/editor-beta.js:45 _inc/blocks/editor-beta.js:52
-#: _inc/blocks/editor-beta.js:73 _inc/blocks/editor-experimental.js:5
-#: _inc/blocks/editor-experimental.js:18 _inc/blocks/editor-experimental.js:22
-#: _inc/blocks/editor-experimental.js:37 _inc/blocks/editor-experimental.js:41
-#: _inc/blocks/editor-experimental.js:44 _inc/blocks/editor-experimental.js:51
+#: _inc/blocks/editor-beta.js:73 _inc/blocks/editor-experimental.js:6
+#: _inc/blocks/editor-experimental.js:7 _inc/blocks/editor-experimental.js:20
+#: _inc/blocks/editor-experimental.js:24 _inc/blocks/editor-experimental.js:39
+#: _inc/blocks/editor-experimental.js:41 _inc/blocks/editor-experimental.js:44
+#: _inc/blocks/editor-experimental.js:51 _inc/blocks/editor-experimental.js:72
 #: _inc/blocks/editor-no-post-editor.js:2
 #: _inc/blocks/editor-no-post-editor.js:6
 #: _inc/blocks/editor-no-post-editor.js:7
 #: _inc/blocks/editor-no-post-editor.js:9
-#: _inc/blocks/editor-no-post-editor.js:12 _inc/blocks/editor.js:5
-#: _inc/blocks/editor.js:8 _inc/blocks/editor.js:12 _inc/blocks/editor.js:27
-#: _inc/blocks/editor.js:31 _inc/blocks/editor.js:34 _inc/blocks/editor.js:41
-#: _inc/build/admin.js:44 _inc/build/admin.js:77
+#: _inc/blocks/editor-no-post-editor.js:12 _inc/blocks/editor.js:6
+#: _inc/blocks/editor.js:7 _inc/blocks/editor.js:10 _inc/blocks/editor.js:14
+#: _inc/blocks/editor.js:29 _inc/blocks/editor.js:31 _inc/blocks/editor.js:34
+#: _inc/blocks/editor.js:41 _inc/blocks/editor.js:62 _inc/build/admin.js:44
+#: _inc/build/admin.js:77
 msgid "Settings"
 msgstr "设置"
 

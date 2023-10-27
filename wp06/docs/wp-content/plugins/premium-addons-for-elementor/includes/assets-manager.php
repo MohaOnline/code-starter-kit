@@ -522,7 +522,7 @@ class Assets_Manager {
 				'premium-nav-menu',
 				'premium-addon-maps',
 				'premium-woo-products-pro',
-				'premium-addon-testimonials',
+				// 'premium-addon-testimonials',
 				'premium-smart-post-listing',
 				'premium-addon-pricing-table',
 				'premium-addon-image-separator',

@@ -3658,7 +3658,8 @@ class ExcludeJsFromDelay {
         self::$scripts_exclusion_list = self::EXCLUDE_LIST['scripts'];
         self::$themes_exclusion_list = self::EXCLUDE_LIST['themes'];
         self::$exclusion_data = self::$site_plugins;
-        array_filter(self::$plugins_exclusion_list, 'self::filter_exclusion_plugins', ARRAY_FILTER_USE_BOTH);
+        $filter_exclusion_plugins_fanc = self::class . '::filter_exclusion_plugins';
+        array_filter(self::$plugins_exclusion_list, $filter_exclusion_plugins_fanc, ARRAY_FILTER_USE_BOTH);
         self::$exclusion_data = array_merge(self::$exclusion_data, self::$scripts_exclusion_list);
         $current_theme = wp_get_theme();
         $theme_text_domain = $current_theme->get('TextDomain');

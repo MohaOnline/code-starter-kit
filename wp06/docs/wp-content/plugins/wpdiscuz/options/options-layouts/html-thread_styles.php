@@ -40,7 +40,7 @@ if (!defined("ABSPATH")) {
         <h2 style="margin-bottom: 0px;font-size: 15px; color: #555;"><?php echo esc_html($setting["options"]["styleSpecificColors"]["label"]) ?></h2>
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["styleSpecificColors"]["description"]) ?></p>
         <div class="wpd-default-style-colors" style="float: left; width: 48%;">
-            <h4 style="font-size: 14px; color: #0c8d71;"><?php _e("Default Style","wpdiscuz"); ?></h4>
+            <h4 style="font-size: 14px; color: #0c8d71;"><?php esc_html_e("Default Style","wpdiscuz"); ?></h4>
             <div class="wpd-scol-wrap">
                 <input type="text" class="wpdiscuz-color-picker regular-text" value="<?php echo esc_attr($this->thread_styles["defaultCommentAreaBG"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_THREAD_STYLES); ?>[defaultCommentAreaBG]" placeholder="<?php esc_attr_e("default", "wpdiscuz"); ?>"/>
                 <label><?php esc_html_e("Comment Area Background", "wpdiscuz"); ?></label>
@@ -67,7 +67,7 @@ if (!defined("ABSPATH")) {
             </div>
         </div>
         <div class="wpd-dark-style-colors" style="float: right; width: 48%;">
-            <h4 style="font-size: 14px; color: #222;"><?php _e("Dark Style", "wpdiscuz"); ?></h4>
+            <h4 style="font-size: 14px; color: #222;"><?php esc_html_e("Dark Style", "wpdiscuz"); ?></h4>
             <div class="wpd-scol-wrap" style="background: #F5F5F5;">
                 <input type="text" class="wpdiscuz-color-picker regular-text" value="<?php echo esc_attr($this->thread_styles["darkCommentAreaBG"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_THREAD_STYLES); ?>[darkCommentAreaBG]" placeholder="<?php esc_attr_e("default", "wpdiscuz"); ?>"/>
                 <label><?php esc_html_e("Comment Area Background", "wpdiscuz"); ?></label>
@@ -140,7 +140,7 @@ if (!defined("ABSPATH")) {
 <!-- Option end -->
 
 <div style="padding: 20px 0 30px 0; font-size: 14px;">
-    <a href="<?php echo admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS . "&wpd_tab=rating") ?>"><?php _e("Comment Rating Colors","wpdiscuz"); ?></a> and <a href="<?php echo admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS . "&wpd_tab=labels") ?>"><?php _e("Comment Author Label Colors","wpdiscuz"); ?></a>
+    <a href="<?php echo admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS . "&wpd_tab=rating") ?>"><?php esc_html_e("Comment Rating Colors","wpdiscuz"); ?></a> and <a href="<?php echo admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS . "&wpd_tab=labels") ?>"><?php esc_html_e("Comment Author Label Colors","wpdiscuz"); ?></a>
 </div>
 
 <!-- Option start -->

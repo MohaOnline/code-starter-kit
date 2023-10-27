@@ -183,7 +183,7 @@
         }
 	}
 
-	// CSVTOJSON(fieldname or CSV String, args, form) the ards, and form parameter are optional
+	// CSVTOJSON(fieldname or CSV String, args, form) the args, and form parameter are optional
 	lib.CSVTOJSON = lib.csvtojson = function(fieldname, args, form){
         var result = null;
         if(typeof args == 'undefined' || args === null) args = {};
@@ -285,6 +285,59 @@
 
         return result;
 	};
+
+    lib.JSONTOCSV = lib.jsontocsv = function( json, delimiter, file_name ){
+
+        function isObject( v ) {
+            return typeof v == 'object' && Object.getPrototypeOf(v) === Object.prototype ? true : false;
+        };
+
+        let arr = typeof json != 'object' ? JSON.parse( json ) : json,
+            str = '',
+            headers = [],
+            row;
+
+        // Initialize parameters
+        delimiter = delimiter || ',';
+        file_name  = file_name || false;
+
+        for ( let i in arr ) {
+            row = [];
+
+            // First record extract headers
+            if ( 0 == i && isObject( arr[i] ) ) {
+                headers = Object.getOwnPropertyNames( arr[i] );
+                str += headers.join( delimiter ) + '\r\n';
+            }
+
+            if ( isObject( arr[i] ) ) {
+                row = Object.values( arr[i] );
+            } else if( Array.isArray( arr[i] ) ) {
+                row = arr[i];
+            } else {
+                row = [ arr[i] ];
+            }
+
+            if ( row.length ) {
+                str += row.join( delimiter ) + '\r\n';
+            }
+
+        }
+
+        if ( str.length && file_name ) {
+            let blob = new Blob([str], { type: 'text/csv' }),
+                url = window.URL.createObjectURL(blob),
+                a = document.createElement('a');
+
+            a.href = url;
+            a.download = file_name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        return str;
+    };
 
 	root.CF_FILE = lib;
 

@@ -142,10 +142,7 @@ class Loader {
 	 * @since 7.1.6
 	 */
 	public function add_settings_hooks() {
-		if ( Helper_Service::is_siteground() ) {
-				return;
-		}
-
+		// Bail if no consent is set.
 		if ( 0 === intval( get_option( 'siteground_data_consent', 0 ) ) ) {
 			return;
 		}

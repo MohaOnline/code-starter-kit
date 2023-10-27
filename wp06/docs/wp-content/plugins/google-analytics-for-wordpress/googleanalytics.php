@@ -7,9 +7,9 @@
  * Author:              MonsterInsights
  * Author URI:          https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
  *
- * Version:             8.19
- * Requires at least:   4.8.0
- * Requires PHP:        5.6
+ * Version:             8.20.1
+ * Requires at least:   5.6.0
+ * Requires PHP:        7.2
  *
  * License:             GPL v3
  *
@@ -71,7 +71,7 @@ final class MonsterInsights_Lite
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '8.19';
+	public $version = '8.20.1';
 
 	/**
 	 * Plugin file.
@@ -181,6 +181,13 @@ final class MonsterInsights_Lite
 	 * @deprecated Since 8.3 with the removal of ga compatibility
 	 */
 	public $tracking_mode;
+
+	/**
+	 * Setup checklist class property.
+	 *
+	 * @var MonsterInsights_Setup_Checklist
+	 */
+	public $setup_checklist;
 
 	/**
 	 * Primary class constructor.

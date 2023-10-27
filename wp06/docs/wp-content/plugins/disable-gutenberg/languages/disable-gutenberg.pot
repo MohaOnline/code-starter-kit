@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Disable Gutenberg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 21:01+0000\n"
+"POT-Creation-Date: 2023-10-20 20:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -27,15 +27,23 @@ msgid "ACF Support"
 msgstr ""
 
 #: inc/settings-reset.php:38
+msgid "and"
+msgstr ""
+
+#: inc/settings-reset.php:40
 msgid "Apply code"
 msgstr ""
 
-#: inc/settings-reset.php:38
-msgid "at checkout. Sale ends 9/9/23."
+#: inc/settings-reset.php:40
+msgid "at checkout. Sale ends 12/30/23."
 msgstr ""
 
 #: inc/plugin-features.php:86
 msgid "Block Edit"
+msgstr ""
+
+#: inc/settings-reset.php:39
+msgid "books"
 msgstr ""
 
 #: inc/plugin-features.php:96
@@ -106,7 +114,7 @@ msgid ""
 "roles, and more."
 msgstr ""
 
-#: inc/settings-reset.php:109
+#: inc/settings-reset.php:111
 msgid "Dismiss"
 msgstr ""
 
@@ -214,10 +222,6 @@ msgstr ""
 msgid "Plugin Menu Item"
 msgstr ""
 
-#: inc/settings-reset.php:35
-msgid "Plugin Sale:"
-msgstr ""
-
 #: inc/settings-register.php:41
 msgid "Post IDs that always should use the Block Editor"
 msgstr ""
@@ -262,9 +266,8 @@ msgstr ""
 msgid "Restore default plugin options"
 msgstr ""
 
-#: inc/settings-reset.php:36
-#, php-format
-msgid "Save 20% on any of our"
+#: inc/settings-reset.php:35
+msgid "Save BIG!"
 msgstr ""
 
 #: inc/settings-register.php:155
@@ -317,6 +320,10 @@ msgstr ""
 
 #: disable-gutenberg.php:248 disable-gutenberg.php:254
 msgid "Sorry, pal!"
+msgstr ""
+
+#: inc/settings-reset.php:36
+msgid "Take 25% OFF any of our"
 msgstr ""
 
 #: inc/settings-register.php:167

@@ -9,7 +9,7 @@ if ( empty( $cff_backend_script_generator ) ) {
 
 ob_start(); // Turn on output buffering
 ?>
-fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery;
+fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery.noConflict();
 fbuilderjQuery(window).bind( 'pageshow', function( event ){ if( typeof event.originalEvent[ 'persisted' ] != 'undefined' && event.originalEvent[ 'persisted' ] ) location.reload(); } );
 fbuilderjQuery.fbuilderjQueryGenerator = function(){
 	(function($) {

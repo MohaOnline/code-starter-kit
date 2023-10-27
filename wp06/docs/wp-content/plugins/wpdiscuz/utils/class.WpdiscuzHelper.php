@@ -179,7 +179,7 @@ class WpdiscuzHelper implements WpDiscuzConstants {
             if (!$timeDependent) {
                 wp_die(__("Nonce is invalid.", "wpdiscuz"));
             }
-            
+
             unset($_COOKIE[self::GLOBAL_NONCE_NAME . '_' . COOKIEHASH]);
             $this->setNonceInCookies($timeDependent, false);
         }
@@ -189,12 +189,13 @@ class WpdiscuzHelper implements WpDiscuzConstants {
         if (headers_sent()) {
             return;
         }
-        
-        
-        if(!apply_filters('wpdiscuz_validate_nonce_for_guests', false) && !is_user_logged_in()){
+
+        $validateNonceForGuests = apply_filters('wpdiscuz_validate_nonce_for_guests', false);
+
+        if (!$validateNonceForGuests && !is_user_logged_in()) {
             return;
         }
-        
+
         if ($checkNonce) {
             $nonce = !empty($_COOKIE[self::GLOBAL_NONCE_NAME . '_' . COOKIEHASH]) ? sanitize_text_field($_COOKIE[self::GLOBAL_NONCE_NAME . '_' . COOKIEHASH]) : "";
             $timeDependent = wp_verify_nonce($nonce, $this->generateNonceKey());
@@ -494,7 +495,7 @@ class WpdiscuzHelper implements WpDiscuzConstants {
 
     public function userNicename($html, $comment, $user) {
         if (apply_filters("wpdiscuz_show_nicename", false) && $this->options->subscription["enableUserMentioning"] && isset($user->user_nicename)) {
-            $html .= "<span class='wpd-user-nicename' data-wpd-clipboard='@" . esc_attr($user->user_nicename) . "'>(@" . esc_html($user->user_nicename) . ")</span>";
+            $html .= "<span class='wpd-user-nicename' data-wpd-ismention='1' data-wpd-clipboard='" . esc_attr($user->user_nicename) . "'>(@" . esc_html($user->user_nicename) . ")</span>";
         }
 
         return $html;
@@ -929,7 +930,7 @@ class WpdiscuzHelper implements WpDiscuzConstants {
     }
 
     private function isValidAvatar($email) {
-        $url = "http://www.gravatar.com/avatar/" . md5($email) . "?d=404";
+        $url = "https://www.gravatar.com/avatar/" . md5($email) . "?d=404";
         $headers = wp_remote_head($url);
 
         return !is_wp_error($headers) && 200 === $headers["response"]["code"];
@@ -1388,7 +1389,7 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                 <script>
                     jQuery(document).ready(function ($) {
                         $(document).on('click', '#wpd_reset_post_rating', function () {
-                            if (confirm('<?php _e("Are you sure you want to reset post rating?") ?>')) {
+                            if (confirm('<?php esc_html_e("Are you sure you want to reset post rating?") ?>')) {
                                 var $this = $(this);
                                 $this.prop('disabled', true);
                                 $this.next('.wpd_reset_rating_working').show();
@@ -1418,11 +1419,11 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                 </script>
                 <p id="wpd_reset_post_ratings_wrapper">
                     <button type="button" class="button" id="wpd_reset_post_rating"
-                            name="wpd_reset_post_rating"><?php _e("Reset Post Rating", "wpdiscuz"); ?></button>
+                            name="wpd_reset_post_rating"><?php esc_html_e("Reset Post Rating", "wpdiscuz"); ?></button>
                     <span class="wpd_reset_rating_working"
-                          style="display:none;"><?php _e("Working...", "wpdiscuz"); ?></span>
+                          style="display:none;"><?php esc_html_e("Working...", "wpdiscuz"); ?></span>
                     <span class="wpd_reset_rating_done"
-                          style="display:none;color:#10b493;"><?php _e("Done", "wpdiscuz"); ?></span>
+                          style="display:none;color:#10b493;"><?php esc_html_e("Done", "wpdiscuz"); ?></span>
                 </p>
                 <?php
             }
@@ -1431,7 +1432,7 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                 <script>
                     jQuery(document).ready(function ($) {
                         $(document).on('click', '#wpd_reset_fields_ratings', function () {
-                            if (confirm('<?php _e("Are you sure you want to reset fields ratings?") ?>')) {
+                            if (confirm('<?php esc_html_e("Are you sure you want to reset fields ratings?") ?>')) {
                                 var $this = $(this);
                                 $this.prop('disabled', true);
                                 $this.next('.wpd_reset_rating_working').show();
@@ -1461,11 +1462,11 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                 </script>
                 <p id="wpd_reset_fields_ratings_wrapper">
                     <button type="button" class="button" id="wpd_reset_fields_ratings"
-                            name="wpd_reset_fields_ratings"><?php _e("Reset Fields Ratings", "wpdiscuz"); ?></button>
+                            name="wpd_reset_fields_ratings"><?php esc_html_e("Reset Fields Ratings", "wpdiscuz"); ?></button>
                     <span class="wpd_reset_rating_working"
-                          style="display:none;"><?php _e("Working...", "wpdiscuz"); ?></span>
+                          style="display:none;"><?php esc_html_e("Working...", "wpdiscuz"); ?></span>
                     <span class="wpd_reset_rating_done"
-                          style="display:none;color:#10b493;"><?php _e("Done", "wpdiscuz"); ?></span>
+                          style="display:none;color:#10b493;"><?php esc_html_e("Done", "wpdiscuz"); ?></span>
                 </p>
                 <?php
             }
@@ -1666,6 +1667,83 @@ class WpdiscuzHelper implements WpDiscuzConstants {
         $variable = filter_input($action, $variable_name, $filter);
 
         return $variable ? $variable : $default;
+    }
+
+    public function handleCommentSubmission($post, $comment_parent, $isNewComment = true) {
+
+        if (!$post) {
+            return new WP_Error("post_not_found", __("Current post doesn't found.", "wpdiscuz"));
+        }
+
+        $_post = get_post($post);
+
+        if (!$_post) {
+            return new WP_Error("post_not_found", __("Current post doesn't found.", "wpdiscuz"));
+        }
+
+        $comment_post_id = $_post->ID;
+
+        if ($comment_parent) {
+            $comment_parent = absint($comment_parent);
+            $comment_parent_object = get_comment($comment_parent);
+            if (
+                    0 !== $comment_parent &&
+                    (
+                    !$comment_parent_object instanceof WP_Comment ||
+                    0 === (int) $comment_parent_object->comment_approved
+                    )
+            ) {
+                do_action("comment_reply_to_unapproved_comment", $comment_post_id, $comment_parent);
+                return new WP_Error("comment_reply_to_unapproved_comment", __("Sorry, replies to unapproved comments are not allowed."), 403);
+            }
+        }
+
+
+
+        if (empty($_post->comment_status)) {
+
+            do_action("comment_id_not_found", $comment_post_id);
+
+            return new WP_Error("comment_id_not_found", __("Current post doesn't found.", "wpdiscuz"));
+        }
+
+        $status = get_post_status($_post);
+
+        if (( "private" === $status ) && !current_user_can("read_post", $comment_post_id)) {
+            return new WP_Error("comment_id_not_found", __("Current post doesn't found.", "wpdiscuz"));
+        }
+
+        $status_obj = get_post_status_object($status);
+
+        if (!comments_open($comment_post_id)) {
+
+            do_action("comment_closed", $comment_post_id);
+            return new WP_Error("comment_closed", __("Sorry, comments are closed for this item.", "wpdiscuz"), 403);
+        } elseif ("trash" === $status) {
+
+            do_action("comment_on_trash", $comment_post_id);
+            return new WP_Error("comment_on_trash", __("Current post doesn't found.", "wpdiscuz"));
+        } elseif (!$status_obj->public && !$status_obj->private) {
+
+            do_action("comment_on_draft", $comment_post_id);
+
+            if (current_user_can("read_post", $comment_post_id)) {
+                return new WP_Error("comment_on_draft", __("Sorry, comments are not allowed for this item.", "wpdiscuz"), 403);
+            } else {
+                return new WP_Error('comment_on_draft', __("Current post doesn't found.", "wpdiscuz"));
+            }
+        } elseif (post_password_required($comment_post_id)) {
+
+            do_action('comment_on_password_protected', $comment_post_id);
+            return new WP_Error('comment_on_password_protected', __("Sorry, comments are not allowed for this item.", "wpdiscuz"));
+        }
+
+        if ($isNewComment) {
+
+            do_action('pre_comment_on_post', $comment_post_id);
+        }
+
+        return true;
     }
 
 }

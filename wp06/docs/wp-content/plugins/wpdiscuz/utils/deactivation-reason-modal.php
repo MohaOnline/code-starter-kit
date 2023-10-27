@@ -24,14 +24,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("What kind of problems do you have?", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="not_working-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="not_working-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="not_working-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -46,14 +46,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("What type of features you want to be in the plugin?", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="how_to_make_it_work-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="how_to_make_it_work-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="how_to_make_it_work-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -64,14 +64,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("What type of features you want to be in the plugin?", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="need_specific_features-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="need_specific_features-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="need_specific_features-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -82,14 +82,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("What part of design you don't like or want to change?", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="did_not_like_design-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="did_not_like_design-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="did_not_like_design-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -100,14 +100,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("Could you please describe which features of the plugin slows down your website?", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="works_very_slow-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="works_very_slow-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="works_very_slow-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -118,14 +118,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" required="required" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_attr_e("Please provide a plugin name or URL", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="found_better-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="found_better-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="found_better-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>
@@ -136,14 +136,14 @@ if (!defined("ABSPATH")) {
                     <div class="wpd-deactivation-reason-more-info">
                         <textarea class="dr_more_info" name="deactivation_reason_desc" rows="3" placeholder="<?php esc_html_e("Please provide more information", "wpdiscuz"); ?>"></textarea>
                         <div class="wpd_deactivation_feedback">
-                            <p class="wpd-info"><?php _e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
+                            <p class="wpd-info"><?php esc_html_e('If you want us to contact you please click on "I agree to receive email" checkbox, then fill out your email. We\'ll try to do our best to help you with problems.', "wpdiscuz"); ?></p>
                             <div class="wpddf_left">
-                                <label for="other-deactivation_feedback" class="wpd-info"><?php _e("I agree to receive email", "wpdiscuz"); ?>
+                                <label for="other-deactivation_feedback" class="wpd-info"><?php esc_html_e("I agree to receive email", "wpdiscuz"); ?>
                                     <input id="other-deactivation_feedback" type="checkbox" name="deactivation_feedback_receive_email">
                                 </label>
                             </div>
                             <div class="wpddf_right">
-                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php _e("email for feedback", "wpdiscuz"); ?>">
+                                <input type="email" name="deactivation_feedback_email" autocomplete="off" placeholder="<?php esc_html_e("email for feedback", "wpdiscuz"); ?>">
                             </div>
                         </div>
                     </div>

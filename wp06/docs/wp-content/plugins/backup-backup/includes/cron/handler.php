@@ -88,7 +88,7 @@ class BMI_Crons {
         if ($c_month_day == $day && $c_hour <= $hour) {
           if ($c_minute >= $minutes) {
 
-            $days = cal_days_in_month(CAL_GREGORIAN, $c_month, $current->format('Y'));
+            $days = \cal_days_in_month(CAL_GREGORIAN, $c_month, $current->format('Y'));
             $offset = ($days - ($c_month_day - $day));
             $future->modify("+$offset day");
 

@@ -251,7 +251,9 @@ class OptimizerAdmin {
 
     public function two_flow_set_mode() {
         // phpcs:ignore
-        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce') && isset($_POST['mode'])) {
+        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce')
+            && isset($_POST['mode'])
+            && OptimizerUtils::check_admin_capabilities()) {
             $two_conflicting_plugins = OptimizerUtils::get_conflicting_plugins();
             $two_triggerPostOptimizationTasks = get_option('two_triggerPostOptimizationTasks');
             $mode = sanitize_text_field($_POST['mode']);
@@ -280,7 +282,7 @@ class OptimizerAdmin {
             'success' => false,
         ];
         // phpcs:ignore
-        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce') && isset($_POST['status']) && !empty($_POST['status'])) {
+        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce') && isset($_POST['status']) && !empty($_POST['status']) && OptimizerUtils::check_admin_capabilities()) {
             // 1 in-progress
             // 2 finished (Looks good)
             // 3 contact-us
@@ -304,7 +306,7 @@ class OptimizerAdmin {
             'success' => false,
         ];
         // phpcs:ignore
-        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce')) {
+        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce') && OptimizerUtils::check_admin_capabilities()) {
             update_option('two_flow_status', '2');
             OptimizerUtils::update_connection_flow_progress('done', 'connection_flow_finish');
             $return_data['success'] = true;
@@ -495,6 +497,8 @@ class OptimizerAdmin {
         delete_option('two_flow_score_log');
         delete_option('two_clear_cache_from');
         delete_option('two_flow_critical_start');
+        delete_option('wp_two_nonce_two_init_flow_score');
+        delete_option('two_activate_score_check_nonce_data');
         //deleting option which is showing IO connection
         delete_site_option(TENWEB_PREFIX . '_from_image_optimizer');
         delete_site_option(TENWEB_PREFIX . '_client_referral_hash');
@@ -1103,7 +1107,7 @@ class OptimizerAdmin {
     }
 
     public function two_clear_cloudflare_cache() {
-        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce')) { // phpcs:ignore
+        if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce') && OptimizerUtils::check_admin_capabilities()) { // phpcs:ignore
             if (isset($_POST['page_url'])) {
                 OptimizerUtils::clear_cloudflare_cache([sanitize_url($_POST['page_url'])]); // phpcs:ignore
             }
@@ -1262,7 +1266,7 @@ class OptimizerAdmin {
 
             if (version_compare($two_version, $habit_version, '<') && !TENWEB_SO_HOSTED_ON_10WEB) {
                 $nonce = uniqid('two_activate_score_check_', false);
-                update_option($nonce, $nonce);
+                update_option('two_activate_score_check_nonce_data', $nonce);
                 $res = wp_remote_post(admin_url('admin-ajax.php'), [
                     'timeout' => 5, // phpcs:ignore
                     'redirection' => 5,
@@ -1585,9 +1589,11 @@ class OptimizerAdmin {
     }
 
     public static function two_white_label() {
-        if (isset($_POST['nonce'], $_POST['company_name']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce')) { // phpcs:ignore
+        if (isset($_POST['nonce'], $_POST['company_name'], $_POST['support_url']) && wp_verify_nonce($_POST['nonce'], 'two_ajax_nonce')) { // phpcs:ignore
             $company_name = trim(sanitize_text_field($_POST['company_name']));
+            $support_url = trim(sanitize_url($_POST['support_url'])); // phpcs:ignore_
             update_option('two_so_organization_name', $company_name);
+            update_option('two_so_organization_support_url', $support_url);
         }
     }
 
@@ -1757,7 +1763,7 @@ class OptimizerAdmin {
     public static function setFlowIdNotificationId() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
         $domain_id = (int) get_option(TENWEBIO_MANAGER_PREFIX . '_domain_id', 0);

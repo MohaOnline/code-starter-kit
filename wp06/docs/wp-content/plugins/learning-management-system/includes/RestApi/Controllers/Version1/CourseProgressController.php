@@ -319,7 +319,8 @@ class CourseProgressController extends CrudController {
 		$course              = masteriyo_get_course( $course_progress->get_course_id( $context ) );
 		$summary             = $this->get_course_progress_summary( $course_progress );
 		$has_user_redirected = masteriyo_string_to_bool( get_user_meta( $course_progress->get_user_id( $context ), 'has_user_redirected_' . $course_progress->get_course_id( $context ), true ) );
-		$data                = array(
+
+		$data = array(
 			'id'                   => $course_progress->get_id( $context ),
 			'user_id'              => $course_progress->get_user_id( $context ),
 			'course_id'            => $course_progress->get_course_id( $context ),
@@ -331,7 +332,7 @@ class CourseProgressController extends CrudController {
 			'completed_at'         => masteriyo_rest_prepare_date_response( $course_progress->get_completed_at( $context ) ),
 			'items'                => $this->get_course_progress_items( $course_progress ),
 			'summary'              => $summary,
-			'has_user_redirected_' . $course_progress->get_course_id( $context ) => $has_user_redirected,
+			'has_user_redirected_' . $course_progress->get_course_id( $context ) => empty( $has_user_redirected ) ? false : $has_user_redirected,
 			'course_thankyou_data' => masteriyo_get_setting( 'general.pages.course_thankyou_page' ),
 		);
 
@@ -341,16 +342,16 @@ class CourseProgressController extends CrudController {
 		}
 
 		if ( 0 === $summary['total']['pending'] ) {
-			$course_progress->set_status( CourseProgressStatus::COMPLETED );
 
 			// Check if user has redirected after course completion.
-			$data['status']    = $course_progress->get_status( $context );
-			$has_user_redirect = get_user_meta( $course_progress->get_user_id( $context ), 'has_user_redirected_' . $course_progress->get_course_id( $context ), true );
 
-			if ( ! $has_user_redirect ) {
-				$data[ 'has_user_redirected_' . $course_progress->get_course_id( $context ) ] = true;
-				update_user_meta( $course_progress->get_user_id( $context ), 'has_user_redirected_' . $course_progress->get_course_id( $context ), true );
+			if ( ( 'completed' === $data['status'] ) && ! $has_user_redirected ) {
+				$data[ 'has_user_redirected_' . $course_progress->get_course_id() ] = false;
+				update_user_meta( $course_progress->get_user_id(), 'has_user_redirected_' . $course_progress->get_course_id(), true );
 			}
+
+			$course_progress->set_status( CourseProgressStatus::COMPLETED );
+			$data['status'] = $course_progress->get_status();
 		}
 		/**
 		 * Filter course progress rest response data.

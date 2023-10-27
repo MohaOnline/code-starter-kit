@@ -9,13 +9,13 @@
                                 <?php echo get_avatar("example@example.com", 64); ?>
                             </div>
                             <div class="wpd-comment-label" wpd-tooltip-position="right">
-                                <span><?php _e("User", "wpdiscuz"); ?></span>
+                                <span><?php esc_html_e("User", "wpdiscuz"); ?></span>
                             </div>
                         </div>
                         <div id="comment-1" class="wpd-comment-right">
                             <div class="wpd-comment-header">
                                 <div class="wpd-comment-author ">
-                                    <a href="#"><?php _e("User Name", "wpdiscuz"); ?></a>
+                                    <a href="#"><?php esc_html_e("User Name", "wpdiscuz"); ?></a>
                                 </div>
                                 <div class="wpd-comment-date">
                                     <?php echo $this->helper->dateDiff(date("Y-m-d H:i:s")); ?>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="wpd-reply-button">
                                     <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
-                                    <span><?php _e("Reply", "wpdiscuz"); ?></span>
+                                    <span><?php esc_html_e("Reply", "wpdiscuz"); ?></span>
                                 </div>
                                 <div class="wpd-space"></div>
                             </div>

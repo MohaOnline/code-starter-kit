@@ -414,6 +414,10 @@ function breeze_currency_switcher_cache() {
 		$currency = $currency.weglot_get_current_language();
 	}
 
+	if(isset($_COOKIE['aelia_cs_selected_currency'])){
+		$currency = trim( $_COOKIE['aelia_cs_selected_currency'] );
+	}
+
 	if ( is_string( $currency ) && ! empty( $currency ) ) {
 		$currency = mb_strtolower( $currency );
 	}

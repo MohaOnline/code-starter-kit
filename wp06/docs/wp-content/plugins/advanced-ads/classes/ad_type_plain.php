@@ -55,7 +55,7 @@ class Advanced_Ads_Ad_Type_Plain extends Advanced_Ads_Ad_Type_Abstract {
 			name="advanced_ad[content]"
 			onkeyup="Advanced_Ads_Admin.check_ad_source()"
 		><?php echo esc_textarea( $content ); ?></textarea>
-		<?php include ADVADS_BASE_PATH . 'admin/views/ad-info-after-textarea.php'; ?>
+		<?php include ADVADS_ABSPATH . 'admin/views/ad-info-after-textarea.php'; ?>
 		<input type="hidden" name="advanced_ad[output][allow_php]" value="0"/>
 
 		<?php
@@ -196,7 +196,7 @@ class Advanced_Ads_Ad_Type_Plain extends Advanced_Ads_Ad_Type_Abstract {
 				if ( strpos( $image, 'loading=' ) !== false ) {
 					continue;
 				}
-				
+
 				// Optimize image HTML tag with loading attributes based on WordPress filter context.
 				$content = str_replace( $image, $this->img_tag_add_loading_attr( $image, 'the_content' ), $content );
 			}

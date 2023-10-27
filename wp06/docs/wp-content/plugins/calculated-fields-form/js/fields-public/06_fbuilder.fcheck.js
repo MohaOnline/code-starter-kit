@@ -11,7 +11,9 @@
 			merge:1,
             onoff:0,
 			max:-1,
+			min:-1,
 			maxError:"Check no more than {0} boxes",
+			minError:"Check at least {0} boxes",
 			toSubmit:"text",
 			showDep:false,
 			show:function()
@@ -33,12 +35,12 @@
 
 						classDep = (this.choicesDep[i].length) ? 'depItem': '';
 
-						str += '<div class="'+this.layout+'"><label for="'+this.name+'_cb'+i+'" '+(!this.tooltipIcon && this.userhelpTooltip && this.userhelp && this.userhelp.length ? 'uh="'+cff_esc_attr(this.userhelp)+'"' : '')+'><input aria-label="'+cff_esc_attr(this.choices[i])+'" name="'+this.name+'[]" id="'+this.name+'_cb'+i+'" class="field '+classDep+' group '+((this.required)?" required":"")+'" value="'+cff_esc_attr(this.choicesVal[i])+'" vt="'+cff_esc_attr((this.toSubmit == 'text') ? this.choices[i] : this.choicesVal[i])+'" type="checkbox" '+(this.readonly ? ' onclick="return false;" ' : '')+((this.choiceSelected[i])?"checked":"")+'/> '+
+						str += '<div class="'+this.layout+'"><label for="'+this.name+'_cb'+i+'" '+(!this.tooltipIcon && this.userhelpTooltip && this.userhelp && this.userhelp.length ? 'uh="'+cff_esc_attr(this.userhelp)+'"' : '')+'><input aria-label="'+cff_esc_attr(this.choices[i])+'" name="'+this.name+'[]" id="'+this.name+'_cb'+i+'" class="field '+classDep+' group '+((this.required || 0 < this.min)?" required":"")+'" value="'+cff_esc_attr(this.choicesVal[i])+'" vt="'+cff_esc_attr((this.toSubmit == 'text') ? this.choices[i] : this.choicesVal[i])+'" type="checkbox" '+(this.readonly ? ' onclick="return false;" ' : '')+((this.choiceSelected[i])?"checked":"")+'/> '+
                         (this.onoff ? '<span class="cff-switch"></span>': '') +
                         '<span>'+
                         cff_html_decode(this.choices[i])+'</span></label></div>';
 					}
-					return '<div class="fields '+cff_esc_attr(this.csslayout)+(this.onoff ? ' cff-switch-container' : '')+' '+this.name+' cff-checkbox-field" id="field'+this.form_identifier+'-'+this.index+'"><label>'+this.title+''+((this.required)?"<span class='r'>*</span>":"")+'</label><div class="dfield">'+str+'<div class="clearer"></div>'+(!this.userhelpTooltip ? '<span class="uh">'+this.userhelp+'</span>' : '')+'</div><div class="clearer"></div></div>';
+					return '<div class="fields '+cff_esc_attr(this.csslayout)+(this.onoff ? ' cff-switch-container' : '')+' '+this.name+' cff-checkbox-field" id="field'+this.form_identifier+'-'+this.index+'"><label>'+this.title+''+((this.required || 0 < this.min)?"<span class='r'>*</span>":"")+'</label><div class="dfield">'+str+'<div class="clearer"></div>'+(!this.userhelpTooltip ? '<span class="uh">'+this.userhelp+'</span>' : '')+'</div><div class="clearer"></div></div>';
 				},
             enable_disable:function()
                 {
@@ -52,12 +54,21 @@
                 },
             after_show:function()
                 {
-                    var m = this;
+                    var m = this, tmp;
                     $(document).off('click','[id*="'+m.name+'"]')
 					.on('click','[id*="'+m.name+'"]', function(){m.enable_disable();});
                     m.enable_disable();
+
+					if(0 < m.max && 0 < m.min && m.max < m.min){
+						tmp = m.min;
+						m.min = m.max;
+						m.max = tmp;
+					}
+
                     if(0 < m.max)
                         $('[id*="'+m.name+'"]').rules('add',{maxlength:m.max, messages:{maxlength:m.maxError}});
+                    if(0 < m.min)
+                        $('[id*="'+m.name+'"]').rules('add',{minlength:m.min, messages:{minlength:m.minError}});
                 },
 			showHideDep:function(toShow, toHide, hiddenByContainer, interval)
 				{

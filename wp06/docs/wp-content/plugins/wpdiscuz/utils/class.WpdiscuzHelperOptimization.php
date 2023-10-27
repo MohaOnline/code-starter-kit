@@ -20,6 +20,7 @@ class WpdiscuzHelperOptimization implements WpDiscuzConstants {
         add_action("delete_user", [&$this, "deleteUserRelatedData"], 11);
         add_action("profile_update", [&$this, "onProfileUpdate"], 10, 2);
         add_action("admin_post_removeVoteData", [&$this, "removeVoteData"]);
+        add_action("admin_post_removeSocialAvatars", [&$this, "removeSocialAvatars"]);
         add_action("admin_post_resetPhrases", [&$this, "resetPhrases"]);
         add_action("transition_comment_status", [&$this, "statusEventHandler"], 10, 3);
         add_action("edit_comment", [&$this, "commentEdited"], 10, 2);
@@ -172,6 +173,13 @@ class WpdiscuzHelperOptimization implements WpDiscuzConstants {
         if (isset($_GET["_wpnonce"]) && wp_verify_nonce($_GET["_wpnonce"], "removeVoteData") && current_user_can("manage_options")) {
             $this->dbManager->removeVotes();
             do_action("wpdiscuz_remove_vote_data");
+            wp_redirect(admin_url("admin.php?page=" . self::PAGE_SETTINGS . "&wpd_tab=" . self::TAB_GENERAL));
+        }
+    }
+    
+    public function removeSocialAvatars() {
+        if (isset($_GET["_wpnonce"]) && wp_verify_nonce($_GET["_wpnonce"], "removeSocialAvatars") && current_user_can("manage_options")) {
+            $this->dbManager->removeSocialAvatars();
             wp_redirect(admin_url("admin.php?page=" . self::PAGE_SETTINGS . "&wpd_tab=" . self::TAB_GENERAL));
         }
     }

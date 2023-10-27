@@ -76,7 +76,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_follow_confirm_email_message"], "wc_follow_confirm_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_follow_confirm_email_message"]), "wc_follow_confirm_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
             </tr>            
             <tr valign="top">
                 <th scope="row">
@@ -106,7 +106,7 @@ if (!defined("ABSPATH")) {
                         <div class="wc_available_variable">[CANCEL_URL]</div>
                     </div>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_follow_email_message"], "wc_follow_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_follow_email_message"]), "wc_follow_email_message", ["textarea_rows" => 10, "teeny" => true]); ?></td>
             </tr>
         </tbody>
     </table>

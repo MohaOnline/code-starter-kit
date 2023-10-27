@@ -435,7 +435,6 @@
 		// Add slices for slice animations
 		function createSlices(element, settings){
 			element.children( '.adipoli-after' ).find( '.adipoli-slice' ).remove();
-			var imWidth = jQuery( '.totalsoft_gv_tv_row' ).width();
 			for (var i = 0; i < settings.slices; i++) {
 				var sliceWidth = Math.round( element.width() / settings.slices );
 				if (i == settings.slices - 1) {
@@ -470,19 +469,9 @@
 		// Add boxes for box animations
 		/*---poxel----*/
 		function createBoxes(element, settings){
-			var imWidth   = jQuery( '.totalsoft_gv_tv_row' ).width();
-			var imHeight  = jQuery( '.totalsoft_gv_tv_row' ).height();
 			var boxWidth = Math.round(jQuery(element).parent().width()/settings.boxCols);
             var boxHeight = Math.round(jQuery(element).parent().outerHeight(true)/settings.boxRows);
 			element.children( '.adipoli-after' ).find( '.adipoli-box' ).remove();
-			if (jQuery( element ).parent().parent().parent().attr( 'class' ) == 'widget widget_total_soft_gallery_video') {
-				jQuery( element ).parent().parent().parent().each(
-					function(index, el){
-						imWidth  = jQuery( el ).find( '.totalsoft_gv_tv_row' ).width();
-						imHeight = jQuery( el ).find( '.totalsoft_gv_tv_row' ).height();
-					}
-				);
-			}
 			for (var rows = 0; rows < settings.boxRows; rows++) {
 				for (var cols = 0; cols < settings.boxCols; cols++) {
 					if (cols == settings.boxCols - 1) {

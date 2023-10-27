@@ -310,7 +310,7 @@ function blogus_social_share_post($post) {
         );
 
         $whatsapp_url = add_query_arg(
-        array('url' => $post_link,
+        array('text' => $post_link,
         'title' => rawurlencode( html_entity_decode( wp_strip_all_tags( $post_title ), ENT_COMPAT, 'UTF-8' ) )
         ),
         'https://api.whatsapp.com/send?text='
@@ -473,7 +473,9 @@ function blogus_custom_header_background() {
 $color = get_theme_mod( 'background_color', get_theme_support( 'custom-background', 'default-color' ) );
 ?>
 <style type="text/css" id="custom-background-css">
-    .wrapper { background-color: #<?php echo esc_attr($color); ?>; }
+    :root {
+        --wrap-color: <?php echo esc_attr($color); ?>
+    }
 </style>
 <?php }
 add_action('wp_head','blogus_custom_header_background');

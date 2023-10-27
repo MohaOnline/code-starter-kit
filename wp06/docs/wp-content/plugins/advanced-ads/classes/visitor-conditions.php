@@ -135,7 +135,7 @@ class Advanced_Ads_Visitor_Conditions {
 		// form name basis.
 		$name = self::get_form_name_with_index( $form_name, $index );
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-device.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-device.php';
 	}
 
 	/**
@@ -163,7 +163,7 @@ class Advanced_Ads_Visitor_Conditions {
 		// options.
 		$operator = isset( $options['operator'] ) ? $options['operator'] : 'is';
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-is-or-not.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-is-or-not.php';
 	}
 
 	/**
@@ -192,7 +192,7 @@ class Advanced_Ads_Visitor_Conditions {
 		$value    = isset( $options['value'] ) ? $options['value'] : 0;
 		$operator = isset( $options['operator'] ) ? $options['operator'] : 'is_equal';
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-number.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-number.php';
 	}
 
 	/**
@@ -221,7 +221,7 @@ class Advanced_Ads_Visitor_Conditions {
 		$value    = isset( $options['value'] ) ? $options['value'] : '';
 		$operator = isset( $options['operator'] ) ? $options['operator'] : 'contains';
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-string.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-string.php';
 	}
 
 	/**
@@ -264,7 +264,7 @@ class Advanced_Ads_Visitor_Conditions {
 		// @todo create a random form name, in case we have more than one form per page and the parameter is not given.
 		$form_name = ! $form_name ? self::FORM_NAME : $form_name;
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/visitor-conditions-list.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/visitor-conditions-list.php';
 
 		/**
 		 * Prepare condition form
@@ -297,7 +297,7 @@ class Advanced_Ads_Visitor_Conditions {
 
 		$empty_options = ! is_array( $set_conditions ) || ! count( $set_conditions );
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/conditions-form.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/conditions-form.php';
 	}
 
 	/**

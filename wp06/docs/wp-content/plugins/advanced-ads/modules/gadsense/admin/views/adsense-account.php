@@ -205,7 +205,7 @@ $alerts_advads_messages    = Advanced_Ads_Adsense_MAPI::get_adsense_alert_messag
 </style>
 <?php
 	echo "<br/><br/><br/><hr>";
-	include ADVADS_BASE_PATH . 'modules/gadsense/admin/views/auto-ads-video.php';
+	include ADVADS_ABSPATH . 'modules/gadsense/admin/views/auto-ads-video.php';
 	?><p>
 	<a href="<?php echo esc_url( ADVADS_URL ); ?>place-adsense-ad-unit-manually/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-manually" style="text-decoration: none;" target="_blank"><span class="dashicons dashicons-welcome-learn-more"></span>
 		<?php

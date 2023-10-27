@@ -50,7 +50,8 @@
 									function() {
 										var $el = $( this );
 										if ( self.support ) {
-											 $el.css( 'transition', self.transitionProp );
+											$el.css( 'visibility', "" );
+											$el.css( 'transition', self.transitionProp );
 										}
 										self._applyAnimation( $el, styleCSS.to, self.options.speed );
 									}
@@ -61,6 +62,7 @@
 					} else {
 						if ( self.support ) {
 							$hoverElem.css( 'transition', self.transitionProp );
+							$hoverElem.css( 'visibility', "hidden" );
 						}
 						clearTimeout( self.tmhover );
 						self._applyAnimation( $hoverElem, styleCSS.from, self.options.speed );

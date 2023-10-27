@@ -1,11 +1,11 @@
 ﻿=== Blogus ===
 Contributors: Themeansar
 Author: Themeansar
-Requires at least: WordPress 4.7
-Tested up to: 6.3
-Requires PHP: 5.6
-Stable tag: 1.0.0.51
-Version: 1.0.0.51
+Requires PHP: 7.0
+Requires at least: 5.4
+Tested up to: 6.3.2
+Stable tag: 1.0.0.56
+Version: 1.0.0.56
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -262,3 +262,19 @@ License: CC0 Public Domain
 = Version 1.0.0.51
 1.Thumbnail support on page.
 2. Added edit link on page.
+
+= Version 1.0.0.52
+1. Fixed color sanitization.
+
+= Version 1.0.0.53
+1. Fixed Custom Background color issue on dark mode.
+2. Fixed post share by WhatsApp
+
+= Version 1.0.0.54
+1. Added Featured Image Caption.
+
+= Version 1.0.0.55
+1. Fixed D/N switch On site title hide.
+
+= Version 1.0.0.56
+1. Added breadcrumb on single page.

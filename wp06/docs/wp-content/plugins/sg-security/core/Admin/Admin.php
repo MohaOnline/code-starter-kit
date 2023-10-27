@@ -296,13 +296,6 @@ class Admin {
 			);
 		}
 
-		if ( 1 === $data_consent ) {
-			return array(
-				'show_data_field'  => 0,
-				'show_email_field' => 0,
-			);
-		}
-
 		return array(
 			'show_data_field'  => 0,
 			'show_email_field' => 1,

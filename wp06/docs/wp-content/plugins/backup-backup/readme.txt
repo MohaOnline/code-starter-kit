@@ -1,13 +1,13 @@
-=== Backup Migration ===
+=== BackupBliss - Backup Migration Staging ===
 Contributors: Migrate
-Tags: Backup, Migration, Migrate, Backups, Restore, All In One, Duplicate, Clone, Import, Export, Transfer
+Tags: Backup, Migration, Staging, Migrate, Backups, Restore, All In One, Duplicate, Clone, Import, Export, Transfer
 Requires at least: 4.6
 Tested up to: 6.4
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv3
 Requires PHP: 5.6
 
-Backup Migrate Restore
+Backup Migration Staging
 
 == Description ==
 
@@ -162,6 +162,32 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 5. The plugin should be shown below the settings menu.
 
 == Changelog ==
+
+= 1.3.4 =
+- [NEW] [PRO] Option that allows to hide banners and carrousel
+- [NEW] Plugin will not fail anymore when configuraiton file was moved manually from different server 
+- [NEW] Added browser sided error handler to catch web server errors and log them out into console
+- [NEW] File filters are now included in calculated exclusion size - can be recalculated as well
+- [NEW] Smart error handler will now try to apply suitable configuraiton without throwing error
+- [NEW] Most errors will be now pretty printed in browser developer console for easier access
+- [CHANGE] Now entire plugin config path will be static, stored in safe form in wp-content/backup-migration-config.php
+- [CHANGE] Improved way of stopping browser-method backup process, now it won't make the process fail on next try
+- [CHANGE] Our plugin will now detect if siteurl is forced by wp-config and consider it during restoration
+- [CHANGE] Adjusted "Stop the process" button to fit designs of staging site creation process window
+- [CHANGE] Restoration temporary directory is now placed within our plugin directory path
+- Added database prefix change prevention while third party software interrupted restoration process
+- Staging site will have non-shared config since this release allows to handle it more individually 
+- Added prevention of use default backup storage name which is "backup-migration" - by overwrite
+- Adjusted text of the staging site button, now it correctly states "site" instead of "server"
+- Adjusted view of backups list, removed progress icon while no cloud storage enabled
+- Fixed staging site creation after staging site was restored on parent website
+- Added new extension type for exclusion by default configuration ".part"
+- Improved the way how percentage is displayed during backup progress
+- Improved UI of some sections of our plugin configuration 
+- Fixed htaccess insertion to bypass some litespeed issues
+- Improved display of success windows in other languages
+- Resolved CSS conflicts with few third party plugins
+- Remove multiple uneccessary since now console logs
 
 = 1.3.3 =
 - By default config files with these extensions will be excluded: .tmp, .zip, .tr, .gz (can be modified in settings)
@@ -637,27 +663,29 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 
 == Upgrade Notice ==
 
-= 1.3.3 =
-What's new in 1.3.3?
-- By default config files with these extensions will be excluded: .tmp, .zip, .tr, .gz (can be modified in settings)
-- Modified default search replace page size to 50 from 300 (only for new installations)
-- Fixed console error logger, now it will display all relevant details
-- Added hard exclusion of third party plugin as it causes issue with compression
-- Propagated new method to slash fixer to other modules of our plugin
-- Refactored way of loading WordPress in outside processing (PHP CLI, PHP CLI within browser, browser backup method)
-- Default backup method now will validate if the file is readable or not, otherwise will exclude it out of the box
-- Fixed error handler during PHP error during PHP CLI restoration 
-- Fixed deprecation issues with PHP 8.2 during Super-Quick Migration
-- Added new hints in live-log for Super-Quick Migration
-- Improved logger for Super-Quick Migration
-- Download progress now will be logged in live-log (restoration by URL)
-- Super-Quick Restoration (URL) via terminal and PHP CLI will now start restoration automatically
-- Added much better explanation for "php -f ./includes/cli-handler.php" command
-- Improved table prefix detection, now it will adjust case-sensitivity of the prefix
-- Added logging for file replacement process (restoration)
-- Added try...catch for unzipping process to catch any failed entries to throw an error
-- Fixed global logs and background logs, file will be now created properly for debug purposes
-- Replaced PHP and WP version verification method with dedicated one
-- Decreased sleep time between cURL requests (server side backup method)
-- Fixed issue when our plugin tried to resolve backup same directories
-- Tested with PHP 8.2 and WP 6.4-beta1 down to PHP 5.6 and WP 4.6
+= 1.3.4 =
+What's new in 1.3.4?
+- [NEW] [PRO] Option that allows to hide banners and carrousel
+- [NEW] Plugin will not fail anymore when configuraiton file was moved manually from different server 
+- [NEW] Added browser sided error handler to catch web server errors and log them out into console
+- [NEW] File filters are now included in calculated exclusion size - can be recalculated as well
+- [NEW] Smart error handler will now try to apply suitable configuraiton without throwing error
+- [NEW] Most errors will be now pretty printed in browser developer console for easier access
+- [CHANGE] Now entire plugin config path will be static, stored in safe form in wp-content/backup-migration-config.php
+- [CHANGE] Improved way of stopping browser-method backup process, now it won't make the process fail on next try
+- [CHANGE] Our plugin will now detect if siteurl is forced by wp-config and consider it during restoration
+- [CHANGE] Adjusted "Stop the process" button to fit designs of staging site creation process window
+- [CHANGE] Restoration temporary directory is now placed within our plugin directory path
+- Added database prefix change prevention while third party software interrupted restoration process
+- Staging site will have non-shared config since this release allows to handle it more individually 
+- Added prevention of use default backup storage name which is "backup-migration" - by overwrite
+- Adjusted text of the staging site button, now it correctly states "site" instead of "server"
+- Adjusted view of backups list, removed progress icon while no cloud storage enabled
+- Fixed staging site creation after staging site was restored on parent website
+- Added new extension type for exclusion by default configuration ".part"
+- Improved the way how percentage is displayed during backup progress
+- Improved UI of some sections of our plugin configuration 
+- Fixed htaccess insertion to bypass some litespeed issues
+- Improved display of success windows in other languages
+- Resolved CSS conflicts with few third party plugins
+- Remove multiple uneccessary since now console logs

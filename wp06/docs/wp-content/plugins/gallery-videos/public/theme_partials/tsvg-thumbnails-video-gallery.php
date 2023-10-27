@@ -1,49 +1,49 @@
 <style type="text/css">
 	:root{
-	  	--tsvg_v_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_11 ), FILTER_VALIDATE_INT ); ?>;
-	  	--tsvg_p_bw_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_11 ), FILTER_VALIDATE_INT ); ?>px;
-	  	--tsvg_vi_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_12 ), FILTER_VALIDATE_INT ); ?>px;
-	  	--tsvg_vi_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_13 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_op_oc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_19 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_op_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_op_br_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_22 ), FILTER_VALIDATE_INT ); ?>px;
-	  	--tsvg_popup_op_sc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_23 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_ao_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_32 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_ao_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_33 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_ao_r_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_34 ), FILTER_VALIDATE_INT ); ?>%;
-	  	--tsvg_popup_tip_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_25 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_tip_fs_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_26 ), FILTER_VALIDATE_INT ); ?>px;
-	  	--tsvg_popup_tip_ff_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_27 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_tip_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_28 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_tip_nc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_30 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_tip_ns_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_31 ), FILTER_VALIDATE_INT ); ?>px;
-	  	--tsvg_popup_cio_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_35 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_cio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_36 ), FILTER_SANITIZE_STRING ); ?>;
-	  	--tsvg_popup_cio_r_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_37 ), FILTER_VALIDATE_INT ); ?>%;
+	  	--tsvg_v_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_11 ), FILTER_VALIDATE_INT ); ?>;
+	  	--tsvg_p_bw_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_11 ), FILTER_VALIDATE_INT ); ?>px;
+	  	--tsvg_vi_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_12 ), FILTER_VALIDATE_INT ); ?>px;
+	  	--tsvg_vi_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_13 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_op_oc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_19 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_op_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_op_br_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_22 ), FILTER_VALIDATE_INT ); ?>px;
+	  	--tsvg_popup_op_sc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_23 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_ao_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_32 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_ao_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_33 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_ao_r_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_34 ), FILTER_VALIDATE_INT ); ?>%;
+	  	--tsvg_popup_tip_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_25 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_tip_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_26 ), FILTER_VALIDATE_INT ); ?>px;
+	  	--tsvg_popup_tip_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_27 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_tip_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_28 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_tip_nc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_30 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_tip_ns_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_31 ), FILTER_VALIDATE_INT ); ?>px;
+	  	--tsvg_popup_cio_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_35 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_cio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_36 ), FILTER_SANITIZE_STRING ); ?>;
+	  	--tsvg_popup_cio_r_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_37 ), FILTER_VALIDATE_INT ); ?>%;
 	}
-	.TS_VGallery_effect-container{
+	.tsvg-thumbnails-effect-container<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
 		width: 100%!important;
 		height: 100%!important;
-		<?php if ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
+		<?php if ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fly' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fly' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'flip' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'flip' ) { ?>
 			 -webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'helix' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'helix' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'popUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'popUp' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
@@ -52,24 +52,27 @@
 		float: left;
 		width: 100%;
 	}
-	.boxer_<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	.tsvg-th-blocks-container-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
+		width: 100%;
+	}
+	.tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		opacity: 0;
-		<?php if ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'moveUp' ) { ?>
+		<?php if ( $tsvg_style_options->TotalSoft_GV_2_15 == 'moveUp' ) { ?>
 			-webkit-transform: translateY(200px);
 			-moz-transform: translateY(200px);
 			transform: translateY(200px);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'scaleUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'scaleUp' ) { ?>
 			-webkit-transform: scale(0.6);
 			-moz-transform: scale(0.6);
 			transform: scale(0.6);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
 			-webkit-transform: translateZ(400px) translateY(300px) rotateX(-90deg);
 			-moz-transform: translateZ(400px) translateY(300px) rotateX(-90deg);
 			transform: translateZ(400px) translateY(300px) rotateX(-90deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fly' ) {
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fly' ) {
 			?>
 			 -webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
@@ -80,7 +83,7 @@
 			-webkit-transform: rotateX(-180deg);
 			-moz-transform: rotateX(-180deg);
 			transform: rotateX(-180deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'flip' ) {
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'flip' ) {
 			?>
 			 -webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
@@ -91,14 +94,14 @@
 			-webkit-transform: rotateX(-80deg);
 			-moz-transform: rotateX(-80deg);
 			transform: rotateX(-80deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'helix' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'helix' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
 			-webkit-transform: rotateY(-180deg);
 			-moz-transform: rotateY(-180deg);
 			transform: rotateY(-180deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'popUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'popUp' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
@@ -107,7 +110,7 @@
 			transform: scale(0.4);
 		<?php } ?>
 	}
-	.TS_VGallery_effect-container .TS_VGallery_effect-blocks{
+	.tsvg-thumbnails-effect-container<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-thumbnails-effect-blocks{
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -115,12 +118,11 @@
 		width: 100%!important;
 		height: 100%!important;
 	}
-	
-	li.TS_VGallery_effect-blocks_item .adipoli-wrapper{
+	li.tsvg-thumbnails-block .adipoli-wrapper{
 		margin: 0;
 		position: unset;
 	}
-	.TS_VGallery_effect-container .TS_VGallery_effect-block{
+	.tsvg-thumbnails-effect-container<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-thumbnails-block-effect{
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
@@ -129,11 +131,11 @@
 		width: 100%!important;
 		height: 100%!important;
 	}
-	.TS_VGallery_effect-container .TS_VGallery_tv_<?php echo esc_attr( $Total_Soft_vgallery ); ?>{
-		margin:  var(--tsvg_p_bw_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		width:calc( calc(100% - calc(2 * var(--tsvg_p_bw_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) *  var(--tsvg_v_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)) ) / var(--tsvg_v_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>))!important;
+	.tsvg-thumbnails-effect-container<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
+		margin:  var(--tsvg_p_bw_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		width:calc( calc(100% - calc(2 * var(--tsvg_p_bw_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) *  var(--tsvg_v_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)) ) / var(--tsvg_v_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>))!important;
 	}
-	.TS_VGallery_effect-container .TS_VGallery_effect-block__item {
+	.tsvg-thumbnails-effect-container<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-thumbnails-block-effect-inner {
 		display: inline-block;
 		max-width: none;
 		border: none;
@@ -141,33 +143,31 @@
 		width: 100%!important;
 		height: 100%!important; 
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .TS_VGallery_effect-block__item {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-thumbnails-block-effect-inner {
 		position: relative;
 		padding-bottom: 56.25%;
 		width: 100%!important;
 		height: 100%!important; 
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .TS_VGallery_effect-block__item>img {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-thumbnails-block-effect-inner>img {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%!important;
 		height: 100%!important;
 	}
-	
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .adipoli-wrapper {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .adipoli-wrapper {
 		width: 100%!important;
 		height: 100%!important; 
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .adipoli-wrapper>img {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .adipoli-wrapper>img {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%!important;
 		height: 100%!important;
 	}
-	
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .adipoli-before {
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .adipoli-before {
 		position: absolute;
 		z-index: 5;
 		top: 0;
@@ -177,39 +177,36 @@
 		background: rgba(30, 115, 190, 0.3);
 		color: rgb(255, 255, 255);
 	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .adipoli-after  {
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .adipoli-after  {
 		position: absolute;
 		z-index: 10;
 		display: none;
 	}
-	.TS_VGallery_tv_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:not(.TS_VGallery_tv_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-ef='popout'])  .adipoli-after{
+	.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:not(.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-ef='popout'])  .adipoli-after{
 		width: 100%!important;
 		height: 100%!important;
 	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery    .adipoli-after img  {
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>    .adipoli-after img  {
 		width: 100%!important;
 		height: 100%!important;
 	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .adipoli-slice {
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .adipoli-slice {
 		display: block;
 		position: absolute;
 		z-index: 15;
 		height: 100%;
 	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .adipoli-box {
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .adipoli-box {
 		display: block;
 		position: absolute;
 		z-index: 15;
 	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .totalsoft_gv_tv_row {
-		opacity: 1 !important;
-	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   div.boxer-caption{
+    #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   div.boxer-caption{
 		display:block;
 	}
-	.TS_VGallery_tv_<?php echo esc_attr( $Total_Soft_vgallery ); ?> .adipoli-before p {
+	.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .adipoli-before p {
 		position: relative;
-		color: var(--tsvg_vi_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		color: var(--tsvg_vi_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		margin: 0px !important;
 		text-align: center !important;
 		top: 50%;
@@ -219,61 +216,61 @@
 		-moz-transform: translateY(-50%);
 		-o-transform: translateY(-50%);
 		z-index: 9999999999;
-		font-size: var(--tsvg_vi_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		font-size: var(--tsvg_vi_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer-overlay {
-		background: var(--tsvg_popup_op_oc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer-overlay.tsvg-boxer-overlay-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
+		background: var(--tsvg_popup_op_oc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		position: fixed !important;
 		z-index: 999999999!important;
 		opacity: 1 !important;
 		transition: opacity 0.25s linear;
 	}
-	#boxer {
-		border-radius: var(--tsvg_popup_op_br_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		box-shadow: 0 0 25px var(--tsvg_popup_op_sc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
+		border-radius: var(--tsvg_popup_op_br_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		box-shadow: 0 0 25px var(--tsvg_popup_op_sc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer[data-tsvg-popup_bacg='true']{
-		background: var(--tsvg_popup_op_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-popup_bacg='true']{
+		background: var(--tsvg_popup_op_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer[data-tsvg-titl_bacg='true'] .boxer-container , #boxer.mobile .boxer-content {
-	   	background: var(--tsvg_popup_tip_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-titl_bacg='true'] .boxer-container , #boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>.mobile .boxer-content {
+	   	background: var(--tsvg_popup_tip_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer .boxer-caption p {
-		color: var(--tsvg_popup_tip_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		font-size: var(--tsvg_popup_tip_fs_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		font-family: var(--tsvg_popup_tip_ff_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-caption p {
+		color: var(--tsvg_popup_tip_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		font-size: var(--tsvg_popup_tip_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		font-family: var(--tsvg_popup_tip_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer[data-tsvg-titl_position='left'] .boxer-container p {text-align:left;}
-	#boxer[data-tsvg-titl_position='center'] .boxer-container p {text-align:center;}
-	#boxer[data-tsvg-titl_position='right'] .boxer-container p {text-align:right;}
-	#boxer .boxer-caption {
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-titl_position='left'] .boxer-container p {text-align:left;}
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-titl_position='center'] .boxer-container p {text-align:center;}
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-titl_position='right'] .boxer-container p {text-align:right;}
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-caption {
 		background: none !important;
 		border: none !important;
 	}
-	#boxer .boxer-position {
-		color: var(--tsvg_popup_tip_nc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		font-size: var(--tsvg_popup_tip_ns_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-position {
+		color: var(--tsvg_popup_tip_nc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		font-size: var(--tsvg_popup_tip_ns_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		perspective: 800px;
 		transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		-webkit-transform: translate3d(0, 0, 0);
 	}
-	#boxer .boxer-control {
-		background: var(--tsvg_popup_ao_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		border-radius: var(--tsvg_popup_ao_r_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-control {
+		background: var(--tsvg_popup_ao_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		border-radius: var(--tsvg_popup_ao_r_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer .boxer-control.previous:before {
-		border-right: 10.4px solid var(--tsvg_popup_ao_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-control.previous:before {
+		border-right: 10.4px solid var(--tsvg_popup_ao_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer .boxer-control.next:before {
-		border-left: 10.4px solid var(--tsvg_popup_ao_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-control.next:before {
+		border-left: 10.4px solid var(--tsvg_popup_ao_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer .boxer-close {
-		background: var(--tsvg_popup_cio_bc_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		border-radius: var(--tsvg_popup_cio_r_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-close {
+		background: var(--tsvg_popup_cio_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		border-radius: var(--tsvg_popup_cio_r_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	#boxer .boxer-close:before {
-		color: var(--tsvg_popup_cio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-close:before {
+		color: var(--tsvg_popup_cio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
 	.adipoli-slice {
 		display: block;
@@ -286,41 +283,24 @@
 		position: absolute;
 		z-index: 15;
 	}
-	.totalsoft_gv_tv_row {
-		opacity: 1 !important;
-	}
-	.totalsoft_gv_tv_row p {
-		position: relative;
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_13; ?>;
-		margin: 0px !important;
-		text-align: center !important;
-		top: 50%;
-		transform: translateY(-50%);
-		-webkit-transform: translateY(-50%);
-		-ms-transform: translateY(-50%);
-		-moz-transform: translateY(-50%);
-		-o-transform: translateY(-50%);
-		z-index: 9999999999;
-		font-size: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_12; ?>px;
-	}
-	.boxer_<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	.tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		opacity: 0;
-		<?php if ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'moveUp' ) { ?>
+		<?php if ( $tsvg_style_options->TotalSoft_GV_2_15 == 'moveUp' ) { ?>
 			-webkit-transform: translateY(200px);
 			-moz-transform: translateY(200px);
 			transform: translateY(200px);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'scaleUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'scaleUp' ) { ?>
 			-webkit-transform: scale(0.6);
 			-moz-transform: scale(0.6);
 			transform: scale(0.6);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fallPerspective' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
 			-webkit-transform: translateZ(400px) translateY(300px) rotateX(-90deg);
 			-moz-transform: translateZ(400px) translateY(300px) rotateX(-90deg);
 			transform: translateZ(400px) translateY(300px) rotateX(-90deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'fly' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'fly' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
@@ -330,7 +310,7 @@
 			-webkit-transform: rotateX(-180deg);
 			-moz-transform: rotateX(-180deg);
 			transform: rotateX(-180deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'flip' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'flip' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
@@ -340,14 +320,14 @@
 			-webkit-transform: rotateX(-80deg);
 			-moz-transform: rotateX(-80deg);
 			transform: rotateX(-80deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'helix' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'helix' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
 			-webkit-transform: rotateY(-180deg);
 			-moz-transform: rotateY(-180deg);
 			transform: rotateY(-180deg);
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 == 'popUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_15 == 'popUp' ) { ?>
 			-webkit-transform-style: preserve-3d;
 			-moz-transform-style: preserve-3d;
 			transform-style: preserve-3d;
@@ -356,16 +336,13 @@
 			transform: scale(0.4);
 		<?php } ?>
 	}
-/*
-	.ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[max-width~="500px"]{
-		--tsvg_v_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>: 2;
+	.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[max-width~="500px"]{
+		--tsvg_v_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>: 2;
 	}
-
-	.ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[max-width~="400px"]{
-		--tsvg_v_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>: 1;
+	.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[max-width~="400px"]{
+		--tsvg_v_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>: 1;
 	}
-
-	@media (max-width: 850px) {
+	/* @media (max-width: 850px) {
 		div.boxer-wrapper {
 			max-width: 90%;
 		}
@@ -379,95 +356,110 @@
 		div.boxer-wrapper {
 			max-width: 30%;
 		}
-	} 
-*/
-	
-	.boxer-position,.current,.total{
-		font-family: var(--tsvg_popup_tip_ff_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+	} */
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .boxer-position,#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .current,#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .total{
+		font-family: var(--tsvg_popup_tip_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-
 	@media (max-height:450px) {
-		#boxer{
+		#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
 			max-height:96vh !important;
 			max-width:90vw !important;
 			top:2vh !important;
 			margin:0 auto;
 		}
-		div.boxer-container{
+		#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?> div.boxer-container{
 			overflow:hidden auto !important;
 		}
 	}
-
-	#boxer.mobile{
-			max-height:100vh !important;
-			max-width:100vw !important;
-			top: 0 !important;
-			margin: 0;
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>.mobile{
+		max-height:100vh !important;
+		max-width:100vw !important;
+		top: 0 !important;
+		margin: 0;
 	}
-	
-
-	
 </style>
 <?php
-$tsp_main_videos = '';
-$i = 0;
-foreach ( $ts_galleryv_videos_Columned as $key => $value ) {
-	$i++;
-	$ts_vgallery_Question_TS_VG_Options = json_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_Options );
-	$TS_VGallery_url_target             = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_vont == 'true' ? '_blank' : '_self';
-	$TS_VGallery_url_v                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Vd == '' ? $tsvgallery_def_theme_ifr_link : $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Vd;
-	$TS_VGallery_url_v_ifr              = preg_replace( '/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i', 'www.youtube.com/embed/$2', $TS_VGallery_url_v );
-	$TS_VGallery_url_l                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_link;
-	$TS_VGallery_url_i                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_video.png', __DIR__ ) ) : esc_url( $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Im );
-	$tsp_main_videos .= sprintf(
-		"
-        <li class='TS_VGallery_effect-blocks_item TS_VGallery_tv_%s'  data-tsvg-class='%s' data-tsvg-ef='%s' data-tsvg-id='%s' style='-moz-animation-delay:  %ss;-webkit-animation-delay:  %ss;animation-delay:  %ss;'>
-            <figure class='TS_VGallery_effect-block'>
-                <a  href='%s' class='TS_VGallery_effect-block__item boxer_%s small' data-gallery='video_gallery_%s' data-id='%s' title='%s'>
-                    <img  width='' height='' src='%s' alt='%s'  title='%s' class='totalsoft_gv_tv_img_%s'>
-                </a>
-            </figure>
-        </li>
-    	",
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $i ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_02 ),
-		esc_attr( $ts_galleryv_videos_Columned[ $key ]->id ),
-		esc_attr( 0.3 * $i ),
-		esc_attr( 0.3 * $i ),
-		esc_attr( 0.3 * $i ),
-		esc_url( $TS_VGallery_url_v_ifr ),
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $Total_Soft_vgallery ),
-		esc_html( html_entity_decode( htmlspecialchars_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
-		esc_url( $TS_VGallery_url_i ),
-		esc_html( html_entity_decode( htmlspecialchars_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
-		esc_html( html_entity_decode( htmlspecialchars_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
-		esc_attr( $Total_Soft_vgallery )
+	$tsvg_videos_data_html = '';
+	$tsvg_media_index = 0;
+	foreach ( $tsvg_videos_data as $key => $value ) {
+		$tsvg_media_index++;
+		$tsvg_videos_data_object = json_decode( $tsvg_videos_data[ $key ]->TS_VG_Options );
+		$tsvg_media_url_target             = $tsvg_videos_data_object->TotalSoftVGallery_Vid_vont == 'true' ? '_blank' : '_self';
+		$tsvg_media_video_url                  = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Vd == '' ? $tsvg_default_video : $tsvg_videos_data_object->TotalSoftVGallery_Vid_Vd;
+		if(str_contains($tsvg_media_video_url, 'youtube.com/shorts/')) {	$tsvg_media_video_url = str_replace('shorts','embed', $tsvg_media_video_url );	}
+		$tsvg_media_iframe_url              = preg_replace( '/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i', 'www.youtube.com/embed/$2', $tsvg_media_video_url );
+		$tsvg_media_img_url                  = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_video.png', __DIR__ ) ) : esc_url( $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im );
+		$tsvg_videos_data_html .= sprintf(
+			'
+			<li class="tsvg-thumbnails-block tsvg-thumbnails-block-%1$s"  data-tsvg-ef="%2$s" data-tsvg-id="%3$s" style="-moz-animation-delay:  %4ss;-webkit-animation-delay:  %4ss;animation-delay:  %4ss;">
+				<figure class="tsvg-thumbnails-block-effect">
+					<a  href="%5$s" class="tsvg-thumbnails-block-effect-inner tsvg-thumbnails-block-effect-inner-%1$s" data-gallery="video_gallery_%1$s" data-id="%1$s" title="%6$s">
+						<img  width="" height="" src="%7$s" alt="%6$s"  title="%6$s" class="tsvg-thumbnails-block-img-%1$s">
+					</a>
+				</figure>
+			</li>
+			',
+			esc_attr( $tsvg_shortcode_id ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_02 ),
+			esc_attr( $tsvg_videos_data[ $key ]->id ),
+			esc_attr( 0.3 * $tsvg_media_index ),
+			esc_url( $tsvg_media_iframe_url ),
+			esc_html( html_entity_decode( htmlspecialchars_decode( $tsvg_videos_data[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
+			esc_url( $tsvg_media_img_url )
+		);
+	}
+	echo sprintf(
+		'
+		<main class="tsvg-main-content-%1$s  tsvg-thumbnails-effect-container tsvg-thumbnails-effect-container%1$s" data-tsvg-autoplay="%2$s"   data-item-open="%3$s"  data-item-number="%4$s" data-pagination="%5$s" data-p-lm="%6$s">
+			<figure  class="tsvg-th-blocks-container-%1$s" data-tsvg-popup_bacg="%7$s" data-tsvg-titl_bacg="%8$s" data-tsvg-titl_position="%9$s" >
+				<ul class="tsvg-thumbnails-effect-blocks">
+					%10$s  
+				</ul>
+		</figure>
+		</main>
+		',
+		esc_attr( $tsvg_shortcode_id ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_37 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_07 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_02 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_01 ),
+		esc_attr(  $tsvg_style_options->TotalSoft_GV_2_15 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_20 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_24 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_29 ),
+		$tsvg_videos_data_html
 	);
-}
-echo sprintf(
-	"
-  	<main data-tsvg-autoplay='%s' class='%s  TS_VGallery_effect-container TS_VGallery_effect-container%s'  data-item-open='%s'  data-tsvg-main='show' data-item-number='%s' data-pagination='%s' data-p-lm='%s'>
-  	  	<figure  class='TS_VGallery_gv-lvg-content%s' data-tsvg-popup_bacg='%s' data-tsvg-titl_bacg='%s' data-tsvg-titl_position='%s' >
-  	   		<ul class='TS_VGallery_effect-blocks'>
-  	   			%s  
-  	   		</ul>
-  	   </figure>
-  	</main>
-	",
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_37 ),
-	'ts_vgallery_main_' . esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_07 ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_02 ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_01 ),
-	esc_attr(  $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 ),
-	esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_20 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_24 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_29 ),
-	$tsp_main_videos
-);
 ?>
+<script>
+	jQuery(document).ready(function () {
+		jQuery('.tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-thumbnails-block-img-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').adipoli({
+			'startEffect': '<?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_01); ?>',
+			'hoverEffect': '<?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_02); ?>',
+			'imageOpacity': 1,
+			'animSpeed': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_03); ?>,
+			'fillColor': '<?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_04); ?>',
+			'textColor': '#ffffff',
+			'overlayText': '<i class="<?php echo esc_attr( $tsvg_style_options->TotalSoft_GV_2_14 ); ?>"></i>',
+			'slices': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_05); ?>,
+			'boxCols': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_06); ?>,
+			'boxRows': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_07); ?>,
+			'popOutMargin': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_08); ?>,
+			'popOutShadow': <?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_09); ?>,
+			'popOutShadowC': '<?php echo esc_js($tsvg_style_options->TotalSoft_GV_1_10); ?>'
+		});
+		if (jQuery(window).width() < 820) {
+			jQuery(".tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?>").boxer({tsvgId : <?php echo esc_attr( $tsvg_shortcode_id ); ?>, mobile: true });
+		} else {
+			jQuery(".tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?>").not(".retina, .boxer_fixed, .boxer_top, .boxer_format, .boxer_mobile, .boxer_object").boxer({tsvgId : "<?php echo esc_attr( $tsvg_shortcode_id ); ?>"});
+		}
+		jQuery(".tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?>.boxer_object").click(function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$.boxer(jQuery('<div class="inline_content"><h2>More Content!</h2><p>This was created by jQuery and loaded into the new Boxer instance.</p></div>'));
+		});
+		jQuery(window).one("pronto.load", function () {
+			jQuery.boxer("close");
+			jQuery(".tsvg-thumbnails-block-effect-inner-<?php echo esc_attr( $tsvg_shortcode_id ); ?>").boxer("destroy");
+		});
+	});
+</script>

@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dist/class-wapf.php:78, dist/includes/controllers/class-admin-controller.php:547
+#: dist/class-wapf.php:78, dist/includes/controllers/class-admin-controller.php:558
 msgid "Product Field Groups"
 msgstr ""
 
@@ -353,11 +353,11 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: dist/includes/classes/class-wapf-list-table.php:16, dist/views/admin/field.php:64
+#: dist/includes/classes/class-wapf-list-table.php:16, dist/views/admin/field.php:58
 msgid "Type"
 msgstr ""
 
-#: dist/includes/classes/class-wapf-list-table.php:17, dist/includes/controllers/class-admin-controller.php:168, dist/includes/controllers/class-admin-controller.php:408
+#: dist/includes/classes/class-wapf-list-table.php:17, dist/includes/controllers/class-admin-controller.php:179, dist/includes/controllers/class-admin-controller.php:419
 msgid "Fields"
 msgstr ""
 
@@ -373,99 +373,99 @@ msgstr ""
 msgid "any"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:76
+#: dist/includes/controllers/class-admin-controller.php:87
 msgid "Please add a field group title first."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:77
+#: dist/includes/controllers/class-admin-controller.php:88
 msgid "Please add some fields first."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:78
+#: dist/includes/controllers/class-admin-controller.php:89
 msgid "You've reached the amount of field groups you can create in the free version. Please consider upgrading to premium to add unlimited field groups. Thank you!"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:100, dist/includes/controllers/class-admin-controller.php:101
+#: dist/includes/controllers/class-admin-controller.php:111, dist/includes/controllers/class-admin-controller.php:112
 msgid "Product Fields"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:110
+#: dist/includes/controllers/class-admin-controller.php:121
 msgid "Settings"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:111
+#: dist/includes/controllers/class-admin-controller.php:122
 msgid "Global fields"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:141
+#: dist/includes/controllers/class-admin-controller.php:152
 msgid "Copy"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:157
+#: dist/includes/controllers/class-admin-controller.php:168
 msgid "Custom fields"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:168, dist/includes/controllers/class-admin-controller.php:408
+#: dist/includes/controllers/class-admin-controller.php:179, dist/includes/controllers/class-admin-controller.php:419
 msgid "Add some custom fields to this group."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:177, dist/includes/controllers/class-admin-controller.php:426
+#: dist/includes/controllers/class-admin-controller.php:188, dist/includes/controllers/class-admin-controller.php:437
 msgid "Layout"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:177, dist/includes/controllers/class-admin-controller.php:426
+#: dist/includes/controllers/class-admin-controller.php:188, dist/includes/controllers/class-admin-controller.php:437
 msgid "Field group layout settings"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:211
+#: dist/includes/controllers/class-admin-controller.php:222
 msgid "Product field settings"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:216
+#: dist/includes/controllers/class-admin-controller.php:227
 msgid "Show in cart"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:220
+#: dist/includes/controllers/class-admin-controller.php:231
 msgid "Show on customer's cart page."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:221
+#: dist/includes/controllers/class-admin-controller.php:232
 msgid "When a user has filled out your fields, should they be summarized on their cart page after adding the product to their cart?"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:225
+#: dist/includes/controllers/class-admin-controller.php:236
 msgid "Show on checkout"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:229
+#: dist/includes/controllers/class-admin-controller.php:240
 msgid "Show on the checkout page."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:230
+#: dist/includes/controllers/class-admin-controller.php:241
 msgid "When a user has filled out your fields, should they be summarized on their checkout page?"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:234
+#: dist/includes/controllers/class-admin-controller.php:245
 msgid "\"Add to cart\" button text"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:237
+#: dist/includes/controllers/class-admin-controller.php:248
 msgid "When a product has custom fields, what should the \"add to cart\" button say?."
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:238, dist/includes/controllers/class-product-controller.php:121
+#: dist/includes/controllers/class-admin-controller.php:249, dist/includes/controllers/class-product-controller.php:121
 msgid "Select options"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:249
+#: dist/includes/controllers/class-admin-controller.php:260
 msgid "Product fields"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:417
+#: dist/includes/controllers/class-admin-controller.php:428
 msgid "Conditions"
 msgstr ""
 
-#: dist/includes/controllers/class-admin-controller.php:417
+#: dist/includes/controllers/class-admin-controller.php:428
 msgid "When should this field group be displayed?"
 msgstr ""
 
@@ -501,51 +501,51 @@ msgstr ""
 msgid "Sorry :( We can't add a new field group. You've reached the amount of field groups allowed in the free version. Consider removing an old field group or upgrading to premium for unlimited field groups."
 msgstr ""
 
-#: dist/views/admin/field.php:65
+#: dist/views/admin/field.php:59
 msgid "What type of field should this be?"
 msgstr ""
 
-#: dist/views/admin/field.php:73
+#: dist/views/admin/field.php:67
 msgid "Label"
 msgstr ""
 
-#: dist/views/admin/field.php:74
+#: dist/views/admin/field.php:68
 msgid "This is the label that is shown next to the field."
 msgstr ""
 
-#: dist/views/admin/field.php:83
+#: dist/views/admin/field.php:77
 msgid "Instructions"
 msgstr ""
 
-#: dist/views/admin/field.php:84
+#: dist/views/admin/field.php:78
 msgid "Instructions can be used to display extra information near the field. Keep it short."
 msgstr ""
 
-#: dist/views/admin/field.php:91
+#: dist/views/admin/field.php:85
 msgid "Required"
 msgstr ""
 
-#: dist/views/admin/field.php:92
+#: dist/views/admin/field.php:86
 msgid "Select \"yes\" if the field should require input from the user."
 msgstr ""
 
-#: dist/views/admin/field.php:115
+#: dist/views/admin/field.php:109
 msgid "Repeat field"
 msgstr ""
 
-#: dist/views/admin/field.php:116
+#: dist/views/admin/field.php:110
 msgid "Should this field be repeated multiple times either by a button or quantity input box?"
 msgstr ""
 
-#: dist/views/admin/field.php:125
+#: dist/views/admin/field.php:119
 msgid "Conditionals"
 msgstr ""
 
-#: dist/views/admin/field.php:126
+#: dist/views/admin/field.php:120
 msgid "Only show this field when conditional rules are true."
 msgstr ""
 
-#: dist/views/admin/field.php:135
+#: dist/views/admin/field.php:129
 msgid "Wrapper attributes"
 msgstr ""
 

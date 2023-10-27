@@ -29,6 +29,6 @@ if($rtActive && !$ltActive)
 	echo 'col-md-8';
 }
 
-?> col-sm-8">
+?>">
 		<?php dynamic_sidebar( 'front-page-content' ); ?>
 </div>

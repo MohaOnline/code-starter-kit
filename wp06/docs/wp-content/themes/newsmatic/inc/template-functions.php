@@ -334,6 +334,7 @@ if( ! function_exists( 'newsmatic_get_multicheckbox_categories_array' ) ) :
 	 */
 	function newsmatic_get_multicheckbox_categories_array() {
 		$categories_list = get_categories();
+		$cats_array = [];
 		foreach( $categories_list as $cat ) :
 			$cats_array[esc_html( $cat->slug )]= esc_html( $cat->name )  . ' (' .absint( $cat->count ). ')';
 		endforeach;
@@ -347,7 +348,7 @@ if( ! function_exists( 'newsmatic_get_multicheckbox_categories_simple_array' ) )
 	 * 
 	 */
 	function newsmatic_get_multicheckbox_categories_simple_array() {
-		$categories_list = get_categories();
+		$categories_list = get_categories( [ 'number'	=> 4 ] );
 		$cats_array = [];
 		foreach( $categories_list as $cat ) :
 			$cats_array[] = array( 

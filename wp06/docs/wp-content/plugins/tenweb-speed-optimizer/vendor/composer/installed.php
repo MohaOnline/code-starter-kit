@@ -3,7 +3,7 @@
         'name' => 'plugins/tenweb-speed-optimizer',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '956781249ad7203bb682d651e8f9006087866dc9',
+        'reference' => '4f88acad0b5524ed7ac1f9cd711d64c02283e775',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -46,7 +46,7 @@
         '10web-utils/tenweb-image-optimizer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ad37b78db970a45b7ceeb07b16836f2d6d7efdb3',
+            'reference' => '0453a0b7410fb1db18091033a19484b1ca33751c',
             'type' => 'git',
             'install_path' => __DIR__ . '/../10web-utils/tenweb-image-optimizer',
             'aliases' => array(
@@ -133,7 +133,7 @@
         'monperrus/crawler-user-agents' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '75cc57b78322eb8781662091ecdfc9fda9cf69b6',
+            'reference' => 'f54b99008fdec0540be3085a1edfa21a7a461dab',
             'type' => 'library',
             'install_path' => __DIR__ . '/../monperrus/crawler-user-agents',
             'aliases' => array(
@@ -162,7 +162,7 @@
         'plugins/tenweb-speed-optimizer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '956781249ad7203bb682d651e8f9006087866dc9',
+            'reference' => '4f88acad0b5524ed7ac1f9cd711d64c02283e775',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -187,18 +187,18 @@
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
-            'pretty_version' => 'v1.27.0',
-            'version' => '1.27.0.0',
-            'reference' => '5bbc823adecdae860bb64756d639ecfec17b050a',
+            'pretty_version' => 'v1.28.0',
+            'version' => '1.28.0.0',
+            'reference' => 'ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php80' => array(
-            'pretty_version' => 'v1.27.0',
-            'version' => '1.27.0.0',
-            'reference' => '7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936',
+            'pretty_version' => 'v1.28.0',
+            'version' => '1.28.0.0',
+            'reference' => '6caa57379c4aec19c0a12a38b59b26487dcfe4b5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php80',
             'aliases' => array(),

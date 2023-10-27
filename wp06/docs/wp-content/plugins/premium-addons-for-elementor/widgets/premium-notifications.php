@@ -218,16 +218,17 @@ class Premium_Notifications extends Widget_Base {
 		$this->add_control(
 			'icon_type',
 			array(
-				'label'   => __( 'Icon Type', 'premium-addons-for-elementor' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'icon',
-				'options' => array(
+				'label'              => __( 'Icon Type', 'premium-addons-for-elementor' ),
+				'type'               => Controls_Manager::SELECT,
+				'default'            => 'icon',
+				'options'            => array(
 					'icon'      => __( 'Icon', 'premium-addons-for-elementor' ),
 					'image'     => __( 'Image', 'premium-addons-for-elementor' ),
 					'text'      => __( 'Text', 'premium-addons-for-elementor' ),
 					'animation' => __( 'Lottie Animation', 'premium-addons-for-elementor' ),
 					'svg'       => __( 'SVG Code', 'premium-addons-for-elementor' ),
 				),
+				'frontend_available' => true,
 			)
 		);
 
@@ -510,6 +511,42 @@ class Premium_Notifications extends Widget_Base {
 				'dynamic'   => array( 'active' => true ),
 				'condition' => array(
 					'icon_type' => 'text',
+				),
+			)
+		);
+
+        $this->add_control(
+			'add_icon_with_no_posts',
+			array(
+				'label'              => __( 'Add Different Icon with no posts', 'premium-addons-for-elementor' ),
+				'type'               => Controls_Manager::SWITCHER,
+				'frontend_available' => true,
+			)
+		);
+
+		$this->add_control(
+			'icon_with_no_posts',
+			array(
+				'label'              => __( 'Icon', 'premium-addons-for-elementor' ),
+				'type'               => Controls_Manager::ICONS,
+				'condition'          => array(
+					'add_icon_with_no_posts' => 'yes',
+					'icon_type!'              => array( 'image' ),
+				),
+				'frontend_available' => true,
+			)
+		);
+
+		$this->add_control(
+			'image_with_no_posts',
+			array(
+				'label'       => __( 'Image', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::MEDIA,
+				'media_types' => array( 'image' ),
+				'dynamic'     => array( 'active' => true ),
+				'condition'   => array(
+					'icon_type'              => 'image',
+					'add_icon_with_no_posts' => 'yes',
 				),
 			)
 		);
@@ -3538,6 +3575,10 @@ class Premium_Notifications extends Widget_Base {
 			if ( ! empty( $settings['image']['url'] ) ) {
 				$image_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' );
 			}
+
+			if ( ! empty( $settings['image_with_no_posts']['url'] ) ) {
+				$image_html_with_no_post = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image_with_no_posts' );
+			}
 		}
 
 		$this->add_render_attribute( 'icon_wrap', 'class', 'pa-rec-not-icon-wrap' );
@@ -3581,7 +3622,7 @@ class Premium_Notifications extends Widget_Base {
 			$this->add_render_attribute(
 				'lottie_icon',
 				array(
-					'class'               => 'premium-lottie-animation',
+					'class'               => array( 'premium-lottie-animation', 'premium-notification-icon' ),
 					'data-lottie-url'     => $settings['lottie_url'],
 					'data-lottie-loop'    => $settings['lottie_loop'],
 					'data-lottie-reverse' => $settings['lottie_reverse'],
@@ -3590,7 +3631,7 @@ class Premium_Notifications extends Widget_Base {
 
 		} elseif ( 'icon' === $icon_type || 'svg' === $icon_type ) {
 
-			$this->add_render_attribute( 'icon', 'class', 'premium-drawable-icon' );
+			$this->add_render_attribute( 'icon', 'class', array( 'premium-drawable-icon', 'premium-notification-icon' ) );
 
 			if ( ( 'yes' === $settings['draw_svg'] && 'icon' === $icon_type ) || 'svg' === $icon_type ) {
 				$this->add_render_attribute( 'icon', 'class', 'premium-not-icon' );
@@ -3689,7 +3730,7 @@ class Premium_Notifications extends Widget_Base {
 						Icons_Manager::render_icon(
 							$settings['icon'],
 							array(
-								'class'       => array( 'premium-not-icon', 'premium-svg-nodraw', 'premium-drawable-icon' ),
+								'class'       => array( 'premium-not-icon', 'premium-svg-nodraw', 'premium-drawable-icon', 'premium-notification-icon' ),
 								'aria-hidden' => 'true',
 							)
 						);
@@ -3703,10 +3744,25 @@ class Premium_Notifications extends Widget_Base {
 						<?php $this->print_unescaped_setting( 'custom_svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 				<?php else : ?>
-					<p class="premium-not-icon-text">
+					<p class="premium-not-icon-text premium-notification-icon">
 						<?php echo wp_kses_post( $settings['text'] ); ?>
 					</p>
 
+				<?php endif; ?>
+
+				<?php if ( 'image' === $icon_type ) : ?>
+					<?php echo wp_kses_post( $image_html_with_no_post ); ?>
+
+				<?php else : ?>
+					<?php
+						Icons_Manager::render_icon(
+							$settings['icon_with_no_posts'],
+							array(
+								'class'       => array( 'premium-not-icon', 'premium-svg-nodraw', 'premium-drawable-icon', 'premium-icon-with-no-post' ),
+								'aria-hidden' => 'true',
+							)
+						);
+					?>
 				<?php endif; ?>
 
 				<?php if ( $number > 0 ) : ?>

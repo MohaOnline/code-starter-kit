@@ -929,6 +929,7 @@ class Customify_Font_Icons
 				783 => 'fa fa-superpowers',
 				784 => 'fa fa-wpexplorer',
 				785 => 'fa fa-meetup',
+				786 => 'fa fa-x-twitter',
 			);
 
 		return apply_filters('customify/customizer/font_icons/font_awesome_icons', $icons);
@@ -2948,6 +2949,7 @@ class Customify_Font_Icons
 				2006 => 'fa-brands fa-youtube-square',
 				2007 => 'fa-solid fa-z',
 				2008 => 'fa-brands fa-zhihu',
+				2009 => 'fa-brands fa-x-twitter',
 			);
 	}
 }

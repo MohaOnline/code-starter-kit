@@ -171,8 +171,8 @@ $wp_customize->add_section('page_layout_settings',
 
 
     $wp_customize->add_setting(
-        'blogus_page_layout_heading'
-            ,array(
+        'blogus_page_layout_heading',
+        array(
             'capability'        => 'edit_theme_options',
             'sanitize_callback' => 'blogus_sanitize_text',
             'priority' => 1,

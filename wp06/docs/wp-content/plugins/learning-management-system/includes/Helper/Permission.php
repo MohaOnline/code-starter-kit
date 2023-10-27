@@ -456,4 +456,37 @@ class Permission {
 		 */
 		return apply_filters( 'masteriyo_rest_check_permissions', $permission, $context, $object_id, $post_type );
 	}
+
+	/**
+	 * Check permissions of course announcement on REST API.
+	 *
+	 * @since x.x.x
+	 * @param string $context   Request context.
+	 * @param int    $object_id Course announcement ID.
+	 * @return bool
+	 */
+	public function rest_check_announcement_permissions( $context = 'read', $object_id = 0 ) {
+		$contexts = array(
+			'read'   => 'read',
+			'create' => 'publish_announcements',
+			'update' => 'edit_announcement',
+			'delete' => 'delete_announcement',
+			'batch'  => 'edit_others_announcements',
+		);
+
+		$cap        = $contexts[ $context ];
+		$permission = current_user_can( $cap, $object_id );
+
+		/**
+		 * Filters permission for an course announcement.
+		 *
+		 * @since x.x.x
+		 *
+		 * @param boolean $permission True if permission granted.
+		 * @param string $context Permission context.
+		 * @param integer $object_id Object ID which requires permission, if available.
+		 * @param string $object_type Object type.
+		 */
+		$permission = apply_filters( 'masteriyo_rest_check_permissions', $permission, $context, $object_id, 'course_announcement' );
+	}
 }

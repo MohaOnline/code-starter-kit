@@ -58,6 +58,8 @@ if ( ! class_exists( 'CR_Emails_Settings' ) ):
 						return;
 					}
 				}
+				global $hide_save_button;
+				$hide_save_button = true;
 				$this->init_settings();
 				WC_Admin_Settings::output_fields( $this->settings );
 			}

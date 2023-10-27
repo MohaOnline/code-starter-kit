@@ -14,6 +14,6 @@
 <a class="button button-primary" href="<?php echo esc_url( ADVADS_URL ); ?>add-ons/advanced-ads-pro/?utm_source=advanced-ads&utm_medium=link&utm_campaign=pitch-pro" target="_blank"><?php esc_html_e( 'See all features and pricing', 'advanced-ads' ); ?></a>
 </div>
 <div class="advads-pro-pitch postbox">
-<?php require ADVADS_BASE_PATH . 'admin/views/upgrades/all-access.php'; ?>
+<?php require ADVADS_ABSPATH . 'admin/views/upgrades/all-access.php'; ?>
 </div>
 <div class="clear"></div>

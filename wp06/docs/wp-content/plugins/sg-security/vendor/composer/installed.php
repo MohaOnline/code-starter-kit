@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'siteground/sg-security',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '3237909845a21fef59ba2451e0c7648d023d48a1',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'reference' => '38e1e6782e7471587191588ced44c1e4fc45a09e',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -81,9 +81,9 @@
             ),
         ),
         'siteground/sg-security' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '3237909845a21fef59ba2451e0c7648d023d48a1',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => '38e1e6782e7471587191588ced44c1e4fc45a09e',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -92,7 +92,7 @@
         'siteground/siteground-data' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'fa35e01366de57ea9c597b73073af7c32ccbd0a0',
+            'reference' => '7a74a612208636dd6f489c5f663ae3659819f3ce',
             'type' => 'library',
             'install_path' => __DIR__ . '/../siteground/siteground-data',
             'aliases' => array(
@@ -114,7 +114,7 @@
         'siteground/siteground-helper' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ddf75543669faf6d5317d8e4e09b6fb94fcf9b3f',
+            'reference' => '5601ba384a643e54359b8249e2be591e90161a7d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../siteground/siteground-helper',
             'aliases' => array(

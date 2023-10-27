@@ -1,17 +1,17 @@
-=== AutomatorWP - The most flexible and powerful no-code automation plugin for WordPress ===
+=== AutomatorWP - The #1 automator plugin for no-code automation in WordPress ===
 Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
-Tags: automator, automation, zapier, webhook, marketing
+Tags: automator, automation, zapier, webhooks, marketing, google sheets, openai, woocommerce, buddyboss, integration
 Requires at least: 4.4
 Tested up to: 6.3
-Stable tag: 3.0.0
+Stable tag: 3.4.0
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
-Automate and connect your WordPress plugins, sites and apps together to create automated workflows with no-code automations!
+Connect your WordPress plugins, sites & apps together to create automated workflows with the most powerful no-code automator plugin!
 
 == Description ==
 
-[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source automator plugin that lets you connect your WordPress plugins together and create automated workflows.
+[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source automator plugin that lets you connect your WordPress plugins, sites and apps together and create automations between them.
 
 You can create "automations" linked to your WordPress activities and when any of them happen, you can make other things happen accordingly.
 
@@ -136,6 +136,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Jetpack CRM](https://automatorwp.com/add-ons/jetpack-crm/)
 * [JetEngine](https://automatorwp.com/add-ons/jetengine/)
 * [JetFormBuilder](https://automatorwp.com/add-ons/jetformbuilder/)
+* [Kadence Blocks](https://automatorwp.com/add-ons/kadence-blocks/)
 * [LearnDash](https://automatorwp.com/add-ons/learndash/)
 * [LearnPress](https://automatorwp.com/add-ons/learnpress/)
 * [LifterLMS](https://automatorwp.com/add-ons/lifterlms/)
@@ -167,6 +168,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [WhishList Member](https://automatorwp.com/add-ons/wishlist-member/)
 * [WooCommerce](https://automatorwp.com/add-ons/woocommerce/)
 * [WooCommerce Shipstation](https://automatorwp.com/add-ons/woocommerce-shipstation/)
+* [WP All Import](https://automatorwp.com/add-ons/wp-all-import/)
 * [WP Fluent Forms](https://automatorwp.com/add-ons/fluentform/)
 * [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
 * [WP Job Manager](https://automatorwp.com/add-ons/wp-job-manager/)
@@ -188,6 +190,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 
 * [ActiveCampaign](https://automatorwp.com/add-ons/activecampaign/)
 * [Airtable](https://automatorwp.com/add-ons/airtable/)
+* [ClickUp](https://automatorwp.com/add-ons/clickup/)
 * [Facebook](https://automatorwp.com/add-ons/facebook/)
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [Google Calendar](https://automatorwp.com/add-ons/google-calendar/)
@@ -304,6 +307,36 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 3.4.0 =
+
+* **Improvements**
+* Added checks to avoid unnecessary ajax requests.
+
+= 3.3.0 =
+
+* **Bug Fixes**
+* Check call to API to avoid warnings due to integrations.
+
+= 3.2.0 =
+
+* **New Features**
+* New integration: ClickUp.
+* ClickUp: New action: Add comment to a task.
+* ClickUp: New action: Add tag to a task.
+* ClickUp: New action: Create a list.
+* ClickUp: New action: Create a new task in list.
+* New integration: Kadence Blocks.
+* Kadence Blocks: New trigger: User submits a form.
+* Kadence Blocks: New trigger: Guest submits a form.
+* New integration: WP All Import.
+* WP All Import: New trigger: User completes an import.
+* WP All Import: New trigger: User imports posts of a type.
+
+= 3.1.0 =
+
+* **Bug Fixes**
+* Check call to API to avoid warnings due to integrations.
 
 = 3.0.0 =
 

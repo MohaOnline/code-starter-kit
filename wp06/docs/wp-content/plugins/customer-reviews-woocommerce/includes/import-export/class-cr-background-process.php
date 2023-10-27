@@ -142,7 +142,7 @@ abstract class CR_Background_Process extends CRWP_Background_Process {
 			$memory_limit = '32000M';
 		}
 
-		return intval( $memory_limit ) * 1024 * 1024;
+		return wp_convert_hr_to_bytes( $memory_limit );
 	}
 
 	/**

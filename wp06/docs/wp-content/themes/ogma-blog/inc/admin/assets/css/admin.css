@@ -235,6 +235,16 @@
   font-weight: 600;
 }
 
+#ogma-blog-dashboard .welcome-block .block-content a.btn-grp {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 5px;
+  text-decoration: none;
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
 #ogma-blog-dashboard .welcome-block .block-content p a .dashicons {
   font-size: 20px;
   margin-left: 6px;

@@ -335,6 +335,18 @@ trait Elements {
 				'icon'       => 'eaicon-woo-cross-sells',
 				'categories' => '["essential-addons-elementor"]',
 			],
+			[
+				'name'       => 'eael-woo-account-dashboard',
+				'title'      => __( 'Woo Account Dashboard', 'essential-addons-for-elementor-lite' ),
+				'icon'       => 'eaicon-woo-account-dashboard',
+				'categories' => '["essential-addons-elementor"]',
+			],
+			[
+				'name'       => 'fancy-chart',
+				'title'      => __( 'Fancy Chart', 'essential-addons-for-elementor-lite' ),
+				'icon'       => 'eicon-elementor-circle',
+				'categories' => '["essential-addons-elementor"]',
+			],
 		] );
 
 		$config['promotionWidgets'] = $combine_array;

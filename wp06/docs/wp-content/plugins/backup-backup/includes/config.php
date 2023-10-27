@@ -22,10 +22,14 @@
       else $result = array();
 
       // Load user config
-      if (file_exists($configpath) && BMI_CONFIG_STATUS) {
+      if (file_exists($configpath) && defined('BMI_CONFIG_STATUS') && BMI_CONFIG_STATUS) {
 
         // Get file contents
         $bmi_config_contents = file_get_contents($configpath);
+        if (defined('BMI_CONFIG_PHP') && BMI_CONFIG_PHP) {
+          $bmi_config_contents = substr($bmi_config_contents, 8);
+        }
+        
         $bmi_config_json = json_decode($bmi_config_contents);
 
         // If config is correct set it
@@ -69,6 +73,10 @@
 
         // Get file contents
         $bmi_config_contents = file_get_contents(BMI_CONFIG_PATH);
+        if (defined('BMI_CONFIG_PHP') && BMI_CONFIG_PHP) {
+          $bmi_config_contents = substr($bmi_config_contents, 8);
+        }
+        
         $bmi_config_json = json_decode($bmi_config_contents);
 
         // Result default
@@ -78,7 +86,7 @@
         if (!(json_last_error() == JSON_ERROR_NONE)) {
 
           // Setting refill base
-          $bmi_config_json = json_decode(json_encode(array()));;
+          $bmi_config_json = json_decode(json_encode(array()));
 
         }
 
@@ -94,7 +102,12 @@
         } else return false;
 
         // Write edited settings
-        file_put_contents(BMI_CONFIG_PATH, json_encode($bmi_config_json));
+        if (defined('BMI_CONFIG_PHP') && BMI_CONFIG_PHP) {
+          file_put_contents(BMI_CONFIG_PATH, "<?php //" . json_encode($bmi_config_json));
+        } else {
+          file_put_contents(BMI_CONFIG_PATH, json_encode($bmi_config_json));
+        }
+        
         return true;
 
       }
@@ -137,6 +150,89 @@
     }
   }
 
+  function bmi_try_convert_old_to_new_config(&$bmi_initial_config_filepath, &$bmi_initial_config_dirpath, $init = true) {
+    
+    $newConfigStaticPath = BMI_STATIC_PHP_CONFIG;
+    if (file_exists($newConfigStaticPath)) {
+      
+      if (!defined('BMI_CONFIG_PHP')) define('BMI_CONFIG_PHP', true);
+      if (!defined('BMI_CONFIG_STATUS')) define('BMI_CONFIG_STATUS', true);
+      if (!defined('BMI_CONFIG_PATH')) define('BMI_CONFIG_PATH', $newConfigStaticPath);
+      if (!defined('BMI_INITIAL_CONFIG_PATH')) define('BMI_INITIAL_CONFIG_PATH', $bmi_initial_config_filepath);
+      
+      $localStoragePath = bmi_get_config('STORAGE::LOCAL::PATH', $newConfigStaticPath);
+      if ($localStoragePath == "default") $localStoragePath = BMI_BACKUPS_DEFAULT;
+      
+      if (!(is_readable($localStoragePath) && is_dir($localStoragePath))) {
+        $localStoragePath = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backup-migration-' . bmi_config_random_string(10);
+        bmi_set_config('STORAGE::LOCAL::PATH', $localStoragePath);
+      }
+      
+      if (basename($localStoragePath) == 'backup-migration') {
+        $current_patch = get_option('bmi_hotfixes', array());
+        $key = array_search('BMI_D20_M07_01', $current_patch);
+        if ($key !== false) unset($current_patch[$key]);
+        update_option('bmi_hotfixes', $current_patch);
+      }
+      
+      if (!defined('BMI_BACKUPS_ROOT')) define('BMI_BACKUPS_ROOT', $localStoragePath);
+      if (!defined('BMI_CONFIG_DIR')) define('BMI_CONFIG_DIR', $localStoragePath);
+      if (!defined('BMI_BACKUPS')) define('BMI_BACKUPS', $localStoragePath . DIRECTORY_SEPARATOR . 'backups');
+      if (!defined('BMI_STAGING')) define('BMI_STAGING', $localStoragePath . DIRECTORY_SEPARATOR . 'staging');
+      
+      $bmi_initial_config_dirpath = $localStoragePath;
+      $bmi_initial_config_filepath = $newConfigStaticPath;
+      
+      return true;
+      
+    } else {
+      
+      if (file_exists($bmi_initial_config_filepath)) {
+        file_put_contents($newConfigStaticPath, "<?php //" . file_get_contents($bmi_initial_config_filepath));
+        @unlink($bmi_initial_config_filepath);
+        if ($init) bmi_try_convert_old_to_new_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath, false);
+        $bmi_initial_config_filepath = $newConfigStaticPath;
+      }
+      
+      return false;
+      
+    }
+    
+  }
+  
+  function bmi_config_random_string($max = 16) {
+
+    $bank = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $bank .= 'abcdefghijklmnopqrstuvwxyz';
+    $bank .= '0123456789';
+
+    $str = str_shuffle($bank);
+
+    while (is_numeric($str[0])) {
+      $str = str_shuffle($bank);
+    }
+
+    $str = substr($str, 0, $max);
+
+    return $str;
+
+  }
+  
+  function bmi_render_default_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath) {
+    
+    if (!file_exists(dirname($bmi_initial_config_filepath)) && !is_dir(dirname($bmi_initial_config_filepath))) {
+      @mkdir(dirname($bmi_initial_config_filepath), 0755, true);
+    }
+
+    @copy(BMI_CONFIG_DEFAULT, $bmi_initial_config_filepath);
+    bmi_try_convert_old_to_new_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath);
+    
+    if (!defined('BMI_CONFIG_STATUS')) define('BMI_CONFIG_STATUS', true);
+    if (!defined('BMI_CONFIG_PATH')) define('BMI_CONFIG_PATH', $bmi_initial_config_filepath);
+    if (!defined('BMI_CONFIG_DIR')) define('BMI_CONFIG_DIR', dirname($bmi_initial_config_filepath));
+    
+  }
+
   $bmi_initial_config_filepath = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backup-migration' . DIRECTORY_SEPARATOR . 'config.json';
   $bmi_initial_config_dirpath = dirname($bmi_initial_config_filepath);
   $bmi_database_config_dirpath = get_option('BMI::STORAGE::LOCAL::PATH', false);
@@ -147,27 +243,30 @@
   }
 
   // Get config and parse it
-  if (file_exists($bmi_initial_config_filepath)) {
+  if (file_exists(BMI_STATIC_PHP_CONFIG)) {
+    
+    $bmi_php_config = bmi_try_convert_old_to_new_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath);
+    
+  } elseif (file_exists($bmi_initial_config_filepath)) {
+    
+    // Convert config
+    $bmi_php_config = bmi_try_convert_old_to_new_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath);
 
     // Get file contents
     $bmi_config_contents = file_get_contents($bmi_initial_config_filepath);
+    if (defined('BMI_CONFIG_PHP') && BMI_CONFIG_PHP) {
+      $bmi_config_contents = substr($bmi_config_contents, 8);
+    }
+    
     $bmi_config_json = json_decode($bmi_config_contents);
 
     // If config is correct set it
     if (json_last_error() == JSON_ERROR_NONE) {
-
-      if (!defined('BMI_CONFIG_STATUS')) define('BMI_CONFIG_STATUS', true);
-      $localStoragePath = bmi_get_config('STORAGE::LOCAL::PATH', $bmi_initial_config_filepath);
-      if (!defined('BMI_BACKUPS_ROOT')) define('BMI_BACKUPS_ROOT', $localStoragePath);
-      if (!defined('BMI_BACKUPS')) define('BMI_BACKUPS', $localStoragePath . DIRECTORY_SEPARATOR . 'backups');
-      if (!defined('BMI_STAGING')) define('BMI_STAGING', $localStoragePath . DIRECTORY_SEPARATOR . 'staging');
-
+      
+      $localStoragePath = BMI_BACKUPS_ROOT;
       if ($bmi_database_config_dirpath == false || $bmi_database_config_dirpath != $localStoragePath) {
-        @copy($bmi_initial_config_filepath, $localStoragePath . DIRECTORY_SEPARATOR . 'config.json');
-        @unlink($bmi_initial_config_filepath);
-
-        $prev_path = dirname($bmi_initial_config_filepath);
-        $prev_path_backups = dirname($bmi_initial_config_filepath) . DIRECTORY_SEPARATOR . 'backups';
+        $prev_path = dirname(BMI_INITIAL_CONFIG_PATH);
+        $prev_path_backups = dirname(BMI_INITIAL_CONFIG_PATH) . DIRECTORY_SEPARATOR . 'backups';
 
         if (file_exists($prev_path_backups) && is_dir($prev_path_backups)) {
           $scanned_directory_backups = array_diff(scandir($prev_path_backups), ['..', '.']);
@@ -196,24 +295,6 @@
         update_option('BMI::STORAGE::LOCAL::PATH', $localStoragePath);
       }
 
-      if (!defined('BMI_CONFIG_PATH')) define('BMI_CONFIG_PATH', $localStoragePath . DIRECTORY_SEPARATOR . 'config.json');
-      if (!defined('BMI_CONFIG_DIR')) define('BMI_CONFIG_DIR', $localStoragePath);
+    } else bmi_render_default_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath);
 
-    } else {
-
-      if (!defined('BMI_CONFIG_STATUS')) define('BMI_CONFIG_STATUS', false);
-
-    }
-
-  } else {
-
-    if (!file_exists(dirname($bmi_initial_config_filepath)) && !is_dir(dirname($bmi_initial_config_filepath))) {
-      @mkdir(dirname($bmi_initial_config_filepath), 0755, true);
-    }
-
-    @copy(BMI_CONFIG_DEFAULT, $bmi_initial_config_filepath);
-    if (!defined('BMI_CONFIG_STATUS')) define('BMI_CONFIG_STATUS', true);
-    if (!defined('BMI_CONFIG_PATH')) define('BMI_CONFIG_PATH', $bmi_initial_config_filepath);
-    if (!defined('BMI_CONFIG_DIR')) define('BMI_CONFIG_DIR', dirname($bmi_initial_config_filepath));
-
-  }
+  } else bmi_render_default_config($bmi_initial_config_filepath, $bmi_initial_config_dirpath);

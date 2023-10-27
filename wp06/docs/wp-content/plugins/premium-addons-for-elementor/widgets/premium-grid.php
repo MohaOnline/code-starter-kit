@@ -2511,7 +2511,7 @@ class Premium_Grid extends Widget_Base {
 		}
 
 		$cat_filtered = str_replace( ', ', ',', $cat_filtered );
-		$cat_filtered = preg_replace( '/[\s_&@!#%]/', '-', $cat_filtered );
+		$cat_filtered = preg_replace( '/[\s_`\'‘&@!#%]/', '-', $cat_filtered );
 		$cat_filtered = str_replace( ',', ' ', $cat_filtered );
 
 		return $cat_filtered;
@@ -2756,6 +2756,9 @@ class Premium_Grid extends Widget_Base {
 				$key = 'gallery_item_' . $index;
 
 				$image_id = apply_filters( 'wpml_object_id', $image['premium_gallery_img']['id'], 'elementor_library', true );
+
+                if( ! $image_id )
+                    continue;
 
 				$image_by_id = get_post( $image_id );
 

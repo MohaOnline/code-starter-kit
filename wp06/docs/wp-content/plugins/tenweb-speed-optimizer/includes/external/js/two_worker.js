@@ -28,6 +28,21 @@ self.addEventListener("message", function(e) {
 function two_fetch_inbg(data, type, excluded_js = false) {
     for(let i in data){
         if(typeof data[i].url != "undefined"){
+            var modifiedScript = null;
+            if(type === "js" && typeof data[i].exclude_blob != "undefined" && data[i].exclude_blob){
+                modifiedScript = {
+                    id: i,
+                    status: 'ok',
+                    type: type,
+                    url: data[i].url,
+                    uid:data[i].uid
+                };
+                two_send_worker_data(modifiedScript);
+                continue;
+            }
+
+
+
             fetch(data[i].url, {mode:'no-cors',redirect: 'follow'}).then((r) => {
                 if (!r.ok || r.status!==200) {
                     throw Error(r.statusText);
@@ -44,7 +59,7 @@ function two_fetch_inbg(data, type, excluded_js = false) {
                 }else{
                     sheetURL = URL.createObjectURL(content_);
                 }
-                var modifiedScript = null;
+                modifiedScript = null;
                 if(type == "css"){
                     modifiedScript = {
                         id: i,

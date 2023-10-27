@@ -636,7 +636,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			wp_register_script(
 				'cr-blocks',
 				plugins_url( 'js/blocks.js', dirname( dirname( __FILE__ ) ) ),
-				array( 'wp-element', 'wp-i18n', 'wp-data', 'wp-blocks', 'wp-components', /*'wp-editor',*/ 'lodash', 'ivole-wc-components' ),
+				array( 'wp-element', 'wp-i18n', 'wp-data', 'wp-blocks', 'wp-components', 'lodash', 'ivole-wc-components' ),
 				false,
 				true
 			);

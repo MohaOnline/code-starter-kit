@@ -349,7 +349,6 @@ final class Plugin {
 
 	public function setup_nav_menu_item_options( $item ) {
 
-		// if (empty($item->quadmenu)) {
 		if ( isset( $item->ID ) ) {
 
 			$saved_settings = (array) get_post_meta( $item->ID, QUADMENU_DB_ITEM, true );
@@ -360,7 +359,6 @@ final class Plugin {
 
 			return apply_filters( 'quadmenu_setup_nav_menu_item', $item );
 		}
-		// }
 
 		return $item;
 	}

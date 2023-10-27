@@ -77,7 +77,7 @@ class CreateCourseContentJob {
 			);
 		}
 
-		$course_content_prompt = generate_course_content_prompt( $course_title, $course_idea, 2, $num_course_highlight_points, $lesson_names );
+		$course_content_prompt = masteriyo_generate_course_content_prompt( $course_title, $course_idea, $lesson_names, 2, $num_course_highlight_points );
 		$response_text         = masteriyo_openai_retry( array( $chatgpt, 'send_prompt' ), array( $course_content_prompt ), 2 ); // Max retry time 2.
 
 		if ( is_null( $response_text ) || is_wp_error( $response_text ) || empty( $response_text ) ) {

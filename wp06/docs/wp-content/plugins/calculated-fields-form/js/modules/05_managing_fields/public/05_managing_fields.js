@@ -385,8 +385,7 @@
 								function()
 								{
 									var id = f.attr('id');
-
-									f.validate().resetForm();
+									if( 'validate' in f ) f.validate().resetForm();
 									f.find('.select2-hidden-accessible').change();
 									f.find(':data(manually)').removeData('manually');
 									$.fbuilder['showHideDep']({ 'formIdentifier' : fid });

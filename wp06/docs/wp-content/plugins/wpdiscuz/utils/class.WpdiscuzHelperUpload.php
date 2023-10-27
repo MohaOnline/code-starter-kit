@@ -871,8 +871,8 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         $selected = $source === "wpdiscuz" ? " selected='selected'" : "";
 
         $dropdown = "<select name='media_source' id='wpdiscuz_media' class='postform'>";
-        $dropdown .= "<option value=''>" . __("All Media Items", "wpdiscuz") . "</option>";
-        $dropdown .= "<option value='wpdiscuz' {$selected}>" . __("wpDiscuz Media Items", "wpdiscuz") . "</option>";
+        $dropdown .= "<option value=''>" . esc_html__("All Media Items", "wpdiscuz") . "</option>";
+        $dropdown .= "<option value='wpdiscuz' {$selected}>" . esc_html__("wpDiscuz Media Items", "wpdiscuz") . "</option>";
         $dropdown .= "</select>";
         echo $dropdown;
     }
@@ -891,7 +891,7 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
 
     public function wpdiscuzMediaCommentColumn($columns, $detached) {
         if ($columns && is_array($columns)) {
-            $columns['wpdcomment'] = __('Attached To Comment', 'wpdiscuz');
+            $columns['wpdcomment'] = esc_html__('Attached To Comment', 'wpdiscuz');
         }
         return $columns;
     }

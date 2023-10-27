@@ -14,16 +14,17 @@
               </div>
               <div class="navbar-header col-md-6">
                     <?php the_custom_logo(); 
-                    if (display_header_text()) : ?>
+                    if (display_header_text()) { ?>
                     <div class="site-branding-text">
-                    <?php if (is_front_page() || is_home()) { ?>
+                    <?php } else { ?>
+                    <div class="site-branding-text d-none">
+                    <?php } if (is_front_page() || is_home()) { ?>
                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></h1>
                     <?php } else { ?>
                     <p class="site-title"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></p>
                     <?php } ?>
                     <p class="site-description"><?php echo esc_html(get_bloginfo( 'description' )); ?></p>
                     </div>
-                    <?php endif; ?>
                 </div>     
               <div class="col-md-3">
                 <div class="info-right right-nav  d-flex align-items-center justify-content-center justify-content-md-end">
@@ -67,16 +68,17 @@
                   </button>
                   <div class="navbar-header">
                    <?php the_custom_logo(); 
-                  if (display_header_text()) : ?>
+                  if (display_header_text()) { ?>
                   <div class="site-branding-text">
-                  <?php if (is_front_page() || is_home()) { ?>
+                  <?php } else { ?>
+                  <div class="site-branding-text d-none">
+                  <?php }  if (is_front_page() || is_home()) { ?>
                   <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></h1>
                   <?php } else { ?>
                   <p class="site-title"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></p>
                   <?php }?>
                   <p class="site-description"><?php echo esc_html(get_bloginfo( 'description' )); ?></p>
                   </div>
-                  <?php endif; ?>
                   </div>
                   <div class="right-nav"> 
                   <!-- /navbar-toggle -->

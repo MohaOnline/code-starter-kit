@@ -82,8 +82,15 @@
               $single_show_featured_image = esc_attr(get_theme_mod('single_show_featured_image','true'));
               if($single_show_featured_image == true) {
               if(has_post_thumbnail()){
-              the_post_thumbnail( '', array( 'class'=>'img-fluid' ) );
-               } }?>
+                the_post_thumbnail( '', array( 'class'=>'img-fluid' ) );
+                
+                  $thumbnail_id = get_post_thumbnail_id();
+                  $caption = get_post($thumbnail_id)->post_excerpt;
+
+                  if (!empty($caption)) {
+                    echo '<span class="featured-image-caption">' . esc_html($caption) . '</span>';
+                  }
+                } }?>
               <article class="page-content-single small single">
                 <?php the_content(); ?>
                 <?php newsup_edit_link(); ?>

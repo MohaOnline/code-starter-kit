@@ -107,7 +107,12 @@ class Attachments
             if (!empty($meta_value['file'])) {
                 $guid = $uploads['baseurl'] . '/' . $meta_value['file'];
                 $file_not_exist = !file_exists($uploads['basedir'] . '/' . $meta_value['file']);
+                $file_is_readable = is_readable($uploads['basedir'] . '/' . $meta_value['file']);
+                if ($file_not_exist || !$file_is_readable) {
+                    continue;
+                }
                 $image_file_size = filesize($uploads['basedir'] . '/' . $meta_value['file']);
+
             }
             if (!$file_not_exist && $image_file_size <= $this->allowed_image_size) {
                 $extension = strtolower(pathinfo($guid, PATHINFO_EXTENSION));
@@ -137,6 +142,9 @@ class Attachments
                     $guid = $uploads['baseurl'] . '/' . $data['destination'] . '/' . $size_data['file'];
                     $file_path = $uploads['basedir'] . '/' . $data['destination'] . '/' . $size_data['file'];
                     if (in_array($attachment->ID . '_' . $size_name, $this->excluded_thumb_ids)) {
+                        continue;
+                    }
+                    if (!file_exists($file_path) || !is_readable($file_path)) {
                         continue;
                     }
                     $image_file_size = filesize($file_path);

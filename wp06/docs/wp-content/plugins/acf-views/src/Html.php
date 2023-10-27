@@ -24,7 +24,7 @@ class Html
     }
 
     public function postboxShortcodes(
-        int $viewId,
+        string $viewUniqueId,
         bool $isShort,
         string $shortcodeName,
         string $entryName,
@@ -62,7 +62,7 @@ class Html
             'idArgument' => $idArgument,
             'shortcodeName' => $shortcodeName,
             'entryName' => $entryName,
-            'viewId' => $viewId,
+            'viewId' => $viewUniqueId,
             'isSingle' => $isSingle,
             'description' => $description,
             'typeName' => $isSingle ? 'Card' : 'View',
@@ -79,50 +79,21 @@ class Html
         return $this->render('postbox/support');
     }
 
-    public function view(int $id, string $classes, string $content, string $bemName): string
+    public function view(string $content, string $bemName): string
     {
         return $this->render('view/view', [
-            'id' => $id,
-            'classes' => $classes,
             'content' => $content,
             'bemName' => $bemName,
         ]);
     }
 
     // $tabs : [ [isActive, url, label,] ]
-    public function dashboardHeader(string $name, array $tabs): string
+    public function dashboardHeader(string $name, string $version, array $tabs): string
     {
         return $this->render('dashboard/header', [
             'name' => $name,
+            'version' => $version,
             'tabs' => $tabs,
-        ]);
-    }
-
-    // $supportedFieldTypes : [ group => [], ]
-    public function dashboardOverview(
-        string $createAcfViewLink,
-        string $createAcfCardLink,
-        array $supportedFieldTypes,
-        array $supportBlock,
-        array $reviewBlock,
-        string $pluginsVersion,
-        string $demoImportLink,
-        string $videoReview,
-        array $proBanner = []
-    ): string {
-        $acfPluginInstallLink = get_admin_url(null, Plugin::ACF_INSTALL_URL);
-
-        return $this->render('dashboard/overview', [
-            'createAcfViewLink' => $createAcfViewLink,
-            'createAcfCardLink' => $createAcfCardLink,
-            'supportedFieldTypes' => $supportedFieldTypes,
-            'supportBlock' => $this->postboxSupport(),
-            'reviewBlock' => $reviewBlock,
-            'pluginsVersion' => $pluginsVersion,
-            'proBanner' => $proBanner,
-            'demoImportLink' => $demoImportLink,
-            'videoReview' => $videoReview,
-            'acfPluginInstallLink' => $acfPluginInstallLink,
         ]);
     }
 

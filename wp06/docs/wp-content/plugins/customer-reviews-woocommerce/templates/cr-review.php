@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) ) {
 								if( $shop_manager ) {
-									$store_manager = apply_filters( 'cr_reviews_store_manager', 'Store manager' );
+									$store_manager = apply_filters( 'cr_reviews_store_manager', __( 'Store manager', 'customer-reviews-woocommerce' ) );
 									echo '<span class="woocommerce-review__verified verified">' . esc_html__( $store_manager, 'customer-reviews-woocommerce' ) . '</span> ';
 								} else {
 									if ( $verified ) {

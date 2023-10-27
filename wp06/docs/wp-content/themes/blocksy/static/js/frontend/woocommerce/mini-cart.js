@@ -127,4 +127,12 @@ export const mount = () => {
 			clearCartContent()
 		})
 	})
+
+	$(document.body).on('click', '.remove_from_cart_button', {}, (e) => {
+		const maybeItem = e.target.closest('.woocommerce-mini-cart-item')
+
+		if (maybeItem) {
+			maybeItem.classList.add('processing')
+		}
+	})
 }

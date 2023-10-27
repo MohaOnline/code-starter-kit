@@ -1,4 +1,23 @@
 == Changelog ==
+= 1.6.16 - 16-10-2023 =
+- Feature - Oxygen builder integration addon.
+- Feature - Course announcements.
+- Feature - Added Instructors list page and Instructors listing shortcode `[masteriyo_instructors_list]`.
+- Enhancement - Added global settings for auto load next content on completing content.
+- Enhancement - Added global setting option to disable 'Complete Quiz' button if students didn't pass quiz.
+- Enhancement - Added filter options on addons page.
+- Enhancement - Show icon based on template source (like Elementor, Divi, Masteriyo) on the settings page.
+- Enhancement - Show create new template link below template options in Elementor.
+- Enhancement - Add “Use template for Masteriyo” action in templates list table showed by Elementor.
+- Refactor - Implement basic caching on user courses to eliminate duplicate queries.
+- Fix - PHP 8 Deprecated Parameter Order in OpenAI.
+- Fix - Random 0 on the learn page.
+- Fix - Preview permalink of quiz and lesson.
+- Fix - Font CSS issue on learn page quiz description.
+- Fix - To admin email gap issue on global email settings.
+- Fix - Import popup showing up on unrelated pages in Elementor
+- Fix - Unusable widgets showing up everywhere in Elementor.
+
 = 1.6.15 - 27-09-2023 =
 - Feature - Open AI Chat GPT Integration.
 - Feature - Gamipress Integration.

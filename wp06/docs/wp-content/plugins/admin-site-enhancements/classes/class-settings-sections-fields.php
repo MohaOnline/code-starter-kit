@@ -152,7 +152,7 @@ class Settings_Sections_Fields
                 'field_id'               => $field_id,
                 'field_slug'             => $field_slug,
                 'field_name'             => ASENHA_SLUG_U . '[' . $field_id . ']',
-                'field_description'      => 'Enable custom ordering of various "hierarchical" content types or those supporting "page attributes". Useful for displaying them in the desired order in wp-admin and on the frontend.',
+                'field_description'      => 'Enable custom ordering of various "hierarchical" content types or those supporting "page attributes". Useful for displaying them in the desired order in wp-admin and on the frontend. A new \'Order\' sub-menu will appear for enabled content type(s).',
                 'field_options_wrapper'  => true,
                 'field_options_moreless' => true,
                 'class'                  => 'asenha-toggle content-management ' . $field_slug,
@@ -1048,6 +1048,30 @@ class Settings_Sections_Fields
                 'field_suffix'      => '',
                 'field_description' => '',
                 'class'             => 'asenha-text with-prefix-suffix login-logout ' . $field_slug,
+            )
+        );
+        // Use Site Identity on the Login Page
+        $field_id = 'site_identity_on_login';
+        $field_slug = 'site-identity-on-login';
+        add_settings_field(
+            $field_id,
+            // Field ID
+            'Site Identity on Login Page',
+            // Field title
+            [ $render_field, 'render_checkbox_toggle' ],
+            // Callback to render field with custom arguments in the array below
+            ASENHA_SLUG,
+            // Settings page slug
+            'main-section',
+            // Section ID
+            array(
+                'option_name'           => ASENHA_SLUG_U,
+                'field_id'              => $field_id,
+                'field_slug'            => $field_slug,
+                'field_name'            => ASENHA_SLUG_U . '[' . $field_id . ']',
+                'field_description'     => 'Use the site icon and URL to replace the default WordPress logo with link to wordpress.org on the login page. Go to the <a href="' . get_admin_url() . 'customize.php">customizer</a> to set or change your site icon.',
+                'field_options_wrapper' => true,
+                'class'                 => 'asenha-toggle login-logout ' . $field_slug,
             )
         );
         // Enable Log In/Out Menu
@@ -1980,6 +2004,27 @@ class Settings_Sections_Fields
                 'class'       => 'asenha-checkbox asenha-hide-th admin-interface ' . $field_slug,
             )
         );
+        $field_id = 'disable_resource_version_number';
+        $field_slug = 'disable-resource-version-number';
+        add_settings_field(
+            $field_id,
+            // Field ID
+            '',
+            // Field title
+            [ $render_field, 'render_checkbox_plain' ],
+            // Callback to render field with custom arguments in the array below
+            ASENHA_SLUG,
+            // Settings page slug
+            'main-section',
+            // Section ID
+            array(
+                'option_name' => ASENHA_SLUG_U,
+                'field_id'    => $field_id,
+                'field_name'  => ASENHA_SLUG_U . '[' . $field_id . ']',
+                'field_label' => 'Disable <strong>version number</strong> on static resource URLs referenced in &lt;head&gt;, which can disclose WordPress version number. Older versions(s) might contain unpatched security loophole(s). Applies to non-logged-in view of pages. This will also increase cacheability of static assets, but may have unintended consequences. Make sure you know what you are doing.',
+                'class'       => 'asenha-checkbox asenha-hide-th admin-interface ' . $field_slug,
+            )
+        );
         $field_id = 'disable_head_wlwmanifest_tag';
         $field_slug = 'disable-head-wlwmanifest-tag';
         add_settings_field(
@@ -2082,6 +2127,27 @@ class Settings_Sections_Fields
                 'field_id'    => $field_id,
                 'field_name'  => ASENHA_SLUG_U . '[' . $field_id . ']',
                 'field_label' => 'Disable <strong>emoji support for pages, posts and custom post types</strong> on the admin and frontend. The support is primarily useful for older browsers that do not have native support for it. Most modern browsers across different OSes and devices now have native support for it.',
+                'class'       => 'asenha-checkbox asenha-hide-th admin-interface ' . $field_slug,
+            )
+        );
+        $field_id = 'disable_jquery_migrate';
+        $field_slug = 'disable-jquery-migrate';
+        add_settings_field(
+            $field_id,
+            // Field ID
+            '',
+            // Field title
+            [ $render_field, 'render_checkbox_plain' ],
+            // Callback to render field with custom arguments in the array below
+            ASENHA_SLUG,
+            // Settings page slug
+            'main-section',
+            // Section ID
+            array(
+                'option_name' => ASENHA_SLUG_U,
+                'field_id'    => $field_id,
+                'field_name'  => ASENHA_SLUG_U . '[' . $field_id . ']',
+                'field_label' => 'Disable <strong>jQuery Migrate</strong> script on the frontend, which should no longer be needed if your site uses modern theme and plugins.',
                 'class'       => 'asenha-checkbox asenha-hide-th admin-interface ' . $field_slug,
             )
         );

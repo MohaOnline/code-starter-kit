@@ -195,7 +195,7 @@ class Advanced_Ads_Ad_Type_Image extends Advanced_Ads_Ad_Type_Abstract {
 		$tooltip_hwstring = image_hwstring( $tooltip_width, $tooltip_height );
 		$alt              = wp_strip_all_tags( get_post_meta( $ad->output['image_id'], '_wp_attachment_image_alt', true ) );
 
-		include ADVADS_BASE_PATH . 'admin/views/ad-list/preview-image.php';
+		include ADVADS_ABSPATH . 'admin/views/ad-list/preview-image.php';
 	}
 
 	/**

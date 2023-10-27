@@ -428,6 +428,11 @@
                         proTemplate = ' premium-template-pro';
                     }
 
+                    if (this.model.get('notice')) {
+                        if (-1 !== this.model.get('notice').indexOf('container'))
+                            proTemplate += ' premium-template-flexbox';
+                    }
+
                     return 'elementor-template-library-template' + sourceClass + urlClass + proTemplate;
                 },
 

@@ -48,6 +48,12 @@ class Admin
         add_filter("plugin_action_links_$plugin", array($this, 'add_settings_link'));
 
         add_action('admin_footer', array($this, 'wcpa_deactivation_form'));
+        add_action('admin_footer', array($this, 'popup_container'));
+    }
+
+    public function popup_container()
+    {
+        echo '<div id="wcpa_order_popup"></div>';
     }
 
     /*

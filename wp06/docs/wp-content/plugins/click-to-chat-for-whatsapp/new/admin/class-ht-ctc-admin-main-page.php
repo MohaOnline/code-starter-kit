@@ -381,7 +381,9 @@ class HT_CTC_Admin_Main_Page {
 
         <ul class="collapsible url_structure" id="url_structure">
         <li class="">
-        <div class="collapsible-header"><?php _e( 'URL Structure', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'URL Structure', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
 
         <p class="description" style="margin: 0 0 20px 0;"><a target="_blank" href="https://holithemes.com/plugins/click-to-chat/url-structure/"><?php _e( 'URL Structure', 'click-to-chat-for-whatsapp' ); ?></a> </p>

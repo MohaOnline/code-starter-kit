@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
+class ComposerStaticInit55f1ea3e80ecc03ba73b4c06535a0834
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -56,9 +56,11 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         array (
             'Masteriyo\\Pro\\' => 14,
             'Masteriyo\\Addons\\RevenueSharing\\' => 32,
+            'Masteriyo\\Addons\\OxygenIntegration\\' => 35,
             'Masteriyo\\Addons\\GamiPressIntegration\\' => 38,
             'Masteriyo\\Addons\\ElementorIntegration\\' => 38,
             'Masteriyo\\Addons\\DiviIntegration\\' => 33,
+            'Masteriyo\\Addons\\CourseAnnouncement\\' => 36,
             'Masteriyo\\' => 10,
         ),
         'L' => 
@@ -100,6 +102,10 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         array (
             0 => __DIR__ . '/../..' . '/addons/revenue-sharing',
         ),
+        'Masteriyo\\Addons\\OxygenIntegration\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/addons/oxygen-integration',
+        ),
         'Masteriyo\\Addons\\GamiPressIntegration\\' => 
         array (
             0 => __DIR__ . '/../..' . '/addons/gamipress-integration',
@@ -111,6 +117,10 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         'Masteriyo\\Addons\\DiviIntegration\\' => 
         array (
             0 => __DIR__ . '/../..' . '/addons/divi-integration',
+        ),
+        'Masteriyo\\Addons\\CourseAnnouncement\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/addons/course-announcement',
         ),
         'Masteriyo\\' => 
         array (
@@ -191,6 +201,12 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         'Masteriyo\\Abstracts\\Shortcode' => __DIR__ . '/../..' . '/includes/Abstracts/Shortcode.php',
         'Masteriyo\\Abstracts\\ShowHideCourseComponents' => __DIR__ . '/../..' . '/includes/Abstracts/ShowHideCourseComponents.php',
         'Masteriyo\\Activation' => __DIR__ . '/../..' . '/includes/Activation.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\Controllers\\CourseAnnouncementController' => __DIR__ . '/../..' . '/addons/course-announcement/Controllers/CourseAnnouncementController.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\CourseAnnouncementAddon' => __DIR__ . '/../..' . '/addons/course-announcement/CourseAnnouncementAddon.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\Models\\CourseAnnouncement' => __DIR__ . '/../..' . '/addons/course-announcement/Models/CourseAnnouncement.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\PostType\\CourseAnnouncement' => __DIR__ . '/../..' . '/addons/course-announcement/PostType/CourseAnnouncement.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\Providers\\CourseAnnouncementServiceProvider' => __DIR__ . '/../..' . '/addons/course-announcement/Providers/CourseAnnouncementServiceProvider.php',
+        'Masteriyo\\Addons\\CourseAnnouncement\\Repository\\CourseAnnouncementRepository' => __DIR__ . '/../..' . '/addons/course-announcement/Repository/CourseAnnouncementRepository.php',
         'Masteriyo\\Addons\\DiviIntegration\\DiviIntegrationAddon' => __DIR__ . '/../..' . '/addons/divi-integration/DiviIntegrationAddon.php',
         'Masteriyo\\Addons\\DiviIntegration\\DiviModule' => __DIR__ . '/../..' . '/addons/divi-integration/DiviModule.php',
         'Masteriyo\\Addons\\DiviIntegration\\Helper' => __DIR__ . '/../..' . '/addons/divi-integration/Helper.php',
@@ -203,6 +219,7 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         'Masteriyo\\Addons\\ElementorIntegration\\ElementorIntegrationAddon' => __DIR__ . '/../..' . '/addons/elementor-integration/ElementorIntegrationAddon.php',
         'Masteriyo\\Addons\\ElementorIntegration\\Helper' => __DIR__ . '/../..' . '/addons/elementor-integration/Helper.php',
         'Masteriyo\\Addons\\ElementorIntegration\\Providers\\ElementorIntegrationServiceProvider' => __DIR__ . '/../..' . '/addons/elementor-integration/Providers/ElementorIntegrationServiceProvider.php',
+        'Masteriyo\\Addons\\ElementorIntegration\\UseTemplateForMasteriyoAction' => __DIR__ . '/../..' . '/addons/elementor-integration/UseTemplateForMasteriyoAction.php',
         'Masteriyo\\Addons\\ElementorIntegration\\WidgetBase' => __DIR__ . '/../..' . '/addons/elementor-integration/WidgetBase.php',
         'Masteriyo\\Addons\\ElementorIntegration\\Widgets\\CategoriesOfCourseWidget' => __DIR__ . '/../..' . '/addons/elementor-integration/Widgets/CategoriesOfCourseWidget.php',
         'Masteriyo\\Addons\\ElementorIntegration\\Widgets\\CourseArchivePaginationWidget' => __DIR__ . '/../..' . '/addons/elementor-integration/Widgets/CourseArchivePaginationWidget.php',
@@ -237,6 +254,12 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         'Masteriyo\\Addons\\GamiPressIntegration\\Providers\\GamiPressIntegrationServiceProvider' => __DIR__ . '/../..' . '/addons/gamipress-integration/Providers/GamiPressIntegrationServiceProvider.php',
         'Masteriyo\\Addons\\GamiPressIntegration\\RulesEngine' => __DIR__ . '/../..' . '/addons/gamipress-integration/RulesEngine.php',
         'Masteriyo\\Addons\\GamiPressIntegration\\Triggers' => __DIR__ . '/../..' . '/addons/gamipress-integration/Triggers.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\Elements\\CourseCategoriesElement' => __DIR__ . '/../..' . '/addons/oxygen-integration/Elements/CourseCategoriesElement.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\Elements\\CourseListElement' => __DIR__ . '/../..' . '/addons/oxygen-integration/Elements/CourseListElement.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\Helper' => __DIR__ . '/../..' . '/addons/oxygen-integration/Helper.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\OxygenElement' => __DIR__ . '/../..' . '/addons/oxygen-integration/OxygenElement.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\OxygenIntegrationAddon' => __DIR__ . '/../..' . '/addons/oxygen-integration/OxygenIntegrationAddon.php',
+        'Masteriyo\\Addons\\OxygenIntegration\\Providers\\OxygenIntegrationServiceProvider' => __DIR__ . '/../..' . '/addons/oxygen-integration/Providers/OxygenIntegrationServiceProvider.php',
         'Masteriyo\\Addons\\RevenueSharing\\Controllers\\WithdrawsController' => __DIR__ . '/../..' . '/addons/revenue-sharing/Controllers/WithdrawsController.php',
         'Masteriyo\\Addons\\RevenueSharing\\Enums\\WithdrawStatus' => __DIR__ . '/../..' . '/addons/revenue-sharing/Enums/WithdrawStatus.php',
         'Masteriyo\\Addons\\RevenueSharing\\Models\\Earning' => __DIR__ . '/../..' . '/addons/revenue-sharing/Models/Earning.php',
@@ -573,6 +596,7 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
         'Masteriyo\\Shortcodes\\CourseCategoriesShortcode' => __DIR__ . '/../..' . '/includes/Shortcodes/CourseCategoriesShortcode.php',
         'Masteriyo\\Shortcodes\\CoursesShortcode' => __DIR__ . '/../..' . '/includes/Shortcodes/CoursesShortcode.php',
         'Masteriyo\\Shortcodes\\InstructorRegistrationShortcode' => __DIR__ . '/../..' . '/includes/Shortcodes/InstructorRegistrationShortcode.php',
+        'Masteriyo\\Shortcodes\\InstructorsListShortcode' => __DIR__ . '/../..' . '/includes/Shortcodes/InstructorsListShortcode.php',
         'Masteriyo\\Shortcodes\\RelatedCoursesShortcode' => __DIR__ . '/../..' . '/includes/Shortcodes/RelatedCoursesShortcode.php',
         'Masteriyo\\ShowHideComponents\\ShowHideArchiveCourseComponents' => __DIR__ . '/../..' . '/includes/ShowHideComponents/ShowHideArchiveCourseComponents.php',
         'Masteriyo\\ShowHideComponents\\ShowHideCategoryCourseComponents' => __DIR__ . '/../..' . '/includes/ShowHideComponents/ShowHideCategoryCourseComponents.php',
@@ -662,9 +686,9 @@ class ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticIniteb2037f7fb201c03d7f9a8dca575fc4e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit55f1ea3e80ecc03ba73b4c06535a0834::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit55f1ea3e80ecc03ba73b4c06535a0834::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit55f1ea3e80ecc03ba73b4c06535a0834::$classMap;
 
         }, null, ClassLoader::class);
     }

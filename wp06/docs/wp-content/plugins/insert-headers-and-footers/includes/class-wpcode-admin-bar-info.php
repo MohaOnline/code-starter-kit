@@ -126,17 +126,45 @@ abstract class WPCode_Admin_Bar_Info {
 	 * @param WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance.
 	 */
 	public function add_admin_bar_info( $wp_admin_bar ) {
+		// Let's see if we have any errors.
+		$error_count = wpcode()->error->get_error_count();
+		$indicator   = '';
+
+		if ( $error_count > 0 ) {
+			$indicator = ' <div class="wp-core-ui wp-ui-notification wpcode-menu-notification-counter">' . $error_count . '</div>';
+		}
+
 		// Add an admin menu item to append our count to.
 		$wp_admin_bar->add_menu(
 			array(
 				'id'    => 'wpcode-admin-bar-info',
-				'title' => 'WPCode',
+				'title' => 'WPCode' . $indicator,
 				'meta'  => array(
 					'class' => 'wpcode-admin-bar-info menupop',
 				),
 				'href'  => add_query_arg( 'page', 'wpcode', admin_url( 'admin.php' ) ),
 			)
 		);
+
+		if ( ! empty( $error_count ) ) {
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'wpcode-error-count',
+					'parent' => 'wpcode-admin-bar-info',
+					'title'  => esc_html__( 'Snippets With Errors', 'insert-headers-and-footers' ) . $indicator,
+					'meta'   => array(
+						'class' => 'wpcode-admin-bar-info-submenu',
+					),
+					'href'   => add_query_arg(
+						array(
+							'page' => 'wpcode',
+							'view' => 'has_error',
+						),
+						admin_url( 'admin.php' )
+					),
+				)
+			);
+		}
 
 		$wp_admin_bar->add_menu(
 			array(

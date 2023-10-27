@@ -78,7 +78,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_user_settings_delete_all_comments_message"], "wc_user_settings_delete_all_comments_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_user_settings_delete_all_comments_message"]), "wc_user_settings_delete_all_comments_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row">
@@ -128,7 +128,7 @@ if (!defined("ABSPATH")) {
                     </div>
                     </p>
                 </th>
-                <td colspan="3"><?php wp_editor($this->phrases["wc_user_settings_delete_all_follows_message"], "wc_user_settings_delete_all_follows_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
+                <td colspan="3"><?php wp_editor(wp_kses_post($this->phrases["wc_user_settings_delete_all_follows_message"]), "wc_user_settings_delete_all_follows_message", ["textarea_rows" => 7, "teeny" => true]); ?></td>
             </tr>
             <tr valign="top">
                 <th scope="row"><label for="wc_user_settings_subscribed_to_replies"><?php esc_html_e("subscribed to this comment", "wpdiscuz"); ?></label></th>

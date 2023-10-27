@@ -1,39 +1,39 @@
 <style type="text/css">
 	:root{
-	  --tsvg_g_img_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_01 ), FILTER_VALIDATE_INT ); ?>;
-	  --tsvg_g_bd_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_03 ), FILTER_VALIDATE_INT ); ?>px;
-	  --tsvg_g_bd_t_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_04 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_g_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_05 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_g_sh_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_06 ), FILTER_VALIDATE_INT ); ?>px;
-	  --tsvg_g_sh_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_07 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_09 ), FILTER_VALIDATE_FLOAT ); ?>s;
-	  --tsvg_vto_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_11 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_vto_ff_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_12 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_vto_fs_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_10 ), FILTER_VALIDATE_INT ); ?>px;
-	  --tsvg_vto_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_13 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_15 ), FILTER_VALIDATE_FLOAT ); ?>s;
-	  --tsvg_pio_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_17 ), FILTER_VALIDATE_INT ); ?>px;
-	  --tsvg_pio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_18 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_pio_bd_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_20 ), FILTER_VALIDATE_INT ); ?>px;
-	  --tsvg_pio_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_pio_bd_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_22 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_pio_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_23 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_lio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_24 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_lio_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_25 ), FILTER_SANITIZE_STRING ); ?>;
-	  --tsvg_lio_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>:<?php echo filter_var( esc_html( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_26 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_g_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_01 ), FILTER_VALIDATE_INT ); ?>;
+	  --tsvg_g_bd_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_03 ), FILTER_VALIDATE_INT ); ?>px;
+	  --tsvg_g_bd_t_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_04 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_g_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_05 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_g_sh_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_06 ), FILTER_VALIDATE_INT ); ?>px;
+	  --tsvg_g_sh_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_07 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo esc_html( $tsvg_style_options->TotalSoft_GV_1_09 ); ?>s;
+	  --tsvg_vto_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_11 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_vto_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_12 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_vto_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_10 ), FILTER_VALIDATE_INT ); ?>px;
+	  --tsvg_vto_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_13 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo esc_html( $tsvg_style_options->TotalSoft_GV_1_15 ); ?>s;
+	  --tsvg_pio_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_17 ), FILTER_VALIDATE_INT ); ?>px;
+	  --tsvg_pio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_18 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_pio_bd_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_20 ), FILTER_VALIDATE_INT ); ?>px;
+	  --tsvg_pio_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_pio_bd_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_22 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_pio_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_23 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_lio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_24 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_lio_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_25 ), FILTER_SANITIZE_STRING ); ?>;
+	  --tsvg_lio_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_26 ), FILTER_SANITIZE_STRING ); ?>;
 	}
-  	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery.ts_vgallery_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?> .TS_VGallery_block{
+  	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>.tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-block-inner{
 		position: relative;
 		padding-bottom: 56.25%;
 		width: 100%!important;
 		height: 100%!important; 
 		margin: 0;
 	}
-	.lg-toolbar<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-icon<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_30; ?>;
+	.tsvg-elastic-lg-toolbar<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-icon<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
+		color: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_30); ?>;
 		cursor: pointer;
 		float: right;
-		font-size: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_31; ?>px;
+		font-size: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_31); ?>px;
 		height: 47px;
 		line-height: 27px;
 		padding: 10px 0;
@@ -46,11 +46,11 @@
 		-o-transition: color 0.2s linear;
 		transition: color 0.2s linear;
 	}
-	.lg-iconn {
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_30; ?>;
+	.tsvg-elastic-lg-toolbar<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-iconn {
+		color: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_30); ?>;
 		cursor: pointer;
 		float: right;
-		font-size: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_31; ?>px;
+		font-size: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_31); ?>px;
 		height: 47px;
 		line-height: 27px;
 		padding: 10px 0;
@@ -63,16 +63,16 @@
 		-o-transition: color 0.2s linear;
 		transition: color 0.2s linear;
 	}
-	.lg-toolbar<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-close<?php echo esc_attr( $Total_Soft_vgallery ); ?>:after {
+	.tsvg-elastic-lg-toolbar<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-close<?php echo esc_attr( $tsvg_shortcode_id ); ?>:after {
 		display: none !important;
 	}
-	.lg-actions<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-next<?php echo esc_attr( $Total_Soft_vgallery ); ?>, .lg-actions<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-prev<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
-		background-color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_35; ?>;
+	.tsvg-elastic-lg-actions<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-next<?php echo esc_attr( $tsvg_shortcode_id ); ?>, .tsvg-elastic-lg-actions<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-prev<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
+		background-color: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_35); ?>;
 		border-radius: 2px;
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_34; ?>;
+		color: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_34); ?>;
 		cursor: pointer;
 		display: block;
-		font-size: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_33; ?>px;
+		font-size: <?php echo esc_attr($tsvg_style_options->TotalSoft_GV_1_33); ?>px;
 		padding: 8px 10px 9px;
 		position: absolute;
 		top: 50%;
@@ -84,296 +84,162 @@
 		perspective: 800px;
 		z-index: 1080;
 	}
-	.lg-actions<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-prev<?php echo esc_attr( $Total_Soft_vgallery ); ?>:after {
+	.tsvg-elastic-lg-actions<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-prev<?php echo esc_attr( $tsvg_shortcode_id ); ?>:after {
 		display: none;
 	}
-	/* .lg-outer<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-video<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
-		width: 100%;
-		height: 0;
-		border: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_39; ?>px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_01; ?> <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_02; ?>;
-		box-shadow: 0px 0px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_03; ?>px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_04; ?>;
-		-moz-box-shadow: 0px 0px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_03; ?> px<?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_04; ?>;
-		-webkit-box-shadow: 0px 0px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_03; ?>px <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_04; ?>;
-		padding-bottom: 56.25%;
-		overflow: hidden;
-		position: relative;
-		background: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_02; ?>;
-	} */
-	.demo-gallery > ul {
-		margin-bottom: 0;
-	}
-	.demo-gallery > ul > li {
-		float: left;
-		margin-bottom: 15px;
-		margin-right: 20px;
-		width: 200px;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .demo-gallery > ul > li a {
-		border: 3px solid #FFF;
-		border-radius: 3px;
-		display: block;
-		overflow: hidden;
-		position: relative;
-		float: left;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery > ul > li a > img {
-		-webkit-transition: -webkit-transform 0.15s ease 0s;
-		-moz-transition: -moz-transform 0.15s ease 0s;
-		-o-transition: -o-transform 0.15s ease 0s;
-		transition: transform 0.15s ease 0s;
-		-webkit-transform: scale3d(1, 1, 1);
-		-moz-transform: scale3d(1, 1, 1);
-		transform: scale3d(1, 1, 1);
-		height: 100%;
-		width: 100%;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .demo-gallery > ul > li a:hover > img {
-		-webkit-transform: scale3d(1.1, 1.1, 1.1);
-		-moz-transform: scale3d(1.1, 1.1, 1.1);
-		transform: scale3d(1.1, 1.1, 1.1);
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery > ul > li a:hover .demo-gallery-poster > img {
-		opacity: 1;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .demo-gallery > ul > li a .demo-gallery-poster {
-		background-color: rgba(0, 0, 0, 0.1);
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		-webkit-transition: background-color 0.15s ease 0s;
-		-moz-transition: background-color 0.15s ease 0s;
-		-o-transition: background-color 0.15s ease 0s;
-		transition: background-color 0.15s ease 0s;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .demo-gallery > ul > li a .demo-gallery-poster > img {
-		left: 50%;
-		margin-left: -10px;
-		margin-top: -10px;
-		opacity: 0;
-		position: absolute;
-		top: 50%;
-		-webkit-transition: opacity 0.3s ease 0s;
-		-moz-transition: opacity 0.3s ease 0s;
-		-o-transition: opacity 0.3s ease 0s;
-		transition: opacity 0.3s ease 0s;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery    .demo-gallery > ul > li a:hover .demo-gallery-poster {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery .justified-gallery > a > img {
-		-webkit-transition: -webkit-transform 0.15s ease 0s;
-		-moz-transition: -moz-transform 0.15s ease 0s;
-		-o-transition: -o-transform 0.15s ease 0s;
-		transition: transform 0.15s ease 0s;
-		-webkit-transform: scale3d(1, 1, 1);
-		-moz-transform: scale3d(1, 1, 1);
-		transform: scale3d(1, 1, 1);
-		height: 100%;
-		width: 100%;
-	}
-	.demo-gallery .justified-gallery > a:hover > img {
-		-webkit-transform: scale3d(1.1, 1.1, 1.1);
-		-moz-transform: scale3d(1.1, 1.1, 1.1);
-		transform: scale3d(1.1, 1.1, 1.1);
-	}
-    #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery .justified-gallery > a:hover .demo-gallery-poster > img {
-		opacity: 1;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery .justified-gallery > a .demo-gallery-poster {
-		background-color: rgba(0, 0, 0, 0.1);
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		-webkit-transition: background-color 0.15s ease 0s;
-		-moz-transition: background-color 0.15s ease 0s;
-		-o-transition: background-color 0.15s ease 0s;
-		transition: background-color 0.15s ease 0s;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .demo-gallery .justified-gallery > a .demo-gallery-poster > img {
-		left: 50%;
-		margin-left: -10px;
-		margin-top: -10px;
-		opacity: 0;
-		position: absolute;
-		top: 50%;
-		-webkit-transition: opacity 0.3s ease 0s;
-		-moz-transition: opacity 0.3s ease 0s;
-		-o-transition: opacity 0.3s ease 0s;
-		transition: opacity 0.3s ease 0s;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery .justified-gallery > a:hover .demo-gallery-poster {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery    .demo-gallery .video .demo-gallery-poster img {
-		height: 48px;
-		margin-left: -24px;
-		margin-top: -24px;
-		opacity: 0.8;
-		width: 48px;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .demo-gallery.dark > ul > li a {
-		border: 3px solid #04070a;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery   .home .demo-gallery {
-		padding-bottom: 80px;
-	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery .fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		display: inline-block;
 		position: relative;
-		width: calc( calc(100% - calc(2 * 5px *  var(--tsvg_g_img_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)) ) / var(--tsvg_g_img_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>))!important;
+		width: calc( calc(100% - calc(2 * 5px *  var(--tsvg_g_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)) ) / var(--tsvg_g_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>))!important;
 		height: 100%;
-		border:  var(--tsvg_g_bd_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)	var(--tsvg_g_bd_t_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) var(--tsvg_g_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) ;
-		box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) ;
-		-moz-box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		-webkit-box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		border:  var(--tsvg_g_bd_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)	var(--tsvg_g_bd_t_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) var(--tsvg_g_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) ;
+		box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) ;
+		-moz-box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		-webkit-box-shadow: 0px 0px var(--tsvg_g_sh_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) var(--tsvg_g_sh_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		margin: 5px;
 		padding: 0;
 		overflow: hidden;
 		float: left;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='none']{ border-style: none;}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff1'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='none']{ border-style: none;}
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff1'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 125% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff1'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff1'] {
 		top: -25%;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff2'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff2'] {
 		position: absolute;
 		top: -25%;
 		left: 0%;
 		width: 100%;
 		height: 125% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover  [ data-tsvg-img='zEff2'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover  [ data-tsvg-img='zEff2'] {
 		top: 0%;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff3'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff3'] {
 		position: absolute;
 		top: -15%;
 		left: -15%;
 		width: 130%;
 		max-width:130%;
 		height: 130% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover  [ data-tsvg-img='zEff3'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover  [ data-tsvg-img='zEff3'] {
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff4'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff4'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff4'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff4'] {
 		top: -15%;
 		left: -15%;
 		width: 130%;
 		height: 130% !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff5'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff5'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff5'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff5'] {
 		width: 130%;
 		height: 130% !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff6'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff6'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff6'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff6'] {
 		width: 130%;
 		height: 130% !important;
 		top: -30%;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff7'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff7'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff7'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff7'] {
 		width: 130%;
 		height: 130% !important;
 		left: -30%;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff8'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff8'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
-		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
-		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear !important;
+		transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-webkit-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-moz-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
+		-ms-transition: all var(--tsvg_g_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-img='zEff8'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover [ data-tsvg-img='zEff8'] {
 		width: 130%;
 		height: 130% !important;
 		left: -30%;
 		top: -30%;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-img='zEff9'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-img='zEff9'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
 		width: 100%;
 		height: 100% !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-hover='zTitfHov1'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *[ data-tsvg-hover='zTitfHov1'] {
 		position: absolute;
 		bottom: -1%;
 		left: 0%;
@@ -381,24 +247,24 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: left;
-		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		color: #fff;
 		transform: translateY(100%) !important;
 		-webkit-transform: translateY(100%) !important;
 		-moz-transform: translateY(100%) !important;
 		-ms-transform: translateY(100%) !important;
-		transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
-		-webkit-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)  linear;
-		-moz-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
-		-ms-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
+		transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
+		-webkit-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)  linear;
+		-moz-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
+		-ms-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-hover='zTitfHov1'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover *[ data-tsvg-hover='zTitfHov1'] {
 		transform: translateY(0%) !important;
 		-webkit-transform: translateY(0%) !important;
 		-moz-transform: translateY(0%) !important;
 		-ms-transform: translateY(0%) !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-hover='zTitfHov2'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *[ data-tsvg-hover='zTitfHov2'] {
 		position: absolute;
 		top: -1%;
 		left: 0%;
@@ -406,24 +272,24 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: left;
-		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		color: #fff;
 		transform: translateY(-100%) !important;
 		-webkit-transform: translateY(-100%) !important;
 		-moz-transform: translateY(-100%) !important;
 		-ms-transform: translateY(-100%) !important;
-		transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
-		-webkit-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
-		-moz-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
-		-ms-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) linear;
+		transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
+		-webkit-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
+		-moz-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
+		-ms-transition: all var(--tsvg_vto_e_tm_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) linear;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover [ data-tsvg-hover='zTitfHov2'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>:hover *[ data-tsvg-hover='zTitfHov2'] {
 		transform: translateY(0%) !important;
 		-webkit-transform: translateY(0%) !important;
 		-moz-transform: translateY(0%) !important;
 		-ms-transform: translateY(0%) !important;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-hover='zTitfHov3'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *[ data-tsvg-hover='zTitfHov3'] {
 		position: absolute;
 		top: 0%;
 		left: 0%;
@@ -431,10 +297,10 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: left;
-		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		background:  var(--tsvg_vto_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		color: #fff;
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery .fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-hover='zTitfHov4'] {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *[ data-tsvg-hover='zTitfHov4'] {
 		position: absolute;
 		bottom: 0%;
 		left: 0%;
@@ -442,112 +308,92 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: left;
-		background: var(--tsvg_vto_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		background: var(--tsvg_vto_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		color: #fff;
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> figcaption span {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> figcaption span {
 		margin-left: 5px;
-		font-size:var(--tsvg_vto_fs_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		color:var(--tsvg_vto_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		font-family: var(--tsvg_vto_ff_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		font-size:var(--tsvg_vto_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		color:var(--tsvg_vto_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		font-family: var(--tsvg_vto_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> [ data-tsvg-show='false'] {
+	.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> [ data-tsvg-show='false'] {
 		display: none;
 	}
-	
-	 #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery .TotalsofthLIcon1<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	 #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-block-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		float: right;
 		padding: 5px;
 		margin-right: 5px;
-		font-size: var(--tsvg_pio_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		border: var(--tsvg_pio_bd_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)  var(--tsvg_pio_bd_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)  var(--tsvg_pio_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		background: var(--tsvg_pio_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		font-size: var(--tsvg_pio_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		border: var(--tsvg_pio_bd_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)  var(--tsvg_pio_bd_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)  var(--tsvg_pio_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		background: var(--tsvg_pio_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		border-radius: 50%;
-		color:var(--tsvg_pio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		color:var(--tsvg_pio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	.TotalsofthLIcon1<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
-	.TotalsofthLIcon1<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
-	.TotalsofthLIcon1<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  .TotalsofthLIcon2<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	.tsvg-elastic-block-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
+	.tsvg-elastic-block-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
+	.tsvg-elastic-block-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-elastic-block-link-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		float: right;
 		padding: 5px;
 		margin-right: 5px;
-		font-size: var(--tsvg_pio_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		border: var(--tsvg_pio_bd_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>)  var(--tsvg_pio_bd_s_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) var(--tsvg_lio_bd_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
-		background: var(--tsvg_lio_bg_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		font-size: var(--tsvg_pio_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		border: var(--tsvg_pio_bd_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)  var(--tsvg_pio_bd_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) var(--tsvg_lio_bd_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+		background: var(--tsvg_lio_bg_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		border-radius: 50%;
-		color: var(--tsvg_lio_c_<?php echo esc_attr( $Total_Soft_vgallery ); ?>);
+		color: var(--tsvg_lio_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
-	.TotalsofthLIcon2<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
-	.TotalsofthLIcon2<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
-	.TotalsofthLIcon2<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
-	.Tot_Vid_Gallery<?php echo esc_attr( $Total_Soft_vgallery ); ?> a[href=''],.Tot_Vid_Gallery<?php echo esc_attr( $Total_Soft_vgallery ); ?> a[href='#']{ 
+	.tsvg-elastic-block-link-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='solid']{ border-style: solid;}
+	.tsvg-elastic-block-link-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dashed']{ border-style: dashed;}
+	.tsvg-elastic-block-link-icon-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-effect='dotted']{ border-style: dotted;}
+	.tsvg-elastic-blocks-list-<?php echo esc_attr( $tsvg_shortcode_id ); ?> a[href=''],.tsvg-elastic-blocks-list-<?php echo esc_attr( $tsvg_shortcode_id ); ?> a[href='#']{ 
 		display:none!important;
 	}
-	.TotalSoftGV_HLG_LM<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
-		background-color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_07; ?>;
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_08; ?>;
-		font-size: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_09; ?>px;
-		font-family: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_10; ?>;
-		<?php if ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_15 != 'none' ) { ?>
-		 	border: 1px solid<?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_16; ?>;
-		<?php } else { ?>
-		 	border: none !important;
-		<?php } ?>
-		cursor: pointer;
-		display: block;
-		padding: 3px !important;
-		line-height: 1 !important;
-	}
-	.TotalSoftGV_HLG_LM<?php echo esc_attr( $Total_Soft_vgallery ); ?>:hover {
-		background-color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_13; ?>;
-		color: <?php echo $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_14; ?>;
-	}
 	@media screen and (max-width: 820px) {
-		.zEff, .pagination li a {
+		.tsvg-elastic-block-img, .tsvg-pagination-pages li a {
 			cursor: default;
 		}
-		.lg-actions<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-prev<?php echo esc_attr( $Total_Soft_vgallery ); ?>, .lg-actions<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-next<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+		.tsvg-elastic-lg-actions<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-prev<?php echo esc_attr( $tsvg_shortcode_id ); ?>, .tsvg-elastic-lg-actions<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-next<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 			font-size: 15px;
 		}
-		.lg-outer<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-video<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+		.tsvg-elastic-lg-outer<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-video<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 			width: 100%;
 			height: 100%;
 			left: 0;
 			top: 0;
 		}
-		.fhovZoom<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+		.tsvg-elastic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 			margin: 5px 0;
 		}
 	}
 	@media screen and (max-width: 400px) {
-		.lg-outer<?php echo esc_attr( $Total_Soft_vgallery ); ?> .lg-video<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+		.tsvg-elastic-lg-outer<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-elastic-lg-video<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 			width: 100%;
 			height: 0;
 			padding-bottom: 56.25%;
 			position: relative;
 		}
 	}
-	.Tot_Vid_Gallery<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	.tsvg-elastic-blocks-list-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		display: block;
 		text-align: center;
-		<?php if ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 == 'fallPerspective' ) { ?>
+		<?php if ( $tsvg_style_options->TotalSoft_GV_2_17 == 'fallPerspective' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 == 'fly' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_17 == 'fly' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 == 'flip' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_17 == 'flip' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 == 'helix' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_17 == 'helix' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
-		<?php } elseif ( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 == 'popUp' ) { ?>
+		<?php } elseif ( $tsvg_style_options->TotalSoft_GV_2_17 == 'popUp' ) { ?>
 			-webkit-perspective: 1300px;
 			-moz-perspective: 1300px;
 			perspective: 1300px;
@@ -555,82 +401,73 @@
 	}
 </style>
 <?php
-$tsp_main_videos = '';
-$i = 0;
-foreach ( $ts_galleryv_videos_Columned as $key => $value ) {
-	$i++;
-	$ts_vgallery_Question_TS_VG_Options = json_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_Options );
-	$TS_VGallery_url_target             = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_vont == 'true' ? '_blank' : '_self';
-	$TS_VGallery_url_v                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Vd == '' ? $tsvgallery_def_theme_ifr_link : $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Vd;
-	$TS_VGallery_url_l                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_link;
-	$TS_VGallery_url_i                  = $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_video.png', __DIR__ ) ) : esc_url( $ts_vgallery_Question_TS_VG_Options->TotalSoftVGallery_Vid_Im );
-	$tsp_main_videos .= sprintf(
-		"
-        <li class='fhovZoom%s' data-tsvg-class='%s' data-tsvg-id='%s' data-src='%s' data-poster='%s' data-title='%s' style='-moz-animation-delay:  %ss;-webkit-animation-delay:  %ss;animation-delay:  %ss;'>
-          	<figure class='TS_VGallery_block'>
-          	  	<img  width='' height='' src='%s' alt='img' class='zEff' data-tsvg-img='%s' >
-          	  	<figcaption  data-tsvg-hover='%s'>
-          	   		<span data-tsvg-show='%s'>
-          	  			%s
-          	  		</span>
-          	  		<i class='TotalsofthLIcon1%s %s' data-tsvg-effect ='%s'></i>
-          	    	<a href='%s' class='TotalsofthLIcon2_link' target='%s'>
-						<i class='TotalsofthLIcon2%s %s' data-tsvg-effect ='%s'>
-						</i>
-					</a>
-          	  	</figcaption>
-          	</figure>
-        </li>
-      	",
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $i ),
-		esc_attr( $ts_galleryv_videos_Columned[ $key ]->id ),
-		esc_url( $TS_VGallery_url_v ),
-		esc_url( $TS_VGallery_url_i ),
-		esc_html( html_entity_decode( htmlspecialchars_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
-		esc_attr( 0.3 * $i ),
-		esc_attr( 0.3 * $i ),
-		esc_attr( 0.3 * $i ),
-		esc_url( $TS_VGallery_url_i ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_08 ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_14 ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_16 ),
-		esc_html( html_entity_decode( htmlspecialchars_decode( $ts_galleryv_videos_Columned[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_19 ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_22 ),
-		esc_url( $TS_VGallery_url_l ),
-		esc_attr( $TS_VGallery_url_target ),
-		esc_attr( $Total_Soft_vgallery ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_27 ),
-		esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_22 )
+	$tsvg_videos_data_html = '';
+	$tsvg_block_index = 0;
+	foreach ( $tsvg_videos_data as $key => $value ) {
+		$tsvg_block_index++;
+		$tsvg_videos_data_object = json_decode( $tsvg_videos_data[ $key ]->TS_VG_Options );
+		$tsvg_media_url_target   = $tsvg_videos_data_object->TotalSoftVGallery_Vid_vont == 'true' ? '_blank' : '_self';
+		$tsvg_media_video_url    = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Vd == '' ? $tsvg_default_video : $tsvg_videos_data_object->TotalSoftVGallery_Vid_Vd;
+		$tsvg_media_link_url     = $tsvg_videos_data_object->TotalSoftVGallery_Vid_link;
+		$tsvg_media_img_url      = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_video.png', __DIR__ ) ) : esc_url( $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im );
+		$tsvg_videos_data_html  .= sprintf(
+			'
+			<li class="tsvg-elastic-block-%1$s" data-tsvg-id="%2$s" data-src="%3$s" data-poster="%4$s" data-title="%5$s" style="-moz-animation-delay:  %6$ss;-webkit-animation-delay:  %6$ss;animation-delay:  %6$ss;">
+				<figure class="tsvg-block-inner">
+					<img  width="" height="" src="%4$s" alt="img" class="tsvg-elastic-block-img" data-tsvg-img="%7$s" >
+					<figcaption  data-tsvg-hover="%8$s">
+						<span data-tsvg-show="%9$s">
+							%5$s
+						</span>
+						<i class="tsvg-elastic-block-icon-%1$s %10$s" data-tsvg-effect ="%11$s"></i>
+						<a href="%12$s" class="tsvg-elastic-block-link" target="%13$s">
+							<i class="tsvg-elastic-block-link-icon-%1$s %14$s" data-tsvg-effect ="%15$s">
+							</i>
+						</a>
+					</figcaption>
+				</figure>
+			</li>
+			',
+			esc_attr( $tsvg_shortcode_id ),
+			esc_attr( $tsvg_videos_data[ $key ]->id ),
+			esc_url( $tsvg_media_video_url ),
+			esc_url( $tsvg_media_img_url ),
+			esc_html( html_entity_decode( htmlspecialchars_decode( $tsvg_videos_data[ $key ]->TS_VG_SetName ), ENT_QUOTES ) ),
+			esc_attr( 0.3 * $tsvg_block_index ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_08 ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_14 ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_16 ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_19 ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_22 ),
+			esc_url( $tsvg_media_link_url ),
+			esc_attr( $tsvg_media_url_target ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_27 ),
+			esc_attr( $tsvg_style_options->TotalSoft_GV_1_22 )
+		);
+	}
+	echo sprintf(
+		'
+		<main class="tsvg-main-content-%1$s" data-tsvg-autoplay="%2$s"   data-item-open="%3$s"  data-item-number="%4$s" data-pagination="%5$s" data-p-lm="%6$s">
+			<figure class="tsvg-blocks-container-%1$s">
+				<ul class="tsvg-elastic-blocks-list-%1$s" data-tsvg-slduration="%7$s" data-tsvg-sldelIcType="%8$s" data-tsvg-slicLeftType="%9$s" data-tsvg-slicRightType="%10$s" data-tsvg-loop="%11$s" data-tsvg-title-show="%12$s" data-tsvg-autoplay="%13$s" >
+					%14$s  
+				</ul>
+			</figure>
+		</main>
+		',
+		esc_attr( $tsvg_shortcode_id ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_37 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_07 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_02 ),
+		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_01 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_17 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_29 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_32 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_38 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_39 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_38 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_FG_PT ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_1_37 ),
+		$tsvg_videos_data_html
 	);
-}
-echo sprintf(
-	"
-    <main data-tsvg-autoplay='%s' class='%s '  data-item-open='%s'  data-tsvg-main='show' data-item-number='%s' data-pagination='%s' data-p-lm='%s'>
-      	<figure  class='video-gallery-parent%s'>
-      		<ul class='Tot_Vid_Gallery%s' data-tsvg-slduration='%s' data-tsvg-sldelIcType='%s' data-tsvg-slicLeftType='%s' data-tsvg-slicRightType='%s' data-tsvg-loop='%s' data-tsvg-title-show='%s' data-tsvg-autoplay='%s' >
-      			%s  
-      		</ul>
-      	</figure>
-    </main>
-	",
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_37 ),
-	'ts_vgallery_main_' . esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_07 ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_02 ),
-	esc_attr( $ts_vgallery_TS_VG_Settings->TotalSoft_VGallery_Set_01 ),
-	esc_attr(  $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_17 ),
-	esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $Total_Soft_vgallery ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_29 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_32 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_38 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_2_39 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_38 ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_FG_PT ),
-	esc_attr( $tsvgallery_TS_VG_Styles->TotalSoft_GV_1_37 ),
-	$tsp_main_videos
-);
 ?>

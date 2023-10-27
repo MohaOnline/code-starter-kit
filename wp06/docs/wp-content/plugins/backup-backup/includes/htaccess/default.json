@@ -25,6 +25,7 @@
     {"txt": "node_modules",    "pos": "2", "whr": "2" },
     {"txt": "mysql.sql",       "pos": "3", "whr": "1" },
     {"txt": "debug.log",       "pos": "3", "whr": "1" },
+    {"txt": ".part",           "pos": "3", "whr": "1" },
     {"txt": ".tmp",            "pos": "3", "whr": "1" },
     {"txt": ".zip",            "pos": "3", "whr": "1" },
     {"txt": ".tr",             "pos": "3", "whr": "1" },

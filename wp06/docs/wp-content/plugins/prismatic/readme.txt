@@ -9,9 +9,9 @@ Contributors: specialk
 Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Requires at least: 4.6
-Tested up to: 6.3
-Stable tag: 3.4
-Version: 3.4
+Tested up to: 6.4
+Stable tag: 3.4.1
+Version: 3.4.1
 Requires PHP: 5.6.20
 Text Domain: prismatic
 Domain Path: /languages
@@ -658,6 +658,12 @@ Send any questions or feedback via my [contact form](https://plugin-planet.com/s
 
 Thank you to everyone providing feedback! If you like Prismatic, please take a moment to [give a 5-star rating](https://wordpress.org/support/plugin/prismatic/reviews/?rate=5#new-post). It helps to keep development and support going strong. Thank you!
 
+
+**3.4.1 (2023/10/25)**
+
+* Updates default translation template
+* Updates custom banner notice
+* Tests on WordPress 6.4 (beta)
 
 **3.4 (2023/07/11)**
 

@@ -1606,11 +1606,18 @@ function automatorwp_automation_ui_integration_pro_choice( $integration_name, $a
 
     $integrations = automatorwp_integrations_api();
 
+    if ( is_array( $integrations ) && empty( $integrations) ) {
+        return;
+    }
+    
     if( is_wp_error( $integrations ) ) {
         return;
     }
 
     foreach ( $integrations as $integration ) {
+        if( ! isset( $integration ) ) {
+            continue;
+        }
         // Break if found the integration
         if( $integration->code === $integration_name ) {
             break;
@@ -1708,11 +1715,19 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
 
     $integrations = automatorwp_integrations_api();
 
+    if ( is_array( $integrations ) && empty( $integrations) ) {
+        return;
+    }
+
     if( is_wp_error( $integrations ) ) {
         return;
     }
 
     foreach ( $integrations as $integration ) {
+        if( ! isset( $integration ) ) {
+            continue;
+        }
+
         // Break if found the integration
         if( $integration->code === $integration_name ) {
             break;
@@ -1795,11 +1810,18 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
 
     $integrations = automatorwp_integrations_api();
 
+    if ( is_array( $integrations ) && empty( $integrations) ) {
+        return;
+    }
+
     if( is_wp_error( $integrations ) ) {
         return;
     }
 
     foreach ( $integrations as $integration ) {
+        if( ! isset( $integration ) ) {
+            continue;
+        }
         // Break if found the integration
         if( $integration->code === $integration_name ) {
             break;

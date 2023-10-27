@@ -27,7 +27,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
             $url = newsup_get_freatured_image_url($post->ID, 'newsup-featured'); 
               ?>
                 <!--col-md-3-->
-                <div class="col-md-3 col-sm-6 pulse animated">
+                <div class="col-md-3 pulse animated">
                <div class="mg-blog-post-3 minh back-img mb-md-0" 
                             <?php if(has_post_thumbnail()) { ?>
                             style="background-image: url('<?php echo esc_url($url); ?>');" <?php } ?>>

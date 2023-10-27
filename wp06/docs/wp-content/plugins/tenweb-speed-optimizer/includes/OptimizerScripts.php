@@ -415,6 +415,10 @@ class OptimizerScripts extends OptimizerBase {
 
     public $two_js_list_excluded = [];
 
+    private $exclude_blob_list = [
+        'adsbygoogle.js'
+    ];
+
     public function __construct($content, $cacheStructure) {
         global $TwoSettings;
         $this->TwoSettings = $TwoSettings;
@@ -553,7 +557,15 @@ class OptimizerScripts extends OptimizerBase {
                                 'url' => $source[2],
                                 'id' => $script_id,
                                 'uid' => $delay_uid,
+                                'exclude_blob' => false,
                             ];
+
+                            foreach ($this->exclude_blob_list as $exclude_blob) {
+                                if (!empty($exclude_blob) && false !== strpos($source[2], $exclude_blob)) {
+                                    $dealy_script_data['exclude_blob'] = true;
+                                    break;
+                                }
+                            }
 
                             if ($excluded_script) {
                                 $dealy_script_data['excluded_from_delay'] = true;
@@ -577,6 +589,7 @@ class OptimizerScripts extends OptimizerBase {
                                 'code' => $inline_code,
                                 'id' => $script_id,
                                 'uid' => $delay_uid,
+                                'exclude_blob' => false,
                             ];
 
                             if ($excluded_script) {

@@ -28,7 +28,7 @@
 
 	// show Pro placements if Pro is not activated.
 	if ( ! defined( 'AAP_VERSION' ) ) :
-		include ADVADS_BASE_PATH . 'admin/views/upgrades/pro-placements.php';
+		include ADVADS_ABSPATH . 'admin/views/upgrades/pro-placements.php';
 	else :
 		?>
 		<div class="clear"></div>

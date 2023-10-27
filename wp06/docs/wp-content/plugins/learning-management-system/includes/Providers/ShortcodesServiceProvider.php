@@ -9,13 +9,13 @@ defined( 'ABSPATH' ) || exit;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
-use Masteriyo\Models\CourseCategory;
 use Masteriyo\Shortcodes\CartShortcode;
 use Masteriyo\Shortcodes\CheckoutShortcode;
 use Masteriyo\Shortcodes\AccountShortcode;
 use Masteriyo\Shortcodes\CourseCategoriesShortcode;
 use Masteriyo\Shortcodes\CoursesShortcode;
 use Masteriyo\Shortcodes\InstructorRegistrationShortcode;
+use Masteriyo\Shortcodes\InstructorsListShortcode;
 use Masteriyo\Shortcodes\RelatedCoursesShortcode;
 
 class ShortcodesServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface {
@@ -103,6 +103,7 @@ class ShortcodesServiceProvider extends AbstractServiceProvider implements Boota
 				'course_categories'       => CourseCategoriesShortcode::class,
 				'instructor-registration' => InstructorRegistrationShortcode::class,
 				'related_courses'         => RelatedCoursesShortcode::class,
+				'instructors_list'        => InstructorsListShortcode::class,
 			)
 		);
 	}

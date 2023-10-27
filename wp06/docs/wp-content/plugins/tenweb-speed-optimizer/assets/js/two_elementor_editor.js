@@ -1,6 +1,8 @@
 const elementorConfigsToRecreateCCSS = [
     'background_image',
     '_background_image',
+    'background_color',
+    '_background_color',
 ];
 jQuery(document).on('click', '#elementor-panel-saver-button-publish',function(){
     let page_id = '';

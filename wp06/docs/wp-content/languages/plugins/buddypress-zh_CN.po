@@ -2,14 +2,238 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-02-22 21:59:54+0000\n"
+"PO-Revision-Date: 2023-10-29 05:46:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - BuddyPress - Stable (latest release)\n"
+
+#. translators: 1: the activity user link. 2: the blog link.
+#: bp-blogs/bp-blogs-activity.php:225
+msgctxt "Multisite `new_blog_post` activity action, since 11.0 only accepts two arguments"
+msgid "%1$s wrote a new post on the site %2$s"
+msgstr "%1$s 在站点 %2$s 上发布了一篇新文章"
+
+#. translators: 1: the activity user link.
+#: bp-blogs/bp-blogs-activity.php:232
+msgctxt "`new_blog_post` activity action, since 11.0 only accepts one argument"
+msgid "%s wrote a new post"
+msgstr "%s 发布了一篇新文章"
+
+#. Translators: %s is a Passport control emoji.
+#: bp-core/classes/class-bp-admin.php:874
+msgid "By the way, the latest version of BP Rewrites also includes a feature to restrict the community area to your site members only %s."
+msgstr "顺便说一下，最新版本的 BP Rewrites 还包含一项功能，可将社区区域限制为仅限网站成员访问 %s。"
+
+#: bp-xprofile/classes/class-bp-rest-xprofile-field-groups-endpoint.php:870
+#: bp-xprofile/classes/class-bp-rest-xprofile-fields-endpoint.php:1178
+msgid "Ensure result set inludes specific profile field groups."
+msgstr "确保结果集包含特定的配置文件字段组。"
+
+#. Translators: %s is a hugging face emoji.
+#: bp-core/classes/class-bp-admin.php:907
+msgid "Many thanks to you for trusting BuddyPress to power your community site %s"
+msgstr "非常感谢您信任 BuddyPress 为您的社区网站提供动力 %s"
+
+#: bp-core/classes/class-bp-admin.php:868
+msgid "Once BP Rewrites are merged into BuddyPress 12.0.0 (our next major release), we’ll make sure to build a backward-compatibility add-on so that you can still use plugins that do not work with \"BP Rewrites\"."
+msgstr "一旦 BP Rewrites 并入 BuddyPress 12.0.0（我们的下一个重要版本），我们将确保创建一个向后兼容的插件，以便您仍然可以使用不能与 \"BP Rewrites \"一起使用的插件。"
+
+#: bp-members/classes/class-bp-rest-members-endpoint.php:420
+msgid "Sorry, you are not allowed delete your account."
+msgstr "抱歉，您不能删除您的帐户。"
+
+#: bp-groups/bp-groups-activity.php:596
+msgid "You need to be a member of this group to share updates with their members."
+msgstr "您需要成为此群组的成员才能与其成员共享更新。"
+
+#: bp-members/classes/class-bp-rest-members-endpoint.php:471
+msgid "Your account cannot be deleted."
+msgstr "您的账户无法删除。"
+
+#: bp-core/classes/class-bp-admin.php:863
+msgid "BP Rewrites"
+msgstr "BP 重写"
+
+#: bp-core/classes/class-bp-admin.php:867
+msgid "You can already test this breaking change, which uses the WordPress way to parse URLs (thanks to the WP Rewrites API), and report issues to us or to the third-party plugin authors."
+msgstr "您已经可以测试这一突破性改动，它使用 WordPress 的方式来解析 URL（感谢 WP Rewrites API），并向我们或第三方插件作者报告问题。"
+
+#: bp-core/classes/class-bp-admin.php:852
+msgid "\"THE\" long-awaited feature: Community Media Attachments."
+msgstr "期待已久的 \"THE \"功能：社区媒体附件。"
+
+#: bp-core/classes/class-bp-admin.php:836
+msgid "11.0.0 also marks the beginning of a transitional year for BuddyPress: get ready for great features and changes."
+msgstr "11.0.0 也标志着 BuddyPress 过渡年的开始：准备好迎接强大的功能和变化。"
+
+#. Translators: %s is a the link to the community assets restricting filter
+#. developer note.
+#: bp-core/classes/class-bp-admin.php:784
+msgid "A %s was introduced to only load BuddyPress JavaScript & CSS assets on BuddyPress-generated pages."
+msgstr "引入了一个 %s，以便仅在 BuddyPress 生成的页面上加载 BuddyPress JavaScript 和 CSS 资产。"
+
+#: bp-core/classes/class-bp-admin.php:853
+msgid "A revolutionary Block-based Activity Post Form to standardize the way to extend activity updates with richer & more engaging content."
+msgstr "革命性的基于区块的活动发布表单，以标准化方式扩展活动更新，提供更丰富、更吸引人的内容。"
+
+#. Translators: %s is a the link to the xProfile fields loop edited argument
+#. developer note.
+#: bp-core/classes/class-bp-admin.php:823
+msgid "Advanced users or developers can now build custom xProfile loops %s."
+msgstr "高级用户或开发人员现在可以构建自定义 xProfile 循环 %s。"
+
+#. Translators: %s is a the link to the activity loop new arguments developer
+#. note.
+#: bp-core/classes/class-bp-admin.php:810
+msgid "Advanced users or developers can now extend the Activity loop to %s."
+msgstr "高级用户或开发人员现在可以将活动循环扩展到 %s。"
+
+#: bp-core/classes/class-bp-admin.php:765
+msgid "Here are five important changes we would like to highlight:"
+msgstr "以下是我们要强调的五项重要变化："
+
+#. translators: %s is the placeholder for the link to the BuddyPress Add-ons
+#. administration page.
+#: bp-core/classes/class-bp-admin.php:842
+msgid "In 10.0.0, we’ve introduced a %s to easily find BuddyPress Add-ons maintained by the BuddyPress Core Team. Check this list often as we will soon publish the following add-ons:"
+msgstr "在 10.0.0 中，我们引入了一个 %s，以方便查找由 BuddyPress 核心团队维护的 BuddyPress 附加组件。请经常查看此列表，因为我们即将发布以下附加组件："
+
+#. Translators: %s is a the link to the deprecated code developer note.
+#: bp-core/classes/class-bp-admin.php:797
+msgid "The way BuddyPress loads its %s has been improved."
+msgstr "改进了 BuddyPress 加载 %s 的方式。"
+
+#: bp-core/classes/class-bp-admin.php:764
+msgid "This new major version of your site’s community engine introduces around 50 changes mostly acting under the hood to improve performance, consistency and the stability of the plugin."
+msgstr "网站社区引擎的这一新的主要版本引入了约 50 项更改，其中大部分是在引擎盖下进行的，以提高插件的性能、一致性和稳定性。"
+
+#. Translators: %s is a the link to the .webp support developer note.
+#: bp-core/classes/class-bp-admin.php:772
+msgid "You may now use %s images for your profile and cover images (requires WordPress 5.8 or newer)."
+msgstr "您现在可以使用 %s 张图片作为个人资料和封面图片（要求 WordPress 5.8 或更新版本）。"
+
+#: bp-core/classes/class-bp-admin.php:801
+msgid "deprecated code"
+msgstr "弃用代码"
+
+#: bp-core/classes/class-bp-admin.php:814
+msgid "include or exclude a list of users"
+msgstr "包含或排除用户列表"
+
+#: bp-core/classes/class-bp-admin.php:827
+msgid "including a specific set of profile field groups"
+msgstr "包括一组特定的配置文件字段组"
+
+#: bp-core/classes/class-bp-admin.php:846
+msgid "new area in the Plugin Administration screen"
+msgstr "插件管理屏幕中的新区域"
+
+#: bp-core/classes/class-bp-admin.php:788
+msgid "new filter"
+msgstr "新过滤器"
+
+#. translators: %s is the placeholder for the link to the BP Rewrites' w.org
+#. plugin page.
+#: bp-core/classes/class-bp-admin.php:859
+msgid "An example about this new way to keep moving forward is the %s Add-on."
+msgstr "关于这种不断前进的新方法，%s 附加组件就是一个例子。"
+
+#. translators: do not remove {} brackets or translate its contents.
+#: bp-core/bp-core-functions.php:4071
+msgid ""
+"An administrator accepted an invitation to join \"{{group.name}}\" on your behalf.\n"
+"\n"
+"If you disagree with this, you can leave the group at anytime visiting your groups memberships page: {{{leave-group.url}}}"
+msgstr ""
+"管理员接受了代表您加入“{{group.name}}”的邀请。\n"
+"\n"
+"如果您不同意这一点，您可以随时访问您的群组成员资格页面离开群组：{{{leave-group.url}}}"
+
+#. translators: do not remove {} brackets or translate its contents.
+#: bp-core/bp-core-functions.php:4069
+msgid ""
+"An administrator accepted an invitation to join &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; on your behalf.\n"
+"\n"
+"If you disagree with this, you can leave the group at anytime visiting your <a href=\"{{{leave-group.url}}}\">groups memberships page</a>."
+msgstr ""
+"管理员接受了代表您加入“<a href=\"{{{group.url}}}\">{{group.name}}</a>”的邀请。\n"
+"\n"
+"如果您不同意这一点，可以随时访问 <a href=\"{{{leave-group.url}}}\">您的群组成员资格页面离开群组</a>。"
+
+#. translators: do not remove {} brackets or translate its contents.
+#: bp-core/bp-core-functions.php:4079
+msgid ""
+"An administrator rejected an invitation to join \"{{group.name}}\" on your behalf.\n"
+"\n"
+"If you disagree with this, please contact the site administrator."
+msgstr ""
+"管理员拒绝了代表您加入“{{group.name}}”的邀请。\n"
+"\n"
+"如果您不同意这一点，请联系网站管理员。"
+
+#. translators: do not remove {} brackets or translate its contents.
+#: bp-core/bp-core-functions.php:4077
+msgid ""
+"An administrator rejected an invitation to join &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; on your behalf.\n"
+"\n"
+"If you disagree with this, please contact the site administrator."
+msgstr ""
+"管理员拒绝了代表您加入“<a href=\"{{{group.url}}}\">{{group.name}}</a>”的邀请。\n"
+"\n"
+"如果您不同意这一点，请联系网站管理员。"
+
+#: bp-core/bp-core-functions.php:4263
+msgid "Recipient had requested to join a group, which was accepted by admin."
+msgstr "收件人已请求加入组，管理员已接受该组。"
+
+#: bp-core/bp-core-functions.php:4269
+msgid "Recipient had requested to join a group, which was rejected by admin."
+msgstr "收件人申请加入一个群组，但被管理员拒绝。"
+
+#: bp-core/classes/class-bp-admin.php:763
+msgid "Thanks for upgrading BuddyPress to 11.0.0."
+msgstr "感谢您将 BuddyPress 升级到 11.0.0。"
+
+#: bp-activity/bp-activity-template.php:3550
+msgid "Send a public message to this member."
+msgstr "向该成员发送公共消息。"
+
+#: bp-core/bp-core-attachments.php:693
+msgid "This image cannot be processed by the web server. Convert it to JPEG or PNG before uploading."
+msgstr "Web 服务器无法处理该图片，请在上传前将其转换为 JPEG 或 PNG 格式。"
+
+#: bp-core/bp-core-cssjs.php:602
+msgid "a day"
+msgstr "一天"
+
+#: bp-core/bp-core-cssjs.php:595
+msgid "a few seconds"
+msgstr "几秒钟"
+
+#: bp-core/bp-core-cssjs.php:596
+msgid "a minute"
+msgstr "一分钟"
+
+#: bp-core/bp-core-cssjs.php:605
+msgid "a month"
+msgstr "一个月"
+
+#: bp-core/bp-core-cssjs.php:608
+msgid "a year"
+msgstr "一年"
+
+#: bp-core/bp-core-cssjs.php:599
+msgid "an hour"
+msgstr "一小时"
+
+#. Translators: %s is the relative time (eg: in a few seconds).
+#: bp-core/bp-core-cssjs.php:592
+msgid "in %s"
+msgstr "%s之后"
 
 #: bp-members/classes/class-bp-members-admin.php:1722
 msgid "\"Approve Request\" or \"Resend Approval\" takes you to the confirmation screen before being able to send the activation link to the desired pending request. You can only send the activation email once per day."
@@ -199,6 +423,10 @@ msgstr "字段数据的值（在多个值的情况下需要使用逗号分隔的
 #: bp-xprofile/classes/class-bp-rest-xprofile-data-endpoint.php:596
 msgid "The date the field data was last updated, as GMT."
 msgstr "上次更新字段数据的日期，如 GMT。"
+
+#: bp-members/screens/register.php:101 bp-settings/actions/general.php:148
+msgid "Your password is not strong enough to be allowed on this site. Please use a stronger password."
+msgstr "您的密码不够强大，无法登录本网站。请使用更强的密码。"
 
 #: bp-core/classes/class-bp-admin.php:1557
 msgid "Thanks to this new tab inside your Dashboard screen to add plugins, you’ll be able to find them faster and eventually contribute to beta features early to give the BuddyPress development team your feedbacks."
@@ -477,11 +705,6 @@ msgstr "站点成员资格请求已被拒绝。"
 msgid "The bp.apiRequest function is deprecated since BuddyPress 10.0.0, please use wp.apiRequest instead."
 msgstr "bp.apiRequest 函数自 BuddyPress10.0.0 起已弃用，请改用 wp.apiRequest。"
 
-#: bp-activity/bp-activity-functions.php:2130
-#: bp-groups/bp-groups-activity.php:593
-msgid "User account has not yet been activated."
-msgstr "用户帐号还未被激活"
-
 #: bp-activity/classes/class-bp-activity-component.php:576
 msgctxt "page label"
 msgid "BP Activity Page"
@@ -524,6 +747,11 @@ msgstr "要允许提交成员资格请求但不允许站点创建请求，请选
 msgid "To allow the submission of membership requests and to allow new sites to be created by your users, choose \"Logged in users may register new sites\"."
 msgstr "要允许提交成员请求并允许您的用户创建新站点，请选择“登录用户可以注册新站点”。"
 
+#: bp-activity/bp-activity-functions.php:2130
+#: bp-groups/bp-groups-activity.php:593
+msgid "User account has not yet been activated."
+msgstr "用户的帐户尚未激活。"
+
 #: bp-settings/actions/general.php:286
 msgid "There was a problem verifying your new email address. If you haven’t dismissed the pending email change, please request a new email update."
 msgstr "验证您的新邮箱地址时出现问题。如果您尚未取消待处理电子邮件更改，请请求新的电子邮件更新。"
@@ -545,13 +773,13 @@ msgid "Information about active features for the component."
 msgstr "有关组件的活动功能的信息。"
 
 #. translators: %s is time elapsed since the registration date happened
-#: bp-friends/bp-friends-blocks.php:179 bp-members/bp-members-blocks.php:472
+#: bp-friends/bp-friends-blocks.php:179 bp-members/bp-members-blocks.php:477
 msgctxt "The timestamp when the user registered"
 msgid "Registered %s"
 msgstr "已注册%s"
 
 #. translators: %s is time elapsed since the group was created
-#: bp-groups/bp-groups-blocks.php:452 bp-groups/js/dynamic-groups.js:33
+#: bp-groups/bp-groups-blocks.php:457 bp-groups/js/dynamic-groups.js:33
 msgid "Created %s"
 msgstr "创建%s"
 
@@ -559,7 +787,7 @@ msgstr "创建%s"
 msgid "Time elapsed since the Group was created, in the site's timezone."
 msgstr "自组创建以来经过的时间，在站点的时区中。"
 
-#: bp-members/bp-members-blocks.php:400 bp-members/js/dynamic-members.js:56
+#: bp-members/bp-members-blocks.php:405 bp-members/js/dynamic-members.js:56
 msgid "No members found."
 msgstr "未找到成员。"
 
@@ -886,12 +1114,6 @@ msgid "%s opt-out was not deleted."
 msgid_plural "%s opt-outs were not deleted."
 msgstr[0] "%s退出未删除。"
 
-#. translators: %s: the searched email.
-#: bp-core/admin/bp-core-admin-optouts.php:331
-msgid "Opt-out with an email address matching &#8220;%s&#8221;"
-msgid_plural "Opt-outs with an email address matching &#8220;%s&#8221;"
-msgstr[0] "使用与&#8220;%s&#8221;匹配的邮箱地址选择退出"
-
 #: bp-core/admin/bp-core-admin-optouts.php:338
 msgid "This table shows opt-out requests from people who are not members of this site, but have been contacted via communication from this site, and wish to receive no further communications."
 msgstr "此表显示来自非本网站成员但已通过本网站通讯联系并希望不再收到进一步通讯的人员的退出请求。"
@@ -921,6 +1143,12 @@ msgstr "允许注册成员邀请他人加入此网络"
 #: bp-core/admin/bp-core-admin-settings.php:195
 msgid "Public registration is currently disabled. However, invitees will still be able to register if network invitations are enabled."
 msgstr "公开注册目前已禁用。但是，如果启用了网络邀请，受邀者仍然可以注册。"
+
+#. translators: %s: the searched email.
+#: bp-core/admin/bp-core-admin-optouts.php:331
+msgid "Opt-out with an email address matching &#8220;%s&#8221;"
+msgid_plural "Opt-outs with an email address matching &#8220;%s&#8221;"
+msgstr[0] "通过匹配的电子邮件地址选择退出 &#8220;%s&#8221;"
 
 #. translators: do not remove {} brackets or translate its contents.
 #: bp-core/bp-core-functions.php:4083
@@ -1817,7 +2045,7 @@ msgid "This type is registered using code, deactivate the plugin or remove the c
 msgstr "这种类型是使用代码注册的，停用插件或删除自定义代码后再行尝试删除。"
 
 #. translators: %d: the number of group members.
-#: bp-groups/bp-groups-blocks.php:292
+#: bp-groups/bp-groups-blocks.php:297
 msgid "%d member"
 msgid_plural "%d members"
 msgstr[0] "%d位成员"
@@ -2238,11 +2466,11 @@ msgid "The content of the latest activity posted by the member."
 msgstr "成员最新发布的动态内容。"
 
 #. translators: %s: last activity timestamp (e.g. "Active 1 hour ago")
-#: bp-friends/bp-friends-blocks.php:185 bp-groups/bp-groups-blocks.php:284
-#: bp-groups/bp-groups-blocks.php:460
+#: bp-friends/bp-friends-blocks.php:185 bp-groups/bp-groups-blocks.php:289
+#: bp-groups/bp-groups-blocks.php:465
 #: bp-groups/classes/class-bp-groups-invite-template.php:283
 #: bp-groups/classes/class-bp-groups-widget.php:155
-#: bp-members/bp-members-blocks.php:312 bp-members/bp-members-blocks.php:478
+#: bp-members/bp-members-blocks.php:317 bp-members/bp-members-blocks.php:483
 #: bp-members/bp-members-template.php:1055
 #: bp-members/bp-members-template.php:1814
 #: bp-templates/bp-legacy/buddypress/groups/groups-loop.php:71
@@ -2460,8 +2688,8 @@ msgid "Active %s"
 msgstr "最后动态 %s"
 
 #. Translators: %s is the group's name.
-#: bp-groups/bp-groups-blocks.php:96 bp-groups/bp-groups-blocks.php:259
-#: bp-groups/bp-groups-blocks.php:479 bp-groups/js/dynamic-groups.js:51
+#: bp-groups/bp-groups-blocks.php:96 bp-groups/bp-groups-blocks.php:264
+#: bp-groups/bp-groups-blocks.php:484 bp-groups/js/dynamic-groups.js:51
 msgid "Group Profile photo of %s"
 msgstr "%s的群组资料照片"
 
@@ -4533,13 +4761,6 @@ msgstr "成员的资料网址。"
 msgid "No extended profile data available as the component is inactive"
 msgstr "由于该组件处于禁用状态，因此没有可用的扩展资料数据"
 
-#: bp-groups/classes/class-bp-rest-attachments-group-avatar-endpoint.php:213
-#: bp-groups/classes/class-bp-rest-attachments-group-cover-endpoint.php:199
-#: bp-members/classes/class-bp-rest-attachments-member-avatar-endpoint.php:204
-#: bp-members/classes/class-bp-rest-attachments-member-cover-endpoint.php:194
-msgid "Sorry, you need an image file to upload."
-msgstr "抱歉，您需要上传图像文件。"
-
 #: bp-blogs/classes/class-bp-rest-attachments-blog-avatar-endpoint.php:180
 #: bp-groups/classes/class-bp-rest-attachments-group-avatar-endpoint.php:174
 #: bp-groups/classes/class-bp-rest-group-invites-endpoint.php:225
@@ -4555,6 +4776,13 @@ msgstr "抱歉，您需要上传图像文件。"
 #: bp-groups/classes/class-bp-rest-groups-endpoint.php:573
 msgid "Invalid group ID."
 msgstr "无效的群组ID。"
+
+#: bp-groups/classes/class-bp-rest-attachments-group-avatar-endpoint.php:213
+#: bp-groups/classes/class-bp-rest-attachments-group-cover-endpoint.php:199
+#: bp-members/classes/class-bp-rest-attachments-member-avatar-endpoint.php:204
+#: bp-members/classes/class-bp-rest-attachments-member-cover-endpoint.php:194
+msgid "Sorry, you need an image file to upload."
+msgstr "抱歉，您需要上传图像文件。"
 
 #. translators: 1: Full avatar width in pixels. 2: Full avatar height in pixels
 #: bp-activity/classes/class-bp-rest-activity-endpoint.php:1451
@@ -4610,11 +4838,6 @@ msgstr "单击“生成密码”按钮以更改密码。"
 #: bp-templates/bp-nouveau/buddypress/members/single/settings/general.php:26
 msgid "(required to update email or change current password)"
 msgstr "（需要更新电子邮件或更改当前密码）"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/group-members/index.php:130
-msgctxt "link"
-msgid "Prev."
-msgstr "上一个"
 
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/group-members/index.php:82
 msgctxt "group member unban link"
@@ -4692,6 +4915,11 @@ msgstr "生成密码"
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/group-members/index.php:51
 msgid "No Group members were found for this request."
 msgstr "未找到此请求的群组成员。"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/group-members/index.php:130
+msgctxt "link"
+msgid "Prev."
+msgstr "上一个。"
 
 #: bp-settings/classes/class-bp-settings-component.php:204
 #: bp-settings/classes/class-bp-settings-component.php:285
@@ -8014,11 +8242,11 @@ msgid ""
 "\n"
 "<a href=\"{{{group-requests.url}}}\">Go here to manage this</a> and all other pending requests."
 msgstr ""
-"<a href=\"{{{profile.url}}}\">{requesting-user.name}</a>希望加入此群组\"{group.name}\"。\n"
-" {请求.消息}\n"
+"<a href=\"{{{profile.url}}}\">{{requesting-user.name}}</a>希望加入组 &quot;{{group.name}}&quot;。\n"
+" {{request.message}}\n"
 " 由于您是此组的管理员，因此必须接受或拒绝成员资格请求。\n"
 "\n"
-"<a href=\"{{{group-requests.url}}}\">请转到此处管理此请求</a>和所有其他挂起的请求。"
+"<a href=\"{{{group-requests.url}}}\">请转到此处管理此</a>请求和所有其他挂起的请求。"
 
 #. translators: do not remove {} brackets or translate its contents.
 #: bp-core/bp-core-functions.php:4023
@@ -9214,6 +9442,11 @@ msgstr "发布此回复时出现问题，请重试。"
 #. Author of the plugin
 msgid "The BuddyPress Community"
 msgstr "Buddypress社区"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://buddypress.org"
+msgstr "https://buddypress.org"
 
 #: bp-xprofile/classes/class-bp-xprofile-group.php:896
 msgid "Field Group Description"
@@ -11150,6 +11383,10 @@ msgstr "%s位接收者"
 msgid "Private Message"
 msgstr "私信"
 
+#: bp-messages/bp-messages-template.php:1547
+msgid "Send a private message to this member."
+msgstr "发送给该用户一条私人信息。"
+
 #: bp-messages/bp-messages-template.php:1153
 msgid "Currently Active"
 msgstr "当前已启用"
@@ -11455,7 +11692,7 @@ msgstr "您的回复发送成功"
 msgid "the sign-up has already been activated."
 msgstr "已开放注册。"
 
-#: bp-members/bp-members-blocks.php:718
+#: bp-members/bp-members-blocks.php:723
 #: bp-members/classes/class-bp-core-recently-active-widget.php:180
 #: bp-members/classes/class-bp-members-component.php:943
 #: bp-members/js/blocks/active-members.js:116
@@ -11467,7 +11704,7 @@ msgstr "近期活跃成员"
 msgid "Profile photos of recently active members"
 msgstr "近期活跃成员的头像"
 
-#: bp-members/bp-members-blocks.php:720
+#: bp-members/bp-members-blocks.php:725
 #: bp-members/classes/class-bp-core-recently-active-widget.php:103
 msgid "There are no recently active members"
 msgstr "当前没有近期活跃成员"
@@ -11477,14 +11714,14 @@ msgctxt "widget name"
 msgid "(BuddyPress) Recently Active Members"
 msgstr "(BuddyPress) 近期常在线成员"
 
-#: bp-members/bp-members-blocks.php:693
+#: bp-members/bp-members-blocks.php:698
 #: bp-members/classes/class-bp-core-whos-online-widget.php:180
 #: bp-members/classes/class-bp-members-component.php:917
 #: bp-members/js/blocks/online-members.js:127
 msgid "Who's Online"
 msgstr "在线用户"
 
-#: bp-members/bp-members-blocks.php:695
+#: bp-members/bp-members-blocks.php:700
 #: bp-members/classes/class-bp-core-whos-online-widget.php:103
 msgid "There are no users currently online"
 msgstr "当前没有在线用户"
@@ -12146,7 +12383,7 @@ msgstr "把小工具标题链接到群组目录"
 msgid "created %s"
 msgstr "创建时间 %s"
 
-#: bp-groups/bp-groups-blocks.php:379
+#: bp-groups/bp-groups-blocks.php:384
 #: bp-groups/classes/class-bp-groups-widget.php:171
 #: bp-groups/js/dynamic-groups.js:56
 msgid "There are no groups to display."
@@ -12208,7 +12445,7 @@ msgstr "近期加入"
 msgid "Group avatar"
 msgstr "群组图标"
 
-#: bp-groups/bp-groups-blocks.php:414 bp-groups/bp-groups-template.php:4762
+#: bp-groups/bp-groups-blocks.php:419 bp-groups/bp-groups-template.php:4762
 #: bp-groups/classes/class-bp-groups-widget.php:134
 #: bp-groups/classes/class-bp-groups-widget.php:246
 #: bp-templates/bp-legacy/buddypress/blogs/index.php:113
@@ -12358,7 +12595,7 @@ msgid "Demote to Member"
 msgstr "降级为成员"
 
 #. translators: %s is the number of Group members
-#: bp-groups/bp-groups-blocks.php:457 bp-groups/bp-groups-template.php:2232
+#: bp-groups/bp-groups-blocks.php:462 bp-groups/bp-groups-template.php:2232
 #: bp-templates/bp-nouveau/buddypress/members/single/groups/invites.php:40
 msgid "%s member"
 msgid_plural "%s members"
@@ -12627,7 +12864,7 @@ msgstr "%s个群组好友请求"
 
 #: bp-members/classes/class-bp-members-admin.php:2271
 msgid "Approve Membership Requests"
-msgstr "请求的用户没有足够的成员资格来批准此群组的成员请求。"
+msgstr "批准会员申请"
 
 #. translators: 1: number of group membership requests. 2: group name.
 #: bp-groups/bp-groups-notifications.php:405
@@ -12901,7 +13138,7 @@ msgstr "标识（ID）"
 #. translators: accessibility text
 #: bp-groups/bp-groups-admin.php:1010 bp-groups/bp-groups-template.php:4734
 #: bp-groups/classes/class-bp-groups-component.php:787
-#: bp-members/bp-members-blocks.php:389
+#: bp-members/bp-members-blocks.php:394
 #: bp-members/classes/class-bp-core-members-widget.php:258
 #: bp-members/classes/class-bp-members-component.php:38
 #: bp-members/classes/class-bp-members-component.php:883
@@ -13000,7 +13237,7 @@ msgid "%s group has been permanently deleted."
 msgid_plural "%s groups have been permanently deleted."
 msgstr[0] "%s个群已被永久删除。"
 
-#: bp-groups/bp-groups-admin.php:830 bp-groups/bp-groups-blocks.php:368
+#: bp-groups/bp-groups-admin.php:830 bp-groups/bp-groups-blocks.php:373
 #: bp-groups/classes/class-bp-groups-component.php:1138
 #: bp-groups/classes/class-bp-groups-widget.php:77
 #: bp-groups/classes/class-bp-groups-widget.php:214
@@ -13320,10 +13557,10 @@ msgstr "抱歉，没有找到成员。"
 #: bp-friends/bp-friends-blocks.php:140
 #: bp-friends/classes/class-bp-core-friends-widget.php:111
 #: bp-friends/classes/class-bp-core-friends-widget.php:206
-#: bp-groups/bp-groups-blocks.php:410
+#: bp-groups/bp-groups-blocks.php:415
 #: bp-groups/classes/class-bp-groups-widget.php:132
 #: bp-groups/classes/class-bp-groups-widget.php:245
-#: bp-members/bp-members-blocks.php:434
+#: bp-members/bp-members-blocks.php:439
 #: bp-members/classes/class-bp-core-members-widget.php:122
 #: bp-members/classes/class-bp-core-members-widget.php:239
 #: bp-friends/js/blocks/friends.js:25 bp-groups/js/blocks/dynamic-groups.js:25
@@ -13334,10 +13571,10 @@ msgstr "热门"
 #: bp-friends/bp-friends-blocks.php:136
 #: bp-friends/classes/class-bp-core-friends-widget.php:110
 #: bp-friends/classes/class-bp-core-friends-widget.php:205
-#: bp-groups/bp-groups-blocks.php:406
+#: bp-groups/bp-groups-blocks.php:411
 #: bp-groups/classes/class-bp-groups-widget.php:130
 #: bp-groups/classes/class-bp-groups-widget.php:244
-#: bp-members/bp-members-blocks.php:427
+#: bp-members/bp-members-blocks.php:432
 #: bp-members/classes/class-bp-core-members-widget.php:118
 #: bp-members/classes/class-bp-core-members-widget.php:238
 #: bp-members/classes/class-bp-members-admin.php:1186
@@ -13352,7 +13589,7 @@ msgid "(BuddyPress) Friends"
 msgstr "(BuddyPress) 好友"
 
 #. translators: %s: total friend count
-#: bp-friends/bp-friends-blocks.php:182 bp-members/bp-members-blocks.php:475
+#: bp-friends/bp-friends-blocks.php:182 bp-members/bp-members-blocks.php:480
 msgid "%s friend"
 msgid_plural "%s friends"
 msgstr[0] "%s位好友"
@@ -13629,6 +13866,31 @@ msgstr "移除"
 msgid "Admin"
 msgstr "管理员"
 
+#. Translators: %d is the amount of days.
+#: bp-core/bp-core-cssjs.php:604
+msgid "%d days"
+msgstr "%d 天"
+
+#. Translators: %d is the amount of hours.
+#: bp-core/bp-core-cssjs.php:601
+msgid "%d hours"
+msgstr "%d 小时"
+
+#. Translators: %d is the amount of minutes.
+#: bp-core/bp-core-cssjs.php:598
+msgid "%d minutes"
+msgstr "%d 分钟"
+
+#. Translators: %d is the amount of months.
+#: bp-core/bp-core-cssjs.php:607
+msgid "%d months"
+msgstr "%d 月"
+
+#. Translators: %d is the amount of years.
+#: bp-core/bp-core-cssjs.php:610
+msgid "%d years"
+msgstr "%d年"
+
 #: bp-core/classes/class-bp-rest-components-endpoint.php:330
 #: bp-core/classes/class-bp-rest-components-endpoint.php:548
 msgid "inactive"
@@ -13891,10 +14153,10 @@ msgstr "按字母顺序"
 #: bp-friends/bp-friends-blocks.php:132
 #: bp-friends/classes/class-bp-core-friends-widget.php:109
 #: bp-friends/classes/class-bp-core-friends-widget.php:204
-#: bp-groups/bp-groups-blocks.php:402 bp-groups/bp-groups-template.php:4755
+#: bp-groups/bp-groups-blocks.php:407 bp-groups/bp-groups-template.php:4755
 #: bp-groups/classes/class-bp-groups-widget.php:128
 #: bp-groups/classes/class-bp-groups-widget.php:243
-#: bp-members/bp-members-blocks.php:423
+#: bp-members/bp-members-blocks.php:428
 #: bp-members/classes/class-bp-core-members-widget.php:116
 #: bp-members/classes/class-bp-core-members-widget.php:237
 #: bp-templates/bp-legacy/buddypress/blogs/index.php:112
@@ -14348,7 +14610,7 @@ msgstr "特殊社区角色不复存在。请使用影射的权限代替"
 #: bp-groups/classes/class-bp-groups-invite-template.php:246
 #: bp-groups/classes/class-bp-groups-invite-template.php:258
 #: bp-groups/classes/class-bp-groups-invite-template.php:270
-#: bp-members/bp-members-blocks.php:91 bp-members/bp-members-blocks.php:244
+#: bp-members/bp-members-blocks.php:91 bp-members/bp-members-blocks.php:249
 #: bp-templates/bp-nouveau/includes/activity/functions.php:93
 #: bp-groups/js/blocks/groups.js:229 bp-members/js/blocks/members.js:215
 msgid "Profile photo of %s"
@@ -15564,7 +15826,7 @@ msgstr "我的动态"
 #: bp-groups/bp-groups-template.php:4125 bp-groups/bp-groups-template.php:4168
 #: bp-groups/bp-groups-template.php:4213 bp-groups/bp-groups-template.php:5831
 #: bp-groups/classes/class-bp-groups-component.php:930
-#: bp-members/bp-members-blocks.php:496 bp-members/bp-members-blocks.php:647
+#: bp-members/bp-members-blocks.php:501 bp-members/bp-members-blocks.php:652
 #: bp-members/bp-members-template.php:864
 #: bp-members/bp-members-template.php:1675
 #: bp-members/bp-members-template.php:1734
@@ -15873,7 +16135,7 @@ msgstr "回复动态信息"
 #: bp-members/classes/class-bp-members-admin.php:2192
 #: bp-members/classes/class-bp-members-admin.php:3079
 msgid "Search results for &#8220;%s&#8221;"
-msgstr "&#8220;%s&#8221;的搜索结果"
+msgstr "搜索结果 &#8220;%s&#8221;"
 
 #. translators: %s: the activity ID
 #: bp-activity/bp-activity-admin.php:1160

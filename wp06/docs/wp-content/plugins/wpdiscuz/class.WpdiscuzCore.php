@@ -2,7 +2,7 @@
 /*
  * Plugin Name: wpDiscuz
  * Description: #1 WordPress Comment Plugin. Innovative, modern and feature-rich comment system to supercharge your website comment section.
- * Version: 7.6.10
+ * Version: 7.6.11
  * Author: gVectors Team
  * Author URI: https://gvectors.com/
  * Plugin URI: https://wpdiscuz.com/
@@ -326,14 +326,19 @@ class WpdiscuzCore implements WpDiscuzConstants {
         $comment_content = isset($_POST["wc_comment"]) ? $_POST["wc_comment"] : "";
 
         if ($uniqueId && $postId) {
+
             $this->isWpdiscuzLoaded = true;
             $this->form = $this->wpdiscuzForm->getForm($postId);
             $this->form->initFormFields();
             $currentUser = WpdiscuzHelper::getCurrentUser();
             if ($this->form->isUserCanSeeComments($currentUser, $postId) && $this->form->isUserCanComment($currentUser, $postId)) {
+                $post = get_post($postId);
                 do_action("wpdiscuz_before_comment_post");
-                if (!comments_open($postId)) {
-                    wp_die(esc_html($this->options->getPhrase("wc_commenting_is_closed")));
+                $uid_data = $this->helper->getUIDData($uniqueId);
+                $comment_parent = intval($uid_data[0]);
+                $result = $this->helper->handleCommentSubmission($post, $comment_parent);
+                if (is_wp_error($result)) {
+                    wp_die(esc_html($result->get_error_message()));
                 }
 
                 if (function_exists("zerospam_get_key") && $wpdiscuzZS = WpdiscuzHelper::sanitize(INPUT_POST, "wpdiscuz_zs", "FILTER_SANITIZE_STRING")) {
@@ -371,8 +376,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
                 $comment_content = ($this->options->form["richEditor"] === "both" || (!wp_is_mobile() && $this->options->form["richEditor"] === "desktop")) && !$this->options->showEditorToolbar() ? html_entity_decode($comment_content) : $comment_content;
                 $comment_content = $this->helper->replaceCommentContentCode($comment_content);
                 $comment_content = $this->helper->filterCommentText($comment_content);
-                $uid_data = $this->helper->getUIDData($uniqueId);
-                $comment_parent = intval($uid_data[0]);
+
                 $parentComment = $comment_parent ? get_comment($comment_parent) : null;
                 $comment_parent = isset($parentComment->comment_ID) ? $parentComment->comment_ID : 0;
                 if ($parentComment && intval(get_comment_meta($comment_parent, self::META_KEY_CLOSED, true))) {
@@ -397,8 +401,12 @@ class WpdiscuzCore implements WpDiscuzConstants {
 
                 if ($name && $email) {
                     $website_url = $website_url ? urldecode($website_url) : "";
-                    $stickyComment = WpdiscuzHelper::sanitize(INPUT_POST, "wc_sticky_comment", FILTER_SANITIZE_NUMBER_INT, "");
-                    $closedComment = absint(WpdiscuzHelper::sanitize(INPUT_POST, "wc_closed_comment", FILTER_SANITIZE_NUMBER_INT, 0));
+                    $stickyComment = "";
+                    $closedComment = 0;
+                    if ($comment_parent === 0 && ( current_user_can("moderate_comments") || ( $post && isset($post->post_author) && $post->post_author == $currentUser->ID ) )) {
+                        $stickyComment = WpdiscuzHelper::sanitize(INPUT_POST, "wc_sticky_comment", FILTER_SANITIZE_NUMBER_INT, "");
+                        $closedComment = absint(WpdiscuzHelper::sanitize(INPUT_POST, "wc_closed_comment", FILTER_SANITIZE_NUMBER_INT, 0));
+                    }
 
                     $this->helper->restrictCommentingPerUser($email, $comment_parent, $postId);
                     $wc_user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? sanitize_text_field($_SERVER["HTTP_USER_AGENT"]) : "";
@@ -500,6 +508,16 @@ class WpdiscuzCore implements WpDiscuzConstants {
         if ($commentId) {
             $this->isWpdiscuzLoaded = true;
             $comment = get_comment($commentId);
+            if (!$comment) {
+                wp_send_json_error("wc_comment_edit_not_possible");
+            }
+
+            $result = $this->helper->handleCommentSubmission($comment->comment_post_ID, $comment->comment_parent, false);
+
+            if (is_wp_error($result)) {
+                wp_die($result->get_error_message());
+            }
+
             $currentUser = WpdiscuzHelper::getCurrentUser();
             $uniqueId = $comment->comment_ID . "_" . $comment->comment_parent;
             $highLevelUser = current_user_can("moderate_comments");
@@ -629,7 +647,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
                         $inlineContent = "<div class='wpd-inline-feedback-wrapper'><span class='wpd-inline-feedback-info'>" . esc_html($this->options->getPhrase("wc_feedback_content_text")) . "</span> <i class='fas fa-quote-left'></i>" . wp_trim_words($feedbackForm->content, apply_filters("wpdiscuz_feedback_content_words_count", 20)) . "&quot;  <a class='wpd-feedback-content-link' data-feedback-content-id='{$feedbackForm->id}' href='#wpd-inline-{$feedbackForm->id}'>" . esc_html($this->options->getPhrase("wc_read_more")) . "</a></div>";
                     }
                     if ($commentarr["comment_approved"] === "spam") {
-                        $commentContent = "<span style='color:#fc9007;'>" . esc_html($this->options->getPhrase("wc_awaiting_for_approval", ["comment" => $comment])) . ": " . __("Spam") . "</span>";
+                        $commentContent = "<span style='color:#fc9007;'>" . esc_html($this->options->getPhrase("wc_awaiting_for_approval", ["comment" => $comment])) . ": " . esc_html__("Spam") . "</span>";
                     }
                     $response["message"] = str_replace(["{TEXT_WRAPPER_CLASSES}", "{TEXT}"], [
                         "wpd-comment-text",
@@ -1126,10 +1144,11 @@ class WpdiscuzCore implements WpDiscuzConstants {
                 "msgConfirmResetOptions" => esc_html__("Do you really want to reset all options?", "wpdiscuz"),
                 "msgConfirmResetTabOptions" => esc_html__("Do you really want to reset tab options?", "wpdiscuz"),
                 "msgConfirmRemoveVotes" => esc_html__("Do you really want to remove voting data?", "wpdiscuz"),
+                "msgConfirmRemoveSocialAvatars" => esc_html__("Do you really want to remove social network avatars ?", "wpdiscuz"),
                 "msgConfirmResetPhrases" => esc_html__("Do you really want to reset phrases?", "wpdiscuz"),
                 "wmuMsgConfirmAttachmentDelete" => esc_html__("Do you really want to delet this attachment?", "wpdiscuz"),
                 "msgConfirmPurgeCache" => esc_html__("Do you really want to delete comments and users cache?", "wpdiscuz"),
-                "wpdOptionNonce" => wp_create_nonce( "wpd-option-nonce" ),
+                "wpdOptionNonce" => wp_create_nonce("wpd-option-nonce"),
             ];
             // Media Upload Lightbox
             wp_register_style("wmu-colorbox-css", plugins_url(WPDISCUZ_DIR_NAME . "/assets/third-party/colorbox/colorbox.css"));
@@ -1666,7 +1685,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
     // Add settings link on plugin page
     public function addPluginSettingsLink($links) {
         $links[] = "<a href='" . esc_url_raw(admin_url("admin.php?page=" . self::PAGE_SETTINGS)) . "'>" . esc_html__("Settings", "wpdiscuz") . "</a>";
-        $links[] = "<a href='" . esc_url_raw(wp_nonce_url(admin_url("plugins.php?action=wpdiscuz-uninstall"), "wpdiscuz_uninstall")) . "' style='color:#b32d2e;' onclick='return confirm(\"" . __("IMPORTANT! Uninstall is not a simple deactivation action. This action will permanently remove all data added by wpDiscuz (comment subscriptions, attachments, like/dislikes, and all other data that do not exist in the native comment system...) from database. Please backup database before this action. If you are sure that you want to delete all wpDiscuz data please confirm. If not, just cancel it, then you can deactivate this plugin.", "wpdiscuz") . "\")'>" . esc_html__("Uninstall", "wpdiscuz") . "</a>";
+        $links[] = "<a href='" . esc_url_raw(wp_nonce_url(admin_url("plugins.php?action=wpdiscuz-uninstall"), "wpdiscuz_uninstall")) . "' style='color:#b32d2e;' onclick='return confirm(\"" . esc_js("IMPORTANT! Uninstall is not a simple deactivation action. This action will permanently remove all data added by wpDiscuz (comment subscriptions, attachments, like/dislikes, and all other data that do not exist in the native comment system...) from database. Please backup database before this action. If you are sure that you want to delete all wpDiscuz data please confirm. If not, just cancel it, then you can deactivate this plugin.", "wpdiscuz") . "\")'>" . esc_html__("Uninstall", "wpdiscuz") . "</a>";
         return $links;
     }
 
@@ -2275,8 +2294,9 @@ class WpdiscuzCore implements WpDiscuzConstants {
         $inline_form_id = WpdiscuzHelper::sanitize(INPUT_POST, "inline_form_id", FILTER_SANITIZE_NUMBER_INT, 0);
         if ($inline_form_id && apply_filters("wpdiscuz_enable_feedback_shortcode_button", true) && ($inline_form = $this->dbManager->getFeedbackForm($inline_form_id))) {
             if (wp_verify_nonce(WpdiscuzHelper::sanitize(INPUT_POST, "_wpd_inline_nonce", "FILTER_SANITIZE_STRING"), "wpd_inline_nonce_" . $inline_form->post_id)) {
-                if (!comments_open($inline_form->post_id)) {
-                    wp_die(esc_html($this->options->getPhrase("wc_commenting_is_closed")));
+                $result = $this->helper->handleCommentSubmission($inline_form->post_id, 0);
+                if (is_wp_error($result)) {
+                    wp_die(esc_html($result->get_error_message()));
                 }
                 $this->isWpdiscuzLoaded = true;
                 $currentUser = WpdiscuzHelper::getCurrentUser();
@@ -2533,22 +2553,22 @@ class WpdiscuzCore implements WpDiscuzConstants {
         $context = isset($_GET['context']) ? $_GET['context'] : '';
         ob_start();
         if ($context === 'edit') {
-            $editBlockNotice = __('This is just a demo of wpDiscuz comment section.<br>
+            $editBlockNotice = wp_kses_post(__('This is just a demo of wpDiscuz comment section.<br>
             Further customization can be done in the Dashboard > wpDiscuz > Settings admin page.<br>
-            The comment form layout can be customized in the Dashboard > wpDiscuz > Forms admin page.', 'wpdiscuz');
+            The comment form layout can be customized in the Dashboard > wpDiscuz > Forms admin page.', 'wpdiscuz'));
             if ($post_id) {
                 $post_before = $post;
                 $post = get_post($post_id);
                 $form = $this->wpdiscuzForm->getForm($post_id);
                 $form->initFormFields();
                 if (!apply_filters("is_load_wpdiscuz", $form->getFormID() && (comments_open($post) || $post->comment_count) && post_type_supports($post->post_type, "comments"), $post)) {
-                    echo '<div class="wpdiscuz-edit-bloc-notice block-editor-warning">' . __('wpDiscuz is not loaded for the following reason.', 'wpdiscuz');
+                    echo '<div class="wpdiscuz-edit-bloc-notice block-editor-warning">' . esc_html__('wpDiscuz is not loaded for the following reason.', 'wpdiscuz');
                     if (!post_type_supports($post->post_type, "comments")) {
-                        echo '<br>' . __('The post type doesn\'t support comments.', 'wpdiscuz');
+                        echo '<br>' . esc_html__('The post type doesn\'t support comments.', 'wpdiscuz');
                     } else if (!comments_open($post)) {
-                        echo '<br>' . __('The comments are closed for the post.', 'wpdiscuz');
+                        echo '<br>' . esc_html__('The comments are closed for the post.', 'wpdiscuz');
                     } else {
-                        echo '<br>' . __('The post type is not enabled in the "Display comment form for post types" section.', 'wpdiscuz');
+                        echo '<br>' . esc_html__('The post type is not enabled in the "Display comment form for post types" section.', 'wpdiscuz');
                     }
                     echo '</div>';
                 } else {

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views;
 
-use org\wplake\acf_views\AcfView\AcfViews;
+use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 
 defined('ABSPATH') || exit;
 
 class Options
 {
-    const PREFIX = AcfViews::NAME . '_';
+    const PREFIX = ViewsCpt::NAME . '_';
     const OPTION_SETTINGS = self::PREFIX . 'settings';
     const TRANSIENT_DEACTIVATED_OTHER_INSTANCES = self::PREFIX . 'deactivated_other_instances';
     const TRANSIENT_LICENSE_EXPIRATION_DISMISS = self::PREFIX . 'license_expiration_dismiss';

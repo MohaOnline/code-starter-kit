@@ -537,7 +537,7 @@ class Zip {
 
           $chunk = $chunks[$i];
           $chunk = array_filter($chunk, function ($path) {
-            if (is_readable($path)) return true;
+            if (is_readable($path) && file_exists($path)) return true;
             else {
               $this->zip_progress->log(sprintf(__("Excluding file that cannot be read: %s", 'backup-backup'), $path), 'warn');
               return false;

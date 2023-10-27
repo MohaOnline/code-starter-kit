@@ -226,6 +226,10 @@ jQuery(document).ready(function ($) {
 
     $('body').on('click', '#wpdcom [data-wpd-clipboard]', function () {
         var val = $(this).data('wpd-clipboard');
+        var mention = $(this).data('wpd-ismention');
+        if(mention){
+            val = '@' + val;
+        }
         var el = $('<input/>');
         el.appendTo('body').css({'position': 'absolute', 'top': '-10000000px'}).val(val);
         el.trigger('select');
@@ -1716,7 +1720,9 @@ jQuery(document).ready(function ($) {
         if (bubbleHintTimeout && !Cookies.get(wpdiscuzAjaxObj.cookieHideBubbleHint)) {
             setTimeout(function () {
                 $('#wpd-bubble-wrapper').addClass('wpd-bubble-hover');
-                Cookies.set(wpdiscuzAjaxObj.cookieHideBubbleHint, '1', {expires: 7, path: '/'});
+                const ckePath = wpdiscuzAjaxObj.bubbleHintShowOnce ? '/' : location.href;
+                const ckeExpires  = wpdiscuzAjaxObj.bubbleHintCookieExpires ? parseInt(wpdiscuzAjaxObj.bubbleHintCookieExpires, 10) : '';
+                Cookies.set(wpdiscuzAjaxObj.cookieHideBubbleHint, '1', {expires: parseInt(wpdiscuzAjaxObj.bubbleHintCookieExpires, 10), path: ckePath});
                 setTimeout(function () {
                     $('#wpd-bubble-wrapper').removeClass('wpd-bubble-hover');
                 }, bubbleHintHideTimeout * 1000);

@@ -6,22 +6,23 @@
   <div class="container"> 
     <!--row-->
     <div class="row">
-        <!--col-lg-->
-        <?php   $blogus_single_page_layout = get_theme_mod('blogus_single_page_layout','single-align-content-right');
-            if($blogus_single_page_layout == "single-align-content-left") { ?>
-          <aside class="col-lg-3">
-              <?php get_sidebar();?>
-          </aside>
-        <?php } ?>
-    <?php if($blogus_single_page_layout == "single-align-content-right"){ ?>
-      <div class="col-lg-9">
-    <?php } elseif($blogus_single_page_layout == "single-align-content-left") { ?>
-          <div class="col-lg-9">
-    <?php } elseif($blogus_single_page_layout == "single-full-width-content") { ?>
-      <div class="col-lg-12">
-      <?php } ?>
-          <?php if(have_posts())
-            {
+      <!--==================== breadcrumb section ====================-->
+      <?php do_action('blogus_breadcrumb_content'); ?>
+      <!--col-lg-->
+      <?php $blogus_single_page_layout = get_theme_mod('blogus_single_page_layout','single-align-content-right');
+      if($blogus_single_page_layout == "single-align-content-left") { ?>
+        <aside class="col-lg-3">
+          <?php get_sidebar();?>
+        </aside>
+      <?php } 
+      if($blogus_single_page_layout == "single-align-content-right"){ ?>
+        <div class="col-lg-9">
+      <?php } elseif($blogus_single_page_layout == "single-align-content-left") { ?>
+        <div class="col-lg-9">
+      <?php } elseif($blogus_single_page_layout == "single-full-width-content") { ?>
+        <div class="col-lg-12">
+      <?php } 
+        if(have_posts()) {
           while(have_posts()) { the_post(); ?>
             <div class="bs-blog-post single"> 
               <div class="bs-header">
@@ -71,6 +72,13 @@
               echo '<a class="bs-blog-thumb" href="'.esc_url(get_the_permalink()).'">';
               the_post_thumbnail( '', array( 'class'=>'img-fluid' ) );
               echo '</a>';
+                
+              $thumbnail_id = get_post_thumbnail_id();
+              $caption = get_post($thumbnail_id)->post_excerpt;
+
+              if (!empty($caption)) {
+                echo '<span class="featured-image-caption">' . esc_html($caption) . '</span>';
+              }
                } }?>
               <article class="small single">
                 <?php the_content(); ?>

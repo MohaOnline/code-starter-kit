@@ -4,9 +4,9 @@ Contributors: Mat Lipe, onpointplugins
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40onpointplugins%2ecom&lc=US&item_name=Advanced%20Sidebar%20Menu&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
 Tags: block, widget, dynamic, hierarchy, menus, sidebar menu, category, pages, parent, child, automatic
 Requires at least: 5.8.0
-Tested up to: 6.3.1
+Tested up to: 6.3.2
 Requires PHP: 7.0.0
-Stable tag: 9.1.0
+Stable tag: 9.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -167,6 +167,23 @@ The Categories Menu widget/block contains a "Display categories on single posts"
 Yes. Based on whatever page, post or category you are on, the menu will change automatically to display the current parents and children.
 
 == Changelog ==
+= 9.3.0 =
+* Modernized legacy widget JS and CSS into the Webpack structure.
+* Reduce bundle size of admin resources.
+* Renamed CSS files with the "advanced-sidebar-menu" prefix.
+* Added support for collapsing info panels on page builders and theme customizers.
+* Updated the block `apiVersion` to "3".
+* Tested to WordPress 6.3.2.
+* Greatly improved widgets styles in Beaver Builder and Elementor.
+
+= 9.2.1 =
+* Introduced transform legacy widgets to blocks prompts.
+* Moved configurations to the root of the plugin and general modernization.
+* Made "Go PRO" callouts more tasteful and less intrusive.
+* Improved styles of the info panels in widgets and blocks.
+* Improved styles of buttons and fields in Beaver Builder.
+* Updated WP-PHPCS to version 3 and fixed all warnings.
+
 = 9.1.0 =
 * Separated the exclude pages/categories field into a filterable component.
 * Updated links to various documentation.
@@ -174,7 +191,7 @@ Yes. Based on whatever page, post or category you are on, the menu will change a
 * Updated block attribute TS definitions to accurately reflect default values.
 * Updated TS to version 5.
 * Updated PHPCS scanning to version 3 of WP PHPCS standards.
-* Loosely the minimum requirement for PHP version 9.2.0.
+* Loosely update the minimum requirement for PRO to version 9.2.0.
 
 = 9.0.11 =
 * Changed default limit of child pages to 200 instead of 100.

@@ -61,7 +61,7 @@ class LearnDash implements Service
             return $attributes;
         }
 
-        $logic_video = false;
+        $logic_video = true;
         $video_id = !empty($attributes['id']) ? '(presto-' . $attributes['id'] . ')' : '(presto)';
         $video_completed = $this->stepIsCompleted($post->ID);
 

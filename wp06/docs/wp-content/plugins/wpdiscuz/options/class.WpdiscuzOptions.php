@@ -197,6 +197,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $this->social["instagramAppSecret"] = isset($options[self::TAB_SOCIAL]["instagramAppSecret"]) ? $options[self::TAB_SOCIAL]["instagramAppSecret"] : $defaultOptions[self::TAB_SOCIAL]["instagramAppSecret"];
         // linkedin
         $this->social["enableLinkedinLogin"] = isset($options[self::TAB_SOCIAL]["enableLinkedinLogin"]) ? $options[self::TAB_SOCIAL]["enableLinkedinLogin"] : $defaultOptions[self::TAB_SOCIAL]["enableLinkedinLogin"];
+        $this->social["enableLinkedinLoginOpenID"] = isset($options[self::TAB_SOCIAL]["enableLinkedinLoginOpenID"]) ? $options[self::TAB_SOCIAL]["enableLinkedinLoginOpenID"] : $defaultOptions[self::TAB_SOCIAL]["enableLinkedinLoginOpenID"];
         $this->social["linkedinClientID"] = isset($options[self::TAB_SOCIAL]["linkedinClientID"]) ? $options[self::TAB_SOCIAL]["linkedinClientID"] : $defaultOptions[self::TAB_SOCIAL]["linkedinClientID"];
         $this->social["linkedinClientSecret"] = isset($options[self::TAB_SOCIAL]["linkedinClientSecret"]) ? $options[self::TAB_SOCIAL]["linkedinClientSecret"] : $defaultOptions[self::TAB_SOCIAL]["linkedinClientSecret"];
         // whatsapp
@@ -303,7 +304,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $this->subscription["usePostmaticForCommentNotification"] = isset($options[self::TAB_SUBSCRIPTION]["usePostmaticForCommentNotification"]) ? $options[self::TAB_SUBSCRIPTION]["usePostmaticForCommentNotification"] : $defaultOptions[self::TAB_SUBSCRIPTION]["usePostmaticForCommentNotification"];
         $this->subscription["isFollowActive"] = isset($options[self::TAB_SUBSCRIPTION]["isFollowActive"]) ? $options[self::TAB_SUBSCRIPTION]["isFollowActive"] : $defaultOptions[self::TAB_SUBSCRIPTION]["isFollowActive"];
         $this->subscription["disableFollowConfirmForUsers"] = isset($options[self::TAB_SUBSCRIPTION]["disableFollowConfirmForUsers"]) ? $options[self::TAB_SUBSCRIPTION]["disableFollowConfirmForUsers"] : $defaultOptions[self::TAB_SUBSCRIPTION]["disableFollowConfirmForUsers"];
-        $this->subscription["emailSubjectPostComment"] = isset($options[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"]) ? __($options[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"], "wpdiscuz") : __($defaultOptions[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"], "wpdiscuz");
+        $this->subscription["emailSubjectPostComment"] = isset($options[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"]) ? wp_kses_post(__($options[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"], "wpdiscuz")) : __($defaultOptions[self::TAB_SUBSCRIPTION]["emailSubjectPostComment"], "wpdiscuz");
         $this->subscription["emailContentPostComment"] = isset($options[self::TAB_SUBSCRIPTION]["emailContentPostComment"]) ? __($options[self::TAB_SUBSCRIPTION]["emailContentPostComment"], "wpdiscuz") : __($defaultOptions[self::TAB_SUBSCRIPTION]["emailContentPostComment"], "wpdiscuz");
         $this->subscription["emailSubjectAllCommentReply"] = isset($options[self::TAB_SUBSCRIPTION]["emailSubjectAllCommentReply"]) ? __($options[self::TAB_SUBSCRIPTION]["emailSubjectAllCommentReply"], "wpdiscuz") : __($defaultOptions[self::TAB_SUBSCRIPTION]["emailSubjectAllCommentReply"], "wpdiscuz");
         $this->subscription["emailContentAllCommentReply"] = isset($options[self::TAB_SUBSCRIPTION]["emailContentAllCommentReply"]) ? __($options[self::TAB_SUBSCRIPTION]["emailContentAllCommentReply"], "wpdiscuz") : __($defaultOptions[self::TAB_SUBSCRIPTION]["emailContentAllCommentReply"], "wpdiscuz");
@@ -685,6 +686,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 "instagramAppSecret" => $this->social["instagramAppSecret"],
                 // linkedin
                 "enableLinkedinLogin" => $this->social["enableLinkedinLogin"],
+                "enableLinkedinLoginOpenID" => $this->social["enableLinkedinLoginOpenID"],
                 "linkedinClientID" => $this->social["linkedinClientID"],
                 "linkedinClientSecret" => $this->social["linkedinClientSecret"],
                 // whatsapp
@@ -959,6 +961,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 "instagramAppID" => "",
                 "instagramAppSecret" => "",
                 "enableLinkedinLogin" => 0,
+                "enableLinkedinLoginOpenID" => 0,
                 "linkedinClientID" => "",
                 "linkedinClientSecret" => "",
                 "enableWhatsappShare" => 0,
@@ -1235,6 +1238,8 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $jsArgs["bubbleHintTimeout"] = $this->live["bubbleHintTimeout"];
         $jsArgs["bubbleHintHideTimeout"] = $this->live["bubbleHintHideTimeout"];
         $jsArgs["cookieHideBubbleHint"] = self::COOKIE_HIDE_BUBBLE_HINT;
+	    $jsArgs["bubbleHintShowOnce"] = apply_filters("wpdiscuz_bubble_hint_show_once", true);
+	    $jsArgs["bubbleHintCookieExpires"] = apply_filters("wpdiscuz_bubble_hint_cookie_expires", 7);
         $jsArgs["bubbleShowNewCommentMessage"] = $this->live["bubbleShowNewCommentMessage"];
         $jsArgs["bubbleLocation"] = $this->live["bubbleLocation"];
         $jsArgs["firstLoadWithAjax"] = $this->thread_display["firstLoadWithAjax"];
@@ -1444,6 +1449,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 $this->social["instagramAppSecret"] = isset($_POST[self::TAB_SOCIAL]["instagramAppSecret"]) ? trim(sanitize_text_field($_POST[self::TAB_SOCIAL]["instagramAppSecret"])) : "";
                 // linkedin
                 $this->social["enableLinkedinLogin"] = isset($_POST[self::TAB_SOCIAL]["enableLinkedinLogin"]) ? absint($_POST[self::TAB_SOCIAL]["enableLinkedinLogin"]) : 0;
+                $this->social["enableLinkedinLoginOpenID"] = isset($_POST[self::TAB_SOCIAL]["enableLinkedinLoginOpenID"]) ? absint($_POST[self::TAB_SOCIAL]["enableLinkedinLoginOpenID"]) : 0;
                 $this->social["linkedinClientID"] = isset($_POST[self::TAB_SOCIAL]["linkedinClientID"]) ? trim(sanitize_text_field($_POST[self::TAB_SOCIAL]["linkedinClientID"])) : "";
                 $this->social["linkedinClientSecret"] = isset($_POST[self::TAB_SOCIAL]["linkedinClientSecret"]) ? trim(sanitize_text_field($_POST[self::TAB_SOCIAL]["linkedinClientSecret"])) : "";
                 // whatsapp
@@ -3045,6 +3051,13 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                             "description_original" => "",
                             "docurl" => "",
                         ],
+                        "enableLinkedinLoginOpenID" => [
+                            "label" => esc_html__("Sign In with LinkedIn using OpenID Connect", "wpdiscuz"),
+                            "label_original" => "Sign In with LinkedIn using OpenID Connect",
+                            "description" => "",
+                            "description_original" => "",
+                            "docurl" => "https://wpdiscuz.com/docs/wpdiscuz-7/plugin-settings/social-login-and-share/linkedin-app-configuration/",
+                        ],
                         "linkedinClientID" => [
                             "label" => esc_html__("LinkedIn Client ID", "wpdiscuz"),
                             "label_original" => "LinkedIn Client ID",
@@ -4094,9 +4107,9 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                             "description_original" => "",
                             "docurl" => "",
                         ],
-                        "purgeAvatarCache" => [
-                            "label" => esc_html__("Purge Expired Avatar Caches", "wpdiscuz"),
-                            "label_original" => "Purge Expired Avatar Caches",
+                        "removeSocialAvatars" => [
+                            "label" => esc_html__("Remove Social Network Avatars", "wpdiscuz"),
+                            "label_original" => "Remove Social Network Avatars",
                             "description" => "",
                             "description_original" => "",
                             "docurl" => "",

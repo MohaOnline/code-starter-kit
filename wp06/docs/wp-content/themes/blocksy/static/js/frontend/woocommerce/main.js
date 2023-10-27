@@ -114,6 +114,14 @@ const initShortcut = () => {
 					request = null
 				}
 
+				const maybeMiniCartItem = el.closest(
+					'.woocommerce-mini-cart-item'
+				)
+
+				if (maybeMiniCartItem) {
+					maybeMiniCartItem.classList.add('processing')
+				}
+
 				request = $.ajax({
 					type: 'POST',
 					url: ct_localizations.ajax_url,

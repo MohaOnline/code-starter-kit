@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 22:35+0000\n"
+"POT-Creation-Date: 2023-10-25 21:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -44,6 +44,10 @@ msgstr ""
 msgid "An Old Hope"
 msgstr ""
 
+#: inc/settings-reset.php:38
+msgid "and"
+msgstr ""
+
 #: prismatic.php:266
 msgid "and try again."
 msgstr ""
@@ -52,7 +56,7 @@ msgstr ""
 msgid "Androidstudio"
 msgstr ""
 
-#: inc/settings-reset.php:34
+#: inc/settings-reset.php:40
 msgid "Apply code"
 msgstr ""
 
@@ -68,8 +72,8 @@ msgstr ""
 msgid "Ascetic"
 msgstr ""
 
-#: inc/settings-reset.php:34
-msgid "at checkout. Sale ends 9/9/23."
+#: inc/settings-reset.php:40
+msgid "at checkout. Sale ends 12/30/23."
 msgstr ""
 
 #: lib/highlight/themes.php:41
@@ -164,6 +168,10 @@ msgstr ""
 msgid "Atom One Light"
 msgstr ""
 
+#: inc/settings-reset.php:39
+msgid "books"
+msgstr ""
+
 #: lib/highlight/themes.php:142
 msgid "Brown Paper"
 msgstr ""
@@ -228,7 +236,7 @@ msgstr ""
 msgid "Disable the Prismatic block stylesheet on the frontend"
 msgstr ""
 
-#: inc/settings-reset.php:105
+#: inc/settings-reset.php:115
 msgid "Dismiss"
 msgstr ""
 
@@ -269,6 +277,10 @@ msgstr ""
 #: inc/settings-register.php:37 inc/settings-register.php:54 
 #: inc/settings-register.php:64
 msgid "Escape code for post excerpts in the Admin Area"
+msgstr ""
+
+#: inc/settings-reset.php:35
+msgid "Fall Sale!"
 msgstr ""
 
 #: lib/highlight/themes.php:174
@@ -497,10 +509,6 @@ msgstr ""
 msgid "Plugin Homepage"
 msgstr ""
 
-#: inc/settings-reset.php:31
-msgid "Plugin Sale:"
-msgstr ""
-
 #: lib/highlight/themes.php:314
 msgid "Pojoaque"
 msgstr ""
@@ -525,7 +533,7 @@ msgid ""
 "activated at the same time. "
 msgstr ""
 
-#: inc/settings-reset.php:33
+#: inc/settings-reset.php:37
 msgid "Pro WordPress plugins"
 msgstr ""
 
@@ -573,9 +581,8 @@ msgstr ""
 msgid "Routeros"
 msgstr ""
 
-#: inc/settings-reset.php:32
-#, php-format
-msgid "Save 20% on any of our"
+#: inc/settings-reset.php:36
+msgid "Save 25% on our"
 msgstr ""
 
 #: lib/highlight/themes.php:342

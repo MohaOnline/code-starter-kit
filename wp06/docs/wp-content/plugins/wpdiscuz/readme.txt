@@ -2,8 +2,8 @@
 Contributors: gVectors Team
 Tags: comment, comments, ajax comments, comment form, comment fields
 Requires at least: 5.0
-Tested up to: 6.2
-Stable tag: 7.6.10
+Tested up to: 6.3
+Stable tag: 7.6.11
 Requires PHP: 5.6 and higher
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -185,13 +185,22 @@ Nothing will be lost!  **Comments - wpDiscuz** will show all old comments.
 
 == Changelog ==
 
-= Comments - wpDiscuz v7.6.9/10 - 25/26.09.2023 =
-
-* Added: Do not set a cookie if validation for guests is disabled
-
 **IMPORTANT!**
 
 Please don't forget delete all caches and purge CDN after the update.
+
+= Comments - wpDiscuz v7.6.11 - 19.10.2023 =
+
+* Updated: Subscriptions/Follows confirmation and cancellation emails logic
+* Fixed: Comment to trashed post (Vulnerability)
+* Fixed: Issue with the Default Avatar Source option
+* Fixed: Security issue (Variables and options must be escaped when echo'd)
+* Fixed: Conflict with "Sign In with LinkedIn using OpenID Connect"
+* Fixed: Conflict with BuddyPress mentioning
+
+= Comments - wpDiscuz v7.6.9/10 - 25/26.09.2023 =
+
+* Added: Do not set a cookie if validation for guests is disabled
 
 = Comments - wpDiscuz v7.6.8 - 18.09.2023 =
 

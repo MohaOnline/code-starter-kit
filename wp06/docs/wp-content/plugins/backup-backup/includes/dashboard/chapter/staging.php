@@ -69,7 +69,7 @@
         type="button"
         class="btn i-staging-creator-local"
         id="stg-notices-button">
-        <?php _e('Create staging server!', 'backup-backup'); ?>
+        <?php _e('Create staging site!', 'backup-backup'); ?>
       </button>
     </div>
 </div>
@@ -98,7 +98,7 @@
     </div>
   </div>
   <div class="bmi-stg-creation-button">
-    <button type="button" class="btn i-staging-creator-tastewp"><?php _e('Create staging server!', 'backup-backup'); ?></button>
+    <button type="button" class="btn i-staging-creator-tastewp"><?php _e('Create staging site!', 'backup-backup'); ?></button>
   </div>
 </div>
 

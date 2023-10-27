@@ -22,6 +22,17 @@ ChinaPayments\ThirdPartyIntegration\MemberPress::instance()->setup();
 ChinaPayments\ThirdPartyIntegration\PaymentPage::instance()->setup();
 ChinaPayments\ThirdPartyIntegration\WooCommerce::instance()->setup();
 
+if( did_action( 'plugins_loaded' ) || doing_action( 'plugins_loaded' ) ) {
+  if( defined( "SIMPLE_WP_MEMBERSHIP_VER" ) )
+    ChinaPayments\ThirdPartyIntegration\SimpleMembership::instance()->setup();
+} else {
+  add_action( 'plugins_loaded', function() {
+    if( defined( "SIMPLE_WP_MEMBERSHIP_VER" ) )
+      ChinaPayments\ThirdPartyIntegration\SimpleMembership::instance()->setup();
+  }, 99 );
+}
+
+
 // General Functionality
 ChinaPayments\Controller::instance()->setup();
 

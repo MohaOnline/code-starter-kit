@@ -105,28 +105,19 @@
     }
 
     $(window).on('load', function() {
-        fetch(wpfront_scroll_top_data.source)
-            .then(d => d.json())
-            .then(d => {
-                if(!d.success) {
-                    console.log(d);
-                    return Promise.reject('bad data');
+        function process(d) {
+            if (d.data.hide_iframe) {
+                if ($(window).attr("self") !== $(window).attr("top")) {
+                    return;
                 }
+            }
 
-                return d.data;
-            })
-            .then(d => {
-                if (d.data.hide_iframe) {
-                    if ($(window).attr("self") !== $(window).attr("top")) {
-                        return;
-                    }
-                }
+            $('<style>').text(d.css).appendTo('head');
+            $('body').append(d.html);
 
-                $('<style>').text(d.css).appendTo('head');
-                $('body').append(d.html);
+            bind_actions(d.data);
+        }
 
-                bind_actions(d.data);
-            })
-            .catch(e => console.log(e));
+        process(wpfront_scroll_top_data.data);
     });
  })();

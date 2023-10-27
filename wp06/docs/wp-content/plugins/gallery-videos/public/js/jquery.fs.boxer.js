@@ -87,7 +87,7 @@
 				extension = sourceParts[0],
 				type = $target.data("boxer-type") || "",
 				isImage = ((type === "image") || ($.inArray(extension, e.data.extensions) > -1 || source.substr(0, 10) === "data:image")),
-				isVideo = (source.indexOf("youtube.com/embed") > -1 || source.indexOf("player.vimeo.com/video") > -1 || source.indexOf("wistia") > -1 || source.indexOf(".mp4") > -1),
+				isVideo = (source.indexOf("youtube.com") > -1 || source.indexOf("player.vimeo.com/video") > -1 || source.indexOf("wistia") > -1 || source.indexOf(".mp4") > -1),
 				isUrl = ((type === "url") || (!isImage && !isVideo && source.substr(0, 4) === "http" && !hash)),
 				isElement = ((type === "element") || (!isImage && !isVideo && !isUrl && (hash.substr(0, 1) === "#"))),
 				isObject = ((typeof $object !== "undefined"));
@@ -103,6 +103,7 @@
 				{
 					$window: $(window),
 					$body: $("body"),
+					tsvgId : e.data.tsvgId,
 					$target: $target,
 					$object: $object,
 					visible: false,
@@ -140,9 +141,9 @@
 			}
 			// Assemble HTML
 			var html = '';
-			var titl_position = jQuery(".TS_VGallery_gv-lvg-content" + key_id).attr('data-tsvg-titl_position');
-			var titl_bacg = jQuery(".TS_VGallery_gv-lvg-content" + key_id).attr('data-tsvg-titl_bacg');
-			var popup_bacg = jQuery(".TS_VGallery_gv-lvg-content" + key_id).attr('data-tsvg-popup_bacg');
+			var titl_position = jQuery(".tsvg-th-blocks-container-" + key_id).attr('data-tsvg-titl_position');
+			var titl_bacg = jQuery(".tsvg-th-blocks-container-" + key_id).attr('data-tsvg-titl_bacg');
+			var popup_bacg = jQuery(".tsvg-th-blocks-container-" + key_id).attr('data-tsvg-popup_bacg');
 			if (!data.isMobile) {
 				html += '<div id="boxer-overlay" class="' + data.customClass + '"></div>';
 			}
@@ -189,6 +190,8 @@
 			// Cache jquery objects
 			data.$overlay = $("#boxer-overlay");
 			data.$boxer = $("#boxer");
+			data.$overlay.addClass("tsvg-boxer-overlay-" + data.tsvgId);
+			data.$boxer.addClass("tsvg-boxer-" + data.tsvgId);
 			data.$container = data.$boxer.find(".boxer-container");
 			data.$content = data.$boxer.find(".boxer-content");
 			data.$meta = data.$boxer.find(".boxer-meta");
@@ -544,9 +547,12 @@
 		}
 	}
 	function loadVideo(source, id) {
-		var tsvg_autoplay = jQuery('.ts_vgallery_main_' + id).attr('data-tsvg-autoplay');
+		var tsvg_autoplay = jQuery('.tsvg-main-content-' + id).attr('data-tsvg-autoplay');
 		var isvideomp4 = "false";
-		if (source.indexOf('youtube.com/embed/') > -1) {
+		if (source.indexOf('youtube.com') > -1) {
+			if(source.indexOf('shorts')){
+				source = source.replace("shorts", "embed");
+			} 
 			if (tsvg_autoplay == "true") {
 				source = source + '?autoplay=1&mute=1';
 			}
@@ -577,7 +583,6 @@
 		data.$content.prepend(data.$videoWrapper);
 		sizeVideo();
 		open();
-
 		// data.$video = $('<iframe class="boxer-video" seamless="seamless" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen/>');
 		// data.$video.attr("src", source+'?autoplay=1;rel=0;iv_load_policy=3')
 		/*****----*/
@@ -650,13 +655,13 @@
 		var source = '';
 		if (data.gallery.index > 0) {
 			source = data.gallery.$items.eq(data.gallery.index - 1).attr("href");
-			if (source.indexOf("youtube.com/embed") < 0 && source.indexOf("player.vimeo.com/video") < 0 || source.indexOf("wistia") < 0) {
+			if (source.indexOf("youtube.com") < 0 && source.indexOf("player.vimeo.com/video") < 0 || source.indexOf("wistia") < 0) {
 				$('<img src="' + source + '">');
 			}
 		}
 		if (data.gallery.index < data.gallery.total) {
 			source = data.gallery.$items.eq(data.gallery.index + 1).attr("href");
-			if (source.indexOf("youtube.com/embed") < 0 && source.indexOf("player.vimeo.com/video") < 0 || source.indexOf("wistia") < 0) {
+			if (source.indexOf("youtube.com") < 0 && source.indexOf("player.vimeo.com/video") < 0 || source.indexOf("wistia") < 0) {
 				$('<img src="' + source + '">');
 			}
 		}
@@ -689,7 +694,7 @@
 						data.$caption.html(data.formatter.apply(data.$body, [data.$target]));
 						data.$position.find(".current").html(data.gallery.index + 1);
 						var source = data.$target.attr("href"),
-							isVideo = (source.indexOf("youtube.com/embed") > -1 || source.indexOf("player.vimeo.com/video") > -1 || source.indexOf("wistia") > -1 || source.indexOf(".mp4") > -1),
+							isVideo = (source.indexOf("youtube.com") > -1 || source.indexOf("player.vimeo.com/video") > -1 || source.indexOf("wistia") > -1 || source.indexOf(".mp4") > -1),
 							gallery_id_ = data.$target.attr("data-id");
 						if (isVideo) {
 							loadVideo(source, gallery_id_);

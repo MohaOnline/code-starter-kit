@@ -3,7 +3,7 @@
 $view = $view ?? [];
 $isShort = $view['isShort'] ?? false;
 $shortcodeName = $view['shortcodeName'] ?? '';
-$viewId = $view['viewId'] ?? 0;
+$viewId = $view['viewId'] ?? '';
 $isSingle = $view['isSingle'] ?? false;
 $description = $view['description'] ?? '';
 $idArgument = $view['idArgument'] ?? '';
@@ -17,10 +17,10 @@ $type = $isShort ?
 <av-shortcodes class="av-shortcodes av-shortcodes--type--<?php
 echo esc_attr($type) ?>">
     <span class='av-shortcodes__code av-shortcodes__code--type--short'>[<?php
-        echo esc_html($shortcodeName) ?> <?php
+        echo esc_html($shortcodeName) ?> name="<?php
+        echo esc_html($entryName) ?>" <?php
         echo esc_html($idArgument) ?>="<?php
-        echo esc_html($viewId) ?>" name="<?php
-        echo esc_html($entryName) ?>"]</span>
+        echo esc_html($viewId) ?>"]</span>
 
     <?php
     if (!$isShort) { ?>
@@ -35,9 +35,9 @@ echo esc_attr($type) ?>">
         if (!$isSingle) { ?>
             <hr class="av-shortcodes__delimiter">
             <span class='av-shortcodes__code av-shortcodes__code--type--full'>[<?php
-                echo esc_html($shortcodeName) ?> view-id="<?php
-                echo esc_html($viewId) ?>" object-id="ANOTHER_POST_ID" name="<?php
-                echo esc_html($entryName) ?>"]</span>
+                echo esc_html($shortcodeName) ?> name="<?php
+                echo esc_html($entryName) ?>" view-id="<?php
+                echo esc_html($viewId) ?>" object-id="ANOTHER_POST_ID"]</span>
             <button class='av-shortcodes__copy-button button button-primary button-large'
                     data-target=".av-shortcodes__code--type--full"><?php
                 echo __('Copy to clipboard', 'acf-views'); ?>
@@ -56,10 +56,10 @@ echo esc_attr($type) ?>">
 
         <hr class="av-shortcodes__delimiter">
         <span class='av-shortcodes__code av-shortcodes__code--type--roles'>[<?php
-            echo esc_html($shortcodeName) ?> <?php
+            echo esc_html($shortcodeName) ?> name="<?php
+            echo esc_html($entryName) ?>" <?php
             echo esc_html($idArgument) ?>="<?php
-            echo esc_html($viewId) ?>" name="<?php
-            echo esc_html($entryName) ?>" user-with-roles="ROLE1,ROLE2" user-without-roles="ROLE1,ROLE2"]</span>
+            echo esc_html($viewId) ?>"  user-with-roles="ROLE1,ROLE2" user-without-roles="ROLE1,ROLE2"]</span>
         <button class='av-shortcodes__copy-button button button-primary button-large'
                 data-target=".av-shortcodes__code--type--roles"><?php
             echo __('Copy to clipboard', 'acf-views'); ?>

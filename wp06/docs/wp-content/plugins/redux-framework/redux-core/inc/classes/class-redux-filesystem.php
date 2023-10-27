@@ -429,7 +429,7 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 					}
 				}
 
-				$this->killswitch = true;
+				$this->wp_filesystem->killswitch = true;
 
 				// translators: %1$s: Upload URL.  %2$s: Codex URL.
 				$msg = '<strong>' . esc_html__( 'File Permission Issues', 'redux-framework' ) . '</strong><br/>' . sprintf( esc_html__( 'We were unable to modify required files. Please ensure that %1$s has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as %2$s.', 'redux-framework' ), '<code>' . esc_url( Redux_Functions_Ex::wp_normalize_path( trailingslashit( WP_CONTENT_DIR ) ) ) . '/uploads/</code>', '<a href="https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants" target="_blank">' . esc_html__( 'outlined here', 'redux-framework' ) . '</a>' );
@@ -532,7 +532,7 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 
 			// phpcs:ignore WordPress.PHP.NoSilencedErrors
 			// @codingStandardsIgnoreStart
-			$return = @file_put_contents( $abs_path, $contents );
+			$return = is_writable( $abs_path ) ? @file_put_contents( $abs_path, $contents ) : false;
 			// @codingStandardsIgnoreEnd
 			$this->chmod( $abs_path );
 
@@ -542,7 +542,8 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 
 			if ( ! $return && $this->use_filesystem ) {
 				$abs_path = $this->get_sanitized_path( $abs_path );
-				$return   = $this->wp_filesystem->put_contents( $abs_path, $contents, $perms );
+				// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_is_writable
+				$return = is_writable( $abs_path ) && $this->wp_filesystem->put_contents( $abs_path, $contents, $perms );
 			}
 
 			return (bool) $return;
@@ -805,6 +806,7 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 			}
 
 			try {
+				// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_is_writable, WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 				$mkdirp = wp_mkdir_p( $abs_path );
 			} catch ( Exception $e ) {
 				$mkdirp = false;
@@ -816,8 +818,9 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 
 				return true;
 			}
-			// phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
-			$return = @mkdir( $abs_path, $perms, true );
+
+			// phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_is_writable
+			$return = is_writable( $abs_path ) && @mkdir( $abs_path, $perms, true );
 
 			if ( ! $return && $this->use_filesystem ) {
 				$abs_path = $this->get_sanitized_path( $abs_path );
@@ -840,7 +843,9 @@ if ( ! class_exists( 'Redux_Filesystem', false ) ) {
 
 				foreach ( $dirs as $dir ) {
 					$current_dir .= '/' . $dir;
-					if ( ! $this->is_dir( $current_dir ) ) {
+
+					// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_is_writable, WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
+					if ( ! $this->is_dir( $current_dir ) && is_writable( $current_dir ) ) {
 						$this->wp_filesystem->mkdir( $current_dir, $perms );
 					}
 				}

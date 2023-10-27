@@ -3,9 +3,9 @@ Contributors: TigrouMeow
 Tags: ai, chatgpt, gpt, openai, chatbot, copilot
 Donate link: https://meowapps.com/donation/
 Requires at least: 6.0
-Tested up to: 6.3.1
+Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.9.85
+Stable tag: 1.9.91
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,10 @@ The AI Engine utilizes the API from [OpenAI](https://beta.openai.com). This plug
 
 AI Engine is a plugin that helps users connect their websites to AI services like OpenAI's ChatGPT or Microsoft Azure. Users need their own API key and must follow the rules set by the AI service they choose. By using AI Engine, users agree to watch and manage the content made by the AI and handle any problems or misuse. The developer of AI Engine and related parties are not responsible for any issues or losses caused by using the plugin or AI-generated content. Users should talk to a legal expert and follow the laws in their area. The full disclaimer is [here](https://meowapps.com/ai-engine/disclaimer/).
 
+== Compatibility ==
+
+Please be aware that there may be conflicts with certain caching or performance plugins, such as SiteGround Optimizer and Ninja Firewall. To prevent any issues, ensure that the AI Engine is excluded from these plugins.
+
 == Usage ==
 
 1. Create an account at OpenAI.
@@ -78,13 +82,40 @@ Languages: English.
 
 == Changelog ==
 
+= 1.9.91 (2023/10/24) =
+* Update: Auto Sync Posts now can be set to use a specific environment, index and namespace.
+* Fix: Remove many warnings in the JS console.
+* Fix: Chatbot with IDs can now be overriden properly.
+
+= 1.9.90 (2023/10/22) =
+* Add: Sync Pull (to download remote embeddings - it does not insure that they have content however).
+* Update: Better UI for Embeddings. 
+* Fix: Many fixes linked to AI Search, auto-retrieval of remote embeddings, and the way the data is handled.
+* Fix: Minimum Score and Max Embeddings are now working correctly throughout the plugin.
+* Fix: Unselecting an embedding environment will now remove the index and the namespace.
+* Fix: A bunch of tiny additional fixes.
+
+= 1.9.88 (2023/10/16) =
+* Add: Support of multi-environments with embeddings (only Pinecone environments for now, but more will come soon).
+* Fix: Various issues when using embeddings without namespaces.
+* Fix: Various other little issues.
+* 🎵 Discuss with other users about features and issues on [my Discord](https://discord.gg/bHDGh38).
+* 🌴 Keep me motivated with [a little review here](https://wordpress.org/support/plugin/ai-engine/reviews/). Thank you!
+
+= 1.9.87 (2023/10/04) =
+* Fix: The mwai_context_search was not being always called.
+* Update: Many enhancements with the Embeddings to make them more flexible and powerful, with better error handling.
+
+= 1.9.86 (2023/10/02) =
+* Fix: Issue with model being overriden by the default model in the chatbot.
+* Update: Better IP resolution for logging.
+* Fix: The value from custom DIVs was not always retrieved by AI Forms.
+
 = 1.9.85 (2023/09/30) =
 * Update: Better support for gcp-starter server (Pinecone). Let us know if it's better for you!
 * Fix: No more swallowing spaces issues when using the AI Assistants in Firefox.
 * Fix: Prevent the user to re-use the same botId for different chatbots.
 * Fix: Custom ID can now be used in the conversations shortcode (custom_id).
-* 🎵 Discuss with other users about features and issues on [my Discord](https://discord.gg/bHDGh38).
-* 🌴 Keep me motivated with [a little review here](https://wordpress.org/support/plugin/ai-engine/reviews/). Thank you!
 
 = 1.9.84 (2023/09/23) =
 * Fix: For Embeddings in Forms, the "None" could be mistaken for an actual index.

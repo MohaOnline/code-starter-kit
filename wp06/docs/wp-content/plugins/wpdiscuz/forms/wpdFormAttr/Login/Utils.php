@@ -130,12 +130,12 @@ class Utils {
         ];
         return $userData;
     }
-    
+
     private static function sanitizeTelegramUser($telegramUser) {
         $userID = $telegramUser["id"] ? $telegramUser["id"] : uniqid();
         $username = $telegramUser["username"] ? $telegramUser["username"] : "tlg_" . $userID;
         $dname = $telegramUser["first_name"] ? $telegramUser["first_name"] : $username;
-                
+
         $userData = [
             "user_login" => self::saitizeUsername($username),
             "first_name" => $telegramUser["first_name"],
@@ -213,21 +213,46 @@ class Utils {
     private static function sanitizeLinkedinUser($socialUser) {
         $fname = "";
         $lname = "";
-        $email = isset($socialUser["email"]) ? $socialUser["email"] : $socialUser["id"] . "@linkedin.com";
-        $dname = $login = self::generateLogin($socialUser["email"]);
+        $dname = "";
+        $avatar = "";
+        if (isset($socialUser["id"])) {
+            $id = $socialUser["id"];
 
-        if (isset($socialUser["firstName"]["localized"]) && is_array($socialUser["firstName"]["localized"])) {
-            $fname = array_shift($socialUser["firstName"]["localized"]);
-        }
-        if (isset($socialUser["lastName"]["localized"]) && is_array($socialUser["lastName"]["localized"])) {
-            $lname = array_shift($socialUser["lastName"]["localized"]);
-        }
-        if ($fname || $lname) {
-            $dname = trim($fname . " " . $lname);
+            if (isset($socialUser["firstName"]["localized"]) && is_array($socialUser["firstName"]["localized"])) {
+                $fname = array_shift($socialUser["firstName"]["localized"]);
+            }
+            if (isset($socialUser["lastName"]["localized"]) && is_array($socialUser["lastName"]["localized"])) {
+                $lname = array_shift($socialUser["lastName"]["localized"]);
+            }
+            if ($fname || $lname) {
+                $dname = trim($fname . " " . $lname);
+            }
+
+            if (isset($socialUser['avatar'])) {
+                $avatar = $socialUser['avatar'];
+            } else if (isset($socialUser["profilePicture"]["displayImage~"]["elements"][0]["identifiers"][0]["identifier"])) {
+                $avatar = $socialUser["profilePicture"]["displayImage~"]["elements"][0]["identifiers"][0]["identifier"];
+            }
+        } else {
+            $id = $socialUser["sub"];
+            if (isset($socialUser["given_name"])) {
+                $fname = $socialUser["given_name"];
+            }
+            if (isset($socialUser["family_name"])) {
+                $lname = $socialUser["family_name"];
+            }
+            if (isset($socialUser["name"])) {
+                $dname = $socialUser["name"];
+            }
+            if (isset($socialUser["picture"])) {
+                $avatar = $socialUser["picture"];
+            }
         }
 
-        if (isset($socialUser["profilePicture"]["displayImage~"]["elements"][0]["identifiers"][0]["identifier"])) {
-            $avatar = $socialUser["profilePicture"]["displayImage~"]["elements"][0]["identifiers"][0]["identifier"];
+        $email = isset($socialUser["email"]) ? $socialUser["email"] : $id . "@linkedin.com";
+        $login = self::generateLogin($socialUser["email"]);
+        if (!$dname) {
+            $dname = $login;
         }
 
         $userData = [
@@ -238,9 +263,10 @@ class Utils {
             "user_url" => "",
             "user_email" => $email,
             "provider" => "linkedin",
-            "social_user_id" => $socialUser["id"],
-            "avatar" => $socialUser['avatar']
+            "social_user_id" => $id,
+            "avatar" => $avatar
         ];
+
         return $userData;
     }
 
@@ -365,7 +391,7 @@ class Utils {
     }
 
     public static function addOAuthState($provider, $secret, $postID) {
-        set_transient(wpdFormConst::WPDISCUZ_OAUTH_STATE_TOKEN.md5($secret),[wpdFormConst::WPDISCUZ_OAUTH_STATE_PROVIDER => $provider , wpdFormConst::WPDISCUZ_OAUTH_CURRENT_POSTID => $postID], HOUR_IN_SECONDS);
+        set_transient(wpdFormConst::WPDISCUZ_OAUTH_STATE_TOKEN . md5($secret), [wpdFormConst::WPDISCUZ_OAUTH_STATE_PROVIDER => $provider, wpdFormConst::WPDISCUZ_OAUTH_CURRENT_POSTID => $postID], HOUR_IN_SECONDS);
     }
 
     public static function generateOAuthState($appID) {
@@ -373,7 +399,7 @@ class Utils {
     }
 
     public static function getProviderByState($state) {
-        $option_key = wpdFormConst::WPDISCUZ_OAUTH_STATE_TOKEN.md5($state);
+        $option_key = wpdFormConst::WPDISCUZ_OAUTH_STATE_TOKEN . md5($state);
         $providerData = get_transient($option_key);
         return $providerData;
     }

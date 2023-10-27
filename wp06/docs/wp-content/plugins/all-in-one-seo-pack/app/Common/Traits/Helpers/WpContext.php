@@ -355,17 +355,14 @@ trait WpContext {
 		foreach ( $keys as $key ) {
 			// Try ACF.
 			if ( isset( $acfFields[ $key ] ) ) {
-				$customFieldContent .= "{$acfFields[$key]} ";
+				$customFieldContent .= "$acfFields[$key] ";
 				continue;
 			}
 
 			// Fallback to post meta.
 			$value = get_post_meta( $post->ID, $key, true );
-			if ( $value ) {
-				if ( ! is_string( $value ) ) {
-					$value = strval( $value );
-				}
-				$customFieldContent .= "{$value} ";
+			if ( $value && is_scalar( $value ) ) {
+				$customFieldContent .= $value . ' ';
 			}
 		}
 
@@ -818,14 +815,37 @@ trait WpContext {
 	public function restoreWpQuery() {
 		global $wp_query, $post;
 		if ( is_a( $this->originalQuery, 'WP_Query' ) ) {
-			$wp_query = $this->deepClone( $this->originalQuery );
+			// Loop over all properties and replace the ones that have changed.
+			// We want to avoid replacing the entire object because it can cause issues with other plugins.
+			foreach ( $this->originalQuery as $key => $value ) {
+				if ( $value !== $wp_query->{$key} ) {
+					$wp_query->{$key} = $value;
+				}
+			}
 		}
 
 		if ( is_a( $this->originalPost, 'WP_Post' ) ) {
-			$post = $this->deepClone( $this->originalPost );
+			foreach ( $this->originalPost as $key => $value ) {
+				if ( $value !== $post->{$key} ) {
+					$post->{$key} = $value;
+				}
+			}
 		}
 
 		$this->originalQuery = null;
 		$this->originalPost  = null;
+	}
+
+	/**
+	 * Gets the list of theme features.
+	 *
+	 * @since 4.4.9
+	 *
+	 * @return array List of theme features.
+	 */
+	public function getThemeFeatures() {
+		global $_wp_theme_features;
+
+		return isset( $_wp_theme_features ) && is_array( $_wp_theme_features ) ? $_wp_theme_features : [];
 	}
 }

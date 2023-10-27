@@ -328,9 +328,13 @@ class BMI_Even_Better_Database_Restore {
 
     $backupRootDir = $this->manifest->config->ABSPATH;
     $currentRootDir = ABSPATH;
+    
+    $homeURL = site_url();
+    if (strlen($homeURL) <= 8) $homeURL = home_url();
+    if (defined('WP_SITEURL') && strlen(WP_SITEURL) > 8) $homeURL = WP_SITEURL;
 
     $backupDomain = $this->parseDomain($this->manifest->dbdomain);
-    $currentDomain = $this->parseDomain(get_option('siteurl'), false);
+    $currentDomain = $this->parseDomain($homeURL, false);
 
     $currentTable = false;
     $allTables = array_keys($this->map['tables']);
@@ -351,6 +355,15 @@ class BMI_Even_Better_Database_Restore {
     $replaceEngine = new BMISearchReplace([$currentTable], $currentPage, $totalPages);
 
     if ($step == 0) {
+      $ssl = is_ssl() == true ? 'https://' : 'http://';
+      $this->logger->log('Previous detected domain: ' . $backupDomain, 'VERBOSE');
+      $this->logger->log('Previous detected domain parsed: ' . $this->parseDomain($backupDomain, false), 'VERBOSE');
+      $this->logger->log('New detected domain: ' . $currentDomain, 'VERBOSE');
+      $this->logger->log('SSL: ' . $ssl, 'VERBOSE');
+      
+      $this->logger->log('Previous ABSPATH: ' . $backupRootDir, 'VERBOSE');
+      $this->logger->log('New detected ABSPATH: ' . $currentRootDir, 'VERBOSE');
+      
       if ($backupRootDir != $currentRootDir || $currentDomain != $this->parseDomain($backupDomain, false)) {
         $this->logger->log(__('Performing Search & Replace', 'backup-backup'), 'STEP');
         $pagesize = '?';
@@ -604,7 +617,8 @@ class BMI_Even_Better_Database_Restore {
       'wordpress-starter/siteground-wizard.php',
       'revslider/revslider.php',
       'easy-soundcloud-shortcode/easy-soundcloud-shortcode.php',
-      'easy-soundcloud-shortcode/EasySoundcloudShortcode.php'
+      'easy-soundcloud-shortcode/EasySoundcloudShortcode.php',
+      'mainwp-child/mainwp-child.php'
     ];
 
     for ($i = 0; $i < sizeof($plugins_copy); ++$i) {
@@ -798,9 +812,13 @@ class BMI_Even_Better_Database_Restore {
       $this->seek['active_plugins'] = $active_plugins;
 
       update_option('active_plugins', ['backup-backup/backup-backup.php']);
-
+      
+      $homeURL = site_url();
+      if (strlen($homeURL) <= 8) $homeURL = home_url();
+      if (defined('WP_SITEURL') && strlen(WP_SITEURL) > 8) $homeURL = WP_SITEURL;
+      
       $ssl = is_ssl() == true ? 'https://' : 'http://';
-      $currentDomain = $ssl . $this->parseDomain(get_option('siteurl'), false);
+      $currentDomain = $ssl . $this->parseDomain($homeURL, false);
 
       $sql = 'UPDATE ' . $options_table . ' SET option_value = %s WHERE option_name = "siteurl"';
       $wpdb->query($wpdb->prepare($sql, $currentDomain));

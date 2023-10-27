@@ -4,8 +4,9 @@
  *
  * @package Botiga
  */
-
-global $_product;
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+global $product;
+$_product = $product;
 $product_id   = $_product->get_id();
 $review_count = $_product->get_review_count();
 $average      = $_product->get_average_rating();
@@ -232,11 +233,11 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                                 // We need to include the $comment variable here because some extra plugins like Germanized for WooCommerce use it.
                                                 $comment = $comment; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
-                                                do_action( 'woocommerce_review_before_comment_text', $comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                                                do_action( 'woocommerce_review_before_comment_text', $comment ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
 
                                                 comment_text( $comment ); 
                                                                                     
-                                                do_action( 'woocommerce_review_after_comment_text', $comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                                                do_action( 'woocommerce_review_after_comment_text', $comment ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
                                                 ?>
                                             </div>
                                         </div>
@@ -321,4 +322,4 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
         echo '</div>';
     } ?>
 </section>
-
+<?php // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>

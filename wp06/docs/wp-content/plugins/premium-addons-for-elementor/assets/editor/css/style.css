@@ -673,6 +673,11 @@ html:not([dir="rtl"]) .premium-promotion-pro-btn {
     cursor: pointer;
 }
 
+.image-choose-label-block .imagesmall.imagesmall-svg {
+    height: 50px;
+    background-color: #afafaf;
+}
+
 .image-choose-label-block input {
     display: none !important;
 }
@@ -686,7 +691,43 @@ html:not([dir="rtl"]) .premium-promotion-pro-btn {
     padding: 2px;
 }
 
+.elementor-control-premium_gdivider_defaults .elementor-image-choices .elementor-image-choices-label {
+    border-width: 1px;
+}
+
 .elementor-image-choices input.checked + .elementor-image-choices-label {
     border: 2px solid #a4afb7;
     border-radius: 12px;
+}
+
+.elementor-control-premium_gdivider_defaults .elementor-image-choices input.checked + .elementor-image-choices-label {
+    border: 1px solid #a4afb7;
+    border-radius: 0px;
+    padding: 2px;
+}
+
+.elementor-control-premium_gdivider_defaults .elementor-image-choices {
+    height: 195px;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.elementor-control-premium_gdivider_defaults .elementor-image-choices-label {
+    height: 50px;
+}
+
+.elementor-control-premium_gdivider_defaults .elementor-image-choices-label svg {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.elementor-control-premium_gdivider_defaults .elementor-image-choices-label svg,
+.elementor-control-premium_gdivider_defaults .elementor-image-choices-label svg path {
+    fill: #afafaf;
+}
+
+.premium-rotate-icon {
+    transform: rotate(90deg);
 }

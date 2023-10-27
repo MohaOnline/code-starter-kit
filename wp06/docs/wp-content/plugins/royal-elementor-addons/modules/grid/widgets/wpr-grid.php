@@ -487,6 +487,13 @@ class Wpr_Grid extends Widget_Base {
 		];
 	}
 
+	public function add_repeater_args_element_custom_field_img_ID() {
+		return [
+			'type' => Controls_Manager::HIDDEN,
+			'default' => ''
+		];
+	}
+
 	public function add_repeater_args_element_custom_field_btn_link() {
 		return [
 			'type' => Controls_Manager::HIDDEN,
@@ -689,6 +696,10 @@ class Wpr_Grid extends Widget_Base {
 	public function add_section_style_custom_field1() {}
 	
 	public function add_section_style_custom_field2() {}
+	
+	public function add_section_style_custom_field3() {}
+	
+	public function add_section_style_custom_field4() {}
 	
 	public function add_control_grid_item_even_bg_color() {}
 	
@@ -1085,6 +1096,54 @@ class Wpr_Grid extends Widget_Base {
 
 		// Upgrade to Pro Notice
 		Utilities::upgrade_pro_notice( $this, Controls_Manager::RAW_HTML, 'grid', 'layout_select', ['pro-ms'] );
+
+		$this->add_control(
+			'stick_last_element_to_bottom',
+			[
+				'label' => esc_html__( 'Last Element to Bottom', 'wpr-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'render_type' => 'template',
+				// 'separator' => 'before',
+				'condition' => [
+					'layout_select' => 'fitRows',
+				]
+			]
+		);
+
+		$this->add_control(
+            'last_element_position',
+            [
+                'label' => esc_html__( 'Last Element Position', 'wpr-addons' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'default' => 'left',
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__( 'Left', 'wpr-addons' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'wpr-addons' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__( 'Right', 'wpr-addons' ),
+                        'icon' => 'eicon-h-align-right',
+                    ]
+                ],
+				'selectors_dictionary' => [
+					'left' => 'left: 0; right: auto;',
+					'center' => 'left: 50%; transform: translateX(-50%);',
+					'right' => 'left: auto; right: 0;'
+				],
+				'selectors' => [
+					'{{WRAPPER}}.wpr-grid-last-element-yes .wpr-grid-item-below-content>div:last-child' => '{{VALUE}}',
+				],
+				'render_type' => 'template',
+				'separator' => 'after'
+            ]
+        );
 
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
@@ -2020,6 +2079,8 @@ class Wpr_Grid extends Widget_Base {
 		);
 
 		$repeater->add_control( 'element_custom_field', $this->add_repeater_args_element_custom_field($post_meta_keys[1]) );
+
+		$repeater->add_control( 'element_custom_field_img_ID', $this->add_repeater_args_element_custom_field_img_ID() );
 
 		$repeater->add_control( 'element_custom_field_btn_link', $this->add_repeater_args_element_custom_field_btn_link() );
 
@@ -5924,6 +5985,839 @@ class Wpr_Grid extends Widget_Base {
 		$this->end_controls_section();
 
 		// Styles ====================
+		// Section: Filters ----------
+		$this->start_controls_section(
+			'section_style_filters',
+			[
+				'label' => esc_html__( 'Filters', 'wpr-addons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+					'layout_select!' => 'slider',
+					'layout_filters' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'active_styles_notice',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => esc_html__('Apply active filter styles from the hover tab.', 'wpr-addons'),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info'
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_grid_filters_style' );
+
+		$this->start_controls_tab(
+			'tab_grid_filters_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpr-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'filters_color',
+			[
+				'label'  => esc_html__( 'Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#7A7A7A',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'filters_bg_color',
+			[
+				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'background-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control(
+			'filters_border_color',
+			[
+				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#E8E8E8',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'filters_box_shadow',
+				'selector' => '{{WRAPPER}} .wpr-grid-filters li > a, {{WRAPPER}} .wpr-grid-filters li > span',
+			]
+		);
+
+		$this->add_control(
+			'filters_wrapper_color',
+			[
+				'label'  => esc_html__( 'Wrapper Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters' => 'background-color: {{VALUE}}',
+				],
+				'separator' => 'after',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_grid_filters_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpr-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'filters_color_hr',
+			[
+				'label'  => esc_html__( 'Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'filters_bg_color_hr',
+			[
+				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#605BE5',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'background-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control(
+			'filters_border_color_hr',
+			[
+				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#E8E8E8',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'border-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control_filters_pointer_color_hr();
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'filters_box_shadow_hr',
+				'selector' => '{{WRAPPER}} .wpr-grid-filters li > a:hover, {{WRAPPER}} .wpr-grid-filters li > span:hover',
+				'separator' => 'after',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_control_filters_pointer();
+
+		$this->add_control_filters_pointer_height();
+
+		$this->add_control_filters_pointer_animation();
+
+		$this->add_control(
+			'filters_transition_duration',
+			[
+				'label' => esc_html__( 'Transition Duration', 'wpr-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 0.1,
+				'min' => 0,
+				'max' => 5,
+				'step' => 0.1,
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'transition-duration: {{VALUE}}s',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'transition-duration: {{VALUE}}s',
+					'{{WRAPPER}} .wpr-grid-filters .wpr-pointer-item:before' => 'transition-duration: {{VALUE}}s',
+					'{{WRAPPER}} .wpr-grid-filters .wpr-pointer-item:after' => 'transition-duration: {{VALUE}}s',
+				],
+				'separator' => 'after',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'filters_typography',
+				'scheme' => Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .wpr-grid-filters li'
+			]
+		);
+
+		$this->add_control(
+			'filters_border_type',
+			[
+				'label' => esc_html__( 'Border Type', 'wpr-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => esc_html__( 'None', 'wpr-addons' ),
+					'solid' => esc_html__( 'Solid', 'wpr-addons' ),
+					'double' => esc_html__( 'Double', 'wpr-addons' ),
+					'dotted' => esc_html__( 'Dotted', 'wpr-addons' ),
+					'dashed' => esc_html__( 'Dashed', 'wpr-addons' ),
+					'groove' => esc_html__( 'Groove', 'wpr-addons' ),
+				],
+				'default' => 'none',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-style: {{VALUE}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'filters_border_width',
+			[
+				'label' => esc_html__( 'Border Width', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'top' => 1,
+					'right' => 1,
+					'bottom' => 1,
+					'left' => 1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'filters_border_type!' => 'none',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filters_distance_from_grid',
+			[
+				'label' => esc_html__( 'Distance From Grid', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 25,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'filters_icon_spacing',
+			[
+				'label' => esc_html__( 'Extra Icon Spacing', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 25,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters-icon-left' => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-filters-icon-right' => 'padding-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filters_margin',
+			[
+				'label' => esc_html__( 'Margin', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'top' => 0,
+					'right' => 5,
+					'bottom' => 0,
+					'left' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filters_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', ],
+				'default' => [
+					'top' => 3,
+					'right' => 15,
+					'bottom' => 3,
+					'left' => 15,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filters_wrapper_padding',
+			[
+				'label' => esc_html__( 'Wrapper Padding', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'filters_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'default' => [
+					'top' => 3,
+					'right' => 3,
+					'bottom' => 3,
+					'left' => 3,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Styles ====================
+		// Section: Pagination -------
+		$this->start_controls_section(
+			'section_style_pagination',
+			[
+				'label' => esc_html__( 'Pagination', 'wpr-addons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+					'layout_select!' => 'slider',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_grid_pagination_style' );
+
+		$this->start_controls_tab(
+			'tab_grid_pagination_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpr-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'pagination_color',
+			[
+				'label'  => esc_html__( 'Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pagination_bg_color',
+			[
+				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#605BE5',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-pagination-finish' => 'color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control(
+			'pagination_border_color',
+			[
+				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#E8E8E8',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'pagination_box_shadow',
+				'selector' => '{{WRAPPER}} .wpr-grid-pagination a, {{WRAPPER}} .wpr-grid-pagination > div > span',
+			]
+		);
+
+		$this->add_control(
+			'pagination_loader_color',
+			[
+				'label'  => esc_html__( 'Loader Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#605BE5',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-double-bounce .wpr-child' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-wave .wpr-rect' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-spinner-pulse' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-chasing-dots .wpr-child' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-three-bounce .wpr-child' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-fading-circle .wpr-circle:before' => 'background-color: {{VALUE}}',
+				],
+				'condition' => [
+					'pagination_type' => [ 'load-more', 'infinite-scroll' ]
+				]
+			]
+		);
+
+		$this->add_control(
+			'pagination_wrapper_color',
+			[
+				'label'  => esc_html__( 'Wrapper Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination' => 'background-color: {{VALUE}}',
+				],
+				'separator' => 'after',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_grid_pagination_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpr-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'pagination_color_hr',
+			[
+				'label'  => esc_html__( 'Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination a:hover svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pagination_bg_color_hr',
+			[
+				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#4A45D2',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'background-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control(
+			'pagination_border_color_hr',
+			[
+				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#E8E8E8',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'pagination_box_shadow_hr',
+				'selector' => '{{WRAPPER}} .wpr-grid-pagination a:hover, {{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover',
+				'separator' => 'after',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_control(
+			'pagination_transition_duration',
+			[
+				'label' => esc_html__( 'Transition Duration', 'wpr-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 0.1,
+				'min' => 0,
+				'max' => 5,
+				'step' => 0.1,
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'transition-duration: {{VALUE}}s',
+					'{{WRAPPER}} .wpr-grid-pagination svg' => 'transition-duration: {{VALUE}}s',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'transition-duration: {{VALUE}}s',
+				],
+				'separator' => 'after',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'pagination_typography',
+				'scheme' => Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .wpr-grid-pagination, {{WRAPPER}} .wpr-grid-pagination a'
+			]
+		);
+
+		$this->add_responsive_control(
+			'pagination_icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 5,
+						'max' => 30,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pagination_border_type',
+			[
+				'label' => esc_html__( 'Border Type', 'wpr-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => esc_html__( 'None', 'wpr-addons' ),
+					'solid' => esc_html__( 'Solid', 'wpr-addons' ),
+					'double' => esc_html__( 'Double', 'wpr-addons' ),
+					'dotted' => esc_html__( 'Dotted', 'wpr-addons' ),
+					'dashed' => esc_html__( 'Dashed', 'wpr-addons' ),
+					'groove' => esc_html__( 'Groove', 'wpr-addons' ),
+				],
+				'default' => 'none',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-style: {{VALUE}}',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'pagination_border_width',
+			[
+				'label' => esc_html__( 'Border Width', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'top' => 1,
+					'right' => 1,
+					'bottom' => 1,
+					'left' => 1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'pagination_border_type!' => 'none',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'pagination_distance_from_grid',
+			[
+				'label' => esc_html__( 'Distance From Grid', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 25,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'pagination_gutter',
+			[
+				'label' => esc_html__( 'Gutter', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 25,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 10,
+				],
+				'selectors' => [
+					// '{{WRAPPER}} .wpr-grid-pagination a' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination a:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};', 
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination > div > a.wpr-prev-page' => 'margin-right: {{SIZE}}{{UNIT}};',
+					// '{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pagination_icon_spacing',
+			[
+				'label' => esc_html__( 'Icon Spacing', 'wpr-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 25,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 10,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-post-link i' => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-post-link i' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-first-page i' => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-page i' => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-page i' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-last-page i' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-post-link svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-post-link svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-first-page svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-page svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-page svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination .wpr-last-page svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'pagination_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'top' => 8,
+					'right' => 20,
+					'bottom' => 8,
+					'left' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'pagination_wrapper_padding',
+			[
+				'label' => esc_html__( 'Wrapper Padding', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pagination_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpr-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'default' => [
+					'top' => 3,
+					'right' => 3,
+					'bottom' => 3,
+					'left' => 3,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Styles ====================
+		// Section: Password Protected
+		$this->start_controls_section(
+			'section_style_pwd_protected',
+			[
+				'label' => esc_html__( 'Password Protected', 'wpr-addons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+			]
+		);
+
+		$this->add_control(
+			'pwd_protected_color',
+			[
+				'label'  => esc_html__( 'Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-item-protected' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pwd_protected_bg_color',
+			[
+				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#605BE5',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-item-protected' => 'background-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_control(
+			'pwd_protected_input_color',
+			[
+				'label'  => esc_html__( 'Input Background Color', 'wpr-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .wpr-grid-item-protected input' => 'background-color: {{VALUE}}',
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'pwd_protected_typography',
+				'scheme' => Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .wpr-grid-item-protected p'
+			]
+		);
+
+		$this->end_controls_section();
+
+		
+		// Styles ====================
 		// Section: Separator Style 1 
 		$this->start_controls_section(
 			'section_style_separator1',
@@ -6884,6 +7778,14 @@ class Wpr_Grid extends Widget_Base {
 		// Section: Custom Field Style 2
 		$this->add_section_style_custom_field2();
 
+		// Styles =======================
+		// Section: Custom Field Style 3
+		$this->add_section_style_custom_field3();
+
+		// Styles =======================
+		// Section: Custom Field Style 4
+		$this->add_section_style_custom_field4();
+
 		// Styles ====================
 		// Section: Navigation -------
 		$this->start_controls_section(
@@ -7358,839 +8260,7 @@ class Wpr_Grid extends Widget_Base {
 		);
 
 		$this->end_controls_section(); // End Controls Section
-
-		// Styles ====================
-		// Section: Filters ----------
-		$this->start_controls_section(
-			'section_style_filters',
-			[
-				'label' => esc_html__( 'Filters', 'wpr-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-				'show_label' => false,
-				'condition' => [
-					'layout_select!' => 'slider',
-					'layout_filters' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'active_styles_notice',
-			[
-				'type' => Controls_Manager::RAW_HTML,
-				'raw' => esc_html__('Apply active filter styles from the hover tab.', 'wpr-addons'),
-				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info'
-			]
-		);
-
-		$this->start_controls_tabs( 'tabs_grid_filters_style' );
-
-		$this->start_controls_tab(
-			'tab_grid_filters_normal',
-			[
-				'label' => esc_html__( 'Normal', 'wpr-addons' ),
-			]
-		);
-
-		$this->add_control(
-			'filters_color',
-			[
-				'label'  => esc_html__( 'Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#7A7A7A',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li a' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'filters_bg_color',
-			[
-				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'background-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control(
-			'filters_border_color',
-			[
-				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#E8E8E8',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'filters_box_shadow',
-				'selector' => '{{WRAPPER}} .wpr-grid-filters li > a, {{WRAPPER}} .wpr-grid-filters li > span',
-			]
-		);
-
-		$this->add_control(
-			'filters_wrapper_color',
-			[
-				'label'  => esc_html__( 'Wrapper Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters' => 'background-color: {{VALUE}}',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_grid_filters_hover',
-			[
-				'label' => esc_html__( 'Hover', 'wpr-addons' ),
-			]
-		);
-
-		$this->add_control(
-			'filters_color_hr',
-			[
-				'label'  => esc_html__( 'Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'filters_bg_color_hr',
-			[
-				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#605BE5',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'background-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control(
-			'filters_border_color_hr',
-			[
-				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#E8E8E8',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a:hover' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > span:hover' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-filters li > .wpr-active-filter' => 'border-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control_filters_pointer_color_hr();
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'filters_box_shadow_hr',
-				'selector' => '{{WRAPPER}} .wpr-grid-filters li > a:hover, {{WRAPPER}} .wpr-grid-filters li > span:hover',
-				'separator' => 'after',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
-		$this->add_control_filters_pointer();
-
-		$this->add_control_filters_pointer_height();
-
-		$this->add_control_filters_pointer_animation();
-
-		$this->add_control(
-			'filters_transition_duration',
-			[
-				'label' => esc_html__( 'Transition Duration', 'wpr-addons' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 0.1,
-				'min' => 0,
-				'max' => 5,
-				'step' => 0.1,
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'transition-duration: {{VALUE}}s',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'transition-duration: {{VALUE}}s',
-					'{{WRAPPER}} .wpr-grid-filters .wpr-pointer-item:before' => 'transition-duration: {{VALUE}}s',
-					'{{WRAPPER}} .wpr-grid-filters .wpr-pointer-item:after' => 'transition-duration: {{VALUE}}s',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'filters_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .wpr-grid-filters li'
-			]
-		);
-
-		$this->add_control(
-			'filters_border_type',
-			[
-				'label' => esc_html__( 'Border Type', 'wpr-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'none' => esc_html__( 'None', 'wpr-addons' ),
-					'solid' => esc_html__( 'Solid', 'wpr-addons' ),
-					'double' => esc_html__( 'Double', 'wpr-addons' ),
-					'dotted' => esc_html__( 'Dotted', 'wpr-addons' ),
-					'dashed' => esc_html__( 'Dashed', 'wpr-addons' ),
-					'groove' => esc_html__( 'Groove', 'wpr-addons' ),
-				],
-				'default' => 'none',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-style: {{VALUE}};',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-style: {{VALUE}};',
-				],
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'filters_border_width',
-			[
-				'label' => esc_html__( 'Border Width', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default' => [
-					'top' => 1,
-					'right' => 1,
-					'bottom' => 1,
-					'left' => 1,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'filters_border_type!' => 'none',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'filters_distance_from_grid',
-			[
-				'label' => esc_html__( 'Distance From Grid', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 25,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				],
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_control(
-			'filters_icon_spacing',
-			[
-				'label' => esc_html__( 'Extra Icon Spacing', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => ['px'],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 25,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 0,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters-icon-left' => 'padding-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-filters-icon-right' => 'padding-left: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'filters_margin',
-			[
-				'label' => esc_html__( 'Margin', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default' => [
-					'top' => 0,
-					'right' => 5,
-					'bottom' => 0,
-					'left' => 0,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'filters_padding',
-			[
-				'label' => esc_html__( 'Padding', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', ],
-				'default' => [
-					'top' => 3,
-					'right' => 15,
-					'bottom' => 3,
-					'left' => 15,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'filters_wrapper_padding',
-			[
-				'label' => esc_html__( 'Wrapper Padding', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'filters_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'top' => 3,
-					'right' => 3,
-					'bottom' => 3,
-					'left' => 3,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-filters li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-filters li > span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'separator' => 'before',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// Styles ====================
-		// Section: Pagination -------
-		$this->start_controls_section(
-			'section_style_pagination',
-			[
-				'label' => esc_html__( 'Pagination', 'wpr-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-				'show_label' => false,
-				'condition' => [
-					'layout_select!' => 'slider',
-				],
-			]
-		);
-
-		$this->start_controls_tabs( 'tabs_grid_pagination_style' );
-
-		$this->start_controls_tab(
-			'tab_grid_pagination_normal',
-			[
-				'label' => esc_html__( 'Normal', 'wpr-addons' ),
-			]
-		);
-
-		$this->add_control(
-			'pagination_color',
-			[
-				'label'  => esc_html__( 'Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination svg' => 'fill: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pagination_bg_color',
-			[
-				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#605BE5',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-pagination-finish' => 'color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control(
-			'pagination_border_color',
-			[
-				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#E8E8E8',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'pagination_box_shadow',
-				'selector' => '{{WRAPPER}} .wpr-grid-pagination a, {{WRAPPER}} .wpr-grid-pagination > div > span',
-			]
-		);
-
-		$this->add_control(
-			'pagination_loader_color',
-			[
-				'label'  => esc_html__( 'Loader Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#605BE5',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-double-bounce .wpr-child' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-wave .wpr-rect' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-spinner-pulse' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-chasing-dots .wpr-child' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-three-bounce .wpr-child' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-fading-circle .wpr-circle:before' => 'background-color: {{VALUE}}',
-				],
-				'condition' => [
-					'pagination_type' => [ 'load-more', 'infinite-scroll' ]
-				]
-			]
-		);
-
-		$this->add_control(
-			'pagination_wrapper_color',
-			[
-				'label'  => esc_html__( 'Wrapper Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination' => 'background-color: {{VALUE}}',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_grid_pagination_hover',
-			[
-				'label' => esc_html__( 'Hover', 'wpr-addons' ),
-			]
-		);
-
-		$this->add_control(
-			'pagination_color_hr',
-			[
-				'label'  => esc_html__( 'Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination a:hover svg' => 'fill: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pagination_bg_color_hr',
-			[
-				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#4A45D2',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'background-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control(
-			'pagination_border_color_hr',
-			[
-				'label'  => esc_html__( 'Border Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#E8E8E8',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a:hover' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover' => 'border-color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'pagination_box_shadow_hr',
-				'selector' => '{{WRAPPER}} .wpr-grid-pagination a:hover, {{WRAPPER}} .wpr-grid-pagination > div > span:not(.wpr-disabled-arrow):hover',
-				'separator' => 'after',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
-		$this->add_control(
-			'pagination_transition_duration',
-			[
-				'label' => esc_html__( 'Transition Duration', 'wpr-addons' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 0.1,
-				'min' => 0,
-				'max' => 5,
-				'step' => 0.1,
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'transition-duration: {{VALUE}}s',
-					'{{WRAPPER}} .wpr-grid-pagination svg' => 'transition-duration: {{VALUE}}s',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'transition-duration: {{VALUE}}s',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'pagination_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .wpr-grid-pagination, {{WRAPPER}} .wpr-grid-pagination a'
-			]
-		);
-
-		$this->add_responsive_control(
-			'pagination_icon_size',
-			[
-				'label' => esc_html__( 'Icon Size', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => ['px'],
-				'range' => [
-					'px' => [
-						'min' => 5,
-						'max' => 30,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 15,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination i' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination svg' => 'width: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pagination_border_type',
-			[
-				'label' => esc_html__( 'Border Type', 'wpr-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'none' => esc_html__( 'None', 'wpr-addons' ),
-					'solid' => esc_html__( 'Solid', 'wpr-addons' ),
-					'double' => esc_html__( 'Double', 'wpr-addons' ),
-					'dotted' => esc_html__( 'Dotted', 'wpr-addons' ),
-					'dashed' => esc_html__( 'Dashed', 'wpr-addons' ),
-					'groove' => esc_html__( 'Groove', 'wpr-addons' ),
-				],
-				'default' => 'none',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-style: {{VALUE}};',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-style: {{VALUE}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-style: {{VALUE}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-style: {{VALUE}}',
-				],
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'pagination_border_width',
-			[
-				'label' => esc_html__( 'Border Width', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default' => [
-					'top' => 1,
-					'right' => 1,
-					'bottom' => 1,
-					'left' => 1,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'pagination_border_type!' => 'none',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'pagination_distance_from_grid',
-			[
-				'label' => esc_html__( 'Distance From Grid', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 25,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination' => 'margin-top: {{SIZE}}{{UNIT}};',
-				],
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_control(
-			'pagination_gutter',
-			[
-				'label' => esc_html__( 'Gutter', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 25,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 10,
-				],
-				'selectors' => [
-					// '{{WRAPPER}} .wpr-grid-pagination a' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination a:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};', 
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination > div > a.wpr-prev-page' => 'margin-right: {{SIZE}}{{UNIT}};',
-					// '{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'margin-right: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pagination_icon_spacing',
-			[
-				'label' => esc_html__( 'Icon Spacing', 'wpr-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => ['px'],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 25,
-					],
-				],				
-				'default' => [
-					'unit' => 'px',
-					'size' => 10,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-post-link i' => 'padding-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-post-link i' => 'padding-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-first-page i' => 'padding-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-page i' => 'padding-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-page i' => 'padding-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-last-page i' => 'padding-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-post-link svg' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-post-link svg' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-first-page svg' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-prev-page svg' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-next-page svg' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination .wpr-last-page svg' => 'margin-left: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'pagination_padding',
-			[
-				'label' => esc_html__( 'Padding', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default' => [
-					'top' => 8,
-					'right' => 20,
-					'bottom' => 8,
-					'left' => 20,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-disabled-arrow' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'pagination_wrapper_padding',
-			[
-				'label' => esc_html__( 'Wrapper Padding', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pagination_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'wpr-addons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'top' => 3,
-					'right' => 3,
-					'bottom' => 3,
-					'left' => 3,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-pagination a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination > div > span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .wpr-grid-pagination span.wpr-grid-current-page' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'separator' => 'before',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// Styles ====================
-		// Section: Password Protected
-		$this->start_controls_section(
-			'section_style_pwd_protected',
-			[
-				'label' => esc_html__( 'Password Protected', 'wpr-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-				'show_label' => false,
-			]
-		);
-
-		$this->add_control(
-			'pwd_protected_color',
-			[
-				'label'  => esc_html__( 'Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-item-protected' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pwd_protected_bg_color',
-			[
-				'label'  => esc_html__( 'Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#605BE5',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-item-protected' => 'background-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_control(
-			'pwd_protected_input_color',
-			[
-				'label'  => esc_html__( 'Input Background Color', 'wpr-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '#ffffff',
-				'selectors' => [
-					'{{WRAPPER}} .wpr-grid-item-protected input' => 'background-color: {{VALUE}}',
-				]
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'pwd_protected_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .wpr-grid-item-protected p'
-			]
-		);
-
-		$this->end_controls_section();
-
+		
 	}
 
 
@@ -8339,6 +8409,20 @@ class Wpr_Grid extends Widget_Base {
 				if ( $_GET['category'] != '0' ) {
 					// Get category from URL
 					$category = sanitize_text_field($_GET['category']);
+				
+					array_push( $tax_query, [
+						'taxonomy' => 'category',
+						'field' => 'id',
+						'terms' => $category
+					] );
+				}
+			}
+						
+			if ( isset($_GET['wpr_select_category']) ) {
+				
+				if ( $_GET['wpr_select_category'] != '0' ) {
+					// Get category from URL
+					$category = sanitize_text_field($_GET['wpr_select_category']);
 				
 					array_push( $tax_query, [
 						'taxonomy' => 'category',
@@ -9502,6 +9586,12 @@ class Wpr_Grid extends Widget_Base {
 			}
 		}
 
+		if ( 'fitRows' == $settings['layout_select'] ) {
+			$stick_last_element_to_bottom = $settings['stick_last_element_to_bottom'];
+		} else {
+			$stick_last_element_to_bottom = 'no';
+		}
+
 		$gutter_hr_widescreen = isset($settings['layout_gutter_hr_widescreen']['size']) ? $settings['layout_gutter_hr_widescreen']['size'] : $settings['layout_gutter_hr']['size'];
 		$gutter_hr_desktop = $settings['layout_gutter_hr']['size'];
 		$gutter_hr_laptop = isset($settings['layout_gutter_hr_laptop']['size']) ? $settings['layout_gutter_hr_laptop']['size'] : $gutter_hr_desktop;
@@ -9520,6 +9610,7 @@ class Wpr_Grid extends Widget_Base {
 
 		$layout_settings = [
 			'layout' => $settings['layout_select'],
+			'stick_last_element_to_bottom' => $stick_last_element_to_bottom,
 			'columns_desktop' => $settings['layout_columns'],
 			'gutter_hr' => $gutter_hr_desktop,
 			'gutter_hr_mobile' => $gutter_hr_mobile,
@@ -9692,20 +9783,22 @@ class Wpr_Grid extends Widget_Base {
 			$this->get_elements_by_location( 'above', $settings, get_the_ID() );
 
 			// Media
-			echo '<div class="wpr-grid-media-wrap'. esc_attr($this->get_image_effect_class( $settings )) .' " data-overlay-link="'. esc_attr( $settings['overlay_post_link'] ) .'">';
-				// Post Thumbnail
-				$this->render_post_thumbnail( $settings, get_the_ID() );
+			if ( has_post_thumbnail() ) {
+				echo '<div class="wpr-grid-media-wrap'. esc_attr($this->get_image_effect_class( $settings )) .' " data-overlay-link="'. esc_attr( $settings['overlay_post_link'] ) .'">';
+					// Post Thumbnail
+					$this->render_post_thumbnail( $settings, get_the_ID() );
 
-				// Media Hover
-				echo '<div class="wpr-grid-media-hover wpr-animation-wrap">';
-					// Media Overlay
-					$this->render_media_overlay( $settings );
+					// Media Hover
+					echo '<div class="wpr-grid-media-hover wpr-animation-wrap">';
+						// Media Overlay
+						$this->render_media_overlay( $settings );
 
-					// Content: Over Media
-					$this->get_elements_by_location( 'over', $settings, get_the_ID() );
+						// Content: Over Media
+						$this->get_elements_by_location( 'over', $settings, get_the_ID() );
 
+					echo '</div>';
 				echo '</div>';
-			echo '</div>';
+			}
 
 			// Content: Below Media
 			$this->get_elements_by_location( 'below', $settings, get_the_ID() );

@@ -7,7 +7,8 @@ define( 'MWAI_CHATBOT_FRONT_PARAMS', [ 'id', 'customId', 'aiName', 'userName', '
 	'textInputPlaceholder', 'textInputMaxLength', 'textCompliance', 'startSentence', 'localMemory',
 	'themeId', 'window', 'icon', 'iconText', 'iconAlt', 'iconPosition', 'fullscreen', 'copyButton'
 ] );
-define( 'MWAI_CHATBOT_SERVER_PARAMS', [ 'id', 'env', 'mode', 'contentAware', 'embeddingsIndex', 'context',
+define( 'MWAI_CHATBOT_SERVER_PARAMS', [ 'id', 'env', 'mode', 'contentAware', 'context',
+	'embeddingsEnvId', 'embeddingsIndex', 'embeddingsNamespace',
 	'casuallyFineTuned', 'promptEnding', 'completionEnding', 'model', 'temperature', 'maxTokens',
 	'maxResults', 'apiKey', 'service'
 ] );
@@ -187,10 +188,12 @@ class Meow_MWAI_Modules_Chatbot {
 
 				// Awareness & Embeddings
 				// TODO: This is same in Chatbot Legacy and Forms, maybe we should move it to the core?
+				$embeddingsEnvId = $params['embeddingsEnvId'] ?? null;
 				$embeddingsIndex = $params['embeddingsIndex'] ?? null;
 				$embeddingsNamespace = $params['embeddingsNamespace'] ?? null;
 				if ( $query->mode === 'chat' ) {
 					$context = apply_filters( 'mwai_context_search', $context, $query, [ 
+						'embeddingsEnvId' => $embeddingsEnvId,
 						'embeddingsIndex' => $embeddingsIndex,
 						'embeddingsNamespace' => $embeddingsNamespace
 					] );
@@ -296,7 +299,7 @@ class Meow_MWAI_Modules_Chatbot {
 
 	public function build_front_params( $botId, $customId ) {
 		$frontSystem = [
-			'botId' => $botId,
+			'botId' => $customId ? null : $botId,
 			'customId' => $customId,
 			'userData' => $this->core->getUserData(),
 			'sessionId' => $this->core->get_session_id(),
@@ -313,7 +316,7 @@ class Meow_MWAI_Modules_Chatbot {
 		return $frontSystem;
 	}
 
-  public function resolveBotInfo( $atts )
+  public function resolveBotInfo( &$atts )
   {
     $chatbot = null;
     $botId = $atts['id'] ?? null;
@@ -334,6 +337,7 @@ class Meow_MWAI_Modules_Chatbot {
     if ( !empty( $customId ) ) {
       $botId = null;
     }
+		unset( $atts['id'] );
     return [
       'chatbot' => $chatbot,
       'botId' => $botId,
@@ -344,17 +348,17 @@ class Meow_MWAI_Modules_Chatbot {
 	public function chat_shortcode( $atts ) {
 		$atts = empty($atts) ? [] : $atts;
 
+		// Let the user override the chatbot params
+		$atts = apply_filters( 'mwai_chatbot_params', $atts );
+
     // Resolve the bot info
-		$resolvedBot = $this->resolveBotInfo( $atts );
+		$resolvedBot = $this->resolveBotInfo( $atts, 'chatbot' );
     if ( isset( $resolvedBot['error'] ) ) {
       return $resolvedBot['error'];
     }
     $chatbot = $resolvedBot['chatbot'];
     $botId = $resolvedBot['botId'];
     $customId = $resolvedBot['customId'];
-
-		// Let the user override the chatbot params
-		$atts = apply_filters( 'mwai_chatbot_params', $atts, $chatbot );
 
 		// Rename the keys of the atts into camelCase to match the internal params system.
 		$atts = array_map( function( $key, $value ) {
@@ -386,6 +390,9 @@ class Meow_MWAI_Modules_Chatbot {
 		foreach ( MWAI_CHATBOT_SERVER_PARAMS as $param ) {
 			if ( isset( $atts[$param] ) ) {
 				$serverParams[$param] = $atts[$param];
+			}
+			else {
+				$serverParams[$param] = $chatbot[$param] ?? null;
 			}
 		}
 

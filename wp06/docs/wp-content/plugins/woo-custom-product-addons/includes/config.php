@@ -31,6 +31,10 @@ class Config
     {
         if (self::$values == false) {
             $cacheKey = 'wcpa_settings_'.WCPA_VERSION;
+            $ml = new ML();
+            if($ml->is_active()){
+                $cacheKey = $cacheKey.'_'.$ml->current_language();
+            }
             $values = get_transient($cacheKey);
             if (false === $values) {
                 $settings                = new Settings();

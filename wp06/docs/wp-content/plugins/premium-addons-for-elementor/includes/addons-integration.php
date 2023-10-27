@@ -12,6 +12,7 @@ use PremiumAddons\Modules\PA_Display_Conditions\Module as Display_Conditions;
 use PremiumAddons\Modules\PremiumSectionFloatingEffects\Module as Floating_Effects;
 use PremiumAddons\Modules\Woocommerce\Module as Woocommerce;
 use PremiumAddons\Modules\PremiumGlobalTooltips\Module as GlobalTooltips;
+use PremiumAddons\Modules\PremiumShapeDivider\Module as Shape_Divider;
 use PremiumAddons\Includes\Assets_Manager;
 use PremiumAddons\Includes\Premium_Template_Tags;
 use ElementorPro\Plugin as PluginPro;
@@ -484,14 +485,6 @@ class Addons_Integration {
 		);
 
 		wp_register_style(
-			'pa-media-wheel-temp',
-			PREMIUM_ADDONS_URL . 'assets/frontend/min-css/premium-media-wheel.min.css',
-			array(),
-			PREMIUM_ADDONS_VERSION,
-			'all'
-		);
-
-		wp_register_style(
 			'tooltipster',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/tooltipster.min.css',
 			array(),
@@ -501,7 +494,15 @@ class Addons_Integration {
 
 		wp_register_style(
 			'pa-gTooltips',
-			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-global-tooltips.min.css',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-global-tooltips' . $suffix . '.css',
+			array(),
+			PREMIUM_ADDONS_VERSION,
+			'all'
+		);
+
+        wp_register_style(
+			'pa-shape-divider',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-shape-divider' . $suffix . '.css',
 			array(),
 			PREMIUM_ADDONS_VERSION,
 			'all'
@@ -815,6 +816,14 @@ class Addons_Integration {
 		wp_register_script(
 			'pa-gTooltips',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-global-tooltips' . $suffix . '.js',
+			array( 'jquery' ),
+			PREMIUM_ADDONS_VERSION,
+			true
+		);
+
+		wp_register_script(
+			'pa-shape-divider',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-shape-divider' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_ADDONS_VERSION,
 			true
@@ -1500,6 +1509,8 @@ class Addons_Integration {
 			self::$modules['premium-tcloud'],
 			self::$modules['premium-notifications'],
 			self::$modules['premium-pinterest-feed'],
+			self::$modules['premium-contactform'],
+			self::$modules['premium-shape-divider'],
 		);
 
 		$blog_modules = array(
@@ -1552,7 +1563,7 @@ class Addons_Integration {
 			}
 		}
 
-		if ( self::$modules['premium-contactform'] ) {
+		if ( self::$modules['premium-contactform'] || self::$modules['premium-shape-divider'] ) {
 
 			require_once PREMIUM_ADDONS_PATH . 'includes/controls/pa-image-choose.php';
 			$premium_image_choose = __NAMESPACE__ . '\Controls\Premium_Image_Choose';
@@ -1574,7 +1585,7 @@ class Addons_Integration {
 			Equal_Height::get_instance();
 		}
 
-		if ( self::$modules['pa-display-conditions'] ) {
+		if ( self::$modules['pa-display-conditions'] || self::$modules['premium-shape-divider'] ) {
 			require_once PREMIUM_ADDONS_PATH . 'widgets/dep/urlopen.php';
 			Display_Conditions::get_instance();
 		}
@@ -1589,6 +1600,10 @@ class Addons_Integration {
 
 		if ( self::$modules['premium-global-tooltips'] ) {
 			GlobalTooltips::get_instance();
+		}
+
+        if ( self::$modules['premium-shape-divider'] ) {
+			Shape_Divider::get_instance();
 		}
 	}
 

@@ -21,7 +21,7 @@ class AcfPro
         add_action('plugins_loaded', function () {
             // skip if 'ACF' is not available (both versions) or 'ACF PRO' is available
             // so only executed when 'ACF' (not PRO) is available
-            if (! $this->plugin->isAcfPluginAvailable() ||
+            if (!$this->plugin->isAcfPluginAvailable() ||
                 $this->plugin->isAcfPluginAvailable(true)) {
                 return;
             }
@@ -35,8 +35,12 @@ class AcfPro
 
     public function include_field_types(): void
     {
-        include_once __DIR__ . '/class-acf-field-clone.php';
-        include_once __DIR__ . '/class-acf-field-repeater.php';
+        include_once __DIR__ . '/inc/class-acf-field-clone.php';
+        include_once __DIR__ . '/inc/class-acf-repeater-table.php';
+        include_once __DIR__ . '/inc/class-acf-field-repeater.php';
+        include_once __DIR__ . '/inc/options-page.php';
+        include_once __DIR__ . '/inc/admin-options-page.php';
+        include_once __DIR__ . '/inc/class-acf-location-options-page.php';
     }
 
     public function register_assets(): void

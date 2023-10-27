@@ -6,7 +6,7 @@
  *  Author URI: https://backupbliss.com
  *  Plugin URI: https://backupbliss.com
  * Text Domain: wp-clone
- *     Version: 2.4.0
+ *     Version: 2.4.2
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 // Exit on direct access
@@ -312,7 +312,7 @@ add_action('plugins_loaded', function () {
 
   // Promo Banner
   $wpclone_banner_manager = false;
-  if (!class_exists('\Inisev\Subs\InisevPlugPromo')) require_once trailingslashit(__DIR__) . 'modules/promotion/misc.php';
+  if (!class_exists('\Inisev\Subs\InisevPlugPromo')) require_once trailingslashit(__DIR__) . 'promotion/misc.php';
   if (!defined('insPP_initialized')) $wpclone_banner_manager = new \Inisev\Subs\InisevPlugPromo(__FILE__, 'wp-clone-by-wp-academy', 'WP Clone By WP Academy', 'wp-clone');
 
   if (!(class_exists('\Inisev\Subs\Inisev_Try_Out_Plugins') || class_exists('Inisev\Subs\Inisev_Try_Out_Plugins') || class_exists('Inisev_Try_Out_Plugins'))) {

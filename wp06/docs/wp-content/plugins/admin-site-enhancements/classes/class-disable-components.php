@@ -408,6 +408,20 @@ class Disable_Components {
 		global $submenu;
 		remove_submenu_page( 'index.php', 'update-core.php' );
 	}
+	
+	/**
+	 * Remove version number from URLs of static resources (CSS, JS)
+	 * 
+	 * @since 5.8.0
+	 */
+	public function remove_resource_version_number( $src ) {
+		if ( ! is_user_logged_in() ) {
+		    if ( strpos( $src, '?ver=' ) ) {
+		        $src = remove_query_arg( 'ver', $src );
+		    }
+		}
+	    return $src;
+	}
 
 	/**
 	 * Disable loading of frontend public assets of dashicons
@@ -460,6 +474,23 @@ class Disable_Components {
 		add_filter( 'tiny_mce_plugins', [ $this, 'disable_emoji_for_tinymce' ] );
 		add_filter( 'wp_resource_hints', [ $this, 'disable_emoji_remove_dns_prefetch' ], 10, 2 );	
 		
+	}
+	
+	/** 
+	 * Disable jQuery Migrate
+	 * 
+	 * @since 5.8.0
+	 * @link https://plugins.trac.wordpress.org/browser/remove-jquery-migrate/trunk/remove-jquery-migrate.php
+	 * @param WP_Scripts $scripts WP_Scripts object.
+	 */
+	public function disable_jquery_migrate( $scripts ) {
+		if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+			$script = $scripts->registered['jquery'];
+			
+			if ( ! empty( $script->deps ) ) { // Check whether the script has any dependencies
+				$script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+			}
+		}
 	}
 
 	/**

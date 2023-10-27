@@ -228,28 +228,52 @@ class Meow_MWAI_Core
 		return $placeholders;
 	}		
 
-	function get_ip_address( $data = null ) {
-    if ( isset( $data ) && isset( $data['ip'] ) ) {
-      $data['ip'] = (string)$data['ip'];
-    }
-    else {
-      if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
-        $data['ip'] = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
-      }
-      else if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-        $data['ip'] = sanitize_text_field( $_SERVER['HTTP_CLIENT_IP'] );
-      }
-      else if ( isset( $_SERVER['HTTP_X_FORWARDED_ FOR'] ) ) {
-        $data['ip'] = sanitize_text_field( $_SERVER['HTTP_X_FORWARDED_FOR'] );
-      }
-    }
-		$ip = apply_filters( 'mwai_get_ip_address', $data['ip'] );
-    return $ip;
-  }
+	function get_ip_address( $params = null ) {
+		$ip = '127.0.0.1';
+		$headers = [
+			'HTTP_TRUE_CLIENT_IP',
+			'HTTP_CF_CONNECTING_IP',
+			'HTTP_X_REAL_IP',
+			'HTTP_CLIENT_IP',
+			'HTTP_X_FORWARDED_FOR',
+			'HTTP_X_FORWARDED',
+			'HTTP_X_CLUSTER_CLIENT_IP',
+			'HTTP_FORWARDED_FOR',
+			'HTTP_FORWARDED',
+			'REMOTE_ADDR',
+		];
+	
+		if ( isset( $params ) && isset( $params[ 'ip' ] ) ) {
+			$ip = ( string )$params[ 'ip' ];
+		} else {
+			foreach ( $headers as $header ) {
+				if ( array_key_exists( $header, $_SERVER ) && !empty( $_SERVER[ $header ] && $_SERVER[ $header ] != '::1' ) ) {
+					$address_chain = explode( ',', wp_unslash( $_SERVER [ $header ] ) );
+					$ip = filter_var( trim( $address_chain[ 0 ] ), FILTER_VALIDATE_IP );
+					break;
+				}
+			}
+		}
+	
+		return filter_var( apply_filters( 'mwai_get_ip_address', $ip ), FILTER_VALIDATE_IP );
+  	}
 
 	#endregion
 
 	#region Other Helpers
+
+	function generateRandomId( $length = 8, $excludeIds = [] ) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+		$charactersLength = strlen( $characters );
+		$randomId = '';
+		for ( $i = 0; $i < $length; $i++ ) {
+			$randomId .= $characters[rand( 0, $charactersLength - 1 )];
+		}
+		if ( in_array( $randomId, $excludeIds ) ) {
+			return $this->generateRandomId( $length, $excludeIds );
+		}
+		return $randomId;
+	}
 
 	function isUrl( $url ) {
 		return strpos( $url, 'http' ) === 0 ? true : false;
@@ -571,6 +595,7 @@ class Meow_MWAI_Core
 		$options['chatbot_defaults'] = MWAI_CHATBOT_DEFAULT_PARAMS;
 		$options['default_limits'] = MWAI_LIMITS;
 		$options['openai_models'] = Meow_MWAI_Engines_OpenAI::get_openai_models();
+
 		$this->options = $options;
 		return $options;
 	}
@@ -585,6 +610,56 @@ class Meow_MWAI_Core
 		if ( isset( $options['pinecone'] ) && isset( $options['pinecone']['namespace'] ) ) {
 			$options['pinecone']['namespaces'] = [ $options['pinecone']['namespace'] ];
 			unset( $options['pinecone']['namespace'] );
+			$needs_update = true;
+		}
+
+		// Support for Multi Vector DB Environments
+		// After June 2024, let's remove this.
+		if ( !isset( $options['embeddings_envs'] ) ) {
+			$options['embeddings_envs'] = [];
+			$default_id = $this->generateRandomId();
+			$pinecone = isset( $options['pinecone'] ) ? $options['pinecone'] : [];
+			$options['embeddings_envs'][] = [
+				'id' => $default_id,
+				'name' => 'Pinecone',
+				'type' => 'pinecone',
+				'apikey' => isset( $pinecone['apikey'] ) ? $pinecone['apikey'] : '',
+				'server' => isset( $pinecone['server'] ) ? $pinecone['server'] : 'gcp-starter',
+				'indexes' => isset( $pinecone['indexes'] ) ? $pinecone['indexes'] : [],
+				'namespaces' => isset( $pinecone['namespaces'] ) ? $pinecone['namespaces'] : [],
+				'index' => isset( $pinecone['index'] ) ? $pinecone['index'] : null,
+			];
+			$options['embeddings_envs_default'] = $default_id;
+			$needs_update = true;
+		}
+		if ( isset( $options['pinecone'] ) ) {
+			unset( $options['pinecone'] );
+			$needs_update = true;
+		}
+
+		// Support for Multi AI Environments
+		if ( !isset( $options['ai_envs'] ) ) {
+			//$options['ai_envs_default'] = 
+			// $needs_update = true;
+		}
+
+		// The IDs for the environments are generated here.
+		// Let's also check if the embeddings_envs_default corresponds to an existing ID.
+		// TODO: We should handle this more gracefully via an option in the Embeddings Settings.
+		$default_exists = false;
+		if ( isset( $options['embeddings_envs'] ) ) {
+			foreach ( $options['embeddings_envs'] as &$env ) {
+				if ( !isset( $env['id'] ) ) {
+					$env['id'] = $this->generateRandomId();
+					$needs_update = true;
+				}
+				if ( $env['id'] === $options['embeddings_envs_default'] ) {
+					$default_exists = true;
+				}
+			}
+		}
+		if ( !$default_exists ) {
+			$options['embeddings_envs_default'] = $options['embeddings_envs'][0]['id'] ?? null;
 			$needs_update = true;
 		}
 

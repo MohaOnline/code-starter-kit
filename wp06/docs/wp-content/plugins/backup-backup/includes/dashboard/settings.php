@@ -12,6 +12,11 @@
   if (defined('BMI_PREMIUM_TOOLTIP')) {
     $configu_sets = str_replace('"', "'", BMI_PREMIUM_TOOLTIP);
   } else $configu_sets = '';
+  
+  // Presets
+  if (!has_action('bmi_premium_other_options')) {
+    bmi_set_config('OTHER:PROMOTIONAL:DISPLAY', false);
+  }
 
 ?>
 <script type="text/javascript">
@@ -248,7 +253,9 @@
 
 </div>
 
+<?php if (bmi_get_config('OTHER:PROMOTIONAL:DISPLAY') != 'true') { ?>
 <!-- Carrousel -->
 <div id="bmi_carrousel" style="display: none;">
   <?php do_action('ins_global_print_carrousel'); ?>
 </div>
+<?php } ?>

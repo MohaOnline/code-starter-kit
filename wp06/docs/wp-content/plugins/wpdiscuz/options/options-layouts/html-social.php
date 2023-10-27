@@ -522,7 +522,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["instagramAppID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["instagramAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[instagramAppID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["instagramAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[instagramAppID]" id="instagramAppID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["instagramAppID"]["docurl"]) ?>
@@ -537,7 +537,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["instagramAppSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("App Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["instagramAppSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[instagramAppSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("App Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["instagramAppSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[instagramAppSecret]" id="instagramAppSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["instagramAppSecret"]["docurl"]) ?>
@@ -572,13 +572,31 @@ if (!defined("ABSPATH")) {
 <!-- Option end -->
 
 <!-- Option start -->
+<div class="wpd-opt-row wpd-opt-row-tight" data-wpd-opt="enableLinkedinLoginOpenID">
+    <div class="wpd-opt-name">
+        <label for="enableLinkedinLoginOpenID"><?php echo esc_html($setting["options"]["enableLinkedinLoginOpenID"]["label"]) ?></label>
+        <p class="wpd-desc"><?php echo esc_html($setting["options"]["enableLinkedinLoginOpenID"]["description"]) ?></p>
+    </div>
+    <div class="wpd-opt-input">
+        <div class="wpd-switcher">
+            <input type="checkbox"<?php checked($this->social["enableLinkedinLoginOpenID"] == 1); ?> value="1" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[enableLinkedinLoginOpenID]" id="enableLinkedinLoginOpenID">
+            <label for="enableLinkedinLoginOpenID"></label>
+        </div>
+    </div>
+    <div class="wpd-opt-doc">
+        <?php $this->printDocLink($setting["options"]["enableLinkedinLoginOpenID"]["docurl"]) ?>
+    </div>
+</div>
+<!-- Option end -->
+
+<!-- Option start -->
 <div class="wpd-opt-row wpd-opt-row-tight" data-wpd-opt="linkedinClientID">
     <div class="wpd-opt-name">
         <label for="linkedinClientID"><?php echo esc_html($setting["options"]["linkedinClientID"]["label"]) ?></label>
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["linkedinClientID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Client ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["linkedinClientID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[linkedinClientID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("Client ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["linkedinClientID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[linkedinClientID]" id="linkedinClientID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["linkedinClientID"]["docurl"]) ?>
@@ -593,7 +611,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["linkedinClientSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Client Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["linkedinClientSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[linkedinClientSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Client Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["linkedinClientSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[linkedinClientSecret]" id="linkedinClientSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["linkedinClientSecret"]["docurl"]) ?>
@@ -656,7 +674,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["yandexID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["yandexID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[yandexID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["yandexID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[yandexID]" id="yandexID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["yandexID"]["docurl"]) ?>
@@ -671,7 +689,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["yandexPassword"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Password", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["yandexPassword"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[yandexPassword]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Password", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["yandexPassword"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[yandexPassword]" id="yandexPassword" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["yandexPassword"]["docurl"]) ?>
@@ -787,7 +805,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["mailruClientID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["mailruClientID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[mailruClientID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["mailruClientID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[mailruClientID]" id="mailruClientID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["mailruClientID"]["docurl"]) ?>
@@ -802,7 +820,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["mailruClientSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Secret Key", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["mailruClientSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[mailruClientSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Secret Key", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["mailruClientSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[mailruClientSecret]" id="mailruClientSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["mailruClientSecret"]["docurl"]) ?>
@@ -933,7 +951,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["wechatAppID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["wechatAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[wechatAppID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["wechatAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[wechatAppID]" id="wechatAppID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["wechatAppID"]["docurl"]) ?>
@@ -948,7 +966,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["wechatSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["wechatSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[wechatSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["wechatSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[wechatSecret]" id="wechatSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["wechatSecret"]["docurl"]) ?>
@@ -989,7 +1007,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["weiboKey"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Key", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["weiboKey"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[weiboKey]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("Key", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["weiboKey"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[weiboKey]" id="weiboKey" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["weiboKey"]["docurl"]) ?>
@@ -1004,7 +1022,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["weiboSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["weiboSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[weiboSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["weiboSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[weiboSecret]" id="weiboSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["weiboSecret"]["docurl"]) ?>
@@ -1045,7 +1063,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["qqAppID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["qqAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[qqAppID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["qqAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[qqAppID]" id="qqAppID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["qqAppID"]["docurl"]) ?>
@@ -1060,7 +1078,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["qqSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["qqSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[qqSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["qqSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[qqSecret]" id="qqSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["qqSecret"]["docurl"]) ?>
@@ -1101,7 +1119,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["baiduAppID"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["baiduAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[baiduAppID]" id="wpd-google-client-id" />
+        <input placeholder="<?php esc_attr_e("App ID", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["baiduAppID"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[baiduAppID]" id="baiduAppID" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["baiduAppID"]["docurl"]) ?>
@@ -1116,7 +1134,7 @@ if (!defined("ABSPATH")) {
         <p class="wpd-desc"><?php echo esc_html($setting["options"]["baiduSecret"]["description"]) ?></p>
     </div>
     <div class="wpd-opt-input">
-        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["baiduSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[baiduSecret]" id="wpd-google-client-secret" />
+        <input placeholder="<?php esc_attr_e("Secret", "wpdiscuz"); ?>" type="text" value="<?php echo esc_attr($this->social["baiduSecret"]); ?>" name="<?php echo esc_attr(WpdiscuzCore::TAB_SOCIAL); ?>[baiduSecret]" id="baiduSecret" />
     </div>
     <div class="wpd-opt-doc">
         <?php $this->printDocLink($setting["options"]["baiduSecret"]["docurl"]) ?>

@@ -682,27 +682,26 @@ const lpMetaboxsalePriceDate = () => {
 	}
 
 	$( '.lp_sale_dates_fields' ).each( function() {
-		const $this = $( this );
-		const $wrap = $this.closest( 'div.lp-meta-box-course-panels' );
+		const wrap = $( this ).closest( '#price_course_data' );
 		let saleScheduleSet = false;
 
-		$this.find( 'input' ).each( function() {
+		$( this ).find( 'input' ).each( function() {
 			if ( '' !== $( this ).val() ) {
 				saleScheduleSet = true;
 			}
 		} );
 
 		if ( saleScheduleSet ) {
-			$wrap.find( '.lp_sale_price_schedule' ).hide();
-			$wrap.find( '.lp_sale_dates_fields' ).show();
+			wrap.find( '.lp_sale_price_schedule' ).hide();
+			wrap.find( '.lp_sale_dates_fields' ).show();
 		} else {
-			$wrap.find( '.lp_sale_price_schedule' ).show();
-			$wrap.find( '.lp_sale_dates_fields' ).hide();
+			wrap.find( '.lp_sale_price_schedule' ).show();
+			wrap.find( '.lp_sale_dates_fields' ).hide();
 		}
 	} );
 
 	$( '.lp-meta-box-course-panels' ).on( 'click', '.lp_sale_price_schedule', function() {
-		const wrap = $( this ).closest( 'div.lp-meta-box-course-panels' );
+		const wrap = $( this ).closest( '#price_course_data' );
 
 		$( this ).hide();
 

@@ -394,13 +394,9 @@
 </div>
 
 <div class="mm mbl lh30 f20">
-  <?php _e("With above exclusion rules you excluded", 'backup-backup'); ?> <b id="esta-exclude">0 B</b> <?php _e("of data, which means your backup will be about", 'backup-backup'); ?> <b id="esta-size-for">0 B</b> <?php _e("large, unzipped.", 'backup-backup'); ?><br>
-  <!-- <?php _e("See the list of files you excluded.", 'backup-backup'); ?> -->
-  <?php _e("* At this moment excluded files are not counted here - yet (it will be in future of course!).", 'backup-backup'); ?>
+  <?php _e("With above exclusion rules you excluded", 'backup-backup'); ?> <b id="esta-exclude">0 B</b>/<b id="esta-exclude-total">0 B</b> <?php _e("of data, which means your backup will be about", 'backup-backup'); ?> <b id="esta-size-for">0 B</b> <?php _e("large, unzipped.", 'backup-backup'); ?>
   <br>
-  <div>
-    <?php _e('You can force:', 'backup-backup'); ?> <a class="get-file-database-sizes nodec secondary hoverable"><?php _e('Database and files rescan', 'backup-backup'); ?></a>
-  </div>
+  <a class="get-file-database-sizes nodec secondary hoverable">– <?php _e('Save and re-calculate with current filters.', 'backup-backup'); ?></a>
 </div>
 
 <?php include BMI_INCLUDES . '/dashboard/chapter/save-button.php'; ?>

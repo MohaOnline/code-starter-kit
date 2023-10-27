@@ -137,6 +137,7 @@ class Ogma_Blog_Admin_Dashboard {
      */
     public function ogma_blog_welcome_screen() {
         $doc_url        = 'https://docs.mysterythemes.com/ogma';
+        $tutorial_url   = 'https://youtu.be/FpRpOJDk-2E'; 
         $support_url    = 'https://wordpress.org/support/theme/ogma-blog';
 ?>
         <div id="ogma-blog-dashboard">
@@ -182,8 +183,11 @@ class Ogma_Blog_Admin_Dashboard {
                             <div class="block-content">
                                 <p>
                                     <?php printf( wp_kses_post( 'Need more details? Please check our full documentation for detailed information on how to use <b>%1$s</b>.', 'ogma-blog' ), $this->theme_name ); ?>
-                                    <a href="<?php echo esc_url( $doc_url ); ?>" target="_blank"><?php esc_html_e( 'Go to doc', 'ogma-blog' ); ?><span class="dashicons dashicons-external"></span></a>
                                 </p>
+                                <div class="btn-grp-wrap">
+                                    <a class="btn-grp" href="<?php echo esc_url( $doc_url ); ?>" target="_blank"><?php esc_html_e( 'Go to doc', 'ogma-blog' ); ?><span class="dashicons dashicons-external"></span></a>
+                                    <a class="btn-grp" href="<?php echo esc_url( $tutorial_url ); ?>" target="_blank"><?php esc_html_e( 'Video Tutorial', 'ogma-blog' ); ?><span class="dashicons dashicons-external"></span></a>
+                                </div>
                             </div><!-- .block-content -->
                         </div><!-- .welcome-block documentation -->
 

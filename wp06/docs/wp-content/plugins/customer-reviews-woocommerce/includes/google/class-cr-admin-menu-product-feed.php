@@ -143,7 +143,7 @@ if ( ! class_exists( 'CR_Product_Feed_Admin_Menu' ) ):
 				wp_enqueue_style( 'ivole_trustbadges_admin_css', plugins_url('css/admin.css', dirname( dirname( __FILE__ ) ) ), array(), Ivole::CR_VERSION );
 				wp_enqueue_style( 'cr_select2_admin_css', plugins_url('css/select2.min.css', dirname( dirname( __FILE__ ) ) ) );
 				wp_enqueue_script( 'cr_select2_admin_js', plugins_url('js/select2.min.js', dirname( dirname( __FILE__ ) ) ) );
-				wp_register_script( 'ivole-admin-categories', plugins_url('js/admin-categories.js', dirname( dirname( __FILE__ ) ) ), array(), false, false );
+				wp_register_script( 'ivole-admin-categories', plugins_url('js/admin-categories.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), false, false );
 
 				wp_localize_script('ivole-admin-categories', 'CrProductFeedStrings', array(
 					'select_category' => __( 'Select a category', 'customer-reviews-woocommerce' ),

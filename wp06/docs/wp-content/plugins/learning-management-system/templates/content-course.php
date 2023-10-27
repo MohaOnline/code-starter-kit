@@ -36,7 +36,7 @@ $categories = $course->get_categories( 'name' );
 
 			<!-- Difficulty Badge -->
 			<?php if ( $difficulty ) : ?>
-			<div class="difficulty-badge <?php echo esc_attr( $difficulty['slug'] ); ?>">
+			<div class="difficulty-badge <?php echo esc_attr( $difficulty['slug'] ); ?>" data-id="<?php echo esc_attr( $difficulty['id'] ); ?>">
 				<?php if ( $difficulty['color'] ) : ?>
 					<span class="masteriyo-badge" style="background-color: <?php echo esc_attr( $difficulty['color'] ); ?>">
 						<?php echo esc_html( $difficulty['name'] ); ?>

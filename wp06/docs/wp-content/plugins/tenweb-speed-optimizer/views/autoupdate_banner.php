@@ -4,7 +4,7 @@
         <img src="<?php echo esc_url(TENWEB_SO_URL . '/assets/images/nps_survey/flash_shorter.png'); ?>"
              alt="flash Image" class="two-banner-main-image">
         <div class="two-banner-title">
-            <?php _e('Do you want to always have the latest version of 10Web Booster?', 'tenweb-speed-optimizer'); ?>
+            <?php _e('Do you want to always have the latest version of ' . esc_html(TWO_SO_ORGANIZATION_NAME) . ' Booster?', 'tenweb-speed-optimizer'); ?>
         </div>
     </div>
     <div class="two-banner-buttons-container">

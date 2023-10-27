@@ -1,6 +1,25 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.14.1 - 2023-10-12
+
+* Updates to the OptinMonster submenu.
+* Removed code related to the output and retrieval of legacy campaigns.
+* Fixed issue where the display rule summary could be blank.
+* Transitioned "Pardot" to "Salesforce Marketing Cloud Account Engagement" to reflect their rebranding.
+* Various npm package updates used for generating our JavaScript code.
+
+### 2.14.0 - 2023-09-28
+* UI updates and improvements to template filtering.
+* Update to allow a new integrations to be set as the default integration during creation.
+* Fixed an issue where an integration using Google Analytics 4 could not be created from within the plugin.
+* Fixed an issue where negative numbers could be entered for cookie duration values.
+
+### 2.13.8 - 2023-08-25
+* Declares compatibility with WooCommerce High-Performance Order Storage
+* Improvements to campaign template searching and filtering
+* Various improvements and updates to copy
+
 ### 2.13.7 - 2023-07-27
 * Fixed PHP error with previous release
 

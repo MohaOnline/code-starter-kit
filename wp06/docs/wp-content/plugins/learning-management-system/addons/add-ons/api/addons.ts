@@ -2,6 +2,7 @@ import { select } from '@wordpress/data';
 
 export const isAddonActive = (
 	slug:
+		| 'course-announcement'
 		| 'gamipress-integration'
 		| 'download-materials'
 		| 'wc-integration'

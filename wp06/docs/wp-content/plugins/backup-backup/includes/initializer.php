@@ -119,23 +119,27 @@
       if (!$user || !$user->roles) return;
       if (!current_user_can('do_backups') && !in_array('administrator', (array) $user->roles)) return;
 
-      // Include our cool banner
-      include_once BMI_INCLUDES . '/banner/misc.php';
+      if (Dashboard\bmi_get_config('OTHER:PROMOTIONAL:DISPLAY') != 'true') {
+        
+        // Include our cool banner
+        include_once BMI_INCLUDES . '/banner/misc.php';
 
-      // Review banner
-      if (!is_dir(WP_PLUGIN_DIR . '/backup-backup-pro')) {
-        if (!(class_exists('\Inisev\Subs\Inisev_Review') || class_exists('Inisev\Subs\Inisev_Review') || class_exists('Inisev_Review'))) {
-          require_once BMI_MODULES_DIR . 'review' . DIRECTORY_SEPARATOR . 'review.php';
+        // Review banner
+        if (!is_dir(WP_PLUGIN_DIR . '/backup-backup-pro')) {
+          if (!(class_exists('\Inisev\Subs\Inisev_Review') || class_exists('Inisev\Subs\Inisev_Review') || class_exists('Inisev_Review'))) {
+            require_once BMI_MODULES_DIR . 'review' . DIRECTORY_SEPARATOR . 'review.php';
+          }
+          $review_banner = new \Inisev\Subs\Inisev_Review(BMI_ROOT_FILE, BMI_ROOT_DIR, 'backup-backup', 'Backup & Migration', 'http://bit.ly/3vdk45L', 'backup-migration');
         }
-        $review_banner = new \Inisev\Subs\Inisev_Review(BMI_ROOT_FILE, BMI_ROOT_DIR, 'backup-backup', 'Backup & Migration', 'http://bit.ly/3vdk45L', 'backup-migration');
-      }
 
-      // GDrive banner
-      if (!is_dir(WP_PLUGIN_DIR . '/backup-backup-pro')) {
-        if (!(class_exists('\Inisev\Subs\BMI_Banners_GDrive') || class_exists('Inisev\Subs\BMI_Banners_GDrive') || class_exists('BMI_Banners_GDrive'))) {
-          require_once BMI_MODULES_DIR . 'gdrivebanner' . DIRECTORY_SEPARATOR . 'misc.php';
+        // GDrive banner
+        if (!is_dir(WP_PLUGIN_DIR . '/backup-backup-pro')) {
+          if (!(class_exists('\Inisev\Subs\BMI_Banners_GDrive') || class_exists('Inisev\Subs\BMI_Banners_GDrive') || class_exists('BMI_Banners_GDrive'))) {
+            require_once BMI_MODULES_DIR . 'gdrivebanner' . DIRECTORY_SEPARATOR . 'misc.php';
+          }
+          $gdirve_banner = new \Inisev\Subs\BMI_Banners_GDrive('Backup & Migration', 'backup-migration');
         }
-        $gdirve_banner = new \Inisev\Subs\BMI_Banners_GDrive('Backup & Migration', 'backup-migration');
+        
       }
 
       // POST Logic

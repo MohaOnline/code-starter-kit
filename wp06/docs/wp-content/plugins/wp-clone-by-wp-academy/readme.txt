@@ -4,8 +4,8 @@ Tags: migrate, clone, backup, migration, backups, copy, restore, recover, restor
 Author URI: https://backupbliss.com
 Requires PHP: 5.5
 Requires at least: 3.3
-Tested up to: 6.3
-Stable tag: 2.4.0
+Tested up to: 6.4
+Stable tag: 2.4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -61,6 +61,66 @@ WP Clone uses functions from the "Safe Search and Replace on Database with Seria
 
 This plugin is part of the Inisev product family - [check out our other products](https://inisev.com).
 
+
+== Frequently Asked Questions ==
+
+= How to create a website backup first? =
+
+Once you have the Clone plugin installed on your site, navigate to the Clone plugin menu within the admin dashboard, then click on the “Create Backup” button, and select the option with the Clone plugin, if you don’t want to proceed with a modernized [Backup Migration](https://wordpress.org/plugins/backup-backup/) plugin.
+
+Clone plugin will by default create a backup that contains everything from your site, except the Clone plugin’s own backups.
+
+You can download backup or migrate your backup (to clone the site) immediately after the backup has been created.
+
+= How do I restore a backup? =
+
+- If your backup file is already **located on your site**: Go to the Clone plugin menu screen, tick the backup file that you want to restore, tick the checkbox “I agree”, and finally on the button “Restore Backup”.
+
+- If your backup file is **located on another site**: Go to the Clone plugin menu screen on the source site, and click on the “Copy URL” button next to the backup file name. After that, go to the Clone plugin screen on the destination site, tick the “Restore from URL” checkbox, paste the copied link, tick the “I agree” checkbox, and hit the “Restore from URL” button. This process will first import the backup and then restore it, i.e. Clone plugin also serves as a backup importer.
+
+- If your backup file is *located on another device*: Go to the Clone plugin screen on the source site where you have created a backup, and click on the backup name to download the backup file. Upload the backup file to the destination site, the default folder location is  wp-content/uploads/wp-clone/. After that, go to the Clone plugin screen and click on the “Scan and repopulate the backup list” button. In a moment, your uploaded backup file should appear in the list within this menu screen. Tick the boxes and start the restoration by clicking on the “Restore Backup” button.
+
+= How do I migrate or clone my site? =
+
+Migrate (or clone) a WordPress site by creating a full backup on the site that you want to migrate (clone) - site #1.
+
+- To transfer website **directly from site #1 to site #2**: Go to the Clone plugin screen on site #1, where you have the backups listed, and click on the Copy URL button. Go to the Clone plugin screen on site #2, click on “Restore from URL”, paste the copied link, and hit the “Restore from URL” button. Make sure that the backup file on site #1 is accessible (the site is online, etc.)
+
+- To migrate the website **indirectly**: Go to the Clone plugin screen, and upload the backup file to /wp-content/uploads/wp-clone/. After the upload, head back to Clone plugin menu, rescan the backup list, and continue with the restore of the specific backup file.
+
+= Where can I find my backups? =
+
+Clone plugin allows you to download backups, migrate backups, or delete backups directly from the plugin screen Manage & Restore Backup(s). By default, the migrator plugin will store a backup to **/wp-content/uploads/wp-clone/** and you should upload Clone backups to that folder too.
+
+= How to set up automatic backups? =
+
+Enabling automatic backups is not available in the Clone plugin, for that, we recommend the new [Backup Migration](https://wordpress.org/plugins/backup-backup/) plugin. There, auto backup can run on a monthly, weekly, or daily basis. You can set the exact time (and day) and how many automatic backups would should be kept.
+
+= How big are backup files? =
+
+Backup file size depends on what is included in the backup file. For example, if it is only a database backup, the backup file will usually be just as few megabytes. Usually, WordPress’ Uploads folder is the heaviest, while Databases are the lightest. If you are looking to save up space, you might want to exclude some folders from the backup. You can do that in the Advanced Settings within the Clune plugin menu screen.
+
+= Is the backup creation and site migration free? =
+
+Yes. You can create full site backups and clone your site (duplicate site) free of charge. [Backup Migration Pro](https://sellcodes.com/oZxnXtc2) provides more sophisticated filters and selections of files that will be included/excluded from backups (affecting backup size), faster backup creation times, number of external backup storage locations, backup encryption, backup file compression methods, advanced backup triggers, additional backup notifications by email, priority support, and more.
+
+= How to create staging sites? =
+
+To avoid manual work, such as setting up a fresh WordPress instance or a subdomain yourself, we recommend the new [Backup Migration](https://wordpress.org/plugins/backup-backup/) plugin. You can easily set up a staging environment for your website with the BackupBliss plugin. You can choose to create a staging site either on your server/machine or on [TasteWP](https://tastewp.com/). Both options are free and super-easy to use!
+
+= Is cloud backup available? =
+
+Clone plugin has no features to sync to the cloud. For that, we recommend [BackupBliss - Backup Migration Staging Pro](https://sellcodes.com/oZxnXtc2).
+
+= How to upload my backup file? =
+
+Uploading a backup can be simply done via FTP or a simple plugin such as WP File Manager. Just navigate to the folder on your site /wp-content/uploads/wp-clone/ and drag-and-drop the backup file there. Remember to re-scan the folder from the Clone plugin menu, and the backup should appear on the list.
+
+= How to backup database only? =
+
+You can back up the website database only, if you navigate to the Advanced Settings section of the Clone plugin menu, and tick the box “Backup database only”. WordPress database is usually small so DB backup is done quickly.
+
+
 == Installation ==
 
 1. Navigate to Plugins > Add New
@@ -72,6 +132,15 @@ This plugin is part of the Inisev product family - [check out our other products
 Backup and migration FAQ are under construction
 
 == Changelog ==
+
+= 2.4.2 =
+* Fixed issue with rendering of external module
+
+= 2.4.1 =
+* Tested with WordPress 6.4-beta2 and PHP 8.2
+* Updated all modules to support latest PHP versions
+* Decreased amount of unwanted warnings and notices in PHP 8.2
+* Updated readme details and added more FAQ answers
 
 = 2.4.0 =
 * Forced "Try it out" module to be disabled by default, user can still enable it manually.
@@ -191,10 +260,9 @@ Backup and migration FAQ are under construction
 = 2.0.2 =
 * Initial release
 
-
 == Screenshots ==
 1. Configuration Page
 
 == Upgrade Notice ==
-= 2.4.0 =
-* Forced "Try it out" module to be disabled by default, user can still enable it manually.
+= 2.4.2 =
+* Fixed issue with rendering of external module

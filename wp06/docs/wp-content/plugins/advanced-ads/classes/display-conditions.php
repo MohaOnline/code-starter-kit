@@ -273,7 +273,7 @@ class Advanced_Ads_Display_Conditions {
 		// @todo create a random form name, in case we have more than one form per page and the parameter is not given.
 		$form_name = ! $form_name ? self::FORM_NAME : $form_name;
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/display-conditions-list.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/display-conditions-list.php';
 
 		/**
 		 * Prepare condition form
@@ -300,7 +300,7 @@ class Advanced_Ads_Display_Conditions {
 
 		$empty_options = ! is_array( $set_conditions ) || ! count( $set_conditions );
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/conditions-form.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/conditions-form.php';
 	}
 
 	/**
@@ -383,7 +383,7 @@ class Advanced_Ads_Display_Conditions {
 		self::render_type_field( $options['type'], $name );
 
 		// load operator template.
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-operator.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-operator.php';
 
 		// set defaults.
 		$post_types = get_post_types(
@@ -417,7 +417,7 @@ class Advanced_Ads_Display_Conditions {
 			name="<?php echo $name; ?>[value][]" <?php checked( $_val, 1 ); ?>
 			value="<?php echo $_type_id; ?>"><?php
 		}
-		include ADVADS_BASE_PATH . 'admin/views/conditions/not-selected.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/not-selected.php';
 		?>
 		</div><?php
 	}
@@ -452,7 +452,7 @@ class Advanced_Ads_Display_Conditions {
 		self::render_type_field( $options['type'], $name );
 
 		// load operator template.
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-operator.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-operator.php';
 
 		// set defaults.
 		$max_authors = absint( apply_filters( 'advanced-ads-admin-max-terms', 50 ) );
@@ -467,7 +467,7 @@ class Advanced_Ads_Display_Conditions {
 		}
 		$authors = get_users( $args );
 
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-author.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-author.php';
 	}
 
 	/**
@@ -508,14 +508,14 @@ class Advanced_Ads_Display_Conditions {
 		self::render_type_field( $options['type'], $name );
 
 		// load operator template.
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-operator.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-operator.php';
 
 		?>
 		<div class="advads-conditions-single advads-buttonset">
 			<?php
 			$terms = self::display_term_list( $taxonomy, $values, $name . '[value][]', $max_terms, $index );
 			if ( empty( $terms ) ) {
-				include ADVADS_BASE_PATH . 'admin/views/conditions/no-option.php';
+				include ADVADS_ABSPATH . 'admin/views/conditions/no-option.php';
 			}
 			?>
 		</div>
@@ -572,7 +572,7 @@ class Advanced_Ads_Display_Conditions {
 				name="<?php echo $name; ?>[value][]" <?php checked( $_val, 1 ); ?>
 				value="<?php echo $_taxonomy_id; ?>"><?php
 			endforeach;
-			include ADVADS_BASE_PATH . 'admin/views/conditions/not-selected.php';
+			include ADVADS_ABSPATH . 'admin/views/conditions/not-selected.php';
 			?>
 		</div>
 		<?php
@@ -636,7 +636,7 @@ class Advanced_Ads_Display_Conditions {
 					value="<?php echo $_term->term_id; ?>" <?php checked( in_array( $_term->term_id, $checked ), true );
 					?>><label for="<?php echo $field_id; ?>"><?php echo $_term->name; ?></label><?php
 				endforeach;
-				include ADVADS_BASE_PATH . 'admin/views/conditions/not-selected.php';
+				include ADVADS_ABSPATH . 'admin/views/conditions/not-selected.php';
 			endif;
 		endif;
 
@@ -666,7 +666,7 @@ class Advanced_Ads_Display_Conditions {
 		self::render_type_field( $options['type'], $name );
 
 		// load operator template.
-		include ADVADS_BASE_PATH . 'admin/views/conditions/condition-operator.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/condition-operator.php';
 
 		?>
 		<div class="advads-conditions-single advads-buttonset advads-conditions-postid-buttons">
@@ -739,7 +739,7 @@ class Advanced_Ads_Display_Conditions {
 			value="<?php echo $_key; ?>" <?php checked( 1, $value ); ?>><label
 			for="<?php echo $field_id; ?>"><?php echo $_condition['label']; ?></label><?php
 		endforeach;
-		include ADVADS_BASE_PATH . 'admin/views/conditions/not-selected.php';
+		include ADVADS_ABSPATH . 'admin/views/conditions/not-selected.php';
 		?></div><?php
 		return;
 	}

@@ -18707,10 +18707,16 @@
                 });
             }
 
-            elementorFrontend.waypoint($item, function () {
+            if ($scope.hasClass('instant-lottie')) {
                 instance = new premiumLottieAnimations($item);
                 instance.init();
-            });
+            } else {
+                elementorFrontend.waypoint($item, function () {
+                    instance = new premiumLottieAnimations($item);
+                    instance.init();
+                });
+            }
+
 
         });
     };

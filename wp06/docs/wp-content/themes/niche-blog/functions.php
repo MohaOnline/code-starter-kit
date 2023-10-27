@@ -47,6 +47,10 @@ if ( ! function_exists( 'niche_blog_setup' ) ) :
 			'primary_menu' 		=> esc_html__( 'Primary Menu', 'niche-blog' ),
 		) );
 
+		register_nav_menus( array(
+			'footer_menu' 		=> esc_html__( 'Footer Menu', 'niche-blog' ),
+		) );
+
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.

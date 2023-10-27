@@ -134,7 +134,7 @@ jQuery( document ).ready( function( $ ) {
 	});
 });
 
-var materialCSS = '/* Custom CSS for Material Template */\n#login form#loginform .input,\n#login form#registerform .input,\n#login form#lostpasswordform .input {\n\tborder-bottom: 1px solid #d2d2d2;\n}\n\n.bar {\n\tposition: relative;\n\tdisplay: block;\n\twidth: 100%;\n}\n\n.bar:before, .bar:after {\n\tcontent: "";\n\theight: 2px; \n\twidth: 0;\n\tbottom: 15px; \n\tposition: absolute;\n\tbackground: #e91e63; \n\ttransition: all 0.2s ease;\n}\n\n.bar:before { left: 50%; }\n\n.bar:after { right: 50%; }\n\ninput:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }';
+var materialCSS = '/* Custom CSS for Material Template */\n#login form#loginform .input,\n#login form#registerform .input,\n#login form#lostpasswordform .input {\n\tborder-bottom: 1px solid #d2d2d2;\n}\n\n.bar {\n\tposition: relative;\n\tdisplay: block;\n\twidth: 100%;\n}\n\n.bar:before, .bar:after {\n\tcontent: "";\n\theight: 2px; \n\twidth: 0;\n\tbottom: 15px; \n\tposition: absolute;\n\tbackground: #e91e63; \n\ttransition: all 0.2s ease;\n}\n\n.bar:before { left: 50%; }\n\n.bar:after { right: 50%; }\n\ninput:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }\n#resetpassform input:focus ~ .bar:before, #resetpassform input:focus ~ .bar:after{ bottom: 0 !important; }';
 
 var materialJS = '// Custom JS for Material Template\nfunction insertAfter( newNode, referenceNode ) {\n    referenceNode.parentNode.insertBefore( newNode, referenceNode.nextSibling );\n}\n\nvar inputFields = document.querySelectorAll( ".input" );\n\ninputFields.forEach( ( field ) => {\n\tvar bar = document.createElement("span");\n\t\tbar.setAttribute( "class", "bar" );\n\tinsertAfter( bar, field );\n});';
 

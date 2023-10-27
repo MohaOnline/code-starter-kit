@@ -28,6 +28,7 @@ use Masteriyo\Addons\ElementorIntegration\Widgets\CourseReviewsWidget;
 use Masteriyo\Addons\ElementorIntegration\Widgets\CourseSearchFormWidget;
 use Masteriyo\Addons\ElementorIntegration\Widgets\CourseStatsWidget;
 use Masteriyo\Addons\ElementorIntegration\Widgets\CourseTitleWidget;
+use Masteriyo\Enums\PostStatus;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -45,6 +46,8 @@ class ElementorIntegrationAddon {
 	 */
 	public function init() {
 		$this->init_hooks();
+
+		( new UseTemplateForMasteriyoAction() )->init();
 	}
 
 	/**
@@ -63,6 +66,8 @@ class ElementorIntegrationAddon {
 		add_filter( 'masteriyo_localized_admin_scripts', array( $this, 'add_backend_script_data' ) );
 		add_action( 'masteriyo_course_archive_page_custom_template_render', array( $this, 'render_course_archive_page_template' ), 10, 2 );
 		add_action( 'masteriyo_single_course_page_custom_template_render', array( $this, 'render_single_course_page_template' ), 10, 2 );
+		add_filter( 'post_row_actions', array( $this, 'add_use_template_for_masteriyo_action' ), 10, 2 );
+		add_filter( 'display_post_states', array( $this, 'add_post_states' ), 10, 2 );
 	}
 
 	/**
@@ -91,22 +96,36 @@ class ElementorIntegrationAddon {
 	public function register_widgets( $widgets_manager ) {
 		$widgets_manager->register( new CourseListWidget() );
 		$widgets_manager->register( new CourseCategoriesWidget() );
-		$widgets_manager->register( new CourseTitleWidget() );
-		$widgets_manager->register( new CoursePriceWidget() );
-		$widgets_manager->register( new CourseFeaturedImageWidget() );
-		$widgets_manager->register( new CourseEnrollButtonWidget() );
-		$widgets_manager->register( new CourseStatsWidget() );
-		$widgets_manager->register( new CourseHighlightsWidget() );
-		$widgets_manager->register( new CategoriesOfCourseWidget() );
-		$widgets_manager->register( new CourseAuthorWidget() );
-		$widgets_manager->register( new CourseRatingWidget() );
-		$widgets_manager->register( new CourseContentsWidget() );
-		$widgets_manager->register( new CourseOverviewWidget() );
-		$widgets_manager->register( new CourseCurriculumWidget() );
-		$widgets_manager->register( new CourseReviewsWidget() );
-		$widgets_manager->register( new CourseArchivePaginationWidget() );
-		$widgets_manager->register( new CourseSearchFormWidget() );
-		$widgets_manager->register( new CourseArchiveViewModeWidget() );
+
+		if ( get_post_type() !== 'elementor_library' ) {
+			return;
+		}
+
+		$post_id       = get_the_ID();
+		$document      = \Elementor\Plugin::$instance->documents->get( $post_id );
+		$template_type = $document ? $document->get_template_type() : '';
+
+		if ( SingleCoursePageDocumentType::TYPE_SLUG === $template_type ) {
+			$widgets_manager->register( new CourseTitleWidget() );
+			$widgets_manager->register( new CoursePriceWidget() );
+			$widgets_manager->register( new CourseFeaturedImageWidget() );
+			$widgets_manager->register( new CourseEnrollButtonWidget() );
+			$widgets_manager->register( new CourseStatsWidget() );
+			$widgets_manager->register( new CourseHighlightsWidget() );
+			$widgets_manager->register( new CategoriesOfCourseWidget() );
+			$widgets_manager->register( new CourseAuthorWidget() );
+			$widgets_manager->register( new CourseRatingWidget() );
+			$widgets_manager->register( new CourseContentsWidget() );
+			$widgets_manager->register( new CourseOverviewWidget() );
+			$widgets_manager->register( new CourseCurriculumWidget() );
+			$widgets_manager->register( new CourseReviewsWidget() );
+		}
+
+		if ( CourseArchivePageDocumentType::TYPE_SLUG === $template_type ) {
+			$widgets_manager->register( new CourseArchivePaginationWidget() );
+			$widgets_manager->register( new CourseSearchFormWidget() );
+			$widgets_manager->register( new CourseArchiveViewModeWidget() );
+		}
 	}
 
 	/**
@@ -386,11 +405,12 @@ class ElementorIntegrationAddon {
 			'masteriyo-elementor-editor',
 			'_MASTERIYO_ELEMENTOR_EDITOR_',
 			array(
-				'page_templates'       => array(
+				'page_templates'        => array(
 					'single_course_page'  => Helper::get_single_course_page_default_layout_elementor_template(),
 					'course_archive_page' => Helper::get_course_archive_page_default_layout_elementor_template(),
 				),
-				'library_btn_template' => Helper::get_library_modal_open_btn_template(),
+				'library_btn_template'  => Helper::get_library_modal_open_btn_template(),
+				'is_elementor_template' => get_post_type() === 'elementor_library',
 			)
 		);
 	}
@@ -414,8 +434,10 @@ class ElementorIntegrationAddon {
 	 * @return array
 	 */
 	public function add_backend_script_data( $script_data ) {
-		$script_data['backend']['data']['singleCourseTemplates']['elementor']  = Helper::get_elementor_templates( SingleCoursePageDocumentType::TYPE_SLUG );
-		$script_data['backend']['data']['courseArchiveTemplates']['elementor'] = Helper::get_elementor_templates( CourseArchivePageDocumentType::TYPE_SLUG );
+		$script_data['backend']['data']['singleCourseTemplates']['elementor']       = Helper::get_elementor_templates( SingleCoursePageDocumentType::TYPE_SLUG );
+		$script_data['backend']['data']['courseArchiveTemplates']['elementor']      = Helper::get_elementor_templates( CourseArchivePageDocumentType::TYPE_SLUG );
+		$script_data['backend']['data']['add_new_course_archive_page_template_url'] = admin_url( 'edit.php?post_type=elementor_library&tabs_group&elementor_library_type=' . CourseArchivePageDocumentType::TYPE_SLUG );
+		$script_data['backend']['data']['add_new_single_course_page_template_url']  = admin_url( 'edit.php?post_type=elementor_library&tabs_group&elementor_library_type=' . SingleCoursePageDocumentType::TYPE_SLUG );
 		return $script_data;
 	}
 
@@ -459,5 +481,111 @@ class ElementorIntegrationAddon {
 		printf( '<div id="%s" class="masteriyo-single-course">', esc_attr( $course ? 'course-' . $course->get_id() : '' ) );
 		echo $frontend->get_builder_content_for_display( $template_id );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		printf( '</div>' );
+	}
+
+	/**
+	 * Add an action link for using the current template for Masteriyo in the appropriate place.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param array $actions An array of row action links.
+	 * @param \WP_Post $post The post object.
+	 *
+	 * @return array
+	 */
+	public function add_use_template_for_masteriyo_action( $actions, $post ) {
+		if ( PostStatus::PUBLISH !== $post->post_status ) {
+			return $actions;
+		}
+
+		global $current_screen;
+
+		if ( ! $current_screen ) {
+			return $actions;
+		}
+
+		if ( 'edit' !== $current_screen->base || 'elementor_library' !== $current_screen->post_type ) {
+			return $actions;
+		}
+
+		$document = \Elementor\Plugin::$instance->documents->get( $post->ID );
+
+		if ( empty( $document ) ) {
+			return $actions;
+		}
+
+		$template_type = $document ? $document->get_template_type() : '';
+		$action_slug   = 'masteriyo-use-elementor-template-for-masteriyo';
+		$label         = esc_html__( 'Use template for Masteriyo', 'masteriyo' );
+		$url           = '';
+
+		if ( SingleCoursePageDocumentType::TYPE_SLUG === $template_type ) {
+			$url = add_query_arg(
+				array(
+					$action_slug    => '1',
+					'template-type' => SingleCoursePageDocumentType::TYPE_SLUG,
+					'template-id'   => $post->ID,
+					'nonce'         => wp_create_nonce( $action_slug ),
+				),
+				home_url()
+			);
+		}
+
+		if ( CourseArchivePageDocumentType::TYPE_SLUG === $template_type ) {
+			$url = add_query_arg(
+				array(
+					$action_slug    => '1',
+					'template-type' => CourseArchivePageDocumentType::TYPE_SLUG,
+					'template-id'   => $post->ID,
+					'nonce'         => wp_create_nonce( $action_slug ),
+				),
+				home_url()
+			);
+		}
+
+		if ( ! empty( $url ) ) {
+			$actions[ $action_slug ] = sprintf( '<a href="%1$s">%2$s</a>', $url, $label );
+		}
+
+		return $actions;
+	}
+
+	/**
+	 * Add post states.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param array $post_states
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
+	public function add_post_states( $post_states, $post ) {
+		if ( 'elementor_library' !== $post->post_type ) {
+			return $post_states;
+		}
+
+		$document      = \Elementor\Plugin::$instance->documents->get( $post->ID );
+		$template_type = $document ? $document->get_template_type() : '';
+
+		if ( CourseArchivePageDocumentType::TYPE_SLUG === $template_type ) {
+			if (
+				masteriyo_string_to_bool( masteriyo_get_setting( 'course_archive.custom_template.enable' ) ) &&
+				masteriyo_get_setting( 'course_archive.custom_template.template_source' ) === 'elementor' &&
+				absint( masteriyo_get_setting( 'course_archive.custom_template.template_id' ) ) === absint( $post->ID )
+			) {
+				$post_states['masteriyo_used_template'] = __( 'Used by Masteriyo', 'masteriyo' );
+			}
+		} elseif ( SingleCoursePageDocumentType::TYPE_SLUG === $template_type ) {
+			if (
+				masteriyo_string_to_bool( masteriyo_get_setting( 'single_course.custom_template.enable' ) ) &&
+				masteriyo_get_setting( 'single_course.custom_template.template_source' ) === 'elementor' &&
+				absint( masteriyo_get_setting( 'single_course.custom_template.template_id' ) ) === absint( $post->ID )
+			) {
+				$post_states['masteriyo_used_template'] = __( 'Used by Masteriyo', 'masteriyo' );
+			}
+		}
+
+		return $post_states;
 	}
 }

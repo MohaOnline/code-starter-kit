@@ -81,9 +81,11 @@ class CR_Export_Reviews {
         </div>
         <div id="cr-export-progress">
             <h2 id="cr-export-text"><?php _e( 'Export is in progress', 'customer-reviews-woocommerce' ); ?></h2>
-            <progress id="cr-export-progress-bar" max="100" value="0"></progress>
+            <progress id="cr-export-progress-bar" max="100" value="0" data-nonce="<?php echo wp_create_nonce( 'cr-export-progress' ); ?>"></progress>
             <div>
-                <button id="cr-export-cancel" class="button button-secondary"><?php _e( 'Cancel', 'customer-reviews-woocommerce' ); ?></button>
+                <button id="cr-export-cancel" class="button button-secondary" data-nonce="<?php echo wp_create_nonce( 'cr-export-cancel' ); ?>">
+                  <?php _e( 'Cancel', 'customer-reviews-woocommerce' ); ?>
+                </button>
             </div>
         </div>
         <div id="cr-export-results">

@@ -4,6 +4,13 @@ $two_manage_url = trim(TENWEB_DASHBOARD, '/') . '/websites/' . $two_domain_id . 
 $two_contact_link = $two_manage_url . '&open=livechat';
 $two_disconnect_nonce = wp_create_nonce('two_disconnect_nonce');
 $two_disconnect_button_text = __('Deactivate', 'tenweb-speed-optimizer');
+
+$two_so_organization_name = get_option('two_so_organization_name');
+$two_so_organization_support_url = get_option('two_so_organization_support_url');
+
+if (!empty($two_so_organization_name) && !empty($two_so_organization_support_url)) {
+    $two_contact_link = $two_so_organization_support_url;
+}
 $query_args = [
     'action' => 'deactivate',
     'plugin' => TENWEB_SO_BASENAME,

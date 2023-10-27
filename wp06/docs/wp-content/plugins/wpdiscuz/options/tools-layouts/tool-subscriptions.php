@@ -18,7 +18,7 @@ $lstcDisabled = $lstcSubscriptionsCount ? "" : "disabled='disabled'";
     <div class="wpdtool-accordion-content">
 
         <div class="wpdtool wpdtool-import-stcr-subscriptions">
-            <p class="wpdtool-desc"><?php _e("Here you can import subscriptions from <strong><i>Subscribe To Comments Reloaded</i></strong> plugin to wpDiscuz.", "wpdiscuz"); ?></p>
+            <p class="wpdtool-desc"><?php echo wp_kses_post(__("Here you can import subscriptions from <strong><i>Subscribe To Comments Reloaded</i></strong> plugin to wpDiscuz.", "wpdiscuz")); ?></p>
             <form action="" method="post" class="wc-tools-settings-form wc-form">
                 <?php wp_nonce_field("wc_tools_form", "wpd-stcr-subscriptions"); ?>
                 <div class="wpdtool-block">
@@ -34,7 +34,7 @@ $lstcDisabled = $lstcSubscriptionsCount ? "" : "disabled='disabled'";
         </div>
 
         <div class="wpdtool wpdtool-import-lstc-subscriptions">
-            <p class="wpdtool-desc"><?php _e("Here you can import subscriptions from <strong><i>Lightweight Subscribe To Comments</i></strong> plugin to wpDiscuz.", "wpdiscuz"); ?></p>
+            <p class="wpdtool-desc"><?php echo wp_kses_post(__("Here you can import subscriptions from <strong><i>Lightweight Subscribe To Comments</i></strong> plugin to wpDiscuz.", "wpdiscuz")); ?></p>
             <form action="" method="post" class="wc-tools-settings-form wc-form">
                 <?php wp_nonce_field("wc_tools_form", "wpd-lstc-subscriptions"); ?>
                 <div class="wpdtool-block">

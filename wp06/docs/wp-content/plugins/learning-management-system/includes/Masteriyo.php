@@ -119,7 +119,7 @@ class Masteriyo {
 
 		add_filter( 'plugin_row_meta', array( $this, 'add_plugin_links' ), 10, 2 );
 		add_filter( 'plugin_action_links_' . Constants::get( 'MASTERIYO_PLUGIN_BASENAME' ), array( $this, 'add_plugin_action_links' ) );
-		add_filter( 'template_include', array( $this, 'template_loader' ) );
+		add_filter( 'template_include', array( $this, 'template_loader' ), PHP_INT_MAX );
 		add_filter( 'template_redirect', array( $this, 'redirect_reset_password_link' ) );
 		add_action( 'template_redirect', array( $this, 'masteriyo_email_verification_handler' ) );
 		add_action( 'template_redirect', array( $this, 'resend_email_verification_email_handler' ) );

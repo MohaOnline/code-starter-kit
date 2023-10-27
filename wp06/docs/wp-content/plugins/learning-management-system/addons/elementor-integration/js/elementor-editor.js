@@ -1,6 +1,8 @@
 (function ($, localized) {
 	var mto = {
-		currentDocType: elementor.config.document.type,
+		currentDocType: localized.is_elementor_template
+			? elementor.config.document.type
+			: '',
 		docTypes: {
 			courseArchivePage: 'masteriyo-course-archive-page',
 			singleCoursePage: 'masteriyo-single-course-page',

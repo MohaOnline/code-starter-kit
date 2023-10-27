@@ -547,18 +547,18 @@ class OptimizerImages {
             $tag = preg_replace('/(\sclass\s?=\s?("|\'))/', '$1 ' . $target_class . ' ', $tag);
         } else {
             if (strpos($tag, '<img') !== false) {
-                $tag = str_replace('<img ', '<img class="' . trim($target_class) . '" ', $tag);
+                $tag = str_replace('<img', '<img class="' . trim($target_class) . '" ', $tag);
             } elseif (strpos($tag, '<iframe') !== false) {
                 global $TwoSettings;
                 $two_delay_iframe_lazyload = $TwoSettings->get_settings('two_delay_iframe_lazyload');
 
                 if ($two_delay_iframe_lazyload == 'on') {
-                    $tag = str_replace('<iframe ', '<iframe class="' . trim($target_class) . '_delay" ', $tag);
+                    $tag = str_replace('<iframe', '<iframe class="' . trim($target_class) . '_delay" ', $tag);
                 } else {
-                    $tag = str_replace('<iframe ', '<iframe class="' . trim($target_class) . '" ', $tag);
+                    $tag = str_replace('<iframe', '<iframe class="' . trim($target_class) . '" ', $tag);
                 }
             } elseif (strpos($tag, '<video') !== false) {
-                $tag = str_replace('<video ', '<video class="' . trim($target_class) . '" ', $tag);
+                $tag = str_replace('<video', '<video class="' . trim($target_class) . '" ', $tag);
             }
         }
 

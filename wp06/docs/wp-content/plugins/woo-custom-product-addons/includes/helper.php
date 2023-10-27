@@ -434,6 +434,9 @@ function refreshCaches($form_id = false, $product_id = false)
     $ml = new ML();
     if($ml->is_active()){
         $langs = $ml->langList();
+        foreach ($langs as $l) {
+            delete_transient(WCPA_PRODUCTS_TRANSIENT_KEY . '_' . $l);
+        }
     }
     if ($product_id) {
         delete_transient('wcpa_fields_' . $product_id);

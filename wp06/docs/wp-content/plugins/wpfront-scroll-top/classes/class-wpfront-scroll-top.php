@@ -41,7 +41,7 @@ class WPFront_Scroll_Top
     use WPFront_Scroll_Top_Functions;
 
     //Constants
-    const VERSION = '2.1.1.08151';
+    const VERSION = '2.2.10081';
     const PLUGIN_SLUG = 'wpfront-scroll-top';
 
     /**
@@ -134,8 +134,6 @@ class WPFront_Scroll_Top
      */
     public function load()
     {
-        add_action('init', array($this, 'register_ajax_data_action'));
-
         if (is_admin()) {
             add_action('init', array($this, 'load_plugin_textdomain'));
             add_action('admin_init', array($this, 'register_admin_ajax'));
@@ -326,24 +324,12 @@ class WPFront_Scroll_Top
     #region Scroll Top functions
 
     /**
-     * Register front ajax hooks
+     * Returns data for front end button
      *
-     * @return void
+     * @param boolean $is_admin
+     * @return array<string,string|array<string,mixed>>
      */
-    public function register_ajax_data_action()
-    {
-        add_action('wp_ajax_wpfront-scroll-top-load', array($this, 'write_front_end_data'));
-        add_action('wp_ajax_nopriv_wpfront-scroll-top-load', array($this, 'write_front_end_data'));
-    }
-
-    /**
-     * Writes JSON data for front end call
-     *
-     * @return void
-     */
-    public function write_front_end_data() {
-        $is_admin = filter_var($_GET['a'], FILTER_VALIDATE_BOOLEAN);
-
+    public function get_front_end_data($is_admin) {
         $options = $this->get_options();
         $template = $this->get_template();
 
@@ -363,24 +349,7 @@ class WPFront_Scroll_Top
             'scroll_duration' => $options->scroll_duration
         );
 
-        header('Cache-Control: max-age=3600');
-        add_filter('nocache_headers', '__return_empty_array');
-
-        wp_send_json_success(['css' => $css, 'html' => $html, 'data' => $data]);
-    }
-
-    /**
-     * Returns full front end data url
-     *
-     * @return string
-     */
-    protected function get_data_url() {
-        return add_query_arg([
-            'action' => self::PLUGIN_SLUG . '-load',
-            'a' => is_admin() ? '1' : '0',
-            'v' => self::VERSION,
-            'l' => $this->get_options()->last_updated
-        ], admin_url('admin-ajax.php'));
+        return ['css' => $css, 'html' => $html, 'data' => $data];
     }
 
     /**
@@ -422,10 +391,9 @@ class WPFront_Scroll_Top
         $src = plugin_dir_url(__DIR__) . "js/wpfront-scroll-top{$min_suffix}.js";
         wp_enqueue_script(self::PLUGIN_SLUG, $src, ['jquery'], self::VERSION, true);
 
-        $options = $this->get_options();
+        wp_localize_script(self::PLUGIN_SLUG, 'wpfront_scroll_top_data', [ 'data' => $this->get_front_end_data(is_admin()) ]);
 
-        $url = $this->get_data_url();
-        wp_localize_script(self::PLUGIN_SLUG, 'wpfront_scroll_top_data', [ 'source' => $url ]);
+        $options = $this->get_options();
 
         if ($options->button_style == 'font-awesome') {
             if (!$options->fa_button_exclude_URL || is_admin()) {

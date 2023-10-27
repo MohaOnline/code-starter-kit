@@ -375,7 +375,6 @@ if ( ! class_exists( 'CR_Background_Importer' ) ) :
 			global $wpdb;
 
 			$this->lock_process();
-			ini_set( 'auto_detect_line_endings', true );
 
 			do {
 				// One batch represents one CSV import job
@@ -445,6 +444,7 @@ if ( ! class_exists( 'CR_Background_Importer' ) ) :
 				*/
 				$review_buffer = array();
 				$review_buffer_size = 3;
+				$break_the_loop = false;
 				/**
 				* Normally using feof in the iteration condition is a bug,
 				* but memory/time constraints will prevent hanging in this situation.
@@ -456,7 +456,7 @@ if ( ! class_exists( 'CR_Background_Importer' ) ) :
 					}
 
 					$current_buffer_size = count( $review_buffer );
-					if ( $current_buffer_size >= $review_buffer_size || $review_data === false || feof( $file ) ) {
+					if ( $current_buffer_size >= $review_buffer_size || $review_data === false || feof( $file ) || $break_the_loop ) {
 						$this->line += $current_buffer_size;
 						$import = $this->task( $review_buffer );
 
@@ -498,7 +498,15 @@ if ( ! class_exists( 'CR_Background_Importer' ) ) :
 						$review_buffer = array();
 					}
 
-					if ( $this->time_exceeded() || $this->memory_exceeded() || $review_data === false ) {
+					if ( $this->time_exceeded() || $this->memory_exceeded() ) {
+						// if we run out of resources, run one more iteration to write reviews in the database and break the next cycle
+						if ( $break_the_loop ) {
+							break;
+						} else {
+							$break_the_loop = true;
+						}
+					}
+					if ( $review_data === false ) {
 						break;
 					}
 				}
@@ -520,7 +528,6 @@ if ( ! class_exists( 'CR_Background_Importer' ) ) :
 				fclose( $file );
 			} while ( ! $this->time_exceeded() && ! $this->memory_exceeded() && ! $this->is_queue_empty() );
 
-			ini_set( 'auto_detect_line_endings', false );
 			$this->unlock_process();
 
 			if ( ! $this->is_queue_empty() ) {

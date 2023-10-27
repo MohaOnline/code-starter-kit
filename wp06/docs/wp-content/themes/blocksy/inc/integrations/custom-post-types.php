@@ -68,6 +68,7 @@ class Blocksy_Custom_Post_Types {
 				'lesson',
 				'atbdp_orders',
 				'at_biz_dir',
+				'gspbstylebook',
 
 				// tutor lms
 				'tutor_quiz',

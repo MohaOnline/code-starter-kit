@@ -223,12 +223,19 @@ class UserCourseRepository extends AbstractRepository implements RepositoryInter
 	public function read( &$user_course ) {
 		global $wpdb;
 
-		$result = $wpdb->get_row(
-			$wpdb->prepare(
-				"SELECT * FROM {$wpdb->prefix}masteriyo_user_items WHERE id = %d;",
-				$user_course->get_id()
-			)
-		);
+		$cache     = masteriyo_cache();
+		$cache_key = 'item' . $user_course->get_id();
+		$result    = $cache->get( $cache_key, 'masteriyo-user-course' );
+
+		if ( ! $result ) {
+			$result = $wpdb->get_row(
+				$wpdb->prepare(
+					"SELECT * FROM {$wpdb->prefix}masteriyo_user_items WHERE id = %d;",
+					$user_course->get_id()
+				)
+			);
+			$cache->set( $cache_key, $result, 'masteriyo-user-course' );
+		}
 
 		if ( ! $result ) {
 			throw new \Exception( __( 'Invalid user course.', 'masteriyo' ) );
@@ -298,6 +305,7 @@ class UserCourseRepository extends AbstractRepository implements RepositoryInter
 	 * @param \Masteriyo\Models\UserCourse $user_course User course object.
 	 */
 	public function clear_cache( &$user_course ) {
+		masteriyo_cache()->flush_group( 'masteriyo-user-course-query' );
 		wp_cache_delete( 'item' . $user_course->get_id(), 'masteriyo-user-course' );
 		wp_cache_delete( 'items-' . $user_course->get_id(), 'masteriyo-user-course' );
 		wp_cache_delete( $user_course->get_id(), $this->meta_type . '_meta' );
@@ -316,6 +324,7 @@ class UserCourseRepository extends AbstractRepository implements RepositoryInter
 	public function query( $query_vars, $query ) {
 		global $wpdb;
 
+		$cache           = masteriyo_cache();
 		$search_criteria = array();
 		$sql             = array();
 		$joins           = '';
@@ -415,10 +424,19 @@ class UserCourseRepository extends AbstractRepository implements RepositoryInter
 		$page     = $query_vars['page'];
 
 		if ( $page > 0 && $per_page > 0 ) {
-			$count_sql         = $sql;
-			$count_sql[0]      = "SELECT COUNT(*), {$wpdb->prefix}masteriyo_user_items.* FROM {$wpdb->prefix}masteriyo_user_items INNER JOIN {$wpdb->posts} ON {$wpdb->prefix}masteriyo_user_items.item_id = {$wpdb->posts}.ID";
-			$count_sql         = implode( ' ', $count_sql ) . ';';
-			$query->found_rows = absint( $wpdb->get_var( $count_sql ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$count_sql    = $sql;
+			$count_sql[0] = "SELECT COUNT(*), {$wpdb->prefix}masteriyo_user_items.* FROM {$wpdb->prefix}masteriyo_user_items INNER JOIN {$wpdb->posts} ON {$wpdb->prefix}masteriyo_user_items.item_id = {$wpdb->posts}.ID";
+			$count_sql    = implode( ' ', $count_sql ) . ';';
+
+			$cache_key  = 'count_user_items_for_posts';
+			$found_rows = $cache->get( $cache_key, 'masteriyo-user-course-query' );
+
+			if ( false === $found_rows ) {
+				$found_rows = absint( $wpdb->get_var( $count_sql ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$cache->set( $cache_key, $found_rows, 'masteriyo-user-course-query' );
+			}
+
+			$query->found_rows = absint( $found_rows );
 
 			$offset = ( $page - 1 ) * $per_page;
 			$sql[]  = $wpdb->prepare( 'LIMIT %d, %d', $offset, $per_page );
@@ -427,8 +445,13 @@ class UserCourseRepository extends AbstractRepository implements RepositoryInter
 		// Generate SQL from the SQL parts.
 		$sql = implode( ' ', $sql ) . ';';
 
-		// Fetch the results.
-		$user_course = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$cache_key   = array_merge( array( 'user_course_query' ), $query_vars );
+		$user_course = $cache->get( $cache_key, 'masteriyo-user-course-query' );
+
+		if ( false === $user_course ) {
+			$user_course = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$cache->set( $cache_key, $user_course, 'masteriyo-user-course-query' );
+		}
 
 		$ids = wp_list_pluck( $user_course, 'id' );
 

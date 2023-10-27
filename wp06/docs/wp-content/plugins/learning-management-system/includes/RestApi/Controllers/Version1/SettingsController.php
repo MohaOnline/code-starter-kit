@@ -465,11 +465,16 @@ class SettingsController extends CrudController {
 							'type'        => 'object',
 							'context'     => array( 'view', 'edit' ),
 							'items'       => array(
-								'type' => 'object',
+								'type'                   => 'object',
 								'questions_display_per_page' => array(
 									'description' => __( 'Quiz questions per page.', 'masteriyo' ),
 									'type'        => 'integer',
 									'context'     => array( 'view', 'edit' ),
+								),
+								'quiz_completion_button' => array(
+									'description' => __( 'Quiz complete button visibility', 'masteriyo' ),
+									'type'        => 'boolean',
+									'content'     => array( 'view', 'edit' ),
 								),
 							),
 						),
@@ -486,10 +491,15 @@ class SettingsController extends CrudController {
 							'type'        => 'object',
 							'context'     => array( 'view', 'edit' ),
 							'items'       => array(
-								'type'    => 'object',
-								'logo_id' => array(
+								'type'                   => 'object',
+								'logo_id'                => array(
 									'description' => __( 'Learn page logo id.', 'masteriyo' ),
 									'type'        => 'number',
+									'context'     => array( 'view', 'edit' ),
+								),
+								'auto_load_next_content' => array(
+									'description' => __( "When enabled, the page will automatically navigate to the next content as we press 'Mark as complete.'", 'masteriyo' ),
+									'type'        => 'boolean',
 									'context'     => array( 'view', 'edit' ),
 								),
 							),

@@ -10,6 +10,7 @@
   use BMI\Plugin\Dashboard as Dashboard;
   use BMI\Plugin\Database\BMI_Database as Database;
   use BMI\Plugin\Database\BMI_Database_Exporter as BetterDatabaseExport;
+  use BMI\Plugin\BMI_Pro_Core as Pro_Core;
   use BMI\Plugin AS BMI;
 
   // Exit on direct access
@@ -57,6 +58,9 @@
     public $final_batch;
     public $dbitJustFinished;
     public $lock_cli;
+    
+    public $_zip;
+    public $batches_left;
 
     // Prepare the request details
     function __construct($curl = false, $config = false, $content = false, $backups = false, $abs = false, $dir = false, $url = false, $remote_settings = [], $it = 0, $dbit = 0, $dblast = 0) {
@@ -1176,7 +1180,7 @@
         include_once $bmiPluginPathToLoadPro;
         
         require_once BMI_PRO_ROOT_DIR . '/classes/core' . ((BMI_PRO_DEBUG) ? '.to-enc' : '') . '.php';
-        $bmi_pro_instance = new BMI_Pro_Core();
+        $bmi_pro_instance = new Pro_Core();
         $bmi_pro_instance->initialize();
       }
       

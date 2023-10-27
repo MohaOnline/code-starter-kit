@@ -29,6 +29,15 @@ $.fn.fbuilder_localstorage = function(){
 		fields;
 	if(sq == '') sq = 1;
 	localStore_obj = new $.fbuilder_localstorage(form, true);
+	fields = localStore_obj.get_fields();
+	if(!$.isEmptyObject(fields))
+	{
+		if(typeof cpcff_default == 'undefined') cpcff_default = {};
+		if(typeof cpcff_default[sq] == 'undefined') cpcff_default[sq] = {};
+		cpcff_default[sq] = $.extend(cpcff_default[sq], fields);
+	}
+
+	$(document).on('cff-loaded-defaults', '#'+id, function(){localStore_obj.set_fields();});
 	$(document).on('change', '#'+id+' *', function(evt){
 		if(
 			typeof this['id'] != 'undefined' &&
@@ -40,13 +49,6 @@ $.fn.fbuilder_localstorage = function(){
 		}
 	});
 	form.on('submit', function(){localStore_obj.clear_fields();});
-	fields = localStore_obj.get_fields();
-	if(!$.isEmptyObject(fields))
-	{
-		if(typeof cpcff_default == 'undefined') cpcff_default = {};
-		if(typeof cpcff_default[sq] == 'undefined') cpcff_default[sq] = {};
-		cpcff_default[sq] = $.extend(cpcff_default[sq], fields);
-	}
 	return this;
 }
 

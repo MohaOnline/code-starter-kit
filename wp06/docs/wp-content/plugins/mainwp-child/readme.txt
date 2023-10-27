@@ -4,10 +4,10 @@ Tags: Manage Multiple Sites, Maintenance, Client, Admin, Update, Monitoring, Das
 Author: mainwp
 Author URI: https://mainwp.com
 Plugin URI: https://mainwp.com
-Requires at least: 5.4
-Tested up to: 6.3.1
+Requires at least: 6.2
+Tested up to: 6.3.2
 Requires PHP: 7.4
-Stable tag: 4.5.1
+Stable tag: 4.5.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,8 @@ MainWP is the **perfect solution for**
 - Consultants
 - Marketers
 - In fact, anyone who wants to manage multiple WordPress sites
+
+[Try the Live Demo](https://mainwp.com/live-demo/)
 
 == Here’s Why WordPress Managers Love MainWP! ==
 
@@ -163,6 +165,13 @@ Yes, we have a quick FAQ with a lot more questions and answers [here](https://ma
 10. Manage Clients Screen
 
 == Changelog ==
+
+= 4.5.2 - 10-16-2023 =
+* Added: Support for the Dashboard Insights logging
+* Added: Encryption process for the connection Dashboard URL info
+* Updated: Unique Security ID random string generate process
+
+[See Video Changelog](https://www.youtube.com/watch?v=6rA2Ub0xYxU)
 
 = 4.5.1 - 9-5-2023 =
 * Fixed: Problem with loading tabs content on the MainWP Child settings page

@@ -8,9 +8,9 @@ $php_mem_limit  = function_exists( 'memory_get_usage' ) ? @ini_get( 'memory_limi
 
 $server_configs = apply_filters( 'wpo_wcpdf_server_configs' , array(
 	'PHP version' => array(
-		'required' => __( '7.1+ (7.4 or higher recommended)', 'woocommerce-pdf-invoices-packing-slips' ),
+		'required' => __( '7.2+ (7.4 or higher recommended)', 'woocommerce-pdf-invoices-packing-slips' ),
 		'value'    => PHP_VERSION,
-		'result'   => version_compare( PHP_VERSION, '7.1', '>' ),
+		'result'   => version_compare( PHP_VERSION, '7.2', '>' ),
 	),
 	'DOMDocument extension' => array(
 		'required' => true,
@@ -286,7 +286,7 @@ if( ! $server_configs['PHP version']['result'] ) {
 		?>
 	<tr>
 		<td><?php echo wp_kses_post( $permission['description'] ); ?></td>
-		<td><?php echo str_replace( array('/','\\' ), array('/<wbr>','\\<wbr>' ), wp_kses_post( $permission['value'] ) ); ?></td>
+		<td><?php echo ! empty( $permission['value'] ) ? str_replace( array('/','\\' ), array('/<wbr>','\\<wbr>' ), wp_kses_post( $permission['value'] ) ) : ''; ?></td>
 		<td style="background-color:<?php echo esc_attr( $background ); ?>; color:<?php echo esc_attr( $color ); ?>"><?php echo wp_kses_post( $permission['status_message'] ); ?></td>
 	</tr>
 

@@ -2,9 +2,9 @@
 Contributors: wplake
 Tags: Advanced Custom Fields, shortcode, custom fields, query, post type, acf
 Requires at least: 5.5
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.1.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,19 +98,14 @@ See tutorials on [our youtube channel](https://www.youtube.com/watch?v=Ieu3Mk2Ah
 ACF Views plugin supports translations.
 Check your language status or help by translating ACF Views into your language [here](https://translate.wordpress.org/projects/wp-plugins/acf-views/).
 
-== Video overview ==
-
-https://youtu.be/0Vv23bmYzzo
-
 == Screenshots ==
 
-1. Overview page takes you through all the main points
-2. Get a basic setup in seconds with Demo import
-3. Views list management via the familiar interface
-4. Assign multiple fields within your View
-5. Advanced tab allows you to add Custom CSS/JS Code
-6. Display a set of posts with a Card
-7. Posts can be filtered, sorted and styled
+1. Get a basic setup in seconds with Demo import
+2. Views list management via the familiar interface
+3. Assign multiple fields within your View
+4. The template generated automatically can be easily customized
+5. Display a set of posts with a Card
+6. Posts can be filtered, sorted and styled
 
 == Installation ==
 
@@ -215,6 +210,60 @@ Have you checked that the fields are filled in the target object? See [steps](ht
 You can use the View shortcode inside the Gutenberg Query Loop element. Please make sure you've added it via the built-in Shortcode block, as it won't work properly with other block types, like Code or Custom HTML.
 
 == Changelog ==
+
+= 2.3.2 (2023-10-27): =
+- Workaround for the Avada theme ob_start() bug
+- Improved switching between Basic and Pro versions
+
+= 2.3.1 (2023-10-27): =
+- Workaround for the Divi theme with the 'Enable Classic Editor' option enabled
+- Edit screen: added warning about suppressed Gutenberg editor
+- Added compatibility with the 'Gutenberg' plugin (from WP repo, that overrides Gutenberg from WP core)
+
+= 2.3.0 (2023-10-26): =
+- Edit screen: improved compatibility with third-party plugins
+- Shortcode: added 'user' and 'term' aliases for the 'object-id' argument
+- Templates: moved to the wp-content/uploads dir to avoid the file permissions issue
+- View: added $Term$ group
+- View: extended the 'linkLabel' setting to all the link-related fields
+- View: added a new 'Open link in a new tab' setting to all the link-related fields (Field options tab)
+
+= 2.2.5 (2023-10-20): =
+- Improved UX (moved fields, renamed tabs, added version to the plugin's name)
+- Card: sort by field - fixed bug
+
+= 2.2.4 (2023-10-19): =
+- Improved performance for View and Card edit screens
+- Fixed 'clone' bug
+- View & Card: added Custom Markup validation on save
+- Added support for terms
+- Added rule for the 'Classic Editor' plugin
+
+= 2.2.3 (2023-10-12): =
+- Internal improvements
+- Minor UI improvements
+- Improved UX: added 'related' meta boxes and list columns
+- Settings page
+
+= 2.2.2 (2023-10-06): =
+- Added back compatibility with the old external CSS (the isMarkupWithDigitalId flag for Views and Cards markups)
+
+= 2.2.1 (2023-10-06): =
+- Small improvements
+- Fixed: Clone item
+- Added: shortcodes refresh for new items
+- Fixed: UI bug on the list page with arrows
+- Fixed: issue with ids in JS files (map, loadmore)
+
+= 2.2.0 (2023-10-03): =
+- View: new $User$ and $WooCommerce$ groups and 'user-id' argument for the shortcode
+- View and Card: multilingual support for labels
+- View and Card: new unique ids
+- Tools: export/import tools
+- New UI
+
+= 2.1.2 (2023-09-27): =
+- View: $Post$ group, added a workaround to avoid the double encoding
 
 = 2.1.1 (2023-09-26): =
 - Card: Unlocked 'Custom Markup' feature

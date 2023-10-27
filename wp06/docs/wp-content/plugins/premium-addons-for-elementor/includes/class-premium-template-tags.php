@@ -902,7 +902,7 @@ class Premium_Template_Tags {
 			<?php if ( 'yes' === $data_meta ) { ?>
 				<span class="premium-blog-meta-separator">•</span>
 				<div class="premium-blog-post-time premium-blog-meta-data">
-					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<i class="fa fa-calendar-alt" aria-hidden="true"></i>
 					<span><?php the_time( $date_format ); ?></span>
 				</div>
 			<?php } ?>

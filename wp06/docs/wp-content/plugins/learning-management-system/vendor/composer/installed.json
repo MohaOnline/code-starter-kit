@@ -437,8 +437,8 @@
         },
         {
             "name": "themegrill/openai",
-            "version": "dev-MAS-1310-page-redirect-as-course-complete-for-the-first-time",
-            "version_normalized": "dev-MAS-1310-page-redirect-as-course-complete-for-the-first-time",
+            "version": "dev-redirect-at-end-in-course",
+            "version_normalized": "dev-redirect-at-end-in-course",
             "dist": {
                 "type": "path",
                 "url": "./packages/openai",

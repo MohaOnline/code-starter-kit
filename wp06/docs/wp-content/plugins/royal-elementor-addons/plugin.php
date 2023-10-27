@@ -416,7 +416,7 @@ class Plugin {
         if ( \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
 			wp_enqueue_style(
 				'wpr-addons-library-frontend-css',
-				WPR_ADDONS_URL . 'assets/css/library-frontend'. $this->script_suffix() .'.css',
+				WPR_ADDONS_URL . 'assets/css/admin/library-frontend'. $this->script_suffix() .'.css',
 				[],
 				Plugin::instance()->get_version()
 			);
@@ -525,6 +525,8 @@ class Plugin {
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'resturl' => get_rest_url() . 'wpraddons/v1',
 				'nonce' => wp_create_nonce( 'wpr-addons-js' ),
+				'addedToCartText' => esc_html__('was added to cart', 'wpr-addons'),
+				'viewCart' => esc_html__('View Cart', 'wpr-addons'),
 				'comparePageID' => get_option('wpr_compare_page'),
 				'comparePageURL' => get_permalink(get_option('wpr_compare_page')),
 				'wishlistPageID' => get_option('wpr_wishlist_page'),
@@ -668,7 +670,7 @@ class Plugin {
 
 		wp_enqueue_script(
 			'wpr-addons-editor-js',
-			WPR_ADDONS_URL . 'assets/js/editor'. $this->script_suffix() .'.js',
+			WPR_ADDONS_URL . 'assets/js/admin/editor'. $this->script_suffix() .'.js',
 			[ 'jquery', 'wp-i18n' ],
 			Plugin::instance()->get_version(),
 			true
@@ -693,7 +695,7 @@ class Plugin {
 
 		wp_enqueue_script(
 			'wpr-addons-library-frontend-js',
-			WPR_ADDONS_URL . 'assets/js/library-frontend'. $this->script_suffix() .'.js',
+			WPR_ADDONS_URL . 'assets/js/admin/library-frontend'. $this->script_suffix() .'.js',
 			[ 'jquery', 'wpr-macy-js' ],
 			Plugin::instance()->get_version(),
 			true
@@ -717,7 +719,7 @@ class Plugin {
 
 		wp_enqueue_script(
 			'wpr-addons-library-editor-js',
-			WPR_ADDONS_URL . 'assets/js/library-editor'. $this->script_suffix() .'.js',
+			WPR_ADDONS_URL . 'assets/js/admin/library-editor'. $this->script_suffix() .'.js',
 			[ 'jquery' ],
 			Plugin::instance()->get_version(),
 			true
@@ -727,7 +729,7 @@ class Plugin {
 	public function enqueue_panel_styles() {
 		wp_enqueue_style(
 			'wpr-addons-library-editor-css',
-			WPR_ADDONS_URL . 'assets/css/editor'. $this->script_suffix() .'.css',
+			WPR_ADDONS_URL . 'assets/css/admin/editor'. $this->script_suffix() .'.css',
 			[],
 			Plugin::instance()->get_version()
 		);
@@ -876,11 +878,15 @@ class Plugin {
 	}
 
     public function promote_premium_widgets($config) {
+
+		// if ( is_plugin_active('elementor-pro/elementor-pro.php') || is_plugin_active('pro-elements/pro-elements.php') ) {
+		// }
 		$config['promotionWidgets'] = [];
+
 		$category = Utilities::is_theme_builder_template() ? 'wpr-woocommerce-builder-widgets' : 'wpr-premium-widgets';
 
 		if ( ! wpr_fs()->can_use_premium_code() ) {
-			$config['promotionWidgets'] = [
+			$promotion_widgets = [
 				[
 					'name' => 'wpr-woo-category-grid',
 					'title' => __('Woo Category Grid', 'wpr-addons'),
@@ -912,6 +918,8 @@ class Plugin {
 					'categories' => '["'. $category .'"]',
 				],
 			];
+			
+			$config['promotionWidgets'] = array_merge( $config['promotionWidgets'], $promotion_widgets );
 		}
 		
 		if ( !wpr_fs()->is_plan( 'expert' ) ) {
@@ -956,6 +964,12 @@ class Plugin {
 					'name' => 'wpr-compare',
 					'title' => __('Compare Table', 'wpr-addons'),
 					'icon' => 'wpr-icon eicon-exchange',
+					'categories' => '["'. $category .'"]',
+				],
+				[
+					'name' => 'wpr-custom-field',
+					'title' => __('Custom Field', 'wpr-addons'),
+					'icon' => 'wpr-icon eicon-database',
 					'categories' => '["'. $category .'"]',
 				],
 			];
@@ -1008,7 +1022,9 @@ class Plugin {
 		add_action( 'wp_head', [ $this, 'lightbox_styles' ], 988 );
 
 		// Promote Premium Widgets
-        add_filter('elementor/editor/localize_settings', [$this, 'promote_premium_widgets']);
+		if ( current_user_can('administrator') ) {
+			add_filter('elementor/editor/localize_settings', [$this, 'promote_premium_widgets']);
+		}
 
 		add_filter( 'pre_get_posts', [$this, 'wpr_custom_posts_per_page'] );
 	}

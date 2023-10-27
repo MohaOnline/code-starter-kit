@@ -83,6 +83,33 @@ class MasteriyoTrackingInfo {
 	}
 
 	/**
+	 * Return publish courses by AI count.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @return integer
+	 */
+	public static function get_publish_course_by_ai_count() {
+
+		$meta_query = array(
+			'key'     => '_is_ai_created',
+			'value'   => '1',
+			'compare' => '=',
+		);
+
+		$args = array(
+			'post_type'      => PostType::COURSE,
+			'post_status'    => PostStatus::PUBLISH,
+			'posts_per_page' => -1,
+			'meta_query'     => array( $meta_query ),
+		);
+
+		$query = new \WP_Query( $args );
+
+		return $query->found_posts;
+	}
+
+	/**
 	 * Return publish courses count.
 	 *
 	 * @since 1.6.0
@@ -124,9 +151,10 @@ class MasteriyoTrackingInfo {
 	 */
 	public static function get_meta_data() {
 		return array(
-			'license_key'  => self::get_license_key(),
-			'course_count' => self::get_publish_course_count(),
-			'order_count'  => self::get_completed_orders_count(),
+			'license_key'        => self::get_license_key(),
+			'course_count'       => self::get_publish_course_count(),
+			'course_by_ai_count' => self::get_publish_course_by_ai_count(),
+			'order_count'        => self::get_completed_orders_count(),
 		);
 	}
 

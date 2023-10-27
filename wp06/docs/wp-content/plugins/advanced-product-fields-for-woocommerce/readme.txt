@@ -3,11 +3,11 @@ Contributors: studiowombat,maartenbelmans
 Tags: woocommerce product addons, woocommerce, woocommerce product options, product addons, product fields
 Tags: woocommerce product addons, woocommerce product options, woocommerce custom fields, woocommerce product fields, woo product options
 Requires at least: 4.5
-Tested up to: 6.2.2
+Tested up to: 6.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 
 Add options (addons) to your WooCommerce products so your customers can personalize their products. Product forms for everyone!
 
@@ -158,9 +158,14 @@ From your WordPress dashboard
 
 = What are the system or server requirements? =
 
- You'll need WooCommerce 3.4.0 or higher, WordPress 4.7 or higher, and PHP 5.6 or higher to make this plugin work.
+ You'll need WooCommerce 3.6.0 or higher, WordPress 4.7 or higher, and PHP 5.6 or higher to make this plugin work.
 
 == Changelog ==
+
+= 1.6.4 =
+ * Improvement: started redesigning the admin fields, beginning with new field icons.
+ * Other: add rate link.
+ * Other: tested compatibility with WordPress 6.4 (beta release).
 
 = 1.6.3 =
  * Other: declare compatibility with the upcoming WooCommerce HPOS update.

@@ -32,8 +32,8 @@ $features = $elements['cat-11']['elements'];
 
 						<?php
 
-							$status         = ( isset( $features[9]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'disabled' : checked( 1, $enabled_elements['premium-mscroll'], false );
-							$class          = ( isset( $features[9]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'pro-' : '';
+							$status         = ( isset( $features[10]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'disabled' : checked( 1, $enabled_elements['premium-mscroll'], false );
+							$class          = ( isset( $features[10]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'pro-' : '';
 							$switcher_class = $class . 'slider round pa-control';
 
 						?>
@@ -46,7 +46,7 @@ $features = $elements['cat-11']['elements'];
 							</p>
 						</div>
 					</div>
-					<a href="<?php echo esc_url( $features[9]['demo'] ); ?>" target="_blank"></a>
+					<a href="<?php echo esc_url( $features[10]['demo'] ); ?>" target="_blank"></a>
 				</div>
 
 				<div class="pa-section-outer-wrap">
@@ -133,6 +133,26 @@ $features = $elements['cat-11']['elements'];
 					<a href="<?php echo esc_url( $features[4]['demo'] ); ?>" target="_blank"></a>
 				</div>
 
+                <div class="pa-section-outer-wrap">
+					<div class="pa-section-info-wrap">
+						<div class="pa-section-info">
+							<h4><?php echo esc_html( __( 'Animated Shape Divider', 'premium-addons-for-elementor' ) ); ?></h4>
+							<p><?php echo esc_html( __( 'Add icon, image, Lottie, or SVG blob shape badge to any Elementor section, container, column, or widget.', 'premium-addons-for-elementor' ) ); ?></p>
+						</div>
+						<?php
+
+						?>
+						<div class="pa-section-info-cta">
+							<label class="switch">
+								<input type="checkbox" id="premium-shape-divider" name="premium-shape-divider" <?php echo checked( 1, $enabled_elements['premium-shape-divider'], false ); ?>>
+									<span class="slider round pa-control"></span>
+								</label>
+							</p>
+						</div>
+					</div>
+					<a href="<?php echo esc_url( $features[5]['demo'] ); ?>" target="_blank"></a>
+				</div>
+
 				<div class="pa-section-outer-wrap">
 					<div class="pa-section-info-wrap">
 						<div class="pa-section-info">
@@ -141,20 +161,16 @@ $features = $elements['cat-11']['elements'];
 						</div>
 						<?php
 
-						$status         = ( isset( $features[10]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'disabled' : checked( 1, $enabled_elements['premium-global-tooltips'], false );
-						$class          = ( isset( $features[10]['is_pro'] ) && ! Helper_Functions::check_papro_version() ) ? 'pro-' : '';
-						$switcher_class = $class . 'slider round pa-control';
-
 						?>
 						<div class="pa-section-info-cta">
 							<label class="switch">
-								<input type="checkbox" id="premium-global-tooltips" name="premium-global-tooltips" <?php echo esc_attr( $status ); ?>>
-									<span class="<?php echo esc_attr( $switcher_class ); ?>"></span>
+								<input type="checkbox" id="premium-global-tooltips" name="premium-global-tooltips" <?php echo checked( 1, $enabled_elements['premium-global-tooltips'], false ); ?>>
+									<span class="slider round pa-control"></span>
 								</label>
 							</p>
 						</div>
 					</div>
-					<a href="<?php echo esc_url( $features[10]['demo'] ); ?>" target="_blank"></a>
+					<a href="<?php echo esc_url( $features[11]['demo'] ); ?>" target="_blank"></a>
 				</div>
 
 				<div class="pa-section-outer-wrap">
@@ -190,7 +206,7 @@ $features = $elements['cat-11']['elements'];
 							</p>
 						</div>
 					</div>
-					<a href="<?php echo esc_url( $features[5]['demo'] ); ?>" target="_blank"></a>
+					<a href="<?php echo esc_url( $features[6]['demo'] ); ?>" target="_blank"></a>
 				</div>
 
 				<div class="pa-section-outer-wrap">
@@ -208,7 +224,7 @@ $features = $elements['cat-11']['elements'];
 							</p>
 						</div>
 					</div>
-					<a href="<?php echo esc_url( $features[6]['demo'] ); ?>" target="_blank"></a>
+					<a href="<?php echo esc_url( $features[7]['demo'] ); ?>" target="_blank"></a>
 				</div>
 
 				<div class="pa-section-outer-wrap">

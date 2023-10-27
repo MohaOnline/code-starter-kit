@@ -6,7 +6,7 @@
  * @since       1.0.0
  */
 
- $this_sdk_version = '1.1.1';
+ $this_sdk_version = '1.1.2';
 
  if(!class_exists('BPlugins_SDK')){
 
@@ -77,16 +77,9 @@
         }
 
         function pipe_default_value(){
-
-            return "{\"zn8mpz8gt\":8ysg,\"key\":\"5BA6C68A-C7934CDB-A5A1443E-9BCBFEEA\",\"9gycz5mrj\":\"19z91\",\"8mcg\":\"63d362fduf2vv\"}";
-            $pipe = get_option( $this->prefix );
-            if( true ){
-                return wp_json_encode([
-                    "zn8mpz8gt" => "8ysg",
-                    "key" => '5BA6C68A-C7934CDB-A5A1443E-9BCBFEEA',
-                    "9gycz5mrj" => "19z91",
-                    "8mcg" => "63d362fduf2vv",
-                ]);
+            $pipe = get_option( $this->prefix."_pipe" );
+            if( $pipe ){
+                return $pipe;
             }else{
                 return "{}";
             }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handle meta table functionality.
  *
@@ -16,6 +17,7 @@ use Masteriyo\DateTime;
 defined( 'ABSPATH' ) || exit;
 
 abstract class AbstractRepository {
+
 
 	/**
 	 * Meta type.
@@ -135,26 +137,37 @@ abstract class AbstractRepository {
 	 * @return MetaData[]
 	 */
 	public function read_meta( &$model ) {
-		// phpcs:disable
 		// TODO Abstract global $wpdb;
 		global $wpdb;
 
 		$meta_table_info = $this->get_meta_table_info();
 
-		// phpcs:disable
-		$raw_meta_data = $wpdb->get_results(
-		$wpdb->prepare(
-			"SELECT {$meta_table_info['meta_id_field']} as  meta_id, meta_key, meta_value
-				FROM {$meta_table_info['table']}
-				WHERE {$meta_table_info['object_id_field']} = %d
-				ORDER BY {$meta_table_info['meta_id_field']}",
-			$model->get_id()
-		)
+		$cache         = masteriyo_cache();
+		$cache_key     = array(
+			'metadata',
+			$meta_table_info['table'],
+			$meta_table_info['object_id_field'],
+			$model->get_id(),
 		);
-		// phpcs:enable
+		$raw_meta_data = $cache->get( $cache_key );
+
+		if ( false === $raw_meta_data ) {
+			// phpcs:disable
+			$sql = $wpdb->prepare(
+				"SELECT {$meta_table_info['meta_id_field']} as  meta_id, meta_key, meta_value
+					FROM {$meta_table_info['table']}
+					WHERE {$meta_table_info['object_id_field']} = %d
+					ORDER BY {$meta_table_info['meta_id_field']}",
+				$model->get_id()
+			);
+			$raw_meta_data = $wpdb->get_results($sql);
+			// phpcs:enable
+
+			$cache->set( $cache_key, $raw_meta_data );
+		}
 
 		$meta_data = array_map(
-			function( $meta_data ) {
+			function ( $meta_data ) {
 				return new MetaData(
 					array(
 						'id'    => $meta_data->meta_id,
@@ -232,6 +245,10 @@ abstract class AbstractRepository {
 			$updated = update_user_meta( $object->get_id(), $meta_key, $meta_value );
 		}
 
+		if ( $updated ) {
+			$this->invalidate_metadata_cache( $object->get_id() );
+		}
+
 		return (bool) $updated;
 	}
 
@@ -258,6 +275,10 @@ abstract class AbstractRepository {
 			$updated = delete_post_meta( $object->get_id(), $meta_key );
 		} else {
 			$updated = update_post_meta( $object->get_id(), $meta_key, $meta_value );
+		}
+
+		if ( $updated ) {
+			$this->invalidate_metadata_cache( $object->get_id() );
 		}
 
 		return (bool) $updated;
@@ -288,6 +309,10 @@ abstract class AbstractRepository {
 			$updated = update_comment_meta( $object->get_id(), $meta_key, $meta_value );
 		}
 
+		if ( $updated ) {
+			$this->invalidate_metadata_cache( $object->get_id() );
+		}
+
 		return (bool) $updated;
 	}
 
@@ -313,6 +338,10 @@ abstract class AbstractRepository {
 			$updated = delete_metadata( $this->meta_type, $object->get_id(), $meta_key );
 		} else {
 			$updated = update_metadata( $this->meta_type, $object->get_id(), $meta_key, $meta_value );
+		}
+
+		if ( $updated ) {
+			$this->invalidate_metadata_cache( $object->get_id() );
 		}
 
 		return (bool) $updated;
@@ -344,7 +373,30 @@ abstract class AbstractRepository {
 			$updated = update_term_meta( $object->get_id(), $meta_key, $meta_value );
 		}
 
+		if ( $updated ) {
+			$this->invalidate_metadata_cache( $object->get_id() );
+		}
+
 		return (bool) $updated;
+	}
+
+	/**
+	 * Invalidate/destroy the metadata cache related to a specific object.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @param integer $object_id The Model object ID.
+	 */
+	protected function invalidate_metadata_cache( $object_id ) {
+		$meta_table_info = $this->get_meta_table_info();
+		$cache_key       = array(
+			'metadata',
+			$meta_table_info['table'],
+			$meta_table_info['object_id_field'],
+			$object_id,
+		);
+
+		masteriyo_cache()->delete( $cache_key );
 	}
 
 	/**
@@ -394,7 +446,7 @@ abstract class AbstractRepository {
 	 * @return array Stopwords.
 	 */
 	protected function get_search_stopwords() {
-		// Translators: This is a comma-separated list of very common words that should be excluded from a search, like a, an, and the. These are usually called "stopwords". You should not simply translate these individual words into your language. Instead, look for and provide commonly accepted stopwords in your language.
+		 // Translators: This is a comma-separated list of very common words that should be excluded from a search, like a, an, and the. These are usually called "stopwords". You should not simply translate these individual words into your language. Instead, look for and provide commonly accepted stopwords in your language.
 		$stopwords = array_map(
 			array( Utils::class, 'strtolower' ),
 			array_map(
@@ -531,8 +583,10 @@ abstract class AbstractRepository {
 
 		// Props should be updated if they are a part of the $changed array or don't exist yet.
 		foreach ( $meta_key_to_props as $meta_key => $prop ) {
-			if ( array_key_exists( $prop, $changed_props )
-			|| ! metadata_exists( $meta_type, $model->get_id(), $meta_key ) ) {
+			if (
+				array_key_exists( $prop, $changed_props )
+				|| ! metadata_exists( $meta_type, $model->get_id(), $meta_key )
+			) {
 				$props_to_update[ $meta_key ] = $prop;
 			}
 		}
@@ -862,7 +916,7 @@ abstract class AbstractRepository {
 	 * @return array
 	 */
 	protected function get_must_exist_meta_keys() {
-		return $this->must_exist_meta_keys;
+		 return $this->must_exist_meta_keys;
 	}
 
 	/**
@@ -873,7 +927,7 @@ abstract class AbstractRepository {
 	 * @return array
 	 */
 	protected function get_internal_lookup_keys() {
-		return $this->internal_lookup_keys;
+		 return $this->internal_lookup_keys;
 	}
 
 	/**

@@ -14,6 +14,14 @@ if (get_option('two_so_organization_name') && get_option('two_so_organization_na
     $company_name_setted = true;
     $company_name = get_option('two_so_organization_name');
 }
+$two_so_support_url = get_option('two_so_organization_support_url');
+
+if (empty($two_so_support_url)) {
+    $two_domain_id = get_site_option('tenweb_domain_id');
+    $two_manage_url = trim(TENWEB_DASHBOARD, '/') . '/websites/' . $two_domain_id . '/booster/frontend' . '?from_plugin=' . \TenWebOptimizer\OptimizerUtils::FROM_PLUGIN;
+    $two_contact_link = $two_manage_url . '&open=livechat';
+    $two_so_support_url = $two_contact_link;
+}
 ?>
 <div class="two-container connected">
   <div class="two-header">
@@ -35,13 +43,24 @@ if (get_option('two_so_organization_name') && get_option('two_so_organization_na
             <div class="two-plugin-description">
                 <?php _e('White label 10Web Booster in this website’s WordPress dashboard.', 'tenweb-speed-optimizer'); ?>
             </div>
-            <div class="two-plugin-description two-description-wl two-description-with-info">
-                <?php _e('Organization name', 'tenweb-speed-optimizer'); ?>
+            <div class="two-desc-block">
+                <div class="two-plugin-description two-description-wl two-description-with-info">
+                    <?php _e('Organization name', 'tenweb-speed-optimizer'); ?>
+                </div>
+                <div class="two-plugin-description two-description-wl two-description-with-info">
+                    <?php _e('Your support URL', 'tenweb-speed-optimizer'); ?>
+                </div>
+                <div class="two-empty-desc"></div>
             </div>
             <div class="two-white-label-settup">
                 <input type="text" id="two-company-name"
                        placeholder="<?php _e('Name of your company', 'tenweb-speed-optimizer'); ?>"
                     <?php echo $company_name_setted ? 'value="' . esc_attr($company_name) . '"' : ''; ?>>
+
+                <input type="text" id="two-support-url"
+                       placeholder="<?php _e('Your support URL', 'tenweb-speed-optimizer'); ?>"
+                       value="<?php echo esc_attr($two_so_support_url); ?>"
+                        >
                 <button id="two-save-company-name" <?php echo $company_name_setted ? '' : 'disabled'; ?>>
                     <?php _e('Save', 'tenweb-speed-optimizer'); ?>
                 </button>

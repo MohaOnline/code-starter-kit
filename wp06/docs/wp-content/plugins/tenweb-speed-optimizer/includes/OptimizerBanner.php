@@ -109,7 +109,7 @@ class OptimizerBanner {
     public static function two_set_autoupdate_from_banner() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
         $auto_update = isset($_POST['auto_update']) ? sanitize_text_field($_POST['auto_update']) : '';
@@ -130,7 +130,7 @@ class OptimizerBanner {
     public static function two_send_nps_survey_data() {
         $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
-        if (!wp_verify_nonce($nonce, 'two_ajax_nonce')) {
+        if (!wp_verify_nonce($nonce, 'two_ajax_nonce') || !OptimizerUtils::check_admin_capabilities()) {
             die('Permission Denied.');
         }
         $nps_rate = isset($_POST['nps_rate']) ? (int) sanitize_text_field($_POST['nps_rate']) : '';

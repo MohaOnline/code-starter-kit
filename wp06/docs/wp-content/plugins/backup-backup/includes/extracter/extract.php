@@ -150,7 +150,8 @@
       }
 
       // Name
-      $this->tmp = untrailingslashit(ABSPATH) . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
+      // $this->tmp = untrailingslashit(ABSPATH) . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
+      $this->tmp = untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
       $GLOBALS['bmi_current_tmp_restore'] = $this->tmp;
       $GLOBALS['bmi_current_tmp_restore_unique'] = $this->tmptime;
 
@@ -208,7 +209,7 @@
       // Handle only database backup
       if (!file_exists($path)) return;
 
-      $rii = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+      $rii = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST);
 
       $clent = strlen($content);
       $sublen = strlen($path);
@@ -225,10 +226,10 @@
 
       for ($i = 0; $i < sizeof($dirs); ++$i) {
         $src = $path . $dirs[$i];
-        if (strpos($src, $content) !== false) {
-          $dest = $this->WP_CONTENT_DIR . $sub . substr($dirs[$i], $clent);
+        if (strpos($dirs[$i], $content) !== false) {
+          $dest = untrailingslashit($this->WP_CONTENT_DIR) . $sub . ltrim(substr($dirs[$i], $clent), DIRECTORY_SEPARATOR);
         } else {
-          $dest = $this->ABSPATH . $sub . $dirs[$i];
+          $dest = untrailingslashit($this->ABSPATH) . $sub . ltrim($dirs[$i], DIRECTORY_SEPARATOR);
         }
 
         $dest = untrailingslashit($dest);
@@ -255,21 +256,14 @@
       $max = sizeof($files);
       for ($i = 0; $i < $max; ++$i) {
         $src = $path . $files[$i];
-        if (strpos($src, $content) !== false) {
-          $dest = $this->WP_CONTENT_DIR . $sub . substr($files[$i], $clent);
+        if (strpos($files[$i], $content) !== false) {
+          $dest = untrailingslashit($this->WP_CONTENT_DIR) . $sub . substr($files[$i], $clent);
         } else {
-          $dest = $this->ABSPATH . $sub . $files[$i];
+          $dest = untrailingslashit($this->ABSPATH) . $sub . $files[$i];
         }
 
         if (file_exists($src)) {
           $fileDest = BMP::fixSlashes($dest);
-          $dirDest = pathinfo($fileDest);
-          if ($dirDest['dirname']) {
-            $dirDest = $dirDest['dirname'];
-            if (!(is_dir($dirDest) && file_exists($dirDest))) {
-              @mkdir($dirDest, 0755, true);
-            }
-          }
           rename($src, $fileDest);
         }
 
@@ -370,11 +364,13 @@
 
         $this->migration->log(__('Removing ', 'backup-backup') . iterator_count($files) . __(' files', 'backup-backup'), 'INFO');
         foreach ($files as $file) {
+          $pathReal = $file->getRealPath();
+          if (!file_exists($pathReal)) continue;
           if ($file->isDir()) {
-            @rmdir($file->getRealPath());
+            @rmdir($pathReal);
           } else {
             gc_collect_cycles();
-            @unlink($file->getRealPath());
+            @unlink($pathReal);
           }
         }
 
@@ -397,7 +393,7 @@
       }
 
       $allowedFiles = ['wp-config.php', '.htaccess', '.litespeed', '.default.json', 'driveKeys.php', '.autologin.php', '.migrationFinished'];
-      foreach (glob(untrailingslashit(ABSPATH) . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
+      foreach (glob(untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
 
         $basename = basename($filename);
 
@@ -1162,6 +1158,14 @@
       
       if (strtolower($manifest->config->table_prefix) == strtolower($new_prefix)) {
         $new_prefix = $manifest->config->table_prefix;
+      }
+      
+      if (strlen(trim($manifest->config->table_prefix)) == 0) {
+        return;
+      }
+      
+      if (strlen(trim($new_prefix)) == 0) {
+        return;
       }
       
       $this->migration->log(__('Restoring wp-config file...', 'backup-backup'), 'STEP');

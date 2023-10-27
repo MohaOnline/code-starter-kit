@@ -125,3 +125,12 @@ border: 1px solid #2271b1;
 #customize-controls .ui-checkboxradio-checked img {
     border: 4px solid #0025ff;
 }
+#customize-control-blogus_skin_mode label, #customize-control-blogus_content_layout label,
+#customize-control-blogus_single_page_layout label, #customize-control-blogus_page_layout label, 
+#customize-control-scrollup_layout label{
+  box-shadow: none;
+  height: 100%;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}

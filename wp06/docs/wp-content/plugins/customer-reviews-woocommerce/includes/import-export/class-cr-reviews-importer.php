@@ -190,7 +190,6 @@ if (! class_exists('CR_Reviews_Importer')):
 				return new WP_Error('failed_read_file', __('Cannot read CSV file', 'customer-reviews-woocommerce'));
 			}
 
-			ini_set( 'auto_detect_line_endings' , true );
 			$file = fopen($file_path, 'r');
 			// detect delimiter
 			$delimiter = $this->detect_delimiter( $file );
@@ -216,7 +215,6 @@ if (! class_exists('CR_Reviews_Importer')):
 
 			if ( !$columns_correct ) {
 				fclose($file);
-				ini_set( 'auto_detect_line_endings', false );
 				return new WP_Error('malformed_columns', __('The CSV file contains invalid or missing column headings, please refer to the template in step 1', 'customer-reviews-woocommerce'));
 			}
 
@@ -228,7 +226,6 @@ if (! class_exists('CR_Reviews_Importer')):
 			}
 
 			fclose($file);
-			ini_set( 'auto_detect_line_endings', false );
 
 			if ($num_reviews < 1) {
 				return new WP_Error('no_reviews', __('The CSV file contains no reviews', 'customer-reviews-woocommerce'));

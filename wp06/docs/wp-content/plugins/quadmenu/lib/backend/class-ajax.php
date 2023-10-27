@@ -531,7 +531,7 @@ class Ajax extends Settings {
 				);
 
 				if ( isset( $_REQUEST['menu-item-title'] ) ) {
-					$post['post_title'] = apply_filters( 'the_title', $_REQUEST['menu-item-title'] );
+					$post['post_title'] = apply_filters( 'the_title', $_REQUEST['menu-item-title'], $menu_item_id );
 				}
 				if ( isset( $_REQUEST['menu-item-attr-title'] ) ) {
 					$post['post_excerpt'] = wp_kses_post( $_REQUEST['menu-item-attr-title'] );

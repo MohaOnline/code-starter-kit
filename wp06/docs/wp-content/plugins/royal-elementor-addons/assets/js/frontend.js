@@ -988,13 +988,23 @@
 							'left' : - $scope.find('.wpr-nav-menu-container').offset().left +'px'
 						});	// conditions for sticky replace needed
 					} else if ( $(this).hasClass('wpr-mega-menu-width-stretch') ) {
-						let elContainer = $(this).closest('.elementor-section');
-							elContainer = elContainer.hasClass('elementor-inner-section') ? elContainer : elContainer.children('.elementor-container');
+						// Sections (Old)
+						if ( 0 === $(this).closest('.e-con').length ) {
+							var elContainer = $(this).closest('.elementor-section');
+								elContainer = elContainer.hasClass('elementor-inner-section') ? elContainer : elContainer.children('.elementor-container');
 
-						let elWidgetGap = !elContainer.hasClass('elementor-inner-section') ? elContainer.find('.elementor-element-populated').css('padding') : '0';
-							elWidgetGap = parseInt(elWidgetGap.replace('px', ''), 10);
+							var elWidgetGap = !elContainer.hasClass('elementor-inner-section') ? elContainer.find('.elementor-element-populated').css('padding') : '0';
+								elWidgetGap = parseInt(elWidgetGap.replace('px', ''), 10);
 
-						let elContainerWidth = elContainer.outerWidth() - (elWidgetGap * 2),
+						// Container (New)
+						} else {
+							var elContainer = $(this).closest('.e-con-inner');
+
+							var elWidgetGap = elContainer.find('.elementor-element.e-con').css('padding'),
+								elWidgetGap = parseInt(elWidgetGap, 10);
+						}
+
+						var elContainerWidth = elContainer.outerWidth() - (elWidgetGap * 2),
 							offsetLeft = -($scope.offset().left - elContainer.offset().left) + elWidgetGap;
 
 						megaSubMenu.css({
@@ -1698,7 +1708,7 @@
 						}
 						
 						if ( !($scope.find('.wpr-grid').find('#wpr-added-to-cart-'+product_id).length > 0) ) {
-							$scope.find('.wpr-grid').append('<div id="wpr-added-to-cart-'+product_id+'" class="wpr-added-to-cart-popup ' + animationClass + '">'+ popupImage +'<div class="wpr-added-tc-title"><p>'+ popupText +' was added to cart</p><p><a href='+popupLink+'>View Cart</a></p></div></div>');
+							$scope.find('.wpr-grid').append('<div id="wpr-added-to-cart-'+product_id+'" class="wpr-added-to-cart-popup ' + animationClass + '">'+ popupImage +'<div class="wpr-added-tc-title"><p>'+ popupText + ' ' + WprConfig.addedToCartText +'</p><p><a href='+popupLink+'>'+ WprConfig.viewCart +'</a></p></div></div>');
 
 							setTimeout(() => {
 								$(this).find('#wpr-added-to-cart-'+product_id).addClass(removeAnimationClass);
@@ -1866,6 +1876,8 @@
 							// }
 							
 							if ( $(this).find('img:nth-of-type(2)').attr('src') !== undefined && $(this).find('img:nth-of-type(2)').attr('src') !== '' ) {
+								// $(this).find('img:first-of-type').fadeOut(0).addClass('wpr-hidden-img');
+								// $(this).find('img:nth-of-type(2)').fadeIn(500).removeClass('wpr-hidden-img');
 								$(this).find('img:first-of-type').addClass('wpr-hidden-img');
 								$(this).find('img:nth-of-type(2)').removeClass('wpr-hidden-img');
 							}
@@ -1877,6 +1889,8 @@
 							// }
 		
 							if ( $(this).find('img:nth-of-type(2)').attr('src') !== undefined && $(this).find('img:nth-of-type(2)').attr('src') !== '' ) {
+								// $(this).find('img:nth-of-type(2)').fadeOut(0).addClass('wpr-hidden-img');
+								// $(this).find('img:first-of-type').fadeIn(500).removeClass('wpr-hidden-img');
 								$(this).find('img:nth-of-type(2)').addClass('wpr-hidden-img');
 								$(this).find('img:first-of-type').removeClass('wpr-hidden-img');
 							}
@@ -2419,6 +2433,10 @@
 					items.each(function() {
 						$(this).css('height', maxHeight + 'px');
 					});
+                    
+                    if ( 'yes' === settings.stick_last_element_to_bottom ) {
+                        $scope.addClass('wpr-grid-last-element-yes');
+                    }
 				}
 			}
 
@@ -3267,6 +3285,14 @@
 		}, // End widgetFeaturedMedia
         
         widgetProductMedia: function( $scope ) {
+			// Fix Main Slider Distortion
+			$(document).ready(function($) {
+				$(window).trigger('resize');
+				setTimeout(function() {
+					$(window).trigger('resize');
+					$scope.find('.wpr-product-media-wrap').removeClass('wpr-zero-opacity');
+				}, 1000);
+			});
 
 			var sliderIcons = $scope.find('.wpr-gallery-slider-arrows-wrap');
 
@@ -4446,7 +4472,6 @@
                     var wprSelectedCategory = localStorage.getItem('wprSelectedCategory');
                     if (wprSelectedCategory) {
 						$scope.find('.wpr-category-select option').each(function() {
-							console.log($(this).val());
 							if ($(this).val() === wprSelectedCategory) {
 								isFound = true;
 								$scope.find('.wpr-category-select').val(wprSelectedCategory);
@@ -4502,6 +4527,17 @@
 					clearTimeout(searchTimeout);
 				}
 				var optionPostType = ($scope.find('.wpr-category-select').length > 0 && $scope.find('.wpr-category-select').find('option:selected').data('post-type'));
+				var wprTaxonomyType = $scope.find('.wpr-search-form-input').attr('wpr-taxonomy-type');
+
+				if ( $scope.find('.wpr-category-select').length > 0) {
+					if (!wprTaxonomyType) {
+						if ($scope.find('.wpr-search-form-input').attr('wpr-query-type') == 'product') {
+							wprTaxonomyType = 'product_cat';
+						} else {
+							wprTaxonomyType = 'category';
+						}
+					}
+				}
 
 				searchTimeout = setTimeout(() => {
 					var thisValue = thisObject.val();
@@ -4514,6 +4550,7 @@
 							wpr_keyword: $scope.find('.wpr-search-form-input').val(),
 							wpr_query_type: $scope.find('.wpr-search-form-input').attr('wpr-query-type'),
 							wpr_option_post_type: optionPostType ? $scope.find('.wpr-category-select').find('option:selected').data('post-type') : '',
+							wpr_taxonomy_type: wprTaxonomyType,
 							wpr_category: $scope.find('.wpr-category-select').length > 0 ? $scope.find('.wpr-category-select').val() : '',
 							wpr_number_of_results: $scope.find('.wpr-search-form-input').attr('number-of-results'),
 							wpr_search_results_offset: postsOffset,
@@ -5220,6 +5257,9 @@
 			});
 
 			$contentTickerMarquee.marquee(marqueeData);
+			if ( $scope.find('.wpr-marquee-hidden').length > 0 ) {
+				$scope.find('.wpr-ticker-marquee').removeClass('wpr-marquee-hidden');
+			}
 
 		}, // End widgetContentTicker
 
@@ -6285,8 +6325,8 @@
 					loop: swiperSlider.data('loop') === 'yes' ? true : false,
 					autoplay: swiperSlider.data("autoplay") !== 'yes' ? false : {
 						delay: +swiperSlider.attr('data-swiper-delay'),
-						// disableOnInteraction: true,
-						// pauseOnMouseEnter: true,
+						disableOnInteraction: false,
+						pauseOnMouseEnter: swiperSlider.data('swiper-poh') === 'yes' ? true : false,
 					},
 					on: {
 						init: function () {
@@ -7771,6 +7811,9 @@
 			}
 
 			function openOffcanvas(offcanvasSelector) {
+				if ( !$scope.hasClass('wpr-offcanvas-entrance-type-push') && !$scope.find('.wpr-offcanvas-content').hasClass('wpr-offcanvas-content-relative') ) {
+					$('body').addClass('wpr-offcanvas-body-overflow');
+				}
 				animationDuration = +offcanvasSelector.find('.wpr-offcanvas-content').css('animation-duration').replace('s', '') * 1000;
 				offcanvasSelector.fadeIn(animationDuration);
 				offcanvasSelector.addClass('wpr-offcanvas-wrap-active');
@@ -7798,6 +7841,9 @@
 			}
 
 			function closeOffcanvas(offcanvasSelector) {
+				if ( !$scope.hasClass('wpr-offcanvas-entrance-type-push') && !$scope.find('.wpr-offcanvas-content').hasClass('wpr-offcanvas-content-relative') ) {
+					$('body').removeClass('wpr-offcanvas-body-overflow');
+				}
 				if ( $scope.hasClass('wpr-offcanvas-entrance-animation-slide') ) {
 					offcanvasSelector.find('.wpr-offcanvas-content').removeClass('wpr-offcanvas-slide-in').addClass('wpr-offcanvas-slide-out');
 				} else if ( $scope.hasClass('wpr-offcanvas-entrance-animation-grow') ) {
@@ -7925,7 +7971,11 @@
 			} else {
 
 				$scope.find('.wpr-offcanvas-trigger').on('click', function() {
-					openOffcanvas($scope.find('.wpr-offcanvas-wrap'));
+					if ( !$scope.find('.wpr-offcanvas-wrap').hasClass('wpr-offcanvas-wrap-active') ) {
+						openOffcanvas($scope.find('.wpr-offcanvas-wrap'));
+					} else if ( $scope.find('.wpr-offcanvas-wrap').hasClass('wpr-offcanvas-wrap-active') && $scope.find('.wpr-offcanvas-wrap').hasClass('wpr-offcanvas-wrap-relative') ) {
+						closeOffcanvas($scope.find('.wpr-offcanvas-wrap'));
+					}
 				});
 	
 				$scope.find('.wpr-offcanvas-wrap').on('click', function(e){
@@ -8638,7 +8688,8 @@
 						var actionsObject = {
 							emailPromise: sendEmail,
 							submissionsPromise: createPost,
-							mailchimpPromise: subscribeMailchimp
+							mailchimpPromise: subscribeMailchimp,
+							webhookPromise: sendWebhook
 						}
 
 						// Wait for all Promises to resolve
@@ -8766,7 +8817,6 @@
 							nonce: WprConfig.nonce,
 							form_content: data,
 							wpr_form_id: $scope.find('input[name="form_id"]').val(),
-							nonce: WprConfig.nonce,
 						},
 						success: function(response) {
 							console.log(response);
@@ -8781,6 +8831,50 @@
 							}
 						},
 						error: function(error) {
+							// if (WprConfig.is_admin) {
+							// 	$scope.find('form').append('<p class="wpr-submit-error">'+ error.data.message +'</p>');
+							// }
+						}
+					});
+				}
+
+				function sendWebhook() {
+					var data = deepCopy(formContent);
+					
+					for (let key in data) {
+						if (data[key][0] == 'radio' || data[key][0] == 'checkbox' ) {
+							if (Array.isArray(data[key][1])) {
+								let trueValues = data[key][1].filter(innerArray => innerArray[1] === true).map(innerArray => innerArray[0]);
+								let trueValuesString = trueValues.join(', ');
+								data[key][1] = trueValuesString;
+							}
+						}
+					}
+
+					return $.ajax({
+						type: 'POST',
+						url: WprConfig.ajaxurl,
+						data: { 
+							action: 'wpr_form_builder_webhook',
+							nonce: WprConfig.nonce,
+							form_content: data,
+							wpr_form_id: $scope.find('input[name="form_id"]').val(),
+							form_name: $scope.find('form').attr('name')
+						},
+						success: function(response) {
+							console.log(response);
+							if ( !response.success ) {
+								// if (WprConfig.is_admin) {
+								// 	$scope.find('form').append('<p class="wpr-submit-error">'+ response.data.message +'</p>');
+								// }
+							} else {
+								// if (WprConfig.is_admin) {
+								// 	$scope.find('form').append('<p class="wpr-submit-success">'+ response.data.message +'</p>');
+								// }
+							}
+						},
+						error: function(error) {
+							console.log(error);
 							// if (WprConfig.is_admin) {
 							// 	$scope.find('form').append('<p class="wpr-submit-error">'+ error.data.message +'</p>');
 							// }

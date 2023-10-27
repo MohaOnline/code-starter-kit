@@ -74,7 +74,7 @@ gadsenseData['msg'] = {
 
 //  the network variable needs to be set for the view to work!
 $network = Advanced_Ads_Network_Adsense::get_instance();
-include(ADVADS_BASE_PATH . '/modules/gadsense/admin/views/external-ads-links.php');
+include(ADVADS_ABSPATH . '/modules/gadsense/admin/views/external-ads-links.php');
 ?>
 <?php endif; ?>
 <p id="adsense-ad-param-error"></p>

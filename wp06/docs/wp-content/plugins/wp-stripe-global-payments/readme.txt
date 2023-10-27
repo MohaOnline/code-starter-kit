@@ -3,19 +3,19 @@ Contributors: gauchoplugins, brandonfire, freemius
 Author URI: https://www.gauchoplugins.com/
 Plugin URI: https://chinapaymentsplugin.com/
 Donate link: https://chinapaymentsplugin.com/pricing/
-Tags: WeChat Pay, Alipay, Stripe, WooCommerce, MemberPress, Payment Page, payments, custom payment amounts, one-time payments, subscriptions, WeChat, weixin, tencent, China, 
+Tags: WeChat Pay, Alipay, Stripe, WooCommerce, MemberPress, Simple Membership, Payment Page, payments, custom payment amounts, one-time payments, subscriptions, WeChat, weixin, tencent, China, 
 Requires at least: 5.1
-Tested up to: 6.3
-Stable tag: 3.3.2
+Tested up to: 6.4
+Stable tag: 3.3.3
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://opensource.org/licenses/GPL-3.0
 
-Accept WeChat Pay and Alipay via Stripe with WooCommerce, MemberPress, or Payment Page. 
+Accept WeChat Pay and Alipay via Stripe with WooCommerce, MemberPress, Simple Membership, or Payment Page. 
 
 == Description ==
  
-Accept WeChat Pay and Alipay via Stripe with a checkout flow optimized for Chinese customers. WooCommerce, MemberPress, and Payment Page are supported. 
+Accept WeChat Pay and Alipay via Stripe with a checkout flow optimized for Chinese customers. WooCommerce, MemberPress, Simple Membership, and Payment Page are supported. 
 
 ## 💳 ACCEPT WECHAT PAY & ALIPAY VIA STRIPE
 > Accept WeChat Pay or Alipay payments with the powerful Stripe.com integration. We’ve implemented the best practices for accepting WeChat Pay via dynamic QR codes and Alipay redirection for Chinese customers. 
@@ -27,9 +27,10 @@ Accept WeChat Pay and Alipay via Stripe with a checkout flow optimized for Chine
 * Anybody who wants to accept WeChat Pay or Alipay and can register for a Stripe account in a [Stripe supported country](https://stripe.com/global/). 
 
 ## 🔌 POWERFUL INTEGRATIONS
-* WooCommerce
-* MemberPress
-* Payment Page
+* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+* [MemberPress](https://memberpress.com/)
+* [Simple Membership](https://wordpress.org/plugins/simple-membership/)
+* [Payment Page](https://wordpress.org/plugins/payment-page/)
 
 ## 🇨🇳 OPTIMIZED PAYMENT FLOW FOR CHINESE CUSTOMERS
 > We’ve adapted the checkout flow for Chinese customers by including currency conversion, full Chinese translation, animated graphics, and the option to include customizable text that guides customers to complete payment seamlessly. 
@@ -60,13 +61,14 @@ Accept WeChat Pay and Alipay via Stripe with a checkout flow optimized for Chine
 * Payment Page (Free)
 * WooCommerce (Free)
 * MemberPress (Free)
+* Simple Membership (Free)
 
 Please read more about **free** and **pro** features below. 
 
 ## FREE FEATURES
 * One-time Alipay payments.
 * One-time WeChat Pay payments. 
-* Integrations with WooCommerce and Payment Page.
+* Integrations with WooCommerce, MemberPress, Simple Membership and Payment Page.
 * Stripe Connect for easily connecting your Stripe account w/o API keys.
 
 ## PRO FEATURES
@@ -75,9 +77,10 @@ Please read more about **free** and **pro** features below.
 * **Checkout optimizations for Chinese customers - coming soon!**
 
 ## Demos
-* [WooCommerce Checkout](https://chinapaymentsplugin.com/woocommerce-demo/ "China Payments Plugin WooCommerce Demo") 
-* [MemberPress Checkout](https://chinapaymentsplugin.com/memberpress-demo/ "China Payments Plugin MemberPress Demo") 
-* [Payment Page Form](https://chinapaymentsplugin.com/demo/ "China Payments Plugin Payment Buttons Demo") 
+* [WooCommerce Checkout](https://chinapaymentsplugin.com/woocommerce-demo/) 
+* [MemberPress Checkout](https://chinapaymentsplugin.com/memberpress-demo/) 
+* [Simple Membership Demo](https://chinapaymentsplugin.com/simple-membership-demo/ ) 
+* [Payment Page Form](https://chinapaymentsplugin.com/demo/) 
 
 🌱 [PLANS & PRICING >](https://chinapaymentsplugin.com/pricing/)
 
@@ -149,11 +152,15 @@ To remove the fee and get access to other features, like checkout optimizations 
 
 = Is WooCommerce supported? =
 
-Absolutely! You can offer WeChat Pay and Alipay on your WooCommerce checkout.
+Absolutely! You can offer one-time WeChat Pay and Alipay payments on your WooCommerce checkout using the free and paid versions of the plugin, as well as recurring Alipay payments with the paid version. 
 
 = Is MemberPress supported? =
 
-Absolutely! You can offer WeChat Pay and Alipay on your MemberPress checkout using version 2.3.6 or earlier. The MemberPress integration has been deprecated in versions 3.0 and later and will be rebuilt in the future. 
+Absolutely! You can offer one-time WeChat Pay and Alipay payments through your MemberPress registration. 
+
+= Is the Simple Membership plugin supported? =
+
+Absolutely! You can offer one-time WeChat Pay and Alipay payments through your Simple Membership registration. 
 
 == Screenshots ==
  
@@ -164,6 +171,10 @@ Absolutely! You can offer WeChat Pay and Alipay on your MemberPress checkout usi
 5. Add the Author on WeChat
  
 == Changelog ==
+
+= 3.3.3 =
+* We’ve added the Simple Membership integration! 
+* Updated Freemius SDK. 
 
 = 3.3.2 = 
 * WooCommerce integration updates. 

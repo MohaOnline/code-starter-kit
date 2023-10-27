@@ -1099,7 +1099,7 @@ function wpa_excluded_dirs() {
 
 function wpa_wpc_dir_size( $path ) {
 
-    $i = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ) );
+    $i = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ), RecursiveIteratorIterator::CATCH_GET_CHILD );
     $size  = 0;
     $files = 0;
 
@@ -1108,7 +1108,6 @@ function wpa_wpc_dir_size( $path ) {
         if( false === strpos( wpCloneSafePathMode( $file ), WPCLONE_DIR_BACKUP ) ) {
             $size += $info->getSize();
             $files++;
-
         }
 
     }

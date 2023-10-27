@@ -27,8 +27,9 @@
     public $file;
     public $progress;
     public $muted = false;
+    public $clearEndCodes = false;
 
-    public function __construct($backup_name, $files = 0, $bytes = 0, $cron = false, $reset = true) {
+    public function __construct($backup_name, $files = 0, $bytes = 0, $cron = false, $reset = true, $clearEndCodes = false) {
 
       if (!file_exists(BMI_BACKUPS)) mkdir(BMI_BACKUPS, 0755, true);
 
@@ -42,11 +43,16 @@
       $this->files = $files;
       $this->bytes = $bytes;
       $this->total_queries = 1;
+      $this->clearEndCodes = $clearEndCodes;
 
       if ($reset == true) {
         if (file_exists($this->latest)) @unlink($this->latest);
         if (file_exists($this->latest_progress)) @unlink($this->latest_progress);
         file_put_contents($this->latest_progress, '0/100');
+      }
+      
+      if ($this->clearEndCodes) {
+        $this->removeAllEndCodes();
       }
 
     }
@@ -128,6 +134,24 @@
       fwrite($this->progress, $progress);
       fclose($this->progress);
 
+    }
+
+    public function removeAllEndCodes() {
+      
+      $logs = file_get_contents($this->latest);
+      $logs = explode("\n", $logs);
+      
+      foreach ($logs as $line => $string) {
+        if (strpos($string, '[END-CODE]') !== false) {
+          $code = substr($string, 10);
+          $logs[$line] = "[VERBOSE] Logs from there starts as new process, it was continued by smart solution system after applying new plugin settings. (" . $code . ")";
+        }
+      }
+      
+      $logs = implode("\n", $logs);
+      file_put_contents($this->latest, $logs);
+      file_put_contents($this->latest_progress, '0/100');
+      
     }
 
     public function end() {

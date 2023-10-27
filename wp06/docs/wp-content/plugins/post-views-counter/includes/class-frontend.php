@@ -127,9 +127,8 @@ class Post_Views_Counter_Frontend {
 		$display = false;
 
 		// post type check
-		if ( ! empty( $pvc->options['display']['post_types_display'] ) ) {
+		if ( ! empty( $pvc->options['display']['post_types_display'] ) )
 			$display = is_singular( $pvc->options['display']['post_types_display'] );
-		}
 
 		// page visibility check
 		if ( ! empty( $pvc->options['display']['page_types_display'] ) ) {
@@ -225,11 +224,22 @@ class Post_Views_Counter_Frontend {
 			wp_enqueue_style( 'post-views-counter-frontend', POST_VIEWS_COUNTER_URL . '/css/frontend' . ( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '.min' : '' ) . '.css', [], $pvc->defaults['version'] );
 		}
 
+		// skip special requests
+		if ( is_preview() || is_feed() || is_trackback() || is_favicon() || is_customize_preview() )
+			return;
+
 		// get countable post types
 		$post_types = $pvc->options['general']['post_types_count'];
 
 		// whether to count this post type or not
 		if ( empty( $post_types ) || ! is_singular( $post_types ) )
+			return;
+
+		// get currently queried object
+		$object = get_queried_object();
+
+		// do not count pages set as homepage or posts page
+		if ( $pvc->counter->is_posts_page( $object ) || $pvc->counter->is_homepage( $object ) )
 			return;
 
 		// get counter mode
@@ -244,7 +254,11 @@ class Post_Views_Counter_Frontend {
 				'mode'			=> $mode,
 				'postID'		=> get_the_ID(),
 				'requestURL'	=> '',
-				'nonce'			=> ''
+				'nonce'			=> '',
+				'dataStorage'	=> $pvc->options['general']['data_storage'],
+				'multisite'		=> ( is_multisite() ? (int) get_current_blog_id() : false ),
+				'path'			=> empty( COOKIEPATH ) || ! is_string( COOKIEPATH ) ? '/' : COOKIEPATH,
+				'domain'		=> empty( COOKIE_DOMAIN ) || ! is_string( COOKIE_DOMAIN ) ? '' : COOKIE_DOMAIN
 			];
 
 			switch ( $mode ) {

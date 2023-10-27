@@ -23,7 +23,7 @@
          Cookies.set('asenha_tab', hash, { expires: 1 }); // expires in 1 day
 
          $.ajax({
-            url: 'https://bowo.io/asenha-save-btn',
+            url: asenhaStats.saveChangesJsonpUrl,
             method: 'GET',
             dataType: 'jsonp',
             crossDomain: true
@@ -152,6 +152,7 @@
       // Place fields into "Log In | Log Out" tab
       $('.change-login-url').appendTo('.fields-login-logout > table > tbody');
       $('.custom-login-slug').appendTo('.fields-login-logout .change-login-url .asenha-subfields');
+      $('.site-identity-on-login').appendTo('.fields-login-logout > table > tbody');
       $('.enable-login-logout-menu').appendTo('.fields-login-logout > table > tbody');
       $('.enable-last-login-column').appendTo('.fields-login-logout > table > tbody');
       $('.redirect-after-login').appendTo('.fields-login-logout > table > tbody');
@@ -195,11 +196,13 @@
       $('.disable-all-updates').appendTo('.fields-disable-components > table > tbody');
       $('.disable-smaller-components').appendTo('.fields-disable-components > table > tbody');
       $('.disable-head-generator-tag').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
+      $('.disable-resource-version-number').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
       $('.disable-head-wlwmanifest-tag').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
       $('.disable-head-rsd-tag').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
       $('.disable-head-shortlink-tag').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
       $('.disable-frontend-dashicons').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
       $('.disable-emoji-support').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
+      $('.disable-jquery-migrate').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
 
       // Place fields into "Security" tab
       $('.limit-login-attempts').appendTo('.fields-security > table > tbody');
@@ -580,6 +583,33 @@
 
       subfieldsToggler( 'maintenance_mode', 'maintenance-mode' );
       
+      // =============== ASE PRO =================
+
+      if ( asenhaStats.hideUpgradeNudge ) {
+         $('.asenha-upgrade-nudge').hide();
+         $('#bottom-upgrade-nudge').show();
+      } else {
+         $('.asenha-upgrade-nudge').show();         
+         $('#bottom-upgrade-nudge').hide();
+      }
+
+      $('#dismiss-upgrade-nudge').click(function(e) {
+         e.preventDefault();
+         $.ajax({
+            url: ajaxurl,
+            data: {
+               'action':'dismiss_upgrade_nudge'
+            },
+            success:function(data) {
+               $('.asenha-upgrade-nudge').hide();
+               // $('#bottom-upgrade-nudge').show();
+            },
+            error:function(errorThrown) {
+               console.log(errorThrown);
+            }
+         });
+      });      
+      
       // =============== SPONSORSHIP =================
 
       // Stats on saving changes from asenha_admin_scripts() wp_localize_script() is availble in the 'asenhaStats' object-----
@@ -662,6 +692,8 @@
          $('#sponsorship-nudge-show-moreless').show();
 
       });
+
+      
 
       // Modal for sponsoring plugin dev and maintenance: https://stephanwagner.me/jBox
 

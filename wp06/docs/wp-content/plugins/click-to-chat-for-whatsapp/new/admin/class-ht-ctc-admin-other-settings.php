@@ -110,7 +110,9 @@ class HT_CTC_Admin_Other_Settings {
         ?>
         <ul class="collapsible ht_ctc_analytics" data-collapsible="accordion" id="ht_ctc_analytics">
         <li class="">
-        <div class="collapsible-header"><?php _e( 'Google Analytics, Facebook Pixel, Google Ads Conversion', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Google Analytics, Facebook Pixel, Google Ads Conversion', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
         
         <?php
@@ -276,7 +278,9 @@ class HT_CTC_Admin_Other_Settings {
         ?>
         <ul class="collapsible ht_ctc_webhooks" data-collapsible="accordion" id="ht_ctc_webhooks">
         <li class="">
-        <div class="collapsible-header"><?php _e( 'Webhooks', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Webhooks', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
         
         <p class="description" style="margin-bottom: 40px;"><?php _e( 'Integrate, Automation', 'click-to-chat-for-whatsapp' ); ?> <?php _e( 'using', 'click-to-chat-for-whatsapp' ); ?> <a target="_blank" href="https://holithemes.com/plugins/click-to-chat/webhooks/"><?php _e( 'Webhooks', 'click-to-chat-for-whatsapp' ); ?></a></p>
@@ -399,7 +403,9 @@ class HT_CTC_Admin_Other_Settings {
         ?>
         <ul class="collapsible ht_ctc_animations" data-collapsible="accordion" id="ht_ctc_animations">
         <li class="">
-        <div class="collapsible-header"><?php _e( 'Animations', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Animations', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
 
         <p class="description" style="margin-bottom:25px;"><a target="_blank" href="https://holithemes.com/plugins/click-to-chat/animations/"><?php _e( 'Animations', 'click-to-chat-for-whatsapp' ); ?></a></p>
@@ -492,7 +498,9 @@ class HT_CTC_Admin_Other_Settings {
 
         <ul class="collapsible ht_ctc_notification" data-collapsible="accordion" id="ht_ctc_notification" style="margin-top: 2rem;">
         <li class="">
-        <div class="collapsible-header"><?php _e( 'Notification Badge', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Notification Badge', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
         <p class="description" style="margin-bottom:25px;"><a target="_blank" href="https://holithemes.com/plugins/click-to-chat/notification-badge/"><?php _e( 'Notification Badge', 'click-to-chat-for-whatsapp' ); ?></a></p>
 
@@ -607,7 +615,9 @@ class HT_CTC_Admin_Other_Settings {
         <p class="description"><?php _e( 'All these below settings are not important to everyone', 'click-to-chat-for-whatsapp' ); ?></p>
         <ul class="collapsible ht_ctc_other_settings" data-collapsible="accordion" id="ht_ctc_othersettings">
         <li class="">
-        <div class="collapsible-header">Advanced Settings</div>
+        <div class="collapsible-header">Advanced Settings
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
 
         <!-- z-index -->
@@ -681,7 +691,9 @@ class HT_CTC_Admin_Other_Settings {
         <!-- enable group, share features -->
         <ul class="collapsible ht_ctc_enable_share_group" data-collapsible="accordion" id="ht_ctc_enable_share_group">
         <li <?= $li_active_gr_sh; ?>>
-        <div class="collapsible-header"><?php _e( 'Group, Share features', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Group, Share features', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
         
         <?php
@@ -753,7 +765,9 @@ class HT_CTC_Admin_Other_Settings {
         <!-- Troubleshoot, Debug, ..  -->
         <ul class="collapsible ht_ctc_debug" data-collapsible="accordion" id="ht_ctc_debug">
         <li>
-        <div class="collapsible-header"><?php _e( 'Debug, Troubleshoot, ..', 'click-to-chat-for-whatsapp' ); ?></div>
+        <div class="collapsible-header"><?php _e( 'Debug, Troubleshoot, ..', 'click-to-chat-for-whatsapp' ); ?>
+            <span class="dashicons dashicons-arrow-down-alt2"></span>
+        </div>
         <div class="collapsible-body">
         <?php
 

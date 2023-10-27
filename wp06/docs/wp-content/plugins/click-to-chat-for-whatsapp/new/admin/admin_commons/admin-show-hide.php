@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 <ul class="collapsible ht_ctc_show_hide_settings">
 <li class="">
-<div class="collapsible-header" id="showhide_settings"><?php _e( 'Display Settings', 'click-to-chat-for-whatsapp' ); ?></div>
+<div class="collapsible-header" id="showhide_settings"><?php _e( 'Display Settings', 'click-to-chat-for-whatsapp' ); ?>
+    <span class="dashicons dashicons-arrow-down-alt2"></span>
+</div>
 <div class="collapsible-body">
 
 <?php

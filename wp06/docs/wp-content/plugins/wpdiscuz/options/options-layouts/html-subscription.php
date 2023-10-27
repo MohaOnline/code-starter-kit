@@ -280,7 +280,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentPostComment"], "emailContentPostComment", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentPostComment"]), "emailContentPostComment", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentPostComment]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -339,7 +339,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentAllCommentReply"], "emailContentAllCommentReply", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentAllCommentReply"]), "emailContentAllCommentReply", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentAllCommentReply]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -398,7 +398,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentCommentReply"], "emailContentCommentReply", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentCommentReply"]), "emailContentCommentReply", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentCommentReply]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -452,7 +452,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentSubscriptionConfirmation"], "emailContentSubscriptionConfirmation", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentSubscriptionConfirmation"]), "emailContentSubscriptionConfirmation", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentSubscriptionConfirmation]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -519,7 +519,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentCommentApproved"], "emailContentCommentApproved", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentCommentApproved"]), "emailContentCommentApproved", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentCommentApproved]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -585,7 +585,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentUserMentioned"], "emailContentUserMentioned", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentUserMentioned"]), "emailContentUserMentioned", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentUserMentioned]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -650,7 +650,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentFollowConfirmation"], "emailContentFollowConfirmation", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentFollowConfirmation"]), "emailContentFollowConfirmation", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentFollowConfirmation]",
                         "textarea_rows" => 10,
                         "teeny" => true,
@@ -708,7 +708,7 @@ if (!defined("ABSPATH")) {
                 </div>
                 <div class="wpd-opt-input">
                     <?php
-                    wp_editor($this->subscription["emailContentFollowComment"], "emailContentFollowComment", [
+                    wp_editor(wp_kses_post($this->subscription["emailContentFollowComment"]), "emailContentFollowComment", [
                         "textarea_name" => WpdiscuzCore::TAB_SUBSCRIPTION . "[emailContentFollowComment]",
                         "textarea_rows" => 10,
                         "teeny" => true,

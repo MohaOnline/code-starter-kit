@@ -24,15 +24,21 @@ function prismatic_admin_notice() {
 		
 		if (!prismatic_check_date_expired() && !prismatic_dismiss_notice_check()) {
 			
+			$tabs = array('tab1', 'tab2', 'tab3', 'tab4', 'tab5');
+			
+			$tab = (isset($_GET['tab']) && in_array($_GET['tab'], $tabs)) ? $_GET['tab'] : 'tab1';
+			
 			?>
 			
 			<div class="notice notice-success">
 				<p>
-					<strong><?php esc_html_e('Plugin Sale:', 'prismatic'); ?></strong> 
-					<?php esc_html_e('Save 20% on any of our', 'prismatic'); ?> 
-					<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/"><?php esc_html_e('Pro WordPress plugins', 'prismatic'); ?></a>. 
-					<?php esc_html_e('Apply code', 'prismatic'); ?> <code>PLANET2023</code> <?php esc_html_e('at checkout. Sale ends 9/9/23.', 'prismatic'); ?> 
-					<?php echo prismatic_dismiss_notice_link(); ?>
+					<strong><?php esc_html_e('Fall Sale!', 'prismatic'); ?></strong> 
+					<?php esc_html_e('Save 25% on our', 'prismatic'); ?> 
+					<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/"><?php esc_html_e('Pro WordPress plugins', 'prismatic'); ?></a> 
+					<?php esc_html_e('and', 'prismatic'); ?> 
+					<a target="_blank" rel="noopener noreferrer" href="https://books.perishablepress.com/"><?php esc_html_e('books', 'prismatic'); ?></a>. 
+					<?php esc_html_e('Apply code', 'prismatic'); ?> <code>SEASONS</code> <?php esc_html_e('at checkout. Sale ends 12/30/23.', 'prismatic'); ?> 
+					<?php echo prismatic_dismiss_notice_link($tab); ?>
 				</p>
 			</div>
 			
@@ -86,7 +92,11 @@ function prismatic_dismiss_notice_save() {
 		
 		$result = $result ? 'true' : 'false';
 		
-		$location = admin_url('options-general.php?page=prismatic&dismiss-notice='. $result);
+		$tabs = array('tab1', 'tab2', 'tab3', 'tab4', 'tab5');
+		
+		$tab = (isset($_GET['tab']) && in_array($_GET['tab'], $tabs)) ? $_GET['tab'] : 'tab1';
+		
+		$location = admin_url('options-general.php?page=prismatic&tab='. $tab .'&dismiss-notice='. $result);
 		
 		wp_redirect($location);
 		
@@ -96,11 +106,11 @@ function prismatic_dismiss_notice_save() {
 	
 }
 
-function prismatic_dismiss_notice_link() {
+function prismatic_dismiss_notice_link($tab) {
 	
 	$nonce = wp_create_nonce('prismatic_dismiss_notice');
 	
-	$href  = add_query_arg(array('dismiss-notice-verify' => $nonce), admin_url('options-general.php?page=prismatic'));
+	$href  = add_query_arg(array('dismiss-notice-verify' => $nonce), admin_url('options-general.php?page=prismatic&tab='. $tab));
 	
 	$label = esc_html__('Dismiss', 'prismatic');
 	
@@ -110,7 +120,7 @@ function prismatic_dismiss_notice_link() {
 
 function prismatic_check_date_expired() {
 	
-	$expires = apply_filters('prismatic_check_date_expired', '2023-09-09');
+	$expires = apply_filters('prismatic_check_date_expired', '2023-12-30');
 	
 	return (new DateTime() > new DateTime($expires)) ? true : false;
 	

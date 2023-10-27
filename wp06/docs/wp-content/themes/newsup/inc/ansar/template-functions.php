@@ -398,7 +398,7 @@ function newsup_hide_shop_page_title( $title ) {
 }
 
 function newsup_custom_header_background() { 
-$color = get_theme_mod( 'background_color', get_theme_support( 'custom-background', 'default-color' ) );
+$color = get_theme_mod( 'background_color','#eee' );
 ?>
 <style type="text/css" id="custom-background-css">
     .wrapper { background-color: <?php echo esc_attr($color); ?>; }

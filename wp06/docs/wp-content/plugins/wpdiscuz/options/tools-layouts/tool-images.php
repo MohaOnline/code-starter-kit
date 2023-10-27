@@ -56,12 +56,12 @@ if ($wmuIsActive) {
     <div class="wpdtool-accordion-content">
         <?php if (!$wmuIsActive) { ?>
             <div class="wpdtool wpdtool-import-cir-images">
-                <p class="wpdtool-desc"><?php _e("These tools are available only in <a href='https://gvectors.com/product/wpdiscuz-media-uploader/'><strong><i>wpDiscuz Media Uploader</i></strong></a> addon! Please install and activate it to use importer!", "wpdiscuz"); ?></p>
+                <p class="wpdtool-desc"><?php echo wp_kses_post(__("These tools are available only in <a href='https://gvectors.com/product/wpdiscuz-media-uploader/'><strong><i>wpDiscuz Media Uploader</i></strong></a> addon! Please install and activate it to use importer!", "wpdiscuz")); ?></p>
             </div>
         <?php } ?>
 
         <div class="wpdtool wpdtool-import-cir-images">
-            <p class="wpdtool-desc"><?php _e("Here you can import comments' images from <strong><i>Comment Images Reloaded</i></strong> plugin to wpDiscuz.", "wpdiscuz"); ?></p>
+            <p class="wpdtool-desc"><?php echo wp_kses_post(__("Here you can import comments' images from <strong><i>Comment Images Reloaded</i></strong> plugin to wpDiscuz.", "wpdiscuz")); ?></p>
             <form action="" method="post" class="wc-tools-settings-form wc-form">
                 <?php wp_nonce_field("wc_tools_form", "wpd-cir-images"); ?>
                 <div class="wpdtool-block">
@@ -77,7 +77,7 @@ if ($wmuIsActive) {
         </div>
 
         <div class="wpdtool wpdtool-import-dco-images">
-            <p class="wpdtool-desc"><?php _e("Here you can import comments' images from <strong><i>DCO Comment Attachment</i></strong> plugin to wpDiscuz.", "wpdiscuz"); ?></p>
+            <p class="wpdtool-desc"><?php echo wp_kses_post(__("Here you can import comments' images from <strong><i>DCO Comment Attachment</i></strong> plugin to wpDiscuz.", "wpdiscuz")); ?></p>
             <form action="" method="post" class="wc-tools-settings-form wc-form">
                 <?php wp_nonce_field("wc_tools_form", "wpd-dco-images"); ?>
                 <div class="wpdtool-block">

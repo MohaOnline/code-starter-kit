@@ -3,7 +3,7 @@
  * Plugin Name: WPFront Scroll Top
  * Plugin URI: http://wpfront.com/scroll-top-plugin/ 
  * Description: Allows the visitor to easily scroll back to the top of the page.
- * Version: 2.1.1
+ * Version: 2.2
  * Requires at least: 5.0
  * Requires PHP: 5.3
  * Author: WPFront Team

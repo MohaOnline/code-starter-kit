@@ -914,7 +914,7 @@ $wp_customize->add_control('blogus_blog_content',
 
     //Bqckground Overlay 
    $wp_customize->add_setting(
-        'blogus_footer_overlay_color', array( 'sanitize_callback' => 'sanitize_text_field',
+        'blogus_footer_overlay_color', array( 'sanitize_callback' => 'blogus_sanitize_alpha_color',
         
     ) );
     
@@ -925,7 +925,7 @@ $wp_customize->add_control('blogus_blog_content',
     ) );
 
     $wp_customize->add_setting(
-        'blogus_footer_text_color', array( 'sanitize_callback' => 'sanitize_hex_color',
+        'blogus_footer_text_color', array( 'sanitize_callback' => 'blogus_sanitize_alpha_color',
         
     ) );
     

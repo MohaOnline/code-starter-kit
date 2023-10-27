@@ -4,7 +4,7 @@ Tags: backup, database backup, cloud backup, restore, wordpress backup
 Requires at least: 3.9
 Tested up to: 6.3
 Requires PHP: 7.2
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv2+
 
 Schedule complete automatic backups of your WordPress installation. Decide which content will be stored (Dropbox, S3…). This is the free version
@@ -164,6 +164,24 @@ Yes. You need to have writing access to the wp-config.php file (usually residing
 [You can find a detailed tutorial in the BackWPup documentation.](https://backwpup.com/docs/install-backwpup-pro-activate-licence/)
 
 == Changelog ==
+
+= 4.0.1 =
+Release date: October 18, 2023
+
+* Changed (pro): Clarified instructions in the "Path to mysqldump file" field
+* Changed: Upgraded minimum version to PHP 7.2.5
+* Fixed (pro): Restoring a compressed database backup resulted in a "Could not get size of SQL file" error
+* Fixed (pro): 500 error in Restore app, due to missing dependencies
+* Fixed (pro): Escaped previously unescaped SQL query
+* Fixed (pro): Security issue regarding location of restore files
+* Fixed (pro): PHP warning when configuring a wizard with the glacier destination
+* Fixed: Missing nonce validation on certain AJAX endpoints
+* Fixed: Escaping for values on log output
+* Fixed: Escaping of sendmail command
+* Fixed: Corrected an invalid URL in the documentation link found in the plugin overview
+* Fixed: Various deprecation notices on PHP 8.0+
+* Fixed: Issue where webp thumbnail images were not excluded despite enabling the "Don't backup thumbnails from the site's uploads folder" option
+* Fixed: Ensure validation of logfile parameter during job run
 
 = 4.0.0 =
 Release Date: November 16, 2022

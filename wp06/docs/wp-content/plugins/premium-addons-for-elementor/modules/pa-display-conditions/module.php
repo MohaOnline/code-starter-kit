@@ -131,6 +131,7 @@ class Module {
 							'woo_last_purchase' => __( 'Last Purchase In Cart', 'premium-addons-for-elementor' ),
 							'woo_total_price'   => __( 'Amount In Cart', 'premium-addons-for-elementor' ),
 							'woo_cart_products' => __( 'Products In Cart', 'premium-addons-for-elementor' ),
+							'woo_purchase_products' => __( 'Purchased Products', 'premium-addons-for-elementor' ),
 						),
 					),
 				)
@@ -210,6 +211,7 @@ class Module {
 				'woo_product_cat',
 				'woo_last_purchase',
 				'woo_total_price',
+				'woo_purchase_products',
 				'woo_cart_products',
 				'acf_choice',
 				'acf_text',

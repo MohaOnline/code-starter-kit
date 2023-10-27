@@ -594,6 +594,10 @@ class OptimizerApi {
             $settings = json_decode($request['settings'], true);
 
             if (is_array($settings)) {
+                if (isset($settings['two_bg_lazyload'])) {
+                    $settings['two_img_in_viewport_lazyload'] = $settings['two_bg_lazyload'];
+                }
+
                 foreach ($settings as $key => $val) {
                     $key = sanitize_text_field($key);
 

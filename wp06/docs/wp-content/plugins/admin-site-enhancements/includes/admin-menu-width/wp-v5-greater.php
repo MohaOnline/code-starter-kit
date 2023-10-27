@@ -1,7 +1,18 @@
+<?php
+
+if ( ! is_rtl() ) {
+	$margin_property = 'margin-left';
+	$position = 'left';
+} else {
+	$margin_property = 'margin-right';
+	$position = 'right';
+}
+
+?>
 <style>
 
 #wpcontent, #wpfooter {
-	margin-left: <?php echo esc_html( esc_html( $custom_width ) ); ?>;
+	<?php echo esc_html( esc_html( $margin_property ) ); ?>: <?php echo esc_html( esc_html( $custom_width ) ); ?>;
 }
 
 #adminmenuback, #adminmenuwrap, #adminmenu, #adminmenu .wp-submenu {
@@ -9,7 +20,7 @@
 }
 
 #adminmenu .wp-submenu {
-	left: <?php echo esc_html( $custom_width ); ?>;
+	<?php echo esc_html( $position ); ?>: <?php echo esc_html( $custom_width ); ?>;
 }
 
 #adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu {

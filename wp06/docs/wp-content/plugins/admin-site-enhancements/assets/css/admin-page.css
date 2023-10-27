@@ -5,7 +5,13 @@
     --ase-accent-black: #111111;
     --ase-accent-grey-darker: #333333;
     --ase-accent-grey-dark: #666666;
+    --ase-accent-grey-light: #999999;
+    --ase-accent-grey-lighter: #cccccc;
+    --ase-accent-grey-lighter2: #ccd0d4;
+    --ase-accent-grey-lightest: #fafafa;
     --ase-body-text: #1d2327;
+    --ase-link: #2271b1;
+    --ase-link-hover: #0a4b78;
 }
 
 /* disable elastic scrolling */
@@ -17,8 +23,12 @@
     padding-left: 0;
 }
 
+#wpbody-content {
+    padding-bottom: 25px;
+}
+
 .wrap.asenha {
-    margin: 0;
+    margin: 0 0 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,9 +86,82 @@
     overflow: hidden;
 }
 
+/* Upgrade Nudge */
+
+.asenha-upgrade-nudge {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8px 20px;
+    background: var(--ase-accent-grey-lightest);
+    border-bottom: 1px solid var(--ase-accent-grey-lighter2);
+    font-size: 1.125em;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.button.asenha-upgrade-nudge__button {
+    margin-left: 8px;
+    color: #fff;
+    background: #333333;
+    border-color: #333333;
+    transition: .25s;
+}
+
+.button.asenha-upgrade-nudge__button:hover {
+    color: #fff;
+    background: var(--ase-accent-black);
+    border-color: var(--ase-accent-black);
+}
+
+.asenha-upgrade-nudge__dismiss {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    color: var(--ase-accent-grey-light);
+    transition: .25s;
+    padding: 2px 6px 0;
+    border-top: 1px solid var(--ase-accent-grey-darker);
+    border-right: 1px solid var(--ase-accent-grey-darker);
+    border-bottom: 1px solid var(--ase-accent-grey-lighter);
+    border-left: 1px solid var(--ase-accent-grey-lighter);
+    border-radius: 0 8px 0 8px;
+}
+
+.asenha-upgrade-nudge__dismiss:hover {
+    color: var(--ase-link);
+    background: var(--ase-accent-faded);
+}
+
+.asenha-upgrade-nudge-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    padding: 8px 20px;
+    background: var(--ase-accent-grey-lightest);
+    border-top: 1px solid var(--ase-accent-grey-lighter2);
+    line-height: 1.5;
+}
+
+.asenha-upgrade-nudge-bottom a {
+    text-decoration: none;
+    transition: .25s;
+}
+
+.asenha-upgrade-nudge-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Sponsorship Nudge */
+
 .asenha-sponsorship-nudge {
     padding: 20px 20px 28px;
-    border: 1px solid var(--ase-accent);
+    border-bottom: 1px solid var(--ase-accent-grey-lighter2);
     font-size: 14px;
     line-height: 1.5;
     border-radius: 8px 8px 0 0;
@@ -265,17 +348,74 @@ p.nudge-description.nudge-closing {
     margin-top: 0;
 }
 
-.asenha-footer {
-    /* display: flex; */
-    display: none;
-    flex-direction: column;
-    width: 100%;
+.asenha-bottom-spacer {
+    min-height: 34px;
+}
+
+.asenha-settings {
     box-sizing: border-box;
-    padding: 12px 20px;
-    background-color: #fafafa;
-    border-right: 1px solid #ccd0d4;
-    border-bottom: 1px solid #ccd0d4;
-    border-left: 1px solid #ccd0d4;
+    width: 1140px;
+    min-height: 34px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.asenha-settings a {
+    padding: 8px;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.asenha-settings a:hover {
+    text-decoration: underline;
+}
+
+.asenha-settings a:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.asenha-footer {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 1140px;
+    background-color: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.footer-section.export-import {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 40px;
+    gap: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-box.half {
+    width: calc(50% - 20px);
+}
+
+.settings-box h3 {
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.settings-box p {
+    margin-bottom: 0;
+}
+
+.settings-box p.submit {
+    margin-top: 0;
+    padding-bottom: 0;
 }
 
 .asenha-icon {
@@ -292,28 +432,6 @@ p.nudge-description.nudge-closing {
     margin: 0;
     padding: 0;
 }
-
-/*
-.asenha-heading a {
-    text-decoration: none;
-    transition: .25s;
-}
-
-.asenha-heading a:hover {
-    text-decoration: underline;
-}
-
-.asenha-heading small {
-    display: none;
-    font-size: 14px;
-    font-weight: 500;
-    color: #555;
-}
-
-.asenha-header:hover .asenha-heading small {
-    display: inline-block;
-}
-*/
 
 .asenha-header-action {
     position: relative;
@@ -357,24 +475,6 @@ p.nudge-description.nudge-closing {
     line-height: 40px;
     padding: 0 20px;
 }
-
-/*
-.wp-core-ui .button-primary.plugin-sponsor {
-    margin-left: 16px;
-    color: #fff;
-    background: #de4c73;
-    border-color: #de4c73;
-}
-
-.wp-core-ui .button-primary.plugin-sponsor:hover {
-    background: #b13c5c;
-    border-color: #b13c5c;    
-}
-
-.wp-core-ui .button-primary.plugin-sponsor:focus {
-    box-shadow: none;
-}
-*/
 
 .wp-core-ui .button-primary.plugin-upgrade {
     margin-left: 8px;
@@ -454,11 +554,11 @@ p.nudge-description.nudge-closing {
     margin: 20px 20px 0 2px;
 }
 
-.asenha .submit {
+.asenha .asenha-body .submit {
     position: absolute;
 }
 
-.asenha .submit input {
+.asenha .asenha-body .submit input {
     display: none;
 }
 
@@ -1040,6 +1140,8 @@ p.nudge-description.nudge-closing {
 
 #custom-admin-menu .menu-item-depth-0 {
     display: list-item !important;
+    margin-block-start: 0;
+    padding: 0;
 }
 
 /*
@@ -1067,6 +1169,10 @@ p.nudge-description.nudge-closing {
 .syntax-highlighted .CodeMirror {
     border: 1px solid #ddd;
     background: #fcfcfc;
+}
+
+.CodeMirror-wrap pre.CodeMirror-line {
+    line-break: anywhere;
 }
 
 /* DataTable */
@@ -1276,8 +1382,13 @@ p.nudge-description.nudge-closing {
 
 @media (max-width: 1440px) {
 
-    .asenha-body {
+    .asenha-body,
+    .asenha-settings,
+    .asenha-footer {
         width: 1176px;
+    }
+    
+    .asenha-body {
         margin-top: 32px;
     }
 
@@ -1292,9 +1403,26 @@ p.nudge-description.nudge-closing {
         border-radius: 0;
         border-bottom: 1px solid #ccd0d4;
     }
+    
+    .asenha-settings {
+        width: 100%;
+    }
 
+    .asenha-footer {
+        width: 100%;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+    }
+
+    .asenha-upgrade-nudge,
     .asenha-sponsorship-nudge {
         border-radius: 0;
     }
+    
+    .asenha-upgrade-nudge__dismiss {
+        border-radius: 0 0 0 8px;
+    }
+
     
 }

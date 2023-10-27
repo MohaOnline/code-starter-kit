@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: n/a\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: n/a\n"
-"PO-Revision-Date: 2023-07-05 08:37+0000\n"
+"PO-Revision-Date: 2023-10-17 09:23+0000\n"
 "Last-Translator: Jan Karres <jan.karres@devowl.io>\n"
 "Language-Team: German (informal) <https://translate.devowl.io/projects/"
 "devowl-wp-real-utils-backend-php/develop/de@informal/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: cross/CrossRealCategoryLibrary.php:50
 msgid "Do you manage many categories?"
@@ -108,7 +108,7 @@ msgid ""
 "organize your media library!"
 msgstr ""
 "Das Einfügen von Medien in einen Beitrag oder eine Seite kann kompliziert "
-"sein. Verwende Ordner, um deine Medienbibliothek zu organisieren!"
+"sein. Verwende Ordner, um deine Mediathek zu organisieren!"
 
 #: cross/CrossRealPhysicalMedia.php:47 cross/CrossRealPhysicalMedia.php:56
 msgid "Did you know that?"
@@ -128,7 +128,7 @@ msgstr ""
 
 #: Service.php:162 Service.php:281
 msgid "No such plugin slug available."
-msgstr "Kein solcher Plugin Slug verfügbar."
+msgstr "Kein solcher Plugin-Slug verfügbar."
 
 #: Service.php:217
 msgid "The abstract implementation for your slug could not be found."

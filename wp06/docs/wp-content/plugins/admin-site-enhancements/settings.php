@@ -74,7 +74,7 @@ function asenha_add_settings_page()
 					<!--<a id="plugin-sponsor" href="#" class="asenha-header-action sponsor"><?php 
     // echo $svg_sponsor . esc_html( 'Sponsor', 'admin-site-enhancements' );
     ?></a>-->
-	                <!--<a href="https://www.wpase.com" target="_blank" id="plugin-upgrade" class="button button-primary plugin-upgrade">Get ASE Pro</a>-->
+	                <a href="https://www.wpase.com/upgrade-btn" target="_blank" id="plugin-upgrade" class="button button-primary plugin-upgrade">Get ASE Pro</a>
 				<?php 
     ?>
 				<a class="button button-primary asenha-save-button">Save Changes</a>
@@ -87,6 +87,13 @@ function asenha_add_settings_page()
 		<div class="asenha-body">
 			<?php 
     ?>
+			<div class="asenha-upgrade-nudge" style="display: none;">
+				<div class="asenha-upgrade-nudge__message">The Pro version of ASE is here! Lifetime Deal (LTD) available.</div>
+				<a href="https://www.wpase.com/upgrade-ndg" class="button asenha-upgrade-nudge__button" target="_blank">Find Out More</a>
+				<a href="#" id="dismiss-upgrade-nudge" class="asenha-upgrade-nudge__dismiss">
+					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M24 2.4L21.6 0L12 9.6L2.4 0L0 2.4L9.6 12L0 21.6L2.4 24l9.6-9.6l9.6 9.6l2.4-2.4l-9.6-9.6z"/></svg>
+				</a>
+			</div>
 			<div class="asenha-sponsorship-nudge nudge-show-more is-enabled" style="display: none;">
 				<h3>Looks like some of these free enhancements have been useful for your site?</h3> 
 				<p class="nudge-description intro">Please consider supporting ASE.</p>
@@ -189,12 +196,12 @@ function asenha_add_settings_page()
 								<a href="#" id="have-sponsored" class="asenha-have-sponsored">I've sponsored ASE</a>
 							</div>
 							<div class="nudge-stats">
-								<p class="nudge-description">ASE has consumed more than <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">250 hours of dev time</a>. At v5.7.1 (released on September 12, 2023) and 10,000+ active installs, there have been <a href="https://bowo.io/asenha-sp-gth-ndg" target="_blank">6 monthly sponsors</a> and <a href="https://bowo.io/asenha-sp-ppl-ndg" target="_blank">45 one-time sponsors</a>. You can be one today!</p>
+								<p class="nudge-description">This free version of ASE has consumed more than <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">250 hours of dev time</a>. At v6.0.4 (released on October 26, 2023) and 10,000+ active installs, there have been <a href="https://bowo.io/asenha-sp-gth-ndg" target="_blank">6 monthly sponsors</a> and <a href="https://bowo.io/asenha-sp-ppl-ndg" target="_blank">54 one-time sponsors</a>. You can be one today!</p>
 							</div>
 						</div>
 						<div class="nudge-secondary">
 							<h4>Give ASE your 5-star review or provide detailed feedback</h4>
-							<p class="nudge-description">If financial sponsorship is not something you can provide at the moment, you can always <a href="https://wordpress.org/plugins/admin-site-enhancements/#reviews" target="_blank">add a quick, 5-star review</a> to support ASE. It has received <a href="https://wordpress.org/plugins/admin-site-enhancements/#reviews" target="_blank">90+ 5-star reviews</a> so far. Help make it 100!</p>
+							<p class="nudge-description">If financial sponsorship is not something you can provide at the moment, you can always <a href="https://wordpress.org/plugins/admin-site-enhancements/#reviews" target="_blank">add a quick, 5-star review</a>.</p>
 							<p class="nudge-description">Or, if you find something is lacking or not working as you expect it to, you can provide a good and detailed <a href="https://wordpress.org/support/plugin/admin-site-enhancements/" target="_blank">feature request or feedback</a>, which is much more appreciated than a 4-star review or less. This is how we can work together to improve ASE.</p>
 						</div>
 					</div>
@@ -328,10 +335,17 @@ function asenha_add_settings_page()
     ?>
 				</div>
 			</form>
+            <?php 
+    ?>
+			<div id="bottom-upgrade-nudge" class="asenha-upgrade-nudge-bottom" style="display:none;">
+				<div class="asenha-upgrade-nudge-bottom__message">Do more with <a href="https://www.wpase.com/upgrade-ndg-btm" target="_blank">ASE Pro</a>. Lifetime deal (LTD) <a href="https://www.wpase.com/upgrade-ndg-btm-prc" target="_blank">available</a>.</div>
+			</div>
+			<?php 
+    ?>
 		</div>
 
-		<div class="asenha-footer">
-		</div>
+		<?php 
+    ?>
 
 	</div>
 	<?php 
@@ -660,36 +674,38 @@ function asenha_admin_scripts( $hook_suffix )
     }
     
     // Content Management >> Hide Admin Notices
-    
     if ( array_key_exists( 'hide_admin_notices', $options ) && $options['hide_admin_notices'] ) {
-        wp_enqueue_style(
-            'asenha-jbox',
-            ASENHA_URL . 'assets/css/jBox.all.min.css',
-            array(),
-            ASENHA_VERSION
-        );
-        wp_enqueue_script(
-            'asenha-jbox',
-            ASENHA_URL . 'assets/js/jBox.all.min.js',
-            array(),
-            ASENHA_VERSION,
-            false
-        );
-        wp_enqueue_style(
-            'asenha-hide-admin-notices',
-            ASENHA_URL . 'assets/css/hide-admin-notices.css',
-            array(),
-            ASENHA_VERSION
-        );
-        wp_enqueue_script(
-            'asenha-hide-admin-notices',
-            ASENHA_URL . 'assets/js/hide-admin-notices.js',
-            array( 'asenha-jbox' ),
-            ASENHA_VERSION,
-            false
-        );
-    }
+        
+        if ( current_user_can( 'manage_options' ) ) {
+            wp_enqueue_style(
+                'asenha-jbox',
+                ASENHA_URL . 'assets/css/jBox.all.min.css',
+                array(),
+                ASENHA_VERSION
+            );
+            wp_enqueue_script(
+                'asenha-jbox',
+                ASENHA_URL . 'assets/js/jBox.all.min.js',
+                array(),
+                ASENHA_VERSION,
+                false
+            );
+            wp_enqueue_style(
+                'asenha-hide-admin-notices',
+                ASENHA_URL . 'assets/css/hide-admin-notices.css',
+                array(),
+                ASENHA_VERSION
+            );
+            wp_enqueue_script(
+                'asenha-hide-admin-notices',
+                ASENHA_URL . 'assets/js/hide-admin-notices.js',
+                array( 'asenha-jbox' ),
+                ASENHA_VERSION,
+                false
+            );
+        }
     
+    }
     // Utilities >> Multiple User Roles
     if ( array_key_exists( 'multiple_user_roles', $options ) && $options['multiple_user_roles'] ) {
         if ( 'user-edit.php' == $hook_suffix || 'user-new.php' == $hook_suffix ) {
@@ -709,14 +725,18 @@ function asenha_admin_scripts( $hook_suffix )
     $asenha_stats = get_option( ASENHA_SLUG_U . '_stats', array() );
     $current_date = date( 'Y-m-d', time() );
     $show_sponsorship_nudge = false;
+    $hide_upgrade_nudge = false;
     $asenha_stats_localized = array(
         'firstSaveDate'        => '',
         'lastSaveDate'         => '',
         'saveCount'            => 0,
+        'hideUpgradeNudge'     => false,
         'showSponsorshipNudge' => false,
+        'saveChangesJsonpUrl'  => 'https://bowo.io/asenha-save-btn',
     );
     
     if ( !empty($asenha_stats) ) {
+        $hide_upgrade_nudge = ( isset( $asenha_stats['upgrade_nudge_dismissed'] ) ? $asenha_stats['upgrade_nudge_dismissed'] : false );
         $have_sponsored = $asenha_stats['have_sponsored'];
         $changes_saved = ( isset( $_GET['settings-updated'] ) && 'true' == $_GET['settings-updated'] ? true : false );
         // Compensate for redirect from settings-updated=true URL
@@ -778,7 +798,9 @@ function asenha_admin_scripts( $hook_suffix )
             'firstSaveDate'        => $asenha_stats['first_save_date'],
             'lastSaveDate'         => $asenha_stats['last_save_date'],
             'saveCount'            => $save_count,
+            'hideUpgradeNudge'     => $hide_upgrade_nudge,
             'showSponsorshipNudge' => $show_sponsorship_nudge,
+            'saveChangesJsonpUrl'  => 'https://bowo.io/asenha-save-btn',
         );
     }
     
@@ -822,7 +844,7 @@ function asenha_public_scripts( $hook_suffix )
     }
     // Media Replacement
     $enable_media_replacement = ( array_key_exists( 'enable_media_replacement', $options ) ? $options['enable_media_replacement'] : false );
-    if ( $enable_media_replacement && !is_admin() ) {
+    if ( $enable_media_replacement && is_user_logged_in() ) {
         wp_enqueue_style(
             'asenha-media-replace-frontend',
             ASENHA_URL . 'assets/css/media-replace-frontend.css',
@@ -865,7 +887,7 @@ function asenha_footer_text()
 function asenha_footer_version_text()
 {
     ?>
-		ASE is at <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">v<?php 
+		ASE <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">v<?php 
     echo  ASENHA_VERSION ;
     ?></a>
 	<?php 
@@ -903,6 +925,33 @@ function asenha_have_sponsored()
         $asenha_stats = get_option( ASENHA_SLUG_U . '_stats', array() );
         $asenha_stats['have_sponsored'] = true;
         $asenha_stats['sponsorship_nudge_dismissed'] = true;
+        $success = update_option( ASENHA_SLUG_U . '_stats', $asenha_stats );
+        
+        if ( $success ) {
+            echo  json_encode( array(
+                'success' => true,
+            ) ) ;
+        } else {
+            echo  json_encode( array(
+                'success' => false,
+            ) ) ;
+        }
+    
+    }
+
+}
+
+/**
+ * Dismiss sponsorship nudge
+ * 
+ * @since 5.8.2
+ */
+function asenha_dismiss_upgrade_nudge()
+{
+    
+    if ( isset( $_REQUEST ) ) {
+        $asenha_stats = get_option( ASENHA_SLUG_U . '_stats', array() );
+        $asenha_stats['upgrade_nudge_dismissed'] = true;
         $success = update_option( ASENHA_SLUG_U . '_stats', $asenha_stats );
         
         if ( $success ) {

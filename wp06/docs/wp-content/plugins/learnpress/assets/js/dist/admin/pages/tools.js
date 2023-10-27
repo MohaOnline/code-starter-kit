@@ -590,8 +590,8 @@ const getStepsUpgradeStatus = () => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /**
  * Reset course progress.
@@ -721,25 +721,25 @@ const ResetCourse = () => {
     }
     setMessage(notice);
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, __('Reset course progress', 'learnpress')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, __('Reset Course Progress', 'learnpress')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "description"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('This action will reset progress of a course for all users have enrolled.', 'learnpress')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Search results only show course have user data.', 'learnpress')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('This action will reset course progress of all users who have enrolled.', 'learnpress')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Search results only show if courses have user data.', 'learnpress')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
     placeholder: __('Search course by name', 'learnpress'),
     value: search,
     onChange: value => setSearch(value),
     style: {
       width: 300
     }
-  }))), loading && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Spinner, null), data.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), loading && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Spinner, null), data.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "lp-reset-course_progress",
     style: {
       border: '1px solid #eee'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       background: '#eee'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(CheckboxControl, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(CheckboxControl, {
     checked: checkData.length === data.length,
     onChange: () => {
       if (checkData.length === data.length) {
@@ -751,23 +751,23 @@ const ResetCourse = () => {
     style: {
       margin: 0
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('ID', 'learnpress')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('Name', 'learnpress')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('Students', 'learnpress')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('ID', 'learnpress')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('Name', 'learnpress')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, __('Students', 'learnpress')))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       height: '100%',
       maxHeight: 200,
       overflow: 'auto'
     }
   }, data.map(dt => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
         borderTop: '1px solid #eee'
       },
       key: dt.id
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(CheckboxControl, {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(CheckboxControl, {
       checked: checkData.includes(dt.id),
       onChange: () => checkItems(dt.id)
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "#", dt.id), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, dt.title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, dt.students));
-  }))), loadingReset ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Spinner, null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "#", dt.id), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, dt.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, dt.students));
+  }))), loadingReset ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Spinner, null) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
     isPrimary: true,
     onClick: () => resetCourse(),
     style: {
@@ -775,12 +775,12 @@ const ResetCourse = () => {
       height: 30
     }
   }, __('Reset now', 'learnpress'))), message.length > 0 && message.map((mess, index) => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Notice, {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Notice, {
       status: mess.status,
       key: index,
       isDismissible: false
     }, mess.message);
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, '\
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, '\
 				.lp-reset-course_progress .components-base-control__field {\
 					margin: 0;\
 				}\
@@ -809,14 +809,14 @@ const ResetCourse = () => {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _course__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./course */ "./assets/src/apps/js/admin/pages/tools/reset-data/course.js");
 
 
 const resetData = () => {
   if (document.querySelectorAll('#learn-press-reset-course-users').length > 0) {
-    wp.element.render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_course__WEBPACK_IMPORTED_MODULE_1__["default"], null), [...document.querySelectorAll('#learn-press-reset-course-users')][0]);
+    wp.element.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_course__WEBPACK_IMPORTED_MODULE_1__["default"], null), [...document.querySelectorAll('#learn-press-reset-course-users')][0]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (resetData);
@@ -916,13 +916,13 @@ const lpModalOverlay = {
 
 /***/ }),
 
-/***/ "@wordpress/element":
-/*!*********************************!*\
-  !*** external ["wp","element"] ***!
-  \*********************************/
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
 /***/ (function(module) {
 
-module.exports = window["wp"]["element"];
+module.exports = window["React"];
 
 /***/ })
 

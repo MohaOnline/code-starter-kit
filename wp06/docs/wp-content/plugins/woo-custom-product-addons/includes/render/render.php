@@ -83,12 +83,23 @@ class Render
 
     public function render_form()
     {
-        if (!$this->product) {
-            global $product;
-            $product_id = $product->get_id();
-            $this->product = $product;
-            $this->product_id = $product_id;
+
+
+        global $product;
+        if (!is_a($product, 'WC_Product')) {
+            return;
         }
+        $product_id = $product->get_id();
+        $this->product = $product;
+        $this->product_id = $product_id;
+
+//
+//        if (!$this->product) {
+//            global $product;
+//            $product_id = $product->get_id();
+//            $this->product = $product;
+//            $this->product_id = $product_id;
+//        }
 
         $wcpaProduct = new Product();
 

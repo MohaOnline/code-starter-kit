@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: n/a\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: n/a\n"
-"PO-Revision-Date: 2023-08-02 06:58+0000\n"
-"Last-Translator: Matthias Günter <matthias.guenter@devowl.io>\n"
+"PO-Revision-Date: 2023-10-15 18:53+0000\n"
+"Last-Translator: Norwegian translator <account+no@devowl.io>\n"
 "Language-Team: Norwegian Bokmål <https://translate.devowl.io/projects/devowl-"
 "wp-utils-backend-php/develop/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #. translators:
 #: Localization.php:424
@@ -20,6 +20,8 @@ msgid ""
 "Some language packs could not be downloaded for the textdomain %1$s (Error: "
 "%2$s, Endpoint: %3$s)."
 msgstr ""
+"Noen språkpakker kunne ikke lastes ned for tekstdomenet %1$s (Error: %2$s, "
+"Endpoint: %3$s)."
 
 #: Localization.php:474
 msgid "Retry"

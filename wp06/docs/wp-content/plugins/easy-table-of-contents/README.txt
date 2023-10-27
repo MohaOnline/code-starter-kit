@@ -3,9 +3,9 @@ Contributors: magazine3
 Donate link: https://tocwp.com/
 Tags: table of contents, toc
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.3.2
 Requires PHP: 5.6.20
-Stable tag: 2.0.55
+Stable tag: 2.0.57.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,7 @@ With [EASY TABLE OF CONTENTS PRO](https://tocwp.com/pricing/) You will get acces
 * <strong>New - Gutenberg Block </strong>: Easily create TOC in Gutenberg block without the need of any coding or shortcode.
 * <strong>New - Elementor Widget </strong>: Easily create TOC using Elementor Widget without the need of any coding or shortcode.
 * <strong>New - Fixed/Sticky TOC </strong>: Users can find the content that they need, much faster through the option of sticky TOC.
+* <strong>New - Fixed/Sticky TOC Customization </strong>: Customize the appearance of Sticky TOC with Theme Design options.
 * <strong>New - Full AMP Support </strong>: Generates a TOC with your existing setup and make it AMP compatible automatically.
 * <strong>NEW – ACF Support </strong>: Easily create TOC with your custom ACF fields.
 
@@ -102,6 +103,39 @@ Easy Table Contents is a fork of the excellent [Table of Contents Plus](https://
 4. Activate the plugin on the Plugins admin page.
 
 == Changelog ==
+
+= 2.0.57.1 27/10/2023 =
+* Bug: Incomplete CSS Classes in Version 2.0.57 Causing Style Issues #614
+
+= 2.0.57 25/10/2023 =
+* New: A feature to show only limited number of headings and rest should be as "View More" #474
+* Bug: The Footnotes are being repeated if the plugin is activated #597
+* Bug: A warning is showing while using the TOC #606
+* Bug: Jump anchors with apostrophe headings not working if theme Bamboo by Mediavine is active #607
+* Bug: Conflict issue with Molongui Authorship plugin in 2.0.56 version #608
+* Bug: Widget Auto-Highlight Issue After Update 2.0.56.1 #610
+
+= 2.0.56.1 09/10/2023 =
+* Bug: Toggle is not working with the pure CSS loading method. #604
+* Bug: Border colour is not changing in TOC #603
+* Bug: jQuery issue showing in console #605
+
+= 2.0.56 05/10/2023 =
+* New: Option to exclude toc from wp-json rest api #580
+* New: Feature to customize the CSS of the TOC container #553
+* New: Compatibility with the plugin CM Tooltip Glossary Ecommerce #556
+* New: Compatibility with the plugin Molongui Authorship #563
+* New: Option to include Page title in Table Of Content #568
+* New: Feature to customize the Background color of the Header Label #569
+* New: Added shortcode [no_ez_toc] so that users can disable the auto insertion of the TOC on a specific post/page #581
+* New: Compatibility with the ACF Flexible Content Module #589
+* New: Compatibility with salesdorado-tailpress theme #590
+* New: Compatibility of javascript scroll with Walker News Template theme #593
+* New: Options to customise the sticky TOC toggle. #583 #286
+* Bug: Unwanted spacing added in post while using TOC with uncode theme #588
+* Bug: Links are not working if the placement option "After Paragraph Number" is selected #598
+* Bug: TOC shortcode is added to the single.php file, it does not work. #599
+
 
 = 2.0.55 04/09/2023 =
 * New: Option to set position for sticky TOC toggle. #576

@@ -21,9 +21,11 @@ $newsup_default = newsup_get_default_theme_options();
     ) );
     
     $wp_customize->add_control(new Newsup_Customize_Alpha_Color_Control( $wp_customize,'newsup_header_overlay_color', array(
-       'label'      => __('Overlay Color', 'newsup' ),
-        'palette' => true,
-        'section' => 'header_image')
+            'label'      => __('Overlay Color', 'newsup' ),
+            'palette' => true,
+            'section' => 'header_image',
+            'active_callback' => 'newsup_header_iamge_overlay_status',
+        )
     ) );
 
 $wp_customize->add_setting('remove_header_image_overlay',

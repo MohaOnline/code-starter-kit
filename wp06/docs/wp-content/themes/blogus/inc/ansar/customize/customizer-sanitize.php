@@ -120,3 +120,37 @@ function blogus_sanitize_radio( $val, $setting ) {
         return array_key_exists( $val, $choices ) ? $val : $setting->default;
     }
 endif;
+
+if ( ! function_exists( 'blogus_sanitize_alpha_color' ) ) :
+    function blogus_sanitize_alpha_color( $value ) {
+        // Check if the value is a valid hexadecimal color
+        if ( preg_match( '/^#([a-f0-9]{3}){1,2}$/i', $value ) ) {
+            return sanitize_hex_color( $value );
+        }
+        
+        // Check if the value is a valid RGB color
+        if ( preg_match( '/^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/i', $value, $matches ) ) {
+            $red = intval( $matches[1] );
+            $green = intval( $matches[2] );
+            $blue = intval( $matches[3] );
+            
+            return "rgb($red, $green, $blue)";
+        }
+        
+        // Check if the value is a valid RGBA color
+        if ( preg_match( '/^rgba\((\d{1,3}),(\d{1,3}),(\d{1,3}),([\d\.]+)\)$/i', $value, $matches ) ) {
+            $red = intval( $matches[1] );
+            $green = intval( $matches[2] );
+            $blue = intval( $matches[3] );
+            $alpha = floatval( $matches[4] );
+            
+            // Ensure alpha value is between 0 and 1
+            $alpha = max( 0, min( 1, $alpha ) );
+            
+            return "rgba($red, $green, $blue, $alpha)";
+        }
+        
+        // If none of the above formats match, return a default value
+        return '';
+    }
+endif;

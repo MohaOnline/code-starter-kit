@@ -61,7 +61,7 @@ class MasteriyoDiviExtension extends \DiviExtension {
 
 		parent::__construct( $name, $args );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_frontend_bundle' ), 11 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_scripts_styles' ), 11 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_styles' ), 99 );
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10, 2 );
 	}
@@ -105,14 +105,15 @@ class MasteriyoDiviExtension extends \DiviExtension {
 	}
 
 	/**
-	 * Dequeue the frontend bundle as this extension does not need JS in the frontend.
+	 * Dequeue the frontend bundle as this extension does not need JS and CSS in the frontend.
 	 *
 	 * @since 1.6.15
 	 *
 	 * @return void
 	 */
-	public function dequeue_frontend_bundle() {
+	public function dequeue_scripts_styles() {
 		wp_dequeue_script( "{$this->name}-frontend-bundle" );
+		wp_dequeue_style( "{$this->name}-styles" );
 	}
 
 	/**

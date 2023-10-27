@@ -250,7 +250,7 @@ class OpenAIController extends RestController {
 			return new WP_Error( 'openai_invalid_parameters', 'Invalid parameters. Number of sections and lessons should be at least 1.', array( 'status' => 400 ) );
 		}
 
-		$course_outline_prompt = generate_course_outline_prompt( $course_title, $course_idea, $num_sections, $num_lessons_per_section );
+		$course_outline_prompt = masteriyo_generate_course_outline_prompt( $course_title, $course_idea, $num_sections, $num_lessons_per_section );
 		$response_text         = masteriyo_openai_retry( array( $chatgpt, 'send_prompt' ), array( $course_outline_prompt ), 3 );
 
 		if ( is_null( $response_text ) || is_wp_error( $response_text ) ) {

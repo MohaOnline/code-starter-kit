@@ -678,6 +678,32 @@ textarea {
 # Navigation
 --------------------------------------------------------------*/
 
+.footer-container {
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-container a {
+	margin-left: 0.2em;
+}
+
+ul#footer-menu {
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+	ul#footer-menu {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.niche-blog-navigation-menu .nav-menu > li > a, .niche-blog-navigation-menu .nav-menu > ul > li > a {
+	text-decoration: none;
+}
+
 /*--------------------------------------------------------------
 ## Social Icons
 --------------------------------------------------------------*/
@@ -930,7 +956,25 @@ div.nav-menu > ul {
 	display: block;
 }
 
+.footer-menu-toggle,
+.niche-blog-navigation-menu.toggled ul {
+	display: block;
+}
+
 .primary-menu-toggle {
+    margin: 0 auto;
+    padding: 16px 15px;
+    line-height: 28px;
+    color: #000;
+    width: 100%;
+    font-size: 14px;
+    border: none;
+    width: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-menu-toggle {
     margin: 0 auto;
     padding: 16px 15px;
     line-height: 28px;
@@ -949,8 +993,19 @@ div.nav-menu > ul {
 	height: 20px;
 }
 
+.footer-menu-toggle svg {
+	fill: #000;
+	width: 20px;
+	height: 20px;
+}
+
 .primary-menu-toggle:hover svg,
 .primary-menu-toggle:focus svg {
+	fill: #fff;
+}
+
+.footer-menu-toggle:hover svg,
+.footer-menu-toggle:focus svg {
 	fill: #fff;
 }
 
@@ -959,11 +1014,24 @@ div.nav-menu > ul {
     display: none;
 }
 
+.footer-menu-toggle .icon-close,
+.footer-menu-toggle.active .icon-bars {
+    display: none;
+}
+
 .primary-menu-toggle.active .icon-close {
     display: inline-block;
 }
 
+.footer-menu-toggle.active .icon-close {
+    display: inline-block;
+}
+
 .primary-menu-label {
+    display: none;
+}
+
+.footer-menu-label {
     display: none;
 }
 
@@ -2287,15 +2355,17 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 .site-info {
     border-top: 1px solid rgba(50, 50, 50, 0.15);
     padding: 15px 10px;
+	background-color: #054e6d;
 }
 
 .to-top {
     width: 40px;
     height: 40px;
-    background-color: #054e6d;
+    background-color: #515151;
+	border: 1px solid #054e6d;
     position: fixed;
     bottom: -100px;
-    right: 15px;
+    right: 1rem;
     z-index: 1;
     -webkit-transition: all .7s ease-in-out;
     -moz-transition: all .7s ease-in-out;
@@ -2757,6 +2827,11 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 	    vertical-align: middle;
 	}
 
+	.footer-menu-label {
+	    display: inline-block;
+	    vertical-align: middle;
+	}
+
 	.error-404.not-found input.search-field {
 	    min-width: 450px;
 	}
@@ -3024,6 +3099,11 @@ body:not(.single) .blog-archive article:not(.has-post-thumbnail) .featured-image
 
 	.nav-menu button.dropdown-toggle,
 	.primary-menu-toggle {
+	    display: none;
+	}
+
+	.nav-menu button.dropdown-toggle,
+	.footer-menu-toggle {
 	    display: none;
 	}
 

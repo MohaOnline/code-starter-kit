@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.3
 Requires PHP: 7.2
-Stable tag: 5.36.0
+Stable tag: 5.37.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -229,6 +229,21 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.37.1 =
+* Improvement: CSS adjustments to avoid conflicts with styling from with 3rd-party themes and plugins
+= 5.37.0 =
+* Improvement: design update of a review form on product pages with the enhanced CusRev user interface style
+* Improvement: minor user interface design updates on the plugin's settings page in the admin console
+* Improvement: compatibility with the ReHub theme for WordPress
+* Bug fix: 'Store manager' string was enabled for the translation function
+* Bug fix: count of reviews for a product might not update after a review was posted via the [cusrev_all_reviews] shortcode
+= 5.36.3 =
+* Improvement: minor CSS improvement
+* Improvement: explicit mention of a jQuery dependency in registration of some scripts
+= 5.36.2 =
+* Bug fix: import of reviews did not work correctly with some values of the 'memory_limit' setting in PHP
+= 5.36.1 =
+* Bug fix: vulnerability in Ajax requests
 = 5.36.0 =
 * Improvement: upload images and videos via a review form in the [cusrev_all_reviews] shortcode
 * Improvement: additional error messages about file upload errors on local aggregated review forms

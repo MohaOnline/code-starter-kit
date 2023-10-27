@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpDiscuz\n"
-"POT-Creation-Date: 2023-08-26 16:51+0400\n"
-"PO-Revision-Date: 2023-08-26 16:51+0400\n"
+"POT-Creation-Date: 2023-09-29 11:42+0400\n"
+"PO-Revision-Date: 2023-09-29 11:41+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,68 +25,68 @@ msgstr ""
 msgid "Every 48 hours"
 msgstr ""
 
-#: class.WpdiscuzCore.php:630
+#: class.WpdiscuzCore.php:645
 msgid "Spam"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1083 class.WpdiscuzCore.php:2441
-#: class.WpdiscuzCore.php:2444
+#: class.WpdiscuzCore.php:1099 class.WpdiscuzCore.php:2458
+#: class.WpdiscuzCore.php:2461
 msgid "Dashboard"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1087 class.WpdiscuzCore.php:1665
-#: class.WpdiscuzCore.php:2451 class.WpdiscuzCore.php:2454
+#: class.WpdiscuzCore.php:1103 class.WpdiscuzCore.php:1681
+#: class.WpdiscuzCore.php:2468 class.WpdiscuzCore.php:2471
 #: options/html-options.php:399 options/html-options.php:514
 msgid "Settings"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1092 class.WpdiscuzCore.php:2462
-#: class.WpdiscuzCore.php:2465
+#: class.WpdiscuzCore.php:1108 class.WpdiscuzCore.php:2479
+#: class.WpdiscuzCore.php:2482
 msgid "Phrases"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1097 class.WpdiscuzCore.php:2473
-#: class.WpdiscuzCore.php:2476
+#: class.WpdiscuzCore.php:1113 class.WpdiscuzCore.php:2490
+#: class.WpdiscuzCore.php:2493
 msgid "Tools"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1123
+#: class.WpdiscuzCore.php:1139
 msgid "Do you really want to reset all options?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1124
+#: class.WpdiscuzCore.php:1140
 msgid "Do you really want to reset tab options?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1125
+#: class.WpdiscuzCore.php:1141
 msgid "Do you really want to remove voting data?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1126
+#: class.WpdiscuzCore.php:1142
 msgid "Do you really want to reset phrases?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1127
+#: class.WpdiscuzCore.php:1143
 msgid "Do you really want to delet this attachment?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1128
+#: class.WpdiscuzCore.php:1144
 msgid "Do you really want to delete comments and users cache?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1185
+#: class.WpdiscuzCore.php:1202
 msgid "Please check one of reasons before sending feedback!"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1186 utils/deactivation-reason-modal.php:137
+#: class.WpdiscuzCore.php:1203 utils/deactivation-reason-modal.php:137
 msgid "Please provide more information"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1208 class.WpdiscuzCore.php:2177
+#: class.WpdiscuzCore.php:1225 class.WpdiscuzCore.php:2193
 msgid "No text is selected. Please select a part of text from post content."
 msgstr ""
 
-#: class.WpdiscuzCore.php:1666
+#: class.WpdiscuzCore.php:1682
 msgid ""
 "IMPORTANT! Uninstall is not a simple deactivation action. This action will "
 "permanently remove all data added by wpDiscuz (comment subscriptions, "
@@ -96,55 +96,55 @@ msgid ""
 "confirm. If not, just cancel it, then you can deactivate this plugin."
 msgstr ""
 
-#: class.WpdiscuzCore.php:1666
+#: class.WpdiscuzCore.php:1682
 msgid "Uninstall"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1798 options/phrases-layouts/phrases-comment.php:56
+#: class.WpdiscuzCore.php:1814 options/phrases-layouts/phrases-comment.php:56
 msgid "Admin"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1801 class.WpdiscuzCore.php:1814
+#: class.WpdiscuzCore.php:1817 class.WpdiscuzCore.php:1830
 #: options/phrases-layouts/phrases-comment.php:58
 msgid "Author"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1804 options/phrases-layouts/phrases-comment.php:60
+#: class.WpdiscuzCore.php:1820 options/phrases-layouts/phrases-comment.php:60
 msgid "Editor"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1807 options/phrases-layouts/phrases-comment.php:64
+#: class.WpdiscuzCore.php:1823 options/phrases-layouts/phrases-comment.php:64
 msgid "Member"
 msgstr ""
 
-#: class.WpdiscuzCore.php:1815 options/phrases-layouts/phrases-comment.php:62
+#: class.WpdiscuzCore.php:1831 options/phrases-layouts/phrases-comment.php:62
 msgid "Guest"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2175
+#: class.WpdiscuzCore.php:2191
 msgid "Selected Text"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2182
+#: class.WpdiscuzCore.php:2198
 msgid "Your Question to Readers"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2184
+#: class.WpdiscuzCore.php:2200
 msgid ""
 "A simple question or a call to leave a feedback on the selected part of "
 "text. Something like &quot;By the way. Do you agree with this?&quot; or "
 "&quot;Would love your thoughts, please comment on this.&quot;"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2190
+#: class.WpdiscuzCore.php:2206
 msgid "e.g: Any thoughts on this?"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2195
+#: class.WpdiscuzCore.php:2211
 msgid "Feedback Button Display Type"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2197
+#: class.WpdiscuzCore.php:2213
 msgid ""
 "By default the inline feedback form is closed and only the button is "
 "displayed. Once reader scrolled and reached to the selected text part, this "
@@ -154,34 +154,34 @@ msgid ""
 "Readers can close it using [x] button."
 msgstr ""
 
-#: class.WpdiscuzCore.php:2205
+#: class.WpdiscuzCore.php:2221
 msgid "CLOSED"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2215
+#: class.WpdiscuzCore.php:2231
 msgid "OPENED"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2226
+#: class.WpdiscuzCore.php:2242
 msgid "Add Inline Feedback Button"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2483 class.WpdiscuzCore.php:2486
+#: class.WpdiscuzCore.php:2500 class.WpdiscuzCore.php:2503
 #: options/class.WpdiscuzAddons.php:37 options/class.WpdiscuzAddons.php:38
 #: options/html-options.php:26
 msgid "Addons"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2494 class.WpdiscuzCore.php:2497
-#: class.WpdiscuzCore.php:2508
+#: class.WpdiscuzCore.php:2511 class.WpdiscuzCore.php:2514
+#: class.WpdiscuzCore.php:2525
 msgid "Purge All Caches"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2505
+#: class.WpdiscuzCore.php:2522
 msgid "Purge This Url Caches"
 msgstr ""
 
-#: class.WpdiscuzCore.php:2533
+#: class.WpdiscuzCore.php:2550
 msgid ""
 "This is just a demo of wpDiscuz comment section.<br>\n"
 "            Further customization can be done in the Dashboard > wpDiscuz > "
@@ -190,19 +190,19 @@ msgid ""
 "wpDiscuz > Forms admin page."
 msgstr ""
 
-#: class.WpdiscuzCore.php:2542
+#: class.WpdiscuzCore.php:2559
 msgid "wpDiscuz is not loaded for the following reason."
 msgstr ""
 
-#: class.WpdiscuzCore.php:2544
+#: class.WpdiscuzCore.php:2561
 msgid "The post type doesn't support comments."
 msgstr ""
 
-#: class.WpdiscuzCore.php:2546
+#: class.WpdiscuzCore.php:2563
 msgid "The comments are closed for the post."
 msgstr ""
 
-#: class.WpdiscuzCore.php:2548
+#: class.WpdiscuzCore.php:2565
 msgid ""
 "The post type is not enabled in the \"Display comment form for post types\" "
 "section."
@@ -330,7 +330,7 @@ msgstr ""
 #: forms/wpDiscuzForm.php:439 forms/wpdFormAttr/Form.php:135
 #: forms/wpdFormAttr/Form.php:1457 forms/wpdFormAttr/Form.php:1458
 #: forms/wpdFormAttr/Tools/PersonalDataExporter.php:82
-#: utils/class.WpdiscuzHelperAjax.php:1013
+#: utils/class.WpdiscuzHelperAjax.php:967
 msgid "Comments"
 msgstr ""
 
@@ -1204,7 +1204,7 @@ msgstr ""
 msgid "Advanced Likers"
 msgstr ""
 
-#: options/addons/cai/title.php:7 utils/class.WpdiscuzHelperAjax.php:1010
+#: options/addons/cai/title.php:7 utils/class.WpdiscuzHelperAjax.php:964
 msgid "Comment Author"
 msgstr ""
 
@@ -1888,7 +1888,7 @@ msgstr ""
 msgid "You've not made any changes"
 msgstr ""
 
-#: options/class.WpdiscuzOptions.php:467 utils/class.WpdiscuzHelper.php:1460
+#: options/class.WpdiscuzOptions.php:467 utils/class.WpdiscuzHelper.php:1611
 msgid "Save"
 msgstr ""
 
@@ -2020,7 +2020,7 @@ msgstr ""
 
 #: options/class.WpdiscuzOptions.php:495 options/html-dashboard.php:201
 #: options/phrases-layouts/phrases-user-settings.php:19
-#: utils/class.WpdiscuzHelperAjax.php:1017
+#: utils/class.WpdiscuzHelperAjax.php:971
 msgid "Subscriptions"
 msgstr ""
 
@@ -2210,7 +2210,7 @@ msgid "Confirm Follow"
 msgstr ""
 
 #: options/class.WpdiscuzOptions.php:534 options/class.WpdiscuzOptions.php:536
-#: utils/class.WpdiscuzHelperEmail.php:450
+#: utils/class.WpdiscuzHelperEmail.php:678
 msgid "Unfollow"
 msgstr ""
 
@@ -6042,11 +6042,11 @@ msgid ""
 "Comments</i></strong> plugin to wpDiscuz."
 msgstr ""
 
-#: themes/default/comment-form.php:521
+#: themes/default/comment-form.php:434
 msgid "wpdiscuz-loading-bar-auth"
 msgstr ""
 
-#: themes/default/comment-form.php:523
+#: themes/default/comment-form.php:436
 msgid "wpdiscuz-comment-message-auth"
 msgstr ""
 
@@ -6058,92 +6058,117 @@ msgstr ""
 msgid "User Name"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:153
+#: utils/class.WpdiscuzHelper.php:180
 msgid "Nonce is invalid."
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:173
+#: utils/class.WpdiscuzHelper.php:229
 #, php-format
 msgid "%sM"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:175
+#: utils/class.WpdiscuzHelper.php:231
 #, php-format
 msgid "%sK"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:435
+#: utils/class.WpdiscuzHelper.php:518
 msgid "Sticky"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1237
+#: utils/class.WpdiscuzHelper.php:1376
 msgid "Reset Ratings"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1249
+#: utils/class.WpdiscuzHelper.php:1392
 msgid "Are you sure you want to reset post rating?"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1277
+#: utils/class.WpdiscuzHelper.php:1422
 msgid "Reset Post Rating"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1278 utils/class.WpdiscuzHelper.php:1317
+#: utils/class.WpdiscuzHelper.php:1424 utils/class.WpdiscuzHelper.php:1467
 msgid "Working..."
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1279 utils/class.WpdiscuzHelper.php:1318
+#: utils/class.WpdiscuzHelper.php:1426 utils/class.WpdiscuzHelper.php:1469
 msgid "Done"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1288
+#: utils/class.WpdiscuzHelper.php:1435
 msgid "Are you sure you want to reset fields ratings?"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1316
+#: utils/class.WpdiscuzHelper.php:1465
 msgid "Reset Fields Ratings"
 msgstr ""
 
-#: utils/class.WpdiscuzHelper.php:1459
+#: utils/class.WpdiscuzHelper.php:1610
 msgid "Enter link:"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:846
+#: utils/class.WpdiscuzHelper.php:1685
+msgid "Sorry, replies to unapproved comments are not allowed."
+msgstr ""
+
+#: utils/class.WpdiscuzHelper.php:1695 utils/class.WpdiscuzHelper.php:1701
+#: utils/class.WpdiscuzHelper.php:1714 utils/class.WpdiscuzHelper.php:1723
+msgid "Current post doesn't found."
+msgstr ""
+
+#: utils/class.WpdiscuzHelper.php:1709
+msgid "Sorry, comments are closed for this item."
+msgstr ""
+
+#: utils/class.WpdiscuzHelper.php:1721 utils/class.WpdiscuzHelper.php:1729
+msgid "Sorry, comments are not allowed for this item."
+msgstr ""
+
+#: utils/class.WpdiscuzHelperAjax.php:784
 msgid "Read More"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:959
+#: utils/class.WpdiscuzHelperAjax.php:905
 msgid "Subscribers"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:960
+#: utils/class.WpdiscuzHelperAjax.php:906
 msgid "Subscription - posts"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:961
+#: utils/class.WpdiscuzHelperAjax.php:907
 msgid "Subscription - all comments"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:962
+#: utils/class.WpdiscuzHelperAjax.php:908
 msgid "Subscription - comment"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:963
-#: utils/class.WpdiscuzHelperAjax.php:1025
+#: utils/class.WpdiscuzHelperAjax.php:909
+#: utils/class.WpdiscuzHelperAjax.php:979
 msgid "Followers"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:964
-#: utils/class.WpdiscuzHelperAjax.php:1021
+#: utils/class.WpdiscuzHelperAjax.php:910
+#: utils/class.WpdiscuzHelperAjax.php:975
 msgid "Following"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:1029
+#: utils/class.WpdiscuzHelperAjax.php:983
 msgid "Last Activity"
 msgstr ""
 
-#: utils/class.WpdiscuzHelperAjax.php:1063
+#: utils/class.WpdiscuzHelperAjax.php:1017
 msgid "Something is wrong"
+msgstr ""
+
+#: utils/class.WpdiscuzHelperEmail.php:109
+msgid "Something is wrong."
+msgstr ""
+
+#: utils/class.WpdiscuzHelperEmail.php:111
+msgid "Email sent successfully."
 msgstr ""
 
 #: utils/class.WpdiscuzHelperUpload.php:531

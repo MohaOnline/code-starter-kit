@@ -31,6 +31,12 @@ jQuery(document).ready(function ($) {
             return false;
         }
     });
+    $('body').on('click', '#wpdiscuz-remove-social-avatars', function (e) {
+        if (!confirm(wpdiscuzObj.msgConfirmRemoveSocialAvatars)) {
+            e.preventDefault();
+            return false;
+        }
+    });
     $('body').on('click', '#wpdiscuz-reset-phrases', function (e) {
         if (!confirm(wpdiscuzObj.msgConfirmResetPhrases)) {
             e.preventDefault();

@@ -1,4 +1,9 @@
 <?php
+// phpcs:ignoreFile
+
+use AdvancedAds\Entities;
+use AdvancedAds\Utilities\WordPress;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -23,7 +28,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	 * Advanced_Ads_Admin_Meta_Boxes constructor.
 	 */
 	private function __construct() {
-		add_action( 'add_meta_boxes_' . Advanced_Ads::POST_TYPE_SLUG, [ $this, 'add_meta_boxes' ] );
+		add_action( 'add_meta_boxes_' . Entities::POST_TYPE_AD, [ $this, 'add_meta_boxes' ] );
 		// add meta box for post types edit pages.
 		add_action( 'add_meta_boxes', [ $this, 'add_post_meta_box' ] );
 		add_action( 'save_post', [ $this, 'save_post_meta_box' ] );
@@ -54,7 +59,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	 */
 	public function add_meta_boxes() {
 		global $post;
-		$post_type = Advanced_Ads::POST_TYPE_SLUG;
+		$post_type = Entities::POST_TYPE_AD;
 
 		add_meta_box(
 			'ad-main-box',
@@ -354,7 +359,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 			endif;
 		}
 		echo '</ul>';
-		include ADVADS_BASE_PATH . 'admin/views/' . $view;
+		include ADVADS_ABSPATH . 'admin/views/' . $view;
 	}
 
 	/**
@@ -404,7 +409,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	 */
 	public function add_post_meta_box( $post_type = '' ) {
 		// don’t display for non admins.
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			return;
 		}
 
@@ -420,10 +425,11 @@ class Advanced_Ads_Admin_Meta_Boxes {
 
 		// limit meta box to public post types.
 		if ( in_array( $post_type, $public_post_types ) ) {
+			$disabled_post_types = Advanced_Ads::get_instance()->options()['pro']['general']['disable-by-post-types'] ?? [];
 			add_meta_box(
 				'advads-ad-settings',
 				__( 'Ad Settings', 'advanced-ads' ),
-				[ $this, 'render_post_meta_box' ],
+				[ $this, in_array( $post_type, $disabled_post_types, true ) ? 'render_disable_post_type_notice' : 'render_post_meta_box' ],
 				$post_type,
 				'side',
 				'low'
@@ -445,7 +451,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 		$values = get_post_meta( $post->ID, '_advads_ad_settings', true );
 
 		// load the view.
-		include ADVADS_BASE_PATH . 'admin/views/post-ad-settings-metabox.php';
+		include ADVADS_ABSPATH . 'admin/views/post-ad-settings-metabox.php';
 
 		do_action( 'advanced_ads_render_post_meta_box', $post, $values );
 	}
@@ -459,7 +465,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	 */
 	public function save_post_meta_box( $post_id ) {
 
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			return;
 		}
 
@@ -518,7 +524,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	 */
 	public function add_dashboard_widget() {
 		// display dashboard widget only to authors and higher roles.
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_see_interface' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_see_interface' ) ) {
 				return;
 		}
 		add_meta_box( 'advads_dashboard_widget', __( 'Dashboard', 'advanced-ads' ), [ $this, 'dashboard_widget_function' ], 'dashboard', 'side', 'high' );
@@ -533,14 +539,14 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	public static function dashboard_widget_function( $post, $callback_args ) {
 		// get number of ads.
 		$ads_count = Advanced_Ads::get_number_of_ads();
-		if ( current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			echo '<p>';
 			printf(
 				// translators: %1$d is the number of ads, %2$s and %3$s are URLs.
 				wp_kses( __( '%1$d ads – <a href="%2$s">manage</a> - <a href="%3$s">new</a>', 'advanced-ads' ), [ 'a' => [ 'href' => [] ] ] ),
 				absint( $ads_count ),
-				'edit.php?post_type=' . esc_attr( Advanced_Ads::POST_TYPE_SLUG ),
-				'post-new.php?post_type=' . esc_attr( Advanced_Ads::POST_TYPE_SLUG )
+				'edit.php?post_type=' . esc_attr( Entities::POST_TYPE_AD ),
+				'post-new.php?post_type=' . esc_attr( Entities::POST_TYPE_AD )
 			);
 			echo '</p>';
 		}
@@ -594,13 +600,14 @@ class Advanced_Ads_Admin_Meta_Boxes {
 			echo $output; // complex HTML widget.
 			return true;
 		}
+
 		/**
 		 * Only display dummy output which then loads the content via AJAX
 		 */
 		?>
 		<div id="advads-dashboard-widget-placeholder">
 			<img src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" width="20" height="20" alt="spinner"/>
-			<script>advads_load_dashboard_rss_widget_content();</script>
+			<script>window.addEventListener( 'load', function() { advads_load_dashboard_rss_widget_content() } );</script>
 		</div>
 		<?php
 
@@ -668,6 +675,17 @@ class Advanced_Ads_Admin_Meta_Boxes {
 	public function fix_wpquadspro_issue( $allowed_post_types ) {
 		unset( $allowed_post_types['advanced_ads'] );
 		return $allowed_post_types;
+	}
+
+	/**
+	 * Render meta box for ad settings notice when ads disabled for post type
+	 *
+	 * @param WP_Post $post The post object.
+	 */
+	public function render_disable_post_type_notice( $post ) {
+		$labels = get_post_type_object( $post->post_type )->labels;
+		// load the view.
+		include ADVADS_ABSPATH . 'admin/views/post-ad-settings-hint-metabox.php';
 	}
 
 }

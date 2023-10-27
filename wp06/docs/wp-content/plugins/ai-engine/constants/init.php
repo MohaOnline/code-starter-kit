@@ -30,7 +30,9 @@ define( 'MWAI_CHATBOT_DEFAULT_PARAMS', [
 	'env' => 'chatbot',
 	'mode' => 'chat',
 	'contentAware' => false,
+	'embeddingsEnvId' => '',
 	'embeddingsIndex' => '',
+	'embeddingsNamespace' => null,
 	'casuallyFineTuned' => false,
 	'promptEnding' => null,
 	'completionEnding' => null,
@@ -166,12 +168,16 @@ define( 'MWAI_OPTIONS', [
 	'openai_finetunes_deleted' => [], // The finetunes that have been deleted
 	'openai_legacy_finetunes' => [],
 	'openai_legacy_finetunes_deleted' => [],
-	'pinecone' => [
-		'apikey' => false,
-		'server' => 'us-east1-gcp',
-		'namespace' => 'mwai',
-		'indexes' => [],
-		'index' => null
+	'embeddings_envs' => [
+		[
+			'name' => 'Pinecone',
+			'type' => 'pinecone',
+			'apikey' => '',
+			'server' => 'gcp-starter',
+			'indexes' => [],
+			'namespaces' => [],
+			'index' => null
+		]
 	],
 	'embeddings' => [
 		'rewriteContent' => true,
@@ -180,6 +186,7 @@ define( 'MWAI_OPTIONS', [
 		'maxSelect' => 1,
 		'minScore' => 75,
 		'syncPosts' => false,
+		'syncPostsEnv' => null,
 		'syncPostTypes' => ['post', 'page', 'product'],
 		'syncPostStatus' => ['publish'],
 	],

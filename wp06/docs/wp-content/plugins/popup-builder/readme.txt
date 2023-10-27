@@ -8,7 +8,7 @@ Tags: popup, pop up, wordpress popup, popup maker, exit popup, popup builder, wo
 Requires at least: 4.2
 Tested up to: 6.1
 Requires PHP: 5.3.3
-Stable tag: 4.1.15
+Stable tag: 4.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,10 @@ Go to the Popup Builder settings and set your desired options.
 14. Registration popup
 
 == Changelog ==
+= Version 4.2.0 =
+* Fixed vulnerabilities
+* Bug fixed exit intent deactivation that triggers an error.
+* Bug fixed related to PHP 8.x errors that were visible.
 
 = Version 4.1.15 =
 * Minor optimization.

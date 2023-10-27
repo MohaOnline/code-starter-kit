@@ -325,8 +325,12 @@ class OptimizerWebPageCache {
             }
 
             // if dir is empty
-            if (is_dir($dir) && count(scandir($dir)) === 2) {
-                rmdir($dir); // phpcs:ignore
+            if (is_dir($dir)) {
+                $dir_arr = scandir($dir);
+
+                if (is_array($dir_arr) && count($dir_arr) === 2) {
+                    rmdir($dir); // phpcs:ignore
+                }
             }
         }
     }

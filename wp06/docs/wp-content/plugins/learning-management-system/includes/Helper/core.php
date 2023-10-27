@@ -2511,6 +2511,10 @@ function masteriyo_add_post_state( $post_states, $post ) {
 		$post_states['masteriyo_instructor_registration_page'] = __( 'Masteriyo Instructor Registration Page', 'masteriyo' );
 	}
 
+	if ( masteriyo_get_page_id( 'instructors-list' ) === $post->ID ) {
+		$post_states['masteriyo_instructors_list_page'] = __( 'Masteriyo Instructors List Page', 'masteriyo' );
+	}
+
 	return $post_states;
 }
 function_exists( 'add_filter' ) && add_filter( 'display_post_states', 'masteriyo_add_post_state', 10, 2 );
@@ -3867,5 +3871,18 @@ if ( ! function_exists( 'masteriyo_is_email_verification_enabled' ) ) {
 		 * @param bool $enabled Whether email verification is enabled or not.
 		 */
 		return apply_filters( 'masteriyo_email_verification_enabled', masteriyo_get_setting( 'advance.email_verification.enable' ) );
+	}
+}
+
+if ( ! function_exists( 'masteriyo_cache' ) ) {
+	/**
+	 * Get the cache handler object.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @return \Masteriyo\Cache\Cache
+	 */
+	function masteriyo_cache() {
+		return masteriyo( 'cache' );
 	}
 }

@@ -236,6 +236,9 @@ class Capabilities {
 			'read_course_reviews'           => true,
 			'read_user_courses'             => true,
 			'read_orders'                   => true,
+			'read_announcements'            => true,
+			'edit_announcements'            => true,
+			'edit_published_announcements'  => true,
 
 			// Course Progress
 			'read_course_progresses'        => true,
@@ -354,6 +357,13 @@ class Capabilities {
 			'delete_mto_webhooks'             => true,
 			'delete_published_mto_webhooks'   => true,
 			'delete_private_mto_webhooks'     => true,
+
+			// Announcements (Added to main capability file due to permission issue on individual addon, so adding with filter is not used here.)
+			'publish_announcements'           => true,
+			'edit_private_announcements'      => true,
+			'delete_announcements'            => true,
+			'delete_published_announcements'  => true,
+			'delete_private_announcements'    => true,
 
 			// Other
 			'upload_files'                    => true,

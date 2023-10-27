@@ -1,9 +1,9 @@
 === Royal Elementor Addons and Templates ===
 Contributors: WP Royal, rubeushagrid13, cyberpinky, elementoraddonswpr, ggedenidze1982, wprduke
 Tags: elementor, elementor templates, elementor addons, widgets for elementor, elementor widgets, elementor mega menu, elementor woocommerce builder, theme builder, header footer builder, elementor post grid, elementor product grid, addons for elementor
-Stable tag: 1.3.77
+Stable tag: 1.3.80
 Requires at least: 5.0
-Tested up to: 6.3.1
+Tested up to: 6.3.2
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -14,7 +14,7 @@ Elementor Post Grid, Portfolio, Woocommerce Grid builder Widgets. Slider, Carous
 
 **Royal Elementor addons** is the most versatile, intuitive, and easy to use [Popular Page Builder](https://wordpress.org/plugins/elementor/) extension. Our goal is to provide you with the tools to make things happen, efficiently, and fast compare to other elementor addons. Choosing us is not only a mindset, but it is also a requirement if you intend to gain an edge over your competitors when creating your website. The best part is that you can design anything **without having to touch a single line of code**.
 
-Comes with **80+ Elementor addons, 60+ Elementor Templates KIT (Growing Each Week), Theme Builder, WooCommerce Builder, Elementor Mega Menu Builder, Popup Builder, Premade Widget Blocks & Extensions.** Creative and self-intuitive widgets to take your WordPress website to the next level. **All widgets are Free** and the Pro Version offers even more advanced functionality.
+Comes with **90+ Elementor addons, 70+ Elementor Templates KIT (Growing Each Week), Theme Builder, WooCommerce Builder, Elementor Mega Menu Builder, Popup Builder, Premade Widget Blocks & Extensions.** Creative and self-intuitive widgets to take your WordPress website to the next level. **All widgets are Free** and the Pro Version offers even more advanced functionality.
 
 *Free and Pro functionalities are mixed in the Widget Demos below.*
 
@@ -114,7 +114,13 @@ Comes with **80+ Elementor addons, 60+ Elementor Templates KIT (Growing Each Wee
 
 - [**Elementor Theme Builder & Woocommerce Builder**](https://royal-elementor-addons.com/?ref=rea-wpo-pp-details-tab#headerfooterbuilder) - Header Footer Builder, Post & Product Archive builder, Single Post & Product builder, Single Page, Search, category, tags, 404, author, data page template builder.
 - [**Mega Menu Builder**](https://royal-elementor-addons.com/elementor-mega-menu-widget/?ref=rea-wpo-pp-details-tab#popupbuilder?ref=rea-wpo-pp-details-tab#popupbuilder) - Build any type of WordPress mega menu with Menu Badges and Icons, use any elementor widgets in Mega menu content, supports Ajax loading of mega menu items for maximum page loading speed. Off-Canvas Mobile and Desktop Menus support.
-- [**Advanced Sticky Menu**](https://prnt.sc/pCVM2ayA_vVV) check examples (scroll to see menu effects): [Demo 1](https://demosites.royal-elementor-addons.com/fashion-v2/?ref=rea-wpo-pp-details-tab), [Demo 2](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v2/?ref=rea-wpo-pp-details-tab), [Demo 3](https://demosites.royal-elementor-addons.com/personal-blog-v1/?ref=rea-wpo-pp-details-tab), [Demo 4](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v1/?ref=rea-wpo-pp-details-tab), [Demo 5.](https://demosites.royal-elementor-addons.com/construction-v3/?ref=rea-wpo-pp-details-tab)
+- [**Advanced Sticky Menu - Create eye-catching Sticky Header Effects**](https://prnt.sc/pCVM2ayA_vVV) check demos (scroll to see menu effects): 
+	[Demo 1 - Replace Header on Scroll, change it's background Color and make it Transparent, replace Logo ](https://demosites.royal-elementor-addons.com/construction-v3/?ref=rea-wpo-pp-details-tab)
+	[Demo 2 - Shrink Logo, Shrink Header and Change its Color](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v1/?ref=rea-wpo-pp-details-tab) 
+	[Demo 3 - Only show Header when Scrolling Up](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v2/?ref=rea-wpo-pp-details-tab)
+	[Demo 4 - Replace Header and add Shadow, Replace Logo and Menu background Colors](https://demosites.royal-elementor-addons.com/personal-blog-v1/?ref=rea-wpo-pp-details-tab)
+	[Demo 5 - Scale Logo, Scale Header and Change its background Color](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v1/?ref=rea-wpo-pp-details-tab)
+
 - [**Popup Builder**](https://royal-elementor-addons.com/?ref=rea-wpo-pp-details-tab#popupbuilder) - (Offer Sales Banners, Subscriptions Banners, GDPR Cookie Consent & Compliance Notice, Cookie Notice, Age Verification), 20+ Premade Popup Templates included in popup library
 - [**Parallax Scrolling**](https://royal-elementor-addons.com/elementor-parallax-background/?ref=rea-wpo-pp-details-tab) - Parallax effect extension
 - [**Parallax Multi-Layer Effect**](https://royal-elementor-addons.com/elementor-parallax-background/?ref=rea-wpo-pp-details-tab#multiparallax) -  extension
@@ -204,6 +210,7 @@ and other custom branding related settings)
 - [**Digital Seo Marketing Agency v2**](https://demosites.royal-elementor-addons.com/digital-seo-marketing-agency-v2/?ref=rea-wpo-pp-details-tab)
 - [**Real Estate v2**](https://demosites.royal-elementor-addons.com/realestate-v2/?ref=rea-wpo-pp-details-tab)
 - [**Real Estate Agency v3**](https://demosites.royal-elementor-addons.com/realestate-v3/?ref=rea-wpo-pp-details-tab)
+- [**Job Listing Website**](https://demosites.royal-elementor-addons.com/job-listing-v1/?ref=rea-wpo-pp-details-tab)
 - [**Digital Marketing Agency v3**](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v3/?ref=rea-wpo-pp-details-tab)
 - [**Digital Marketing Agency v2**](https://demosites.royal-elementor-addons.com/digital-marketing-agency-v2/?ref=rea-wpo-pp-details-tab)
 - [**Digital Agency Dark**](https://demosites.royal-elementor-addons.com/digital-agency-dark-v1/?ref=rea-wpo-pp-details-tab)
@@ -425,6 +432,18 @@ memory_limit 256M or more
 post_max_size 64M
 
 == Changelog ==
+= Royal Elementor Addons v1.3.80 - 2023-10-17 =
+* FIXED: Minor Bugs.
+
+= Royal Elementor Addons v1.3.79 - 2023-10-06 =
+* FIXED: Minor Bugs.
+* FIXED: Security Issues.
+
+= Royal Elementor Addons v1.3.78 - 2023-09-29 =
+* ADDED: Job Listing / Directory Elementor Templates Kit - [**Job Listing Kit**](https://demosites.royal-elementor-addons.com/job-listing-v1/?ref=rea-wpo-pp-details-tab).
+* ADDED: 50+ Header and Footer Premade Sections in [**Royal Elementor Library**](https://prnt.sc/aFX-zsDSrX8y).
+* FIXED: Minor Bugs.
+
 = Royal Elementor Addons v1.3.77 - 2023-09-06 =
 * ADDED: Real Estate Agency Elementor Templates Kit - [**Real Estate Agency Kit**](https://demosites.royal-elementor-addons.com/realestate-v3/?ref=rea-wpo-pp-details-tab).
 * ADDED: Nature - Travel (for beginners) Elementor Templates Kit - [**Nature - Travel**](https://demosites.royal-elementor-addons.com/nature-v2/ref=rea-wpo-pp-details-tab).

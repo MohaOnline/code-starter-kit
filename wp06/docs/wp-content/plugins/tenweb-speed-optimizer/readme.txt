@@ -4,7 +4,7 @@ Tags: cache, speed, optimize, performance, pagespeed, web vitals, critical css
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 7.1
-Stable tag: 2.23.18
+Stable tag: 2.24.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -271,6 +271,23 @@ Yes. 10Web Booster is an all-in-one solution for optimizing websites. It impleme
 
 
 == Changelog ==
+
+= 2.24.18 =
+Improved: PHP8.2 compatibility
+Fixed: Security issue
+
+= 2.24.14 =
+Fixed: Kinsta cache clearing
+Fixed: IO package
+
+= 2.24.12 =
+Improved: Added compatibility checks
+Improved: Critical CSS generation
+Improved: Compatibility with other plugins
+Fixed: Loading Google Ads
+Fixed: Disabling background images lazyload from 10web Dashboard
+Fixed: Texts in deactivation popup
+Fixed: Iframe lazyload bug
 
 = 2.23.18 =
 Added: More WP actions

@@ -1,5 +1,8 @@
 <?php
 
+use AdvancedAds\Entities;
+use AdvancedAds\Utilities\WordPress;
+
 /**
  * Class Advanced_Ads_Import
  */
@@ -56,7 +59,7 @@ class Advanced_Ads_Import {
 	public function dispatch() {
 		if ( ! isset( $_POST['_wpnonce'] )
 			|| ! wp_verify_nonce( $_POST['_wpnonce'], 'advads-import' )
-			|| ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options') ) ) {
+			|| ! WordPress::user_can( 'advanced_ads_manage_options') ) {
 			return;
 		}
 
@@ -173,7 +176,7 @@ class Advanced_Ads_Import {
 					'post_modified_gmt' => isset( $ad['post_modified_gmt'] ) ? $ad['post_modified_gmt'] : '',
 					'guid' => isset( $ad['guid'] ) ? $ad['guid'] :'',
 					'post_author' => get_current_user_id(),
-					'post_type' => Advanced_Ads::POST_TYPE_SLUG,
+					'post_type' => Entities::POST_TYPE_AD,
 					'comment_status' => 'closed',
 					'ping_status' => 'closed',
 					'meta_input' => isset( $ad['meta_input'] ) ? $ad['meta_input'] : '',
@@ -236,7 +239,7 @@ class Advanced_Ads_Import {
 
 					$this->messages[] = [ 'update', sprintf( __( 'Assigned terms: <em>%s</em>, to post: <em>%s</em>', 'advanced-ads' ), implode(',',$groups_to_set), $post_id ) ];
 
-					$tt_ids = wp_set_post_terms( $post_id, $groups_to_set, Advanced_Ads::AD_GROUP_TAXONOMY  );
+					$tt_ids = wp_set_post_terms( $post_id, $groups_to_set, Entities::TAXONOMY_AD_GROUP  );
 				}
 			}
 		}
@@ -283,22 +286,22 @@ class Advanced_Ads_Import {
 			return $this->created_groups[ $slug ];
 		}
 
-		if ( term_exists( $slug, Advanced_Ads::AD_GROUP_TAXONOMY ) ) {
+		if ( term_exists( $slug, Entities::TAXONOMY_AD_GROUP ) ) {
 			$count = 1;
-			while ( term_exists( $slug . '_' . $count, Advanced_Ads::AD_GROUP_TAXONOMY ) ) {
+			while ( term_exists( $slug . '_' . $count, Entities::TAXONOMY_AD_GROUP ) ) {
 			    $count++;
 			}
 			$slug = $slug . '_' . $count;
 		}
 
-		$t = wp_insert_term( $_group['name'], Advanced_Ads::AD_GROUP_TAXONOMY, [ 'slug' => $slug] );
+		$t = wp_insert_term( $_group['name'], Entities::TAXONOMY_AD_GROUP, [ 'slug' => $slug] );
 
 		if ( ! is_wp_error( $t ) ) {
 			$this->created_groups[ $original_slug ] = $t['term_id'];
 			$group_id = $t['term_id'];
 			$this->messages[] = [ 'update', sprintf( __( 'New group created, id: <em>%s</em>, name: <em>%s</em>', 'advanced-ads' ), $group_id, esc_html( $_group['name'] ) ) ];
 		} else {
-			$this->messages[] = [ 'error', sprintf( __( 'Failed to import taxonomy: <em>%s</em>, term: <em>%s</em>', 'advanced-ads' ), esc_html(Advanced_Ads::AD_GROUP_TAXONOMY), esc_html($_group['name'] ) ) ];
+			$this->messages[] = [ 'error', sprintf( __( 'Failed to import taxonomy: <em>%s</em>, term: <em>%s</em>', 'advanced-ads' ), esc_html(Entities::TAXONOMY_AD_GROUP), esc_html($_group['name'] ) ) ];
 				if ( defined('IMPORT_DEBUG') && IMPORT_DEBUG ) {
 					$this->messages[] = [ 'error', ' > ' . $t->get_error_message() ];
 				}
@@ -393,8 +396,8 @@ class Advanced_Ads_Import {
 										if ( ! empty( $_item_existing[1] ) && $_item_existing[0] === Advanced_Ads_Select::GROUP ) {
 											$advads_ad_weights = get_option( 'advads-ad-weights', [] );
 
-											if ( term_exists( absint( $_item_existing[1] ), Advanced_Ads::AD_GROUP_TAXONOMY ) ) {
-												wp_set_post_terms( $found, $_item_existing[1], Advanced_Ads::AD_GROUP_TAXONOMY, true );
+											if ( term_exists( absint( $_item_existing[1] ), Entities::TAXONOMY_AD_GROUP ) ) {
+												wp_set_post_terms( $found, $_item_existing[1], Entities::TAXONOMY_AD_GROUP, true );
 
 												/**
 												 * By default, a new add added to a group receives the weight of 5
@@ -460,14 +463,14 @@ class Advanced_Ads_Import {
 				// if the ad was was imported
 				if ( ! $found = array_search( $id, $this->imported_data['ads'] ) ) {
 					// if the ad already exists
-					if ( get_post_type( $id ) === Advanced_Ads::POST_TYPE_SLUG ) {
+					if ( get_post_type( $id ) === Entities::POST_TYPE_AD ) {
 						$found = $id;
 					}
 				}
 				break;
 			case Advanced_Ads_Select::GROUP :
 				if ( ! $found = array_search( $id, $this->imported_data['groups'] ) ) {
-					if ( term_exists( absint( $id ), Advanced_Ads::AD_GROUP_TAXONOMY ) ) {
+					if ( term_exists( absint( $id ), Entities::TAXONOMY_AD_GROUP ) ) {
 						$found = $id;
 					}
 				}

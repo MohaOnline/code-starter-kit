@@ -4,7 +4,7 @@ Tags: SEO, Google Search Console, XML Sitemap, meta description, schema, meta ti
 Tested up to: 6.3.1
 Requires at least: 4.9
 Requires PHP: 7.0
-Stable tag: 4.4.7
+Stable tag: 4.4.9.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -258,6 +258,31 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 
 == Changelog ==
 
+**New in Version 4.4.9.1**
+
+* Fixed: Metabox sometimes doesn't load in post editor when post does not support featured images.
+
+**New in Version 4.4.9**
+
+* Updated: Added support for our Divi page builder integration for the Extra theme.
+* Updated: Robots.txt Editor now also highlights conflicting crawl-delay directives
+* Fixed: Social snippet preview now re-renders when Featured Image is changed.
+* Fixed: SEO Overview widget throws PHP warning when all content on the site is noindexed.
+* Fixed: Schema Validator output could not be copied to clipboard on sites using HTTP.
+* Fixed: TruSEO sometimes highlighting single characters or words.
+* Fixed: TruSEO throws PHP warning when ACF Link field is used in post.
+* Fixed: REST API error when "All" language filter is selected in WPML.
+* Fixed: PHP notice when HTTP_USER_AGENT request header not set.
+
+**New in Version 4.4.8**
+
+* New: Cornerstone Content - Mark the most important pages on your website as cornerstone content so that AIOSEO can prioritize internal linking suggestions for them.
+* Updated: Breadcrumbs schema has been updated according to Google's latest specifications.
+
+**New in Version 4.4.7.1**
+
+* Fixed: Plugin conflict with Divi where the visual editor does not load.
+
 **New in Version 4.4.7**
 
 * Updated: Improved TruSEO Highlighter style compatibility with various popular themes.
@@ -293,7 +318,7 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 * Updated: Adding a redirect to a protected path like `/wp-admin/` now throws a warning.
 * Updated: Added support for ACF Link field to TruSEO algorithm.
 * Updated: Product schema now outputs multiple offers for variable WooCommerce Products.
-* Updated: Image sitemap now detects images inside Kadance Gallery block.
+* Updated: Image sitemap now detects images inside Kadence Gallery block.
 * Updated: Local SEO Map no longer uses geocoding to center the map.
 * Fixed: Breadcrumbs prefix not rendering on frontend.
 * Fixed: Searching for redirects now works again when a user enters one or more numbers.
@@ -308,7 +333,7 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 * Fixed: Plugin conflict where WP Optimize removed AIOSEO custom tables.
 * Fixed: Plugin conflicts with Product shipping details schema.
 * Fixed: Plugin conflict with Jetpack WAF causing warnings when a failed login attempt occurs.
-* Fixed: Theme conflict with JupitorX causing the "lang" and "prefix" attributes to be combined.
+* Fixed: Theme conflict with Jupiter X causing the "lang" and "prefix" attributes to be combined.
 * Fixed: Avada Theme's Fusion Elements are no longer available in the AIOSEO options.
 * Fixed: Removed Table of Contents block from Widgets Editor.
 * Fixed: Removing a static robots.txt file through the relevant notification in the Notifications Center now works correctly.
@@ -618,6 +643,6 @@ Additionally, AIOSEO can also provide you with data on the most frequently used 
 
 == Upgrade Notice ==
 
-= 4.4.7 =
+= 4.4.9.1 =
 
 This update adds major improvements and bug fixes.

@@ -1,4 +1,4 @@
-fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery;
+fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery.noConflict();
 
 fbuilderjQuery(function(){
     (function($) {

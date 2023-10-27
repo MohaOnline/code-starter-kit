@@ -3006,7 +3006,7 @@ class Premium_Post_Ticker extends Widget_Base {
 	 */
 	protected function render() {
 
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		$papro_activated = apply_filters( 'papro_activated', false );
 

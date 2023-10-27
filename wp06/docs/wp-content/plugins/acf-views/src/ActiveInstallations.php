@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views;
 
-use org\wplake\acf_views\AcfCard\AcfCards;
-use org\wplake\acf_views\AcfView\AcfViews;
+use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use WP_Query;
 
 defined('ABSPATH') || exit;
@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
  */
 class ActiveInstallations
 {
-    const HOOK = AcfViews::NAME . '_refresh';
+    const HOOK = ViewsCpt::NAME . '_refresh';
     const DELAY_MIN_HR = 12;
     const DELAY_MAX_HRS = 48;
     const REQUEST_URL = 'https://wplake.org/wp-admin/admin-ajax.php';
@@ -59,8 +59,8 @@ class ActiveInstallations
             '_isPro' => $this->plugin->isProVersion(),
             '_license' => $this->settings->getLicense(),
             '_isActive' => $isActive,
-            '_viewsCount' => $this->getCountOfPosts(AcfViews::NAME),
-            '_cardsCount' => $this->getCountOfPosts(AcfCards::NAME),
+            '_viewsCount' => $this->getCountOfPosts(ViewsCpt::NAME),
+            '_cardsCount' => $this->getCountOfPosts(CardsCpt::NAME),
             // 'is_plugin_active()' is available only later
             '_isAcfPro' => class_exists('acf_pro'),
             '_language' => get_bloginfo('language'),

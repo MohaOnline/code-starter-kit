@@ -5,7 +5,7 @@ Contributors: hardeepasrani, hiddenpearls
 Donate link: https://wpbrigade.com/go/donate-login-customizer
 Author URI: https://loginpress.pro/?utm_source=login-customizer-lite&utm_medium=author-url-link
 Tags: login, customizer, logo, login logo, login customizer, login page,admin, branding, customization, custom login, error, login error, custom login pro
-Stable tag: 2.2.3
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,10 +105,15 @@ Please visit <a target="_blank" rel="nofollow" href="https://loginpress.pro/?utm
 
 == Upgrade Notice ==
 
-= 2.2.3 =
+= 2.3.0 =
 * Update immediately - compatible with 6.3
 
 == Changelog ==
+
+= 2.3.0 – 2023-10-25 =
+* Bugfix: Reset Password button styling issues on login page.
+* Enhancement: Update the rage control layout in login customizer.
+* Compatibility: Compatible with WordPress 6.3
 
 = 2.2.3 – 2023-07-20 =
 * Enhancement: Update the Freemius latest SDK v2.5.10.

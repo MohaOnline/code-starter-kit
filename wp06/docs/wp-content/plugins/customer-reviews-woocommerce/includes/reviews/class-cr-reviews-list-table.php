@@ -1138,7 +1138,7 @@ class CR_Reviews_List_Table extends WP_List_Table {
 		if ( isset( $comment->user_id ) ) {
 			if( user_can( $comment->user_id, 'manage_woocommerce' ) ) {
 				$author_type_label = __(
-					apply_filters( 'cr_reviews_store_manager', 'Store manager' ),
+					apply_filters( 'cr_reviews_store_manager', __( 'Store manager', 'customer-reviews-woocommerce' ) ),
 					'customer-reviews-woocommerce'
 				);
 			}

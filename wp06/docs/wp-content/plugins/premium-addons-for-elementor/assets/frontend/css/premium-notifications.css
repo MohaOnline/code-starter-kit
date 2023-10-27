@@ -38,6 +38,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.pa-rec-not-icon-wrap .premium-icon-with-no-post {
+  display: none;
+}
+
 .pa-rec-not-number {
   display: -webkit-flex;
   display: -ms-flexbox;

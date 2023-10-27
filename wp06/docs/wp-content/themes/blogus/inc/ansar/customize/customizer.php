@@ -183,6 +183,10 @@ function blogus_customize_register($wp_customize) {
             'selector'        => '.content-right .bs-blog-post .bs-blog-meta', 
         ));
 
+        $wp_customize->selective_refresh->add_partial('breadcrumb_settings', array(
+            'selector'        => '.bs-breadcrumb-section .breadcrumb a', 
+        ));
+
    
 	}
 

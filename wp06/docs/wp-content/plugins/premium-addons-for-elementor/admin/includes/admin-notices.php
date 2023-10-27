@@ -61,10 +61,10 @@ class Admin_Notices {
 
 		self::$notices = array(
 			'pa-review',
-			'advanced_carousel',
+			'shape_divider',
 		);
 
-		delete_option( 'tiktok_tooltip_notice' );
+		delete_option( 'advanced_carousel' );
 
 	}
 
@@ -106,7 +106,7 @@ class Admin_Notices {
 			return;
 		}
 
-		$this->get_adv_carousel_notice();
+		$this->get_shape_divider_notice();
 
 	}
 
@@ -255,22 +255,22 @@ class Admin_Notices {
 
 	/**
 	 *
-	 * Shows admin notice for Advanced Carousel.
+	 * Shows admin notice for Shape Divider.
 	 *
 	 * @since 4.8.8
 	 * @access public
 	 *
 	 * @return void
 	 */
-	public function get_adv_carousel_notice() {
+	public function get_shape_divider_notice() {
 
-		$adv_carousel = get_option( 'advanced_carousel' );
+		$shape_divider = get_option( 'shape_divider' );
 
-		if ( '1' === $adv_carousel ) {
+		if ( '1' === $shape_divider ) {
 			return;
 		}
 
-		$adv_carousel = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-advanced-carousel-widget/', 'advanced-carousel-notification', 'wp-dash', 'advanced-carousel' );
+		$shape_divider = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-animated-shape-divider-addon/', 'shape-divider-notification', 'wp-dash', 'shape-divider' );
 
 		?>
 
@@ -280,11 +280,11 @@ class Admin_Notices {
 			</div>
 			<div class="pa-text-wrap">
 				<p>
-					<strong><?php echo __( 'Premium Advanced Media Carousel widget', 'premium-addons-for-elemetor' ); ?></strong>
-					<?php echo sprintf( __( 'is now available in Premium Addons for Elementor. <a href="%s" target="_blank">Check it out now!</a>', 'premium-addons-for-elementor' ), $adv_carousel ); ?>
+					<strong><?php echo __( 'Premium Animated Shape Divider addon', 'premium-addons-for-elemetor' ); ?></strong>
+					<?php echo sprintf( __( 'is now available in Premium Addons for Elementor. <a href="%s" target="_blank">Check it out now!</a>', 'premium-addons-for-elementor' ), $shape_divider ); ?>
 				</p>
 			</div>
-			<div class="pa-notice-close" data-notice="carousel">
+			<div class="pa-notice-close" data-notice="divider">
 				<span class="dashicons dashicons-dismiss"></span>
 			</div>
 		</div>

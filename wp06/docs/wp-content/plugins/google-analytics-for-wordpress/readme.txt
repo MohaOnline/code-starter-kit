@@ -2,10 +2,10 @@
 Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: WordPress analytics, google analytics, google analytics dashboard, google analytics widget, WooCommerce stats, analytics dashboard, universal google analytics, statistics, tracking, stats, google, google analytics by yoast, ga, monster insights, monsterinsights, universal analytics, web stats, ecommerce, ecommerce tracking
-Requires at least: 4.8.0
-Tested up to: 6.3
-Stable tag: 8.19
-Requires PHP: 5.6
+Requires at least: 5.6.0
+Tested up to: 6.3.1
+Stable tag: 8.20.1
+Requires PHP: 7.2
 License: GPL v3
 
 The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.
@@ -310,6 +310,19 @@ You can also learn about other <a href="http://www.wpbeginner.com/category/plugi
 4. Want more features? <a href="https://www.monsterinsights.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase MonsterInsights Pro</a>!
 
 == Changelog ==
+= 8.20.1: October 09, 2023 =
+- Fix: We updated our lite emails to render better inside multiple mail clients. We also changed the emails to send out monthly instead of weekly. To disable emails go to Settings -> Advanced - Toggle the "Enable Email Summaries
+
+= 8.20: October 03, 2023 =
+- New: Google Analytics and eCommerce support for WishList Member
+- New: Google Analytics and eCommerce support for WPCharitable 
+- Enhanced: Improved support for PHP 8.2.
+- Enhanced: Improved Site Health compatibility.
+- Fixed: Restrict Content Pro, we fixed the refund event in GoogleAnalytics when order status is failed or abandoned.
+- Fixed: We fixed some minor bugs related to notifications. 
+- Fixed: Popular posts, we fixed a bug occurring in curated popular posts.
+- Fixed: We fixed some minor bugs related to User Journey.
+
 = 8.19: August 23, 2023 =
 - New: Ecommerce funnel report for WooCommerce and Easy Digital Downloads.
 - New: Setup checklist to get up and running faster

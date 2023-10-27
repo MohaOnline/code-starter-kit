@@ -40,7 +40,7 @@ class BSDKLicense extends BSDK{
 
     public function addButtonInPlugin($links){
         if(get_option($this->prefix."_pipe", false) || !$this->config->isBlock){
-            $text = ($this->isPipe ? __('Deactivate License', 'bsdk') : __('Active License', 'bsdk'));
+            $text = ($this->isPipe ? __('Deactive License', 'bsdk') : __('Active License', 'bsdk'));
         }else {
             $text = __('Upgrade to pro', 'bsdk');
         }
@@ -51,7 +51,7 @@ class BSDKLicense extends BSDK{
 
     public function admin_enqueue_scripts($page){
         if($page === 'plugins.php'){
-            wp_register_script( 'bsdk-license',  plugin_dir_url( plugin_dir_path( __DIR__ ) ) . 'dist/license.js', array(), WP_B__VERSION , true ); 
+            wp_register_script( 'bsdk-license',  plugin_dir_url( plugin_dir_path( __DIR__ ) ) . 'dist/license.js', array('wp-api'), WP_B__VERSION , true ); 
             wp_register_style( 'bsdk-license',  plugin_dir_url( plugin_dir_path( __DIR__ ) ) . 'dist/license.css', array(), WP_B__VERSION , 'all' ); 
 
             wp_localize_script('bsdk-license', 'BSDK', array(

@@ -17,7 +17,7 @@ use Masteriyo\Taxonomy\Taxonomy;
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 defined( 'MASTERIYO_SLUG' ) || define( 'MASTERIYO_SLUG', 'masteriyo' );
-defined( 'MASTERIYO_VERSION' ) || define( 'MASTERIYO_VERSION', '1.6.15' );
+defined( 'MASTERIYO_VERSION' ) || define( 'MASTERIYO_VERSION', '1.6.16' );
 defined( 'MASTERIYO_PLUGIN_FILE' ) || define( 'MASTERIYO_PLUGIN_FILE', __FILE__ );
 defined( 'MASTERIYO_PLUGIN_BASENAME' ) || define( 'MASTERIYO_PLUGIN_BASENAME', plugin_basename( MASTERIYO_PLUGIN_FILE ) );
 defined( 'MASTERIYO_PLUGIN_DIR' ) || define( 'MASTERIYO_PLUGIN_DIR', dirname( MASTERIYO_PLUGIN_FILE ) );
@@ -59,6 +59,7 @@ if ( masteriyo_string_to_bool( masteriyo_get_setting( 'advance.uninstall.remove_
 	wp_trash_post( masteriyo_get_setting( 'general.pages.checkout_page_id' ) );
 	wp_trash_post( masteriyo_get_setting( 'general.pages.learn_page_id' ) );
 	wp_trash_post( masteriyo_get_setting( 'general.pages.instructor_registration_page_id' ) );
+	wp_trash_post( masteriyo_get_setting( 'general.pages.instructors_list_page_id' ) );
 
 	// Tables.
 	$tables = Install::get_tables();

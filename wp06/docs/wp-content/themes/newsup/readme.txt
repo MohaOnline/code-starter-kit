@@ -2,10 +2,10 @@
 Contributors: Themeansar
 Author: Themeansar
 Requires at least: WordPress 4.7
-Tested up to: 6.3
+Tested up to: 6.3.2
 Requires PHP: 7.0
-Stable tag: 3.0.0.106
-Version: 3.0.0.106
+Stable tag: 3.0.0.111
+Version: 3.0.0.111
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -852,3 +852,18 @@ Fixed fade styling issue.
 
 = Version 3.0.0.106
 Fixed styling issue.
+
+= Version 3.0.0.107
+Fixed Background Color Issue.
+
+= Version 3.0.0.108
+Fixed Rtl styling issue.
+
+= Version 3.0.0.109
+Added Featured Image Caption.
+
+= Version 3.0.0.110
+Fixed Responsive Issue.
+
+= Version 3.0.0.111
+Fixed Tabbed widget Issue.

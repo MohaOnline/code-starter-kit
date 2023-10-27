@@ -290,38 +290,13 @@ class WPCode_Snippet_Execute {
 				'message' => $e->getMessage(),
 				'line'    => $e->getLine(),
 			);
-			if ( $this->log_activation_errors() ) {
-				$error['snippet'] = $snippet->get_id();
-			}
-			wpcode()->error->add_error( $error );
 		}
 
 		if ( $error ) {
-			if ( ! empty( $error['line'] ) ) {
-				$snippet_data = $this->find_snippet_from_line( $error['line'] );
-				if ( ! empty( $snippet_data ) ) {
-					$snippet    = $snippet_data['snippet'];
-					$error_line = $snippet_data['line'];
-					$snippet->force_deactivate( $error_line );
-
-					return ob_get_clean();
-				}
-			}
-			$this->deactivate_last_snippet();
+			$this->maybe_disable_snippet( $error );
 		}
 
 		return ob_get_clean();
-	}
-
-	/**
-	 * Deactivate the last snippet that was executed as it threw an error.
-	 *
-	 * @return void
-	 */
-	public function deactivate_last_snippet() {
-		if ( isset( $this->snippet_executed ) && in_array( $this->snippet_executed->get_location(), $this->get_locations_to_auto_disable(), true ) ) {
-			$this->snippet_executed->force_deactivate();
-		}
 	}
 
 	/**
@@ -329,33 +304,68 @@ class WPCode_Snippet_Execute {
 	 * and if so, it disables the last snippet that was executed so that the site continues to run
 	 * correctly.
 	 *
+	 * @param array|null $error The error object.
+	 *
 	 * @return void
 	 */
-	public function maybe_disable_snippet() {
-		$error = error_get_last();
+	public function maybe_disable_snippet( $error = null ) {
+		if ( is_null( $error ) ) {
+			$error = error_get_last();
+		}
+
+		$deactivated = false;
+
+		$error['wpc_type'] = 'error';
 
 		if ( $this->is_error_from_wpcode( $error ) ) {
-			// If we have a clue about the snippet that caused the error, let's add it to the error object.
-			if ( $this->log_activation_errors() && isset( $this->snippet_executed ) ) {
-				$error['snippet'] = $this->snippet_executed->get_id();
-			}
-			wpcode()->error->add_error( $error );
 			// Let's see if we have a line reference stored and the error has a line number.
 			if ( ! empty( $error['line'] ) ) {
 				$snippet_data = $this->find_snippet_from_line( $error['line'] );
 				if ( ! empty( $snippet_data ) ) {
-					$snippet    = $snippet_data['snippet'];
-					$error_line = $snippet_data['line'];
-					if ( in_array( $snippet->get_location(), $this->get_locations_to_auto_disable(), true ) ) {
-						$snippet->force_deactivate( $error_line );
-
-						return;
+					/**
+					 * Added for convenience.
+					 *
+					 * @var WPCode_Snippet $snippet
+					 */
+					$snippet             = $snippet_data['snippet'];
+					$error_line          = $snippet_data['line'];
+					$error['snippet']    = $snippet;
+					$error['error_line'] = $error_line;
+					// Let's try to determine on which page we are and potentially save that URL in the error details.
+					global $wp;
+					if ( isset( $wp->query_vars ) && isset( $wp->request ) ) {
+						$error['url'] = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+					}
+					if ( $this->snippet_location_disable( $snippet ) && $this->should_auto_disable() ) {
+						$snippet->force_deactivate();
+						$deactivated       = true;
+						$error['wpc_type'] = 'deactivated';
 					}
 				}
 			}
-			// Deactivate the last ran snippet.
-			$this->deactivate_last_snippet();
+
+			if ( ! $deactivated ) {
+				// Check if we should deactivate the last snippet executed.
+				if ( isset( $this->snippet_executed ) && $this->snippet_location_disable( $this->snippet_executed ) && $this->should_auto_disable() ) {
+					$this->snippet_executed->force_deactivate();
+					$error['snippet']  = $this->snippet_executed;
+					$error['wpc_type'] = 'deactivated';
+				}
+			}
+
+			wpcode()->error->add_error( $error );
 		}
+	}
+
+	/**
+	 * Check if the snippet is in a location that might potentially be auto disabled.
+	 *
+	 * @param WPCode_Snippet $snippet The snippet object.
+	 *
+	 * @return bool
+	 */
+	public function snippet_location_disable( $snippet ) {
+		return in_array( $snippet->get_location(), $this->get_locations_to_auto_disable(), true );
 	}
 
 	/**
@@ -398,7 +408,7 @@ class WPCode_Snippet_Execute {
 			// If it's a notice let's let it be.
 			return false;
 		}
-		if ( $error && isset( $error['message'] ) ) {
+		if ( $error && isset( $error['message'] ) && isset( $error['file'] ) ) {
 			// Let's see if the error originated in the code executed from a snippet.
 			$pattern = '/\bwpcode-snippet-execute\.php\b(.*)\beval\b/m';
 			if ( preg_match( $pattern, $error['message'] ) || preg_match( $pattern, $error['file'] ) ) {
@@ -447,12 +457,12 @@ class WPCode_Snippet_Execute {
 				$deactivated_snippets_link = add_query_arg(
 					array(
 						'page' => 'wpcode',
-						'view' => 'deactivated',
+						'view' => 'has_error',
 					),
 					admin_url( 'admin.php' )
 				);
 
-				$message .= '<a href="' . esc_url( $deactivated_snippets_link ) . '" class="button button-primary">' . __( 'View Deactivated Snippets', 'insert-headers-and-footers' ) . '</a>&nbsp;';
+				$message .= '<a href="' . esc_url( $deactivated_snippets_link ) . '" class="button button-primary">' . __( 'View Snippets With Errors', 'insert-headers-and-footers' ) . '</a>&nbsp;';
 			}
 
 			if ( ! $this->is_doing_activation() ) {
@@ -516,19 +526,6 @@ class WPCode_Snippet_Execute {
 	}
 
 	/**
-	 * Check if we should log errors when activating snippets.
-	 *
-	 * @return bool
-	 */
-	public function log_activation_errors() {
-		if ( $this->is_doing_activation() && apply_filters( 'wpcode_log_activation_errors', false ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Check if a code type is marked as pro.
 	 *
 	 * @param string $key The key of the type to check.
@@ -558,6 +555,18 @@ class WPCode_Snippet_Execute {
 				'everywhere',
 				'admin_only',
 			)
+		);
+	}
+
+	/**
+	 * Check if we should auto disable snippets on the frontend.
+	 *
+	 * @return bool
+	 */
+	public function should_auto_disable() {
+		return apply_filters(
+			'wpcode_auto_disable_frontend',
+			is_admin()
 		);
 	}
 }

@@ -4,7 +4,7 @@ Donate link: http://davidlingren.com/#donate
 Tags: categories, gallery, images, media, media library, tags
 Requires at least: 4.1
 Tested up to: 6.3.1
-Stable tag: 3.11
+Stable tag: 3.12
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,6 +191,9 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 3.12 =
+* Fix: IMPORTANT: Cross-site scripting security risk for authenticated users with the "Author" role has been eliminated.
+
 = 3.11 =
 * New: You can add custom file type icons to the set MLA provides in the crystal directory. See the "Icons and Icon Types" subsection in the Settings/Media Library Assistant Documentation tab for details.
 * Fix: IMPORTANT: Cross-site scripting security risks for certain `[mla_gallery]`, `[mla_tag_cloud]` and `[mla_term_list]` parameters have been eliminated.
@@ -369,8 +372,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 3.11 =
-IMPORTANT: Security risk fixes for shortcode parameters and example plugin. Custom file icon support for Uploads file types. One enhancement, four fixes.
+= 3.12 =
+IMPORTANT: Cross-site scripting security risk for authenticated users with the "Author" role has been eliminated.
 
 == Other Notes ==
 

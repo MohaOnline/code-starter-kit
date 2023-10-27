@@ -298,12 +298,13 @@ class Premium_Banner extends Widget_Base {
 			'premium_banner_custom_height',
 			array(
 				'label'     => __( 'Min Height', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::NUMBER,
+				'type'      => Controls_Manager::SLIDER,
+                'size_units'=> ['px', 'em', 'vh', 'custom' ],
 				'condition' => array(
 					'premium_banner_height' => 'custom',
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-banner-ib' => 'height: {{VALUE}}px;',
+					'{{WRAPPER}} .premium-banner-ib' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);

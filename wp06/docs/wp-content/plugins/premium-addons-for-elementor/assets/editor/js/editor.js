@@ -478,6 +478,15 @@
                 e.prototype.onRender.apply(this, arguments);
                 var t = this.getControlValue();
                 t && (this.ui.inputs.filter('[value="' + t + '"]').prop("checked", !0), this.ui.inputs.filter('[value="' + t + '"]').addClass("checked"))
+            },
+            onReady: function() {
+                if ( 'premium_gdivider_defaults' === this.model.attributes.name) {
+                    const choicesContainer = $(this.el).find('.elementor-image-choices')[0];
+                    new PerfectScrollbar (  choicesContainer, {
+                        suppressScrollX: true,
+                    });
+
+                }
             }
 
         }, {
@@ -487,8 +496,5 @@
         });
 
     elementor.addControlView("premium-image-choose", imageChoose)
-
-
-
 
 })(jQuery);

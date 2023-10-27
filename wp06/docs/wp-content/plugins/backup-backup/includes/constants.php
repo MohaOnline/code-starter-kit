@@ -21,6 +21,9 @@
   if (!defined('BMI_CONFIG_DEFAULT')) {
     define('BMI_CONFIG_DEFAULT', BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'default.json');
   }
+  if (!defined('BMI_STATIC_PHP_CONFIG')) {
+    define('BMI_STATIC_PHP_CONFIG', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backup-migration-config.php');
+  }
   if (!defined('BMI_REV')) {
     define('BMI_REV', 2);
   }

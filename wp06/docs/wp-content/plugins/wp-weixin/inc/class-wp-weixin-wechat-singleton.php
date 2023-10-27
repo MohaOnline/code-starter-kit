@@ -25,9 +25,12 @@ class WP_Weixin_Wechat_Singleton {
 				self::$wechat = new WP_Weixin_Wechat( $wechat_sdk );
 
 				if (
-					( time() + 1800 ) >= absint( self::$wechat->getAccessTokenExpiry() ) ||
-					! $access_info['token'] ||
-					! $access_info['expiry']
+					! (bool) constant( 'WP_WEIXIN_API_DISABLED' ) &&
+					(
+						( time() + 1800 ) >= absint( self::$wechat->getAccessTokenExpiry() ) ||
+						! $access_info['token'] ||
+						! $access_info['expiry']
+					)
 				) {
 					if ( apply_filters( 'wp_weixin_debug', (bool) ( constant( 'WP_DEBUG' ) ) ) ) {
 						WP_Weixin::log( 'renewing token !' );

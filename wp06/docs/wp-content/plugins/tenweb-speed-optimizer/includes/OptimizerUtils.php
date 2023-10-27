@@ -49,6 +49,7 @@ class OptimizerUtils {
         'page-optimize/page-optimize.php',
         'wp-smushit/wp-smush.php',
         'performance-lab/load.php',
+        'airlift/airlift.php',
     ];
 
     const OPTIMIZED_BG_MARKER = '++TWO_OPTIMIZED_BG_IMAGE++';
@@ -606,6 +607,16 @@ class OptimizerUtils {
     }
 
     public static function replace_bg($css) {
+        /* Exclude ::after and ::before elements from CSS because if we change their bg urls,
+        we cannot restore it on the fronted using JS  */
+        $css_without_after_before = $css;
+
+        if (preg_match_all('#(::before.*})|(::after.*})#Usmi', $css_without_after_before, $css_matches)) {
+            foreach ($css_matches[0] as $css_block) {
+                $css_without_after_before = str_replace($css_block, '}', $css_without_after_before);
+            }
+        }
+
         $replaced_images = [];
         global $TwoSettings;
         $two_lazyload = $TwoSettings->get_settings('two_lazyload');
@@ -619,7 +630,7 @@ class OptimizerUtils {
             //$re = '~url\s*\(\s*[\'|"]?(.*?)?[\'|"]?\s*\)~i'; // phpcs:ignore
             //$re = '~\bbackground[-image]*?\s*:.*?url.*?\(\s*[\'|"]?(.*?)?[\'|"]\s*\)~i'; // phpcs:ignore
             $re = '~\bbackground[-image]*?\s*:.*?url.*?\(\s*?(.*?)?\s*\)~i';
-            preg_match_all($re, $css, $matches);
+            preg_match_all($re, $css_without_after_before, $matches);
             $ext_list = ['svg', 'jpeg', 'png', 'gif', 'jpg', 'webp', 'bmp'];
 
             if (isset($matches[1]) && is_array($matches)) {
@@ -1783,8 +1794,10 @@ class OptimizerUtils {
             $wp_fastest_cache->deleteCache(true);
         }
 
-        if (class_exists('\Kinsta\Cache') && !empty($kinsta_cache)) {
-            $kinsta_cache->kinsta_cache_purge->purge_complete_caches();
+        if (class_exists('\Kinsta\Cache') && !empty($kinsta_cache) && !empty($kinsta_cache->kinsta_cache_purge)) {
+            if (method_exists($kinsta_cache->kinsta_cache_purge, 'purge_complete_caches')) {
+                $kinsta_cache->kinsta_cache_purge->purge_complete_caches();
+            }
         }
 
         if (class_exists('\WPaaS\Cache')) {
@@ -2546,7 +2559,7 @@ class OptimizerUtils {
     public static function init_flow_score_check($only_do_request = false) {
         if ($only_do_request) {
             $nonce = uniqid('two_', false);
-            update_option($nonce, $nonce);
+            update_option('wp_two_nonce_two_init_flow_score', $nonce);
             $res = wp_remote_post(admin_url('admin-ajax.php'), [
                 'timeout' => 5, // phpcs:ignore
                 'redirection' => 5,
@@ -2746,5 +2759,9 @@ class OptimizerUtils {
         }
 
         return $response_data; // phpcs:ignore
+    }
+
+    public static function check_admin_capabilities() {
+        return current_user_can('manage_options');
     }
 }

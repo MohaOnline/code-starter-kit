@@ -13,6 +13,8 @@
 defined( 'ABSPATH' ) || exit();
 
 class LP_Filter {
+	const ORDER_DESC = 'DESC';
+	const ORDER_ASC  = 'ASC';
 	/**
 	 * @var int set -1 for no limit
 	 */
@@ -30,7 +32,7 @@ class LP_Filter {
 	 */
 	public $group_by = '';
 	/**
-	 * @var string
+	 * @var string field name for order, EX ID
 	 */
 	public $order_by = '';
 	/**
@@ -122,10 +124,7 @@ class LP_Filter {
 	 */
 	public $filter_extra;
 
-	public function __construct() {
-		$this->limit     = apply_filters( 'lp/filter/limit', $this->limit );
-		$this->max_limit = apply_filters( 'lp/filter/max/limit', $this->max_limit );
-	}
+	public function __construct() {}
 }
 
 

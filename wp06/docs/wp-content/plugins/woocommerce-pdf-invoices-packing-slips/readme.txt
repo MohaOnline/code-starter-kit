@@ -1,23 +1,23 @@
 === PDF Invoices & Packing Slips for WooCommerce ===
 Contributors: pomegranate, alexmigf, yordansoares, kluver, dpeyou, dwpriv, jhosagid
 Donate link: https://wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-bundle/
-Tags: woocommerce, pdf, invoices, packing slips, print, delivery notes, invoice, packing slip, export, email, bulk, automatic
-Requires at least: 3.5
-Tested up to: 6.3
-Requires PHP: 7.1
-Stable tag: 3.6.3
+Tags: woocommerce, pdf, ubl, invoices, packing slips
+Requires at least: 4.4
+Tested up to: 6.4
+Requires PHP: 7.2
+Stable tag: 3.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create, print & automatically email PDF invoices & packing slips for WooCommerce orders.
+Create, print & automatically email PDF or UBL Invoices & PDF Packing Slips for WooCommerce orders.
 
 == Description ==
 
-This WooCommerce extension automatically adds a PDF invoice to the order confirmation emails sent out to your customers. Includes a basic template (additional templates are available from [WP Overnight](https://wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-premium-templates/)) as well as the possibility to modify/create your own templates. In addition, you can choose to download or print invoices and packing slips from the WooCommerce order admin.
+This WooCommerce extension automatically adds a PDF or UBL invoice to the order confirmation emails sent out to your customers. Includes a basic template (additional templates are available from [WP Overnight](https://wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-premium-templates/)) as well as the possibility to modify/create your own templates. In addition, you can choose to download or print invoices and packing slips from the WooCommerce order admin.
 
 = Main features =
-* Automatically attach invoice PDF to WooCommerce emails of your choice
-* Download the PDF invoice / packing slip from the order admin page
+* Automatically attach invoice PDF or UBL to WooCommerce emails of your choice
+* Download the PDF or UBL Invoice / PDF Packing Slip from the order admin page
 * Generate PDF invoices / packings slips in bulk
 * **Fully customizable** HTML/CSS invoice templates
 * Download invoices from the My Account page
@@ -43,7 +43,7 @@ In addition to a number of default settings (including a custom header/logo) and
 = Minimum Requirements =
 
 * WooCommerce 3.0 or later
-* WordPress 3.5 or later
+* WordPress 4.4 or later
 
 = Automatic installation =
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of PDF Invoices & Packing Slips for WooCommerce, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
@@ -101,6 +101,26 @@ There's a setting on the Status tab of the settings page that allows you to togg
 6. Set shop name, address, header logo, etc.
 
 == Changelog ==
+
+= 3.7.1 (2023-10-20) =
+* Fix: bug on UBL preview that forces the invoice creation
+
+= 3.7.0 (2023-10-18) =
+* New: adds `payment_date()` function to be used in templates
+* New: adds UBL as additional output format for documents
+* New: bump min required PHP version to 7.2
+* New: bump min required WordPress version to 4.4 (which was already implicitly by the minimum required WooCommerce version)
+* Tweak: switch `wpo_wcpdf_before_html` and `wpo_wcpdf_before_html` hooks positions
+* Tweak: hide next Invoice number if displaying order number
+* Tweak: removed legacy `normalize_path` functions and replaced with `wp_normalize_path`
+* Fix: bug with HTML output using pretty links. Improved endpoint.
+* Fix: potential fatal error if document is `false` in order list action buttons
+* Fix: error when calling order ID on `null` under `output_number_date_edit_fields` method
+* Fix: bug when displaying the Invoice number/date columns, causing significant drop of performance
+* Fix: my account PDF link conflict with Jetpack analytics module
+* Fix: PHP error on calling `get_title()` document method on `bool`
+* Fix: `strpos()` and `str_replace()` `null` parameter deprecated warnings
+* Tested up to WooCommerce 8.2 & WordPress 6.4
 
 = 3.6.3 (2023-09-04) =
 * New: adds Invoice Number column to the orders export of WooCommerce Analytics

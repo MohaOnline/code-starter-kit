@@ -5,6 +5,12 @@
 
   // Exit on direct access
   if (!defined('ABSPATH')) exit;
+  
+  $bmiGDriveBackupTooltip = 'Google Drive';
+  if (!defined('BMI_PRO_INC')) {
+    $bmiGDriveBackupTooltip = __('%sNever lose a backup by also saving it on Google Drive!%s%sUpgrade to %sPremium%s today%s%s%sWe made it really affordable!%s', 'backup-backup');
+    $bmiGDriveBackupTooltip = sprintf($bmiGDriveBackupTooltip, '<div class="bmi-center-text">', '<br>', '<a href="' . BMI_AUTHOR_URI . '" target="_blank">', '<span class="bmi-premium-bg-stars">', '</span>', '</a>', '<br>', '<b>', '</b>', '</div>');
+  }
 
 ?>
 
@@ -19,18 +25,19 @@
     <td class="br_name tooltip-html" tooltip="example.com" data-top="5">---</td>
     <td class="br_size">---</td>
     <td class="br_stroage center">
-      <div class="cf br_wrapper_storage">
-        <div class="left">
+      <div class="cf<?php echo (defined('BMI_PRO_INC')) ? ' br_wrapper_storage' : '' ?>">
+        <div<?php echo (defined('BMI_PRO_INC')) ? ' class="left"' : '' ?>>
 
           <svg class="list-storage-img strg-local tooltip" tooltip="<?php _e('Local Storage', 'backup-backup') ?>" data-top="5">
             <use xlink:href="<?php echo $this->get_asset('images', 'local-server-2.svg#img') ?>"></use>
           </svg>
 
-          <svg class="list-storage-img strg-gdrive tooltip" tooltip="<?php _e('Google Drive', 'backup-backup') ?>" data-top="5">
+          <svg class="list-storage-img strg-gdrive tooltip-html" tooltip="<?php echo esc_attr( $bmiGDriveBackupTooltip ); ?>" data-top="5">
             <use xlink:href="<?php echo $this->get_asset('images', 'google-drive-mono.svg#img') ?>"></use>
           </svg>
 
         </div>
+        <?php if (defined('BMI_PRO_INC')): ?>
         <div class="right">
 
           <svg class="list-storage-img strg-suc tooltip" tooltip="<?php _e('Backup is stored on: Google Drive & Local Storage.', 'backup-backup') ?>" data-top="5">
@@ -51,6 +58,7 @@
 
         </div>
       </div>
+      <?php endif; ?>
     </td>
     <td class="center">
       <div class="brow_lock">

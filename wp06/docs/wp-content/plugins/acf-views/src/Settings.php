@@ -18,6 +18,9 @@ class Settings
     private array $demoImport;
     private string $licenseUsedDomains;
     private string $licenseUsedDevDomains;
+    private bool $isDevMode;
+    private bool $isNotCollapsedFieldsByDefault;
+    private bool $isWithoutFieldsCollapseCursor;
 
     public function __construct(Options $options)
     {
@@ -29,6 +32,9 @@ class Settings
         $this->licenseUsedDomains = '';
         $this->licenseUsedDevDomains = '';
         $this->demoImport = [];
+        $this->isDevMode = false;
+        $this->isNotCollapsedFieldsByDefault = false;
+        $this->isWithoutFieldsCollapseCursor = false;
     }
 
     public function load(): void
@@ -58,6 +64,18 @@ class Settings
         if (isset($settings['demoImport'])) {
             $this->demoImport = (array)$settings['demoImport'];
         }
+
+        if (isset($settings['isDevMode'])) {
+            $this->isDevMode = (bool)$settings['isDevMode'];
+        }
+
+        if (isset($settings['isNotCollapsedFieldsByDefault'])) {
+            $this->isNotCollapsedFieldsByDefault = (bool)$settings['isNotCollapsedFieldsByDefault'];
+        }
+
+        if (isset($settings['isWithoutFieldsCollapseCursor'])) {
+            $this->isWithoutFieldsCollapseCursor = (bool)$settings['isWithoutFieldsCollapseCursor'];
+        }
     }
 
     public function save(): void
@@ -69,6 +87,9 @@ class Settings
             'licenseUsedDomains' => $this->licenseUsedDomains,
             'licenseUsedDevDomains' => $this->licenseUsedDevDomains,
             'demoImport' => $this->demoImport,
+            'isDevMode' => $this->isDevMode,
+            'isNotCollapsedFieldsByDefault' => $this->isNotCollapsedFieldsByDefault,
+            'isWithoutFieldsCollapseCursor' => $this->isWithoutFieldsCollapseCursor,
         ];
 
         $this->options->updateOption(Options::OPTION_SETTINGS, $settings);
@@ -181,9 +202,38 @@ class Settings
         $this->demoImport = $demoImport;
     }
 
-
     public function getDemoImport(): array
     {
         return $this->demoImport;
+    }
+
+    public function isDevMode(): bool
+    {
+        return $this->isDevMode;
+    }
+
+    public function setIsDevMode(bool $isDevMode): void
+    {
+        $this->isDevMode = $isDevMode;
+    }
+
+    public function isNotCollapsedFieldsByDefault(): bool
+    {
+        return $this->isNotCollapsedFieldsByDefault;
+    }
+
+    public function setIsNotCollapsedFieldsByDefault(bool $isNotCollapsedFieldsByDefault): void
+    {
+        $this->isNotCollapsedFieldsByDefault = $isNotCollapsedFieldsByDefault;
+    }
+
+    public function isWithoutFieldsCollapseCursor(): bool
+    {
+        return $this->isWithoutFieldsCollapseCursor;
+    }
+
+    public function setIsWithoutFieldsCollapseCursor(bool $isWithoutFieldsCollapseCursor): void
+    {
+        $this->isWithoutFieldsCollapseCursor = $isWithoutFieldsCollapseCursor;
     }
 }

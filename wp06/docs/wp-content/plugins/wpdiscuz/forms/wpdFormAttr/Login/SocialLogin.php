@@ -449,11 +449,12 @@ class SocialLogin {
         $linkedinCallBack = site_url('/wpdiscuz_auth/linkedin/');
         $state = Utils::generateOAuthState($this->generalOptions->social["linkedinClientID"]);
         Utils::addOAuthState("linkedin", $state, $postID);
+        $scope = $this->generalOptions->social["enableLinkedinLoginOpenID"] ? "openid profile email" : "r_liteprofile r_emailaddress";
         $oautAttributs = [
             "client_id" => $this->generalOptions->social["linkedinClientID"],
             "redirect_uri" => urlencode($linkedinCallBack),
             "response_type" => "code",
-            "scope" => "r_liteprofile r_emailaddress",
+            "scope" => $scope,
             "state" => $state
         ];
         $oautURL = add_query_arg($oautAttributs, $linkedinAuthorizeURL);
@@ -494,11 +495,6 @@ class SocialLogin {
         }
         $token = $linkedinAccesTokenData["access_token"];
 
-        $linkedinGetUserEmailURL = 'https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))';
-        $linkedinGetUserAvatarURL = 'https://api.linkedin.com/v2/me?projection=(id,profilePicture(displayImage~:playableStreams))';
-        $linkedinGetUserDataURL = 'https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,emailAddress,profilePicture(displayImage~:playableStreams))';
-        $email = '';
-        $avatar = '';
         $getLinkedinRequestArgs = [
             'timeout' => 120,
             'redirection' => 5,
@@ -506,41 +502,58 @@ class SocialLogin {
             'headers' => 'Authorization:Bearer ' . $token
         ];
 
-        $getLinkedinEmailResponse = wp_remote_get($linkedinGetUserEmailURL, $getLinkedinRequestArgs);
-        $getLinkedinAvatarResponse = wp_remote_get($linkedinGetUserAvatarURL, $getLinkedinRequestArgs);
+        if ($this->generalOptions->social["enableLinkedinLoginOpenID"]) {
+            $linkedinGetUserDataURL = 'https://api.linkedin.com/v2/userinfo';
+            $getLinkedinUserResponse = wp_remote_get($linkedinGetUserDataURL, $getLinkedinRequestArgs);
+            if (is_wp_error($getLinkedinUserResponse)) {
+                $this->redirect($postID, $getLinkedinUserResponse->get_error_message());
+            }
+            $linkedinUserData = json_decode(wp_remote_retrieve_body($getLinkedinUserResponse), true);
+        } else {
+            $linkedinGetUserEmailURL = 'https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))';
+            $linkedinGetUserAvatarURL = 'https://api.linkedin.com/v2/me?projection=(id,profilePicture(displayImage~:playableStreams))';
+            $linkedinGetUserDataURL = 'https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,emailAddress,profilePicture(displayImage~:playableStreams))';
+            $email = '';
+            $avatar = '';
 
-        if (!is_wp_error($getLinkedinEmailResponse)) {
-            $linkedinUserEmailData = json_decode(wp_remote_retrieve_body($getLinkedinEmailResponse), true);
-            if (!isset($linkedinUserEmailData["error"]) && isset($linkedinUserEmailData['elements']['0']['handle~']['emailAddress'])) {
-                $email = $linkedinUserEmailData['elements']['0']['handle~']['emailAddress'];
+
+            $getLinkedinEmailResponse = wp_remote_get($linkedinGetUserEmailURL, $getLinkedinRequestArgs);
+            $getLinkedinAvatarResponse = wp_remote_get($linkedinGetUserAvatarURL, $getLinkedinRequestArgs);
+
+            if (!is_wp_error($getLinkedinEmailResponse)) {
+                $linkedinUserEmailData = json_decode(wp_remote_retrieve_body($getLinkedinEmailResponse), true);
+                if (!isset($linkedinUserEmailData["error"]) && isset($linkedinUserEmailData['elements']['0']['handle~']['emailAddress'])) {
+                    $email = $linkedinUserEmailData['elements']['0']['handle~']['emailAddress'];
+                }
+            }
+
+            if (!is_wp_error($getLinkedinAvatarResponse)) {
+                $linkedinUserAvatarData = json_decode(wp_remote_retrieve_body($getLinkedinAvatarResponse), true);
+                if (!isset($linkedinUserAvatarData["error"]) && isset($linkedinUserAvatarData['profilePicture']['displayImage~']['elements']['0']['identifiers'][0]['identifier'])) {
+                    $avatar = $linkedinUserAvatarData['profilePicture']['displayImage~']['elements']['0']['identifiers'][0]['identifier'];
+                }
+            }
+
+
+
+            $getLinkedinUserResponse = wp_remote_get($linkedinGetUserDataURL, $getLinkedinRequestArgs);
+            if (is_wp_error($getLinkedinUserResponse)) {
+                $this->redirect($postID, $getLinkedinUserResponse->get_error_message());
+            }
+            $linkedinUserData = json_decode(wp_remote_retrieve_body($getLinkedinUserResponse), true);
+
+            if (isset($linkedinUserData["error"])) {
+                $this->redirect($postID, $linkedinUserData["error_description"]);
+            }
+            if ($email) {
+                $linkedinUserData["email"] = $email;
+            }
+
+            if ($avatar) {
+                $linkedinUserData["avatar"] = $avatar;
             }
         }
 
-        if (!is_wp_error($getLinkedinAvatarResponse)) {
-            $linkedinUserAvatarData = json_decode(wp_remote_retrieve_body($getLinkedinAvatarResponse), true);
-            if (!isset($linkedinUserAvatarData["error"]) && isset($linkedinUserAvatarData['profilePicture']['displayImage~']['elements']['0']['identifiers'][0]['identifier'])) {
-                $avatar = $linkedinUserAvatarData['profilePicture']['displayImage~']['elements']['0']['identifiers'][0]['identifier'];
-            }
-        }
-
-
-
-        $getLinkedinUserResponse = wp_remote_get($linkedinGetUserDataURL, $getLinkedinRequestArgs);
-        if (is_wp_error($getLinkedinUserResponse)) {
-            $this->redirect($postID, $getLinkedinUserResponse->get_error_message());
-        }
-        $linkedinUserData = json_decode(wp_remote_retrieve_body($getLinkedinUserResponse), true);
-
-        if (isset($linkedinUserData["error"])) {
-            $this->redirect($postID, $linkedinUserData["error_description"]);
-        }
-        if ($email) {
-            $linkedinUserData["email"] = $email;
-        }
-
-        if ($avatar) {
-            $linkedinUserData["avatar"] = $avatar;
-        }
 
         $uID = Utils::addUser($linkedinUserData, "linkedin");
         if (is_wp_error($uID)) {

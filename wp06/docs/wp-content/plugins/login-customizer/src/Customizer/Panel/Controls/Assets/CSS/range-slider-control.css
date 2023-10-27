@@ -1,5 +1,7 @@
 .o2-range-slider {
 	width: 100%;
+	display: flex;
+	padding: 10px 10px 10px 1px;
 }
 
 .o2-range-slider-range::-moz-range-track,
@@ -71,6 +73,9 @@
 	cursor: pointer;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
+    margin-top: -5px;
+    padding-left: 3px;
+
 }
 
 .o2-range-reset-slider:hover {
@@ -90,10 +95,11 @@ input[type="number"].o2-range-slider-value {
 	position: relative;
 	width: 60px;
 	margin-left: 8px;
-	padding: 5px 10px;
+	padding: 5px 5px;
 	border-radius: 3px;
 	line-height: 20px;
 	text-align: center;
+	margin-top: -12px;
 }
 
 input[type=radio].o2-range-slider-buttonset {

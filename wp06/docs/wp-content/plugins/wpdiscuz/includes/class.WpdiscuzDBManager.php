@@ -300,12 +300,10 @@ class WpdiscuzDBManager implements WpDiscuzConstants {
      * create unsubscribe link
      */
     public function unsubscribeLink($postID, $email) {
-//        global $wp_rewrite;
         $wc_unsubscribe = $this->getUnsubscribeLinkParams($postID, $email);
         $post_id = $wc_unsubscribe["post_id"];
-//        $wc_unsubscribe_link = !$wp_rewrite->using_permalinks() ? get_permalink($post_id) . "&" : get_permalink($post_id) . "?";
-        $wc_unsubscribe_link = site_url('/wpdiscuzsubscription/unsubscribe/');
-        $wc_unsubscribe_link .= "?wpdiscuzSubscribeID=" . $wc_unsubscribe["id"] . "&key=" . $wc_unsubscribe["activation_key"] . "&post=" . $post_id;
+        $wc_unsubscribe_link = site_url("/wpdiscuzsubscription/unsubscribe/");
+        $wc_unsubscribe_link .= "?wpdiscuzSubscribeID=" . $wc_unsubscribe["id"] . "&key=" . $wc_unsubscribe["activation_key"];
         return esc_url_raw($wc_unsubscribe_link);
     }
 
@@ -318,9 +316,8 @@ class WpdiscuzDBManager implements WpDiscuzConstants {
      * generate confirm link
      */
     public function confirmLink($id, $activationKey, $postID) {
-        global $wp_rewrite;
-        $wc_confirm_link = !$wp_rewrite->using_permalinks() ? get_permalink($postID) . "&" : get_permalink($postID) . "?";
-        $wc_confirm_link .= "wpdiscuzUrlAnchor&wpdiscuzConfirmID=$id&wpdiscuzConfirmKey=$activationKey&wpDiscuzComfirm=yes#wc_unsubscribe_message";
+        $wc_confirm_link = site_url("/wpdiscuzsubscription/confirm/");
+        $wc_confirm_link .= "?wpdiscuzConfirmID=$id&wpdiscuzConfirmKey=$activationKey&wpDiscuzComfirm=yes";
         return esc_url_raw($wc_confirm_link);
     }
 
@@ -922,17 +919,15 @@ class WpdiscuzDBManager implements WpDiscuzConstants {
         return $data;
     }
 
-    public function followConfirmLink($postId, $id, $key) {
-        global $wp_rewrite;
-        $confirmLink = !$wp_rewrite->using_permalinks() ? get_permalink($postId) . "&" : get_permalink($postId) . "?";
-        $confirmLink .= "wpdiscuzUrlAnchor&wpdiscuzFollowID=$id&wpdiscuzFollowKey=$key&wpDiscuzComfirm=1&#wc_follow_message";
+    public function followConfirmLink($id, $key) {
+        $confirmLink = site_url("/wpdiscuzsubscription/follow/");
+        $confirmLink .= "?wpdiscuzFollowID=$id&wpdiscuzFollowKey=$key&wpDiscuzComfirm=1";
         return esc_url_raw($confirmLink);
     }
 
-    public function followCancelLink($postId, $id, $key) {
-        global $wp_rewrite;
-        $cancelLink = !$wp_rewrite->using_permalinks() ? get_permalink($postId) . "&" : get_permalink($postId) . "?";
-        $cancelLink .= "wpdiscuzUrlAnchor&wpdiscuzFollowID=$id&wpdiscuzFollowKey=$key&wpDiscuzComfirm=0#wc_follow_message";
+    public function followCancelLink($id, $key) {
+        $cancelLink = site_url("/wpdiscuzsubscription/follow/");
+        $cancelLink .= "?wpdiscuzFollowID=$id&wpdiscuzFollowKey=$key&wpDiscuzComfirm=0";
         return esc_url_raw($cancelLink);
     }
 
@@ -1238,6 +1233,16 @@ class WpdiscuzDBManager implements WpDiscuzConstants {
         $sql = $this->db->prepare("UPDATE {$this->db->comments} SET `comment_type` = 'comment' WHERE `comment_type` = %s", self::WPDISCUZ_STICKY_COMMENT);
         $this->db->query($sql);
     }
+
+    /* === Delete Social Network Avatars === */
+    
+    public function removeSocialAvatars(){
+        $sql = $this->db->prepare("DELETE FROM `{$this->db->usermeta}` WHERE `meta_key` = %s;", "wpdiscuz_social_avatar");
+        $this->db->query($sql);
+    }
+
+
+
 
     /* === Fix Tables === */
 

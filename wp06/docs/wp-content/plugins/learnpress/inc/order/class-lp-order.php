@@ -572,8 +572,8 @@ if ( ! class_exists( 'LP_Order' ) ) {
 		 *
 		 * @return int
 		 * @throws Exception
-		 * @editor tungnx
-		 * @modify 4.1.5
+		 * @since 1.0.0
+		 * @version 4.2.4
 		 */
 		public function add_item( $item ): int {
 			global $wpdb;
@@ -608,21 +608,10 @@ if ( ! class_exists( 'LP_Order' ) ) {
 
 				switch ( $item_type ) {
 					case LP_COURSE_CPT:
-						$course                  = learn_press_get_course( $item['item_id'] );
-						$item['subtotal']        = apply_filters( 'learnpress/order/item/subtotal', $course->get_price() * $item['quantity'], $course, $item );
-						$item['total']           = apply_filters( 'learnpress/order/item/total', $course->get_price() * $item['quantity'], $course, $item );
-						$item['order_item_name'] = apply_filters( 'learnpress/order/item/title', $course->get_title(), $course, $item );
-
-						if ( $this->check_can_delete_item_old( $course ) ) {
-							// Delete lp_user_items old
-							$user_ids = $this->get_users();
-							foreach ( $user_ids as $user_id ) {
-								$lp_user_items_db->delete_user_items_old( $user_id, $course->get_id() );
-							}
-							// End
-						}
-
-						//learn_press_add_order_item_meta( $order_item_id, '_course_id', $item['item_id'] );
+						$course                     = learn_press_get_course( $item['item_id'] );
+						$item['subtotal']           = apply_filters( 'learnpress/order/item/subtotal', $course->get_price() * $item['quantity'], $course, $item );
+						$item['total']              = apply_filters( 'learnpress/order/item/total', $course->get_price() * $item['quantity'], $course, $item );
+						$item['order_item_name']    = apply_filters( 'learnpress/order/item/title', $course->get_title(), $course, $item );
 						$item['meta']['_course_id'] = $item['item_id'];
 						break;
 					default:
@@ -653,7 +642,7 @@ if ( ! class_exists( 'LP_Order' ) ) {
 				// End insert new order item
 
 				// Add learnpress_order_itemmeta
-				$item['meta']['_quantity'] = $item['quantity'];
+				$item['meta']['_quantity'] = $item['quantity'] ?? 1;
 				$item['meta']['_subtotal'] = $item['subtotal'] ?? 0;
 				$item['meta']['_total']    = $item['total'] ?? 0;
 

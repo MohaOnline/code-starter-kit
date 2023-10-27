@@ -1,17 +1,21 @@
 // general styles
-.shop_table {
+.woocommerce-cart-form {
 
-	.quantity {
-		font-size: 14px;
-		--quantity-height: 40px;
-	}
+	.shop_table {
+		margin-bottom: 0;
 
-	.quantity[data-type="type-1"] {
-		--quantity-width: 70px;
-	}
+		.quantity {
+			font-size: 14px;
+			--quantity-height: 40px;
+		}
 
-	.quantity[data-type="type-2"] {
-		--quantity-width: 100px;
+		.quantity[data-type="type-1"] {
+			--quantity-width: 70px;
+		}
+
+		.quantity[data-type="type-2"] {
+			--quantity-width: 100px;
+		}
 	}
 }
 

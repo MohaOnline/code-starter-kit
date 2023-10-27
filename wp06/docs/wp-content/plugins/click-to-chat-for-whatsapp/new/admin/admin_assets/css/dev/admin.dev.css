@@ -1,4 +1,30 @@
+/* admin css */
+
+.toplevel_page_click-to-chat #wpcontent,
+.click-to-chat_page_click-to-chat-greetings #wpcontent,
+.click-to-chat_page_click-to-chat-other-settings #wpcontent,
+.click-to-chat_page_click-to-chat-customize-styles #wpcontent {
+    background-color: #ffffff;
+}
+
 /* md related */
+.collapsible-header {
+    background-color: #fdfdfd;
+}
+
+/* md collapsible arrow. */
+.collapsible-header .dashicons {
+    color: #ddd;
+    margin-left: auto;
+}
+.rtl .collapsible-header .dashicons {
+    margin-right: auto;
+    margin-left: unset;
+}
+.active .collapsible-header .dashicons {
+    transform: rotate(180deg);
+}
+
 .collapsible .dropdown-content li {
     background-color: #ffffff;
 }

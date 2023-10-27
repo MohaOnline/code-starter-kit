@@ -40,13 +40,7 @@
 		align-items: center;
 	}
 	/* Main CSS */
-	.ts_vgallery_select_popup_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-popup-select='hide'], .ts_vgallery_before_popup_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-popup-back='hide'],main[data-tsvg-main='hide']{
-		display:none;
-	}
-	.ts_vgallery_select_popup_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-popup-select='show'], .ts_vgallery_before_popup_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?>[data-tsvg-popup-back='show'],main[data-tsvg-main='show']{
-		display:block;
-	}
-	.ts_vgallery_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?> {
+	.tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		width: 100%!important;
 		max-width: 100%!important;
 		display:flex;
@@ -56,30 +50,27 @@
 		padding: 0;
 		margin: 0;
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery    main.ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?> >figure> ul,#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery nav > ul {
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> main.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?> >figure> ul,#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> nav > ul {
         margin: 0;
-        margin-left:calc(100% -  calc( var(--tsvg_general_img_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>) * calc(calc(100% - var(--tsvg_general_place_between_<?php echo esc_attr( $Total_Soft_vgallery ); ?>))  / var(--tsvg_general_img_w_<?php echo esc_attr( $Total_Soft_vgallery ); ?>))));
+        margin-left:calc(100% -  calc( var(--tsvg_general_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) * calc(calc(100% - var(--tsvg_general_place_between_<?php echo esc_attr( $tsvg_shortcode_id ); ?>))  / var(--tsvg_general_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>))));
     }
-
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery .ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?> > figure > ul{
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?> > figure > ul{
 		padding: unset !important;
 	}
-
-	
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery	 main.ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?> >figure> ul>li, #grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery nav > ul>li{
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>	 main.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?> >figure> ul>li, #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> nav > ul>li{
 	  	/* margin-left:0!important; */
 		/* margin-bottom: 6px !important */
 	}
-	.pagination > li{
+	.tsvg-pagination-pages > li{
 		margin-bottom: 6px !important;
 	}
-	.ts_vgallery_section_<?php echo esc_attr( $Total_Soft_vgallery ); ?> a{
+	.tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> a{
 		text-decoration: none!important;
 	}
-	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery	main.ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?>{
-	  	margin-top:20px;
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>	main.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
+	  	/* margin-top:20px; */
 	}
-	.TS_VGallery__Content *:not(.TS_VGallery_grid<?php echo $Total_Soft_vgallery; ?>-wrap *) {
+	.TS_VGallery__Content *:not(.TS_VGallery_tsvg-section-<?php echo esc_attr($tsvg_shortcode_id); ?>-wrap *) {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -87,20 +78,18 @@
 		margin-right: auto;
 		max-width: 100%;
 	}
-   	#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery  #TS_VGallery_pagination<?php echo esc_attr( $Total_Soft_vgallery ); ?> li {
+   	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  #TS_VGallery_pagination<?php echo esc_attr( $tsvg_shortcode_id ); ?> li {
 		border: none !important;
 		list-style: none !important;
 		display: inline-block !important;
 		padding: 0 !important
 	}
-
-	<?php if( $tsvgallery_TS_VG_Old_User=='yes'){?>
-		#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery .pagination-outer li a {
+	<?php if( $tsvg_old_user=='yes'){?>
+		#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> .tsvg-pagination-pages-wrapper li a {
 			box-shadow:unset;
 		}
 	<?php } ?>
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='fadeIn'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='fadeIn'] >figure> ul>li{
 		opacity: 0;
 		animation: old-fadeIn 0.65s ease  0s forwards;
 		-webkit-animation:  old-fadeIn 0.65s ease  0s forwards;
@@ -109,8 +98,7 @@
 		-moz-transform: none !important;
 		transform: none !important;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='moveUp'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='moveUp'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform: translateY(200px);
 		-moz-transform: translateY(200px);
@@ -119,8 +107,7 @@
 		-webkit-animation: old-moveUp 0.65s ease  0s forwards;
 		-moz-animation: old-moveUp 0.65s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='scaleUp'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='scaleUp'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform: scale(0.6);
 		-moz-transform: scale(0.6);
@@ -129,8 +116,7 @@
 		-webkit-animation: old-scaleUp 0.65s ease  0s forwards;
 		-moz-animation: old-scaleUp 0.65s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='fallPerspective'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='fallPerspective'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform-style: preserve-3d;
 		-moz-transform-style: preserve-3d;
@@ -141,11 +127,8 @@
 		animation:  0.8s ease-in-out 0.2s 1 normal forwards running  old-fallPerspectives;
 		-webkit-animation:  0.8s ease-in-out 0.2s 1 normal forwards running  old-fallPerspective;
 		-moz-animation:  0.8s ease-in-out 0.2s 1 normal forwards running  old-fallPerspective;
-	
 	}
-
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='fly'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='fly'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform-style: preserve-3d!important;
 		-moz-transform-style: preserve-3d!important;
@@ -160,8 +143,7 @@
 		-webkit-animation: old-fly 0.8s ease  0s forwards;
 		-moz-animation: old-fly 0.8s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='flip'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='flip'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform-style: preserve-3d;
 		-moz-transform-style: preserve-3d;
@@ -176,8 +158,7 @@
 		-webkit-animation: old-flip 0.8s ease  0s forwards;
 		-moz-animation: old-flip 0.8s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='helix'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='helix'] >figure> ul>li{
 		opacity: 0;
 		-webkit-transform-style: preserve-3d;
 		-moz-transform-style: preserve-3d;
@@ -189,8 +170,7 @@
 		-webkit-animation: old-helix 0.8s ease  0s forwards;
 		-moz-animation: old-helix 0.8s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='popUp'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='popUp'] >figure> ul>li{
 		opacity: 0;
 		-moz-transform-style: preserve-3d;
 		transform-style: preserve-3d;
@@ -201,40 +181,35 @@
 		-webkit-animation: old-popUp 0.8s ease  0s forwards;
 		-moz-animation: old-popUp 0.8s ease  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='animno'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='animno'] >figure> ul>li{
 		display: block;
 		animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-webkit-animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-moz-animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='animno'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='animno'] >figure> ul>li{
 		display: block;
 		opacity: 0;
 		animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-webkit-animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-moz-animation: animno 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='animsc'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='animsc'] >figure> ul>li{
 		display: block;
 		opacity: 0;
 		animation: animsc 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-webkit-animation: animsc 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-moz-animation: animsc 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 	}
-
-	#grid<?php echo esc_attr($Total_Soft_vgallery);?>-gallery main.ts_vgallery_main_<?php echo esc_attr($Total_Soft_vgallery);?>[data-p-lm='animtr'] >figure> ul>li{
+	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> main.tsvg-main-content-<?php echo esc_attr($tsvg_shortcode_id);?>[data-p-lm='animtr'] >figure> ul>li{
 		display: block;
 		opacity: 0;
 		animation: animtr 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-webkit-animation: animtr 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 		-moz-animation: animtr 3s cubic-bezier(0.77, 0.35, 0, 1.6)  0s forwards;
 	}
-
 	@media only screen and (max-width: 400px) {
-		#grid<?php echo esc_attr( $Total_Soft_vgallery ); ?>-gallery .ts_vgallery_main_<?php echo esc_attr( $Total_Soft_vgallery ); ?> > figure > ul{
+		#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?> > figure > ul{
 			padding: 0 !important;
 		}
 	}
@@ -277,7 +252,6 @@
 		70% { transform: scale(1.1); opacity: .8; animation-timing-function: ease-out; }
 		100% { transform: scale(1); opacity: 1; }
 	}
-
 	@-webkit-keyframes animtr {
 		0% {
 			-webkit-transform: translateY(100px);
@@ -293,7 +267,6 @@
 			opacity: 1;
 		}
 	}
-
 	@-moz-keyframes animtr {
 		0% {
 			-moz-transform: translateY(100px);
@@ -309,7 +282,6 @@
 			opacity: 1;
 		}
 	}
-
 	@keyframes animtr {
 		0% {
 			-webkit-transform: translateY(100px);
@@ -325,7 +297,6 @@
 			opacity: 1;
 		}
 	}
-
 	@-webkit-keyframes animsc {
 		0% {
 			-webkit-transform: scale(0.7);
@@ -346,7 +317,6 @@
 			opacity: 1;
 		}
 	}
-
 	@-moz-keyframes animsc {
 		0% {
 			-moz-transform: scale(0.7);
@@ -367,7 +337,6 @@
 			opacity: 1;
 		}
 	}
-
 	@keyframes animsc {
 		0% {
 			-webkit-transform: scale(0.7);
@@ -388,7 +357,6 @@
 			opacity: 1;
 		}
 	}
-
 	@-webkit-keyframes animno {
 		0% {
 			opacity: 0;
@@ -403,7 +371,6 @@
 			opacity: 1;
 		}
 	}
-
 	@-moz-keyframes animno {
 		0% {
 			opacity: 0;
@@ -418,7 +385,6 @@
 			opacity: 1;
 		}
 	}
-
 	@keyframes animno {
 		0% {
 			opacity: 0;
@@ -433,5 +399,4 @@
 			opacity: 1;
 		}
 	}
-
 </style>

@@ -95,7 +95,7 @@ function two_connect_failed_style(data) {
 
     link.href = data.url;
     link.media = "none";
-    link.onload =  function () { if(this.media==="none"){ if (data.media) {this.media=data.media;}else{this.media="all";}console.log(data.media);} if(data.connected_length == data.length && typeof two_replace_backgrounds != "undefined"){two_replace_backgrounds();};};
+    link.onload =  function () { if(this.media==="none"){ if (data.media) {this.media=data.media;}else{this.media="all";}console.log(data.media);} if(data.connected_length == data.length && typeof two_replace_backgrounds != "undefined"){two_replace_backgrounds();}; two_styles_loaded()};
     document.getElementsByTagName("head")[0].appendChild(link);
     if(data.connected_length == data.length && typeof two_replace_backgrounds != "undefined"){
         two_replace_backgrounds();
@@ -168,14 +168,24 @@ function two_connect_script(i, scripts_list=null) {
             );
             current_script.remove();
             script.classList.add("loaded_two_worker_js");
+            if(typeof scripts_list[i].exclude_blob != "undefined" && scripts_list[i].exclude_blob ){
+                script.dataset.blob_exclude = "1";
+            }
         }
         i++;
         two_connect_script(i, scripts_list);
 
     } else {
         document.querySelectorAll(".loaded_two_worker_js").forEach((elem) => {
-            if (elem.dataset.src){
-                elem.setAttribute("src",elem.dataset.src);
+            let data_src = elem.dataset.src;
+            if(elem.dataset.blob_exclude === "1"){
+                delete elem.dataset.blob_exclude;
+                delete elem.dataset.src;
+                delete elem.dataset.two_delay_id;
+                delete elem.dataset.two_delay_src;
+            }
+            if (data_src){
+                elem.setAttribute("src",data_src);
             }
         });
     }

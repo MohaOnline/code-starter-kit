@@ -161,26 +161,25 @@ if (! class_exists('CR_Reviews_Exporter')) :
 
         public function check_progress()
         {
+          if( check_ajax_referer( 'cr-export-progress', 'nonce', false ) ) {
             $progress_id = $_POST['progress_id'];
             $progress = get_transient($progress_id);
-
             wp_send_json($progress, 200);
-            wp_die();
+          }
+          wp_die();
         }
 
         public function cancel_export()
         {
+          if( check_ajax_referer( 'cr-export-cancel', 'nonce', false ) ) {
             $progress_id = $_POST['progress_id'];
-
             $progress = get_transient($progress_id);
-
             set_transient('cancel' . $progress_id, true, WEEK_IN_SECONDS);
-
             $progress['status'] = 'cancelled';
             $progress['finished'] = current_time( 'timestamp' );
-
             wp_send_json($progress, 200);
-            wp_die();
+          }
+          wp_die();
         }
 
         /**

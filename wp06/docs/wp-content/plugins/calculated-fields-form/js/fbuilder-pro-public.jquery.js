@@ -1,4 +1,4 @@
-	$.fbuilder['version'] = '1.2.29';
+	$.fbuilder['version'] = '1.2.35';
 	$.fbuilder['controls'] = $.fbuilder['controls'] || {};
 	$.fbuilder['forms'] = $.fbuilder['forms'] || {};
 
@@ -288,8 +288,9 @@
 					try{ if('setVal' in item) item.setVal(data[fieldId], true, true); $('[name*="'+item.name+'"]').trigger('trigger_ds'); }
 					catch(err){}
 				}
-				f.attr('data-evalequations', ('evalequations_delay' in o && o.evalequations_delay) ? 0 : o.evalequations);
+				f.attr('data-evalequations', o.evalequations);
 				$.fbuilder.showHideDep({'formIdentifier' : o.identifier});
+				f.trigger('cff-loaded-defaults');
 			}
 		}
 	};
@@ -596,10 +597,24 @@
 					try
 					{
 						$.widget.bridge('uitooltip', $.ui.tooltip);
-						$( "#fbuilder"+opt.identifier ).uitooltip({show: false,hide:false,tooltipClass:"uh-tooltip",position: { my: "left top", at: "left bottom+5", collision: "flipfit"  },items: "[uh]",content: function (){return $(this).attr("uh");}, open: function( evt, ui ){ try{ if(window.matchMedia("screen and (max-width: 640px)").matches){
-							var duration = ('undefined' != typeof tooltip_duration && /^\d+$/.test(tooltip_duration)) ? tooltip_duration : 3000;
-							setTimeout( function(){$(ui.tooltip).hide('fade'); }, duration);
-						}}catch( err ){}} });
+						$( "#fbuilder"+opt.identifier ).uitooltip(
+							{
+								show: false,
+								hide: false,
+								tooltipClass: "uh-tooltip",
+								position: { my: "left top", at: "left bottom+5", collision: "flipfit" },
+								items: "[uh]",
+								content: function (){return $(this).attr("uh");},
+								open: function( evt, ui ) {
+									try {
+										if(window.matchMedia("screen and (max-width: 640px)").matches && window.orientation != undefined){
+											var duration = ('undefined' != typeof tooltip_duration && /^\d+$/.test(tooltip_duration)) ? tooltip_duration : 3000;
+											setTimeout( function(){$(ui.tooltip).hide('fade'); }, duration );
+										}
+									} catch ( err ){}
+								}
+							}
+						);
 					} catch(e){}
                 }
                 $("#fieldlist"+opt.identifier+" .pbreak:not(.pb0)").find(".field").addClass("ignorepb");
@@ -944,7 +959,7 @@
 		setTimeout( function(){assign_data_cff_field_content(me);}, 50);
 	});
 
-	$(document).on('keydown', '#fbuilder :input[maxlength]', function(){
+	$(document).on('keyup', '#fbuilder :input[maxlength]', function(){
 		var e = $( this ),
 			v = new String( e.val() ),
 			l = v.length,

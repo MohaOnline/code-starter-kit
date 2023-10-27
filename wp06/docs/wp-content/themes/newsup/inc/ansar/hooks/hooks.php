@@ -150,14 +150,11 @@ if (!function_exists('newsup_banner_advertisement')):
      * @since Newsup 1.0.0
      *
      */
-    function newsup_banner_advertisement()
-    {
-
+    function newsup_banner_advertisement(){
         if (('' != newsup_get_option('banner_advertisement_section')) ) { ?>
             <?php $newsup_center_logo_title = get_theme_mod('newsup_center_logo_title',false);
-                            if($newsup_center_logo_title == false) {
-                             ?>
-            <div class="col-md-9 ">
+            if($newsup_center_logo_title == false) { ?>
+            <div class="col-md-9">
             <?php } else { ?>
              <div class="col text-center mx-auto">   
             <?php } ?>
@@ -177,7 +174,6 @@ if (!function_exists('newsup_banner_advertisement')):
                         </a>
                     </div>
                 <?php endif; ?>                
-
             </div>
             <!-- Trending line END -->
             <?php

@@ -113,3 +113,13 @@ add_action( 'masteriyo_checkout_form_content', 'masteriyo_template_checkout_gdpr
  */
 add_action( 'masteriyo_template_shortcode_course_categories', 'masteriyo_template_shortcode_course_categories' );
 add_action( 'masteriyo_template_shortcode_course_category', 'masteriyo_template_shortcode_course_category' );
+
+
+
+/**
+ * Instructors list shortcode.
+ *
+ * @since 1.6.16
+ */
+add_action( 'masteriyo_template_shortcode_instructors_list', 'masteriyo_template_shortcode_instructors_list' );
+add_action( 'masteriyo_template_shortcode_instructors_list_item', 'masteriyo_template_shortcode_instructors_list_item' );

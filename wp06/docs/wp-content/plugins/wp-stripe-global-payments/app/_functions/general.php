@@ -1,6 +1,6 @@
 <?php
 
-function china_payments_setting_get( $option_name ) {
+function china_payments_setting_get($option_name ) {
   return ChinaPayments\Settings::instance()->get( $option_name );
 }
 
@@ -148,6 +148,17 @@ function china_payments_integrations() {
       'actions'       => [
         admin_url( 'admin.php?page=memberpress-options#mepr-integration' ) => __( "Manage Payment Methods", "china-payments" )
       ],
+    ],
+    "simple-membership/simple-wp-membership.php" => [
+      'name'          => "Simple Membership",
+      'plugin_slug'   => "simple-membership/simple-wp-membership.php",
+      'logo_url'      => plugins_url( 'interface/img/integrations/simple-membership.png', CHINA_PAYMENTS_BASE_FILE_PATH ),
+      'can_install'   => 1,
+      'is_installed'  => 0,
+      'is_active'     => 0,
+      'actions'       => [
+        admin_url( 'admin.php?page=simple_wp_membership_payments&tab=payment_buttons' ) => __( "Manage Payment Buttons", "china-payments" )
+      ],
     ]
   ];
 
@@ -190,4 +201,25 @@ function china_payments_woocommerce_ensure_cart_loaded(): bool {
   WC()->cart->get_cart();
 
   return true;
+}
+
+function china_payments_stripe_customer_id( $args ) {
+  if( isset( $args[ 'user_id' ] ) && !empty( $args[ 'user_id' ] ) ) {
+    $user = get_user_by( 'ID', intval( $args[ 'user_id' ] ) );
+
+    return ChinaPayments\PaymentGateway::get_integration_from_settings( 'stripe' )->get_customer_id( [
+      'first_name'    => $user->first_name,
+      'last_name'     => $user->last_name,
+      'email_address' => $user->user_email,
+      'currency'      => strtolower( $args[ 'currency' ] )
+    ] );
+  }
+
+  if( isset( $args[ 'email_address' ] ) )
+    return ChinaPayments\PaymentGateway::get_integration_from_settings( 'stripe' )->get_customer_id( [
+      'email_address' => $args[ 'email_address' ],
+      'currency'      => strtolower( $args[ 'currency' ] )
+    ] );
+
+  return null;
 }

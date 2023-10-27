@@ -12,43 +12,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Avatar; }
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_easy_crop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-easy-crop */ "./node_modules/react-easy-crop/index.module.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_easy_crop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-easy-crop */ "./node_modules/react-easy-crop/index.module.js");
 
 
 
 
 
 function Avatar() {
-  const [file, setFile] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
-  const [width, setWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [height, setHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [crop, setCrop] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  const [file, setFile] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)();
+  const [width, setWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [height, setHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [crop, setCrop] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)({
     x: 0,
     y: 0
   });
-  const [rotation, setRotation] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [croppedAreaPixels, setCroppedAreaPixels] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [naturalWidth, setNaturalWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [naturalHeight, setNaturalHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [skeleton, setSkeleton] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  const [uploadError, setUploadError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  const [rotation, setRotation] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [croppedAreaPixels, setCroppedAreaPixels] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+  const [naturalWidth, setNaturalWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [naturalHeight, setNaturalHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [skeleton, setSkeleton] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
+  const [uploadError, setUploadError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)({
     type: '',
     message: ''
   });
-  const fileInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+  const fileInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)();
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     async function getAvatar() {
       setSkeleton(true);
       try {
-        const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+        const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
           method: 'GET',
           path: 'lp/v1/profile/get-avatar'
         });
@@ -72,7 +74,7 @@ function Avatar() {
       reader.readAsDataURL(file);
     });
   }
-  const onCropComplete = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)((croppedArea, croppedAreaPixels) => {
+  const onCropComplete = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
   const base64Resize = (base64, width, height) => {
@@ -94,14 +96,14 @@ function Avatar() {
       img.onerror = err => reject(err);
     });
   };
-  const updateAvatar = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
+  const updateAvatar = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async () => {
     setLoading({
       save: true
     });
     try {
       const croppedImage = await getCroppedImg(file, croppedAreaPixels, rotation);
       const imageResize = await base64Resize(croppedImage, width, height);
-      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
         path: 'lp/v1/profile/upload-avatar',
         method: 'POST',
         data: {
@@ -139,9 +141,9 @@ function Avatar() {
       setNaturalHeight(img.naturalHeight);
       let error = '';
       if (parseInt(fileUpload.size) > 2097152) {
-        error = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The file size is too large. You need to upload a file < 2MB.', 'learnpress');
+        error = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The file size is too large. You need to upload a file < 2MB.', 'learnpress');
       } else if (img.naturalWidth < width || img.naturalHeight < height) {
-        error = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The image size must be greater than or equal to %1$sx%2$spx', 'learnpress'), width, height);
+        error = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The image size must be greater than or equal to %1$sx%2$spx', 'learnpress'), width, height);
       }
       if (error) {
         setUploadError(error);
@@ -152,12 +154,12 @@ function Avatar() {
     };
   };
   async function removeAvatar() {
-    if (confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to remove your avatar?', 'learnpress'))) {
+    if (confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Are you sure you want to remove your avatar?', 'learnpress'))) {
       setLoading({
         remove: true
       });
       try {
-        const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+        const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
           path: 'lp/v1/profile/remove-avatar',
           method: 'POST'
         });
@@ -182,11 +184,11 @@ function Avatar() {
       });
     }
   }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar"
-  }, !skeleton ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, file && !uploadError && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, naturalHeight && naturalWidth ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, !skeleton ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, file && !uploadError && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, naturalHeight && naturalWidth ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar__cropper"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       position: 'relative',
       width: naturalWidth,
@@ -195,7 +197,7 @@ function Avatar() {
       maxWidth: '100%',
       maxHeight: '800px'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_easy_crop__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_easy_crop__WEBPACK_IMPORTED_MODULE_4__["default"], {
     image: file,
     crop: crop,
     zoom: "1",
@@ -205,33 +207,33 @@ function Avatar() {
     },
     onCropChange: setCrop,
     onCropComplete: onCropComplete
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `learnpress_avatar__button learnpress_avatar__button--save ${loading?.save ? 'learnpress_avatar__button--loading' : ''}`,
     onClick: updateAvatar
-  }, lpProfileSettings.text_save))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, lpProfileSettings.text_save))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar__cropper"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: file,
     alt: ""
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `learnpress_avatar__button learnpress_avatar__button--replace`,
     onClick: () => fileInput.current && fileInput.current.click()
-  }, lpProfileSettings.text_replace), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, lpProfileSettings.text_replace), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `learnpress_avatar__button learnpress_avatar__button--remove ${loading?.remove ? 'learnpress_avatar__button--loading' : ''}`,
     onClick: removeAvatar
-  }, lpProfileSettings.text_remove)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+  }, lpProfileSettings.text_remove)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     style: {
       display: !file ? '' : 'none'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar__form"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar__form-group"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "avatar-file"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "learnpress_avatar__form__upload"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     viewBox: "64 64 896 896",
     focusable: "false",
     "data-icon": "plus",
@@ -239,39 +241,39 @@ function Avatar() {
     height: "1em",
     fill: "currentColor",
     "aria-hidden": "true"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     d: "M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     d: "M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, lpProfileSettings.text_upload))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, lpProfileSettings.text_upload))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     ref: fileInput,
     type: "file",
     id: "avatar-file",
     accept: "image/*",
     onChange: e => setFileInput(e.target.files && e.target.files.length > 0 ? e.target.files[0] : '')
-  }))))), uploadError && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))))), uploadError && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `lp-ajax-message error`,
     style: {
       display: 'block'
     }
-  }, uploadError), !uploadError && notice && notice.type && notice.message && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, uploadError), !uploadError && notice && notice.type && notice.message && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `lp-ajax-message ${notice.type}`,
     style: {
       display: 'block'
     }
-  }, notice.message)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+  }, notice.message)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "lp-skeleton-animation"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     style: {
       width: 200,
       height: 200
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     style: {
       width: 200,
       height: 20
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     style: {
       width: 200,
       height: 20
@@ -2534,8 +2536,8 @@ var __webpack_exports__ = {};
   !*** ./assets/src/apps/js/frontend/profile.js ***!
   \************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _profile_course_tab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile/course-tab */ "./assets/src/apps/js/frontend/profile/course-tab.js");
 /* harmony import */ var _profile_statistic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile/statistic */ "./assets/src/apps/js/frontend/profile/statistic.js");
 /* harmony import */ var _profile_order_recover__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile/order-recover */ "./assets/src/apps/js/frontend/profile/order-recover.js");
@@ -2554,7 +2556,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   (0,_profile_course_list__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 if (document.getElementById('learnpress-avatar-upload')) {
-  wp.element.render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_profile_avatar__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('learnpress-avatar-upload'));
+  wp.element.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_profile_avatar__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('learnpress-avatar-upload'));
 }
 }();
 /******/ })()

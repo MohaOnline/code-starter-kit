@@ -20,7 +20,9 @@
 			merge:1,
 			onoff:0,
 			max:-1,
+			min:-1,
 			maxError:"Check no more than {0} boxes",
+			minError:"Check at least {0} boxes",
 			showDep:false,
 			init:function()
 				{
@@ -29,6 +31,7 @@
 					this.choiceSelected = new Array(false,false,false);
 					this.choicesDep = new Array(new Array(),new Array(),new Array());
 				},
+			showRangeIntance:function(){},
 			display:function()
 				{
 					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null)?this.choicesVal:this.choices.slice(0));
@@ -191,7 +194,12 @@
 								var v = el.val();
 								return ($.isNumeric(v)) ? Math.round(v) : -1;
 							}},
-							{s:'[name="sMaxError"]', e:"change keyup", l:"maxError"}
+							{s:'[name="sMin"]', e:"change keyup", l:"min", f: function(el){
+								var v = el.val();
+								return ($.isNumeric(v)) ? Math.round(v) : -1;
+							}},
+							{s:'[name="sMaxError"]', e:"change keyup", l:"maxError"},
+							{s:'[name="sMinError"]', e:"change keyup", l:"minError"}
 						];
 					$('.dependencies').each(function()
 						{
@@ -216,6 +224,11 @@
 			attributeToSubmit: function()
 				{
 					return '<div class="choicesSet"><label>Value to Submit</label><div class="column width50"><label><input type="radio" name="sToSubmit" value="text" '+((this.toSubmit == 'text') ? ' CHECKED ' : '')+'/> Choice Text</label></div><div class="column width50"><label><input type="radio" name="sToSubmit" value="value" '+((this.toSubmit == 'value') ? ' CHECKED ' : '')+'/> Choice Value</label></div><div class="clearer" /></div>';
+				},
+			minChoices: function()
+				{
+					return '<label style="margin-bottom:10px;"><input type="number" name="sMin" value="'+(($.isNumeric(this.min) && 0<=this.min) ? this.min : '')+'" style="max-width:60px;" /> Minimum number of choices to be ticked.</label>'+
+					'<input type="text" name="sMinError" class="large" value="'+cff_esc_attr(cff_html_decode(this.minError))+'" placeholder="Min choices error messages" />';
 				},
 			maxChoices: function()
 				{
@@ -256,6 +269,6 @@
 							str += '<div class="choicesEditDep"><span>If selected show:</span> <select class="dependencies" i="'+i+'" j="'+j+'" dname="'+this.name+'" dvalue="" ></select><div class="choice-ctrls"><a class="choice_addDep ui-icon ui-icon-circle-plus" i="'+i+'" j="'+j+'" title="Add another dependency."></a><a class="choice_removeDep ui-icon ui-icon-circle-minus" i="'+i+'" j="'+j+'" title="Delete this dependency."></a></div></div>';
 						}
 					}
-					return '<div class="choicesSet '+((this.showDep)?"show":"hide")+'"><label>Choices<a class="helpfbuilder dep" text="Dependencies are used to show/hide other fields depending of the option selected in this field.">help?</a> <a href="" class="showHideDependencies">'+((this.showDep)?"Hide":"Show")+' Dependencies</a></label><div><div class="t">Text</div><div class="t">Value</div><div class="clearer" /></div>'+str+this.mergeValues()+this.attributeToSubmit()+this.maxChoices()+'</div>';
+					return '<div class="choicesSet '+((this.showDep)?"show":"hide")+'"><label>Choices<a class="helpfbuilder dep" text="Dependencies are used to show/hide other fields depending of the option selected in this field.">help?</a> <a href="" class="showHideDependencies">'+((this.showDep)?"Hide":"Show")+' Dependencies</a></label><div><div class="t">Text</div><div class="t">Value</div><div class="clearer" /></div>'+str+this.mergeValues()+this.attributeToSubmit()+'<hr style="margin-top:20px;margin-bottom:20px;" />'+this.minChoices()+this.maxChoices()+'</div>';
 				}
 	});

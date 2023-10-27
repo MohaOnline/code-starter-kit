@@ -789,19 +789,19 @@ msgstr ""
 msgid "% Comments"
 msgstr ""
 
-#: widgets/blog/blog.php:1161, widgets/blog/blog.php:1195
+#: widgets/blog/blog.php:1161, widgets/blog/blog.php:1214
 msgid "Continue reading"
 msgstr ""
 
-#: widgets/blog/blog.php:1261
+#: widgets/blog/blog.php:1280
 msgid "Post navigation"
 msgstr ""
 
-#: widgets/blog/blog.php:1291
+#: widgets/blog/blog.php:1310
 msgid "Get more pagination themes and Ajax reloading with %sSiteOrigin Premium%s"
 msgstr ""
 
-#: widgets/blog/blog.php:1296
+#: widgets/blog/blog.php:1315
 msgid "Adjust the post Read More link text and choose a custom post date format with %sSiteOrigin Premium%s"
 msgstr ""
 
@@ -973,7 +973,7 @@ msgstr ""
 msgid "Adds a rel attribute to the button link."
 msgstr ""
 
-#: widgets/button/button.php:496
+#: widgets/button/button.php:497
 msgid "Add a beautiful tooltip to the Button Widget with %sSiteOrigin Premium%s"
 msgstr ""
 

@@ -56,8 +56,6 @@ class LP_Page_Controller {
 			// Set link profile to admin menu
 			//add_action( 'admin_bar_menu', array( $this, 'learn_press_edit_admin_bar' ) );
 
-			// Web hook detected PayPal request.
-			add_action( 'init', [ $this, 'check_webhook_paypal_ipn' ] );
 			// Set again x-wp-nonce on header when has cache with not login.
 			add_filter( 'rest_send_nocache_headers', array( $this, 'check_x_wp_nonce_cache' ) );
 
@@ -120,52 +118,6 @@ class LP_Page_Controller {
 
 		return $post_link;
 	}
-
-	/**
-	 * @deprecated 4.2.2.4
-	 */
-	//  private function has_block_template( $template_name ) {
-	//      if ( ! $template_name ) {
-	//          return false;
-	//      }
-	//
-	//      $has_template      = false;
-	//      $template_name     = str_replace( 'course', LP_COURSE_CPT, $template_name );
-	//      $template_filename = $template_name . '.html';
-	//      // Since Gutenberg 12.1.0, the conventions for block templates directories have changed,
-	//      // we should check both these possible directories for backwards-compatibility.
-	//      $possible_templates_dirs = array( 'templates', 'block-templates' );
-	//
-	//      // Combine the possible root directory names with either the template directory
-	//      // or the stylesheet directory for child themes, getting all possible block templates
-	//      // locations combinations.
-	//      $filepath        = DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $template_filename;
-	//      $legacy_filepath = DIRECTORY_SEPARATOR . 'block-templates' . DIRECTORY_SEPARATOR . $template_filename;
-	//      $possible_paths  = array(
-	//          get_stylesheet_directory() . $filepath,
-	//          get_stylesheet_directory() . $legacy_filepath,
-	//          get_template_directory() . $filepath,
-	//          get_template_directory() . $legacy_filepath,
-	//      );
-	//
-	//      // Check the first matching one.
-	//      foreach ( $possible_paths as $path ) {
-	//          if ( is_readable( $path ) ) {
-	//              $has_template = true;
-	//              break;
-	//          }
-	//      }
-	//
-	//      /**
-	//       * Filters the value of the result of the block template check.
-	//       *
-	//       * @since x.x.x
-	//       *
-	//       * @param boolean $has_template value to be filtered.
-	//       * @param string $template_name The name of the template.
-	//       */
-	//      return (bool) apply_filters( 'learnpress_has_block_template', $has_template, $template_name );
-	//  }
 
 	/**
 	 * Set title of pages
@@ -397,28 +349,12 @@ class LP_Page_Controller {
 
 			// Set item viewing
 			$user->set_viewing_item( $lp_course_item );
-
-			wp_localize_script( 'lp-single-curriculum', 'lpCourseItem', [ 'id' => $lp_course_item->get_id() ] );
 		} catch ( Throwable $e ) {
 			error_log( $e->getMessage() );
 		}
 
 		return $post;
 	}
-
-	/**
-	 * Set page 404
-	 *
-	 * @return mixed
-	 * @editor tungnx
-	 * @reason not use
-	 * @deprecated 4.0.0
-	 */
-	/*
-	public function set_404( $is_404 ) {
-		global $wp_query;
-		$wp_query->is_404 = $this->_is_404 = (bool) $is_404;
-	}*/
 
 	public function is_404() {
 		return apply_filters( 'learn-press/query/404', $this->_is_404 );
@@ -1156,43 +1092,6 @@ class LP_Page_Controller {
 					'href'   => learn_press_user_profile_link( $user_id, false ),
 				)
 			);
-		}
-	}
-
-	/**
-	 * Check notify papal call when done.
-	 *
-	 * Set in param notify_url on @see LP_Gateway_Paypal::get_paypal_args()
-	 */
-	public function check_webhook_paypal_ipn() {
-		//error_log( 'xxx:' . json_encode( $_POST, JSON_UNESCAPED_UNICODE ) );
-
-		// Paypal payment done
-		if ( ! isset( $_GET['paypal_notify'] ) ) {
-			return;
-		}
-
-		if ( ! isset( $_POST['ipn_track_id'] ) ) {
-			return;
-		}
-
-		try {
-			$paypal = LP_Gateway_Paypal::instance();
-			$verify = $paypal->validate_ipn();
-
-			if ( $verify ) {
-				if ( isset( $_POST['custom'] ) ) {
-					$data_order = json_decode( LP_Helper::sanitize_params_submitted( $_POST['custom'] ) );
-
-					if ( json_last_error() === JSON_ERROR_NONE ) {
-						$order_id = $data_order->order_id;
-						$lp_order = learn_press_get_order( $order_id );
-						$lp_order->update_status( LP_ORDER_COMPLETED );
-					}
-				}
-			}
-		} catch ( Throwable $e ) {
-			error_log( $e->getMessage() );
 		}
 	}
 

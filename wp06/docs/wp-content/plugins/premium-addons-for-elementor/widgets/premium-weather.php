@@ -3709,9 +3709,9 @@ class Premium_Weather extends Widget_Base {
 	 */
 	protected function render() {
 
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-		$papro_activated = apply_filters( 'papro_activated', false );
+        $papro_activated = apply_filters( 'papro_activated', false );
 
 		if ( ! $papro_activated ) {
 
@@ -3779,7 +3779,6 @@ class Premium_Weather extends Widget_Base {
 			$api_settings['custom_location_type'] = $custom_loc_type;
 
 			if ( 'name' === $custom_loc_type ) {
-
 				$city_name = $settings['city_name'];
 
 				if ( empty( $city_name ) ) {

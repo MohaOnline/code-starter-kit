@@ -25,7 +25,6 @@ class Deactivator {
 		$performance_reports = new Performance_Reports();
 
 		if ( wp_next_scheduled( 'siteground_optimizer_performance_report_cron' ) ) {
-			error_log( 'deactivate' );
 			$performance_reports->performance_reports_email->unschedule_event();
 		}
 	}

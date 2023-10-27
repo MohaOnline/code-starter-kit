@@ -499,6 +499,7 @@ class System_Info {
       'php_backtrack_limit' => $this->get_backtrack_limit(),
       'php_zip_archive_class_exists' => class_exists('ZipArchive'),
       'php_mcrypt_exists' => extension_loaded('mcrypt'),
+      'open_basedir' => ini_get('open_basedir'),
 
       // MySql Configuration information.
       'mysql_version' => $wpdb->db_version(),

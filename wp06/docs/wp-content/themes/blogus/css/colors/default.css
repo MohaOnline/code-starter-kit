@@ -116,7 +116,7 @@ a.category-color-4{background: #82b74b; color: #fff}
 
 /*==================== Body & Global ====================*/
 body {
-	color: #5b5b5b;
+	color: var(--text-color);
 }
 input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"], textarea {
 	color: #9b9ea8;
@@ -155,8 +155,8 @@ a:hover, a:focus {
 	background: #0F1012;
 	color: #fff;
 }
-.bs .swiper-button-prev:hover,
- .bs .swiper-button-next:hover  {
+.bs .swiper-button-prev:hover, 
+.bs .swiper-button-next:hover  {
 	background: #0025ff;
 	color: #fff;
 }
@@ -353,17 +353,17 @@ a:hover, a:focus {
 .bs-blog-post .single .nav-links{
 	background: #e2e8f0;
 }
-.page-links a:hover, .single-nav-links a:hover, .single-nav-links .post-page-numbers.current
-{
+.featured-image-caption{
+	background-color: #343a40 ;
+	color: #f8f9fa;
+}
+.page-links a:hover, .single-nav-links a:hover, .single-nav-links .post-page-numbers.current{
 	background: #0025ff;
 	color: #fff;
 }
-
-.page-links a:hover, .single-nav-links a:hover, .single-nav-links .post-page-numbers.current:hover
-{
+.page-links a:hover, .single-nav-links a:hover, .single-nav-links .post-page-numbers.current:hover{
 	color: #fff;
 }
-
 .bs-blog-post.two .small {
     background: var(--box-color);
     color: var(--text-color);

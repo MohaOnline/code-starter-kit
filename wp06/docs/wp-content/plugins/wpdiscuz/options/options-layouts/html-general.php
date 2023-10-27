@@ -255,7 +255,21 @@ if (!defined("ABSPATH")) {
     </div>
 </div>
 <!-- Option end -->
-
+<!-- Option start -->
+<div class="wpd-opt-row" data-wpd-opt="removeSocialAvatars">
+    <div class="wpd-opt-name">
+        <label for="removeSocialAvatars"><?php echo esc_html($setting["options"]["removeSocialAvatars"]["label"]) ?></label>
+        <p class="wpd-desc"><?php echo esc_html($setting["options"]["removeSocialAvatars"]["description"]) ?></p>
+    </div>
+    <div class="wpd-opt-input">
+        <?php $voteUrl = admin_url("admin-post.php?action=removeSocialAvatars"); ?>
+        <a id="wpdiscuz-remove-social-avatars" href="<?php echo esc_url_raw(wp_nonce_url($voteUrl, "removeSocialAvatars")); ?>" class="button button-secondary" style="text-decoration: none;"><?php esc_html_e("Remove Social Avatars", "wpdiscuz"); ?></a>
+    </div>
+    <div class="wpd-opt-doc">
+        <?php $this->printDocLink($setting["options"]["removeSocialAvatars"]["docurl"]) ?>
+    </div>
+</div>
+<!-- Option end -->
 <!-- Option start -->
 <div class="wpd-opt-row" data-wpd-opt="purgeAllCaches">
     <div class="wpd-opt-name">

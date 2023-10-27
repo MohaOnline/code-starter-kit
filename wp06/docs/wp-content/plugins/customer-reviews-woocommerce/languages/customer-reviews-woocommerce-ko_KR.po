@@ -6,7 +6,7 @@ msgstr ""
 "(latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-"
 "woocommerce\n"
-"POT-Creation-Date: 2023-09-25T23:53:44+00:00\n"
+"POT-Creation-Date: 2023-10-14T23:51:17+00:00\n"
 "PO-Revision-Date: 2018-10-07 17:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:930
 #: includes/blocks/class-cr-reviews-grid.php:879
-#: includes/reviews/class-cr-reviews.php:487
+#: includes/reviews/class-cr-reviews.php:485
 msgid "Based on %s review"
 msgid_plural "Based on %s reviews"
 msgstr[0] ""
@@ -90,8 +90,8 @@ msgstr[0] ""
 #: includes/blocks/class-cr-all-reviews.php:947
 #: includes/blocks/class-cr-reviews-grid.php:891
 #: includes/blocks/class-cr-reviews-grid.php:895
-#: includes/reviews/class-cr-reviews.php:502
-#: includes/reviews/class-cr-reviews.php:506
+#: includes/reviews/class-cr-reviews.php:500
+#: includes/reviews/class-cr-reviews.php:504
 msgid "5 star"
 msgstr "5 성급"
 
@@ -99,8 +99,8 @@ msgstr "5 성급"
 #: includes/blocks/class-cr-all-reviews.php:960
 #: includes/blocks/class-cr-reviews-grid.php:904
 #: includes/blocks/class-cr-reviews-grid.php:908
-#: includes/reviews/class-cr-reviews.php:513
-#: includes/reviews/class-cr-reviews.php:517
+#: includes/reviews/class-cr-reviews.php:511
+#: includes/reviews/class-cr-reviews.php:515
 msgid "4 star"
 msgstr "4 성급"
 
@@ -108,8 +108,8 @@ msgstr "4 성급"
 #: includes/blocks/class-cr-all-reviews.php:973
 #: includes/blocks/class-cr-reviews-grid.php:917
 #: includes/blocks/class-cr-reviews-grid.php:921
-#: includes/reviews/class-cr-reviews.php:524
-#: includes/reviews/class-cr-reviews.php:528
+#: includes/reviews/class-cr-reviews.php:522
+#: includes/reviews/class-cr-reviews.php:526
 msgid "3 star"
 msgstr "3 성급"
 
@@ -117,8 +117,8 @@ msgstr "3 성급"
 #: includes/blocks/class-cr-all-reviews.php:986
 #: includes/blocks/class-cr-reviews-grid.php:930
 #: includes/blocks/class-cr-reviews-grid.php:934
-#: includes/reviews/class-cr-reviews.php:535
-#: includes/reviews/class-cr-reviews.php:539
+#: includes/reviews/class-cr-reviews.php:533
+#: includes/reviews/class-cr-reviews.php:537
 msgid "2 star"
 msgstr "2 성급"
 
@@ -127,23 +127,23 @@ msgstr "2 성급"
 #: includes/blocks/class-cr-reviews-grid.php:943
 #: includes/blocks/class-cr-reviews-grid.php:947
 #: includes/reviews/class-cr-reviews-list-table.php:467
-#: includes/reviews/class-cr-reviews.php:546
-#: includes/reviews/class-cr-reviews.php:550
+#: includes/reviews/class-cr-reviews.php:544
+#: includes/reviews/class-cr-reviews.php:548
 msgid "1 star"
 msgstr "1 성급"
 
 #: includes/blocks/class-cr-all-reviews.php:1011
-#: templates/cr-review-form.php:21
+#: templates/cr-review-form.php:30
 msgid "Add a review"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1087
-#: includes/reviews/class-cr-reviews.php:1495
+#: includes/reviews/class-cr-reviews.php:1493
 msgid "Most Recent"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1090
-#: includes/reviews/class-cr-reviews.php:1499
+#: includes/reviews/class-cr-reviews.php:1497
 msgid "Most Helpful"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr[0] ""
 
 #: includes/blocks/class-cr-all-reviews.php:1111
 #: includes/blocks/class-cr-reviews-grid.php:961
-#: includes/reviews/class-cr-reviews.php:562
+#: includes/reviews/class-cr-reviews.php:560
 msgid "See all %d review"
 msgid_plural "See all %d reviews"
 msgstr[0] ""
@@ -179,6 +179,7 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1163
 #: includes/reminders/class-cr-local-forms.php:195
+#: templates/cr-ajax-product-reviews.php:142
 msgid "Add photos or video to your review"
 msgstr ""
 
@@ -212,26 +213,28 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: includes/blocks/class-cr-all-reviews.php:1276
+#: includes/blocks/class-cr-all-reviews.php:1277
 msgid ""
 "Error: no shop page configured in WooCommerce settings (WooCommerce > "
 "Settings > Products > Shop page)"
 msgstr ""
 
-#: includes/blocks/class-cr-all-reviews.php:1278
+#: includes/blocks/class-cr-all-reviews.php:1279
 msgid "Error: no product with ID %d found"
 msgstr ""
 
-#: includes/blocks/class-cr-all-reviews.php:1315
-#: includes/reviews/class-cr-reviews.php:1367
-msgid "Error: the file(s) is too large"
+#: includes/blocks/class-cr-all-reviews.php:1317
+#: includes/reminders/class-cr-local-forms-ajax.php:99
+#: includes/reminders/class-cr-local-forms.php:144
+#: includes/reviews/class-cr-reviews.php:359
+msgid "The file cannot be uploaded because its size exceeds the limit of %d MB"
 msgstr ""
 
-#: includes/blocks/class-cr-all-reviews.php:1324
+#: includes/blocks/class-cr-all-reviews.php:1326
 #: includes/reminders/class-cr-local-forms-ajax.php:108
 #: includes/reminders/class-cr-local-forms.php:145
-#: includes/reviews/class-cr-reviews.php:359
-#: includes/reviews/class-cr-reviews.php:1376
+#: includes/reviews/class-cr-reviews.php:357
+#: includes/reviews/class-cr-reviews.php:1374
 msgid ""
 "Error: accepted file types are PNG, JPG, JPEG, GIF, MP4, MPEG, OGG, WEBM, "
 "MOV, AVI"
@@ -259,10 +262,10 @@ msgstr ""
 #: includes/blocks/class-cr-reviews-slider.php:343
 #: includes/blocks/class-cr-reviews-slider.php:345
 #: includes/reviews/class-cr-reviews-list-table.php:628
+#: includes/reviews/class-cr-reviews.php:1064
 #: includes/reviews/class-cr-reviews.php:1066
-#: includes/reviews/class-cr-reviews.php:1068
+#: includes/reviews/class-cr-reviews.php:1122
 #: includes/reviews/class-cr-reviews.php:1124
-#: includes/reviews/class-cr-reviews.php:1126
 msgid "Verified review"
 msgstr ""
 
@@ -270,13 +273,13 @@ msgstr ""
 #: includes/blocks/class-cr-reviews-grid.php:342
 #: includes/blocks/class-cr-reviews-slider.php:339
 #: includes/blocks/class-cr-reviews-slider.php:346
-#: includes/reviews/class-cr-reviews.php:1077
-#: includes/reviews/class-cr-reviews.php:1135
+#: includes/reviews/class-cr-reviews.php:1075
+#: includes/reviews/class-cr-reviews.php:1133
 msgid "view original"
 msgstr ""
 
 #: includes/blocks/class-cr-reviews-grid.php:960
-#: includes/reviews/class-cr-reviews.php:561
+#: includes/reviews/class-cr-reviews.php:559
 msgid "Showing %1$d of %2$d review (%3$d star). "
 msgid_plural "Showing %1$d of %2$d reviews (%3$d star). "
 msgstr[0] ""
@@ -1278,9 +1281,9 @@ msgstr ""
 #: includes/reviews/class-cr-reviews-media-meta-box.php:95
 #: includes/reviews/class-cr-reviews.php:210
 #: includes/reviews/class-cr-reviews.php:226
-#: includes/reviews/class-cr-reviews.php:1214
-#: includes/reviews/class-cr-reviews.php:1284
-#: includes/reviews/class-cr-reviews.php:1315 templates/reviews-grid.php:51
+#: includes/reviews/class-cr-reviews.php:1212
+#: includes/reviews/class-cr-reviews.php:1282
+#: includes/reviews/class-cr-reviews.php:1313 templates/reviews-grid.php:51
 #: templates/reviews-grid.php:53
 msgid "Image #%1$d from "
 msgstr ""
@@ -1343,7 +1346,7 @@ msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:130
 #: includes/import-export/class-cr-export-reviews.php:77
-#: includes/import-export/class-cr-export-reviews.php:95
+#: includes/import-export/class-cr-export-reviews.php:97
 #: includes/reviews/class-cr-reviews-media-download.php:31
 #: includes/settings/class-cr-settings-license.php:142
 msgid "Download"
@@ -1381,8 +1384,8 @@ msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:182
 #: includes/import-export/class-cr-admin-menu-import.php:397
-#: includes/import-export/class-cr-export-reviews.php:86
-#: includes/import-export/class-cr-export-reviews.php:157
+#: includes/import-export/class-cr-export-reviews.php:87
+#: includes/import-export/class-cr-export-reviews.php:159
 #: includes/qna/class-cr-admin-menu-qna.php:189
 #: includes/reminders/class-cr-manual.php:379
 #: includes/reminders/class-cr-reminders-list-table.php:182
@@ -1392,9 +1395,7 @@ msgstr ""
 #: includes/settings/class-cr-settings-forms-rating.php:213
 #: includes/settings/class-cr-settings-forms.php:578
 #: includes/settings/class-cr-settings-forms.php:605
-#: templates/cr-ajax-product-reviews.php:136
-#: templates/cr-ajax-product-reviews.php:190
-#: templates/cr-ajax-product-reviews.php:216 templates/cr-review-form.php:126
+#: templates/cr-review-form.php:159
 msgid "Cancel"
 msgstr ""
 
@@ -1448,7 +1449,7 @@ msgid "Import is in progress (%s/%s completed)"
 msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:396
-#: includes/import-export/class-cr-export-reviews.php:156
+#: includes/import-export/class-cr-export-reviews.php:158
 msgid "Cancelling"
 msgstr ""
 
@@ -1461,17 +1462,17 @@ msgid "Upload Failed"
 msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:400
-#: includes/import-export/class-cr-export-reviews.php:160
+#: includes/import-export/class-cr-export-reviews.php:162
 msgid "Started: %s"
 msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:401
-#: includes/import-export/class-cr-export-reviews.php:161
+#: includes/import-export/class-cr-export-reviews.php:163
 msgid "Finished: %s"
 msgstr ""
 
 #: includes/import-export/class-cr-admin-menu-import.php:402
-#: includes/import-export/class-cr-export-reviews.php:162
+#: includes/import-export/class-cr-export-reviews.php:164
 msgid "Cancelled: %s"
 msgstr ""
 
@@ -1605,42 +1606,42 @@ msgstr ""
 msgid "Export is in progress"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:90
+#: includes/import-export/class-cr-export-reviews.php:92
 msgid "Export Completed"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:105
+#: includes/import-export/class-cr-export-reviews.php:107
 msgid ""
 "Failed to download: invalid nonce. <a href=\"%s\">Return to settings</a>"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:132
+#: includes/import-export/class-cr-export-reviews.php:134
 msgid ""
 "A utility to export reviews to a CSV file. Use the Export button to start "
 "export of reviews. Use the Download button to download the last export."
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:134
+#: includes/import-export/class-cr-export-reviews.php:136
 msgid "A utility to export reviews to a CSV file."
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:138
+#: includes/import-export/class-cr-export-reviews.php:140
 msgid "Export Reviews to CSV File"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:155
+#: includes/import-export/class-cr-export-reviews.php:157
 msgid "Export is in progress (%s/%s completed)"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:158
+#: includes/import-export/class-cr-export-reviews.php:160
 msgid "Export Cancelled"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:159
+#: includes/import-export/class-cr-export-reviews.php:161
 msgid "Export Failed"
 msgstr ""
 
-#: includes/import-export/class-cr-export-reviews.php:163
+#: includes/import-export/class-cr-export-reviews.php:165
 msgid "%d review(s) successfully exported"
 msgstr ""
 
@@ -1682,13 +1683,13 @@ msgstr ""
 msgid "Cannot read CSV file"
 msgstr ""
 
-#: includes/import-export/class-cr-reviews-importer.php:220
+#: includes/import-export/class-cr-reviews-importer.php:218
 msgid ""
 "The CSV file contains invalid or missing column headings, please refer to "
 "the template in step 1"
 msgstr ""
 
-#: includes/import-export/class-cr-reviews-importer.php:234
+#: includes/import-export/class-cr-reviews-importer.php:231
 msgid "The CSV file contains no reviews"
 msgstr ""
 
@@ -2134,12 +2135,6 @@ msgstr ""
 msgid "Reminders"
 msgstr ""
 
-#: includes/reminders/class-cr-local-forms-ajax.php:99
-#: includes/reminders/class-cr-local-forms.php:144
-#: includes/reviews/class-cr-reviews.php:361
-msgid "The file cannot be uploaded because its size exceeds the limit of %d MB"
-msgstr ""
-
 #: includes/reminders/class-cr-local-forms.php:132
 msgid "* Required"
 msgstr ""
@@ -2192,7 +2187,7 @@ msgid ""
 msgstr ""
 
 #: includes/reminders/class-cr-local-forms.php:233
-#: templates/cr-review-form.php:122 templates/qna-tab.php:75
+#: templates/cr-review-form.php:155 templates/qna-tab.php:75
 #: templates/qna-tab.php:119
 msgid "Submit"
 msgstr ""
@@ -2345,9 +2340,9 @@ msgid "WP Cron error"
 msgstr ""
 
 #: includes/reminders/class-cr-manual.php:358
-#: includes/settings/class-cr-settings-emails.php:109
+#: includes/settings/class-cr-settings-emails.php:111
 #: includes/settings/class-cr-settings-review-reminder.php:992
-#: templates/cr-review-form.php:61
+#: templates/cr-review-form.php:94
 msgid "Email"
 msgstr ""
 
@@ -2549,6 +2544,13 @@ msgstr ""
 msgid "Reviewer"
 msgstr ""
 
+#: includes/reviews/class-cr-admin-menu-reviews.php:616
+#: includes/reviews/class-cr-admin-menu-reviews.php:625
+#: includes/reviews/class-cr-reviews-list-table.php:1141
+#: templates/cr-review.php:86
+msgid "Store manager"
+msgstr ""
+
 #: includes/reviews/class-cr-admin-menu-reviews.php:649
 msgid ""
 "This reply was originally posted on CusRev portal. This copy of the reply "
@@ -2710,7 +2712,7 @@ msgid ""
 msgstr ""
 
 #: includes/reviews/class-cr-reviews-list-table.php:941
-#: includes/reviews/class-cr-reviews.php:1149 templates/cr-review.php:113
+#: includes/reviews/class-cr-reviews.php:1147 templates/cr-review.php:113
 msgid "Featured Review"
 msgstr ""
 
@@ -2781,7 +2783,7 @@ msgid "Number"
 msgstr ""
 
 #: includes/reviews/class-cr-reviews.php:129
-#: includes/reviews/class-cr-reviews.php:358
+#: includes/reviews/class-cr-reviews.php:356
 msgid "Upload up to %d images or videos"
 msgstr ""
 
@@ -2795,42 +2797,42 @@ msgstr ""
 msgid "Go back to: %s"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:357
-msgid "Please type your review text"
-msgstr ""
-
-#: includes/reviews/class-cr-reviews.php:360
+#: includes/reviews/class-cr-reviews.php:358
 msgid ""
 "Error: You tried to upload too many files. The maximum number of files that "
 "can be uploaded is %d."
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:398
+#: includes/reviews/class-cr-reviews.php:396
 msgid "reCAPTCHA vertification failed and your review cannot be saved."
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:398
+#: includes/reviews/class-cr-reviews.php:396
 msgid "Add Review Error"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1078
-#: includes/reviews/class-cr-reviews.php:1136
+#: includes/reviews/class-cr-reviews.php:1076
+#: includes/reviews/class-cr-reviews.php:1134
 msgid "External link"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1200
+#: includes/reviews/class-cr-reviews.php:1198
 msgid "Customer Images"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1358
+#: includes/reviews/class-cr-reviews.php:1356
 msgid "Error: please solve the CAPTCHA before uploading files"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1503
+#: includes/reviews/class-cr-reviews.php:1365
+msgid "Error: the file(s) is too large"
+msgstr ""
+
+#: includes/reviews/class-cr-reviews.php:1501
 msgid "Highest Rating"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1506
+#: includes/reviews/class-cr-reviews.php:1504
 msgid "Lowest Rating"
 msgstr ""
 
@@ -3512,11 +3514,11 @@ msgstr ""
 msgid "Emails"
 msgstr ""
 
-#: includes/settings/class-cr-settings-emails.php:76
+#: includes/settings/class-cr-settings-emails.php:78
 msgid "Email Templates"
 msgstr ""
 
-#: includes/settings/class-cr-settings-emails.php:78
+#: includes/settings/class-cr-settings-emails.php:80
 msgid ""
 "Adjust templates of the emails that will be sent to customers. If you enable "
 "<b>advanced</b> email templates in your account on the %1$sCusRev "
@@ -3524,11 +3526,11 @@ msgid ""
 "template below."
 msgstr ""
 
-#: includes/settings/class-cr-settings-emails.php:110
+#: includes/settings/class-cr-settings-emails.php:112
 msgid "Subject"
 msgstr ""
 
-#: includes/settings/class-cr-settings-emails.php:111
+#: includes/settings/class-cr-settings-emails.php:113
 msgid "From"
 msgstr ""
 
@@ -4011,19 +4013,19 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: includes/settings/class-cr-settings-messages.php:75
+#: includes/settings/class-cr-settings-messages.php:77
 msgid "WhatsApp Templates"
 msgstr ""
 
-#: includes/settings/class-cr-settings-messages.php:77
+#: includes/settings/class-cr-settings-messages.php:79
 msgid "Adjust templates of WhatsApp messages that will be sent to customers."
 msgstr ""
 
-#: includes/settings/class-cr-settings-messages.php:106
+#: includes/settings/class-cr-settings-messages.php:108
 msgid "WhatsApp Template"
 msgstr ""
 
-#: includes/settings/class-cr-settings-messages.php:107
+#: includes/settings/class-cr-settings-messages.php:109
 #: includes/settings/class-cr-settings-wa-template.php:91
 msgid "Message"
 msgstr ""
@@ -5586,28 +5588,44 @@ msgstr ""
 msgid "Search reviews"
 msgstr ""
 
+#: templates/cr-ajax-product-reviews.php:123
+msgid "There are no reviews yet"
+msgstr ""
+
 #: templates/cr-rating.php:52
 msgid "%s answered question"
 msgid_plural "%s answered questions"
 msgstr[0] ""
 
-#: templates/cr-review-form.php:41
+#: templates/cr-review-form.php:49
+msgid "Only customers who have purchased this product may leave a review"
+msgstr ""
+
+#: templates/cr-review-form.php:57
+msgid "You must be logged in to post a review"
+msgstr ""
+
+#: templates/cr-review-form.php:59
+msgid "Log In"
+msgstr ""
+
+#: templates/cr-review-form.php:74
 msgid "Your review"
 msgstr ""
 
-#: templates/cr-review-form.php:45
+#: templates/cr-review-form.php:78
 msgid "* Review is required"
 msgstr ""
 
-#: templates/cr-review-form.php:52
+#: templates/cr-review-form.php:85
 msgid "Name"
 msgstr ""
 
-#: templates/cr-review-form.php:56
+#: templates/cr-review-form.php:89
 msgid "* Name is required"
 msgstr ""
 
-#: templates/cr-review-form.php:65
+#: templates/cr-review-form.php:98
 msgid "* Email is required"
 msgstr ""
 
@@ -5621,6 +5639,10 @@ msgstr ""
 
 #: templates/qna-list.php:46
 msgid "%s answered on %s"
+msgstr ""
+
+#: templates/qna-list.php:49 templates/review-meta.php:43
+msgid "store manager"
 msgstr ""
 
 #: templates/qna-list.php:79

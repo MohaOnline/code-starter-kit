@@ -396,6 +396,9 @@ class Process
             $this->process_cl_logic();
         }
 
+        if ($this->fields == false) {
+            return $cart_item_data;
+        }
 
         /*  removing this section from 3.0.2, as causing issues repeating added items to cart, in version 2 , it seems was set for order again data
             now order again has changed differently
@@ -437,7 +440,9 @@ class Process
             }
         }
 
-
+       if(!is_array($cart_item_data)){
+           $cart_item_data=[];// to avoid conflict with some plugins who retuns $cart_item_data as string
+       }
         $cart_item_data[WCPA_CART_ITEM_KEY] = $_form_data;
         $cart_item_data['wcpa_cart_rules'] = [
             'quantity' => false,

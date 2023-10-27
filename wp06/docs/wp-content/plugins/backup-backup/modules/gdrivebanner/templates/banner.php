@@ -60,7 +60,7 @@
         <p class="bmi-banner__gdrive-text">
           You can now
           <span class="bmi-banner__bold-black">
-            backup files on
+            backup files on 
             <span class="bmi-banner__green1">G</span><span class="bmi-banner__green1">o</span><span class="bmi-banner__grren2">o</span><span class="bmi-banner__yellow">g</span><span class="bmi-banner__yellow">l</span><span class="bmi-banner__yellow">e</span>
             <span class=""></span>
             <span class="bmi-banner__red">D</span><span class="bmi-banner__blue1">r</span><span class="bmi-banner__blue1">i</span><span class="bmi-banner__blue1">v</span><span class="bmi-banner__blue2">e</span>
@@ -69,10 +69,7 @@
       </div>
     </div>
     <div class="bmi-banner__right">
-      <?php
-      // To add discount here add parameter: https://backupbliss.com/?discount={discount code}
-      ?>
-      <a href="https://backupbliss.com/" target="_blank" class="bmi-banner__get-button">
+      <a href="https://backupbliss.com/?discount=BESTGDRIVE" target="_blank" class="bmi-banner__get-button">
         <span>Get the plugin</span>
         <svg
           class="bmi-banner__get-button-icon"
@@ -122,6 +119,12 @@
           </svg>
           <span>Premium features</span>
         </span>
+        <span
+          >for a
+          <span class="bmi-banner__uppercase"
+            >time-limited <span class="bmi-banner__bold">30%</span> discount</span
+          ></span
+        >
       </p>
     </div>
   </div>

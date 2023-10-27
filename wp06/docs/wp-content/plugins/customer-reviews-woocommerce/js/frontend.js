@@ -14,13 +14,6 @@
 					alert("Please confirm that you are not a robot");
 				}
 			}
-			var cr_ajax_comment = jQuery("#cr-ajax-reviews-review-form form#commentform textarea#comment");
-			if( cr_ajax_comment.length > 0 ) {
-				if( cr_ajax_object.ivole_allow_empty_comment === '0' && cr_ajax_comment.val().trim().length === 0 ) {
-					event.preventDefault();
-					alert(cr_ajax_object.ivole_allow_empty_comment_alert);
-				}
-			}
 		} );
 		//show lightbox when click on images attached to reviews
 		jQuery("ol.commentlist").on("click", ".cr-comment-a", function(t) {
@@ -360,15 +353,10 @@
 				jQuery(this).parents(".cr-reviews-ajax-comments").find(".cr-show-more-reviews-prd").trigger("click");
 			}
 		});
-		jQuery("button.cr-ajax-reviews-add-review").on( "click", function(t) {
+		jQuery(".cr-ajax-reviews-add-review").on( "click", function(t) {
 			t.preventDefault();
-			jQuery("#comments.cr-reviews-ajax-comments").hide();
-			jQuery("#cr-ajax-reviews-review-form").show();
-		} );
-		jQuery("a#cr-ajax-reviews-cancel").on( "click", function(t) {
-			t.preventDefault();
-			jQuery("#cr-ajax-reviews-review-form").hide();
-			jQuery("#comments.cr-reviews-ajax-comments").show();
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-reviews-ajax-comments").hide();
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-ajax-reviews-review-form").show();
 		} );
 		// click to filter reviews by tags
 		jQuery(".cr-review-tags-filter span.cr-tags-filter").on( "click", function (e) {
@@ -978,12 +966,24 @@
 			jQuery( this ).closest( ".cr-review-form-wrap" ).removeClass( "cr-review-form-res" );
 			cr_reset_review_form( jQuery( this ) );
 		} );
-		jQuery( ".cr-all-reviews-shortcode .cr-review-form-wrap" ).on( "click", ".cr-review-form-error", function( e ) {
+		jQuery( ".cr-review-form-wrap" ).on( "click", ".cr-review-form-error", function( e ) {
 			jQuery( this ).closest( ".cr-review-form-wrap" ).removeClass( "cr-review-form-res" );
+		} );
+		jQuery( ".cr-ajax-reviews-review-form .cr-nav-left svg, .cr-ajax-reviews-review-form .cr-nav-right svg, .cr-ajax-reviews-review-form .cr-review-form-cancel" ).on( "click", function( e ) {
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-reviews-ajax-comments").show();
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-ajax-reviews-review-form").hide();
+			jQuery( this ).closest( ".cr-review-form-wrap" ).removeClass( "cr-review-form-res" );
+			cr_reset_review_form( jQuery( this ) );
+		} );
+		jQuery( ".cr-ajax-reviews-review-form .cr-review-form-wrap" ).on( "click", ".cr-review-form-success", function( e ) {
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-reviews-ajax-comments").show();
+			jQuery(this).closest(".cr-reviews-ajax-reviews").find(".cr-ajax-reviews-review-form").hide();
+			jQuery( this ).closest( ".cr-review-form-wrap" ).removeClass( "cr-review-form-res" );
+			cr_reset_review_form( jQuery( this ) );
 		} );
 
 		// submit the review form
-		jQuery( ".cr-all-reviews-shortcode .cr-review-form-submit" ).on( "click", function( e ) {
+		jQuery( ".cr-review-form-wrap .cr-review-form-submit" ).on( "click", function( e ) {
 			// check if media upload is in progress
 			if ( 0 < jQuery( this ).closest( ".cr-review-form-wrap" ).find( ".cr-form-item-media-preview .cr-upload-images-containers:not(.cr-upload-ok)" ).length ) {
 				return false;
@@ -1488,10 +1488,12 @@
 
 		let validationResult = true;
 
-		if( 1 > submitBtn.closest( ".cr-review-form-wrap" ).find( ".cr-review-form-rating-actv" ).length ) {
-			submitBtn.closest( ".cr-review-form-wrap" ).find( ".cr-review-form-rating" ).addClass( "cr-review-form-error" );
-			validationResult = false;
-		}
+		submitBtn.closest( ".cr-review-form-wrap" ).find( ".cr-review-form-rating-cont.cr-review-form-rating-req" ).each( function( index ) {
+			if( 1 > jQuery( this ).find( ".cr-review-form-rating-actv" ).length ) {
+				jQuery( this ).closest( ".cr-review-form-rating" ).addClass( "cr-review-form-error" );
+				validationResult = false;
+			}
+		} );
 		if( 1 > submitBtn.closest( ".cr-review-form-wrap" ).find( ".cr-review-form-comment-txt" ).val().trim().length ) {
 			submitBtn.closest( ".cr-review-form-wrap" ).find( ".cr-review-form-comment" ).addClass( "cr-review-form-error" );
 			validationResult = false;

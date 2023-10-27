@@ -207,6 +207,18 @@
 					children.push( el.apply( null, args ) );
 				}
 
+				if ( ! advadsGutenberg.ads.length ) {
+					children.push(
+						el( 'div',
+							{
+								className: 'components-placeholder__label',
+								key:'components-placeholder__label'},
+								'',
+								el( 'a', {href: advadsglobal.create_ad_url,class: 'button',target: '_blank', style: {display: 'block', "margin-top": '10px'}}, advadsglobal.create_your_first_ad )
+						)
+					);
+				}
+
 				// return the complete form
 				return el( 'form', { className: 'components-placeholder is-large', onSubmit: setItemID }, children );
 

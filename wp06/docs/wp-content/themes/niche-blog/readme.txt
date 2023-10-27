@@ -3,7 +3,7 @@ Contributors: fahimmurshed
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 5.1
 Requires PHP: 5.6
-Tested up to: 6.3+
+Tested up to: 6.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,9 @@ License: MIT
 Source: https://github.com/WPTT/webfont-loader
 
 == Changelog ==
+
+= 0.0.8 =
+* Added Footer menu feature.
 
 = 0.0.7 =
 * Fix CSS issue.

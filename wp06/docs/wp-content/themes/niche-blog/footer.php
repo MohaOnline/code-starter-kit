@@ -11,6 +11,20 @@
 
 ?>
 	</div><!-- #content -->
+<!-- Footer Menu -->
+	<nav id="site-navigation" class="footer-navigation niche-blog-navigation-menu">
+			<div class="container">
+
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'footer_menu',
+	    			'container' 	 => false,
+					'menu_id'        => 'footer-menu',
+					'menu_class'     => 'nav-menu',
+				) );
+				?>
+			</div><!-- .container -->
+		</nav><!-- #site-navigation -->
 
 	<footer id="colophon" class="site-footer">
 		<?php if ( is_active_sidebar( 'sidebar-2' ) || is_active_sidebar( 'sidebar-3' ) || is_active_sidebar( 'sidebar-4' ) ) : ?>

@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views;
 
-use org\wplake\acf_views\AcfCard\AcfCards;
-use org\wplake\acf_views\AcfView\AcfViews;
+use org\wplake\acf_views\Cards\CardsDataStorage;
+use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Cards\Cpt\CardsSaveActions;
+use org\wplake\acf_views\Groups\ViewData;
+use org\wplake\acf_views\Views\Cpt\ViewsCpt;
+use org\wplake\acf_views\Views\Cpt\ViewsSaveActions;
+use org\wplake\acf_views\Views\ViewsDataStorage;
 use WP_Query;
 
 defined('ABSPATH') || exit;
@@ -14,23 +19,29 @@ class Upgrades
 {
     protected Plugin $plugin;
     protected Settings $settings;
-    protected Cache $cache;
-    protected AcfViews $acfViews;
-    protected AcfCards $acfCards;
+    protected ViewsDataStorage $viewsDataStorage;
+    protected CardsDataStorage $cardsDataStorage;
+    protected ViewsSaveActions $acfViewsSaveActions;
+    protected CardsSaveActions $acfCardsSaveActions;
+    protected Twig $twig;
     protected string $logData;
 
     public function __construct(
         Plugin $plugin,
         Settings $settings,
-        Cache $cache,
-        AcfViews $acfViews,
-        AcfCards $acfCards
+        ViewsDataStorage $viewsDataStorage,
+        CardsDataStorage $cardsDataStorage,
+        ViewsSaveActions $acfViewsSaveActions,
+        CardsSaveActions $acfCardsSaveActions,
+        Twig $twig
     ) {
         $this->plugin = $plugin;
         $this->settings = $settings;
-        $this->cache = $cache;
-        $this->acfViews = $acfViews;
-        $this->acfCards = $acfCards;
+        $this->viewsDataStorage = $viewsDataStorage;
+        $this->cardsDataStorage = $cardsDataStorage;
+        $this->acfViewsSaveActions = $acfViewsSaveActions;
+        $this->acfCardsSaveActions = $acfCardsSaveActions;
+        $this->twig = $twig;
         $this->logData = '';
     }
 
@@ -92,7 +103,7 @@ class Upgrades
     protected function moveViewAndCardMetaToPostContentJson(): void
     {
         $queryArgs = [
-            'post_type' => [AcfViews::NAME, AcfCards::NAME,],
+            'post_type' => [ViewsCpt::NAME, CardsCpt::NAME,],
             'post_status' => ['publish', 'draft', 'trash',],
             'posts_per_page' => -1,
         ];
@@ -104,9 +115,9 @@ class Upgrades
         foreach ($myPosts as $myPost) {
             $postId = $myPost->ID;
 
-            $data = AcfViews::NAME === $myPost->post_type ?
-                $this->cache->getAcfViewData($postId) :
-                $this->cache->getAcfCardData($postId);
+            $data = ViewsCpt::NAME === $myPost->post_type ?
+                $this->viewsDataStorage->get($postId) :
+                $this->cardsDataStorage->get($postId);
 
             $data->load($myPost->ID);
 
@@ -163,8 +174,8 @@ class Upgrades
         $myPosts = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT * FROM {$wpdb->posts} WHERE post_type IN (%s,%s) AND post_content != ''",
-                AcfViews::NAME,
-                AcfCards::NAME
+                ViewsCpt::NAME,
+                CardsCpt::NAME
             )
         );
 
@@ -191,14 +202,15 @@ class Upgrades
     protected function triggerSaveForAllViews(): int
     {
         $queryArgs = [
-            'post_type' => AcfViews::NAME,
+            'post_type' => ViewsCpt::NAME,
             'posts_per_page' => -1,
+            'post_status' => ['publish', 'draft', 'trash',],
         ];
         $query = new WP_Query($queryArgs);
         $posts = $query->posts;
 
         foreach ($posts as $post) {
-            $this->acfViews->performSaveActions($post->ID);
+            $this->acfViewsSaveActions->performSaveActions($post->ID);
         }
 
         return count($posts);
@@ -207,17 +219,42 @@ class Upgrades
     protected function triggerSaveForAllCards(): int
     {
         $queryArgs = [
-            'post_type' => AcfCards::NAME,
+            'post_type' => CardsCpt::NAME,
             'posts_per_page' => -1,
+            'post_status' => ['publish', 'draft', 'trash',],
         ];
         $query = new WP_Query($queryArgs);
         $posts = $query->posts;
 
         foreach ($posts as $post) {
-            $this->acfCards->performSaveActions($post->ID);
+            $this->acfCardsSaveActions->performSaveActions($post->ID);
         }
 
         return count($posts);
+    }
+
+    protected function replaceViewIdToUniqueIdInView(ViewData $acfViewData): bool
+    {
+        $isChanged = false;
+
+        foreach ($acfViewData->items as $item) {
+            $oldId = $item->field->acfViewId;
+
+            if (!$oldId) {
+                continue;
+            }
+
+            $newId = $this->viewsDataStorage->getPostIdByUniqueId($oldId, ViewsCpt::NAME);
+
+            if (!$newId) {
+                continue;
+            }
+
+            $isChanged = true;
+            $item->field->acfViewId = $this->viewsDataStorage->get($newId)->getUniqueId();
+        }
+
+        return $isChanged;
     }
 
     protected function extraUpgrade(string $previousVersion): void
@@ -225,10 +262,104 @@ class Upgrades
         // stub for Pro
     }
 
+    public function setDigitalIdForMarkupFlagForViewsAndCards()
+    {
+        $queryArgs = [
+            'post_type' => [ViewsCpt::NAME, CardsCpt::NAME,],
+            'post_status' => ['publish', 'draft', 'trash',],
+            'posts_per_page' => -1,
+        ];
+        $posts = new WP_Query($queryArgs);
+        $posts = $posts->get_posts();
+
+        foreach ($posts as $post) {
+            $cptData = ViewsCpt::NAME === $post->post_type ?
+                $this->viewsDataStorage->get($post->ID) :
+                $this->cardsDataStorage->get($post->ID);
+
+            $cptData->isMarkupWithDigitalId = true;
+
+            $cptData->saveToPostContent();
+        }
+    }
+
+    public function recreatePostSlugs(): void
+    {
+        $queryArgs = [
+            'post_type' => [ViewsCpt::NAME, CardsCpt::NAME,],
+            'post_status' => ['publish', 'draft', 'trash',],
+            'posts_per_page' => -1,
+        ];
+        $query = new WP_Query($queryArgs);
+        $posts = $query->get_posts();
+
+        foreach ($posts as $post) {
+            $prefix = ViewsCpt::NAME === $post->post_type ?
+                'view_' :
+                'card_';
+
+            $postName = uniqid($prefix);
+
+            wp_update_post([
+                'ID' => $post->ID,
+                'post_name' => $postName,
+            ]);
+
+            // to make sure ids are unique (uniqid based on the time)
+            usleep(1);
+        }
+    }
+
+    public function replaceViewIdToUniqueIdInCards(): void
+    {
+        $acfCards = new WP_Query([
+            'post_type' => CardsCpt::NAME,
+            'post_status' => ['publish', 'draft', 'trash',],
+            'posts_per_page' => -1,
+        ]);
+        $acfCards = $acfCards->get_posts();
+
+        foreach ($acfCards as $acfCard) {
+            $acfCardData = $this->cardsDataStorage->get($acfCard->ID);
+
+            $viewId = $this->viewsDataStorage->getPostIdByUniqueId($acfCardData->acfViewId, ViewsCpt::NAME);
+
+            if (!$viewId) {
+                continue;
+            }
+
+            $acfViewData = $this->viewsDataStorage->get($viewId);
+
+            $acfCardData->acfViewId = $acfViewData->getUniqueId();
+
+            $acfCardData->saveToPostContent();
+        }
+    }
+
+    public function replaceViewIdToUniqueIdInViewRelationships(): void
+    {
+        $acfViews = new WP_Query([
+            'post_type' => ViewsCpt::NAME,
+            'post_status' => ['publish', 'draft', 'trash',],
+            'posts_per_page' => -1,
+        ]);
+        $acfViews = $acfViews->get_posts();
+
+        foreach ($acfViews as $acfView) {
+            $acfViewData = $this->viewsDataStorage->get($acfView->ID);
+
+            if (!$this->replaceViewIdToUniqueIdInView($acfViewData)) {
+                continue;
+            }
+
+            $acfViewData->saveToPostContent();
+        }
+    }
+
     public function enableWithCommonClassesAndUnnecessaryWrappersForAllViews(): void
     {
         $queryArgs = [
-            'post_type' => AcfViews::NAME,
+            'post_type' => ViewsCpt::NAME,
             'post_status' => ['publish', 'draft', 'trash',],
             'posts_per_page' => -1,
         ];
@@ -236,19 +367,19 @@ class Upgrades
         $posts = $query->posts;
 
         foreach ($posts as $post) {
-            $acfViewData = $this->cache->getAcfViewData($post->ID);
+            $acfViewData = $this->viewsDataStorage->get($post->ID);
 
             $acfViewData->isWithCommonClasses = true;
             $acfViewData->isWithUnnecessaryWrappers = true;
 
-            $this->acfViews->performSaveActions($post->ID);
+            $this->acfViewsSaveActions->performSaveActions($post->ID);
         }
     }
 
     public function updateMarkupIdentifiers(): void
     {
         $queryArgs = [
-            'post_type' => AcfViews::NAME,
+            'post_type' => ViewsCpt::NAME,
             'post_status' => ['publish', 'draft', 'trash',],
             'posts_per_page' => -1,
         ];
@@ -256,7 +387,7 @@ class Upgrades
         $posts = $query->posts;
 
         foreach ($posts as $post) {
-            $acfViewData = $this->cache->getAcfViewData($post->ID);
+            $acfViewData = $this->viewsDataStorage->get($post->ID);
 
             // replace identifiers for Views without Custom Markup
             if (!trim($acfViewData->customMarkup) &&
@@ -282,7 +413,7 @@ class Upgrades
             }
 
             // update markup field for all
-            $this->acfViews->performSaveActions($post->ID);
+            $this->acfViewsSaveActions->performSaveActions($post->ID);
         }
     }
 
@@ -291,6 +422,9 @@ class Upgrades
         // all versions since 1.6.0 has a version
         // empty means the very first run, no data is available, nothing to fix
         $previousVersion = $this->settings->getVersion();
+
+        // NOTE: do not call methods directly (only via init or other hooks)
+        // some plugins, like WPFastestCache can use global functions, which won't be defined yet
 
         if ('1.6.0' === $previousVersion) {
             $this->fixMultipleSlashesInPostContentJson();
@@ -317,6 +451,30 @@ class Upgrades
 
         if ($this->isVersionLower($previousVersion, '2.1.0')) {
             add_action('acf/init', [$this, 'enableWithCommonClassesAndUnnecessaryWrappersForAllViews']);
+        }
+
+        if ($this->isVersionLower($previousVersion, '2.2.0')) {
+            add_action('acf/init', [$this, 'recreatePostSlugs',]);
+            add_action('acf/init', [$this, 'replaceViewIdToUniqueIdInCards',]);
+            add_action('acf/init', [$this, 'replaceViewIdToUniqueIdInViewRelationships',]);
+        }
+
+        if ($this->isVersionLower($previousVersion, '2.2.2')) {
+            add_action('acf/init', [$this, 'setDigitalIdForMarkupFlagForViewsAndCards']);
+        }
+
+        if ($this->isVersionLower($previousVersion, '2.2.3')) {
+            // related Views/Cards in post_content_filtered appeared, filled during the save action
+            add_action('acf/init', function () {
+                $this->triggerSaveForAllViews();
+                $this->triggerSaveForAllCards();
+            });
+        }
+
+        if ($this->isVersionLower($previousVersion, '2.3.0')) {
+            add_action('init', function () {
+                $this->twig->createTemplatesDir();
+            });
         }
 
         $this->extraUpgrade($previousVersion);

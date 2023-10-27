@@ -4,7 +4,7 @@ Tags: cache,caching, performance, wp-cache, cdn, combine, compress, speed plugin
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 2.0.29
+Stable tag: 2.0.31
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,21 @@ Breeze excels in the following areas:
 * **Simplicity:** Breeze is designed to be simple for all users. Just install and activate the plugin and you'll see the results instantaneously.
 
 What makes Breeze WordPress Cache Plugin awesome is that it comes with builtin support for Varnish. If Varnish is not installed on your servers, Breeze will utilize its internal cache mechanism to boost up your WordPress site performance.
+
+**FEATURES**
+
+* Seamless integration with Varnish Cache for efficient content delivery. No manual adjustments needed – all settings come pre-configured for your convenience.
+* Optimize performance using Cloudflare's caching capabilities. No specific Breeze configurations are needed – it works out of the box. 
+* Effortlessly integrate your preferred Content Delivery Network (CDN) for global content distribution with Breeze instead of using the the CDN providers' plugins.
+* Trim WordPress database bloat effortlessly. Breeze's Database Options optimize and declutter your database, boosting performance by removing unneeded data like post revisions and trashed content.
+* Take command over caching exclusions. With Breeze, you have the power to prevent specific URLs, JS files, and CSS files from being cached.
+* Achieve smaller page sizes and faster load times through HTML, CSS, and JavaScript minification, including inline CSS and JavaScript minification.
+* Load images when they're visible, not all at once, for faster webpage performance by implementing lazy loading for images.
+* Load JS files with deferred loading, enhancing overall performance.
+* Supercharge your site's speed with Breeze's advanced preloading features: load fonts early, quicken link clicks, and enhance DNS requests for a seamless user experience.
+* Master real-time interactions with Breeze's Heartbeat API management. Fine-tune notifications, sales data, autosaves, and more to optimize WordPress performance by adjusting API call frequencies.
+* Effortlessly manage Breeze settings using Import/Export. Download your configurations as a .json file for backup, or effortlessly import existing settings to quickly fine-tune your optimization.
+
 
 **Support:** We love to provide support! Post your questions on the WordPress.org support forums, or if you are a Cloudways Customer you may ask questions on the <a href="https://community.cloudways.com/">Cloudways Community Forum</a>.
 
@@ -144,6 +159,15 @@ Yes. The process of setting up CloudFlare with Breeze is easy. Check out the fol
 Using Gzip, Breeze compresses the request files, further reducing the size of the download files and speeding up the user experience.
 
 == Changelog ==
+
+= 2.0.31=
+
+* Add: Breeze now supports the Aelia Currency Switcher for WooCommerce.
+* Add: Breeze will automatically clear the cache for order products, homepage, and shop page if the "Out of stock visibility" option is enabled and the stock is no longer available.
+
+= 2.0.30=
+
+* Add: Host Files Locally improve website speed by serving Google Fonts, Google Analytics, Facebook, and Gravatar files directly from your application's local path.
 
 = 2.0.29=
 

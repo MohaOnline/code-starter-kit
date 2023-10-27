@@ -9,9 +9,9 @@
 	Author URI: https://plugin-planet.com/
 	Donate link: https://monzillamedia.com/donate.html
 	Requires at least: 4.6
-	Tested up to: 6.3
-	Stable tag: 3.4
-	Version: 3.4
+	Tested up to: 6.4
+	Stable tag: 3.4.1
+	Version: 3.4.1
 	Requires PHP: 5.6.20
 	Text Domain: prismatic
 	Domain Path: /languages
@@ -164,7 +164,7 @@ if (!class_exists('Prismatic')) {
 		
 		private function constants() {
 			
-			if (!defined('PRISMATIC_VERSION')) define('PRISMATIC_VERSION', '3.4');
+			if (!defined('PRISMATIC_VERSION')) define('PRISMATIC_VERSION', '3.4.1');
 			if (!defined('PRISMATIC_REQUIRE')) define('PRISMATIC_REQUIRE', '4.6');
 			if (!defined('PRISMATIC_NAME'))    define('PRISMATIC_NAME',    'Prismatic');
 			if (!defined('PRISMATIC_AUTHOR'))  define('PRISMATIC_AUTHOR',  'Jeff Starr');

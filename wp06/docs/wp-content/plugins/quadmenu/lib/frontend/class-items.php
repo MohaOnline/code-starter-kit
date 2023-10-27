@@ -21,6 +21,10 @@ class Items {
 
 	function item_object_class( $class, $item, $id, $auto_child = '' ) {
 
+		if ( ! isset( $item->quadmenu ) ) {
+			return $class;
+		}
+
 		switch ( $item->quadmenu ) {
 
 			case 'mega':
@@ -50,10 +54,6 @@ class Items {
 			case 'post_type';
 				$class = '\\QuadLayers\\QuadMenu\\Frontend\\Walker\\QuadMenu_Item_Post_Type';
 			break;
-
-			// default:
-			// $class = 'QuadMenuItemDefault';
-			// break;
 		}
 
 		return $class;
@@ -69,4 +69,3 @@ class Items {
 }
 
 // new QuadMenu_Items();
-

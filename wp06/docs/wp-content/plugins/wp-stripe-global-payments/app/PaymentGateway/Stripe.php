@@ -319,12 +319,7 @@ class Stripe extends Skeleton
     
     public function get_customer_id( $information )
     {
-        foreach ( [
-            'first_name',
-            'last_name',
-            'email_address',
-            'currency'
-        ] as $required_param ) {
+        foreach ( [ 'email_address', 'currency' ] as $required_param ) {
             if ( !isset( $information[$required_param] ) ) {
                 return new WP_Error( 'rest_error', esc_html( sprintf( __( "Missing request param %s", "china-payments" ), $required_param ) ), [
                     'status' => 400,
@@ -344,10 +339,13 @@ class Stripe extends Skeleton
         $stripeClient = $this->stripeClient();
         
         if ( $stripeCustomer->stripe_id === '' ) {
-            $response = $stripeClient->customers->create( [
-                'name'  => $information['first_name'] . ' ' . $information['last_name'],
+            $args = [
                 'email' => $stripeCustomer->email_address,
-            ] );
+            ];
+            if ( isset( $args['first_name'] ) && isset( $information['last_name'] ) ) {
+                $args['name'] = $information['first_name'] . ' ' . $information['last_name'];
+            }
+            $response = $stripeClient->customers->create( $args );
             $stripeCustomer->stripe_id = $response->id;
             $stripeCustomer->save();
         }

@@ -3,8 +3,8 @@ Contributors: Kerfred
 Plugin Uri: https://wordpress.org/plugins/fg-drupal-to-wp/
 Tags: drupal, wordpress, importer, migration, migrator, converter, import, cck, internationalization, ubercart
 Requires at least: 4.5
-Tested up to: 6.3.1
-Stable tag: 3.63.1
+Tested up to: 6.3.2
+Stable tag: 3.63.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -190,6 +190,9 @@ You can read this post to fix it: http://forumsarchive.laravel.io/viewtopic.php?
 Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plugin/fg-drupal-to-wp) or to report bugs if you found some.
 
 == Changelog ==
+
+= 3.63.4 =
+* Tested with WordPress 6.3.2
 
 = 3.63.1 =
 * Fixed: TXT and PPS files were not imported
@@ -796,6 +799,9 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * Initial version: Import Drupal articles, basic pages, categories, tags and images
 
 == Upgrade Notice ==
+
+= 3.63.4 =
+Tested with WordPress 6.3.2
 
 = 3.63.1 =
 Fixed: TXT and PPS files were not imported

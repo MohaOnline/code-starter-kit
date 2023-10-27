@@ -1,10 +1,10 @@
-=== Video Gallery - Best WordPress YouTube Gallery Plugin ===
+ï»¿=== Video Gallery - Best WordPress YouTube Gallery Plugin ===
 Contributors: totalsoft
 Donate link: https://total-soft.com/wp-video-gallery/
-Tags: gallery, image gallery, photo gallery, video gallery, wordpress gallery plugin
+Tags: gallery, gallery, image gallery, photo gallery, video gallery, wordpress gallery plugin
 Requires at least: 4.0
 Tested up to: 6.3
-Stable tag: 2.0.2
+Stable tag: 2.1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,7 +90,7 @@ Most powerful features
 **Set numeric pagination display type**
 
 * Full (1,2,3,4,5,6)
-* Short (Prev 1,2…5,6 Next)
+* Short (Prev 1,2â€¦5,6 Next)
 * Short (Prev 4 Next)
 * Short ( < 4 > )
 * Only text or icon (Prev - Next)
@@ -194,7 +194,7 @@ After activating video gallery choose the type of version you wish to use.
 
 = 5). May I add my own video in WordPress? =
 
-* Yes. This plugin is only accepts mp4 format of videos. Just You need to upload video from your computer. You need to upload an image for that video. This format doesn't automatically create thumbnails and doesn’t create an image.
+* Yes. This plugin is only accepts mp4 format of videos. Just You need to upload video from your computer. You need to upload an image for that video. This format doesn't automatically create thumbnails and doesnâ€™t create an image.
 
 = 6). Why I can not add my video? =
 
@@ -230,6 +230,30 @@ After activating video gallery choose the type of version you wish to use.
 15. An example of plugin in action - Parallax Engine
 
 == Changelog ==
+
+= Version 2.1.3 =
+
+* Fixed a small error
+
+= Version 2.1.2 =
+
+* Problem fixed. When a new gallery was created, the SAVE button did not work.
+
+= Version 2.1.1 =
+
+* The security issue has been resolved.
+
+= Version 2.1.0 =
+
+* Added new types of animation for pagination.
+* Solved the problem for all types of galleries. Two of the same type of galleries on one page did not work.
+* The problem in the gallery has been resolved. The popup did not open correctly.
+* Animation issue has been resolved. Animation during pagination does not work correctly.
+
+= Version 2.0.4 =
+
+* Added function for pagination and load more.
+* Calendar has been tested up to version 6.3.
 
 = Version 2.0.2 =
 

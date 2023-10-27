@@ -125,7 +125,6 @@ class OptimizerDataRepository {
             $two_optimized_pages = \TenWebOptimizer\OptimizerUtils::getCriticalPages();
 
             $args = [
-                'post_type' => 'page',
                 'meta_key' => 'two_mode',
             ];
             $optimized_posts = new WP_Query($args);

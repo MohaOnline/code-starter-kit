@@ -90,10 +90,6 @@ a.newsup-categories.category-color-4{background: #82b74b;}
 .navbar-wp .dropdown-menu {
 	background: #1f2024;
 }
-.navbar-wp .dropdown-menu > li > a {
-	background: #1f2024;
-	color: #fff;
-}
 .navbar-wp .dropdown-menu > .active > a, .navbar-wp .dropdown-menu > .active > a:hover, .navbar-wp .dropdown-menu > .active > a:focus {
 	background: #1151d3;
 	color: #fff;
@@ -107,8 +103,8 @@ a.newsup-categories.category-color-4{background: #82b74b;}
 	color: #fff !important;
 }
 .navbar-wp .dropdown-menu > li > a {
-	background: #1f2024;
-	color: #fff;
+    background: #1f2024 !important;
+    color: #fff !important;
 }
 .navbar-wp .dropdown-menu > .active > a, .navbar-wp .dropdown-menu > .active > a:hover, .navbar-wp .dropdown-menu > .active > a:focus {
 	background: #1151d3;
@@ -398,6 +394,10 @@ blockquote::after {
 }
 .mg-blog-post.lg .mg-blog-meta a:hover , .mg-blog-post.lg .mg-blog-meta a:focus {
 	color: #1151d3;
+}
+.featured-image-caption{
+	background-color: #343a40 ;
+	color: #f8f9fa;
 }
 .post-form {
     color: #fff;

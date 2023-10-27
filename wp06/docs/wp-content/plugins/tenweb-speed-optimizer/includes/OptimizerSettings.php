@@ -1479,7 +1479,7 @@ HTACCESS;
         if ('active' === $plugin_state) {
             if (TENWEB_SO_HOSTED_ON_10WEB) {
                 $enable_webp_delivery = $this->get_settings('two_enable_nginx_webp_delivery');
-                $this->change_nginx_webp_delivery($enable_webp_delivery);
+                $this->change_nginx_webp_delivery([ 'nginx_webp_delivery' => ('on' == $enable_webp_delivery ? 'enabled' : 'disabled') ]);
             } elseif (!TENWEB_SO_HOSTED_ON_NGINX) {
                 add_filter('get_two_enable_htaccess_webp_delivery', function () {
                     return $this->get_settings('two_enable_htaccess_webp_delivery');
@@ -1493,7 +1493,7 @@ HTACCESS;
             }
         } else {
             if (TENWEB_SO_HOSTED_ON_10WEB) {
-                $this->change_nginx_webp_delivery('disabled');
+                $this->change_nginx_webp_delivery([ 'nginx_webp_delivery' => ('disabled') ]);
             } elseif (!TENWEB_SO_HOSTED_ON_NGINX) {
                 add_filter('get_two_enable_htaccess_webp_delivery', function () {
                     return '';

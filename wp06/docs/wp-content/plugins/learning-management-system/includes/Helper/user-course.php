@@ -7,7 +7,9 @@
  * @package Masteriyo\Helper
  */
 
+use Masteriyo\Enums\PostStatus;
 use Masteriyo\Enums\UserCourseStatus;
+use Masteriyo\PostType\PostType;
 use Masteriyo\Query\UserCourseQuery;
 use Masteriyo\Roles;
 
@@ -207,4 +209,74 @@ function masteriyo_get_user_course_by_user_and_course( $user_id, $course_id ) {
 	);
 
 	return current( $query->get_user_courses() );
+}
+
+if ( ! function_exists( 'masteriyo_count_all_enrolled_users' ) ) {
+	/**
+	 * Count total enrolled users from all courses.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @param int|WP_User|Masteriyo\Database\Model $user User ID, WP_User object, or Masteriyo\Database\Model object.
+	 *
+	 * @return integer
+	 */
+	function masteriyo_count_all_enrolled_users( $user ) {
+		$total_count = 0;
+
+		$user = masteriyo_get_user( $user );
+
+		if ( is_null( $user ) || is_wp_error( $user ) ) {
+			return $total_count;
+		}
+
+		// Get all courses.
+		$all_courses = get_posts(
+			array(
+				'post_type'      => PostType::COURSE,
+				'post_status'    => PostStatus::PUBLISH,
+				'author'         => $user->get_id(),
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+			)
+		);
+
+		// Iterate through each course and count enrolled users.
+		foreach ( $all_courses as $course_id ) {
+				$total_count += masteriyo_count_enrolled_users( $course_id );
+		}
+
+		return $total_count;
+	}
+}
+
+if ( ! function_exists( 'masteriyo_count_user_courses' ) ) {
+	/**
+	 * Get the count of courses created by a user.
+	 *
+	 * @since 1.6.16
+	 *
+	 * @param int|WP_User|Masteriyo\Database\Model $user User ID, WP_User object, or Masteriyo\Database\Model object.
+	 *
+	 * @return int The count of courses created by the user.
+	 */
+	function masteriyo_count_user_courses( $user ) {
+		$user = masteriyo_get_user( $user );
+
+		if ( is_null( $user ) || is_wp_error( $user ) ) {
+			return 0;
+		}
+
+		$query = new WP_Query(
+			array(
+				'post_type'      => PostType::COURSE,
+				'post_status'    => PostStatus::PUBLISH,
+				'author'         => $user->get_id(),
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+			)
+		);
+
+		return $query->found_posts;
+	}
 }

@@ -1,3 +1,7 @@
+1.9.8: 2023-10-12
+- Improvement: Better integration with WooCommerce Subscriptions plugin
+- Improvement: WooCommerce spinner z-index conflict with sticky header
+
 1.9.7: 2023-09-28
 - Improvement: Better gallery update logic for variable products with a lot of variations
 - Improvement: Button text alignment improvement

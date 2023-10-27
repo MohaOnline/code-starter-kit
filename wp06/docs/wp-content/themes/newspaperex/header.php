@@ -39,9 +39,11 @@
                         <div class="row align-items-center">
                             <?php $newsup_right_banner_advertisement = newsup_get_option('banner_right_advertisement_section');         
                                    $newsup_center_logo_title = get_theme_mod('newsup_center_logo_title',false);
-                                  do_action('newspaperex_action_right_banner_advertisement');
+                                   $newsup_right_banner_advertisement = newsup_get_option('banner_right_advertisement_section');
+                                   if(!empty($newsup_right_banner_advertisement)){
+                                  do_action('newspaperex_action_right_banner_advertisement'); }
                                   if($newsup_center_logo_title == false ) { ?>
-                            <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4">
                               <?php } else { ?>
                                 <div class="col-12 text-center mx-auto mt-3">
                               <?php }  if($newsup_right_banner_advertisement) { ?>
@@ -60,7 +62,10 @@
                               <?php endif; ?>
                                 </div>
                             </div>
-                           <?php do_action('newspaperex_action_banner_advertisement'); ?>
+                           <?php 
+                           $newsup_banner_advertisement = newsup_get_option('banner_advertisement_section');
+                           if(!empty($newsup_banner_advertisement)){
+                           do_action('newspaperex_action_banner_advertisement'); } ?>
                         </div>
                     </div>
                 </div>

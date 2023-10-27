@@ -38,22 +38,8 @@
 	}
 }
 
-.woocommerce-order-details,
 .woocommerce-customer-details {
-	margin-top: 2.5em;
-}
-
-.woocommerce-order-details {
-
-	table {
-
-		&:not(:last-of-type) {
-			margin-bottom: 2.5em;
-		}
-	}
-}
-
-.woocommerce-customer-details {
+	margin-top: 2em;
 
 	.col2-set {
 		display: grid;
@@ -73,6 +59,10 @@
 		padding: 1.5em;
 		border-radius: 5px;
 		border: 1px dashed var(--border-color);
+
+		p:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 

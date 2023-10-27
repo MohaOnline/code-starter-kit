@@ -88,6 +88,7 @@ function newsup_setup() {
 
 	/* Add theme support for gutenberg block */
 	add_theme_support( 'align-wide' );
+	add_theme_support( 'responsive-embeds' );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.

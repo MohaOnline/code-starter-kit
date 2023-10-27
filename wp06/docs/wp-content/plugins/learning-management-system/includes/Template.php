@@ -11,7 +11,6 @@ namespace Masteriyo;
 
 defined( 'ABSPATH' ) || exit;
 
-use Masteriyo\Cache\Cache;
 use Masteriyo\Helper\Utils;
 use Masteriyo\Constants;
 use Masteriyo\Contracts\Template as TemplateInterface;

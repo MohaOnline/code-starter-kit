@@ -1307,6 +1307,10 @@ $elements = array(
 				'is_pro' => true,
 				'demo'   => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-badge-global-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
 			),
+            array(
+				'key'    => 'premium-shape-divider',
+				'demo'   => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-animated-shape-divider-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
+			),
 			array(
 				'key'  => 'premium-floating-effects',
 				'demo' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-floating-effects-animation/', 'settings-page', 'wp-dash', 'dashboard' ),

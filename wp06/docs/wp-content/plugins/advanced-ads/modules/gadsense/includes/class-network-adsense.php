@@ -101,19 +101,6 @@ class Advanced_Ads_Network_Adsense extends Advanced_Ads_Ad_Network {
 			$section_id
 		);
 
-		// Add setting field for adsense limit.
-		// Deprecated of January, 2019; will be removed one year later.
-		$limit_per_page = $this->data->get_limit_per_page();
-		if ( $limit_per_page ) {
-			add_settings_field(
-				'adsense-limit',
-				__( 'Limit to 3 ads', 'advanced-ads' ),
-				[ $this, 'render_settings_adsense_limit' ],
-				$hook,
-				$section_id
-			);
-		};
-
 		// Disable AdSense violation warnings.
 		add_settings_field(
 			'adsense-warnings-disable',
@@ -159,38 +146,6 @@ class Advanced_Ads_Network_Adsense extends Advanced_Ads_Ad_Network {
 	 */
 	public function render_settings_adsense_id() {
 		require_once GADSENSE_BASE_PATH . 'admin/views/adsense-account.php';
-	}
-
-	/**
-	 * Render AdSense limit setting
-	 *
-	 * @since 1.5.1
-	 * @deprecated January, 2019 – let’s give users one year until we remove the whole logic completely
-	 */
-	public function render_settings_adsense_limit() {
-		$limit_per_page = $this->data->get_limit_per_page();
-
-		?><label><input type="checkbox" name="<?php echo esc_attr( GADSENSE_OPT_NAME ); ?>[limit-per-page]" value="1" <?php checked( $limit_per_page ); ?> />
-		<?php
-		printf(
-		// Translators: $d a number of ads.
-			esc_html( __( 'Limit to %d AdSense ads', 'advanced-ads' ) ),
-			3
-		);
-		?>
-		</label>
-		<p class="description">
-			<?php
-			esc_html_e( 'There is no explicit limit for AdSense ads anymore, but you can still use this setting to prevent too many AdSense ads to show accidentally on your site.', 'advanced-ads' );
-			?>
-		</p>
-		<?php
-		if ( defined( 'AAP_VERSION' ) ) :
-			// Give warning when cache-busting in Pro is active.
-			?>
-			<p class="advads-notice-inline advads-error"><?php esc_html_e( 'Due to technical restrictions, the limit does not work on placements with cache-busting enabled.', 'advanced-ads' ); ?></p>
-			<?php
-		endif;
 	}
 
 	/**

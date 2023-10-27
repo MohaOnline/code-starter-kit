@@ -96,6 +96,12 @@ class Activation {
 					'content'      => '<!-- wp:shortcode -->[masteriyo_instructor_registration]<!-- /wp:shortcode -->',
 					'setting_name' => 'instructor_registration_page_id',
 				),
+				'instructors-list'        => array(
+					'name'         => 'instructors-list',
+					'title'        => 'Instructors List',
+					'content'      => '<!-- wp:shortcode -->[masteriyo_instructors_list]<!-- /wp:shortcode -->',
+					'setting_name' => 'instructors_list_page_id',
+				),
 			)
 		);
 

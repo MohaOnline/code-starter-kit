@@ -1,4 +1,7 @@
 <?php
+
+use AdvancedAds\Entities;
+
 /**
  * Container class for callbacks for overview widgets
  *
@@ -88,7 +91,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 		do_action( 'advanced-ads-overview-widget-content-' . $id, $id );
 		$content = ob_get_clean();
 
-		include ADVADS_BASE_PATH . 'admin/views/overview-widget.php';
+		include ADVADS_ABSPATH . 'admin/views/overview-widget.php';
 	}
 
 	/**
@@ -111,7 +114,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 		$model      = Advanced_Ads::get_instance()->get_model();
 		$recent_ads = $model->get_ads();
 		if ( count( $recent_ads ) === 0 ) :
-			echo '<p><a class="button button-primary" href="' . esc_url( admin_url( 'post-new.php?post_type=' . Advanced_Ads::POST_TYPE_SLUG ) ) .
+			echo '<p><a class="button button-primary" href="' . esc_url( admin_url( 'post-new.php?post_type=' . Entities::POST_TYPE_AD ) ) .
 			'">' . esc_html( __( 'Create your first ad', 'advanced-ads' ) ) . '</a></p>';
 			// Connect to AdSense
 			echo '<p><a class="button button-primary" href="' . esc_url( admin_url( 'admin.php?page=advanced-ads-settings#top#adsense' ) ) .
@@ -157,7 +160,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 			<?php
 		} elseif ( count( $recent_ads ) > 0 ) {
 			// link to manage ads.
-			echo '<p><a class="button button-secondary" href="' . esc_url( admin_url( 'edit.php?post_type=' . Advanced_Ads::POST_TYPE_SLUG ) ) .
+			echo '<p><a class="button button-secondary" href="' . esc_url( admin_url( 'edit.php?post_type=' . Entities::POST_TYPE_AD ) ) .
 			'">' . esc_html__( 'Manage your ads', 'advanced-ads' ) . '</a></p>';
 		}
 
@@ -236,7 +239,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 		}
 		$report_type   = 'domain';
 		$report_filter = $filter_value;
-		include ADVADS_BASE_PATH . 'admin/views/gadsense-dashboard.php';
+		include ADVADS_ABSPATH . 'admin/views/gadsense-dashboard.php';
 	}
 
 	/**
@@ -729,14 +732,14 @@ endif;
 			} else {
 				$link_title = isset( $_addon['link_title'] ) ? $_addon['link_title'] : __( 'Get this add-on', 'advanced-ads' );
 			}
-			include ADVADS_BASE_PATH . 'admin/views/overview-addons-line.php';
+			include ADVADS_ABSPATH . 'admin/views/overview-addons-line.php';
 		endforeach;
 		?>
 		</table>
 		<?php
 	}
 
-	
+
 	/**
 	 * Sort by installed add-ons
 	 *

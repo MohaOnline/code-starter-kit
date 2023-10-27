@@ -1,3 +1,6 @@
+:root {
+	--wp-admin-theme-color: #007cba;
+}
 #ivole_trustbadge_admin { display: block; }
 #ivole_trustbadge_admin.ivole-trustbadge-sl, #ivole_trustbadge_admin.ivole-trustbadge-slp, #ivole_trustbadge_admin.ivole-trustbadge-sd, #ivole_trustbadge_admin.ivole-trustbadge-sdp {
 	-webkit-border-radius: 5px;
@@ -1257,6 +1260,70 @@ li.select2-results__option {
 }
 .ivole-new-settings .cr-test-wa-status {
 	max-width: 500px;
+}
+.ivole-new-settings table.form-table {
+	margin: 0;
+	position: relative;
+	table-layout: fixed;
+}
+.ivole-new-settings table.form-table input[type=text],
+.ivole-new-settings table.form-table input[type=number] {
+	width: 400px;
+	margin: 0;
+	padding: 0 8px;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+.ivole-new-settings table.form-table th {
+	position: relative;
+	padding-right: 24px;
+}
+.ivole-new-settings table.form-table th label {
+	position: relative;
+	display: block;
+}
+.ivole-new-settings table.form-table th label+.woocommerce-help-tip {
+	margin: 0;
+	position: absolute;
+	right: 0;
+	top: 20px;
+}
+.ivole-new-settings table.form-table th label .woocommerce-help-tip,
+.ivole-new-settings table.form-table th label img.help_tip {
+	margin: -7px -24px 0 0;
+	position: absolute;
+	right: 0;
+	top: 50%;
+}
+.ivole-new-settings table.form-table .woocommerce-help-tip,
+.ivole-new-settings table.form-table img.help_tip {
+	padding: 0;
+	margin: -4px 0 0 5px;
+	vertical-align: middle;
+	cursor: help;
+	line-height: 1;
+}
+.ivole-new-settings table.form-table .select2-container {
+	vertical-align: top;
+	margin-bottom: 3px;
+}
+.ivole-new-settings table.form-table select {
+	width: 400px;
+	margin: 0;
+	box-sizing: border-box;
+	line-height: 32px;
+	vertical-align: top;
+}
+.ivole-new-settings .wc-admin-breadcrumb {
+	margin-left: 0.5em;
+}
+.ivole-new-settings #template div {
+	margin: 0;
+}
+.ivole-new-settings #template div p .button {
+	float: right;
+	margin-left: 10px;
+	margin-top: -4px;
 }
 @keyframes dashicons-spin {
 	0% {

@@ -30,8 +30,11 @@
 			flex-direction: column;
 		}
 
-		body #theme-content .row > div{
+		body #theme-content .row > div,
+		body.both-sidebar #theme-content .row .secondary-left-sidebar,
+		body.both-sidebar #theme-content .row .secondary-sidebar {
 			width: 100%;
+			max-width: 100%;
 		}
 
 		body #theme-content .row .primary-content {

@@ -112,7 +112,7 @@ $settings = $this->settingsArray();
                         if ($wizard === 1) {
                             $notice = false;
                             $customizedDir = "";
-                            $wpd_addon_fix = ( isset($_GET['wpd_addon_fix']) && $_GET['wpd_addon_fix'] ) ? 1 : 0;
+                            $wpd_addon_fix = filter_input( INPUT_GET, "wpd_addon_fix", FILTER_SANITIZE_NUMBER_INT ) ? 1 : 0;
                             if (is_dir(get_stylesheet_directory() . "/wpdiscuz")) {
                                 $customizedDir = get_stylesheet_directory() . "/wpdiscuz";
                             } else if (is_dir(get_template_directory() . "/wpdiscuz")) {
@@ -133,7 +133,7 @@ $settings = $this->settingsArray();
                                         <span style="color: #ee0004"><?php esc_html_e("Please remove wpDiscuz template files from your active theme's /wpdiscuz/ folder.", "wpdiscuz") ?></span>
                                         <?php esc_html_e("Use FTP client or hosting service cPanel > File Manager tool. WordPress theme folders are located in /wp-content/themes/ directory. The active theme folder can be detected by name.", "wpdiscuz"); ?>
                                     </p>
-                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=1&wpd_addon_fix=" . $wpd_addon_fix ?>" class="button" style="text-decoration: none;"><?php _e('Mark as solved', 'wpdiscuz') ?></a></p>
+                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=1&wpd_addon_fix=" . $wpd_addon_fix ?>" class="button" style="text-decoration: none;"><?php esc_html_e('Mark as solved', 'wpdiscuz') ?></a></p>
                                 </div>
                                 <!-- Wizard Note - end -->
                                 <?php
@@ -153,7 +153,7 @@ $settings = $this->settingsArray();
                                         <span style="color: #ee0004"><?php esc_html_e("Please update wpDiscuz addons in Dashboard > Plugins admin page, then activate those back.", "wpdiscuz"); ?></span>
                                         <?php esc_html_e("Prior to the wpDiscuz 7 release, we've released new versions of all wpDiscuz addons. If you've already using the latest versions, just activate those back. If your license key is expired and you cannot update, please renew those addons at gVectors Store with 30% discount applied automatically at checkout page. Just make sure you're logged-in in the store with your customer account.", "wpdiscuz"); ?>
                                     </p>
-                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=1&wpd_addon_fix=1" ?>" class="button" style="text-decoration: none;"><?php _e('Ok, I understood', 'wpdiscuz') ?></a></p>
+                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=1&wpd_addon_fix=1" ?>" class="button" style="text-decoration: none;"><?php esc_html_e('Ok, I understood', 'wpdiscuz') ?></a></p>
                                 </div>
                                 <!-- Wizard Note - end -->
                                 <?php
@@ -172,7 +172,7 @@ $settings = $this->settingsArray();
                                         <span style="color: #ee0004"><?php esc_html_e("Please disable Jetpack Comments.", "wpdiscuz") ?></span>
                                         <?php esc_html_e('Use the "Deactivate" button located next to the "Learn More" button. Just click on this button and Jetpack Comments will be deactivated. Once it\'s disabled, please delete all caches.', "wpdiscuz") ?>
                                     </p>
-                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=&wpd_addon_fix=" . $wpd_addon_fix ?>" class="button" style="text-decoration: none;"><?php _e('Mark as solved', 'wpdiscuz') ?></a></p>
+                                    <p style="text-align: right; margin-top: -10px;"><a href="<?php echo esc_url_raw(admin_url("admin.php?page=" . WpdiscuzCore::PAGE_SETTINGS)) . "&wpd_wizard=&wpd_addon_fix=" . $wpd_addon_fix ?>" class="button" style="text-decoration: none;"><?php esc_html_e('Mark as solved', 'wpdiscuz') ?></a></p>
                                 </div>
                                 <!-- Wizard Note - end -->
                                 <?php

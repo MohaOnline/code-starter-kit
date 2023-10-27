@@ -90,12 +90,14 @@ class Notice {
 			return;
 		}
 
+		/**
+		 * On clicking of the <h3> element add an "open" class to the parent
+		 * div element.
+		 */
 		?>
-		<div class="advanced-sidebar-menu-column-box advanced-sidebar-info-panel">
-			<h3>
-				<a href="https://onpointplugins.com/product/advanced-sidebar-menu-pro/?utm_source=widget-title&utm_campaign=gopro&utm_medium=wp-dash">
-					<?php esc_html_e( 'Advanced Sidebar Menu PRO', 'advanced-sidebar-menu' ); ?>
-				</a>
+		<div class="advanced-sidebar-menu-column-box advanced-sidebar-info-panel wp-core-ui">
+			<h3 onclick="this.parentNode.classList.toggle('open')">
+				<?php esc_html_e( 'Go PRO', 'advanced-sidebar-menu' ); ?>
 			</h3>
 			<ol>
 				<?php
@@ -108,12 +110,7 @@ class Notice {
 				}
 				?>
 				<li>
-					<a
-						href="https://onpointplugins.com/product/advanced-sidebar-menu-pro/?utm_source=widget-more&utm_campaign=gopro&utm_medium=wp-dash"
-						target="_blank"
-						style="text-decoration: none;">
-						<?php esc_html_e( 'So much more...', 'advanced-sidebar-menu' ); ?>
-					</a>
+					<?php esc_html_e( 'And so much more…', 'advanced-sidebar-menu' ); ?>
 				</li>
 			</ol>
 			<a
@@ -126,7 +123,7 @@ class Notice {
 			<div
 				data-js="advanced-sidebar-menu/pro/preview/trigger"
 				data-target="advanced-sidebar-menu/pro/preview/<?php echo esc_attr( $widget->id ); ?>"
-				class="advanced-sidebar-desktop-only"
+				class="advanced-sidebar-desktop-only advanced-sidebar-preview-trigger"
 			>
 				<button class="button-secondary">
 					<?php esc_html_e( 'Preview', 'advanced-sidebar-menu' ); ?>
@@ -191,7 +188,7 @@ class Notice {
 	 */
 	public function get_features() {
 		return [
-			__( 'Styling options including borders, bullets, colors, backgrounds, size, and font weight.', 'advanced-sidebar-menu' ),
+			__( 'Styling options including borders, bullets, colors, backgrounds, font size and weight.', 'advanced-sidebar-menu' ),
 			__( 'Accordion menus.', 'advanced-sidebar-menu' ),
 			__( 'Support for custom navigation menus from Appearance -> Menus.', 'advanced-sidebar-menu' ),
 			__( 'Select and display custom post types and taxonomies.', 'advanced-sidebar-menu' ),

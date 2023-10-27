@@ -4,7 +4,7 @@ Tags: ads, adsense, amp, ads.txt, ad rotations, ad blocker, amazon, banner, clic
 Requires at least: 4.9
 Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 1.46.0
+Stable tag: 1.47.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -334,12 +334,22 @@ Yes. You can use plenty of [hooks](https://wpadvancedads.com/codex/) to customiz
 
 == Changelog ==
 
-= 1.46.0 (August 17, 2023) =
+= 1.47.2 (October 26, 2023) =
 
-- Feature: add a direct link to view the ad when a new ad is published
-- Improvement: use adsense ad unit title in adsense earnings metabox
-- Fix: add an "aria-label" attribute to link tags which contain images
-- Fix: add a new Translation promo class, which prevents PHP deprecation notices
-- Fix: prevent deprecation warnings in PHP 8.2
-- Fix: remove unused AMP code that in some cases threw a PHP error
-- Fix: exchange 'wp_img_tag_add_loading_attr' function, which was deprecated in WordPress 6.3,  with 'wp_img_tag_add_loading_optimization_attrs'
+- Fix: prevent fatal error in some cases on local sites
+- Fix: show missing groups on group list page
+
+= 1.47.1 (October 26, 2023) =
+
+- Fix: prevent fatal error on the Widgets page
+
+= 1.47.0 (October 25, 2023) =
+
+- Improvement: show hints when ads are disabled for specific post types
+- Improvement: optimize loading times throughout the plugin to enhance overall performance
+- Improvement: enhance Ad Health features with ad count display, toggleable ad highlighting, and informative tooltips for ads and placements
+- Fix: remove AdSense 'ads limit' deprecated feature
+- Fix: correct an inaccurate display of the targeting box in the wizard
+- Fix: display a notification for groups that was accidentally hidden
+- Fix: update complianz 6.0.0 deprecated filter cmplz_script_class replaced with cmplz_service_category
+- Fix: prevent an error message when using invalid CSS in placements Inline CSS field

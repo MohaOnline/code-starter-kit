@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 6.3
-Stable tag: 3.0
-Version: 3.0
+Tested up to: 6.4
+Stable tag: 3.1
+Version: 3.1
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
@@ -305,6 +305,13 @@ Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-sta
 If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via the [contact form](https://plugin-planet.com/support/#contact) at Plugin Planet.
 
 
+**3.1 (2023/10/20)**
+
+* Fixes activation bug w/ WP CLI ([Thanks](https://wordpress.org/support/topic/fatal-error-when-installing-via-wp-cli/) [@deanhibbert](https://wordpress.org/support/users/deanhibbert/))
+* Updates default translation template
+* Updates custom banner notice
+* Tests on WordPress 6.4 (beta)
+
 **3.0 (2023/07/10)**
 
 * Improves font-icon CSS styles
@@ -418,7 +425,7 @@ If you have any feedback or suggestions to make this plugin the absolute best it
 
 * Fixes bug with empty titles reverting to Gutenberg
 * Removes requirement for custom fields for post types
-* Resolves error when using as mu-plugin (thanks [Dave Lavoie](https://ep4.com/))
+* Resolves error when using as mu-plugin (Thanks [Dave Lavoie](https://ep4.com/))
 * Adds enable/disable support for `wp-block-library-theme`
 * Tweaks plugin settings screen UI
 * Generates new default translation template

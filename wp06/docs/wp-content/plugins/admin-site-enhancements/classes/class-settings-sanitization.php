@@ -242,6 +242,11 @@ class Settings_Sanitization
             $options['custom_login_slug'] = 'backend';
         }
         $options['custom_login_slug'] = ( !empty($options['custom_login_slug']) ? sanitize_text_field( $options['custom_login_slug'] ) : 'backend' );
+        // Use Site Identity on the Login Page
+        if ( !isset( $options['site_identity_on_login'] ) ) {
+            $options['site_identity_on_login'] = false;
+        }
+        $options['site_identity_on_login'] = ( 'on' == $options['site_identity_on_login'] ? true : false );
         // Enable Login Logout Menu
         if ( !isset( $options['enable_login_logout_menu'] ) ) {
             $options['enable_login_logout_menu'] = false;
@@ -462,6 +467,10 @@ class Settings_Sanitization
             $options['disable_head_generator_tag'] = false;
         }
         $options['disable_head_generator_tag'] = ( 'on' == $options['disable_head_generator_tag'] ? true : false );
+        if ( !isset( $options['disable_resource_version_number'] ) ) {
+            $options['disable_resource_version_number'] = false;
+        }
+        $options['disable_resource_version_number'] = ( 'on' == $options['disable_resource_version_number'] ? true : false );
         if ( !isset( $options['disable_head_wlwmanifest_tag'] ) ) {
             $options['disable_head_wlwmanifest_tag'] = false;
         }
@@ -482,6 +491,10 @@ class Settings_Sanitization
             $options['disable_emoji_support'] = false;
         }
         $options['disable_emoji_support'] = ( 'on' == $options['disable_emoji_support'] ? true : false );
+        if ( !isset( $options['disable_jquery_migrate'] ) ) {
+            $options['disable_jquery_migrate'] = false;
+        }
+        $options['disable_jquery_migrate'] = ( 'on' == $options['disable_jquery_migrate'] ? true : false );
         // =================================================================
         // SECURITY
         // =================================================================

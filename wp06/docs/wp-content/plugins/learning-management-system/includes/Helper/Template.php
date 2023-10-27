@@ -2315,3 +2315,25 @@ if ( ! function_exists( 'masteriyo_custom_footer' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'masteriyo_template_shortcode_instructors_list' ) ) {
+	/**
+	 * Print instructors.
+	 *
+	 * @since 1.6.16
+	 */
+	function masteriyo_template_shortcode_instructors_list( $attrs ) {
+		masteriyo_get_template( 'shortcodes/instructors-list/list.php', $attrs );
+	}
+}
+
+if ( ! function_exists( 'masteriyo_template_shortcode_instructors_list_item' ) ) {
+	/**
+	 * Print course category.
+	 *
+	 * @since 1.6.16
+	 */
+	function masteriyo_template_shortcode_instructors_list_item( $attrs ) {
+		masteriyo_get_template( 'shortcodes/instructors-list/list-item.php', $attrs );
+	}
+}

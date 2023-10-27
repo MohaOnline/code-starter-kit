@@ -48,6 +48,10 @@
              download="backup_live_logs.txt" class="nlink">
             <?php _e('Download live log', 'backup-backup') ?>
           </a>
+          <span>&nbsp;|&nbsp;</span>
+          <div class="f16 bmi-modal-closer inline" data-close="backup-progress-modal" id="backup-stop">
+            <?php _e('Stop the process', 'backup-backup') ?>
+          </div>
         </div>
 
       </div>
@@ -64,9 +68,6 @@
               <div class="f18 semibold"><?php _e('Minimize this window', 'backup-backup') ?></div>
             </div>
           </a>
-        </div>
-        <div class="text-grey text-muted mtll f16 bmi-modal-closer medium red-text inline" data-close="backup-progress-modal" id="backup-stop">
-          <?php _e('Stop the backup process', 'backup-backup') ?>
         </div>
       </div>
 

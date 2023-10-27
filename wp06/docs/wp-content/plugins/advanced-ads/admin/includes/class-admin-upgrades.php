@@ -1,4 +1,8 @@
 <?php // phpcs:ignore
+
+use AdvancedAds\Entities;
+use AdvancedAds\Utilities\WordPress;
+
 /**
  * Functions around promoting upgrades
  *
@@ -69,7 +73,7 @@ class Advanced_Ads_Admin_Upgrades {
 			'utm_campaign' => $utm_campaign,
 		], $url );
 
-		include ADVADS_BASE_PATH . 'admin/views/upgrades/upgrade-link.php';
+		include ADVADS_ABSPATH . 'admin/views/upgrades/upgrade-link.php';
 	}
 
 	/**
@@ -118,7 +122,7 @@ class Advanced_Ads_Admin_Upgrades {
 	 */
 	public function adsense_type_amp_options() {
 		if ( ! defined( 'AAR_VERSION' ) && Advanced_Ads_Checks::active_amp_plugin() ) {
-			include ADVADS_BASE_PATH . 'admin/views/upgrades/adsense-amp.php';
+			include ADVADS_ABSPATH . 'admin/views/upgrades/adsense-amp.php';
 		}
 	}
 
@@ -133,8 +137,8 @@ class Advanced_Ads_Admin_Upgrades {
 	public function render_duplicate_link( $actions, $post ) {
 		if (
 			 ! defined( 'AAP_VERSION' )
-			 && Advanced_Ads::POST_TYPE_SLUG === $post->post_type
-			 && current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) )
+			 && Entities::POST_TYPE_AD === $post->post_type
+			 && WordPress::user_can( 'advanced_ads_edit_ads' )
 		) {
 			$actions['copy-ad'] = $this->create_duplicate_link();
 		}
@@ -150,8 +154,8 @@ class Advanced_Ads_Admin_Upgrades {
 		if (
 			! defined( 'AAP_VERSION' )
 			 && $post->filter === 'edit' // only for already saved ads.
-			 && Advanced_Ads::POST_TYPE_SLUG === $post->post_type
-			 && current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) )
+			 && Entities::POST_TYPE_AD === $post->post_type
+			 && WordPress::user_can( 'advanced_ads_edit_ads' )
 		) {
 			?>
 			<div>

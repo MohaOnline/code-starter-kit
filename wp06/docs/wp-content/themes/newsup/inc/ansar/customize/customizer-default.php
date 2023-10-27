@@ -21,7 +21,7 @@ function newsup_get_default_theme_options() {
     
     // Header options section
     $defaults['banner_advertisement_section'] = '';
-    $defaults['banner_advertisement_section_url'] = '';
+    $defaults['banner_advertisement_section_url'] = '#';
     $defaults['banner_advertisement_scope'] = 'front-page-only';
 
 

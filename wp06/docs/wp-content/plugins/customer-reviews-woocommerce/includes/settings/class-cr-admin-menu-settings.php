@@ -71,7 +71,7 @@ if ( ! class_exists( 'CR_Settings_Admin_Menu' ) ):
 
 		public function display_settings_admin_page() {
 			?>
-			<div class="wrap ivole-new-settings woocommerce">
+			<div class="wrap ivole-new-settings cr-tab-<?php echo esc_attr( $this->current_tab ); ?>">
 				<h1 class="wp-heading-inline" style="margin-bottom:8px;"><?php echo esc_html( get_admin_page_title() ); ?></h1>
 				<hr class="wp-header-end">
 				<?php
@@ -126,7 +126,7 @@ if ( ! class_exists( 'CR_Settings_Admin_Menu' ) ):
 
 		public function include_scripts() {
 			if ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] === 'cr-reviews-settings' ) {
-				wp_register_script( 'cr-admin-settings', plugins_url('js/admin-settings.js', dirname( dirname( __FILE__ ) ) ), array(), Ivole::CR_VERSION, false );
+				wp_register_script( 'cr-admin-settings', plugins_url('js/admin-settings.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), Ivole::CR_VERSION, false );
 				wp_localize_script(
 					'cr-admin-settings',
 					'cr_settings_object',

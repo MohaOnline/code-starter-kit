@@ -4,9 +4,10 @@ Theme URI: https://themeansar.com/free-themes/newspaperex
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newspaperex is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newspaperex is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newspaperex is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://newsup.themeansar.com/newspaperex/ and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 2.0
-Requires PHP: 7
-Tested up to: 6.3
+Version: 2.1
+Requires PHP: 7.0
+Requires at least: 5.4
+Tested up to: 6.3.1
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Template: newsup
@@ -117,20 +118,12 @@ footer .site-description {
 .mg-nav-widget-area .navbar-brand{
     margin-right: 0;
 }
+.comment-detail .edit-link a, 
+.comment-detail .reply a, 
+pre.wp-block-code a {
+    text-decoration: underline;
+}
 /* ============================================= Responsive Part ======================================== */
-
-@media screen and (max-width: 767px) and (min-width: 240px) {
-    .mg-headwidget .navbar-wp .navbar-nav > li> a {
-        position: relative;
-        border-bottom: 1px solid rgba(225,225,225,0.4);
-    }
-}
-
-@media (max-width: 991px) {
-	.navbar-wp .navbar-nav > li> a i {
-    	display: none;
-	}	
-}
 
 @media (min-width: 1200px) {
     .mg-blog-post.md .bottom h4 {
@@ -138,8 +131,10 @@ footer .site-description {
         overflow: hidden;
     }
 }
-
-@media (max-width: 991.98px) {
+@media (max-width: 991px) {
+	.navbar-wp .navbar-nav > li> a i {
+    	display: none;
+	}	
     #menu-primary li.active.home {
         display: none;
     }
@@ -154,7 +149,6 @@ footer .site-description {
         display: none;
     }
 }
-
 @media (max-width: 767px) and (min-width: 576px) {
     .mg-fea-area .col-md-3 {
         display: flex;
@@ -162,8 +156,14 @@ footer .site-description {
     .mg-fea-area .mg-blog-post.lg.mins {
         margin: 0 5px 30px 0;
     }
-    .mg-fea-area .col-md-3.col-sm-6{
+    .mg-fea-area .col-md-3.top-right-area{
         display: block;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 240px) {
+    .mg-headwidget .navbar-wp .navbar-nav > li> a {
+        position: relative;
+        border-bottom: 1px solid rgba(225,225,225,0.4);
     }
 }
 @media (min-width: 240px) and (max-width: 576px){
@@ -174,10 +174,4 @@ footer .site-description {
     .mg-fea-area .mr-bot60 {
         margin-bottom: 50px;
     }
-}
-
-.comment-detail .edit-link a, 
-.comment-detail .reply a, 
-pre.wp-block-code a {
-    text-decoration: underline;
 }

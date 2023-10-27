@@ -40,7 +40,7 @@ if ( '0' === $comment->comment_approved ) { ?>
 		<strong class="woocommerce-review__author"><?php comment_author(); ?> </strong>
 		<?php
 		if( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $shop_manager ) {
-			$store_manager = apply_filters( 'cr_reviews_store_manager', 'store manager' );
+			$store_manager = apply_filters( 'cr_reviews_store_manager', __( 'store manager', 'customer-reviews-woocommerce' ) );
 			echo '<em class="woocommerce-review__verified verified">(' . esc_html__( $store_manager, 'customer-reviews-woocommerce' ) . ')</em> ';
 		} else {
 			if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) {

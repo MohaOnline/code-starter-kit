@@ -3,8 +3,8 @@ Tags: page builder, responsive, parallax, widgets, blocks, gallery, layout, grid
 Requires at least: 4.7
 Tested up to: 6.3
 Requires PHP: 5.6.20
-Stable tag: 2.26.1
-Build time: 2023-09-20T09:33:56-07:00
+Stable tag: 2.26.2
+Build time: 2023-10-25T10:52:31+01:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/premium/
@@ -120,6 +120,10 @@ Page Builder is compatible with the vast majority of third-party plugins and wid
 SiteOrigin offers a single premium plugin that enhances and extends Page Builder, the Widgets Bundle, SiteOrigin CSS and all of our free themes. Find out more about [SiteOrigin Premium](https://siteorigin.com/downloads/premium/) and the powerful addons it offers.
 
 == Changelog ==
+
+= 2.26.2 - 25 October 2023 =
+* Added compatibility with SEOPress Content Analysis.
+* Developer: Made adjustments to the styles filter in the admin panel. Added a new parameter `current_styles` to the `apply_filters` function call. Also, introduced a new filter `siteorigin_panels_style_field_sanitize_all_` that allows a field to modify other values.
 
 = 2.26.1 - 20 September 2023 =
 * Improved handling of a greater number of sizes in the Row Cell Ratio feature.

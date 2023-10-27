@@ -4,7 +4,7 @@ Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, po
 Requires at least: 4.7.0
 Tested up to: 6.3
 Requires PHP: 5.3
-Stable tag: 2.14.0
+Stable tag: 2.14.1
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -460,6 +460,13 @@ Syed Balkhi
 == Changelog ==
 
 **Most Recent Changes:**
+
+= Popup Builder 2.14.1 =
+* Updates to the OptinMonster submenu.
+* Removed code related to the output and retrieval of legacy campaigns.
+* Fixed issue where the display rule summary could be blank.
+* Transitioned "Pardot" to "Salesforce Marketing Cloud Account Engagement" to reflect their rebranding.
+* Various npm package updates used for generating our JavaScript code.
 
 = Popup Builder 2.14.0 =
 * UI updates and improvements to template filtering.

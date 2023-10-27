@@ -3,9 +3,9 @@ Contributors: Leap13, Rimoun
 Tags: elementor, elementor addons, widgets, elementor elements, templates
 Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme
 Requires at least: 5.0
-Tested Up To: 6.3.1
+Tested Up To: 6.3.2
 Requires PHP: 7.0
-Stable Tag: 4.10.11
+Stable Tag: 4.10.14
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -20,8 +20,11 @@ Supercharge your [Elementor Page Builder](https://wordpress.org/plugins/elemento
 ### Useful Links
 [Support](https://my.leap13.com/contact-support/) | [Docs](https://premiumaddons.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) | [Video Tutorials](https://www.youtube.com/channel/UCXcJ9BeO2sKKHor7Q9VglTQ) | [Facebook Group](https://facebook.com/groups/premiumAddons) | [Upgrade to Pro](https://premiumaddons.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
+### New: Animated Shape Divider Addon
+Add animated shape dividers for Elementor flexbox containers, sections and columns. You can select between 40+ shape dividers or use a custom SVG code to add your own divider. [Check it out now!](https://premiumaddons.com/elementor-animated-shape-divider-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+
 ### New: Advanced Media Carousel Widget
-You can now create carousel using images, videos, Elementor templates to create the carousel you want. Select between four animations and dozens of customization options . [Check it out now!](https://premiumaddons.com/elementor-advanced-carousel-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+You can now create carousel using images, videos, Elementor templates to create the carousel you want. Select between four animations and dozens of customization options. [Check it out now!](https://premiumaddons.com/elementor-advanced-carousel-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 ### New: TikTok Feed Widget
 We recently released the UNIQUE TikTok Feed widget that helps you to get feed from your TikTok accounts and show them as a grid, masonry or carousel. Select between 3 neat skins. [Check it out now!](https://premiumaddons.com/elementor-tiktok-feed-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
@@ -124,6 +127,7 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 * [**Multi-Scroll Widget**](https://premiumaddons.com/multi-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Elementor widget available that allows you to create attractive multi-scroll effect. It can be used to create full landing pages or use it inside any page.
 * [**Custom Mouse Cursor Global Addon**](https://premiumaddons.com/elementor-custom-mouse-cursor-global-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add a custom mouse cursor to any section, column, or widget. You can select between Font Awesome icon, custom SVGs, image or Lottie animation.
 * [**Magic Scroll Global Addon**](https://premiumaddons.com/elementor-magic-scroll-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create outstanding scroll animations to any column/widget with just few clicks and control every single detail in the animation scene.
+* [**Animated Shape Divier Addon**](https://premiumaddons.com/elementor-animated-shape-divider-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create animated shape divider on containers, sections and columns. Select between tens of pre-made dividers or use your own.
 * [**Tooltips Global Addon**](https://premiumaddons.com/elementor-tooltip-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Add icon, image, Lottie animation or Elementor template as a tooltip for any Elementor container, section, column or widget element.
 * [**Badge Global Addon**](https://premiumaddons.com/elementor-badge-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add an icon, image, Lottie animation, or SVG blob shape badge to any section, column, or widget.
 * [**Animated Blob Generator**](https://premiumaddons.com/elementor-animated-blob-generator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple animated blob layers to your sections with a wide range of smart customization options.
@@ -242,6 +246,21 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.14 =
+
+- Fixed: Slow issues in Animated Shape Divider addon.
+
+= 4.10.13 =
+
+- Fixed: PHP warning since v4.10.12
+
+= 4.10.12 =
+
+- New: Added Animated Shape Divier addon - [here](https://premiumaddons.com/elementor-animated-shape-divider-addon/).
+- Tweak: Testimonials widget rebuilt - [here](https://premiumaddons.com/testimonials-widget-for-elementor-page-builder/).
+- Tweak: Added option to control header/footer separator color in Modal Box widget.
+- Fixed: Fatal error with Woo Category Display Condition.
 
 = 4.10.11 =
 

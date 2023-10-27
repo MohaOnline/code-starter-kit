@@ -16,7 +16,7 @@
   <div class="bmi-modal-wrapper no-hpad" style="max-width: 900px; max-width: min(900px, 80vw)">
     <div class="bmi-modal-content">
 
-      <div class="mms mm60 f30 bold center black"><?php _e('Backup successful!', 'backup-backup') ?></div>
+      <div class="mms mm60 f30 bold center black bck-suc-title"><?php _e('Backup successful!', 'backup-backup') ?></div>
 
       <div class="center mm60 mbl mtl">
         <img src="<?php echo $this->get_asset('images', 'happy-smile.png'); ?>" alt="happy-img">

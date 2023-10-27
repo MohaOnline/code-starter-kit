@@ -5,7 +5,7 @@ Donate link: https://bowo.io/asenha-sp-rdm
 Tags: enhancements, tweaks, optimizations, tools  
 Requires at least: 4.6  
 Tested up to: 6.3.1  
-Stable tag: 5.7.1  
+Stable tag: 6.0.4  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,6 +17,16 @@ Duplicate post, post order, image resize, email via SMTP, admin menu editor, cus
 ## Description
 
 Admin and Site Enhancements (ASE) helps you to **easily enhance** various admin workflows and site aspects while **replacing multiple plugins** doing it. 
+
+**Pro version** with Lifetime Deal (LTD) is available at [www.wpase.com](https://www.wpase.com/rdme-to-web).
+
+Here's First Look at ASE Pro by David McCan
+
+https://www.youtube.com/watch?v=qdbl-Ao_1Xc
+
+Here's a review at v5.7.1 by Buxbaum Barna in Hungarian.
+
+https://www.youtube.com/watch?v=JHo1x3ITs8E
 
 Here's a review at v5.7.0 by Tiziano Fogliata in Italian.
 
@@ -116,10 +126,13 @@ _"**p.s. There are bugs**. This is software development after all and **I'm the 
 
 ### Content Management
 
+* **[[PRO](https://www.wpase.com/rdme-to-web)] Custom Content Types**. Conveniently register and edit custom post types and custom taxonomies without writing a single line of code. Optionally enable the creation of custom field groups.
 * **Content Duplication**. Enable one-click duplication / clone / copy of pages, posts and custom posts. The corresponding taxonomy terms and post meta will also be duplicated.
 * **Content Order**. Enable custom order for pages, posts and custom post types. Useful for displaying them in the desired order in wp-admin and on the frontend. e.g. projects, services, FAQs, team members, testimonials, etc.
+* **[[PRO](https://www.wpase.com/rdme-to-web)] Media Categories**. Add categories for the media library and enable drag-and-drop categorization of media items. Categories can then be used to filter media items during media insertion into content.
 * **Media Replacement**. Easily replace any type of media file with a new one while retaining the existing media ID, publish date and file name. So, no existing links will break.
 * **SVG Upload**. Allow some or all user roles to upload SVG files, which will then be sanitized to keep things secure.
+* **[[PRO](https://www.wpase.com/rdme-to-web)] AVIF Upload**. Enable uploading AVIF files in the Media Library.
 * **External Permalinks**. Enable pages, posts and/or custom post types to have permalinks that point to external URLs. The rel="noopener noreferrer nofollow" attribute will also be added for enhanced security and SEO benefits. Compatible with links added using [Page Links To](https://wordpress.org/plugins/page-links-to/).
 * **Open All External Links in New Tab**. Force all links to external sites to open in new browser tab via target="\_blank" attribute. The rel="noopener noreferrer nofollow" attribute will also be added for enhanced security and SEO benefits.
 * **Allow Custom Navigation Menu Items to Open in New Tab**. Allow custom navigation menu items to have links that open in new browser tab via target="\_blank" attribute. The rel="noopener noreferrer nofollow" attribute will also be added for enhanced security and SEO benefits.
@@ -141,6 +154,7 @@ _"**p.s. There are bugs**. This is software development after all and **I'm the 
 
 * **Wider Admin Menu**. Give the admin menu more room to better accommodate wider items.
 * **Admin Menu Editor / Organizer**. Customize the order of the admin menu and optionally change menu item title or hide some items.
+* **[[PRO](https://www.wpase.com/rdme-to-web)] Admin Columns Manager**. Manage and organize columns in the admin listing for pages, posts and custom post types.
 * **Enhance List Tables**. Improve the usefulness of listing pages of various post types by adding / removing columns and elements.
   * _Show the featured image column_: in the list tables for pages and post types that support featured images.
   * _Show the excerpt column_: in the list tables for pages and post types that support excerpt.
@@ -152,12 +166,14 @@ _"**p.s. There are bugs**. This is software development after all and **I'm the 
 ### Log In / Log Out
 
 * **Change Login URL**. Improve site security by using a custom login URL, e.g. www.example.com/backend
+* **Site Identity on Login Page**. Use the site icon and URL to replace the default WordPress logo with link to wordpress.org on the login page.
 * **Log In/Out Menu**. Enable log in, log out and dynamic log in/out menu item for addition to any menu.
 * **Last Login Column**. Log when users on the site last logged in and display the date and time in the users list table.
 * **Redirect After Login / Logout**. Set custom redirect URL for all or some user roles after login / logout.
 
 ### Custom Code
 
+* **[[PRO](https://www.wpase.com/rdme-to-web)] Code Snippets Manager**. Conveniently add and manage CSS, JS, HTML and PHP code snippets to modify your site's content, design, behaviour and functionalities
 * **Custom Admin CSS**. Add custom CSS on all admin pages for all user roles.
 * **Custom Frontend CSS**. Add custom CSS on all frontend pages for all user roles.
 * **Insert &lt;head&gt;, &lt;body&gt; and &lt;footer&gt; Code**. Easily insert &lt;meta&gt;, &lt;link&gt;, &lt;script&gt; and &lt;style&gt; tags, Google Analytics, Tag Manager, AdSense, Ads Conversion and Optimize code, Facebook, TikTok and Twitter pixels, etc.
@@ -175,11 +191,13 @@ _"**p.s. There are bugs**. This is software development after all and **I'm the 
 * **Disable All Updates**. Completely disable core, theme and plugin updates and auto-updates. Will also disable update checks, notices and emails.
 * **Disable Smaller Components**. Prevent smaller components from running or loading. Make the site more secure, load slightly faster and be more optimized for crawling by search engines.
   * Disable the **generator &lt;meta&gt; tag** in &lt;head&gt;, which discloses the WordPress version number. Older versions(s) might contain unpatched security loophole(s).
+  * Disable **version number** on static resource URLs referenced in &lt;head&gt;, which can disclose WordPress version number. Older versions(s) might contain unpatched security loophole(s).
   * Disable the **Windows Live Writer (WLW) manifest &lt;link&gt; tag** in &lt;head&gt;. The WLW app was discontinued in 2017.
   * Disable the **Really Simple Discovery (RSD) &lt;link&gt; tag** in &lt;head&gt;. It's not needed if your site is not using pingback or remote (XML-RPC) client to manage posts.
   * Disable the default **WordPress shortlink &lt;link&gt; tag** in &lt;head&gt;. Ignored by search engines and has minimal practical use case. Usually, a dedicated shortlink plugin or service is preferred that allows for nice names in the short links and tracking of clicks when sharing the link on social media.
   * Disable loading of **dashicons CSS and JS files** on the front-end for public site visitors.
   * Disable **emoji support for pages, posts and custom post types** on the admin and frontend. The support is primarily useful for older browsers that do not have native support for it. Most modern browsers across different OSes and devices now have native support for it.
+  * Disable **jQuery Migrate** script on the frontend, which should no longer be needed if your site uses modern theme and plugins.
 
 ### Security
 
@@ -206,12 +224,16 @@ _"**p.s. There are bugs**. This is software development after all and **I'm the 
 
 Admin and Site Enhancements (ASE) will include more enhancements, tweaks and useful features in future versions. Please [give feedback](https://bowo.io/feedback-asenha) on must-have plugins or code snippets you enable on sites that you manage, and the functionalities will be considered for inclusion as well.
 
+### ASE Pro
+
+**Pro version** with Lifetime Deal (LTD) is available at [www.wpase.com](https://www.wpase.com/rdme-to-web).
+
 ### Give Back
 
 * [**A nice review**](https://bowo.io/asenha-rvw-dsc) would be great!
 * [**Give feedback**](https://bowo.io/asenha-fdbk-dsc) and help improve future versions.
 * [**Help translate**](https://bowo.io/asenha-trnslt-dsc) plugin description on this page into your language.
-* **Sponsor my work** with as little as USD 1, [**monthly**](https://bowo.io/asenha-sp-gth-rdm) or [**one-time**](https://bowo.io/asenha-sp-ppl-rdm).
+* **Sponsor ASE Free** with as little as USD 1, [**monthly**](https://bowo.io/asenha-sp-gth-rdm) or [**one-time**](https://bowo.io/asenha-sp-ppl-rdm).
 
 ### Check These Out Too
 
@@ -251,30 +273,66 @@ Hoping that this is useful in reducing the number of plugins we install the firs
 
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **57 _point_ releases** (e.g. 1.1.0 ) and **46 _patch_ releases** (e.g. 4.9.1). 
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **48 _patch_ releases** (e.g. 4.9.1). 
 
-Each **_point_** release usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_patch_** release usually contain one or more bugfix or improvement to existing modules/features.
+Each **_point release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_patch release_** usually contain one or more bugfix or improvements to existing modules/features.
 
-> _"**Reported a bug yesterday, it was fixed today**. Can't ask for better than that.."_ ~[Greg Mount](https://wordpress.org/support/topic/very-handy-plugin-by-a-great-dev/)
+[**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web) now. Lifetime Deal (LTD) available.
 
-> _"Simply the best! Still looking for the sixth star for you. **Don’t stop developing... We are supporting you!**"_ ~[@springbreak](https://wordpress.org/support/topic/too-good-to-be-true-22/)
+### 6.0.4 (2023.10.26) - ASE Free and Pro
 
+* **[IMPROVED][FREE] Admin Interface >> Hide Admin Notices**: Removed broad-sweeping CSS rules that unintentionally affected notices that were not supposed to be hidden into the admin notices panel. Props to Ingo R. for reporting the issue with MainWP site connection error notice being hidden on page load.
 
-#### Kindly Consider Sponsoring Ongoing Development and Maintenance
+* **[IMPROVED][FREE] Disable Components >> Disable Smaller Components >> Disable version number**: will now only remove version number from static assets in the public view (non-logged-in) of pages. Props to Ingo R for reporting that ACSS auto-BEM feature in Bricks was missing it's button in the structure panel, and was caused by version number being removed from static assets.
 
-If this plugin has been useful for your **personal project(s), paid dev work, client site(s) and or agency's workflow**, please kindly consider **sponsoring from as little as USD 1** ([**monthly**](https://bowo.io/asenha-sp-gth-chnlg) or [**one-time**](https://bowo.io/asenha-sp-ppl-chnlg)).
+* **[FIXED][FREE][PRO] PHP Deprecation notice in PHP 8.1:** which showed up when `null` was unintentionally passed into `preg_replace()` during the rendering of some ASE setting fields. Props to Stewart R. for reporting the issue.
 
-This helps ensure you're going to continue seeing **new features and/or fixes**, hopefully **for years to come**. Thank you!
+* **[FIXED][PRO] Admin Interface >> Admin Menu Organizer:** now correctly shows all submenu items. Props to Henry R. for reporting an issue where several of Elementor's 'Templates' menu's submenu items gone missing when this module was enabled.
 
-> _"**Amazing job – premium functions in free plugin**."_ ~[Peter](https://wordpress.org/support/topic/amazing-job-premium-functions-in-free-plugin/)
+### 6.0.3 (2023.10.18) - ASE Free and Pro
 
-> _"**I will definitely support it’s development** because I know it will **save me time and frustration on all of the websites I set up**."_ ~[Todd](https://wordpress.org/support/topic/great-plugin-clear-useful-and-a-joy-to-use/)
+* **[FIXED][FREE] Admin Interface >> Hide Admin Notices**: Plugin description and update success message will now remain visible after plugin update process is completed on the Plugins listing page.
+* **[FIXED][PRO] Custom Code >> Code Snippets Manager**: CSS fixes for the activate / deactivate / publish / update box on each snippet.
+* **[FIXED][FREE] Utilities >> Display System Summary**: CSS fix to ensure system summary is displayed in alignment with other elements in the At a Glance widget
 
-> _"A very very useful plugin. **I have made a little sponsorship and encourage other users to do the same as it is so much deserved**. Thank you Bowo!"_ ~[@pgrand83](https://wordpress.org/support/topic/very-very-useful-54/)
+### 6.0.2 (2023.10.17) - ASE Pro
 
-**More than 250 hours of dev time** have been spent on developing and mantaining this plugin. At v5.7.1 (released on September 12, 2023) and **10,000+ active installs**, there have been [**6 monthly sponsors**](https://bowo.io/asenha-sp-gth-chnlg) and [**45 one-time sponsors**](https://bowo.io/asenha-sp-ppl-chnlg). You can be one today!
+* **[FIXED] Admin Interface >> Admin Columns Manager**: Will now render the value of custom fields added using default WordPress UI/metabox for managing custom fields. This is rendered using [`get_post_meta()`](https://developer.wordpress.org/reference/functions/get_post_meta/). Props to Upekkha for reporting it.
 
-**USD 1** [**monthly**](https://bowo.io/asenha-sp-gth-chnlg) or [**one-time**](https://bowo.io/asenha-sp-ppl-chnlg) is all it takes for you to start sponsoring ASE. Thank you!
+### 6.0.1 (2023.10.13) - ASE Pro
+
+* **[FIXED] Custom Code >> Code Snippets Manager**: PHP Warning: undefined variable. Props to Michael S.P. for reporting it.
+* **[FIXED] Admin Interface >> Admin Columns Manager**: PHP Warning: undefined array key 0. Props to Sam for reporting it.
+* **[FIXED] Content Management >> Custom Content Types**: PHP Deprecation: creation of dynamic properties. Props to Steven for reporting it.
+* **[FIXED] Optimizations >> Image Upload Control**: .jpeg files will now properly be converted to .webp. Props to Julian S for reporting it.
+
+### 6.0.0 (2023.10.11)
+
+* **[ADDED] Log In | Log Out >> Site Identity on Login Page**: Use the site icon and URL to replace the default WordPress logo with link to wordpress.org on the login page. Props to [@cooper08](https://wordpress.org/support/users/cooper08/) and [@julians3](https://wordpress.org/support/users/julians3/) for [suggesting this](https://wordpress.org/support/topic/change-login-wp-logo/) along with the code snippet.
+
+* **[PRO] The Pro version of ASE is here. Lifetime Deal (LTD) is available.** Find out more at [wpase.com](https://www.wpase.com/chnlg-to-web).
+
+### 5.8.1 (2023.10.05)
+
+* **[FIXED] wp_die error message** when updating to v5.8.0. Thanks to [@verysiberian](https://wordpress.org/support/users/verysiberian/) for the prompt and detailed [report](https://wordpress.org/support/topic/wsod-on-all-sites-after-update/) and [@wrlkd](https://wordpress.org/support/users/wrlkd/), [@rockwildaz](https://wordpress.org/support/users/rockwildaz/) and [@amnwtritaly](https://wordpress.org/support/users/amnwtritaly/) for helping out with troubleshooting.
+
+### 5.8.0 (2023.10.05)
+
+* **[ADDED] Disable Components >> Disable Smaller Components >> Disable version number**: You can now hide version number which by default is part of static resource (CSS/JS) URLs in the &lt;head&gt;. Props to [@cooper08](https://wordpress.org/support/users/cooper08/) for [suggesting this](https://wordpress.org/support/topic/disable-smaller-components/) along with the code snippet.
+
+* **[ADDED] Disable Components >> Disable Smaller Components >> Disable jQuery Migrate**: You can now disable the jQuery Migrate script from loading on the frontend. Props to [@blueoaks](https://wordpress.org/support/users/blueoaks/) for [suggesting this](https://wordpress.org/support/topic/feature-request-disable-jquery-migrate/).
+
+* **[CHANGED] Admin Interface >> Hide Admin Notices**: This is now limited to site admins only. Editors, Authors and other user roles will see notices as usual.
+
+* **[FIXED] Admin Interface >> Hide Admin Notices**: Notices under each plugin that has an update in the Plugins list page now shows up normally where it was previously missing/hidden when Hide Admin Notices is active. Thanks to [@venkeyaccent](https://wordpress.org/support/users/venkeyaccent/), [@dmdeck](https://wordpress.org/support/users/dmdeck/) and [@computerbuddha](https://wordpress.org/support/users/computerbuddha/) for reporting this issue [here](https://wordpress.org/support/topic/bug-in-hide-admin-notices/) and [here](https://wordpress.org/support/topic/hide-admin-notices-issue/).
+
+* **[IMPROVED] Admin Interface >> Wider Admin Menu**: Now works when wp-admin is in Right-to-Left (RTL) languages. Thanks to [@mehdimoradi7172](https://wordpress.org/support/users/mehdimoradi7172/) for [reporting the issue](https://wordpress.org/support/topic/wider-admin-menu-rtl-issue/).
+
+* **[IMPROVED] Log In | Log Out >> Change Login URL**: Default lost password URL no longer accessible directly and must now include custom login slug. Props to [@banijadev](https://wordpress.org/support/users/banijadev/) for discovering the issue and [reporting it](https://wordpress.org/support/topic/add-support-hidden-lost-password-path/).
+
+* **[IMPROVED] Content Management >> Media Replacement**: media-replace-frontend.css no longer loads for site visitors. Props to [@cvladan](https://wordpress.org/support/users/cvladan/) for discovering the issue and [reporting it](https://wordpress.org/support/topic/dont-load-media-replace-frontend-css-on-frontend/).
+
+* **[SECURITY] Utilities >> Password Protection**: Patched a bypass vulnerability disclosed responsibly by security researcher Abu Hurayra via Pathstack, regarding the authentication cookie. It now uses wp_hash_password() and wp_check_password().
 
 ### 5.7.1 (2023.09.12)
 

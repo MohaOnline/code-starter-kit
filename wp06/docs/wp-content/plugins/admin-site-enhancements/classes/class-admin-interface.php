@@ -87,7 +87,9 @@ class Admin_Interface
      */
     public function admin_notices_wrapper()
     {
-        echo  '<div class="asenha-admin-notices-drawer" style="display:none;"><h2>Admin Notices</h2></div>' ;
+        if ( current_user_can( 'manage_options' ) ) {
+            echo  '<div class="asenha-admin-notices-drawer" style="display:none;"><h2>Admin Notices</h2></div>' ;
+        }
     }
     
     /**
@@ -99,16 +101,18 @@ class Admin_Interface
      */
     public function admin_notices_menu( WP_Admin_Bar $wp_admin_bar )
     {
-        $wp_admin_bar->add_menu( array(
-            'id'     => 'asenha-hide-admin-notices',
-            'parent' => 'top-secondary',
-            'grou'   => null,
-            'title'  => 'Notices<span class="asenha-admin-notices-counter" style="opacity:0;">0</span>',
-            'meta'   => array(
-            'class' => 'asenha-admin-notices-menu',
-            'title' => 'Click to view hidden admin notices',
-        ),
-        ) );
+        if ( current_user_can( 'manage_options' ) ) {
+            $wp_admin_bar->add_menu( array(
+                'id'     => 'asenha-hide-admin-notices',
+                'parent' => 'top-secondary',
+                'grou'   => null,
+                'title'  => 'Notices<span class="asenha-admin-notices-counter" style="opacity:0;">0</span>',
+                'meta'   => array(
+                'class' => 'asenha-admin-notices-menu',
+                'title' => 'Click to view hidden admin notices',
+            ),
+            ) );
+        }
     }
     
     /**
@@ -118,83 +122,89 @@ class Admin_Interface
      */
     public function admin_notices_menu_inline_css()
     {
-        wp_add_inline_style( 'admin-bar', '
+        
+        if ( current_user_can( 'manage_options' ) ) {
+            wp_add_inline_style( 'admin-bar', '
 
-			#wpadminbar .asenha-admin-notices-counter {
-				box-sizing: border-box;
-				margin: 1px 0 -1px 6px ;
-				padding: 2px 6px 3px 5px;
-				min-width: 18px;
-				height: 18px;
-				border-radius: 50%;
-				background-color: #ca4a1f;
-				color: #fff;
-				font-size: 11px;
-				line-height: 1.6;
-				text-align: center;
-			}
+				#wpadminbar .asenha-admin-notices-counter {
+					box-sizing: border-box;
+					margin: 1px 0 -1px 6px ;
+					padding: 2px 6px 3px 5px;
+					min-width: 18px;
+					height: 18px;
+					border-radius: 50%;
+					background-color: #ca4a1f;
+					color: #fff;
+					font-size: 11px;
+					line-height: 1.6;
+					text-align: center;
+				}
 
-		' );
-        // Below we pre-emptively hide notices to avoid having them shown briefly before being moved into the notices panel via JS
-        ?>
-		<style type="text/css">
-			#wpbody-content .notice:not(.system-notice),
-			#wpbody-content .notice-error,
-			#wpbody-content .error,
-			#wpbody-content .notice-info,
-			#wpbody-content .notice-information,
-			#wpbody-content #message,
-			#wpbody-content .notice-warning,
-			#wpbody-content .notice-success,
-			#wpbody-content .notice-updated,
-			#wpbody-content .updated,
-			#wpbody-content .update-nag,						
-			#wpbody-content > .wrap > .notice:not(.system-notice),
-			#wpbody-content > .wrap > .notice-error,
-			#wpbody-content > .wrap > .error,
-			#wpbody-content > .wrap > .notice-info,
-			#wpbody-content > .wrap > .notice-information,
-			#wpbody-content > .wrap > #message,
-			#wpbody-content > .wrap > .notice-warning,
-			#wpbody-content > .wrap > .notice-success,
-			#wpbody-content > .wrap > .notice-updated,
-			#wpbody-content > .wrap > .updated,
-			#wpbody-content > .wrap > .update-nag,
-			#wpbody-content > .wrap > div > .notice:not(.system-notice),
-			#wpbody-content > .wrap > div > .notice-error,
-			#wpbody-content > .wrap > div > .error,
-			#wpbody-content > .wrap > div > .notice-info,
-			#wpbody-content > .wrap > div > .notice-information,
-			#wpbody-content > .wrap > div > #message,
-			#wpbody-content > .wrap > div > .notice-warning,
-			#wpbody-content > .wrap > div > .notice-success,
-			#wpbody-content > .wrap > div > .notice-updated,
-			#wpbody-content > .wrap > div > .updated,
-			#wpbody-content > .wrap > div > .update-nag,
-			#wpbody-content > div > .wrap > .notice:not(.system-notice),
-			#wpbody-content > div > .wrap > .notice-error,
-			#wpbody-content > div > .wrap > .error,
-			#wpbody-content > div > .wrap > .notice-info,
-			#wpbody-content > div > .wrap > .notice-information,
-			#wpbody-content > div > .wrap > #message,
-			#wpbody-content > div > .wrap > .notice-warning,
-			#wpbody-content > div > .wrap > .notice-success,
-			#wpbody-content > div > .wrap > .notice-updated,
-			#wpbody-content > div > .wrap > .updated,
-			#wpbody-content > div > .wrap > .update-nag,
-			#wpbody-content > .update-nag,
-			#wpbody-content > .notice,
-			#wpbody-content > .jp-connection-banner,
-			#wpbody-content > .jitm-banner,
-			#wpbody-content > .jetpack-jitm-message,
-			#wpbody-content > .ngg_admin_notice,
-			#wpbody-content > .imagify-welcome,
-			#wpbody-content #wordfenceAutoUpdateChoice,
-			#wpbody-content #easy-updates-manager-dashnotice {
-				display: none !important;
-			}
-		</style>
-		<?php 
+			' );
+            // Below we pre-emptively hide notices to avoid having them shown briefly before being moved into the notices panel via JS
+            ?>
+			<style type="text/css">
+				/* #wpbody-content .notice:not(.system-notice,.update-message),
+				#wpbody-content .notice-error,
+				#wpbody-content .error,
+				#wpbody-content .notice-info,
+				#wpbody-content .notice-information,
+				#wpbody-content #message,
+				#wpbody-content .notice-warning:not(.update-message),
+				#wpbody-content .notice-success:not(.update-message),
+				#wpbody-content .notice-updated,
+				#wpbody-content .updated:not(.active, .inactive, .plugin-update-tr),
+				#wpbody-content .update-nag, */
+				#wpbody-content > .wrap > .notice:not(.system-notice),
+				#wpbody-content > .wrap > .notice-error,
+				#wpbody-content > .wrap > .error,
+				#wpbody-content > .wrap > .notice-info,
+				#wpbody-content > .wrap > .notice-information,
+				#wpbody-content > .wrap > #message,
+				#wpbody-content > .wrap > .notice-warning,
+				#wpbody-content > .wrap > .notice-success,
+				#wpbody-content > .wrap > .notice-updated,
+				#wpbody-content > .wrap > .updated,
+				#wpbody-content > .wrap > .update-nag,
+				#wpbody-content > .wrap > div > .notice:not(.system-notice),
+				#wpbody-content > .wrap > div > .notice-error,
+				#wpbody-content > .wrap > div > .error,
+				#wpbody-content > .wrap > div > .notice-info,
+				#wpbody-content > .wrap > div > .notice-information,
+				#wpbody-content > .wrap > div > #message,
+				#wpbody-content > .wrap > div > .notice-warning,
+				#wpbody-content > .wrap > div > .notice-success,
+				#wpbody-content > .wrap > div > .notice-updated,
+				#wpbody-content > .wrap > div > .updated,
+				#wpbody-content > .wrap > div > .update-nag,
+				#wpbody-content > div > .wrap > .notice:not(.system-notice),
+				#wpbody-content > div > .wrap > .notice-error,
+				#wpbody-content > div > .wrap > .error,
+				#wpbody-content > div > .wrap > .notice-info,
+				#wpbody-content > div > .wrap > .notice-information,
+				#wpbody-content > div > .wrap > #message,
+				#wpbody-content > div > .wrap > .notice-warning,
+				#wpbody-content > div > .wrap > .notice-success,
+				#wpbody-content > div > .wrap > .notice-updated,
+				#wpbody-content > div > .wrap > .updated,
+				#wpbody-content > div > .wrap > .update-nag,
+				#wpbody-content > .notice,
+				#wpbody-content > .error,
+				#wpbody-content > .updated,
+				#wpbody-content > .update-nag,
+				#wpbody-content > .jp-connection-banner,
+				#wpbody-content > .jitm-banner,
+				#wpbody-content > .jetpack-jitm-message,
+				#wpbody-content > .ngg_admin_notice,
+				#wpbody-content > .imagify-welcome,
+				#wpbody-content #wordfenceAutoUpdateChoice,
+				#wpbody-content #easy-updates-manager-dashnotice {
+					display: none !important;
+				}
+			</style>
+			<?php 
+        }
+    
     }
     
     /**

@@ -1,5 +1,7 @@
 <?php
 
+use AdvancedAds\Utilities\WordPress;
+
 /**
  * AdSense Management API class.
  */
@@ -690,7 +692,7 @@ class Advanced_Ads_AdSense_MAPI {
         public function ajax_revoke_tokken() {
 
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
             die;
         }
 		if ( false !== wp_verify_nonce( $nonce, 'advads-mapi' ) ) {
@@ -734,7 +736,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * When a user manually adds an ad code, save it
 	 */
 	public function ajax_save_manual_code() {
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			die();
 		}
 
@@ -790,7 +792,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 */
 	public function ajax_save_reconstructed_code() {
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
             die;
         }
 		if ( false !== wp_verify_nonce( $nonce, 'advads-mapi' ) ) {
@@ -811,7 +813,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * Get ad code for a given unit
 	 */
 	public function ajax_get_adCode() {
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			wp_send_json_error( 'Unauthorized', 401 );
 		}
 		$post_data = wp_unslash( $_POST );
@@ -883,7 +885,7 @@ class Advanced_Ads_AdSense_MAPI {
      *  Dismiss an account alert
      */
     public function ajax_dismiss_alert() {
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
             die;
         }
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';
@@ -918,7 +920,7 @@ class Advanced_Ads_AdSense_MAPI {
      *  Get / Update the list of alerts on an AdSense account.
      */
     public function ajax_get_account_alerts() {
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
             die;
         }
 
@@ -1016,7 +1018,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * Get / Update the ad unit list for a given ad client. The corresponding <select /> input used in the ad selector is passed as a fied of an array
 	 */
 	public function ajax_get_adUnits() {
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_edit_ads' ) ) {
 			die;
 		}
 		$post_vars = wp_unslash( $_POST );
@@ -1058,7 +1060,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * Save account and token after account selection MCN.
 	 */
 	public function ajax_account_selected() {
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
             die;
         }
 		$post_data = wp_unslash( $_POST );
@@ -1089,7 +1091,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * Get AdSense account details from a new access token.
 	 */
 	public function ajax_get_account_details() {
-		if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+		if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
 			wp_send_json_error( 'Unauthorized', 401 );
 		}
 		$post_data = wp_unslash( $_POST );
@@ -1183,7 +1185,7 @@ class Advanced_Ads_AdSense_MAPI {
 	 * Submit Google API confirmation code. Save the token and update ad client list.
 	 */
 	public function ajax_confirm_code() {
-        if ( ! current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_manage_options' ) ) ) {
+        if ( ! WordPress::user_can( 'advanced_ads_manage_options' ) ) {
             die;
         }
 		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : '';

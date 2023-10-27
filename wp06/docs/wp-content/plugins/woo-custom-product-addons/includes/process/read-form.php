@@ -46,12 +46,16 @@ class ReadForm
                 'checkbox-group',
 
             ])) {
-                if (is_array($dField['value'])) {
+                if (!is_array($dField['value']) && !isEmpty($dField['value'])) {
+                    $dField['value'] = [['value'=>$dField['value']]];
+                }
+                if(is_array($dField['value'])){
                     $values     = array_map(function ($v) {
                         return $v['value'];
                     }, $dField['value']);
                     $fieldValue = $this->readOptionsField($field, $values);
                 }
+
             } elseif (in_array($field->type, ['date'])) {
                 $fieldValue = $dField['value'];
             } else {
@@ -90,10 +94,15 @@ class ReadForm
     {
         $elementId = $field->elementId;
         $arr       = array_filter($data, function ($v) use ($elementId) {
-            return $v['elementId'] === $elementId;
+            if(isset($v['elementId'])){
+                return $v['elementId'] === $elementId;
+            }
+            if(isset($v['form_data']) && isset($v['form_data']->elementId)){
+                return $v['form_data']->elementId === $elementId;
+            }
         });
 
-        if ($arr !== false) {
+        if ($arr !== false && !isEmpty($arr)) {
             return reset($arr);
         } else {
             /** check with name */

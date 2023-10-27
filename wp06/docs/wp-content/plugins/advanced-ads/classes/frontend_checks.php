@@ -1,5 +1,7 @@
 <?php
 
+use AdvancedAds\Utilities\WordPress;
+
 /**
  * Class Advanced_Ads_Frontend_Checks
  *
@@ -32,7 +34,7 @@ class Advanced_Ads_Frontend_Checks {
 	public function init() {
 		if ( ! is_admin()
 			&& is_admin_bar_showing()
-            && current_user_can( Advanced_Ads_Plugin::user_cap( 'advanced_ads_edit_ads' ) )
+            && WordPress::user_can( 'advanced_ads_edit_ads' )
             && Advanced_Ads_Ad_Health_Notices::notices_enabled()
 		) {
 			add_action( 'admin_bar_menu', [ $this, 'add_admin_bar_menu' ], 1000 );
@@ -701,8 +703,10 @@ class Advanced_Ads_Frontend_Checks {
 		};
 
 		(function(d, w) {
-				// var not_head_jQuery = typeof jQuery === 'undefined';
-
+				// highlight link as global
+				var highlight_link = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_highlight_ads' );
+				// update ad count in health tool admin bar
+				update_ads_count(d);
 				var addEvent = function( obj, type, fn ) {
 					if ( obj.addEventListener )
 						obj.addEventListener( type, fn, false );
@@ -722,29 +726,26 @@ class Advanced_Ads_Frontend_Checks {
 					} catch ( e ) { return; }
 				    for ( i = 0; i < ad_wrappers.length; i++ ) {
 				            ad_wrappers[i].title = ad_wrappers[i].className;
-				            ad_wrappers[i].className += ' advanced-ads-highlight-ads';
-				            // in case we want to remove it later
-				            // ad_wrappers[i].className = ad_wrappers[i].className.replace( 'advanced-ads-highlight-ads', '' );
+
+                    // Check highlighted ads active
+                    ad_wrappers[i].classList.toggle('advanced-ads-highlight-ads');
 				    }
+
+					// add or remove active class from highlight link
+					highlight_link.classList.toggle('active');
 				}
 
 				advanced_ads_ready( function() {
 					var adblock_item = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_adblocker_enabled' );
-					// jQuery_item = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_jquery' ),
+
 
 					// handle click on the highlight_ads link
-					var highlight_link = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_highlight_ads' );
 					addEvent( highlight_link, 'click', highlight_ads );
 
 					if ( adblock_item && typeof advanced_ads_adblocker_test === 'undefined' ) {
 						// show hidden item
 						adblock_item.className = adblock_item.className.replace( /hidden/, '' );
 					}
-
-					/* if ( jQuery_item && not_head_jQuery ) {
-						// show hidden item
-						jQuery_item.className = jQuery_item.className.replace( /hidden/, '' );
-					}*/
 
 					<?php if ( ! $this->did_the_content ) : ?>
 						var the_content_item = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_the_content_not_invoked' );
@@ -856,6 +857,41 @@ class Advanced_Ads_Frontend_Checks {
 				setTimeout( function(){
 					advanced_ads_ready( advads_gam_show_debug_link );
 				}, 2000 );
+
+				// Function to count visible ads with unique group IDs
+				function get_ads_count(){
+					// Get all elements with the specified class name
+					const ad_wrappers = document.getElementsByClassName( "<?php echo Advanced_Ads_Plugin::get_instance()->get_frontend_prefix(); ?>highlighted-wrappers" );
+					// Initialize a count for visible ads
+					let ads_count = 0;
+					// Loop through each ad wrapper element
+					for ( let i = 0; i < ad_wrappers.length; i++ ) {
+ 						// Check if the group ID is either null or not included in the array of seen group IDs,
+						if ( ad_wrappers[i].offsetHeight > 0 ) {
+							 // Increment the ad count and add the group ID to the list
+							 ads_count++;
+						}
+					}
+					// Return the total count of eligible ads
+					return ads_count;
+				}
+
+				function update_ads_count(d){
+					var highlight_link = d.getElementById( 'wp-admin-bar-advanced_ads_ad_health_highlight_ads' );
+					// update ad count in health tool admin bar
+					highlight_link.querySelector('.ab-item').innerHTML += ' (<span class="highlighted_ads_count">' + get_ads_count() + '</span>) ';
+
+					// If any ads load by ajax its update count after ajax load
+					var origOpen = XMLHttpRequest.prototype.open;
+					XMLHttpRequest.prototype.open = function() {
+						this.addEventListener('load', function() {
+							if ( this.status === 200 ) {
+								highlight_link.querySelector('.highlighted_ads_count').innerHTML = get_ads_count();
+							}
+						});
+						origOpen.apply(this, arguments);
+					};
+				}
 		})(document, window);
 		</script>
 		<?php echo Advanced_Ads_Utils::get_inline_asset( ob_get_clean() );

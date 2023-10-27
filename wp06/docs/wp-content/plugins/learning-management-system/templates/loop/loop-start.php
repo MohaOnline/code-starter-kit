@@ -17,4 +17,4 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="masteriyo-course <?php echo esc_attr( masteriyo_get_courses_view_mode() ); ?> columns-<?php echo esc_attr( masteriyo_get_loop_prop( 'columns' ) ); ?>">
+<div class="masteriyo-courses-wrapper masteriyo-course <?php echo esc_attr( masteriyo_get_courses_view_mode() ); ?> columns-<?php echo esc_attr( masteriyo_get_loop_prop( 'columns' ) ); ?>">
