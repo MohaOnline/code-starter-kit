@@ -1,4 +1,11 @@
-// https://stackoverflow.com/questions/45395369/how-to-get-console-log-line-numbers-shown-in-nodejs/47296370#47296370
+import { TRACKABLE_LOGS } from './common.js';
+
+/**
+ *
+ *
+ * @see https://stackoverflow.com/questions/45395369/how-to-get-console-log-line-numbers-shown-in-nodejs/47296370#47296370
+ */
+if (TRACKABLE_LOGS){
 ['log', 'warn', 'error'].forEach((methodName) => {
     const originalMethod = console[methodName];
     console[methodName] = (...args) => {
@@ -22,8 +29,8 @@
                 }
             }
         }
-        originalMethod.apply(console, [`${initiator}`, ' : \n', ...args]);
+        originalMethod.apply(console, [`${initiator}`, '\n', ...args]);
     };
 });
-
+}
 
