@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Real Media Library: Media Library Folder &amp; File Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-10 08:48:23+0000\n"
+"PO-Revision-Date: 2023-11-04 09:37:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.9\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Real Media Library: Media Library Folder &amp; File Manager - Stable (latest release)\n"
 
@@ -21,7 +21,7 @@ msgstr "了解更多"
 
 #: inc/view/View.php:130
 msgid "Unorganized pictures"
-msgstr "无组织的图片"
+msgstr "未分类的图片"
 
 #: inc/view/View.php:73
 msgid "All"
@@ -105,7 +105,7 @@ msgstr "想要创建子文件夹吗？"
 
 #: inc/view/Lang.php:44
 msgid "Organize the nodes within your folder tree according to a criterion (e.g. name descending) or by drag & drop."
-msgstr "在文件夹树中进行组织，并根据标准(如名称降序排列)或通过拖放对节点进行重新排序。"
+msgstr "根据标准（例如名称降序）或通过拖放来组织文件夹树中的节点。"
 
 #: inc/view/Lang.php:44
 msgid "Full order control?"
@@ -201,11 +201,11 @@ msgstr "开始导入"
 
 #: inc/view/Lang.php:44
 msgid "It looks like you have already used another plugin for folders in the media library."
-msgstr "看来您已经在媒体库中的文件夹中使用了另一个插件。"
+msgstr "看起来您已经在媒体库中的文件夹中使用了另一个插件。"
 
 #: inc/view/Lang.php:44
 msgid "Dismiss notice"
-msgstr "驳回通知"
+msgstr "忽略通知"
 
 #: inc/view/Lang.php:44
 msgid "Enter license"
@@ -299,7 +299,10 @@ msgid ""
 "A collection cannot contain files. However, you can create additional collections and *galleries* there. This gallery is only a *gallery data folder*, i.e. they are not automatically visible on the website.\n"
 "\n"
 "You can create a *visual gallery* by using a shortcode in the Visual Editor on your pages/postings."
-msgstr "集合可以不包含任何文件。但是你可以在那里创建其他的收藏品和“画廊”。上面提到的图库只是一个*图库数据文件夹*，这意味着它们不会自动出现在你的前端(你的网站)。您可以创建一个*visual gallery*从这个*gallery数据文件夹*通过可视化编辑器在您的页面/文章。"
+msgstr ""
+"集合不能包含文件。但是，您可以在那里创建其他收藏和*画廊*。该画廊只是一个*画廊数据文件夹*，即它们不会在网站上自动可见。\n"
+"\n"
+"您可以在页面/帖子的可视化编辑器中使用短代码来创建*视觉库*。"
 
 #: inc/view/Lang.php:40
 msgid "Click this to create a new collection"
@@ -307,7 +310,7 @@ msgstr "单击此以创建新集合"
 
 #: inc/view/Lang.php:40
 msgid "A folder can contain any file type and collection, but not galleries. If you want to create a subfolder, select a folder and click this button."
-msgstr "文件夹可以包含所有类型的文件和集合，但不能包含图库。如果您想创建一个子文件夹，只需从列表中选择一个文件夹并单击此按钮。"
+msgstr "文件夹可以包含任何文件类型和集合，但不能包含图库。如果要创建子文件夹，请选择一个文件夹并单击此按钮。"
 
 #: inc/view/Lang.php:40
 msgid "Click this to create a new folder"
@@ -415,11 +418,11 @@ msgstr "按 *{name}* 排序内容..."
 
 #: inc/view/Lang.php:40
 msgid "A gallery can only contain images. Upload moved to Unorganized..."
-msgstr "图库只能包含图像。上传移至无组织..."
+msgstr "图库只能包含图像。上传移至未分类..."
 
 #: inc/view/Lang.php:40
 msgid "A collection cannot contain files. Upload moved to Unorganized..."
-msgstr "集合不能包含文件。上传移至无组织..."
+msgstr "集合不能包含文件。上传移至未分类..."
 
 #: inc/view/Lang.php:40
 msgid "In the current view of uploads, filters are active. Please reset them and refresh the view."
@@ -429,7 +432,9 @@ msgstr "在上传的当前视图中，过滤器是活动的。请重置这些并
 msgid ""
 "This is a shortcut of a media library file. Shortcuts doesn't need any physical storage *(0 kB)*. If you want to change the file itself, you must do this in the original file (for example replace media file through a plugin).\n"
 "Note also that the fields in the shortcuts can be different to the original file, for example \"Title\", \"Description\" or \"Caption\"."
-msgstr "这是媒体库文件的快捷方式。快捷键不需要任何物理存储*(0kb)*。如果您想要更改文件本身，您必须在原始文件中这样做(例如，通过插件替换媒体文件)。还要注意，快捷键中的字段可能与原始文件不同，例如“标题”、“描述”或“标题”。"
+msgstr ""
+"这是媒体库文件的快捷方式。快捷方式不需要任何物理存储*(0 kB)*。如果您想更改文件本身，则必须在原始文件中执行此操作（例如通过插件替换媒体文件）。↵\n"
+"另请注意，快捷方式中的字段可能与原始文件不同，例如“标题”、“说明”或“标题”。"
 
 #: inc/view/Lang.php:39
 msgid "Shortcut"
@@ -489,7 +494,7 @@ msgstr "重命名为 *{name}*..."
 
 #: inc/view/Lang.php:39
 msgid "No search results."
-msgstr "没有搜索结果。"
+msgstr "无搜索结果。"
 
 #: inc/view/Lang.php:39
 msgid "Folders"
@@ -497,11 +502,11 @@ msgstr "文件夹"
 
 #: inc/view/Lang.php:39
 msgid "No folders have been created yet. Just click on the button above to create your first folder."
-msgstr "您实际上没有创建任何文件夹。只需点击标题按钮来创建你的第一个文件夹。"
+msgstr "尚未创建任何文件夹。只需单击上面的按钮即可创建您的第一个文件夹。"
 
 #: inc/view/Lang.php:39
 msgid "No folders found"
-msgstr "没有找到文件夹"
+msgstr "未找到文件夹"
 
 #: inc/view/Lang.php:39
 msgid "Back"
@@ -521,15 +526,15 @@ msgstr "好的"
 
 #: inc/view/Lang.php:39
 msgid "Are you sure to delete *{count} folders*? All files gets moved to Unorganized."
-msgstr "您确定要删除*{count}文件夹*吗?所有文件被移动到无组织。"
+msgstr "您确定要删除*{count}个文件夹*吗？所有文件都会移至“未分类”状态。"
 
 #: inc/view/Lang.php:39
 msgid "Are you sure to delete *{name}*? All files gets moved to Unorganized."
-msgstr "您确定要删除*{name}*吗?所有文件被移动到无组织。"
+msgstr "您确定要删除*{name}*吗?所有文件被移动到未分类。"
 
 #: inc/view/Lang.php:39
 msgid "No entries found"
-msgstr "没有发现记录"
+msgstr "未找到条目。"
 
 #: inc/view/Lang.php:39
 msgid "Failed"
@@ -549,11 +554,11 @@ msgstr "文件被上传到您当前所在的文件夹。"
 
 #: inc/view/Lang.php:39
 msgid "If no next node is given, the element is placed at the end."
-msgstr "如果没有下一个节点，则将该项放到末尾。"
+msgstr "如果没有给出下一个节点，则该元素被放置在末尾。"
 
 #: inc/view/Lang.php:39
 msgid "Before this node"
-msgstr "在这个节点"
+msgstr "在该节点之前"
 
 #: inc/view/Lang.php:39
 msgid "Parent"
@@ -561,19 +566,19 @@ msgstr "父"
 
 #: inc/view/Lang.php:39
 msgid "You cannot *move* files outside the folder"
-msgstr "你不能将文件移出文件夹"
+msgstr "您无法*移动*文件夹外的文件"
 
 #: inc/view/Lang.php:39
 msgid "You cannot *delete* the folder"
-msgstr "您不能“删除”该文件夹"
+msgstr "您无法*删除*该文件夹"
 
 #: inc/view/Lang.php:39
 msgid "You cannot *rename* the folder"
-msgstr "您不能*重命名*文件夹"
+msgstr "您无法*重命名*该文件夹"
 
 #: inc/view/Lang.php:39
 msgid "You cannot *insert* new files. New files will be moved to Unorganized..."
-msgstr "您无法*插入*新文件。新文件将移至无组织..."
+msgstr "您无法*插入*新文件。新文件将移至未分类..."
 
 #: inc/view/Lang.php:39
 msgid "You cannot *create* subfolders"
@@ -585,7 +590,7 @@ msgstr "您不能“重新排列”子文件夹"
 
 #: inc/view/Lang.php:39
 msgid "You cannot change *parent* folder"
-msgstr "您不能更改*母*文件夹"
+msgstr "您无法更改*父*文件夹"
 
 #: inc/view/Lang.php:39
 msgid "The current selected folder has some restrictions:"
@@ -629,7 +634,7 @@ msgstr "大"
 
 #: inc/view/FolderShortcode.php:92
 msgid "Medium"
-msgstr "媒介"
+msgstr "中"
 
 #: inc/view/FolderShortcode.php:92
 msgid "Thumbnail"
@@ -637,7 +642,7 @@ msgstr "缩略图"
 
 #: inc/view/FolderShortcode.php:92
 msgid "None"
-msgstr "没有一个"
+msgstr "无"
 
 #: inc/view/FolderShortcode.php:92
 msgid "Media File"
@@ -689,7 +694,7 @@ msgstr "最后打开的文件夹"
 
 #: inc/usersettings/DefaultFolder.php:42
 msgid "No folder at startup"
-msgstr "启动时没有文件夹"
+msgstr "启动时无文件夹"
 
 #: inc/usersettings/DefaultFolder.php:42
 msgid "Default startup folder"
@@ -709,7 +714,7 @@ msgstr "https://devowl.io/knowledge-base/codecanyon-where-can-i-find-my-license-
 
 #: inc/rest/Service.php:159
 msgid "Real Media Library is not active for the current user."
-msgstr "当前用户未激活真实媒体库。"
+msgstr "Real Media Library 当前用户未激活。"
 
 #: inc/rest/Service.php:156
 msgid "Forbidden"
@@ -721,7 +726,7 @@ msgstr "仅按文件夹id获取文件夹中的媒体。"
 
 #: inc/overrides/lite/rest/Service.php:27
 msgid "Folder not found."
-msgstr "文件夹没有找到。"
+msgstr "找不到文件夹。"
 
 #: inc/overrides/lite/folder/Creatable.php:148 inc/rest/Attachment.php:144
 msgid "Something went wrong."
@@ -785,12 +790,12 @@ msgstr "此选项在此页面上被禁用。请导航至媒体库。"
 
 #: inc/folder/Root.php:88
 msgid "Unorganized is the same as a root folder. Here you can find all files which are not assigned to a folder."
-msgstr "无组织的与根文件夹相同。在这里你可以找到所有没有分配给文件夹的文件。"
+msgstr "未分类的文件夹与根文件夹相同。在这里您可以找到所有未分配到文件夹的文件。"
 
 #: inc/folder/Root.php:22 inc/folder/Root.php:83 inc/view/Lang.php:40
 #: inc/view/View.php:75
 msgid "Unorganized"
-msgstr "无组织的"
+msgstr "未分类的"
 
 #: inc/folder/CRUD.php:163
 msgid "The given folder does not exist."
@@ -911,11 +916,11 @@ msgstr "所有可用的文件夹将被导出。导入期间当前结构不会丢
 #: inc/comp/ExImport.php:64 inc/comp/ExImport.php:83 inc/comp/ExImport.php:87
 #: inc/comp/ExImport.php:91
 msgid "Import"
-msgstr "进口"
+msgstr "导入"
 
 #: inc/comp/ExImport.php:63
 msgid "Export"
-msgstr "出口"
+msgstr "导出"
 
 #: inc/comp/ExImport.php:55
 msgid "Export / Import Real Media Library folders"
@@ -963,7 +968,7 @@ msgstr "不允许在这里插入文件。"
 
 #: inc/attachment/CustomField.php:110
 msgid "This file has no associated shortcuts. You can create shortcuts by moving files per mouse and hold any key."
-msgstr "此文件没有相关的快捷方式。您可以创建快捷方式移动文件每鼠标和举行任何关键。"
+msgstr "该文件没有关联的快捷方式。您可以通过用鼠标移动文件并按住任意键来创建快捷方式。"
 
 #. translators:
 #: inc/attachment/CustomField.php:100
@@ -973,7 +978,7 @@ msgstr[0] "对于此文件，以下文件夹中有 %d 个可用快捷方式："
 
 #: inc/attachment/CustomField.php:86
 msgid "This is a shortcut of a media library file. Shortcuts doesn't need any physical storage <strong>(0 kB)</strong>. If you want to change the file itself, you must do this in the original file (for example replace media file through a plugin).<br/>Note also that the fields in the shortcuts can be different to the original file, for example \"Title\", \"Description\" or \"Caption\"."
-msgstr "这是媒体库文件的快捷方式。快捷键不需要任何物理存储<strong>(0kb)</strong>。如果您想要更改文件本身，您必须在原始文件中这样做(例如，通过插件替换媒体文件)。<br/>还应注意，快捷键中的字段可能与原始文件不同，例如“标题”、“描述”或“标题”。"
+msgstr "这是媒体库文件的快捷方式。快捷方式不需要任何物理存储<strong>(0 kB)</strong>。如果您想更改文件本身，则必须在原始文件中执行此操作（例如通过插件替换媒体文件）。<br/>另请注意，快捷方式中的字段可能与原始文件不同，例如“标题”、“描述”或“说明文字”。"
 
 #: inc/attachment/CustomField.php:82
 msgid "Shortcut infos"
@@ -1004,9 +1009,8 @@ msgid ""
 "If you want to delete a non-shortcut file, all associated shortcuts are deleted, too."
 msgstr ""
 "\n"
-"\n"
-"注意:如果你想删除一个短截文件，源文件将不会被删除。\n"
-"如果你想删除一个非快捷方式的文件，所有相关的快捷方式也会被删除。"
+"注意：如果要删除快捷方式文件，则不会删除源文件。↵\n"
+"如果要删除非快捷方式文件，则也会删除所有关联的快捷方式。"
 
 #: inc/Assets.php:156
 msgid "Complementary Plugins"
@@ -1019,7 +1023,7 @@ msgstr "https://devowl.io/"
 #: inc/api/attachment.php:110 inc/api/attachment.php:131
 #: inc/api/attachment.php:146
 msgid "The given folder was not found."
-msgstr "没有找到给定的文件夹。"
+msgstr "找不到给定的文件夹。"
 
 #: inc/AdInitiator.php:62
 msgid "Get your PRO license now!"

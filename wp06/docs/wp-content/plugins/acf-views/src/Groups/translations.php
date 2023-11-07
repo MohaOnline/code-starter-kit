@@ -5,7 +5,7 @@
 // CardData.php : labels
 
 __("Basic", "acf-views");
-__("ACF View", "acf-views");
+__("View", "acf-views");
 __("Post Type", "acf-views");
 __("Post Status", "acf-views");
 __("Maximum number of posts", "acf-views");
@@ -45,7 +45,7 @@ __("Preview", "acf-views");
 
 // CardData.php : descriptions
 
-__("Assigned ACF View is used to display every post from the query results", "acf-views");
+__("Assigned View is used to display every post from the query results", "acf-views");
 __("Filter by post type. You can select multiple items", "acf-views");
 __("Filter by post status. You can select multiple items", "acf-views");
 __("Use '-1' to set 'unlimited'", "acf-views");
@@ -53,7 +53,7 @@ __("Select which field results should be sorted by. ‘Default’ keeps the defa
 __("Select a target group", "acf-views");
 __("Select a target field. Note : only fields with <a target='_blank' href='https://docs.acfviews.com/getting-started/supported-field-types'>supported field types</a> are listed here", "acf-views");
 __("Defines the sorting order of posts", "acf-views");
-__("Add a short description for your views’ purpose. Only seen on the admin ACF Cards list", "acf-views");
+__("Add a short description for your views’ purpose. Only seen on the admin Cards list", "acf-views");
 __("This message will be displayed in case there are no posts found. Leave empty to not show a message", "acf-views");
 __("Here you can manually assign specific posts. If set then the query will be limited to posts ONLY from this pool. It means the result will consist ONLY from posts from this pool, which also fit all other filters. If you want to have the same order of results like here, please choose the 'Pool of posts' option in the Sort tab", "acf-views");
 __("Here you can manually exclude specific posts from the query. It means the query will ignore posts from this list, even if they fit the filters. Warning : this field can't be used together with 'Pool of posts'", "acf-views");
@@ -67,11 +67,11 @@ __("Output preview of the generated <a target='_blank' href='https://docs.acfvie
 __("Write your own template with full control over the HTML markup. You can copy the Template Preview field output and make your changes, such as adding an extra heading. <br> Powerful <a target='_blank' href='https://docs.acfviews.com/guides/twig-templates'>Twig features</a>, including <a target='_blank' href='https://docs.acfviews.com/guides/twig-templates#our-functions'>our functions</a>, are available for you. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Make sure you've retained all the default classes; otherwise, pagination won't work.", "acf-views");
 __("Define a unique <a target='_blank' href='https://getbem.com/introduction/'>BEM name</a> for the element that will be used in the markup, or leave it empty to use the default ('acf-card').", "acf-views");
 __("Add a class name without a dot (e.g. 'class-name') or multiple classes with single space as a delimiter (e.g. 'class-name1 class-name2'). These classes are added to the wrapping HTML element. <a target='_blank' href='https://www.w3schools.com/cssref/sel_class.asp'>Learn more about CSS Classes</a>", "acf-views");
-__("Define your CSS style rules. This will be added within &lt;style&gt;&lt;/style&gt; tags ONLY to pages that have this card. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Don't style view fields here, ACF View has its own CSS field for this goal. <br> Magic shortcuts are available (and will use the BEM Unique Name if defined) : <br> '#card' will be replaced with '.acf-card--id--X' (or '.bem-name').<br> '#card__' will be replaced with '.acf-card--id--X .acf-card__' (or '.bem-name .bem-name__'). <br> '#__' will be replaced with '.acf-card__' (or '.bem-name__'). <br> To match items wrapper you should use '#card__items' selector, to match single item you should use '#card .acf-view' selector", "acf-views");
+__("Define your CSS style rules. This will be added within &lt;style&gt;&lt;/style&gt; tags ONLY to pages that have this card. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Don't style view fields here, View has its own CSS field for this goal. <br> Magic shortcuts are available (and will use the BEM Unique Name if defined) : <br> '#card' will be replaced with '.acf-card--id--X' (or '.bem-name').<br> '#card__' will be replaced with '.acf-card--id--X .acf-card__' (or '.bem-name .bem-name__'). <br> '#__' will be replaced with '.acf-card__' (or '.bem-name__'). <br> To match items wrapper you should use '#card__items' selector, to match single item you should use '#card .acf-view' selector", "acf-views");
 __("Add your own Javascript to your view. This will be added within &lt;script&gt;&lt;/script&gt; tags ONLY to pages that have this view and also will be wrapped into an anonymous function to avoid name conflicts. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Don't use inline comments ('//') inside the code, otherwise it'll break the snippet.", "acf-views");
 __("When enabled CSS layout styles are added to CSS Code in the Advanced tab. These styles are automatically updated each time. <br>Tip: If you’d like to edit the Layout CSS manually, simply disable this here. Disabling this does not remove the previously added CSS Code", "acf-views");
 __("The rules control layout of card items. <br>Note: These rules are inherited from small to large. For example: If you’ve set up 'Mobile' and 'Desktop' screen rules, then 'Tablet' will have the same rules as 'Mobile' and 'Large Desktop' will have the same rules as 'Desktop'", "acf-views");
-__("See an output preview of your ACF Card, where you can test some CSS styles. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/preview'>Read more</a> <br> Styles from your front page are included in the preview (some differences may appear). <br>Note: Press 'Update' if you have changed Custom Markup (in the Advanced tab) to see the latest preview. <br> Important! Don't style your ACF View here, instead use the CSS Code field in your ACF View for this goal. <br> After testing: Copy and paste the ACF Card styles to the CSS Code field.", "acf-views");
+__("See an output preview of your Card, where you can test some CSS styles. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/preview'>Read more</a> <br> Styles from your front page are included in the preview (some differences may appear). <br>Note: Press 'Update' if you have changed Custom Markup (in the Advanced tab) to see the latest preview. <br> Important! Don't style your View here, instead use the CSS Code field in your View for this goal. <br> After testing: Copy and paste the Card styles to the CSS Code field.", "acf-views");
 
 // CardData.php : buttons
 
@@ -146,9 +146,9 @@ __("Field", "acf-views");
 __("Label", "acf-views");
 __("Link Label", "acf-views");
 __("Image Size", "acf-views");
-__("ACF View", "acf-views");
+__("View", "acf-views");
 __("Gallery Layout", "acf-views");
-__("Image Lightbox", "acf-views");
+__("With Lightbox", "acf-views");
 __("Field Options", "acf-views");
 __("Identifier", "acf-views");
 __("Default Value", "acf-views");
@@ -157,7 +157,9 @@ __("Open link in a new tab", "acf-views");
 __("Masonry: Row Min Height", "acf-views");
 __("Masonry: Gutter", "acf-views");
 __("Masonry: Mobile Gutter", "acf-views");
-__("Hide Google Map", "acf-views");
+__("Map Marker Icon", "acf-views");
+__("Map Marker icon title", "acf-views");
+__("Hide Map", "acf-views");
 __("Map address format", "acf-views");
 __("Show address from the map", "acf-views");
 __("Values delimiter", "acf-views");
@@ -170,7 +172,7 @@ __("You can set the link label here. Leave empty to use the default", "acf-views
 __("Controls the size of the image, it changes the image src", "acf-views");
 __("If filled then data within this field will be displayed using the selected View. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/display-fields-from-a-related-post-pro'>Read more</a>", "acf-views");
 __("Select the gallery layout type. If Masonry is chosen see 'Field Options' for more settings. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/fields/gallery'>Read more</a>", "acf-views");
-__("If enabled image(s) will include a zoom icon on hover and when clicked popup with a large image", "acf-views");
+__("If enabled, image(s) will include a zoom icon on hover, and when clicked, a popup with a larger image will appear", "acf-views");
 __("Used in the markup. Allowed symbols : letters, numbers, underline and dash. Important! Should be unique within the group", "acf-views");
 __("Set up default value, only used when the field is empty", "acf-views");
 __("By default, empty fields are hidden. Turn on to show even when field has no value", "acf-views");
@@ -178,6 +180,8 @@ __("By default, this setting is inherited from ACF, if available. Turn it on to 
 __("Minimum height of a row in px", "acf-views");
 __("Margin between items in px", "acf-views");
 __("Margin between items on mobile in px", "acf-views");
+__("Customize the Map Marker by using your own icon or uploading an image from <a target='_blank' href='https://www.flaticon.com/free-icons/google-maps'>Flaticon</a> (.png, .jpg allowed). <br> Dimensions of 32x32px is recommended", "acf-views");
+__("Shown when mouse hovers on Map Marker", "acf-views");
 __("The Map is shown by default. Turn this on to hide the map", "acf-views");
 __("Use these variables to format your map address: <br> &#36;street_number&#36;, &#36;street_name&#36;, &#36;city&#36;, &#36;state&#36;, &#36;post_code&#36;, &#36;country&#36; <br> HTML is also supported. If left empty the address is not shown.", "acf-views");
 __("The address is hidden by default. Turn this on to show the address from the map", "acf-views");

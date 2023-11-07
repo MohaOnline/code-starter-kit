@@ -142,12 +142,12 @@ class Admin
         if (\defined('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT) {
             ?>
             <div class='update-nag fm-error notice notice-success is-dismissible'>
-                <b>DISALLOW_FILE_EDIT</b> <?php _e('is set to', 'file-manager'); ?>
+                <b>DISALLOW_FILE_EDIT</b> <?php esc_html_e('is set to', 'file-manager'); ?>
                 <b>TRUE</b>.
-                <?php _e('You will not be able to edit files with', 'file-manager'); ?>
+                <?php esc_html_e('You will not be able to edit files with', 'file-manager'); ?>
                  <a href='admin.php?page=file-manager-settings'>Bit File Manager</a>.
-                <?php _e('Please set', 'file-manager'); ?>
-                <b>DISALLOW_FILE_EDIT</b> <?php _e('to', 'file-manager'); ?>
+                <?php esc_html_e('Please set', 'file-manager'); ?>
+                <b>DISALLOW_FILE_EDIT</b> <?php esc_html_e('to', 'file-manager'); ?>
                 <b>FALSE</b>
             </div>
             <style>
@@ -208,7 +208,7 @@ class Admin
                 'type'       => 'submenu',
                 'name'       => 'Logs',
                 'title'      => __('Logs | Bit File Manager', 'file-manager'),
-                'capability' => Hooks::applyFilter('can_access_fm_logs', 'manage_options'),
+                'capability' => Hooks::applyFilter('can_access_fm_logs', 'install_plugins'),
                 'slug'       => Config::SLUG . '-logs',
                 'callback'   => [$this, 'logsPage'],
             ],
@@ -217,7 +217,7 @@ class Admin
                 'type'       => 'submenu',
                 'name'       => 'Settings',
                 'title'      => __('Settings | Bit File Manager', 'file-manager'),
-                'capability' => Hooks::applyFilter('can_change_fm_settings', 'manage_options'),
+                'capability' => Hooks::applyFilter('can_change_fm_settings', 'install_plugins'),
                 'slug'       => Config::SLUG . '-settings',
                 'callback'   => [$this, 'settingsPage'],
             ],
@@ -229,7 +229,7 @@ class Admin
                     'Permissions - Sets permission for specific user or by user role | Bit File Manager',
                     'file-manager'
                 ),
-                'capability' => Hooks::applyFilter('can_change_fm_permissions', 'manage_options'),
+                'capability' => Hooks::applyFilter('can_change_fm_permissions', 'install_plugins'),
                 'slug'       => Config::SLUG . '-permissions',
                 'callback'   => [$this, 'permissionsPage'],
             ],
@@ -241,7 +241,7 @@ class Admin
                     'System Information | Bit File Manager',
                     'file-manager'
                 ),
-                'capability' => Hooks::applyFilter('can_view_fm_sys_info', 'manage_options'),
+                'capability' => Hooks::applyFilter('can_view_fm_sys_info', 'install_plugins'),
                 'slug'       => Config::SLUG . '-system-info',
                 'callback'   => [$this, 'systemInfoPage'],
             ],

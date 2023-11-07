@@ -1,4 +1,4 @@
-var javascript_version = "2.7.31"
+var javascript_version = "2.7.32"
 var ignore_key = true;
 var start = 1;
 var end = 16;

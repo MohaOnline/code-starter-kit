@@ -218,8 +218,12 @@ class Twig
         );
     }
 
-    public function setHooks(string $file): void
+    public function setHooks(bool $isAdmin, string $file): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         // do not use $plugin->getSlug(), it won't work in tests
         register_activation_hook($file, [$this, 'createTemplatesDir']);
         register_deactivation_hook($file, [$this, 'removeTemplatesDir']);

@@ -8,7 +8,6 @@ class ApplepayManager {
         this.buttonConfig = buttonConfig;
         this.ppcpConfig = ppcpConfig;
         this.ApplePayConfig = null;
-console.log('Applepay manager', ppcpConfig, buttonConfig)
         this.buttons = [];
 
         buttonModuleWatcher.watchContextBootstrap((bootstrap) => {
@@ -34,6 +33,12 @@ console.log('Applepay manager', ppcpConfig, buttonConfig)
                 button.init(this.ApplePayConfig);
             }
         })();
+    }
+
+    reinit() {
+        for (const button of this.buttons) {
+            button.reinit();
+        }
     }
 
     /**

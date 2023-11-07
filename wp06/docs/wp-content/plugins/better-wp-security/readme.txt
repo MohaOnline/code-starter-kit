@@ -2,8 +2,8 @@
 Contributors: ithemes, timothyblynjacobs, layotte, jthillithemes, lisacee, solidwp
 Tags: security, malware, two factor authentication, brute force protection, password protection
 Requires at least: 6.2
-Tested up to: 6.3
-Stable tag: 9.0.0
+Tested up to: 6.4
+Stable tag: 9.0.3
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,22 @@ Manage more than one WordPress site? Release lockouts and keep your themes, plug
 8. Automated vulnerability patching with Patchstack (Pro)
 
 == Changelog ==
+
+= 9.0.3 =
+* Bug Fix: Remove an extra folder containing duplicate plugin files
+
+= 9.0.2 =
+* Bug Fix: Adding missing dist files to SVN
+
+= 9.0.1 =
+* Security: Don't disclose the login URL when using Hide Backend on a site with comments enabled and comment registration required. Thanks to Naveen Muthusamy for disclosing this issue.
+* Hardening: Check for the promote_user capability when using Privilege Escalation in addition to edit_user.
+* Tweak: Remove the iThemes Security is now Solid Security banner from admin-facing email notifications.
+* Bug Fix: Prevent the User Security page from crashing when "Show Avatars" is disabled in the WordPress discussion settings.
+* Bug Fix: Fix some filters on the User Security page not working as expected.
+* Bug Fix: Fix spacing on the Two-Factor form when backup methods are enabled.
+* Bug Fix: Fix fatal error when there is an error retrieving Patchstack license information.
+* Bug Fix: Styling issues on WordPress 6.4.
 
 = 9.0.0 =
 * New: iThemes Security is now Solid Security! Learn More: https://go.solidwp.com/security-welcome-to-solidwp

@@ -186,7 +186,6 @@ function blogus_customize_register($wp_customize) {
         $wp_customize->selective_refresh->add_partial('breadcrumb_settings', array(
             'selector'        => '.bs-breadcrumb-section .breadcrumb a', 
         ));
-
    
 	}
 

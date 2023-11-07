@@ -405,7 +405,7 @@ function ai_adb_process_blocks (element) {
               var wrapping_div = el.closest ('div[data-ai]');
 //              if (typeof wrapping_div.attr ("data-ai") != "undefined") {
               // ***
-              if (wrapping_div.hasAttribute ("data-ai")) {
+              if (wrapping_div != null && wrapping_div.hasAttribute ("data-ai")) {
 //                if ($(this).hasClass ('ai-no-tracking')) {
                 // ***
                 if (el.classList.contains ('ai-no-tracking')) {

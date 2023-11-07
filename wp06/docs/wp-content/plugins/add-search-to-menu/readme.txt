@@ -5,7 +5,7 @@ Tags: search, woocommerce search, image search, ajax search, search shortcode, l
 Requires at least: 3.9
 Tested up to: 6.4
 Requires PHP: 5.2.4
-Stable tag: 5.5.3
+Stable tag: 5.5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -196,6 +196,11 @@ Yes we do. We try our best to help free users with customisation requests and we
 8. Plugin Settings
 
 == Changelog ==
+
+= 5.5.4 =
+* Fixed - Error: Call to undefined function mysql_get_server_info 
+* Fixed - Passing args to wc_get_product is deprecated
+* Updated - Freemius SDK 2.6.0
 
 = 5.5.3 =
 * Added - WooCommerce High-Performance Order Storage (HPOS) Compatibility

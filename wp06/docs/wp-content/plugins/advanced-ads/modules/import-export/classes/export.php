@@ -38,7 +38,7 @@ class Advanced_Ads_Export {
 	 * Handle form submissions
 	 */
 	public function download_export_file() {
-		$action = Advanced_Ads_Admin::get_instance()->current_action();
+		$action = WordPress::current_action();
 
 		if ( $action === 'export' ) {
 			if ( ! WordPress::user_can( 'advanced_ads_manage_options') ) {

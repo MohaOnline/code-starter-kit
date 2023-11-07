@@ -751,6 +751,42 @@ window.jQuery(function ($) {
             $('input[name="settings[smoothHeight]"]').prop( "checked", false );
         }
     });
+
+    /* Dismiss legacy setting notices */
+    $(document).on( 'click', '.ml-legacy-notice .notice-dismiss', function() {
+        var data = {
+            action: 'legacy_notification',
+            notif_status: 'hide',
+            _wpnonce: metaslider.legacy_notification_nonce
+        };
+        $.ajax({
+            url: metaslider.ajaxurl,
+            data: data,
+            type: 'POST',
+            error: function (error) {
+                console.log('Something went wrong:' +  error);
+            },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    
+    });
+
+    /* Copy to clipboard on Dashboard Page*/
+    $('.copy-shortcode').click(function() {
+        var textToCopy = $(this).text();
+        if (window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy);
+        } else {
+            var $tempElement = $("<input>");
+            $("body").append($tempElement);
+            $tempElement.val(textToCopy).select();
+            document.execCommand("Copy");
+            $tempElement.remove();
+        }
+        $(this).next('.copy-message').fadeIn().delay(1000).fadeOut();
+    });
 });
 
 /**

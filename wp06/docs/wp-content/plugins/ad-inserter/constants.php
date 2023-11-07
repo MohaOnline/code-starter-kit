@@ -35,7 +35,7 @@ if (!defined( 'AD_INSERTER_NAME'))
   define ('AD_INSERTER_NAME', 'Ad Inserter');
 
 if (!defined( 'AD_INSERTER_VERSION'))
-  define ('AD_INSERTER_VERSION', '2.7.31');
+  define ('AD_INSERTER_VERSION', '2.7.32');
 
 if (!defined ('AD_INSERTER_PLUGIN_BASENAME'))
   define ('AD_INSERTER_PLUGIN_BASENAME', plugin_basename (__FILE__));
@@ -91,6 +91,7 @@ define ('AI_OPTION_IFRAME_HEIGHT',               'iframe_height');
 define ('AI_OPTION_LABEL_IN_IFRAME',             'label_in_iframe');
 define ('AI_OPTION_TRACKING',                    'tracking');
 define ('AI_OPTION_ENABLE_AJAX',                 'enable_ajax');
+define ('AI_OPTION_ENABLE_REST',                 'enable_rest');
 define ('AI_OPTION_ENABLE_FEED',                 'enable_feed');
 define ('AI_OPTION_ENABLE_404',                  'enable_404');
 define ('AI_OPTION_DISABLE_CACHING',             'disable_caching');
@@ -231,6 +232,7 @@ define ('AI_OPTION_LIMIT_CLICKS_PER_TIME_PERIOD',              'limit-clicks-per
 define ('AI_OPTION_LIMIT_CLICKS_TIME_PERIOD',                  'limit-clicks-time');
 define ('AI_OPTION_TRIGGER_CLICK_FRAUD_PROTECTION',            'trigger-cfp');
 
+define ('AI_OPTION_PARALLAX_MODE',               'parallax-mode');
 define ('AI_OPTION_PARALLAX',                    'parallax');
 define ('AI_OPTION_PARALLAX_IMAGE',              'parallax-image');
 define ('AI_OPTION_PARALLAX_SHIFT',              'parallax-shift');
@@ -771,6 +773,13 @@ define ('AI_STICKY_WIDGET_MODE_CSS', 0);
 define ('AI_STICKY_WIDGET_MODE_JS',  1);
 define ('AI_STICKY_WIDGET_MODE_CSS_PUSH',  2);
 
+// Parallax mode
+define ('AI_PARALLAX_MODE_BLOCK',      0);
+define ('AI_PARALLAX_MODE_BACKGROUND', 1);
+
+define ('AI_TEXT_ENG_BLOCK',           'Block');
+define ('AI_TEXT_ENG_BACKGROUND',      'Background');
+
 // Plugin settings menu position
 define ('AI_SETTINGS_SUBMENU',  0);
 define ('AI_TOP_MENU',          1);
@@ -995,6 +1004,7 @@ define ('DEFAULT_RECAPTCHA_THRESHOLD',          '0.5');
 define ('DEFAULT_SETTINGS_MENU_PRIORITY',       81);
 define ('DEFAULT_SETTINGS_SUBMENU_PRIORITY',    10);
 define ('DEFAULT_MENU_FOR_LINK',                AI_SETTINGS_SUBMENU);
+define ('DEFAULT_PARALLAX_MODE',                AI_PARALLAX_MODE_BACKGROUND);
 
 
 define ('AI_ADBLOCKING_DETECTION',              true);
@@ -1146,6 +1156,7 @@ define ('AI_PT_404',                      7);
 define ('AI_PT_FEED',                     8);
 define ('AI_PT_ADMIN',                    9);
 define ('AI_PT_AJAX',                    10);
+define ('AI_PT_REST',                    11);
 
 define ('AI_USER_NOT_LOGGED_IN',          0);
 define ('AI_USER_LOGGED_IN',              1);

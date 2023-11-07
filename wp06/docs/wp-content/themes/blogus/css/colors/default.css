@@ -327,6 +327,10 @@ a:hover, a:focus {
 .featured-tab-widget .nav-link {
     color: #0F1012;
 }
+/*----- Featured-post -----*/
+.featured-widget-content .small-post {
+	border-bottom-color: var(--border-color);
+}
 /*==================== Blog ====================*/
 .small-post  {
 	background: var(--box-color);

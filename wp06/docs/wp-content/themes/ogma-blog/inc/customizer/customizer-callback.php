@@ -203,6 +203,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     endif;
 
+    if ( ! function_exists( 'ogma_blog_cb_has_header_search_enable' ) ) :
+
+        /**
+         * Check if header top option and header search option is enable or not.
+         *
+         * @since 1.0.0
+         *
+         * @param WP_Customize_Control $control WP_Customize_Control instance.
+         *
+         * @return bool Whether the control is active to the current preview.
+         */
+        function ogma_blog_cb_has_header_search_enable( $control ) {
+            if ( false !== $control->manager->get_setting( 'ogma_blog_header_top_enable' )->value() && false !== $control->manager->get_setting( 'ogma_blog_header_search_enable' )->value() ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    endif;
+
     if ( ! function_exists( 'ogma_blog_cb_has_sticky_sidebar_toggle_enable' ) ) :
 
         /**

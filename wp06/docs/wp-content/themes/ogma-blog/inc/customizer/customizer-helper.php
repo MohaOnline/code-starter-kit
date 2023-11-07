@@ -344,6 +344,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             'ogma_blog_header_sticky_enable',
                             'ogma_blog_divider_main_area_one',
                             'ogma_blog_header_search_enable',
+                            'ogma_blog_header_search_option',
                             'ogma_blog_header_site_mode_switch_enable',
                             'ogma_blog_header_sticky_sidebar_toggle_enable',
                             'ogma_blog_header_sticky_sidebar_redirect',

@@ -7,12 +7,13 @@ namespace org\wplake\acf_views\Common\Cpt;
 use org\wplake\acf_views\Common\CptData;
 use org\wplake\acf_views\Common\CptDataStorage;
 use org\wplake\acf_views\Common\Group;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Common\Instance;
 use org\wplake\acf_views\Plugin;
 
 defined('ABSPATH') || exit;
 
-abstract class SaveActions
+abstract class SaveActions implements HooksInterface
 {
     protected CptDataStorage $cptDataStorage;
     protected Plugin $plugin;
@@ -147,6 +148,25 @@ abstract class SaveActions
             $this->getCustomMarkupAcfFieldName(),
             $markupValidationError
         );
+    }
+
+    protected function loadValidationDataInstanceFromCurrentValues($postId): void
+    {
+        // remove slashes added by WP, as it's wrong to have slashes so early
+        // (corrupts next data processing, like markup generation (will be \&quote; instead of &quote; due to this escaping)
+        // in the 'saveToPostContent()' method using $wpdb that also has 'addslashes()',
+        // it means otherwise \" will be replaced with \\\" and it'll create double slashing issue (every saving amount of slashes before " will be increasing)
+
+        $fieldValues = array_map('stripslashes_deep', $this->fieldValues);
+
+        $this->validationData->load($postId, '', $fieldValues);
+    }
+
+    protected function saveCaughtFields($postId)
+    {
+        $this->cptDataStorage->replace($postId, $this->validationData);
+
+        $this->performSaveActions($postId);
     }
 
     public function saveMetaField($value, array $field): void
@@ -335,14 +355,7 @@ abstract class SaveActions
             return;
         }
 
-        // remove slashes added by WP, as it's wrong to have slashes so early
-        // (corrupts next data processing, like markup generation (will be \&quote; instead of &quote; due to this escaping)
-        // in the 'saveToPostContent()' method using $wpdb that also has 'addslashes()',
-        // it means otherwise \" will be replaced with \\\" and it'll create double slashing issue (every saving amount of slashes before " will be increasing)
-
-        $fieldValues = array_map('stripslashes_deep', $this->fieldValues);
-
-        $this->validationData->load($postId, '', $fieldValues);
+        $this->loadValidationDataInstanceFromCurrentValues($postId);
 
         $this->validateSubmission();
 
@@ -366,16 +379,28 @@ abstract class SaveActions
                 return $isUpdated;
             }
 
+            if ($this->plugin->isWordpressComHosting()) {
+                $this->saveMetaField($value, $field);
+            }
+
             // avoid saving to the postmeta
             return true;
         }, 10, 4);
-    }
 
-    public function saveCaughtFields($postId)
-    {
-        $this->cptDataStorage->replace($postId, $this->validationData);
+        if (!$this->plugin->isWordpressComHosting()) {
+            return;
+        }
 
-        $this->performSaveActions($postId);
+        // priority is 20, as current is with 10
+        add_action('acf/save_post', function ($postId) {
+            // check again, as probably it's about another post
+            if (!$this->isMyPost($postId)) {
+                return;
+            }
+
+            $this->loadValidationDataInstanceFromCurrentValues($postId);
+            $this->saveCaughtFields($postId);
+        }, 20);
     }
 
     public function loadFieldsFromPostContent()
@@ -408,11 +433,18 @@ abstract class SaveActions
     }
 
     // by tests, json in post_meta in 13 times quicker than ordinary postMeta way (30ms per 10 objects vs 400ms)
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        // priority is 20, to make sure it's run after the ACF's code
-        add_action('acf/validate_value', [$this, 'catchFieldValue'], 20, 4);
-        add_action('acf/validate_save_post', [$this, 'customValidation'], 20, 4);
+        if (!$isAdmin) {
+            return;
+        }
+
+        // for some reason, ACF ajax form validation doesn't work on the wordpress.com hosting
+        if (!$this->plugin->isWordpressComHosting()) {
+            // priority is 20, to make sure it's run after the ACF's code
+            add_action('acf/validate_value', [$this, 'catchFieldValue'], 20, 4);
+            add_action('acf/validate_save_post', [$this, 'customValidation'], 20, 4);
+        }
 
         add_action('acf/save_post', [$this, 'skipSavingToPostMeta']);
 

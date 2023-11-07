@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder, widgets for Elementor, header footer 
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 7.1
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -650,6 +650,9 @@ Visit  [wpmet](https://wpmet.com/)  to learn more about how to get the best of W
 
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.0.1 (2023-11-05)
+Fixed: PHP notice at onepage scroll module
+
 ElementsKit Elementor Addons Version: 3.0.0 (2023-10-04)
 Fixed: Header search accessibility issue
 Fixed: Post tab click issue

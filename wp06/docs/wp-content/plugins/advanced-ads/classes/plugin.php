@@ -205,7 +205,7 @@ class Advanced_Ads_Plugin {
 		$short_url   = self::get_short_url();
 		$attribution = '<!-- ' . $short_url . ' is managing ads with Advanced Ads%1$s%2$s -->';
 		$version     = self::is_new_user( 1585224000 ) ? ' ' . ADVADS_VERSION : '';
-		$plugin_url  = self::get_group_by_url( $short_url, 'a' ) ? ' – ' . ADVADS_URL : '';
+		$plugin_url  = self::get_group_by_url( $short_url, 'a' ) ? ' – https://wpadvancedads.com/' : '';
 		// escaping would break HTML comment tags so we disable checks here.
 		// phpcs:ignore
 		echo apply_filters( 'advanced-ads-attribution', sprintf( $attribution, $version, $plugin_url ) );
@@ -578,9 +578,9 @@ class Advanced_Ads_Plugin {
 
 		$utm = empty( $utm ) ? '?utm_source=advanced-ads&utm_medium=link&utm_campaign=support' : $utm;
 		if ( self::any_activated_add_on() ) {
-			$url = ADVADS_URL . 'support/' . $utm . '-with-addons';
+			$url = 'https://wpadvancedads.com/support/' . $utm . '-with-addons';
 		} else {
-			$url = ADVADS_URL . 'support/' . $utm . '-free-user';
+			$url = 'https://wpadvancedads.com/support/' . $utm . '-free-user';
 		}
 
 		return $url;
@@ -622,8 +622,7 @@ class Advanced_Ads_Plugin {
 	public static function is_new_user( $timestamp = 0 ) {
 
 		// allow admins to see version for new users in any case.
-		if ( current_user_can( self::user_cap( 'advanced_ads_manage_options' ) )
-			&& isset( $_REQUEST['advads-ignore-timestamp'] ) ) {
+		if ( WordPress::user_can( 'advanced_ads_manage_options' ) && isset( $_REQUEST['advads-ignore-timestamp'] ) ) {
 			return true;
 		}
 

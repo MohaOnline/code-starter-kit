@@ -21,13 +21,13 @@ class Config
 
     const DB_PREFIX = 'fm_';
 
-    const VERSION = '6.2.1';
+    const VERSION = '6.3';
 
-    const VERSION_ID = 621;
+    const VERSION_ID = 630;
 
     const DB_VERSION = '1.0';
 
-    const REQUIRED_PHP_VERSION = '5.6.4';
+    const REQUIRED_PHP_VERSION = '7.4';
 
     const REQUIRED_WP_VERSION = '5.0';
 
@@ -175,7 +175,7 @@ class Config
             ],
             'Settings' => [
                 'title' => __('Settings', 'file-manager'),
-                'url'   => self::get('ADMIN_URL') . 'admin.php?page=bit-file-manager-settings',
+                'url'   => self::get('ADMIN_URL') . 'admin.php?page=file-manager-settings',
             ],
             'Home'     => [
                 'title' => __('Home', 'file-manager'),

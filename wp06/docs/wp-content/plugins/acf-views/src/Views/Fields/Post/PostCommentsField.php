@@ -10,12 +10,141 @@ use org\wplake\acf_views\Groups\ViewData;
 use org\wplake\acf_views\Views\FieldMeta;
 use org\wplake\acf_views\Views\Fields\CustomField;
 use org\wplake\acf_views\Views\Fields\MarkupField;
+use WP_Comment;
 
 defined('ABSPATH') || exit;
 
 class PostCommentsField extends MarkupField
 {
     use CustomField;
+
+    protected function getItemMarkup(
+        ViewData $viewData,
+        string $fieldId,
+        string $itemId,
+        FieldData $fieldData,
+        int $tabsNumber,
+        bool $isWithFieldWrapper,
+        bool $isWithRowWrapper
+    ): string {
+        $markup = '';
+
+        // opening 'comment' div
+        $markup .= sprintf(
+            '<div class="%s">',
+            esc_html(
+                $this->getFieldClass('comment', $viewData, $fieldData, $isWithFieldWrapper, $isWithRowWrapper)
+            ),
+        );
+        $markup .= "\r\n" . str_repeat("\t", ++$tabsNumber);
+
+        // comment author name
+        $markup .= sprintf(
+            '<div class="%s">',
+            esc_html(
+                $this->getFieldClass(
+                    'comment-author-name',
+                    $viewData,
+                    $fieldData,
+                    $isWithFieldWrapper,
+                    $isWithRowWrapper
+                )
+            )
+        );
+        $markup .= "\r\n" . str_repeat("\t", ++$tabsNumber);
+        $markup .= sprintf('{{ %s.author_name }}', esc_html($itemId));
+        $markup .= "\r\n" . str_repeat("\t", --$tabsNumber);
+        $markup .= '</div>';
+
+        // comment author email
+        $markup .= "\r\n" . str_repeat("\t", $tabsNumber);
+        $markup .= sprintf(
+            '<div class="%s">',
+            esc_html(
+                $this->getFieldClass('comment-content', $viewData, $fieldData, $isWithFieldWrapper, $isWithRowWrapper)
+            )
+        );
+        $markup .= "\r\n" . str_repeat("\t", ++$tabsNumber);
+        $markup .= '{{ comment_item.content|raw }}';
+        $markup .= "\r\n" . str_repeat("\t", --$tabsNumber);
+        $markup .= '</div>';
+
+        // closing 'comment' div
+        $markup .= "\r\n" . str_repeat("\t", --$tabsNumber);
+        $markup .= '</div>';
+
+        return $markup;
+    }
+
+    protected function getItemTwigArgs(
+        ?WP_Comment $comment,
+        FieldData $fieldData,
+        bool $isForValidation = false
+    ): array {
+        if ($isForValidation ||
+            !$comment) {
+            return [
+                'author_name' => 'Name',
+                'content' => 'Comment content',
+            ];
+        }
+
+        return [
+            // avoid double encoding in Twig
+            'author_name' => html_entity_decode($comment->comment_author, ENT_QUOTES),
+            'content' => html_entity_decode($comment->comment_content, ENT_QUOTES),
+        ];
+    }
+
+    /**
+     * @param WP_Comment[] $comments
+     * @return array
+     */
+    protected function groupCommentsByParent(array $comments): array
+    {
+        $groupedComments = [];
+
+        $getCommentById = function ($commentId) use ($comments): ?WP_Comment {
+            // search commend in array by id
+
+            foreach ($comments as $comment) {
+                if ($comment->comment_ID !== $commentId) {
+                    continue;
+                }
+
+                return $comment;
+            }
+
+            return null;
+        };
+
+        foreach ($comments as $comment) {
+            $topComment = $comment->comment_parent ?
+                $getCommentById($comment->comment_parent) :
+                null;
+
+            while ($topComment) {
+                if (!$topComment->comment_parent) {
+                    break;
+                }
+
+                $topComment = $getCommentById($topComment->comment_parent);
+            }
+
+            $commentKey = $topComment->comment_ID ?? $comment->comment_ID;
+            $groupedComments[$commentKey] = $groupedComments[$commentKey] ?? [];
+            $groupedComments[$commentKey][] = $comment;
+        }
+
+        $grouped = [];
+        foreach ($groupedComments as $comments) {
+            // reverse 'one conversation messages', to reflect the historic order
+            $comments = array_reverse($comments);
+            $grouped = array_merge($grouped, $comments);
+        }
+
+        return $grouped;
+    }
 
     public function getMarkup(
         ViewData $acfViewData,
@@ -31,19 +160,19 @@ class PostCommentsField extends MarkupField
 
         $markup .= "\r\n" . str_repeat("\t", $tabsNumber);
         $markup .= sprintf("{%% for comment_item in %s.value %%}", esc_html($fieldId));
-        $markup .= "\r\n" . str_repeat("\t", $tabsNumber + 1);
+        $markup .= "\r\n" . str_repeat("\t", ++$tabsNumber);
 
-        $markup .= sprintf(
-            '<div class="%s">',
-            esc_html(
-                $this->getFieldClass('comment', $acfViewData, $field, $isWithFieldWrapper, $isWithRowWrapper)
-            ),
+        $markup .= $this->getItemMarkup(
+            $acfViewData,
+            $fieldId,
+            'comment_item',
+            $field,
+            $tabsNumber,
+            $isWithFieldWrapper,
+            $isWithRowWrapper
         );
 
-        // todo in basic, only name and content. In pro, allow to choose ACF View id
-
-        $markup .= "\r\n";
-        $markup .= str_repeat("\t", $tabsNumber);
+        $markup .= "\r\n" . str_repeat("\t", --$tabsNumber);
         $markup .= "{% endfor %}\r\n";
 
         return $markup;
@@ -59,12 +188,14 @@ class PostCommentsField extends MarkupField
         bool $isForValidation = false
     ): array {
         $args = [
-            'value' => '',
+            'value' => [],
         ];
 
         if ($isForValidation) {
             return array_merge($args, [
-                'value' => 'content',
+                'value' => [
+                    $this->getItemTwigArgs(null, $field, true),
+                ],
             ]);
         }
 
@@ -74,12 +205,17 @@ class PostCommentsField extends MarkupField
             return $args;
         }
 
-        $content = $post->post_content;
-        // to avoid double escaping
-        $content = html_entity_decode($content, ENT_QUOTES);
+        // get all post comments
+        $comments = get_comments([
+            'post_id' => $post->ID,
+            'status' => 'approve',
+        ]);
 
+        $comments = $this->groupCommentsByParent($comments);
 
-        $args['value'] = $content;
+        foreach ($comments as $comment) {
+            $args['value'][] = $this->getItemTwigArgs($comment, $field);
+        }
 
         return $args;
     }

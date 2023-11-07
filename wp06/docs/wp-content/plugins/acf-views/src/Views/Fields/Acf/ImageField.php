@@ -41,7 +41,7 @@ class ImageField extends MarkupField
         }
 
         $markup .= sprintf(
-            '<img class="%s" src="{{ %s.value }}" width="{{ %s.width }}" height="{{ %s.height }}" alt="{{ %s.alt }}" decoding="{{ %s.decoding }}" loading="{{ %s.loading }}" srcset="{{ %s.srcset }}" sizes="{{ %s.sizes }}"',
+            '<img class="%s" src="{{ %2$s.value }}" width="{{ %2$s.width }}" height="{{ %2$s.height }}" alt="{{ %2$s.alt }}" decoding="{{ %2$s.decoding }}" loading="{{ %2$s.loading }}" srcset="{{ %2$s.srcset }}" sizes="{{ %2$s.sizes }}"',
             esc_html(
                 $this->getFieldClass(
                     'image',
@@ -51,14 +51,7 @@ class ImageField extends MarkupField
                     $isWithRowWrapper
                 )
             ),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
+            esc_html($fieldId)
         );
 
         if ($field->galleryWithLightBox) {

@@ -25,19 +25,18 @@ class OpenStreetMap extends \acf_field {
 		return self::$_instance;
 	}
 
-	/*
-	*  __construct
-	*
-	*  This function will setup the field type data
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
+	/**
+	 *  __construct
+	 *
+	 *  This function will setup the field type data
+	 *
+	 *  @type	function
+	 *  @date	5/03/2014
+	 *  @since	5.0.0
+	 *
+	 *  @param	n/a
+	 *  @return	n/a
+	 */
 	function __construct() {
 		if ( ! is_null( self::$_instance ) ) {
 			throw new Exception('Not more than one Field\OpenStreetMap!');
@@ -67,7 +66,7 @@ class OpenStreetMap extends \acf_field {
 			'lat'		=> 53.55064,
 			'lng'		=> 10.00065,
 			'zoom'		=> 12,
-			'layers'	=> [ 'OpenStreetMap' ],
+			'layers'	=> [ 'OpenStreetMap.Mapnik' ],
 			'markers'	=> [],
 			// gm compatibility
 			'address'	=> '',
@@ -97,22 +96,20 @@ class OpenStreetMap extends \acf_field {
 		add_action( 'print_media_templates', [ $this, 'print_media_templates' ] );
 
 		parent::__construct();
-
 	}
 
-
 	/*
-	*  render_field_settings()
-	*
-	*  Create extra settings for your field. These are visible when editing a field
-	*
-	*  @type	action
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$field (array) the $field being edited
-	*  @return	n/a
-	*/
+	 *  render_field_settings()
+	 *
+	 *  Create extra settings for your field. These are visible when editing a field
+	 *
+	 *  @type	action
+	 *  @since	3.6
+	 *  @date	23/01/13
+	 *
+	 *  @param	$field (array) the $field being edited
+	 *  @return	n/a
+	 */
 
 	function render_field_settings( $field ) {
 
@@ -145,7 +142,6 @@ class OpenStreetMap extends \acf_field {
 			$this->render_field_presentation_settings( $field );
 			$this->render_field_validation_settings( $field );
 		}
-
 	}
 
 	/**
@@ -168,7 +164,6 @@ class OpenStreetMap extends \acf_field {
 			'min'			=> 0,
 			'step'			=> 1,
 		]);
-
 	}
 
 	/**
@@ -180,17 +175,21 @@ class OpenStreetMap extends \acf_field {
 	 * @return void
 	 */
 	function render_field_presentation_settings( $field ) {
+
+		$leafletProviders = Core\LeafletProviders::instance();
+		$osmProviders     = Core\OSMProviders::instance();
+
 		acf_render_field_setting( $field, [
 			'label'				=> __( 'Map Appearance', 'acf-openstreetmap-field' ),
 			'instructions'		=> __( 'Set zoom, center and select layers being displayed.', 'acf-openstreetmap-field' ),
-			'type'				=> 'leaflet_map',
+			'type'				=> 'open_street_map',
 			'name'				=> 'leaflet_map',
 
 			'return_format'		=> 'admin',
 			'attr'				=> [
 				'data-editor-config'	=> [
 					'allow_providers'		=> true,
-					'restrict_providers'	=> [],
+					'restrict_providers'	=> false,
 					'max_markers'			=> 0, // no markers
 					'name_prefix'			=> $field['prefix'],
 				],
@@ -216,26 +215,26 @@ class OpenStreetMap extends \acf_field {
 			'type'			=> 'number',
 			'name'			=> 'center_lat',
 			'prepend'		=> __('lat','acf-openstreetmap-field'),
-			'placeholder'	=> $this->default_values['lat']
+			'placeholder'	=> $this->default_values['lat'],
+			// 'step'			=> 0.1,
 		]);
-
 
 		// lng
 		acf_render_field_setting( $field, [
-			'label'			=> __('Center','acf-openstreetmap-field'),
-			'instructions'	=> __('Center the initial map','acf-openstreetmap-field'),
+			'label'			=> __( 'Center', 'acf-openstreetmap-field' ),
+			'instructions'	=> __( 'Center the initial map', 'acf-openstreetmap-field' ),
 			'type'			=> 'number',
 			'name'			=> 'center_lng',
 			'prepend'		=> __('lng','acf-openstreetmap-field'),
 			'placeholder'	=> $this->default_values['lng'],
-			'_append' 		=> 'center_lat'
+			'_append' 		=> 'center_lat',
+			// 'step'			=> 0.1,
 		]);
-
 
 		// zoom
 		acf_render_field_setting( $field, [
-			'label'			=> __('Zoom','acf-openstreetmap-field'),
-			'instructions'	=> __('Set the initial zoom level','acf-openstreetmap-field'),
+			'label'			=> __( 'Zoom', 'acf-openstreetmap-field' ),
+			'instructions'	=> __( 'Set the initial zoom level', 'acf-openstreetmap-field' ),
 			'type'			=> 'number',
 			'name'			=> 'zoom',
 			'min'			=> 1,
@@ -247,11 +246,24 @@ class OpenStreetMap extends \acf_field {
 
 		// allow_layer selection
 		acf_render_field_setting( $field, [
-			'label'			=> __('Allow layer selection','acf-openstreetmap-field'),
+			'label'			=> __( 'Allow layer selection', 'acf-openstreetmap-field' ),
 			'instructions'	=> '',
 			'name'			=> 'allow_map_layers',
 			'type'			=> 'true_false',
 			'ui'			=> 1,
+		]);
+
+		// Leaflet layers
+		acf_render_field_setting( $field, [
+			'label'			=> __( 'Leaflet Layers', 'acf-openstreetmap-field' ),
+			'instructions'	=> '',
+			'name'			=> 'layers',
+			'type'			=> 'select',
+			'multiple'		=> 1,
+			'choices'		=> $leafletProviders->get_layers(),
+			'wrapper'		=> [
+				'class'	=> 'acf-hidden',
+			],
 		]);
 
 		// map height
@@ -262,7 +274,6 @@ class OpenStreetMap extends \acf_field {
 			'name'			=> 'height',
 			'append'		=> 'px',
 		]);
-
 	}
 
 
@@ -296,23 +307,17 @@ class OpenStreetMap extends \acf_field {
 			'class'		=> 'osm-json',
 		]);
 
-		$providers = false;
-
-		if ( isset($field['return_format']) ) {
-			if ( $field['return_format'] === 'osm' ) {
-				$providers = Core\OSMProviders::instance()->get_layers();
-			} else {
-				$providers = Core\LeafletProviders::instance()->get_layers();
-			}
-		}
+		$restrict_providers = isset($field['return_format']) && $field['return_format'] === 'osm'
+			? array_values( Core\OSMProviders::instance()->get_layers() )
+			: false;
 
 		$max_markers = $field['max_markers'] === '' ? false : intval( $field['max_markers'] );
 
 		if ( 'osm' === $field['return_format'] ) {
-			if ( $max_markers === false ) { // no restrictin > max one marker
+			if ( $max_markers === false ) { // no restriction > max one marker
 				$max_markers = 1;
 			}
-			// oly one marker max
+			// only one marker max
 			$max_markers = min( $max_markers, 1 );
 		}
 		$map_args = [
@@ -320,7 +325,7 @@ class OpenStreetMap extends \acf_field {
 				'attr'	=> [
 					'data-editor-config'	=> [
 						'allow_providers'		=> $field['allow_map_layers'],
-						'restrict_providers'	=> array_values( $providers ),
+						'restrict_providers'	=> $restrict_providers,
 						'max_markers'			=> $max_markers,
 						'name_prefix'			=> $field['name'],
 					],
@@ -383,7 +388,6 @@ class OpenStreetMap extends \acf_field {
 		<div class="osm-markers">
 		</div>
 		<?php
-
 	}
 
 	/*
@@ -412,27 +416,26 @@ class OpenStreetMap extends \acf_field {
 		// wp_enqueue_style('leaflet');
 
 		add_action( 'wp_footer', [ $this, 'maybe_print_media_templates' ], 11 );
-
 	}
 
 	/*
-	*  field_group_admin_enqueue_scripts()
-	*
-	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is edited.
-	*  Use this action to add CSS + JavaScript to assist your render_field_options() action.
-	*
-	*  @type	action (admin_enqueue_scripts)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
+	 *  field_group_admin_enqueue_scripts()
+	 *
+	 *  This action is called in the admin_enqueue_scripts action on the edit screen where your field is edited.
+	 *  Use this action to add CSS + JavaScript to assist your render_field_options() action.
+	 *
+	 *  @type	action (admin_enqueue_scripts)
+	 *  @since	3.6
+	 *  @date	23/01/13
+	 *
+	 *  @param	n/a
+	 *  @return	n/a
+	 */
 	function field_group_admin_enqueue_scripts() {
 
 		wp_enqueue_media();
 
-		wp_enqueue_script('acf-input-osm');
+		wp_dequeue_script('acf-input-osm');
 
 		wp_enqueue_script('acf-field-group-osm');
 
@@ -443,24 +446,22 @@ class OpenStreetMap extends \acf_field {
 		wp_enqueue_style('acf-field-group-osm');
 
 		wp_enqueue_style('leaflet');
-
 	}
 
-
 	/*
-	*  load_value()
-	*
-	*  This filter is applied to the $value after it is loaded from the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value found in the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$value
-	*/
+	 *  load_value()
+	 *
+	 *  This filter is applied to the $value after it is loaded from the db
+	 *
+	 *  @type	filter
+	 *  @since	3.6
+	 *  @date	23/01/13
+	 *
+	 *  @param	$value (mixed) the value found in the database
+	 *  @param	$post_id (mixed) the $post_id from which the value was loaded
+	 *  @param	$field (array) the field array holding all the field options
+	 *  @return	$value
+	 */
 	function load_value( $value, $post_id, $field ) {
 
 		// prepare data for display
@@ -502,12 +503,10 @@ class OpenStreetMap extends \acf_field {
 		if ( isset( $value['zoom'] )) {
 			// boundaries
 			$value['zoom'] = min( 22, max( 0, intval( $value['zoom'] ) ) );
-
 		}
 
 		return $value;
 	}
-
 
 	/**
 	 *	@param array $value	array( 'lat' => float, 'lng => float, 'zoom' => int, 'address' => string, 'markers' => array, 'layers' => array )
@@ -600,24 +599,34 @@ class OpenStreetMap extends \acf_field {
 		//
 		// Layers
 		//
-		if ( ! isset( $value['layers'] ) || ! is_array( $value['layers'] ) ) {
-			$value['layers'] = [];
-		}
-
-		// set default layers if layer selection is empty or prohibited
-		if ( ! count( $value['layers'] ) || ! $field['allow_map_layers'] ) {
+		if ( ! is_array( $value['layers'] ) || ! count( $value['layers'] ) || ! $field['allow_map_layers'] ) {
 			$value['layers'] = $field['layers'];
 		} else {
 			// normalize layers
-			$value['layers'] = array_filter( $value['layers'] );
-			$value['layers'] = array_unique( $value['layers'] );
-			$value['layers'] = array_values( $value['layers'] );
+			$value['layers'] = $this->sanitize_layers( $value['layers'] );
 		}
 
 		return array_intersect_key( $value, $this->default_values );
 
 	}
 
+	/**
+	 *	Sanitize layers
+	 */
+	private function sanitize_layers( $layers ) {
+		$layers = (array) $layers;
+
+		$layers = array_map( function( $layer ) {
+			if ( 'OpenStreetMap' === $layer ) {
+				$layer = 'OpenStreetMap.Mapnik';
+			}
+			return $layer;
+		}, $layers );
+		$layers = array_filter( $layers );
+		$layers = array_unique( $layers );
+		$layers = array_values( $layers );
+		return $layers;
+	}
 
 	/*
 	 *  update_value()
@@ -779,7 +788,6 @@ class OpenStreetMap extends \acf_field {
 		return $value;
 	}
 
-
 	/**
 	 * Apply basic formatting to prepare the value for default REST output.
 	 *
@@ -802,23 +810,22 @@ class OpenStreetMap extends \acf_field {
 
 
 	/*
-	*  validate_value()
-	*
-	*  This filter is used to perform validation on the value prior to saving.
-	*  All values are validated regardless of the field's required setting. This allows you to validate and return
-	*  messages to the user if the value is not correct
-	*
-	*  @type	filter
-	*  @date	11/02/2014
-	*  @since	5.0.0
-	*
-	*  @param	$valid (boolean) validation status based on the value and the field's required setting
-	*  @param	$value (mixed) the $_POST value
-	*  @param	$field (array) the field array holding all the field options
-	*  @param	$input (string) the corresponding input name for $_POST value
-	*  @return	$valid
-	*/
-
+	 *  validate_value()
+	 *
+	 *  This filter is used to perform validation on the value prior to saving.
+	 *  All values are validated regardless of the field's required setting. This allows you to validate and return
+	 *  messages to the user if the value is not correct
+	 *
+	 *  @type	filter
+	 *  @date	11/02/2014
+	 *  @since	5.0.0
+	 *
+	 *  @param	$valid (boolean) validation status based on the value and the field's required setting
+	 *  @param	$value (mixed) the $_POST value
+	 *  @param	$field (array) the field array holding all the field options
+	 *  @param	$input (string) the corresponding input name for $_POST value
+	 *  @return	$valid
+	 */
 	function validate_value( $valid, $value, $field, $input ){
 
 		// bail early if not required
@@ -836,32 +843,28 @@ class OpenStreetMap extends \acf_field {
 
 		}
 
-
 		// return
 		return $valid;
-
 	}
 
 
 
 	/*
-	*  load_field()
-	*
-	*  This filter is applied to the $field after it is loaded from the database
-	*
-	*  @type	filter
-	*  @date	23/01/2013
-	*  @since	3.6.0
-	*
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$field
-	*/
+	 *  load_field()
+	 *
+	 *  This filter is applied to the $field after it is loaded from the database
+	 *
+	 *  @type	filter
+	 *  @date	23/01/2013
+	 *  @since	3.6.0
+	 *
+	 *  @param	$field (array) the field array holding all the field options
+	 *  @return	$field
+	 */
 	function load_field( $field ) {
 
 		return $this->sanitize_field( $field, 'display' );
-
 	}
-
 
 	/*
 	*  update_field()
@@ -878,7 +881,6 @@ class OpenStreetMap extends \acf_field {
 	function update_field( $field ) {
 
 		return $this->sanitize_field( $field, 'update' );
-
 	}
 
 
@@ -892,9 +894,12 @@ class OpenStreetMap extends \acf_field {
 		$field = wp_parse_args( $field, $this->defaults );
 
 		// typecast and restrict values
-		$field['center_lat']	= floatval( $field['center_lat'] );
-		$field['center_lng']	= floatval( $field['center_lng'] );
-		$field['zoom'] 			= min( 22, max( 1, intval( $field['zoom'] ) ) );
+		$field['center_lat'] = floatval( $field['center_lat'] );
+		$field['center_lng'] = floatval( $field['center_lng'] );
+		$field['zoom']       = min( 22, max( 1, intval( $field['zoom'] ) ) );
+
+		// layers
+		$field['layers']     = $this->sanitize_layers( $field['layers'] );
 
 		return $field;
 	}
@@ -907,7 +912,6 @@ class OpenStreetMap extends \acf_field {
 			$this->print_media_templates();
 		}
 	}
-
 
 	/**
 	 *	@action print_media_templates
@@ -931,5 +935,4 @@ class OpenStreetMap extends \acf_field {
 		</script>
 		<?php
 	}
-
 }

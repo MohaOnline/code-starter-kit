@@ -1235,6 +1235,17 @@ input.no_last_pass {
 #slideshows-list #message p {
 	margin: 10px 0 !important;
 }
+#metaslider-list-form .search-box {
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+}
+#slideshows-list table .copy-shortcode {
+    display: inline;
+    margin-right: 10px;
+}
+#slideshows-list table .dashicons-yes{
+	color: green;
+}
 
 @keyframes autoplaythumb {
     0% {opacity: 0.0}
@@ -1292,6 +1303,27 @@ input.no_last_pass {
 #metaslider-settings-page{
     background-color: #F0F0F1;
 }
+.export-instruction {
+	padding: 10px 10px 10px 15px;
+	list-style: disc;
+}
+.export-instruction a {
+	font-weight: bold;
+}
+.export-instruction a .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	margin-top: 3px;
+}
+#metaslider-settings-page .notice {
+	margin: 0;
+}
+#metaslider-settings-page .notice p {
+	padding: 10px 0;
+	margin: 0 !important;
+}
+
 
 /* Custom Theme */
 .customtheme-list-h {
@@ -1302,6 +1334,29 @@ input.no_last_pass {
 	margin-bottom: 28px !important;
 }
 
+/* Legacy Libraries Settings */
+#hide-legacy-settings {
+	display: none;
+}
+.disableSwitch span {
+	pointer-events: none;
+}
+.legacy-notif-success .bg-yellow-50 {
+	background-color: #DFFFFF !important;
+	border-color: #016FB9 !important;
+}
+.legacy-notif-success svg {
+	display: none;
+}
+.legacy-notif-success .flex .ml-3 {
+	margin: 0 !important;
+}
+.ml-legacy-notice {
+	margin: 15px 0 0 0 !important;
+}
+.ml-legacy-notice p {
+	margin: 10px 0 !important;
+}
 
 @media only screen and (min-width : 320px) {
     #metaslider-ui, .container {

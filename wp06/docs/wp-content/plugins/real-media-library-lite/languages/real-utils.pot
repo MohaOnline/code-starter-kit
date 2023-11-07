@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: n/a\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 
 #: cross/CrossRealCategoryLibrary.php:50
 msgid "Do you manage many categories?"
@@ -150,21 +150,22 @@ msgstr ""
 
 #. translators:
 #: WelcomePage.php:198
+msgctxt "legal-text"
 msgid "I want to receive WordPress news from devowl.io via email and agree to the <a %s>privacy policy</a>."
 msgstr ""
 
-#: WelcomePage.php:202
+#: WelcomePage.php:203
 msgid "https://devowl.io/privacy-policy/"
 msgstr ""
 
-#: WelcomePage.php:209
+#: WelcomePage.php:210
 msgid "Subscribe"
 msgstr ""
 
-#: WelcomePage.php:283
+#: WelcomePage.php:284
 msgid "Additional plugins by devowl.io"
 msgstr ""
 
-#: WelcomePage.php:353
+#: WelcomePage.php:354
 msgid "Available in"
 msgstr ""

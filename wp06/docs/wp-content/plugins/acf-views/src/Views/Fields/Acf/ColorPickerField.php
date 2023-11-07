@@ -29,10 +29,7 @@ class ColorPickerField extends MarkupField
         }
 
         return sprintf(
-            'rgba({{ %s.red }};{{ %s.green }};{{ %s.blue }};{{ %s.alpha }})',
-            esc_html($fieldId),
-            esc_html($fieldId),
-            esc_html($fieldId),
+            'rgba({{ %s.red }};{{ %1$s.green }};{{ %1$s.blue }};{{ %1$s.alpha }})',
             esc_html($fieldId)
         );
     }

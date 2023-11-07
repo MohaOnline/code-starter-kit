@@ -3,9 +3,9 @@ Contributors: Wpcalc, lobov
 Donate link: https://wow-estore.com/item/float-menu-pro/
 Tags: sidebar menu, floating menu, side menu, sticky menu, float menu
 Requires at least: 4.3
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 5.1
+Stable tag: 5.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ Search for answers and ask your questions at [support center](https://wordpress.
 1. Menu
 
 == Changelog ==
+= 5.1.1 =
+* Fixed: dynamic property for PHP 8.2
+
 = 5.1 =
 * Updated: FontAwesome to version 6.4.2
 

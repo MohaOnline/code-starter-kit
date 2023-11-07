@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; More than Just a Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-27 12:26:36+0000\n"
+"PO-Revision-Date: 2023-11-04 08:49:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4067,11 +4067,6 @@ msgstr "最后由 %2$s 于 %1$s 编辑"
 msgid "Draft saved on %1$s by %2$s"
 msgstr "%2$s 在 %1$s 保存草稿"
 
-#. translators: %s: Document title.
-#: core/base/document.php:185
-msgid "Hurray! Your %s is live."
-msgstr "欢呼！您的 %s 已上线。"
-
 #: includes/widgets/video.php:430
 msgid "When you turn on privacy mode, YouTube/Vimeo won't store information about visitors on your website unless they play the video."
 msgstr "当您打开隐私模式时，YouTube/Vimeo 不会存储您网站上访问者的信息，除非他们播放视频。"
@@ -4080,6 +4075,11 @@ msgstr "当您打开隐私模式时，YouTube/Vimeo 不会存储您网站上访�
 #: modules/history/views/revisions-panel-template.php:64
 msgid "Published"
 msgstr "已发布"
+
+#. translators: %s: Document title.
+#: core/base/document.php:185
+msgid "Hurray! Your %s is live."
+msgstr "恭喜！您的 %s 已上线。"
 
 #: includes/template-library/sources/local.php:500
 #: includes/template-library/sources/local.php:610

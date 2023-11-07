@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-const { noop } = lodash;
 import classnames from "classnames";
 const baseCurrentUrl = window.location.href;
 import helpers from "./helpers";

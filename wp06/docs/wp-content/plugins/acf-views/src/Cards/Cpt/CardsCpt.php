@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Cards\Cpt;
 
-use org\wplake\acf_views\Common\Cpt\Cpt;
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\CardShortcode;
+use org\wplake\acf_views\Common\Cpt\Cpt;
 use org\wplake\acf_views\Html;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use WP_Query;
@@ -44,31 +44,31 @@ class CardsCpt extends Cpt
     public function addCPT(): void
     {
         $labels = [
-            'name' => __('ACF Cards', 'acf-views'),
-            'singular_name' => __('ACF Card', 'acf-views'),
-            'menu_name' => __('ACF Cards', 'acf-views'),
-            'parent_item_colon' => __('Parent ACF Card', 'acf-views'),
-            'all_items' => __('ACF Cards', 'acf-views'),
-            'view_item' => __('Browse ACF Card', 'acf-views'),
-            'add_new_item' => __('Add New ACF Card', 'acf-views'),
+            'name' => __('Cards', 'acf-views'),
+            'singular_name' => __('Card', 'acf-views'),
+            'menu_name' => __('Cards', 'acf-views'),
+            'parent_item_colon' => __('Parent Card', 'acf-views'),
+            'all_items' => __('Cards', 'acf-views'),
+            'view_item' => __('Browse Card', 'acf-views'),
+            'add_new_item' => __('Add New Card', 'acf-views'),
             'add_new' => __('Add New', 'acf-views'),
-            'item_updated' => __('ACF Card updated.', 'acf-views'),
-            'edit_item' => __('Edit ACF Card', 'acf-views'),
-            'update_item' => __('Update ACF Card', 'acf-views'),
-            'search_items' => __('Search ACF Card', 'acf-views'),
+            'item_updated' => __('Card updated.', 'acf-views'),
+            'edit_item' => __('Edit Card', 'acf-views'),
+            'update_item' => __('Update Card', 'acf-views'),
+            'search_items' => __('Search Card', 'acf-views'),
             'not_found' => __('Not Found', 'acf-views'),
             'not_found_in_trash' => __('Not Found In Trash', 'acf-views'),
         ];
 
         $description = __(
-                'Create ACF Card item to choose a set of posts (or CPT items) and paste the shortcode in a target place to display the posts with their ACF fields.',
+                'Create a Card item to choose a set of posts (or CPT items) and paste the shortcode in a target place to display the posts with their ACF fields.',
                 'acf-views'
             ) .
             '<br>'
-            . __('(which fields are printed depending on a selected ACF View in the Card settings)', 'acf-views');
+            . __('(which fields are printed depending on a selected View in the Card settings)', 'acf-views');
 
         $args = [
-            'label' => __('ACF Cards', 'acf-views'),
+            'label' => __('Cards', 'acf-views'),
             'description' => $description,
             'labels' => $labels,
             // shouldn't be presented in the sitemap and other places
@@ -105,7 +105,7 @@ class CardsCpt extends Cpt
 
         // 'ACF Views' has 5, so 6 is right after
         $submenu[$url][6] = [
-            __('ACF Cards', 'acf-views'),
+            __('Cards', 'acf-views'),
             'manage_options',
             sprintf(
                 'edit.php?post_type=%s',
@@ -193,39 +193,44 @@ class CardsCpt extends Cpt
         global $post;
 
         $restoredMessage = false;
-        $scheduledMessage = __('ACF Card scheduled for:', 'acf-views');
+        $scheduledMessage = __('Card scheduled for:', 'acf-views');
         $scheduledMessage .= sprintf(
             ' <strong>%1$s</strong>',
             date_i18n('M j, Y @ G:i', strtotime($post->post_date))
         );
 
         if (isset($_GET['revision'])) {
-            $restoredMessage = __('ACF Card restored to revision from', 'acf-views');
+            $restoredMessage = __('Card restored to revision from', 'acf-views');
             $restoredMessage .= ' ' . wp_post_revision_title((int)$_GET['revision'], false);
         }
 
         $messages[self::NAME] = [
             0 => '', // Unused. Messages start at index 1.
-            1 => __('ACF Card updated.', 'acf-views'),
+            1 => __('Card updated.', 'acf-views'),
             2 => __('Custom field updated.', 'acf-views'),
             3 => __('Custom field deleted.', 'acf-views'),
-            4 => __('ACF Card updated.', 'acf-views'),
+            4 => __('Card updated.', 'acf-views'),
             5 => $restoredMessage,
-            6 => __('ACF Card published.', 'acf-views'),
-            7 => __('ACF Card saved.', 'acf-views'),
-            8 => __('ACF Card submitted.', 'acf-views'),
+            6 => __('Card published.', 'acf-views'),
+            7 => __('Card saved.', 'acf-views'),
+            8 => __('Card submitted.', 'acf-views'),
             9 => $scheduledMessage,
-            10 => __('ACF Card draft updated.', 'acf-views'),
+            10 => __('Card draft updated.', 'acf-views'),
         ];
 
         return $messages;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        parent::setHooks();
+        parent::setHooks($isAdmin);
 
         add_action('init', [$this, 'addCPT']);
+
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('admin_menu', [$this, 'addPage']);
         add_action(
             'manage_' . self::NAME . '_posts_custom_column',

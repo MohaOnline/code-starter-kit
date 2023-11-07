@@ -42,7 +42,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			// translators: %1$s is a list of plugin names; %2$s a target URL.
 				__( 'Plugins that are known to cause (partial) problems: <strong>%1$s</strong>. <a href="%2$s" target="_blank">Learn more</a>.', 'advanced-ads' ),
 				implode( ', ', Advanced_Ads_Checks::conflicting_plugins() ),
-				ADVADS_URL . 'manual/known-plugin-conflicts/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-plugin-conflicts'
+				'https://wpadvancedads.com/manual/known-plugin-conflicts/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-plugin-conflicts'
 			),
 			'type' => 'problem',
 		],
@@ -113,7 +113,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			),
 			'type'          => 'notice',
 			'hide'          => false,
-			'get_help_link' => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-visible-ad-in-header#header-ads',
+			'get_help_link' => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-visible-ad-in-header#header-ads',
 			'timeout'       => YEAR_IN_SECONDS,
 		],
 		// Ad has HTTP, but site uses HTTPS
@@ -122,7 +122,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			'text'          => __( 'Your website is using HTTPS, but the ad code contains HTTP and might not work.', 'advanced-ads' ),
 			'type'          => 'notice',
 			'hide'          => false,
-			'get_help_link' => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-https-ads#https-ads',
+			'get_help_link' => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-https-ads#https-ads',
 		],
 		// dummy text for general AdSense issue.
 		'adsense_issue'                                 => [
@@ -181,7 +181,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 		// AdSense deprecated link units
 		'adsense_link_units_deprecated'                  => [
 			'text' => __( 'Google AdSense deprecated Link Units. Please choose another format.', 'advanced-ads' )
-					  . ' <a href="' . esc_url( ADVADS_URL ) . 'adsense-link-units/" target="_blank" rel="noopener">'
+					  . ' <a href="https://wpadvancedads.com/adsense-link-units/" target="_blank" rel="noopener">'
 					  . esc_html__( 'Learn more', 'advanced-ads' )
 					  . '</a>',
 			'type' => 'problem',
@@ -192,7 +192,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 				                   __( '<strong>%s</strong> filter found multiple times.', 'advanced-ads' ),
 				                   'the_content'
 			                   ) . '&nbsp;' . __( 'Advanced Ads uses the outermost of them.', 'advanced-ads' ),
-			'get_help_link' => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-multiple-the-content#the_content_filter_found_multiple_times',
+			'get_help_link' => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-multiple-the-content#the_content_filter_found_multiple_times',
 			'type'          => 'notice',
 			'hide'          => false,
 		],
@@ -202,7 +202,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			// translators: %1$s is a plugin name, %2$s is the opening a tag and %3$s the closing one.
 				__( 'Learn how to integrate %1$s with Advanced Ads %2$shere%3$s.', 'advanced-ads' ),
 				'<strong>BuddyPress & BuddyBoss</strong>',
-				'<a href="' . ADVADS_URL . 'ads-on-buddypress-pages/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-buddypress" target="_blank">',
+				'<a href="https://wpadvancedads.com/ads-on-buddypress-pages/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-buddypress" target="_blank">',
 				'</a>'
 			),
 			'type' => 'notice',
@@ -213,7 +213,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			// translators: %1$s is a plugin name, %2$s is the opening a tag and %3$s the closing one.
 				__( 'Learn how to integrate %1$s with Advanced Ads %2$shere%3$s.', 'advanced-ads' ),
 				'<strong>bbPress</strong>',
-				'<a href="' . ADVADS_URL . 'ads-in-bbpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-bbpress" target="_blank">',
+				'<a href="https://wpadvancedads.com/ads-in-bbpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-bbpress" target="_blank">',
 				'</a>'
 			),
 			'type' => 'notice',
@@ -224,7 +224,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			// translators: %1$s is a plugin name, %2$s is the opening a tag and %3$s the closing one.
 				__( 'Learn how to integrate %1$s with Advanced Ads %2$shere%3$s.', 'advanced-ads' ),
 				'<strong>WPML</strong>',
-				'<a href="' . ADVADS_URL . 'translating-ads-wpml/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-WPML" target="_blank">',
+				'<a href="https://wpadvancedads.com/translating-ads-wpml/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-WPML" target="_blank">',
 				'</a>'
 			),
 			'type'    => 'notice',
@@ -237,7 +237,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			// translators: %1$s is a plugin name, %2$s is the opening a tag and %3$s the closing one.
 				__( 'Learn how to integrate %1$s with Advanced Ads %2$shere%3$s.', 'advanced-ads' ),
 				'<strong>AMP</strong>',
-				'<a href="' . ADVADS_URL . 'manual/ads-on-amp-pages/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-amp" target="_blank">',
+				'<a href="https://wpadvancedads.com/manual/ads-on-amp-pages/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-amp" target="_blank">',
 				'</a>'
 			),
 			'type'    => 'notice',
@@ -250,7 +250,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 			'text'    => sprintf(
 			// translators: %s is a service or plugin name.
 				'<strong>' . __( '%s detected.', 'advanced-ads' ) . '</strong>'
-				. ' <a href="' . ADVADS_URL . 'wp-engine-and-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-wpengine">' . __( 'Learn how this might impact your ad setup.', 'advanced-ads' ) . '</a>',
+				. ' <a href="https://wpadvancedads.com/wp-engine-and-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-wpengine">' . __( 'Learn how this might impact your ad setup.', 'advanced-ads' ) . '</a>',
 				'WP Engine'
 			),
 			'type'    => 'notice',
@@ -276,7 +276,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 				sprintf( __( 'You might be able to <strong>remove %1$s</strong>.', 'advanced-ads' ),
 					implode( ', ', Advanced_Ads_Checks::header_footer_plugins() )
 				) . '&nbsp;' .
-				'<a href="' . ADVADS_URL . 'add-header-and-footer-code-wordpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-header-footer" target="_blank">' . __( 'Learn how.', 'advanced-ads' ) . '</a>',
+				'<a href="https://wpadvancedads.com/add-header-and-footer-code-wordpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-header-footer" target="_blank">' . __( 'Learn how.', 'advanced-ads' ) . '</a>',
 			'type'    => 'notice',
 			'hide'    => false,
 			'timeout' => YEAR_IN_SECONDS,

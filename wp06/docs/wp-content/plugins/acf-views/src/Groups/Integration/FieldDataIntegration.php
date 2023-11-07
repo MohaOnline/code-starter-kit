@@ -7,7 +7,12 @@ namespace org\wplake\acf_views\Groups\Integration;
 use org\wplake\acf_views\Groups\FieldData;
 use org\wplake\acf_views\Groups\ItemData;
 use org\wplake\acf_views\Groups\RepeaterFieldData;
+use org\wplake\acf_views\Views\Fields\Comment\CommentFields;
 use org\wplake\acf_views\Views\Fields\Fields;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
+use org\wplake\acf_views\Views\Fields\Term\TermFields;
+use org\wplake\acf_views\Views\Fields\User\UserFields;
+use org\wplake\acf_views\Views\Fields\Woo\WooFields;
 
 defined('ABSPATH') || exit;
 
@@ -118,162 +123,173 @@ class FieldDataIntegration extends AcfIntegration
         $fieldChoices = [];
 
         $postFields = [
-            Fields::FIELD_POST_TITLE => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_TITLE),
+            PostFields::FIELD_TITLE => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_TITLE),
                 __('Title', 'acf-views')
             ],
-            Fields::FIELD_POST_TITLE_LINK => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_TITLE_LINK),
+            PostFields::FIELD_TITLE_LINK => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_TITLE_LINK),
                 __('Title with link', 'acf-views')
             ],
-            Fields::FIELD_POST_CONTENT => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_CONTENT),
+            PostFields::FIELD_CONTENT => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_CONTENT),
                 __('Content', 'acf-views')
             ],
-            Fields::FIELD_POST_EXCERPT => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_EXCERPT),
+            PostFields::FIELD_EXCERPT => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_EXCERPT),
                 __('Excerpt', 'acf-views')
             ],
-            Fields::FIELD_POST_THUMBNAIL => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_THUMBNAIL),
+            PostFields::FIELD_THUMBNAIL => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_THUMBNAIL),
                 __('Featured Image', 'acf-views')
             ],
-            Fields::FIELD_POST_THUMBNAIL_LINK => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_THUMBNAIL_LINK),
+            PostFields::FIELD_THUMBNAIL_LINK => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_THUMBNAIL_LINK),
                 __('Featured Image with link', 'acf-views')
             ],
-            Fields::FIELD_POST_AUTHOR => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_AUTHOR),
+            PostFields::FIELD_AUTHOR => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_AUTHOR),
                 __('Author', 'acf-views')
             ],
-            Fields::FIELD_POST_DATE => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_DATE),
+            PostFields::FIELD_DATE => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_DATE),
                 __('Published date', 'acf-views')
             ],
-            Fields::FIELD_POST_MODIFIED => [
-                FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_MODIFIED),
+            PostFields::FIELD_MODIFIED => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_MODIFIED),
                 __('Modified date', 'acf-views')
+            ],
+            PostFields::FIELD_COMMENTS => [
+                FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_COMMENTS),
+                __('Comments', 'acf-views')
             ],
         ];
 
         $userFields = [
-            Fields::FIELD_USER_FIRST_NAME => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_FIRST_NAME),
+            UserFields::FIELD_FIRST_NAME => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_FIRST_NAME),
                 __('First Name', 'acf-views')
             ],
-            Fields::FIELD_USER_LAST_NAME => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_LAST_NAME),
+            UserFields::FIELD_LAST_NAME => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_LAST_NAME),
                 __('Last Name', 'acf-views')
             ],
-            Fields::FIELD_USER_DISPLAY_NAME => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_DISPLAY_NAME),
+            UserFields::FIELD_DISPLAY_NAME => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_DISPLAY_NAME),
                 __('Display Name', 'acf-views')
             ],
-            Fields::FIELD_USER_BIO => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_BIO),
+            UserFields::FIELD_BIO => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_BIO),
                 __('Bio', 'acf-views')
             ],
-            Fields::FIELD_USER_EMAIL => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_EMAIL),
+            UserFields::FIELD_EMAIL => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_EMAIL),
                 __('Email', 'acf-views')
             ],
-            Fields::FIELD_USER_AUTHOR_LINK => [
-                FieldData::createKey(Fields::GROUP_USER, Fields::FIELD_USER_AUTHOR_LINK),
+            UserFields::FIELD_AUTHOR_LINK => [
+                FieldData::createKey(UserFields::GROUP_NAME, UserFields::FIELD_AUTHOR_LINK),
                 __('Author link', 'acf-views')
             ],
         ];
 
         $commentFields = [
-            Fields::FIELD_COMMENT_AUTHOR_EMAIL => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_AUTHOR_EMAIL),
+            CommentFields::FIELD_AUTHOR_EMAIL => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_AUTHOR_EMAIL),
                 __('Author Email', 'acf-views')
             ],
-            Fields::FIELD_COMMENT_AUTHOR_NAME => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_AUTHOR_NAME),
+            CommentFields::FIELD_AUTHOR_NAME => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_AUTHOR_NAME),
                 __('Author Name', 'acf-views')
             ],
-            Fields::FIELD_COMMENT_AUTHOR_NAME_LINK => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_AUTHOR_NAME_LINK),
+            CommentFields::FIELD_AUTHOR_NAME_LINK => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_AUTHOR_NAME_LINK),
                 __('Author Name link', 'acf-views')
             ],
-            Fields::FIELD_COMMENT_CONTENT => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_CONTENT),
+            CommentFields::FIELD_CONTENT => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_CONTENT),
                 __('Content', 'acf-views')
             ],
-            Fields::FIELD_COMMENT_DATE => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_DATE),
+            CommentFields::FIELD_DATE => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_DATE),
                 __('Date', 'acf-views')
             ],
-            Fields::FIELD_COMMENT_STATUS => [
-                FieldData::createKey(Fields::GROUP_COMMENT, Fields::FIELD_COMMENT_STATUS),
+            CommentFields::FIELD_STATUS => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_STATUS),
                 __('Status', 'acf-views')
+            ],
+            CommentFields::FIELD_PARENT => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_PARENT),
+                __('Parent', 'acf-views')
+            ],
+            CommentFields::FIELD_USER => [
+                FieldData::createKey(CommentFields::GROUP_NAME, CommentFields::FIELD_USER),
+                __('User', 'acf-views')
             ],
         ];
 
         $wooFields = [
-            Fields::FIELD_WOO_GALLERY => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_GALLERY),
+            WooFields::FIELD_GALLERY => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_GALLERY),
                 __('Gallery', 'acf-views')
             ],
-            Fields::FIELD_WOO_PRICE => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_PRICE),
+            WooFields::FIELD_PRICE => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_PRICE),
                 __('Price', 'acf-views')
             ],
-            Fields::FIELD_WOO_REGULAR_PRICE => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_REGULAR_PRICE),
+            WooFields::FIELD_REGULAR_PRICE => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_REGULAR_PRICE),
                 __('Regular price', 'acf-views')
             ],
-            Fields::FIELD_WOO_SALE_PRICE => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_SALE_PRICE),
+            WooFields::FIELD_SALE_PRICE => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_SALE_PRICE),
                 __('Sale price', 'acf-views')
             ],
-            Fields::FIELD_WOO_SKU => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_SKU),
+            WooFields::FIELD_SKU => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_SKU),
                 __('SKU', 'acf-views')
             ],
-            Fields::FIELD_WOO_STOCK_STATUS => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_STOCK_STATUS),
+            WooFields::FIELD_STOCK_STATUS => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_STOCK_STATUS),
                 __('Stock status', 'acf-views')
             ],
-            Fields::FIELD_WOO_WEIGHT => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_WEIGHT),
+            WooFields::FIELD_WEIGHT => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_WEIGHT),
                 __('Weight', 'acf-views')
             ],
-            Fields::FIELD_WOO_LENGTH => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_LENGTH),
+            WooFields::FIELD_LENGTH => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_LENGTH),
                 __('Length', 'acf-views')
             ],
-            Fields::FIELD_WOO_WIDTH => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_WIDTH),
+            WooFields::FIELD_WIDTH => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_WIDTH),
                 __('Width', 'acf-views')
             ],
-            Fields::FIELD_WOO_HEIGHT => [
-                FieldData::createKey(Fields::GROUP_WOO, Fields::FIELD_WOO_HEIGHT),
+            WooFields::FIELD_HEIGHT => [
+                FieldData::createKey(WooFields::GROUP_NAME, WooFields::FIELD_HEIGHT),
                 __('Height', 'acf-views')
             ],
         ];
 
         $termFields = [
-            Fields::FIELD_TERM_NAME => [
-                FieldData::createKey(Fields::GROUP_TERM, Fields::FIELD_TERM_NAME),
+            TermFields::FIELD_NAME => [
+                FieldData::createKey(TermFields::GROUP_NAME, TermFields::FIELD_NAME),
                 __('Name', 'acf-views')
             ],
-            Fields::FIELD_TERM_SLUG => [
-                FieldData::createKey(Fields::GROUP_TERM, Fields::FIELD_TERM_SLUG),
+            TermFields::FIELD_SLUG => [
+                FieldData::createKey(TermFields::GROUP_NAME, TermFields::FIELD_SLUG),
                 __('Slug', 'acf-views')
             ],
-            Fields::FIELD_TERM_DESCRIPTION => [
-                FieldData::createKey(Fields::GROUP_TERM, Fields::FIELD_TERM_DESCRIPTION),
+            TermFields::FIELD_DESCRIPTION => [
+                FieldData::createKey(TermFields::GROUP_NAME, TermFields::FIELD_DESCRIPTION),
                 __('Description', 'acf-views')
             ],
-            Fields::FIELD_TERM_NAME_LINK => [
-                FieldData::createKey(Fields::GROUP_TERM, Fields::FIELD_TERM_NAME_LINK),
+            TermFields::FIELD_NAME_LINK => [
+                FieldData::createKey(TermFields::GROUP_NAME, TermFields::FIELD_NAME_LINK),
                 __('Name link', 'acf-views')
             ],
         ];
 
-        // todo
-        $extraFields = array_merge($postFields, $userFields, /*$commentFields,*/ $wooFields, $termFields);
+        $extraFields = array_merge($postFields, $userFields, $commentFields, $wooFields, $termFields);
 
         foreach ($extraFields as $fieldName => $fieldInfo) {
             if (in_array($fieldName, $excludeTypes, true)) {
@@ -369,18 +385,23 @@ class FieldDataIntegration extends AcfIntegration
             'relationship',
             'taxonomy',
             'user',
-            Fields::FIELD_POST_TITLE_LINK,
-            Fields::FIELD_POST_AUTHOR,
-            Fields::FIELD_POST_TAXONOMY,
-            Fields::FIELD_TERM_NAME_LINK,
-            Fields::FIELD_USER_AUTHOR_LINK,
+            PostFields::FIELD_TITLE_LINK,
+            PostFields::FIELD_AUTHOR,
+            PostFields::FIELD_TAXONOMY,
+            TermFields::FIELD_NAME_LINK,
+            UserFields::FIELD_AUTHOR_LINK,
         ];
         $imageFields = [
             'image',
             'gallery',
-            Fields::FIELD_POST_THUMBNAIL,
-            Fields::FIELD_POST_THUMBNAIL_LINK,
-            Fields::FIELD_WOO_GALLERY,
+            PostFields::FIELD_THUMBNAIL,
+            PostFields::FIELD_THUMBNAIL_LINK,
+            WooFields::FIELD_GALLERY,
+        ];
+        $mapFields = [
+            'google_map',
+            'google_map_multi',
+            'open_street_map',
         ];
 
         $fieldRules = [
@@ -392,26 +413,23 @@ class FieldDataIntegration extends AcfIntegration
                 'relationship',
                 'user',
                 'taxonomy',
-                Fields::FIELD_POST_AUTHOR,
+                PostFields::FIELD_AUTHOR,
+                PostFields::FIELD_COMMENTS,
                 Fields::GROUP_TAXONOMY,
             ],
             FieldData::FIELD_GALLERY_TYPE => [
                 'gallery',
-                Fields::FIELD_WOO_GALLERY,
+                WooFields::FIELD_GALLERY,
             ],
             FieldData::FIELD_GALLERY_WITH_LIGHT_BOX => array_diff($imageFields, [
                 // it's a link, shouldn't be lightboxed
-                Fields::FIELD_POST_THUMBNAIL_LINK,
+                PostFields::FIELD_THUMBNAIL_LINK,
             ]),
-            FieldData::FIELD_MAP_ADDRESS_FORMAT => [
-                'google_map',
-            ],
-            FieldData::FIELD_IS_MAP_WITH_ADDRESS => [
-                'google_map',
-            ],
-            FieldData::FIELD_IS_MAP_WITHOUT_GOOGLE_MAP => [
-                'google_map',
-            ],
+            FieldData::FIELD_MAP_MARKER_ICON => $mapFields,
+            FieldData::FIELD_MAP_MARKER_ICON_TITLE => $mapFields,
+            FieldData::FIELD_MAP_ADDRESS_FORMAT => $mapFields,
+            FieldData::FIELD_IS_MAP_WITH_ADDRESS => $mapFields,
+            FieldData::FIELD_IS_MAP_WITHOUT_GOOGLE_MAP => $mapFields,
             FieldData::FIELD_OPTIONS_DELIMITER => [
                 'select',
                 'post_object',

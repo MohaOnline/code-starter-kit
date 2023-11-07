@@ -359,7 +359,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
 
             $commentAuthor = $comment->comment_author ? $comment->comment_author : $this->options->getPhrase("wc_anonymous");
             $search = ["[SITE_URL]", "[POST_URL]", "[BLOG_TITLE]", "[POST_TITLE]", "[SUBSCRIBER_NAME]", "[COMMENT_URL]", "[COMMENT_AUTHOR]", "[COMMENT_CONTENT]"];
-            $replace = [$siteUrl, get_permalink($comment->comment_post_ID), $blogTitle, $postTitle, $subscriber, get_comment_link($commentId), $commentAuthor, wpautop($comment->comment_content)];
+            $replace = [$siteUrl, urldecode_deep(get_permalink($comment->comment_post_ID)), $blogTitle, $postTitle, $subscriber, urldecode_deep(get_comment_link($commentId)), $commentAuthor, wpautop($comment->comment_content)];
 
             $subject = str_replace(["[BLOG_TITLE]", "[POST_TITLE]", "[COMMENT_AUTHOR]"], [$blogTitle, $postTitle, $commentAuthor], $subject);
             $message = str_replace($search, $replace, $message);
@@ -544,7 +544,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
                     $blogTitle = get_option("blogname");
                     $postTitle = get_the_title($comment->comment_post_ID);
                     $search = ["[SITE_URL]", "[POST_URL]", "[BLOG_TITLE]", "[POST_TITLE]", "[COMMENT_URL]", "[COMMENT_AUTHOR]", "[COMMENT_CONTENT]"];
-                    $replace = [$siteUrl, get_permalink($comment->comment_post_ID), $blogTitle, $postTitle, get_comment_link($comment->comment_ID), $comment->comment_author, wpautop($comment->comment_content)];
+                    $replace = [$siteUrl, urldecode_deep(get_permalink($comment->comment_post_ID)), $blogTitle, $postTitle, urldecode_deep(get_comment_link($comment->comment_ID)), $comment->comment_author, wpautop($comment->comment_content)];
 
                     $subject = $this->options->subscription["emailSubjectCommentApproved"];
                     $message = wpautop($this->options->subscription["emailContentCommentApproved"]);
@@ -580,7 +580,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $blogTitle = get_option("blogname");
         $postTitle = get_the_title($postId);
         $search = ["[SITE_URL]", "[POST_URL]", "[BLOG_TITLE]", "[POST_TITLE]"];
-        $replace = [$siteUrl, get_permalink($postId), $blogTitle, $postTitle];
+        $replace = [$siteUrl, urldecode_deep(get_permalink($postId)), $blogTitle, $postTitle];
 
         $subject = $this->options->subscription["emailSubjectFollowConfirmation"];
         $message = wpautop($this->options->subscription["emailContentFollowConfirmation"]);
@@ -629,8 +629,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $siteUrl = get_site_url();
         $blogTitle = get_option("blogname");
         $postTitle = get_the_title($post);
-        $postUrl = get_permalink($post);
-        $commentUrl = get_comment_link($comment);
+        $postUrl = urldecode_deep(get_permalink($post));
+        $commentUrl = urldecode_deep(get_comment_link($comment));
 
         $subject = $this->options->subscription["emailSubjectFollowComment"];
         $message = wpautop($this->options->subscription["emailContentFollowComment"]);
@@ -703,8 +703,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $siteUrl = get_site_url();
         $blogTitle = get_option("blogname");
         $postTitle = get_the_title($post);
-        $postUrl = get_permalink($post);
-        $commentUrl = get_comment_link($comment);
+        $postUrl = urldecode_deep(get_permalink($post));
+        $commentUrl = urldecode_deep(get_comment_link($comment));
         $commentAuthor = $comment->comment_author;
 
         $subject = $this->options->subscription["emailSubjectUserMentioned"];

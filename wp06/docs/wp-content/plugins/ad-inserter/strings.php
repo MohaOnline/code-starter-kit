@@ -207,6 +207,10 @@ define ('AI_TEXT_FIXED_BY_VIEWPORT',      _x('Fixed by viewport', 'size', 'ad-in
 define ('AI_TEXT_SETTINGS_SUBMENU',       __('Settings submenu', 'ad-inserter'));
 define ('AI_TEXT_TOP_MENU',               __('Top menu', 'ad-inserter'));
 
+define ('AI_TEXT_BLOCK',                  __('Block', 'ad-inserter'));
+define ('AI_TEXT_BACKGROUND',             __('Background', 'ad-inserter'));
+
+
                                                 // Translators: %s: Ad Inserter Pro
 define ('DEFAULT_REPORT_HEADER_TITLE',          sprintf (__('%s Report', 'ad-inserter'), 'Ad Inserter Pro'));
 define ('DEFAULT_REPORT_HEADER_DESCRIPTION',    __('Impressions and clicks', 'ad-inserter'));

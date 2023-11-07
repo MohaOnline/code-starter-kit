@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace org\wplake\acf_views;
 
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use WP_Query;
 
@@ -14,7 +15,7 @@ defined('ABSPATH') || exit;
  * Custom implementation of a growth counter (native was removed) https://meta.trac.wordpress.org/ticket/6511
  * IT DOESN'T SEND ANY PRIVATE DATA, only a DOMAIN. And the domain is only used to avoid multiple counting from one website
  */
-class ActiveInstallations
+class ActiveInstallations implements HooksInterface
 {
     const HOOK = ViewsCpt::NAME . '_refresh';
     const DELAY_MIN_HR = 12;
@@ -124,7 +125,7 @@ class ActiveInstallations
         add_action('admin_init', [$this, 'rescheduleOutdated']);
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
         add_action('init', [$this, 'init']);
         // CRON job

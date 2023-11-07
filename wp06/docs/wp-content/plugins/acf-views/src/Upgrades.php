@@ -7,6 +7,7 @@ namespace org\wplake\acf_views;
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
 use org\wplake\acf_views\Cards\Cpt\CardsSaveActions;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\ViewData;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use org\wplake\acf_views\Views\Cpt\ViewsSaveActions;
@@ -15,7 +16,7 @@ use WP_Query;
 
 defined('ABSPATH') || exit;
 
-class Upgrades
+class Upgrades implements HooksInterface
 {
     protected Plugin $plugin;
     protected Settings $settings;
@@ -483,7 +484,7 @@ class Upgrades
         $this->settings->save();
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
         // don't use 'upgrader_process_complete' hook, as user can update the plugin manually by FTP
         $dbVersion = $this->settings->getVersion();

@@ -35,7 +35,7 @@ class Html
 
         if ($isSingle) {
             $description .= __(
-                'displays the card, posts will be queried according to the filters and displayed according to the selected ACF View.',
+                'displays the card, posts will be queried according to the filters and displayed according to the selected View.',
                 'acf-views'
             );
             $description .= ' ';

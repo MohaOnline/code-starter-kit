@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views;
 
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 
 defined('ABSPATH') || exit;
 
-class Plugin
+class Plugin implements HooksInterface
 {
     const DOCS_URL = 'https://docs.acfviews.com/getting-started/acf-views-for-wordpress';
     const PRO_VERSION_URL = 'https://wplake.org/acf-views-pro/';
@@ -20,7 +21,7 @@ class Plugin
 
     protected string $slug = 'acf-views/acf-views.php';
     protected string $shortSlug = 'acf-views';
-    protected string $version = '2.3.2';
+    protected string $version = '2.3.5';
     protected bool $isProVersion = false;
     protected bool $isSwitchingVersions;
 
@@ -62,7 +63,7 @@ class Plugin
 
     public function getName(): string
     {
-        return __('ACF Views', 'acf-views');
+        return __('ACF Views Lite', 'acf-views');
     }
 
     public function getSlug(): string
@@ -222,11 +223,11 @@ class Plugin
         $message = sprintf(
             '%s "%s".',
             __(
-                "'ACF Views' and 'ACF Views Pro' should not be active at the same time. We've automatically deactivated",
+                "'ACF Views Lite' and 'ACF Views Pro' should not be active at the same time. We've automatically deactivated",
                 'acf-views'
             ),
             1 === $deactivatedNoticeId ?
-                __('ACF Views', 'acf-views') :
+                __('ACF Views Lite', 'acf-views') :
                 __('ACF Views Pro', 'acf-views')
         );
 
@@ -324,11 +325,21 @@ class Plugin
         return $this->isSwitchingVersions;
     }
 
-    public function setHooks(): void
+    // for some reason, ACF ajax form validation doesn't work on the wordpress.com hosting. So need to use a special approach
+    public function isWordpressComHosting(): bool
     {
+        return defined('WPCOMSH_VERSION') ||
+            defined('WPCOM_CORE_ATOMIC_PLUGINS');
+    }
+
+    public function setHooks(bool $isAdmin): void
+    {
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('admin_notices', [$this, 'showWarningAboutInactiveAcfPlugin']);
         add_action('admin_notices', [$this, 'showWarningAboutOpcacheIssue']);
-
         add_action('activated_plugin', [$this, 'deactivateOtherInstances']);
         add_action('pre_current_active_plugins', [$this, 'showPluginDeactivatedNotice']);
 

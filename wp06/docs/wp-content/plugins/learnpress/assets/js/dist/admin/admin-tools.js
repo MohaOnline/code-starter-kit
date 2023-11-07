@@ -132,6 +132,9 @@ if (undefined === lpGlobalSettings) {
     apiAddonAction: lpGlobalSettings.rest + 'lp/v1/addon/action',
     apiSearchCourses: lpGlobalSettings.rest + 'lp/v1/admin/tools/search-course',
     apiAssignUserCourse: lpGlobalSettings.rest + 'lp/v1/admin/tools/assign-user-course'
+  },
+  frontend: {
+    apiWidgets: lpGlobalSettings.lp_rest_url + 'lp/v1/widgets/api'
   }
 });
 
@@ -197,7 +200,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 /***/ (function(module) {
 
 /**
-* Tom Select v2.2.3
+* Tom Select v2.3.0
 * Licensed under the Apache License, Version 2.0 (the "License");
 */
 
@@ -1792,7 +1795,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	  preload: null,
 	  allowEmptyOption: false,
 	  //closeAfterSelect: false,
-
+	  refreshThrottle: 300,
 	  loadThrottle: 300,
 	  loadingClass: 'loading',
 	  dataAttr: null,
@@ -1885,6 +1888,17 @@ const lpAddQueryArgs = (endpoint, args) => {
 	};
 
 	/**
+	 * use setTimeout if timeout > 0 
+	 */
+	const timeout = (fn, timeout) => {
+	  if (timeout > 0) {
+	    return setTimeout(fn, timeout);
+	  }
+	  fn.call(null);
+	  return null;
+	};
+
+	/**
 	 * Debounce the user provided load function
 	 *
 	 */
@@ -1942,6 +1956,8 @@ const lpAddQueryArgs = (endpoint, args) => {
 	 *   - start
 	 *   - length
 	 *
+	 * Note: "selectionStart, selectionEnd ... apply only to inputs of types text, search, URL, tel and password"
+	 * 	- https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
 	 */
 	const getSelection = input => {
 	  return {
@@ -2053,6 +2069,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    var options = settings_element.options;
 	    var optionsMap = {};
 	    var group_count = 1;
+	    let $order = 0;
 	    var readData = el => {
 	      var data = Object.assign({}, el.dataset); // get plain object from DOMStringMap
 	      var json = attr_data && data[attr_data];
@@ -2088,6 +2105,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	        option_data[field_disabled] = option_data[field_disabled] || option.disabled;
 	        option_data[field_optgroup] = option_data[field_optgroup] || group;
 	        option_data.$option = option;
+	        option_data.$order = option_data.$order || ++$order;
 	        optionsMap[value] = option_data;
 	        options.push(option_data);
 	      }
@@ -2101,6 +2119,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	      optgroup_data[field_optgroup_label] = optgroup_data[field_optgroup_label] || optgroup.getAttribute('label') || '';
 	      optgroup_data[field_optgroup_value] = optgroup_data[field_optgroup_value] || group_count++;
 	      optgroup_data[field_disabled] = optgroup_data[field_disabled] || optgroup.disabled;
+	      optgroup_data.$order = optgroup_data.$order || ++$order;
 	      settings_element.optgroups.push(optgroup_data);
 	      id = optgroup_data[field_optgroup_value];
 	      iterate(optgroup.children, option => {
@@ -2171,6 +2190,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    this.sifter = void 0;
 	    this.isOpen = false;
 	    this.isDisabled = false;
+	    this.isReadOnly = false;
 	    this.isRequired = void 0;
 	    this.isInvalid = false;
 	    // @deprecated 1.8
@@ -2193,6 +2213,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    this.options = {};
 	    this.userOptions = {};
 	    this.items = [];
+	    this.refreshTimeout = null;
 	    instance_i++;
 	    var dir;
 	    var input = getDom(input_arg);
@@ -2271,7 +2292,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	      control_input = getDom(settings.controlInput);
 
 	      // set attributes
-	      var attrs = ['autocorrect', 'autocapitalize', 'autocomplete'];
+	      var attrs = ['autocorrect', 'autocapitalize', 'autocomplete', 'spellcheck'];
 	      iterate$1(attrs, attr => {
 	        if (input.getAttribute(attr)) {
 	          setAttr(control_input, {
@@ -2369,7 +2390,6 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    if (settings.load && settings.loadThrottle) {
 	      settings.load = loadDebounce(settings.load, settings.loadThrottle);
 	    }
-	    self.control_input.type = input.type;
 	    addEvent(dropdown, 'mousemove', () => {
 	      self.ignoreHover = false;
 	    });
@@ -2477,6 +2497,8 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    self.isSetup = true;
 	    if (input.disabled) {
 	      self.disable();
+	    } else if (input.readOnly) {
+	      self.setReadOnly(true);
 	    } else {
 	      self.enable(); //sets tabIndex
 	    }
@@ -2796,19 +2818,31 @@ const lpAddQueryArgs = (endpoint, args) => {
 	   *
 	   */
 	  onInput(e) {
-	    var self = this;
-	    if (self.isLocked) {
+	    if (this.isLocked) {
 	      return;
 	    }
-	    var value = self.inputValue();
-	    if (self.lastValue !== value) {
-	      self.lastValue = value;
-	      if (self.settings.shouldLoad.call(self, value)) {
-	        self.load(value);
-	      }
-	      self.refreshOptions();
-	      self.trigger('type', value);
+	    const value = this.inputValue();
+	    if (this.lastValue === value) return;
+	    this.lastValue = value;
+	    if (value == '') {
+	      this._onInput();
+	      return;
 	    }
+	    if (this.refreshTimeout) {
+	      clearTimeout(this.refreshTimeout);
+	    }
+	    this.refreshTimeout = timeout(() => {
+	      this.refreshTimeout = null;
+	      this._onInput();
+	    }, this.settings.refreshThrottle);
+	  }
+	  _onInput() {
+	    const value = this.lastValue;
+	    if (this.settings.shouldLoad.call(this, value)) {
+	      this.load(value);
+	    }
+	    this.refreshOptions();
+	    this.trigger('type', value);
 	  }
 
 	  /**
@@ -2828,7 +2862,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	  onFocus(e) {
 	    var self = this;
 	    var wasFocused = self.isFocused;
-	    if (self.isDisabled) {
+	    if (self.isDisabled || self.isReadOnly) {
 	      self.blur();
 	      preventDefault(e);
 	      return;
@@ -2838,7 +2872,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    if (self.settings.preload === 'focus') self.preload();
 	    if (!wasFocused) self.trigger('focus');
 	    if (!self.activeItems.length) {
-	      self.showInput();
+	      self.inputState();
 	      self.refreshOptions(!!self.settings.openOnFocus);
 	    }
 	    self.refreshState();
@@ -3050,7 +3084,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    if (!item) {
 	      self.clearActiveItems();
 	      if (self.isFocused) {
-	        self.showInput();
+	        self.inputState();
 	      }
 	      return;
 	    }
@@ -3085,7 +3119,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    }
 
 	    // ensure control has focus
-	    self.hideInput();
+	    self.inputState();
 	    if (!self.isFocused) {
 	      self.focus();
 	    }
@@ -3203,7 +3237,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    if (self.settings.mode === 'single') return;
 	    const activeItems = self.controlChildren();
 	    if (!activeItems.length) return;
-	    self.hideInput();
+	    self.inputState();
 	    self.close();
 	    self.activeItems = activeItems;
 	    iterate$1(activeItems, item => {
@@ -3236,23 +3270,6 @@ const lpAddQueryArgs = (endpoint, args) => {
 	  }
 
 	  /**
-	   * Hides the input element out of view, while
-	   * retaining its focus.
-	   * @deprecated 1.3
-	   */
-	  hideInput() {
-	    this.inputState();
-	  }
-
-	  /**
-	   * Restores input visibility.
-	   * @deprecated 1.3
-	   */
-	  showInput() {
-	    this.inputState();
-	  }
-
-	  /**
 	   * Get the input value
 	   */
 	  inputValue() {
@@ -3264,7 +3281,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	   */
 	  focus() {
 	    var self = this;
-	    if (self.isDisabled) return;
+	    if (self.isDisabled || self.isReadOnly) return;
 	    self.ignoreFocus = true;
 	    if (self.control_input.offsetWidth) {
 	      self.control_input.focus();
@@ -3392,6 +3409,25 @@ const lpAddQueryArgs = (endpoint, args) => {
 	      show_dropdown = true;
 	    }
 
+	    // get fragment for group and the position of the group in group_order
+	    const getGroupFragment = (optgroup, order) => {
+	      let group_order_i = groups[optgroup];
+	      if (group_order_i !== undefined) {
+	        let order_group = groups_order[group_order_i];
+	        if (order_group !== undefined) {
+	          return [group_order_i, order_group.fragment];
+	        }
+	      }
+	      let group_fragment = document.createDocumentFragment();
+	      group_order_i = groups_order.length;
+	      groups_order.push({
+	        fragment: group_fragment,
+	        order,
+	        optgroup
+	      });
+	      return [group_order_i, group_fragment];
+	    };
+
 	    // render and group available options individually
 	    for (i = 0; i < n; i++) {
 	      // get option dom element
@@ -3411,14 +3447,14 @@ const lpAddQueryArgs = (endpoint, args) => {
 	      optgroups = Array.isArray(optgroup) ? optgroup : [optgroup];
 	      for (j = 0, k = optgroups && optgroups.length; j < k; j++) {
 	        optgroup = optgroups[j];
-	        if (!self.optgroups.hasOwnProperty(optgroup)) {
+	        let order = option.$order;
+	        let self_optgroup = self.optgroups[optgroup];
+	        if (self_optgroup === undefined) {
 	          optgroup = '';
+	        } else {
+	          order = self_optgroup.$order;
 	        }
-	        let group_fragment = groups[optgroup];
-	        if (group_fragment === undefined) {
-	          group_fragment = document.createDocumentFragment();
-	          groups_order.push(optgroup);
-	        }
+	        const [group_order_i, group_fragment] = getGroupFragment(optgroup, order);
 
 	        // nodes can only have one parent, so if the option is in mutple groups, we need a clone
 	        if (j > 0) {
@@ -3438,25 +3474,24 @@ const lpAddQueryArgs = (endpoint, args) => {
 	          }
 	        }
 	        group_fragment.appendChild(option_el);
-	        groups[optgroup] = group_fragment;
+	        if (optgroup != '') {
+	          groups[optgroup] = group_order_i;
+	        }
 	      }
 	    }
 
 	    // sort optgroups
 	    if (self.settings.lockOptgroupOrder) {
 	      groups_order.sort((a, b) => {
-	        const grp_a = self.optgroups[a];
-	        const grp_b = self.optgroups[b];
-	        const a_order = grp_a && grp_a.$order || 0;
-	        const b_order = grp_b && grp_b.$order || 0;
-	        return a_order - b_order;
+	        return a.order - b.order;
 	      });
 	    }
 
 	    // render optgroup headers & join groups
 	    html = document.createDocumentFragment();
-	    iterate$1(groups_order, optgroup => {
-	      let group_fragment = groups[optgroup];
+	    iterate$1(groups_order, group_order => {
+	      let group_fragment = group_order.fragment;
+	      let optgroup = group_order.optgroup;
 	      if (!group_fragment || !group_fragment.children.length) return;
 	      let group_heading = self.optgroups[optgroup];
 	      if (group_heading !== undefined) {
@@ -4014,6 +4049,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    const wrap_classList = self.wrapper.classList;
 	    wrap_classList.toggle('focus', self.isFocused);
 	    wrap_classList.toggle('disabled', self.isDisabled);
+	    wrap_classList.toggle('readonly', self.isReadOnly);
 	    wrap_classList.toggle('required', self.isRequired);
 	    wrap_classList.toggle('invalid', !self.isValid);
 	    wrap_classList.toggle('locked', isLocked);
@@ -4150,7 +4186,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	      // before blur() to prevent form onchange event
 	      self.setTextboxValue();
 	      if (self.settings.mode === 'single' && self.items.length) {
-	        self.hideInput();
+	        self.inputState();
 	      }
 	    }
 	    self.isOpen = false;
@@ -4199,7 +4235,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    iterate$1(items, item => {
 	      self.removeItem(item, true);
 	    });
-	    self.showInput();
+	    self.inputState();
 	    if (!silent) self.updateOriginalInput();
 	    self.trigger('clear');
 	  }
@@ -4260,7 +4296,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	    while (rm_items.length) {
 	      self.removeItem(rm_items.pop());
 	    }
-	    self.showInput();
+	    self.inputState();
 	    self.positionDropdown();
 	    self.refreshOptions(false);
 	    return true;
@@ -4363,15 +4399,21 @@ const lpAddQueryArgs = (endpoint, args) => {
 	   * items are being asynchronously created.
 	   */
 	  lock() {
-	    this.isLocked = true;
-	    this.refreshState();
+	    this.setLocked(true);
 	  }
 
 	  /**
 	   * Re-enables user input on the control.
 	   */
 	  unlock() {
-	    this.isLocked = false;
+	    this.setLocked(false);
+	  }
+
+	  /**
+	   * Disable or enable user input on the control
+	   */
+	  setLocked(lock = this.isReadOnly || this.isDisabled) {
+	    this.isLocked = lock;
 	    this.refreshState();
 	  }
 
@@ -4380,13 +4422,8 @@ const lpAddQueryArgs = (endpoint, args) => {
 	   * While disabled, it cannot receive focus.
 	   */
 	  disable() {
-	    var self = this;
-	    self.input.disabled = true;
-	    self.control_input.disabled = true;
-	    self.focus_node.tabIndex = -1;
-	    self.isDisabled = true;
+	    this.setDisabled(true);
 	    this.close();
-	    self.lock();
 	  }
 
 	  /**
@@ -4394,12 +4431,20 @@ const lpAddQueryArgs = (endpoint, args) => {
 	   * to focus and user input.
 	   */
 	  enable() {
-	    var self = this;
-	    self.input.disabled = false;
-	    self.control_input.disabled = false;
-	    self.focus_node.tabIndex = self.tabIndex;
-	    self.isDisabled = false;
-	    self.unlock();
+	    this.setDisabled(false);
+	  }
+	  setDisabled(disabled) {
+	    this.focus_node.tabIndex = disabled ? -1 : this.tabIndex;
+	    this.isDisabled = disabled;
+	    this.input.disabled = disabled;
+	    this.control_input.disabled = disabled;
+	    this.setLocked();
+	  }
+	  setReadOnly(isReadOnly) {
+	    this.isReadOnly = isReadOnly;
+	    this.input.readOnly = isReadOnly;
+	    this.control_input.readOnly = isReadOnly;
+	    this.setLocked();
 	  }
 
 	  /**
@@ -4718,9 +4763,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 	  self.on('initialize', () => {
 	    var button = getDom(options.html(options));
 	    button.addEventListener('click', evt => {
-	      if (self.isDisabled) {
-	        return;
-	      }
+	      if (self.isLocked) return;
 	      self.clear();
 	      if (self.settings.mode === 'single' && self.settings.allowEmptyOption) {
 	        self.addItem('');
@@ -4747,44 +4790,102 @@ const lpAddQueryArgs = (endpoint, args) => {
 	 *
 	 */
 
+	const insertAfter = (referenceNode, newNode) => {
+	  var _referenceNode$parent;
+	  (_referenceNode$parent = referenceNode.parentNode) == null || _referenceNode$parent.insertBefore(newNode, referenceNode.nextSibling);
+	};
+	const insertBefore = (referenceNode, newNode) => {
+	  var _referenceNode$parent2;
+	  (_referenceNode$parent2 = referenceNode.parentNode) == null || _referenceNode$parent2.insertBefore(newNode, referenceNode);
+	};
+	const isBefore = (referenceNode, newNode) => {
+	  do {
+	    var _newNode;
+	    newNode = (_newNode = newNode) == null ? void 0 : _newNode.previousElementSibling;
+	    if (referenceNode == newNode) {
+	      return true;
+	    }
+	  } while (newNode && newNode.previousElementSibling);
+	  return false;
+	};
 	function drag_drop () {
 	  var self = this;
-	  if (!$.fn.sortable) throw new Error('The "drag_drop" plugin requires jQuery UI "sortable".');
 	  if (self.settings.mode !== 'multi') return;
 	  var orig_lock = self.lock;
 	  var orig_unlock = self.unlock;
+	  let sortable = true;
+	  let drag_item;
+
+	  /**
+	   * Add draggable attribute to item
+	   */
+	  self.hook('after', 'setupTemplates', () => {
+	    var orig_render_item = self.settings.render.item;
+	    self.settings.render.item = (data, escape) => {
+	      const item = getDom(orig_render_item.call(self, data, escape));
+	      setAttr(item, {
+	        'draggable': 'true'
+	      });
+
+	      // prevent doc_mousedown (see tom-select.ts)
+	      const mousedown = evt => {
+	        if (!sortable) preventDefault(evt);
+	        evt.stopPropagation();
+	      };
+	      const dragStart = evt => {
+	        drag_item = item;
+	        setTimeout(() => {
+	          item.classList.add('ts-dragging');
+	        }, 0);
+	      };
+	      const dragOver = evt => {
+	        evt.preventDefault();
+	        item.classList.add('ts-drag-over');
+	        moveitem(item, drag_item);
+	      };
+	      const dragLeave = () => {
+	        item.classList.remove('ts-drag-over');
+	      };
+	      const moveitem = (targetitem, dragitem) => {
+	        if (dragitem === undefined) return;
+	        if (isBefore(dragitem, item)) {
+	          insertAfter(targetitem, dragitem);
+	        } else {
+	          insertBefore(targetitem, dragitem);
+	        }
+	      };
+	      const dragend = () => {
+	        var _drag_item;
+	        document.querySelectorAll('.ts-drag-over').forEach(el => el.classList.remove('ts-drag-over'));
+	        (_drag_item = drag_item) == null || _drag_item.classList.remove('ts-dragging');
+	        drag_item = undefined;
+	        var values = [];
+	        self.control.querySelectorAll(`[data-value]`).forEach(el => {
+	          if (el.dataset.value) {
+	            let value = el.dataset.value;
+	            if (value) {
+	              values.push(value);
+	            }
+	          }
+	        });
+	        self.setValue(values);
+	      };
+	      addEvent(item, 'mousedown', mousedown);
+	      addEvent(item, 'dragstart', dragStart);
+	      addEvent(item, 'dragenter', dragOver);
+	      addEvent(item, 'dragover', dragOver);
+	      addEvent(item, 'dragleave', dragLeave);
+	      addEvent(item, 'dragend', dragend);
+	      return item;
+	    };
+	  });
 	  self.hook('instead', 'lock', () => {
-	    var sortable = $(self.control).data('sortable');
-	    if (sortable) sortable.disable();
+	    sortable = false;
 	    return orig_lock.call(self);
 	  });
 	  self.hook('instead', 'unlock', () => {
-	    var sortable = $(self.control).data('sortable');
-	    if (sortable) sortable.enable();
+	    sortable = true;
 	    return orig_unlock.call(self);
-	  });
-	  self.on('initialize', () => {
-	    var $control = $(self.control).sortable({
-	      items: '[data-value]',
-	      forcePlaceholderSize: true,
-	      disabled: self.isLocked,
-	      start: (e, ui) => {
-	        ui.placeholder.css('width', ui.helper.css('width'));
-	        $control.css({
-	          overflow: 'visible'
-	        });
-	      },
-	      stop: () => {
-	        $control.css({
-	          overflow: 'hidden'
-	        });
-	        var values = [];
-	        $control.children('[data-value]').each(function () {
-	          if (this.dataset.value) values.push(this.dataset.value);
-	        });
-	        self.setValue(values);
-	      }
-	    });
 	  });
 	}
 
@@ -5139,6 +5240,8 @@ const lpAddQueryArgs = (endpoint, args) => {
 	        preventDefault(evt, true);
 	      });
 	      addEvent(close_button, 'click', evt => {
+	        if (self.isLocked) return;
+
 	        // propagating will trigger the dropdown to show for single mode
 	        preventDefault(evt, true);
 	        if (self.isLocked) return;

@@ -214,7 +214,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 		switch ( $box['id'] ) {
 			case 'ad-main-box':
 				$view       = 'ad-main-metabox.php';
-				$hndlelinks = '<a href="' . ADVADS_URL . 'manual/ad-types?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-ad-type" target="_blank" class="advads-manual-link">' . __( 'Manual', 'advanced-ads' ) . '</a>';
+				$hndlelinks = '<a href="https://wpadvancedads.com/manual/ad-types?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-ad-type" target="_blank" class="advads-manual-link">' . __( 'Manual', 'advanced-ads' ) . '</a>';
 				break;
 			case 'ad-usage-box':
 				$view = 'ad-usage-metabox.php';
@@ -228,13 +228,13 @@ class Advanced_Ads_Admin_Meta_Boxes {
 				$wrapper_class      = $ad->options( 'output.wrapper-class', '' );
 				$debug_mode_enabled = (bool) $ad->options( 'output.debugmode', false );
 				$view               = 'ad-output-metabox.php';
-				$hndlelinks         = '<a href="' . ADVADS_URL . 'manual/optimizing-the-ad-layout/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-ad-layout" target="_blank" class="advads-manual-link">' . __( 'Manual', 'advanced-ads' ) . '</a>';
+				$hndlelinks         = '<a href="https://wpadvancedads.com/manual/optimizing-the-ad-layout/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-ad-layout" target="_blank" class="advads-manual-link">' . __( 'Manual', 'advanced-ads' ) . '</a>';
 				break;
 			case 'ad-targeting-box':
 				$view                         = 'conditions/ad-targeting-metabox.php';
 				$hndlelinks                   = '<a href="#" class="advads-video-link">' . __( 'Video', 'advanced-ads' ) . '</a>';
-				$hndlelinks                  .= '<a href="' . ADVADS_URL . 'manual/display-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-display" target="_blank" class="advads-manual-link">' . __( 'Display Conditions', 'advanced-ads' ) . '</a>';
-				$hndlelinks                  .= '<a href="' . ADVADS_URL . 'manual/visitor-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-visitor" target="_blank" class="advads-manual-link">' . __( 'Visitor Conditions', 'advanced-ads' ) . '</a>';
+				$hndlelinks                  .= '<a href="https://wpadvancedads.com/manual/display-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-display" target="_blank" class="advads-manual-link">' . __( 'Display Conditions', 'advanced-ads' ) . '</a>';
+				$hndlelinks                  .= '<a href="https://wpadvancedads.com/manual/visitor-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-visitor" target="_blank" class="advads-manual-link">' . __( 'Visitor Conditions', 'advanced-ads' ) . '</a>';
 				$videomarkup                  = '<iframe width="420" height="315" src="https://www.youtube-nocookie.com/embed/VjfrRl5Qn4I?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 				$display_conditions           = $ad->options( 'conditions', [] );
 				$visitor_conditions           = $ad->options( 'visitors', [] );
@@ -243,11 +243,9 @@ class Advanced_Ads_Admin_Meta_Boxes {
 				break;
 			case 'advads-pro-pitch':
 				$view = 'upgrades/all-access.php';
-				// $hndlelinks = '<a href="' . ADVADS_URL . 'manual/visitor-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-visitor" target="_blank">' . __('Manual', 'advanced-ads') . '</a>';
 				break;
 			case 'advads-tracking-pitch':
 				$view = 'upgrades/tracking.php';
-				// $hndlelinks = '<a href="' . ADVADS_URL . 'manual/visitor-conditions/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-visitor" target="_blank">' . __('Manual', 'advanced-ads') . '</a>';
 				break;
 			case 'advads-gadsense-box':
 				$unit_code = null;
@@ -574,7 +572,7 @@ class Advanced_Ads_Admin_Meta_Boxes {
 		self::dashboard_cached_rss_widget();
 
 		?>
-		<p><a href="<?php echo esc_url( ADVADS_URL . 'category/tutorials/?utm_source=advanced-ads&utm_medium=link&utm_campaign=dashboard' ); ?>" target="_blank"><?php esc_html_e( 'Visit our blog for more articles about ad optimization', 'advanced-ads' ); ?></a></p>
+		<p><a href="https://wpadvancedads.com/category/tutorials/?utm_source=advanced-ads&utm_medium=link&utm_campaign=dashboard" target="_blank"><?php esc_html_e( 'Visit our blog for more articles about ad optimization', 'advanced-ads' ); ?></a></p>
 		<?php
 
 		// add markup for utm variables.
@@ -625,12 +623,12 @@ class Advanced_Ads_Admin_Meta_Boxes {
 
 		$feeds = [
 			[
-				'link'         => ADVADS_URL,
-				'url'          => ADVADS_URL . 'feed/',
+				'link'         => 'https://wpadvancedads.com/',
+				'url'          => 'https://wpadvancedads.com/category/tutorials/feed/',
 				'title'        => sprintf(
 					// translators: %s is our URL.
 					__( 'Latest posts on wpadvancedads.com', 'advanced-ads' ),
-					ADVADS_URL
+					'https://wpadvancedads.com/'
 				),
 				'items'        => 2,
 				'show_summary' => 1,

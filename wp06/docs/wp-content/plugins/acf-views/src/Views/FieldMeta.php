@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace org\wplake\acf_views\Views;
 
 use org\wplake\acf_views\Views\Fields\Fields;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
 
 defined('ABSPATH') || exit;
 
@@ -25,6 +26,9 @@ class FieldMeta implements FieldMetaInterface
      */
     private $defaultValue;
     private array $customArgs;
+    private int $zoom;
+    private string $centerLat;
+    private string $centerLng;
 
     public function __construct(string $fieldId, array $fieldData = [])
     {
@@ -40,6 +44,9 @@ class FieldMeta implements FieldMetaInterface
         $this->appearance = '';
         $this->defaultValue = '';
         $this->customArgs = [];
+        $this->zoom = 0;
+        $this->centerLat = '';
+        $this->centerLng = '';
 
         $this->read();
     }
@@ -52,7 +59,7 @@ class FieldMeta implements FieldMetaInterface
 
         if (0 === strpos($this->fieldId, Fields::TAXONOMY_PREFIX)) {
             return [
-                'type' => Fields::FIELD_POST_TAXONOMY,
+                'type' => PostFields::FIELD_TAXONOMY,
                 // name is necessary for the identifier and markup generation
                 'name' => str_replace(Fields::TAXONOMY_PREFIX, '', $this->fieldId),
                 // 'field_type' is an alias of the 'appearance'.
@@ -90,6 +97,9 @@ class FieldMeta implements FieldMetaInterface
         $this->displayFormat = (string)($fieldData['display_format'] ?? '');
         $this->isMultiple = (bool)($fieldData['multiple'] ?? false);
         $this->appearance = (string)($fieldData['field_type'] ?? '');
+        $this->zoom = (int)($fieldData['zoom'] ?? 0);
+        $this->centerLat = (string)($fieldData['center_lat'] ?? '');
+        $this->centerLng = (string)($fieldData['center_lng'] ?? '');
 
         if (key_exists('default_value', $fieldData)) {
             if (is_array($fieldData['default_value'])) {
@@ -177,5 +187,20 @@ class FieldMeta implements FieldMetaInterface
     public function getDefaultValue()
     {
         return $this->defaultValue;
+    }
+
+    public function getZoom(): int
+    {
+        return $this->zoom;
+    }
+
+    public function getCenterLat(): string
+    {
+        return $this->centerLat;
+    }
+
+    public function getCenterLng(): string
+    {
+        return $this->centerLng;
     }
 }

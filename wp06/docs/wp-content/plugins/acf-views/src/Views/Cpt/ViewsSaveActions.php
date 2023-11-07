@@ -6,6 +6,7 @@ namespace org\wplake\acf_views\Views\Cpt;
 
 use org\wplake\acf_views\Common\Cpt\SaveActions;
 use org\wplake\acf_views\Common\Instance;
+use org\wplake\acf_views\Groups\ItemData;
 use org\wplake\acf_views\Groups\ViewData;
 use org\wplake\acf_views\Html;
 use org\wplake\acf_views\Plugin;
@@ -59,12 +60,18 @@ class ViewsSaveActions extends SaveActions
     {
         $labels = [];
 
+        /**
+         * @var ItemData $item
+         */
         foreach ($cptData->items as $item) {
             if ($item->field->label) {
                 $labels[] = $item->field->label;
             }
             if ($item->field->linkLabel) {
                 $labels[] = $item->field->linkLabel;
+            }
+            if ($item->field->mapMarkerIconTitle) {
+                $labels[] = $item->field->mapMarkerIconTitle;
             }
         }
 
@@ -218,9 +225,13 @@ class ViewsSaveActions extends SaveActions
         exit;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        parent::setHooks();
+        parent::setHooks($isAdmin);
+
+        if (!$isAdmin) {
+            return;
+        }
 
         add_action('wp_ajax_acf_views__view_refresh', [$this, 'refreshAjax',]);
     }

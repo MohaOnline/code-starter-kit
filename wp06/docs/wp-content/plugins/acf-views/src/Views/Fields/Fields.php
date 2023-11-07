@@ -12,9 +12,9 @@ use org\wplake\acf_views\Views\Fields\Acf\ColorPickerField;
 use org\wplake\acf_views\Views\Fields\Acf\DatePickerField;
 use org\wplake\acf_views\Views\Fields\Acf\FileField;
 use org\wplake\acf_views\Views\Fields\Acf\GalleryField;
-use org\wplake\acf_views\Views\Fields\Acf\GoogleMapField;
 use org\wplake\acf_views\Views\Fields\Acf\ImageField;
 use org\wplake\acf_views\Views\Fields\Acf\LinkField;
+use org\wplake\acf_views\Views\Fields\Acf\MapField;
 use org\wplake\acf_views\Views\Fields\Acf\PageLinkField;
 use org\wplake\acf_views\Views\Fields\Acf\PostObjectField;
 use org\wplake\acf_views\Views\Fields\Acf\SelectField;
@@ -27,12 +27,16 @@ use org\wplake\acf_views\Views\Fields\Comment\CommentAuthorNameField;
 use org\wplake\acf_views\Views\Fields\Comment\CommentAuthorNameLinkField;
 use org\wplake\acf_views\Views\Fields\Comment\CommentContentField;
 use org\wplake\acf_views\Views\Fields\Comment\CommentDateField;
+use org\wplake\acf_views\Views\Fields\Comment\CommentFields;
+use org\wplake\acf_views\Views\Fields\Comment\CommentParentField;
 use org\wplake\acf_views\Views\Fields\Comment\CommentStatusField;
+use org\wplake\acf_views\Views\Fields\Comment\CommentUserField;
 use org\wplake\acf_views\Views\Fields\Post\PostAuthorField;
 use org\wplake\acf_views\Views\Fields\Post\PostCommentsField;
 use org\wplake\acf_views\Views\Fields\Post\PostContentField;
 use org\wplake\acf_views\Views\Fields\Post\PostDateField;
 use org\wplake\acf_views\Views\Fields\Post\PostExcerptField;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
 use org\wplake\acf_views\Views\Fields\Post\PostModifiedField;
 use org\wplake\acf_views\Views\Fields\Post\PostTaxonomyField;
 use org\wplake\acf_views\Views\Fields\Post\PostThumbnailField;
@@ -40,6 +44,7 @@ use org\wplake\acf_views\Views\Fields\Post\PostThumbnailLinkField;
 use org\wplake\acf_views\Views\Fields\Post\PostTitleField;
 use org\wplake\acf_views\Views\Fields\Post\PostTitleLinkField;
 use org\wplake\acf_views\Views\Fields\Term\TermDescriptionField;
+use org\wplake\acf_views\Views\Fields\Term\TermFields;
 use org\wplake\acf_views\Views\Fields\Term\TermNameField;
 use org\wplake\acf_views\Views\Fields\Term\TermNameLinkField;
 use org\wplake\acf_views\Views\Fields\Term\TermSlugField;
@@ -47,8 +52,10 @@ use org\wplake\acf_views\Views\Fields\User\UserAuthorLinkField;
 use org\wplake\acf_views\Views\Fields\User\UserBioField;
 use org\wplake\acf_views\Views\Fields\User\UserDisplayNameField;
 use org\wplake\acf_views\Views\Fields\User\UserEmailField;
+use org\wplake\acf_views\Views\Fields\User\UserFields;
 use org\wplake\acf_views\Views\Fields\User\UserFirstNameField;
 use org\wplake\acf_views\Views\Fields\User\UserLastNameField;
+use org\wplake\acf_views\Views\Fields\Woo\WooFields;
 use org\wplake\acf_views\Views\Fields\Woo\WooGalleryField;
 use org\wplake\acf_views\Views\Fields\Woo\WooHeightField;
 use org\wplake\acf_views\Views\Fields\Woo\WooLengthField;
@@ -64,66 +71,7 @@ defined('ABSPATH') || exit;
 
 class Fields
 {
-    // all fields have ids like 'field_x', so no conflicts possible
-    const GROUP_POST = '$post$';
-    const GROUP_USER = '$user$';
-    const GROUP_WOO = '$woo$';
     const GROUP_TAXONOMY = '$taxonomy$';
-    const GROUP_TERM = '$term$';
-    const GROUP_COMMENT = '$comment$';
-
-    // all fields have ids like 'field_x', so no conflicts possible
-    const POST_GROUP_PREFIX = '_post_';
-    const FIELD_POST_TITLE = '_post_title';
-    const FIELD_POST_TITLE_LINK = '_post_title_link';
-    const FIELD_POST_THUMBNAIL = '_post_thumbnail';
-    const FIELD_POST_THUMBNAIL_LINK = '_post_thumbnail_link';
-    const FIELD_POST_AUTHOR = '_post_author';
-    const FIELD_POST_DATE = '_post_date';
-    const FIELD_POST_MODIFIED = '_post_modified';
-    const FIELD_POST_CONTENT = '_post_content';
-    const FIELD_POST_EXCERPT = '_post_excerpt';
-    const FIELD_POST_TAXONOMY = '_post_taxonomy';
-    const FIELD_POST_COMMENTS = '_post_comments';
-
-    // all fields have ids like 'field_x', so no conflicts possible
-    const USER_GROUP_PREFIX = '_user_';
-    const FIELD_USER_FIRST_NAME = '_user_first_name';
-    const FIELD_USER_LAST_NAME = '_user_last_name';
-    const FIELD_USER_DISPLAY_NAME = '_user_display_name';
-    const FIELD_USER_EMAIL = '_user_email';
-    const FIELD_USER_BIO = '_user_bio';
-    const FIELD_USER_AUTHOR_LINK = '_user_author_link';
-
-    // all fields have ids like 'field_x', so no conflicts possible
-    const COMMENT_GROUP_PREFIX = '_comment_';
-    const FIELD_COMMENT_AUTHOR_EMAIL = '_comment_author_email';
-    const FIELD_COMMENT_AUTHOR_NAME = '_comment_author_name';
-    const FIELD_COMMENT_AUTHOR_NAME_LINK = '_comment_author_name_link';
-    const FIELD_COMMENT_CONTENT = '_comment_content';
-    const FIELD_COMMENT_DATE = '_comment_date';
-    const FIELD_COMMENT_STATUS = '_comment_status';
-
-
-    // all fields have ids like 'field_x', so no conflicts possible
-    const WOO_GROUP_PREFIX = '_woo_';
-    const FIELD_WOO_GALLERY = '_woo_gallery';
-    const FIELD_WOO_PRICE = '_woo_price';
-    const FIELD_WOO_REGULAR_PRICE = '_woo_regular_price';
-    const FIELD_WOO_SALE_PRICE = '_woo_sale_price';
-    const FIELD_WOO_SKU = '_woo_sku';
-    const FIELD_WOO_STOCK_STATUS = '_woo_stock_status';
-    const FIELD_WOO_WEIGHT = '_woo_weight';
-    const FIELD_WOO_LENGTH = '_woo_length';
-    const FIELD_WOO_WIDTH = '_woo_width';
-    const FIELD_WOO_HEIGHT = '_woo_height';
-
-    const TERM_GROUP_PREFIX = '_term_';
-    const FIELD_TERM_NAME = '_term_name';
-    const FIELD_TERM_SLUG = '_term_slug';
-    const FIELD_TERM_DESCRIPTION = '_term_description';
-    const FIELD_TERM_NAME_LINK = '_term_name_link';
-
     const TAXONOMY_PREFIX = '_taxonomy_';
 
     /**
@@ -140,6 +88,7 @@ class Fields
         $datePickerField = new DatePickerField();
         $taxonomyField = new TaxonomyField($linkField);
         $postContent = new PostContentField();
+        $mapField = new MapField();
 
         $this->fields = [
             //// basic
@@ -166,58 +115,57 @@ class Fields
             'user' => new UserField($linkField),
 
             //// jquery types
-            'google_map' => new GoogleMapField(),
+            'google_map' => $mapField,
+            'google_map_multi' => $mapField,
+            'open_street_map' => $mapField,
             'date_picker' => $datePickerField,
             'date_time_picker' => $datePickerField,
             'time_picker' => $datePickerField,
             'color_picker' => new ColorPickerField(),
 
-            //// post
-            self::FIELD_POST_TITLE => new PostTitleField(),
-            self::FIELD_POST_TITLE_LINK => new PostTitleLinkField($linkField),
-            self::FIELD_POST_THUMBNAIL => new PostThumbnailField($imageField),
-            self::FIELD_POST_THUMBNAIL_LINK => new PostThumbnailLinkField($imageField),
-            self::FIELD_POST_AUTHOR => new PostAuthorField($linkField),
-            self::FIELD_POST_DATE => new PostDateField(),
-            self::FIELD_POST_MODIFIED => new PostModifiedField(),
-            self::FIELD_POST_CONTENT => $postContent,
-            self::FIELD_POST_EXCERPT => new PostExcerptField(),
-            self::FIELD_POST_TAXONOMY => new PostTaxonomyField($linkField),
-            self::FIELD_POST_COMMENTS => new PostCommentsField(),
+            PostFields::FIELD_TITLE => new PostTitleField(),
+            PostFields::FIELD_TITLE_LINK => new PostTitleLinkField($linkField),
+            PostFields::FIELD_THUMBNAIL => new PostThumbnailField($imageField),
+            PostFields::FIELD_THUMBNAIL_LINK => new PostThumbnailLinkField($imageField),
+            PostFields::FIELD_AUTHOR => new PostAuthorField($linkField),
+            PostFields::FIELD_DATE => new PostDateField(),
+            PostFields::FIELD_MODIFIED => new PostModifiedField(),
+            PostFields::FIELD_CONTENT => $postContent,
+            PostFields::FIELD_EXCERPT => new PostExcerptField(),
+            PostFields::FIELD_TAXONOMY => new PostTaxonomyField($linkField),
+            PostFields::FIELD_COMMENTS => new PostCommentsField(),
 
-            //// term
-            self::FIELD_TERM_NAME => new TermNameField(),
-            self::FIELD_TERM_SLUG => new TermSlugField(),
-            self::FIELD_TERM_DESCRIPTION => new TermDescriptionField(),
-            self::FIELD_TERM_NAME_LINK => new TermNameLinkField($linkField),
+            TermFields::FIELD_NAME => new TermNameField(),
+            TermFields::FIELD_SLUG => new TermSlugField(),
+            TermFields::FIELD_DESCRIPTION => new TermDescriptionField(),
+            TermFields::FIELD_NAME_LINK => new TermNameLinkField($linkField),
 
-            //// user
-            self::FIELD_USER_FIRST_NAME => new UserFirstNameField(),
-            self::FIELD_USER_LAST_NAME => new UserLastNameField(),
-            self::FIELD_USER_DISPLAY_NAME => new UserDisplayNameField(),
-            self::FIELD_USER_EMAIL => new UserEmailField(),
-            self::FIELD_USER_BIO => new UserBioField(),
-            self::FIELD_USER_AUTHOR_LINK => new UserAuthorLinkField($linkField),
+            UserFields::FIELD_FIRST_NAME => new UserFirstNameField(),
+            UserFields::FIELD_LAST_NAME => new UserLastNameField(),
+            UserFields::FIELD_DISPLAY_NAME => new UserDisplayNameField(),
+            UserFields::FIELD_EMAIL => new UserEmailField(),
+            UserFields::FIELD_BIO => new UserBioField(),
+            UserFields::FIELD_AUTHOR_LINK => new UserAuthorLinkField($linkField),
 
-            //// comment
-            self::FIELD_COMMENT_AUTHOR_EMAIL => new CommentAuthorEmail(),
-            self::FIELD_COMMENT_AUTHOR_NAME => new CommentAuthorNameField(),
-            self::FIELD_COMMENT_AUTHOR_NAME_LINK => new CommentAuthorNameLinkField($linkField),
-            self::FIELD_COMMENT_CONTENT => new CommentContentField(),
-            self::FIELD_COMMENT_DATE => new CommentDateField(),
-            self::FIELD_COMMENT_STATUS => new CommentStatusField(),
+            CommentFields::FIELD_AUTHOR_EMAIL => new CommentAuthorEmail(),
+            CommentFields::FIELD_AUTHOR_NAME => new CommentAuthorNameField(),
+            CommentFields::FIELD_AUTHOR_NAME_LINK => new CommentAuthorNameLinkField($linkField),
+            CommentFields::FIELD_CONTENT => new CommentContentField(),
+            CommentFields::FIELD_DATE => new CommentDateField(),
+            CommentFields::FIELD_STATUS => new CommentStatusField(),
+            CommentFields::FIELD_PARENT => new CommentParentField(),
+            CommentFields::FIELD_USER => new CommentUserField(),
 
-            //// woo
-            self::FIELD_WOO_PRICE => new WooPriceField(),
-            self::FIELD_WOO_REGULAR_PRICE => new WooRegularPriceField(),
-            self::FIELD_WOO_SALE_PRICE => new WooSalePriceField(),
-            self::FIELD_WOO_SKU => new WooSkuField(),
-            self::FIELD_WOO_STOCK_STATUS => new WooStockStatusField(),
-            self::FIELD_WOO_GALLERY => new WooGalleryField($imageField),
-            self::FIELD_WOO_WEIGHT => new WooWeightField(),
-            self::FIELD_WOO_LENGTH => new WooLengthField(),
-            self::FIELD_WOO_WIDTH => new WooWidthField(),
-            self::FIELD_WOO_HEIGHT => new WooHeightField(),
+            WooFields::FIELD_PRICE => new WooPriceField(),
+            WooFields::FIELD_REGULAR_PRICE => new WooRegularPriceField(),
+            WooFields::FIELD_SALE_PRICE => new WooSalePriceField(),
+            WooFields::FIELD_SKU => new WooSkuField(),
+            WooFields::FIELD_STOCK_STATUS => new WooStockStatusField(),
+            WooFields::FIELD_GALLERY => new WooGalleryField($imageField),
+            WooFields::FIELD_WEIGHT => new WooWeightField(),
+            WooFields::FIELD_LENGTH => new WooLengthField(),
+            WooFields::FIELD_WIDTH => new WooWidthField(),
+            WooFields::FIELD_HEIGHT => new WooHeightField(),
         ];
     }
 

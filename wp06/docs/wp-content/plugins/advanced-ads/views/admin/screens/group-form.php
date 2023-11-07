@@ -52,7 +52,7 @@ $group_types = wp_advads()->group_manager->get_types();
 		</div>
 		<div class="clear"></div>
 		<h4>
-			<?php Advanced_Ads_Admin_Upgrades::upgrade_link( __( 'Get all group types with All Access', 'advanced-ads' ), ADVADS_URL . 'add-ons/all-access/', 'upgrades-pro-groups' ); ?>
+			<?php Advanced_Ads_Admin_Upgrades::upgrade_link( __( 'Get all group types with All Access', 'advanced-ads' ), 'https://wpadvancedads.com/add-ons/all-access/', 'upgrades-pro-groups' ); ?>
 		</h4>
 	<?php endif; ?>
 	<div class="clear"></div>

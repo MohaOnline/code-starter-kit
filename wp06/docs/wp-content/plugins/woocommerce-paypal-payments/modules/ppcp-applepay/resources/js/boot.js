@@ -8,10 +8,18 @@ import ApplepayManager from "./ApplepayManager";
                jQuery
            }) {
 
+    let manager;
+
     const bootstrap = function () {
-        const manager = new ApplepayManager(buttonConfig, ppcpConfig);
+        manager = new ApplepayManager(buttonConfig, ppcpConfig);
         manager.init();
     };
+
+    jQuery(document.body).on('updated_cart_totals updated_checkout', () => {
+        if (manager) {
+            manager.reinit();
+        }
+    });
 
     document.addEventListener(
         'DOMContentLoaded',
@@ -20,12 +28,10 @@ import ApplepayManager from "./ApplepayManager";
                 (typeof (buttonConfig) === 'undefined') ||
                 (typeof (ppcpConfig) === 'undefined')
             ) {
-                console.error('PayPal button could not be configured.');
                 return;
             }
             const isMiniCart = ppcpConfig.mini_cart_buttons_enabled;
             const isButton = jQuery('#' + buttonConfig.button.wrapper).length > 0;
-            console.log('isbutton' ,isButton, buttonConfig.button.wrapper)
             // If button wrapper is not present then there is no need to load the scripts.
             // minicart loads later?
             if (!isMiniCart && !isButton) {

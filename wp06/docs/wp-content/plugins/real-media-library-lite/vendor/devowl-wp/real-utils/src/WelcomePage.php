@@ -127,7 +127,7 @@ class WelcomePage
                         <input type="checkbox" name="newsletter-privacy" />
                         ' . \sprintf(
             // translators:
-            \__('I want to receive WordPress news from devowl.io via email and agree to the <a %s>privacy policy</a>.', REAL_UTILS_TD),
+            \_x('I want to receive WordPress news from devowl.io via email and agree to the <a %s>privacy policy</a>.', 'legal-text', REAL_UTILS_TD),
             'href="' . \esc_attr(\__('https://devowl.io/privacy-policy/', REAL_UTILS_TD)) . '" target="_blank"'
         ) . '</span>
                     </label>

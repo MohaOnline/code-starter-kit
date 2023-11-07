@@ -22,6 +22,9 @@ class Utils
      */
     public static function startsWith($haystack, $needle)
     {
+        if ($haystack === null || $needle === null) {
+            return \false;
+        }
         $length = \strlen($needle);
         return \substr($haystack, 0, $length) === $needle;
     }

@@ -9,14 +9,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: n/a\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 
 #. translators:
-#: Localization.php:424
+#: Localization.php:455
 msgid "Some language packs could not be downloaded for the textdomain %1$s (Error: %2$s, Endpoint: %3$s)."
 msgstr ""
 
-#: Localization.php:474
+#: Localization.php:506
 msgid "Retry"
 msgstr ""
 

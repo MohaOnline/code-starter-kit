@@ -177,7 +177,7 @@ msgstr ""
 msgid "Choose Media"
 msgstr ""
 
-#: inc/admin.php:391, tpl/js-templates.php:226, tpl/js-templates.php:292, tpl/js-templates.php:361
+#: inc/admin.php:391, tpl/js-templates.php:226, tpl/js-templates.php:293, tpl/js-templates.php:366
 msgid "Done"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgid "Layout Builder Widget"
 msgstr ""
 
 #. translators: A standard confirmation message
-#: inc/admin.php:484, tpl/js-templates.php:102, tpl/js-templates.php:442
+#: inc/admin.php:484, tpl/js-templates.php:102, tpl/js-templates.php:450
 msgid "Are you sure?"
 msgstr ""
 
@@ -1350,7 +1350,7 @@ msgid "Full Width Stretched"
 msgstr ""
 
 #: inc/styles.php:411
-msgid "Full Width Stretched Padded"
+msgid "Full Width Stretched With Padding Support"
 msgstr ""
 
 #: inc/styles.php:417
@@ -1473,7 +1473,7 @@ msgstr ""
 msgid "Add Widget"
 msgstr ""
 
-#: tpl/js-templates.php:22, tpl/js-templates.php:398
+#: tpl/js-templates.php:22, tpl/js-templates.php:406
 msgid "Prebuilt Layouts"
 msgstr ""
 
@@ -1505,11 +1505,11 @@ msgstr ""
 msgid "Pro Tip"
 msgstr ""
 
-#: tpl/js-templates.php:155, tpl/js-templates.php:288, tpl/js-templates.php:353
+#: tpl/js-templates.php:155, tpl/js-templates.php:288, tpl/js-templates.php:357
 msgid "Duplicate"
 msgstr ""
 
-#: tpl/js-templates.php:161, tpl/js-templates.php:287, tpl/js-templates.php:352
+#: tpl/js-templates.php:161, tpl/js-templates.php:287, tpl/js-templates.php:356
 msgid "Delete"
 msgstr ""
 
@@ -1517,135 +1517,135 @@ msgstr ""
 msgid "Add New Widget %s"
 msgstr ""
 
-#: tpl/js-templates.php:256, tpl/js-templates.php:576
+#: tpl/js-templates.php:256, tpl/js-templates.php:584
 msgid "Close"
 msgstr ""
 
-#: tpl/js-templates.php:291, tpl/js-templates.php:360
+#: tpl/js-templates.php:292, tpl/js-templates.php:365
 msgid "Save"
 msgstr ""
 
-#: tpl/js-templates.php:293, tpl/js-templates.php:362
-msgid ":"
+#: tpl/js-templates.php:295, tpl/js-templates.php:368
+msgid "Access Modes"
 msgstr ""
 
-#: tpl/js-templates.php:296, tpl/js-templates.php:365
+#: tpl/js-templates.php:299, tpl/js-templates.php:372
 msgid "Save Now"
 msgstr ""
 
-#: tpl/js-templates.php:299, tpl/js-templates.php:368
+#: tpl/js-templates.php:302, tpl/js-templates.php:375
 msgid "Save With Page Save"
 msgstr ""
 
-#: tpl/js-templates.php:330
+#: tpl/js-templates.php:334
 msgid "Set Row Layout"
 msgstr ""
 
-#: tpl/js-templates.php:337
+#: tpl/js-templates.php:341
 msgid "Resize Columns: "
 msgstr ""
 
-#: tpl/js-templates.php:358, tpl/js-templates.php:436
+#: tpl/js-templates.php:363, tpl/js-templates.php:444
 msgid "Insert"
 msgstr ""
 
-#: tpl/js-templates.php:388
+#: tpl/js-templates.php:396
 msgid "Page Builder Layouts"
 msgstr ""
 
-#: tpl/js-templates.php:392
+#: tpl/js-templates.php:400
 msgid "Search"
 msgstr ""
 
-#: tpl/js-templates.php:406
+#: tpl/js-templates.php:414
 msgid "Import/Export"
 msgstr ""
 
-#: tpl/js-templates.php:415
+#: tpl/js-templates.php:423
 msgid "Clone: %s"
 msgstr ""
 
-#: tpl/js-templates.php:440
+#: tpl/js-templates.php:448
 msgid "Insert after"
 msgstr ""
 
-#: tpl/js-templates.php:441
+#: tpl/js-templates.php:449
 msgid "Insert before"
 msgstr ""
 
-#: tpl/js-templates.php:442
+#: tpl/js-templates.php:450
 msgid "Replace current"
 msgstr ""
 
-#: tpl/js-templates.php:453
+#: tpl/js-templates.php:461
 msgid "Do you want to browse the Prebuilt Layouts directory?"
 msgstr ""
 
-#: tpl/js-templates.php:454
+#: tpl/js-templates.php:462
 msgid "Enable"
 msgstr ""
 
-#: tpl/js-templates.php:467
+#: tpl/js-templates.php:475
 msgid "Your search didn't return any results"
 msgstr ""
 
-#: tpl/js-templates.php:495
+#: tpl/js-templates.php:503
 msgid "Previous"
 msgstr ""
 
-#: tpl/js-templates.php:496
+#: tpl/js-templates.php:504
 msgid "Next"
 msgstr ""
 
-#: tpl/js-templates.php:506
+#: tpl/js-templates.php:514
 msgid "Drop import file here"
 msgstr ""
 
-#: tpl/js-templates.php:507
+#: tpl/js-templates.php:515
 msgid "Or"
 msgstr ""
 
-#: tpl/js-templates.php:510
+#: tpl/js-templates.php:518
 msgid "Select Import File"
 msgstr ""
 
-#: tpl/js-templates.php:524
+#: tpl/js-templates.php:532
 msgid "Download Layout"
 msgstr ""
 
-#: tpl/js-templates.php:535
+#: tpl/js-templates.php:543
 msgid "Page Builder Change History"
 msgstr ""
 
-#: tpl/js-templates.php:550
+#: tpl/js-templates.php:558
 msgid "Restore Version"
 msgstr ""
 
-#: tpl/js-templates.php:573
+#: tpl/js-templates.php:581
 msgid "Save Draft"
 msgstr ""
 
-#: tpl/js-templates.php:574, tpl/js-templates.php:575
+#: tpl/js-templates.php:582, tpl/js-templates.php:583
 msgid "Update"
 msgstr ""
 
-#: tpl/js-templates.php:578
+#: tpl/js-templates.php:586
 msgid "Toggle desktop mode"
 msgstr ""
 
-#: tpl/js-templates.php:581
+#: tpl/js-templates.php:589
 msgid "Toggle tablet mode"
 msgstr ""
 
-#: tpl/js-templates.php:584
+#: tpl/js-templates.php:592
 msgid "Toggle mobile mode"
 msgstr ""
 
-#: tpl/js-templates.php:623
+#: tpl/js-templates.php:631
 msgid "No Results"
 msgstr ""
 
-#: tpl/js-templates.php:633
+#: tpl/js-templates.php:641
 msgid "Add SiteOrigin Layout Block"
 msgstr ""
 

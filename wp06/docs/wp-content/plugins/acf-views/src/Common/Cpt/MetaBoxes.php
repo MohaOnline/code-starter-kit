@@ -6,11 +6,12 @@ namespace org\wplake\acf_views\Common\Cpt;
 
 use org\wplake\acf_views\Common\CptData;
 use org\wplake\acf_views\Common\CptDataStorage;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Html;
 
 defined('ABSPATH') || exit;
 
-abstract class MetaBoxes
+abstract class MetaBoxes implements HooksInterface
 {
     protected Html $html;
     protected CptDataStorage $cptDataStorage;
@@ -87,8 +88,12 @@ abstract class MetaBoxes
         }
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('add_meta_boxes', [$this, 'addMetaboxes']);
     }
 }

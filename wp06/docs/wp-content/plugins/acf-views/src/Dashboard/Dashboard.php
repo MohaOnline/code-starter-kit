@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace org\wplake\acf_views\Dashboard;
 
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\Integration\AcfIntegration;
 use org\wplake\acf_views\Html;
 use org\wplake\acf_views\Plugin;
@@ -13,7 +14,7 @@ use WP_Screen;
 
 defined('ABSPATH') || exit;
 
-class Dashboard
+class Dashboard implements HooksInterface
 {
     const PAGE_DEMO_IMPORT = 'demo-import';
     const PAGE_DOCS = 'docs';
@@ -52,14 +53,14 @@ class Dashboard
             [
                 'isLeftBlock' => true,
                 'url' => $this->plugin->getAdminUrl(),
-                'label' => __('ACF Views', 'acf-views'),
+                'label' => __('Views', 'acf-views'),
                 'isActive' => false,
                 'isSecondary' => false,
             ],
             [
                 'isLeftBlock' => true,
                 'url' => $this->plugin->getAdminUrl('', CardsCpt::NAME),
-                'label' => __('ACF Cards', 'acf-views'),
+                'label' => __('Cards', 'acf-views'),
                 'isActive' => false,
                 'isSecondary' => false,
             ],
@@ -130,25 +131,6 @@ class Dashboard
     protected function getPlugin(): Plugin
     {
         return $this->plugin;
-    }
-
-    public function setHooks(): void
-    {
-        $pluginSlug = $this->plugin->getSlug();
-
-        add_action('admin_menu', [$this, 'addPages']);
-
-        add_action('current_screen', function (WP_Screen $screen) {
-            if (!isset($screen->post_type) ||
-                !in_array($screen->post_type, [ViewsCpt::NAME, CardsCpt::NAME,])) {
-                return;
-            }
-            add_action('in_admin_header', [$this, 'getHeader']);
-        });
-
-        add_filter("plugin_action_links_{$pluginSlug}", [$this, 'addUpgradeToProLink']);
-
-        add_action('admin_menu', [$this, 'removeSubmenuLinks']);
     }
 
     public function addPages(): void
@@ -282,7 +264,7 @@ class Dashboard
             $formMessage .= sprintf(
                 '<a target="_blank" href="%s">%s</a><br><br>',
                 $this->demoImport->getPhoneAcfViewLink(),
-                __('"Phone" ACF View', 'acf-views')
+                __('"Phone" View', 'acf-views')
             );
 
             $formMessage .= sprintf(
@@ -303,7 +285,7 @@ class Dashboard
             $formMessage .= sprintf(
                 '<a target="_blank" href="%s">%s</a><br><br>',
                 $this->demoImport->getPhonesAcfCardLink(),
-                __('"Phones" ACF Card', 'acf-views')
+                __('"Phones" Card', 'acf-views')
             );
             $formMessage .= sprintf(
                 '<a target="_blank" href="%s">%s</a><br><br>',
@@ -351,5 +333,28 @@ class Dashboard
 
             unset($submenu[$url][$itemKey]);
         }
+    }
+
+    public function setHooks(bool $isAdmin): void
+    {
+        if (!$isAdmin) {
+            return;
+        }
+
+        $pluginSlug = $this->plugin->getSlug();
+
+        add_action('admin_menu', [$this, 'addPages']);
+
+        add_action('current_screen', function (WP_Screen $screen) {
+            if (!isset($screen->post_type) ||
+                !in_array($screen->post_type, [ViewsCpt::NAME, CardsCpt::NAME,])) {
+                return;
+            }
+            add_action('in_admin_header', [$this, 'getHeader']);
+        });
+
+        add_filter("plugin_action_links_{$pluginSlug}", [$this, 'addUpgradeToProLink']);
+
+        add_action('admin_menu', [$this, 'removeSubmenuLinks']);
     }
 }

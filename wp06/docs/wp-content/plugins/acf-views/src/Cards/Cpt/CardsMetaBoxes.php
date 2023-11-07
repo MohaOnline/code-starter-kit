@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Cards\Cpt;
 
-use org\wplake\acf_views\Common\Cpt\MetaBoxes;
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\CardShortcode;
+use org\wplake\acf_views\Common\Cpt\MetaBoxes;
 use org\wplake\acf_views\Html;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use WP_Post;
@@ -30,7 +30,7 @@ class CardsMetaBoxes extends MetaBoxes
         bool $isIgnorePrint = false,
         bool $isSkipNotFoundMessage = false
     ): string {
-        $message = __('No related ACF View.', 'acf-views');
+        $message = __('No related View.', 'acf-views');
 
         if (!$post->post_content_filtered) {
             if (!$isIgnorePrint &&

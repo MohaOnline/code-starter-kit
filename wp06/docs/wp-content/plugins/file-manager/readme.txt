@@ -2,10 +2,10 @@
 
 Contributors: bitpressadmin, aihimel
 Tags: file manager, code editor, wp file manager, FTP, elfinder, file Browser, manage files, upload, delete, rename, copy, move, online file browser, remote file manager, drag and drop, folder upload
-Requires at least: 4.0
-Tested up to: 6.2.2
-Requires PHP: 5.6
-Stable tag: 6.2.1
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+Stable tag: 6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -263,11 +263,10 @@ loudspeaker **Join our community [Bit Apps](https://www.facebook.com/groups/bita
 = Requirements =
 
 - At least Firefox 12, Internet Explorer 9, Safari 6, Opera 12 or Chrome/Chromium 19
-- PHP 5.6+ (recommended)
-- Minimum 5.2
-- Recommended 5.6+
-- Up to 8.2.6
-- Supports 8.2.6 on production environment
+- PHP 7.4+ (recommended)
+- Minimum 5.6
+- Up to 8.2.12
+- Supports 8.2.12 on production environment
 - DISALLOW_FILE_EDIT must be false to edit files from Bit File Manager.
 
 = Installation process =
@@ -314,11 +313,16 @@ Yes, file/folder permission can be changed like cPanel and other hosting managem
 
 == Upgrade Notice ==
 
-= 6.2 =
+= 6.3 =
 
 - No special requirements.
 
 == Changelog ==
+
+= 6.3 (7 Nov, 2023) =
+- Fix: Admin+ Arbitrary OS File/Folder Access + Path Traversal.
+- Fix: Non stop folder sync requests due to conflict with browser extension
+- Compatibility: Tested compatibility with WordPress 6.4
 
 = 6.2 (25 May, 2023) =
 

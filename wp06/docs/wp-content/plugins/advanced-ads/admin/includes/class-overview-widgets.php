@@ -167,7 +167,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 		$all_access = Advanced_Ads_Admin_Licenses::get_instance()->get_probably_all_access();
 		if ( $is_subscribed && ! $all_access ) {
 			?>
-			<a class="button button-primary" href="<?php echo esc_url( ADVADS_URL ); ?>add-ons/all-access/?utm_source=advanced-ads&utm_medium=link&utm_campaign=pitch-bundle" target="_blank"><?php esc_html_e( 'Get the All Access pass', 'advanced-ads' ); ?></a>
+			<a class="button button-primary" href="https://wpadvancedads.com/add-ons/all-access/?utm_source=advanced-ads&utm_medium=link&utm_campaign=pitch-bundle" target="_blank"><?php esc_html_e( 'Get the All Access pass', 'advanced-ads' ); ?></a>
 			<?php
 		}
 	}
@@ -178,11 +178,11 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 	public static function render_support() {
 		?>
 		<ul>
-			<li><a href="<?php echo esc_url( ADVADS_URL . 'manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-manual' ); ?>" target="_blank">
+			<li><a href="https://wpadvancedads.com/manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-manual" target="_blank">
 			<?php esc_html_e( 'Manual', 'advanced-ads' ); ?>
 				</a>
 			</li>
-			<li><a href="<?php echo esc_url( ADVADS_URL . 'support/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-support' ); ?>" target="_blank">
+			<li><a href="https://wpadvancedads.com/support/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-support" target="_blank">
 			<?php esc_html_e( 'FAQ and Support', 'advanced-ads' ); ?>
 				</a>
 			</li>
@@ -355,7 +355,7 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 	public static function render_addons( $hide_activated = false ) {
 		if ( ! $hide_activated ) :
 			?>
-			<p><a href="<?php echo esc_url( ADVADS_URL ) . 'manual/how-to-install-an-add-on/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-install-add-ons'; ?>" target="_blank"><?php echo esc_attr__( 'How to download, install and activate an add-on.', 'advanced-ads' ); ?></a></p>
+			<p><a href="https://wpadvancedads.com/manual/how-to-install-an-add-on/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-install-add-ons" target="_blank"><?php echo esc_attr__( 'How to download, install and activate an add-on.', 'advanced-ads' ); ?></a></p>
 			<?php
 		endif;
 
@@ -443,50 +443,50 @@ endif;
 			'pro'             => [
 				'title' => 'Advanced Ads Pro',
 				'desc'  => $pro_content,
-				'link'  => ADVADS_URL . 'add-ons/advanced-ads-pro/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/advanced-ads-pro/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 4,
 				'class' => 'recommended',
 			],
 			'tracking'        => [
 				'title' => 'Tracking',
 				'desc'  => __( 'Analyze clicks and impressions of your ads locally or in Google Analytics, share reports, and limit ads to a specific number of impressions or clicks.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/tracking/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/tracking/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 4,
 			],
 			'responsive'      => [
 				'title' => 'Responsive, AMP and Mobile ads',
 				'desc'  => __( 'Display ads based on the device or the size of your visitor’s browser, and control ads on AMP pages.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/responsive-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/responsive-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 4,
 			],
 			'gam'             => [
 				'title' => 'Google Ad Manager Integration',
 				'desc'  => __( 'A quick and error-free way of implementing ad units from your Google Ad Manager account.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/google-ad-manager/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/google-ad-manager/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 5,
 			],
 			'sticky'          => [
 				'title' => 'Sticky ads',
 				'desc'  => __( 'Increase click rates on your ads by placing them in sticky positions above, next or below your site.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/sticky-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/sticky-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 5,
 			],
 			'layer'           => [
 				'title' => 'PopUps and Layers',
 				'desc'  => __( 'Users will never miss an ad or other information in a PopUp. Choose when it shows up and for how long a user can close it.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/popup-and-layer-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/popup-and-layer-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 5,
 			],
 			'selling'         => [
 				'title' => 'Selling Ads',
 				'desc'  => __( 'Earn more money and let advertisers pay for ad space directly on the frontend of your site.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/selling-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/selling-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 6,
 			],
 			'slider'          => [
 				'title' => 'Ad Slider',
 				'desc'  => __( 'Create a beautiful and simple slider from your ads to show more information on less space.', 'advanced-ads' ),
-				'link'  => ADVADS_URL . 'add-ons/slider/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'  => 'https://wpadvancedads.com/add-ons/slider/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'order' => 6,
 			],
 			'adsense-in-feed' => [
@@ -515,7 +515,7 @@ endif;
 			$add_ons['pro']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Pro' ) ) {
-			$add_ons['pro']['link']      = ADVADS_URL . 'manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['pro']['link']      = 'https://wpadvancedads.com/manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['pro']['desc']      = '';
 			$add_ons['pro']['installed'] = true;
 			$add_ons['pro']['order']     = 20;
@@ -534,7 +534,7 @@ endif;
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Tracking_Plugin', false ) &&
 			method_exists( Advanced_Ads_Tracking_Plugin::get_instance(), 'get_tracking_method' ) ) {
-			$add_ons['tracking']['link'] = ADVADS_URL . 'manual/tracking-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['tracking']['link'] = 'https://wpadvancedads.com/manual/tracking-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			if ( 'ga' !== Advanced_Ads_Tracking_Plugin::get_instance()->get_tracking_method() ) {
 
 				// don’t show Tracking link if Analytics method is enabled.
@@ -558,7 +558,7 @@ endif;
 			$add_ons['responsive']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Responsive_Plugin' ) ) {
-			$add_ons['responsive']['link']      = ADVADS_URL . 'manual/responsive-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['responsive']['link']      = 'https://wpadvancedads.com/manual/responsive-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['responsive']['desc']      = '<a href="' . admin_url( 'admin.php?page=responsive-ads-list' ) . '">' . __( 'List of responsive ads by browser width', 'advanced-ads' ) . '</a>';
 			$add_ons['responsive']['installed'] = true;
 			$add_ons['responsive']['order']     = 20;
@@ -576,7 +576,7 @@ endif;
 			$add_ons['gam']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Network_Gam' ) ) {
-			$add_ons['gam']['link']      = ADVADS_URL . 'manual/google-ad-manager-integration-manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['gam']['link']      = 'https://wpadvancedads.com/manual/google-ad-manager-integration-manual/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['gam']['desc']      = '';
 			$add_ons['gam']['installed'] = true;
 			$add_ons['gam']['order']     = 20;
@@ -594,7 +594,7 @@ endif;
 			$add_ons['sticky']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Sticky_Plugin' ) ) {
-			$add_ons['sticky']['link']      = ADVADS_URL . 'manual/sticky-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['sticky']['link']      = 'https://wpadvancedads.com/manual/sticky-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['sticky']['desc']      = '';
 			$add_ons['sticky']['installed'] = true;
 			$add_ons['sticky']['order']     = 20;
@@ -612,7 +612,7 @@ endif;
 			$add_ons['layer']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Layer_Plugin' ) ) {
-			$add_ons['layer']['link']      = ADVADS_URL . 'manual/popup-and-layer-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['layer']['link']      = 'https://wpadvancedads.com/manual/popup-and-layer-ads-documentation/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['layer']['desc']      = '';
 			$add_ons['layer']['installed'] = true;
 			$add_ons['layer']['order']     = 20;
@@ -630,7 +630,7 @@ endif;
 			$add_ons['selling']['link_title'] = __( 'Activate now', 'advanced-ads' );
 			$installed_pro_plugins++;
 		} elseif ( class_exists( 'Advanced_Ads_Selling_Plugin' ) ) {
-			$add_ons['selling']['link']      = ADVADS_URL . 'manual/selling-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['selling']['link']      = 'https://wpadvancedads.com/manual/selling-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['selling']['desc']      = '';
 			$add_ons['selling']['installed'] = true;
 			$add_ons['selling']['order']     = 20;
@@ -647,7 +647,7 @@ endif;
 			$add_ons['slider']['link']       = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=advanced-ads-slider/slider.php&amp', 'activate-plugin_advanced-ads-slider/slider.php' );
 			$add_ons['slider']['link_title'] = __( 'Activate now', 'advanced-ads' );
 		} elseif ( class_exists( 'Advanced_Ads_Slider_Plugin' ) ) {
-			$add_ons['slider']['link']      = ADVADS_URL . 'manual/ad-slider/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
+			$add_ons['slider']['link']      = 'https://wpadvancedads.com/manual/ad-slider/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons-manual';
 			$add_ons['slider']['desc']      = '';
 			$add_ons['slider']['installed'] = true;
 			$add_ons['slider']['order']     = 20;
@@ -695,7 +695,7 @@ endif;
 			$add_ons['bundle'] = [
 				'title'        => 'All Access',
 				'desc'         => __( 'Our best deal with all add-ons included.', 'advanced-ads' ),
-				'link'         => ADVADS_URL . 'add-ons/all-access/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'         => 'https://wpadvancedads.com/add-ons/all-access/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'link_title'   => __( 'Get full access', 'advanced-ads' ),
 				'link_primary' => true,
 				'order'        => 0,
@@ -711,7 +711,7 @@ endif;
 			$add_ons['long_term'] = [
 				'title'        => 'All Access long-term',
 				'desc'         => __( 'A one-time payment for four years of support and updates. The package saves you up to 70% compared to individually purchasing our add-ons.', 'advanced-ads' ),
-				'link'         => ADVADS_URL . 'add-ons/all-access-long-term/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
+				'link'         => 'https://wpadvancedads.com/add-ons/all-access-long-term/?utm_source=advanced-ads&utm_medium=link&utm_campaign=overview-add-ons',
 				'link_title'   => __( 'Get full access', 'advanced-ads' ),
 				'link_primary' => true,
 				'order'        => 1,

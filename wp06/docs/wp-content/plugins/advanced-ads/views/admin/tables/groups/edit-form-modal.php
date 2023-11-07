@@ -61,7 +61,7 @@ $group_types = wp_advads()->group_manager->get_types();
 
 		<?php if ( wp_advads()->group_manager->has_premium() ) : ?>
 			<label>
-				<?php Advanced_Ads_Admin_Upgrades::upgrade_link( __( 'Get all group types with All Access', 'advanced-ads' ), ADVADS_URL . 'add-ons/all-access/', 'upgrades-pro-groups' ); ?>
+				<?php Advanced_Ads_Admin_Upgrades::upgrade_link( __( 'Get all group types with All Access', 'advanced-ads' ), 'https://wpadvancedads.com/add-ons/all-access/', 'upgrades-pro-groups' ); ?>
 			</label>
 		<?php endif; ?>
 	</div>

@@ -5,7 +5,7 @@ Tags: Elementor,Beaver Builder,Templates,Gutenberg,Block Editor,Astra Starter Si
 Requires at least: 4.4
 Requires PHP: 5.3
 Tested up to: 6.3.1
-Stable tag: 3.4.4
+Stable tag: 3.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,6 +134,12 @@ We are open to suggestions and would love to work on topics that our users are l
 8. Free Images by Pixabay right inside the WordPress media popup.
 
 == Changelog ==
+
+v3.4.5 - 02-November-2023
+- Improvement: Added extra checks for filesystem permission during template import.
+- Improvement: Display a notice if filesystem permissions are insufficient.
+- Fix: On the welcome screen, the "Getting Started" button link now respects sub-folder WordPress installations.
+- Fix: Corrected an issue where uploaded retina images were not displayed after importing.
 
 v3.4.4 - 02-October-2023
 - Fix: Fixed an issue where the Free Images feature was missing in the Premium Starter Templates plugin.

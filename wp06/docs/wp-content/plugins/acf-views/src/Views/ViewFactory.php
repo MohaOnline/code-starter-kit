@@ -60,8 +60,12 @@ class ViewFactory
         return $fitFields;
     }
 
-    protected function getItemSelector(ViewData $acfViewData, FieldData $field, string $target): string
-    {
+    protected function getItemSelector(
+        ViewData $acfViewData,
+        FieldData $field,
+        string $target,
+        bool $isInnerTarget = false
+    ): string {
         $markupId = $acfViewData->getMarkupId();
 
         $viewSelector = $acfViewData->bemName ?
@@ -80,7 +84,8 @@ class ViewFactory
         );
 
         if ($acfViewData->isWithUnnecessaryWrappers ||
-            $field->label) {
+            $field->label ||
+            $isInnerTarget) {
             $fieldSelector = $acfViewData->isWithCommonClasses ?
                 sprintf(
                     '%s .%s__%s',
@@ -100,6 +105,16 @@ class ViewFactory
         return $fieldSelector;
     }
 
+    protected function isGoogleMapSelectorInner(FieldData $fieldData): bool
+    {
+        return false;
+    }
+
+    /**
+     * @param ViewData $acfViewData
+     * @param FieldData[] $mapFields
+     * @return void
+     */
     protected function addGoogleMap(ViewData $acfViewData, array $mapFields): void
     {
         foreach ($mapFields as $mapField) {
@@ -107,14 +122,19 @@ class ViewFactory
                 continue;
             }
 
-            $this->maps[] = $this->getItemSelector($acfViewData, $mapField, 'map');
+            $isInnerTarget = $this->isGoogleMapSelectorInner($mapField);
+            $this->maps[] = $this->getItemSelector($acfViewData, $mapField, 'map', $isInnerTarget);
         }
     }
 
     protected function markViewAsRendered(ViewData $view): void
     {
         $this->renderedViews[$view->getSource()] = $view;
+
         $mapFields = $this->getFieldsByType('google_map', $view);
+        $mapMultipleFields = $this->getFieldsByType('google_map_multi', $view);
+
+        $mapFields = array_merge($mapFields, $mapMultipleFields);
 
         $this->addGoogleMap($view, $mapFields);
     }

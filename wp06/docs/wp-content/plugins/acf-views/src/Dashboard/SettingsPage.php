@@ -5,13 +5,14 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Dashboard;
 
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\SettingsData;
 use org\wplake\acf_views\Settings;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 
 defined('ABSPATH') || exit;
 
-class SettingsPage
+class SettingsPage implements HooksInterface
 {
     const SLUG = 'acf-views-settings';
 
@@ -126,8 +127,12 @@ class SettingsPage
         $this->settings->save();
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         // init, not acf/init, as the method uses 'get_edit_post_link' which will be available only since this hook
         // (because we sign up the CPTs in this hook)
         add_action('init', [$this, 'addPage',]);

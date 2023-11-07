@@ -181,8 +181,10 @@ class LearnDash implements Service
         if (isset($meta_cache[$meta_key])) {
             $saved = maybe_unserialize($meta_cache[$meta_key][0]);
 
-            $key = array_key_exists('sfwd-lessons_lesson_video_url', $saved) ? 'sfwd-lessons_lesson_video_url' : '';
-            $key = array_key_exists('sfwd-topic_lesson_video_url', $saved) ? 'sfwd-topic_lesson_video_url' : $key;
+            if (is_array($saved)) {
+                $key = array_key_exists('sfwd-lessons_lesson_video_url', $saved) ? 'sfwd-lessons_lesson_video_url' : '';
+                $key = array_key_exists('sfwd-topic_lesson_video_url', $saved) ? 'sfwd-topic_lesson_video_url' : $key;
+            }
 
             if (!$key) {
                 return $value;

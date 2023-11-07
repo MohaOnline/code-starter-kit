@@ -7,6 +7,7 @@ namespace org\wplake\acf_views\Assets;
 use org\wplake\acf_views\Cards\CardFactory;
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\CardData;
 use org\wplake\acf_views\Groups\FieldData;
 use org\wplake\acf_views\Groups\ItemData;
@@ -23,7 +24,7 @@ use org\wplake\acf_views\Views\ViewsDataStorage;
 
 defined('ABSPATH') || exit;
 
-class AdminAssets
+class AdminAssets implements HooksInterface
 {
     /**
      * @var Plugin
@@ -260,7 +261,8 @@ class AdminAssets
                     'preferences' => [
                         'isNotCollapsedFieldsByDefault' => $this->settings->isNotCollapsedFieldsByDefault(),
                         'isWithoutFieldsCollapseCursor' => $this->settings->isWithoutFieldsCollapseCursor(),
-                    ]
+                    ],
+                    'isWordpressComHosting' => $this->plugin->isWordpressComHosting(),
                 ]);
 
                 $this->enqueueCodeEditor();
@@ -336,8 +338,12 @@ class AdminAssets
         $this->enqueueAdminAssets($currentScreen->base);
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
     }
 }

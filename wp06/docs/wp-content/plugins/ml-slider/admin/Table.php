@@ -36,7 +36,7 @@ class MetaSlider_Admin_Table extends WP_List_table
     protected function get_views() {
         global $wpdb;
         $views = array();
-        $paramaters = array('action', 'slideshows', 'post_status', '_wpnonce');
+        $paramaters = array('action', 'slideshows', 'post_status', '_wpnonce', 'paged');
         $current = ( !empty($_REQUEST['post_status']) ? $_REQUEST['post_status'] : 'all');
    
         $all = remove_query_arg($paramaters);
@@ -104,10 +104,10 @@ class MetaSlider_Admin_Table extends WP_List_table
             case 'post_title':
                 return $item[ $column_name ];
             case 'post_date':
-                $date = date_create($item[ $column_name ]);
+                $date = strtotime($item[ $column_name ]);
                 $dateFormat = get_option('date_format');
                 $timeFormat = get_option( 'time_format' );
-                return date_format($date, $dateFormat.' \a\t '.$timeFormat);
+                return ucfirst( wp_date( $dateFormat.' \a\t '.$timeFormat, $date ) );
             case 'ID':
                 return $this->shortcodeColumn($item[$column_name]);
             default:
@@ -117,9 +117,7 @@ class MetaSlider_Admin_Table extends WP_List_table
 
     public function shortcodeColumn($slideshowID)
     {
-        return ('<metaslider-shortcode inline-template>
-        <pre id="shortcode" ref="shortcode" dir="ltr" class="text-gray text-sm"><div @click.prevent="copyShortcode($event)" class="text-orange cursor-pointer whitespace-normal inline">[metaslider id="'. esc_attr($slideshowID) .'"]</div></pre>
-        </metaslider-shortcode>');
+        return ('<pre class="copy-shortcode tipsy-tooltip" original-title="' . __('Click to copy shortcode.', 'ml-slider') . '"><div class="text-orange cursor-pointer whitespace-normal inline">[metaslider id="'. esc_attr($slideshowID) .'"]</div></pre><span class="copy-message" style="display:none;"><div class="dashicons dashicons-yes"></div></span>');
     }
 
     protected function column_cb($item)
@@ -132,7 +130,7 @@ class MetaSlider_Admin_Table extends WP_List_table
     protected function process_action()
     {
         if (isset($_POST['_wpnonce']) && ! empty($_POST['_wpnonce'])) {
-            $nonce  = filter_input( INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING );
+            $nonce  = filter_input( INPUT_POST, '_wpnonce', FILTER_SANITIZE_SPECIAL_CHARS );
             $action = 'bulk-' . $this->_args['plural'];
             if ( ! wp_verify_nonce($nonce, $action)) {
                 wp_die( 'Cannot process action' );

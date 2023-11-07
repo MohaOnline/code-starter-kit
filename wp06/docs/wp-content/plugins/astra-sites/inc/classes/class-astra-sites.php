@@ -136,6 +136,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 			add_action( 'astra_sites_after_plugin_activation', array( $this, 'disable_wp_forms_redirect' ) );
 			add_action( 'astra_notice_before_markup', array( $this, 'notice_assets' ) );
 			add_action( 'load-index.php', array( $this, 'admin_dashboard_notices' ) );
+			add_action( 'admin_notices', array( $this, 'check_filesystem_access_notice' ) );
 
 			// AJAX.
 			$this->ajax = array(
@@ -2648,7 +2649,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 							<div class="text-section">
 								<h1 class="text-heading">' . __( 'Welcome to Starter Templates!', 'astra-sites' ) . '</h1>
 								<p>' . __( 'Create professionally designed pixel-perfect websites in minutes.', 'astra-sites' ) . '</p>
-								<a href="/wp-admin/themes.php?page=starter-templates" class="text-button">' . __( 'Get Started', 'astra-sites' ) . '</a>
+								<a href="' . home_url() . '/wp-admin/themes.php?page=starter-templates" class="text-button">' . __( 'Get Started', 'astra-sites' ) . '</a>
 							</div>
 							<div class="showcase-section">
 								<img src="' . esc_url( ASTRA_SITES_URI . 'inc/assets/images/templates-showcase.png' ) . '" />
@@ -2661,7 +2662,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 								<div class="link-section">
 									<h4>' . __( 'Ecommerce', 'astra-sites' ) . '</h4>
 									<p>' . __( 'Looking for a fully operational eCommerce template to launch a store or level up an existing one?', 'astra-sites' ) . '</p>
-									<a href="/wp-admin/themes.php?page=starter-templates&ci=1&s=E-Commerce">' . __( 'View Ecommerce Templates', 'astra-sites' ) . ' →</a>
+									<a href="' . home_url() . '/wp-admin/themes.php?page=starter-templates&ci=1&s=E-Commerce">' . __( 'View Ecommerce Templates', 'astra-sites' ) . ' →</a>
 								</div>
 							</div>
 							<div class="content-section">
@@ -2670,7 +2671,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 								<div class="link-section">
 									<h4>' . __( 'Local Business', 'astra-sites' ) . '</h4>
 									<p>' . __( 'Fully customizable local business templates that can deliver a fully functioning website in minutes', 'astra-sites' ) . '</p>
-									<a href="/wp-admin/themes.php?page=starter-templates&ci=1&s=Business">' . __( 'View Local Business Templates', 'astra-sites' ) . ' →</a>
+									<a href="' . home_url() . '/wp-admin/themes.php?page=starter-templates&ci=1&s=Business">' . __( 'View Local Business Templates', 'astra-sites' ) . ' →</a>
 								</div>
 							</div>
 							<div class="content-section">
@@ -2679,7 +2680,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 								<div class="link-section">
 									<h4>' . __( 'Agency', 'astra-sites' ) . '</h4>
 									<p>' . __( 'Do more in less time with Starter Templates. Pro-quality designs that can be fully customized to suit your clients.', 'astra-sites' ) . '</p>
-									<a href="/wp-admin/themes.php?page=starter-templates&ci=1&s=Agency">' . __( 'View Agency Templates', 'astra-sites' ) . ' →</a>
+									<a href="' . home_url() . '/wp-admin/themes.php?page=starter-templates&ci=1&s=Agency">' . __( 'View Agency Templates', 'astra-sites' ) . ' →</a>
 								</div>
 							</div>
 							<div class="content-section">
@@ -2688,7 +2689,7 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 								<div class="link-section">
 									<h4>' . __( 'Blog', 'astra-sites' ) . '</h4>
 									<p>' . __( 'Customizable blog templates covering every niche. Page builder compatible, easy to use and fast!', 'astra-sites' ) . '</p>
-									<a href="/wp-admin/themes.php?page=starter-templates&ci=1&s=Blog">' . __( 'View Blog Templates', 'astra-sites' ) . ' →</a>
+									<a href="' . home_url() . '/wp-admin/themes.php?page=starter-templates&ci=1&s=Blog">' . __( 'View Blog Templates', 'astra-sites' ) . ' →</a>
 								</div>
 							</div>
 						</div>'
@@ -2721,17 +2722,27 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 				if ( ! current_user_can( 'customize' ) ) {
 					wp_send_json_error( __( 'You do not have permission to perform this action.', 'astra-sites' ) );
 				}
+			}
+			$wp_upload_path = wp_upload_dir();
+			$permissions = array(
+				'is_readable' => false,
+				'is_writable' => false,
+			);
 
-				$wp_upload_path = wp_upload_dir();
-				$permissions = array(
-					'is_readable' => false,
-					'is_writable' => false,
-				);
+			foreach ( $permissions as $file_permission => $value ) {
+				$permissions[ $file_permission ] = $file_permission( $wp_upload_path['basedir'] );
+			}
+			
+			$permissions['is_wp_filesystem'] = true;
+			if ( ! WP_Filesystem() ) {
+				$permissions['is_wp_filesystem'] = false;
+			}
 
-				foreach ( $permissions as $file_permission => $value ) {
-					$permissions[ $file_permission ] = $file_permission( $wp_upload_path['basedir'] );
+			if ( defined( 'WP_CLI' ) ) {
+				if ( ! $permissions['is_readable'] || ! $permissions['is_writable'] || ! $permissions['is_wp_filesystem'] ) {
+					WP_CLI::error( esc_html__( 'Please contact the hosting service provider to help you update the permissions so that you can successfully import a complete template.', 'astra-sites' ) );
 				}
-
+			} else {
 				wp_send_json_success(
 					array(
 						'permissions' => $permissions,
@@ -2739,8 +2750,19 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 					)
 				);
 			}
+		}
 
-			wp_send_json_error( __( 'You do not have permission to perform this action.', 'astra-sites' ) );
+		/**
+		 * Display notice on dashboard if WP_Filesystem() false.
+		 *
+		 * @return void
+		 */
+		public function check_filesystem_access_notice() {
+			// Check if WP_Filesystem() returns false.
+			if ( ! WP_Filesystem() ) {
+				// Display a notice on the dashboard.
+				echo '<div class="error"><p>' . esc_html__( 'Required WP_Filesystem Permissions to import the templates from Starter Templates are missing.', 'astra-sites' ) . '</p></div>';
+			}
 		}
 	}
 

@@ -22,7 +22,7 @@ return array(
     'Dhii\\Util\\Normalization\\' => array($vendorDir . '/dhii/normalization-helper-base/src'),
     'Dhii\\Transformer\\' => array($vendorDir . '/dhii/transformer-interface/src'),
     'Dhii\\Stats\\' => array($vendorDir . '/dhii/stats-interface/src', $vendorDir . '/dhii/stats-abstract/src'),
-    'Dhii\\Output\\' => array($vendorDir . '/dhii/output-renderer-abstract/src', $vendorDir . '/dhii/output-renderer-interface/src', $vendorDir . '/dhii/output-renderer-base/src'),
+    'Dhii\\Output\\' => array($vendorDir . '/dhii/output-renderer-interface/src', $vendorDir . '/dhii/output-renderer-abstract/src', $vendorDir . '/dhii/output-renderer-base/src'),
     'Dhii\\Iterator\\' => array($vendorDir . '/dhii/iterator-helper-base/src'),
     'Dhii\\I18n\\' => array($vendorDir . '/dhii/i18n-interface/src', $vendorDir . '/dhii/i18n-helper-base/src'),
     'Dhii\\Factory\\' => array($vendorDir . '/dhii/factory-interface/src'),

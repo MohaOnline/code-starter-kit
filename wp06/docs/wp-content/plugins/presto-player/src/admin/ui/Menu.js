@@ -6,15 +6,15 @@ import classnames from "classnames";
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { useState, useEffect } = wp.element;
+import { __ } from "@wordpress/i18n";
+import { useState, useEffect } from "@wordpress/element";
 
-const { partial, noop, find } = lodash;
+import { partial, noop, find } from "lodash";
 
 /**
  * WordPress components
  */
-const { NavigableMenu, Animate } = wp.components;
+import { NavigableMenu, Animate } from "@wordpress/components";
 
 export default ({
   className,

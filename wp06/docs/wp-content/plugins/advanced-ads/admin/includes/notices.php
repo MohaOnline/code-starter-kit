@@ -52,7 +52,7 @@ $advanced_ads_admin_notices = apply_filters(
 						__( 'When you give 5-stars, an actual person does a little happy dance!', 'advanced-ads' ) . '</p>'
 						. '<p>'
 						. '<span class="dashicons dashicons-external"></span>&nbsp;<strong><a href="https://wordpress.org/support/plugin/advanced-ads/reviews/?rate=5#new-post" target=_"blank">' . __( 'Sure, I appreciate your work', 'advanced-ads' ) . '</a></strong>'
-						. ' &nbsp;&nbsp;<span class="dashicons dashicons-sos"></span>&nbsp;<a href="' . ADVADS_URL . 'support/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-review" target=_"blank">' . __( 'Yes, but help me first to solve a problem, please', 'advanced-ads' ) . '</a>'
+						. ' &nbsp;&nbsp;<span class="dashicons dashicons-sos"></span>&nbsp;<a href="https://wpadvancedads.com/support/?utm_source=advanced-ads&utm_medium=link&utm_campaign=notice-review" target=_"blank">' . __( 'Yes, but help me first to solve a problem, please', 'advanced-ads' ) . '</a>'
 						. '</p></div>',
 			'global' => false,
 		],
@@ -63,11 +63,10 @@ $advanced_ads_admin_notices = apply_filters(
 				/* translators: %1$s is the markup for the discount value, %2$s starts a button link, %3$s closes the button link. */
 				__( 'Save %1$s on all products with our Black Friday / Cyber Monday offer! %2$sGet All Access%3$s', 'advanced-ads' ),
 				'<span style="font-weight: bold; font-size: 1.6em; vertical-align: sub;">30%</span>',
-				'<a class="button button-primary" target="_blank" href="' . ADVADS_URL . 'checkout/?edd_action=add_to_cart&download_id=95170&edd_options[price_id]=1&discount=BFCM2022&utm_source=advanced-ads&utm_medium=link&utm_campaign=bfcm-2022">',
+				'<a class="button button-primary" target="_blank" href="https://wpadvancedads.com/checkout/?edd_action=add_to_cart&download_id=95170&edd_options[price_id]=1&discount=BFCM2022&utm_source=advanced-ads&utm_medium=link&utm_campaign=bfcm-2022">',
 				'</a>'
 			),
 			'global' => true,
 		],
 	]
 );
-

@@ -130,6 +130,9 @@
 .lp-form-course-filter .lp-form-course-filter__item .lp-form-course-filter__content .lp-course-filter__field input:focus {
   outline: none;
 }
+.lp-form-course-filter .lp-form-course-filter__item .lp-form-course-filter__content .lp-course-filter__field input[disabled] {
+  cursor: not-allowed;
+}
 .lp-form-course-filter .lp-form-course-filter__item .lp-form-course-filter__content .lp-course-filter__field label {
   color: #333;
   padding: 0;

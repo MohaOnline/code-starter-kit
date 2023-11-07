@@ -43,29 +43,29 @@ class ViewsCpt extends Cpt
     public function addCPT(): void
     {
         $labels = [
-            'name' => __('ACF Views', 'acf-views'),
-            'singular_name' => __('ACF View', 'acf-views'),
+            'name' => __('Views', 'acf-views'),
+            'singular_name' => __('View', 'acf-views'),
             'menu_name' => __('ACF Views', 'acf-views'),
-            'parent_item_colon' => __('Parent ACF View', 'acf-views'),
-            'all_ite__(ms' => __('ACF Views', 'acf-views'),
-            'view_item' => __('Browse ACF View', 'acf-views'),
-            'add_new_item' => __('Add New ACF View', 'acf-views'),
+            'parent_item_colon' => __('Parent View', 'acf-views'),
+            'all_ite__(ms' => __('Views', 'acf-views'),
+            'view_item' => __('Browse View', 'acf-views'),
+            'add_new_item' => __('Add New View', 'acf-views'),
             'add_new' => __('Add New', 'acf-views'),
-            'item_updated' => __('ACF View updated.', 'acf-views'),
-            'edit_item' => __('Edit ACF View', 'acf-views'),
-            'update_item' => __('Update ACF View', 'acf-views'),
-            'search_items' => __('Search ACF View', 'acf-views'),
+            'item_updated' => __('View updated.', 'acf-views'),
+            'edit_item' => __('Edit View', 'acf-views'),
+            'update_item' => __('Update View', 'acf-views'),
+            'search_items' => __('Search View', 'acf-views'),
             'not_found' => __('Not Found', 'acf-views'),
             'not_found_in_trash' => __('Not Found In Trash', 'acf-views'),
         ];
 
         $description = __(
-            'Create an ACF View item by selecting post fields, paste the shortcode in place to display field values for a specific post/page/CPT item.',
+            'Create a View item by selecting post fields, paste the shortcode in place to display field values for a specific post/page/CPT item.',
             'acf-views'
         );
 
         $args = [
-            'label' => __('ACF Views', 'acf-views'),
+            'label' => __('Views', 'acf-views'),
             'description' => $description,
             'labels' => $labels,
             // shouldn't be presented in the sitemap and other places
@@ -119,29 +119,29 @@ class ViewsCpt extends Cpt
         global $post;
 
         $restoredMessage = false;
-        $scheduledMessage = __('ACF View scheduled for:', 'acf-views');
+        $scheduledMessage = __('View scheduled for:', 'acf-views');
         $scheduledMessage .= sprintf(
             ' <strong>%1$s</strong>',
             date_i18n('M j, Y @ G:i', strtotime($post->post_date))
         );
 
         if (isset($_GET['revision'])) {
-            $restoredMessage = __('ACF View restored to revision from', 'acf-views');
+            $restoredMessage = __('View restored to revision from', 'acf-views');
             $restoredMessage .= ' ' . wp_post_revision_title((int)$_GET['revision'], false);
         }
 
         $messages[self::NAME] = [
             0 => '', // Unused. Messages start at index 1.
-            1 => __('ACF View updated.', 'acf-views'),
+            1 => __('View updated.', 'acf-views'),
             2 => __('Custom field updated.', 'acf-views'),
             3 => __('Custom field deleted.', 'acf-views'),
-            4 => __('ACF View updated.', 'acf-views'),
+            4 => __('View updated.', 'acf-views'),
             5 => $restoredMessage,
-            6 => __('ACF View published.', 'acf-views'),
-            7 => __('ACF View saved.', 'acf-views'),
-            8 => __('ACF View submitted.', 'acf-views'),
+            6 => __('View published.', 'acf-views'),
+            7 => __('View saved.', 'acf-views'),
+            8 => __('View submitted.', 'acf-views'),
             9 => $scheduledMessage,
-            10 => __('ACF View draft updated.', 'acf-views'),
+            10 => __('View draft updated.', 'acf-views'),
         ];
 
         return $messages;
@@ -188,7 +188,7 @@ class ViewsCpt extends Cpt
         return __('Name your view', 'acf-views');
     }
 
-    public function removeAddNewItemSubmenuLink(): void
+    public function changeMenuItems(): void
     {
         $url = sprintf('edit.php?post_type=%s', self::NAME);
 
@@ -199,13 +199,20 @@ class ViewsCpt extends Cpt
         }
 
         foreach ($submenu[$url] as $itemKey => $item) {
-            if (3 !== count($item) ||
-                $item[2] !== 'post-new.php?post_type=acf_views') {
+            if (3 !== count($item)) {
                 continue;
             }
 
-            unset($submenu[$url][$itemKey]);
-            break;
+            switch ($item[2]) {
+                // remove 'Add new' submenu link
+                case 'post-new.php?post_type=acf_views':
+                    unset($submenu[$url][$itemKey]);
+                    break;
+                // rename 'ACF Views' to 'Views' submenu link
+                case 'edit.php?post_type=acf_views':
+                    $submenu[$url][$itemKey][0] = __('Views', 'acf-views');
+                    break;
+            }
         }
     }
 
@@ -222,14 +229,19 @@ class ViewsCpt extends Cpt
         ]);
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        parent::setHooks();
+        parent::setHooks($isAdmin);
 
         add_action('init', [$this, 'addCPT']);
+
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('pre_get_posts', [$this, 'addSortableColumnsToRequest',]);
         add_action('manage_' . self::NAME . '_posts_custom_column', [$this, 'printColumn',], 10, 2);
-        add_action('admin_menu', [$this, 'removeAddNewItemSubmenuLink']);
+        add_action('admin_menu', [$this, 'changeMenuItems']);
 
         add_filter('post_updated_messages', [$this, 'replacePostUpdatedMessage']);
         add_filter('manage_' . self::NAME . '_posts_columns', [$this, 'getColumns',]);

@@ -143,6 +143,34 @@ if ( ! function_exists( 'ogma_blog_register_main_area_options' ) ) :
             )
         );
 
+         /**
+         * Option for header search method.
+         *
+         * Header Settings > Main Area
+         *
+         * @since 1.0.0
+         */
+        $wp_customize->add_setting( 'ogma_blog_header_search_option',
+            array(
+                'default'           => ogma_blog_get_customizer_default( 'ogma_blog_header_search_option' ),
+                'sanitize_callback' => 'sanitize_text_field'
+            )
+        );
+        $wp_customize->add_control( 'ogma_blog_header_search_option',
+            array(
+                'priority'  => 22,
+                'section'   => 'ogma_blog_section_header_main_area',
+                'setting'   => 'ogma_blog_header_search_option',
+                'label'     => __( 'Search Method', 'ogma-blog' ),
+                'type' => 'select',
+                'choices' => array(
+                    'default'       => __('Default', 'ogma-blog'),
+                    'live-search'   => __('Live Search', 'ogma-blog'),
+                ),
+                'active_callback'   => 'ogma_blog_cb_has_header_search_enable'
+            )
+        );
+
         /**
          * Toggle option for header sticky sidebar toggle.
          *

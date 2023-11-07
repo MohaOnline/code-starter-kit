@@ -681,6 +681,7 @@ function generate_settings_form (){
       $obj->get_display_for_users() != AI_DISPLAY_ALL_USERS ||
       $obj->get_enable_amp () == AI_ENABLED ||
       $obj->get_enable_ajax () != AI_ENABLED ||
+      $obj->get_enable_rest () != AI_DISABLED ||
       $obj->get_enable_404 () == AI_ENABLED ||
       $obj->get_enable_feed () == AI_ENABLED ||
       $obj->get_max_page_blocks_enabled () ||
@@ -2284,6 +2285,11 @@ function generate_settings_form (){
                   <label for="enable-ajax-<?php echo $block; ?>" title="<?php _e ('Enable insertion for Ajax requests', 'ad-inserter'); ?>"><?php _e ('Ajax requests', 'ad-inserter'); ?></label>
                 </td>
                 <td>
+                  <input type="hidden" name="<?php echo AI_OPTION_ENABLE_REST, WP_FORM_FIELD_POSTFIX, $block; ?>" value="0" />
+                  <input style="margin-left: 10px;" id="enable-rest-<?php echo $block; ?>" type="checkbox" name="<?php echo AI_OPTION_ENABLE_REST, WP_FORM_FIELD_POSTFIX, $block; ?>" value="1" default="<?php echo $default->get_enable_rest(); ?>" <?php if ($obj->get_enable_rest () == AI_ENABLED) echo 'checked '; ?> />
+                  <label for="enable-rest-<?php echo $block; ?>" title="<?php _e ('Enable insertion for REST requests', 'ad-inserter'); ?>"><?php _e ('REST  requests', 'ad-inserter'); ?></label>
+                </td>
+                <td>
                   <input type="hidden" name="<?php echo AI_OPTION_ENABLE_FEED, WP_FORM_FIELD_POSTFIX, $block; ?>" value="0" />
                   <input style="margin-left: 10px;" id="enable-feed-<?php echo $block; ?>" type="checkbox" name="<?php echo AI_OPTION_ENABLE_FEED, WP_FORM_FIELD_POSTFIX, $block; ?>" value="1" default="<?php echo $default->get_enable_feed(); ?>" <?php if ($obj->get_enable_feed () == AI_ENABLED) echo 'checked '; ?> />
                   <label for="enable-feed-<?php echo $block; ?>" title="<?php _e ('Enable insertion in RSS feeds', 'ad-inserter'); ?>"><?php _e ('RSS Feed', 'ad-inserter'); ?></label>
@@ -3822,6 +3828,7 @@ function get_sidebar_widgets () {
   }
 
   $sidebar_widgets = wp_get_sidebars_widgets();
+  // 'widget_' + registered AI widget name
   $widget_options = get_option ('widget_ai_widget');
 
   $sidebars_with_widgets = array ();
@@ -4473,6 +4480,7 @@ function ai_change_settings () {
 function ai_update_block_numbers ($blocks_org, $blocks_new) {
   global $wpdb;
 
+  // 'widget_' + registered AI widget name
   $ai_widgets = get_option ('widget_ai_widget');
   if (is_array ($ai_widgets))
     foreach ($ai_widgets as $widget_index => $ai_widget) {

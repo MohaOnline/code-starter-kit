@@ -37,12 +37,11 @@ class PostThumbnailLinkField extends MarkupField
     ): string {
         $markup = sprintf(
 
-            '<a target="{{ %s.target }}" class="%s" href="{{ %s.href }}">',
+            '<a target="{{ %s.target }}" class="%s" href="{{ %1$s.href }}">',
             esc_html($fieldId),
             esc_html(
                 $this->getFieldClass('link', $acfViewData, $field, $isWithFieldWrapper, $isWithRowWrapper)
-            ),
-            esc_html($fieldId),
+            )
         );
         $markup .= "\r\n" . str_repeat("\t", $tabsNumber + 1);
         $markup .= $this->imageField->getMarkup(

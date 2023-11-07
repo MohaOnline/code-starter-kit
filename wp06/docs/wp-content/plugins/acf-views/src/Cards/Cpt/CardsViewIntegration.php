@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace org\wplake\acf_views\Cards\Cpt;
 
 use org\wplake\acf_views\Cards\CardsDataStorage;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use org\wplake\acf_views\Views\ViewsDataStorage;
 
 defined('ABSPATH') || exit;
 
-class CardsViewIntegration
+class CardsViewIntegration implements HooksInterface
 {
     protected CardsDataStorage $cardsDataStorage;
     protected ViewsDataStorage $viewsDataStorage;
@@ -68,8 +69,12 @@ class CardsViewIntegration
         exit;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         add_action('current_screen', [$this, 'maybeCreateCardForView']);
     }
 }

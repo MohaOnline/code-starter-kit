@@ -45,31 +45,31 @@ class Capabilities {
 	public function register_defaults(): void {
 		$this->register(
 			'advanced_ads_manage_options',
-			esc_html__( 'Manage ads', 'advanced-ads' ),
+			esc_html__( 'Allows changing plugin options', 'advanced-ads' ),
 			'administrator'
 		);
 
 		$this->register(
 			'advanced_ads_see_interface',
-			esc_html__( 'See screens', 'advanced-ads' ),
+			esc_html__( 'Allows access to the Advanced Ads backend', 'advanced-ads' ),
 			'administrator'
 		);
 
 		$this->register(
 			'advanced_ads_edit_ads',
-			esc_html__( 'Edit ads', 'advanced-ads' ),
+			esc_html__( 'Allows editing ads', 'advanced-ads' ),
 			'administrator'
 		);
 
 		$this->register(
 			'advanced_ads_manage_placements',
-			esc_html__( 'Manage placements', 'advanced-ads' ),
+			esc_html__( 'Allows changing the placements page', 'advanced-ads' ),
 			'administrator'
 		);
 
 		$this->register(
 			'advanced_ads_place_ads',
-			esc_html__( 'Manage place ads', 'advanced-ads' ),
+			esc_html__( 'Enables shortcode button', 'advanced-ads' ),
 			'administrator'
 		);
 	}

@@ -4,8 +4,8 @@ Donate link: https://donate.openstreetmap.org/
 Tags: map acf openstreetmap leaflet
 Requires at least: 4.8
 Requires PHP: 5.6
-Tested up to: 6.3
-Stable tag: 1.5.0
+Tested up to: 6.4
+Stable tag: 1.5.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -107,12 +107,28 @@ No.
 
 == Upgrade Notice ==
 
-**Attention:** Version 1.4.4 may involve some breaking changes.
+**Attention:** Version 1.5.0 may involve some breaking changes.
 
-The global Leaflet object is no longer available. If 
+The global Leaflet object is no longer available.
 
 
 == Changelog ==
+
+= 1.5.3 =
+ - Fix: Disable provider settings not displaying
+
+= 1.5.2 =
+ - Fix: JS Error if some providers are disabled
+
+= 1.5.1 =
+ - Backend UI: Attribution below map
+ - ACF Field: Introduce conditional logic
+ - Fix: Some map controls not visible in Blockeditor sidebar
+ - Fix: Marker instructions display
+ - Providers: [Migrate Stamen to Stadia Maps](https://maps.stamen.com/stadia-partnership/)
+ - Providers: Update Esri Ocean base map, OpenAIP, Opensnowmap, OpenWeathermap, OpenFireMap, NLS, OpenRailwayMap, Jawg, MapTiler, MtbMap, nlmaps
+ - Providers: Remove HERE (Legacy), Hydda (service down)
+ - JS: Rewritten ACF integration
 
 = 1.5.0 =
  - Use Leaflet noConflict

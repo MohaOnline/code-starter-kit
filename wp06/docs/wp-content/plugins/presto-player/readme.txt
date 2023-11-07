@@ -3,8 +3,8 @@ Contributors: 2winfactor, wpcrafter
 Donate link: https://prestoplayer.com
 Tags: video, audio, youtube, vimeo, lms, elementor, learndash, beaver builder, lifterlms
 Requires at least: 5.6
-Tested up to: 6.2
-Stable tag: 2.0.8
+Tested up to: 6.4
+Stable tag: 2.0.9
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,13 @@ It is also important to point out that BunnyNet has a $1 per month minimum.
 
 
 == Changelog ==
+
+= 2.0.9 = 
+* Fix: Compatibility with upcoming WordPress 6.4.
+* Fix: PHP notice for Learndash video progression with WP DEBUG turned on for some instances.
+* Fix: Overlays admin modal video being small on some instances.
+* Fix: Issue where some slower connections may see a flash of un-hidden content on the playlist.
+* Fix: Playlist block border controls not displaying with the Hello Elementor and few other themes.
 
 = 2.0.8 = 
 * Fix: Issue with Learndash video progression in newer versions of Learndash for lessons with "Display Timing" set to "After completing sub-steps".

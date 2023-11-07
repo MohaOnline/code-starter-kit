@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace org\wplake\acf_views\Assets;
 
 use org\wplake\acf_views\Cards\CardFactory;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Plugin;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use org\wplake\acf_views\Views\ViewFactory;
 
 defined('ABSPATH') || exit;
 
-class FrontAssets
+class FrontAssets implements HooksInterface
 {
     /**
      * @var Plugin
@@ -185,8 +186,12 @@ class FrontAssets
         return str_replace(' src', ' defer src', $tag);
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if ($isAdmin) {
+            return;
+        }
+
         add_action('wp_footer', [$this, 'enqueueGoogleMapsJS']);
         // printCustomAssets() contains ob_get_clean, so must be executed after all other scripts
         add_action('wp_footer', [$this, 'printCustomAssets'], 9999);

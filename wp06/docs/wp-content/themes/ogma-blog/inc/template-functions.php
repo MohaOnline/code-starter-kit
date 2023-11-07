@@ -139,13 +139,18 @@ add_action( 'wp_head', 'ogma_blog_pingback_header' );
 
 			$ogma_blog_header_sticky_enable 	= ogma_blog_get_customizer_option_value( 'ogma_blog_header_sticky_enable' );
 			$ogma_blog_sidebar_sticky_enable 	= ogma_blog_get_customizer_option_value( 'ogma_blog_sidebar_sticky_enable' );
+			$ogma_blog_search_option			= ogma_blog_get_customizer_option_value( 'ogma_blog_header_search_option' );
 			$header_sticky = $ogma_blog_header_sticky_enable ? 'true' : 'false';
 			$sidebar_sticky = $ogma_blog_sidebar_sticky_enable ? 'true' : 'false';
+			$live_search = ($ogma_blog_search_option == 'live-search') ? 'true' : 'false';
 
 			wp_localize_script( 'ogma-blog-main-scripts', 'OG_JSObject',
 				array(
 		            'sidebar_sticky'    => $sidebar_sticky,
-		            'header_sticky'     => $header_sticky
+		            'header_sticky'     => $header_sticky,
+		            'live_search'   => $live_search,
+		            'ajaxUrl'       => admin_url('admin-ajax.php'),
+		            '_wpnonce'      => wp_create_nonce('ogma-blog-nonce')
 		        )
 		    );
 
@@ -815,3 +820,64 @@ if ( ! function_exists( 'ogma_blog_minify_css' ) ) {
 		
 	endif;
 	
+/*----------------------------------------- live search -----------------------------------------------------*/
+
+	if (!function_exists('ogma_blog_search_posts_content')) {
+	    function ogma_blog_search_posts_content() {
+	        check_ajax_referer('ogma-blog-nonce', 'security');
+
+	        $search_key = isset($_POST['search_key']) ? sanitize_text_field($_POST['search_key']) : '';
+	        $query_vars = array(
+	            'post_type' => 'post',
+	            'post_status' => 'publish',
+	            'posts_per_page' => 4,
+	            's' => $search_key,
+	        );
+
+	        $n_posts = new WP_Query($query_vars);
+	        $res['loaded'] = false;
+
+	        ob_start();
+	        echo '<div class="ogma-blog-search-results-wrap">';
+	        echo '<div class="ogma-blog-search-posts-wrap">';
+
+	        if ($n_posts->have_posts()) {
+	            $res['loaded'] = true;
+	            while ($n_posts->have_posts()) :
+	                $n_posts->the_post();
+	                ?>
+	                <div class="ogma-blog-search-article-item <?php if( ! has_post_thumbnail() ){ echo esc_attr( 'no-img-post' ); } ?>">
+	                    <figure class="ogma-blog-search-post-thumb-wrap">
+	                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+	                            <?php
+	                            if (has_post_thumbnail()) {
+	                                the_post_thumbnail('thumbnail', array(
+	                                    'title' => the_title_attribute(array(
+	                                        'echo' => false
+	                                    ))
+	                                ));
+	                            }
+	                            ?>
+	                        </a>
+	                    </figure>
+	                    <div class="ogma-blog-search-post-element">
+	                        <h4 class="ogma-blog-search-post-title"><a href="<?php the_permalink(); ?>"
+	                        title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+	                        <?php ogma_blog_posted_on(); ?>
+	                    </div>
+	                </div>
+	                <?php
+	            endwhile;
+	        } else {
+	            echo 'No Results Found'; 
+	        }
+	        echo '</div>';
+	        echo '</div>';
+	        $res['posts'] = ob_get_clean();
+	        
+	        echo json_encode($res);
+	        wp_die();
+	    }
+	    add_action('wp_ajax_ogma_blog_search_posts_content', 'ogma_blog_search_posts_content');
+	    add_action('wp_ajax_nopriv_ogma_blog_search_posts_content', 'ogma_blog_search_posts_content');
+	}

@@ -1,6 +1,6 @@
 {
     "name": "@devowl-wp/real-product-manager-wp-client",
-    "version": "1.18.2",
+    "version": "1.19.0",
     "private": true,
     "description": "A WordPress client for Real Product Manager",
     "homepage": "https://devowl.io",
@@ -96,7 +96,7 @@
     "devDependencies": {
         "@devowl-wp/composer-licenses": "^0.1.14",
         "@devowl-wp/continuous-integration": "^0.4.3",
-        "@devowl-wp/continuous-localization": "^0.7.5",
+        "@devowl-wp/continuous-localization": "^0.7.6",
         "@devowl-wp/eslint-config": "^0.2.3",
         "@devowl-wp/monorepo-utils": "^0.1.10",
         "@devowl-wp/node-gitlab-ci": "^0.7.7",
@@ -104,7 +104,7 @@
         "@devowl-wp/phpcs-config": "^0.1.13",
         "@devowl-wp/phpunit-config": "^0.1.11",
         "@devowl-wp/ts-config": "^0.1.12",
-        "@devowl-wp/utils": "^1.15.14",
+        "@devowl-wp/utils": "^1.16.0",
         "@devowl-wp/webpack-config": "^0.2.21",
         "@types/jest": "~29.5.5",
         "@types/react": "~16.14.35",
@@ -137,7 +137,83 @@
             "ru_RU": "ru@formal",
             "sk_SK": "sk",
             "uk": "uk",
-            "fi": "fi"
+            "fi": "fi",
+            "fr_FR": "fr@formal",
+            "fr_BE": false,
+            "fr_CA": false,
+            "it_IT": "it@formal",
+            "pl_PL": "pl@formal",
+            "nl_NL": "nl@informal",
+            "nl_NL_formal": "nl@formal",
+            "nl_BE": false,
+            "es_AR": false,
+            "es_ES": "es@formal",
+            "es_CO": false,
+            "es_EC": false,
+            "es_CR": false,
+            "es_DO": false,
+            "es_PE": false,
+            "es_UY": false,
+            "es_CL": false,
+            "es_PR": false,
+            "es_MX": false,
+            "es_GT": false,
+            "es_VE": false,
+            "da_DK": "da",
+            "sv_SE": "sv",
+            "cs_CZ": "cs",
+            "pt_PT": "pt@formal",
+            "pt_BR": false
+        },
+        "thresholds": {
+            "de@informal": 100,
+            "de@formal": 100,
+            "fr@formal": 100,
+            "it@formal": 100,
+            "pl@formal": 100,
+            "nl@informal": 100,
+            "nl@formal": 100,
+            "es@formal": 100,
+            "da": 100,
+            "sv": 100,
+            "nb_NO": 100,
+            "cs": 100,
+            "pt@formal": 100
+        },
+        "machineTranslation": {
+            "fr@formal": [
+                "deepl"
+            ],
+            "it@formal": [
+                "deepl"
+            ],
+            "pl@formal": [
+                "deepl"
+            ],
+            "nl@informal": [
+                "deepl"
+            ],
+            "nl@formal": [
+                "deepl"
+            ],
+            "es@formal": [
+                "deepl"
+            ],
+            "da": [
+                "deepl"
+            ],
+            "sv": [
+                "deepl"
+            ],
+            "nb_NO": [
+                "deepl"
+            ],
+            "cs": [
+                "deepl"
+            ],
+            "pt@formal": [
+                "deepl"
+            ]
         },
         "copy-files": {
             "de@informal.(po)$": [
@@ -152,12 +228,44 @@
             ],
             "fi_FI.(po)$": [
                 "fi.$1"
+            ],
+            "es_ES.(po)$": [
+                "es_AR.$1",
+                "es_CO.$1",
+                "es_EC.$1",
+                "es_CR.$1",
+                "es_DO.$1",
+                "es_PE.$1",
+                "es_UY.$1",
+                "es_CL.$1",
+                "es_PR.$1",
+                "es_MX.$1",
+                "es_GT.$1",
+                "es_VE.$1"
+            ],
+            "fr_FR.(po)$": [
+                "fr_CA.$1",
+                "fr_BE.$1"
+            ],
+            "nl_NL.(po)$": [
+                "nl_BE.$1"
+            ],
+            "pt_PT.(po)$": [
+                "pt_BR.$1"
             ]
         },
         "projects": {
             "backend": {
                 "name": "@devowl-wp/real-product-manager-wp-client (Backend, PHP)",
                 "system": "weblate",
+                "weblate": {
+                    "componentSettings": {
+                        "check_flags": "php-format",
+                        "enforced_checks": [
+                            "php_format"
+                        ]
+                    }
+                },
                 "sourceFolder": "src",
                 "languageFolder": "languages/backend",
                 "extractCmd": "dowl run --silent wp:weak i18n make-pot src/ languages/backend/real-product-manager-wp-client.pot --headers='{\"POT-Creation-Date\":\"n/a\",\"Project-Id-Version\":\"n/a\"}' --ignore-domain"
@@ -165,6 +273,15 @@
             "frontend": {
                 "name": "@devowl-wp/real-product-manager-wp-client (Frontend, JavaScript)",
                 "system": "weblate",
+                "weblate": {
+                    "componentSettings": {
+                        "check_flags": "php-format",
+                        "enforced_checks": [
+                            "php_format",
+                            "automatic_interpolate_components"
+                        ]
+                    }
+                },
                 "sourceFolder": "lib",
                 "languageFolder": "languages/frontend",
                 "extractCmd": "dowl run --silent wp:weak i18n make-pot lib languages/frontend/real-product-manager-wp-client.pot --skip-js --headers='{\"POT-Creation-Date\":\"n/a\",\"Project-Id-Version\":\"n/a\"}' --ignore-domain --merge=$(find $(test \"$NODE_ENV\" = \"production\" && echo \"dist\" || echo \"dev\") -maxdepth 1 -name '*.pot' -type f | tr '\\n' ',' | sed 's/,$//')",

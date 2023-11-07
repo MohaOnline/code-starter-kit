@@ -191,8 +191,8 @@ class Advanced_Ads_Network_Adsense extends Advanced_Ads_Ad_Network {
 			<?php esc_attr_e( 'Insert the AdSense header code to enable Auto ads and verify your website.', 'advanced-ads' ); ?>
 		</label>
 		<ul>
-			<li><a href="<?php echo esc_url( ADVADS_URL ) . 'adsense-auto-ads-wordpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=settings-adsense-specific-pages#Display_AdSense_Auto_Ads_only_on_specific_pages'; ?>" target="_blank"><?php esc_attr_e( 'Display Auto ads only on specific pages', 'advanced-ads' ); ?></a></li>
-			<li><a href="<?php echo esc_url( ADVADS_URL ) . 'adsense-in-random-positions-auto-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=backend-autoads-ads'; ?>" target="_blank"><?php esc_attr_e( 'Why are ads appearing in random positions?', 'advanced-ads' ); ?></a></li>
+			<li><a href="https://wpadvancedads.com/adsense-auto-ads-wordpress/?utm_source=advanced-ads&utm_medium=link&utm_campaign=settings-adsense-specific-pages#Display_AdSense_Auto_Ads_only_on_specific_pages" target="_blank"><?php esc_attr_e( 'Display Auto ads only on specific pages', 'advanced-ads' ); ?></a></li>
+			<li><a href="https://wpadvancedads.com/adsense-in-random-positions-auto-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=backend-autoads-ads" target="_blank"><?php esc_attr_e( 'Why are ads appearing in random positions?', 'advanced-ads' ); ?></a></li>
 			<?php
 			if ( ! empty( $options['adsense-id'] ) ) :
 				?>
@@ -258,7 +258,7 @@ class Advanced_Ads_Network_Adsense extends Advanced_Ads_Ad_Network {
 						],
 					]
 				),
-				esc_url( ADVADS_URL ) . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=backend-autoads-ads'
+				'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=backend-autoads-ads'
 			);
 			?>
 		</p>
@@ -513,21 +513,21 @@ class Advanced_Ads_Network_Adsense extends Advanced_Ads_Ad_Network {
 		if ( ! $adense_ad || 'adsense' !== ( $adense_ad->type ?? '' ) || ! isset( $adense_ad->content ) ) {
 			return null;
 		}
-		
+
 		$ad_units = $this->get_external_ad_units();
 		if ( empty( $ad_units ) ) {
 			return null;
 		}
-	
+
 		$json_content = json_decode( $adense_ad->content );
 		$unit_code = $json_content->slotId ?? null;
-	
+
 		foreach( $ad_units as $ad_unit ) {
 			if( $ad_unit->slot_id === $unit_code){
 				return $ad_unit;
 			}
 		}
-	
+
 		return null;
 	}
 }

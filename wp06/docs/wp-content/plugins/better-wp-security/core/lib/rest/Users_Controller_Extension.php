@@ -77,7 +77,7 @@ class Users_Controller_Extension implements Runnable {
 				__( 'Not Configured Two-Factor', 'better-wp-security' ),
 			];
 
-			if ( \ITSEC_Core::is_pro() && \ITSEC_Modules::get_setting( 'two-factor', 'protect_user_group' ) ) {
+			if ( \ITSEC_Core::get_install_type() === 'pro' && \ITSEC_Modules::get_setting( 'two-factor', 'protect_user_group' ) ) {
 				$enum[]      = 'enforced-not-configured';
 				$enumNames[] = __( 'Two-Factor Enforced', 'better-wp-security' );
 			}
@@ -142,15 +142,24 @@ class Users_Controller_Extension implements Runnable {
 		}
 
 		if ( $request['solid_2fa'] ) {
+			$enforced = \ITSEC_Modules::get_setting( 'two-factor', 'protect_user_group' );
+
 			if ( $request['solid_2fa'] === 'enforced-not-configured' ) {
 				$params['solid_2fa'] = 'not-enabled';
-
-				$enforced = \ITSEC_Modules::get_setting( 'two-factor', 'protect_user_group' );
 
 				if ( $enforced ) {
 					$params['solid_user_groups'] = array_merge(
 						$enforced,
 						$params['solid_user_groups'] ?? [],
+					);
+				}
+			} elseif ( $request['solid_2fa'] === 'not-enabled' ) {
+				$params['solid_2fa'] = $request['solid_2fa'];
+
+				if ( $enforced ) {
+					$params['solid_user_groups__not_in'] = array_merge(
+						$enforced,
+						$params['solid_user_groups__not_in'] ?? [],
 					);
 				}
 			} else {

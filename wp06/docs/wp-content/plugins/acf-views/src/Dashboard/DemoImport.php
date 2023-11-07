@@ -9,16 +9,17 @@ defined('ABSPATH') || exit;
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
 use org\wplake\acf_views\Cards\Cpt\CardsSaveActions;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\DemoGroup;
 use org\wplake\acf_views\Groups\FieldData;
 use org\wplake\acf_views\Groups\ItemData;
 use org\wplake\acf_views\Settings;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use org\wplake\acf_views\Views\Cpt\ViewsSaveActions;
-use org\wplake\acf_views\Views\Fields\Fields;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
 use org\wplake\acf_views\Views\ViewsDataStorage;
 
-class DemoImport
+class DemoImport implements HooksInterface
 {
     protected int $samsungId;
     protected int $xiaomiId;
@@ -127,7 +128,7 @@ class DemoImport
             'post_title' => __('"Phone" Demo View', 'acf-views'),
         ]);
         if (is_wp_error($phoneViewId)) {
-            $this->addError(__('Failed to create an ACF View', 'acf-views'));
+            $this->addError(__('Failed to create a View', 'acf-views'));
 
             return;
         }
@@ -143,7 +144,7 @@ class DemoImport
             'post_title' => __('"Phones" Demo Card', 'acf-views'),
         ]);
         if (is_wp_error($phonesCardId)) {
-            $this->addError(__('Failed to create an ACF Card', 'acf-views'));
+            $this->addError(__('Failed to create a Card', 'acf-views'));
 
             return;
         }
@@ -188,13 +189,13 @@ class DemoImport
         $view = $this->viewsDataStorage->get($this->phoneViewId);
 
         $view->description = __(
-            "It's a demo ACF View to display fields from the 'Phone' demo ACF Field Group.",
+            "It's a demo View to display fields from the 'Phone' demo ACF Field Group.",
             'acf-views'
         );
 
         $titleLinkItem = $this->item->getDeepClone();
-        $titleLinkItem->group = Fields::GROUP_POST;
-        $titleLinkItem->field->key = FieldData::createKey(Fields::GROUP_POST, Fields::FIELD_POST_TITLE_LINK);
+        $titleLinkItem->group = PostFields::GROUP_NAME;
+        $titleLinkItem->field->key = FieldData::createKey(PostFields::GROUP_NAME, PostFields::FIELD_TITLE_LINK);
         $titleLinkItem->field->id = 'post_title_link';
         $view->items[] = $titleLinkItem;
 
@@ -243,7 +244,7 @@ class DemoImport
     {
         $acfCard = $this->cardsDataStorage->get($this->phonesCardId);
 
-        $acfCard->description = __("It's a demo ACF Card for 'Phones'", 'acf-views');
+        $acfCard->description = __("It's a demo Card for 'Phones'", 'acf-views');
 
         $acfCard->acfViewId = $this->viewsDataStorage->get($this->phoneViewId)->getUniqueId();
 
@@ -294,7 +295,7 @@ class DemoImport
 <!-- /wp:paragraph -->';
             $postContent .= sprintf(
                 '<!-- wp:heading --><h2>%s</h2><!-- /wp:heading -->',
-                __('"Phone" ACF View to show fields of this page', 'acf-views')
+                __('"Phone" View to show fields of this page', 'acf-views')
             );
             $postContent .= '<!-- wp:shortcode -->[acf_views view-id="' . $this->phoneViewId . '"]<!-- /wp:shortcode -->';
 
@@ -311,7 +312,7 @@ class DemoImport
 <!-- /wp:paragraph -->';
         $postContent .= sprintf(
             '<!-- wp:heading --><h2>%s</h2><!-- /wp:heading -->',
-            __("'Phone' ACF View with the object-id argument to show Samsung Phone's fields", 'acf-views')
+            __("'Phone' View with the object-id argument to show Samsung Phone's fields", 'acf-views')
         );
         $postContent .= '<!-- wp:shortcode -->[acf_views view-id="' . $this->phoneViewId . '" object-id="' . $this->samsungId . '"]<!-- /wp:shortcode -->';
         wp_update_post([
@@ -326,7 +327,7 @@ class DemoImport
 <!-- /wp:paragraph -->';
         $postContent .= sprintf(
             '<!-- wp:heading --><h2>%s</h2><!-- /wp:heading -->',
-            __('"Phones" ACF Card to show the phones', 'acf-views')
+            __('"Phones" Card to show the phones', 'acf-views')
         );
         $postContent .= '<!-- wp:shortcode -->[acf_cards card-id="' . $this->phonesCardId . '"]<!-- /wp:shortcode -->';
         wp_update_post([
@@ -348,23 +349,6 @@ class DemoImport
             'groupId' => $this->groupId,
         ]);
         $this->settings->save();
-    }
-
-    public function setHooks(): void
-    {
-        add_action('wp_loaded', function () {
-            if (!isset($_POST['_av-demo-import'])) {
-                return;
-            }
-
-            check_admin_referer('_av-demo-import');
-
-            $isImport = isset($_POST['_import']);
-            $isDelete = isset($_POST['_delete']);
-
-            !$isImport || $this->import();
-            $isImport || !$isDelete || $this->delete();
-        });
     }
 
     public function readIDs(): void
@@ -508,4 +492,26 @@ class DemoImport
     {
         return (string)get_edit_post_link($this->phonesCardId);
     }
+
+    public function setHooks(bool $isAdmin): void
+    {
+        if (!$isAdmin) {
+            return;
+        }
+
+        add_action('wp_loaded', function () {
+            if (!isset($_POST['_av-demo-import'])) {
+                return;
+            }
+
+            check_admin_referer('_av-demo-import');
+
+            $isImport = isset($_POST['_import']);
+            $isDelete = isset($_POST['_delete']);
+
+            !$isImport || $this->import();
+            $isImport || !$isDelete || $this->delete();
+        });
+    }
+
 }

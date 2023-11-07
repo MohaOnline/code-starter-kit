@@ -2,20 +2,30 @@
 
 /*
 Plugin Name: Ad Inserter
-Version: 2.7.31
+Version: 2.7.32
 Description: Ad management with many advanced advertising features to insert ads at optimal positions
 Author: Igor Funa
 Author URI: http://igorfuna.com/
 Plugin URI: https://adinserter.pro/documentation
 Text Domain: ad-inserter
 Domain Path: /languages
-Requires at least: 4.9
-Requires PHP: 5.6
+Requires at least: 5
+Requires PHP: 7.2
 */
 
 /*
 
 Change Log
+
+Ad Inserter 2.7.33 - 2023-10-30
+- Changed widget class name
+
+Ad Inserter 2.7.32 - 2023-10-29
+- Added experimental support for REST requests
+- Added support for data shortcode for url parameters
+- Added option for shortcodes to ignore category, tag, taxonomy and post ID lists
+- Added support for background parallax ads (Pro only)
+- Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.7.31 - 2023-09-11
 - Security fix for some data revealed via remote debugging data
@@ -594,6 +604,40 @@ function set_user () {
 //  if (isset ($_GET [AI_URL_DEBUG_USER]) && $_GET [AI_URL_DEBUG_USER] != 0) $ai_wp_data [AI_WP_USER] = $_GET [AI_URL_DEBUG_USER];
 
   $ai_wp_data [AI_WP_USER_SET] = true;
+}
+
+
+if (!function_exists ('is_rest')) {
+    /**
+     * Checks if the current request is a WP REST API request.
+     *
+     * Case #1: After WP_REST_Request initialisation
+     * Case #2: Support "plain" permalink settings and check if `rest_route` starts with `/`
+     * Case #3: It can happen that WP_Rewrite is not yet initialized,
+     *          so do this (wp-settings.php)
+     * Case #4: URL Path begins with wp-json/ (your REST prefix)
+     *          Also supports WP installations in subfolders
+     *
+     * @returns boolean
+     * @author matzeeable
+     */
+    function is_rest () {
+        if (defined('REST_REQUEST') && REST_REQUEST // (#1)
+                || isset($_GET['rest_route']) // (#2)
+                        && strpos( $_GET['rest_route'], '/', 0 ) === 0)
+                return true;
+
+        // (#3)
+        global $wp_rewrite;
+        if ($wp_rewrite === null) $wp_rewrite = new WP_Rewrite();
+
+        // (#4)
+        $rest_url = wp_parse_url( trailingslashit( rest_url( ) ) );
+        $current_url = wp_parse_url( add_query_arg( array( ) ) );
+        // PHP 7
+//        return strpos( $current_url['path'] ?? '/', $rest_url['path'], 0 ) === 0;
+        return strpos((isset ($current_url['path']) && $current_url['path'] != NULL ? $current_url['path'] : '/'), $rest_url['path'], 0 ) === 0;
+    }
 }
 
 function set_page_type () {
@@ -1369,9 +1413,17 @@ function ai_content_marker () {
   global $ai_wp_data;
 
   if ($ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_AJAX ||
+      $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_REST ||
       get_disable_html_code ()) return;
 
   echo '<span class="ai-content"></span>', "\n";
+
+  if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_BLOCKS) != 0) {
+    $debug_label = new ai_block_labels ('ai-debug-marker');
+    $marker_label = $debug_label->center_bar (__('CONTENT MARKER', 'ad-inserter'));
+    echo $marker_label;
+  }
+
 }
 
 function ai_mark_loop_start () {
@@ -1925,6 +1977,15 @@ function ai_init_hook () {
 
   if (defined ('DOING_AJAX') && DOING_AJAX) {
     $ai_wp_data [AI_WP_PAGE_TYPE] = AI_PT_AJAX;
+
+    ai_load_extract ();
+
+    ai_wp_hook ();
+  }
+
+  // Experimental
+  elseif (is_rest ()) {
+    $ai_wp_data [AI_WP_PAGE_TYPE] = AI_PT_REST;
 
     ai_load_extract ();
 
@@ -2897,7 +2958,7 @@ function ai_replace_js_data ($js) {
     $wp_username = $current_user->user_login;
     $js = str_replace ('WP_USERNAME',                   $wp_username, $js);
 
-    $js = str_replace ('AI_TRACK_PAGEVIEWS',            get_track_pageviews () == AI_TRACKING_ENABLED && $ai_wp_data [AI_WP_PAGE_TYPE] != AI_PT_AJAX && !$ai_wp_data [AI_CODE_FOR_IFRAME] ? 1 : 0, $js);
+    $js = str_replace ('AI_TRACK_PAGEVIEWS',            get_track_pageviews () == AI_TRACKING_ENABLED && $ai_wp_data [AI_WP_PAGE_TYPE] != AI_PT_AJAX && $ai_wp_data [AI_WP_PAGE_TYPE] != AI_PT_REST && !$ai_wp_data [AI_CODE_FOR_IFRAME] ? 1 : 0, $js);
     $js = str_replace ('AI_ADVANCED_CLICK_DETECTION',   get_click_detection () == AI_CLICK_DETECTION_ADVANCED ? 1 : 0, $js);
 
     if (!isset ($ai_wp_data [AI_VIEWPORT_WIDTHS])) {
@@ -3410,7 +3471,7 @@ function ai_after_plugin_row_1 ($plugin_file, $plugin_data, $status) {
     echo $plugins_css;
     echo '<tr class="plugin-update-tr active';
     if (isset ($plugin_data ['update']) && $plugin_data ['update']) echo ' update';
-    echo '"><td colspan="3" class="plugin-update colspanchange ai-message"><div class="update-message notice inline notice-warning notice-alt"><p> ',
+    echo '"><td colspan="4" class="plugin-update colspanchange ai-message"><div class="update-message notice inline notice-warning notice-alt"><p> ',
       /* translators: 1: AMPforWP Plugin Manager, 2: Ad Inserter, 3, 4: HTML tags */
       sprintf (__('Warning: %1$s %3$s disabled %4$s %2$s on AMP pages.', 'ad-inserter'), 'AMPforWP Plugin Manager', AD_INSERTER_NAME, '<a href="https://adinserter.pro/documentation/amp-pages#ampforwp" target="_blank" style="text-decoration: none; box-shadow: 0 0 0;">', '</a>'),
       '</p></div></td></tr>';
@@ -3680,7 +3741,7 @@ function ai_save_meta_box_data_hook ($post_id) {
 
 function ai_widgets_init_hook () {
   if (is_multisite() && !is_main_site () && !multisite_widgets_enabled ()) return;
-  register_widget ('ai_widget');
+  register_widget ('ai_widget'); // AI widget PHP class name
 }
 
 function get_page_type_debug_info ($text = '') {
@@ -3710,6 +3771,9 @@ function get_page_type_debug_info ($text = '') {
       break;
     case AI_PT_AJAX:
       $page_type = __('AJAX CALL', 'ad-inserter');
+      break;
+    case AI_PT_REST:
+      $page_type = __('REST CALL', 'ad-inserter');
       break;
     default:
       $page_type = __('UNKNOWN PAGE TYPE', 'ad-inserter');
@@ -4422,6 +4486,7 @@ function ai_write_debug_info ($write_processing_log = false) {
     case AI_PT_ADMIN:     echo "ADMIN"; break;
     case AI_PT_FEED:      echo "FEED"; break;
     case AI_PT_AJAX:      echo "AJAX"; break;
+    case AI_PT_REST:      echo "REST"; break;
     case AI_PT_ANY:       echo "ANY ?"; break;
     case AI_PT_NONE:      echo "NONE ?"; break;
     default:              echo "?"; break;
@@ -4755,7 +4820,8 @@ function ai_write_debug_info ($write_processing_log = false) {
 
   $default = new ai_Block (1);
 
-  echo "BLOCK SETTINGS           Po Pa Hp Cp Ap Sp AM Aj Fe 404 Wi Sh PHP\n";
+  echo "BLOCK SETTINGS           Po Pa Ho Ca Ar Sr AMP Aj RE Fe 404 Wi Sh PHP\n";
+  echo "                         st ge me t  ch ch     ax ST ed     dg or PHP\n";
   for ($block = 1; $block <= 96; $block ++) {
     $obj = $block_object [$block];
 
@@ -4777,6 +4843,7 @@ function ai_write_debug_info ($write_processing_log = false) {
         case AI_OPTION_DISPLAY_ON_ARCHIVE_PAGES:
         case AI_OPTION_ENABLE_AMP:
         case AI_OPTION_ENABLE_AJAX:
+        case AI_OPTION_ENABLE_REST:
         case AI_OPTION_ENABLE_FEED:
         case AI_OPTION_ENABLE_404:
         case AI_OPTION_ENABLE_MANUAL:
@@ -4879,8 +4946,9 @@ function ai_write_debug_info ($write_processing_log = false) {
     echo $obj->get_display_settings_category() ? "o" : ".", "  ";
     echo $obj->get_display_settings_archive()  ? "o" : ".", "  ";
     echo $obj->get_display_settings_search()   ? "o" : ".", "  ";
-    echo $obj->get_enable_amp()                ? "o" : ".", "  ";
+    echo $obj->get_enable_amp()                ? "o" : ".", "   ";
     echo $obj->get_enable_ajax()               ? "o" : ".", "  ";
+    echo $obj->get_enable_rest()               ? "o" : ".", "  ";
     echo $obj->get_enable_feed()               ? "o" : ".", "  ";
     echo $obj->get_enable_404()                ? "o" : ".", "   ";
     echo $obj->get_enable_widget()             ? "x" : ".", "  ";
@@ -5141,6 +5209,7 @@ function ai_shutdown_hook () {
         $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_ARCHIVE ||
         $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_404 ||
         $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_NONE ||
+        $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_REST ||
         $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_ANY) {
       echo "\n<!--\n\n";
       ai_write_debug_info (true);
@@ -6913,26 +6982,27 @@ function ai_generate_extract (&$settings) {
   $extract = array ();
 
   if (defined ('AI_BUFFERING')) {
-    $above_header_hook_blocks     = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-    $html_element_hook_blocks     = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
+    $above_header_hook_blocks     = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+    $html_element_hook_blocks     = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
   }
 
-  $content_hook_blocks          = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $excerpt_hook_blocks          = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $loop_start_hook_blocks       = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $loop_end_hook_blocks         = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $post_hook_blocks             = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $before_comments_hook_blocks  = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $between_comments_hook_blocks = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $after_comments_hook_blocks   = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
-  $footer_hook_blocks           = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
+  $content_hook_blocks          = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $excerpt_hook_blocks          = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $loop_start_hook_blocks       = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $loop_end_hook_blocks         = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $post_hook_blocks             = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $before_comments_hook_blocks  = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $between_comments_hook_blocks = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $after_comments_hook_blocks   = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
+  $footer_hook_blocks           = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
   $custom_hook_blocks           = array ();
   for ($custom_hook = 1; $custom_hook <= 20; $custom_hook ++) {
-    $custom_hook_blocks     []  = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array());
+    $custom_hook_blocks     []  = array (AI_PT_ANY => array (), AI_PT_HOMEPAGE => array(), AI_PT_CATEGORY => array(), AI_PT_SEARCH => array(), AI_PT_ARCHIVE => array(), AI_PT_STATIC => array(), AI_PT_POST => array(), AI_PT_404 => array(), AI_PT_FEED => array(), AI_PT_AJAX => array(), AI_PT_REST => array());
   }
 
   // Get blocks used in sidebar widgets
   $sidebar_widgets = wp_get_sidebars_widgets();
+  // 'widget_' + registered AI widget name
   $widget_options = get_option ('widget_ai_widget');
 
   $widget_blocks = array ();
@@ -6990,6 +7060,7 @@ function ai_generate_extract (&$settings) {
     if ($obj->get_display_settings_search())   $page_types []= AI_PT_SEARCH;
     if ($obj->get_display_settings_archive())  $page_types []= AI_PT_ARCHIVE;
     if ($obj->get_enable_ajax())               $page_types []= AI_PT_AJAX;
+    if ($obj->get_enable_rest())               $page_types []= AI_PT_REST;
     if ($obj->get_enable_feed())               $page_types []= AI_PT_FEED;
     if ($obj->get_enable_404())                $page_types []= AI_PT_404;
 
@@ -7517,6 +7588,9 @@ a.ai-debug-center {text-align: center; cursor: default; font-size: 10px; text-de
 
 .ai-debug-block.ai-debug-adsense {border-color: #e0a; outline-color: #e0a;}
 .ai-debug-bar.ai-debug-adsense {background: #e0a;}
+
+.ai-debug-block.ai-debug-marker {border-color: #a0f; outline-color: #a0f;}
+.ai-debug-bar.ai-debug-marker {background: #a0f; display: inline;}
 
 .ai-debug-block.ai-debug-adsense.ai-adsense-auto-ads {position: absolute; top: -20px; width: 100%;}
 
@@ -8434,7 +8508,7 @@ function ai_content_hook ($content = '') {
     $content = '<kbd class="ai-debug-invisible">[' . __('HTML TAGS REMOVED', 'ad-inserter') . ']</kbd>' . $content;
   }
 
-  if ($ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_AJAX && !$ai_wp_data [AI_CODE_FOR_IFRAME]) {
+  if (($ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_AJAX || $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_REST) && !$ai_wp_data [AI_CODE_FOR_IFRAME]) {
     if ($ai_wp_data [AI_CLOSE_BUTTONS]) {
       $content .= '<script>if (typeof ai_install_close_buttons == "function") {ai_install_close_buttons (document);}</script>';
     }
@@ -9347,6 +9421,12 @@ function ai_process_shortcode (&$block, $atts) {
       return empty ($post_meta) && $default_value !== null ? $default_value : $post_meta;
     }
 
+    if ($parameters ['url-parameter'] != '') {
+      $url_parameter = trim ($parameters ['url-parameter']);
+
+      return isset ($_GET [$url_parameter]) && is_string ($_GET [$url_parameter]) ? htmlspecialchars ($_GET [$url_parameter]) : '';
+    }
+
     if ($parameters ['random'] != '' || isset ($atts ['RANDOM']) || isset ($atts ['random'])) {
       $random_value_limits = trim ($parameters ['random']);
       $random_value = '';
@@ -9475,6 +9555,10 @@ function ai_process_shortcode (&$block, $atts) {
 
 //  IGNORE SETTINGS
 //  page-type
+//  post-id
+//  category
+//  tag
+//  taxonomy
 //  *block-counter
 
 //  CHECK SETTINGS
@@ -9499,7 +9583,7 @@ function ai_process_shortcode (&$block, $atts) {
   if (!$obj->get_enable_manual ()) return "";
 
   if (!$obj->check_server_side_detection ()) return "";
-  if (!$obj->check_page_types_lists_users (in_array ("page-type", $ignore_array))) return "";
+  if (!$obj->check_page_types_lists_users (in_array ("page-type", $ignore_array), in_array ("category", $ignore_array), in_array ("tag", $ignore_array), in_array ("taxonomy", $ignore_array), in_array ("post-id", $ignore_array))) return "";
 
   if (in_array ("exceptions", $check_array)) {
     if ($ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_POST || $ai_wp_data [AI_WP_PAGE_TYPE] == AI_PT_STATIC) {
@@ -10219,6 +10303,7 @@ function check_scheduling_time ($start_time, $end_time, $days_in_week, $between)
   if (!function_exists ('ai_scheduling_options')) return true;
 
   $current_time = current_time ('timestamp');
+  $current_weekday =  (date ('w', $current_time) + 6) % 7;
 
   if (strpos ($start_time, '-') === false && strpos ($end_time, '-') === false) {
     $current_time -= (strtotime (current_time ('Y-m-d')));
@@ -10227,15 +10312,13 @@ function check_scheduling_time ($start_time, $end_time, $days_in_week, $between)
     }
   }
 
-  $start_time   = strtotime ($start_time, $current_time);
-  $end_time     = strtotime ($end_time,   $current_time);
+  $start_time   = (int) strtotime ($start_time, $current_time);
+  $end_time     = (int) strtotime ($end_time,   $current_time);
 
-  $current_weekday = date ('w', $current_time);
-  if ($current_weekday == 0) $current_weekday = 6; else $current_weekday --;
   $weekdays = explode (',', $days_in_week);
   if (isset ($weekdays [0]) and $weekdays [0] === '') $weekdays = array ();
 
-  $insertion_enabled = $current_time >= $start_time && $current_time < $end_time && in_array ($current_weekday, $weekdays);
+  $insertion_enabled = $current_time >= $start_time && ($end_time == 0 || $current_time < $end_time) && in_array ($current_weekday, $weekdays);
 
   return ($between ? $insertion_enabled : !$insertion_enabled);
 }
@@ -12351,6 +12434,7 @@ if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_PROCESSING) != 0) {
 
 // ===========================================================================================
 
+// PHP class name as registered AI widget
 if (!class_exists ('ai_widget')) {
   class ai_widget extends WP_Widget {
 
@@ -12359,7 +12443,8 @@ if (!class_exists ('ai_widget')) {
         false,                                  // Base ID
         AD_INSERTER_NAME,                       // Name
         array (                                 // Args
-          'classname'   => 'ai_widget',
+//          'classname'   => 'ai_widget',
+          'classname'   => 'block-widget',
                                     // translators: %s: Ad Inserter
           'description' => sprintf (__('%s block.', 'ad-inserter'), AD_INSERTER_NAME)
         )

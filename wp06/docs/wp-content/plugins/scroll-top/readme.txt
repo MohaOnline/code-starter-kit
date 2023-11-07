@@ -1,11 +1,11 @@
 === Scroll To Top ===
-Contributors: satrya
+Contributors: milkitall
 Donate link: https://paypal.me/satrya
 Tags: back to top, button, to top, jquery, scroll to top, scroll top, customization
 Requires at least: 5.6
 Tested up to: 6.1
 Requires PHP: 7.2
-Stable tag: 1.5
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

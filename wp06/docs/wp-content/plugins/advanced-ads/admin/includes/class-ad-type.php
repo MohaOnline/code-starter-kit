@@ -950,7 +950,7 @@ class Advanced_Ads_Admin_Ad_Type {
 
 		if ( isset( $typenow ) && 'You need a higher level of permission.' === $untranslated_text && $typenow === $this->post_type ) {
 			$translated_text = __( 'You don’t have access to ads. Please deactivate and re-enable Advanced Ads again to fix this.', 'advanced-ads' )
-							   . '&nbsp;<a href="' . ADVADS_URL . 'manual/user-capabilities/?utm_source=advanced-ads&utm_medium=link&utm_campaign=wrong-user-role#You_dont_have_access_to_ads" target="_blank">' . __( 'Get help', 'advanced-ads' ) . '</a>';
+							   . '&nbsp;<a href="https://wpadvancedads.com/manual/user-capabilities/?utm_source=advanced-ads&utm_medium=link&utm_campaign=wrong-user-role#You_dont_have_access_to_ads" target="_blank">' . __( 'Get help', 'advanced-ads' ) . '</a>';
 		}
 
 		return $translated_text;

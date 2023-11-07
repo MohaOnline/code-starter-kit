@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Views\Cpt;
 
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\Integration\FieldDataIntegration;
 use org\wplake\acf_views\Groups\ItemData;
 use org\wplake\acf_views\Groups\ViewData;
@@ -14,7 +15,7 @@ use WP_Post;
 
 defined('ABSPATH') || exit;
 
-class ViewsGroupIntegration
+class ViewsGroupIntegration implements HooksInterface
 {
     protected ItemData $item;
     protected ViewsDataStorage $viewsDataStorage;
@@ -75,8 +76,8 @@ class ViewsGroupIntegration
         $relatedViews = $wpdb->get_results($query);
 
         $label = $relatedViews ?
-            __('Assigned to ACF Views:', 'acf-views') . ' ' :
-            __('Not assigned to any ACF Views.', 'acf-views');
+            __('Assigned to Views:', 'acf-views') . ' ' :
+            __('Not assigned to any Views.', 'acf-views');
 
         if (!$isListLook) {
             echo $label;
@@ -285,8 +286,12 @@ class ViewsGroupIntegration
         return $messages;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         add_filter('acf/field_group/additional_group_settings_tabs', [$this, 'addAcfViewsTabToAcfGroup']);
         // higher priority, to run after ACF's listener (they don't use 'merge')
         add_filter('manage_acf-field-group_posts_columns', [$this, 'addRelatedViewsToAcfGroupsList',], 20);

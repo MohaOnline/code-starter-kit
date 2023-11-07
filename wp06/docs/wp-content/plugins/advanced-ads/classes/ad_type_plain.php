@@ -251,7 +251,7 @@ class Advanced_Ads_Ad_Type_Plain extends Advanced_Ads_Ad_Type_Abstract {
 				}
 			}
 			?>
-			<a href="<?php echo esc_url( ADVADS_URL ) . '/manual/ad-types/#Plain_Text_and_Code'; ?>" target="_blank" rel="noopener">
+			<a href="https://wpadvancedads.com/manual/ad-types/#Plain_Text_and_Code" target="_blank" rel="noopener">
 				<?php esc_html_e( 'Manual', 'advanced-ads' ); ?>
 			</a>
 		</p>

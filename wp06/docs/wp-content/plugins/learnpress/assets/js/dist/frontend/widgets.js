@@ -2,13 +2,85 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "@wordpress/url":
-/*!*****************************!*\
-  !*** external ["wp","url"] ***!
-  \*****************************/
-/***/ (function(module) {
+/***/ "./assets/src/js/api.js":
+/*!******************************!*\
+  !*** ./assets/src/js/api.js ***!
+  \******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-module.exports = window["wp"]["url"];
+__webpack_require__.r(__webpack_exports__);
+/**
+ * List API on backend
+ */
+
+if (undefined === lpGlobalSettings) {
+  throw new Error('lpGlobalSettings is undefined');
+}
+/* harmony default export */ __webpack_exports__["default"] = ({
+  admin: {
+    apiAdminNotice: lpGlobalSettings.rest + 'lp/v1/admin/tools/admin-notices',
+    apiAdminOrderStatic: lpGlobalSettings.rest + 'lp/v1/orders/statistic',
+    apiAddons: lpGlobalSettings.rest + 'lp/v1/addon/all',
+    apiAddonAction: lpGlobalSettings.rest + 'lp/v1/addon/action',
+    apiSearchCourses: lpGlobalSettings.rest + 'lp/v1/admin/tools/search-course',
+    apiAssignUserCourse: lpGlobalSettings.rest + 'lp/v1/admin/tools/assign-user-course'
+  },
+  frontend: {
+    apiWidgets: lpGlobalSettings.lp_rest_url + 'lp/v1/widgets/api'
+  }
+});
+
+/***/ }),
+
+/***/ "./assets/src/js/utils.js":
+/*!********************************!*\
+  !*** ./assets/src/js/utils.js ***!
+  \********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   lpAddQueryArgs: function() { return /* binding */ lpAddQueryArgs; },
+/* harmony export */   lpFetchAPI: function() { return /* binding */ lpFetchAPI; },
+/* harmony export */   lpGetCurrentURLNoParam: function() { return /* binding */ lpGetCurrentURLNoParam; }
+/* harmony export */ });
+const lpFetchAPI = (url, data = {}, functions = {}) => {
+  if ('function' === typeof functions.before) {
+    functions.before();
+  }
+  fetch(url, {
+    method: 'GET',
+    ...data
+  }).then(response => response.json()).then(response => {
+    if ('function' === typeof functions.success) {
+      functions.success(response);
+    }
+  }).catch(err => {
+    if ('function' === typeof functions.error) {
+      functions.error(err);
+    }
+  }).finally(() => {
+    if ('function' === typeof functions.completed) {
+      functions.completed();
+    }
+  });
+};
+const lpGetCurrentURLNoParam = () => {
+  let currentUrl = window.location.href;
+  const hasParams = currentUrl.includes('?');
+  if (hasParams) {
+    currentUrl = currentUrl.split('?')[0];
+  }
+  return currentUrl;
+};
+const lpAddQueryArgs = (endpoint, args) => {
+  const url = new URL(endpoint);
+  Object.keys(args).forEach(arg => {
+    url.searchParams.set(arg, args[arg]);
+  });
+  return url;
+};
+
 
 /***/ })
 
@@ -39,18 +111,6 @@ module.exports = window["wp"]["url"];
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	}();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -83,42 +143,60 @@ module.exports = window["wp"]["url"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!************************************************!*\
-  !*** ./assets/src/apps/js/frontend/widgets.js ***!
-  \************************************************/
+/*!*******************************************!*\
+  !*** ./assets/src/js/frontend/widgets.js ***!
+  \*******************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./assets/src/js/utils.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api */ "./assets/src/js/api.js");
+
 
 function widgetRestAPI() {
   const widgets = document.querySelectorAll('.learnpress-widget-wrapper');
   if (!widgets.length) {
     return;
   }
-  const getResponse = async ele => {
+  const getResponse = ele => {
     const widget = ele.dataset.widget ? JSON.parse(ele.dataset.widget) : '';
-    const response = await wp.apiFetch({
-      path: 'lp/v1/widgets/api',
+    const url = _api__WEBPACK_IMPORTED_MODULE_1__["default"].frontend.apiWidgets;
+    const paramsFetch = {
       method: 'POST',
-      data: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         ...widget,
         ...{
           params_url: lpGlobalSettings.lpArchiveSkeleton
         }
-      }
-    });
-    const {
-      data,
-      status,
-      message
-    } = response;
-    if (data && status === 'success') {
-      ele.insertAdjacentHTML('afterbegin', data);
-    } else if (message) {
-      ele.insertAdjacentHTML('afterbegin', `<div class="lp-ajax-message error" style="display:block">${message}</div>`);
+      })
+    };
+    if (0 !== lpGlobalSettings.user_id) {
+      paramsFetch.headers['X-WP-Nonce'] = lpGlobalSettings.nonce;
     }
-    delete ele.dataset.widget;
-    ele.querySelector('.lp-skeleton-animation').remove();
+    const callBack = {
+      before: () => {},
+      success: res => {
+        const {
+          data,
+          status,
+          message
+        } = res;
+        if (data && status === 'success') {
+          ele.insertAdjacentHTML('afterbegin', data);
+        } else if (message) {
+          ele.insertAdjacentHTML('afterbegin', `<div class="lp-ajax-message error" style="display:block">${message}</div>`);
+        }
+      },
+      error: error => {},
+      completed: () => {
+        delete ele.dataset.widget;
+        ele.querySelector('.lp-skeleton-animation').remove();
+      }
+    };
+
+    // Call API load widget
+    (0,_utils__WEBPACK_IMPORTED_MODULE_0__.lpFetchAPI)(url, paramsFetch, callBack);
   };
   widgets.forEach(ele => {
     if (ele.classList.contains('learnpress-widget-wrapper__restapi')) {

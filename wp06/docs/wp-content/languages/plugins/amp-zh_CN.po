@@ -2,20 +2,347 @@
 # This file is distributed under the same license as the Plugins - AMP - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-06 07:43:22+0000\n"
+"PO-Revision-Date: 2023-11-05 12:02:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - AMP - Stable (latest release)\n"
 
-#: src/LoadingError.php:37 assets/js/amp-onboarding-wizard.js:9
-#: assets/js/amp-settings.js:16 assets/js/amp-site-scan-notice.js:1
-#: assets/js/amp-support.js:15
-msgid "Something went wrong."
-msgstr "出现了问题。"
+#: src/ReaderThemeSupportFeatures.php:650
+msgid "Raw size value must be a string, integer, or float."
+msgstr "原始大小值必须是字符串、整数或浮点数。"
+
+#: src/Cli/OptionCommand.php:346
+msgid "Try using --user=<id|login|email> to set the user context or set it in wp-cli.yml."
+msgstr "尝试使用 --user=<id|login|email> 设置用户上下文，或在 wp-cli.yml 中进行设置。"
+
+#. translators: %s: AMP plugin GitHub issues URL
+#: src/Cli/OptionCommand.php:288
+msgid "* Please raise a feature request at %s to request a new option to be managed via the CLI."
+msgstr "* 请在 %s 提出功能请求，要求通过 CLI 管理新选项。"
+
+#. translators: %s: wp option get amp-options command
+#: src/Cli/OptionCommand.php:280
+msgid "* Only the above listed options can currently be updated via the CLI. To list all options, use the %s command."
+msgstr "* 目前只能通过 CLI 更新上述选项。要列出所有选项，请使用 %s 命令。"
+
+#. translators: %s: option name
+#: src/Cli/OptionCommand.php:199
+msgid "Updated \"%s\" option."
+msgstr "更新了\"%s \"选项。"
+
+#. translators: %1$s: option name, %2$s: error message
+#: src/Cli/OptionCommand.php:195
+msgid "Could not update \"%1$s\" option: %2$s"
+msgstr "无法更新\"%1$s \"选项：%2$s"
+
+#. translators: %1$s: option name, %2$s: list of allowed options
+#: src/Cli/OptionCommand.php:183
+msgid "The option \"%1$s\" is not among the following options that can currently be managed via CLI: %2$s"
+msgstr "选项\"%1$s \"不属于当前可通过 CLI 管理的以下选项：%2$s"
+
+#. translators: %s: option name
+#: src/Cli/OptionCommand.php:144
+msgid "Could not get \"%s\" option. Does it exist?"
+msgstr "无法获取\"%s \"选项。是否存在？"
+
+#. translators: %s: error message
+#: src/Cli/OptionCommand.php:139 src/Cli/OptionCommand.php:251
+msgid "Could not retrieve options: %s"
+msgstr "无法检索选项：%s"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3312
+msgid "(empty)"
+msgstr "（空）"
+
+#: src/Admin/SiteHealth.php:1338
+msgid "Update site icon"
+msgstr "更新站点图标"
+
+#: src/Admin/SiteHealth.php:1330
+msgid "Currently, the fallback WordPress logo is used."
+msgstr "目前，使用的是后备 WordPress 徽标。"
+
+#: src/Admin/SiteHealth.php:1329
+msgid "Publisher logo is not defined"
+msgstr "未定义发布商徽标"
+
+#: src/Admin/SiteHealth.php:1325
+msgid "Publisher logo is defined"
+msgstr "发布商徽标已定义"
+
+#: src/Admin/SiteHealth.php:1320
+msgid "The publisher logo used in Schema.org metadata. The site icon is used as the publisher logo when it is specified."
+msgstr "Schema.org 元数据中使用的发布者徽标。站点图标在指定时用作发布者徽标。"
+
+#: src/Admin/SiteHealth.php:217
+msgid "Publisher Logo"
+msgstr "出版商标志"
+
+#: src/PluginSuppression.php:518
+msgid "Suppressed on AMP Pages"
+msgstr "在 AMP 网页上被禁止"
+
+#: src/PluginSuppression.php:517
+msgid "Visit AMP Settings"
+msgstr "访问 AMP 设置"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2819
+msgid "Pseudo-class selector used to increase specificity for rule extracted from inline styles and/or properties with !important qualifiers."
+msgstr "伪类选择器用于增加从内联样式和/或带有 !important 限定符的属性中提取的规则的特异性。"
+
+#: includes/sanitizers/class-amp-core-theme-sanitizer.php:2183
+msgid "On"
+msgstr "上"
+
+#: includes/sanitizers/class-amp-core-theme-sanitizer.php:2182
+msgid "Off"
+msgstr "离开"
+
+#. translators: %s: On/Off
+#: includes/sanitizers/class-amp-core-theme-sanitizer.php:2181
+msgid "Dark Mode: %s"
+msgstr "暗模式：%s"
+
+#: src/Admin/SiteHealth.php:469
+msgid "A page caching plugin was not detected."
+msgstr "未检测到页面缓存插件。"
+
+#: src/Admin/SiteHealth.php:466
+msgid "A page caching plugin was detected."
+msgstr "检测到页面缓存插件。"
+
+#. translators: Placeholder is number of caching headers
+#: src/Admin/SiteHealth.php:453
+msgid "There was %d client caching response header detected:"
+msgid_plural "There were %d client caching response headers detected:"
+msgstr[0] "检测到 %d 个客户端缓存响应标头："
+
+#: src/Admin/SiteHealth.php:448
+msgid "No client caching response headers were detected."
+msgstr "未检测到客户端缓存响应标头。"
+
+#. translators: %d is the response time in milliseconds
+#: src/Admin/SiteHealth.php:441
+msgid "Median server response time was %1$s milliseconds. It should be less than %2$s milliseconds."
+msgstr "服务器响应时间中位数为 %1$s 毫秒。它应该小于 %2$s 毫秒。"
+
+#. translators: %d is the response time in milliseconds
+#: src/Admin/SiteHealth.php:434
+msgid "Median server response time was %1$s milliseconds. This is less than the %2$s millisecond threshold."
+msgstr "服务器响应时间中位数为 %1$s 毫秒。这小于 %2$s 毫秒阈值。"
+
+#: src/Admin/SiteHealth.php:427
+msgid "Server response time could not be determined. Verify that loopback requests are working."
+msgstr "无法确定服务器响应时间。验证环回请求是否正常工作。"
+
+#: src/Admin/SiteHealth.php:419
+msgid "Page caching is detected but the server response time is still slow"
+msgstr "检测到页面缓存但服务器响应时间仍然很慢"
+
+#: src/Admin/SiteHealth.php:417
+msgid "Page caching is not detected and the server response time is slow"
+msgstr "未检测到页面缓存，服务器响应时间慢"
+
+#: src/Admin/SiteHealth.php:412
+msgid "Page caching is detected and the server response time is good"
+msgstr "检测到页面缓存，服务器响应时间良好"
+
+#: src/Admin/SiteHealth.php:408
+msgid "Page caching is not detected but the server response time is OK"
+msgstr "未检测到页面缓存但服务器响应时间正常"
+
+#: src/Admin/SiteHealth.php:395
+msgid "Unable to detect the presence of page caching"
+msgstr "无法检测到页面缓存的存在"
+
+#: src/Admin/SiteHealth.php:389
+msgid "Page caching is detected by looking for an active page caching plugin as well as making three requests to the homepage and looking for one or more of the following HTTP client caching response headers:"
+msgstr "通过查找活动页面缓存插件以及向主页发出三个请求并查找以下一个或多个 HTTP 客户端缓存响应标头来检测页面缓存："
+
+#: includes/sanitizers/class-amp-accessibility-sanitizer.php:156
+msgid "Skip to content"
+msgstr "跳到内容"
+
+#: src/Validation/URLValidationRESTController.php:329
+msgid "The URL for AMP support."
+msgstr "AMP 支持的 URL。"
+
+#: src/Validation/ScannableURLsRestController.php:274
+msgid "Whether the Validated URL post is stale."
+msgstr "验证的 URL 帖子是否过时。"
+
+#: src/Validation/ScannableURLsRestController.php:268
+msgid "Validation errors for validated URL if previously scanned."
+msgstr "如果之前扫描过，则验证 URL 的验证错误。"
+
+#: src/Validation/ScannableURLsRestController.php:253
+msgid "Validated URL post if previously scanned."
+msgstr "如果之前扫描过，则经过验证的 URL 帖子。"
+
+#: src/Validation/ScannableURLsRestController.php:247
+msgid "Label"
+msgstr "标签"
+
+#: src/Validation/ScannableURLsRestController.php:234
+msgid "AMP URL"
+msgstr "AMP 网址"
+
+#: src/Validation/ScannableURLsRestController.php:114
+msgid "Sorry, you are not allowed to access validation data."
+msgstr "抱歉，您无权访问验证数据。"
+
+#: src/Validation/ScannableURLsRestController.php:92
+msgid "Indicates whether to force Standard template mode."
+msgstr "指示是否强制标准模板模式。"
+
+#: src/Validation/ScannableURLProvider.php:219
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: src/Validation/ScannableURLProvider.php:211
+msgid "Date Archive"
+msgstr "日期存档"
+
+#: src/Validation/ScannableURLProvider.php:200
+msgid "Author Archive"
+msgstr "作者档案"
+
+#: src/Support/SupportRESTController.php:111 assets/js/amp-support.js:4
+msgid "Failed to send support request. Please try again later."
+msgstr "未能发送支持请求。请稍后再试。"
+
+#: src/Sandboxing.php:268
+msgid "Sandboxing level: Strict (3)"
+msgstr "沙盒级别：严格 (3)"
+
+#: src/Sandboxing.php:264
+msgid "Sandboxing level: Moderate (2)"
+msgstr "沙盒级别：中等 (2)"
+
+#: src/Sandboxing.php:260
+msgid "Sandboxing level: Loose (1)"
+msgstr "沙盒级别：松散 (1)"
+
+#: src/Admin/UserRESTEndpointExtension.php:59
+msgid "The template mode for which the Review panel on the Settings screen was dismissed by a user."
+msgstr "用户关闭“设置”屏幕上的“审阅”面板的模板模式。"
+
+#: src/Admin/SupportScreen.php:168 src/Admin/SupportScreen.php:169
+msgid "Support"
+msgstr "支持"
+
+#: src/Admin/SupportLink.php:123 src/Admin/SupportLink.php:151
+#: assets/js/amp-block-validation.js:4
+msgid "Get Support"
+msgstr "得到支持"
+
+#: src/Admin/SupportLink.php:86 src/Admin/SupportLink.php:177
+msgid "Get support"
+msgstr "得到支持"
+
+#: src/Admin/SiteHealth.php:720
+msgctxt "persistent object cache service"
+msgid "APCu"
+msgstr "亚太铜"
+
+#: src/Admin/SiteHealth.php:711
+msgctxt "persistent object cache service"
+msgid "Memcached"
+msgstr "内存缓存"
+
+#: src/Admin/SiteHealth.php:706
+msgctxt "persistent object cache service"
+msgid "Redis"
+msgstr "雷迪斯"
+
+#: src/Admin/SiteHealth.php:487
+msgid "Learn more about page caching"
+msgstr "了解有关页面缓存的更多信息"
+
+#. translators: 1 is error message, 2 is error code
+#: src/Admin/SiteHealth.php:399
+msgid "Unable to detect page caching due to possible loopback request problem. Please verify that the loopback request test is passing. Error: %1$s (Code: %2$s)"
+msgstr "由于可能的环回请求问题，无法检测页面缓存。请验证环回请求测试是否通过。错误：%1$s（代码：%2$s）"
+
+#: src/Admin/SiteHealth.php:387
+msgid "The AMP plugin performs at its best when page caching is enabled. This is because the additional optimizations performed require additional server processing time, and page caching ensures that responses are served quickly."
+msgstr "启用页面缓存时，AMP 插件会发挥最佳性能。这是因为执行的额外优化需要额外的服务器处理时间，而页面缓存可确保快速提供响应。"
+
+#: src/Admin/SiteHealth.php:327
+msgid "Persistent object caching is not enabled, but page caching was detected"
+msgstr "未启用持久对象缓存，但检测到页面缓存"
+
+#: src/Admin/SiteHealth.php:316
+msgid "Please check with your host for what persistent caching services are available."
+msgstr "请与您的主机核实哪些持久缓存服务可用。"
+
+#: src/Admin/SiteHealth.php:306
+msgid "(link goes to Add Plugins screen)."
+msgid_plural "(links go to Add Plugins screen)."
+msgstr[0] "（链接转到添加插件屏幕）。"
+
+#: src/Admin/SiteHealth.php:285
+msgid "During the test, we found the following object caching service may be available on your server:"
+msgid_plural "During the test, we found the following object caching services may be available on your server:"
+msgstr[0] "（链接转到添加插件屏幕）。在测试过程中，我们发现您的服务器上可能提供以下对象缓存服务："
+
+#: src/Admin/SiteHealth.php:270
+msgid "Since page caching was detected, the need for persistent object caching is lessened. However, it still remains a best practice."
+msgstr "（链接转到添加插件屏幕）。在测试过程中，我们发现您的服务器上可能提供以下对象缓存服务：由于检测到页面缓存，因此减少了对持久对象缓存的需求。但是，它仍然是最佳实践。"
+
+#: src/Admin/SiteHealth.php:266
+msgid "The AMP plugin performs at its best when persistent object cache is enabled. Persistent object caching is used to more effectively store image dimensions and parsed CSS using a caching backend rather than using the options table in the database."
+msgstr "启用持久对象缓存时，AMP 插件会发挥最佳性能。持久对象缓存用于更有效地存储图像尺寸和使用缓存后端解析的 CSS，而不是使用数据库中的选项表。"
+
+#: src/Admin/SiteHealth.php:230
+msgid "Page caching"
+msgstr "页面缓存"
+
+#: src/Admin/AmpPlugins.php:325
+msgid "Visit site"
+msgstr "访问网站"
+
+#. translators: %s: Plugin name
+#: src/Admin/AmpPlugins.php:323
+msgid "Site link of %s"
+msgstr "%s 的站点链接"
+
+#: src/Admin/AmpPlugins.php:245 src/Admin/AmpPlugins.php:350
+#: src/Admin/AmpThemes.php:285 assets/js/amp-theme-install.js:2
+msgid "AMP Compatible"
+msgstr "AMP 兼容"
+
+#. translators: %s is attribute name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3373
+msgid "Event handler attribute %s encountered"
+msgstr "遇到事件处理程序属性 %s"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3368
+msgid "Custom inline script encountered"
+msgstr "遇到自定义内联脚本"
+
+#. translators: %s is script basename
+#: includes/validation/class-amp-validation-error-taxonomy.php:3363
+msgid "Custom external script %s encountered"
+msgstr "遇到自定义外部脚本 %s"
+
+#. translators: %1$s is 'POST', %2$s is 'action-xhr'
+#: includes/validation/class-amp-validation-error-taxonomy.php:3355
+msgid "Native %1$s form has %2$s attribute."
+msgstr "本机 %1$s 表单具有 %2$s 属性。"
+
+#. Description of the plugin
+msgid "An easier path to great Page Experience for everyone. Powered by AMP. <em class=\"amp-deletion-notice\"><strong>Uninstall Note:</strong> To control whether all data from this plugin is deleted at uninstallation, first activate the plugin, go to the Other section on the Settings screen, and set the “Delete plugin data at uninstall” toggle.</em>"
+msgstr "为每个人提供出色页面体验的更简单途径。由 AMP 提供支持。<em class=\"amp-deletion-notice\"><strong>卸载注意：</strong>要控制是否在卸载时删除此插件的所有数据，首先激活插件，转到设置屏幕上的其他部分，然后设置“卸载时删除插件数据”切换。</em>"
+
+#. translators: %s is the URL being redirected to.
+#: includes/validation/class-amp-validation-manager.php:2230
+msgid "Unable to validate a URL on another site. Attempted to validate: %s"
+msgstr "无法验证另一个站点上的 URL。尝试验证：%s"
 
 #: templates/header-bar.php:27
 msgid "Site icon"
@@ -30,6 +357,12 @@ msgstr "必须启用 JavaScript 才能使用此页。"
 msgid "Check your connection and open your browser console to see if there are any error messages. You may share them on the <a href=\"%s\" target=\"_blank\" rel=\"noreferrer noopener\">support forum</a>."
 msgstr "检查您的连接并打开浏览器控制台以查看是否有任何错误消息。您可以将其分享到<a href=\"%s\" target=\"_blank\" rel=\"noreferrer noopener\">支持论坛</a>。"
 
+#: src/LoadingError.php:37 assets/js/amp-onboarding-wizard.js:1
+#: assets/js/amp-settings.js:8 assets/js/amp-site-scan-notice.js:1
+#: assets/js/amp-support.js:6
+msgid "Something went wrong."
+msgstr "出现了问题。"
+
 #: src/LoadingError.php:29
 msgid "Loading"
 msgstr "加载"
@@ -38,42 +371,42 @@ msgstr "加载"
 msgid "https://wordpress.org/support/plugin/amp/"
 msgstr "https://wordpress.org/support/plugin/amp/"
 
-#. translators: %s is count of functions
-#: src/Admin/SiteHealth.php:792
-msgid "There is %s undefined cURL multi function"
-msgid_plural "There are %s undefined cURL multi functions"
-msgstr[0] "有%s个未定义的函数"
-
 #. translators: %s is the AMP support forum URL.
 #: src/DevTools/ErrorPage.php:276
 msgid "If you get stuck, you may want to share any details in a new topic on the plugin's <a href=\"%s\" target=\"_blank\" rel=\"noreferrer noopener\">support forum</a>."
 msgstr "如果遇到问题，您可能想在插件的<a href=\"%s\" target=\"_blank\" rel=\"noreferrer noopener\">支持论坛</a>上分享新主题中的任何详细信息。"
 
-#. translators: %1$s: the URL, %2$d: the HTTP status code, %3$s: the HTTP
-#. status message
-#: includes/sanitizers/class-amp-style-sanitizer.php:1609
-msgid "Failed to fetch: %1$s (HTTP %2$d: %3$s)"
-msgstr "获取失败：%1$s（HTTP %2$d：%3$s）"
+#. translators: %s is count of functions
+#: src/Admin/SiteHealth.php:816
+msgid "There is %s undefined cURL multi function"
+msgid_plural "There are %s undefined cURL multi functions"
+msgstr[0] "有%s个未定义的函数"
 
 #: src/Editor/EditorSupport.php:67
 msgid "AMP functionality is not available since your version of the Block Editor is too old. Please either update WordPress core to the latest version or activate the Gutenberg plugin."
 msgstr "AMP 功能不可用，因为您的区块编辑器版本太旧。请将 WordPress 核心更新到最新版本或激活 Gutenberg 插件。"
 
-#: includes/amp-helper-functions.php:2137
-#: includes/amp-helper-functions.php:2159
-#: includes/amp-helper-functions.php:2181
+#: includes/templates/amp-enabled-classic-editor-toggle.php:32
+msgid "Your version of WordPress is too old to manage whether AMP is enabled. Please upgrade."
+msgstr "您的 WordPress 版本太旧，无法管理是否启用了 AMP。请升级。"
+
+#. translators: %1$s: the URL, %2$d: the HTTP status code, %3$s: the HTTP
+#. status message
+#: includes/sanitizers/class-amp-style-sanitizer.php:1608
+msgid "Failed to fetch: %1$s (HTTP %2$d: %3$s)"
+msgstr "获取失败：%1$s（HTTP %2$d：%3$s）"
+
+#: includes/amp-helper-functions.php:2080
+#: includes/amp-helper-functions.php:2102
+#: includes/amp-helper-functions.php:2124
 msgid "Function cannot be called before services are registered."
 msgstr "在注册服务之前不能调用函数。"
 
-#: includes/amp-helper-functions.php:2135
-#: includes/amp-helper-functions.php:2157
-#: includes/amp-helper-functions.php:2179
+#: includes/amp-helper-functions.php:2078
+#: includes/amp-helper-functions.php:2100
+#: includes/amp-helper-functions.php:2122
 msgid "Function called while AMP is disabled via `amp_is_enabled` filter."
 msgstr "通过 `amp_is_enabled` 过滤器禁用 AMP 时调用的函数。"
-
-#: src/Validation/URLValidationRESTController.php:132
-msgid "Invalid post ID."
-msgstr "文章ID无效。"
 
 #: src/Validation/URLValidationRESTController.php:324
 msgid "The URL where validation errors can be reviewed."
@@ -94,6 +427,10 @@ msgstr "抱歉，您无权访问适用于 WordPress 的 AMP 插件的开发工�
 #: src/Validation/URLValidationRESTController.php:141
 msgid "AMP is not supported on post."
 msgstr "AMP 不支持post"
+
+#: src/Validation/URLValidationRESTController.php:132
+msgid "Invalid post ID."
+msgstr "文章ID无效。"
 
 #: src/Validation/URLValidationRESTController.php:93
 msgid "Preview nonce."
@@ -117,15 +454,53 @@ msgid "WordPress core"
 msgstr "WordPress 核心"
 
 #. translators: %1$s is the value of the slug
-#: src/Admin/SiteHealth.php:743
+#: src/Admin/SiteHealth.php:767
 msgid "Your AMP slug (%s) is defined early so you're good to go!"
 msgstr "您的 AMP slug (%s) 已提前定义，因此您可以开始使用了！"
 
 #. translators: %1$s is the value of the slug, %2$s is the constant name, %3$s
 #. is the filter name
-#: src/Admin/SiteHealth.php:734
+#: src/Admin/SiteHealth.php:758
 msgid "Your AMP slug (%1$s) is defined late, most likely in the theme via the %2$s filter or %3$s constant. Make sure this is being defined in a plugin at the top level so it happens before %4$s. While a late-defined AMP slug will still work, it requires extra work to make the slug available earlier in WordPress execution by storing it in an option."
 msgstr "您的 AMP slug (%1$s) 定义较晚，很可能通过 %2$s 过滤器或 %3$s 常量在主题中定义。 确保这是在顶级插件中定义的，因此它发生在 %4$s 之前。 虽然后期定义的 AMP slug 仍然可以工作，但需要额外的工作才能通过将其存储在选项中来使 slug 在 WordPress 执行中更早可用。"
+
+#. translators: %s is 'plugins_loaded'
+#: src/Admin/SiteHealth.php:750
+msgid "For best results, the AMP slug (query var) should be available early in WordPress's execution flow, specifically before the %s action occurs (at priority 4). This slug is used to construct the paired AMP URLs."
+msgstr "为获得最佳结果，AMP slug（查询变量）应在 WordPress 执行流程的早期可用，特别是在 %s 操作发生之前（优先级为 4）。此 slug 用于构建配对的 AMP URL。"
+
+#: src/Admin/SiteHealth.php:746
+msgid "The AMP slug (query var) was defined early"
+msgstr "AMP slug（查询变量）定义太早"
+
+#: src/Admin/SiteHealth.php:745
+msgid "The AMP slug (query var) was defined late"
+msgstr "AMP slug（查询变量）定义太晚"
+
+#: src/Admin/SiteHealth.php:189
+msgid "AMP slug (query var) definition timing"
+msgstr "AMP slug（查询变量）定义时间"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2954
+#: includes/validation/class-amp-validation-error-taxonomy.php:1704
+msgid "Copy to clipboard"
+msgstr "复制到剪贴板"
+
+#: includes/validation/class-amp-validation-manager.php:551
+msgid "The requested URL is not an AMP page."
+msgstr "请求的 URL 不是 AMP 页面。"
+
+#: includes/validation/class-amp-validation-manager.php:548
+msgid "The requested URL is not an AMP page. AMP may have been disabled for the URL. If so, you can forget the Validated URL."
+msgstr "请求的 URL 不是 AMP 页面。如果 AMP 被禁用，您可以忘记验证的 URL。"
+
+#: includes/class-amp-theme-support.php:1906
+msgid "The requested URL did not result in an AMP page being rendered."
+msgstr "请求的 URL 未能呈现 AMP 页面。"
+
+#: includes/embeds/class-amp-instagram-embed-handler.php:203
+msgid "View on Instagram"
+msgstr "在Instagram上查看"
 
 #: includes/embeds/class-amp-base-embed-handler.php:219
 #: includes/embeds/class-amp-base-embed-handler.php:236
@@ -133,51 +508,13 @@ msgstr "您的 AMP slug (%1$s) 定义较晚，很可能通过 %2$s 过滤器或 
 msgid "See more"
 msgstr "查看更多"
 
-#: includes/embeds/class-amp-instagram-embed-handler.php:203
-msgid "View on Instagram"
-msgstr "在Instagram上查看"
-
-#: includes/class-amp-theme-support.php:1938
-msgid "The requested URL did not result in an AMP page being rendered."
-msgstr "请求的 URL 未能呈现 AMP 页面。"
-
-#: includes/validation/class-amp-validation-manager.php:548
-msgid "The requested URL is not an AMP page. AMP may have been disabled for the URL. If so, you can forget the Validated URL."
-msgstr "请求的 URL 不是 AMP 页面。如果 AMP 被禁用，您可以忘记验证的 URL。"
-
-#: includes/validation/class-amp-validation-manager.php:551
-msgid "The requested URL is not an AMP page."
-msgstr "请求的 URL 不是 AMP 页面。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2954
-#: includes/validation/class-amp-validation-error-taxonomy.php:1704
-msgid "Copy to clipboard"
-msgstr "复制到剪贴板"
-
-#: src/Admin/SiteHealth.php:190
-msgid "AMP slug (query var) definition timing"
-msgstr "AMP slug（查询变量）定义时间"
-
-#: src/Admin/SiteHealth.php:721
-msgid "The AMP slug (query var) was defined late"
-msgstr "AMP slug（查询变量）定义太晚"
-
-#: src/Admin/SiteHealth.php:722
-msgid "The AMP slug (query var) was defined early"
-msgstr "AMP slug（查询变量）定义太早"
-
-#. translators: %s is 'plugins_loaded'
-#: src/Admin/SiteHealth.php:726
-msgid "For best results, the AMP slug (query var) should be available early in WordPress's execution flow, specifically before the %s action occurs (at priority 4). This slug is used to construct the paired AMP URLs."
-msgstr "为获得最佳结果，AMP slug（查询变量）应在 WordPress 执行流程的早期可用，特别是在 %s 操作发生之前（优先级为 4）。此 slug 用于构建配对的 AMP URL。"
+#: includes/admin/class-amp-post-meta-box.php:440
+msgid "The post data could not be successfully retrieved."
+msgstr "无法成功获取文章数据。"
 
 #: src/Admin/PluginRowMeta.php:52
 msgid "Leave review"
 msgstr "发表评价"
-
-#: includes/admin/class-amp-post-meta-box.php:440
-msgid "The post data could not be successfully retrieved."
-msgstr "无法成功获取文章数据。"
 
 #: includes/amp-helper-functions.php:450
 msgid "The function was called too early (before the plugins_loaded action) to determine the plugin source."
@@ -188,7 +525,7 @@ msgid "WordPress is not currently doing any hook."
 msgstr "WordPress目前没有做任何挂钩操作。"
 
 #. translators: %s is the invalid attribute value
-#: includes/validation/class-amp-validation-error-taxonomy.php:3314
+#: includes/validation/class-amp-validation-error-taxonomy.php:3319
 msgid "Invalid or missing value for attribute %s"
 msgstr "属性值 %s无效或缺失"
 
@@ -206,40 +543,45 @@ msgstr "标为已检查"
 msgid "Calling this function before the %1$s action means it will not have access to %2$s and the queried object to determine if it is an AMP response, thus neither the %3$s filter nor the AMP enabled toggle will be considered."
 msgstr "在%1$s操作之前调用此函数意味着该函数将无法访问%2$s和查询的对象来确定它是否是AMP响应，因此将不会考虑%3$s过滤和启用AMP切换。"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3409
+#. translators: 1: amp_is_available function, 2: amp_is_request function, 3:
+#. is_amp_endpoint function
+#: includes/amp-helper-functions.php:408
+msgid "%1$s (or %2$s, formerly %3$s) was called too early and so it will not work properly."
+msgstr "%1$s （或者 %2$s，以前称为 %3$s）的调用时机过早，因此无法正常工作。"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3469
+msgid "Duplicate dimensions"
+msgstr "重复的尺寸"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3414
 msgid "Class name"
 msgstr "类名"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3078
+#: includes/validation/class-amp-validation-error-taxonomy.php:3412
+msgid "CSS selector"
+msgstr "CSS选择器"
+
+#. translators: %1$s is the attribute name, %2$s is the tag name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3295
+msgid "Multiple image candidates with the same width or pixel density found in attribute %1$s in tag %2$s"
+msgstr "在标签 %2$s 的属性 %1$s 中找到具有相同宽度或像素密度的多个备选图像"
+
+#. translators: %s is the attribute name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3254
+msgid "The attribute %s is set to an invalid value"
+msgstr "为属性 %s 设置的值无效"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3083
 msgid "Disallowed class name"
 msgstr "不允许的类名"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3076
+#: includes/validation/class-amp-validation-error-taxonomy.php:3081
 msgid "Illegal CSS selector"
 msgstr "不合规的 CSS 选择器"
 
 #: includes/validation/class-amp-validated-url-post-type.php:163
 msgid "All Validated URLs"
 msgstr "所有已验证的 URL"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3407
-msgid "CSS selector"
-msgstr "CSS选择器"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3464
-msgid "Duplicate dimensions"
-msgstr "重复的尺寸"
-
-#. translators: %s is the attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3249
-msgid "The attribute %s is set to an invalid value"
-msgstr "为属性 %s 设置的值无效"
-
-#. translators: 1: amp_is_available function, 2: amp_is_request function, 3:
-#. is_amp_endpoint function
-#: includes/amp-helper-functions.php:408
-msgid "%1$s (or %2$s, formerly %3$s) was called too early and so it will not work properly."
-msgstr "%1$s （或者 %2$s，以前称为 %3$s）的调用时机过早，因此无法正常工作。"
 
 #. translators: placeholder is the slug of the theme
 #: includes/amp-helper-functions.php:447 src/DevTools/ErrorPage.php:315
@@ -264,16 +606,15 @@ msgstr "无法显示默认的阅读器主题，因为似乎有一个插件覆盖
 msgid "The request for reader themes from WordPress.org resulted in an invalid response. Check your Site Health to confirm that your site can communicate with WordPress.org. Otherwise, please try again later or contact your host."
 msgstr "WordPress.org 对阅读器主题的请求导致响应无效。 请检查您站点的运行情况，确认您的站点可以与 WordPress.org 通信。 否则，请稍后重试，或联系您的托管服务提供商。"
 
-#. translators: %1$s is the attribute name, %2$s is the tag name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3290
-msgid "Multiple image candidates with the same width or pixel density found in attribute %1$s in tag %2$s"
-msgstr "在标签 %2$s 的属性 %1$s 中找到具有相同宽度或像素密度的多个备选图像"
-
-#: includes/class-amp-theme-support.php:1797
+#: includes/class-amp-theme-support.php:1765
 msgid "Go to non-AMP version"
 msgstr "转到非 AMP 版本"
 
-#: includes/class-amp-theme-support.php:1775
+#: includes/class-amp-theme-support.php:1744
+msgid "A PHP error occurred while trying to prepare the AMP response. This may not be caused by the AMP plugin but by some other active plugin or the current theme. You will need to review the error details to determine the source of the error."
+msgstr "尝试准备AMP响应时发生PHP错误。这可能不是由AMP插件而是由当前激活的主题或其他插件引起的。您需要查看错误详细信息以确定错误来源。"
+
+#: includes/class-amp-theme-support.php:1743
 msgid "Failed to prepare AMP page"
 msgstr "准备AMP页面失败"
 
@@ -281,22 +622,9 @@ msgstr "准备AMP页面失败"
 msgid "The exact details of the error are hidden for security reasons. To learn more about this error, enable the WordPress debugging display (by setting both <code>WP_DEBUG</code> and <code>WP_DEBUG_DISPLAY</code> to <code>true</code>), or look into the PHP error log. Learn more about <a href=\"https://wordpress.org/support/article/debugging-in-wordpress/\">Debugging in WordPress</a>."
 msgstr "出于安全原因，错误的具体细节已隐藏。 如需进一步了解此错误，请启用 WordPress 调试显示（方法是将 <code>WP_DEBUG</code> 和 <code>WP_DEBUG_DISPLAY</code> 设置为 <code>true</code>），或者查看 PHP 错误日志。 了解有关<a href=\"https://wordpress.org/support/article/debugging-in-wordpress/\">在 WordPress 中执行调试</a>的更多信息。"
 
-#: includes/class-amp-theme-support.php:1776
-msgid "A PHP error occurred while trying to prepare the AMP response. This may not be caused by the AMP plugin but by some other active plugin or the current theme. You will need to review the error details to determine the source of the error."
-msgstr "尝试准备AMP响应时发生PHP错误。这可能不是由AMP插件而是由当前激活的主题或其他插件引起的。您需要查看错误详细信息以确定错误来源。"
-
-#: src/Admin/ReaderThemes.php:247 assets/js/amp-settings.js:19
+#: src/Admin/ReaderThemes.php:247 assets/js/amp-settings.js:11
 msgid "Error:"
 msgstr "错误："
-
-#: includes/admin/class-amp-template-customizer.php:555
-msgctxt "theme"
-msgid "Import"
-msgstr "导入"
-
-#: includes/admin/class-amp-template-customizer.php:554
-msgid "Import settings"
-msgstr "导入设置"
 
 #: includes/admin/class-amp-post-meta-box.php:588
 msgid "The AMP enabled status failed to be updated."
@@ -305,6 +633,11 @@ msgstr "AMP启用状态无法更新。"
 #: includes/admin/class-amp-post-meta-box.php:571
 msgid "Insufficient permissions to change whether AMP is enabled."
 msgstr "没有足够的权限来更改是否启用AMP。"
+
+#. translators: %s: The name of the post type.
+#: includes/admin/class-amp-post-meta-box.php:561
+msgid "AMP is not supported for the \"%s\" post type."
+msgstr "\"%s\" 文章类型不支持AMP。"
 
 #. translators: %s is a link to the AMP settings screen
 #: includes/admin/class-amp-post-meta-box.php:432
@@ -320,6 +653,15 @@ msgstr "没有<a href=\"%s\" target=\"_blank\">受支持的模板</a>。"
 msgid "You can import some settings from the primary Active theme into the corresponding Reader theme settings."
 msgstr "您可以将一些设置从激活的主题导入到相应的阅读器主题中。"
 
+#: includes/admin/class-amp-template-customizer.php:555
+msgctxt "theme"
+msgid "Import"
+msgstr "导入"
+
+#: includes/admin/class-amp-template-customizer.php:554
+msgid "Import settings"
+msgstr "导入设置"
+
 #. translators: placeholder is URL to non-AMP Customizer.
 #: includes/admin/class-amp-template-customizer.php:374
 msgid "You are customizing the AMP version of your site. <a href=\"%s\">Customize non-AMP version</a>."
@@ -330,16 +672,18 @@ msgstr "您正在自定义站点的AMP版本。<a href=\"%s\">自定义非AMP版
 msgid "While <a href=\"%1$s\" target=\"_blank\">AMP</a> works well on both desktop and mobile pages, your site is <a href=\"%2$s\" target=\"_blank\">currently configured</a> in Reader mode to serve AMP pages to mobile visitors. These settings customize the experience for these users."
 msgstr "虽然 <a href=\"%1$s\" target=\"_blank\">AMP</a> 在桌面端和移动端页面上均可正常运行，但您的站点<a href=\"%2$s\" target=\"_blank\">当前已配置</a>为阅读器模式，以便为移动端访客提供 AMP 页面。 这些设置可定制这些用户的体验。"
 
-#. translators: %s: The name of the post type.
-#: includes/admin/class-amp-post-meta-box.php:561
-msgid "AMP is not supported for the \"%s\" post type."
-msgstr "\"%s\" 文章类型不支持AMP。"
+#. translators: %s is WP_DEBUG_DISPLAY
+#: includes/validation/class-amp-validation-manager.php:2557
+msgid "Alternatively, you may enable %s to show the error details below."
+msgstr "您还可以启用 %s，以在下面显示错误详细信息。"
 
-#. translators: %s the total count of unreviewed validation errors
-#: includes/validation/class-amp-validation-manager.php:2134
-msgid "%s kept"
-msgid_plural "%s kept"
-msgstr[0] "%s 已保留"
+#: includes/validation/class-amp-validation-manager.php:2555
+msgid "The error details appear below."
+msgstr "错误详细信息显示在下面。"
+
+#: includes/validation/class-amp-validation-manager.php:2553
+msgid "A PHP fatal error occurred while validating the URL. This may indicate either a bug in theme/plugin code or it may be due to an issue in the AMP plugin itself."
+msgstr "验证 URL 时发生 PHP 致命错误。 这可能表明主题/插件代码中存在错误，也可能是 AMP 插件本身存在问题。"
 
 #. translators: %s is total count of validation errors
 #: includes/validation/class-amp-validation-manager.php:2156
@@ -348,49 +692,42 @@ msgid_plural "%s issues:"
 msgstr[0] "%s 问题："
 
 #. translators: %s the total count of unreviewed validation errors
+#: includes/validation/class-amp-validation-manager.php:2134
+msgid "%s kept"
+msgid_plural "%s kept"
+msgstr[0] "%s 已保留"
+
+#. translators: %s the total count of unreviewed validation errors
 #: includes/validation/class-amp-validation-manager.php:2112
 msgid "%s unreviewed"
 msgid_plural "%s unreviewed"
 msgstr[0] "%s 未检查"
 
-#: includes/validation/class-amp-validation-manager.php:2557
-msgid "The error details appear below."
-msgstr "错误详细信息显示在下面。"
+#: includes/validation/class-amp-validation-manager.php:462
+msgid "View with AMP disabled"
+msgstr "在禁用 AMP 的情况下查看"
 
 #: includes/validation/class-amp-validation-manager.php:431
 msgid "Validate URL"
 msgstr "已验证URL"
 
-#: includes/validation/class-amp-validation-manager.php:462
-msgid "View with AMP disabled"
-msgstr "在禁用 AMP 的情况下查看"
-
-#: includes/validation/class-amp-validation-manager.php:2555
-msgid "A PHP fatal error occurred while validating the URL. This may indicate either a bug in theme/plugin code or it may be due to an issue in the AMP plugin itself."
-msgstr "验证 URL 时发生 PHP 致命错误。 这可能表明主题/插件代码中存在错误，也可能是 AMP 插件本身存在问题。"
-
-#. translators: %s is WP_DEBUG_DISPLAY
-#: includes/validation/class-amp-validation-manager.php:2559
-msgid "Alternatively, you may enable %s to show the error details below."
-msgstr "您还可以启用 %s，以在下面显示错误详细信息。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3493
+#: includes/validation/class-amp-validation-error-taxonomy.php:3498
 msgid "Unreviewed"
 msgstr "未审阅"
 
 #. translators: %1$s is the layout, %2$s is the tag
-#: includes/validation/class-amp-validation-error-taxonomy.php:3342
+#: includes/validation/class-amp-validation-error-taxonomy.php:3347
 msgid "The specified layout %1$s is not supported by tag %2$s."
 msgstr "标签 %2$s 不支持指定的布局 %1$s。"
 
 #. translators: %1$s is the layout, %2$s is the tag
-#: includes/validation/class-amp-validation-error-taxonomy.php:3334
+#: includes/validation/class-amp-validation-error-taxonomy.php:3339
 msgid "The implied layout %1$s is not supported by tag %2$s."
 msgstr "标签 %2$s 不支持隐式布局 %1$s。"
 
 #. translators: %1$s is the element name, %2$s is the attribute name 'width',
 #. %3$s is the attribute name 'height'
-#: includes/validation/class-amp-validation-error-taxonomy.php:3325
+#: includes/validation/class-amp-validation-error-taxonomy.php:3330
 msgid "Incomplete layout attributes specified for tag %1$s. For example, provide attributes %2$s and %3$s"
 msgstr "为标签 %1$s 指定的布局属性不完整。 例如，提供属性 %2$s 和 %3$s"
 
@@ -404,6 +741,12 @@ msgstr "如果所有无效的标记均已&#8220;移除&#8221;，该页面将用�
 #: includes/validation/class-amp-validation-error-taxonomy.php:2136
 msgid "AMP does not allow the use of JS %1$s tags unless they are for loading <a href=\"%2$s\">AMP components</a>, which are added automatically by the AMP plugin. For any page to be served as AMP, all invalid script tags must be removed from the page. Instead of custom or third-party JS, please consider using AMP components and functionality such as <a href=\"%6$s\">%7$s</a> and <a href=\"%4$s\">actions and events</a> (as opposed to JS event handler attributes like %5$s). Some custom JS can be added if encapsulated in the <a href=\"%8$s\">%9$s</a>. Learn more about <a href=\"%3$s\">how AMP works</a>."
 msgstr "AMP 不允许使用 JS %1$s 标签，除非它们用于加载由 AMP 插件自动添加的 <a href=\"%2$s\">AMP 组件</a>。要将任何页面用作 AMP，必须从页面中删除所有无效的脚本标签。而不是自定义或第三方JS，请考虑使用AMP组件和功能， <a href=\"%6$s\">%7$s</a> 如 <a href=\"%4$s\">actions and events</a> （而不是S事件处理器属性等 %5$s ）。如果封装在<a href=\"%8$s\">%9$s</a>中，则可以添加一些自定义JS。了解更多有关 <a href=\"%3$s\">AMP 工作原理</a>。"
+
+#. translators: %s is number of errors accepted
+#: includes/validation/class-amp-validation-error-taxonomy.php:1569
+msgid "Deleted %s instance of validation errors."
+msgid_plural "Deleted %s instances of validation errors."
+msgstr[0] "已删除%s个验证错误实例。"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1420
 msgctxt "terms"
@@ -435,12 +778,6 @@ msgctxt "terms"
 msgid "With unreviewed errors"
 msgstr "带有未检查的错误"
 
-#. translators: %s is number of errors accepted
-#: includes/validation/class-amp-validation-error-taxonomy.php:1569
-msgid "Deleted %s instance of validation errors."
-msgid_plural "Deleted %s instances of validation errors."
-msgstr[0] "已删除%s个验证错误实例。"
-
 #. translators: placeholder is URL to recheck the post
 #: includes/validation/class-amp-validated-url-post-type.php:2433
 msgid "Stylesheet information for this URL is no longer available. Such data is automatically deleted after a week to reduce database storage. It is of little value to store long-term given that it becomes stale as themes and plugins are updated. To obtain the latest stylesheet information, <a href=\"%s\">recheck this URL</a>."
@@ -454,26 +791,51 @@ msgstr "AMP已禁用，因为其中保留了一些无效的标记。 要想使�
 msgid "For each instance of invalid markup, determine whether it can be safely removed or it needs to be kept. You can change the Markup Status (Removed or Kept) and click the Preview Changes button to see its impact on the page. Once the proper action has been taken (Remove or Keep), you can toggle the checkbox the instance as Reviewed."
 msgstr "对于无效标记的实例，确定是否可以安全地删除标记或需要保留他们。您可以更改标记状态（已删除或保留），然后单击\"预览更改\"按钮以查看其对页面的影响。采取正确操作后（删除或保留），您可以将该复选框切换为\"已审\"。"
 
+#: includes/validation/class-amp-validated-url-post-type.php:2305
+msgid "Invalid markup not reviewed"
+msgstr "无效的标记未审核"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2290
+msgid "Plugins have been updated since these results were obtained."
+msgstr "自获得这些结果以来，插件已更新。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2287
+msgid "The theme has changed since these results were obtained."
+msgstr "在获得这些结果之后，主题已更改。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2284
+msgid "The theme and plugins have changed since these results were obtained."
+msgstr "自获得这些结果以来，主题和插件已更改。"
+
 #: includes/validation/class-amp-validated-url-post-type.php:1902
 msgid "Location:"
 msgstr "位置:"
 
+#: includes/validation/class-amp-validated-url-post-type.php:1829
+msgid "There are no validated URLs with this validation error. Would you like to delete it?"
+msgstr "没有带有此验证错误的已验证 URL。 是否要将其删除？"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1465
+msgctxt "CSS usage not available"
+msgid "n/a"
+msgstr "n/a"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1389
+msgid "Confirm that the action being taken on the invalid markup (causing a validation error) has been seen and approved."
+msgstr "确认已查看并批准了对无效标记（导致验证错误的标记）执行的操作。"
+
 #: includes/validation/class-amp-validated-url-post-type.php:1384
 #: includes/validation/class-amp-validated-url-post-type.php:1388
-#: includes/validation/class-amp-validation-error-taxonomy.php:3491
+#: includes/validation/class-amp-validation-error-taxonomy.php:3496
 #: assets/js/amp-block-validation.js:12
 msgid "Reviewed"
 msgstr "已审阅"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2305
-msgid "Invalid markup not reviewed"
-msgstr "无效的标记未审核"
 
 #: includes/validation/class-amp-validated-url-post-type.php:212
 msgid "AMP DevTools"
 msgstr "AMP开发工具"
 
-#: includes/class-amp-theme-support.php:2167
+#: includes/class-amp-theme-support.php:2135
 msgid "Redirecting since AMP version not available."
 msgstr "AMP版本不可用，正在重定向。"
 
@@ -496,7 +858,7 @@ msgid "The AMP Reader theme %1$s cannot be found. Your site is currently falling
 msgstr "找不到AMP阅读器主题 %1$s。 您的站点目前正在回退，以便为 AMP 页面使用旧模板。 请<a href=\"%2$s\">重新选择</a>所需的阅读器主题。"
 
 #. translators: %s: $post
-#: includes/amp-helper-functions.php:1511
+#: includes/amp-helper-functions.php:1463
 msgid "The %s argument is deprecated."
 msgstr "%s 参数已弃用。"
 
@@ -506,34 +868,31 @@ msgstr "%s 参数已弃用。"
 msgid "Removal of %1$s link should be done by removing %2$s from the %3$s action at %4$s."
 msgstr "%1$s 链接的移除应该通过从 %4$s 的 %3$s 操作中移除 %2$s 来实现。"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2284
-msgid "The theme and plugins have changed since these results were obtained."
-msgstr "自获得这些结果以来，主题和插件已更改。"
+#. translators: 1: amp_is_enabled filter name, 2: plugins_loaded action
+#: includes/amp-helper-functions.php:280
+msgid "Filter for \"%1$s\" added too late. To disable AMP, this filter must be added before the \"%2$s\" action."
+msgstr "针对“%1$s”的过滤器的添加时机过晚。 要禁用 AMP，必须在执行“%2$s”操作之前添加此过滤器。"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2287
-msgid "The theme has changed since these results were obtained."
-msgstr "在获得这些结果之后，主题已更改。"
+#: src/ReaderThemeLoader.php:259 src/ReaderThemeLoader.php:271
+msgctxt "prefix for theme card in list"
+msgid "Reader:"
+msgstr "阅读器："
 
-#: includes/validation/class-amp-validated-url-post-type.php:1829
-msgid "There are no validated URLs with this validation error. Would you like to delete it?"
-msgstr "没有带有此验证错误的已验证 URL。 是否要将其删除？"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1389
-msgid "Confirm that the action being taken on the invalid markup (causing a validation error) has been seen and approved."
-msgstr "确认已查看并批准了对无效标记（导致验证错误的标记）执行的操作。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2290
-msgid "Plugins have been updated since these results were obtained."
-msgstr "自获得这些结果以来，插件已更新。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1465
-msgctxt "CSS usage not available"
-msgid "n/a"
-msgstr "n/a"
-
-#: src/ReaderThemeLoader.php:240 assets/js/amp-onboarding-wizard.js:22
+#: src/ReaderThemeLoader.php:240 assets/js/amp-onboarding-wizard.js:13
 msgid "Customize"
 msgstr "自定义"
+
+#. translators: placeholder is link to AMP settings screen
+#: src/ReaderThemeLoader.php:186
+msgid "This has been <a href=\"%s\">selected</a> as the AMP Reader theme."
+msgstr "已被<a href=\"%s\">选为</a> AMP 阅读器主题。"
+
+#. translators: text is describing validation issue(s)
+#: includes/validation/class-amp-validation-manager.php:2103
+#: src/PluginSuppression.php:290
+msgid "unreviewed"
+msgid_plural "all unreviewed"
+msgstr[0] "未审阅"
 
 #. translators: text is describing validation issue(s)
 #: includes/validation/class-amp-validation-manager.php:2146
@@ -549,35 +908,9 @@ msgid "kept"
 msgid_plural "all kept"
 msgstr[0] "保持"
 
-#. translators: text is describing validation issue(s)
-#: includes/validation/class-amp-validation-manager.php:2103
-#: src/PluginSuppression.php:290
-msgid "unreviewed"
-msgid_plural "all unreviewed"
-msgstr[0] "未审阅"
-
-#. translators: 1: amp_is_enabled filter name, 2: plugins_loaded action
-#: includes/amp-helper-functions.php:280
-msgid "Filter for \"%1$s\" added too late. To disable AMP, this filter must be added before the \"%2$s\" action."
-msgstr "针对“%1$s”的过滤器的添加时机过晚。 要禁用 AMP，必须在执行“%2$s”操作之前添加此过滤器。"
-
-#: src/ReaderThemeLoader.php:259 src/ReaderThemeLoader.php:271
-msgctxt "prefix for theme card in list"
-msgid "Reader:"
-msgstr "阅读器："
-
-#. translators: placeholder is link to AMP settings screen
-#: src/ReaderThemeLoader.php:186
-msgid "This has been <a href=\"%s\">selected</a> as the AMP Reader theme."
-msgstr "已被<a href=\"%s\">选为</a> AMP 阅读器主题。"
-
 #: src/PluginSuppression.php:289
 msgid "removed"
 msgstr "已移除"
-
-#: src/MobileRedirection.php:606
-msgid "Go to mobile version"
-msgstr "转到手机版"
 
 #. translators: %1 is whether validation error is 'removed' or 'kept', %2 is
 #. whether validation error is 'reviewed' or 'unreviewed'
@@ -585,20 +918,24 @@ msgstr "转到手机版"
 msgid "Invalid markup causing the validation error is %1$s and %2$s. See all validated URL(s) with this validation error."
 msgstr "导致验证错误的无效标记是“%1$s”和“%2$s”。 查看包含此验证错误的所有已验证 URL。"
 
-#: src/MobileRedirection.php:661
+#: src/MobileRedirection.php:645
 msgid "This link is not applicable in this context. It remains here for preview purposes only."
 msgstr "此链接不适用于该语境， 此处仅保留供预览。"
 
-#: src/MobileRedirection.php:602
+#: src/MobileRedirection.php:590
+msgid "Go to mobile version"
+msgstr "转到手机版"
+
+#: src/MobileRedirection.php:586
 msgid "Exit mobile version"
 msgstr "退出移动版"
 
 #: includes/options/class-amp-reader-theme-rest-controller.php:67
-#: src/Cli/OptionCommand.php:340 src/OptionsRESTController.php:153
+#: src/Cli/OptionCommand.php:341 src/OptionsRESTController.php:153
 msgid "Sorry, you are not allowed to manage options for the AMP plugin for WordPress."
 msgstr "抱歉，您没有权限管理 WordPress 的 AMP 插件的选项。"
 
-#: src/DevTools/UserAccess.php:224
+#: src/DevTools/UserAccess.php:228
 msgid "Sorry, the current user is not allowed to make this change."
 msgstr "抱歉，不允许当前用户执行此更改。"
 
@@ -606,7 +943,7 @@ msgstr "抱歉，不允许当前用户执行此更改。"
 msgid "This presumes you have some experience coding with HTML, CSS, JS, and PHP."
 msgstr "此操作假设您具有 HTML、CSS、JS 和 PHP 的编码经验。"
 
-#: src/DevTools/UserAccess.php:180 assets/js/amp-settings.js:35
+#: src/DevTools/UserAccess.php:180 assets/js/amp-settings.js:27
 msgid "Enable AMP developer tools to surface validation errors when editing posts and viewing the site."
 msgstr "启用 AMP 开发人员工具，以在编辑文章和查看站点时显示验证错误。"
 
@@ -618,7 +955,7 @@ msgstr "AMP 开发人员工具"
 msgid "Whether the user has enabled dev tools."
 msgstr "用户是否启用了开发工具。"
 
-#: src/Admin/SiteHealth.php:1084
+#: src/Admin/SiteHealth.php:1108
 msgid "Additionally, AMP requires HTTPS for most components to work properly, including iframes and videos."
 msgstr "此外，AMP 需要使用 HTTPS 才能保证大多数组件（包括 iframe 和视频）正常工作。"
 
@@ -644,26 +981,26 @@ msgstr "插件中包含的原始模板所具有的自定义选项有限。"
 msgid "AMP Legacy"
 msgstr "AMP Legacy"
 
-#: src/Admin/SiteHealth.php:941
+#: src/Admin/SiteHealth.php:965
 msgid "The operation failed, please reload the page and try again."
 msgstr "操作失败，请重新加载页面并重试。"
 
-#: src/Admin/SiteHealth.php:940
+#: src/Admin/SiteHealth.php:964
 msgid "Reload the page to refresh the diagnostic check."
 msgstr "重新加载页面以刷新诊断检查。"
 
-#: src/Admin/SiteHealth.php:939
+#: src/Admin/SiteHealth.php:963
 msgid "Re-enable transient caching"
 msgstr "重新启用瞬态缓存"
 
-#: src/Admin/SiteHealth.php:936
+#: src/Admin/SiteHealth.php:960
 msgid "If you have identified and eliminated the cause of the variable CSS, please re-enable transient caching to reduce the amount of CSS processing required to generate AMP pages."
 msgstr "如果您已确定并消除了导致 CSS 可变的原因，请重新启用瞬态缓存，以减少生成 AMP 页面所需的 CSS 处理量。"
 
 #. translators: %1$s is wp_options table, %2$s is the
 #. amp_css_transient_monitoring_threshold filter, and %3$s is the
 #. amp_css_transient_monitoring_sampling_range filter
-#: src/Admin/SiteHealth.php:921
+#: src/Admin/SiteHealth.php:945
 msgid "On sites which have highly variable CSS and are not using a persistent object cache, the transient caching of parsed stylesheets may be automatically disabled in order to prevent a site from filling up its <code>%1$s</code> table with too many transients. Examples of highly variable CSS include dynamically-generated style rules with selectors referring to user IDs or elements being given randomized background colors. There are two filters which may be used to configure the CSS transient monitoring: <code>%2$s</code> and <code>%3$s</code>."
 msgstr "在具有高度可变 CSS 且不使用持久对象缓存的站点上，可能会自动禁用解析样式表的瞬态缓存，以防止站点用太多的 <code>%1$s</code> 瞬态填充其表。高度可变 CSS 的示例包括动态生成的样式规则，选择器引用用户 ID 或元素被随机化背景颜色。有两个筛选器可用于配置 CSS 瞬态监视： <code>%2$s</code> 和 <code>%3$s</code> 。"
 
@@ -671,16 +1008,16 @@ msgstr "在具有高度可变 CSS 且不使用持久对象缓存的站点上，�
 msgid "Paired Browsing"
 msgstr "成对浏览"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3462
-msgid "Message"
-msgstr "消息"
-
-#: src/Admin/SiteHealth.php:1053
+#: src/Admin/SiteHealth.php:1077
 msgid "Calculated time series for monitoring the stylesheet caching"
 msgstr "用于监控样式表缓存的计算时间序列"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:3467
+msgid "Message"
+msgstr "消息"
+
 #. translators: %1$s: the fetched URL, %2$s the error message that was returned
-#: includes/sanitizers/class-amp-style-sanitizer.php:1602
+#: includes/sanitizers/class-amp-style-sanitizer.php:1601
 msgid "Failed to fetch: %1$s (%2$s)"
 msgstr "未能获取：%1$s (%2$s)"
 
@@ -688,92 +1025,19 @@ msgstr "未能获取：%1$s (%2$s)"
 msgid "AMP Paired Browsing:"
 msgstr "AMP配对浏览："
 
-#: includes/class-amp-theme-support.php:2141
+#: includes/class-amp-theme-support.php:2109
 msgid "AMP optimization could not be completed due to the following:"
 msgstr "由于以下原因，无法完成AMP优化："
 
-#: includes/validation/class-amp-validation-manager.php:2575
+#: includes/validation/class-amp-validation-manager.php:2573
 msgid "URL validation failed due to unexpected JSON in AMP validation response."
 msgstr "由于AMP验证响应中出现意外的JSON，URL 验证失败。"
 
-#: includes/validation/class-amp-validation-manager.php:2566
+#: includes/validation/class-amp-validation-manager.php:2564
 msgid "URL validation failed due to the AMP validation request not returning JSON data. This may be due to a PHP fatal error occurring."
 msgstr "由于AMP验证请求未返回JSON数据，此URL验证失败。 原因可能是发生了PHP致命错误。"
 
-#: includes/validation/class-amp-validation-manager.php:2334
-msgid "Too many redirects."
-msgstr "重定向过多。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3431
-msgid "Invalid property value"
-msgstr "无效的属性值"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3428
-msgid "Property name"
-msgstr "属性名称"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2179
-msgid "Error code"
-msgstr "错误代码"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1887
-msgid "Syntax error"
-msgstr "语法错误"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2768
-msgid "CSS Code"
-msgstr "CSS 代码"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2615
-msgid "Markup"
-msgstr "标记"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2614
-msgid "Included"
-msgstr "包括"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2612
-msgid "Percent"
-msgstr "百分比"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2609
-msgid "Final"
-msgstr "最终"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2604
-msgid "Original"
-msgstr "原始"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3104
-#: includes/validation/class-amp-validation-error-taxonomy.php:3423
-msgid "Invalid property"
-msgstr "无效的属性"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3096
-msgid "Invalid JSON"
-msgstr "无效的 JSON"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3089
-msgid "Illegal text content"
-msgstr "非法文字内容"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3027
-msgid "Invalid inline script"
-msgstr "无效的内联脚本"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1881
-msgid "Invalid or malformed JSON"
-msgstr "无效或格式错误的 JSON"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2613
-msgid "Priority"
-msgstr "优先级"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2256
-msgid "required value"
-msgstr "必需值"
-
-#: includes/validation/class-amp-validation-manager.php:2529
+#: includes/validation/class-amp-validation-manager.php:2527
 msgid "Unable to validate URL. A white screen of death was encountered which is likely due to a PHP fatal error."
 msgstr "无法验证 URL。 发生了白屏死机，原因可能是出现了PHP致命错误。"
 
@@ -781,6 +1045,10 @@ msgstr "无法验证 URL。 发生了白屏死机，原因可能是出现了PHP�
 #: includes/validation/class-amp-validation-manager.php:2476
 msgid "Please check your server PHP error logs; to do this you may need to <a href=\"%1$s\" target=\"_blank\">enable</a> %2$s."
 msgstr "请检查您的服务器PHP错误日志；为此，您可能需要<a href=\"%1$s\" target=\"_blank\">启用</a> %2$s。"
+
+#: includes/validation/class-amp-validation-manager.php:2334
+msgid "Too many redirects."
+msgstr "重定向过多。"
 
 #: includes/validation/class-amp-validation-manager.php:1760
 msgid "Nonce authentication failed."
@@ -790,119 +1058,181 @@ msgstr "Nonce 身份验证失败。"
 msgid "Preview link expired. Please try again."
 msgstr "预览链接已过期， 请重试。"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3458
+#: includes/validation/class-amp-validation-error-taxonomy.php:3463
 msgid "Required attribute value"
 msgstr "必需的属性值"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3454
+#: includes/validation/class-amp-validation-error-taxonomy.php:3459
 msgid "Required ancestor element"
 msgstr "必需的上级元素"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3452
+#: includes/validation/class-amp-validation-error-taxonomy.php:3457
 msgid "Disallowed ancestor element"
 msgstr "不允许的上级元素"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3450
+#: includes/validation/class-amp-validation-error-taxonomy.php:3455
 msgid "Required parent element"
 msgstr "必需的父元素"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3448
+#: includes/validation/class-amp-validation-error-taxonomy.php:3453
 msgid "Required minimum child count"
 msgstr "所需的最小子项计数"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3446
+#: includes/validation/class-amp-validation-error-taxonomy.php:3451
 msgid "Required child count"
 msgstr "所需的子项计数"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3444
+#: includes/validation/class-amp-validation-error-taxonomy.php:3449
 msgid "Children count"
 msgstr "子项计数"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3442
+#: includes/validation/class-amp-validation-error-taxonomy.php:3447
 msgid "First child tag"
 msgstr "第一个子标签"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3440
+#: includes/validation/class-amp-validation-error-taxonomy.php:3445
 msgid "Child tag"
 msgstr "子标签"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3438
+#: includes/validation/class-amp-validation-error-taxonomy.php:3443
 msgid "Missing attributes"
 msgstr "缺少属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3436
+#: includes/validation/class-amp-validation-error-taxonomy.php:3441
 msgid "Property value"
 msgstr "属性值"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3433
+#: includes/validation/class-amp-validation-error-taxonomy.php:3438
 msgid "Required property value"
 msgstr "必需的属性值"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3425
+#: includes/validation/class-amp-validation-error-taxonomy.php:3436
+msgid "Invalid property value"
+msgstr "无效的属性值"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3433
+msgid "Property name"
+msgstr "属性名称"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3430
 msgid "Missing property"
 msgstr "缺失的属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3411
+#: includes/validation/class-amp-validation-error-taxonomy.php:3416
 msgid "Mutually exclusive attributes"
 msgstr "互斥的属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3320
+#: includes/validation/class-amp-validation-error-taxonomy.php:3325
 msgid "Inconsistent units for width and height"
 msgstr "宽度和高度所用的单位不一致"
 
+#. translators: %1$s is the invalid attribute value, %2$s is the attribute name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3310
+msgid "Invalid value %1$s for attribute %2$s"
+msgstr "属性 %2$s 的值 %1$s 无效"
+
 #. translators: %1$s is attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3283
+#: includes/validation/class-amp-validation-error-taxonomy.php:3288
 msgid "Missing URL for attribute %s"
 msgstr "属性缺少 URL %s"
 
 #. translators: %1$s is the relative URL, %2$s is attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3275
+#: includes/validation/class-amp-validation-error-taxonomy.php:3280
 msgid "The relative URL %1$s for attribute %2$s is disallowed"
 msgstr "不允许属性 %2$s 的相对 URL %1$s"
 
+#. translators: %1$s is the invalid URL, %2$s is attribute name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3272
+msgid "Malformed URL %1$s for attribute %2$s"
+msgstr "属性 %2$s 的 URL %1$s 格式错误"
+
 #. translators: %1$s is the invalid protocol, %2$s is attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3259
+#: includes/validation/class-amp-validation-error-taxonomy.php:3264
 msgid "Invalid URL protocol %1$s for attribute %2$s"
 msgstr "属性 %2$s 的 URL 协议 %1$s 无效"
 
+#. translators: %1$s is the node name, %2$s is the required ancestor tag name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3242
+msgid "The tag %1$s may only appear as a descendant of tag %2$s"
+msgstr "标签 %1$s 只能作为标签 %2$s 的后代出现"
+
 #. translators: %1$s is the node name, %2$s is the disallowed ancestor tag name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3229
+#: includes/validation/class-amp-validation-error-taxonomy.php:3234
 msgid "The tag %1$s may not appear as a descendant of tag %2$s"
 msgstr "标签 %1$s 不能作为标签 %2$s 的后代出现"
 
 #. translators: %1$s is the node name, %2$s is parent name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3220
+#: includes/validation/class-amp-validation-error-taxonomy.php:3225
 msgid "The parent tag of tag %1$s cannot be %2$s"
 msgstr "标签 %1$s 的父标签不能为 %2$s"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3152
+#. translators: %1$s is the node name, %2$s is required child count
+#: includes/validation/class-amp-validation-error-taxonomy.php:3211
+msgid "Tag %1$s must have a minimum of %2$s child tag"
+msgid_plural "Tag %1$s must have a minimum of %2$s child tags"
+msgstr[0] "标签 %1$s 必须至少有 %2$s 个子标签"
+
+#. translators: %1$s is the node name, %2$s is required child count
+#: includes/validation/class-amp-validation-error-taxonomy.php:3196
+msgid "Tag %1$s must have %2$s child tag"
+msgid_plural "Tag %1$s must have %2$s child tags"
+msgstr[0] "标签 %1$s 必须有 %2$s 个子标签"
+
+#. translators: %1$s is the first child tag, %2$s is node name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3187
+msgid "Tag %1$s is disallowed as first child of tag %2$s"
+msgstr "标签 %1$s 不允许作为标签 %2$s 的第一个子标签"
+
+#. translators: %1$s is the child tag, %2$s is node name
+#: includes/validation/class-amp-validation-error-taxonomy.php:3179
+msgid "Tag %1$s is disallowed as child of tag %2$s"
+msgstr "标签 %1$s 不允许作为标签 %2$s 的子标签"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3157
 msgid "Missing at least one mandatory attribute"
 msgstr "至少缺少一项必需属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3149
+#: includes/validation/class-amp-validation-error-taxonomy.php:3154
 msgid "Missing exclusive mandatory attribute"
 msgstr "缺少互斥的必需属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3131
+#: includes/validation/class-amp-validation-error-taxonomy.php:3136
 msgid "Mutually exclusive attributes encountered"
 msgstr "存在互斥的属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3125
+#: includes/validation/class-amp-validation-error-taxonomy.php:3130
 msgid "Missing required attribute"
 msgstr "缺少必需属性"
 
 #. translators: %1$s is the property name, %2$s is the value for the property
-#: includes/validation/class-amp-validation-error-taxonomy.php:3118
+#: includes/validation/class-amp-validation-error-taxonomy.php:3123
 msgid "Invalid value for %1$s property: %2$s"
 msgstr "%1$s 属性的值无效：%2$s"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3110
+#: includes/validation/class-amp-validation-error-taxonomy.php:3115
 msgid "Missing required property"
 msgstr "缺少必需属性"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3067
+#: includes/validation/class-amp-validation-error-taxonomy.php:3109
+#: includes/validation/class-amp-validation-error-taxonomy.php:3428
+msgid "Invalid property"
+msgstr "无效的属性"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3101
+msgid "Invalid JSON"
+msgstr "无效的 JSON"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3094
+msgid "Illegal text content"
+msgstr "非法文字内容"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3072
 msgid "Stylesheet fetch error"
 msgstr "样式表提取错误"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3032
+msgid "Invalid inline script"
+msgstr "无效的内联脚本"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:2604
 msgid "Inline Text"
@@ -928,10 +1258,34 @@ msgstr "排队样式"
 msgid "Enqueued Script"
 msgstr "排队脚本"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:2256
+msgid "required value"
+msgstr "必需值"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2179
+msgid "Error code"
+msgstr "错误代码"
+
 #. translators: %s: UTF-8, a charset
 #: includes/validation/class-amp-validation-error-taxonomy.php:1891
 msgid "Malformed %s characters, possibly incorrectly encoded"
 msgstr "%s 字符格式错误，可能是编码错误"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1887
+msgid "Syntax error"
+msgstr "语法错误"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1884
+msgid "Control character error, possibly incorrectly encoded"
+msgstr "控制字符错误，可能是编码错误"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1881
+msgid "Invalid or malformed JSON"
+msgstr "无效或格式错误的 JSON"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1878
+msgid "The maximum stack depth has been exceeded"
+msgstr "已超过最大堆栈深度"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1875
 msgid "Expected JSON, got an empty value"
@@ -961,6 +1315,10 @@ msgstr "生成了选择器以提高针对重要属性的专用性，从而保留
 msgid "Selector generated to increase specificity so the cascade is preserved for properties moved from style attribute to CSS rules in style[amp-custom]."
 msgstr "生成了选择器以提高专用性，以便对标有 style[amp-custom] 标记从样式属性移到 CSS 规则的属性保留级联。"
 
+#: includes/validation/class-amp-validated-url-post-type.php:2768
+msgid "CSS Code"
+msgstr "CSS 代码"
+
 #: includes/validation/class-amp-validated-url-post-type.php:2751
 msgid "Stylesheet URL"
 msgstr "样式表URL"
@@ -973,6 +1331,10 @@ msgstr "原始标记"
 msgid "Stylesheet excluded due to exceeding CSS budget"
 msgstr "由于超出CSS预算，样式表已被排除"
 
+#: includes/validation/class-amp-validated-url-post-type.php:2705
+msgid "Stylesheet overruns CSS budget yet it is still included on page"
+msgstr "样式表超出了CSS预算，但仍包含在页面中"
+
 #: includes/validation/class-amp-validated-url-post-type.php:2702
 msgid "Stylesheet included"
 msgstr "包含的样式表"
@@ -981,78 +1343,72 @@ msgstr "包含的样式表"
 msgid "Stylesheet bytes of total CSS added to page"
 msgstr "已添加到页面的总CSS样式表字节数"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2705
-msgid "Stylesheet overruns CSS budget yet it is still included on page"
-msgstr "样式表超出了CSS预算，但仍包含在页面中"
-
-#. translators: %1$s is the node name, %2$s is required child count
-#: includes/validation/class-amp-validation-error-taxonomy.php:3206
-msgid "Tag %1$s must have a minimum of %2$s child tag"
-msgid_plural "Tag %1$s must have a minimum of %2$s child tags"
-msgstr[0] "标签 %1$s 必须至少有 %2$s 个子标签"
-
-#. translators: %1$s is the node name, %2$s is required child count
-#: includes/validation/class-amp-validation-error-taxonomy.php:3191
-msgid "Tag %1$s must have %2$s child tag"
-msgid_plural "Tag %1$s must have %2$s child tags"
-msgstr[0] "标签 %1$s 必须有 %2$s 个子标签"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1884
-msgid "Control character error, possibly incorrectly encoded"
-msgstr "控制字符错误，可能是编码错误"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1878
-msgid "The maximum stack depth has been exceeded"
-msgstr "已超过最大堆栈深度"
-
 #: includes/validation/class-amp-validated-url-post-type.php:2662
 msgid "Expand/collapse"
 msgstr "展开/折叠"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2615
+msgid "Markup"
+msgstr "标记"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2614
+msgid "Included"
+msgstr "包括"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2613
+msgid "Priority"
+msgstr "优先级"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2612
+msgid "Percent"
+msgstr "百分比"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2609
+msgid "Final"
+msgstr "最终"
 
 #: includes/validation/class-amp-validated-url-post-type.php:2607
 msgid "Minified"
 msgstr "精简后"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2593
-msgid "You are nearing the limit of the CSS budget. Once this limit is reached, stylesheets deemed of lesser priority will be excluded from the page. Please review the stylesheets below and determine if the current theme or a particular plugin is including excessive CSS."
-msgstr "您已接近 CSS 预算上限。 达到此上限后，页面中优先级较低的样式表将被排除。 请查看下方样式表，确定当前主题或特定插件是否包含过多 CSS。"
-
-#. translators: %1$s is the invalid attribute value, %2$s is the attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3305
-msgid "Invalid value %1$s for attribute %2$s"
-msgstr "属性 %2$s 的值 %1$s 无效"
-
-#. translators: %1$s is the invalid URL, %2$s is attribute name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3267
-msgid "Malformed URL %1$s for attribute %2$s"
-msgstr "属性 %2$s 的 URL %1$s 格式错误"
-
-#. translators: %1$s is the node name, %2$s is the required ancestor tag name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3237
-msgid "The tag %1$s may only appear as a descendant of tag %2$s"
-msgstr "标签 %1$s 只能作为标签 %2$s 的后代出现"
-
-#. translators: %1$s is the first child tag, %2$s is node name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3182
-msgid "Tag %1$s is disallowed as first child of tag %2$s"
-msgstr "标签 %1$s 不允许作为标签 %2$s 的第一个子标签"
-
-#. translators: %1$s is the child tag, %2$s is node name
-#: includes/validation/class-amp-validation-error-taxonomy.php:3174
-msgid "Tag %1$s is disallowed as child of tag %2$s"
-msgstr "标签 %1$s 不允许作为标签 %2$s 的子标签"
+#: includes/validation/class-amp-validated-url-post-type.php:2604
+msgid "Original"
+msgstr "原始"
 
 #: includes/validation/class-amp-validated-url-post-type.php:2602
 msgid "Order"
 msgstr "排序"
 
-#: src/Admin/SiteHealth.php:962
-msgid "Your server currently has the Xdebug PHP extension loaded"
-msgstr "您的服务器当前已加载Xdebug PHP扩展"
+#: includes/validation/class-amp-validated-url-post-type.php:2593
+msgid "You are nearing the limit of the CSS budget. Once this limit is reached, stylesheets deemed of lesser priority will be excluded from the page. Please review the stylesheets below and determine if the current theme or a particular plugin is including excessive CSS."
+msgstr "您已接近 CSS 预算上限。 达到此上限后，页面中优先级较低的样式表将被排除。 请查看下方样式表，确定当前主题或特定插件是否包含过多 CSS。"
 
-#: src/Admin/SiteHealth.php:973
-msgid "Your server currently does not have the Xdebug PHP extension loaded"
-msgstr "您的服务器当前未加载Xdebug PHP扩展"
+#: includes/validation/class-amp-validated-url-post-type.php:2587
+msgid "Please review the flagged stylesheets below and determine if the current theme or a particular plugin is including excessive CSS."
+msgstr "请查看下方标出的样式表，确定当前主题或特定插件是否包含过多 CSS。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2585
+msgid "You have exceeded the CSS budget. Stylesheets deemed of lesser priority have been excluded from the page."
+msgstr "您已超出 CSS 预算。 优先级较低的样式表已从页面中排除。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2583
+msgid "You have exceeded the CSS budget. The page will not be served as a valid AMP page."
+msgstr "您已超出 CSS 预算。 该页面将不会作为有效的 AMP 页面。"
+
+#. translators: %s is the number of stylesheets excluded
+#: includes/validation/class-amp-validated-url-post-type.php:2566
+msgid "Excluded minified CSS (%s stylesheet):"
+msgid_plural "Excluded minified CSS size (%s stylesheets):"
+msgstr[0] "已排除且经过精简的 CSS（%s 样式表）："
+
+#. translators: %s is max kilobytes
+#: includes/validation/class-amp-validated-url-post-type.php:2537
+msgid "Percentage of used CSS budget (%sKB):"
+msgstr "已使用的 CSS 预算百分比 (%sKB)："
+
+#: includes/validation/class-amp-validated-url-post-type.php:2524
+msgid "Total CSS size after minification:"
+msgstr "精简后的CSS总大小："
 
 #: includes/validation/class-amp-validated-url-post-type.php:2519
 #: includes/validation/class-amp-validated-url-post-type.php:2528
@@ -1071,123 +1427,42 @@ msgstr "B"
 msgid "bytes"
 msgstr "字节"
 
-#: includes/templates/amp-paired-browsing.php:50
-msgid "Exit"
-msgstr "退出"
-
-#: includes/templates/amp-paired-browsing.php:20
-msgid "Loading&#8230;"
-msgstr "加载中&#8230;"
-
-#. translators: %s is the number of stylesheets excluded
-#: includes/validation/class-amp-validated-url-post-type.php:2566
-msgid "Excluded minified CSS (%s stylesheet):"
-msgid_plural "Excluded minified CSS size (%s stylesheets):"
-msgstr[0] "已排除且经过精简的 CSS（%s 样式表）："
-
-#: includes/sanitizers/class-amp-style-sanitizer.php:3321
-#: includes/validation/class-amp-validated-url-post-type.php:1325
-msgid "CSS Usage"
-msgstr "CSS使用情况"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2204
-msgid "Stylesheets"
-msgstr "样式表"
+#: includes/validation/class-amp-validated-url-post-type.php:2515
+msgid "Total CSS size prior to minification:"
+msgstr "精简前的CSS总大小："
 
 #: includes/validation/class-amp-validated-url-post-type.php:2444
 msgid "Unable to retrieve data for stylesheets."
 msgstr "无法检索样式表的数据。"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2515
-msgid "Total CSS size prior to minification:"
-msgstr "精简前的CSS总大小："
+#: includes/validation/class-amp-validated-url-post-type.php:2204
+msgid "Stylesheets"
+msgstr "样式表"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2524
-msgid "Total CSS size after minification:"
-msgstr "精简后的CSS总大小："
+#: includes/sanitizers/class-amp-style-sanitizer.php:3320
+#: includes/validation/class-amp-validated-url-post-type.php:1325
+msgid "CSS Usage"
+msgstr "CSS使用情况"
+
+#: includes/templates/amp-paired-browsing.php:70 assets/js/amp-support.js:3
+msgid "AMP version"
+msgstr "AMP版本"
 
 #: includes/templates/amp-paired-browsing.php:61
 msgid "Non-AMP version"
 msgstr "非AMP版本"
 
-#: includes/templates/amp-paired-browsing.php:70 assets/js/amp-support.js:12
-msgid "AMP version"
-msgstr "AMP版本"
+#: includes/templates/amp-paired-browsing.php:51
+msgid "Go Back"
+msgstr "返回"
+
+#: includes/templates/amp-paired-browsing.php:50
+msgid "Exit"
+msgstr "退出"
 
 #: includes/templates/amp-paired-browsing.php:45
 msgid "The navigated URL is not available for paired browsing."
 msgstr "所导航的URL不可用于成对浏览。"
-
-#: includes/templates/amp-paired-browsing.php:25
-msgid "Skip to the non-AMP iframe"
-msgstr "跳转至非 AMP iframe"
-
-#: src/BackgroundTask/BackgroundTaskDeactivator.php:153
-msgid "Large site detected. Deactivation will leave orphaned scheduled events behind."
-msgstr "检测到大型站点。 如果停用此项，将会留下孤立的已计划事件。"
-
-#: src/Admin/SiteHealth.php:1129
-msgid "This option does not apply to Reader mode."
-msgstr "此选项不适用于阅读器模式。"
-
-#: src/Admin/SiteHealth.php:1116
-msgid "No template supported"
-msgstr "没有支持的模板"
-
-#: src/Admin/SiteHealth.php:1048
-msgid "Number of stylesheet transient cache entries"
-msgstr "样式表瞬态缓存条目数"
-
-#: src/Admin/SiteHealth.php:1043
-msgid "Sampling range for monitoring stylesheet caching"
-msgstr "用于监控样式表缓存的采样范围"
-
-#: src/Admin/SiteHealth.php:1038
-msgid "Threshold for monitoring stylesheet caching"
-msgstr "用于监控样式表缓存的阈值"
-
-#: src/Admin/SiteHealth.php:1033
-msgid "Transient caching for stylesheets disabled"
-msgstr "样式表的瞬态缓存已禁用"
-
-#: src/Admin/SiteHealth.php:1028
-msgid "Serve all templates as AMP?"
-msgstr "是否将所有模板用作 AMP？"
-
-#: src/Admin/SiteHealth.php:1023
-msgid "Templates enabled"
-msgstr "已启用模板"
-
-#: src/Admin/SiteHealth.php:1000
-msgid "Debugging information for the Official AMP Plugin for WordPress."
-msgstr "WordPress 官方 AMP 插件的调试信息。"
-
-#. translators: %s: the WP_DEBUG constant
-#: src/Admin/SiteHealth.php:970
-msgid "Please deactivate Xdebug to improve performance. Otherwise, you may enable %s to indicate that this site is currently under development or is undergoing debugging."
-msgstr "请停用 Xdebug 以提高性能。 除此之外，您还可以启用 %s，以表明该站点当前正在开发或正在调试。"
-
-#. translators: %s: the WP_DEBUG constant
-#: src/Admin/SiteHealth.php:965
-msgid "Nevertheless, %s is enabled which suggests that this site is currently under development or is undergoing debugging."
-msgstr "但 %s 已启用，表明该站点当前正在开发或正在调试。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2587
-msgid "Please review the flagged stylesheets below and determine if the current theme or a particular plugin is including excessive CSS."
-msgstr "请查看下方标出的样式表，确定当前主题或特定插件是否包含过多 CSS。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2585
-msgid "You have exceeded the CSS budget. Stylesheets deemed of lesser priority have been excluded from the page."
-msgstr "您已超出 CSS 预算。 优先级较低的样式表已从页面中排除。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2583
-msgid "You have exceeded the CSS budget. The page will not be served as a valid AMP page."
-msgstr "您已超出 CSS 预算。 该页面将不会作为有效的 AMP 页面。"
-
-#. translators: %s is max kilobytes
-#: includes/validation/class-amp-validated-url-post-type.php:2537
-msgid "Percentage of used CSS budget (%sKB):"
-msgstr "已使用的 CSS 预算百分比 (%sKB)："
 
 #: includes/templates/amp-paired-browsing.php:31
 msgid "Exit paired browsing onto the AMP version."
@@ -1201,85 +1476,164 @@ msgstr "退出成对浏览，进入非 AMP 版本。"
 msgid "Skip to the AMP iframe"
 msgstr "跳转至 AMP iframe"
 
-#: src/Admin/SiteHealth.php:959
+#: includes/templates/amp-paired-browsing.php:25
+msgid "Skip to the non-AMP iframe"
+msgstr "跳转至非 AMP iframe"
+
+#: includes/templates/amp-paired-browsing.php:20
+msgid "Loading&#8230;"
+msgstr "加载中&#8230;"
+
+#: src/BackgroundTask/BackgroundTaskDeactivator.php:153
+msgid "Large site detected. Deactivation will leave orphaned scheduled events behind."
+msgstr "检测到大型站点。 如果停用此项，将会留下孤立的已计划事件。"
+
+#: src/Admin/SiteHealth.php:1153
+msgid "This option does not apply to Reader mode."
+msgstr "此选项不适用于阅读器模式。"
+
+#: src/Admin/SiteHealth.php:1140
+msgid "No template supported"
+msgstr "没有支持的模板"
+
+#: src/Admin/SiteHealth.php:1072
+msgid "Number of stylesheet transient cache entries"
+msgstr "样式表瞬态缓存条目数"
+
+#: src/Admin/SiteHealth.php:1067
+msgid "Sampling range for monitoring stylesheet caching"
+msgstr "用于监控样式表缓存的采样范围"
+
+#: src/Admin/SiteHealth.php:1062
+msgid "Threshold for monitoring stylesheet caching"
+msgstr "用于监控样式表缓存的阈值"
+
+#: src/Admin/SiteHealth.php:1057
+msgid "Transient caching for stylesheets disabled"
+msgstr "样式表的瞬态缓存已禁用"
+
+#: src/Admin/SiteHealth.php:1052
+msgid "Serve all templates as AMP?"
+msgstr "是否将所有模板用作 AMP？"
+
+#: src/Admin/SiteHealth.php:1047
+msgid "Templates enabled"
+msgstr "已启用模板"
+
+#: src/Admin/SiteHealth.php:1024
+msgid "Debugging information for the Official AMP Plugin for WordPress."
+msgstr "WordPress 官方 AMP 插件的调试信息。"
+
+#: src/Admin/SiteHealth.php:997
+msgid "Your server currently does not have the Xdebug PHP extension loaded"
+msgstr "您的服务器当前未加载Xdebug PHP扩展"
+
+#. translators: %s: the WP_DEBUG constant
+#: src/Admin/SiteHealth.php:994
+msgid "Please deactivate Xdebug to improve performance. Otherwise, you may enable %s to indicate that this site is currently under development or is undergoing debugging."
+msgstr "请停用 Xdebug 以提高性能。 除此之外，您还可以启用 %s，以表明该站点当前正在开发或正在调试。"
+
+#. translators: %s: the WP_DEBUG constant
+#: src/Admin/SiteHealth.php:989
+msgid "Nevertheless, %s is enabled which suggests that this site is currently under development or is undergoing debugging."
+msgstr "但 %s 已启用，表明该站点当前正在开发或正在调试。"
+
+#: src/Admin/SiteHealth.php:986
+msgid "Your server currently has the Xdebug PHP extension loaded"
+msgstr "您的服务器当前已加载Xdebug PHP扩展"
+
+#: src/Admin/SiteHealth.php:983
 msgid "The Xdebug extension can cause some of the AMP plugin&#8217;s processes to time out depending on your system resources and configuration. It should not be enabled on a live site (production environment)."
 msgstr "Xdebug 扩展可能导致某些 AMP 插件的进程超时，具体取决于您的系统资源和配置。 不应在正在运行的站点（生产环境）中启用此扩展。"
 
-#: includes/templates/amp-paired-browsing.php:51
-msgid "Go Back"
-msgstr "返回"
+#: src/Admin/SiteHealth.php:934
+msgid "Transient caching of parsed stylesheets is enabled"
+msgstr "已解析样式表的瞬态缓存已启用"
 
-#: src/Admin/SiteHealth.php:776
-msgid "https://www.php.net/manual/en/book.curl.php"
-msgstr "https://www.php.net/manual/en/book.curl.php"
+#: src/Admin/SiteHealth.php:930
+msgid "Transient caching of parsed stylesheets is disabled"
+msgstr "已解析样式表的瞬态缓存已禁用"
 
-#: src/Admin/SiteHealth.php:902
+#: src/Admin/SiteHealth.php:926
 msgid "Transient caching of parsed stylesheets is not used due to external object cache"
 msgstr "由于启用了外部对象缓存，未使用已解析样式表的瞬态缓存"
 
 #. translators: %s: the ICU version
-#: src/Admin/SiteHealth.php:879
+#: src/Admin/SiteHealth.php:903
 msgid "The version of ICU (v%s) looks good"
 msgstr "ICU (v%s) 的版本看起来一切正常"
 
 #. translators: %s: the ICU version
-#: src/Admin/SiteHealth.php:875
+#: src/Admin/SiteHealth.php:899
 msgid "The version of ICU (v%s) is out of date"
 msgstr "ICU (v%s) 的版本已过期"
 
 #. translators: %s: the constant for the ICU version
-#: src/Admin/SiteHealth.php:871
+#: src/Admin/SiteHealth.php:895
 msgid "The ICU version is unknown, as the constant %s is not defined"
 msgstr "未定义常量 %s，ICU 版本未知"
 
-#: src/Admin/SiteHealth.php:861
+#: src/Admin/SiteHealth.php:885
 msgid "Learn more about ICU"
 msgstr "了解ICU的更多信息"
 
 #. translators: %s: the minimum recommended ICU version
-#: src/Admin/SiteHealth.php:854
+#: src/Admin/SiteHealth.php:878
 msgid "The version of ICU can affect how the intl extension runs. This extension is used to derive AMP Cache URLs for internationalized domain names (IDNs). The minimum recommended version of ICU is v%s."
 msgstr "ICU 的版本可能会影响 intl 扩展的运行方式。 此扩展用于派生国际化域名 (IDN) 的 AMP 缓存 URL。 推荐使用的最低 ICU 版本是 v%s。"
 
-#: src/Admin/SiteHealth.php:777
+#: src/Admin/SiteHealth.php:855
+msgid "The cURL multi functions are defined"
+msgstr "cURL multi函数已定义"
+
+#. translators: %1$s: the count of functions, %2$s: the name(s) of the cURL
+#. multi PHP function(s)
+#: src/Admin/SiteHealth.php:828
+msgid "The following %1$s cURL multi function is not defined: %2$s."
+msgid_plural "The following %1$s cURL multi functions are not defined: %2$s."
+msgstr[0] "未定义下列 %1$s cURL 多函数：%2$s。"
+
+#: src/Admin/SiteHealth.php:801
 msgid "Learn more about these functions"
 msgstr "详细了解这些函数"
 
-#: src/Admin/SiteHealth.php:773
+#: src/Admin/SiteHealth.php:800
+msgid "https://www.php.net/manual/en/book.curl.php"
+msgstr "https://www.php.net/manual/en/book.curl.php"
+
+#: src/Admin/SiteHealth.php:797
 msgid "The AMP plugin is able to more efficiently determine the dimensions of images lacking width or height by making parallel requests via cURL multi."
 msgstr "AMP插件可以通过cURL multi发出并行请求，从而更有效地确定缺少宽度或高度的图像的尺寸。"
 
-#: src/Admin/SiteHealth.php:322
+#: src/Admin/SiteHealth.php:331
 msgid "Persistent object caching is not enabled"
 msgstr "持久对象缓存未启用"
 
-#: src/Admin/SiteHealth.php:314
+#: src/Admin/SiteHealth.php:323
 msgid "Persistent object caching is enabled"
 msgstr "持久对象缓存已启用"
 
-#: src/Admin/SiteHealth.php:241
+#. translators: The accessibility text.
+#. translators: accessibility text
+#: src/Admin/AmpPlugins.php:326 src/Admin/SiteHealth.php:252
+#: src/Admin/SiteHealth.php:489 src/Admin/SiteHealth.php:803
+#: src/Admin/SiteHealth.php:887 assets/js/amp-block-editor.js:4
+#: assets/js/amp-onboarding-wizard.js:9 assets/js/amp-settings.js:28
+#: assets/js/amp-support.js:2 assets/js/amp-theme-install.js:1
+msgid "(opens in a new tab)"
+msgstr "（在新窗口中打开）"
+
+#: src/Admin/SiteHealth.php:250
 msgid "Learn more about persistent object caching"
 msgstr "了解有关持久对象缓存的更多信息"
 
-#: src/Admin/SiteHealth.php:211
+#: src/Admin/SiteHealth.php:212
 msgid "Xdebug extension"
 msgstr "Xdebug 扩展"
 
 #: src/Admin/SiteHealth.php:207
 msgid "Transient caching of stylesheets"
 msgstr "样式表的瞬态缓存"
-
-#: src/Admin/SiteHealth.php:184
-msgid "Persistent object cache"
-msgstr "持久对象缓存"
-
-#: src/Admin/SiteHealth.php:910
-msgid "Transient caching of parsed stylesheets is enabled"
-msgstr "已解析样式表的瞬态缓存已启用"
-
-#: src/Admin/SiteHealth.php:906
-msgid "Transient caching of parsed stylesheets is disabled"
-msgstr "已解析样式表的瞬态缓存已禁用"
 
 #: src/Admin/SiteHealth.php:201
 msgid "ICU version"
@@ -1289,38 +1643,21 @@ msgstr "ICU版本"
 msgid "cURL multi functions"
 msgstr "cURL multi 函数"
 
-#: src/Admin/SiteHealth.php:831
-msgid "The cURL multi functions are defined"
-msgstr "cURL multi函数已定义"
+#: src/Admin/SiteHealth.php:224
+msgid "Persistent object cache"
+msgstr "持久对象缓存"
 
-#. translators: %1$s: the count of functions, %2$s: the name(s) of the cURL
-#. multi PHP function(s)
-#: src/Admin/SiteHealth.php:804
-msgid "The following %1$s cURL multi function is not defined: %2$s."
-msgid_plural "The following %1$s cURL multi functions are not defined: %2$s."
-msgstr[0] "未定义下列 %1$s cURL 多函数：%2$s。"
-
-#. translators: The accessibility text.
-#. translators: accessibility text
-#: src/Admin/AmpPlugins.php:326 src/Admin/SiteHealth.php:243
-#: src/Admin/SiteHealth.php:465 src/Admin/SiteHealth.php:779
-#: src/Admin/SiteHealth.php:863 assets/js/amp-block-editor.js:4
-#: assets/js/amp-onboarding-wizard.js:18 assets/js/amp-settings.js:37
-#: assets/js/amp-support.js:11 assets/js/amp-theme-install.js:1
-msgid "(opens in a new tab)"
-msgstr "（在新窗口中打开）"
-
-#: includes/validation/class-amp-validation-manager.php:2520
+#: includes/validation/class-amp-validation-manager.php:2518
 msgid "Failed to fetch URL to validate."
 msgstr "未能获取用于验证的URL。"
 
 #. translators: %s is the URL to Site Health Info.
-#: includes/validation/class-amp-validation-manager.php:2501
+#: includes/validation/class-amp-validation-manager.php:2500
 msgid "Please include your <a href=\"%s\">Site Health Info</a>."
 msgstr "请提供您的<a href=\"%s\">站点健康信息</a>。"
 
 #. translators: %s is link to Site Health
-#: includes/validation/class-amp-validation-manager.php:2496
+#: includes/validation/class-amp-validation-manager.php:2494
 msgid "Please check your <a href=\"%s\">Site Health</a> to verify it can perform loopback requests."
 msgstr "请检查您的<a href=\"%s\">站点健康</a>，以确保它可以执行环回请求。"
 
@@ -1334,7 +1671,27 @@ msgstr "如果您遇到了困难，请在<a href=\"%1$s\">支持论坛</a>中搜
 msgid "Invalid Markup"
 msgstr "无效的标记"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3021
+#: includes/validation/class-amp-validation-error-taxonomy.php:3410
+msgid "CSS property"
+msgstr "CSS属性"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3103
+msgid "Illegal CSS !important property"
+msgstr "非法的CSS !important属性"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3075
+msgid "Illegal CSS property"
+msgstr "非法的CSS属性"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3070
+msgid "CSS parse error"
+msgstr "CSS解析错误"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3068
+msgid "Unrecognized CSS"
+msgstr "无法识别的CSS"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3026
 msgid "Invalid script"
 msgstr "无效的脚本"
 
@@ -1344,51 +1701,86 @@ msgid "%s byte"
 msgid_plural "%s bytes"
 msgstr[0] "%s 字节"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3405
-msgid "CSS property"
-msgstr "CSS属性"
+#. translators: %s: amp_supportable_templates
+#: includes/class-amp-theme-support.php:544
+msgid "An expected parent was not found. Did you filter %s to not honor the template hierarchy?"
+msgstr "找不到预期的父项。 您是否过滤了 %s，以保证不遵循模板层级？"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3065
-msgid "CSS parse error"
-msgstr "CSS解析错误"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3063
-msgid "Unrecognized CSS"
-msgstr "无法识别的CSS"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3098
-msgid "Illegal CSS !important property"
-msgstr "非法的CSS !important属性"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3070
-msgid "Illegal CSS property"
-msgstr "非法的CSS属性"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3413
+#: includes/validation/class-amp-validation-error-taxonomy.php:3418
 msgid "Text content"
 msgstr "文本内容"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3388
+#: includes/validation/class-amp-validation-error-taxonomy.php:3408
+msgid "Parent element"
+msgstr "父元素"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3405
+msgid "Node name"
+msgstr "节点名称"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3403
+msgid "Element name"
+msgstr "元素名称"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3401
+msgid "Attribute name"
+msgstr "属性名"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3395
+msgid "At-rule"
+msgstr "＠规则"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3393
 msgid "Code"
 msgstr "代码"
+
+#. translators: %s error code
+#: includes/validation/class-amp-validation-error-taxonomy.php:3379
+msgid "Unknown error (%s)"
+msgstr "未知错误 (%s)"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3064
+msgid "Duplicate element"
+msgstr "重复元素"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3048
+msgid "Invalid processing instruction"
+msgstr "无效的处理指令"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:2790
 msgid "Custom HTML"
 msgstr "自定义HTML"
+
+#. translators: %d is the hook priority
+#: includes/validation/class-amp-validation-error-taxonomy.php:2685
+msgid "(priority %d)"
+msgstr "（优先级 %d）"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:2660
 #: assets/js/amp-block-validation.js:12
 msgid "Core"
 msgstr "核心"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:2656
+msgid "Must-Use Plugin"
+msgstr "强制使用的插件"
+
 #: includes/validation/class-amp-validation-error-taxonomy.php:2652
-#: assets/js/amp-settings.js:25
+#: assets/js/amp-settings.js:17
 msgid "Plugin"
 msgstr "插件"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:2648
 msgid "Theme"
 msgstr "主题"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2631
+msgid "Action"
+msgstr "操作"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2629
+msgid "Filter"
+msgstr "筛选"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:2622
 msgid "Location"
@@ -1402,6 +1794,14 @@ msgstr "功能"
 msgid "Shortcode"
 msgstr "简码"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:2610
+msgid "Block Name"
+msgstr "区块名称"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2607
+msgid "Block Index"
+msgstr "区块索引"
+
 #: includes/validation/class-amp-validation-error-taxonomy.php:2584
 msgid "Post Type"
 msgstr "文章类型"
@@ -1410,65 +1810,9 @@ msgstr "文章类型"
 msgid "Post ID"
 msgstr "文章 ID"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3043
-msgid "Invalid processing instruction"
-msgstr "无效的处理指令"
-
-#. translators: %s: amp_supportable_templates
-#: includes/class-amp-theme-support.php:544
-msgid "An expected parent was not found. Did you filter %s to not honor the template hierarchy?"
-msgstr "找不到预期的父项。 您是否过滤了 %s，以保证不遵循模板层级？"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3403
-msgid "Parent element"
-msgstr "父元素"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3400
-msgid "Node name"
-msgstr "节点名称"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3398
-msgid "Element name"
-msgstr "元素名称"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3396
-msgid "Attribute name"
-msgstr "属性名"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3390
-msgid "At-rule"
-msgstr "＠规则"
-
-#. translators: %s error code
-#: includes/validation/class-amp-validation-error-taxonomy.php:3374
-msgid "Unknown error (%s)"
-msgstr "未知错误 (%s)"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3059
-msgid "Duplicate element"
-msgstr "重复元素"
-
-#. translators: %d is the hook priority
-#: includes/validation/class-amp-validation-error-taxonomy.php:2685
-msgid "(priority %d)"
-msgstr "（优先级 %d）"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2656
-msgid "Must-Use Plugin"
-msgstr "强制使用的插件"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2607
-msgid "Block Index"
-msgstr "区块索引"
-
-#. translators: 1: Documentation URL, 2: Documentation URL.
-#: includes/validation/class-amp-validation-error-taxonomy.php:2166
-msgid "AMP allows a specific set of elements and attributes on valid AMP pages. Learn about the <a href=\"%1$s\">AMP HTML specification</a>. If an element or attribute is not allowed in AMP, it must be removed for the page to be <a href=\"%2$s\">cached and eligible for prerendering</a>."
-msgstr "AMP允许在有效的AMP页面上使用一组特定的元素和属性。 了解<a href=\"%1$s\">AMP HTML规范</a>。 如果AMP中不允许使用某个元素或属性，则必须将其移除，以保证页面可以<a href=\"%2$s\">得到缓存并符合预呈现的条件</a>。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2610
-msgid "Block Name"
-msgstr "区块名称"
+#: includes/validation/class-amp-validation-error-taxonomy.php:2578
+msgid "Name"
+msgstr "名称"
 
 #. translators: %s: number of sources.
 #: includes/validation/class-amp-validation-error-taxonomy.php:2523
@@ -1476,17 +1820,10 @@ msgid "Source stack (%s)"
 msgid_plural "Source stack (%s)"
 msgstr[0] "源堆栈 (%s)"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:2631
-msgid "Action"
-msgstr "操作"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2578
-msgid "Name"
-msgstr "名称"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2629
-msgid "Filter"
-msgstr "筛选"
+#. translators: 1: Documentation URL, 2: Documentation URL.
+#: includes/validation/class-amp-validation-error-taxonomy.php:2166
+msgid "AMP allows a specific set of elements and attributes on valid AMP pages. Learn about the <a href=\"%1$s\">AMP HTML specification</a>. If an element or attribute is not allowed in AMP, it must be removed for the page to be <a href=\"%2$s\">cached and eligible for prerendering</a>."
+msgstr "AMP允许在有效的AMP页面上使用一组特定的元素和属性。 了解<a href=\"%1$s\">AMP HTML规范</a>。 如果AMP中不允许使用某个元素或属性，则必须将其移除，以保证页面可以<a href=\"%2$s\">得到缓存并符合预呈现的条件</a>。"
 
 #. translators: 1: Documentation URL, 2: Documentation URL, 3: !important
 #: includes/validation/class-amp-validation-error-taxonomy.php:2154
@@ -1501,23 +1838,8 @@ msgstr "信息"
 msgid "Misc"
 msgstr "杂项"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2951
-msgid "Keep"
-msgstr "保留"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1603
-msgid "Content"
-msgstr "内容"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1361
-#: includes/validation/class-amp-validated-url-post-type.php:1365
-#: includes/validation/class-amp-validation-error-taxonomy.php:890
-#: includes/validation/class-amp-validation-error-taxonomy.php:894
-msgid "Context"
-msgstr "上下文"
-
 #: includes/validation/class-amp-validation-error-taxonomy.php:1931
-#: includes/validation/class-amp-validation-error-taxonomy.php:3485
+#: includes/validation/class-amp-validation-error-taxonomy.php:3490
 #: assets/js/amp-block-validation.js:12
 msgid "Kept"
 msgstr "保持"
@@ -1526,10 +1848,11 @@ msgstr "保持"
 msgid "HTML element"
 msgstr "HTML 元素"
 
-#. translators: %s is the hook name
-#: includes/validation/class-amp-validated-url-post-type.php:1613
-msgid "Hook: %s"
-msgstr "钩子: %s"
+#. translators: %s is the number of validation errors cleared
+#: includes/validation/class-amp-validation-error-taxonomy.php:1592
+msgid "Cleared %s validation error for invalid markup that no longer occurs on the site."
+msgid_plural "Cleared %s validation errors for invalid markup that no longer occur on the site."
+msgstr[0] "清除了站点上不再发生的无效标记的%s验证错误。"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1511
 msgid "Invalid CSS"
@@ -1538,44 +1861,6 @@ msgstr "无效的CSS"
 #: includes/validation/class-amp-validation-error-taxonomy.php:1509
 msgid "With invalid CSS"
 msgstr "带有无效的CSS"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1484
-msgid "All types of invalid markup"
-msgstr "所有类型的无效标记"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1404
-msgid "Filter by markup status"
-msgstr "按标记状态过滤"
-
-#: includes/validation/class-amp-validated-url-post-type.php:3098
-msgid "AMP Validated URL"
-msgstr "AMP已验证URL"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2330
-msgid "AMP is enabled because no invalid markup is being kept."
-msgstr "AMP已启用，因为没有保留无效的标记。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1319
-#: includes/validation/class-amp-validated-url-post-type.php:1378
-#: includes/validation/class-amp-validation-error-taxonomy.php:884
-msgid "When invalid markup is removed it will not block a URL from being served as AMP; the validation error will be sanitized, where the offending markup is stripped from the response to ensure AMP validity. If invalid AMP markup is kept, then URLs is occurs on will not be served as AMP pages."
-msgstr "移除无效的标记后，它不会再阻止UR 用作AMP，因为验证错误将被清除，这会从响应中删除违规的标记以确保AMP的有效性。 如果保留了无效的AMP标记，则存在无效标记的 URL的页面将不会用作AMP页面。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1760
-msgid "The rechecked URL is free of non-removed invalid markup."
-msgid_plural "The rechecked URLs are free of non-removed invalid markup."
-msgstr[0] "重新检查的URL没有未删除的无效标记。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1752
-msgid "The rechecked URL still has remaining invalid markup kept."
-msgid_plural "The rechecked URLs still have remaining invalid markup kept."
-msgstr[0] "重新检查的URL仍保留着无效的标记。"
-
-#. translators: %s is the number of validation errors cleared
-#: includes/validation/class-amp-validation-error-taxonomy.php:1592
-msgid "Cleared %s validation error for invalid markup that no longer occurs on the site."
-msgid_plural "Cleared %s validation errors for invalid markup that no longer occur on the site."
-msgstr[0] "清除了站点上不再发生的无效标记的%s验证错误。"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1504
 msgid "Invalid JS"
@@ -1601,17 +1886,61 @@ msgstr "无效的HTML元素"
 msgid "With invalid HTML elements"
 msgstr "包含无效的HTML元素"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:1484
+msgid "All types of invalid markup"
+msgstr "所有类型的无效标记"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1404
+msgid "Filter by markup status"
+msgstr "按标记状态过滤"
+
+#: includes/validation/class-amp-validated-url-post-type.php:3098
+msgid "AMP Validated URL"
+msgstr "AMP已验证URL"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2330
+msgid "AMP is enabled because no invalid markup is being kept."
+msgstr "AMP已启用，因为没有保留无效的标记。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2951
+msgid "Keep"
+msgstr "保留"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1760
+msgid "The rechecked URL is free of non-removed invalid markup."
+msgid_plural "The rechecked URLs are free of non-removed invalid markup."
+msgstr[0] "重新检查的URL没有未删除的无效标记。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1752
+msgid "The rechecked URL still has remaining invalid markup kept."
+msgid_plural "The rechecked URLs still have remaining invalid markup kept."
+msgstr[0] "重新检查的URL仍保留着无效的标记。"
+
+#. translators: %s is the hook name
+#: includes/validation/class-amp-validated-url-post-type.php:1613
+msgid "Hook: %s"
+msgstr "钩子: %s"
+
 #: includes/validation/class-amp-validated-url-post-type.php:1607
 msgid "Excerpt"
 msgstr "摘要"
 
-#: includes/validation/class-amp-validated-url-post-type.php:646
-msgid "Invalid markup removed"
-msgstr "无效的标记已删除"
+#: includes/validation/class-amp-validated-url-post-type.php:1603
+msgid "Content"
+msgstr "内容"
 
-#: includes/validation/class-amp-validated-url-post-type.php:622
-msgid "Invalid markup kept"
-msgstr "保留无效的标记"
+#: includes/validation/class-amp-validated-url-post-type.php:1361
+#: includes/validation/class-amp-validated-url-post-type.php:1365
+#: includes/validation/class-amp-validation-error-taxonomy.php:890
+#: includes/validation/class-amp-validation-error-taxonomy.php:894
+msgid "Context"
+msgstr "上下文"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1319
+#: includes/validation/class-amp-validated-url-post-type.php:1378
+#: includes/validation/class-amp-validation-error-taxonomy.php:884
+msgid "When invalid markup is removed it will not block a URL from being served as AMP; the validation error will be sanitized, where the offending markup is stripped from the response to ensure AMP validity. If invalid AMP markup is kept, then URLs is occurs on will not be served as AMP pages."
+msgstr "移除无效的标记后，它不会再阻止UR 用作AMP，因为验证错误将被清除，这会从响应中删除违规的标记以确保AMP的有效性。 如果保留了无效的AMP标记，则存在无效标记的 URL的页面将不会用作AMP页面。"
 
 #: includes/validation/class-amp-validated-url-post-type.php:1314
 #: includes/validation/class-amp-validated-url-post-type.php:1318
@@ -1627,17 +1956,29 @@ msgstr "标记状态"
 msgid "All markup valid"
 msgstr "所有标记均有效"
 
+#: includes/validation/class-amp-validated-url-post-type.php:646
+msgid "Invalid markup removed"
+msgstr "无效的标记已删除"
+
 #. translators: %s is the count of new validation errors
 #: includes/validation/class-amp-validated-url-post-type.php:631
 msgid "%s validation error with removed markup is new"
 msgid_plural "%s validation errors with removed markup are new"
 msgstr[0] "%s 个带有已移除标记的验证错误为新错误"
 
+#: includes/validation/class-amp-validated-url-post-type.php:622
+msgid "Invalid markup kept"
+msgstr "保留无效的标记"
+
 #. translators: %s is the count of new validation errors
 #: includes/validation/class-amp-validated-url-post-type.php:608
 msgid "%s validation error with kept markup is new"
 msgid_plural "%s validation errors with kept markup are new"
 msgstr[0] "%s 个带有保留标记的验证错误为新错误"
+
+#: includes/options/class-amp-options-manager.php:474
+msgid "https://wordpress.org/support/article/why-should-i-use-https/"
+msgstr "https://cn.wordpress.org/support/article/why-should-i-use-https/"
 
 #. translators: %s: "Why should I use HTTPS" support URL
 #: includes/options/class-amp-options-manager.php:473
@@ -1648,25 +1989,9 @@ msgstr "无法通过安全连接(使用HTTPS)为您的网站提供完整的服�
 msgid "Your server currently has the Xdebug PHP extension loaded. This can cause some of the AMP plugin's processes to timeout depending on your system resources and configuration. Please deactivate Xdebug for the best experience."
 msgstr "您的服务器目前已加载Xdebug PHP扩展程序。这会导致部分AMP插件处理程序时超时, 具体取决于您的系统资源和配置。请禁用 Xdebug以获得最佳体验。"
 
-#: includes/options/class-amp-options-manager.php:474
-msgid "https://wordpress.org/support/article/why-should-i-use-https/"
-msgstr "https://cn.wordpress.org/support/article/why-should-i-use-https/"
-
 #: includes/validation/class-amp-validated-url-post-type.php:2950
 msgid "Remove"
 msgstr "移除"
-
-#: includes/sanitizers/class-amp-form-sanitizer.php:353
-msgid "It appears your submission was successful."
-msgstr "系统显示您已成功提交。"
-
-#: includes/sanitizers/class-amp-form-sanitizer.php:349
-msgid "Your submission failed."
-msgstr "提交失败。"
-
-#: includes/sanitizers/class-amp-form-sanitizer.php:338
-msgid "Submitting…"
-msgstr "正在提交…"
 
 #: includes/sanitizers/class-amp-form-sanitizer.php:356
 msgid "Please contact the developer of this form processor to improve this message."
@@ -1676,13 +2001,25 @@ msgstr "请与此表单处理器的开发者联系, 以改进此消息。"
 msgid "Even though the server responded OK, it is possible the submission was not processed."
 msgstr "即使服务器响应正常,系统也有可能不处理提交。"
 
+#: includes/sanitizers/class-amp-form-sanitizer.php:353
+msgid "It appears your submission was successful."
+msgstr "系统显示您已成功提交。"
+
 #. translators: %1$s: HTTP status text, %2$s: HTTP status code
 #: includes/sanitizers/class-amp-form-sanitizer.php:351
 msgid "The server responded with %1$s (code %2$s)."
 msgstr "服务器发回了 %1$s 响应(代码:%2$s)。"
 
+#: includes/sanitizers/class-amp-form-sanitizer.php:349
+msgid "Your submission failed."
+msgstr "提交失败。"
+
+#: includes/sanitizers/class-amp-form-sanitizer.php:338
+msgid "Submitting…"
+msgstr "正在提交…"
+
 #. translators: %s: CSS selector for admin bar element
-#: includes/sanitizers/class-amp-style-sanitizer.php:3233
+#: includes/sanitizers/class-amp-style-sanitizer.php:3232
 msgid "Admin bar (%s) was removed to preserve AMP validity due to excessive CSS."
 msgstr "因 CSS 过多而移除了管理栏 (%s), 以便保持 AMP 有效性。"
 
@@ -1731,7 +2068,17 @@ msgstr "%1$s 功能已移至 %2$s。"
 msgid "Please update to PWA v0.2. Expected argument to be %s."
 msgstr "请更新到PWA v0.2。参数应为 %s。"
 
-#: includes/sanitizers/class-amp-style-sanitizer.php:1617
+#. translators: %s is error code
+#: includes/validation/class-amp-validation-manager.php:2582
+msgid "URL validation failed. Error code: %s."
+msgstr "网址验证失败。错误代码:%s。"
+
+#. translators: localized date and time format, see http://php.net/date
+#: includes/validation/class-amp-validation-error-taxonomy.php:1968
+msgid "F j, Y g:i a"
+msgstr "Y年n月j日ag:i"
+
+#: includes/sanitizers/class-amp-style-sanitizer.php:1616
 msgid "Response did not contain the expected text/css content type."
 msgstr "响应没有包含预期文字/css 内容类型。"
 
@@ -1757,39 +2104,29 @@ msgstr "嵌入式处理程序 (%1$s) 必须扩展“%2$s”"
 msgid "Sanitizer (%1$s) must extend `%2$s`"
 msgstr "清理程序 (%1$s) 必须扩展“%2$s”"
 
-#. translators: %s is error code
-#: includes/validation/class-amp-validation-manager.php:2584
-msgid "URL validation failed. Error code: %s."
-msgstr "网址验证失败。错误代码:%s。"
-
-#. translators: localized date and time format, see http://php.net/date
-#: includes/validation/class-amp-validation-error-taxonomy.php:1968
-msgid "F j, Y g:i a"
-msgstr "Y年n月j日ag:i"
-
-#: includes/class-amp-service-worker.php:327
-msgid "No service workers registered for the requested scope."
-msgstr "没有针对请求的范围注册的 Service Worker。"
-
 #: includes/class-amp-service-worker.php:344
 msgid "Installing service worker..."
 msgstr "正在安装Service Worker…..."
-
-#. translators: 1: the analytics entry ID. 2: type. 3: attributes. 4:
-#. config_data. 5: comma-separated list of the actual entry keys.
-#: includes/amp-helper-functions.php:1327
-msgid "Analytics entry for %1$s is missing one of the following keys: `%2$s` or `%3$s` (array keys: %4$s)"
-msgstr "%1$s的分析条目缺少以下键之一：`%2$s`或`%3$s`(数组键：%4$s)"
 
 #: includes/class-amp-service-worker.php:328
 #: includes/class-amp-service-worker.php:340
 msgid "Service Worker Installation"
 msgstr "Service Worker安装"
 
+#: includes/class-amp-service-worker.php:327
+msgid "No service workers registered for the requested scope."
+msgstr "没有针对请求的范围注册的 Service Worker。"
+
 #: includes/class-amp-service-worker.php:151
 #: includes/class-amp-service-worker.php:185
 msgid "Please update to PWA v0.2. Expected argument to be WP_Service_Worker_Scripts."
 msgstr "请更新到PWA v0.2。参数应为WP_Service_Worker_Scripts。"
+
+#. translators: 1: the analytics entry ID. 2: type. 3: attributes. 4:
+#. config_data. 5: comma-separated list of the actual entry keys.
+#: includes/amp-helper-functions.php:1280
+msgid "Analytics entry for %1$s is missing one of the following keys: `%2$s` or `%3$s` (array keys: %4$s)"
+msgstr "%1$s的分析条目缺少以下键之一：`%2$s`或`%3$s`(数组键：%4$s)"
 
 #. Author of the plugin
 msgid "AMP Project Contributors"
@@ -1815,6 +2152,11 @@ msgstr "所有AMP验证错误"
 #: includes/amp-helper-functions.php:738
 msgid "There is no amphtml version available for this URL."
 msgstr "没有可用于此网址的 AMPHTML 版本。"
+
+#. translators: 1: @import. 2: wp_enqueue_style(). 3: font CDN URL.
+#: includes/sanitizers/class-amp-style-sanitizer.php:1816
+msgid "It is not a best practice to use %1$s to load font CDN stylesheets. Please use %2$s to enqueue %3$s as its own separate script."
+msgstr "使用 %1$s 加载字体 CDN 样式表不是最佳做法。请使用 %2$s 将 %3$s 加入队列, 作为其自有的独立脚本。"
 
 #: includes/sanitizers/class-amp-core-theme-sanitizer.php:388
 #: includes/sanitizers/class-amp-core-theme-sanitizer.php:414
@@ -1853,39 +2195,108 @@ msgstr "作者"
 msgid "Blog"
 msgstr "博客"
 
+#: includes/class-amp-theme-support.php:705
+#: includes/class-amp-theme-support.php:723
+#: src/Validation/ScannableURLProvider.php:124
+#: src/Validation/ScannableURLProvider.php:138
+msgid "Homepage"
+msgstr "主页"
+
 #: includes/class-amp-theme-support.php:700
 msgid "Singular"
 msgstr "单数"
+
+#. translators: %s: amp_supportable_templates
+#: includes/class-amp-theme-support.php:633
+msgid "Did not expect there to be more than one matching template. Did you filter %s to not honor the template hierarchy?"
+msgstr "没有预料到有多个匹配模板。是否对 %s 进行了过滤以便不遵从模板层次结构?"
 
 #. translators: %s: the supportable template ID.
 #: includes/class-amp-theme-support.php:496
 msgid "Supportable template \"%s\" does not have a callable callback."
 msgstr "可支持的模板 \"%s\" 没有可调用的回调。"
 
-#: includes/validation/class-amp-validation-manager.php:2546
+#: includes/class-amp-theme-support.php:467
+msgid "No WP_Query available."
+msgstr "无可用的WP_Query。"
+
+#: includes/validation/class-amp-validation-manager.php:2544
 msgid "An internal server error occurred when fetching the URL for validation."
 msgstr "提取网址以进行验证时出现内部服务器错误。"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3037
-#: includes/validation/class-amp-validation-error-taxonomy.php:3456
+#: includes/validation/class-amp-validation-manager.php:2536
+msgid "The fetched URL was not found. It may have been deleted. If so, you can trash this."
+msgstr "找不到提取的网址。该网址可能已被删除。如果已删除, 您可以将其放到回收站。"
+
+#: includes/amp-helper-functions.php:1997
+#: includes/validation/class-amp-validation-manager.php:442
+#: includes/validation/class-amp-validation-manager.php:464
+msgid "View AMP version"
+msgstr "查看AMP版本"
+
+#: includes/amp-helper-functions.php:1996
+#: includes/validation/class-amp-validation-manager.php:464
+msgid "View non-AMP version"
+msgstr "查看非AMP版本"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3058
+msgid "Illegal CSS at-rule"
+msgstr "不合法的CSS ＠ 规则"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3054
+msgid "Excessive CSS"
+msgstr "过多的CSS"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3042
+#: includes/validation/class-amp-validation-error-taxonomy.php:3461
 msgid "Invalid attribute"
 msgstr "属性无效"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:3030
+#: includes/validation/class-amp-validation-error-taxonomy.php:3035
 msgid "Invalid element"
 msgstr "元素无效"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:2970
+#: includes/validation/class-amp-validation-error-taxonomy.php:2975
 msgid "You do not have authorization."
 msgstr "您没有获得授权。"
 
-#: includes/validation/class-amp-validation-error-taxonomy.php:2965
+#: includes/validation/class-amp-validation-error-taxonomy.php:2970
 msgid "The link you followed has expired."
 msgstr "您点击的链接已过期。"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2809
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2808
+msgid "HTML Attribute"
+msgstr "HTML属性"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2807
+msgid "HTML Element"
+msgstr "HTML元素"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:2183
+#: includes/validation/class-amp-validation-error-taxonomy.php:2198
+msgid "Invalid markup"
+msgstr "无效的标记"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:3398
+msgid "Element attributes"
+msgstr "元素属性"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1961
 msgid "n/a"
 msgstr "无"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1792
+#: includes/validation/class-amp-validation-error-taxonomy.php:2810
+msgid "CSS"
+msgstr "CSS"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1789
+msgid "HTML attribute"
+msgstr "HTML 属性"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:1783
 msgid "JS"
@@ -1904,6 +2315,10 @@ msgstr "清除空白项"
 msgid "Filter by error type"
 msgstr "按错误类型过滤"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:1406
+msgid "All statuses"
+msgstr "所有状态"
+
 #: includes/validation/class-amp-validation-error-taxonomy.php:1305
 msgid "View Validated URLs"
 msgstr "查看已验证的网址"
@@ -1915,6 +2330,10 @@ msgstr "应用过滤条件"
 #: includes/validation/class-amp-validation-error-taxonomy.php:900
 msgid "Last Seen"
 msgstr "上次出现时间"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:318
+msgid "Method must be passed a term slug (string) or error attributes (array)."
+msgstr "方法必须以 slug 术语(字符串)或错误属性(数组)形式进行传递。"
 
 #. translators: Tab heading when selecting from the most used terms
 #: includes/validation/class-amp-validation-error-taxonomy.php:273
@@ -1951,290 +2370,9 @@ msgstr "返回 AMP 验证错误"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:262
 #: includes/validation/class-amp-validation-error-taxonomy.php:1744
-#: assets/js/amp-settings.js:41
+#: assets/js/amp-settings.js:32
 msgid "Error Index"
 msgstr "错误索引"
-
-#: includes/validation/class-amp-validated-url-post-type.php:3229
-msgid "Forgotten"
-msgstr "已忘记"
-
-#: includes/validation/class-amp-validated-url-post-type.php:3183
-msgid "View"
-msgstr "查看"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2946
-msgid "Search Errors"
-msgstr "搜索错误"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2391
-msgid "Update"
-msgstr "更新"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2357
-msgid "View User"
-msgstr "查看用户"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2341
-msgid "View URL"
-msgstr "查看网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2293
-msgid "Please recheck."
-msgstr "请重新检查。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2268
-msgid "Preview Changes"
-msgstr "预览更改"
-
-#: includes/sanitizers/class-amp-iframe-sanitizer.php:220
-#: assets/js/amp-validated-url-post-edit-screen.js:2
-msgid "Show all"
-msgstr "全部显示"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1649
-#: includes/validation/class-amp-validated-url-post-type.php:2387
-#: includes/validation/class-amp-validated-url-post-type.php:3206
-msgid "Forget"
-msgstr "忘记"
-
-#. translators: %s is the guessed theme as the source for the error
-#: includes/validation/class-amp-validated-url-post-type.php:1630
-msgid "%s (?)"
-msgstr "%s (?)"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1569
-#: assets/js/amp-settings.js:41
-msgid "Other"
-msgstr "其他"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1542
-#: assets/js/amp-block-validation.js:10
-msgid "Plugins"
-msgstr "插件"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1416
-#: includes/validation/class-amp-validated-url-post-type.php:2280
-#: assets/js/amp-settings.js:39
-msgid "Stale results"
-msgstr "过时的结果"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1358
-#: includes/validation/class-amp-validation-error-taxonomy.php:899
-#: includes/validation/class-amp-validation-error-taxonomy.php:2616
-#: includes/validation/class-amp-validation-error-taxonomy.php:3415
-#: src/Validation/ScannableURLsRestController.php:241
-msgid "Type"
-msgstr "类型"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1366
-#: includes/validation/class-amp-validation-error-taxonomy.php:895
-msgid "The parent element of where the error occurred."
-msgstr "发生错误的父元素。"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1357
-#: includes/validation/class-amp-validation-error-taxonomy.php:876
-#: includes/validation/class-amp-validation-manager.php:515
-msgid "Error"
-msgstr "错误"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1336
-#: includes/validation/class-amp-validated-url-post-type.php:1342
-msgid "Last Checked"
-msgstr "上次检查时间"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1324
-#: includes/validation/class-amp-validated-url-post-type.php:1341
-#: includes/validation/class-amp-validated-url-post-type.php:1370
-#: includes/validation/class-amp-validated-url-post-type.php:2616
-#: includes/validation/class-amp-validated-url-post-type.php:2763
-#: includes/validation/class-amp-validation-error-taxonomy.php:2625
-#: includes/validation/class-amp-validation-error-taxonomy.php:3417
-msgid "Sources"
-msgstr "来源"
-
-#: includes/validation/class-amp-validated-url-post-type.php:435
-msgid "View Error Index"
-msgstr "查看错误索引"
-
-#: includes/validation/class-amp-validated-url-post-type.php:169
-msgid "Search validated URLs"
-msgstr "搜索已验证的网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:168
-msgid "No forgotten validated URLs"
-msgstr "没有忘记任何已验证的网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:167
-msgid "No validated URLs found"
-msgstr "未找到任何已验证的网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:166
-msgid "Validated URL"
-msgstr "已验证的网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:165
-#: assets/js/amp-settings.js:41
-msgid "Validated URLs"
-msgstr "已验证的网址"
-
-#: includes/validation/class-amp-validated-url-post-type.php:164
-msgctxt "post type general name"
-msgid "AMP Validated URLs"
-msgstr "已验证的 AMP 网址"
-
-#: includes/sanitizers/class-amp-form-sanitizer.php:366
-#: assets/js/amp-settings.js:19
-msgid "Learn More"
-msgstr "了解详情"
-
-#: src/Admin/PluginActivationNotice.php:78
-msgid "Welcome to AMP for WordPress"
-msgstr "欢迎使用 AMP for WordPress"
-
-#: includes/validation/class-amp-validation-manager.php:484
-#: src/Admin/OptionsMenu.php:136 src/Admin/OptionsMenu.php:174
-msgid "Settings"
-msgstr "设置"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1578
-#: assets/js/amp-block-editor.js:1 assets/js/amp-block-validation.js:12
-msgid "Embed"
-msgstr "嵌入"
-
-#. Plugin URI of the plugin
-msgid "https://amp-wp.org"
-msgstr "https://amp-wp.org"
-
-#. translators: 1: @import. 2: wp_enqueue_style(). 3: font CDN URL.
-#: includes/sanitizers/class-amp-style-sanitizer.php:1817
-msgid "It is not a best practice to use %1$s to load font CDN stylesheets. Please use %2$s to enqueue %3$s as its own separate script."
-msgstr "使用 %1$s 加载字体 CDN 样式表不是最佳做法。请使用 %2$s 将 %3$s 加入队列, 作为其自有的独立脚本。"
-
-#. translators: %s: amp_supportable_templates
-#: includes/class-amp-theme-support.php:633
-msgid "Did not expect there to be more than one matching template. Did you filter %s to not honor the template hierarchy?"
-msgstr "没有预料到有多个匹配模板。是否对 %s 进行了过滤以便不遵从模板层次结构?"
-
-#: includes/validation/class-amp-validation-manager.php:2538
-msgid "The fetched URL was not found. It may have been deleted. If so, you can trash this."
-msgstr "找不到提取的网址。该网址可能已被删除。如果已删除, 您可以将其放到回收站。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1406
-msgid "All statuses"
-msgstr "所有状态"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:318
-msgid "Method must be passed a term slug (string) or error attributes (array)."
-msgstr "方法必须以 slug 术语(字符串)或错误属性(数组)形式进行传递。"
-
-#. translators: %s: The date this was published
-#: includes/validation/class-amp-validated-url-post-type.php:2254
-msgid "Last checked: <b>%s</b>"
-msgstr "上次检查时间: <b>%s</b>"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1918
-#: includes/validation/class-amp-validated-url-post-type.php:2047
-msgid "You do not have permissions to validate an AMP URL. Did you get logged out?"
-msgstr "您无权验证 AMP 网址。您退出了吗?"
-
-#: includes/admin/class-amp-admin-pointers.php:68
-msgid "You can now reuse your theme's templates and styles in AMP responses, in both &#8220;Transitional&#8221; and &#8220;Standard&#8221; modes."
-msgstr "您现在可以在“Transitional”和“标准”模式下, 在 AMP 响应中重复使用主题模板和样式。"
-
-#. translators: %1$s is the current directory name, and %2$s is the required
-#. directory name
-#: amp.php:226
-msgid "You appear to have installed the AMP plugin incorrectly. It is currently installed in the <code>%1$s</code> directory, but it needs to be placed in a directory named <code>%2$s</code>. Please rename the directory. This is important for WordPress plugin auto-updates."
-msgstr "您似乎未正确安装 AMP 插件。该插件目前安装在 <code>%1$s</code> 目录中,但它需要位于名为 <code>%2$s</code> 的目录中。请重命名当前目录。这对 WordPress 插件自动更新非常重要。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2809
-msgid "JavaScript"
-msgstr "JavaScript"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2183
-#: includes/validation/class-amp-validation-error-taxonomy.php:2198
-msgid "Invalid markup"
-msgstr "无效的标记"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1789
-msgid "HTML attribute"
-msgstr "HTML 属性"
-
-#. translators: %s is count of validation errors updated
-#: includes/validation/class-amp-validated-url-post-type.php:1786
-msgid "Updated %s validation error."
-msgid_plural "Updated %s validation errors."
-msgstr[0] "已更新 %s 个验证错误。"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3393
-msgid "Element attributes"
-msgstr "元素属性"
-
-#: includes/validation/class-amp-validated-url-post-type.php:2325
-msgid "AMP disabled"
-msgstr "AMP已禁用"
-
-#: includes/admin/class-amp-post-meta-box.php:516
-#: includes/validation/class-amp-validated-url-post-type.php:2323
-msgid "AMP enabled"
-msgstr "AMP已启用"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1542
-msgid "Must-Use Plugins"
-msgstr "强制使用的插件"
-
-#. translators: %s: the human-readable time difference.
-#: back-compat/templates-v0-3/meta-time.php:21
-#: includes/validation/class-amp-validation-error-taxonomy.php:1972
-#: templates/meta-time.php:28
-msgid "%s ago"
-msgstr "%s前"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1792
-#: includes/validation/class-amp-validation-error-taxonomy.php:2810
-msgid "CSS"
-msgstr "CSS"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3053
-msgid "Illegal CSS at-rule"
-msgstr "不合法的CSS ＠ 规则"
-
-#. translators: %s: post title
-#: includes/validation/class-amp-validated-url-post-type.php:3205
-msgid "Forget &#8220;%s&#8221;"
-msgstr "忘记&#8220;%s&#8221;"
-
-#: includes/admin/class-amp-admin-pointers.php:67
-msgid "New AMP Template Modes"
-msgstr "新的AMP模板模式"
-
-#: includes/class-amp-theme-support.php:467
-msgid "No WP_Query available."
-msgstr "无可用的WP_Query。"
-
-#: includes/amp-helper-functions.php:2054
-#: includes/validation/class-amp-validation-manager.php:442
-#: includes/validation/class-amp-validation-manager.php:464
-msgid "View AMP version"
-msgstr "查看AMP版本"
-
-#: includes/amp-helper-functions.php:2053
-#: includes/validation/class-amp-validation-manager.php:464
-msgid "View non-AMP version"
-msgstr "查看非AMP版本"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:3049
-msgid "Excessive CSS"
-msgstr "过多的CSS"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2808
-msgid "HTML Attribute"
-msgstr "HTML属性"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:2807
-msgid "HTML Element"
-msgstr "HTML元素"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:261
 msgid "Update AMP Validation Error"
@@ -2267,38 +2405,288 @@ msgid "%s validated URL forgotten."
 msgid_plural "%s validated URLs forgotten."
 msgstr[0] "忘记了%s个已验证的网址。"
 
-#: includes/class-amp-theme-support.php:705
-#: includes/class-amp-theme-support.php:723
-#: src/Validation/ScannableURLProvider.php:124
-#: src/Validation/ScannableURLProvider.php:138
-msgid "Homepage"
-msgstr "主页"
+#: includes/validation/class-amp-validated-url-post-type.php:3229
+msgid "Forgotten"
+msgstr "已忘记"
 
-#: includes/validation/class-amp-validated-url-post-type.php:2355
-msgid "Edit User"
-msgstr "编辑用户"
+#. translators: %s: post title
+#: includes/validation/class-amp-validated-url-post-type.php:3205
+msgid "Forget &#8220;%s&#8221;"
+msgstr "忘记&#8220;%s&#8221;"
+
+#: includes/validation/class-amp-validated-url-post-type.php:3183
+msgid "View"
+msgstr "查看"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2946
+msgid "Search Errors"
+msgstr "搜索错误"
 
 #: includes/validation/class-amp-validated-url-post-type.php:2911
 msgid "Invalid taxonomy."
 msgstr "无效分类法。"
 
+#: includes/validation/class-amp-validated-url-post-type.php:2391
+msgid "Update"
+msgstr "更新"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2357
+msgid "View User"
+msgstr "查看用户"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2355
+msgid "Edit User"
+msgstr "编辑用户"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2341
+msgid "View URL"
+msgstr "查看网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2293
+msgid "Please recheck."
+msgstr "请重新检查。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2268
+msgid "Preview Changes"
+msgstr "预览更改"
+
+#. translators: %s: The date this was published
+#: includes/validation/class-amp-validated-url-post-type.php:2254
+msgid "Last checked: <b>%s</b>"
+msgstr "上次检查时间: <b>%s</b>"
+
+#: includes/sanitizers/class-amp-iframe-sanitizer.php:220
+#: assets/js/amp-validated-url-post-edit-screen.js:2
+msgid "Show all"
+msgstr "全部显示"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1918
+#: includes/validation/class-amp-validated-url-post-type.php:2047
+msgid "You do not have permissions to validate an AMP URL. Did you get logged out?"
+msgstr "您无权验证 AMP 网址。您退出了吗?"
+
+#. translators: %s is count of validation errors updated
+#: includes/validation/class-amp-validated-url-post-type.php:1786
+msgid "Updated %s validation error."
+msgid_plural "Updated %s validation errors."
+msgstr[0] "已更新 %s 个验证错误。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1649
+#: includes/validation/class-amp-validated-url-post-type.php:2387
+#: includes/validation/class-amp-validated-url-post-type.php:3206
+msgid "Forget"
+msgstr "忘记"
+
+#. translators: %s is the guessed theme as the source for the error
+#: includes/validation/class-amp-validated-url-post-type.php:1630
+msgid "%s (?)"
+msgstr "%s (?)"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1569
+#: assets/js/amp-settings.js:32
+msgid "Other"
+msgstr "其他"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1542
+#: assets/js/amp-block-validation.js:10
+msgid "Plugins"
+msgstr "插件"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1542
+msgid "Must-Use Plugins"
+msgstr "强制使用的插件"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1416
+#: includes/validation/class-amp-validated-url-post-type.php:2280
+#: assets/js/amp-settings.js:30
+msgid "Stale results"
+msgstr "过时的结果"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1358
+#: includes/validation/class-amp-validation-error-taxonomy.php:899
+#: includes/validation/class-amp-validation-error-taxonomy.php:2616
+#: includes/validation/class-amp-validation-error-taxonomy.php:3420
+#: src/Validation/ScannableURLsRestController.php:241
+msgid "Type"
+msgstr "类型"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1366
+#: includes/validation/class-amp-validation-error-taxonomy.php:895
+msgid "The parent element of where the error occurred."
+msgstr "发生错误的父元素。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1357
+#: includes/validation/class-amp-validation-error-taxonomy.php:876
+#: includes/validation/class-amp-validation-manager.php:515
+msgid "Error"
+msgstr "错误"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1336
+#: includes/validation/class-amp-validated-url-post-type.php:1342
+msgid "Last Checked"
+msgstr "上次检查时间"
+
 #: includes/validation/class-amp-validated-url-post-type.php:1330
 #: includes/validation/class-amp-validated-url-post-type.php:1343
-#: includes/validation/class-amp-validation-error-taxonomy.php:3460
+#: includes/validation/class-amp-validation-error-taxonomy.php:3465
 #: src/Validation/ScannableURLsRestController.php:227
 msgid "URL"
 msgstr "URL"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1324
+#: includes/validation/class-amp-validated-url-post-type.php:1341
+#: includes/validation/class-amp-validated-url-post-type.php:1370
+#: includes/validation/class-amp-validated-url-post-type.php:2616
+#: includes/validation/class-amp-validated-url-post-type.php:2763
+#: includes/validation/class-amp-validation-error-taxonomy.php:2625
+#: includes/validation/class-amp-validation-error-taxonomy.php:3422
+msgid "Sources"
+msgstr "来源"
+
+#: includes/validation/class-amp-validated-url-post-type.php:2325
+msgid "AMP disabled"
+msgstr "AMP已禁用"
+
+#: includes/admin/class-amp-post-meta-box.php:516
+#: includes/validation/class-amp-validated-url-post-type.php:2323
+msgid "AMP enabled"
+msgstr "AMP已启用"
+
+#: includes/validation/class-amp-validated-url-post-type.php:435
+msgid "View Error Index"
+msgstr "查看错误索引"
+
+#: includes/validation/class-amp-validated-url-post-type.php:169
+msgid "Search validated URLs"
+msgstr "搜索已验证的网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:168
+msgid "No forgotten validated URLs"
+msgstr "没有忘记任何已验证的网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:167
+msgid "No validated URLs found"
+msgstr "未找到任何已验证的网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:166
+msgid "Validated URL"
+msgstr "已验证的网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:165
+#: assets/js/amp-settings.js:32
+msgid "Validated URLs"
+msgstr "已验证的网址"
+
+#: includes/validation/class-amp-validated-url-post-type.php:164
+msgctxt "post type general name"
+msgid "AMP Validated URLs"
+msgstr "已验证的 AMP 网址"
+
+#: includes/admin/class-amp-admin-pointers.php:68
+msgid "You can now reuse your theme's templates and styles in AMP responses, in both &#8220;Transitional&#8221; and &#8220;Standard&#8221; modes."
+msgstr "您现在可以在“Transitional”和“标准”模式下, 在 AMP 响应中重复使用主题模板和样式。"
+
+#: includes/admin/class-amp-admin-pointers.php:67
+msgid "New AMP Template Modes"
+msgstr "新的AMP模板模式"
+
+#: includes/sanitizers/class-amp-form-sanitizer.php:366
+#: assets/js/amp-settings.js:11
+msgid "Learn More"
+msgstr "了解详情"
+
+#: src/Admin/PluginActivationNotice.php:78
+msgid "Welcome to AMP for WordPress"
+msgstr "欢迎使用 AMP for WordPress"
+
+#: includes/validation/class-amp-validation-manager.php:484
+#: src/Admin/OptionsMenu.php:136 src/Admin/OptionsMenu.php:174
+msgid "Settings"
+msgstr "设置"
+
+#. translators: %s: the human-readable time difference.
+#: back-compat/templates-v0-3/meta-time.php:21
+#: includes/validation/class-amp-validation-error-taxonomy.php:1972
+#: templates/meta-time.php:28
+msgid "%s ago"
+msgstr "%s前"
+
+#. translators: %1$s is the current directory name, and %2$s is the required
+#. directory name
+#: amp.php:226
+msgid "You appear to have installed the AMP plugin incorrectly. It is currently installed in the <code>%1$s</code> directory, but it needs to be placed in a directory named <code>%2$s</code>. Please rename the directory. This is important for WordPress plugin auto-updates."
+msgstr "您似乎未正确安装 AMP 插件。该插件目前安装在 <code>%1$s</code> 目录中,但它需要位于名为 <code>%2$s</code> 的目录中。请重命名当前目录。这对 WordPress 插件自动更新非常重要。"
+
+#: includes/validation/class-amp-validated-url-post-type.php:1578
+#: assets/js/amp-block-editor.js:1 assets/js/amp-block-validation.js:12
+msgid "Embed"
+msgstr "嵌入"
+
+#. Plugin URI of the plugin
+msgid "https://amp-wp.org"
+msgstr "https://amp-wp.org"
+
+#. Author URI of the plugin
+msgid "https://github.com/ampproject/amp-wp/graphs/contributors"
+msgstr "https://github.com/ampproject/amp-wp/graphs/contributors"
+
+#: includes/widgets/class-amp-widget-categories.php:65
+msgid "Select Category"
+msgstr "选择分类"
+
+#: includes/widgets/class-amp-widget-categories.php:44
+msgid "Categories"
+msgstr "分类"
+
+#: includes/widgets/class-amp-widget-archives.php:87
+msgid "Select Post"
+msgstr "选择文章"
+
+#: includes/widgets/class-amp-widget-archives.php:84
+msgid "Select Week"
+msgstr "选择周次"
+
+#: includes/widgets/class-amp-widget-archives.php:81
+msgid "Select Day"
+msgstr "选择日期"
+
+#: includes/widgets/class-amp-widget-archives.php:78
+msgid "Select Month"
+msgstr "选择月份"
+
+#: includes/widgets/class-amp-widget-archives.php:75
+msgid "Select Year"
+msgstr "选择年份"
 
 #: includes/class-amp-theme-support.php:731
 #: includes/widgets/class-amp-widget-archives.php:49
 msgid "Archives"
 msgstr "归档"
 
+#: includes/validation/class-amp-validation-error-taxonomy.php:901
+msgid "URLs"
+msgstr "网址"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:1928
+#: includes/validation/class-amp-validation-error-taxonomy.php:3487
+#: assets/js/amp-block-validation.js:12
+msgid "Removed"
+msgstr "已移除"
+
+#. translators: Meta box date format
+#: includes/validation/class-amp-validated-url-post-type.php:2256
+msgid "M j, Y @ H:i"
+msgstr "Y年n月j日 @ H:i"
+
 #: includes/validation/class-amp-validated-url-post-type.php:1851
 #: includes/validation/class-amp-validated-url-post-type.php:2195
-#: assets/js/amp-settings.js:25
+#: assets/js/amp-settings.js:17
 msgid "Status"
 msgstr "状态"
+
+#: includes/validation/class-amp-validation-error-taxonomy.php:269
+msgid "Validation Error"
+msgstr "验证错误"
 
 #: includes/validation/class-amp-validated-url-post-type.php:1653
 #: includes/validation/class-amp-validated-url-post-type.php:2264
@@ -2313,54 +2701,37 @@ msgstr "重新检查"
 msgid "--"
 msgstr "--"
 
-#. Author URI of the plugin
-msgid "https://github.com/ampproject/amp-wp/graphs/contributors"
-msgstr "https://github.com/ampproject/amp-wp/graphs/contributors"
-
-#: includes/widgets/class-amp-widget-archives.php:81
-msgid "Select Day"
-msgstr "选择日期"
-
-#: includes/widgets/class-amp-widget-archives.php:78
-msgid "Select Month"
-msgstr "选择月份"
-
-#: includes/widgets/class-amp-widget-archives.php:75
-msgid "Select Year"
-msgstr "选择年份"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:269
-msgid "Validation Error"
-msgstr "验证错误"
-
 #: includes/validation/class-amp-validation-error-taxonomy.php:268
 msgid "No validation errors found."
 msgstr "未找到任何验证错误。"
 
-#: includes/class-amp-http.php:492
-msgid "Your comment has been posted."
-msgstr "您的评论已发布。"
-
-#: includes/widgets/class-amp-widget-archives.php:87
-msgid "Select Post"
-msgstr "选择文章"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:1928
-#: includes/validation/class-amp-validation-error-taxonomy.php:3482
-#: assets/js/amp-block-validation.js:12
-msgid "Removed"
-msgstr "已移除"
-
-#: includes/validation/class-amp-validation-error-taxonomy.php:901
-msgid "URLs"
-msgstr "网址"
+#: includes/validation/class-amp-validated-url-post-type.php:3173
+#: includes/validation/class-amp-validation-error-taxonomy.php:1698
+#: includes/validation/class-amp-validation-error-taxonomy.php:1718
+#: assets/js/amp-onboarding-wizard.js:1 assets/js/amp-settings.js:8
+#: assets/js/amp-settings.js:17 assets/js/amp-site-scan-notice.js:1
+#: assets/js/amp-support.js:6
+msgid "Details"
+msgstr "详情"
 
 #: includes/validation/class-amp-validation-error-taxonomy.php:260
 msgid "Edit AMP Validation Error"
 msgstr "修改AMP验证错误"
 
+#: includes/class-amp-theme-support.php:1188
+msgid "Click here to cancel reply."
+msgstr "点击这里取消回复。"
+
+#: includes/class-amp-http.php:494
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论正在等待审核。"
+
+#: includes/class-amp-http.php:492
+msgid "Your comment has been posted."
+msgstr "您的评论已发布。"
+
 #. translators: %s: $post
-#: includes/amp-helper-functions.php:1375
+#: includes/amp-helper-functions.php:1328
 msgid "The %s argument is deprecated when theme supports AMP."
 msgstr "主题支持AMP后, %s参数即被弃用。"
 
@@ -2369,47 +2740,13 @@ msgstr "主题支持AMP后, %s参数即被弃用。"
 msgid "The AMP plugin requires PHP %s. Please contact your host to update your PHP version."
 msgstr "AMP插件需要PHP%s。请与您的托管商联系以更新PHP版本。"
 
-#: includes/widgets/class-amp-widget-categories.php:44
-msgid "Categories"
-msgstr "分类"
-
-#: includes/widgets/class-amp-widget-categories.php:65
-msgid "Select Category"
-msgstr "选择分类"
-
-#: includes/validation/class-amp-validated-url-post-type.php:3173
-#: includes/validation/class-amp-validation-error-taxonomy.php:1698
-#: includes/validation/class-amp-validation-error-taxonomy.php:1718
-#: assets/js/amp-onboarding-wizard.js:9 assets/js/amp-settings.js:16
-#: assets/js/amp-settings.js:25 assets/js/amp-site-scan-notice.js:1
-#: assets/js/amp-support.js:15
-msgid "Details"
-msgstr "详情"
-
-#: includes/widgets/class-amp-widget-archives.php:84
-msgid "Select Week"
-msgstr "选择周次"
-
-#: includes/class-amp-http.php:494
-msgid "Your comment is awaiting moderation."
-msgstr "您的评论正在等待审核。"
-
-#: includes/class-amp-theme-support.php:1188
-msgid "Click here to cancel reply."
-msgstr "点击这里取消回复。"
-
-#. translators: Meta box date format
-#: includes/validation/class-amp-validated-url-post-type.php:2256
-msgid "M j, Y @ H:i"
-msgstr "Y年n月j日 @ H:i"
+#: includes/embeds/class-amp-crowdsignal-embed-handler.php:61
+msgid "View Poll"
+msgstr "查看投票"
 
 #: includes/embeds/class-amp-crowdsignal-embed-handler.php:59
 msgid "View Survey"
 msgstr "查看调查"
-
-#: includes/embeds/class-amp-crowdsignal-embed-handler.php:61
-msgid "View Poll"
-msgstr "查看投票"
 
 #: includes/templates/amp-enabled-classic-editor-toggle.php:67
 msgid "Cancel"
@@ -2419,34 +2756,42 @@ msgstr "取消"
 msgid "OK"
 msgstr "确定"
 
-#: includes/templates/amp-enabled-classic-editor-toggle.php:37
-msgid "Edit"
-msgstr "编辑"
-
-#: includes/templates/amp-enabled-classic-editor-toggle.php:38
-msgid "Edit Status"
-msgstr "编辑状态"
-
 #: includes/admin/class-amp-post-meta-box.php:443
 msgid "Unavailable for an unknown reason."
 msgstr "因未知原因而不可用。"
-
-#: includes/admin/class-amp-post-meta-box.php:204
-msgid "Preview changes in AMP (opens in new window)"
-msgstr "在 AMP 中预览更改(在新窗口打开)"
-
-#: includes/templates/amp-enabled-classic-editor-toggle.php:26
-msgid "AMP:"
-msgstr "AMP:"
 
 #: includes/admin/class-amp-post-meta-box.php:437
 msgid "A plugin or theme has disabled AMP support."
 msgstr "插件或主题已停用AMP支持。"
 
+#: includes/templates/amp-enabled-classic-editor-toggle.php:38
+msgid "Edit Status"
+msgstr "编辑状态"
+
+#: includes/templates/amp-enabled-classic-editor-toggle.php:37
+msgid "Edit"
+msgstr "编辑"
+
+#: includes/templates/amp-enabled-classic-editor-toggle.php:26
+msgid "AMP:"
+msgstr "AMP:"
+
 #: src/Admin/OptionsMenu.php:163 src/Admin/OptionsMenu.php:173
 #: src/ReaderThemeLoader.php:243 assets/js/amp-block-editor.js:3
 msgid "AMP Settings"
 msgstr "AMP设置"
+
+#: includes/admin/class-amp-post-meta-box.php:370
+msgid "Disabled"
+msgstr "禁用"
+
+#: includes/admin/class-amp-post-meta-box.php:369
+msgid "Enabled"
+msgstr "启用"
+
+#: includes/admin/class-amp-post-meta-box.php:204
+msgid "Preview changes in AMP (opens in new window)"
+msgstr "在 AMP 中预览更改(在新窗口打开)"
 
 #: includes/admin/class-amp-post-meta-box.php:104
 msgid "AMP status."
@@ -2464,27 +2809,19 @@ msgstr "转到与AMP兼容的网页"
 msgid "AMP is not available for the page currently being previewed."
 msgstr "AMP不适用于当前正在预览的网页。"
 
-#: includes/admin/class-amp-post-meta-box.php:369
-msgid "Enabled"
-msgstr "启用"
-
-#: includes/admin/class-amp-post-meta-box.php:370
-msgid "Disabled"
-msgstr "禁用"
-
-#: includes/validation/class-amp-validated-url-post-type.php:1844
-#: includes/validation/class-amp-validation-error-taxonomy.php:1728
-msgid "Delete"
-msgstr "删除"
-
 #: includes/validation/class-amp-validated-url-post-type.php:1742
 #: includes/validation/class-amp-validated-url-post-type.php:1773
 #: includes/validation/class-amp-validated-url-post-type.php:1795
 msgid "Dismiss this notice."
 msgstr "忽略此通知。"
 
+#: includes/validation/class-amp-validated-url-post-type.php:1844
+#: includes/validation/class-amp-validation-error-taxonomy.php:1728
+msgid "Delete"
+msgstr "删除"
+
 #: src/Admin/AnalyticsOptionsSubmenu.php:59
-#: src/Admin/AnalyticsOptionsSubmenu.php:60 assets/js/amp-settings.js:41
+#: src/Admin/AnalyticsOptionsSubmenu.php:60 assets/js/amp-settings.js:32
 msgid "Analytics"
 msgstr "统计"
 
@@ -2493,13 +2830,15 @@ msgstr "统计"
 msgid "Sanitizer (%s) class does not exist"
 msgstr "清理程序 (%s) 类不存在"
 
-#: includes/settings/class-amp-customizer-design-settings.php:134
-msgid "Design"
-msgstr "设计"
+#. translators: %s: list of tags.
+#: templates/meta-taxonomy.php:44
+msgid "Tags: %s"
+msgstr "代码:%s"
 
-#: includes/templates/class-amp-post-template.php:343
-msgid "View Comments"
-msgstr "查看评论"
+#. translators: %s: list of categories.
+#: templates/meta-taxonomy.php:27
+msgid "Categories: %s"
+msgstr "类别:%s"
 
 #: templates/footer.php:24
 msgid "Back to top"
@@ -2521,35 +2860,40 @@ msgstr "配色方案"
 msgid "Header Background & Link Color"
 msgstr "标题背景和链接颜色"
 
-#: includes/templates/class-amp-post-template.php:342
-msgid "Leave a Comment"
-msgstr "发表评论"
-
-#. translators: %s: list of tags.
-#: templates/meta-taxonomy.php:44
-msgid "Tags: %s"
-msgstr "代码:%s"
-
-#. translators: %s: list of categories.
-#: templates/meta-taxonomy.php:27
-msgid "Categories: %s"
-msgstr "类别:%s"
-
 #: includes/settings/class-amp-customizer-design-settings.php:146
 msgid "Header Text Color"
 msgstr "页眉文字颜色"
+
+#: includes/settings/class-amp-customizer-design-settings.php:134
+msgid "Design"
+msgstr "设计"
+
+#: includes/templates/class-amp-post-template.php:343
+msgid "View Comments"
+msgstr "查看评论"
+
+#: includes/templates/class-amp-post-template.php:342
+msgid "Leave a Comment"
+msgstr "发表评论"
 
 #. Plugin Name of the plugin
 #: includes/admin/class-amp-admin-pointers.php:66
 #: includes/admin/class-amp-template-customizer.php:269
 #: includes/admin/functions.php:136 includes/admin/functions.php:137
-#: includes/amp-helper-functions.php:2059
+#: includes/amp-helper-functions.php:2002
 #: includes/templates/amp-paired-browsing.php:31
 #: includes/validation/class-amp-validation-manager.php:438
-#: src/Admin/OptionsMenu.php:164 src/Admin/SiteHealth.php:152
-#: assets/js/amp-block-validation.js:12 assets/js/amp-onboarding-wizard.js:22
+#: src/Admin/OptionsMenu.php:164 src/Admin/SiteHealth.php:156
+#: assets/js/amp-block-validation.js:12 assets/js/amp-onboarding-wizard.js:13
 msgid "AMP"
 msgstr "AMP"
+
+#: back-compat/templates-v0-3/meta-taxonomy.php:8
+#: back-compat/templates-v0-3/meta-taxonomy.php:17
+#: templates/meta-taxonomy.php:21 templates/meta-taxonomy.php:35
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ", "
 
 #. translators: 1: the template file, 2: WP_CONTENT_DIR.
 #: includes/templates/class-amp-post-template.php:473
@@ -2560,10 +2904,3 @@ msgstr "模板 (%1$s) 的路径验证失败。路径无法遍历且必须位于�
 #: includes/templates/class-amp-post-template.php:200
 msgid "Called for non-existent key (\"%s\")."
 msgstr "针对不存在的键 (\"%s\") 调用。"
-
-#: back-compat/templates-v0-3/meta-taxonomy.php:8
-#: back-compat/templates-v0-3/meta-taxonomy.php:17
-#: templates/meta-taxonomy.php:21 templates/meta-taxonomy.php:35
-msgctxt "Used between list items, there is a space after the comma."
-msgid ", "
-msgstr ", "

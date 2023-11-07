@@ -11,6 +11,7 @@
  * @var bool    $has_placements there are use-defined placements.
  */
 
+use AdvancedAds\Entities;
 use AdvancedAds\Framework\Utilities\Params;
 
 defined( 'ABSPATH' ) || exit;
@@ -38,7 +39,7 @@ $message = Params::get( 'message' );
 		?>
 		<p class="description">
 			<?php
-			echo esc_html( Advanced_Ads_Placements::get_description() );
+			echo esc_html( Entities::get_placement_description() );
 			?>
 			<a href="https://wpadvancedads.com/manual/placements/?utm_source=advanced-ads&utm_medium=link&utm_campaign=placements" target="_blank" class="advads-manual-link"><?php esc_html_e( 'Manual', 'advanced-ads' ); ?></a>
 		</p>
@@ -425,7 +426,7 @@ $message = Params::get( 'message' );
 											],
 										]
 									),
-									esc_url( ADVADS_URL ) . 'place-ads-in-website-header/?utm_source=advanced-ads&utm_medium=link&utm_campaign=header-ad-tutorial'
+									'https://wpadvancedads.com/place-ads-in-website-header/?utm_source=advanced-ads&utm_medium=link&utm_campaign=header-ad-tutorial'
 								);
 								?>
 							</p>

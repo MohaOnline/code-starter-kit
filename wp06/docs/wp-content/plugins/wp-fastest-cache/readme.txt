@@ -3,8 +3,8 @@ Contributors: emrevona
 Donate link: https://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, wp-cache, core web vitals
 Requires at least: 3.3
-Tested up to: 6.3
-Stable tag: 1.2.0
+Tested up to: 6.4
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,13 @@ Chinese Simplified (China), Chinese Traditional (Taiwan), Czech, Dutch (Belgium)
 18. Database Cleanup
 
 == Changelog ==
+= 1.2.1 =
+* refactroning of the condition that was added for Divi theme
+* <strong>[FEATURE]</strong> Add a hook system for creating a post cache by id [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/create-a-post-cache-by-id-using-the-function-hook/">Details</a>]
+* to fix the issue of obtaining the latest version of the sitemap after a restart
+* to check if the intl extension is available for Cloudflare integration
+* to fix Warning: Undefined property: stdClass::$zone_id in cdn.php on line 227
+
 = 1.2.0 =
 * to make the Preload feature to be compatible with Sitemap Index
 * to hide the premium tab for the premium users

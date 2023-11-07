@@ -12,7 +12,7 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   public bool $casuallyFineTuned = false;
   public ?int $promptTokens = null;
   
-  public function __construct( ?string $prompt = '', int $maxTokens = 1024, string $model = MWAI_DEFAULT_MODEL ) {
+  public function __construct( ?string $prompt = '', int $maxTokens = 1024, string $model = MWAI_FALLBACK_MODEL ) {
     parent::__construct( $prompt );
     $this->setModel( $model );
     $this->setMaxTokens( $maxTokens );
@@ -27,16 +27,17 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
       'maxTokens' => $this->maxTokens,
       'temperature' => $this->temperature,
       'maxSentences' => $this->maxSentences,
-      'stop' => $this->stop,
       'context' => $this->context,
       'newMessage' => $this->newMessage,
-      'promptEnding' => $this->promptEnding,
-      'casuallyFineTuned' => $this->casuallyFineTuned,
       'model' => $this->model,
       'mode' => $this->mode,
       'session' => $this->session,
       'env' => $this->env,
+      'envId' => $this->envId,
       'service' => $this->service,
+      'promptEnding' => $this->promptEnding,
+      'stop' => $this->stop,
+      'casuallyFineTuned' => $this->casuallyFineTuned,
     ];
   }
 
@@ -414,6 +415,9 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
 		}
     if ( !empty( $params['botId'] ) ) {
       $this->setBotId( $params['botId'] );
+    }
+    if ( !empty( $params['envId'] ) ) {
+      $this->setEnvId( $params['envId'] );
     }
   }
 }

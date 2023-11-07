@@ -117,11 +117,11 @@ if( $pub_id_errors ) : ?>
 	    <option value="in-article" <?php selected( $unit_type, 'in-article' ); ?>><?php _e( 'In-article', 'advanced-ads' ); ?></option>
 	    <option value="in-feed" <?php selected( $unit_type, 'in-feed' ); ?>><?php _e( 'In-feed', 'advanced-ads' ); ?></option>
 	</select>
-	<a href="<?php echo esc_url( ADVADS_URL ) . 'adsense-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-ad-types'; ?>" target="_blank"><?php esc_html_e( 'manual', 'advanced-ads' ); ?></a>
+	<a href="https://wpadvancedads.com/adsense-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-ad-types" target="_blank"><?php esc_html_e( 'manual', 'advanced-ads' ); ?></a>
     </div>
 <?php if ( in_array( $unit_type, [ 'link', 'link-responsive' ], true ) ) : ?>
 <p class="advads-message-warning"><?php esc_html_e( 'Google AdSense deprecated Link Units. Please choose another type.', 'advanced-ads' ); ?>
-	<a href="<?php echo esc_url( ADVADS_URL ); ?>adsense-link-units/"" target="_blank" rel="noopener">
+	<a href="https://wpadvancedads.com/adsense-link-units/" target="_blank" rel="noopener">
 		<?php esc_html_e( 'Learn more', 'advanced-ads' ); ?>
 	</a>
 </p>

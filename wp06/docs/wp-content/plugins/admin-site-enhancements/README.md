@@ -4,8 +4,8 @@ Contributors: qriouslad
 Donate link: https://bowo.io/asenha-sp-rdm  
 Tags: enhancements, tweaks, optimizations, tools  
 Requires at least: 4.6  
-Tested up to: 6.3.1  
-Stable tag: 6.0.4  
+Tested up to: 6.3.2  
+Stable tag: 6.0.6  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -273,11 +273,37 @@ Hoping that this is useful in reducing the number of plugins we install the firs
 
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **48 _patch_ releases** (e.g. 4.9.1). 
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **51 _patch_ releases** (e.g. 4.9.1). 
 
 Each **_point release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_patch release_** usually contain one or more bugfix or improvements to existing modules/features.
 
 [**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web) now. Lifetime Deal (LTD) available.
+
+### 6.0.6 (2023.11.05) - ASE Free and Pro
+
+* **[ADDED][PRO] Admin Interface >> Admin Columns Manager**: Horizontal scrolling on the posts list table is automatically enabled when there are columns using custom width in pixels that have the combined width greater than the width of the list table. This is especially useful for post types with many custom fields and you'd like to show many / most of them in the list table.
+
+* **[IMPROVED][PRO] Admin Interface >> Admin Columns Manager**: Ensure custom columns are shown correctly in the posts list table after performing Quick Edit on a post. Props to Benjamin P. for reporting the issue.
+
+* **[FIXED][PRO] Admin Interface >> Admin Columns Manager**: Fixed several PHP Warnings when custom fields have no value assigned yet for a post.
+
+* **[FIXED][FREE][PRO] Admin Interface >> Hide Admin Notices**: Connection error notices were shown immediately after enabling this module, regardless of whether there was an actual connection error. It will now be properly hidden and only shown as needed. Props to Sebastian A. for reporting the issue.
+
+* **[FIXED][PRO] Content Management >> Custom Content Types**: The WYSIWYG custom field will now correctly insert the media when using the Add Media button/UI.
+
+* **[FIXED][FREE][PRO] Security >> Email Address Obfuscator**: Fixed an issue with Firefox browser not correctly showing the human-readable version of the email. Props to Mark G. for reporting the issue with helpful screenshots.
+
+### 6.0.5.1 (2023.10.31) - ASE Free and Pro
+
+* **[FIXED][FREE][PRO] Log In | Log Out >> Change Login URL**: Fixed an issue where correct login redirects to /not_found/ after latest changes in v6.0.5. Props to Gustavo F. and Ignacio C. for reporting the issue.
+
+### 6.0.5 (2023.10.30) - ASE Free and Pro
+
+* **[IMPROVED][FREE][PRO] Log In | Log Out >> Change Login URL**: Redirection of /wp-login.php and /wp-admin/ to the 404 /not_found/ URL works more reliably now. Props to Gustavo F. for reporting the issue where those URLs were not properly redirecting to /not_found/ on his sites and ongoing help with troubleshooting it.
+
+* **[FIXED][PRO] Admin Interface >> Admin Menu Organizer**: Missing submenu items should now be shown in the admin menu, as well as ASE Pro settings page's sortables. i.e. the module should more reliably show submenu items now. Props to Bruce Z for reporting this for an ACF Pro CPT menu item which had missing submenu items on his site.
+
+* **[FIXED][PRO] Content Management >> Custom Content Types**: Fixed a PHP Warning error. Props to Sam E.B. for reporting.
 
 ### 6.0.4 (2023.10.26) - ASE Free and Pro
 

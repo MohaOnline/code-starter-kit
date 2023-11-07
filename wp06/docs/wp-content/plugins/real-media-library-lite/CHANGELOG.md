@@ -3,6 +3,161 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.21.16 (2023-11-07)
+
+
+### Build Process
+
+* set @automattic/interpolate-components as enforced check in weblate (CU-2gfb4w6)
+* set php-format as enforced check in weblate (CU-2gfb4w6)
+
+
+### Maintenance
+
+* add de@informal with threshold 100 in continuous localization (CU-2gfb42y)
+* minimum required PHP version 7.4 and WP version 5.8 (CU-arvdr3)
+
+
+<details><summary>Dependency updates @devowl-wp/freemium 1.3.63</summary>
+
+
+**_Purpose of dependency:_** _Make your plugin to a freemium plugin with predefined Envato support_
+##### Build Process
+
+* set @automattic/interpolate-components as enforced check in weblate (CU-2gfb4w6)
+* set php-format as enforced check in weblate (CU-2gfb4w6)
+
+
+##### Maintenance
+
+* add de@informal with threshold 100 in continuous localization (CU-2gfb42y)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-product-manager-wp-client 1.19.0</summary>
+
+
+**_Purpose of dependency:_** _A WordPress client for Real Product Manager_
+##### Bug Fixes
+
+* remote language codes for cs, da and sv (CU-2gfb42y)
+
+
+##### Build Process
+
+* set @automattic/interpolate-components as enforced check in weblate (CU-2gfb4w6)
+* set php-format as enforced check in weblate (CU-2gfb4w6)
+
+
+##### Continuous Integration
+
+* enable machine translation for various languages (CU-2gfb42y)
+* translation completeness thresholds defined for main languages (CU-861n4aer5)
+
+
+##### Features
+
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)
+
+
+##### Maintenance
+
+* add legal-text to some texts (CU-2gfb42y)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-utils 1.12.0</summary>
+
+
+**_Purpose of dependency:_** _Create cross-selling ads, about page, rating and newsletter input for WP Real plugins._
+##### Bug Fixes
+
+* remote language codes for cs, da and sv (CU-2gfb42y)
+
+
+##### Build Process
+
+* set @automattic/interpolate-components as enforced check in weblate (CU-2gfb4w6)
+* set php-format as enforced check in weblate (CU-2gfb4w6)
+
+
+##### Continuous Integration
+
+* enable machine translation for various languages (CU-2gfb42y)
+* translation completeness thresholds defined for main languages (CU-861n4aer5)
+
+
+##### Features
+
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)
+
+
+##### Maintenance
+
+* add legal-text to some texts (CU-2gfb42y)</details>
+
+<details><summary>Dependency updates @devowl-wp/utils 1.16.0</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Bug Fixes
+
+* remote language codes for cs, da and sv (CU-2gfb42y)
+
+
+##### Build Process
+
+* remove local language files from built ZIP file and use remote files (CU-861n4ahzb)
+* set @automattic/interpolate-components as enforced check in weblate (CU-2gfb4w6)
+* set php-format as enforced check in weblate (CU-2gfb4w6)
+
+
+##### Continuous Integration
+
+* enable machine translation for various languages (CU-2gfb42y)
+* translation completeness thresholds defined for main languages (CU-861n4aer5)
+
+
+##### Features
+
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)
+* translations in Spanish, French, Italian, Dutch, Polish, Danish, Swedish, Norwegian, Czech, Portuguese and Romanian (CU-2gfb42y)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.7.6</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Continuous Integration
+
+* show inconsistent translations always in translation status (CU-86932cagc)
+
+
+##### Maintenance
+
+* machine translated strings should be trusted and not set as fuzzy in Weblate (CU-2gfb42y)</details>
+
+
+
+
+
+## 4.21.15 (2023-11-02)
+
+
+### Maintenance
+
+* tested up to WordPress 6.4 (CU-8692zwmth)
+
+
+<details><summary>Dependency updates @devowl-wp/real-product-manager-wp-client 1.18.3</summary>
+
+
+**_Purpose of dependency:_** _A WordPress client for Real Product Manager_
+##### Bug Fixes
+
+* passing null to parameter [#1](https://git.devowl.io/devowlio/devowl-wp/issues/1) () of type string is deprecated</details>
+
+
+
+
+
 ## 4.21.14 (2023-10-27)
 
 **Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.

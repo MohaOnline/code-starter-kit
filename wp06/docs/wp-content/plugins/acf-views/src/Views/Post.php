@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Views;
 
+use org\wplake\acf_views\Views\Fields\Comment\CommentFields;
 use org\wplake\acf_views\Views\Fields\Fields;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
+use org\wplake\acf_views\Views\Fields\Term\TermFields;
+use org\wplake\acf_views\Views\Fields\User\UserFields;
+use org\wplake\acf_views\Views\Fields\Woo\WooFields;
 
 defined('ABSPATH') || exit;
 
@@ -72,12 +77,12 @@ class Post
         $isCustomFieldType = 0 === strpos($fieldName, '_');
 
         if ($isCustomFieldType) {
-            $isPostGroup = 0 === strpos($fieldName, Fields::POST_GROUP_PREFIX);
+            $isPostGroup = 0 === strpos($fieldName, PostFields::PREFIX);
             $isTaxonomyGroup = 0 === strpos($fieldName, Fields::TAXONOMY_PREFIX);
-            $isUserGroup = 0 === strpos($fieldName, Fields::USER_GROUP_PREFIX);
-            $isWooGroup = 0 === strpos($fieldName, Fields::WOO_GROUP_PREFIX);
-            $isTermGroup = 0 === strpos($fieldName, Fields::TERM_GROUP_PREFIX);
-            $isCommentGroup = 0 === strpos($fieldName, Fields::COMMENT_GROUP_PREFIX);
+            $isUserGroup = 0 === strpos($fieldName, UserFields::PREFIX);
+            $isWooGroup = 0 === strpos($fieldName, WooFields::PREFIX);
+            $isTermGroup = 0 === strpos($fieldName, TermFields::PREFIX);
+            $isCommentGroup = 0 === strpos($fieldName, CommentFields::PREFIX);
 
             if (!$this->isOptions() &&
                 ($isPostGroup || $isTaxonomyGroup || $isWooGroup)) {

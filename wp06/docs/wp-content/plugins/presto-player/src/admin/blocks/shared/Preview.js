@@ -1,12 +1,12 @@
-const { __ } = wp.i18n;
-const { Disabled } = wp.components;
+import { __ } from "@wordpress/i18n";
+import { useState, useEffect } from "@wordpress/element";
+import { Disabled } from "@wordpress/components";
 import {
   PrestoCtaOverlayUi,
   PrestoEmailOverlayUi,
 } from "@presto-player/components-react";
 import { timeToSeconds } from "../util";
 import Player from "./Player";
-const { useState, useEffect } = wp.element;
 
 export default ({
   state,
@@ -109,7 +109,11 @@ export default ({
   };
 
   return (
-    <Disabled isDisabled={isDisabled} className="disable-player">
+    <Disabled
+      isDisabled={isDisabled}
+      className="disable-player"
+      style={{ width: "100%" }}
+    >
       <div className="presto-player__wrapper">
         <Player
           src={src || ""}

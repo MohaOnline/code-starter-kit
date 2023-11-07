@@ -40,7 +40,7 @@ class Advanced_Ads_Visitor_Conditions {
 					'label'        => __( 'Device', 'advanced-ads' ),
 					'metabox'      => [ 'Advanced_Ads_Visitor_Conditions', 'mobile_is_or_not' ], // callback to generate the metabox.
 					'check'        => [ 'Advanced_Ads_Visitor_Conditions', 'check_device' ], // callback for frontend check.
-					'helplink'     => ADVADS_URL . 'manual/display-ads-either-on-mobile-or-desktop/?utm_source=advanced-ads&utm_medium=link&utm_campaign=condition-device',
+					'helplink'     => 'https://wpadvancedads.com/manual/display-ads-either-on-mobile-or-desktop/?utm_source=advanced-ads&utm_medium=link&utm_campaign=condition-device',
 					'device_types' => [
 						'mobile'  => [
 							'id'    => 'mobile',
@@ -61,7 +61,7 @@ class Advanced_Ads_Visitor_Conditions {
 					'description'  => __( 'Whether the visitor has to be logged in or not in order to see the ad.', 'advanced-ads' ),
 					'metabox'      => [ 'Advanced_Ads_Visitor_Conditions', 'metabox_is_or_not' ], // callback to generate the metabox.
 					'check'        => [ 'Advanced_Ads_Visitor_Conditions', 'check_logged_in' ], // callback for frontend check.
-					'helplink'     => ADVADS_URL . 'manual/logged-in-visitors/?utm_source=advanced-ads&utm_medium=link&utm_campaign=condition-logged-in-visitors',
+					'helplink'     => 'https://wpadvancedads.com/manual/logged-in-visitors/?utm_source=advanced-ads&utm_medium=link&utm_campaign=condition-logged-in-visitors',
 					'passive_info' => [
 						'hash_fields' => null,
 						'remove'      => 'login',

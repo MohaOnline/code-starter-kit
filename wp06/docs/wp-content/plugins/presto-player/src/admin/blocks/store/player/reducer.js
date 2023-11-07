@@ -1,6 +1,6 @@
-const { combineReducers, dispatch } = wp.data;
-const { apiFetch } = wp;
-const { pick } = lodash;
+import { combineReducers, dispatch } from '@wordpress/data';
+import apiFetch from  '@wordpress/api-fetch';
+import { pick } from 'lodash';
 
 /**
  * Presets reducer

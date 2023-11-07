@@ -36,6 +36,19 @@ class Scripts
         // admin pages
         add_action("admin_print_scripts-presto-player_page_presto_license", [$this, 'licenseScripts']);
         add_action("presto_player_pro_register_license_page", [$this, 'licenseScripts']);
+
+        add_action('after_setup_theme', [$this, 'addAppearanceToolsSupport'], 99999);
+    }
+
+    /**
+     * Add support for Appearance Tools.
+     *
+     * @return void
+     */
+    public function addAppearanceToolsSupport()
+    {
+        add_theme_support('appearance-tools');
+        add_theme_support('border');
     }
 
     public function learndashAdminScripts($hook_suffix)

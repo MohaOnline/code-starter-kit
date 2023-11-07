@@ -16,8 +16,8 @@ class LeafletProviders extends Singleton {
 	 */
 	protected function __construct() {
 	}
-	
-	
+
+
 	/**
 	 *	Returns raw leaflet providers
 	 *	@param array $filters credentials|enabled
@@ -26,9 +26,9 @@ class LeafletProviders extends Singleton {
 	public function get_providers( $filters = [] ) {
 		$core = Core::instance();
 
-		
+
 		if ( is_null( $this->leaflet_providers ) ) {
-			$this->leaflet_providers = json_decode( $core->read_file( 'etc/leaflet-providers.json' ), true );			
+			$this->leaflet_providers = json_decode( $core->read_file( 'etc/leaflet-providers.json' ), true );
 		}
 
 		$providers = $this->leaflet_providers;
@@ -63,14 +63,14 @@ class LeafletProviders extends Singleton {
 				$providers = array_replace_recursive( $providers, $disabled_providers );
 
 				$providers = array_filter( $providers, function( $el ) {
-					return $el !== false;
+					return $el !== '0';
 				} );
 
 				foreach ( $providers as &$provider ) {
 					if ( isset( $provider['variants'] ) ) {
 						// remove disabled variants
 						$provider['variants'] = array_filter( $provider['variants'], function( $el ) {
-							return $el !== false;
+							return ! in_array( $el, [ '0', false ], true );
 						} );
 						// remove empty variants
 						if ( ! count( $provider['variants'] ) ) {

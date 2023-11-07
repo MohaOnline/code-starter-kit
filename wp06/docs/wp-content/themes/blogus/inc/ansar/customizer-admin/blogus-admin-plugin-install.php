@@ -39,6 +39,9 @@ function blogus_deprecated_hook_admin_notice() {
 
                         <div class="panel-column-6">
                         <a class="blogus-btn-get-started button button-primary button-hero blogus-button-padding" href="#" data-name="" data-slug=""><?php esc_html_e( 'Starter Sites', 'blogus' ) ?></a>
+
+                        <a class="blogus-btn-get-started-customize button button-primary button-hero blogus-button-padding" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>" data-name="" data-slug=""><?php esc_html_e( 'Customize Site', 'blogus' ) ?></a>
+
                         
                         <div class="blogus-documentation">
                         <span aria-hidden="true" class="dashicons dashicons-external"></span>

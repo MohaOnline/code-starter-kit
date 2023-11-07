@@ -1064,9 +1064,13 @@ function nextAll (element, selector) {
           if (!scheduling_start_string.includes ('-') && !scheduling_end_string.includes ('-')) {
             var scheduling_start_date = ai_get_time (scheduling_start_string);
             var scheduling_end_date   = ai_get_time (scheduling_end_string);
+            scheduling_start_date ??= 0;
+            scheduling_end_date   ??= 0;
           } else {
               var scheduling_start_date = ai_get_date (scheduling_start_string) + gmt;
               var scheduling_end_date   = ai_get_date (scheduling_end_string) + gmt;
+              scheduling_start_date ??= 0;
+              scheduling_end_date   ??= 0;
             }
 
           var scheduling_days_array = b64d (scheduling_days).split (',');
@@ -1077,6 +1081,8 @@ function nextAll (element, selector) {
           var current_time = new Date ().getTime () + gmt;
           var date = new Date (current_time);
           var current_day = date.getDay ();
+          // Set 0 for Monday, 6 for Sunday
+          if (current_day == 0) current_day = 6; else current_day --;
 
           if (!scheduling_start_string.includes ('-') && !scheduling_end_string.includes ('-')) {
             var current_time_date_only = new Date (date.getFullYear (), date.getMonth (), date.getDate ()).getTime () + gmt;
@@ -1086,17 +1092,17 @@ function nextAll (element, selector) {
             }
           }
 
-          // Set 0 for Monday, 6 for Sunday
-          if (current_day == 0) current_day = 6; else current_day --;
+          scheduling_start_date_ok = current_time >= scheduling_start_date;
+          scheduling_end_date_ok   = scheduling_end_date == 0 || current_time < scheduling_end_date;
 
           if (ai_debug) console.log ('');
           if (ai_debug) console.log ("AI SCHEDULING:", b64d (scheduling_start), ' ', b64d (scheduling_end), ' ', b64d (scheduling_days), ' ', scheduling_type == 'W' ? 'IN' : 'OUT');
           if (ai_debug) console.log ("AI SCHEDULING current time", current_time);
-          if (ai_debug) console.log ("AI SCHEDULING start date", scheduling_start_date, current_time >= scheduling_start_date);
-          if (ai_debug) console.log ("AI SCHEDULING end date  ", scheduling_end_date, current_time < scheduling_end_date);
+          if (ai_debug) console.log ("AI SCHEDULING start date", scheduling_start_date, scheduling_start_date_ok);
+          if (ai_debug) console.log ("AI SCHEDULING end date  ", scheduling_end_date, scheduling_end_date_ok);
           if (ai_debug) console.log ("AI SCHEDULING days", scheduling_days_array, scheduling_days_array.includes (current_day.toString ()));
 
-          var scheduling_ok = current_time >= scheduling_start_date && current_time < scheduling_end_date && scheduling_days_array.includes (current_day.toString ());
+          var scheduling_ok = scheduling_start_date_ok && scheduling_end_date_ok && scheduling_days_array.includes (current_day.toString ());
 
           switch (scheduling_type) {
             case "B":
@@ -1118,9 +1124,9 @@ function nextAll (element, selector) {
 //          debug_bar.find ('.ai-debug-name.ai-scheduling-info').text (date_time + ' ' + current_day +
 //          ' current_time:' + Math.floor (current_time.toString () / 1000) + ' ' +
 //          ' start_date:' + Math.floor (scheduling_start_date / 1000).toString () +
-//          ' =' + (current_time >= scheduling_start_date).toString () +
+//          ' =' + (scheduling_start_date_ok).toString () +
 //          ' end_date:' + Math.floor (scheduling_end_date / 1000).toString () +
-//          ' =:' + (current_time < scheduling_end_date).toString () +
+//          ' =:' + (scheduling_end_date_ok).toString () +
 //          ' days:' + scheduling_days_array.toString () +
 //          ' =:' + scheduling_days_array.includes (current_day.toString ()).toString ());
 
@@ -1131,13 +1137,13 @@ function nextAll (element, selector) {
               var debug_bar_data = debug_bar.querySelector ('.ai-debug-name.ai-scheduling-info');
               if (debug_bar_data != null) {
                 debug_bar_data.textContent = date_time + ' ' + current_day +
-                  ' current_time:' + Math.floor (current_time.toString () / 1000) + ' ' +
+                  ' current_time: ' + Math.floor (current_time.toString () / 1000) + ' ' +
                   ' start_date:' + Math.floor (scheduling_start_date / 1000).toString () +
-                  ' =' + (current_time >= scheduling_start_date).toString () +
+                  '=>' + (scheduling_start_date_ok).toString () +
                   ' end_date:' + Math.floor (scheduling_end_date / 1000).toString () +
-                  ' =:' + (current_time < scheduling_end_date).toString () +
+                  '=>' + (scheduling_end_date_ok).toString () +
                   ' days:' + scheduling_days_array.toString () +
-                  ' =:' + scheduling_days_array.includes (current_day.toString ()).toString ();
+                  '=>' + scheduling_days_array.includes (current_day.toString ()).toString ();
               }
               debug_bar_data = debug_bar.querySelector ('.ai-debug-name.ai-scheduling-status');
               if (debug_bar_data != null) {

@@ -4,7 +4,7 @@ Theme URI:    https://ogma.mysterythemes.com/ogma-blog
 Author:       Mystery Themes
 Author URI:   https://mysterythemes.com
 Description:  Ogma Blog is a blogging WordPress theme with a one-click demo import feature which is a highly versatile and user-friendly theme explicitly designed for blog websites, and content-heavy blogs. It offers a range of advanced features and customization options to help you create a professional and engaging online publication. It offers Google fonts, text, and categories color options and layout options for Header, Single Posts, Related Posts, and Archives Posts. It has 8 Widget areas including one sticky sidebar enabled from the primary header. It has all the necessary features like WooCommerce Compatibility, RTL ready, Gutenberg, Elementor compatibility, GDPR compliant, and many more. This theme is optimized for search engines, ensuring your content is easily discoverable by search engines like Google. This helps to drive organic traffic to your website and increase your online visibility. You can check demos here which can be easily imported by the Mystery Themes Demo Importer plugin. Also, You can check Demo here:https://ogma.mysterythemes.com/demos/ogma-blog/ , Documentation here: https://docs.mysterythemes.com/ogma/ & Video tutorial here: https://youtu.be/FpRpOJDk-2E
-Version:      1.0.12
+Version:      1.0.13
 Tested up to: 6.3
 Requires PHP: 7.2
 License:      GNU General Public License v2 or later
@@ -2443,11 +2443,125 @@ Social Icon Official Color CSS
   top: 45px;
 }
 
-.header-search-wrapper .search-form-wrap .search-field {
+.search-form-wrap .search-form::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+/* ogma Pro live search CSS */
+
+.ogma-blog-search-results-wrap {
+  padding: 15px 3px 0;
+}
+
+.search-form-wrap .ogma-blog-search-posts-wrap {
+  max-height: 600px;
+  overflow-y: scroll;
+  padding-right: 8px;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-thumb-wrap {
+  flex: 0 1 20%;
+  margin-right: 15px;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-thumb-wrap img {
+  display: block;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-element {
+  flex: 0 1 80%;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item.no-img-post .ogma-blog-search-post-thumb-wrap {
+  flex: 0;
+  margin: 0;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-element .ogma-blog-search-post-title {
+  margin: 0 0 6px;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-element .ogma-blog-search-post-title a {
+  color: #212121;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-element .ogma-blog-search-post-title a:hover{
+  color:#0065C1;
+}
+
+.ogma-blog-search-results-wrap .ogma-blog-search-article-item .ogma-blog-search-post-element .posted-on {
+  font-size: 12px;
+  display: block;
+  margin-top: -2px;
+}
+
+.search-form.retrieving-posts label::before {
+  content: "\eb47";
+  font-family: boxicons !important;
+  font-weight: 600;
+  display: inline-block;
+  color: #B6B6B6;
+  position: absolute;
+  right: 5px;
+  border-radius: 50%;
+  top: 0px;
+  font-size: 20px;
+  -webkit-animation: tie-spin 3s infinite linear;
+  animation: tie-spin 3s infinite linear;
+}
+
+@keyframes tie-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.search-results-wrap.no-posts-found h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.search-results-wrap.no-posts-found p {
+  margin: 8px 0 0;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+.search-form.retrieving-posts label input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+.search-form.retrieving-posts label input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+
+/* clears the ‘X’ from Chrome */
+.search-form.retrieving-posts label input[type="search"]::-webkit-search-decoration,
+.search-form.retrieving-posts label input[type="search"]::-webkit-search-cancel-button,
+.search-form.retrieving-posts label input[type="search"]::-webkit-search-results-button,
+.search-form.retrieving-posts label input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.header-search-wrapper .search-form-wrap .search-form label {
   border-radius: 0;
-  padding: 4px 10px;
+  padding: 0;
   width: 70%;
   float: left;
+  position: relative;
 }
 
 .header-search-wrapper .search-form-wrap .search-submit {
@@ -2456,7 +2570,7 @@ Social Icon Official Color CSS
   box-shadow: none;
   color: #fff;
   float: left;
-  padding: 10px 0 10px;
+  padding: 0;
   width: 30%;
   height: 36px;
   background: #FF376C;

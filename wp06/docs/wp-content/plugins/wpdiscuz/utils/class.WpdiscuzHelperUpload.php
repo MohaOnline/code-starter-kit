@@ -593,8 +593,8 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
             $attachment = [
                 "guid" => $this->wpUploadsUrl . "/" . $cleanFileName,
                 "post_mime_type" => $file["type"],
-                "post_title" => preg_replace("#\.[^.]+$#", "", wp_slash($fName)),
-                "post_excerpt" => wp_slash($fName),
+                "post_title" => preg_replace("#\.[^.]+$#", "", wp_slash($sanitizedName)),
+                "post_excerpt" => wp_slash($sanitizedName),
                 "post_content" => "",
                 "post_status" => "inherit",
                 "post_parent" => $postParent
@@ -604,7 +604,7 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
                 add_filter("intermediate_image_sizes", [&$this, "getImagesSizes"]);
                 $attachData = wp_generate_attachment_metadata($attachId, $fileName);
                 wp_update_attachment_metadata($attachId, $attachData);
-                update_post_meta($attachId, "_wp_attachment_image_alt", $fName);
+                update_post_meta($attachId, "_wp_attachment_image_alt", $sanitizedName);
                 $ip = WpdiscuzHelper::getRealIPAddr();
                 update_post_meta($attachId, self::METAKEY_ATTCHMENT_OWNER_IP, $ip);
                 update_post_meta($attachId, self::METAKEY_ATTCHMENT_COMMENT_ID, 0);

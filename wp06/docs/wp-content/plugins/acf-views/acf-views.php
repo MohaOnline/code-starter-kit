@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: ACF Views
+ * Plugin Name: ACF Views Lite
  * Plugin URI: https://wplake.org/acf-views/
  * Description: Smart templates to display your content easily.
- * Version: 2.3.2
+ * Version: 2.3.5
  * Author: WPLake
  * Author URI: https://wplake.org/acf-views/
  * Text Domain: acf-views
@@ -72,7 +72,7 @@ $acfViews = new class {
     protected Creator $groupCreator;
     protected Settings $settings;
 
-    protected function acfGroups(): void
+    protected function acfGroups(bool $isAdmin): void
     {
         $acfGroupsLoader = new GroupsLoader();
         $acfGroupsLoader->signUpGroups(
@@ -88,16 +88,37 @@ $acfViews = new class {
         $taxFieldIntegration = new TaxFieldDataIntegration();
         $toolsDataIntegration = new ToolsDataIntegration();
 
-        $this->fieldIntegration->setHooks();
-        $cardDataIntegration->setHooks();
-        $itemIntegration->setHooks();
-        $metaFieldIntegration->setHooks();
-        $mountPointIntegration->setHooks();
-        $taxFieldIntegration->setHooks();
-        $toolsDataIntegration->setHooks();
+        $this->fieldIntegration->setHooks($isAdmin);
+        $cardDataIntegration->setHooks($isAdmin);
+        $itemIntegration->setHooks($isAdmin);
+        $metaFieldIntegration->setHooks($isAdmin);
+        $mountPointIntegration->setHooks($isAdmin);
+        $taxFieldIntegration->setHooks($isAdmin);
+        $toolsDataIntegration->setHooks($isAdmin);
     }
 
-    protected function acfViews(): void
+    protected function primary(bool $isAdmin): void
+    {
+        $this->groupCreator = new Creator();
+        $this->viewData = $this->groupCreator->create(ViewData::class);
+        $this->cardData = $this->groupCreator->create(CardData::class);
+        $this->options = new Options();
+        $this->html = new Html();
+        $this->cardsDataStorage = new CardsDataStorage($this->cardData);
+        $this->viewsDataStorage = new ViewsDataStorage($this->viewData);
+        $this->settings = new Settings($this->options);
+        $this->plugin = new Plugin($this->options);
+        $this->twig = new Twig($this->settings, $this->plugin);
+        $this->item = $this->groupCreator->create(ItemData::class);
+
+        // load right here, as used everywhere
+        $this->settings->load();
+
+        $this->plugin->setHooks($isAdmin);
+        $this->twig->setHooks($isAdmin, __FILE__);
+    }
+
+    protected function acfViews(bool $isAdmin): void
     {
         $fields = new Fields();
         $viewMarkup = new ViewMarkup($this->html, $fields);
@@ -123,14 +144,14 @@ $acfViews = new class {
         );
         $viewShortcode = new ViewShortcode($this->settings, $this->viewsDataStorage, $this->viewFactory);
 
-        $acfViewMetaBoxes->setHooks();
-        $acfViewsCpt->setHooks();
-        $this->viewsSaveActions->setHooks();
-        $acfViewGroupIntegration->setHooks();
-        $viewShortcode->setHooks();
+        $acfViewMetaBoxes->setHooks($isAdmin);
+        $acfViewsCpt->setHooks($isAdmin);
+        $this->viewsSaveActions->setHooks($isAdmin);
+        $acfViewGroupIntegration->setHooks($isAdmin);
+        $viewShortcode->setHooks($isAdmin);
     }
 
-    protected function acfCards(): void
+    protected function acfCards(bool $isAdmin): void
     {
         $queryBuilder = new QueryBuilder();
 
@@ -155,35 +176,14 @@ $acfViews = new class {
         );
         $cardShortcode = new CardShortcode($this->settings, $this->cardsDataStorage, $this->cardFactory);
 
-        $acfCardsCpt->setHooks();
-        $acfCardsMetaBoxes->setHooks();
-        $this->cardsSaveActions->setHooks();
-        $acfCardsViewIntegration->setHooks();
-        $cardShortcode->setHooks();
+        $acfCardsCpt->setHooks($isAdmin);
+        $acfCardsMetaBoxes->setHooks($isAdmin);
+        $this->cardsSaveActions->setHooks($isAdmin);
+        $acfCardsViewIntegration->setHooks($isAdmin);
+        $cardShortcode->setHooks($isAdmin);
     }
 
-    protected function primary(): void
-    {
-        $this->groupCreator = new Creator();
-        $this->viewData = $this->groupCreator->create(ViewData::class);
-        $this->cardData = $this->groupCreator->create(CardData::class);
-        $this->options = new Options();
-        $this->html = new Html();
-        $this->cardsDataStorage = new CardsDataStorage($this->cardData);
-        $this->viewsDataStorage = new ViewsDataStorage($this->viewData);
-        $this->settings = new Settings($this->options);
-        $this->plugin = new Plugin($this->options);
-        $this->twig = new Twig($this->settings, $this->plugin);
-        $this->item = $this->groupCreator->create(ItemData::class);
-
-        // load right here, as used everywhere
-        $this->settings->load();
-
-        $this->plugin->setHooks();
-        $this->twig->setHooks(__FILE__);
-    }
-
-    protected function others(): void
+    protected function others(bool $isAdmin): void
     {
         $demoImport = new DemoImport(
             $this->cardsSaveActions,
@@ -225,15 +225,15 @@ $acfViews = new class {
         );
         $frontAssets = new FrontAssets($this->plugin, $this->viewFactory, $this->cardFactory);
 
-        $dashboard->setHooks();
-        $demoImport->setHooks();
-        $acfPro->setHooks();
-        $upgrades->setHooks();
-        $activeInstallations->setHooks();
-        $tools->setHooks();
-        $adminAssets->setHooks();
-        $frontAssets->setHooks();
-        $settings->setHooks();
+        $dashboard->setHooks($isAdmin);
+        $demoImport->setHooks($isAdmin);
+        $acfPro->setHooks($isAdmin);
+        $upgrades->setHooks($isAdmin);
+        $activeInstallations->setHooks($isAdmin);
+        $tools->setHooks($isAdmin);
+        $adminAssets->setHooks($isAdmin);
+        $frontAssets->setHooks($isAdmin);
+        $settings->setHooks($isAdmin);
     }
 
     public function init(): void
@@ -245,11 +245,13 @@ $acfViews = new class {
 
         require_once __DIR__ . '/prefixed_vendors/vendor/scoper-autoload.php';
 
-        $this->acfGroups();
-        $this->primary();
-        $this->acfViews();
-        $this->acfCards();
-        $this->others();
+        $isAdmin = is_admin();
+
+        $this->acfGroups($isAdmin);
+        $this->primary($isAdmin);
+        $this->acfViews($isAdmin);
+        $this->acfCards($isAdmin);
+        $this->others($isAdmin);
     }
 };
 

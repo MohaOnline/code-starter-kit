@@ -30,6 +30,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Wow_Plugin_Admin {
 
+	private $plugin = '';
+	private $url = '';
+	private $rating = '';
+
 	/**
 	 * Setup to admin panel of the plugin
 	 *

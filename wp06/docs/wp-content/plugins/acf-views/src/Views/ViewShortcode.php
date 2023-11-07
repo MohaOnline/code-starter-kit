@@ -186,7 +186,7 @@ class ViewShortcode extends Shortcode
 
         $this->displayingView[$recursionKey] = true;
 
-        $post = new Post($dataPostId, [], false, $userId, $termId);
+        $post = new Post($dataPostId, [], false, $userId, $termId, $commentId);
         $html = $this->viewFactory->makeAndGetHtml($post, $viewId, $currentPageId);
 
         unset($this->displayingView[$recursionKey]);
@@ -235,9 +235,9 @@ class ViewShortcode extends Shortcode
         return $args;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        parent::setHooks();
+        parent::setHooks($isAdmin);
 
         add_filter('register_block_type_args', [$this, 'extendGutenbergShortcode'], 10, 2);
     }

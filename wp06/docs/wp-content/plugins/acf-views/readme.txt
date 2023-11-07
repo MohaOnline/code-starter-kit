@@ -1,10 +1,10 @@
-=== ACF Views - Smart templates to display your content easily ===
+=== ACF Views Lite - Smart Templates to Display your Content Easily ===
 Contributors: wplake
 Tags: Advanced Custom Fields, shortcode, custom fields, query, post type, acf
 Requires at least: 5.5
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.3.2
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Smart templates to display your content easily. Built-in post queries and automa
 
 Smart templates to display your content easily. Built-in post queries and automated template generation. Develop quickly, and maintain flexibility.
 
-Note: "ACF Views" plugin requires [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin to be enabled on your website (either Free or Pro version).
+Note: "ACF Views Lite" plugin requires [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin to be enabled on your website (either Free or Pro version).
 
 == 🌟 Display ACF fields and Posts ==
 
@@ -62,18 +62,20 @@ Work faster: copy and paste the generated template and change it in seconds!
 == 📚 Extensive Docs and Friendly Support ==
 
 Our [YouTube channel](https://www.youtube.com/watch?v=Ieu3Mk2Ah0A&list=PL4WYpE2DYvTyzk1DtNhXJ4BXRjtIndht3) showcases the use of our plugin and its features, making it easier for new users to get started. See our [Docs](https://docs.acfviews.com/getting-started/acf-views-plugin-for-wordpress) for step by step guides and for information about customization.
-Questions about the Basic ACF Views plugin are handled through the [support forum](https://wordpress.org/support/plugin/acf-views/). Customers with an active Pro license have personal support via our [support form](https://wplake.org/acf-views-support/).
+Questions about the ACF Views Lite plugin are handled through the [support forum](https://wordpress.org/support/plugin/acf-views/). Customers with an active Pro license have personal support via our [support form](https://wplake.org/acf-views-support/).
 
 Visit [our website](https://wplake.org/acf-views/) to get more information.
 
 == 📢 Powerful features ==
 
-* Display built-in post fields (like title or featured image) along with ACF fields
+* Display built-in WP fields (like post title or username) along with ACF fields
 * Display post A in post B with its fields
 * Define custom CSS and JS
 * No style conflicts due to BEM method used
 * Combine ACF fields from two different field groups
 * Restrict visibility to specific user roles
+* Display fields from any source, including the [options page](https://wplake.org/blog/acf-options-page/) and user profiles
+* Labels from Views and Cards can be [easily translated](https://docs.acfviews.com/general/multilingual)
 
 == 🎯 High Performance ==
 
@@ -86,17 +88,14 @@ Do you need more? We have a [Pro version](https://wplake.org/acf-views-pro/) wit
 
 * Filter posts by meta and taxonomies. Use AJAX pagination
 * Repeater and Group field types supported
-* Gallery field supports Masonry style and Lightbox
-* Relationship and Post Object fields have extended support
 * Custom Gutenberg blocks are generated on the fly
-* Plugin’s shortcodes can be added to pages/CPT items without editing code
-
-See tutorials on [our youtube channel](https://www.youtube.com/watch?v=Ieu3Mk2Ah0A&list=PL4WYpE2DYvTyzk1DtNhXJ4BXRjtIndht3).
+* Extended support for field types (customize the display of Relationship, Post Object, User and Taxonomy fields)
+* Google and Open Street Maps: display the chosen address as text, and define a custom marker icon
+* Image field with Lightbox
 
 == 🌍 Multilingual ==
 
-ACF Views plugin supports translations.
-Check your language status or help by translating ACF Views into your language [here](https://translate.wordpress.org/projects/wp-plugins/acf-views/).
+Labels from Views and Cards can be [easily translated](https://docs.acfviews.com/general/multilingual).
 
 == Screenshots ==
 
@@ -109,13 +108,13 @@ Check your language status or help by translating ACF Views into your language [
 
 == Installation ==
 
-**Installation for ACF Views**
+**Installation for ACF Views Lite**
 
 From your WordPress dashboard:
 
 1. Visit the Plugins list, click "Add New"
-2. Search for "ACF Views"
-3. Click "Install" and "Activate" ACF Views
+2. Search for "ACF Views Lite"
+3. Click "Install" and "Activate" ACF Views Lite
 4. Visit the new menu item "ACF Views" to create your first View
 
 See our [plugin documentation](https://docs.acfviews.com/getting-started/acf-views-for-wordpress) for step-by-step tutorials.
@@ -128,7 +127,7 @@ After payment you'll receive an email with your license key which includes the A
 1. Visit the Plugins list, click "Add New", then click "Upload Plugin"
 2. Click on "Choose File" and locate the downloaded ACF Views Pro package, then click "Open"
 3. Click on "Install Now" and wait for the package to upload and install, then click "Activate Plugin"
-   Note: ACF Views free will automatically be deactivated. You can safely delete ACF Views from the Plugins list. (Don't worry, deleting the ACF Views plugin won't delete your data.)
+   Note: ACF Views Lite will automatically be deactivated. You can safely delete ACF Views Lite from the Plugins list. (Don't worry, deleting the ACF Views Lite plugin won't delete your data.)
 4. In the Plugins list for ACF Views Pro click "Activate your Pro license"
 5. Copy and paste your Pro License Key, then click "Activate"
 
@@ -179,6 +178,8 @@ Relational group
 JQuery group
 
 * [Google Map](https://docs.acfviews.com/guides/acf-views/fields/google-map)
+* [GMap multiple markers](https://wordpress.org/plugins/acf-google-map-field-multiple-markers/)
+* [OpenStreetMap](https://wordpress.org/plugins/acf-openstreetmap-field/)
 * Date Picker
 * Date Time Picker
 * Time Picker
@@ -191,7 +192,7 @@ Layout group
 
 = Custom fields not in the list of fields? =
 
-Only fields created using the official Advanced Custom Fields (ACF) plugin are compatible with ACF Views. See list above for supported field types.
+Only fields created using the official Advanced Custom Fields (ACF) plugin or from supported addons are compatible with ACF Views. See the list above for supported field types.
 
 = Can I display user fields? =
 
@@ -210,6 +211,18 @@ Have you checked that the fields are filled in the target object? See [steps](ht
 You can use the View shortcode inside the Gutenberg Query Loop element. Please make sure you've added it via the built-in Shortcode block, as it won't work properly with other block types, like Code or Custom HTML.
 
 == Changelog ==
+
+= 2.3.5 (2023-11-03): =
+- View: map field - added "Multiple map markers" plugin compatibility
+- View: map field - added "OpenStreetMap" plugin compatibility
+- View: added '$Comment$' group
+- UX: Labels
+
+= 2.3.4 (2023-10-29): =
+- Edit screen: added workaround for the missing ACF ajax validation on the wordpress.com hosting
+
+= 2.3.3 (2023-10-29): =
+- Edit screen: fixed conflict with the Fusion Builder (Avada theme)
 
 = 2.3.2 (2023-10-27): =
 - Workaround for the Avada theme ob_start() bug

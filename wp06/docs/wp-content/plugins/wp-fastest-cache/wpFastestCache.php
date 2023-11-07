@@ -3,7 +3,7 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
-Version: 1.2.0
+Version: 1.2.1
 Author: Emre Vona
 Author URI: https://www.wpfastestcache.com/
 Text Domain: wp-fastest-cache
@@ -169,6 +169,9 @@ GNU General Public License for more details.
 			add_action("wpfc_clear_all_cache", array($this, 'deleteCache'), 10, 1);
 			add_action("wpfc_clear_all_site_cache", array($this, 'wpfc_clear_cache_of_allsites_callback'));
 			add_action("wpfc_clear_post_cache_by_id", array($this, 'singleDeleteCache'), 10, 2);
+
+			// create cache by id hook
+			add_action("wpfc_create_post_cache_by_id", array($this, 'create_post_cache_by_id'), 10, 1);
 
 			// to enable Auto Cache Panel for the classic editor
 			add_action( 'admin_init', array($this, 'enable_auto_cache_settings_panel'));
@@ -419,6 +422,14 @@ GNU General Public License for more details.
 
 			include_once('inc/single-preload.php');
 			SinglePreloadWPFC::create_cache();
+		}
+
+		public function create_post_cache_by_id($id){
+			include_once('inc/single-preload.php');
+			SinglePreloadWPFC::init($id);
+			$res = SinglePreloadWPFC::create_cache_for_all_urls();
+
+			return $res;
 		}
 
 		public function single_preload_inline_js(){
@@ -2515,5 +2526,16 @@ GNU General Public License for more details.
 		}
 	}
 
+	function wpfc_create_post_cache_by_id($post_id = false){
+		if($post_id){
+			do_action("wpfc_create_post_cache_by_id", $post_id);
+		}
+	}
+
+
+
 	$GLOBALS["wp_fastest_cache"] = new WpFastestCache();
+
+
+
 ?>

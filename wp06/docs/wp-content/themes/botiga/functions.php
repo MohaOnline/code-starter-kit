@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.5' );
+	define( 'BOTIGA_VERSION', '2.1.6' );
 }
 
 // aThemes White Label Compatibility
@@ -465,6 +465,13 @@ if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
  */
 if( class_exists( 'WC_Vendors' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/wc-vendors/wc-vendors.php';
+}
+
+/**
+ * Load WC Germanized compatibility file.
+ */
+if( class_exists( 'WooCommerce_Germanized' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/wc-germanized/class-wc-germanized.php';
 }
 
 /**

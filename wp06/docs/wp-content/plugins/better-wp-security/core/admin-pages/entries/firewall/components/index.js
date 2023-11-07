@@ -1,6 +1,7 @@
 export { default as Nav } from './nav';
 export { default as Header } from './header';
 export { default as Page } from './page';
+export { default as RuleForm } from './rule-form';
 export { default as RulesTable } from './rules-table';
 export { default as RulesTableHeader } from './rules-table-header';
 export { default as RulesTablePagination } from './rules-table-pagination';

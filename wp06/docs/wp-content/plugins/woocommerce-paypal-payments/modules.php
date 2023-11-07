@@ -31,7 +31,7 @@ return function ( string $root_dir ): iterable {
 	if ( apply_filters(
 		// phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		'woocommerce.feature-flags.woocommerce_paypal_payments.applepay_enabled',
-		getenv( 'PCP_APPLEPAY_ENABLED' ) === '1'
+		getenv( 'PCP_APPLEPAY_ENABLED' ) !== '0'
 	) ) {
 		$modules[] = ( require "$modules_dir/ppcp-applepay/module.php" )();
 	}
@@ -39,7 +39,7 @@ return function ( string $root_dir ): iterable {
 	if ( apply_filters(
 		//phpcs:disable WordPress.NamingConventions.ValidHookName.UseUnderscores
 		'woocommerce.feature-flags.woocommerce_paypal_payments.googlepay_enabled',
-		getenv( 'PCP_GOOGLEPAY_ENABLED' ) === '1'
+		getenv( 'PCP_GOOGLEPAY_ENABLED' ) !== '0'
 	) ) {
 		$modules[] = ( require "$modules_dir/ppcp-googlepay/module.php" )();
 	}

@@ -62,14 +62,7 @@ trait Assets
         $fileDir = $file === null ? null : \dirname($file);
         $chunksLanguageFolder = null;
         if ($file !== null) {
-            //if (defined('WP_LANG_DIR') && !empty(constant('WP_LANG_DIR')) && !(defined('DEVOWL_WP_DEV') && constant('DEVOWL_WP_DEV'))) {
-            //    $chunksLanguageFolder =
-            //        trailingslashit(content_url(str_replace(constant('WP_CONTENT_DIR'), '', constant('WP_LANG_DIR')))) .
-            //        'mo-cache/' .
-            //        $slug;
-            //} else {
-            $chunksLanguageFolder = \plugins_url(\substr(PackageLocalization::getParentLanguageFolder($fileDir . '/' . Constants::LOCALIZATION_PUBLIC_JSON_I18N), \strlen($fileDir)), $file);
-            //}
+            $chunksLanguageFolder = PackageLocalization::getParentLanguageFolder($fileDir . '/' . Constants::LOCALIZATION_PUBLIC_JSON_I18N, \false, 'url');
         }
         return [
             'slug' => $slug,

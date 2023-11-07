@@ -6,6 +6,7 @@ namespace org\wplake\acf_views\Common\Cpt;
 
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
 use org\wplake\acf_views\Common\CptDataStorage;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Plugin;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
 use WP_Post;
@@ -13,7 +14,7 @@ use WP_Query;
 
 defined('ABSPATH') || exit;
 
-abstract class Cpt
+abstract class Cpt implements HooksInterface
 {
     const NAME = '';
 
@@ -39,6 +40,12 @@ abstract class Cpt
         return static::NAME . '_cloned';
     }
 
+    protected function isNecessaryHandle(string $handle): bool
+    {
+        // acf do not include select2 if it's already included (e.g. by woo, or Avada)
+        return in_array($handle, ['select2'], true);
+    }
+
     protected function isNecessaryPluginAsset(string $url, string $handle): bool
     {
         $isPlugin = false !== strpos($url, '/wp-content/plugins/');
@@ -55,12 +62,11 @@ abstract class Cpt
         $isGutenberg = false !== strpos($url, '/wp-content/plugins/gutenberg/');
 
         $necessaryHandles = [
-            // acf do not include select2 if it's already included (e.g. by woo)
-            'select2',
             // admin menu groups plugin
             'amg_admin_menu_style',
         ];
-        $isNecessaryHandle = in_array($handle, $necessaryHandles, true);
+        $isNecessaryHandle = $this->isNecessaryHandle($handle) ||
+            in_array($handle, $necessaryHandles, true);
 
         return !$isPlugin ||
             $isAcfViews ||
@@ -108,7 +114,8 @@ abstract class Cpt
         foreach ($styles as $styleHandle => $styleData) {
             // can be false or even NULL
             if (!is_string($styleData->src) ||
-                !$this->isThemeAsset($styleData->src)) {
+                !$this->isThemeAsset($styleData->src) ||
+                $this->isNecessaryHandle($styleHandle)) {
                 continue;
             }
 
@@ -120,7 +127,8 @@ abstract class Cpt
         foreach ($scripts as $scriptHandle => $scriptData) {
             // can be false or even NULL
             if (!is_string($scriptData->src) ||
-                !$this->isThemeAsset($scriptData->src)) {
+                !$this->isThemeAsset($scriptData->src) ||
+                $this->isNecessaryHandle($scriptHandle)) {
                 continue;
             }
 
@@ -173,21 +181,9 @@ abstract class Cpt
     {
         $scriptsToOverride = [
             //// wp media
-            'mediaelement-core',
-            'wp-mediaelement',
-            'media-views',
-            'imgareaselect',
             'wp-color-picker',
-            'media-editor',
-            'media-audiovideo',
             'wp-color-picker-alpha',
             'wp-link',
-            'wp-media-utils',
-            'media-upload',
-            'mediaelement-core',
-            'mediaelement-migrate',
-            'image-edit',
-            'media-models',
             //// blocks
             'wp-format-library',
             'wp-wordcount',
@@ -201,7 +197,6 @@ abstract class Cpt
             'wp-shortcode',
             'wp-embed',
             'svg-painter',
-            'clipboard',
             //// acf
             'acf-color-picker-alpha',
             'acf-timepicker',
@@ -213,7 +208,6 @@ abstract class Cpt
             //// wp media
             'media-widgets',
             'media-audio-widget',
-            'media-image-widget',
             'media-video-widget',
             'media-gallery-widget',
         ];
@@ -545,8 +539,14 @@ abstract class Cpt
         );
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        add_filter('wp_insert_post_data', [$this, 'avoidOverridePostContentByGutenberg']);
+
+        if (!$isAdmin) {
+            return;
+        }
+
         // Note: do not use ob_start in admin, it causes compatibility issues with some themes (Avada)
 
         add_action('admin_init', [$this, 'cloneItemAction']);
@@ -561,7 +561,6 @@ abstract class Cpt
         add_filter('views_edit-' . static::NAME, [$this, 'printPostTypeDescription',]);
         add_filter('post_row_actions', [$this, 'getRowActions',], 10, 2);
 
-        add_filter('wp_insert_post_data', [$this, 'avoidOverridePostContentByGutenberg']);
         add_filter('admin_body_class', [$this, 'maybeAddAcfClassToBody']);
         add_filter('admin_footer_text', [$this, 'printSurveyLink']);
         add_filter('classic_editor_plugin_settings', [$this, 'classicEditorPluginSettingsPatch',]);

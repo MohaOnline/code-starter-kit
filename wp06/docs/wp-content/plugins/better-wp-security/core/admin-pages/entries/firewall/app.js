@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
  */
 import { SlotFillProvider, Popover } from '@wordpress/components';
 import { PluginArea } from '@wordpress/plugins';
+import { useSelect } from '@wordpress/data';
 
 /**
  * iThemes dependencies
@@ -21,7 +22,8 @@ import { solidTheme, Surface, SurfaceVariant } from '@ithemes/ui';
  * Internal dependencies
  */
 import { TopToolbar } from '@ithemes/security-ui';
-import { Logs, Rules, Rule, Configure } from './pages';
+import { coreStore } from '@ithemes/security.packages.data';
+import { Logs, Rules, Rule, Configure, CreateRule } from './pages';
 
 import './style.scss';
 
@@ -31,6 +33,10 @@ const StyledApp = styled( Surface )`
 `;
 
 export default function App( { history } ) {
+	const { hasCustomFirewallRules } = useSelect( ( select ) => ( {
+		hasCustomFirewallRules: select( coreStore ).getFeatureFlags().includes( 'customFirewallRules' ),
+	} ), [] );
+
 	return (
 		<ThemeProvider theme={ solidTheme }>
 			<Router history={ history }>
@@ -45,13 +51,19 @@ export default function App( { history } ) {
 									path="/logs"
 									component={ Logs }
 								/>
-								<Route
-									path="/rules"
-									component={ Rules }
-								/>
+								{ hasCustomFirewallRules && (
+									<Route
+										path="/rules/new"
+										component={ CreateRule }
+									/>
+								) }
 								<Route
 									path="/rules/:id"
 									component={ Rule }
+								/>
+								<Route
+									path="/rules"
+									component={ Rules }
 								/>
 								<Route
 									path="/configure/:tab"

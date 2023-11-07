@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 1.0.0.56
+Version: 1.0.0.58
 Tested up to: 6.3.2
 Requires PHP: 7.0
 Requires at least: 5.4
@@ -1482,7 +1482,7 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link,
 .small-post .img-small-post {
 	width: 20%;
 	height: 85px;
-	margin-right: 25px;
+	margin-left: 25px;
 	overflow: hidden;
 	position: relative;
 	border-radius: 0;
@@ -1501,6 +1501,31 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link,
 	font-weight: 600;
     line-height: 1.2;
     text-align: left;
+}
+/*----- Featured-post -----*/
+.featured-widget.wd-back{
+	margin-bottom: 30px;
+}
+.featured-widget-content .small-post {
+    padding: 0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.featured-widget-content .small-post:nth-last-child(1) {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+.featured-widget-content .small-post .img-small-post {
+    width: 25%; 
+}
+.featured-widget-content .bs-blog-post:hover{
+	box-shadow: var(--bxsh);
+}
+.single-class .featured-widget-content .bs-blog-thumb.lg {
+    height: 350px;
 }
 /*----- blog-post slider -----*/
 .bs-slide {
@@ -1623,6 +1648,9 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link,
 /*----- blog-post meta -----*/
 .bs-blog-post .bs-blog-meta {
 	margin-bottom: 20px;
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
 }
 .bs-post-meta a {
     display: inline-block;

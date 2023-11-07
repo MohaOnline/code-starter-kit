@@ -393,8 +393,18 @@ class Security
         if ( !is_email( $email ) ) {
             return;
         }
-        $email_reversed = strrev( $email );
-        $email_rev_parts = explode( '@', $email_reversed );
+        // Reverse email address characters if not in Firefox, which has bug related to unicode-bidi CSS property
+        
+        if ( false !== strpos( sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ), 'Firefox' ) ) {
+            // Do nothing. Do not reverse characters.
+            $email_reversed = $email;
+            $email_rev_parts = explode( '@', $email_reversed );
+            $email_rev_parts = array( $email_rev_parts[0], $email_rev_parts[1] );
+        } else {
+            $email_reversed = strrev( $email );
+            $email_rev_parts = explode( '@', $email_reversed );
+        }
+        
         $display = $atts['display'];
         
         if ( 'newline' == $display ) {

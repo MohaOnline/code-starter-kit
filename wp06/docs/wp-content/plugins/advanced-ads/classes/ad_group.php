@@ -649,7 +649,7 @@ class Advanced_Ads_Group {
 				$link       = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=advanced-ads-pro/advanced-ads-pro.php', 'activate-plugin_advanced-ads-pro/advanced-ads-pro.php' );
 				$link_title = __( 'Activate now', 'advanced-ads' );
 			} else {
-				$link       = ADVADS_URL . 'add-ons/advanced-ads-pro/?utm_source=advanced-ads&utm_medium=link&utm_campaign=groups-CB';
+				$link       = 'https://wpadvancedads.com/add-ons/advanced-ads-pro/?utm_source=advanced-ads&utm_medium=link&utm_campaign=groups-CB';
 				$link_title = __( 'Get this add-on', 'advanced-ads' );
 			}
 

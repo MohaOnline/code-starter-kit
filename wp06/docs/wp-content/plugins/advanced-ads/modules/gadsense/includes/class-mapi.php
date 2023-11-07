@@ -1637,7 +1637,7 @@ class Advanced_Ads_AdSense_MAPI {
         $link = sprintf(
             // translators: %1$s is an anchor (link) opening tag, %2$s is the closing tag.
             esc_attr__( 'Learn more about AdSense account issues %1$shere%2$s.', 'advanced-ads' ),
-			'<a href="' . ADVADS_URL . 'adsense-errors/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-error' . $code . '" target="_blank">',
+			'<a href="https://wpadvancedads.com/adsense-errors/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-error' . $code . '" target="_blank">',
             '</a>'
         );
         return $link;

@@ -1,10 +1,10 @@
 === Real Media Library: Media Library Folder & File Manager ===
 Contributors: devowl, mguenter, jankarres, mrguenter
 Tags: wordpress media library folders, media library folders, file manager, media folder, media library folder, media library category, media library categories, media category, subfolders, file manager, directories, folder, folders, organize, media library, enhanced Media, enhanced media library, media management, media directory, folder manager, wordpress, media library wizard, folders manager, media library folder, media folders, media directories, media categories, wordpress media library folders, wordpress media folder, wordpress media folders, wordpress media library
-Stable tag: 4.21.14
-Requires at least: 5.2
-Requires PHP: 7.2.0
-Tested up to: 6.3
+Stable tag: 4.21.16
+Requires at least: 5.8
+Requires PHP: 7.4.0
+Tested up to: 6.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 

@@ -466,7 +466,7 @@ class Advanced_Ads_Admin {
 	 * @param string $feature simple string to indicate the deprecated feature. Will be added to the UTM campaign attribute.
 	 */
 	public static function show_deprecated_notice( $feature = '' ) {
-		$url = esc_url( ADVADS_URL ) . 'manual/deprecated-features/';
+		$url = 'https://wpadvancedads.com/manual/deprecated-features/';
 
 		if ( '' !== $feature ) {
 			$url .= '#utm_source=advanced-ads&utm_medium=link&utm_campaign=deprecated-' . sanitize_title_for_query( $feature );

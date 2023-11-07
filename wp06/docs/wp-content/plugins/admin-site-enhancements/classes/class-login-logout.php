@@ -21,16 +21,6 @@ class Login_Logout
         $options = get_option( ASENHA_SLUG_U );
         $custom_login_slug = $options['custom_login_slug'];
         $url_input = sanitize_text_field( $_SERVER['REQUEST_URI'] );
-        // Exclude interim login URL, which is inside modal popup when user is logged out in the background
-        // URL looks like https://www.example.com/wp-login.php?interim-login=1&wp_lang=en_US
-        if ( false !== strpos( $url_input, 'interim-login=1' ) ) {
-            remove_action( 'login_head', [ $this, 'redirect_on_default_login_urls' ] );
-        }
-        // Exclude URLs in the "Lost your password" flow
-        // URL looks like https://www.example.com/wp-login.php?action=lostpassword
-        if ( false !== strpos( $url_input, 'checkemail=confirm' ) || false !== strpos( $url_input, 'action=rp' ) || false !== strpos( $url_input, 'action=resetpass' ) ) {
-            remove_action( 'login_head', [ $this, 'redirect_on_default_login_urls' ] );
-        }
         // Make sure $url_input ends with /
         if ( false !== strpos( $url_input, $custom_login_slug ) ) {
             if ( substr( $url_input, -1 ) != '/' ) {
@@ -61,6 +51,7 @@ class Login_Logout
     
     /**
      * Redirect to /not_found when login URL does not contain the custom login slug
+     * This will redirect /wp-login.php and /wp-admin/ to /not_found/
      *
      * @link https://plugins.trac.wordpress.org/browser/admin-login-url-change/trunk/admin-login-url-change.php#L121
      * @since 1.4.0
@@ -72,16 +63,31 @@ class Login_Logout
         $custom_login_slug = $options['custom_login_slug'];
         // e.g. manage
         $url_input = sanitize_text_field( $_SERVER['REQUEST_URI'] );
-        // Custom login slug is not part of the login URL typed into the browser
-        // e.g. https://www.example.com/wp-admin/ or https://www.example.com/wp-login.php
-        if ( !is_user_logged_in() && false !== strpos( $url_input, 'wp-login.php' ) && false === strpos( $url_input, $custom_login_slug ) ) {
-            
-            if ( 'success' != $interim_login ) {
-                wp_safe_redirect( home_url( 'not_found/' ), 302 );
-                exit;
-            }
         
+        if ( isset( $_POST['log'] ) && isset( $_POST['pwd'] ) ) {
+            // Do nothing. i.e. do not redirect to /not_found/ as this contains a login POST request
+            // upon successful login, redirection to logged-in view of /wp-admin/ happens.
+            // Without this condition, login attempt will redirect to /not_found/
+        } else {
+            if ( false !== strpos( $url_input, 'wp-login.php' ) && false === strpos( $url_input, $custom_login_slug ) ) {
+                // At this point /wp-admin/ redirects to /wp-login.php
+                // So, the URL contains wp-login.php but the custom login slug is not part of the URL
+                // https://www.example.com/wp-login.php
+                
+                if ( isset( $_GET['action'] ) && ('logout' == $_GET['action'] || 'lostpassword' == $_GET['action'] || 'rp' == $_GET['action'] || 'resetpass' == $_GET['action']) || isset( $_GET['checkemail'] ) && 'confirm' == $_GET['checkemail'] || isset( $_GET['interim-login'] ) && '1' == $_GET['interim-login'] || 'success' == $interim_login ) {
+                    // Do nothing for when we're logging out, inside the reset password flow, or within the interim login flow
+                    // e.g. https://www.example.com/wp-login.php?action=logout&_wpnonce=49bb818269
+                    // e.g. https://www.example.com/wp-login.php?action=lostpassword&manage
+                    // e.g. https://www.example.com/wp-login.php?interim-login=1&wp_lang=en_US
+                } else {
+                    // Redirect to /not_found/
+                    wp_safe_redirect( home_url( 'not_found/' ), 302 );
+                    exit;
+                }
+            
+            }
         }
+    
     }
     
     /**

@@ -88,20 +88,6 @@ class Advanced_Ads_Frontend_Checks {
 		// load AdSense related options.
 		$adsense_options = Advanced_Ads_AdSense_Data::get_instance()->get_options();
 
-		// check if jQuery is loaded in the header
-		// Hidden, will be shown using js.
-		// message removed after we fixed all issues we know of.
-		/*$wp_admin_bar->add_node( array(
-			'parent' => 'advanced_ads_ad_health',
-			'id'    => 'advanced_ads_ad_health_jquery',
-			'title' => __( 'jQuery not in header', 'advanced-ads' ),
-			'href'  => ADVADS_URL . 'manual/common-issues#frontend-issues-javascript',
-			'meta'   => array(
-				'class' => 'hidden advanced_ads_ad_health_warning',
-				'target' => '_blank'
-			)
-		) );*/
-
 		// check if AdSense loads Auto Ads ads
 		// Hidden, will be shown using js.
 		if( ! isset( $adsense_options['violation-warnings-disable'] ) ) {
@@ -109,7 +95,7 @@ class Advanced_Ads_Frontend_Checks {
 				'parent' => 'advanced_ads_ad_health',
 				'id'    => 'advanced_ads_autoads_displayed',
 				'title' => __( 'Random AdSense ads', 'advanced-ads' ),
-				'href'  => ADVADS_URL . 'adsense-in-random-positions-auto-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=frontend-autoads-ads',
+				'href'  => 'https://wpadvancedads.com/adsense-in-random-positions-auto-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=frontend-autoads-ads',
 				'meta'   => [
 					'class' => 'hidden',
 					'target' => '_blank'
@@ -123,7 +109,7 @@ class Advanced_Ads_Frontend_Checks {
 				'parent' => 'advanced_ads_ad_health',
 				'id'    => 'advanced_ads_user_is_bot',
 				'title' => __( 'You look like a bot', 'advanced-ads' ),
-				'href'  => ADVADS_URL . 'manual/ad-health/#look-like-bot',
+				'href'  => 'https://wpadvancedads.com/manual/ad-health/#look-like-bot',
 				'meta'   => [
 					'class' => 'advanced_ads_ad_health_warning',
 					'target' => '_blank'
@@ -149,7 +135,7 @@ class Advanced_Ads_Frontend_Checks {
 					'parent' => 'advanced_ads_ad_health',
 					'id'    => 'advanced_ads_ad_health_the_content_not_invoked',
 					'title' => sprintf( __( '<em>%s</em> filter does not exist', 'advanced-ads' ), 'the_content' ),
-					'href'  => ADVADS_URL . 'manual/ads-not-showing-up/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-content-filter-missing#the_content-filter-missing',
+					'href'  => 'https://wpadvancedads.com/manual/ads-not-showing-up/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-content-filter-missing#the_content-filter-missing',
 					'meta'   => [
 						'class' => 'hidden advanced_ads_ad_health_warning',
 						'target' => '_blank'
@@ -177,7 +163,7 @@ class Advanced_Ads_Frontend_Checks {
 					'parent' => 'advanced_ads_ad_health',
 					'id'    => 'advanced_ads_ad_health_post_zero',
 					'title' => __( 'the current post ID is 0 ', 'advanced-ads' ),
-					'href'  => ADVADS_URL . 'manual/ad-health/#post-id-0',
+					'href'  => 'https://wpadvancedads.com/manual/ad-health/#post-id-0',
 					'meta'   => [
 						'class' => 'advanced_ads_ad_health_warning',
 						'target' => '_blank'
@@ -254,7 +240,7 @@ class Advanced_Ads_Frontend_Checks {
 				__( 'Your website is using HTTPS, but the ad code contains HTTP and might not work.', 'advanced-ads' ),
 				sprintf( __( 'Ad IDs: %s', 'advanced-ads'  ), '<i></i>' )
 			),
-			'href'   => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-https-ads#https-ads',
+			'href'   => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-https-ads#https-ads',
 			'meta'   => [
 				'class'  => 'hidden advanced_ads_ad_health_warning advanced_ads_ad_health_has_http',
 				'target' => '_blank'
@@ -265,7 +251,7 @@ class Advanced_Ads_Frontend_Checks {
 			'parent' => 'advanced_ads_ad_health',
 			'id'     => 'advanced_ads_ad_health_incorrect_head',
 			'title'  => sprintf( __( 'Visible ads should not use the Header placement: %s', 'advanced-ads' ), '<i></i>' ),
-			'href'   => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-visible-ad-in-header#header-ads',
+			'href'   => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-visible-ad-in-header#header-ads',
 			'meta'   => [
 				'class'  => 'hidden advanced_ads_ad_health_warning advanced_ads_ad_health_incorrect_head',
 				'target' => '_blank'
@@ -282,7 +268,7 @@ class Advanced_Ads_Frontend_Checks {
 					__( 'Ad is hidden', 'advanced-ads' ),
 					sprintf( __( 'IDs: %s', 'advanced-ads'  ), '<i></i>' )
 				),
-				'href'  => ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-frontend-adsense-hidden#adsense-hidden',
+				'href'  => 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-frontend-adsense-hidden#adsense-hidden',
 				'meta'   => [
 					'class' => 'hidden advanced_ads_ad_health_warning advanced_ads_ad_health_hidden_adsense',
 					'target' => '_blank'
@@ -294,7 +280,7 @@ class Advanced_Ads_Frontend_Checks {
 			'parent' => 'advanced_ads_ad_health',
 			'id'    => 'advanced_ads_ad_health_floated_responsive_adsense',
 			'title' => sprintf( __( 'The following responsive AdSense ads are not showing up: %s', 'advanced-ads'  ), '<i></i>' ),
-			'href'	=> ADVADS_URL . 'manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-adsense-responsive-not-showing#The_following_responsive_AdSense_ads_arenot_showing_up',
+			'href'	=> 'https://wpadvancedads.com/manual/ad-health/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adhealth-adsense-responsive-not-showing#The_following_responsive_AdSense_ads_arenot_showing_up',
 			'meta'   => [
 				'class' => 'hidden advanced_ads_ad_health_warning advanced_ads_ad_health_floated_responsive_adsense',
 				'target' => '_blank'

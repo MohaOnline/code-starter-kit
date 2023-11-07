@@ -5,13 +5,19 @@ declare(strict_types=1);
 namespace org\wplake\acf_views\Groups\Integration;
 
 use org\wplake\acf_views\Common\Group;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Views\Cpt\ViewsCpt;
+use org\wplake\acf_views\Views\Fields\Comment\CommentFields;
 use org\wplake\acf_views\Views\Fields\Fields;
+use org\wplake\acf_views\Views\Fields\Post\PostFields;
+use org\wplake\acf_views\Views\Fields\Term\TermFields;
+use org\wplake\acf_views\Views\Fields\User\UserFields;
+use org\wplake\acf_views\Views\Fields\Woo\WooFields;
 use WP_Query;
 
 defined('ABSPATH') || exit;
 
-class AcfIntegration
+class AcfIntegration implements HooksInterface
 {
     // Important! Use this wrapper to avoid recursion
     protected function getGroups(): array
@@ -46,13 +52,12 @@ class AcfIntegration
         ];
 
         if ($isWithExtra) {
-            $groupChoices[Fields::GROUP_POST] = __('$Post$', 'acf-views');
+            $groupChoices[PostFields::GROUP_NAME] = __('$Post$', 'acf-views');
             $groupChoices[Fields::GROUP_TAXONOMY] = __('$Taxonomy$', 'acf-views');
-            $groupChoices[Fields::GROUP_TERM] = __('$Term$', 'acf-views');
-            $groupChoices[Fields::GROUP_USER] = __('$User$', 'acf-views');
-            // todo
-            // $groupChoices[Fields::GROUP_COMMENT] = __('$Comment$', 'acf-views');
-            $groupChoices[Fields::GROUP_WOO] = __('$WooCommerce$', 'acf-views');
+            $groupChoices[TermFields::GROUP_NAME] = __('$Term$', 'acf-views');
+            $groupChoices[UserFields::GROUP_NAME] = __('$User$', 'acf-views');
+            $groupChoices[CommentFields::GROUP_NAME] = __('$Comment$', 'acf-views');
+            $groupChoices[WooFields::GROUP_NAME] = __('$WooCommerce$', 'acf-views');
         }
 
         $groups = $this->getGroups();
@@ -135,6 +140,10 @@ class AcfIntegration
             ],
             'jquery' => [
                 'google_map',
+                // https://wordpress.org/plugins/acf-google-map-field-multiple-markers/
+                'google_map_multi',
+                // https://wordpress.org/plugins/acf-openstreetmap-field/
+                'open_street_map',
                 'date_picker',
                 'date_time_picker',
                 'time_picker',
@@ -147,8 +156,12 @@ class AcfIntegration
         ];
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         $this->setFieldChoices();
         $this->setConditionalFieldRules();
     }

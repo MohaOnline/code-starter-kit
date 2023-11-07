@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Advanced Custom Fields (ACF) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-26 07:15:50+0000\n"
+"PO-Revision-Date: 2023-11-02 06:40:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -347,11 +347,11 @@ msgstr "我们不建议在 ACF 块中使用此字段。"
 
 #: includes/fields/class-acf-field-wysiwyg.php:27
 msgid "Displays the WordPress WYSIWYG editor as seen in Posts and Pages allowing for a rich text-editing experience that also allows for multimedia content."
-msgstr "显示 WordPress 所见即所得编辑器，如帖子和页面中所示，可提供丰富的文本编辑体验，还支持多媒体内容。"
+msgstr "显示 WordPress 可视化编辑器，如文章和页面中所示，可提供丰富的文本编辑体验，还支持多媒体内容。"
 
 #: includes/fields/class-acf-field-wysiwyg.php:25
 msgid "WYSIWYG Editor"
-msgstr "所见即所得编辑器"
+msgstr "可视化编辑器"
 
 #: includes/fields/class-acf-field-user.php:17
 msgid "Allows the selection of one or more users which can be used to create relationships between data objects."
@@ -2469,7 +2469,7 @@ msgstr "画廊字段"
 
 #: includes/admin/views/acf-field-group/pro-features.php:23
 msgid "Flexible Content Field"
-msgstr "弹性的内容字段"
+msgstr "弹性内容字段"
 
 #: includes/admin/views/acf-field-group/pro-features.php:27
 msgid "Repeater Field"

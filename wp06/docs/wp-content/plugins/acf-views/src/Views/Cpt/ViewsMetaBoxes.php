@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace org\wplake\acf_views\Views\Cpt;
 
-use org\wplake\acf_views\Common\Cpt\MetaBoxes;
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Common\Cpt\MetaBoxes;
 use org\wplake\acf_views\Html;
 use org\wplake\acf_views\Views\ViewsDataStorage;
 use org\wplake\acf_views\Views\ViewShortcode;
@@ -76,7 +76,7 @@ class ViewsMetaBoxes extends MetaBoxes
     public function getRelatedAcfCardsMetaBox(WP_Post $post, bool $isListLook = false): string
     {
         $content = '';
-        $message = __('Not assigned to any ACF Cards.', 'acf-views');
+        $message = __('Not assigned to any Cards.', 'acf-views');
         $message = '<p>' . $message . '</p>';
 
         if ('publish' !== $post->post_status) {

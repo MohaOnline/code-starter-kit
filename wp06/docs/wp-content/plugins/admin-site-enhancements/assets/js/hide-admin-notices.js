@@ -43,9 +43,9 @@
 			// TotalPress Custom post types - https://wordpress.org/plugins/custom-post-types/
 
 			// Reposition notices with the following selectors. Excluding 'notice-system'.
-			$('#wpbody-content > .wrap > .notice:not(.system-notice),'
+			$('#wpbody-content > .wrap > .notice:not(.system-notice,.hidden),'
 			+ '#wpbody-content > .wrap > .notice-error,'
-			+ '#wpbody-content > .wrap > .error,'
+			+ '#wpbody-content > .wrap > .error:not(.hidden),'
 			+ '#wpbody-content > .wrap > .notice-info,'
 			+ '#wpbody-content > .wrap > .notice-information,'
 			+ '#wpbody-content > .wrap > #message,'
@@ -54,9 +54,9 @@
 			+ '#wpbody-content > .wrap > .notice-updated,'
 			+ '#wpbody-content > .wrap > .updated,'
 			+ '#wpbody-content > .wrap > .update-nag,'
-			+ '#wpbody-content > .wrap > div > .notice:not(.system-notice),'
+			+ '#wpbody-content > .wrap > div > .notice:not(.system-notice,.hidden),'
 			+ '#wpbody-content > .wrap > div > .notice-error,'
-			+ '#wpbody-content > .wrap > div > .error,'
+			+ '#wpbody-content > .wrap > div > .error:not(.hidden),'
 			+ '#wpbody-content > .wrap > div > .notice-info,'
 			+ '#wpbody-content > .wrap > div > .notice-information,'
 			+ '#wpbody-content > .wrap > div > #message,'
@@ -65,9 +65,9 @@
 			+ '#wpbody-content > .wrap > div > .notice-updated,'
 			+ '#wpbody-content > .wrap > div > .updated,'
 			+ '#wpbody-content > .wrap > div > .update-nag,'
-			+ '#wpbody-content > div > .wrap > .notice:not(.system-notice),'
+			+ '#wpbody-content > div > .wrap > .notice:not(.system-notice,.hidden),'
 			+ '#wpbody-content > div > .wrap > .notice-error,'
-			+ '#wpbody-content > div > .wrap > .error,'
+			+ '#wpbody-content > div > .wrap > .error:not(.hidden),'
 			+ '#wpbody-content > div > .wrap > .notice-info,'
 			+ '#wpbody-content > div > .wrap > .notice-information,'
 			+ '#wpbody-content > div > .wrap > #message,'
@@ -76,8 +76,8 @@
 			+ '#wpbody-content > div > .wrap > .notice-updated,'
 			+ '#wpbody-content > div > .wrap > .updated,'
 			+ '#wpbody-content > div > .wrap > .update-nag,'
-			+ '#wpbody-content > .update-nag,' // LearnDash
 			+ '#wpbody-content > .notice,' // LearnDash
+			+ '#wpbody-content > .update-nag,' // LearnDash
 			+ '#wpbody-content > .jp-connection-banner,' // Jetpack
 			+ '#wpbody-content > .jitm-banner,' // Jetpack
 			+ '#wpbody-content > .jetpack-jitm-message,' // Jetpack

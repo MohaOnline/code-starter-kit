@@ -5,8 +5,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ads, adsense, ad rotation, ad manager, amp, amazon, ad blocking detection, header code, banners, in-feed ads, sticky fixed widgets, hooks
 Requires at least: 4.9
 Tested up to: 6.3
-Requires PHP: 5.6
-Stable tag: 2.7.31
+Requires PHP: 7.2
+Stable tag: 2.7.32
 License: GPLv3
 
 Manage Google AdSense, Media.net, Amazon banners, ads.txt, ad rotation, sticky widgets, AMP ads, DFP, tracking, AdSense header and footer code
@@ -361,6 +361,13 @@ If you are not happy to reveal this information and you have opted in, simply di
 
 == Changelog ==
 
+= 2.7.32 =
+- Added experimental support for REST requests
+- Added support for data shortcode for url parameters
+- Added option for shortcodes to ignore category, tag, taxonomy and post ID lists
+- Added support for background parallax ads (Pro only)
+- Few minor bug fixes, cosmetic changes and code improvements
+
 = 2.7.31 =
 - Security fix for some data revealed via remote debugging data
 - Added support to remove ad label when no code is inserted
@@ -547,6 +554,13 @@ If you are not happy to reveal this information and you have opted in, simply di
 For the changelog of earlier versions, please refer to the separate changelog.txt file.
 
 == Upgrade Notice ==
+
+= 2.7.32 =
+Added experimental support for REST requests;
+Added support for data shortcode for url parameters;
+Added option for shortcodes to ignore category, tag, taxonomy and post ID lists;
+Added support for background parallax ads (Pro only);
+Few minor bug fixes, cosmetic changes and code improvements
 
 = 2.7.31 =
 Security fix for some data revealed via remote debugging data;

@@ -97,6 +97,7 @@ if ( ! function_exists( 'ogma_blog_get_customizer_default' ) ) :
                 'ogma_blog_header_main_area_layout'               => 'header-main-layout--one',
                 'ogma_blog_header_site_mode_switch_enable'        => true,
                 'ogma_blog_header_search_enable'                  => true,
+                'ogma_blog_header_search_option'                  => 'live-search',  
                 'ogma_blog_header_sticky_sidebar_toggle_enable'   => true,
                 'ogma_blog_header_custom_button_label'            => __( 'Subscribe', 'ogma-blog' ),
                 'ogma_blog_header_custom_button_link'             => '',

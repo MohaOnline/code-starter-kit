@@ -2,9 +2,9 @@
 Contributors: andergmartins, htmgarcia, publishpress, stevejburge, rochdesigns
 Tags: slideshow, slider, image slider, carousel, gallery, flex slider, wordpress slider, nivoslider, rotating banner, image sliders, responsive slideshow, seo slideshow, unsplash, post sliders, video sliders, YouTube sliders, Vimeo sliders, HTML sliders, external URL sliders, layer sliders, best WordPress slider, best slider, best slideshow, best carousel, easy slider, easy slideshow, flex slider, woocommerce slider, woocommerce slideshow, video slider
 Requires at least: 5.0
-Stable tag: 3.40.0
+Stable tag: 3.50.0
 Requires PHP: 7.0
-Tested up to: 6.3.1
+Tested up to: 6.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -352,6 +352,20 @@ Our official name is MetaSlider. Don't worry - we'll still understand if you cal
 
 The format is based on [Keep a Changelog recommendations](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+= [3.50.0] - 01 Nov, 2023 =
+
+* ADDED: Click to copy shortcode on slideshow list, #684;
+* FIXED: When deleting slideshows in bulk a deprecation notice is displayed, #690;
+* FIXED: Error when hovering on Preview icon, #674;
+* FIXED: Italian, Spanish and French translation updates, #667, #715;
+* FIXED: Fatal error in PHP 8+ when slideshow height or width is missing, #736;
+* CHANGED: Move Nivo, Coin and RSlides to a "Legacy" setting, #604;
+* CHANGED: Move Loop Setting to Free and added Pro label on Navigation Setting, #676;
+* CHANGED: Update Settings title to Option on Edit Slideshow Page, #678;
+* CHANGED: Put back shortcode section on Edit Slideshow Page, #669;
+* CHANGED: Disable the "Edit Slideshow" link by default, #682;
+* CHANGED: Improve export guidelines, #665;
 
 = [3.40.0] - 27 Sep, 2023 =
 

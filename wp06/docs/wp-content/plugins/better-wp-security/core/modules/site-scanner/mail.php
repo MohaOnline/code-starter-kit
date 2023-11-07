@@ -81,10 +81,6 @@ class ITSEC_Site_Scanner_Mail {
 			}
 		}
 
-		$tracking_link = ITSEC_Core::is_pro()
-			? 'https://go.solidwp.com/security-site-scan-email-ithemes-becoming-solidwp'
-			: 'https://go.solidwp.com/security-free-site-scan-email-ithemes-becoming-solidwp';
-
 		$mail->add_header(
 			esc_html__( 'Site Scan', 'better-wp-security' ),
 			sprintf(
@@ -93,7 +89,6 @@ class ITSEC_Site_Scanner_Mail {
 			),
 			false,
 			$lead,
-			$tracking_link
 		);
 		static::format_scan_body( $mail, $scan );
 		$mail->add_footer( false );

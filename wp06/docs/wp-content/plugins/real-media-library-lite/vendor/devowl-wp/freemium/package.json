@@ -1,6 +1,6 @@
 {
     "name": "@devowl-wp/freemium",
-    "version": "1.3.62",
+    "version": "1.3.63",
     "private": true,
     "description": "Make your plugin to a freemium plugin with predefined Envato support",
     "homepage": "https://devowl.io",
@@ -92,7 +92,7 @@
     "devDependencies": {
         "@devowl-wp/composer-licenses": "^0.1.14",
         "@devowl-wp/continuous-integration": "^0.4.3",
-        "@devowl-wp/continuous-localization": "^0.7.5",
+        "@devowl-wp/continuous-localization": "^0.7.6",
         "@devowl-wp/eslint-config": "^0.2.3",
         "@devowl-wp/monorepo-utils": "^0.1.10",
         "@devowl-wp/node-gitlab-ci": "^0.7.7",
@@ -100,7 +100,7 @@
         "@devowl-wp/phpcs-config": "^0.1.13",
         "@devowl-wp/phpunit-config": "^0.1.11",
         "@devowl-wp/ts-config": "^0.1.12",
-        "@devowl-wp/utils": "^1.15.14",
+        "@devowl-wp/utils": "^1.16.0",
         "@devowl-wp/webpack-config": "^0.2.21",
         "@types/jest": "~29.5.5",
         "fork-ts-checker-webpack-plugin": "~8.0.0",
@@ -139,10 +139,21 @@
                 "de_CH.$1"
             ]
         },
+        "thresholds": {
+            "de@informal": 100
+        },
         "projects": {
             "backend": {
                 "name": "@devowl-wp/freemium (Backend, PHP)",
                 "system": "weblate",
+                "weblate": {
+                    "componentSettings": {
+                        "check_flags": "php-format",
+                        "enforced_checks": [
+                            "php_format"
+                        ]
+                    }
+                },
                 "sourceFolder": "src",
                 "languageFolder": "languages/backend",
                 "extractCmd": "dowl run --silent wp:weak i18n make-pot src/ languages/backend/freemium.pot --headers='{\"POT-Creation-Date\":\"n/a\",\"Project-Id-Version\":\"n/a\"}' --ignore-domain"
@@ -150,6 +161,15 @@
             "frontend": {
                 "name": "@devowl-wp/freemium (Frontend, JavaScript)",
                 "system": "weblate",
+                "weblate": {
+                    "componentSettings": {
+                        "check_flags": "php-format",
+                        "enforced_checks": [
+                            "php_format",
+                            "automatic_interpolate_components"
+                        ]
+                    }
+                },
                 "sourceFolder": "lib",
                 "languageFolder": "languages/frontend",
                 "extractCmd": "dowl run --silent wp:weak i18n make-pot lib languages/frontend/freemium.pot --skip-js --headers='{\"POT-Creation-Date\":\"n/a\",\"Project-Id-Version\":\"n/a\"}' --ignore-domain --merge=$(find $(test \"$NODE_ENV\" = \"production\" && echo \"dist\" || echo \"dev\") -maxdepth 1 -name '*.pot' -type f | tr '\\n' ',' | sed 's/,$//')",

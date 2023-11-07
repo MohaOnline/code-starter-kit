@@ -1,11 +1,11 @@
 === Custom Login Page Customizer ===
 Requires at least: 4.0
-Tested up to: 6.3
+Tested up to: 6.4
 Contributors: hardeepasrani, hiddenpearls
 Donate link: https://wpbrigade.com/go/donate-login-customizer
 Author URI: https://loginpress.pro/?utm_source=login-customizer-lite&utm_medium=author-url-link
 Tags: login, customizer, logo, login logo, login customizer, login page,admin, branding, customization, custom login, error, login error, custom login pro
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,10 +105,14 @@ Please visit <a target="_blank" rel="nofollow" href="https://loginpress.pro/?utm
 
 == Upgrade Notice ==
 
-= 2.3.0 =
-* Update immediately - compatible with 6.3
+= 2.3.1 =
+* Update immediately - compatible with 6.4
 
 == Changelog ==
+
+= 2.3.1 – 2023-11-07 =
+* Enhancement: Update the Freemius latest SDK v2.6.0.
+* Compatibility: Compatible with WordPress 6.4
 
 = 2.3.0 – 2023-10-25 =
 * Bugfix: Reset Password button styling issues on login page.

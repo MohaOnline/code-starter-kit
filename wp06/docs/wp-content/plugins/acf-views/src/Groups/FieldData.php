@@ -25,6 +25,8 @@ class FieldData extends Group
     const FIELD_MASONRY_GUTTER = 'masonryGutter';
     const FIELD_MASONRY_MOBILE_GUTTER = 'masonryMobileGutter';
     const FIELD_GALLERY_WITH_LIGHT_BOX = 'galleryWithLightBox';
+    const FIELD_MAP_MARKER_ICON = 'mapMarkerIcon';
+    const FIELD_MAP_MARKER_ICON_TITLE = 'mapMarkerIconTitle';
     const FIELD_MAP_ADDRESS_FORMAT = 'mapAddressFormat';
     const FIELD_IS_MAP_WITH_ADDRESS = 'isMapWithAddress';
     const FIELD_IS_MAP_WITHOUT_GOOGLE_MAP = 'isMapWithoutGoogleMap';
@@ -63,7 +65,7 @@ class FieldData extends Group
      * @a-type select
      * @ui 1
      * @allow_null 1
-     * @label ACF View
+     * @label View
      * @instructions If filled then data within this field will be displayed using the selected View. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/display-fields-from-a-related-post-pro'>Read more</a>
      * @a-order 2
      * @a-pro The field must be not required or have default value!
@@ -80,8 +82,8 @@ class FieldData extends Group
      */
     public string $galleryType;
     /**
-     * @label Image Lightbox
-     * @instructions If enabled image(s) will include a zoom icon on hover and when clicked popup with a large image
+     * @label With Lightbox
+     * @instructions If enabled, image(s) will include a zoom icon on hover, and when clicked, a popup with a larger image will appear
      * @a-order 2
      * @a-pro The field must be not required or have default value!
      */
@@ -142,7 +144,23 @@ class FieldData extends Group
      */
     public int $masonryMobileGutter;
     /**
-     * @label Hide Google Map
+     * @label Map Marker Icon
+     * @instructions Customize the Map Marker by using your own icon or uploading an image from <a target='_blank' href='https://www.flaticon.com/free-icons/google-maps'>Flaticon</a> (.png, .jpg allowed). <br> Dimensions of 32x32px is recommended
+     * @a-type image
+     * @return_format id
+     * @a-order 6
+     * @a-pro The field must be not required or have default value!
+     */
+    public int $mapMarkerIcon;
+    /**
+     * @label Map Marker icon title
+     * @instructions Shown when mouse hovers on Map Marker
+     * @a-order 6
+     * @a-pro The field must be not required or have default value!
+     */
+    public string $mapMarkerIconTitle;
+    /**
+     * @label Hide Map
      * @instructions The Map is shown by default. Turn this on to hide the map
      * @a-order 6
      * @a-pro The field must be not required or have default value!

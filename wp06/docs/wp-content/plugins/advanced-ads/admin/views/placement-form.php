@@ -19,7 +19,7 @@
 					],
 				]
 			),
-			esc_url( ADVADS_URL ) . 'manual/placements/#utm_source=advanced-ads&utm_medium=link&utm_campaign=placements'
+			'https://wpadvancedads.com/manual/placements/#utm_source=advanced-ads&utm_medium=link&utm_campaign=placements'
 		);
 		?>
 	</p>

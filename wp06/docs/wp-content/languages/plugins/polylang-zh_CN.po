@@ -2,14 +2,91 @@
 # This file is distributed under the same license as the Plugins - Polylang - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-27 08:44:51+0000\n"
+"PO-Revision-Date: 2023-11-02 03:58:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.6\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Polylang - Stable (latest release)\n"
+
+#: admin/admin-model.php:184
+msgid "The language does not seem to exist."
+msgstr "这种语言似乎并不存在。"
+
+#. translators: 1 is a post type or taxonomy label, 2 is a post type or
+#. taxonomy key.
+#: settings/settings-cpt.php:115 settings/settings-cpt.php:146
+msgctxt "content type setting choice"
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: modules/site-health/admin-site-health.php:176
+msgid "Synchronization disabled"
+msgstr "同步禁用"
+
+#: modules/site-health/admin-site-health.php:171
+msgid "The media are translated"
+msgstr "媒体翻译"
+
+#: modules/site-health/admin-site-health.php:168
+msgid "The media are not translated"
+msgstr "媒体没有翻译"
+
+#: modules/site-health/admin-site-health.php:163
+msgid "The front page URL contains the page name or page id instead of the language code"
+msgstr "首页 URL 包含页面名称或页面 ID，而不是语言代码"
+
+#: modules/site-health/admin-site-health.php:140
+msgid "Display URL language information for default language"
+msgstr "显示默认语言的 URL 语言信息"
+
+#: modules/site-health/admin-site-health.php:126
+msgid "Detect browser language activated"
+msgstr "检测已激活的浏览器语言"
+
+#: modules/site-health/admin-site-health.php:123
+msgid "Detect browser language deactivated"
+msgstr "检测浏览器语言已停用"
+
+#. translators: placeholder is the plugin name
+#: modules/site-health/admin-site-health.php:442
+msgid "%s information"
+msgstr "%s 信息"
+
+#: modules/site-health/admin-site-health.php:434
+msgid "Not loaded. Contact your host provider."
+msgstr "未加载。请联系主机提供商。"
+
+#: modules/site-health/admin-site-health.php:433
+msgid "PHP SimpleXML extension"
+msgstr "PHP SimpleXML 扩展"
+
+#: install/plugin-updater.php:256
+msgid "Update now."
+msgstr "现在更新。"
+
+#. translators: 1. and 4. are opening anchor tags 2. the new plugin version 3.
+#. and 5. are closing anchor tags.
+#: install/plugin-updater.php:245
+msgid "%1$sView version %2$s details%3$s or %4$supdate now%5$s."
+msgstr "%1$s查看版本%2$s详细信息%3$s 或%4$s更新现在%5$s。"
+
+#. translators: 1. opening anchor tag, do not translate 2. the new plugin
+#. version 3. closing anchor tag, do not translate.
+#: install/plugin-updater.php:236
+msgid "%1$sView version %2$s details%3$s."
+msgstr "%1$s查看版本%2$s详细信息%3$s。"
+
+#: install/plugin-updater.php:231
+msgid "Contact your network administrator to install the update."
+msgstr "联系您的网络管理员以安装更新。"
+
+#. translators: the plugin name.
+#: install/plugin-updater.php:225
+msgid "There is a new version of %1$s available."
+msgstr "有一个新版本的%1$s可用。"
 
 #: settings/settings-url.php:55
 msgid "Some themes or plugins may not be fully compatible with the language defined by the content or by domains."
@@ -33,7 +110,7 @@ msgstr "无语言文章"
 
 #: modules/site-health/admin-site-health.php:394
 msgid "The homepage is not translated in all languages"
-msgstr "首页还没有翻译为所有语言。"
+msgstr "首页未被翻译成所有语言"
 
 #: modules/site-health/admin-site-health.php:384
 msgid "It is mandatory to translate the static front page in all languages."
@@ -60,6 +137,11 @@ msgstr "语言切换器中使用的国旗：%s"
 #: modules/site-health/admin-site-health.php:295
 msgid "Language: %s"
 msgstr "语言：%s"
+
+#. translators: placeholder is the plugin name
+#: modules/site-health/admin-site-health.php:252
+msgid "%s options"
+msgstr "%s 选项"
 
 #: include/widget-calendar.php:248
 msgid "Previous and next months"
@@ -391,7 +473,12 @@ msgstr "%1$s已自行停用，因为您使用的是旧版本的PHP。您正在�
 msgid "North Macedonia"
 msgstr "北马其顿"
 
-#: settings/settings-module.php:318
+#. translators: %1$s is a date, %2$s is link start tag, %3$s is link end tag.
+#: include/license.php:332
+msgid "Your license key will expire soon! Precisely, it will expire on %1$s. %2$sRenew your license key today!%3$s"
+msgstr "您的许可证密钥即将过期！准确地说，它将在 %1$s 到期。%2$s今天就更新您的许可证密钥！%3$s"
+
+#: settings/settings-module.php:323
 msgid "To enable this feature, you need Polylang Pro."
 msgstr "要启用此功能，您需要Polylang Pro。"
 
@@ -461,7 +548,7 @@ msgstr "https://polylang.pro"
 msgid "Support and extra features are available to %1$sPolylang Pro%2$s users."
 msgstr "%1$sPolylang Pro%2$s用户可以使用支持和其他功能。"
 
-#: settings/settings-module.php:320
+#: settings/settings-module.php:325
 msgid "Upgrade now."
 msgstr "现在升级。"
 
@@ -564,11 +651,11 @@ msgstr "问题描述"
 msgid "Module"
 msgstr "模块"
 
-#: settings/settings-module.php:140
+#: settings/settings-module.php:145
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: settings/settings-module.php:139 js/build/block-editor.js:80
+#: settings/settings-module.php:144 js/build/block-editor.js:80
 #: js/build/classic-editor.js:80
 msgid "Cancel"
 msgstr "取消"
@@ -613,23 +700,23 @@ msgstr "请为 %s 输入一个有效网址。"
 msgid "Decide how your URLs will look like."
 msgstr "决定你的网址的格式。"
 
-#: settings/settings-module.php:135
+#: settings/settings-module.php:140
 msgid "Deactivated"
 msgstr "已停用"
 
-#: settings/settings-module.php:130
+#: settings/settings-module.php:135
 msgid "Activate this module"
 msgstr "启用此模块"
 
-#: include/license.php:324 settings/settings-module.php:126
+#: include/license.php:324 settings/settings-module.php:131
 msgid "Deactivate"
 msgstr "停用"
 
-#: settings/settings-module.php:124
+#: settings/settings-module.php:129
 msgid "Deactivate this module"
 msgstr "停用此模块"
 
-#: settings/settings-module.php:118
+#: settings/settings-module.php:123
 msgid "Configure this module"
 msgstr "配置此模块"
 
@@ -1679,11 +1766,11 @@ msgstr "为 WordPress 添加多语言支持"
 msgid "Polylang"
 msgstr "Polylang"
 
-#: settings/settings-module.php:132
+#: settings/settings-module.php:137
 msgid "Activate"
 msgstr "启用"
 
-#: settings/settings-module.php:134
+#: settings/settings-module.php:139
 msgid "Activated"
 msgstr "已启用"
 
@@ -1978,51 +2065,51 @@ msgstr "删除"
 msgid "You are about to permanently delete this language. Are you sure?"
 msgstr "您将要永久删除此语言。你确定？"
 
-#: modules/sync/settings-sync.php:111
+#: modules/sync/settings-sync.php:112
 msgid "Featured image"
 msgstr "特色图片"
 
-#: modules/sync/settings-sync.php:110
+#: modules/sync/settings-sync.php:111
 msgid "Page order"
 msgstr "页面顺序"
 
-#: modules/sync/settings-sync.php:109
+#: modules/sync/settings-sync.php:110
 msgid "Page template"
 msgstr "页面模板"
 
-#: modules/sync/settings-sync.php:108
+#: modules/sync/settings-sync.php:109
 msgid "Page parent"
 msgstr "父级页面"
 
-#: modules/sync/settings-sync.php:107
+#: modules/sync/settings-sync.php:108
 msgid "Post format"
 msgstr "文章格式"
 
-#: modules/sync/settings-sync.php:106
+#: modules/sync/settings-sync.php:107
 msgid "Published date"
 msgstr "发布日期"
 
-#: modules/sync/settings-sync.php:105
+#: modules/sync/settings-sync.php:106
 msgid "Sticky posts"
 msgstr "置顶文章"
 
-#: modules/sync/settings-sync.php:104
+#: modules/sync/settings-sync.php:105
 msgid "Ping status"
 msgstr "Ping 状态"
 
-#: modules/sync/settings-sync.php:103
+#: modules/sync/settings-sync.php:104
 msgid "Comment status"
 msgstr "评论状态"
 
-#: modules/sync/settings-sync.php:102
+#: modules/sync/settings-sync.php:103
 msgid "Custom fields"
 msgstr "自定义字段"
 
-#: modules/sync/settings-sync.php:101
+#: modules/sync/settings-sync.php:102
 msgid "Taxonomies"
 msgstr "分类法"
 
-#: settings/settings-licenses.php:113 settings/settings-module.php:259
+#: settings/settings-licenses.php:113 settings/settings-module.php:264
 msgid "Settings saved."
 msgstr "设置已保存。"
 
@@ -2051,7 +2138,7 @@ msgid "Show all languages"
 msgstr "显示全部语言"
 
 #: admin/admin-base.php:132 admin/admin.php:104
-#: settings/settings-module.php:120
+#: settings/settings-module.php:125
 msgid "Settings"
 msgstr "设置"
 
@@ -2108,11 +2195,11 @@ msgstr "所有语言"
 msgid "The widget is displayed for:"
 msgstr "此小工具将显示于："
 
-#: admin/admin-filters-term.php:462
+#: admin/admin-filters-term.php:464
 msgid "None"
 msgstr "无"
 
-#: admin/admin-filters-term.php:138 admin/admin-filters-term.php:211
+#: admin/admin-filters-term.php:140 admin/admin-filters-term.php:213
 msgid "Sets the language"
 msgstr "设置语言"
 
@@ -2135,8 +2222,8 @@ msgid "Languages"
 msgstr "语言"
 
 #: admin/admin-classic-editor.php:127 admin/admin-filters-columns.php:234
-#: admin/admin-filters-media.php:62 admin/admin-filters-term.php:136
-#: admin/admin-filters-term.php:209 include/translated-post.php:188
+#: admin/admin-filters-media.php:62 admin/admin-filters-term.php:138
+#: admin/admin-filters-term.php:211 include/translated-post.php:188
 #: modules/wizard/view-wizard-step-languages.php:62
 msgid "Language"
 msgstr "语言"

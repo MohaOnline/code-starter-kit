@@ -6,9 +6,13 @@
 
 jQuery(document).ready(function($) {
 
-    var headerSticky = OG_JSObject.header_sticky,
-        sidebarSticky = OG_JSObject.sidebar_sticky,
-        KEYCODE_TAB = 9;
+    var headerSticky    = OG_JSObject.header_sticky,
+        sidebarSticky   = OG_JSObject.sidebar_sticky,
+        liveSearch      = OG_JSObject.live_search,
+        ajaxUrl         = OG_JSObject.ajaxUrl,
+        _wpnonce        = OG_JSObject._wpnonce,
+        KEYCODE_TAB     = 9;
+
 
     var rtl = false;
     var dir = "left";
@@ -240,6 +244,60 @@ jQuery(document).ready(function($) {
         $(this).children('.bx-chevron-up').first().toggleClass('bx-chevron-down');
     });
 
+    //-------------------------------live search------------------------------------------------
+    if (liveSearch === 'true') {
+        var searchContainer = $(".header-search-wrapper");
+
+        if (searchContainer.length > 0) {
+            var searchFormContainer = searchContainer.find("form");
+
+            searchContainer.on('input', 'input[type="search"]', function() {
+                var searchKey = $(this).val();
+
+                if (searchKey) {
+                    $.ajax({
+                        method: 'post',
+                        url: ajaxUrl,
+                        data: {
+                            action: 'ogma_blog_search_posts_content',
+                            search_key: searchKey,
+                            security: _wpnonce
+                        },
+                        beforeSend: function() {
+                            searchFormContainer.addClass('retrieving-posts');
+                            searchFormContainer.removeClass('results-loaded');
+                        },
+                        success: function(res) {
+                            var parsedRes = JSON.parse(res);
+                            searchContainer.find(".ogma-blog-search-results-wrap").remove();
+                            searchFormContainer.after(parsedRes.posts);
+                            searchFormContainer.removeClass('retrieving-posts').addClass('results-loaded');
+                        },
+                        complete: function() {
+                            // Render search content here
+                        }
+                    });
+                } else {
+                    searchContainer.find(".ogma-blog-search-results-wrap").remove();
+                    searchFormContainer.removeClass('results-loaded');
+                }
+            });
+        }
+    }
+
+    /**
+     * close live search
+     * 
+     * @since 1.0.0
+     */
+    $(document).mouseup(function (e) {
+        var container = $(".header-search-wrapper");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.find(".ogma-blog-search-results-wrap").remove();
+            container.removeClass('results-loaded');
+        }
+    });
+
     /**
      * focus trap
      * 
@@ -260,6 +318,5 @@ jQuery(document).ready(function($) {
                 }
             }
         }
-    }
-
+    }   
 });

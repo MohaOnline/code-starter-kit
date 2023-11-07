@@ -168,9 +168,10 @@
 				$hostname = preg_replace("/^(https?\:\/\/)?(www\d*\.)?/", "", $_SERVER["HTTP_HOST"]);
 			}
 
-
-			if(function_exists("idn_to_utf8")){
-				$hostname = idn_to_utf8($hostname);
+			if(extension_loaded('intl')){
+				if(function_exists("idn_to_utf8")){
+					$hostname = idn_to_utf8($hostname);
+				}
 			}
 			
 			$header = array("method" => "GET",
@@ -223,7 +224,7 @@
 
 				if(is_array($arr)){
 					foreach ($arr as $cdn_key => $cdn_value) {
-						if($cdn_value->id == "cloudflare"){
+						if($cdn_value->id == "cloudflare" && isset($cdn_value->zone_id)){
 							return unserialize($cdn_value->zone_id);
 						}
 					}

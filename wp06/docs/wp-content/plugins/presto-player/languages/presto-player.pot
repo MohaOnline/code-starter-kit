@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-11T18:39:05+00:00\n"
+"POT-Creation-Date: 2023-11-03T21:09:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 
@@ -19,7 +19,7 @@ msgstr ""
 #: admin/analytics/components/DatePicker.js:22
 #: admin/blocks/shared/audio-placeholder.js:41
 #: admin/blocks/shared/components/ColorPopup.js:76
-#: admin/blocks/shared/placeholder.js:53
+#: admin/blocks/shared/placeholder.js:52
 msgid "Apply"
 msgstr ""
 
@@ -34,8 +34,8 @@ msgstr ""
 #: admin/blocks/shared/audioPresets/Preset.js:241
 #: admin/blocks/shared/components/ColorPopup.js:73
 #: admin/blocks/shared/overlays/Edit.js:205
-#: admin/blocks/shared/placeholder.js:152
-#: admin/blocks/shared/placeholder.js:156
+#: admin/blocks/shared/placeholder.js:151
+#: admin/blocks/shared/placeholder.js:155
 #: admin/blocks/shared/presets/Edit.js:368
 #: admin/blocks/shared/presets/parts/YoutubeChannelId.js:99
 #: admin/blocks/shared/presets/Preset.js:241
@@ -970,7 +970,7 @@ msgid "Copy to clipboard"
 msgstr ""
 
 #: admin/blocks/shared/audio-placeholder.js:32
-#: admin/blocks/shared/placeholder.js:41
+#: admin/blocks/shared/placeholder.js:40
 #: Integrations/Elementor/VideoWidget.php:229
 msgid "URL"
 msgstr ""
@@ -980,7 +980,7 @@ msgid "Paste an mp3 URL"
 msgstr ""
 
 #: admin/blocks/shared/audio-placeholder.js:103
-#: admin/blocks/shared/placeholder.js:115
+#: admin/blocks/shared/placeholder.js:114
 msgid "To edit this block, you need permission to upload media."
 msgstr ""
 
@@ -1504,27 +1504,27 @@ msgstr ""
 msgid "Add Overlay"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:42
+#: admin/blocks/shared/placeholder.js:41
 msgid "Paste or type a Youtube, Vimeo or .mp4 video URL"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:174
+#: admin/blocks/shared/placeholder.js:173
 msgid "Video URL"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:195
+#: admin/blocks/shared/placeholder.js:194
 msgid "Select or Upload Private Video"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:196
+#: admin/blocks/shared/placeholder.js:195
 msgid "Select or Upload Video"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:229
+#: admin/blocks/shared/placeholder.js:228
 msgid "Add/Select Private Video"
 msgstr ""
 
-#: admin/blocks/shared/placeholder.js:230
+#: admin/blocks/shared/placeholder.js:229
 #: Integrations/Elementor/VideoWidget.php:211
 msgid "Add/Select Video"
 msgstr ""
@@ -2896,20 +2896,20 @@ msgid "Select A Preset"
 msgstr ""
 
 #. translators: placeholders: 1. Lesson or Topic label, 2. span for counter.
-#: Integrations/LearnDash/LearnDash.php:221
+#: Integrations/LearnDash/LearnDash.php:223
 msgctxt "placeholders: 1. Lesson or Topic label, 2. span for counter"
 msgid "<p class=\"ld-video-delay-message\">%1$s will auto complete in %2$s seconds</p>"
 msgstr ""
 
-#: Integrations/LearnDash/LearnDash.php:379
+#: Integrations/LearnDash/LearnDash.php:381
 msgid "Use Presto Video"
 msgstr ""
 
-#: Integrations/LearnDash/LearnDash.php:382
+#: Integrations/LearnDash/LearnDash.php:384
 msgid "Use the Presto Player video in your post content for video progression."
 msgstr ""
 
-#: Integrations/LearnDash/LearnDash.php:385
+#: Integrations/LearnDash/LearnDash.php:387
 msgid "The presto video in this post will be used for video progression."
 msgstr ""
 

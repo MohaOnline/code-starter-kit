@@ -183,9 +183,13 @@ class CardsSaveActions extends SaveActions
         exit;
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
-        parent::setHooks();
+        parent::setHooks($isAdmin);
+
+        if (!$isAdmin) {
+            return;
+        }
 
         add_action('wp_ajax_acf_views__card_refresh', [$this, 'refreshAjax',]);
     }

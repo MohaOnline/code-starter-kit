@@ -7,6 +7,7 @@ namespace org\wplake\acf_views\Dashboard;
 
 use org\wplake\acf_views\Cards\CardsDataStorage;
 use org\wplake\acf_views\Cards\Cpt\CardsCpt;
+use org\wplake\acf_views\Common\HooksInterface;
 use org\wplake\acf_views\Groups\CardData;
 use org\wplake\acf_views\Groups\ToolsData;
 use org\wplake\acf_views\Groups\ViewData;
@@ -17,7 +18,7 @@ use WP_Query;
 
 defined('ABSPATH') || exit;
 
-class Tools
+class Tools implements HooksInterface
 {
     const SLUG = 'acf-views-tools';
 
@@ -519,8 +520,12 @@ class Tools
         }
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
+        if (!$isAdmin) {
+            return;
+        }
+
         // init, not acf/init, as the method uses 'get_edit_post_link' which will be available only since this hook
         // (because we sign up the CPTs in this hook)
         add_action('init', [$this, 'addPage',]);

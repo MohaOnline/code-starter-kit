@@ -9,6 +9,8 @@
 
 namespace MainWP\Child;
 
+//phpcs:disable WordPress.WP.AlternativeFunctions, Generic.Metrics.CyclomaticComplexity -- Current complexity is the only way to achieve desired results, pull request solutions appreciated.
+
 /**
  * Class MainWP_Child_Server_Information_Base
  *
@@ -177,7 +179,7 @@ class MainWP_Child_Server_Information_Base {
 	 *
 	 * @return bool If 'curl_version' function exists, return true, if not, return false.
 	 */
-	protected static function get_curl_support() {
+	public static function get_curl_support() {
 		return function_exists( 'curl_version' );
 	}
 
@@ -196,9 +198,11 @@ class MainWP_Child_Server_Information_Base {
 	 * @return string Current cURL Version.
 	 */
 	public static function get_curl_version() {
-		$curlversion = curl_version();
-
-		return $curlversion['version'];
+		if ( function_exists( 'curl_version' ) ) {
+			$curlversion = curl_version();
+			return $curlversion['version'];
+		}
+		return '';
 	}
 
 	/**
@@ -225,9 +229,11 @@ class MainWP_Child_Server_Information_Base {
 	 * @return string SSL version.
 	 */
 	public static function get_curl_ssl_version() {
-		$curlversion = curl_version();
-
-		return $curlversion['ssl_version'];
+		if ( function_exists( 'curl_version' ) ) {
+			$curlversion = curl_version();
+			return $curlversion['ssl_version'];
+		}
+		return '';
 	}
 
 	/**

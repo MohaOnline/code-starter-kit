@@ -48,7 +48,7 @@ if ( count( $authors ) >= $max_authors ) :
 				]
 			),
 			absint( $max_authors ),
-			esc_url( ADVADS_URL . 'codex/filter-hooks/?utm_source=advanced-ads&utm_medium=link&utm_campaign=author-term-limit' )
+			'https://wpadvancedads.com/codex/filter-hooks/?utm_source=advanced-ads&utm_medium=link&utm_campaign=author-term-limit'
 		);
 		?>
 	</p>

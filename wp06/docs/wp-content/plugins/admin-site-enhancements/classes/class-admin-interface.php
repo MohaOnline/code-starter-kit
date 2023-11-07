@@ -155,9 +155,9 @@ class Admin_Interface
 				#wpbody-content .notice-updated,
 				#wpbody-content .updated:not(.active, .inactive, .plugin-update-tr),
 				#wpbody-content .update-nag, */
-				#wpbody-content > .wrap > .notice:not(.system-notice),
+				#wpbody-content > .wrap > .notice:not(.system-notice,.hidden),
 				#wpbody-content > .wrap > .notice-error,
-				#wpbody-content > .wrap > .error,
+				#wpbody-content > .wrap > .error:not(.hidden),
 				#wpbody-content > .wrap > .notice-info,
 				#wpbody-content > .wrap > .notice-information,
 				#wpbody-content > .wrap > #message,
@@ -166,9 +166,9 @@ class Admin_Interface
 				#wpbody-content > .wrap > .notice-updated,
 				#wpbody-content > .wrap > .updated,
 				#wpbody-content > .wrap > .update-nag,
-				#wpbody-content > .wrap > div > .notice:not(.system-notice),
+				#wpbody-content > .wrap > div > .notice:not(.system-notice,.hidden),
 				#wpbody-content > .wrap > div > .notice-error,
-				#wpbody-content > .wrap > div > .error,
+				#wpbody-content > .wrap > div > .error:not(.hidden),
 				#wpbody-content > .wrap > div > .notice-info,
 				#wpbody-content > .wrap > div > .notice-information,
 				#wpbody-content > .wrap > div > #message,
@@ -177,9 +177,9 @@ class Admin_Interface
 				#wpbody-content > .wrap > div > .notice-updated,
 				#wpbody-content > .wrap > div > .updated,
 				#wpbody-content > .wrap > div > .update-nag,
-				#wpbody-content > div > .wrap > .notice:not(.system-notice),
+				#wpbody-content > div > .wrap > .notice:not(.system-notice,.hidden),
 				#wpbody-content > div > .wrap > .notice-error,
-				#wpbody-content > div > .wrap > .error,
+				#wpbody-content > div > .wrap > .error:not(.hidden),
 				#wpbody-content > div > .wrap > .notice-info,
 				#wpbody-content > div > .wrap > .notice-information,
 				#wpbody-content > div > .wrap > #message,
@@ -546,6 +546,133 @@ class Admin_Interface
                 false
             );
         }
+    }
+    
+    /**
+     * Reload list table after performing Quick Edit on post types with custom admin columns
+     * This is modified from wp_ajax_inline_save() by adding a script before wp_die() at the end
+     * 
+     * @link https://github.com/WordPress/wordpress-develop/blob/6.3/src/wp-admin/includes/ajax-actions.php#L2049-L2159
+     * @since 6.0.6
+     */
+    public function wp_ajax_inline_save_with_page_reload()
+    {
+        global  $mode ;
+        check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
+        if ( !isset( $_POST['post_ID'] ) || !(int) $_POST['post_ID'] ) {
+            wp_die();
+        }
+        $post_id = (int) $_POST['post_ID'];
+        
+        if ( 'page' === $_POST['post_type'] ) {
+            if ( !current_user_can( 'edit_page', $post_id ) ) {
+                wp_die( __( 'Sorry, you are not allowed to edit this page.' ) );
+            }
+        } else {
+            if ( !current_user_can( 'edit_post', $post_id ) ) {
+                wp_die( __( 'Sorry, you are not allowed to edit this post.' ) );
+            }
+        }
+        
+        $last = wp_check_post_lock( $post_id );
+        
+        if ( $last ) {
+            $last_user = get_userdata( $last );
+            $last_user_name = ( $last_user ? $last_user->display_name : __( 'Someone' ) );
+            /* translators: %s: User's display name. */
+            $msg_template = __( 'Saving is disabled: %s is currently editing this post.' );
+            if ( 'page' === $_POST['post_type'] ) {
+                /* translators: %s: User's display name. */
+                $msg_template = __( 'Saving is disabled: %s is currently editing this page.' );
+            }
+            printf( $msg_template, esc_html( $last_user_name ) );
+            wp_die();
+        }
+        
+        $data =& $_POST;
+        $post = get_post( $post_id, ARRAY_A );
+        // Since it's coming from the database.
+        $post = wp_slash( $post );
+        $data['content'] = $post['post_content'];
+        $data['excerpt'] = $post['post_excerpt'];
+        // Rename.
+        $data['user_ID'] = get_current_user_id();
+        if ( isset( $data['post_parent'] ) ) {
+            $data['parent_id'] = $data['post_parent'];
+        }
+        // Status.
+        
+        if ( isset( $data['keep_private'] ) && 'private' === $data['keep_private'] ) {
+            $data['visibility'] = 'private';
+            $data['post_status'] = 'private';
+        } else {
+            $data['post_status'] = $data['_status'];
+        }
+        
+        if ( empty($data['comment_status']) ) {
+            $data['comment_status'] = 'closed';
+        }
+        if ( empty($data['ping_status']) ) {
+            $data['ping_status'] = 'closed';
+        }
+        // Exclude terms from taxonomies that are not supposed to appear in Quick Edit.
+        if ( !empty($data['tax_input']) ) {
+            foreach ( $data['tax_input'] as $taxonomy => $terms ) {
+                $tax_object = get_taxonomy( $taxonomy );
+                /** This filter is documented in wp-admin/includes/class-wp-posts-list-table.php */
+                if ( !apply_filters(
+                    'quick_edit_show_taxonomy',
+                    $tax_object->show_in_quick_edit,
+                    $taxonomy,
+                    $post['post_type']
+                ) ) {
+                    unset( $data['tax_input'][$taxonomy] );
+                }
+            }
+        }
+        // Hack: wp_unique_post_slug() doesn't work for drafts, so we will fake that our post is published.
+        
+        if ( !empty($data['post_name']) && in_array( $post['post_status'], array( 'draft', 'pending' ), true ) ) {
+            $post['post_status'] = 'publish';
+            $data['post_name'] = wp_unique_post_slug(
+                $data['post_name'],
+                $post['ID'],
+                $post['post_status'],
+                $post['post_type'],
+                $post['post_parent']
+            );
+        }
+        
+        // Update the post.
+        edit_post();
+        $wp_list_table = _get_list_table( 'WP_Posts_List_Table', array(
+            'screen' => $_POST['screen'],
+        ) );
+        $mode = ( 'excerpt' === $_POST['post_view'] ? 'excerpt' : 'list' );
+        $level = 0;
+        
+        if ( is_post_type_hierarchical( $wp_list_table->screen->post_type ) ) {
+            $request_post = array( get_post( $_POST['post_ID'] ) );
+            $parent = $request_post[0]->post_parent;
+            while ( $parent > 0 ) {
+                $parent_post = get_post( $parent );
+                $parent = $parent_post->post_parent;
+                $level++;
+            }
+        }
+        
+        $wp_list_table->display_rows( array( get_post( $_POST['post_ID'] ) ), $level );
+        // INTERCEPT: Add a script to reload the list table page
+        ?>
+		    <script type="text/javascript">
+		    	jQuery('#post-<?php 
+        echo  $_POST['post_ID'] ;
+        ?>').css('opacity','0.3');
+		        document.location.reload(true);
+		    </script>
+		<?php 
+        // end INTERCEPT
+        wp_die();
     }
     
     /**

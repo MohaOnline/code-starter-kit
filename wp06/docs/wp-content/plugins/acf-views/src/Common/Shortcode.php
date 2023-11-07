@@ -8,7 +8,7 @@ use org\wplake\acf_views\Settings;
 
 defined('ABSPATH') || exit;
 
-abstract class Shortcode
+abstract class Shortcode implements HooksInterface
 {
     const NAME = '';
 
@@ -103,7 +103,7 @@ abstract class Shortcode
         );
     }
 
-    public function setHooks(): void
+    public function setHooks(bool $isAdmin): void
     {
         add_shortcode(static::NAME, [$this, 'render']);
     }

@@ -312,6 +312,10 @@ const itemsProgress = () => {
   if (elements[0].querySelectorAll('form.form-button-finish-course').length !== 0) {
     return;
   }
+  const user_id = lpGlobalSettings.user_id || 0;
+  if (user_id === 0) {
+    return;
+  }
   if ('IntersectionObserver' in window) {
     const eleObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {

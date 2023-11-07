@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - LiteSpeed Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-29 05:51:51+0000\n"
+"PO-Revision-Date: 2023-10-31 10:25:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +49,7 @@ msgstr "联署材料延迟包括"
 
 #: src/cloud.cls.php:762
 msgid "Your domain_key has been temporarily blocklisted to prevent abuse. You may contact support at QUIC.cloud to learn more."
-msgstr "为防止滥用，您的 domain_key 已被暂时封锁。您可以联系 QUIC.cloud 支持部门了解详情。"
+msgstr "您的 domain_key 已被暂时列入黑名单以防止滥用。您可以联系 QUIC.cloud 的支持人员以了解更多信息。"
 
 #: src/cloud.cls.php:757
 msgid "Cloud server refused the current request due to unpulled images. Please pull the images first."
@@ -273,7 +273,7 @@ msgstr "高级版中的所有内容，以及"
 
 #: tpl/presets/standard.tpl.php:54
 msgid "Aggressive"
-msgstr "激进"
+msgstr "积极"
 
 #: tpl/presets/standard.tpl.php:49 tpl/presets/standard.tpl.php:64
 msgid "A Domain Key is required to use this preset. Includes many optimizations known to improve page speed scores."

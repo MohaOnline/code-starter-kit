@@ -4,8 +4,8 @@ Author: Themeansar
 Requires PHP: 7.0
 Requires at least: 5.4
 Tested up to: 6.3.2
-Stable tag: 1.0.0.56
-Version: 1.0.0.56
+Stable tag: 1.0.0.58
+Version: 1.0.0.58
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -278,3 +278,10 @@ License: CC0 Public Domain
 
 = Version 1.0.0.56
 1. Added breadcrumb on single page.
+
+= Version 1.0.0.57
+1. Added Featured post widget.
+
+= Version 1.0.0.58
+1. Added Customize Button on Demos Import Banner.
+2. Fixed styling issue.

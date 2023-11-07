@@ -3,7 +3,7 @@
  * Plugin Name:       Scroll To Top
  * Plugin URI:        https://github.com/gasatrya/scroll-top
  * Description:       Adds a flexible Back to Top button to any post/page of your WordPress website.
- * Version:           1.5
+ * Version:           1.5.2
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Ga Satrya
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ST_VERSION', '1.5' );
+define( 'ST_VERSION', '1.5.2' );
 define( 'ST_INCLUDES', trailingslashit( plugin_dir_path( __FILE__ ) ) . trailingslashit( 'inc' ) );
 define( 'ST_ADMIN', trailingslashit( plugin_dir_path( __FILE__ ) ) . trailingslashit( 'admin' ) );
 define( 'ST_ASSETS', trailingslashit( plugin_dir_url( __FILE__ ) ) . trailingslashit( 'assets' ) );

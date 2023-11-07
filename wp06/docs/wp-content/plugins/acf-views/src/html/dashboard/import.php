@@ -62,12 +62,12 @@ $formMessage = $view['formMessage'] ?? '';
                     ); ?></li>
                 <li><?php
                     echo __(
-                        'Create an ACF View called "Phone" with fields assigned from the "Phone" Field Group.',
+                        'Create a View called "Phone" with fields assigned from the "Phone" Field Group.',
                         'acf-views'
                     ); ?></li>
                 <li><?php
                     echo __(
-                        "Fill each page’s ACF fields with text and add the ACF View shortcode to the page content.",
+                        "Fill each page’s ACF fields with text and add the View shortcode to the page content.",
                         'acf-views'
                     ); ?></li>
             </ol>
@@ -78,7 +78,7 @@ $formMessage = $view['formMessage'] ?? '';
                     echo __("Create a 'draft' page called 'Article about Samsung'", 'acf-views'); ?></li>
                 <li><?php
                     echo __(
-                        'Add the ACF View shortcode to the page content with "object-id" argument to "Samsung Galaxy A53".',
+                        'Add the View shortcode to the page content with "object-id" argument to "Samsung Galaxy A53".',
                         'acf-views'
                     ); ?>
                 </li>
@@ -93,13 +93,13 @@ $formMessage = $view['formMessage'] ?? '';
             <ol class="av-introduction__description av-introduction__ol">
                 <li><?php
                     echo __(
-                        'Create an ACF Card for "List of Phones" with ACF View "Phone" assigned and filtered to.',
+                        'Create a Card for "List of Phones" with View "Phone" assigned and filtered to.',
                         'acf-views'
                     ); ?>
                 </li>
                 <li><?php
                     echo __(
-                        "Create a 'draft' page called 'Most popular phones in 2022' and add the ACF Card shortcode to the
+                        "Create a 'draft' page called 'Most popular phones in 2022' and add the Card shortcode to the
                     page content.",
                         'acf-views'
                     ); ?>

@@ -45,9 +45,9 @@ class CardData extends CptData
      * @a-type select
      * @ui 1
      * @allow_null 1
-     * @label ACF View
+     * @label View
      * @required 1
-     * @instructions Assigned ACF View is used to display every post from the query results
+     * @instructions Assigned View is used to display every post from the query results
      */
     public string $acfViewId;
     /**
@@ -122,7 +122,7 @@ class CardData extends CptData
     /**
      * @a-type textarea
      * @label Description
-     * @instructions Add a short description for your views’ purpose. Only seen on the admin ACF Cards list
+     * @instructions Add a short description for your views’ purpose. Only seen on the admin Cards list
      */
     public string $description;
     /**
@@ -266,7 +266,7 @@ class CardData extends CptData
     /**
      * @a-type textarea
      * @label CSS Code
-     * @instructions Define your CSS style rules. This will be added within &lt;style&gt;&lt;/style&gt; tags ONLY to pages that have this card. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Don't style view fields here, ACF View has its own CSS field for this goal. <br> Magic shortcuts are available (and will use the BEM Unique Name if defined) : <br> '#card' will be replaced with '.acf-card--id--X' (or '.bem-name').<br> '#card__' will be replaced with '.acf-card--id--X .acf-card__' (or '.bem-name .bem-name__'). <br> '#__' will be replaced with '.acf-card__' (or '.bem-name__'). <br> To match items wrapper you should use '#card__items' selector, to match single item you should use '#card .acf-view' selector
+     * @instructions Define your CSS style rules. This will be added within &lt;style&gt;&lt;/style&gt; tags ONLY to pages that have this card. <br> Press Ctrl (Cmd) + Alt + L to format the code. <br> Don't style view fields here, View has its own CSS field for this goal. <br> Magic shortcuts are available (and will use the BEM Unique Name if defined) : <br> '#card' will be replaced with '.acf-card--id--X' (or '.bem-name').<br> '#card__' will be replaced with '.acf-card--id--X .acf-card__' (or '.bem-name .bem-name__'). <br> '#__' will be replaced with '.acf-card__' (or '.bem-name__'). <br> To match items wrapper you should use '#card__items' selector, to match single item you should use '#card .acf-view' selector
      * /
      */
     public string $cssCode;
@@ -304,7 +304,7 @@ class CardData extends CptData
     public bool $previewTab;
     /**
      * @label Preview
-     * @instructions See an output preview of your ACF Card, where you can test some CSS styles. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/preview'>Read more</a> <br> Styles from your front page are included in the preview (some differences may appear). <br>Note: Press 'Update' if you have changed Custom Markup (in the Advanced tab) to see the latest preview. <br> Important! Don't style your ACF View here, instead use the CSS Code field in your ACF View for this goal. <br> After testing: Copy and paste the ACF Card styles to the CSS Code field.
+     * @instructions See an output preview of your Card, where you can test some CSS styles. <a target='_blank' href='https://docs.acfviews.com/guides/acf-views/features/preview'>Read more</a> <br> Styles from your front page are included in the preview (some differences may appear). <br>Note: Press 'Update' if you have changed Custom Markup (in the Advanced tab) to see the latest preview. <br> Important! Don't style your View here, instead use the CSS Code field in your View for this goal. <br> After testing: Copy and paste the Card styles to the CSS Code field.
      * @placeholder Loading... Please wait a few seconds
      * @disabled 1
      */

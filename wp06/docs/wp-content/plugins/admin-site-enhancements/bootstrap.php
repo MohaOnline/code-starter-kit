@@ -346,7 +346,7 @@ class Admin_Site_Enhancements
             if ( array_key_exists( 'custom_login_slug', $options ) && !empty($options['custom_login_slug']) ) {
                 add_action( 'init', [ $login_logout, 'redirect_on_custom_login_url' ] );
                 add_filter( 'lostpassword_url', [ $login_logout, 'customize_lost_password_url' ] );
-                add_action( 'login_head', [ $login_logout, 'redirect_on_default_login_urls' ] );
+                add_action( 'wp_loaded', [ $login_logout, 'redirect_on_default_login_urls' ] );
                 add_action( 'wp_login_failed', [ $login_logout, 'redirect_to_custom_login_url_on_login_fail' ] );
                 add_action( 'wp_logout', [ $login_logout, 'redirect_to_custom_login_url_on_logout_success' ] );
             }

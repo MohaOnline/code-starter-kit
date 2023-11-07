@@ -199,7 +199,7 @@ class Advanced_Ads_AdSense_Admin {
 					'text'  => sprintf(
 							// Translators: %s is a URL.
 						__( 'Responsive AdSense ads don’t work reliably with <em>Position</em> set to left or right. Either switch the <em>Type</em> to "normal" or follow <a href="%s" target="_blank">this tutorial</a> if you want the ad to be wrapped in text.', 'advanced-ads' ),
-						ADVADS_URL . 'adsense-responsive-custom-sizes/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-custom-sizes-tutorial'
+						'https://wpadvancedads.com/adsense-responsive-custom-sizes/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-custom-sizes-tutorial'
 					),
 					'class' => 'advads-ad-notice-responsive-position advads-notice-inline advads-error hidden',
 				];

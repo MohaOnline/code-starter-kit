@@ -608,6 +608,10 @@
 					@mkdir($GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/"), 0755, true);
 				}
 
+				if(!is_dir($GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/preload-sitemap"))){
+					@mkdir($GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/preload-sitemap"), 0755, true);
+				}
+
 				file_put_contents($sitemap_cache_path, $content);
 
 				return $content;
@@ -651,7 +655,7 @@
 
 
 			foreach ($pre_load->sitemaps as $s_key => &$s_value) {
-				$sitemap_cache_path = $GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/".base64_encode($s_value->url).".xml");
+				$sitemap_cache_path = $GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/preload-sitemap/".base64_encode($s_value->url).".xml");
 
 				if(!file_exists($sitemap_cache_path) || !isset($s_value->total)){
 					$content = self::prepare_sitemap($s_value->url, $sitemap_cache_path);
@@ -768,6 +772,9 @@
 					update_option("WpFastestCachePreLoad", json_encode($pre_load));
 
 					echo "Preload Restarted";
+
+					// clearing the sitemap cache in order to get the latest sitemap updates
+					$GLOBALS["wp_fastest_cache"]->rm_folder_recursively($GLOBALS["wp_fastest_cache"]->getWpContentDir("/cache/all/preload-sitemap"));
 
 					if($varnish_datas = get_option("WpFastestCacheVarnish")){
 						include_once('inc/varnish.php');

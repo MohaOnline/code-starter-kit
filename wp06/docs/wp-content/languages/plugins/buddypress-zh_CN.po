@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-29 05:46:02+0000\n"
+"PO-Revision-Date: 2023-11-02 03:56:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,61 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - BuddyPress - Stable (latest release)\n"
+
+#: bp-core/bp-core-functions.php:4960
+msgid "BuddyPress 12.0.0 introduces the BP Rewrites API, which completely changes the way BuddyPress URLs are built and routed. This fundamental change requires most BuddyPress plugins to update how they deal with BuddyPress URLs. If your BuddyPress plugins have not been updated in the last few months, they are probably not ready for BuddyPress 12.0.0."
+msgstr "BuddyPress 12.0.0 引入了 BP Rewrites API，彻底改变了 BuddyPress URL 的构建和路由方式。这一根本性改变要求大多数BuddyPress插件更新它们处理BuddyPress URL的方式。如果您的BuddyPress插件在过去几个月中没有更新，那么它们可能还没有为BuddyPress 12.0.0做好准备。"
+
+#: bp-core/classes/class-bp-admin.php:304
+#: bp-core/classes/class-bp-admin.php:305
+msgid "BuddyPress Admin Notifications"
+msgstr "BuddyPress 管理员通知"
+
+#: bp-core/bp-core-functions.php:4963
+msgid "If any of the above items are true, we strongly advise you to install and activate the Classic Add-on before updating to BuddyPress 12.0.0."
+msgstr "如果上述情况属实，我们强烈建议您在更新至 BuddyPress 12.0.0 之前安装并激活经典插件。"
+
+#: bp-core/classes/class-bp-admin.php:1600
+msgid "No new Admin Notfications"
+msgstr "没有新的行政通知"
+
+#: bp-core/bp-core-functions.php:4961
+msgid "You are still using the BP Default theme."
+msgstr "您仍在使用 BP 默认主题。"
+
+#. translators: %s: the number of admin notifications
+#: bp-members/bp-members-adminbar.php:241
+msgid "You have %s new important admin notification."
+msgid_plural "You have %s new important admin notifications."
+msgstr[0] "您有 %s 个新的重要管理通知。"
+
+#: bp-core/bp-core-functions.php:4962
+msgid "You still use a BP Legacy Widget."
+msgstr "您仍在使用 BP 传统 Widget。"
+
+#: bp-core/bp-core-functions.php:4958
+msgid "Our next major version (12.0.0) will introduce several large changes that could be incompatible with your site's configuration. To prevent problems, we've built the BP Classic Add-on, which you may want to proactively install if any of the following cases:"
+msgstr "我们的下一个主要版本（12.0.0）将引入几项重大变更，这些变更可能与您网站的配置不兼容。为防止出现问题，我们开发了 BP Classic 附加组件，如果出现以下情况，您可能需要主动安装该附加组件："
+
+#: bp-core/bp-core-functions.php:4959
+msgid "Some of your BuddyPress plugins have not been updated lately."
+msgstr "您的一些 BuddyPress 插件最近没有更新。"
+
+#: bp-core/bp-core-functions.php:4940
+msgid "Discover BuddyPress Add-ons"
+msgstr "发现 BuddyPress 附加组件"
+
+#: bp-core/admin/bp-core-admin-functions.php:1536
+msgid "Dismiss the notification"
+msgstr "取消通知"
+
+#: bp-core/bp-core-functions.php:4956
+msgid "Get The BP Classic Add-on"
+msgstr "获取 BP Classic 附加组件"
+
+#: bp-core/bp-core-functions.php:4957
+msgid "Get ready for the brand-new BP Rewrites API!"
+msgstr "准备好使用全新的 BP Rewrites API！"
 
 #. translators: 1: the activity user link. 2: the blog link.
 #: bp-blogs/bp-blogs-activity.php:225
@@ -24,7 +79,7 @@ msgid "%s wrote a new post"
 msgstr "%s 发布了一篇新文章"
 
 #. Translators: %s is a Passport control emoji.
-#: bp-core/classes/class-bp-admin.php:874
+#: bp-core/classes/class-bp-admin.php:888
 msgid "By the way, the latest version of BP Rewrites also includes a feature to restrict the community area to your site members only %s."
 msgstr "顺便说一下，最新版本的 BP Rewrites 还包含一项功能，可将社区区域限制为仅限网站成员访问 %s。"
 
@@ -34,11 +89,11 @@ msgid "Ensure result set inludes specific profile field groups."
 msgstr "确保结果集包含特定的配置文件字段组。"
 
 #. Translators: %s is a hugging face emoji.
-#: bp-core/classes/class-bp-admin.php:907
+#: bp-core/classes/class-bp-admin.php:921
 msgid "Many thanks to you for trusting BuddyPress to power your community site %s"
 msgstr "非常感谢您信任 BuddyPress 为您的社区网站提供动力 %s"
 
-#: bp-core/classes/class-bp-admin.php:868
+#: bp-core/classes/class-bp-admin.php:882
 msgid "Once BP Rewrites are merged into BuddyPress 12.0.0 (our next major release), we’ll make sure to build a backward-compatibility add-on so that you can still use plugins that do not work with \"BP Rewrites\"."
 msgstr "一旦 BP Rewrites 并入 BuddyPress 12.0.0（我们的下一个重要版本），我们将确保创建一个向后兼容的插件，以便您仍然可以使用不能与 \"BP Rewrites \"一起使用的插件。"
 
@@ -54,91 +109,91 @@ msgstr "您需要成为此群组的成员才能与其成员共享更新。"
 msgid "Your account cannot be deleted."
 msgstr "您的账户无法删除。"
 
-#: bp-core/classes/class-bp-admin.php:863
+#: bp-core/classes/class-bp-admin.php:877
 msgid "BP Rewrites"
 msgstr "BP 重写"
 
-#: bp-core/classes/class-bp-admin.php:867
+#: bp-core/classes/class-bp-admin.php:881
 msgid "You can already test this breaking change, which uses the WordPress way to parse URLs (thanks to the WP Rewrites API), and report issues to us or to the third-party plugin authors."
 msgstr "您已经可以测试这一突破性改动，它使用 WordPress 的方式来解析 URL（感谢 WP Rewrites API），并向我们或第三方插件作者报告问题。"
 
-#: bp-core/classes/class-bp-admin.php:852
+#: bp-core/classes/class-bp-admin.php:866
 msgid "\"THE\" long-awaited feature: Community Media Attachments."
 msgstr "期待已久的 \"THE \"功能：社区媒体附件。"
 
-#: bp-core/classes/class-bp-admin.php:836
+#: bp-core/classes/class-bp-admin.php:850
 msgid "11.0.0 also marks the beginning of a transitional year for BuddyPress: get ready for great features and changes."
 msgstr "11.0.0 也标志着 BuddyPress 过渡年的开始：准备好迎接强大的功能和变化。"
 
 #. Translators: %s is a the link to the community assets restricting filter
 #. developer note.
-#: bp-core/classes/class-bp-admin.php:784
+#: bp-core/classes/class-bp-admin.php:798
 msgid "A %s was introduced to only load BuddyPress JavaScript & CSS assets on BuddyPress-generated pages."
 msgstr "引入了一个 %s，以便仅在 BuddyPress 生成的页面上加载 BuddyPress JavaScript 和 CSS 资产。"
 
-#: bp-core/classes/class-bp-admin.php:853
+#: bp-core/classes/class-bp-admin.php:867
 msgid "A revolutionary Block-based Activity Post Form to standardize the way to extend activity updates with richer & more engaging content."
 msgstr "革命性的基于区块的活动发布表单，以标准化方式扩展活动更新，提供更丰富、更吸引人的内容。"
 
 #. Translators: %s is a the link to the xProfile fields loop edited argument
 #. developer note.
-#: bp-core/classes/class-bp-admin.php:823
+#: bp-core/classes/class-bp-admin.php:837
 msgid "Advanced users or developers can now build custom xProfile loops %s."
 msgstr "高级用户或开发人员现在可以构建自定义 xProfile 循环 %s。"
 
 #. Translators: %s is a the link to the activity loop new arguments developer
 #. note.
-#: bp-core/classes/class-bp-admin.php:810
+#: bp-core/classes/class-bp-admin.php:824
 msgid "Advanced users or developers can now extend the Activity loop to %s."
 msgstr "高级用户或开发人员现在可以将活动循环扩展到 %s。"
 
-#: bp-core/classes/class-bp-admin.php:765
+#: bp-core/classes/class-bp-admin.php:779
 msgid "Here are five important changes we would like to highlight:"
 msgstr "以下是我们要强调的五项重要变化："
 
 #. translators: %s is the placeholder for the link to the BuddyPress Add-ons
 #. administration page.
-#: bp-core/classes/class-bp-admin.php:842
+#: bp-core/classes/class-bp-admin.php:856
 msgid "In 10.0.0, we’ve introduced a %s to easily find BuddyPress Add-ons maintained by the BuddyPress Core Team. Check this list often as we will soon publish the following add-ons:"
 msgstr "在 10.0.0 中，我们引入了一个 %s，以方便查找由 BuddyPress 核心团队维护的 BuddyPress 附加组件。请经常查看此列表，因为我们即将发布以下附加组件："
 
 #. Translators: %s is a the link to the deprecated code developer note.
-#: bp-core/classes/class-bp-admin.php:797
+#: bp-core/classes/class-bp-admin.php:811
 msgid "The way BuddyPress loads its %s has been improved."
 msgstr "改进了 BuddyPress 加载 %s 的方式。"
 
-#: bp-core/classes/class-bp-admin.php:764
+#: bp-core/classes/class-bp-admin.php:778
 msgid "This new major version of your site’s community engine introduces around 50 changes mostly acting under the hood to improve performance, consistency and the stability of the plugin."
 msgstr "网站社区引擎的这一新的主要版本引入了约 50 项更改，其中大部分是在引擎盖下进行的，以提高插件的性能、一致性和稳定性。"
 
 #. Translators: %s is a the link to the .webp support developer note.
-#: bp-core/classes/class-bp-admin.php:772
+#: bp-core/classes/class-bp-admin.php:786
 msgid "You may now use %s images for your profile and cover images (requires WordPress 5.8 or newer)."
 msgstr "您现在可以使用 %s 张图片作为个人资料和封面图片（要求 WordPress 5.8 或更新版本）。"
 
-#: bp-core/classes/class-bp-admin.php:801
+#: bp-core/classes/class-bp-admin.php:815
 msgid "deprecated code"
 msgstr "弃用代码"
 
-#: bp-core/classes/class-bp-admin.php:814
+#: bp-core/classes/class-bp-admin.php:828
 msgid "include or exclude a list of users"
 msgstr "包含或排除用户列表"
 
-#: bp-core/classes/class-bp-admin.php:827
+#: bp-core/classes/class-bp-admin.php:841
 msgid "including a specific set of profile field groups"
 msgstr "包括一组特定的配置文件字段组"
 
-#: bp-core/classes/class-bp-admin.php:846
+#: bp-core/classes/class-bp-admin.php:860
 msgid "new area in the Plugin Administration screen"
 msgstr "插件管理屏幕中的新区域"
 
-#: bp-core/classes/class-bp-admin.php:788
+#: bp-core/classes/class-bp-admin.php:802
 msgid "new filter"
 msgstr "新过滤器"
 
 #. translators: %s is the placeholder for the link to the BP Rewrites' w.org
 #. plugin page.
-#: bp-core/classes/class-bp-admin.php:859
+#: bp-core/classes/class-bp-admin.php:873
 msgid "An example about this new way to keep moving forward is the %s Add-on."
 msgstr "关于这种不断前进的新方法，%s 附加组件就是一个例子。"
 
@@ -194,7 +249,7 @@ msgstr "收件人已请求加入组，管理员已接受该组。"
 msgid "Recipient had requested to join a group, which was rejected by admin."
 msgstr "收件人申请加入一个群组，但被管理员拒绝。"
 
-#: bp-core/classes/class-bp-admin.php:763
+#: bp-core/classes/class-bp-admin.php:777
 msgid "Thanks for upgrading BuddyPress to 11.0.0."
 msgstr "感谢您将 BuddyPress 升级到 11.0.0。"
 
@@ -428,7 +483,7 @@ msgstr "上次更新字段数据的日期，如 GMT。"
 msgid "Your password is not strong enough to be allowed on this site. Please use a stronger password."
 msgstr "您的密码不够强大，无法登录本网站。请使用更强的密码。"
 
-#: bp-core/classes/class-bp-admin.php:1557
+#: bp-core/bp-core-functions.php:4943
 msgid "Thanks to this new tab inside your Dashboard screen to add plugins, you’ll be able to find them faster and eventually contribute to beta features early to give the BuddyPress development team your feedbacks."
 msgstr "借助仪表板屏幕中用于添加插件的新选项卡，您将能够更快地找到它们，并最终尽早为测试版功能做出贡献，以便向 BuddyPress开发团队提供反馈。"
 
@@ -603,19 +658,15 @@ msgstr "编辑用户%s"
 msgid "\"Activate\" will activate the user immediately without requiring that they validate their email."
 msgstr "“激活”将立即激活用户，而不需要他们验证他们的电子邮件。"
 
-#: bp-core/classes/class-bp-admin.php:1552
-msgid "Dismiss the welcome panel"
-msgstr "关闭欢迎面板"
-
-#: bp-core/classes/class-bp-admin.php:1554
+#: bp-core/bp-core-functions.php:4941
 msgid "Hello BuddyPress Add-ons!"
 msgstr "您好 BuddyPress附加组件！"
 
-#: bp-core/classes/class-bp-admin.php:1556
+#: bp-core/bp-core-functions.php:4942
 msgid "Add-ons are features as Plugins or Blocks maintained by the BuddyPress development team & hosted on the WordPress.org plugins directory."
 msgstr "附加组件是由 BuddyPress开发团队维护并托管在 WordPress.org 插件目录中的插件或块功能。"
 
-#: bp-core/classes/class-bp-admin.php:1506
+#: bp-core/classes/class-bp-admin.php:1520
 msgid "BuddyPress Add-ons"
 msgstr "BuddyPress附加组件"
 
@@ -727,7 +778,7 @@ msgstr "博客中最后一次活动的日期，在网站的时区。"
 msgid "The date of the last activity from the blog, as GMT."
 msgstr "博客中最后一次活动的日期，为 GMT。"
 
-#: bp-core/admin/bp-core-admin-functions.php:634
+#: bp-core/admin/bp-core-admin-functions.php:642
 msgid "BuddyPress Settings and Tools Screens are now using a new tabbed header. Please use `bp_core_admin_tabbed_screen_header()` instead of bp_core_admin_tabs() to output tabs."
 msgstr "BuddyPress设置和工具屏幕现在使用新的选项卡式标题。请使用 `bp_core_admin_tabbed_screen_header()` 而不是 bp_core_admin_tabs() 来输出选项卡。"
 
@@ -1037,7 +1088,7 @@ msgstr "删除选择退出时出现问题。请再试一次。"
 msgid "These pages will only be reachable by users who are not logged in."
 msgstr "只有未登录的用户才能访问这些页面。"
 
-#: bp-core/admin/bp-core-admin-functions.php:775
+#: bp-core/admin/bp-core-admin-functions.php:783
 msgid "Note: Drag fields from other groups and drop them on the \"Signup Fields\" tab to include them into your registration form."
 msgstr "注意：将其他组中的字段拖放到“注册字段”选项卡上，以将它们包含在您的注册表单中。"
 
@@ -1434,12 +1485,12 @@ msgstr "未找到选择退出。"
 msgid "Select opt-out request: %d"
 msgstr "选择退出请求：%d"
 
-#: bp-core/admin/bp-core-admin-functions.php:563
+#: bp-core/admin/bp-core-admin-functions.php:571
 #: bp-core/admin/bp-core-admin-optouts.php:319
 #: bp-core/admin/bp-core-admin-optouts.php:424
 #: bp-core/admin/bp-core-admin-tools.php:570
-#: bp-core/classes/class-bp-admin.php:358
-#: bp-core/classes/class-bp-admin.php:359
+#: bp-core/classes/class-bp-admin.php:371
+#: bp-core/classes/class-bp-admin.php:372
 msgid "Manage Opt-outs"
 msgstr "管理退订"
 
@@ -1969,8 +2020,8 @@ msgstr "计数"
 msgid "Type metadata labels need to be set into the labels argument when registering your taxonomy using the meta key as the label’s key."
 msgstr "当使用元键作为标签的键注册您的分类法时，需要在标签参数中设置类型元数据标签。"
 
-#: bp-core/admin/bp-core-admin-functions.php:992
-#: bp-core/admin/bp-core-admin-functions.php:1017
+#: bp-core/admin/bp-core-admin-functions.php:1000
+#: bp-core/admin/bp-core-admin-functions.php:1025
 msgid "All BuddyPress Member menu items"
 msgstr "所有BuddyPress成员菜单项目"
 
@@ -2003,7 +2054,7 @@ msgstr "用逗号分隔群组类型"
 msgid "Occasionally these relationships become out of sync, most often after an import, update, or migration."
 msgstr "这些关系偶尔会变得不同步，最常见的是在导入、更新或迁移之后。"
 
-#: bp-core/admin/bp-core-admin-functions.php:991
+#: bp-core/admin/bp-core-admin-functions.php:999
 msgid "Search BuddyPress member menu items"
 msgstr "搜索BuddyPress成员菜单项目"
 
@@ -2118,13 +2169,13 @@ msgstr "群组类型："
 msgid "BuddyPress keeps track of various relationships between members, groups, and activity items."
 msgstr "BuddyPress可以跟踪成员、群组和动态等项目之间的各种关系。"
 
-#: bp-core/classes/class-bp-admin.php:890
+#: bp-core/classes/class-bp-admin.php:904
 msgid "How are you using BuddyPress? Receiving your feedback and suggestions for future versions of BuddyPress genuinely motivates and encourages our contributors."
 msgstr "您如何使用BuddyPress？收到您对BuddyPress未来版本的反馈和建议，确实能激发并鼓励我们的贡献者。"
 
 #. translators: %s is the placeholder for the link to BuddyPress support
 #. forums.
-#: bp-core/classes/class-bp-admin.php:894
+#: bp-core/classes/class-bp-admin.php:908
 msgid "Please %s about this version of BuddyPress on our website."
 msgstr "请%s关于BuddyPress的这个版本在我们网站上。"
 
@@ -2707,7 +2758,7 @@ msgid "Viewing %1$s - %2$s of %3$s member"
 msgid_plural "Viewing %1$s - %2$s of %3$s members"
 msgstr[0] "显示%3$s位成员中的%1$s- %2$s位"
 
-#: bp-core/admin/bp-core-admin-functions.php:945
+#: bp-core/admin/bp-core-admin-functions.php:953
 #: bp-members/js/blocks/member.js:92
 msgid "BuddyPress Member"
 msgstr "BuddyPress成员"
@@ -2786,7 +2837,7 @@ msgid "There was an error deleting %s from the system. Please try again."
 msgstr "从系统中删除 %s时发生错误。请重试。"
 
 #. translators: %s: BuddyPress version number
-#: bp-core/classes/class-bp-admin.php:1076
+#: bp-core/classes/class-bp-admin.php:1090
 msgid "Noteworthy Contributors to %s"
 msgstr "%s的值得注意的贡献者"
 
@@ -2820,7 +2871,7 @@ msgctxt "profile photo upload error"
 msgid "That photo is too big. Please upload one smaller than %s"
 msgstr "上传的图像太大。请上传比%s这张小的图像"
 
-#: bp-core/classes/class-bp-admin.php:476
+#: bp-core/classes/class-bp-admin.php:489
 msgctxt "BuddyPress setting tab"
 msgid "Members Settings"
 msgstr "成员设置"
@@ -3123,13 +3174,13 @@ msgstr "搜索引擎新用户网站的可见性。"
 msgid "Language to use for the new user's site."
 msgstr "用于新用户网站的语言。"
 
-#: bp-core/classes/class-bp-admin.php:949
-#: bp-core/classes/class-bp-admin.php:951
+#: bp-core/classes/class-bp-admin.php:963
+#: bp-core/classes/class-bp-admin.php:965
 msgid "Visit the Support Forums"
 msgstr "访问支持论坛"
 
-#: bp-core/classes/class-bp-admin.php:938
-#: bp-core/classes/class-bp-admin.php:940
+#: bp-core/classes/class-bp-admin.php:952
+#: bp-core/classes/class-bp-admin.php:954
 msgid "Follow BuddyPress on Twitter"
 msgstr "在Twitter上关注BuddyPress"
 
@@ -4383,12 +4434,12 @@ msgstr "动态模板包"
 
 #. translators: 1: heart dashicons. 2: BP Credits screen url. 3: number of
 #. BuddyPress contributors to this version.
-#: bp-core/classes/class-bp-admin.php:923
+#: bp-core/classes/class-bp-admin.php:937
 msgid "Built with %1$s by <a href=\"%2$s\">%3$d volunteer</a>."
 msgid_plural "Built with %1$s by <a href=\"%2$s\">%3$d volunteers</a>."
 msgstr[0] "由<a href=\"%2$s\">%3$d志愿者</a>使用%1$s构建。"
 
-#: bp-core/classes/class-bp-admin.php:898
+#: bp-core/classes/class-bp-admin.php:912
 msgid "share your feedback"
 msgstr "分享您的反馈"
 
@@ -4414,28 +4465,28 @@ msgstr "您提供的群组类型%1$s不是%2$s 。"
 msgid "Active components"
 msgstr "有效组件"
 
-#: bp-core/classes/class-bp-admin.php:756
+#: bp-core/classes/class-bp-admin.php:770
 msgid "Get involved"
 msgstr "参与其中"
 
-#: bp-core/classes/class-bp-admin.php:755
+#: bp-core/classes/class-bp-admin.php:769
 msgid "Changelog"
 msgstr "变更日志"
 
-#: bp-core/classes/class-bp-admin.php:754
+#: bp-core/classes/class-bp-admin.php:768
 msgid "What's new?"
 msgstr "什么是新的？"
 
-#: bp-core/classes/class-bp-admin.php:661
+#: bp-core/classes/class-bp-admin.php:675
 msgid "Hello BuddyPress"
 msgstr "您好BuddyPress"
 
 #. translators: %s is the placeholder for the BuddyPress version number.
-#: bp-core/classes/class-bp-admin.php:748
+#: bp-core/classes/class-bp-admin.php:762
 msgid "BuddyPress %s"
 msgstr "BuddyPress%s"
 
-#: bp-core/classes/class-bp-admin.php:660
+#: bp-core/classes/class-bp-admin.php:674
 msgid "Sorry, the page you requested was not found."
 msgstr "抱歉，未找到您要求的页面。"
 
@@ -5139,7 +5190,7 @@ msgstr "一旦我们满足您的要求时，您将收到一个通过电子邮件
 msgid "Your previous request for an export of personal data has expired."
 msgstr "您之前的个人数据导出请求已过期。"
 
-#: bp-core/classes/class-bp-admin.php:888
+#: bp-core/classes/class-bp-admin.php:902
 msgctxt "screen heading"
 msgid "Your feedback"
 msgstr "您的反馈"
@@ -5266,63 +5317,63 @@ msgstr "BuddyPress扩展资料数据"
 msgid "Extended Profile Data"
 msgstr "扩展资料数据"
 
-#: bp-core/classes/class-bp-admin.php:712
+#: bp-core/classes/class-bp-admin.php:726
 msgid "When a logged-in user creates a new group, we use a number of cookies to keep track of the group creation process. These cookies contain no personal data, and are deleted either upon the successful creation of the group or after 24 hours."
 msgstr "当登录用户创建新群组时，我们使用大量cookie来跟踪群组创建过程。 这些cookie不包含任何个人数据，并在成功创建群组或24小时后删除。"
 
-#: bp-core/classes/class-bp-admin.php:709
+#: bp-core/classes/class-bp-admin.php:723
 msgid "We use cookies on group, member, and activity directories to keep track of a user's browsing preferences. These preferences include the last-selected values of the sort and filter dropdowns, as well as pagination information. These cookies contain no personal data, and are deleted after 24 hours."
 msgstr "我们在群组成员和动态目录中使用cookie来跟踪用户的浏览偏好。 这些首选项包括排序和筛选器下拉列表的最后选择值，以及分页信息。 这些cookie不包含任何个人数据，并在24小时后删除。"
 
-#: bp-core/classes/class-bp-admin.php:707
+#: bp-core/classes/class-bp-admin.php:721
 msgid "We use a cookie to show success and failure messages to logged-in users, in response to certain actions, like joining a group. These cookies contain no personal data, and are deleted immediately after the next page load."
 msgstr "我们使用cookie向登录用户显示成功和失败消息，以响应某些操作，如加入群组。 这些cookie不包含任何个人数据，并在下一页加载后立即删除。"
 
-#: bp-core/classes/class-bp-admin.php:705
+#: bp-core/classes/class-bp-admin.php:719
 msgid "In this section you should describe the BuddyPress-specific cookies that your site collects. The suggested text describes the default cookies."
 msgstr "在本节中，您应该描述您的网站收集BuddyPress特定的cookie。 建议的文本描述了默认cookie。"
 
-#: bp-core/classes/class-bp-admin.php:701
+#: bp-core/classes/class-bp-admin.php:715
 msgid "The content of private messages is visible only to the sender and the recipients of the message. With the exception of site administrators, who can read all private messages, private message content is never visible to other users or site visitors. Site administrators may delete the content of any message."
 msgstr "私密消息的内容仅对消息的发送人和接收人可见。 除了可以阅读所有私密消息的站点管理员之外，其他用户或站点访问者永远不会看到私密消息内容。 站点管理员可以删除任何消息的内容。"
 
-#: bp-core/classes/class-bp-admin.php:694
+#: bp-core/classes/class-bp-admin.php:708
 msgid "Activity items may be deleted at any time by users who created them. Site administrators can edit all activity items."
 msgstr "创建项目的用户可以随时删除动态项目。 站点管理员可以编辑所有动态项目。"
 
-#: bp-core/classes/class-bp-admin.php:699
+#: bp-core/classes/class-bp-admin.php:713
 msgid "In this section you should describe any personal data related to private messages."
 msgstr "在本节中，您应该描述与私密消息相关的任何个人数据。"
 
-#: bp-core/classes/class-bp-admin.php:693
+#: bp-core/classes/class-bp-admin.php:707
 msgid "The content of activity items obey the same privacy rules as the contexts in which the activity items are created. For example, activity updates created in a user's profile is publicly visible, while activity items generated in a private group are visible only to members of that group. Site administrators can view all activity items, regardless of context."
 msgstr "动态项目的内容遵循与创建动态项目的上下文相同的隐私规则。 例如，在用户资料中创建的动态更新是公开可见的，而在私有群组中生成的动态项仅对此群组的成员可见。 无论上下文如何，站点管理员都可以查看所有动态项。"
 
-#: bp-core/classes/class-bp-admin.php:692
+#: bp-core/classes/class-bp-admin.php:706
 msgid "This site records certain user actions, in the form of \"activity\" data. Activity includes updates and comments posted directly to activity streams, as well as descriptions of other actions performed while using the site, such as new friendships, newly joined groups, and profile updates."
 msgstr "此站点以“动态”数据的形式记录某些用户操作。 动态包括直接发布到动态流的更新和评论，以及使用网站时执行的其他操作的说明，例如添加新好友，新加入群组和资料更新等。"
 
-#: bp-core/classes/class-bp-admin.php:690
+#: bp-core/classes/class-bp-admin.php:704
 msgid "In this section you should describe the kinds of information collected in the activity stream, how and whether it can be edited or deleted, and to whom the activity is visible."
 msgstr "在本节中，您应描述动态流中收集的信息类型，如何以及是否可以编辑或删除这些信息，以及动态可见的对象。"
 
-#: bp-core/classes/class-bp-admin.php:685
+#: bp-core/classes/class-bp-admin.php:699
 msgid "User information provided during account registration can be modified or removed on the Profile > Edit panel. In most cases, users also have control over who is able to view a particular piece of profile content, limiting visibility on a field-by-field basis to friends, logged-in users, or administrators only. Site administrators can read and edit all profile data for all users."
 msgstr "可以在“资料”>“编辑”面板上修改或删除帐户注册期间提供的用户信息。 在大多数情况下，用户还可以控制谁能够查看特定的资料内容，从而逐个地向好友，登录用户或管理员限制可见性。 站点管理员可以读取和编辑所有用户的所有资料数据。"
 
-#: bp-core/classes/class-bp-admin.php:684
+#: bp-core/classes/class-bp-admin.php:698
 msgid "When you register for the site, you may be asked to provide certain personal data for display on your profile. The \"Name\" field is required as well as public, and user profiles are visible to any site visitor. Other profile information may be required or optional, as configured by the site administrator."
 msgstr "注册网站时，可能会要求您提供某些个人数据，以便在您的资料中显示。 “名称”字段是必需的以及公开的，用户资料对任何站点访问者都是可见的。 根据站点管理员的配置，可能需要或可选其他资料信息。"
 
-#: bp-core/classes/class-bp-admin.php:678
+#: bp-core/classes/class-bp-admin.php:692
 msgid "Sites powered by BuddyPress rely heavily on user-provided data. In this section, you should note what data you collect, from both registered users and anonymous visitors."
 msgstr "BuddyPress支持的网站严重依赖用户提供的数据。 在本节中，您应该记录您从注册用户和匿名访问者收集数据。"
 
-#: bp-core/classes/class-bp-admin.php:672
+#: bp-core/classes/class-bp-admin.php:686
 msgid "Suggested text:"
 msgstr "建议的文字："
 
-#: bp-core/classes/class-bp-admin.php:677
+#: bp-core/classes/class-bp-admin.php:691
 msgid "What personal data we collect and why we collect it"
 msgstr "我们收集了哪些个人数据以及我们收集它的原因"
 
@@ -5341,11 +5392,11 @@ msgstr ""
 "\n"
 "如果“激活密钥”字段为空，请将以下内容复制并粘贴到此字段中 - {{key}}"
 
-#: bp-core/classes/class-bp-admin.php:682
+#: bp-core/classes/class-bp-admin.php:696
 msgid "In this section you should note what information is collected on user profiles. The suggested text gives an overview of the kinds of profile data collected by BuddyPress."
 msgstr "在本节中，您应该注意在用户资料上收集了哪些信息。 建议的文本给出了各种由BuddyPress收集资料数据的概况。"
 
-#: bp-core/classes/class-bp-admin.php:681
+#: bp-core/classes/class-bp-admin.php:695
 msgid "Profile Data"
 msgstr "资料数据"
 
@@ -6108,7 +6159,7 @@ msgstr "群组邀请无法接受。"
 msgid "Group invite accepted."
 msgstr "群组邀请已接受。"
 
-#: bp-members/bp-members-adminbar.php:230
+#: bp-members/bp-members-adminbar.php:317
 #: bp-members/bp-members-invitations.php:55
 #: bp-templates/bp-nouveau/includes/groups/functions.php:142
 msgid "Pending Invites"
@@ -6717,15 +6768,15 @@ msgstr "上传封面图像"
 msgid "Add an image to use as a profile photo for this group. The image will be shown on the main group page, and in search results."
 msgstr "添加图像以用作此论坛的头像。 图像将显示在主群组页面和搜索结果中。"
 
-#: bp-core/classes/class-bp-admin.php:977
+#: bp-core/classes/class-bp-admin.php:991
 msgid "Meet the contributors behind BuddyPress:"
 msgstr "认识BuddyPress背后的贡献者："
 
-#: bp-core/classes/class-bp-admin.php:1157
+#: bp-core/classes/class-bp-admin.php:1171
 msgid "Project Founder"
 msgstr "项目创始人"
 
-#: bp-core/classes/class-bp-admin.php:1139
+#: bp-core/classes/class-bp-admin.php:1153
 msgid "With our thanks to these Open Source projects"
 msgstr "感谢这些开源项目"
 
@@ -6821,7 +6872,7 @@ msgstr "邀请尚未发送。"
 msgid "Your changes have not been saved. Please fill in all required fields, and save your changes again."
 msgstr "您的更改尚未保存。 请填写所有必填字段，然后再次保存更改。"
 
-#: bp-core/classes/class-bp-admin.php:1152
+#: bp-core/classes/class-bp-admin.php:1166
 msgid "Contributor Emeriti"
 msgstr "贡献者"
 
@@ -6853,7 +6904,7 @@ msgid "Activity generated by posts and comments uses the link field for a permal
 msgstr "由文章、评论、论坛主题、回复以及一些插件所生成的动态信息条目使用链接字段作为指向原内容的固定链接。"
 
 #. Translators: %s is the url to the BuddyPress tools administration screen.
-#: bp-core/admin/bp-core-admin-functions.php:1135
+#: bp-core/admin/bp-core-admin-functions.php:1143
 msgid "Are these emails not written in your site's language? Go to <a href=\"%s\">BuddyPress Tools and try the \"reinstall emails\"</a> tool."
 msgstr "这些邮件不是用您网站的语言编写的吗？ 转到<a href=\"%s\"> BuddyPress工具并尝试“重新安装电子邮件”</a>工具。"
 
@@ -6863,7 +6914,7 @@ msgstr "这些邮件不是用您网站的语言编写的吗？ 转到<a href=\"%
 msgid "Enable or disable all optional components in bulk"
 msgstr "批量启用或禁用所有可选组件"
 
-#: bp-core/classes/class-bp-admin.php:542
+#: bp-core/classes/class-bp-admin.php:555
 msgid "Post Comments"
 msgstr "文章评论"
 
@@ -6871,13 +6922,13 @@ msgstr "文章评论"
 msgid "You do not have access to that page."
 msgstr "您无权访问此页面。"
 
-#: bp-core/classes/class-bp-admin.php:304
-#: bp-core/classes/class-bp-admin.php:305
+#: bp-core/classes/class-bp-admin.php:317
+#: bp-core/classes/class-bp-admin.php:318
 msgid "BuddyPress Credits"
 msgstr "BuddyPress鸣谢"
 
-#: bp-core/classes/class-bp-admin.php:573
-#: bp-core/classes/class-bp-admin.php:600
+#: bp-core/classes/class-bp-admin.php:586
+#: bp-core/classes/class-bp-admin.php:613
 msgctxt "Colloquial alternative to \"learn about BuddyPress\""
 msgid "Hello, BuddyPress!"
 msgstr "欢迎使用 BuddyPress！"
@@ -6945,7 +6996,7 @@ msgstr "群组邀请已接受。 访问%s。"
 msgid "Dismiss this notice"
 msgstr "关闭此通知"
 
-#: bp-core/classes/class-bp-admin.php:470
+#: bp-core/classes/class-bp-admin.php:483
 msgid "Template Pack"
 msgstr "模板包"
 
@@ -7384,14 +7435,14 @@ msgstr "群组资料字段"
 msgid "Group invitations"
 msgstr "群组邀请"
 
-#: bp-core/classes/class-bp-admin.php:1033
-#: bp-core/classes/class-bp-admin.php:1038
-#: bp-core/classes/class-bp-admin.php:1043
-#: bp-core/classes/class-bp-admin.php:1068
+#: bp-core/classes/class-bp-admin.php:1047
+#: bp-core/classes/class-bp-admin.php:1052
+#: bp-core/classes/class-bp-admin.php:1057
+#: bp-core/classes/class-bp-admin.php:1082
 msgid "Community Support"
 msgstr "社区与支持"
 
-#: bp-core/classes/class-bp-admin.php:1013
+#: bp-core/classes/class-bp-admin.php:1027
 msgid "BuddyPress Team"
 msgstr "BuddyPress团队"
 
@@ -7603,7 +7654,7 @@ msgstr "bp_nav和bp_options_nav全局变量不应直接使用或不推荐使用�
 msgid "These globals should not be used directly and are deprecated. Please use the BuddyPress nav functions instead."
 msgstr "不应直接使用这些全局变量并且不推荐使用它们。 请改用BuddyPress导航功能。"
 
-#: bp-core/classes/class-bp-admin.php:1197
+#: bp-core/classes/class-bp-admin.php:1211
 msgctxt "Email post type"
 msgid "Situations"
 msgstr "情况"
@@ -7780,8 +7831,8 @@ msgctxt "email post type description"
 msgid "BuddyPress emails"
 msgstr "BuddyPress邮件"
 
-#: bp-core/classes/class-bp-admin.php:436
-#: bp-core/classes/class-bp-admin.php:437
+#: bp-core/classes/class-bp-admin.php:449
+#: bp-core/classes/class-bp-admin.php:450
 msgctxt "email menu label"
 msgid "Customize"
 msgstr "自定义"
@@ -7811,8 +7862,8 @@ msgctxt "email type taxonomy singular name"
 msgid "Email"
 msgstr "邮件"
 
-#: bp-core/classes/class-bp-admin.php:426
-#: bp-core/classes/class-bp-admin.php:427
+#: bp-core/classes/class-bp-admin.php:439
+#: bp-core/classes/class-bp-admin.php:440
 msgctxt "screen heading"
 msgid "Emails"
 msgstr "邮箱"
@@ -8571,23 +8622,23 @@ msgstr ""
 msgid "[{{{site.name}}}] {{poster.name}} replied to one of your comments"
 msgstr "[{{{site.name}}}]{{poster.name}}回复了您的一条评论"
 
-#: bp-core/admin/bp-core-admin-functions.php:1243
+#: bp-core/admin/bp-core-admin-functions.php:1251
 msgid "Most email clients support HTML email. However, some people prefer to receive plain text email. Enter a plain text alternative version of your email here."
 msgstr "大多数电子邮件客户端支持HTML邮件，但是，有些人更喜欢接收纯文本电子邮件。 在此输入您的电子邮件的纯文本替代版本。"
 
 #. translators: accessibility text
-#: bp-core/admin/bp-core-admin-functions.php:1220
-#: bp-core/admin/bp-core-admin-functions.php:1239
+#: bp-core/admin/bp-core-admin-functions.php:1228
+#: bp-core/admin/bp-core-admin-functions.php:1247
 msgid "Plain text email content"
 msgstr "纯文本电子邮件内容"
 
-#: bp-core/admin/bp-core-admin-functions.php:1207
+#: bp-core/admin/bp-core-admin-functions.php:1215
 msgid "Choose when this email will be sent."
 msgstr "选择何时发送此电子邮件。"
 
 #. Translators: %s is the url to the BuddyPress codex page about BP Email
 #. tokens.
-#: bp-core/admin/bp-core-admin-functions.php:1156
+#: bp-core/admin/bp-core-admin-functions.php:1164
 msgid "Phrases wrapped in braces <code>{{ }}</code> are email tokens. <a href=\"%s\">Learn about tokens on the BuddyPress Codex</a>."
 msgstr "用大括号<code>{{ }}</code>包裹的短语是电子邮件令牌。 <a href=\"%s\">了解BuddyPressCodex上的令牌</a>。"
 
@@ -8997,11 +9048,11 @@ msgstr "为了能有更好的效果，请确定上传的图像大小大于%1$s�
 msgid "Allow customizable cover images for groups"
 msgstr "允许为群自定义封面图像"
 
-#: bp-core/classes/class-bp-admin.php:484
+#: bp-core/classes/class-bp-admin.php:497
 msgid "Cover Image Uploads"
 msgstr "上传封面图像"
 
-#: bp-core/classes/class-bp-admin.php:529
+#: bp-core/classes/class-bp-admin.php:542
 msgid "Group Cover Image Uploads"
 msgstr "上传群组封面图像"
 
@@ -9049,7 +9100,7 @@ msgstr "未找到与此ID相关的动态。"
 msgid "Allow registered members to upload cover images"
 msgstr "允许注册成员上传封面图像"
 
-#: bp-core/admin/bp-core-admin-functions.php:775
+#: bp-core/admin/bp-core-admin-functions.php:783
 msgid "Your users will distinguish themselves through their profile page. Create relevant profile fields that will show on each users profile."
 msgstr "通过用户的资料页，您的用户将会被区别开来。创建相关资料字段，这些字段将会显示在每个用户的资料页上。"
 
@@ -10469,7 +10520,7 @@ msgstr "群邀请仅限于好友。"
 msgid "Once you've made some friendships, you'll be able to invite those members to this group."
 msgstr "一旦您加了好友，您就能够把他们邀请到此群来。"
 
-#: bp-members/bp-members-adminbar.php:217
+#: bp-members/bp-members-adminbar.php:304
 #: bp-members/bp-members-invitations.php:43
 #: bp-templates/bp-legacy/buddypress/groups/single/send-invites.php:35
 #: bp-templates/bp-nouveau/includes/groups/functions.php:148
@@ -11314,7 +11365,7 @@ msgstr "通知"
 msgid "Search Notifications..."
 msgstr "搜索通知…"
 
-#: bp-notifications/bp-notifications-adminbar.php:56
+#: bp-members/bp-members-adminbar.php:205
 msgid "No new notifications"
 msgstr "没有新通知"
 
@@ -11603,7 +11654,7 @@ msgstr "已标记"
 msgid "Inbox"
 msgstr "收件箱"
 
-#: bp-core/classes/class-bp-admin.php:698
+#: bp-core/classes/class-bp-admin.php:712
 #: bp-messages/bp-messages-notifications.php:350
 #: bp-messages/classes/class-bp-messages-component.php:224
 #: bp-messages/classes/class-bp-messages-component.php:323
@@ -11879,7 +11930,7 @@ msgstr "已经重发激活邮件！请检查您的收件箱或垃圾邮件夹。
 msgid "Member type already exists."
 msgstr "用户类型已经存在。"
 
-#: bp-core/bp-core-update.php:861
+#: bp-core/bp-core-update.php:886
 msgctxt "component directory title"
 msgid "Members"
 msgstr "成员"
@@ -12956,9 +13007,9 @@ msgstr "首页"
 
 #. translators: accessibility text
 #: bp-core/admin/bp-core-admin-tools.php:565
-#: bp-core/classes/class-bp-admin.php:490
+#: bp-core/classes/class-bp-admin.php:503
 #: bp-groups/classes/class-bp-groups-component.php:622
-#: bp-members/bp-members-adminbar.php:204
+#: bp-members/bp-members-adminbar.php:291
 #: bp-members/bp-members-invitations.php:29
 #: bp-templates/bp-legacy/buddypress/members/single/invitations/list-invites.php:16
 #: bp-templates/bp-nouveau/buddypress/members/single/invitations/list-invites.php:15
@@ -13001,7 +13052,7 @@ msgctxt "Group screen nav"
 msgid "Details"
 msgstr "详情"
 
-#: bp-core/bp-core-update.php:860
+#: bp-core/bp-core-update.php:885
 msgctxt "component directory title"
 msgid "Groups"
 msgstr "群组"
@@ -14016,7 +14067,7 @@ msgstr "停用"
 msgid "Profile"
 msgstr "资料"
 
-#: bp-core/classes/class-bp-admin.php:617
+#: bp-core/classes/class-bp-admin.php:630
 msgid "Settings saved."
 msgstr "设置已保存。"
 
@@ -14029,7 +14080,7 @@ msgstr "常规设置"
 msgid "Date format"
 msgstr "日期格式"
 
-#: bp-core/classes/class-bp-admin.php:704
+#: bp-core/classes/class-bp-admin.php:718
 msgid "Cookies"
 msgstr "Cookies"
 
@@ -14118,11 +14169,11 @@ msgstr "用户权限"
 msgid "Delete Group"
 msgstr "删除群组"
 
-#: bp-core/classes/class-bp-admin.php:496
+#: bp-core/classes/class-bp-admin.php:509
 msgid "Membership Requests"
 msgstr "好友请求"
 
-#: bp-core/admin/bp-core-admin-functions.php:558
+#: bp-core/admin/bp-core-admin-functions.php:566
 #: bp-core/admin/bp-core-admin-tools.php:557
 #: bp-members/classes/class-bp-members-admin.php:535
 #: bp-members/classes/class-bp-members-admin.php:536
@@ -14698,7 +14749,8 @@ msgstr "请确保不要重复上传"
 msgid "Crunching&hellip;"
 msgstr "执行中&hellip;"
 
-#: bp-core/bp-core-attachments.php:690 bp-core/classes/class-bp-admin.php:1552
+#: bp-core/admin/bp-core-admin-functions.php:1536
+#: bp-core/bp-core-attachments.php:690
 msgid "Dismiss"
 msgstr "关闭"
 
@@ -14828,92 +14880,92 @@ msgid_plural "Maintenance Releases"
 msgstr[0] "维护更新发布"
 
 #: bp-core/admin/bp-core-admin-functions.php:517
-#: bp-core/classes/class-bp-admin.php:972
+#: bp-core/classes/class-bp-admin.php:986
 msgid "Credits"
 msgstr "鸣谢"
 
 #. translators: %s: BuddyPress version number
-#: bp-core/classes/class-bp-admin.php:1096
+#: bp-core/classes/class-bp-admin.php:1110
 msgid "All Contributors to BuddyPress %s"
 msgstr "BuddyPress%s的所有贡献者"
 
-#: bp-core/classes/class-bp-admin.php:1018
-#: bp-core/classes/class-bp-admin.php:1023
-#: bp-core/classes/class-bp-admin.php:1028
-#: bp-core/classes/class-bp-admin.php:1048
-#: bp-core/classes/class-bp-admin.php:1053
-#: bp-core/classes/class-bp-admin.php:1058
-#: bp-core/classes/class-bp-admin.php:1063
+#: bp-core/classes/class-bp-admin.php:1032
+#: bp-core/classes/class-bp-admin.php:1037
+#: bp-core/classes/class-bp-admin.php:1042
+#: bp-core/classes/class-bp-admin.php:1062
+#: bp-core/classes/class-bp-admin.php:1067
+#: bp-core/classes/class-bp-admin.php:1072
+#: bp-core/classes/class-bp-admin.php:1077
 msgid "Core Developer"
 msgstr "核心开发人员"
 
-#: bp-core/classes/class-bp-admin.php:984
+#: bp-core/classes/class-bp-admin.php:998
 msgid "Project Lead"
 msgstr "项目负责人"
 
-#: bp-core/classes/class-bp-admin.php:989
-#: bp-core/classes/class-bp-admin.php:994
-#: bp-core/classes/class-bp-admin.php:999
-#: bp-core/classes/class-bp-admin.php:1004
-#: bp-core/classes/class-bp-admin.php:1009
+#: bp-core/classes/class-bp-admin.php:1003
+#: bp-core/classes/class-bp-admin.php:1008
+#: bp-core/classes/class-bp-admin.php:1013
+#: bp-core/classes/class-bp-admin.php:1018
+#: bp-core/classes/class-bp-admin.php:1023
 msgid "Lead Developer"
 msgstr "首席开发人员"
 
-#: bp-core/classes/class-bp-admin.php:979
+#: bp-core/classes/class-bp-admin.php:993
 msgid "Project Leaders"
 msgstr "项目负责人"
 
-#: bp-core/classes/class-bp-admin.php:551
+#: bp-core/classes/class-bp-admin.php:564
 msgid "Akismet"
 msgstr "Akismet"
 
-#: bp-core/classes/class-bp-admin.php:546
+#: bp-core/classes/class-bp-admin.php:559
 msgid "Activity auto-refresh"
 msgstr "自动刷新动态"
 
-#: bp-core/classes/class-bp-admin.php:539
+#: bp-core/classes/class-bp-admin.php:552
 msgid "Activity Settings"
 msgstr "动态设置"
 
-#: bp-core/classes/class-bp-admin.php:524
+#: bp-core/classes/class-bp-admin.php:537
 msgid "Group Photo Uploads"
 msgstr "群组图像上传"
 
-#: bp-core/classes/class-bp-admin.php:520
+#: bp-core/classes/class-bp-admin.php:533
 msgid "Group Creation"
 msgstr "建立群组"
 
-#: bp-core/classes/class-bp-admin.php:517
+#: bp-core/classes/class-bp-admin.php:530
 msgid "Groups Settings"
 msgstr "设置群组"
 
-#: bp-core/classes/class-bp-admin.php:508
+#: bp-core/classes/class-bp-admin.php:521
 msgid "Profile Syncing"
 msgstr "同步资料"
 
-#: bp-core/classes/class-bp-admin.php:479
+#: bp-core/classes/class-bp-admin.php:492
 msgid "Profile Photo Uploads"
 msgstr "头像更新"
 
-#: bp-core/classes/class-bp-admin.php:505
+#: bp-core/classes/class-bp-admin.php:518
 msgctxt "BuddyPress setting tab"
 msgid "Profile Settings"
 msgstr "资料设置"
 
-#: bp-core/classes/class-bp-admin.php:466
+#: bp-core/classes/class-bp-admin.php:479
 msgid "Account Deletion"
 msgstr "删除帐号"
 
-#: bp-core/classes/class-bp-admin.php:462
+#: bp-core/classes/class-bp-admin.php:475
 msgid "Toolbar"
 msgstr "工具栏"
 
-#: bp-core/classes/class-bp-admin.php:459
+#: bp-core/classes/class-bp-admin.php:472
 msgid "Main Settings"
 msgstr "主设置"
 
-#: bp-core/classes/class-bp-admin.php:331
-#: bp-core/classes/class-bp-admin.php:332
+#: bp-core/classes/class-bp-admin.php:344
+#: bp-core/classes/class-bp-admin.php:345
 msgid "Available Tools"
 msgstr "可用工具"
 
@@ -14925,7 +14977,8 @@ msgstr "BuddyPress页面"
 #: bp-core/admin/bp-core-admin-components.php:20
 #: bp-core/admin/bp-core-admin-settings.php:321
 #: bp-core/admin/bp-core-admin-slugs.php:20
-#: bp-core/classes/class-bp-admin.php:972
+#: bp-core/classes/class-bp-admin.php:986
+#: bp-core/classes/class-bp-admin.php:1587
 msgid "BuddyPress Settings"
 msgstr "BuddyPress设置"
 
@@ -14948,8 +15001,8 @@ msgid "Use the %s to repair these relationships."
 msgstr "使用%s来修复关联。"
 
 #: bp-core/admin/bp-core-admin-tools.php:512
-#: bp-core/classes/class-bp-admin.php:320
-#: bp-core/classes/class-bp-admin.php:321
+#: bp-core/classes/class-bp-admin.php:333
+#: bp-core/classes/class-bp-admin.php:334
 msgid "Tools"
 msgstr "工具"
 
@@ -15007,7 +15060,7 @@ msgid "Use the tools below to manually recalculate these relationships."
 msgstr "使用下面的工具手动重新计算这些关系。"
 
 #: bp-core/admin/bp-core-admin-tools.php:542
-#: bp-core/classes/class-bp-admin.php:346
+#: bp-core/classes/class-bp-admin.php:359
 msgid "BuddyPress Tools"
 msgstr "BuddyPress工具"
 
@@ -15038,7 +15091,7 @@ msgstr "目录"
 
 #: bp-core/admin/bp-core-admin-functions.php:321
 #: bp-core/admin/bp-core-admin-functions.php:352
-#: bp-core/admin/bp-core-admin-functions.php:553
+#: bp-core/admin/bp-core-admin-functions.php:561
 #: bp-core/admin/bp-core-admin-tools.php:19
 msgid "Repair"
 msgstr "修复"
@@ -15089,63 +15142,63 @@ msgctxt "First field-group name"
 msgid "General"
 msgstr "常规"
 
-#: bp-core/admin/bp-core-admin-functions.php:1385
+#: bp-core/admin/bp-core-admin-functions.php:1393
 msgid "User removed from spam."
 msgstr "把用户从垃圾信息发送者中移除。"
 
-#: bp-core/admin/bp-core-admin-functions.php:1383
+#: bp-core/admin/bp-core-admin-functions.php:1391
 #: bp-core/deprecated/3.0.php:136
 #: bp-members/classes/class-bp-members-admin.php:397
 msgid "User marked as spammer. Spam users are visible only to site admins."
 msgstr "用户已被标记为垃圾信息发布者。只有站点管理员才可以看到这些用户。"
 
-#: bp-core/admin/bp-core-admin-functions.php:1029
+#: bp-core/admin/bp-core-admin-functions.php:1037
 msgid "Logged-Out"
 msgstr "已注销"
 
-#: bp-core/admin/bp-core-admin-functions.php:1028
+#: bp-core/admin/bp-core-admin-functions.php:1036
 msgid "Logged-In"
 msgstr "已登录"
 
 #. Plugin Name of the plugin
-#: bp-core/admin/bp-core-admin-functions.php:1494
+#: bp-core/admin/bp-core-admin-functions.php:1502
 #: bp-core/admin/bp-core-admin-tools.php:718
 #: bp-core/classes/class-bp-admin.php:247
 #: bp-core/classes/class-bp-admin.php:248
 #: bp-core/classes/class-bp-admin.php:268
-#: bp-core/classes/class-bp-admin.php:347
+#: bp-core/classes/class-bp-admin.php:360
 msgid "BuddyPress"
 msgstr "BuddyPress"
 
-#: bp-core/admin/bp-core-admin-functions.php:771
+#: bp-core/admin/bp-core-admin-functions.php:779
 msgid "Extra configuration settings are provided and activated. You can selectively enable or disable any setting by using the form on this screen."
 msgstr "提供和激活扩展配置设置。通过此页面的表单，您可以有选择性地启用或禁用任何设置。"
 
-#: bp-core/admin/bp-core-admin-functions.php:680
+#: bp-core/admin/bp-core-admin-functions.php:688
 msgid "<a href=\"https://codex.buddypress.org/getting-started/configure-components/\">Managing Components</a>"
 msgstr "<a href=\"https://codex.buddypress.org/getting-started/configure-components/\">管理组件</a>"
 
-#: bp-core/admin/bp-core-admin-functions.php:699
+#: bp-core/admin/bp-core-admin-functions.php:707
 msgid "<a href=\"https://codex.buddypress.org/getting-started/configure-components/#settings-buddypress-pages\">Managing Pages</a>"
 msgstr "<a href=\"https://codex.buddypress.org/getting-started/configure-components/#settings-buddypress-pages\">管理页面</a>"
 
-#: bp-core/admin/bp-core-admin-functions.php:719
+#: bp-core/admin/bp-core-admin-functions.php:727
 msgid "<a href=\"https://codex.buddypress.org/getting-started/configure-components/#settings-buddypress-settings\">Managing Settings</a>"
 msgstr "<a href=\"https://codex.buddypress.org/getting-started/configure-components/#settings-buddypress-settings\">管理设置</a>"
 
-#: bp-core/admin/bp-core-admin-functions.php:767
+#: bp-core/admin/bp-core-admin-functions.php:775
 msgid "BuddyPress Components use WordPress Pages for their root directory/archive pages. You can change the page associations for each active component by using the form below."
 msgstr "BuddyPress组件使用WordPress页面作为他们的根目录/存档页面。您可以使用以下表单来修改每一个在用组件页面相关设置。"
 
-#: bp-core/admin/bp-core-admin-functions.php:739
+#: bp-core/admin/bp-core-admin-functions.php:747
 msgid "<a href=\"https://codex.buddypress.org/administrator-guide/extended-profiles/\">Managing Profile Fields</a>"
 msgstr "<a href=\"https://codex.buddypress.org/administrator-guide/extended-profiles/\">管理资料</a>"
 
-#: bp-core/admin/bp-core-admin-functions.php:763
+#: bp-core/admin/bp-core-admin-functions.php:771
 msgid "By default, all but four of the BuddyPress components are enabled. You can selectively enable or disable any of the components by using the form below. Your BuddyPress installation will continue to function. However, the features of the disabled components will no longer be accessible to anyone using the site."
 msgstr "默认情况下，除了4种BuddyPress组件以外的其他所有组件都已启用。您可以使用以下表单有选择性地启用或禁用任意一个群组件。您的BuddyPress安装将会继续进行。然而，已禁用组件的功能将不再对网站的任何用户可用。"
 
-#: bp-core/classes/class-bp-admin.php:599
+#: bp-core/classes/class-bp-admin.php:612
 #: bp-groups/classes/class-bp-groups-component.php:765
 #: bp-settings/bp-settings-functions.php:208
 #: bp-settings/classes/class-bp-settings-component.php:28
@@ -15322,7 +15375,8 @@ msgstr[0] "全部 <span class=\"count\">(%s)</span>"
 
 #. translators: accessibility text
 #: bp-core/admin/bp-core-admin-components.php:73
-#: bp-core/bp-core-functions.php:2729
+#: bp-core/admin/bp-core-admin-functions.php:525
+#: bp-core/bp-core-functions.php:2729 bp-core/classes/class-bp-admin.php:1587
 #: bp-notifications/bp-notifications-functions.php:982
 #: bp-notifications/classes/class-bp-notifications-component.php:289
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/read.php:16
@@ -15546,7 +15600,7 @@ msgstr "我的站点"
 msgid "Search sites..."
 msgstr "搜索站点..."
 
-#: bp-core/bp-core-update.php:859
+#: bp-core/bp-core-update.php:884
 msgctxt "component directory title"
 msgid "Sites"
 msgstr "站点"
@@ -15600,7 +15654,7 @@ msgid "Clear Filter"
 msgstr "清空过滤条件"
 
 #: bp-activity/bp-activity-template.php:3069
-#: bp-core/admin/bp-core-admin-functions.php:1331
+#: bp-core/admin/bp-core-admin-functions.php:1339
 #: bp-core/admin/bp-core-admin-slugs.php:146
 #: bp-groups/classes/class-bp-groups-list-table.php:611
 #: bp-members/bp-members-template.php:1147
@@ -15763,7 +15817,7 @@ msgstr "是"
 #: bp-activity/bp-activity-notifications.php:401
 #: bp-activity/classes/class-bp-activity-oembed-extension.php:138
 #: bp-activity/classes/class-bp-activity-theme-compat.php:161
-#: bp-core/classes/class-bp-admin.php:689
+#: bp-core/classes/class-bp-admin.php:703
 msgid "Activity"
 msgstr "动态"
 
@@ -15904,7 +15958,7 @@ msgstr "动态"
 msgid "Search Activity..."
 msgstr "搜索动态……"
 
-#: bp-core/bp-core-update.php:858
+#: bp-core/bp-core-update.php:883
 msgctxt "component directory title"
 msgid "Site-Wide Activity"
 msgstr "全站用户动态"
@@ -16081,7 +16135,7 @@ msgstr "永久删除"
 
 #: bp-activity/classes/class-bp-activity-list-table.php:403
 #: bp-activity/classes/class-bp-activity-list-table.php:662
-#: bp-core/admin/bp-core-admin-functions.php:1313
+#: bp-core/admin/bp-core-admin-functions.php:1321
 msgid "Not Spam"
 msgstr "非垃圾"
 
@@ -16089,7 +16143,7 @@ msgstr "非垃圾"
 msgid "Mark as Spam"
 msgstr "标记为垃圾信息"
 
-#: bp-core/admin/bp-core-admin-functions.php:1030
+#: bp-core/admin/bp-core-admin-functions.php:1038
 #: bp-members/classes/class-bp-members-invitations-list-table.php:145
 msgid "All"
 msgstr "全部"
@@ -16234,7 +16288,7 @@ msgstr "Y年m月d日 G:i"
 #: bp-activity/classes/class-bp-activity-list-table.php:664
 #: bp-activity/classes/class-bp-akismet.php:208
 #: bp-activity/classes/class-bp-akismet.php:237
-#: bp-core/admin/bp-core-admin-functions.php:1325
+#: bp-core/admin/bp-core-admin-functions.php:1333
 msgid "Spam"
 msgstr "垃圾"
 
@@ -16313,10 +16367,10 @@ msgid "Primary Item/Secondary Item"
 msgstr "主项/次要项"
 
 #: bp-activity/bp-activity-admin.php:244 bp-activity/bp-activity-admin.php:295
-#: bp-core/admin/bp-core-admin-functions.php:681
-#: bp-core/admin/bp-core-admin-functions.php:700
-#: bp-core/admin/bp-core-admin-functions.php:720
-#: bp-core/admin/bp-core-admin-functions.php:740
+#: bp-core/admin/bp-core-admin-functions.php:689
+#: bp-core/admin/bp-core-admin-functions.php:708
+#: bp-core/admin/bp-core-admin-functions.php:728
+#: bp-core/admin/bp-core-admin-functions.php:748
 #: bp-core/admin/bp-core-admin-optouts.php:87 bp-groups/bp-groups-admin.php:245
 #: bp-members/classes/class-bp-members-admin.php:878
 #: bp-members/classes/class-bp-members-admin.php:1746
@@ -16329,10 +16383,10 @@ msgid "<a href=\"https://codex.buddypress.org/administrator-guide/activity-strea
 msgstr "<a href=\"https://codex.buddypress.org/administrator-guide/activity-stream-management-panels/\">管理动态</a>"
 
 #: bp-activity/bp-activity-admin.php:242 bp-activity/bp-activity-admin.php:294
-#: bp-core/admin/bp-core-admin-functions.php:679
-#: bp-core/admin/bp-core-admin-functions.php:698
-#: bp-core/admin/bp-core-admin-functions.php:718
-#: bp-core/admin/bp-core-admin-functions.php:738
+#: bp-core/admin/bp-core-admin-functions.php:687
+#: bp-core/admin/bp-core-admin-functions.php:706
+#: bp-core/admin/bp-core-admin-functions.php:726
+#: bp-core/admin/bp-core-admin-functions.php:746
 #: bp-core/admin/bp-core-admin-optouts.php:86 bp-groups/bp-groups-admin.php:183
 #: bp-groups/bp-groups-admin.php:244
 #: bp-members/classes/class-bp-members-admin.php:876
@@ -16370,10 +16424,10 @@ msgid "You edit activities made on your site similar to the way you edit a comme
 msgstr "编辑网站用户发布的动态信息条目的方式类似于您编辑评论。这适用于您需要变更动态信息链接所指向的页面时，或当您注意到作者有拼写错误时。"
 
 #: bp-activity/bp-activity-admin.php:223 bp-activity/bp-activity-admin.php:277
-#: bp-core/admin/bp-core-admin-functions.php:672
-#: bp-core/admin/bp-core-admin-functions.php:691
-#: bp-core/admin/bp-core-admin-functions.php:711
-#: bp-core/admin/bp-core-admin-functions.php:731
+#: bp-core/admin/bp-core-admin-functions.php:680
+#: bp-core/admin/bp-core-admin-functions.php:699
+#: bp-core/admin/bp-core-admin-functions.php:719
+#: bp-core/admin/bp-core-admin-functions.php:739
 #: bp-core/admin/bp-core-admin-optouts.php:64 bp-groups/bp-groups-admin.php:175
 #: bp-groups/bp-groups-admin.php:228
 #: bp-members/classes/class-bp-members-admin.php:867
