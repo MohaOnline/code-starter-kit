@@ -21,3 +21,7 @@ console.log(version, typeof version);
 console.log(PI, typeof PI);
 console.log(C, typeof C);
 
+console.log('\n\nValue is absence: ')
+console.log(typeof undefined);
+console.log(typeof null);
+
