@@ -1,4 +1,4 @@
-	$.fbuilder['version'] = '1.2.35';
+	$.fbuilder['version'] = '1.2.36';
 	$.fbuilder['controls'] = $.fbuilder['controls'] || {};
 	$.fbuilder['forms'] = $.fbuilder['forms'] || {};
 
@@ -543,7 +543,7 @@
                 });
 				$( form_tag ).find( '.captcha img' ).click();
 
-				$( '#fieldlist'+opt.identifier).find(".pbSubmit").bind("keyup", function(evt){
+				$( '#fieldlist'+opt.identifier).find(".pbSubmit").unbind('click').bind("keyup", function(evt){
 					if(evt.which == 13 || evt.which == 32) $(this).click();
 				}).bind("click", { 'identifier' : opt.identifier }, function(evt){
 					$(this).closest("form").submit();

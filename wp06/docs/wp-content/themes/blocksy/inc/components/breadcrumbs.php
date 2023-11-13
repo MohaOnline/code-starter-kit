@@ -404,17 +404,45 @@ class Blocksy_Breadcrumbs_Builder {
 
 		if (function_exists('is_woocommerce') && is_woocommerce()) {
 			$permalinks = wc_get_permalink_structure();
-			$shop_page_id = wc_get_page_id('shop');
+			$shop_page_id = apply_filters(
+				'wpml_object_id',
+				wc_get_page_id('shop'),
+				'page'
+			);
 			$shop_page = get_post($shop_page_id);
+
+			$shop_page_for_matching = $shop_page;
+
+			$product_base = '';
+
+			if (isset($permalinks['product_base'])) {
+				$product_base = trim($permalinks['product_base'], '/');
+			}
+
+			global $sitepress, $woocommerce_wpml;
+
+			if ($sitepress && $woocommerce_wpml) {
+				$product_base = $woocommerce_wpml->url_translation->get_woocommerce_product_base();
+
+				$shop_page_for_matching = get_post(
+					apply_filters(
+						'translate_object_id',
+						$shop_page_id,
+						'page',
+						true,
+						$sitepress->get_default_language()
+					)
+				);
+			}
 
 			if (
 				$shop_page_id
 				&&
 				$shop_page
 				&&
-				isset($permalinks['product_base'])
+				$permalinks['product_base']
 				&&
-				strstr($permalinks['product_base'], '/' . $shop_page->post_name)
+				strstr($product_base, $shop_page_for_matching->post_name)
 				&&
 				intval(get_option('page_on_front')) !== $shop_page_id
 				&&

@@ -525,6 +525,28 @@ fbuilderjQuery[ 'fbuilder' ][ 'modules' ][ 'default' ] = {
 			};
 		}
 
+		if(window.SINGLEDIGIT == undefined)
+		{
+			window.SINGLEDIGIT = window.singledigit = function(v,callback){
+				let result = v;
+                try
+                {
+					callback = typeof callback == 'function' ? callback : function(d){
+						return SUM(d);
+					};
+
+					v = String(v).split('');
+					do {
+						result = callback(v);
+						v = String(result).split('');
+					} while ( 10 <= result);
+
+				}
+                catch(err){ if ( 'console' in window ) console.log( err ); }
+				return result;
+			};
+		}
+
 		fbuilderjQuery[ 'fbuilder' ][ 'extend_window' ]( fbuilderjQuery[ 'fbuilder' ][ 'modules' ][ 'default' ][ 'prefix' ], CF_LOGICAL );
 	},
 

@@ -1,17 +1,17 @@
 <style type="text/css">
 	:root{
-		--tsvg_popup_po_bc_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_15 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_po_br_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_16 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_popup_po_bc_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_15 ) ); ?>;
+		--tsvg_popup_po_br_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_16 ) ); ?>;
 		--tsvg_popup_po_br_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_17 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_popup_po_br_r_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_18 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_popup_to_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_20 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_to_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_to_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_22 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_popup_to_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ) ); ?>;
+		--tsvg_popup_to_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_22 ) ); ?>;
 		--tsvg_popup_lat_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_25 ), FILTER_VALIDATE_INT ); ?>%;
 		--tsvg_popup_lat_h_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_26 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_lat_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_27 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_lat_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_28 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_cl_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_30 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_popup_lat_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_27 ) ); ?>;
+		--tsvg_popup_lat_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_28 ) ); ?>;
+		--tsvg_popup_cl_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_30 ) ); ?>;
 		--tsvg_popup_cl_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_31 ), FILTER_VALIDATE_INT ); ?>px;
 	}
 	.tsvg-classic-popup-content-box-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
@@ -284,6 +284,7 @@
 	let tsvgClassicInterval_for_<?php echo esc_attr( $tsvg_shortcode_id ); ?> = null,  
     	tsvgClassicIntervalFunction_<?php echo esc_attr( $tsvg_shortcode_id ); ?> = function(){
     	    if(typeof jQuery === "function" && typeof(jQuery) != "undefined" && jQuery != null) {
+				jQuery('.tsvg-section-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').fadeIn();
 				jQuery(document).on("click", ".tsvg-classic-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>", function() {
 					if(!jQuery('.tsvg-classic-popup-backface-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').parent().is('body')){
 						jQuery('.tsvg-classic-popup-backface-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').appendTo(document.body);

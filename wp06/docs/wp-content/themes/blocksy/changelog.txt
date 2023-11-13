@@ -1,3 +1,12 @@
+1.9.11: 2023-11-09
+- Improvement: Better compatibility with WordPress 6.4
+- Improvement: Cleanup non-string Polylang strings from database
+- Improvement: Correct page structure output for LifterLMS course pages
+- Improvement: Correctly output shop in breadcrumb with translated product base in WPML
+- Improvement: Hooks manager properly use WP_Hook API for redirecting callbacks
+- Improvement: Correct prefix calculation for categories archive with The Events Calendar plugin
+- Fix: Unregistered users that have no Gravatars linked display the same profile picture as the admin
+
 1.9.10: 2023-11-02
 - Fix: PHP warning for excerpt
 - Fix: Scroll to top CSS issue

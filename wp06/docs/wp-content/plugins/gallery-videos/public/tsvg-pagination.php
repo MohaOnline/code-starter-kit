@@ -3,6 +3,8 @@
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+	}
+	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *::after, #tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?> *::before {
 		line-height: 1 !important;	
 	}
 	.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-pagination='pagination']  figure ul li,.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-pagination='load-more']  figure ul li,.tsvg-pagination-pages-wrapper[data-pagination='all'],.tsvg-pagination-disabled-item{
@@ -10,8 +12,6 @@
 	}
 	.tsvg-pagination-pages-wrapper[data-pagination='pagination']{
 		display: flex !important;
-		/* overflow-y: hidden;
-		overflow-x: auto; */
 	}
 	.tsvg-pagination-page-item a:focus{
 	  outline:none!important;
@@ -63,25 +63,25 @@
 		}
 	<?php } ?>
 	:root{
-		--tsvg_s_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_04 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_03 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_h_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_10 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_07 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_ac_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_08 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_ac_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_09 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_s_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_04 ) ); ?>;
+		--tsvg_s_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_03 ) ); ?>;
+		--tsvg_s_h_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_10 ) ); ?>;
+		--tsvg_s_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_07 ) ); ?>;
+		--tsvg_s_ac_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_08 ) ); ?>;
+		--tsvg_s_ac_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_09 ) ); ?>;
 		--tsvg_s_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_05 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_s_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_06 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_b_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_11 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_s_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_06 ) ); ?>;
+		--tsvg_s_b_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_11 ) ); ?>;
 		--tsvg_s_b_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_12 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_s_pl_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_13 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_s_l_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_19 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_l_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_20 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_s_l_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_19 ) ); ?>;
+		--tsvg_s_l_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_20 ) ); ?>;
 		--tsvg_s_l_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_21 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_s_l_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_22 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_l_bc_2_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_23 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_l_h_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_25 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_l_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_26 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_s_l_h_bc_2_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_27 ), FILTER_SANITIZE_STRING ); ?>;
+		--tsvg_s_l_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_22 ) ); ?>;
+		--tsvg_s_l_bc_2_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_23 ) ); ?>;
+		--tsvg_s_l_h_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_25 ) ); ?>;
+		--tsvg_s_l_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_26 ) ); ?>;
+		--tsvg_s_l_h_bc_2_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_27 ) ); ?>;
 	}
 	.tsvg-pagination-pages-wrapper{
 	   display: flex;

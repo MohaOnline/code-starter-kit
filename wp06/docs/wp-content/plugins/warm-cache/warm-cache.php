@@ -3,7 +3,7 @@
 Plugin Name: Warm cache
 Plugin URI: https://www.autowarmcache.com
 Description: Crawls your website-pages based on any XML sitemap plugin. If you have a caching plugin this wil keep your cache warm. Speeds up your site.
-Version: 4.1.0
+Version: 4.1.1
 Author: Ramon Fincken
 Author URI: https://www.autowarmcache.com
 Text Domain: managedwphosting_warmcache
@@ -69,7 +69,7 @@ class warm_cache extends mijnpress_plugin_framework {
 			if(!isset($_POST['update_sitemap']) || !$_POST['update_sitemap']) {
 				echo '<div class="error"><p>';
 				_e( 'A notice from plugin Warm-cache: Your configured sitemap url is not configured, I cannot crawl your pages.', 'managedwphosting_warmcache');
-				echo '<a href="'.admin_url('plugins.php?page=warm-cache%2Fwarm-cache.php').'">'._('Update your sitemap url now', 'managedwphosting_warmcache').'</a>.</p></div>';
+				echo '<a href="'.admin_url('plugins.php?page=warm-cache%2Fwarm-cache.php').'">'.__('Update your sitemap url now', 'managedwphosting_warmcache').'</a>.</p></div>';
 			}
 		} else {
 			// Check sitemap validity

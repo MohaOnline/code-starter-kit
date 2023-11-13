@@ -1131,11 +1131,17 @@ class Utilities {
 
 				$php_version = phpversion();
 				
-				$db_full_version = mysqli_get_server_info( mysqli_connect( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ) );
-				$db_version_parts = explode( ':', $db_full_version );
-				$db_short_version = $db_version_parts[0];
+				if ( mysqli_connect( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ) ) {
+					$db_full_version = mysqli_get_server_info( mysqli_connect( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ) );
+					$db_version_parts = explode( ':', $db_full_version );
+					$db_short_version = $db_version_parts[0];
+					$db_separator = ' | ';
+				} else {
+					$db_short_version = '';
+					$db_separator = '';
+				}
 
-				echo '<div class="system-summary"><a href="' . admin_url( 'site-health.php?tab=debug' ) . '">System</a>: ' . esc_html( $server_software ) . ' | PHP ' . esc_html( $php_version ) . ' (' . php_sapi_name() . ') | ' . esc_html( $db_short_version ) . '</div>';
+				echo '<div class="system-summary"><a href="' . admin_url( 'site-health.php?tab=debug' ) . '">System</a>: ' . esc_html( $server_software ) . ' | PHP ' . esc_html( $php_version ) . ' (' . php_sapi_name() . ')' . esc_html( $db_separator ) . esc_html( $db_short_version ) . '</div>';
 
 			}
 		}

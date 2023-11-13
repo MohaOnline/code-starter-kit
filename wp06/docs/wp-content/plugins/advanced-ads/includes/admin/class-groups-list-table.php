@@ -470,7 +470,7 @@ class Groups_List_Table extends WP_Terms_List_Table {
 		$sorted_ad_ids = array_keys( $weights );
 		$args          = [
 			'post_type'      => Entities::POST_TYPE_AD,
-			'post_status'    => [ 'publish' ],
+			'post_status'    => 'all',
 			'taxonomy'       => $group->taxonomy,
 			'term'           => $group->slug,
 			'posts_per_page' => - 1,

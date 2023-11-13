@@ -147,6 +147,11 @@ class Blocksy_Db_Versioning {
 			[
 				'version' => '1.8.91',
 				'cb' => [$this, 'v_1_8_91']
+			],
+
+			[
+				'version' => '1.9.11',
+				'cb' => [$this, 'v_1_9_11']
 			]
 		];
 	}
@@ -1422,6 +1427,36 @@ class Blocksy_Db_Versioning {
 
 		if ($maybe_google_fonts !== '__EMPTY__') {
 			delete_option('blocksy_google_fonts');
+		}
+	}
+
+	public function v_1_9_11() {
+		$polylang_wpml_strings = get_option('polylang_wpml_strings', '__EMPTY__');
+
+		if ($polylang_wpml_strings === '__EMPTY__') {
+			return;
+		}
+
+		$cleaned_value = [];
+
+		foreach ($polylang_wpml_strings as $key => $value) {
+			if (
+				isset($value['context'])
+				&&
+				isset($value['string'])
+				&&
+				$value['context'] === 'Blocksy'
+				&&
+				! is_string($value['string'])
+			) {
+				continue;
+			}
+
+			$cleaned_value[$key] = $value;
+		}
+
+		if (count($cleaned_value) !== count($polylang_wpml_strings)) {
+			update_option('polylang_wpml_strings', $cleaned_value);
 		}
 	}
 

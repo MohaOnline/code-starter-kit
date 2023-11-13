@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator,calculated,quote calculator,forms,form editor,advanced forms,payment calculator,payment,recurring payment,quote,fields,calculated field,price calculator,email,form design,paypal,equation editor,formula,equation,quote calculator,post,posts,plugin,widget,admin,sidebar,images,image,page,shortcode,products form,woocommerce,addons,layout,session,post,cookie,get,webhook,Dropbox,pdf,language
 Requires at least: 3.0.5
 Tested up to: 6.4
-Stable tag: 1.2.35
+Stable tag: 1.2.36
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -999,6 +999,12 @@ A: Please, follow the steps below:
 
 == Changelog ==
 
+= 1.2.36 =
+
+* Implements the SINGLEDIGIT operation.
+* Includes new predefined forms.
+* Modifies the submission process (Professional, Developer, and Platinum versions).
+
 = 1.2.35 =
 
 * Modifies the Phone control.
@@ -1042,7 +1048,3 @@ A: Please, follow the steps below:
 * Modifies the CDATE operation to display the result in the correct format when its parameter value is zero.
 * Modifies the TIMETODECIMAL operation to accept the time in 12 hours format (with am/pm).
 * Includes the Bcc attribute in the "Email copy to the user" section to receive an exact copy of the confirmation email sent to the user (Professional, Developer, and Platinum plugin versions).
-
-= 1.2.27 =
-
-* Modifies the require_once instructions to load the files with absolute paths.

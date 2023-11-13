@@ -105,6 +105,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 1.3.16 =
+* Remove WooCommerce compatbility tag (reason: irrelevant)
+
 = 1.3.15 =
 * Fix user avatar
 * WordPress tested up to: 6.4

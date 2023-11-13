@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignoreFile
 if ( ! defined( 'WPINC' ) ) {
 	die();
 }
@@ -84,7 +84,7 @@ include(ADVADS_ABSPATH . '/modules/gadsense/admin/views/external-ads-links.php')
     <input type="text" name="unit-code" id="unit-code" value="<?php echo $unit_code; ?>" />
     <input type="hidden" name="advanced_ad[output][adsense-pub-id]" id="advads-adsense-pub-id" value="<?php echo esc_attr( $unit_pubid ); ?>" />
     <?php if( $unit_pubid ) : ?>
-	<?php printf(__( 'Publisher ID: %s', 'advanced-ads' ), $unit_pubid ); ?>
+	<?php /* translators: %s is the publisher ID. */ printf(__( 'Publisher ID: %s', 'advanced-ads' ), $unit_pubid ); ?>
     <?php endif; ?>
 	<p id="advads-pubid-in-slot" class="advads-notice-inline advads-error"
 		<?php echo ! ( 0 === strpos( $pub_id, 'pub-' ) && false !== strpos( $unit_code, substr( $pub_id, 4 ) ) ) ? 'style="display:none"' : ''; ?>
@@ -99,7 +99,7 @@ if( $pub_id_errors ) : ?>
 	<span class="advads-notice-inline advads-error">
 	    <?php echo $pub_id_errors; ?>
 	</span>
-	<?php printf(__( 'Please <a href="%s" target="_blank">change it here</a>.', 'advanced-ads' ), admin_url( 'admin.php?page=advanced-ads-settings#top#adsense' )); ?>
+	<?php /* translators: %s the setting page link */ printf(__( 'Please <a href="%s" target="_blank">change it here</a>.', 'advanced-ads' ), admin_url( 'admin.php?page=advanced-ads-settings#top#adsense' )); ?>
     </p>
 <?php endif; ?>
     <label class="label" id="unit-type-block"><?php _e( 'Type', 'advanced-ads' ); ?></label>

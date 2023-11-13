@@ -3,7 +3,7 @@
  * Plugin Name: ACF Views Lite
  * Plugin URI: https://wplake.org/acf-views/
  * Description: Smart templates to display your content easily.
- * Version: 2.3.5
+ * Version: 2.3.7
  * Author: WPLake
  * Author URI: https://wplake.org/acf-views/
  * Text Domain: acf-views
@@ -245,7 +245,9 @@ $acfViews = new class {
 
         require_once __DIR__ . '/prefixed_vendors/vendor/scoper-autoload.php';
 
-        $isAdmin = is_admin();
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+        $isAdmin = is_admin() ||
+            false !== strpos($requestUri, '/wp-json/');
 
         $this->acfGroups($isAdmin);
         $this->primary($isAdmin);

@@ -69,14 +69,20 @@ class ViewShortcode extends Shortcode
         int $termId,
         int $commentId
     ): string {
-        if (in_array($objectId, ['$user$', 'options', '$term$', 'user', 'term', 'comment',], true)) {
-            $objectId = str_replace('user', 'user_' . $userId, $objectId);
-            $objectId = str_replace('$user$', 'user_' . $userId, $objectId);
-
-            $objectId = str_replace('term', 'term_' . $termId, $objectId);
-            $objectId = str_replace('$term$', 'term_' . $termId, $objectId);
-
-            $objectId = str_replace('comment', 'comment_' . $commentId, $objectId);
+        if (in_array($objectId, ['$user$', 'user', 'options', '$term$', 'term', 'comment',], true)) {
+            switch ($objectId) {
+                case '$user$':
+                case 'user':
+                    $objectId = 'user_' . $userId;
+                    break;
+                case '$term$':
+                case 'term':
+                    $objectId = 'term_' . $termId;
+                    break;
+                case 'comment':
+                    $objectId = 'comment_' . $commentId;
+                    break;
+            }
 
             return $objectId;
         }

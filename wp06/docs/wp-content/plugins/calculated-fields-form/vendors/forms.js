@@ -60,6 +60,11 @@ cff_forms_templates = {
             "description": "Calculates the maximum area of a plot based on the size of its sides. Calculates the area of a polygon of n-sides (3<=n).",
             "id": 30
         }, {
+            "title": "Automobile Information",
+            "category": "Basic Operations",
+            "description": "Collects automobiles' makes, models, and other information. It uses datalists to facilitate data entry for users.",
+            "id": 31
+        }, {
             "title": "Simple Accommodation Booking",
             "category": "Dates Operations",
             "description": "Gives a quote for a stay in a hotel based in the check-in date, check-out date and some optional services.",

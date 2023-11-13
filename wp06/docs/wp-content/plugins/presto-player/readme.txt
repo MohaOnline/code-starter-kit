@@ -4,7 +4,7 @@ Donate link: https://prestoplayer.com
 Tags: video, audio, youtube, vimeo, lms, elementor, learndash, beaver builder, lifterlms
 Requires at least: 5.6
 Tested up to: 6.4
-Stable tag: 2.0.9
+Stable tag: 2.0.11
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,12 @@ It is also important to point out that BunnyNet has a $1 per month minimum.
 
 
 == Changelog ==
+
+= 2.0.11 = 
+* Fix: Issue with bunny.net block placeholder not loading due to changes in instructions prop with a11y.
+
+= 2.0.10 = 
+* Fix: Issue with bunny.net blocks not loading on backend due to WordPress 6.4 update.
 
 = 2.0.9 = 
 * Fix: Compatibility with upcoming WordPress 6.4.

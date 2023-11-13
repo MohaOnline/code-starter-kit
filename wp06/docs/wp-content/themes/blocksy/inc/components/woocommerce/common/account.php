@@ -109,7 +109,10 @@ add_action('woocommerce_before_account_navigation', function () {
 		)) * 2;
 
 		$username = blocksy_simple_image(
-			blocksy_get_avatar_url($avatar_size, get_current_user_id()),
+			blocksy_get_avatar_url([
+				'avatar_entity' => get_current_user_id(),
+				'size' => $avatar_size
+			]),
 			[
 				'tag_name' => 'span',
 

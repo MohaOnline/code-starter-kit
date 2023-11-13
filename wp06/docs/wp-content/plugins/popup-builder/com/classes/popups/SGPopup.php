@@ -465,7 +465,11 @@ abstract class SGPopup
 		$data = apply_filters('sgpbFilterOptionsBeforeSaving', $data);
 		foreach ($data as $key => $value) {
 			if ( !is_array( $value ) ) {
-				$value = sanitize_text_field ( $value );
+				//Sanitize URL to avoid 404 error
+				if ( strpos( $key, '-url' ) === false )				
+					$value = sanitize_text_field( $value );
+				else
+					$value = wp_sanitize_redirect( $value );	
 			}
 			if (strpos($key, 'sgpb') === 0) {				
 				$popupData[$key] = $value;

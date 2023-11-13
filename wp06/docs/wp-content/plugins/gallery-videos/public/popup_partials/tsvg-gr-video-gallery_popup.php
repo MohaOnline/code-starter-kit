@@ -1,28 +1,28 @@
 <style type="text/css">
 	:root{
-		--tsvg_popup_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_18 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_popup_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_18 ) ); ?>;
 		--tsvg_popup_bw_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_19 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_bdc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_popup_bdc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_21 ) ); ?>;
 		--tsvg_popup_rd_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_22 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_popup_p_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_23 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_popup_t_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_24 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_t_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_25 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_t_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_26 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_popup_t_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_25 ) ); ?>;
+        --tsvg_popup_t_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_26 ) ); ?>;
 		--tsvg_popup_l_t_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_28 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_l_t_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_30 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_popup_ar_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_34 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_popup_l_t_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_30 ) ); ?>;
+        --tsvg_popup_ar_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_34 ) ); ?>;
 		--popup_ar_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_35 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_popup_cl_i_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_38 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_popup_cl_i_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_38 ) ); ?>;
 		--tsvg_header_cl_i_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_1_39 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_lo_bdw_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_01 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_lo_bdc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_03 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_lo_bdc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_03 ) ); ?>;
 		--tsvg_lo_bdr_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_04 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_lo_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_06 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_lo_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_07 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_lo_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_06 ) ); ?>;
+        --tsvg_lo_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_07 ) ); ?>;
 		--tsvg_lo_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_08 ), FILTER_VALIDATE_INT ); ?>px;
-		--tsvg_lo_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_09 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_lo_hbc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_10 ), FILTER_SANITIZE_STRING ); ?>;
-		--tsvg_lo_hc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_style_options->TotalSoft_GV_2_11 ), FILTER_SANITIZE_STRING ); ?>;
+        --tsvg_lo_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_09 ) ); ?>;
+        --tsvg_lo_hbc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_10 ) ); ?>;
+        --tsvg_lo_hc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_2_11 ) ); ?>;
 	}
   	<?php if ( $tsvg_edit === 'true' ) { ?>
 		.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-popup-content='builder-show'] ,.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-popup-content='builder-show'] .tsvg-grid-slide,
@@ -152,10 +152,10 @@
   	}
   	.tsvg-grid-slide-div {
 		min-height: 25px;
+        max-height: 5em;
   	}
     .tsvg-grid-slide-div > p{
         line-height: 15px !important;
-        max-height: 5em;
         overflow: revert;
     }
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-grid-slide-div ul {
@@ -192,7 +192,7 @@
 	  	line-height: 1 !important;
 	  	font-weight: 400 !important;
   	}
-  	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  figcaption[data-tsvg-position='left']{ text-align:left !important;}
+  	/* .tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  figcaption[data-tsvg-position='left']{ text-align:left !important;}
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  figcaption[data-tsvg-position='center']{ text-align:center !important ;}
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  figcaption[data-tsvg-position='right']{ text-align:right !important ;}
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  figcaption[data-tsvg-effect='solid']{ border-style: solid!important;}
@@ -201,7 +201,7 @@
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> p {
 	 	margin-bottom: 0 !important;
 	 	display: block !important;
-  	}
+  	} */
   	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-grid-slide-div::-webkit-scrollbar-track {
 		-webkit-box-shadow: inset 0 0 6px      var(--tsvg_popup_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);;
   	}
@@ -506,7 +506,7 @@
             if( typeof(jQuery) != "undefined" && jQuery != null && 
                 typeof(window.Modernizr) != "undefined" && window.Modernizr != null && 
                 typeof(window.imagesLoaded) != "undefined" && window.imagesLoaded != null && 
-                jQuery(".tsvg-grid-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>").width() !== 0 && 
+                // jQuery(".tsvg-grid-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>").width() !== 0 && 
                 typeof(window.CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>) != "undefined" &&
                 window.CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> != null && 
                 document.readyState === 'complete'
@@ -545,7 +545,7 @@
         tsvgGridCreate<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = function () {
             if(tsvgGridCheck<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>() === true){
                 if(!tsvgGridInit<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>){
-                    jQuery(window).bind('tsvgResizeEnd<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>', function() {
+                    jQuery(window).on('tsvgResizeEnd<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>', function() {
                         setTimeout(() => {
                             jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry({itemSelector: jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').attr("data-pagination") != 'all' ? 'li.tsvg-layout-item-show' : '.tsvg-grid-layout-item'});
                             jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry('destroy');
@@ -586,6 +586,7 @@
                 jQuery('.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').find('.tsvg-media-video-container').find('video').css({
                     'min-height': tsvgGridIframeHeight + 'px', 'max-height': tsvgGridIframeHeight + 'px'
                 });
+                jQuery('.tsvg-section-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').fadeIn();
                 tsvgGridInstance<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = new CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>(document.getElementById('tsvg-section-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>'));
                 clearInterval(tsvgGridInterval<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>);
                 <?php if ( $tsvg_edit != 'true' ) { ?>
@@ -594,7 +595,7 @@
                 tsvgGridInit<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = true;
             }
         },
-        tsvgGridInterval<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = setInterval(tsvgGridCreate<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>, 100);
+        tsvgGridInterval<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = setInterval(tsvgGridCreate<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>, 1000);
     (function (window) {
         'use strict';
         let tsvgDocElem<?php echo esc_attr( $tsvg_js_shortcode_id ); ?> = window.document.documentElement,
@@ -650,14 +651,13 @@
         };
         CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>.prototype._initMasonry = function () {
             let grid = this.grid;
-            if (imagesLoaded) {
-                imagesLoaded(grid, function () {
-                    jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry({itemSelector: jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').attr("data-pagination") != 'all' ? 'li.tsvg-layout-item-show' : '.tsvg-grid-layout-item'});
-                    jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry('destroy');
-                    jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').removeData('masonry');
-                    jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry({itemSelector: jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').attr("data-pagination") != 'all' ? 'li.tsvg-layout-item-show' : '.tsvg-grid-layout-item'});
-                });
-            }
+            imagesLoaded(grid, function () {
+                jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry({itemSelector: jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').attr("data-pagination") != 'all' ? 'li.tsvg-layout-item-show' : '.tsvg-grid-layout-item'});
+                jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry('destroy');
+                jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').removeData('masonry');
+                jQuery('ul.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').masonry({itemSelector: jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').attr("data-pagination") != 'all' ? 'li.tsvg-layout-item-show' : '.tsvg-grid-layout-item'});
+                window.dispatchEvent(new Event('resize'));
+            });
         };
         CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>.prototype._initEvents = function () {
             var tsvgGridSelf = this;
@@ -1007,14 +1007,15 @@
         CBPGridGallery_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>.prototype._resize = function () {
             if (this.isSlideshowVisible) {
                 let tsvgPopupHeight = jQuery(this.tsvgCurrentItem).find("figure").outerHeight(true),
+                tsvgPopupWidth = jQuery(this.tsvgCurrentItem).find("figure").outerWidth(true),
                 root = document.documentElement;
                 root.style.setProperty('--tsvg_popup_elem_height_<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>', tsvgPopupHeight + "px");
                 if (!jQuery(this.nextItem).hasClass("tsvg-grid-slide-current-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>")) {
-                    let translateValNext = Number(tsvgGridGetVW<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>() / 2 - this.nextItem.offsetWidth / 2);
+                    let translateValNext = Number(tsvgGridGetVW<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>() / 2 - this.nextItem.tsvgPopupWidth / 2);
                     tsvgGridSetTransform<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>(this.nextItem, support<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>.support3d ? 'translate3d(' + translateValNext + 'px, 0, -150px)' : 'translate(' + translateValNext + 'px)');
                 }
                 if (!jQuery(this.prevItem).hasClass("tsvg-grid-slide-current-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>")) {
-                    let translateValPrev = Number(-1 * (tsvgGridGetVW<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>() / 2 + this.prevItem.offsetWidth / 2));
+                    let translateValPrev = Number(-1 * (tsvgGridGetVW<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>() / 2 + this.prevItem.tsvgPopupWidth / 2));
                     tsvgGridSetTransform<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>(this.prevItem, support<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>.support3d ? 'translate3d(' + translateValPrev + 'px, 0, -150px)' : 'translate(' + translateValPrev + 'px)');
                 }
             }

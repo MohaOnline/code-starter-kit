@@ -91,6 +91,10 @@ class Blocksy_Translations_Manager {
 		$builder_keys = $this->get_all_translation_keys();
 
 		foreach ($builder_keys as $single_key) {
+			if (! is_string($single_key['value'])) {
+				continue;
+			}
+
 			pll_register_string(
 				$single_key['key'],
 				$single_key['value'],

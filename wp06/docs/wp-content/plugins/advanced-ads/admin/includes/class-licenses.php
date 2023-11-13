@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignoreFile
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -585,8 +585,10 @@ class Advanced_Ads_Admin_Licenses {
 			// if AJAX; show direct update link as first possible solution.
 			if ( defined( 'DOING_AJAX' ) ) {
 				$update_link                         = wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' ) . $plugin_file, 'upgrade-plugin_' . $plugin_file );
+				/* translators: %s plugin update link */
 				$updater->strings['download_failed'] = sprintf( __( 'Download failed. <a href="%s">Click here to try another method</a>.', 'advanced-ads' ), $update_link );
 			} else {
+				/* translators: %s download failed knowledgebase link */
 				$updater->strings['download_failed'] = sprintf( __( 'Download failed. <a href="%s" target="_blank">Click here to learn why</a>.', 'advanced-ads' ), 'https://wpadvancedads.com/manual/download-failed-updating-add-ons/#utm_source=advanced-ads&utm_medium=link&utm_campaign=download-failed' );
 			}
 		}

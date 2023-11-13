@@ -1,5 +1,4 @@
-<?php
-// phpcs:ignoreFile
+<?php // phpcs:ignoreFile
 use AdvancedAds\Utilities\Conditional;
 
 /**

@@ -4,7 +4,7 @@ Tags: ads, adsense, amp, ads.txt, ad rotations, ad blocker, amazon, banner, clic
 Requires at least: 4.9
 Tested up to: 6.3
 Requires PHP: 7.2
-Stable tag: 1.47.3
+Stable tag: 1.47.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -333,6 +333,13 @@ Yes. You can use plenty of [hooks](https://wpadvancedads.com/codex/) to customiz
 10. Convert AdSense ads into AMP automatically (Responsive add-on)
 
 == Changelog ==
+
+= 1.47.4 (November 8, 2023) =
+
+- Fix: prevent fatal error that occurred on WordPress versions below 5.5
+- Fix: correct group link on placement page
+- Fix: show missing ads on the group page
+- Fix: prevent fatal error on placements page with PHP version PHP 8 and higher
 
 = 1.47.3 (October 30, 2023) =
 

@@ -64,7 +64,7 @@ class Login_Logout
         // e.g. manage
         $url_input = sanitize_text_field( $_SERVER['REQUEST_URI'] );
         
-        if ( isset( $_POST['log'] ) && isset( $_POST['pwd'] ) ) {
+        if ( isset( $_POST['log'] ) && isset( $_POST['pwd'] ) || isset( $_POST['post_password'] ) ) {
             // Do nothing. i.e. do not redirect to /not_found/ as this contains a login POST request
             // upon successful login, redirection to logged-in view of /wp-admin/ happens.
             // Without this condition, login attempt will redirect to /not_found/

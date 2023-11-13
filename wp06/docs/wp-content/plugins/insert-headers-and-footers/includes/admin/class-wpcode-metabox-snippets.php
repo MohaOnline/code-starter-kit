@@ -196,6 +196,7 @@ abstract class WPCode_Metabox_Snippets {
 					<?php
 					$class = '';
 				}
+				do_action( 'wpcode_metabox_admin_tabs' )
 				?>
 			</ul>
 		</div>

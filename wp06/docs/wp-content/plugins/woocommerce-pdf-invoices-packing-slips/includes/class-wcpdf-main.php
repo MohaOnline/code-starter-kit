@@ -51,7 +51,7 @@ class Main {
 		add_filter( 'wpo_wcpdf_pdf_filters', array( $this, 'pdf_currency_filters' ) );
 		add_filter( 'wpo_wcpdf_html_filters', array( $this, 'html_currency_filters' ) );
 
-		// scheduled attachments cleanup (following settings on Status tab)
+		// scheduled attachments cleanup (following settings on Advanced tab)
 		add_action( 'wp_scheduled_delete', array( $this, 'schedule_temporary_files_cleanup' ) );
 
 		// remove private data
@@ -74,6 +74,8 @@ class Main {
 		add_filter( 'woocommerce_valid_webhook_events', array( $this, 'wc_webhook_topic_events' ) );
 		add_filter( 'woocommerce_webhook_topics', array( $this, 'wc_webhook_topics' ) );
 		add_action( 'wpo_wcpdf_save_document', array( $this, 'wc_webhook_trigger' ), 10, 2 );
+
+		add_action( 'wpo_wcpdf_after_order_data', array( $this, 'display_due_date' ), 10, 2 );
 	}
 
 	/**
@@ -1572,7 +1574,40 @@ class Main {
 	public function wc_webhook_trigger( $document, $order ) {
 		do_action( "wpo_wcpdf_webhook_order_{$document->slug}_saved", $order->get_id() );
 	}
-	
+
+	/**
+	 * @param string $document_type
+	 * @param \WC_Order|\WC_Order_Refund $order
+	 *
+	 * @return void
+	 */
+	public function display_due_date( string $document_type, $order ): void {
+		if ( empty( $order ) ) {
+			return;
+		}
+
+		$document = wcpdf_get_document( $document_type, $order );
+
+		if ( ! $document ) {
+			return;
+		}
+
+		$due_date_timestamp = is_callable( array( $document, 'get_due_date' ) ) ? $document->get_due_date() : 0;
+
+		if ( 0 >= $due_date_timestamp ) {
+			return;
+		}
+
+		$due_date       = apply_filters( 'wpo_wcpdf_due_date_display', date( wcpdf_date_format( $this, 'due_date' ), $due_date_timestamp ), $due_date_timestamp, $document_type, $order );
+		$due_date_title = is_callable( array( $document, 'get_due_date_title' ) ) ? $document->get_due_date_title() : __( 'Due Date:', 'woocommerce-pdf-invoices-packing-slips' );
+
+		if ( ! empty( $due_date ) ) {
+			echo '<tr class="due-date">
+				<th>', $due_date_title, '</th>
+				<td>', $due_date, '</td>
+			</tr>';
+		}
+	}
 }
 
 endif; // class_exists

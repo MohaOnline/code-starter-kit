@@ -111,8 +111,8 @@ class TS_Video_Gallery_Admin extends TS_Video_Gallery_Function {
 					'parallax_engine'        => 'wp-video-gallery-parallax/',
 					'classic_gallery'        => 'wp-video-gallery-classic/',
 					'space_gallery'          => 'wp-video-gallery-space/',
-					'effective-gallery'		 => 'wp-video-gallery-effective/',
-					'gallery-album'			 => 'wp-video-gallery-album/'
+					'effective_gallery'		 => 'wp-video-gallery-effective/',
+					'gallery_album'			 => 'wp-video-gallery-album/'
 				);
 			}
 		}

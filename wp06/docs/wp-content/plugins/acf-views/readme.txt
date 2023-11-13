@@ -4,7 +4,7 @@ Tags: Advanced Custom Fields, shortcode, custom fields, query, post type, acf
 Requires at least: 5.5
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.3.5
+Stable tag: 2.3.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -211,6 +211,15 @@ Have you checked that the fields are filled in the target object? See [steps](ht
 You can use the View shortcode inside the Gutenberg Query Loop element. Please make sure you've added it via the built-in Shortcode block, as it won't work properly with other block types, like Code or Custom HTML.
 
 == Changelog ==
+
+= 2.3.7 (2023-11-07): =
+- View: Custom Markup - fixed bug with the newly added fields with multiple spaces in the name
+- Edit screen: workaround for the initial Full Screen Mode (Gutenberg)
+- Jetpack: added workaround to avoid break post_content by the 'Markdown' module
+
+= 2.3.6 (2023-11-04): =
+- View: fixed bug with the 'object-id' argument (for the old '$user$' and '$term$' values)
+- Card: fixed Meta and Card filters bug on wp.com hosting
 
 = 2.3.5 (2023-11-03): =
 - View: map field - added "Multiple map markers" plugin compatibility

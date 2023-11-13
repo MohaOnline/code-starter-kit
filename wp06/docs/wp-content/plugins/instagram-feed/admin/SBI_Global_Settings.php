@@ -704,10 +704,10 @@ class SBI_Global_Settings {
 	 *
 	 * @since 6.0
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function remove_admin_footer_text() {
-		return;
+		return '';
 	}
 
 	/**

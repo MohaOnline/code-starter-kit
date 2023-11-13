@@ -196,7 +196,6 @@ class Blocksy_Screen_Manager {
 			'default_prefix' => null
 		]);
 
-
 		if (function_exists('is_lifterlms') && is_lifterlms()) {
 			return 'lms';
 		}
@@ -358,7 +357,7 @@ class Blocksy_Screen_Manager {
 				||
 				is_tax('tec_venue_category')
 				||
-				is_archive('tribe_events')
+				is_post_type_archive('tribe_events')
 			)
 		) {
 			$actual_prefix = 'tribe_events_archive';

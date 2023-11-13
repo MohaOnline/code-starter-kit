@@ -75,6 +75,12 @@ class Blocksy_Custom_Post_Types {
 				'tutor_assignments',
 				'tutor_zoom_meeting',
 
+				// Lifter LMS
+				'llms_quiz',
+				'llms_membership',
+				'llms_certificate',
+				'llms_my_certificate',
+
 				// learn dash
 				'ld-exam',
 				'groups',

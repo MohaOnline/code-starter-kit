@@ -86,6 +86,8 @@ class Advanced_Ads_Ad_Type_Image extends Advanced_Ads_Ad_Type_Abstract {
 	 * @param Advanced_Ads_Ad $ad ad object.
 	 */
 	public function create_image_tag( $attachment_id, $ad ) {
+		global $wp_current_filter;
+
 		$image = wp_get_attachment_image_src( $attachment_id, 'full' );
 		$style = '';
 
@@ -105,8 +107,6 @@ class Advanced_Ads_Ad_Type_Image extends Advanced_Ads_Ad_Type_Abstract {
 		}
 		$hwstring 	= image_hwstring( $width, $height );
 		$alt      	= trim( esc_textarea( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) );
-
-		global $wp_current_filter;
 
 		// TODO: use an array for attributes so they are simpler to extend
 		$sizes           = '';
@@ -153,11 +153,11 @@ class Advanced_Ads_Ad_Type_Image extends Advanced_Ads_Ad_Type_Abstract {
 		if (
 			$wp_current_filter
 			&& function_exists( 'wp_lazy_loading_enabled' )
-			&& wp_lazy_loading_enabled( 'img', $wp_current_filter )
+			&& wp_lazy_loading_enabled( 'img', current_filter() )
 			&& ! strpos( $more_attributes, 'loading=' )
 		) {
 			// Optimize image HTML tag with loading attributes based on WordPress filter context.
-			$img = $this->img_tag_add_loading_attr( $img, $wp_current_filter );
+			$img = $this->img_tag_add_loading_attr( $img, current_filter() );
 		}
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- use unescaped image tag here

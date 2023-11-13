@@ -21,7 +21,7 @@ class Plugin implements HooksInterface
 
     protected string $slug = 'acf-views/acf-views.php';
     protected string $shortSlug = 'acf-views';
-    protected string $version = '2.3.5';
+    protected string $version = '2.3.7';
     protected bool $isProVersion = false;
     protected bool $isSwitchingVersions;
 

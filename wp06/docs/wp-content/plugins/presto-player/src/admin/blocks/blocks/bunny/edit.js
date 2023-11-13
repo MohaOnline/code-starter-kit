@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const {
+import {
   Button,
   Disabled,
   DropdownMenu,
@@ -11,12 +11,12 @@ const {
   BaseControl,
   Placeholder,
   ToggleControl,
-} = wp.components;
+} from "@wordpress/components";
 import { BlockControls, InspectorControls } from "@wordpress/block-editor";
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { useEffect, useState, Fragment } = wp.element;
-const { dispatch } = wp.data;
+import { __ } from "@wordpress/i18n";
+import { compose } from "@wordpress/compose";
+import { useEffect, useState, Fragment } from "@wordpress/element";
+import { dispatch } from "@wordpress/data";
 
 import { signURL } from "../../shared/services/bunny";
 
@@ -354,9 +354,10 @@ export default compose([withPlayerData(), withPlayerEdit()])(
                   </svg>
                 )
               }
-              instructions={
-                <>{__("Add or select a Bunny.net video", "presto-player")}</>
-              }
+              instructions={__(
+                "Add or select a Bunny.net video",
+                "presto-player"
+              )}
             >
               <BaseControl className="presto-player__placeholder-control">
                 <ToggleControl

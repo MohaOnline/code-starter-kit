@@ -300,7 +300,7 @@ msgid "Row pasted"
 msgstr ""
 
 #: inc/admin.php:471
-msgid "Cell resized"
+msgid "Column resized"
 msgstr ""
 
 #: inc/admin.php:474
@@ -339,7 +339,7 @@ msgid "Add Widget Below"
 msgstr ""
 
 #: inc/admin.php:491
-msgid "Add Widget to Cell"
+msgid "Add Widget to Column"
 msgstr ""
 
 #: inc/admin.php:492, tpl/js-templates.php:244
@@ -350,12 +350,12 @@ msgstr ""
 msgid "Add Row"
 msgstr ""
 
-#: inc/admin.php:495
+#: inc/admin.php:495, inc/styles.php:492
 msgid "Column"
 msgstr ""
 
 #: inc/admin.php:497
-msgid "Cell Actions"
+msgid "Column Actions"
 msgstr ""
 
 #: inc/admin.php:498
@@ -554,7 +554,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/admin.php:1518
-msgid "Get the row, cell, and widget %link%."
+msgid "Get the row, column, and widget %link%."
 msgstr ""
 
 #: inc/admin.php:1520
@@ -586,7 +586,7 @@ msgid "Lightbox Addon"
 msgstr ""
 
 #: inc/admin.php:1538
-msgid "Link an entire Page Builder row, cell, or widget with the %link%."
+msgid "Link an entire Page Builder row, column, or widget with the %link%."
 msgstr ""
 
 #: inc/admin.php:1540
@@ -654,7 +654,7 @@ msgid "Organize your Page Builder rows with custom background colors using %link
 msgstr ""
 
 #: inc/admin.php:1593
-msgid "Add widget, cell, and row Retina background images for high-pixel-density displays with %link%."
+msgid "Add widget, column, and row Retina background images for high-pixel-density displays with %link%."
 msgstr ""
 
 #: inc/admin.php:1598
@@ -978,11 +978,11 @@ msgid "Allow margin below the last row."
 msgstr ""
 
 #: inc/settings.php:502, inc/styles.php:475
-msgid "Mobile Cell Bottom Margin"
+msgid "Mobile Column Bottom Margin"
 msgstr ""
 
 #: inc/settings.php:503
-msgid "The default vertical space between cells in a collapsed mobile row."
+msgid "The default vertical space between columns in a collapsed mobile row."
 msgstr ""
 
 #: inc/settings.php:509
@@ -1074,7 +1074,7 @@ msgid "Row Styles"
 msgstr ""
 
 #: inc/styles-admin.php:66
-msgid "Cell%s Styles"
+msgid "Column%s Styles"
 msgstr ""
 
 #: inc/styles-admin.php:70
@@ -1310,11 +1310,11 @@ msgid "Set the minimum height of the row to the full height of the browser."
 msgstr ""
 
 #: inc/styles.php:379
-msgid "Cell Class"
+msgid "Column Class"
 msgstr ""
 
 #: inc/styles.php:382
-msgid "Class added to all cells in this row."
+msgid "Class added to all columns in this row."
 msgstr ""
 
 #: inc/styles.php:388
@@ -1330,7 +1330,7 @@ msgid "Gutter"
 msgstr ""
 
 #: inc/styles.php:399
-msgid "Amount of space between cells. Default is %spx."
+msgid "Amount of space between columns. Default is %spx."
 msgstr ""
 
 #: inc/styles.php:404
@@ -1378,7 +1378,7 @@ msgid "Right on Top"
 msgstr ""
 
 #: inc/styles.php:441
-msgid "Cell Vertical Alignment"
+msgid "Column Vertical Alignment"
 msgstr ""
 
 #: inc/styles.php:446, inc/styles.php:501, widgets/widgets/button/button.php:31
@@ -1406,11 +1406,7 @@ msgid "Space below the row on mobile devices. Default is %spx."
 msgstr ""
 
 #: inc/styles.php:478
-msgid "Vertical space between cells in a collapsed mobile row. Default is %spx."
-msgstr ""
-
-#: inc/styles.php:492
-msgid "Cell"
+msgid "Vertical space between columns in a collapsed mobile row. Default is %spx."
 msgstr ""
 
 #: inc/styles.php:495
@@ -1538,7 +1534,7 @@ msgid "Save With Page Save"
 msgstr ""
 
 #: tpl/js-templates.php:334
-msgid "Set Row Layout"
+msgid "Column Count:"
 msgstr ""
 
 #: tpl/js-templates.php:341

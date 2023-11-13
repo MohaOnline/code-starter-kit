@@ -492,7 +492,7 @@ class Security
         return bin2hex( openssl_encrypt(
             base_convert( $user_id, 10, 36 ),
             'DES-EDE3',
-            md5( sanitize_text_field( $_SERVER['SERVER_ADDR'] ) . ASENHA_URL ),
+            md5( ASENHA_URL ),
             OPENSSL_RAW_DATA
         ) );
     }
@@ -509,7 +509,7 @@ class Security
         return base_convert( openssl_decrypt(
             pack( 'H*', $encrypted_author_slug ),
             'DES-EDE3',
-            md5( sanitize_text_field( $_SERVER['SERVER_ADDR'] ) . ASENHA_URL ),
+            md5( ASENHA_URL ),
             OPENSSL_RAW_DATA
         ), 36, 10 );
     }

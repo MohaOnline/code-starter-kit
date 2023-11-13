@@ -1319,9 +1319,9 @@ if ( $this->tsvg_build == 'new' ) {
 						'sliceUpRandom'      => '  Slice Up Random ',
 						'sliceDownRandom'    => ' Slice Down Random ',
 						'sliceUpDown'        => ' Slice Up Down ',
-						'sliceUpDownLeft'    => 'Slice Up Down Left',
-						'fold'               => 'Fold',
-						'foldLeft'           => 'Fold Left',
+						'sliceUpDownLeft'    => ' Slice Up Down Left',
+						'fold'               => ' Fold',
+						'foldLeft'           => ' Fold Left',
 						'boxRandom'          => ' Box Random',
 						'boxRain'            => ' Box Rain',
 						'boxRainReverse'     => ' Box Rain Reverse ',
@@ -2077,7 +2077,7 @@ if ( $this->tsvg_build == 'new' ) {
 				'TotalSoft_GV_2_26' => array(
 					'label'       => 'Close Icon Type',
 					'type'        => 'select-icon',
-					'change_elem' => '.tsvg-content-popup-arrow-close-' . $this->tsvg_build_id . 'tsvg-content-popup-arrow-close',
+					'change_elem' => '.tsvg-content-popup-arrow-close-' . $this->tsvg_build_id . ' .tsvg-content-popup-arrow-close',
 					'change_attr' => 'class'
 				),
 				'TotalSoft_GV_2_27' => array(

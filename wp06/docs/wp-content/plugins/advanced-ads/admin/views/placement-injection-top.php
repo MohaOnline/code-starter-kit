@@ -1,9 +1,10 @@
-<?php
+<?php // phpcs:ignoreFile
 /**
  * Render placements after publishing an ad.
  *
  * @var array $placements array with placements.
  */
+
 // show quick injection options.
 // check if the ad code contains the AdSense verification and Auto ads code.
 $is_page_level_ad_in_code_field = ( isset( $ad->type ) && 'plain' === $ad->type && strpos( $ad->content, 'enable_page_level_ads' ) ) || preg_match( '/script[^>]+data-ad-client=/', $ad->content ); ?>
@@ -34,7 +35,7 @@ $is_page_level_ad_in_code_field = ( isset( $ad->type ) && 'plain' === $ad->type 
 	<p>
 	<?php
 	printf(
-		// Translators: %1$s is the opening link tag, %2$s is closing link tag.
+		// translators: %1$s is the opening link tag, %2$s is closing link tag.
 		__( 'Adjust the placement options? Take a look  %1$shere.%2$s', 'advanced-ads' ),
 		'<a href="' . esc_url( admin_url( 'admin.php?page=advanced-ads-placements#single-placement-' ) ) . '" target="_blank">',
 		'</a>'
@@ -175,16 +176,14 @@ $is_page_level_ad_in_code_field = ( isset( $ad->type ) && 'plain' === $ad->type 
 							<?php
 							printf(
 							// translators: %s is some HTML.
-				// phpcs:ignore
-					__( 'Or use the shortcode %s to insert the ad into the content manually.', 'advanced-ads' ),
+							__( 'Or use the shortcode %s to insert the ad into the content manually.', 'advanced-ads' ), // phpcs:ignore
 								'<input id="advads-ad-injection-shortcode" onclick="this.select();" value="[the_ad id=\'' . absint( $post->ID ) . '\']"/>'
 							);
 							?>
 							<?php
 							printf(
 								// translators: %s is a URL.
-							// phpcs:ignore
-								__( 'Learn more about your choices to display an ad in the <a href="%s" target="_blank">manual</a>.', 'advanced-ads' ),
+								__( 'Learn more about your choices to display an ad in the <a href="%s" target="_blank">manual</a>.', 'advanced-ads' ), // phpcs:ignore
 								'https://wpadvancedads.com/manual/display-ads/?utm_source=advanced-ads&utm_medium=link&utm_campaign=edit-created'
 							);
 							?>

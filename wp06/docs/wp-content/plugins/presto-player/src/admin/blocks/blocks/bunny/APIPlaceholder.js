@@ -1,6 +1,6 @@
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
-const {
+import {
   Button,
   TextControl,
   Placeholder,
@@ -10,8 +10,8 @@ const {
   Spinner,
   FlexItem,
   Notice,
-} = wp.components;
-const { useEffect } = wp.element;
+} from "@wordpress/components";
+import { useEffect } from "@wordpress/element";
 
 import useStorageConnection from "./useStorageConnection";
 import useStreamConnection from "./useStreamConnection";
@@ -40,18 +40,10 @@ export default ({ onRefetch, type, autoSubmit }) => {
   return (
     <Placeholder
       label={__("Bunny.net Video", "presto-player")}
-      instructions={
-        <>
-          {__(
-            "Enter your Bunny.net API key, which can be found on your Bunny CDN Account page.",
-            "presto-player"
-          )}
-          &nbsp;
-          <ExternalLink href="https://bunnycdn.com/dashboard/account">
-            {__("Get My API Key", "presto-player")}
-          </ExternalLink>
-        </>
-      }
+      instructions={__(
+        "Enter your Bunny.net API key, which can be found on your Bunny CDN Account page.",
+        "presto-player"
+      )}
     >
       {saving ? (
         <Flex>

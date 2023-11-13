@@ -2,8 +2,8 @@
 Contributors: ramon fincken
 Tags: cache, warm, keep, xml, sitemap, load, speed, quick, tag, w3tc, optimize, page cache, preload, google, pagespeed, webmaster, sitemap, generator, warmup, cold, expire, expired, nginx, varnish, microcaching, microcache
 Requires at least: 3.5
-Tested up to: 6.1.1
-Stable tag: 4.1.0
+Tested up to: 6.3.2
+Stable tag: 4.1.1
 
 Crawls your website-pages based on google XML sitemap. If you have a caching plugin this will keep your cache warm. Speeds up your site.
 
@@ -74,6 +74,9 @@ The support forums over here, drop me a toot to notify me of your support topic 
 I always check my toots, so mention my name with https://mastodon.social/@ramonfincken and your problem.
 
 == Changelog ==
+= 4.1.1 =
+Bugfix: PHP fatal for _ vs __
+
 = 4.1.0 =
 Added: merge 3.1.0 and 4.0.0 to account for the PHP fatal countable
 

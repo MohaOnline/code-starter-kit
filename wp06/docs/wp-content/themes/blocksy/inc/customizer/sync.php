@@ -183,6 +183,8 @@ function blocksy_replace_current_template() {
 		)
 		&&
 		(
+			class_exists('Tribe__Events__Main')
+			&&
 			! (
 				tribe_is_events_home()
 				||
@@ -199,7 +201,7 @@ function blocksy_replace_current_template() {
 				is_singular('tribe_organizer')
 				||
 				tribe_is_venue()
-			) && class_exists('Tribe__Events__Main')
+			)
 			||
 			! class_exists('Tribe__Events__Main')
 		)

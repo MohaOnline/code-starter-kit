@@ -4,8 +4,8 @@ Contributors: qriouslad
 Donate link: https://bowo.io/asenha-sp-rdm  
 Tags: enhancements, tweaks, optimizations, tools  
 Requires at least: 4.6  
-Tested up to: 6.3.2  
-Stable tag: 6.0.6  
+Tested up to: 6.4.1  
+Stable tag: 6.0.7  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,9 +20,13 @@ Admin and Site Enhancements (ASE) helps you to **easily enhance** various admin 
 
 **Pro version** with Lifetime Deal (LTD) is available at [www.wpase.com](https://www.wpase.com/rdme-to-web).
 
-Here's First Look at ASE Pro by David McCan
+Here's First Look at ASE Pro by David McCan.
 
 https://www.youtube.com/watch?v=qdbl-Ao_1Xc
+
+Here's a review of ASE Pro at v6.0.6 by Albert Tan.
+
+https://www.youtube.com/watch?v=wZjGCcmJ3xw
 
 Here's a review at v5.7.1 by Buxbaum Barna in Hungarian.
 
@@ -273,11 +277,29 @@ Hoping that this is useful in reducing the number of plugins we install the firs
 
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **51 _patch_ releases** (e.g. 4.9.1). 
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **52 _patch_ releases** (e.g. 4.9.1). 
 
 Each **_point release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_patch release_** usually contain one or more bugfix or improvements to existing modules/features.
 
 [**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web) now. Lifetime Deal (LTD) available.
+
+### 6.0.8 (2023.11.12) - ASE Pro
+
+* **[IMPROVED][PRO] Admin Interface >> Admin Columns Manager**: Improved handling for custom columns from plugins, e.g. SEO plugins like Yoast SEO, All in One SEO (AIOS), Rank Math SEO and SEOPress. There's now a dedicated "Extra" section on the admin columns management page/UI. There's also a "Reset Columns" button that will allow for restoring columns to the initial state and re-listing available default, extra and custom field columns to choose from. Props to Benjamin P. and Tim for reporting issues with Rank Math and SEOPress which prompted the improvement.
+
+* **[FIX][PRO] Admin Interface >> Admin Menu Organizer**: Fixed an issue where submenu items could not be re-ordered. Props to Bruze Z. for reporting the issue with WooCommerce Products submenu items.
+
+### 6.0.7 (2023.11.10) - ASE Free and Pro
+
+* **[FIX][FREE][PRO] Disable Components >> Disable Smaller Components >> Disable Dashicons CSS and JS**: Fix for scenarios where a custom login URL is set with another plugin, e.g. All in One Security (AIOS), and disabling Dashicons will mess up the styling of that login page. Thanks to Aleš for reporting the issue.
+
+* **[FIX][FREE][PRO] Security >> Obfuscate Author Slugs**: Fixed PHP warning "Undefined array key SERVER_ADDR" in certain scenarios where server IP is not detectable via that PHP server global. Thanks to Marco M. for reporting.
+
+* **[FIX][FREE][PRO] Log In | Log Out >> Change Login URL**: Fix for password-protected pages getting redirected to the /not_found/ 404 page even after entering the correct password. Props to [@vanektomas](https://wordpress.org/support/users/vanektomas/) and [@netzzjd](https://wordpress.org/support/users/netzzjd/) for [reporting this](https://wordpress.org/support/topic/bug-in-change-login-url-if-its-enabled-and-set/).
+
+* **[FIX][FREE][PRO] Utilities >> Display System Summary**: Fixed PHP fatal error when mysqli_connect() fails to connect to the database. Thanks to Diaz X. and Simon for reporting the issue.
+
+* **[FIX][PRO] Admin Interface >> Admin Columns Manager**: Fixed PHP Warning "non-numeric value encountered". Props to Elon R. for reporting the issue in detail.
 
 ### 6.0.6 (2023.11.05) - ASE Free and Pro
 

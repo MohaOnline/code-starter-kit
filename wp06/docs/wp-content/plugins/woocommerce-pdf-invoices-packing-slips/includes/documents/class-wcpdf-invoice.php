@@ -18,7 +18,6 @@ class Invoice extends Order_Document_Methods {
 	public $type;
 	public $title;
 	public $icon;
-	public $slug;
 	public $lock_name;
 	public $lock_context;
 	public $lock_time;
@@ -35,8 +34,7 @@ class Invoice extends Order_Document_Methods {
 		$this->type         = 'invoice';
 		$this->title        = __( 'Invoice', 'woocommerce-pdf-invoices-packing-slips' );
 		$this->icon         = WPO_WCPDF()->plugin_url() . "/assets/images/invoice.svg";
-		$this->slug         = ! empty( $this->type ) ? str_replace( '-', '_', $this->type ) : '';
-		
+
 		// semaphore
 		$this->lock_name    = "wpo_wcpdf_{$this->slug}_number_lock";
 		$this->lock_context = array( 'source' => "wpo-wcpdf-{$this->type}-semaphore" );
@@ -82,7 +80,6 @@ class Invoice extends Order_Document_Methods {
 			$this->set_display_date( 'invoice_date' );	
 		}
 
-		
 		$this->init_number();
 
 		do_action( 'wpo_wcpdf_init_document', $this );
@@ -331,6 +328,24 @@ class Invoice extends Order_Document_Methods {
 						'invoice_date'	=> __( 'Invoice Date' , 'woocommerce-pdf-invoices-packing-slips' ),
 						'order_date'	=> __( 'Order Date' , 'woocommerce-pdf-invoices-packing-slips' ),
 					),
+				)
+			),
+			array(
+				'type'			=> 'setting',
+				'id'			=> 'due_date',
+				'title'			=> __( 'Display due date', 'woocommerce-pdf-invoices-packing-slips' ),
+				'callback'		=> 'select',
+				'section'		=> $this->type,
+				'args'			=> array(
+					'option_name'	=> $option_name,
+					'id'			=> 'due_date',
+					'options'       => apply_filters( 'wpo_wcpdf_due_date_options', array(
+						''   => __( 'No', 'woocommerce-pdf-invoices-packing-slips' ),
+						'1'  => __( '1 day', 'woocommerce-pdf-invoices-packing-slips' ),
+						'7'  => __( '7 days', 'woocommerce-pdf-invoices-packing-slips' ),
+						'30' => __( '30 days', 'woocommerce-pdf-invoices-packing-slips' ),
+					), $this->type ),
+					'description'	=> __( 'Displays a due date below the order data.', 'woocommerce-pdf-invoices-packing-slips' ),
 				)
 			),
 			array(

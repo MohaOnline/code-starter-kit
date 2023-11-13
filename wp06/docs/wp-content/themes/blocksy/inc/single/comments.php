@@ -185,8 +185,10 @@ function blocksy_custom_comment_template($comment, $args, $depth) {
 					if ($has_avatar) {
 						$avatar_alt = $comment->comment_author;
 
-						if ($comment->user_id !== 0) {
-							$maybe_alt = blocksy_get_avatar_alt_for($comment->user_id);
+						if (intval($comment->user_id) !== 0) {
+							$maybe_alt = blocksy_get_avatar_alt_for(
+								$comment->user_id
+							);
 
 							if (! empty($maybe_alt)) {
 								$avatar_alt = $maybe_alt;
@@ -194,7 +196,12 @@ function blocksy_custom_comment_template($comment, $args, $depth) {
 						}
 
 						echo blocksy_simple_image(
-							blocksy_get_avatar_url($args['avatar_size'], $comment->user_id),
+							blocksy_get_avatar_url(
+								[
+									'avatar_entity' => $comment,
+									'size' => $args['avatar_size']
+								]
+							),
 							[
 								'tag_name' => 'figure',
 								'img_atts' => [

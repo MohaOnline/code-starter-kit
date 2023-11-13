@@ -190,13 +190,19 @@ $message = Params::get( 'message' );
 						include ADVADS_ABSPATH . 'admin/views/placements-inline-css.php';
 						$option_content = ob_get_clean();
 
-						Advanced_Ads_Admin_Options::render_option(
-							'placement-inline-css',
-							__( 'Inline CSS', 'advanced-ads' ),
-							$option_content
-						);
+						$inline_css     = $_placement['options']['inline-css'] ?? '';
+						$placement_type = $_placement['type'] ?? '';
+						$show_option    = ! ( 'custom_position' === $placement_type && empty( $inline_css ) );
 
-						// Show Pro features if Pro is not actiavated.
+						if ( $show_option ) {
+							Advanced_Ads_Admin_Options::render_option(
+								'placement-inline-css',
+								__( 'Inline CSS', 'advanced-ads' ),
+								$option_content
+							);
+						}
+
+						// Show Pro features if Pro is not activated.
 						if ( ! defined( 'AAP_VERSION' ) ) {
 							// Minimum Content Length.
 							Advanced_Ads_Admin_Options::render_option(
@@ -398,7 +404,7 @@ $message = Params::get( 'message' );
 										<p><span class="advads-notice-inline advads-error"><?php esc_html_e( 'Important Notice', 'advanced-ads' ); ?>: </span>
 											<?php
 											printf(
-											// Translators: %s is a name of a module.
+												// translators: %s is a list of PHP extensions.
 												esc_html__( 'Missing PHP extensions could cause issues. Please ask your hosting provider to enable them: %s', 'advanced-ads' ),
 												'dom (php_xml)'
 											);
@@ -417,7 +423,7 @@ $message = Params::get( 'message' );
 								<?php
 								printf(
 									wp_kses(
-									// Translators: %s is a URL.
+									// translators: %s is a URL.
 										__( 'Tutorial: <a href="%s" target="_blank">How to place visible ads in the header of your website</a>.', 'advanced-ads' ),
 										[
 											'a' => [

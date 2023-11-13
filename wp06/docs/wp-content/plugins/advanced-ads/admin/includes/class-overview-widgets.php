@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignoreFile
 
 use AdvancedAds\Entities;
 
@@ -209,7 +209,6 @@ class Advanced_Ads_Overview_Widgets_Callbacks {
 		$ignored_count   = count( Advanced_Ads_Ad_Health_Notices::get_instance()->ignore );
 		$displayed_count = count( Advanced_Ads_Ad_Health_Notices::get_instance()->displayed_notices );
 		if ( ! $displayed_count && $ignored_count ) {
-			// translators: %s includes a number and markup like <span class="count">6</span>.
 			?>
 			<p><span class="dashicons dashicons-warning"></span>&nbsp;<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=advanced-ads&advads-show-hidden-notices=true' ), 'advanced-ads-show-hidden-notices', 'advads_nonce' ) ); ?>">
 			<?php

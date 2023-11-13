@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-02 06:09:18+0000\n"
+"PO-Revision-Date: 2023-11-10 15:41:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3027,13 +3027,13 @@ msgstr "添加导航菜单至您的边栏。"
 #. 'wp-customize-widgets'.
 #: wp-includes/widgets.php:2102
 msgid "\"%1$s\" style should not be enqueued together with the new widgets editor (%2$s or %3$s)."
-msgstr "“%1$s”样式不应与新的小部件编辑器（%2$s 或 %3$s）一起入队。"
+msgstr "“%1$s”样式不应与新的小工具编辑器（%2$s 或 %3$s）一起排队。"
 
 #. translators: 1: 'wp-editor', 2: 'wp-edit-widgets', 3:
 #. 'wp-customize-widgets'.
 #: wp-includes/widgets.php:2089
 msgid "\"%1$s\" script should not be enqueued together with the new widgets editor (%2$s or %3$s)."
-msgstr "“%1$s”脚本不应与新的小部件编辑器（%2$s 或 %3$s）一起入队。"
+msgstr "“%1$s”脚本不应与新的小工具编辑器（%2$s 或 %3$s）一起排队。"
 
 #: wp-includes/widgets.php:1738
 msgid "Display item date?"
@@ -8749,12 +8749,12 @@ msgstr "新建导航菜单"
 
 #: wp-includes/post.php:511
 msgid "Add New Navigation Menu"
-msgstr "新增导航菜单"
+msgstr "添加导航菜单"
 
 #: wp-includes/post.php:510
 msgctxt "Navigation Menu"
 msgid "Add New"
-msgstr "新增导航菜单"
+msgstr "添加导航菜单"
 
 #: wp-includes/post.php:509
 msgctxt "post type singular name"
@@ -8923,7 +8923,7 @@ msgstr "新增模板"
 #: wp-includes/post.php:352
 msgctxt "Template"
 msgid "Add New"
-msgstr "新增"
+msgstr "添加模板"
 
 #: wp-includes/post.php:351
 msgctxt "post type singular name"
@@ -9007,7 +9007,7 @@ msgstr "添加新区块样板"
 #: wp-includes/post.php:287
 msgctxt "Pattern"
 msgid "Add New"
-msgstr "新增"
+msgstr "添加样板"
 
 #: wp-includes/post.php:286
 msgctxt "post type singular name"
@@ -9124,7 +9124,7 @@ msgstr "编辑媒体"
 #: wp-admin/upload.php:412
 msgctxt "file"
 msgid "Add New"
-msgstr "新增文件"
+msgstr "添加文件"
 
 #: wp-includes/post.php:77
 msgctxt "add new from admin bar"
@@ -12877,7 +12877,7 @@ msgstr "已经上传"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:250
 msgid "Add new image"
-msgstr "新增图片"
+msgstr "添加新图像"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:250
 msgid "Add new header image"
@@ -15083,7 +15083,7 @@ msgstr "编辑文章"
 
 #: wp-includes/class-wp-post-type.php:835
 msgid "Add New Page"
-msgstr "创建页面"
+msgstr "添加新页面"
 
 #: wp-includes/class-wp-post-type.php:835
 msgid "Add New Post"
@@ -15092,7 +15092,7 @@ msgstr "撰写新文章"
 #: wp-includes/class-wp-post-type.php:834
 msgctxt "page"
 msgid "Add New"
-msgstr "新建页面"
+msgstr "添加页面"
 
 #: wp-includes/class-wp-post-type.php:834
 msgctxt "post"

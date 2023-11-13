@@ -126,6 +126,10 @@ if (! function_exists('blocksy_get_single_page_structure')) {
 			}
 		}
 
+		if ($prefix === 'lms') {
+			$result = 'none';
+		}
+
 		return apply_filters('blocksy:global:page_structure', $result);
 	}
 }

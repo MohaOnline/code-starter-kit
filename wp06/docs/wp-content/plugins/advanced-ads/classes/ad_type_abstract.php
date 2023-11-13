@@ -168,6 +168,10 @@ class Advanced_Ads_Ad_Type_Abstract {
 	 * @return string Updated HTML image tag with loading optimization attributes.
 	 */
 	public function img_tag_add_loading_attr( $img, $context ) {
+		if ( is_array( $context ) ) {
+			$context = end( $context );
+		}
+
 		// Check if the current WordPress version is compatible.
 		if ( is_wp_version_compatible( '6.3' ) ) {
 			 // If compatible, apply the function to add loading optimization attributes

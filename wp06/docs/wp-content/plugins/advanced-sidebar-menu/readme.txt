@@ -4,9 +4,9 @@ Contributors: Mat Lipe, onpointplugins
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40onpointplugins%2ecom&lc=US&item_name=Advanced%20Sidebar%20Menu&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
 Tags: block, widget, dynamic, hierarchy, menus, sidebar menu, category, pages, parent, child, automatic
 Requires at least: 5.8.0
-Tested up to: 6.3.2
+Tested up to: 6.4.1
 Requires PHP: 7.0.0
-Stable tag: 9.3.2
+Stable tag: 9.3.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -167,6 +167,17 @@ The Categories Menu widget/block contains a "Display categories on single posts"
 Yes. Based on whatever page, post or category you are on, the menu will change automatically to display the current parents and children.
 
 == Changelog ==
+= 9.3.4 =
+* Passed block attributes and supports to JavaScript as well as PHP.
+* Fixed issues with block previews in WordPress 6.4.
+* Fixed issues with widget transformations in WordPress 6.4.
+* Improved styles of legacy widget's info panel.
+* Updated PHPStan level to 8 and fixed all warnings.
+
+= 9.3.3 =
+* Fixed issue with blocks loading in WordPress 6.4.
+* Tested to WordPress 6.4.1.
+
 = 9.3.2 =
 * Fixed deployignore configurations.
 
@@ -277,6 +288,9 @@ Yes. Based on whatever page, post or category you are on, the menu will change a
 * Numerous bug fixes.
 
 == Upgrade Notice ==
+= 9.3.4 =
+Update to support WordPress 6.4.
+
 = 9.1.0 =
 Update to support PRO version 9.2.0.
 

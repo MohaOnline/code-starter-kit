@@ -8,6 +8,8 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   public array $messages = [];
   public ?string $context = null;
   public ?string $newMessage = null;
+  public ?string $newImage = null;
+  public ?string $newImageData = null;
   public ?string $promptEnding = null;
   public bool $casuallyFineTuned = false;
   public ?int $promptTokens = null;
@@ -29,6 +31,7 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
       'maxSentences' => $this->maxSentences,
       'context' => $this->context,
       'newMessage' => $this->newMessage,
+      'newImage' => $this->newImage,
       'model' => $this->model,
       'mode' => $this->mode,
       'session' => $this->session,
@@ -53,25 +56,32 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     if ( empty( $this->messages ) ) {
       return $this->prompt;
     }
-    $lastMessage = end( $this->messages );
-    return $lastMessage['content'];
+    $last = $this->getLastMessage();
+    return $last;
   }
 
   // Quick and dirty token estimation
   // Let's keep this synchronized with Helpers in JS
-  function estimateTokens( $content ): int
+  function estimateTokens( $promptOrMessages ): int
   {
     $text = "";
     // https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb
-    if ( is_array( $content ) ) {
-      foreach ( $content as $message ) {
+    if ( is_array( $promptOrMessages ) ) {
+      foreach ( $promptOrMessages as $message ) {
         $role = $message['role'];
         $content = $message['content'];
+        if ( is_array( $content ) ) {
+          foreach ( $content as $subMessage ) { 
+            if ( $subMessage['type'] === 'text' ) {
+              $text .= $subMessage['text'];
+            }
+          }
+        }
         $text .= "=#=$role\n$content=#=\n";
       }
     }
     else {
-      $text = $content;
+      $text = $promptOrMessages;
     }
     $tokens = 0;
     return apply_filters( 'mwai_estimate_tokens', (int)$tokens, $text, $this->model );
@@ -83,7 +93,7 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   public function finalChecks() {
     if ( empty( $this->model )  ) { return; }
 
-    // Make sure the number of messages is not too great
+    // Make sure the number of messages is not too great.
     if ( !empty( $this->maxSentences ) ) {
       $context = array_shift( $this->messages );
       if ( !empty( $this->messages ) ) {
@@ -95,29 +105,48 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
       if ( !empty( $context ) ) {
         array_unshift( $this->messages, $context );
       }
-    }
 
-    // Make sure the max tokens are respected.
-    $realMax = 4096;
-    $finetuneFamily = preg_match('/^([a-zA-Z]{0,32}):/', $this->model, $matches );
-    $finetuneFamily = ( isset( $matches ) && count( $matches ) > 0 ) ? $matches[1] : 'N/A';
-    $foundModel = null;
-    $openai_models = Meow_MWAI_Engines_OpenAI::get_openai_models();
-    foreach ( $openai_models as $currentModel ) {
-      if ( $currentModel['model'] === $this->model || $currentModel['family'] === $finetuneFamily ) {
-        $foundModel = $currentModel['name'];
-        $realMax = $currentModel['maxTokens'];
-        break;
+      // If there is a newImageData, it means we are using the Vision API with Image Upload to the OpenAI servers
+      // instead of using the URL. In that case, we need to update the URL with the newImageData.
+      if ( !empty( $this->newImageData ) ) {
+        $lastKey = key( array_slice( $this->messages, -1, 1, true ) );
+        if ( is_array( $this->messages[$lastKey]['content'] ) ) {
+          foreach ( $this->messages[$lastKey]['content'] as &$message ) {
+            if ( $message['type'] === 'image_url' ) {
+              $message['image_url']['url'] = "data:image/jpeg;base64,{$this->newImageData}";
+              break;
+            }
+          }
+          unset( $message );
+        }
       }
     }
-    $estimatedTokens = $this->getPromptTokens();
-    if ( !empty( $realMax ) && $estimatedTokens > $realMax ) {
-      throw new Exception( "AI Engine: The prompt is too long! It contains about $estimatedTokens tokens (estimation). The $foundModel model only accepts a maximum of $realMax tokens. " );
-    }
-    $realMax = (int)($realMax - $estimatedTokens) - 16;
-    if ( $this->maxTokens > $realMax ) {
-      $this->maxTokens = $realMax;
-    }
+
+    //NOTE: Removed the checks related to the MaxTokens (as of November 8th)
+    // Let's see if we can remove this completely.
+
+    // Make sure the max tokens are respected.
+    // $realMax = 4096;
+    // $finetuneFamily = preg_match('/^([a-zA-Z]{0,32}):/', $this->model, $matches );
+    // $finetuneFamily = ( isset( $matches ) && count( $matches ) > 0 ) ? $matches[1] : 'N/A';
+    // $foundModel = null;
+    // $openai_models = Meow_MWAI_Engines_OpenAI::get_openai_models();
+    // foreach ( $openai_models as $currentModel ) {
+    //   if ( $currentModel['model'] === $this->model || $currentModel['family'] === $finetuneFamily ) {
+    //     $foundModel = $currentModel['name'];
+    //     $realMax = $currentModel['maxTokens'];
+    //     break;
+    //   }
+    // }
+
+    // $estimatedTokens = $this->getPromptTokens();
+    // if ( !empty( $realMax ) && $estimatedTokens > $realMax ) {
+    //   throw new Exception( "AI Engine: The prompt is too long! It contains about $estimatedTokens tokens (estimation). The $foundModel model only accepts a maximum of $realMax tokens. " );
+    // }
+    // $realMax = (int)($realMax - $estimatedTokens) - 16;
+    // if ( $this->maxTokens > $realMax ) {
+    //   $this->maxTokens = $realMax;
+    // }
   }
 
   /**
@@ -142,7 +171,7 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
       // If the model can't be found, it's because it's probably a fine-tuned model. In the past (before August 2023),
       // fine-tuned models were always based on GPT-3 (and therefore, using completion mode). From now on, they can be
       // based on GPT-3.5 or 4 (and therefore, using chat mode). We need to detect that.
-      $baseModel = Meow_MWAI_Engines_OpenAI::getBaseModelForFinetune( $model );
+      $baseModel = Meow_MWAI_Engines_OpenAI::get_finetune_base_model( $model );
       if ( preg_match( '/^gpt-3.5|^gpt-4/', $baseModel ) ) {
         $this->mode = 'chat';
       }
@@ -215,6 +244,16 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     $this->validateMessages();
   }
 
+  public function setNewImage( string $newImage ): void {
+    $this->newImage = $newImage;
+    $this->validateMessages();
+  }
+
+  public function setNewImageData( string $newImageData ): void {
+    $this->newImageData = $newImageData;
+    $this->validateMessages();
+  }
+
   public function replace( $search, $replace ) {
     $this->prompt = str_replace( $search, $replace, $this->prompt );
     $this->validateMessages();
@@ -240,11 +279,20 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     $this->validateMessages();
   }
 
-  public function getLastMessage(): ?string {
+  public function getLastMessage() {
     if ( !empty( $this->messages ) ) {
       $lastMessageIndex = count( $this->messages ) - 1;
       $lastMessage = $this->messages[$lastMessageIndex];
-      return $lastMessage['content'];
+      if ( is_array( $lastMessage['content'] ) ) {
+        foreach( $lastMessage['content'] as $message ) {
+          if ( $message['type'] === 'text' ) {
+            return $message['text'];
+          }
+        }
+      }
+      else {
+        return $lastMessage['content'];
+      }
     }
     return null;
   }
@@ -272,16 +320,26 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   private function validateMessages(): void {
     // Messages should end with either the prompt or, if exists, the newMessage.
     $message = empty( $this->newMessage ) ? $this->prompt : $this->newMessage;
+    $content = $message;
+
+    // If there is an image, we need to adapt it to Vision.
+    if ( !empty( $this->newImage ) ) {
+      $content = [
+        [ "type" => "text", "text" => $message ],
+        [ "type" => "image_url", "image_url" => [ "url" => $this->newImage ] ]
+      ];
+    }
+
     if ( empty( $this->messages ) ) {
-      $this->messages = [ [ 'role' => 'user', 'content' => $message ] ];
+      $this->messages = [ [ 'role' => 'user', 'content' => $content ] ];
     }
     else {
       $last = &$this->messages[ count( $this->messages ) - 1 ];
       if ( $last['role'] === 'user' ) {
-          $last['content'] = $message;
+          $last['content'] = $content;
       }
       else {
-        array_push( $this->messages, [ 'role' => 'user', 'content' => $message ] );
+        array_push( $this->messages, [ 'role' => 'user', 'content' => $content ] );
       }
     }
     

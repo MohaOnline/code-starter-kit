@@ -3,7 +3,7 @@
 // Params for the chatbot (front and server)
 
 define( 'MWAI_CHATBOT_FRONT_PARAMS', [ 'id', 'customId', 'aiName', 'userName', 'guestName',
-	'textSend', 'textClear', 
+	'textSend', 'textClear', 'imageUpload',
 	'textInputPlaceholder', 'textInputMaxLength', 'textCompliance', 'startSentence', 'localMemory',
 	'themeId', 'window', 'icon', 'iconText', 'iconAlt', 'iconPosition', 'fullscreen', 'copyButton'
 ] );
@@ -61,7 +61,6 @@ class Meow_MWAI_Modules_Chatbot {
 			'callback' => array( $this, 'rest_chat' ),
 			'permission_callback' => '__return_true'
 		) );
-		
 	}
 
 	public function basics_security_check( $botId, $customId, $newMessage ) {
@@ -88,6 +87,7 @@ class Meow_MWAI_Modules_Chatbot {
 		$customId = $params['customId'] ?? null;
 		$stream = $params['stream'] ?? false;
 		$newMessage = trim( $params['newMessage'] ?? '' );
+		$newImageId = $params['newImageId'] ?? null;
 
 		if ( !$this->basics_security_check( $botId, $customId, $newMessage )) {
 			return new WP_REST_Response( [ 
@@ -97,7 +97,7 @@ class Meow_MWAI_Modules_Chatbot {
 		}
 
 		try {
-			$data = $this->chat_submit( $botId, $newMessage, $params, $stream );
+			$data = $this->chat_submit( $botId, $newMessage, $newImageId, $params, $stream );
 			return new WP_REST_Response( [
 				'success' => true,
 				'reply' => $data['reply'],
@@ -114,7 +114,7 @@ class Meow_MWAI_Modules_Chatbot {
 		}
 	}
 
-	public function chat_submit( $botId, $newMessage, $params = [], $stream = false ) {
+	public function chat_submit( $botId, $newMessage, $newImageId, $params = [], $stream = false ) {
 		try {
 			$chatbot = null;
 			$customId = $params['customId'] ?? null;
@@ -167,6 +167,19 @@ class Meow_MWAI_Modules_Chatbot {
 				$params = apply_filters( 'mwai_chatbot_params', $newParams );
 				$params['env'] = empty( $params['env'] ) ? 'chatbot' : $params['env'];
 				$query->injectParams( $params );
+
+				// Support for Uploaded Image
+				if ( !empty( $newImageId ) ) {
+					$remote_upload = $this->core->get_option( 'image_remote_upload' );
+					$url = $this->core->files->get_url( $newImageId );
+					if ( $url ) {
+						$query->setNewImage( $url );
+					}
+					if ( $remote_upload === 'data' ) {
+						$data = $this->core->files->get_base64_data( $newImageId );
+						$query->setNewImageData( $data );
+					}
+				}
 
 				// Takeover
 				$takeoverAnswer = apply_filters( 'mwai_chatbot_takeover', null, $query, $params );

@@ -429,6 +429,7 @@ class Disable_Components {
 	 * @since 4.5.0
 	 */
 	public function disable_dashicons_public_assets() {
+		global $pagenow;
 		if ( ! is_user_logged_in() ) {
 
 			// This will get /path/file.php?param=val portion of the full URL
@@ -440,7 +441,7 @@ class Disable_Components {
 				wp_deregister_style( 'dashicons' );
 			} else {
 				// Exclude the login page, where dashicon assets are requred to properly style the page				
-				if ( false !== strpos( $current_request_uri, 'wp-login.php' ) ) {
+				if ( false !== strpos( $current_request_uri, 'wp-login.php' ) || 'wp-login.php' === $pagenow ) {
 					// On wp-login.php, so, do nothing
 				}
 				// Exclude password protection form 

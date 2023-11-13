@@ -689,19 +689,8 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 		if ( ! isset( $this->snippet_id ) ) {
 			return $current_location;
 		}
-		$location_terms = wp_get_post_terms(
-			$this->snippet_id,
-			'wpcode_location',
-			array(
-				'fields' => 'slugs',
-				'number' => 1, // A snippet can only have 1 type.
-			)
-		);
-		if ( ! empty( $location_terms ) ) {
-			$current_location = $location_terms[0];
-		}
 
-		return $current_location;
+		return $this->snippet->get_location();
 	}
 
 	/**
@@ -938,7 +927,17 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 				<?php esc_html_e( 'Inactive', 'insert-headers-and-footers' ); ?>
 			</span>
 		</label>
-		<?php echo $this->get_checkbox_toggle( $active, 'wpcode_active' ); ?>
+		<?php echo $this->get_checkbox_toggle( $active, 'wpcode_active' );
+		$this->update_button();
+	}
+
+	/**
+	 * The Update snippet button.
+	 *
+	 * @return void
+	 */
+	public function update_button() {
+		?>
 		<button class="wpcode-button" type="submit" value="publish" name="button"><?php echo esc_html( $this->publish_button_text ); ?></button>
 		<?php
 	}

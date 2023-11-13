@@ -181,22 +181,35 @@ abstract class SaveActions implements HooksInterface
             $value = Group::convertRepeaterFieldValues($fieldName, $value);
         }
 
-        // convert the clone sub-fields
-        // note: in the 'acf/validate_value' filter which is in use,
-        // they presented as separate fields, unlike the grouped array presentation in case of the 'acf/pre_update_value' filter
-        $cloneFieldNames = $validationInstance->getCloneFieldNames();
-        foreach ($cloneFieldNames as $cloneFieldName) {
-            $clonePrefix = $cloneFieldName . '_';
+        // the difference that this code is called in different hooks, which require different approach
+        if ($this->plugin->isWordpressComHosting()) {
+            // convert clone format
+            // also check to make sure it's array (can be empty string)
+            if (in_array($fieldName, $validationInstance->getCloneFieldNames(), true) &&
+                is_array($value)) {
+                $newValue = Group::convertCloneField($fieldName, $value);
+                $this->fieldValues = array_merge($this->fieldValues, $newValue);
 
-            if (0 !== strpos($fieldName, $clonePrefix)) {
-                continue;
+                return;
             }
+        } else {
+            // convert the clone sub-fields
+            // note: in the 'acf/validate_value' filter which is in use,
+            // they presented as separate fields, unlike the grouped array presentation in case of the 'acf/pre_update_value' filter
+            $cloneFieldNames = $validationInstance->getCloneFieldNames();
+            foreach ($cloneFieldNames as $cloneFieldName) {
+                $clonePrefix = $cloneFieldName . '_';
 
-            // pass as an array as the second argument, as we use the 'acf/validate_value' filter
-            $newValue = Group::convertCloneField($cloneFieldName, [$fieldName => $value]);
-            $this->fieldValues = array_merge($this->fieldValues, $newValue);
+                if (0 !== strpos($fieldName, $clonePrefix)) {
+                    continue;
+                }
 
-            return;
+                // pass as an array as the second argument, as we use the 'acf/validate_value' filter
+                $newValue = Group::convertCloneField($cloneFieldName, [$fieldName => $value]);
+                $this->fieldValues = array_merge($this->fieldValues, $newValue);
+
+                return;
+            }
         }
 
         $this->fieldValues[$fieldName] = $value;

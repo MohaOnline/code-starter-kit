@@ -2,9 +2,9 @@
 Contributors: xpeedstudio, Ataurr, emranio
 Tags: Elementor addons, mega menu builder, widgets for Elementor, header footer builder, Elementor widgets, elementor addon, elements, widgets, Elementor modules, page builder addons, addons
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -650,6 +650,11 @@ Visit  [wpmet](https://wpmet.com/)  to learn more about how to get the best of W
 
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.0.2 (2023-11-08)
+Fixed: Fix ajax loading icon issue for nav menu widget
+Fixed: Team widget popup compatibility with elementor loop grid widget
+Improved: Pricing table widget control type for custom ordering
+
 ElementsKit Elementor Addons Version: 3.0.1 (2023-11-05)
 Fixed: PHP notice at onepage scroll module
 

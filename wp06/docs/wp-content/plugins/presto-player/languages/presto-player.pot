@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-03T21:09:29+00:00\n"
+"POT-Creation-Date: 2023-11-12T18:58:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 
@@ -239,7 +239,7 @@ msgstr ""
 
 #: admin/blocks/blocks/audio/AudioBlockInspectorControl.js:129
 #: admin/blocks/blocks/audio/edit.js:127
-#: admin/blocks/blocks/bunny/edit.js:412
+#: admin/blocks/blocks/bunny/edit.js:413
 #: admin/blocks/blocks/hosted/edit.js:221
 #: admin/blocks/blocks/vimeo/edit.js:130
 #: admin/blocks/blocks/youtube/edit.js:124
@@ -415,21 +415,15 @@ msgstr ""
 msgid "Bunny.net Video"
 msgstr ""
 
-#: admin/blocks/blocks/bunny/APIPlaceholder.js:45
+#: admin/blocks/blocks/bunny/APIPlaceholder.js:43
 msgid "Enter your Bunny.net API key, which can be found on your Bunny CDN Account page."
 msgstr ""
 
-#: admin/blocks/blocks/bunny/APIPlaceholder.js:51
-#: admin/settings/pages/parts/integration/Mailchimp.js:93
-#: admin/settings/pages/parts/integration/MailerLite.js:94
-msgid "Get My API Key"
-msgstr ""
-
-#: admin/blocks/blocks/bunny/APIPlaceholder.js:95
+#: admin/blocks/blocks/bunny/APIPlaceholder.js:87
 msgid "Your Bunny.net API Key"
 msgstr ""
 
-#: admin/blocks/blocks/bunny/APIPlaceholder.js:101
+#: admin/blocks/blocks/bunny/APIPlaceholder.js:93
 #: admin/ui/Pagination.js:58
 msgid "Next"
 msgstr ""
@@ -478,7 +472,7 @@ msgstr ""
 msgid "Bunny.net Private Video"
 msgstr ""
 
-#: admin/blocks/blocks/bunny/edit.js:358
+#: admin/blocks/blocks/bunny/edit.js:357
 msgid "Add or select a Bunny.net video"
 msgstr ""
 
@@ -2539,6 +2533,11 @@ msgstr ""
 
 #: admin/settings/pages/parts/integration/Mailchimp.js:88
 msgid "You can create a new key on your mailchimp account page."
+msgstr ""
+
+#: admin/settings/pages/parts/integration/Mailchimp.js:93
+#: admin/settings/pages/parts/integration/MailerLite.js:94
+msgid "Get My API Key"
 msgstr ""
 
 #: admin/settings/pages/parts/integration/MailerLite.js:54

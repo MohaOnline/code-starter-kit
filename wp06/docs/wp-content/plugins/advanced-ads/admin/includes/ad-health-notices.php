@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignoreFile
 /**
  * Array with ad health messages
  *
@@ -21,6 +21,7 @@
  * attribute: get_help_link
  * (enter URL, if exists, will add a link after the message)
  */
+
 $advanced_ads_ad_health_notices = apply_filters(
 	'advanced-ads-ad-health-notices',
 	[
@@ -39,7 +40,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 		// Advanced_Ads_Checks::conflicting_plugins().
 		'conflicting_plugins'                           => [
 			'text' => sprintf(
-			// translators: %1$s is a list of plugin names; %2$s a target URL.
+				// translators: %1$s is a list of plugin names; %2$s a target URL.
 				__( 'Plugins that are known to cause (partial) problems: <strong>%1$s</strong>. <a href="%2$s" target="_blank">Learn more</a>.', 'advanced-ads' ),
 				implode( ', ', Advanced_Ads_Checks::conflicting_plugins() ),
 				'https://wpadvancedads.com/manual/known-plugin-conflicts/?utm_source=advanced-ads&utm_medium=link&utm_campaign=error-plugin-conflicts'
@@ -50,7 +51,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 		// Advanced_Ads_Checks::php_extensions().
 		'php_extensions_missing'                        => [
 			'text' => sprintf(
-			// translators: %s is a list of PHP extensions.
+					// translators: %s is a list of PHP extensions.
 				__( 'Missing PHP extensions could cause issues. Please ask your hosting provider to enable them: %s', 'advanced-ads' ),
 				implode( ', ', Advanced_Ads_Checks::php_extensions() )
 			),
@@ -87,11 +88,11 @@ $advanced_ads_ad_health_notices = apply_filters(
 		// Advanced_Ads_Checks::license_invalid().
 		'license_invalid'                               => [
 			'text'    => __( 'One or more license keys for <strong>Advanced Ads add-ons are invalid or missing</strong>.', 'advanced-ads' ) . ' '
-			             . sprintf(
-			             // translators: %s is a target URL.
-				             __( 'Please add valid license keys <a href="%s">here</a>.', 'advanced-ads' ),
-							 get_admin_url( null, 'admin.php?page=advanced-ads-settings#top#licenses' )
-			             ),
+				. sprintf(
+					// translators: %s is a target URL.
+					__( 'Please add valid license keys <a href="%s">here</a>.', 'advanced-ads' ),
+					get_admin_url( null, 'admin.php?page=advanced-ads-settings#top#licenses' )
+				),
 			'type'    => 'problem',
 			'hide'    => false,
 			'timeout' => WEEK_IN_SECONDS,
@@ -261,6 +262,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 		// Advanced_Ads_Checks::ads_txt_plugins().
 		'ads_txt_plugins_enabled'                       => [
 			'text'    => sprintf(
+				/* translators: %s removable ads.txt plugins */
 				__( 'Advanced Ads handles your ads.txt file automatically. You might be able to <strong>remove %1$s</strong>.', 'advanced-ads' ),
 				implode( ', ', Advanced_Ads_Checks::ads_txt_plugins() )
 			),
@@ -273,6 +275,7 @@ $advanced_ads_ad_health_notices = apply_filters(
 		'header_footer_plugins_enabled'                 => [
 			'text'    =>
 				__( 'Advanced Ads handles header and footer codes.', 'advanced-ads' ) . '&nbsp;' .
+				/* translators: %s removable header and footer plugins */
 				sprintf( __( 'You might be able to <strong>remove %1$s</strong>.', 'advanced-ads' ),
 					implode( ', ', Advanced_Ads_Checks::header_footer_plugins() )
 				) . '&nbsp;' .

@@ -140,7 +140,10 @@ if (! function_exists('blocksy_post_meta')) {
 						echo blocksy_simple_image(
 							apply_filters(
 								'blocksy:post-meta:author:author-avatar-url',
-								blocksy_get_avatar_url(intval($single_meta['avatar_size']) * 2, get_the_author_meta('ID'))
+								blocksy_get_avatar_url([
+									'avatar_entity' => get_the_author_meta('ID'),
+									'size' => intval($single_meta['avatar_size']) * 2
+								])
 							),
 							[
 								'tag_name' => 'a',

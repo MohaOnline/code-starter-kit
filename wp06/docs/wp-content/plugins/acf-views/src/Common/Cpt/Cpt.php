@@ -230,6 +230,14 @@ abstract class Cpt implements HooksInterface
     }
 
     // for early checks, when get_current_screen isn't available
+
+    protected function isMyRestRequest(): bool
+    {
+        $requestUrl = $_SERVER['REQUEST_URI'] ?? '';
+        return false !== strpos($requestUrl, '/wp-json/') &&
+            false !== strpos($requestUrl, '/' . static::NAME . '/');
+    }
+
     protected function isMyEditOrAddPostPage(): bool
     {
         if (!is_admin()) {
@@ -539,6 +547,25 @@ abstract class Cpt implements HooksInterface
         );
     }
 
+    // Jetpack's markdown module "very polite" and breaks json in our post_content
+    public function disableJetpackMarkdownModule(): void
+    {
+        if (!class_exists('WPCom_Markdown') ||
+            // check for future version
+            !is_callable(['WPCom_Markdown', 'get_instance'])) {
+            return;
+        }
+
+        // only for our edit screens
+        if (!$this->isMyEditOrAddPostPage() &&
+            !$this->isMyRestRequest()) {
+            return;
+        }
+
+        $markdown = \WPCom_Markdown::get_instance();
+        remove_action('init', [$markdown, 'load']);
+    }
+
     public function setHooks(bool $isAdmin): void
     {
         add_filter('wp_insert_post_data', [$this, 'avoidOverridePostContentByGutenberg']);
@@ -557,6 +584,8 @@ abstract class Cpt implements HooksInterface
         // print is later than 'admin_enqueue_scripts'
         add_action('admin_print_styles', [$this, 'removeUnusedAssetsFromEditScreen'], 99);
         add_action('current_screen', [$this, 'maybeShowErrorThatGutenbergEditorIsSuppressed']);
+        // priority '9' is earlier than Jetpack's
+        add_action('init', [$this, 'disableJetpackMarkdownModule'], 9);
 
         add_filter('views_edit-' . static::NAME, [$this, 'printPostTypeDescription',]);
         add_filter('post_row_actions', [$this, 'getRowActions',], 10, 2);

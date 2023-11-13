@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.2.36 =
+
+* Implements the SINGLEDIGIT operation.
+* Includes new predefined forms.
+* Modifies the submission process (Professional, Developer, and Platinum versions).
+
 = 1.2.35 =
 
 * Modifies the Phone control.

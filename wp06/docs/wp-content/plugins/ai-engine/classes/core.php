@@ -18,6 +18,7 @@ class Meow_MWAI_Core
 	public $is_cli = false;
 	public $site_url = null;
 	public $ai = null;
+	public $files = null;
 	private $option_name = 'mwai_options';
 	private $themes_option_name = 'mwai_themes';
 	private $chatbots_option_name = 'mwai_chatbots';
@@ -32,6 +33,8 @@ class Meow_MWAI_Core
 		$this->is_rest = MeowCommon_Helpers::is_rest();
 		$this->is_cli = defined( 'WP_CLI' );
 		$this->ai = new Meow_MWAI_Engines_Core( $this );
+		$this->files = new Meow_MWAI_Modules_Files( $this );
+
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 		add_action( 'wp_register_script', array( $this, 'register_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
@@ -404,7 +407,7 @@ class Meow_MWAI_Core
     ];
   }
 
-	public function recordAudioUsage( $model, $seconds ) {
+	public function record_audio_usage( $model, $seconds ) {
 		if ( !is_numeric( $seconds ) ) {
 			throw new Exception( 'Record usage: seconds is not a number.' );
 		}
@@ -428,7 +431,7 @@ class Meow_MWAI_Core
 		];
 	}
 
-  public function recordImagesUsage( $model, $resolution, $images ) {
+  public function record_images_usage( $model, $resolution, $images ) {
     if ( !$model || !$resolution || !$images ) {
       throw new Exception( 'Missing parameters for record_image_usage.' );
     }

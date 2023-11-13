@@ -1,5 +1,4 @@
-<?php
-// phpcs:ignoreFile
+<?php // phpcs:ignoreFile
 
 use AdvancedAds\Entities;
 use AdvancedAds\Utilities\Conditional;
@@ -197,7 +196,7 @@ class Advanced_Ads_AdSense_Admin {
 				// Hidden by default and made visible with JS.
 				$notices[] = [
 					'text'  => sprintf(
-							// Translators: %s is a URL.
+							// translators: %s is a URL.
 						__( 'Responsive AdSense ads don’t work reliably with <em>Position</em> set to left or right. Either switch the <em>Type</em> to "normal" or follow <a href="%s" target="_blank">this tutorial</a> if you want the ad to be wrapped in text.', 'advanced-ads' ),
 						'https://wpadvancedads.com/adsense-responsive-custom-sizes/?utm_source=advanced-ads&utm_medium=link&utm_campaign=adsense-custom-sizes-tutorial'
 					),
@@ -207,7 +206,7 @@ class Advanced_Ads_AdSense_Admin {
 				if ( ! class_exists( 'Advanced_Ads_In_Feed', false ) && ! class_exists( 'Advanced_Ads_Pro_Admin', false ) ) {
 					$notices[] = [
 						'text'  => sprintf(
-								// Translators: %s is a URL.
+								// translators: %s is a URL.
 							__( '<a href="%s" target="_blank">Install the free AdSense In-feed add-on</a> in order to place ads between posts.', 'advanced-ads' ),
 							wp_nonce_url(
 								self_admin_url( 'update.php?action=install-plugin&plugin=advanced-ads-adsense-in-feed' ),
@@ -248,7 +247,7 @@ class Advanced_Ads_AdSense_Admin {
 	public static function get_auto_ads_messages() {
 		return [
 			'enabled'  => sprintf(
-						  // Translators: %s is a URL.
+						  // translators: %s is a URL.
 				__( 'The AdSense verification and Auto ads code is already activated in the <a href="%s">AdSense settings</a>.', 'advanced-ads' ),
 				admin_url( 'admin.php?page=advanced-ads-settings#top#adsense' )
 			)
@@ -256,7 +255,7 @@ class Advanced_Ads_AdSense_Admin {
 			'disabled' => sprintf(
 				'%s <button id="adsense_enable_pla" type="button" class="button">%s</button>',
 				sprintf(
-						// Translators: %s is a URL.
+						// translators: %s is a URL.
 					__( 'The AdSense verification and Auto ads code should be set up in the <a href="%s">AdSense settings</a>. Click on the following button to enable it now.', 'advanced-ads' ),
 					admin_url( 'admin.php?page=advanced-ads-settings#top#adsense' )
 				),
