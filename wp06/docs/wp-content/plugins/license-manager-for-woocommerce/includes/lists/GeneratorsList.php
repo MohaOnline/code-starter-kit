@@ -52,7 +52,7 @@ class GeneratorsList extends WP_List_Table
     {
         global $wpdb;
 
-         $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM {$this->table}";
           $sql .= isset($_REQUEST['orderby']) && !empty(sanitize_sql_orderby($_REQUEST['orderby'])) ?  ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby']) : ' ORDER BY ' . sanitize_sql_orderby('id');
         $sql .= isset($_REQUEST['order']) && !empty(sanitize_sql_orderby($_REQUEST['order']))   ? ' ' . sanitize_sql_orderby($_REQUEST['order']) : sanitize_sql_orderby(' DESC');
         $sql .= " LIMIT {$perPage}";

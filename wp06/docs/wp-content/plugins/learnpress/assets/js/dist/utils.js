@@ -1,14 +1,17 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/js/utils/cookies.js":
 /*!****************************************!*\
   !*** ./assets/src/js/utils/cookies.js ***!
   \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Cookies = {
   get: (name, def, global) => {
     let ret;
@@ -59,7 +62,7 @@ const Cookies = {
     Cookies.set(newCookies);
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Cookies);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cookies);
 
 /***/ }),
 
@@ -67,10 +70,13 @@ const Cookies = {
 /*!***********************************************!*\
   !*** ./assets/src/js/utils/event-callback.js ***!
   \***********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * Manage event callbacks.
 Allow add/remove a callback function into custom event of an object.
@@ -156,7 +162,7 @@ const Event_Callback = function Event_Callback(self) {
     }
   };
 };
-/* harmony default export */ __webpack_exports__["default"] = (Event_Callback);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Event_Callback);
 
 /***/ }),
 
@@ -164,12 +170,12 @@ const Event_Callback = function Event_Callback(self) {
 /*!***************************************!*\
   !*** ./assets/src/js/utils/extend.js ***!
   \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
   window.LP = window.LP || {};
@@ -187,10 +193,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./assets/src/js/utils/fn.js ***!
   \***********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * Auto prepend `LP` prefix for jQuery fn plugin name.
  *
@@ -221,7 +230,7 @@ let exp;
     return this;
   };
 })();
-/* harmony default export */ __webpack_exports__["default"] = (exp);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (exp);
 
 /***/ }),
 
@@ -229,10 +238,13 @@ let exp;
 /*!*************************************!*\
   !*** ./assets/src/js/utils/hook.js ***!
   \*************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Hook = {
   hooks: {
     action: {},
@@ -312,7 +324,7 @@ const Hook = {
     return this;
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Hook);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Hook);
 
 /***/ }),
 
@@ -320,10 +332,13 @@ const Hook = {
 /*!**********************************************!*\
   !*** ./assets/src/js/utils/iframe-submit.js ***!
   \**********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 let iframeCounter = 1;
 const $ = window.jQuery || jQuery;
 const IframeSubmit = function (form) {
@@ -343,7 +358,7 @@ const IframeSubmit = function (form) {
   });
   iframeCounter++;
 };
-/* harmony default export */ __webpack_exports__["default"] = (IframeSubmit);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IframeSubmit);
 
 /***/ }),
 
@@ -351,10 +366,13 @@ const IframeSubmit = function (form) {
 /*!***********************************************!*\
   !*** ./assets/src/js/utils/jquery.plugins.js ***!
   \***********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const $ = window.jQuery || jQuery;
 const serializeJSON = function serializeJSON(path) {
   const isInput = $(this).is('input') || $(this).is('select') || $(this).is('textarea');
@@ -530,7 +548,7 @@ $.fn.checkLines = checkLines;
 $.fn.findNext = findNext;
 $.fn.findPrev = findPrev;
 $.fn.progress = progress;
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   serializeJSON,
   LP_Tooltip,
   hasEvent,
@@ -548,10 +566,13 @@ $.fn.progress = progress;
 /*!**********************************************!*\
   !*** ./assets/src/js/utils/local-storage.js ***!
   \**********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const _localStorage = {
   __key: 'LP',
   set(name, value) {
@@ -588,7 +609,7 @@ const _localStorage = {
     localStorage.setItem(_localStorage.__key, JSON.stringify(data || '{}'));
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (_localStorage);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_localStorage);
 
 /***/ }),
 
@@ -596,10 +617,13 @@ const _localStorage = {
 /*!********************************************!*\
   !*** ./assets/src/js/utils/message-box.js ***!
   \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const $ = window.jQuery;
 const MessageBox = {
   $block: null,
@@ -842,7 +866,7 @@ const MessageBox = {
     return $button;
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (MessageBox);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MessageBox);
 
 /***/ }),
 
@@ -850,7 +874,7 @@ const MessageBox = {
 /*!******************************************!*\
   !*** ./assets/src/js/utils/quick-tip.js ***!
   \******************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($) {
   function QuickTip(el, options) {
@@ -967,7 +991,7 @@ const MessageBox = {
 /*!**********************************************!*\
   !*** ./assets/src/js/utils/show-password.js ***!
   \**********************************************/
-/***/ (function() {
+/***/ (() => {
 
 const $ = jQuery;
 $(function () {
@@ -1013,54 +1037,57 @@ $(function () {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!**************************************!*\
   !*** ./assets/src/js/utils/index.js ***!
   \**************************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _extend__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./extend */ "./assets/src/js/utils/extend.js");
 /* harmony import */ var _fn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fn */ "./assets/src/js/utils/fn.js");
 /* harmony import */ var _quick_tip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./quick-tip */ "./assets/src/js/utils/quick-tip.js");
@@ -1606,14 +1633,15 @@ $(document).ready(function () {
   localStorage: _local_storage__WEBPACK_IMPORTED_MODULE_7__["default"],
   ..._default
 });
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   fn: _fn__WEBPACK_IMPORTED_MODULE_1__["default"],
   QuickTip: (_quick_tip__WEBPACK_IMPORTED_MODULE_2___default()),
   Cookies: _cookies__WEBPACK_IMPORTED_MODULE_6__["default"],
   localStorage: _local_storage__WEBPACK_IMPORTED_MODULE_7__["default"],
   showPass: (_show_password__WEBPACK_IMPORTED_MODULE_10___default())
 });
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=utils.js.map

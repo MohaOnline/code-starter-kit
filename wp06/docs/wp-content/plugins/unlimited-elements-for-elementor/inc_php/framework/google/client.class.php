@@ -64,7 +64,7 @@ abstract class UEGoogleAPIClient{
 
 		$params["key"] = $this->apiKey;
 
-		$query = ($method === self::METHOD_GET && $params) ? '?' . http_build_query($params) : '';
+		$query = ($method === self::METHOD_GET && $params) ? "?" . http_build_query($params) : "";
 		$body = ($method !== self::METHOD_GET && $params) ? json_encode($params) : null;
 
 		$url = $this->getBaseUrl() . $endpoint . $query;
@@ -75,8 +75,8 @@ abstract class UEGoogleAPIClient{
 		$response = UniteProviderFunctionsUC::rememberTransient($cacheKey, $cacheTime, function() use ($method, $url, $body){
 
 			$headers = array(
-				'Accept: application/json',
-				'Content-Type: application/json',
+				"Accept: application/json",
+				"Content-Type: application/json",
 			);
 
 			$curl = curl_init();
@@ -90,14 +90,19 @@ abstract class UEGoogleAPIClient{
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-			$error = curl_error($curl);
 			$response = curl_exec($curl);
 			$response = json_decode($response, true);
+
+			$error = curl_error($curl);
+			$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 			curl_close($curl);
 
 			if($error)
 				throw new Exception($error);
+
+			if ($response === null)
+				throw new Exception("Unable to parse the response (status code $code).", $code);
 
 			if(isset($response["error"])){
 				$error = $response["error"];

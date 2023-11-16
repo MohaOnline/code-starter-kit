@@ -3,8 +3,8 @@ Tags: page builder, responsive, parallax, widgets, blocks, gallery, layout, grid
 Requires at least: 4.7
 Tested up to: 6.4
 Requires PHP: 5.6.20
-Stable tag: 2.27.1
-Build time: 2023-11-09T19:59:00+00:00
+Stable tag: 2.28.0
+Build time: 2023-11-12T21:22:47+00:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/premium/
@@ -120,6 +120,11 @@ Page Builder is compatible with the vast majority of third-party plugins and wid
 SiteOrigin offers a single premium plugin that enhances and extends Page Builder, the Widgets Bundle, SiteOrigin CSS and all of our free themes. Find out more about [SiteOrigin Premium](https://siteorigin.com/downloads/premium/) and the powerful addons it offers.
 
 == Changelog ==
+
+= 2.28.0 - 12 November 2023 =
+* Column Preset Sizes: Added `Golden Ratio` for two columns.
+* Rounded column sizes to two decimal places to prevent display issues.
+* Row update to allow for custom overlays.
 
 = 2.27.1 - 09 November 2023 =
 * Renamed "Cell" to "Column" throughout the codebase for improved clarity and consistency.

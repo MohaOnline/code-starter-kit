@@ -15,10 +15,11 @@ class UCAdminNoticeBanner extends UCAdminNoticeAbstract{
 	 * get the notice identifier
 	 */
 	public function getId(){
-
-		return 'birthday-sale-23-banner3';
+		
+		return 'black_friday_23a';
 	}
-
+	
+	
 	/**
 	 * get the notice html
 	 */
@@ -26,14 +27,14 @@ class UCAdminNoticeBanner extends UCAdminNoticeAbstract{
 		
 		$linkUrl = 'https://unlimited-elements.com/pricing/';
 		$linkTarget = '_blank';
-		$imageUrl = GlobalsUC::$urlPluginImages . 'birthday_sale_banner1.png'; // 'https://placehold.co/1280x320';
+		$imageUrl = GlobalsUC::$urlPluginImages . 'banner_bf2023.png'; // 'https://placehold.co/1280x320';
 		
 		$builder = $this->createBannerBuilder();
 		$builder->dismissible();
 		$builder->theme(UCAdminNoticeBannerBuilder::THEME_DARK);
 		$builder->link($linkUrl, $linkTarget);
 		$builder->image($imageUrl);
-
+		
 		$html = $builder->build();
 
 		return $html;

@@ -1,12 +1,12 @@
-# WordPress Shortcodes Plugin — Shortcodes Ultimate
+# WP Shortcodes Plugin — Shortcodes Ultimate
 Contributors: gn_themes
 License: GPLv3
 Donate link: https://getshortcodes.com/pricing/
 Tags: posts, carousel, shortcode, toggle, columns
-Stable tag: 5.13.2
+Stable tag: 5.13.3
 Requires PHP: 5.4
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 
 
 A comprehensive collection of visual components for your site
@@ -137,11 +137,11 @@ First, visit the [Help Center](https://getshortcodes.com/support/). If you get s
 
 ## Changelog
 
-### 5.13.2
+### 5.13.3
 
-- Freemius-related security improvements
-- Tested compatibility with WordPress 6.3
-- Added compatibility with PHP 8.2
+- Tested compatibility with WordPress 6.4
+- Improved plugin stability
+- Updated Freemius SDK
 
 
 

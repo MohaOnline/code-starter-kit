@@ -82,7 +82,14 @@ class EPKB_ML_FAQs {
 				break;
 			default:
 				break;
-		}   ?>
+		}
+
+		// init FAQ schema json
+		$faq_schema_json = [
+			'@context'   => 'https://schema.org',
+			'@type'      => 'FAQPage',
+			'mainEntity' => [],
+		];  ?>
 
 		<div id="epkb-ml-faqs-<?php echo esc_html( $faqsID ); ?>" class="epkb-ml-faqs-container <?php echo esc_html( $this->kb_config['ml_faqs_custom_css_class'] ) . $faqsPreset; ?>">  <?php
 
@@ -159,8 +166,19 @@ class EPKB_ML_FAQs {
 
 						if ( $this->kb_config['ml_faqs_content_mode'] == 'excerpt' ) {
 							$post_content = $article->post_excerpt;
-						}   ?>
+						}
 
+                        // add article title and content to the FAQ schema
+						if ( $this->kb_config['faq_schema_toggle'] == 'on' ) {
+							$faq_schema_json['mainEntity'][] = array(
+								'@type' => 'Question',
+								'name' => get_the_title( $article ),
+								'acceptedAnswer' => array(
+									'@type' => 'Answer',
+									'text' => wp_strip_all_tags( $post_content ),
+								)
+							);
+						}   ?>
 						<div class="epkb-ml-faqs__item-container" id="epkb-ml-faqs-article-<?php echo $article->ID; ?>">
 							<div class="epkb-ml-faqs__item__question">
 								<div class="epkb-ml-faqs__item__question__icon epkbfa epkbfa-plus-square"></div>
@@ -177,7 +195,11 @@ class EPKB_ML_FAQs {
 						</div>  <?php
 					}   ?>
 				</div>  <?php
-			} ?>
+			}
+
+			if ( $this->kb_config['faq_schema_toggle'] == 'on' ) {    ?>
+				<script type="application/ld+json"><?php echo wp_json_encode( $faq_schema_json ); ?></script>   <?php
+			}   ?>
 		</div>  <?php
 
 		// add epkb filter back

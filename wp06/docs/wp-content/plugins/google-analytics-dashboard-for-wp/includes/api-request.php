@@ -166,7 +166,7 @@ final class ExactMetrics_API_Request {
 		$this->end    = ! empty( $args['end'] ) ? $args['end'] : '';
 
 		// We need to do this hack so that the network panel + the site_url of the main site are distinct
-		$this->site_url = is_network_admin() ? network_admin_url() : site_url();
+		$this->site_url = is_network_admin() ? network_admin_url() : home_url();
 
 		if ( exactmetrics_is_pro_version() ) {
 			$this->license = $this->network ? ExactMetrics()->license->get_network_license_key() : ExactMetrics()->license->get_site_license_key();

@@ -1,4 +1,4 @@
-//Unite Gallery, Version: 1.7.71, released 20 April 2023
+//Unite Gallery, Version: 1.7.74, released 15 November 2023
 
 //------ ug-common-libraries.js------ 
 
@@ -412,7 +412,7 @@ function UGFunctions(){
 		
 		if(document["msExitFullscreen"])
 			addEvent("MSFullscreenChange",document,func);
-		else if(document["mozCancelFullScreen"])
+		else if(document.onfullscreenchange)
 			addEvent("mozfullscreenchange",document,func);
 		else
 			addEvent("fullscreenchange",document,func);
@@ -19941,7 +19941,7 @@ var g_ugWistiaAPI = new UGWistiaAPI();
 		
 		if(!options)
 			var options = {};
-				
+		
 		var objGallery = new UniteGalleryMain();
 		objGallery.run(galleryID, options);
 		
@@ -20223,7 +20223,8 @@ function UniteGalleryMain(){
 			
 			if(isCustomOptions)
 		      g_temp.objCustomOptions = objCustomOptions;
-			 			 
+						 
+			
 		     if(g_temp.isRunFirstTime == true){
 				
 		    	 g_galleryID = galleryID;
@@ -20547,7 +20548,7 @@ function UniteGalleryMain(){
 	 * fill item by html child
 	 */
 	function fillItemByChild(objChild){
-				
+		 		
 		var isMobile = t.isMobileMode();
 		
 		 var tagname = objChild.prop("tagName").toLowerCase();
@@ -20635,7 +20636,10 @@ function UniteGalleryMain(){
 			 
 			 if(!urlImage)
 				 urlImage = urlThumb;
-			 
+			 			 
+			 if(urlThumb && urlThumb.indexOf("data:image") !== -1)
+				 urlThumb = urlImage;
+			 			 
 			 objItem.urlThumb = urlThumb;
 			 objItem.urlImage = urlImage;
 			 
@@ -20797,8 +20801,7 @@ function UniteGalleryMain(){
 			 objItem.objThumbImage.removeAttr("data-thumb", "");				 
 			 objItem.objThumbImage.removeAttr("title", "");				 
 		 }
-		 
-		 
+		 		 
 		 return(objItem);
 	}
 	
@@ -20819,6 +20822,7 @@ function UniteGalleryMain(){
 		}
 		 
 		 for(var i=0;i<arrChildren.length;i++){
+			 
 			 var objChild = jQuery(arrChildren[i]);
 			 
 			 var objItem = fillItemByChild(objChild);
@@ -21620,7 +21624,7 @@ function UniteGalleryMain(){
 			index = index.index;
 		
 		var nextIndex = index + 1;
-		
+				
 		if(forceCarousel !== true && g_numItems == 1)
 			return(null);
 		
@@ -21649,7 +21653,7 @@ function UniteGalleryMain(){
 		var prevIndex = index - 1;
 		
 		if(prevIndex < 0){
-			if(g_options.gallery_carousel == true || forceCarousel === true)
+			if(g_options.gallery_carousel == true)
 				prevIndex = g_numItems - 1;
 			else
 				return(null);

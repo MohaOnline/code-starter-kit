@@ -48,6 +48,12 @@ jQuery(document).ready(function($) {
 				}
 				return;
 			}
+			// if there is no WhatsApp option, get nonce from the URL
+			const urlParams = new URLSearchParams( jQuery(this).attr('href') );
+			if ( urlParams.has( 'cr_manual_reminder' ) ) {
+				jQuery(this).data( 'nonce', urlParams.get( 'cr_manual_reminder' ) );
+			}
+			//
 			crSendReminderEmail( this, order_id );
 		}
 	});
@@ -115,7 +121,8 @@ jQuery(document).ready(function($) {
 			jQuery(this).closest( '.cr-send-wa-cons-btn' ).addClass( 'cr-send-wa-btn-spnr' );
 			let data = {
 				'action': 'cr_manual_review_reminder_wa',
-				'order_id': orderID
+				'order_id': orderID,
+				'nonce': jQuery(this).data('nonce')
 			};
 			jQuery.post( {
 				url: ajaxurl,
@@ -151,7 +158,8 @@ jQuery(document).ready(function($) {
 		let orderID = jQuery(this).closest( '.cr-send-menu' ).data( 'orderid' );
 		let data = {
 			'action': 'cr_manual_review_reminder_conf',
-			'order_id': orderID
+			'order_id': orderID,
+			'nonce': jQuery(this).data('nonce')
 		};
 		jQuery.post( {
 			url: ajaxurl,
@@ -188,7 +196,8 @@ jQuery(document).ready(function($) {
 			jQuery(ref).closest( '#post-' + orderID + ',#order-' + orderID ).find( '.ivole-review-reminder' ).text( sending );
 			let data = {
 				'action': 'ivole_manual_review_reminder',
-				'order_id': orderID
+				'order_id': orderID,
+				'nonce': jQuery(ref).data('nonce')
 			};
 			jQuery.post(ajaxurl, data, function(response) {
 				if ( response.code === 1 ) {

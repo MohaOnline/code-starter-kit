@@ -1,16 +1,16 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/js/admin/tools/assign-user-course.js":
 /*!*********************************************************!*\
   !*** ./assets/src/js/admin/tools/assign-user-course.js ***!
   \*********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ assignUserCourse; }
+/* harmony export */   "default": () => (/* binding */ assignUserCourse)
 /* harmony export */ });
 /* harmony import */ var tom_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tom-select */ "./node_modules/tom-select/dist/js/tom-select.complete.js");
 /* harmony import */ var tom_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tom_select__WEBPACK_IMPORTED_MODULE_0__);
@@ -41,7 +41,7 @@ function assignUserCourse() {
       const params = {
         headers: {
           'Content-Type': 'application/json',
-          'X-WP-Nonce': lpGlobalSettings.nonce
+          'X-WP-Nonce': lpDataAdmin.nonce
         },
         method: 'POST',
         body: JSON.stringify(obj)
@@ -58,7 +58,7 @@ function assignUserCourse() {
     const params = {
       headers: {
         'Content-Type': 'application/json',
-        'X-WP-Nonce': lpGlobalSettings.nonce
+        'X-WP-Nonce': lpDataAdmin.nonce
       },
       method: 'POST',
       body: JSON.stringify({
@@ -113,30 +113,35 @@ function assignUserCourse() {
 /*!******************************!*\
   !*** ./assets/src/js/api.js ***!
   \******************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * List API on backend
  */
 
-if (undefined === lpGlobalSettings) {
-  throw new Error('lpGlobalSettings is undefined');
+const lplistAPI = {};
+if ('undefined' !== typeof lpDataAdmin) {
+  lplistAPI.admin = {
+    apiAdminNotice: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/admin-notices',
+    apiAdminOrderStatic: lpDataAdmin.lp_rest_url + 'lp/v1/orders/statistic',
+    apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
+    apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
+    apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+  };
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
-  admin: {
-    apiAdminNotice: lpGlobalSettings.rest + 'lp/v1/admin/tools/admin-notices',
-    apiAdminOrderStatic: lpGlobalSettings.rest + 'lp/v1/orders/statistic',
-    apiAddons: lpGlobalSettings.rest + 'lp/v1/addon/all',
-    apiAddonAction: lpGlobalSettings.rest + 'lp/v1/addon/action',
-    apiSearchCourses: lpGlobalSettings.rest + 'lp/v1/admin/tools/search-course',
-    apiAssignUserCourse: lpGlobalSettings.rest + 'lp/v1/admin/tools/assign-user-course'
-  },
-  frontend: {
-    apiWidgets: lpGlobalSettings.lp_rest_url + 'lp/v1/widgets/api'
-  }
-});
+if ('undefined' !== typeof lpData) {
+  lplistAPI.frontend = {
+    apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
 
 /***/ }),
 
@@ -144,14 +149,14 @@ if (undefined === lpGlobalSettings) {
 /*!********************************!*\
   !*** ./assets/src/js/utils.js ***!
   \********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   lpAddQueryArgs: function() { return /* binding */ lpAddQueryArgs; },
-/* harmony export */   lpFetchAPI: function() { return /* binding */ lpFetchAPI; },
-/* harmony export */   lpGetCurrentURLNoParam: function() { return /* binding */ lpGetCurrentURLNoParam; }
+/* harmony export */   lpAddQueryArgs: () => (/* binding */ lpAddQueryArgs),
+/* harmony export */   lpFetchAPI: () => (/* binding */ lpFetchAPI),
+/* harmony export */   lpGetCurrentURLNoParam: () => (/* binding */ lpGetCurrentURLNoParam)
 /* harmony export */ });
 const lpFetchAPI = (url, data = {}, functions = {}) => {
   if ('function' === typeof functions.before) {
@@ -200,7 +205,7 @@ const lpAddQueryArgs = (endpoint, args) => {
 /***/ (function(module) {
 
 /**
-* Tom Select v2.3.0
+* Tom Select v2.3.1
 * Licensed under the Apache License, Version 2.0 (the "License");
 */
 
@@ -5528,49 +5533,49 @@ var tomSelect=function(el,opts){return new TomSelect(el,opts);}
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!********************************************!*\
   !*** ./assets/src/js/admin/admin-tools.js ***!
@@ -5579,7 +5584,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tools_assign_user_course__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tools/assign-user-course */ "./assets/src/js/admin/tools/assign-user-course.js");
 
 (0,_tools_assign_user_course__WEBPACK_IMPORTED_MODULE_0__["default"])();
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=admin-tools.js.map

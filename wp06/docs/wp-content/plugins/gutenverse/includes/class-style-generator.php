@@ -97,8 +97,30 @@ class Style_Generator {
 		add_action( 'wp_head', array( $this, 'global_style_generator' ) );
 		add_action( 'wp_head', array( $this, 'template_style_generator' ) );
 		add_action( 'wp_head', array( $this, 'content_style_generator' ) );
+		add_action( 'wp_head', array( $this, 'widget_style_generator' ) );
 		add_action( 'wp_head', array( $this, 'embeed_font_generator' ) );
 	}
+
+	/**
+	 * Render CSS for Widget.
+	 */
+	public function widget_style_generator() {
+		if ( current_theme_supports( 'widgets' ) ) {
+			$widgets = get_option( 'widget_block' );
+			$style   = null;
+
+			foreach ( $widgets as $widget ) {
+				if ( isset( $widget['content'] ) ) {
+					$blocks = $this->parse_blocks( $widget['content'] );
+					$blocks = $this->flatten_blocks( $blocks );
+					$this->loop_blocks( $blocks, $style );
+				}
+			}
+
+			gutenverse_print_header_style( 'gutenverse-widget-css', $style );
+		}
+	}
+
 
 	/**
 	 * Global Style Generator.
@@ -143,8 +165,7 @@ class Style_Generator {
 			$queue[] = &$block;
 		}
 
-		$total = count( $queue );
-		while ( $total > 0 ) {
+		while ( count( $queue ) > 0 ) {
 			$block = &$queue[0];
 			array_shift( $queue );
 			$all_blocks[] = &$block;
@@ -167,13 +188,13 @@ class Style_Generator {
 	 * @return blocks.
 	 */
 	public function inject_theme_attribute_in_block_template_content( $template_content ) {
-		if ( is_gutenverse_compatible() ) {
-			// use Gutenberg or WP 5.9 & above version.
-			return _inject_theme_attribute_in_block_template_content( $template_content );
+		if ( is_gutenverse_compatible('6.4') ) {
+			// use Gutenberg or WP 6.4 & above version.
+			return traverse_and_serialize_blocks( parse_blocks( $template_content ), '_inject_theme_attribute_in_template_part_block' );
 		}
 
 		/**
-		 * Below is the native functionality of "_inject_theme_attribute_in_block_template_content".
+		 * Below is the native functionality of "traverse_and_serialize_blocks( parse_blocks( $template_content ), '_inject_theme_attribute_in_template_part_block' )t".
 		 * Just to prevent fatal error if somehow user able to install this plugin on WP below 5.9.
 		 */
 		$has_updated_content = false;

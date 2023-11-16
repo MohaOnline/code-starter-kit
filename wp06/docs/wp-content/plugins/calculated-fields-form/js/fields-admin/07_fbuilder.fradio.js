@@ -33,7 +33,7 @@
 					var str = "";
 					for (var i=0;i<this.choices.length;i++)
 					{
-						str += '<div class="'+this.layout+'"><input class="field" disabled="true" type="radio" i="'+i+'"  '+(( this.choices[i]+' - '+this.choicesVal[i]==this.choiceSelected)?"checked":"")+'/> '+cff_html_decode(this.choices[i])+'</div>';
+						str += '<div class="'+this.layout+'"><input disabled class="field disabled" type="radio" i="'+i+'"  '+(( this.choices[i]+' - '+this.choicesVal[i]==this.choiceSelected)?"checked":"")+'/> '+cff_html_decode(this.choices[i])+'</div>';
 					}
 					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><label>'+this.title+''+((this.required)?"*":"")+'</label><div class="dfield">'+str+'<span class="uh">'+this.userhelp+'</span></div><div class="clearer" /></div>';
 				},

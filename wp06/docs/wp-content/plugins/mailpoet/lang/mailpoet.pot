@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the MailPoet plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: MailPoet 4.35.1\n"
+"Project-Id-Version: MailPoet 4.36.0\n"
 "Report-Msgid-Bugs-To: http://support.mailpoet.com/\n"
 "Last-Translator: MailPoet i18n (https://www.transifex.com/organization/wysija)\n"
 "Language-Team: MailPoet i18n <https://www.transifex.com/organization/wysija>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-07T11:13:04+00:00\n"
+"POT-Creation-Date: 2023-11-14T10:53:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -8276,6 +8276,18 @@ msgstr ""
 msgid "The automation did not exist in the selected time span"
 msgstr ""
 
+#: lib/Automation/Integrations/MailPoet/Fields/NewsletterLinkFieldsFactory.php:14
+msgid "Link URL"
+msgstr ""
+
+#: lib/Automation/Integrations/MailPoet/Fields/NewsletterLinkFieldsFactory.php:21
+msgid "Created"
+msgstr ""
+
+#: lib/Automation/Integrations/MailPoet/Fields/NewsletterLinkFieldsFactory.php:28
+msgid "Link ID"
+msgstr ""
+
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberAutomationFieldsFactory.php:41
 msgid "Automations — entered"
 msgstr ""
@@ -8360,6 +8372,10 @@ msgstr ""
 
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberStatisticFieldsFactory.php:52
 msgid "Email — clicked count"
+msgstr ""
+
+#: lib/Automation/Integrations/MailPoet/Subjects/NewsletterLinkSubject.php:42
+msgid "Email link"
 msgstr ""
 
 #: lib/Automation/Integrations/MailPoet/Subjects/SegmentSubject.php:35
@@ -12728,6 +12744,7 @@ msgid "{condition} {emails} emails"
 msgstr ""
 
 #: assets/dist/js/admin.js:2
+#: assets/dist/js/commons.js:9
 msgid "clicks"
 msgstr ""
 
@@ -14484,6 +14501,22 @@ msgstr ""
 
 #: assets/dist/js/commons.js:9
 msgid "Starting an automation when a tag has been removed from a subscriber is a premium feature."
+msgstr ""
+
+#: assets/dist/js/commons.js:9
+msgid "Subscriber clicks a link in email"
+msgstr ""
+
+#: assets/dist/js/commons.js:9
+msgid "Triggers an automation when a subscriber clicks a link in an email."
+msgstr ""
+
+#: assets/dist/js/commons.js:9
+msgid "link"
+msgstr ""
+
+#: assets/dist/js/commons.js:9
+msgid "Triggering an automation by following an email link is a premium feature."
 msgstr ""
 
 #: assets/dist/js/commons.js:9

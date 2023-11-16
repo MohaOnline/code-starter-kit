@@ -473,7 +473,11 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 
 		$objOutput = new UniteCreatorOutput();
 		$objOutput->setProcessType($processType);
-
+		
+		//put show debug here
+		
+		$objOutput->checkOutputDebug($objAddon);
+		
 		$objOutput->initByAddon($objAddon);
 
 		if($isWrap == true)

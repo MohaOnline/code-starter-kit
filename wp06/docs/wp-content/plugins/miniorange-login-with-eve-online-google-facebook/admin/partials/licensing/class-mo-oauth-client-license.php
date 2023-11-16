@@ -587,7 +587,7 @@ class MO_OAuth_Client_License {
 		</div>
 						<div class="moc-licensing-notice" id="payment-method" style="height: 10%;padding-top: 10px;min-height: 400px;" onmouseenter="onMouseEnter('payment-section', '3px solid #093553')" onmouseleave="onMouseEnter('payment-section', 'none')">
 							<h2 class="mo-oauth-h2">ACCEPTED PAYMENT METHODS</h2>
-						<section class="payment-methods" style="height: 400px;" >
+						<section class="payment-methods">
 						<br>
 						<div class="row">
 							<div class="col span-1-of-3">
@@ -599,16 +599,6 @@ class MO_OAuth_Client_License {
 									</div>
 									<div>
 										If the payment is made through Credit Card/International Debit Card, the license will be created automatically once the payment is completed.
-									</div>
-								</div>
-							</div>
-							<div class="col span-1-of-3">
-								<div class="plan-box">
-									<div>
-										<img class="payment-images" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ) . '/img/paypal.png'; ?>" alt="">
-									</div>
-									<div>
-										Use the following PayPal ID <i><b>info@xecurify.com</b></i> for making the payment via PayPal.<br><br>
 									</div>
 								</div>
 							</div>
@@ -634,7 +624,7 @@ class MO_OAuth_Client_License {
 					<div class="moc-licensing-notice" style="min-height:450px;  margin-bottom: 3%;">
 						<h2 id="moc_licensing_policy" class="mo-oauth-h2">LICENSING POLICY</h2>
 						<br>
-						<p style="font-size: 1em;"><span style="color: red;">*</span>The WordPress SSO plugin licenses are subscription and the license includes 12 months of maintenance (version updates). You need to renew the license after 12 months at 50% of the current license cost.<br></p>
+						<p style="font-size: 1em;"><span style="color: red;">*</span>The WordPress SSO plugin licenses are subscription-based, and each license includes 12 months of maintenance, which covers version updates.<br></p>
 
 						<p style="font-size: 1em;"><span style="color: red;">*</span>We provide deep discounts on bulk license purchases and pre-production environment licenses. As the no. of licenses increases, the discount percentage also increases. Contact us at <i><a href="mailto:oauthsupport@xecurify.com">oauthsupport@xecurify.com</a></i> for more information.</p>
 

@@ -2,9 +2,9 @@
 Contributors: cyberlord92
 Tags: SSO, oauth 2.0, login, Single Sign-On, OpenId
 Requires at least: 3.0.1
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.4
-Stable tag: 6.24.10
+Stable tag: 6.25.0
 License: MIT/Expat
 License URI: https://docs.miniorange.com/mit-license
 
@@ -313,6 +313,11 @@ Please email us at <a href="mailto:info@xecurify.com" target="_blank">info@xecur
 7. WordPress Dashboard Login / SSO
 
 == Changelog ==
+= 6.25.0 =
+* Added WP 6.4 Compatibility
+* Added WordPress SSO with Steam
+* Licensing policy updated
+
 = 6.24.10 =
 * Improvised WordPress SSO logs
 * Readme Changes
@@ -840,6 +845,10 @@ Please email us at <a href="mailto:info@xecurify.com" target="_blank">info@xecur
 * First version with supported applications as EVE Online and Google.
 
 == Upgrade Notice ==
+= 6.25.0 =
+* Added WP 6.4 Compatibility
+* Added WordPress SSO with Steam
+* Licensing policy updated
 
 = 6.24.10 =
 * Improvised WordPress SSO logs

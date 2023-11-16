@@ -216,6 +216,7 @@ class OMAPI_Pages {
 		$promo_start  = gmdate( 'Y-m-d 10:00:00', strtotime( 'first Monday of November' ) );
 		$bf_end       = gmdate( 'Y-m-d 23:59:59', strtotime( 'first Tuesday of December' ) );
 		$is_bf_window = OMAPI_Utils::date_within( $now, $promo_start, $bf_end );
+		$year         = $now->format( 'Y' );
 
 		if ( $is_bf_window ) {
 
@@ -223,7 +224,7 @@ class OMAPI_Pages {
 				'black-friday/',
 				array(
 					'utm_medium'   => 'pluginMenu',
-					'utm_campaign' => 'BF2022',
+					'utm_campaign' => "BF{$year}",
 				)
 			);
 
@@ -237,7 +238,7 @@ class OMAPI_Pages {
 						'pricing-wp/',
 						array(
 							'utm_medium'   => 'pluginMenu',
-							'utm_campaign' => 'BF2022',
+							'utm_campaign' => "BF{$year}",
 						)
 					)
 					: OMAPI_Urls::upgrade(
@@ -245,7 +246,7 @@ class OMAPI_Pages {
 						'',
 						'',
 						array(
-							'utm_campaign' => 'BF2022',
+							'utm_campaign' => "BF{$year}",
 							'feature'      => false,
 						)
 					);
@@ -275,7 +276,7 @@ class OMAPI_Pages {
 				'pricing-wp/',
 				array(
 					'utm_medium'   => 'pluginMenu',
-					'utm_campaign' => 'BF2022',
+					'utm_campaign' => "BF{$year}",
 				)
 			);
 
@@ -285,7 +286,7 @@ class OMAPI_Pages {
 					'',
 					'',
 					array(
-						'utm_campaign' => 'BF2022',
+						'utm_campaign' => "BF{$year}",
 						'feature'      => false,
 					)
 				);
@@ -514,6 +515,7 @@ class OMAPI_Pages {
 				'siteIds'         => $this->base->get_site_ids(),
 				'wpUrl'           => trailingslashit( site_url() ),
 				'adminUrl'        => OMAPI_Urls::admin(),
+				'upgradeParams'   => OMAPI_Urls::upgrade_params( null, null ),
 				'restUrl'         => rest_url(),
 				'adminPath'       => $admin_parts['path'],
 				'apijsUrl'        => OPTINMONSTER_APIJS_URL,

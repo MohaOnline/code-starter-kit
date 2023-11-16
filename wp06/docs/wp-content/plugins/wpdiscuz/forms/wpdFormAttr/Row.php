@@ -159,7 +159,7 @@ class Row {
 
     private function changeFieldName($fieldName, $fieldData) {
         if (isset($fieldData["meta_key"])) {
-            $metaKey = trim($fieldData["meta_key"]);
+            $metaKey = sanitize_text_field(trim($fieldData["meta_key"]));
             if ($metaKey && $fieldName !== $metaKey) {
                 $newName = str_replace(['-', ' '], '_', remove_accents($metaKey));
                 $this->replaceMetaKeyInDB($fieldName, $newName, $fieldData);

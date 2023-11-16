@@ -175,15 +175,20 @@ class UniteCreatorWooIntegrate{
     	    	
     	//add html ajax add to cart
     	$addCartAttributes = "href=\"{$urlAddCart}\" data-quantity=\"1\" class=\"uc-button-addcart product_type_simple add_to_cart_button ajax_add_to_cart\" data-product_id=\"{$productID}\" data-product_sku=\"{$productSku}\" rel=\"nofollow\"";
-		
+    	
+    	$addCartAttributesButton = "onclick=\"location.href={$urlAddCart}\" data-quantity=\"1\" class=\"uc-button-addcart product_type_simple add_to_cart_button ajax_add_to_cart\" data-product_id=\"{$productID}\" data-product_sku=\"{$productSku}\" rel=\"nofollow\"";
+    	
     	if($type == self::PRODUCT_TYPE_VARIABLE){
     		
     		$urlProduct = get_permalink($productID);
     		
     		$addCartAttributes = "href=\"{$urlProduct}\" class=\"uc-button-addcart\" ";
+    		
+    		$addCartAttributesButton = "onclick=\"location.href={$urlProduct}\" data-quantity=\"1\" class=\"uc-button-addcart product_type_simple add_to_cart_button ajax_add_to_cart\" data-product_id=\"{$productID}\" data-product_sku=\"{$productSku}\" rel=\"nofollow\"";
     	}
     	
     	$arrProduct["woo_addcart_ajax_attributes"] = $addCartAttributes;
+    	$arrProduct["woo_addcart_ajax_attributes_button"] = $addCartAttributesButton;
     	
 		return($arrProduct);
 	}

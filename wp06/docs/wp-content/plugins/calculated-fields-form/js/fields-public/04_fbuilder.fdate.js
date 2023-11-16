@@ -20,6 +20,7 @@
 			dropdownRange:"-10:+10",
             invalidDates:"",
             mondayFirstDay:false,
+            alwaysVisible:false,
 			working_dates:[true,true,true,true,true,true,true],
 			minDate:"",
 			maxDate:"",
@@ -64,7 +65,11 @@
 							$('#'+me.name+'_date').valid();
 						};
 
-					$(document).off('change', '#'+me.name+'_date').on('change', '#'+me.name+'_date', function(){f();});
+					$(document).off('change', '#'+me.name+'_date').on('change', '#'+me.name+'_date', function(){
+						if( me.showDatepicker && me.alwaysVisible )
+							$('#'+me.name+'_datepicker_container').datepicker('setDate', this.value);
+						f();
+					});
 					$(document).off('change', '#'+me.name+'_hours').on('change', '#'+me.name+'_hours', function(){f();});
 					$(document).off('change', '#'+me.name+'_minutes').on('change', '#'+me.name+'_minutes', function(){f();});
 					$(document).off('change', '#'+me.name+'_ampm').on('change', '#'+me.name+'_ampm', function(){f();});
@@ -79,7 +84,7 @@
 						var e = this,
 							w = e.working_dates,
 							i = e.invalidDates,
-							n = $('#'+e.name+'_date');
+							n = ( e.alwaysVisible && e.showDatepicker ) ? $('#'+e.name+'_datepicker_container') : $('#'+e.name+'_date');
 
 						d = d || n.datepicker('getDate');
 
@@ -275,7 +280,16 @@
 						},
 						dp = $("#"+me.name+"_date"),
 						// dd = (me.defaultDate != "") ? me.defaultDate : ((me.predefined != "") ? me.predefined : new Date());
-						dd = me.currentDate ? new Date() : ((me.defaultDate != "") ? me.defaultDate : ((me.predefined != "") ? me.predefined : ''));
+						dd = me.currentDate && init ? new Date() : ((me.defaultDate != "") ? me.defaultDate : ((me.predefined != "") ? me.predefined : ''));
+
+					if( me.alwaysVisible && me.showDatepicker ) {
+						dp = $("#"+me.name+"_datepicker_container");
+						p['altField'] = $("#"+me.name+"_date");
+						p['altFormat'] = p['dateFormat'];
+						p['onSelect'] = function( dateText, inst ){
+							$("#"+me.name+"_date").change();
+						};
+					}
 
 					dp.click(function(){ $(document).click(); $(this).focus(); });
 					if(me.showDropdown) p = $.extend(p,{changeMonth: true,changeYear: true,yearRange: me.dropdownRange});
@@ -336,11 +350,16 @@
 						date_tag_class 	= 'field date'+me.dformat.replace(/[^a-z]/ig,"")+' '+me.size+((me.required && me.showDatepicker)?' required': '');
 
                     if(me.predefinedClick) attr = 'placeholder';
-                    if(me.showDatepicker) format_label.push(me.dformat);
+                    if(me.showDatepicker && ! me.alwaysVisible) format_label.push(me.dformat);
 					else{ date_tag_type = 'hidden'; disabled='disabled';}
                     if(me.showTimepicker) format_label.push('HH:mm');
 					this.predefined = this._getAttr('predefined');
-					return '<div class="fields '+cff_esc_attr(me.csslayout)+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label '+(me.showDatepicker ? 'for="'+n+'_date"' : '')+'>'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+((format_label.length) ? ' <span class="dformat">('+format_label.join(' ')+')</span>' : '')+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+cff_esc_attr(me.predefined)+'"/><input aria-label="'+cff_esc_attr(me.title)+'" id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+cff_esc_attr(me.predefined)+'" '+disabled+(me.disableKeyboardOnMobile ? ' inputmode="none"' : '')+(me.errorMssg != '' ? ' data-msg="'+cff_esc_attr(me.errorMssg)+'"' : '')+' />'+((me.showTimepicker) ? ' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm() : '')+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';
+					return '<div class="fields '+cff_esc_attr(me.csslayout)+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label '+(me.showDatepicker ? 'for="'+n+'_date"' : '')+'>'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+((format_label.length) ? ' <span class="dformat">('+format_label.join(' ')+')</span>' : '')+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+cff_esc_attr(me.predefined)+'"/>'+
+
+					'<input aria-label="'+cff_esc_attr(me.title)+'" id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+cff_esc_attr(me.predefined)+'" '+disabled+(me.disableKeyboardOnMobile ? ' inputmode="none"' : '')+(me.errorMssg != '' ? ' data-msg="'+cff_esc_attr(me.errorMssg)+'"' : '')+' />'+
+
+					(me.alwaysVisible && me.showDatepicker ? '<div id="'+n+'_datepicker_container" class="datepicker-container"></div>' : '')+
+					((me.showTimepicker) ? ' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm() : '')+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';
 				},
 			after_show:function()
 				{
@@ -353,7 +372,7 @@
 								var p = e.name.replace('_date', '').split('_'),
 									i = $.fbuilder.forms['_'+p[1]].getItem(p[0]),
 									o = me._get_regexp(),
-									d = $(e).datepicker('getDate');
+									d = $($(e).hasClass('hasDatepicker') ? e : $(e).siblings('.hasDatepicker:eq(0)')).datepicker('getDate');
 
 								if(i != null) return this.optional(e) || (i._validateDate() && (new RegExp(o.r)).test(v) && i._validateTime() && DATEOBJ(v, me.dformat).getTime() == d.getTime());
 								return true;
@@ -389,6 +408,7 @@
 							d  = re.exec(v),
 							h  = 0,
 							m  = 0,
+							s = me.showDatepicker ? (new Date()).getSeconds() : 0,
 							date;
 
 						if(d)
@@ -404,23 +424,24 @@
 							switch(o.d)
 							{
 								case 'yyyy/dd/mm':
-									date = new Date(d[2], (d[4] * 1 - 1), d[3], h, m, 0, 0);
+									date = new Date(d[2], (d[4] * 1 - 1), d[3], h, m, s, 0);
 								break;
 								case 'yyyy/mm/dd':
-									date = new Date(d[2], (d[3] * 1 - 1), d[4], h, m, 0, 0);
+									date = new Date(d[2], (d[3] * 1 - 1), d[4], h, m, s, 0);
 								break;
 								case 'dd/mm/yyyy':
-									date = new Date(d[4], (d[3] * 1 - 1), d[2], h, m, 0, 0);
+									date = new Date(d[4], (d[3] * 1 - 1), d[2], h, m, s, 0);
 								break;
 								case 'mm/dd/yyyy':
-									date = new Date(d[4], (d[2] * 1 - 1), d[3], h, m, 0, 0);
+									date = new Date(d[4], (d[2] * 1 - 1), d[3], h, m, s, 0);
 								break;
 							}
 
 							if(isFinite(date))
 							{
-								if(me.showTimepicker) return date.valueOf()/86400000;
-								else return Math.ceil(date.valueOf()/86400000);
+								// if(me.showTimepicker) return date.valueOf()/86400000;
+								// else return Math.ceil(date.valueOf()/86400000);
+								return date.valueOf()/86400000;
 							}
 							else if(
 								(

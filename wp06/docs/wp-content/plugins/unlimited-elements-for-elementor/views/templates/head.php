@@ -9,34 +9,23 @@
 
 defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
-/*
+
+$isProVersion = GlobalsUC::$isProVersion;
+
 $showFreeVersion = UniteFunctionsUC::getGetVar("showfreeversion", "", UniteFunctionsUC::SANITIZE_TEXT_FIELD);
 $showFreeVersion = UniteFunctionsUC::strToBool($showFreeVersion);
 
 if($showFreeVersion === true)
 	$isProVersion = false;
-else
-*/
 
-$isProVersion = GlobalsUC::$isProVersion;
 
 $logoImage = ($isProVersion === true)
 	? GlobalsUC::$urlPluginImages . "logo_unlimited-pro.svg"
 	: GlobalsUC::$urlPluginImages . "logo_unlimited.svg";
 
-/*
-$logoUrl = HelperUC::getViewUrl_Default("showfreeversion=true"); // to free version
-$logoTitle = "Free Version";
-
-if($isProVersion === false){
-	$logoUrl = HelperUC::getViewUrl_Default(); // to pro version
-	$logoTitle = "Pro Version";
-}
-*/
 
 $logoUrl = GlobalsUC::URL_SITE;
 $logoTitle = GlobalsUC::URL_SITE;
-
 
 ?>
 

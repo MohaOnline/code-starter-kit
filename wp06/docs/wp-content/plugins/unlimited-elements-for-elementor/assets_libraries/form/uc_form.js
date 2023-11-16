@@ -1,6 +1,6 @@
 "use strict";
 
-//version: 1.8
+//version: 1.9
 
 function UnlimitedElementsForm(){
   
@@ -157,7 +157,7 @@ function UnlimitedElementsForm(){
         
       }
       
-      var inputValue = objInpput.val();
+      var inputValue = objInpput.val();      
       
       //add parentheses if valus is less then 0
       if(inputValue < 0)
@@ -166,6 +166,9 @@ function UnlimitedElementsForm(){
       //if input is empty then count it as 0
       if(inputValue.length == 0)
       inputValue = 0;
+      
+      //make sure value is number type (usefull for separating thousand option)
+      inputValue = Number(inputValue.replace(/,/g, ''));
       
       expr = expr.replace(name, inputValue);
       expr = expr.replace('[', '');
@@ -228,7 +231,12 @@ function UnlimitedElementsForm(){
     
     //catch math operation error
     try{
+      
       result = eval(expr);
+      
+      //hide error message after successful calculation
+      objError.hide();
+      
     }
     
     catch{      
@@ -248,6 +256,31 @@ function UnlimitedElementsForm(){
   }
   
   /**
+  * get number formated in fractional number
+  */
+  function getFractionalResult(result, objCalcInput){
+    
+    var dataCharNum = objCalcInput.data("char-num");
+    
+    //replace coma woth period if needed here		
+    var dataPeriod = objCalcInput.data("dot-instead-coma");
+    
+    if(dataPeriod == true){
+      
+      //change type of the field to "text" (this makes coma change to dot)
+      objCalcInput.attr("type", "text");
+      
+      return(result.toFixed(dataCharNum));  
+      
+    } else{
+      
+      return(result.toFixed(dataCharNum))
+      
+    }		
+    
+  }
+  
+  /**
   * format result number
   */
   function formatResultNumber(result, objCalcInput){
@@ -263,13 +296,8 @@ function UnlimitedElementsForm(){
     if(dataFormat == "ceil")
     return(Math.ceil(result))
     
-    if(dataFormat == "fractional"){
-      
-      var dataCharNum = objCalcInput.data("char-num");
-      
-      return(result.toFixed(dataCharNum))
-      
-    }
+    if(dataFormat == "fractional")
+    return(getFractionalResult(result, objCalcInput));
     
   }
   
@@ -278,18 +306,23 @@ function UnlimitedElementsForm(){
   */
   function getValueWithSeparatedThousands(val, objCalcInput){
     
-    var inputType = objCalcInput.attr("type");
-    
-    if(inputType != "text")
-    return(val);
+    //input can be "text" or "number" type (some old version of Text Field widget has calculation mode)
     
     var dataSeparateThousands = objCalcInput.data("separate-thousands");
     
+    //if no such attribute exit function
     if(!dataSeparateThousands)
     return(val)
     
+    //if it set to false exit too
     if(dataSeparateThousands == false)
     return(val);
+    
+    var inputType = objCalcInput.attr("type");
+    
+    //if type is not "text" then make it "text"
+    if(inputType != "text")
+    objCalcInput.attr("type", "text");
     
     val = val.toString().split(".");
     
@@ -422,7 +455,7 @@ function UnlimitedElementsForm(){
       var objInpput = getParentInput(names[i]);      
       
       g_parents.push(parentIdAttribute);
-
+      
       g_parents = removeDuplicatesFromArray(g_parents);
       
       objInpput.attr(parentAttrName, g_parents);      
@@ -478,13 +511,16 @@ function UnlimitedElementsForm(){
     }
     
     if(!yValue){
-
+      
       var errorText = 'Unlimited Elements Form Error: no x-value found.';
       var consoleErrorText = 'Unlimited Elements Form Error: no x-value found.';
       
       showCustomError(objError, errorText, consoleErrorText);
       
     }
+    
+    //hide error object in case of successful calculation
+    objError.hide();
     
     var closestValue = null;
     var closestDistance = Infinity;
@@ -662,11 +698,22 @@ function UnlimitedElementsForm(){
   /**
   * set visibility in editor
   */
-  function setVisibilityInEditor(objFieldWidget, classError){    
+  function setVisibilityInEditor(objFieldWidget, classError, classHidden){    
     
     var hiddenHtml = "<div class="+classError+">Unlimited Field is hidden due to Visibility Condition Options. <br> This message shows only in editor.</div>";
-    
-    objFieldWidget.html(hiddenHtml);
+    var objError = objFieldWidget.find("."+classError);
+        
+    if(objFieldWidget.hasClass(classHidden) == true){
+      
+      if(!objError || !objError.length)
+      objFieldWidget.prepend(hiddenHtml);
+      
+    }else{
+      
+      if(objError && objError.length)
+      objError.remove();
+      
+    }
     
   }
   
@@ -703,17 +750,34 @@ function UnlimitedElementsForm(){
         
         //check if field is hidden due to condition
         // if(objInpput.is(':visible') == false){
-          
+        
         //   var errorText = 'Unlimited Elements Form Error: Field is invisible on the page, but contains in formula: '+name+'.';
         //   var consoleErrorText = `Field is invisible on the page, but contains in formula: ${name}`;
-          
+        
         //   showCustomError(objError, errorText, consoleErrorText);
-          
+        
         // }
         
       });
       
     });    
+    
+  }
+  
+  /**
+  * recalculate parent inputs
+  */
+  function recalculateParentInputs(objParentCalkInputs){
+    
+    if(objParentCalkInputs != undefined){
+      
+      objParentCalkInputs.forEach(function(parent, index){
+        
+        onInputChange(parent);          
+        
+      });
+      
+    }
     
   }
   
@@ -771,17 +835,23 @@ function UnlimitedElementsForm(){
       
     }
     
-    if(eval(totalVisibilityCondition) == true)
-    showField(objFieldWidget, classHidden);
+    var isInEditor = objField.data("editor");
     
-    if(eval(totalVisibilityCondition) == false){
+    if(eval(totalVisibilityCondition) == true){
       
-      var isInEditor = objField.data("editor");
-      
+      showField(objFieldWidget, classHidden);
+
       if(isInEditor == "yes")
-      setVisibilityInEditor(objFieldWidget, classError);
-      else
+      setVisibilityInEditor(objFieldWidget, classError, classHidden);
+
+    }
+    
+    if(eval(totalVisibilityCondition) == false){      
+      
       hideField(objFieldWidget, classHidden);
+
+      if(isInEditor == "yes")
+      setVisibilityInEditor(objFieldWidget, classError, classHidden);
       
     }
     
@@ -817,9 +887,24 @@ function UnlimitedElementsForm(){
       //set result on custom shange event
       objCalcInput.on('input_calc', function(){
         
-        var objInput = jQuery(this); //triggered input
+        var objInput = jQuery(this); //triggered input        
         
         setResult(objInput, objError);
+        
+        var objParentCalkInputs = getParentCalcInput(objInput); //parent calc input with formula attr
+        
+        if(objParentCalkInputs != undefined){
+          
+          objParentCalkInputs.forEach(function(parent, index){
+            
+            var objParentError = parent.find(ueNumberErrorSelector);
+            
+            setResult(parent, objParentError);         
+            
+          });
+          
+        }
+        
         
       });
       
@@ -834,15 +919,20 @@ function UnlimitedElementsForm(){
       var objInput = jQuery(this); //triggered input
       var objParentCalkInputs = getParentCalcInput(objInput); //parent calc input with formula attr
       
-      if(objParentCalkInputs != undefined){
-        
-        objParentCalkInputs.forEach(function(parent, index){
-          
-          onInputChange(parent);          
-          
-        });
-        
-      }     
+      recalculateParentInputs(objParentCalkInputs);   
+      
+    });
+    
+    objAllInputFields.each(function(){
+      
+      var objInput = jQuery(this); //triggered input
+      var objParentCalkInputs = getParentCalcInput(objInput); //parent calc input with formula attr
+      var dataCalcMode = objInput.data("calc-mode");
+      
+      if(dataCalcMode === false)
+      return(true);
+      
+      recalculateParentInputs(objParentCalkInputs);
       
     });
     
@@ -876,9 +966,9 @@ var g_ucUnlimitedForms = new UnlimitedElementsForm();
 g_ucUnlimitedForms.init();
 
 jQuery( document ).on( 'elementor/popup/show', (event, id, objPopup) => {
-	
-	var g_ucUnlimitedForms = new UnlimitedElementsForm();
-	
-	g_ucUnlimitedForms.init();
-	
+  
+  var g_ucUnlimitedForms = new UnlimitedElementsForm();
+  
+  g_ucUnlimitedForms.init();
+  
 });	

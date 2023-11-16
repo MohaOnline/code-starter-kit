@@ -100,6 +100,8 @@ add_action('wp_footer','newsup_footer_text_color');
 if ( ! function_exists( 'newsup_admin_scripts' ) ) :
 function newsup_admin_scripts() {
     
+    wp_enqueue_script( 'newsup-admin-script', get_template_directory_uri() . '/inc/ansar/customizer-admin/js/newsup-admin-script.js', array( 'jquery' ), '', true );
+    
     wp_localize_script( 'newsup-admin-script', 'newsup_ajax_object',
         array( 'ajax_url' => admin_url( 'admin-ajax.php' ) )
     );

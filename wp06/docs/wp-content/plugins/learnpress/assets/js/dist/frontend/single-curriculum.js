@@ -1,16 +1,16 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/apps/js/frontend/material.js":
 /*!*************************************************!*\
   !*** ./assets/src/apps/js/frontend/material.js ***!
   \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ lpMaterialsLoad; }
+/* harmony export */   "default": () => (/* binding */ lpMaterialsLoad)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
@@ -31,13 +31,13 @@ function lpMaterialsLoad(is_curriculum = false) {
     getResponse(elementSkeleton);
   };
   const getResponse = async (ele, page = 1) => {
-    const elCurriculum = document.querySelector('.learnpress-course-curriculum');
-    if (!elCurriculum) {
-      return;
-    }
-    const itemId = elCurriculum.dataset.id;
     let itemID = 0;
     if (is_curriculum) {
+      const elCurriculum = document.querySelector('.learnpress-course-curriculum');
+      if (!elCurriculum) {
+        return;
+      }
+      const itemId = elCurriculum.dataset.id;
       itemID = itemId || 0;
     } else {
       itemID = lpGlobalSettings.post_id;
@@ -91,9 +91,8 @@ function lpMaterialsLoad(is_curriculum = false) {
   document.addEventListener('click', function (e) {
     const target = e.target;
     if (target.classList.contains('lp-loadmore-material')) {
-      const elementSkeleton = document.querySelector('.lp-material-skeleton'),
-        loadMoreBtn = elementSkeleton.querySelector('.lp-loadmore-material');
-      const page = ~~target.getAttribute('page');
+      const elementSkeleton = document.querySelector('.lp-material-skeleton');
+      const page = parseInt(target.getAttribute('page'));
       target.classList.add('loading');
       getResponse(elementSkeleton, page);
       // target.classList.remove( 'loading' );
@@ -107,10 +106,13 @@ function lpMaterialsLoad(is_curriculum = false) {
 /*!**********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/show-lp-overlay-complete-item.js ***!
   \**********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _utils_lp_modal_overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/lp-modal-overlay */ "./assets/src/apps/js/utils/lp-modal-overlay.js");
 
 const lpModalOverlayCompleteItem = {
@@ -151,7 +153,7 @@ const lpModalOverlayCompleteItem = {
     }
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (lpModalOverlayCompleteItem);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lpModalOverlayCompleteItem);
 
 /***/ }),
 
@@ -159,12 +161,12 @@ const lpModalOverlayCompleteItem = {
 /*!*****************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/comment.js ***!
   \*****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   commentForm: function() { return /* binding */ commentForm; }
+/* harmony export */   commentForm: () => (/* binding */ commentForm)
 /* harmony export */ });
 /**
  * Toogle form Comment for Lesson.
@@ -219,7 +221,7 @@ const commentForm = () => {
 /*!********************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/compatible.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 /**
  * Compatible with Page Builder.
@@ -287,13 +289,13 @@ LP.Hook.addAction('lp-question-compatible-builder', () => {
 /*!************************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/items-progress.js ***!
   \************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getResponse: function() { return /* binding */ getResponse; },
-/* harmony export */   itemsProgress: function() { return /* binding */ itemsProgress; }
+/* harmony export */   getResponse: () => (/* binding */ getResponse),
+/* harmony export */   itemsProgress: () => (/* binding */ itemsProgress)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
@@ -350,12 +352,12 @@ const getResponse = async ele => {
 /*!******************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/progress.js ***!
   \******************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   progressBar: function() { return /* binding */ progressBar; }
+/* harmony export */   progressBar: () => (/* binding */ progressBar)
 /* harmony export */ });
 const $ = jQuery;
 const progressBar = () => {
@@ -376,12 +378,12 @@ const progressBar = () => {
 /*!****************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/search.js ***!
   \****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   searchCourseContent: function() { return /* binding */ searchCourseContent; }
+/* harmony export */   searchCourseContent: () => (/* binding */ searchCourseContent)
 /* harmony export */ });
 const searchCourseContent = () => {
   const popup = document.querySelector('#popup-course');
@@ -458,12 +460,12 @@ const searchCourseContent = () => {
 /*!*****************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/sidebar.js ***!
   \*****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Sidebar: function() { return /* binding */ Sidebar; }
+/* harmony export */   Sidebar: () => (/* binding */ Sidebar)
 /* harmony export */ });
 const $ = jQuery;
 const {
@@ -536,10 +538,13 @@ const Sidebar = () => {
 /*!****************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/index.js ***!
   \****************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -579,7 +584,7 @@ class SingleCurriculums extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null);
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = (SingleCurriculums);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleCurriculums);
 document.addEventListener('DOMContentLoaded', () => {
   LP.Hook.doAction('lp-compatible-builder');
   (0,_components_search__WEBPACK_IMPORTED_MODULE_2__.searchCourseContent)();
@@ -599,10 +604,13 @@ document.addEventListener('DOMContentLoaded', () => {
 /*!***********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/scrolltoitem.js ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _utils_lp_modal_overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/lp-modal-overlay */ "./assets/src/apps/js/utils/lp-modal-overlay.js");
 
 const $ = jQuery;
@@ -641,7 +649,7 @@ const scrollToItemCurrent = {
     this.scrollToItemViewing();
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (scrollToItemCurrent);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scrollToItemCurrent);
 
 /***/ }),
 
@@ -649,22 +657,20 @@ const scrollToItemCurrent = {
 /*!*******************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/skeleton.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ courseCurriculumSkeleton; }
+/* harmony export */   "default": () => (/* binding */ courseCurriculumSkeleton)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _scrolltoitem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scrolltoitem */ "./assets/src/apps/js/frontend/single-curriculum/scrolltoitem.js");
-/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/search */ "./assets/src/apps/js/frontend/single-curriculum/components/search.js");
+/* harmony import */ var _scrolltoitem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scrolltoitem */ "./assets/src/apps/js/frontend/single-curriculum/scrolltoitem.js");
+/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/search */ "./assets/src/apps/js/frontend/single-curriculum/components/search.js");
 // Rest API load content in Tab Curriculum - Nhamdv.
 
-
+//import apiFetch from '@wordpress/api-fetch';
 
 
 function courseCurriculumSkeleton(courseID = '') {
@@ -683,14 +689,25 @@ function courseCurriculumSkeleton(courseID = '') {
     const sectionID = ele.dataset.section;
     try {
       const page = 1;
-      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-        path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)('lp/v1/lazy-load/course-curriculum', {
-          courseId: courseID || lpGlobalSettings.post_id || '',
-          page,
-          sectionID: sectionID || ''
-        }),
-        method: 'GET'
+      let url = lpData.lp_rest_url + 'lp/v1/lazy-load/course-curriculum/';
+      url = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)(url, {
+        courseId: courseID || lpGlobalSettings.post_id || '',
+        page,
+        sectionID: sectionID || ''
       });
+      let paramsFetch = {};
+      if (0 !== parseInt(lpData.user_id)) {
+        paramsFetch = {
+          headers: {
+            'X-WP-Nonce': lpData.nonce
+          }
+        };
+      }
+      let response = await fetch(url, {
+        method: 'GET',
+        ...paramsFetch
+      });
+      response = await response.json();
       const {
         data,
         status,
@@ -735,7 +752,7 @@ function courseCurriculumSkeleton(courseID = '') {
       ele.insertAdjacentHTML('beforeend', `<div class="lp-ajax-message error" style="display:block">${error.message || 'Error: Query lp/v1/lazy-load/course-curriculum'}</div>`);
     }
     skeleton && skeleton.remove();
-    (0,_components_search__WEBPACK_IMPORTED_MODULE_3__.searchCourseContent)();
+    (0,_components_search__WEBPACK_IMPORTED_MODULE_2__.searchCourseContent)();
   };
   const parseContentItems = async ({
     ele,
@@ -785,16 +802,27 @@ function courseCurriculumSkeleton(courseID = '') {
       }
     }
     ele.insertAdjacentHTML('beforeend', doc.body.innerHTML);
-    _scrolltoitem__WEBPACK_IMPORTED_MODULE_2__["default"].init();
+    _scrolltoitem__WEBPACK_IMPORTED_MODULE_1__["default"].init();
   };
   const getResponsiveItem = async (returnData, paged, sectionID, itemID) => {
-    const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)('lp/v1/lazy-load/course-curriculum-items', {
-        sectionId: sectionID || '',
-        page: paged
-      }),
-      method: 'GET'
+    let url = lpData.lp_rest_url + 'lp/v1/lazy-load/course-curriculum-items/';
+    url = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)(url, {
+      sectionId: sectionID || '',
+      page: paged
     });
+    let paramsFetch = {};
+    if (0 !== parseInt(lpData.user_id)) {
+      paramsFetch = {
+        headers: {
+          'X-WP-Nonce': lpData.nonce
+        }
+      };
+    }
+    let response = await fetch(url, {
+      method: 'GET',
+      ...paramsFetch
+    });
+    response = await response.json();
     const {
       data,
       status,
@@ -823,15 +851,26 @@ function courseCurriculumSkeleton(courseID = '') {
     };
   };
   const getResponsive = async (returnData, page, sectionID) => {
-    const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)('lp/v1/lazy-load/course-curriculum', {
-        courseId: courseID || lpGlobalSettings.post_id || '',
-        page,
-        sectionID: sectionID || '',
-        loadMore: true
-      }),
-      method: 'GET'
+    let url = lpData.lp_rest_url + 'lp/v1/lazy-load/course-curriculum/';
+    url = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_0__.addQueryArgs)(url, {
+      courseId: courseID || lpGlobalSettings.post_id || '',
+      page,
+      sectionID: sectionID || '',
+      loadMore: true
     });
+    let paramsFetch = {};
+    if (0 !== parseInt(lpData.user_id)) {
+      paramsFetch = {
+        headers: {
+          'X-WP-Nonce': lpData.nonce
+        }
+      };
+    }
+    let response = await fetch(url, {
+      method: 'GET',
+      ...paramsFetch
+    });
+    response = await response.json();
     const {
       data,
       status,
@@ -887,7 +926,7 @@ function courseCurriculumSkeleton(courseID = '') {
           sectionContent.insertAdjacentHTML('beforeend', `<div class="lp-ajax-message error" style="display:block">${e.message || 'Error: Query lp/v1/lazy-load/course-curriculum'}</div>`);
         }
         sectionBtn.classList.remove('loading');
-        (0,_components_search__WEBPACK_IMPORTED_MODULE_3__.searchCourseContent)();
+        (0,_components_search__WEBPACK_IMPORTED_MODULE_2__.searchCourseContent)();
       }
     });
 
@@ -921,7 +960,7 @@ function courseCurriculumSkeleton(courseID = '') {
             sections.insertAdjacentHTML('beforeend', `<div class="lp-ajax-message error" style="display:block">${e.message || 'Error: Query lp/v1/lazy-load/course-curriculum'}</div>`);
           }
           moreSection.classList.remove('loading');
-          (0,_components_search__WEBPACK_IMPORTED_MODULE_3__.searchCourseContent)();
+          (0,_components_search__WEBPACK_IMPORTED_MODULE_2__.searchCourseContent)();
         }
       }
     });
@@ -945,10 +984,13 @@ function courseCurriculumSkeleton(courseID = '') {
 /*!******************************************************!*\
   !*** ./assets/src/apps/js/utils/lp-modal-overlay.js ***!
   \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const $ = jQuery;
 let elLPOverlay = null;
 const lpModalOverlay = {
@@ -1001,7 +1043,7 @@ const lpModalOverlay = {
     this.elTitle.html(content);
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (lpModalOverlay);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lpModalOverlay);
 
 /***/ }),
 
@@ -1009,7 +1051,7 @@ const lpModalOverlay = {
 /*!************************!*\
   !*** external "React" ***!
   \************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["React"];
@@ -1020,7 +1062,7 @@ module.exports = window["React"];
 /*!**********************************!*\
   !*** external ["wp","apiFetch"] ***!
   \**********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["apiFetch"];
@@ -1031,7 +1073,7 @@ module.exports = window["wp"]["apiFetch"];
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
   \*********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["element"];
@@ -1042,7 +1084,7 @@ module.exports = window["wp"]["element"];
 /*!*****************************!*\
   !*** external ["wp","url"] ***!
   \*****************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["url"];
@@ -1077,56 +1119,57 @@ module.exports = window["wp"]["url"];
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!**********************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum.js ***!
   \**********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   init: function() { return /* binding */ init; }
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   init: () => (/* binding */ init)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -1139,7 +1182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_single_curriculum_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_single_curriculum_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
 const init = () => {
   wp.element.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_curriculum_index__WEBPACK_IMPORTED_MODULE_1__["default"], null), document.getElementById('learn-press-course-curriculum'));
 };
@@ -1158,7 +1201,8 @@ const detectedElCurriculum = setInterval(function () {
     clearInterval(detectedElCurriculum);
   }
 }, 1);
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=single-curriculum.js.map

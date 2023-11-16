@@ -1,4 +1,4 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -6,9 +6,12 @@
 /*!**************************************************************************!*\
   !*** ./assets/src/apps/js/admin/pages/addons/search-lp-addons-themes.js ***!
   \**************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 (function ($) {
   let timer = null,
     $wraps = null,
@@ -55,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
   });
 })(jQuery);
 const searchThemesAddons = () => {};
-/* harmony default export */ __webpack_exports__["default"] = (searchThemesAddons);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchThemesAddons);
 
 /***/ })
 
@@ -86,21 +89,38 @@ const searchThemesAddons = () => {};
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
+(() => {
 /*!*********************************************************!*\
   !*** ./assets/src/apps/js/admin/pages/themes-addons.js ***!
   \*********************************************************/
@@ -110,7 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', function (event) {
   (0,_addons_search_lp_addons_themes__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=themes-addons.js.map

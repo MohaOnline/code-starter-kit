@@ -10,6 +10,6 @@ export { default as ThreatsBlocked } from './threats-blocked';
 export { default as DataList } from './data-list';
 export * from './data-list';
 export { default as LogsTable } from './logs-table';
-export { AsideHeaderFill } from './header-aside';
 export { default as TopBlockedIPs } from './top-blocked-ips';
 export { default as LogsTablePagination } from './logs-table-pagination';
+export * from './slot-fill';

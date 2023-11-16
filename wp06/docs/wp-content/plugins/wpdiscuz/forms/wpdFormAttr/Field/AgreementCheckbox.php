@@ -105,16 +105,16 @@ class AgreementCheckbox extends Field {
 
     public function sanitizeFieldData($data) {
         $cleanData = [];
-        $cleanData["type"] = $data["type"];
+        $cleanData["type"] = sanitize_text_field($data["type"]);
         if (isset($data["name"])) {
-            $name = trim(strip_tags($data["name"]));
+            $name = sanitize_text_field(trim(strip_tags($data["name"])));
             $cleanData["name"] = $name ? $name : $this->fieldDefaultData["name"];
         }
         if (isset($data["desc"])) {
-            $cleanData["desc"] = trim($data["desc"]);
+            $cleanData["desc"] = sanitize_text_field(trim($data["desc"]));
         }
         if (isset($data["label"])) {
-            $cleanData["label"] = trim($data["label"]);
+            $cleanData["label"] = wp_kses_post(trim($data["label"]));
         }
         if (isset($data["required"])) {
             $cleanData["required"] = intval($data["required"]);

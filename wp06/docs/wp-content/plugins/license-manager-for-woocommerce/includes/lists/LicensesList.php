@@ -41,6 +41,11 @@ class LicensesList extends WP_List_Table
     /**
      * @var string
      */
+    protected $dateTimeFormat;
+
+    /**
+     * @var string
+     */
     protected $timeFormat;
 
     /**
@@ -67,6 +72,7 @@ class LicensesList extends WP_List_Table
         $this->dateFormat = get_option('date_format');
         $this->timeFormat = get_option('time_format');
         $this->gmtOffset  = get_option('gmt_offset');
+        $this->dateTimeFormat = lmfwc_expiration_format();
     }
 
     /**
@@ -644,17 +650,15 @@ class LicensesList extends WP_List_Table
 
         if ($timestampNow > $timestampExpiresAt) {
             return sprintf(
-                '<span class="lmfwc-date lmfwc-status expired" title="%s">%s, %s</span><br>',
+                '<span class="lmfwc-date lmfwc-status expired" title="%s">%s</span><br>',
                 __('Expired'),
-                $date->format($this->dateFormat),
-                $date->format($this->timeFormat)
+                wp_date($this->dateTimeFormat, strtotime($item['expires_at']))
             );
         }
 
         return sprintf(
-            '<span class="lmfwc-date lmfwc-status">%s, %s</span>',
-            $date->format($this->dateFormat),
-            $date->format($this->timeFormat)
+            '<span class="lmfwc-date lmfwc-status">%s</span>',
+            wp_date($this->dateTimeFormat, strtotime($item['expires_at']))
         );
     }
 
@@ -789,7 +793,6 @@ class LicensesList extends WP_List_Table
     private function processBulkActions()
     {
         $action = $this->current_action();
-
         switch ($action) {
             case 'activate':
                 $this->toggleLicenseKeyStatus(LicenseStatus::ACTIVE);

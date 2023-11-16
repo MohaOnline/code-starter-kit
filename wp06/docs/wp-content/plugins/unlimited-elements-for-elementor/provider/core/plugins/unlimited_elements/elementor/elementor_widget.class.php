@@ -2291,7 +2291,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
 		}
 		
 		$debugTypeOptions["current_post_data"] = __( 'Current Post Data', 'unlimited-elements-for-elementor' );
-		
+		$debugTypeOptions["settings_values"] = __( 'Show Settings Values', 'unlimited-elements-for-elementor' );
 		
 		$hasDebugType = (count($debugTypeOptions) > 1);
 		
@@ -3798,7 +3798,6 @@ class UniteCreatorElementorWidget extends Widget_Base {
 	    	
 	    	$arrValues = $this->getSettingsValuesUC($arrAllSettings);
 	    	
-	    	
 	        $widgetID = $this->get_id();
 	    	
 	        $addonTitle = $objAddon->getTitle();
@@ -3869,7 +3868,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
 	    		$objAddon->setArrItems($arrItems);
 	   		
 	        $output = new UniteCreatorOutput();
-				        
+			    
 	        if(!empty($widgetID))
 	        	$output->setSystemOutputID($widgetID);
 	        
@@ -3886,7 +3885,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
 	        	
 	        	$debugDataType = UniteFunctionsUC::getVal($arrValues, "widget_debug_data_type");
 	        	
-	        	$output->showDebugData(true, $debugDataType);
+	        	$output->showDebugData(true, $debugDataType, $arrValues);
 	        }
 	        
 	        $output->initByAddon($objAddon);
@@ -3964,7 +3963,6 @@ class UniteCreatorElementorWidget extends Widget_Base {
     		echo "no memory to render ".$this->isNoMemory_addonName." widget. <br> Please increase memory_limit in php.ini";	
     		return(false);
     	}
-    	
     	
     	if($this->isConsolidated == false){
     		

@@ -1,14 +1,17 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/apps/js/admin/editor/actions/question.js":
 /*!*************************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/actions/question.js ***!
   \*************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Question = {
   changeQuestionType(context, payload) {
     const draftQuestion = undefined !== payload.question ? payload.question : '';
@@ -99,7 +102,7 @@ const Question = {
     }
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Question);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Question);
 
 /***/ }),
 
@@ -107,7 +110,7 @@ const Question = {
 /*!***********************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/fill-in-blanks.js ***!
   \***********************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($) {
   window.FIB = {
@@ -180,10 +183,13 @@ const Question = {
 /*!*************************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/getters/question.js ***!
   \*************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Question = {
   id: function (state) {
     return state.id;
@@ -240,7 +246,7 @@ const Question = {
     return state.i18n;
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Question);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Question);
 
 /***/ }),
 
@@ -248,12 +254,12 @@ const Question = {
 /*!*************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/http.js ***!
   \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ HTTP; }
+/* harmony export */   "default": () => (/* binding */ HTTP)
 /* harmony export */ });
 function HTTP(options) {
   const $ = window.jQuery || jQuery;
@@ -312,10 +318,13 @@ function HTTP(options) {
 /*!***************************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/mutations/question.js ***!
   \***************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Question = {
   UPDATE_STATUS: function (state, status) {
     state.status = status;
@@ -351,7 +360,7 @@ const Question = {
     state.countCurrentRequest--;
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Question);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Question);
 
 /***/ }),
 
@@ -359,10 +368,13 @@ const Question = {
 /*!***********************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/store/question.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _getters_question__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../getters/question */ "./assets/src/apps/js/admin/editor/getters/question.js");
 /* harmony import */ var _mutations_question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mutations/question */ "./assets/src/apps/js/admin/editor/mutations/question.js");
 /* harmony import */ var _actions_question__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/question */ "./assets/src/apps/js/admin/editor/actions/question.js");
@@ -383,7 +395,7 @@ const Question = function Question(data) {
     actions: _actions_question__WEBPACK_IMPORTED_MODULE_2__["default"]
   };
 };
-/* harmony default export */ __webpack_exports__["default"] = (Question);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Question);
 
 /***/ })
 
@@ -415,49 +427,49 @@ const Question = function Question(data) {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!*****************************************************!*\
   !*** ./assets/src/apps/js/admin/editor/question.js ***!
@@ -494,7 +506,8 @@ $(document).ready(function () {
     }
   }, 100);
 });
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=question.js.map

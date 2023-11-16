@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.15.0 - 2023-11-15
+* Improved connection flow and onboarding for new/existing users.
+* Fixed filtering bug on Playbooks page.
+* Improved process for those intending to upgrade.
+* Various npm package updates used for generating our JavaScript code.
+
 ### 2.14.1 - 2023-10-12
 
 * Updates to the OptinMonster submenu.

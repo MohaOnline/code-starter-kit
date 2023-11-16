@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator,calculated,quote calculator,forms,form editor,advanced forms,payment calculator,payment,recurring payment,quote,fields,calculated field,price calculator,email,form design,paypal,equation editor,formula,equation,quote calculator,post,posts,plugin,widget,admin,sidebar,images,image,page,shortcode,products form,woocommerce,addons,layout,session,post,cookie,get,webhook,Dropbox,pdf,language
 Requires at least: 3.0.5
 Tested up to: 6.4
-Stable tag: 1.2.36
+Stable tag: 1.2.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -999,6 +999,12 @@ A: Please, follow the steps below:
 
 == Changelog ==
 
+= 1.2.37 =
+
+* Includes some modifications in the forms builder to improve the user experience by selecting, duplicating, or deleting fields from the form.
+* Includes a new option in the Date control to make the calendar always visible.
+* Fixes some inaccuracies in the date/time operations.
+
 = 1.2.36 =
 
 * Implements the SINGLEDIGIT operation.
@@ -1040,11 +1046,3 @@ A: Please, follow the steps below:
 * Prevents that variables included with the CP_CALCULATED_FIELDS_VAR shortcode overwrite global and other context variables (Thanks to NGÔ THIÊN AN (ancorn_ from VNPT-VCI)).
 * Modifies the CFFCHART operation to allow the use of ChartJS 4.X.X API versions (Developer and Platinum versions of the plugin).
 * Modifies the WebHook add-on (Developer and Platinum versions of the plugin).
-
-= 1.2.28 =
-
-* Loads the default values after completing the form rendering.
-* Fixes an issue in Date fields when only the time component is enabled.
-* Modifies the CDATE operation to display the result in the correct format when its parameter value is zero.
-* Modifies the TIMETODECIMAL operation to accept the time in 12 hours format (with am/pm).
-* Includes the Bcc attribute in the "Email copy to the user" section to receive an exact copy of the confirmation email sent to the user (Professional, Developer, and Platinum plugin versions).

@@ -5,7 +5,7 @@ Donate link: https://bowo.io/asenha-sp-rdm
 Tags: enhancements, tweaks, optimizations, tools  
 Requires at least: 4.6  
 Tested up to: 6.4.1  
-Stable tag: 6.0.7  
+Stable tag: 6.0.8.1  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,10 @@ https://www.youtube.com/watch?v=qdbl-Ao_1Xc
 Here's a review of ASE Pro at v6.0.6 by Albert Tan.
 
 https://www.youtube.com/watch?v=wZjGCcmJ3xw
+
+Here's a review at v6.0.7 by Michal Magneter in Polish.
+
+https://www.youtube.com/watch?v=Nonc05qvRD0
 
 Here's a review at v5.7.1 by Buxbaum Barna in Hungarian.
 
@@ -277,11 +281,24 @@ Hoping that this is useful in reducing the number of plugins we install the firs
 
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **52 _patch_ releases** (e.g. 4.9.1). 
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **59 _point_ releases** (e.g. 1.1.0 ) and **54 _patch_ releases** (e.g. 4.9.1). 
 
 Each **_point release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_patch release_** usually contain one or more bugfix or improvements to existing modules/features.
 
 [**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web) now. Lifetime Deal (LTD) available.
+
+### 6.0.8.2 (2023.11.13) - ASE Pro
+
+* **[IMPROVED][PRO] Admin Interface >> Admin Columns Manager**: Fix issues with Rank Math SEO admin columns. Ensure they are properly manageable with ASE while retaining bulk-editability, and prevent duplicate values from being shown. Props to Benjamin P. for reporting the issue with detail and screenshots.
+
+### 6.0.8.1 (2023.11.13) - ASE Free and Pro
+
+* **[IMPROVED][FREE][PRO] Content Management >> Media Categories**: frontend CSS previously (also) loaded for public visitors will only be shown to logged-in users when they work with the media library in page builders.
+
+* **[IMPROVED][FREE][PRO] Content Management >> External Permalinks**: completely remove jQuery dependency so it no longer loads on the frontend. Previously the frontend JS was improved to no longer use jQuery, but the dependency was still there. Props to David M. for reporting the issue as he was working on his site using Bricks builder and wanted to optimize page load time.
+
+* **[IMPROVED][PRO] Admin Interface >> Admin Columns Manager**: Further improvement to the handling of custom columns from plugins, prompted by report from Paul R. of an issue with columns from WooCommerce Product Retailers plugin.
+
 
 ### 6.0.8 (2023.11.12) - ASE Pro
 
@@ -442,7 +459,6 @@ Each **_point release_** usually corresponds with the addition of one new module
 * **[ADDED] Security >> Email Address Obfuscator**. Obfuscate email address to prevent spam bots from harvesting them, but make it readable like a regular email address for human visitors. Props to [@nassukesso](https://github.com/nassukesso) for [suggesting this feature](https://wordpress.org/support/topic/email-address-obfuscating/).
 
 * **[FIXED] In some scenarios, ASE settings page only shows the category tabs while not showing any of the actual modules settings**. Props to John B. for reporting this and facilitating troubleshooting. He also kindly provided licenses to premium plugins on my test site, that will help with ASE development and maintenance in the future. If you have spare licenses for [~~Elementor Pro~~](https://elementor.com/pro/), [~~Spectra Pro~~](https://wpspectra.com/pro/), [~~Bricks~~](https://bricksbuilder.io/), [~~Cwicly~~](https://cwicly.com/) and/or [~~JetEngine~~](https://crocoblock.com/plugins/jetengine/) that you'd like to donate to my test site, please [get in touch](https://bowo.io).
-
 
 ### 5.4.1 (2023.07.31)
 
@@ -852,7 +868,6 @@ Each **_point release_** usually corresponds with the addition of one new module
 ### 1.3.0 (2022.10.29)
 
 * **[ADDED] Admin Interface >> Hide Admin Bar**: Hide it on the front end for all or some user roles.
-
 
 ### 1.2.0 (2022.10.28)
 

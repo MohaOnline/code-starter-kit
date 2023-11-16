@@ -1,4 +1,4 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -6,24 +6,25 @@
 /*!********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/instructors/instructor-list.js ***!
   \********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ InstructorList; }
+/* harmony export */   "default": () => (/* binding */ InstructorList)
 /* harmony export */ });
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/utils */ "./assets/src/apps/js/utils/utils.js");
 
 let query = {};
-if (lpSkeletonParam) {
-  lpSkeletonParam = JSON.parse(lpSkeletonParam);
+let lpUrlParam = [];
+if ('undefined' !== typeof lpSkeletonParam) {
+  lpUrlParam = lpSkeletonParam;
 }
 function InstructorList() {
   // Call API get instructors without wait element ready
   let htmlListItemInstructor = '';
   let htmlPagination = '';
   getInstructors({
-    ...lpSkeletonParam,
+    ...lpUrlParam,
     paged: 1
   }, true, function (res) {
     htmlListItemInstructor = res.data.content;
@@ -92,6 +93,9 @@ const pagination = () => {
   document.addEventListener('click', function (event) {
     const target = event.target;
     const elListInstructors = target.closest('.lp-list-instructors');
+    if (!elListInstructors) {
+      return;
+    }
     const elUlListInstructors = elListInstructors.querySelector('.ul-list-instructors');
     const pagination = target.closest('.learn-press-pagination');
     if (!pagination || !elListInstructors || !elUlListInstructors) {
@@ -118,7 +122,7 @@ const pagination = () => {
     query = {
       ...query,
       paged,
-      ...lpSkeletonParam
+      ...lpUrlParam
     };
     getInstructors(query, false, function (res) {
       elUlListInstructors.innerHTML = res.data.content;
@@ -136,13 +140,13 @@ const pagination = () => {
 /*!*******************************************!*\
   !*** ./assets/src/apps/js/utils/utils.js ***!
   \*******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   lpAddQueryArgs: function() { return /* binding */ lpAddQueryArgs; },
-/* harmony export */   lpFetchAPI: function() { return /* binding */ lpFetchAPI; },
-/* harmony export */   lpGetCurrentURLNoParam: function() { return /* binding */ lpGetCurrentURLNoParam; }
+/* harmony export */   lpAddQueryArgs: () => (/* binding */ lpAddQueryArgs),
+/* harmony export */   lpFetchAPI: () => (/* binding */ lpFetchAPI),
+/* harmony export */   lpGetCurrentURLNoParam: () => (/* binding */ lpGetCurrentURLNoParam)
 /* harmony export */ });
 const lpFetchAPI = (url, data = {}, functions = {}) => {
   if ('function' === typeof functions.before) {
@@ -212,37 +216,37 @@ const lpAddQueryArgs = (endpoint, args) => {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
+(() => {
 /*!****************************************************!*\
   !*** ./assets/src/apps/js/frontend/instructors.js ***!
   \****************************************************/
@@ -250,7 +254,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _instructors_instructor_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./instructors/instructor-list */ "./assets/src/apps/js/frontend/instructors/instructor-list.js");
 
 (0,_instructors_instructor_list__WEBPACK_IMPORTED_MODULE_0__["default"])();
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=instructors.js.map

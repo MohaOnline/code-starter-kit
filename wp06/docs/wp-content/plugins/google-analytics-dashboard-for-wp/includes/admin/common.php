@@ -314,6 +314,7 @@ function exactmetrics_admin_scripts()
 				'network'             => is_network_admin(),
 				'translations'        => wp_get_jed_locale_data(exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp'),
 				'assets'              => plugins_url($version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE),
+				'pro_assets'          => plugins_url($version_path . '/assets', EXACTMETRICS_PLUGIN_FILE),
 				'shareasale_id'       => exactmetrics_get_shareasale_id(),
 				'shareasale_url'      => exactmetrics_get_shareasale_url(exactmetrics_get_shareasale_id(), ''),
 				'addons_url'          => is_multisite() ? network_admin_url('admin.php?page=exactmetrics_network#/addons') : admin_url('admin.php?page=exactmetrics_settings#/addons'),

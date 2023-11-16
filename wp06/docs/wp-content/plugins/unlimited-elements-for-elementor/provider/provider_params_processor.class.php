@@ -762,6 +762,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			
 			//dynamic popup
 			
+			$arrCustomFields = null;
+			
 			if(!empty($this->dynamicPopupParams)){
 				
 				foreach($this->dynamicPopupParams as $paramDynamic){
@@ -784,9 +786,28 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 						
 						$linkType = UniteFunctionsUC::getVal($paramDynamic, "dynamic_popup_linktype");
 						
+						//empty link type
+						
 						if($linkType == "empty")
 							$dynamicPopupLink = "javascript:void(0)";
 						
+						//meta link type
+						if($linkType == "meta"){
+							
+							$dynamicPopupLink = "javascript:void(0)";
+							
+							$linkMetaField = UniteFunctionsUC::getVal($paramDynamic, "dynamic_popup_link_metafield");
+						 	
+							$arrCustomFields = UniteFunctionsWPUC::getPostCustomFields($postID);
+							
+							$dynamicPopupLink = UniteFunctionsUC::getVal($arrCustomFields, "cf_".$linkMetaField);
+							
+							if(is_string($dynamicPopupLink) == false)
+								$dynamicPopupLink = "javascript:void(0)";
+							else
+								$dynamicPopupLink = filter_var($dynamicPopupLink, FILTER_SANITIZE_URL);
+						}
+												
 						$dynamicLinkAddClass = "";
 						$dynamicLinkAttr = "href='{$dynamicPopupLink}'";
 					}
@@ -794,7 +815,6 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 					$arrData["dynamic_popup_link_class{$dynamicSuffix}"] = $dynamicLinkAddClass;
 					$arrData["dynamic_popup_link_attributes{$dynamicSuffix}"] = $dynamicLinkAttr;
 				}
-				
 				
 			}
 			
@@ -885,7 +905,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 				switch($addition){
 					case GlobalsProviderUC::POST_ADDITION_CUSTOMFIELDS:
 						
-						$arrCustomFields = UniteFunctionsWPUC::getPostCustomFields($postID);
+						if(empty($arrCustomFields))
+							$arrCustomFields = UniteFunctionsWPUC::getPostCustomFields($postID);
 						
 						$arrData = array_merge($arrData, $arrCustomFields);
 					break;
@@ -2141,8 +2162,16 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		}
 				
 		
-		if(!empty($arrPostInIDs))
+		//exclude posts not in from posts in
+		$arrPostsNotInTest = UniteFunctionsUC::getVal($args, "post__not_in");
+		
+		if(!empty($arrPostInIDs) && !empty($arrPostsNotInTest) && is_array($arrPostsNotInTest))
+			$arrPostInIDs = array_diff($arrPostInIDs, $arrPostsNotInTest);
+		
+		
+		if(!empty($arrPostInIDs)){
 			$args["post__in"] = $arrPostInIDs;
+		}
 		
 		
 		//------ get woo  related products ------ 
@@ -2235,6 +2264,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			}
 		}
 		
+		
+		
 		//merge current tax query
 		if(!empty($currentTaxQuery))
 			$args = UniteFunctionsWPUC::mergeArgsTaxQuery($args, $currentTaxQuery);
@@ -2260,9 +2291,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			$objWoo = UniteCreatorWooIntegrate::getInstance();
 			
 			$arrVariationTerms = $objWoo->getVariationTermsFromQueryQrgs($args);
-			
-			
 		}
+
 		
 		
 		HelperUC::addDebug("Posts Query", $args);

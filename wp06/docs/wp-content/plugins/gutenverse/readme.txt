@@ -1,9 +1,9 @@
 === Gutenverse - Gutenberg Blocks - Page Builder for Site Editor ===
 Contributors: Jegstudio
 Tags: gutenberg, blocks, gutenberg blocks, page builder, form, gutenberg form, gutenberg block, full-site-editing, popup, popup builder, gallery, block, templates, layouts, sections, columns, patterns, animation, fse
-Tested up to: 6.3
-Requires PHP: 7.0
-Stable tag: 1.8.8
+Tested up to: 6.4
+Requires PHP: 7.4
+Stable tag: 1.8.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -185,6 +185,14 @@ Gutenverse should be compatible with other Gutenberg plugins, some popular plugi
 Spectra - WordPress Gutenberg Blocks, Otter – Gutenberg Blocks – Page Builder for Gutenberg Editor & FSE, Essential Blocks for Gutenberg, Stackable – Page Builder Gutenberg Blocks, Gutenberg Blocks by Kadence Blocks – Page Builder Features
 
 == Changelog ==
+
+= 1.8.9 - 2023-11-15 =
+##### Bug Fixes
+* **Widgets**, Allow gutenverse to run on Widgets.
+* **Form Date Input**, Fix error on mobile.
+* **Form Multiselect Input**, Fix error cannot send value multiselect.
+* **Form Multiselect Input**, Fix order option in frontend.
+* **Form Multiselect Input**, Add selected option to input area.
 
 = 1.8.8 - 2023-08-15 =
 ##### Bug Fixes

@@ -11,6 +11,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
 		public static $inDev = false;
 		
+		public static $debugAjaxErrors = false;
+		
 		const DEBUG_ALLOW_SHOWVARS = false;		//keep it false
 
 		const SHOW_TRACE = false;
@@ -185,11 +187,15 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 * init globals
 		 */
 		public static function initGlobals(){
-
+			
 			//set dev mode
 			if(defined("UC_DEVMODE") && UC_DEVMODE === true)
 				self::$inDev = true;
-
+			
+			if(defined("UC_DEBUG_AJAX_ERRORS") && UC_DEBUG_AJAX_ERRORS === true)
+				self::$debugAjaxErrors = true;
+			
+			
 			UniteProviderFunctionsUC::initGlobalsBase();
 
 			self::$current_protocol = "http://";
@@ -216,7 +222,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
 			if(file_exists(self::$pathPro))
 				self::$isProVersion = true;
-
+			
 			if(defined("UC_TEST_FREE_VERSION"))
 				self::$isProVersion = false;
 
@@ -255,7 +261,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			}
 
 			if(self::DEBUG_ALLOW_SHOWVARS == true){
-
+			
 				$action = UniteFunctionsUC::getGetVar("maxaction", "", UniteFunctionsUC::SANITIZE_KEY);
 				if($action == "showvars")
 					GlobalsUC::printVars();

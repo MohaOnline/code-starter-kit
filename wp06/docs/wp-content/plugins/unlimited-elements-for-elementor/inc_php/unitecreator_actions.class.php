@@ -9,8 +9,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
 class UniteCreatorActions{
 
-	const DEBUG_ERRORS = false;
-
+	
 	/**
 	 * on update layout response, function for override
 	 */
@@ -62,13 +61,11 @@ class UniteCreatorActions{
 	 * on ajax action
 	 */
 	public function onAjaxAction(){
-
-		if(self::DEBUG_ERRORS == true)
-			ini_set("display_errors", "on");
-
-		if(GlobalsUC::$inDev == true){
+				
+		if(GlobalsUC::$inDev == true || GlobalsUC::$debugAjaxErrors == true){
 			ini_set("display_errors", "on");
 			error_reporting(E_ALL);
+			
 		}
 
 
@@ -331,8 +328,8 @@ class UniteCreatorActions{
 
 					HelperUC::ajaxResponseData($response);
 				break;
-				case "get_addon_output_data":  //from elementor/gutenberg
-
+				case "get_addon_output_data":  //from elementor editor bg/gutenberg
+					
 					$response = $addons->getAddonOutputData($data);
 
 					HelperUC::ajaxResponseData($response);

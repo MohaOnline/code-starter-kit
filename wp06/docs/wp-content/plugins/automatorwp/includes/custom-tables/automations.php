@@ -525,6 +525,7 @@ function automatorwp_automations_default_data( $default_data = array() ) {
     $default_data['times']          = 0;
     $default_data['status']         = 'inactive';
     $default_data['date']           = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+    $default_data['title']          = '';
 
     return $default_data;
 }

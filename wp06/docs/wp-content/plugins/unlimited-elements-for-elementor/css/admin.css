@@ -1345,6 +1345,56 @@ color:#8D8D8D;
 	margin: auto;
 }
 
+
+._________________LINK_FIELD____________{}
+
+.unite-setting-link {
+	padding-right: 32px !important;
+}
+
+.unite-setting-link-field {
+	display: inline-flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	position: relative;
+}
+
+.unite-setting-link-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	background: transparent;
+	border: none;
+	border-left: 1px solid lightgray;
+	border-radius: 0;
+	padding: 0 6px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.unite-setting-link-toggle > .dashicons {
+	width: 16px;
+	height: auto;
+	font-size: 16px;
+	line-height: 1em;
+	color: #656565;
+	transition: color 0.3s ease-in-out;
+}
+
+.unite-setting-link-toggle:hover > .dashicons {
+	color: #000000;
+}
+
+.unite-setting-link-fields.unite-setting-link-fields { /* increase specificity */
+	display: none;
+}
+
+
 #---------------REPEATER-FIELD---------------- {}
 
 .unite-settings-repeater .unite-repeater-emptytext{
@@ -1602,6 +1652,11 @@ table.unite_table_settings_wide .setting_onecell_text {
 
 /* top tabs */
 
+.unite-settings-sidebar .unite-setting-row{
+
+	margin-bottom:30px;
+
+}
 
 .unite-settings-accordion-saps-tabs {
 	clear: both;
@@ -1705,6 +1760,10 @@ table.unite_table_settings_wide .setting_onecell_text {
 
 .unite-settings-sidebar .unite-settings-static-text{
 	padding-top:5px;
+}
+
+.unite-settings-static-text__heading{
+	font-weight:bold;
 }
 
 .unite-settings-sidebar .unite-postbox .unite-postbox-inside{

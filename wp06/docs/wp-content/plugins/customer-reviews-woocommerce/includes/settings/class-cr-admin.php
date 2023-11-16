@@ -9,6 +9,7 @@ if ( ! class_exists( 'CR_Admin' ) ) :
 	class CR_Admin {
 
 		private $milestones;
+		public $ver;
 
 		public function __construct() {
 			$this->ver = Ivole::CR_VERSION;

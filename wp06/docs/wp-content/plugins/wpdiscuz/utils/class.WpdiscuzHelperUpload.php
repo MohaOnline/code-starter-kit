@@ -559,8 +559,8 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         $bool = false;
         if ($currentUser && $currentUser->ID) {
             $userRoles = $currentUser->roles;
+            $allowedRoles = apply_filters("wpdiscuz_mu_allowed_roles", $this->getDefaultRoles());
             foreach ($userRoles as $role) {
-                $allowedRoles = apply_filters("wpdiscuz_mu_allowed_roles", $this->getDefaultRoles());
                 if (in_array($role, $allowedRoles)) {
                     $bool = true;
                     break;

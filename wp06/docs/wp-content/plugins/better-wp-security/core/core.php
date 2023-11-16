@@ -802,7 +802,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		 * @return bool
 		 */
 		public static function has_patchstack(): bool {
-			if ( ! self::is_licensed() ) {
+			if ( ! self::is_licensed() || 'free' === self::get_install_type() ) {
 				return false;
 			}
 

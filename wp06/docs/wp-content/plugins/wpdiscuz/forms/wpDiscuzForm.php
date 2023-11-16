@@ -167,7 +167,7 @@ class wpDiscuzForm implements wpdFormConst {
 		}
 		$this->canManageOptions();
 		$this->form->saveFormData( $postId );
-		$css = Sanitizer::sanitize( INPUT_POST, self::WPDISCUZ_META_FORMS_CSS, FILTER_DEFAULT );
+		$css = sanitize_textarea_field(Sanitizer::sanitize( INPUT_POST, self::WPDISCUZ_META_FORMS_CSS, FILTER_DEFAULT ));
 		update_post_meta( $postId, self::WPDISCUZ_META_FORMS_CSS, $css );
 	}
 
@@ -351,7 +351,7 @@ class wpDiscuzForm implements wpdFormConst {
 		global $post;
 		$cssMeta = get_post_meta( $post->ID, self::WPDISCUZ_META_FORMS_CSS, true );
 		$css     = $cssMeta ? $cssMeta : "";
-		echo "<textarea style='width:100%;' name='" . esc_attr( self::WPDISCUZ_META_FORMS_CSS ) . "' class='" . esc_attr( self::WPDISCUZ_META_FORMS_CSS ) . "'>" . $css . "</textarea>";
+		echo "<textarea style='width:100%;' name='" . esc_attr( self::WPDISCUZ_META_FORMS_CSS ) . "' class='" . esc_attr( self::WPDISCUZ_META_FORMS_CSS ) . "'>" . wp_kses_post($css) . "</textarea>";
 	}
 
 	public function transferJSData( $data ) {

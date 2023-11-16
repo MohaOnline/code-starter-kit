@@ -126,12 +126,14 @@ if ( ! class_exists( 'CR_Settings_Admin_Menu' ) ):
 
 		public function include_scripts() {
 			if ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] === 'cr-reviews-settings' ) {
+				wp_enqueue_script( 'jquery-ui-accordion' );
 				wp_register_script( 'cr-admin-settings', plugins_url('js/admin-settings.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), Ivole::CR_VERSION, false );
 				wp_localize_script(
 					'cr-admin-settings',
 					'cr_settings_object',
 					array(
 						'checking' => __( 'Checking...', 'customer-reviews-woocommerce' ),
+						'checking_license' => __( 'Checking license...', 'customer-reviews-woocommerce' ),
 						'yes' => __( 'Yes', 'customer-reviews-woocommerce' ),
 						'no' => __( 'No', 'customer-reviews-woocommerce' ),
 						'max_cus_atts' => CR_Forms_Settings::get_max_cus_atts(),
@@ -142,7 +144,17 @@ if ( ! class_exists( 'CR_Settings_Admin_Menu' ) ):
 						'no_attributes' => CR_Forms_Settings::$no_atts,
 						'no_ratings' => CR_Forms_Settings_Rating::$no_atts,
 						'wa_prepare_test' => __( 'Starting a test...', 'customer-reviews-woocommerce' ),
-						'wa_ready_test' => __( 'A test review form is ready. Click on the button to send a WhatsApp message.', 'customer-reviews-woocommerce' )
+						'wa_ready_test' => __( 'A test review form is ready. Click on the button to send a WhatsApp message.', 'customer-reviews-woocommerce' ),
+						'footer_status' => sprintf( __( 'While editing the footer text please make sure to keep the unsubscribe link markup: %s', 'customer-reviews-woocommerce' ), '<a href="{{unsubscribeLink}}" style="color:#555555; text-decoration: underline; line-height: 12px; font-size: 10px;">unsubscribe</a>.' ),
+						'info_from' => 'Review reminders are sent by CusRev from \'feedback@cusrev.com\'. This indicates to customers that review process is independent and trustworthy. \'From Address\' can be modified with the <a href="' . admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ) . '">Pro license</a> for CusRev.',
+						'info_from_name' => 'Since review invitations are sent via CusRev, \'From Name\' will be based on \'Shop Name\' (see above) with a reference to CusRev. This field can be modified with the <a href="' . admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ) . '">Pro license</a> for CusRev.',
+						'info_footer' => 'To comply with the international laws about sending emails (CAN-SPAM act, CASL laws, etc), CusRev will automatically add a footer with address of the sender and an opt-out link. The footer can be modified with the <a href="' . admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ) . '">Pro license</a> for CusRev.',
+						'info_rating_bar' => 'CusRev creates review forms that support two visual styles of rating bars: smiley/frowny faces and stars. The default style is smiley/frowny faces. This option can be modified with the <a href="' . admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ) . '">Pro license</a> for CusRev.',
+						'info_geolocation' => 'CusRev supports automatic determination of geolocation and gives reviewers an option to indicate where they are from. For example, "England, United Kingdom". This feature requires the <a href="' . admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ) . '">Pro license</a> for CusRev.',
+						'dns_copied' => __( 'DNS record copied', 'customer-reviews-woocommerce' ),
+						'dns_enabled' => __( 'Enabled', 'customer-reviews-woocommerce' ),
+						'dns_disabled' => __( 'Disabled', 'customer-reviews-woocommerce' ),
+						'dns_pending' => __( 'Pending', 'customer-reviews-woocommerce' )
 					)
 				);
 				wp_enqueue_script( 'cr-admin-settings' );
@@ -325,10 +337,11 @@ if ( ! class_exists( 'CR_Settings_Admin_Menu' ) ):
 			}
 			?>
 			<tr valign="top">
-				<th scope="row" class="titledesc">
-					<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?>
+				<th scope="row" class="titledesc cr-send-test-th">
+					<div style="position:relative;">
+						<?php echo esc_html( $value['title'] ); ?>
 						<?php echo $tooltip_html; ?>
-					</label>
+					</div>
 				</th>
 				<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 					<input

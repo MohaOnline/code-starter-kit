@@ -527,7 +527,8 @@
 
       try {
 
-        if (class_exists('\ZipArchive') || class_exists('ZipArchive')) {
+        // TODO: Remove false && or replace with option in settings to switch
+        if (false && (class_exists('\ZipArchive') || class_exists('ZipArchive'))) {
 
           // Initialize Zip
           if (!isset($this->_zip)) {

@@ -1,14 +1,3 @@
-jQuery(window).on("error", function (event) {
-	var error = event.originalEvent;
-	var details = error.message + ' (' + error.filename + ':' + error.lineno + ':' + error.colno + ')';
-
-	if (error.error) {
-		details = error.error.stack;
-	}
-
-	alert('JavaScript Error:\n\n' + details);
-});
-
 (function (wp) {
 	var wbe = wp.blockEditor;
 	var wc = wp.components;
@@ -26,6 +15,7 @@ jQuery(window).on("error", function (event) {
 		var attributes = props.attributes;
 
 		var settingsId = "elementor-widget-" + blockProps.id;
+		var settingsErrorId = settingsId + "-error";
 
 		var settingsLoaded = settingsLoadedState[0];
 		var setSettingsLoaded = settingsLoadedState[1];
@@ -40,6 +30,8 @@ jQuery(window).on("error", function (event) {
 		var ucHelper = ucHelperState[0];
 
 		var loadSettingsContent = function () {
+			g_ucAdmin.setErrorMessageID(settingsErrorId);
+
 			return g_ucAdmin.ajaxRequest("get_addon_settings_html", {
 				id: attributes._id,
 				config: attributes.data ? JSON.parse(attributes.data) : null,
@@ -51,6 +43,20 @@ jQuery(window).on("error", function (event) {
 		};
 
 		var loadWidgetContent = function () {
+			if (!widgetContent) {
+				for (var index in g_gutenbergParsedBlocks) {
+					var block = g_gutenbergParsedBlocks[index];
+
+					if (block.name === props.name) {
+						setWidgetContent(block.html);
+
+						delete g_gutenbergParsedBlocks[index];
+
+						return;
+					}
+				}
+			}
+
 			return g_ucAdmin.ajaxRequest("get_addon_output_data", {
 				id: attributes._id,
 				settings: attributes.data ? JSON.parse(attributes.data) : null,
@@ -88,11 +94,18 @@ jQuery(window).on("error", function (event) {
 		}, [attributes.data]);
 
 		we.useEffect(function () {
-			if (settingsContent) {
-				ucSettings.init(jQuery("#" + settingsId));
-				ucSettings.setEventOnChange(saveSettings);
-				ucSettings.setEventOnSelectorsChange(saveSettings);
-			}
+			if (!settingsContent)
+				return;
+
+			var $root = jQuery("#" + settingsId);
+
+			// check if the block is still selected
+			if (!$root.length)
+				return;
+
+			ucSettings.init($root);
+			ucSettings.setEventOnChange(saveSettings);
+			ucSettings.setEventOnSelectorsChange(saveSettings);
 		}, [settingsContent]);
 
 		var settingsElement = el(
@@ -101,19 +114,22 @@ jQuery(window).on("error", function (event) {
 					"div", { className: "block-editor-block-card__content" }, settingsContent
 						? el("div", { id: settingsId, dangerouslySetInnerHTML: { __html: settingsContent } })
 						: el(wc.Spinner),
+					el("div", { className: "uc-gi-settings-error", id: settingsErrorId }),
 				),
 			),
 		);
 
-		var widgetElement = el(wc.Disabled, { dangerouslySetInnerHTML: { __html: widgetContent } });
+		var widgetElement = widgetContent
+			? el(wc.Disabled, { dangerouslySetInnerHTML: { __html: widgetContent } })
+			: el("div", { className: "uc-gi-widget-placeholder" }, el(wc.Spinner));
 
 		return el("div", blockProps, settingsElement, widgetElement);
 	};
 
-	for (var index in g_gutenbergBlocks) {
-		var block = g_gutenbergBlocks[index];
+	for (var name in g_gutenbergBlocks) {
+		var block = g_gutenbergBlocks[name];
 		var args = jQuery.extend(block, { edit: edit });
 
-		wp.blocks.registerBlockType(block.name, args);
+		wp.blocks.registerBlockType(name, args);
 	}
 })(wp);

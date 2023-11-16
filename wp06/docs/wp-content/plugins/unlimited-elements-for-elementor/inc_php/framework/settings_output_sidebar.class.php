@@ -208,7 +208,7 @@ class UniteSettingsOutputSidebarUC extends UniteCreatorSettingsOutput{
 		 * @param unknown_type $setting
 		 */
 		protected function drawTextRow($setting){
-		    		    
+		   	
 		    //set cell style
 		    $cellStyle = "";
 		    if(isset($setting["padding"]))
@@ -227,12 +227,19 @@ class UniteSettingsOutputSidebarUC extends UniteCreatorSettingsOutput{
              if(!empty($classHidden))
 				$classAdd .= $classHidden;
 			
+			$isHeading = UniteFunctionsUC::getVal($setting, "is_heading");
+			$isHeading = UniteFunctionsUC::strToBool($isHeading);
+			
+			if($isHeading == true){
+				$classAdd .= " unite-settings-static-text__heading";
+			}
+			
              if(!empty($classAdd))
-                 $classAdd = " ".$classAdd;
-                
+             		
+                 	$classAdd = " ".$classAdd;
                     $settingID = $setting["id"];
-		                    ?>
-		                    
+                    
+			?>
     			  	<li id="<?php echo esc_attr($settingID)?>_row" <?php echo UniteProviderFunctionsUC::escAddParam($rowClass)?>>
     					
     					<?php if(!empty($label)):?>

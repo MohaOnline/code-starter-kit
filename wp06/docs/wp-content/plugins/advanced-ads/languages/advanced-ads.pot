@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Advanced Ads 1.47.3\n"
+"Project-Id-Version: Advanced Ads 1.47.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/advanced-ads/\n"
 "Last-Translator: Thomas Maier <post@webzunft.de>\n"
 "Language-Team: webgilde <support@wpadvancedads.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-08T11:49:46+00:00\n"
+"POT-Creation-Date: 2023-11-13T09:05:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: advanced-ads\n"
@@ -975,7 +975,7 @@ msgstr ""
 
 #. translators: %1$s is the markup for the discount value, %2$s starts a button link, %3$s closes the button link.
 #: admin/includes/notices.php:64
-msgid "Save %1$s on all products with our Black Friday / Cyber Monday offer! %2$sGet All Access%3$s"
+msgid "Save %1$s on all products with our Black Friday / Cyber Monday offer! %2$sGet this deal%3$s"
 msgstr ""
 
 #: admin/includes/shortcode-creator-l10n.php:17
@@ -1335,7 +1335,7 @@ msgstr ""
 msgid "Please disable your <strong>AdBlocker</strong>. Otherwise, the features of Advanced Ads and the layout are broken."
 msgstr ""
 
-#: admin/views/notices/promo.php:41
+#: admin/views/notices/promo.php:40
 msgid "Dismiss this notice."
 msgstr ""
 

@@ -3,7 +3,7 @@ Contributors: ithemes, timothyblynjacobs, layotte, jthillithemes, lisacee, solid
 Tags: security, malware, two factor authentication, brute force protection, password protection
 Requires at least: 6.2
 Tested up to: 6.4
-Stable tag: 9.0.3
+Stable tag: 9.1.0
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,11 @@ Manage more than one WordPress site? Release lockouts and keep your themes, plug
 8. Automated vulnerability patching with Patchstack (Pro)
 
 == Changelog ==
+
+= 9.1.0 =
+* New: Add support for creating custom firewall rules.
+* Enhancement: Add support for configuring firewall settings from the Firewall page.
+* Bug Fix: The firewall page would appear empty when geolocation could not retrieve a country code.
 
 = 9.0.3 =
 * Bug Fix: Remove an extra folder containing duplicate plugin files

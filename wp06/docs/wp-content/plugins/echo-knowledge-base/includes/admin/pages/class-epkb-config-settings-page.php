@@ -2126,6 +2126,7 @@ class EPKB_Config_Settings_Page {
 				'ml_faqs_custom_css_class' => 'only_modular',
 				'ml_faqs_kb_id' => 'only_modular',
 				'ml_faqs_category_ids' => 'only_modular',
+				'faq_schema_toggle' => 'only_modular',
 			],
 		];
 
@@ -2317,6 +2318,7 @@ class EPKB_Config_Settings_Page {
 			case 'ml_faqs_custom_css_class':
 			case 'ml_faqs_kb_id':
 			case 'ml_faqs_category_ids':
+			case 'faq_schema_toggle':
 				$field_specs['dependency'] = ['ml_row_1_module', 'ml_row_2_module', 'ml_row_3_module', 'ml_row_4_module', 'ml_row_5_module'];
 				$field_specs['enable_on'] = ['faqs'];
 				$field_specs['input_group_class'] = 'eckb-ml-module__faqs' . ' ';

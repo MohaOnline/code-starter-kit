@@ -21,10 +21,6 @@
 
 #customize-control-newsup_default_bg_image img {height:40px; width:40px; }
 
-.newsup-notice {
-    position: relative;
-    padding: 20px 40px 20px 0px;
-}
 
 .newsup-notice-content {
     display: flex;
@@ -37,13 +33,6 @@
     margin-right: 12px;
     border-right: 1px solid #FCFCFD;
 }
-
-.newsup-notice-content .newsup-notice_image .newsup-screenshot {
-    width: 100%;
-    box-shadow: 0 0 1px 0 #ccd0d4;
-    border: 1px solid #dddddd;
-}
-
 .newsup-notice-content .text_heading {
     margin-top: 0;
     margin-bottom: 12px;
@@ -55,3 +44,75 @@
 .newsup-notice_text h3{font-size: 16px; padding-bottom: 10px;}
 
 li#customize-control-display_header_text, li#customize-control-newsup_center_logo_title{font-weight: 700;}
+
+.newsup-notice {
+    position: relative;
+    padding: 8px;
+}
+
+.newsup-notice-content {
+    display: flex;
+}
+
+.newsup-notice-content .newsup-notice_image {
+    display: flex;
+    flex: 0 1 40%;
+    min-height: 100px;
+    border-right: 1px solid #FCFCFD;
+    border-right: none;
+}
+
+.newsup-notice_text 
+{
+    flex: 0 1 70%;
+}
+
+
+.newsup-notice-started {
+    padding: 38px 38px 38px 20px !important;
+    position: relative;
+}
+
+
+.newsup-notice-content .newsup-notice_image .newsup-screenshot {
+    width: 100%;
+    box-shadow: 0 0 1px 0 #ccd0d4;
+    box-shadow: none;
+    border: 1px solid #dddddd;
+    border: none;
+    object-fit: contain;
+}
+
+.newsup-notice-content .text_heading {
+    margin-top: 0;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+a.button.button-primary.button-hero.newsup-button-padding {
+    margin-right: 10px;
+}
+a.button.button-blue-secondary.button_info{
+    margin-right: 10px; 
+}
+.newsup-documentation, .newsup-demos {
+    display: inline;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.newsup-notice_text .panel-column-6 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.newsup-notice_text .panel-column-6 .panel-column-one{
+    display: flex;
+    align-items: center;
+}
+.newsup-notice_text .panel-column-6 .panel-column-two{
+    margin-top: 30px;
+}
+.newsup-notice_text .notice p, .notice-title, div.updated p, div.error p, .form-table td .notice p {
+    padding-right: 25px;
+    font-size: 15px;
+}

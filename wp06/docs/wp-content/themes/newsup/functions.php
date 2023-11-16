@@ -11,7 +11,8 @@
 	require( $newsup_theme_path . '/template-tags.php');
 	require( $newsup_theme_path . '/template-functions.php');
 	require( $newsup_theme_path. '/widgets/widgets-common-functions.php');
-	require ( $newsup_theme_path . '/custom-control/custom-control.php');
+	require ( $newsup_theme_path . '/custom-control/custom-control.php');	
+	require_once get_template_directory() . '/inc/ansar/customizer-admin/newsup-admin-plugin-install.php';
 	require_once( trailingslashit( get_template_directory() ) . 'inc/ansar/customize-pro/class-customize.php' );
 
 	$newsup_theme_start = wp_get_theme();

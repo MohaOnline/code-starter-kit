@@ -14,6 +14,7 @@ use Psr\Log\LoggerInterface;
 use WC_Cart;
 use WC_Order;
 use WooCommerce\PayPalCommerce\Button\Assets\ButtonInterface;
+use WooCommerce\PayPalCommerce\Button\Helper\CartProductsHelper;
 use WooCommerce\PayPalCommerce\WcGateway\Exception\NotFoundException;
 use WooCommerce\PayPalCommerce\WcGateway\Helper\SettingsStatus;
 use WooCommerce\PayPalCommerce\WcGateway\Processor\OrderProcessor;
@@ -25,18 +26,21 @@ use WooCommerce\PayPalCommerce\Webhooks\Handler\RequestHandlerTrait;
  */
 class ApplePayButton implements ButtonInterface {
 	use RequestHandlerTrait;
+
 	/**
 	 * The settings.
 	 *
 	 * @var Settings
 	 */
 	private $settings;
+
 	/**
 	 * The logger.
 	 *
 	 * @var LoggerInterface
 	 */
 	private $logger;
+
 	/**
 	 * The response templates.
 	 *
@@ -58,12 +62,14 @@ class ApplePayButton implements ButtonInterface {
 	 * @var string
 	 */
 	protected $id;
+
 	/**
 	 * The method title.
 	 *
 	 * @var string
 	 */
 	protected $method_title;
+
 	/**
 	 * The processor for orders.
 	 *
@@ -84,24 +90,34 @@ class ApplePayButton implements ButtonInterface {
 	 * @var string
 	 */
 	private $version;
+
 	/**
 	 * The module URL.
 	 *
 	 * @var string
 	 */
 	private $module_url;
+
 	/**
 	 * The data to send to the ApplePay button script.
 	 *
 	 * @var DataToAppleButtonScripts
 	 */
 	private $script_data;
+
 	/**
 	 * The Settings status helper.
 	 *
 	 * @var SettingsStatus
 	 */
 	private $settings_status;
+
+	/**
+	 * The cart products helper.
+	 *
+	 * @var CartProductsHelper
+	 */
+	protected $cart_products;
 
 	/**
 	 * PayPalPaymentMethod constructor.
@@ -113,6 +129,7 @@ class ApplePayButton implements ButtonInterface {
 	 * @param string                   $version The module version.
 	 * @param DataToAppleButtonScripts $data The data to send to the ApplePay button script.
 	 * @param SettingsStatus           $settings_status The settings status helper.
+	 * @param CartProductsHelper       $cart_products The cart products helper.
 	 */
 	public function __construct(
 		Settings $settings,
@@ -121,7 +138,8 @@ class ApplePayButton implements ButtonInterface {
 		string $module_url,
 		string $version,
 		DataToAppleButtonScripts $data,
-		SettingsStatus $settings_status
+		SettingsStatus $settings_status,
+		CartProductsHelper $cart_products
 	) {
 		$this->settings           = $settings;
 		$this->response_templates = new ResponsesToApple();
@@ -133,6 +151,7 @@ class ApplePayButton implements ButtonInterface {
 		$this->version            = $version;
 		$this->script_data        = $data;
 		$this->settings_status    = $settings_status;
+		$this->cart_products      = $cart_products;
 	}
 
 	/**
@@ -822,15 +841,24 @@ class ApplePayButton implements ButtonInterface {
 	 *
 	 * @param ApplePayDataObjectHttp $applepay_request_data_object The request data object.
 	 * @return bool | string The cart item key after adding to the new cart.
-	 * @throws \Exception If cannot be added to cart.
+	 * @throws \Exception If it cannot be added to cart.
 	 */
 	public function prepare_cart( ApplePayDataObjectHttp $applepay_request_data_object ): string {
 		$this->save_old_cart();
-		$cart = WC()->cart;
-		return $cart->add_to_cart(
-			(int) $applepay_request_data_object->product_id(),
-			(int) $applepay_request_data_object->product_quantity()
+		$this->cart_products->set_cart( WC()->cart );
+
+		$product = $this->cart_products->product_from_data(
+			array(
+				'id'         => (int) $applepay_request_data_object->product_id(),
+				'quantity'   => (int) $applepay_request_data_object->product_quantity(),
+				'variations' => $applepay_request_data_object->product_variations(),
+				'extra'      => $applepay_request_data_object->product_extra(),
+				'booking'    => $applepay_request_data_object->product_booking(),
+			)
 		);
+
+		$this->cart_products->add_products( array( $product ) );
+		return $this->cart_products->cart_item_keys()[0];
 	}
 
 	/**
@@ -914,7 +942,7 @@ class ApplePayButton implements ButtonInterface {
 		}
 		if ( $button_enabled_cart ) {
 			$default_hook_name  = 'woocommerce_paypal_payments_cart_button_render';
-			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_googlepay_cart_button_render_hook', $default_hook_name );
+			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_applepay_cart_button_render_hook', $default_hook_name );
 			$render_placeholder = is_string( $render_placeholder ) ? $render_placeholder : $default_hook_name;
 			add_action(
 				$render_placeholder,
@@ -926,7 +954,7 @@ class ApplePayButton implements ButtonInterface {
 
 		if ( $button_enabled_checkout ) {
 			$default_hook_name  = 'woocommerce_paypal_payments_checkout_button_render';
-			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_googlepay_checkout_button_render_hook', $default_hook_name );
+			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_applepay_checkout_button_render_hook', $default_hook_name );
 			$render_placeholder = is_string( $render_placeholder ) ? $render_placeholder : $default_hook_name;
 			add_action(
 				$render_placeholder,
@@ -938,7 +966,7 @@ class ApplePayButton implements ButtonInterface {
 		}
 		if ( $button_enabled_payorder ) {
 			$default_hook_name  = 'woocommerce_paypal_payments_payorder_button_render';
-			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_googlepay_payorder_button_render_hook', $default_hook_name );
+			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_applepay_payorder_button_render_hook', $default_hook_name );
 			$render_placeholder = is_string( $render_placeholder ) ? $render_placeholder : $default_hook_name;
 			add_action(
 				$render_placeholder,
@@ -951,7 +979,7 @@ class ApplePayButton implements ButtonInterface {
 
 		if ( $button_enabled_minicart ) {
 			$default_hook_name  = 'woocommerce_paypal_payments_minicart_button_render';
-			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_googlepay_minicart_button_render_hook', $default_hook_name );
+			$render_placeholder = apply_filters( 'woocommerce_paypal_payments_applepay_minicart_button_render_hook', $default_hook_name );
 			$render_placeholder = is_string( $render_placeholder ) ? $render_placeholder : $default_hook_name;
 			add_action(
 				$render_placeholder,
@@ -1032,12 +1060,49 @@ class ApplePayButton implements ButtonInterface {
 	}
 
 	/**
+	 * Enqueues scripts/styles for admin.
+	 */
+	public function enqueue_admin(): void {
+		wp_register_style(
+			'wc-ppcp-applepay-admin',
+			untrailingslashit( $this->module_url ) . '/assets/css/styles.css',
+			array(),
+			$this->version
+		);
+		wp_enqueue_style( 'wc-ppcp-applepay-admin' );
+
+		wp_register_script(
+			'wc-ppcp-applepay-admin',
+			untrailingslashit( $this->module_url ) . '/assets/js/boot-admin.js',
+			array(),
+			$this->version,
+			true
+		);
+		wp_enqueue_script( 'wc-ppcp-applepay-admin' );
+
+		wp_localize_script(
+			'wc-ppcp-applepay-admin',
+			'wc_ppcp_applepay_admin',
+			$this->script_data_for_admin()
+		);
+	}
+
+	/**
 	 * Returns the script data.
 	 *
 	 * @return array
 	 */
 	public function script_data(): array {
 		return $this->script_data->apple_pay_script_data();
+	}
+
+	/**
+	 * Returns the admin script data.
+	 *
+	 * @return array
+	 */
+	public function script_data_for_admin(): array {
+		return $this->script_data->apple_pay_script_data_for_admin();
 	}
 
 	/**

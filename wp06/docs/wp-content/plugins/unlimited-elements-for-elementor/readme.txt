@@ -3,7 +3,7 @@ Contributors: unitecms, valiano, iritmega
 Donate link: http://unlimited-elements.com/
 Tags: elementor, elements, addons, elementor addons, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor
 Requires at least: 3.5
-Tested up to: 6.3
+Tested up to: 6.4.1
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1227,8 +1227,6 @@ https://github.com/ykob/shape-overlays Check out the demo [in the link](https://
 
 
 
-
-
 == Installation ==
 
 Note : This plugin works with Elementor. Make sure you have [Elementor](https://wordpress.org/plugins/elementor/) installed.
@@ -1238,6 +1236,20 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 3. Navigate to Unlimited Elements in the WordPress side menu and install the widget you want by hovering over it and clicking install.
 
 == Changelog ==
+
+
+version 1.5.85: 2021-11-15
+
+* Feature: added woo_addcart_ajax_attributes_button in twig for the button
+* Feature: added option to show original settings values in widget debug
+* Feature: added troubleshooting setting not to show php deprecated warnings
+* Fix: better prepare post custom fields for the post multisource
+* Fix: links from meta field works now
+* Fix: fixed the ob_end_clean bug
+* Fix: in post query - excluded posts not in from posts in
+* Fix: fixed a small bug in the unite gallery library
+* Change: updated twig version to 3.x
+* Change: updated instagram data with date released field
 
 
 version 1.5.85: 2021-09-20

@@ -2,9 +2,9 @@
 Contributors: ivole
 Tags: woocommerce, review plugin, review reminder, customer reviews, review for discount
 Requires at least: 4.5
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.2
-Stable tag: 5.37.1
+Stable tag: 5.38.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -20,7 +20,7 @@ Enhance the standard WooCommerce reviews with extra features, and reassure custo
 
 The **Customer Reviews for WooCommerce** plugin helps you increase engagement, build loyalty, improve SEO, and get more sales with social proof.
 
-**Localized to 29 languages and installed on over 60,000 stores!**
+**Localized to 30 languages and installed on over 60,000 stores!**
 
 The plugin includes an optional integration with an external service to verify customer reviews. **CusRev** collects reviews from customers and verifies their authenticity.
 
@@ -229,6 +229,13 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.38.1 =
+* Bug fix: an error in a security token check when triggering a review reminder manually
+* Improvement: check for get_shipping_phone method in old WooCommerce versions
+= 5.38.0 =
+* New feature: self-service setup of DKIM signatures with CusRev mailer in the Pro version
+* Bug fix: vulnerability in Ajax requests
+* Bug fix: reviews could not be submitted on product pages when shortcodes were disabled
 = 5.37.1 =
 * Improvement: CSS adjustments to avoid conflicts with styling from with 3rd-party themes and plugins
 = 5.37.0 =

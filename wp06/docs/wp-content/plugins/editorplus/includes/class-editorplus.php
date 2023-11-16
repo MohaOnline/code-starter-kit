@@ -115,8 +115,8 @@ final class EditorPlus {
 		if ( editorplus_is_gutenberg_page() ) {
 
 			wp_enqueue_style( 'editor_plus-plugin-style', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/gutenberg-editor-style.css', array( 'wp-components' ), $dynamic_version );
-			wp_enqueue_script( 'editor_plus-plugin-script', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/gutenberg-editor.js', array( 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
-			wp_enqueue_script( 'editor_plus-lodash-conflict-script', EDPL_EDITORPLUS_PLUGIN_URL . 'assets/scripts/lodash-conflict.js', array( 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
+			wp_enqueue_script( 'editor_plus-plugin-script', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/gutenberg-editor.js', array( 'lodash', 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
+			wp_enqueue_script( 'editor_plus-lodash-conflict-script', EDPL_EDITORPLUS_PLUGIN_URL . 'assets/scripts/lodash-conflict.js', array( 'lodash', 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
 
 			// LOTTIE SCRIPT.
 			wp_enqueue_script( 'editor-plus-lottie-script', EDPL_EDITORPLUS_PLUGIN_URL . '/assets/scripts/lottie-player.js', array(), 'latest', true );
@@ -164,7 +164,7 @@ final class EditorPlus {
 		if ( in_array( $suffix, array( 'settings_page_editor_plus', 'toplevel_page_gutenberg-edit-site' ), true ) ) {
 
 			wp_enqueue_style( 'editor-plus-admin-style', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/style-admin.css', array( 'wp-components' ), $dynamic_version );
-			wp_enqueue_script( 'editor-plus-admin-script', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/admin.js', array( 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
+			wp_enqueue_script( 'editor-plus-admin-script', EDPL_EDITORPLUS_PLUGIN_URL . 'dist/admin.js', array( 'lodash', 'wp-api', 'wp-i18n', 'wp-components', 'wp-element', 'wp-editor' ), $dynamic_version, true );
 
 			// loading localized variables.
 			$extension_manager = new EditorPlus_Extensions_Manager();

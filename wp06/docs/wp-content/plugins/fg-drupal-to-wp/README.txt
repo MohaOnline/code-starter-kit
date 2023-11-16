@@ -3,8 +3,8 @@ Contributors: Kerfred
 Plugin Uri: https://wordpress.org/plugins/fg-drupal-to-wp/
 Tags: drupal, wordpress, importer, migration, migrator, converter, import, cck, internationalization, ubercart
 Requires at least: 4.5
-Tested up to: 6.4
-Stable tag: 3.63.5
+Tested up to: 6.4.1
+Stable tag: 3.64.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,7 @@ A plugin to migrate articles, stories, pages, categories, tags, images from Drup
 
 This plugin migrates articles, stories, pages, categories, tags and images from Drupal to WordPress.
 
-It has been tested with **Drupal 4, 5, 6, 7, 8 & 9** and the latest version of WordPress. It is compatible with multisite installations.
+It has been tested with **Drupal 4, 5, 6, 7, 8, 9 & 10** and the latest version of WordPress. It is compatible with multisite installations.
 
 Major features include:
 
@@ -190,6 +190,13 @@ You can read this post to fix it: http://forumsarchive.laravel.io/viewtopic.php?
 Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plugin/fg-drupal-to-wp) or to report bugs if you found some.
 
 == Changelog ==
+
+= 3.64.1 =
+* Update the Help screen
+
+= 3.64.0 =
+* Tested with Drupal 10
+* Tested with WordPress 6.4.1
 
 = 3.63.5 =
 * Tested with WordPress 6.4
@@ -803,12 +810,9 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 
 == Upgrade Notice ==
 
-= 3.63.5 =
-Tested with WordPress 6.4
+= 3.64.1 =
+Update the Help screen
 
-= 3.63.4 =
-Tested with WordPress 6.3.2
-
-= 3.63.1 =
-Fixed: TXT and PPS files were not imported
-Tested with WordPress 6.3.1
+= 3.64.0 =
+Tested with Drupal 10
+Tested with WordPress 6.4.1

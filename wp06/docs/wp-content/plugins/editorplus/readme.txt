@@ -2,9 +2,9 @@
 Contributors: munirkamal
 Tags: block, blocks, editor, gutenberg, gutenberg blocks, wordpress blocks, pattern
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.4
 Requires PHP: 7.2
-Stable tag: 2.9.16
+Stable tag: 2.10.0
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -144,6 +144,9 @@ Make sure to check out the Admin are of the plugin for configuration settings.
 4. Spacing (Margin & Padding)
 
 == Changelog ==
+
+=2.10.0 (9 Nov 2023)
+* Fix: Missing lodash dependency issue with WP 6.4.
 
 =2.9.16 (25 July 2023)
 * Fix: Button styling not working.

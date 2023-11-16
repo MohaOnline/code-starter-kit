@@ -29,6 +29,7 @@
 			maxDate:"",
             invalidDates:"",
             mondayFirstDay:false,
+            alwaysVisible:false,
 			minHour:0,
 			maxHour:23,
 			minMinute:0,
@@ -94,6 +95,7 @@
 							{s:"#sShowDatepicker",e:"click", l:"showDatepicker", f:function(el){return el.is(':checked');}},
 							{s:"#sDisableKeyboardOnMobile",e:"click", l:"disableKeyboardOnMobile", f:function(el){return el.is(':checked');}},
 							{s:"#sMondayFirstDay",e:"click", l:"mondayFirstDay", f:function(el){return el.is(':checked');}},
+							{s:"#sAlwaysVisible",e:"click", l:"alwaysVisible", f:function(el){return el.is(':checked');}},
 							{s:"#sAriaAMPMLabel",e:"change keyup", l:"ariaAMPMLabel"},
 							{s:"#sAriaHourLabel",e:"change keyup", l:"ariaHourLabel"},
 							{s:"#sAriaMinuteLabel",e:"change keyup", l:"ariaMinuteLabel"},
@@ -123,13 +125,15 @@
 					for (var i in me.separators)
 						separatorOpts += '<option value="'+cff_esc_attr(me.separators[i])+'" '+((me.separators[i]==me.dseparator)?"selected":"")+'>'+cff_esc_attr(me.separators[i])+'</option>';
 
-					return '<hr></hr><label><input type="checkbox" name="sShowDatepicker" id="sShowDatepicker" '+( ( me.showDatepicker ) ? 'CHECKED' : '' )+' > Show input field for the date</label><div class="width50 column"><label>Date Format</label><select name="sFormat" id="sFormat" class="large">'+formatOpts+'</select></div><div class="width50 column"><label>Parts separator</label><select name="sSeparator" id="sSeparator" class="large">'+separatorOpts+'</select></div><div class="clearer"></div>';
+					return '<hr></hr><label><input type="checkbox" name="sShowDatepicker" id="sShowDatepicker" '+( ( me.showDatepicker ) ? 'CHECKED' : '' )+' > Show date component</label><div class="width50 column"><label>Date Format</label><select name="sFormat" id="sFormat" class="large">'+formatOpts+'</select></div><div class="width50 column"><label>Parts separator</label><select name="sSeparator" id="sSeparator" class="large">'+separatorOpts+'</select></div><div class="clearer"></div>';
 				},
 			showSpecialDataInstance: function()
 				{
 					return '<label><input type="checkbox" name="sDisableKeyboardOnMobile" id="sDisableKeyboardOnMobile" '+( ( this.disableKeyboardOnMobile ) ? 'CHECKED' : '' )+' > Disable keboard on mobiles</label>'+
 
                     '<label><input type="checkbox" name="sMondayFirstDay" id="sMondayFirstDay" '+( ( this.mondayFirstDay ) ? 'CHECKED' : '' )+' > Make Monday the first day of the week</label>'+
+
+                    '<label><input type="checkbox" name="sAlwaysVisible" id="sAlwaysVisible" '+( ( this.alwaysVisible ) ? 'CHECKED' : '' )+' > Make calendar always visible</label>'+
 
                     '<label>Default date [<a class="helpfbuilder" text="You can put one of the following type of values into this field:\n\nEmpty: Leave empty for current date.\n\nDate: A Fixed date with the same date format indicated in the &quot;Date Format&quot; drop-down field.\n\nNumber: A number of days from today. For example 2 represents two days from today and -1 represents yesterday.\n\nString: A smart text indicating a relative date. Relative dates must contain value (number) and period pairs; valid periods are &quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, and &quot;d&quot; for days. For example, &quot;+1m +7d&quot; represents one month and seven days from today.">help?</a>]</label>'+
 					'<div style="padding-top:5px;padding-bottom:5px;"><input type="checkbox" name="sCurrentDate" id="sCurrentDate" '+( this.currentDate ? 'CHECKED' : '' )+'> Current date</div>'+

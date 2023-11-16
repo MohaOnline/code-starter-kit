@@ -518,7 +518,7 @@ class Api {
 		/** Need to allow file locally hosted. */
 		add_filter(
 			'http_request_host_is_external',
-			function() {
+			function () {
 				return true;
 			}
 		);
@@ -841,7 +841,7 @@ class Api {
 		foreach ( $data as $item ) {
 			foreach ( $item->categories as $category ) {
 				if ( $category->slug === $slug ) {
-					$count++;
+					++$count;
 				}
 			}
 		}
@@ -859,7 +859,7 @@ class Api {
 	public function sort_section( $sections ) {
 		usort(
 			$sections,
-			function( $a, $b ) {
+			function ( $a, $b ) {
 				return $a->count < $b->count;
 			}
 		);
@@ -1869,7 +1869,6 @@ class Api {
 	public function submit_form( $request ) {
 		$form_entry = $request['form-entry'];
 		$form_data  = $this->filter_form_params( $form_entry['data'] );
-
 		if ( isset( $form_data ) ) {
 			$form_id    = (int) $form_entry['formId'];
 			$post_id    = (int) $form_entry['postId'];
@@ -1944,6 +1943,9 @@ class Api {
 		}
 
 		foreach ( $entry_data as $data ) {
+			if ( 'array' === gettype( $data['value'] ) ) {
+				$data['value'] = implode( ', ', $data['value'] );
+			}
 			if ( $input_name ) {
 				if ( $input_name === $data['id'] && preg_match( $mail_rgx, $data['value'] ) ) {
 					$mail_list[] = $data['value'];

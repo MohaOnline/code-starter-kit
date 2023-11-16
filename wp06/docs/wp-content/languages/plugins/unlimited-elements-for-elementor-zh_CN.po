@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Unlimited Elements For Elementor (Free Widgets, Addons, Templates) - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-05 17:12:43+0000\n"
+"PO-Revision-Date: 2023-11-16 10:01:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,242 @@ msgstr ""
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Unlimited Elements For Elementor (Free Widgets, Addons, Templates) - Development (trunk)\n"
 
-#: views/templates/menu.php:78
+#: provider/core/plugins/unlimited_elements/dialog_param_elementor.class.php:906
+msgid "Currency API Fields"
+msgstr "货币 API 字段"
+
+#: inc_php/unitecreator_settings.class.php:1480
+#: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2294
+msgid "Show Settings Values"
+msgstr "显示设置值"
+
+#: inc_php/unitecreator_settings.class.php:1440
+msgid "Edit Widget HTML"
+msgstr "编辑小部件 HTML"
+
+#: inc_php/unitecreator_form.class.php:310
+msgid "%s field is empty."
+msgstr "%s 字段为空。"
+
+#: inc_php/unitecreator_api_integrations.class.php:1088
+msgid "%s key is missing. Please add the key in the <a href='%s' target='_blank'>%s</a>."
+msgstr "%s 钥匙丢失。请将密钥添加到<a href='%s' target='_blank'>%s</a>中。"
+
+#: inc_php/unitecreator_api_integrations.class.php:657
+msgid "Optional. You can specify the maximum number of videos: from 1 to 50. The default value is %d."
+msgstr "选填。您可以指定视频的最大数量：从 1 到 50。默认值为 %d。"
+
+#: inc_php/unitecreator_api_integrations.class.php:656
+msgid "Videos Limit"
+msgstr "视频列表"
+
+#: inc_php/unitecreator_api_integrations.class.php:649
+msgid "Date published (random)"
+msgstr "发布日期（随机）"
+
+#: inc_php/unitecreator_api_integrations.class.php:648
+msgid "Date published (oldest)"
+msgstr "发布日期（最旧）"
+
+#: inc_php/unitecreator_api_integrations.class.php:647
+msgid "Date published (newest)"
+msgstr "发布日期（最新）"
+
+#: inc_php/unitecreator_api_integrations.class.php:646
+msgid "Date added (random)"
+msgstr "添加日期（随机）"
+
+#: inc_php/unitecreator_api_integrations.class.php:645
+msgid "Date added (oldest)"
+msgstr "添加日期（最旧）"
+
+#: inc_php/unitecreator_api_integrations.class.php:644
+msgid "Date added (newest)"
+msgstr "添加日期（最新）"
+
+#: inc_php/unitecreator_api_integrations.class.php:636
+msgid "You can find the playlist ID in a YouTube URL: <br />— %s<br />— %s<br />The playlist must be <a href='%s' target='_blank'>public</a>."
+msgstr "您可以在 YouTube URL 中找到播放列表 ID：<br />— %s<br />— %s<br />播放列表必须是<a href='%s' target='_blank'>公开</a>。"
+
+#: inc_php/unitecreator_api_integrations.class.php:635
+msgid "Playlist ID"
+msgstr "播放列表 ID"
+
+#: inc_php/unitecreator_api_integrations.class.php:606
+msgid "Imperial"
+msgstr "英制"
+
+#: inc_php/unitecreator_api_integrations.class.php:605
+msgid "Metric"
+msgstr "公制"
+
+#: inc_php/unitecreator_api_integrations.class.php:598
+msgid "City Name"
+msgstr "城市名称"
+
+#: inc_php/unitecreator_api_integrations.class.php:593
+msgid "Specify the two-letter <a href='%s' target='_blank'>country code</a>."
+msgstr "指定两个字母的<a href='%s' target='_blank'>国家/地区代码</a>。"
+
+#: inc_php/unitecreator_api_integrations.class.php:592
+msgid "Country Code"
+msgstr "国家/地区代码"
+
+#: inc_php/unitecreator_api_integrations.class.php:563
+msgid "Optional. You can find the sheet ID in a Google Sheets URL: %s"
+msgstr "选填。您可以在 Google 表格 URL 中找到工作表 ID：%s"
+
+#: inc_php/unitecreator_api_integrations.class.php:562
+msgid "Sheet ID"
+msgstr "工作表 ID"
+
+#: inc_php/unitecreator_api_integrations.class.php:557
+msgid "You can find the spreadsheet ID in a Google Sheets URL: %s<br />The spreadsheet must be <a href='%s' target='_blank'>public</a>."
+msgstr "您可以在Google Sheets URL:%s中找到电子表格ID<br />电子表格必须是<a href='%s'target='_blank'>公共</a>。"
+
+#: inc_php/unitecreator_api_integrations.class.php:556
+msgid "Spreadsheet ID"
+msgstr "Spreadsheet ID"
+
+#: inc_php/unitecreator_api_integrations.class.php:529
+msgid "You can find the place ID by using <a href='%s' target='_blank'>Place ID Finder</a>."
+msgstr "您可以使用<a href='%s' target='_blank'>地点 ID 查找器</a>查找地点 ID。"
+
+#: inc_php/unitecreator_api_integrations.class.php:528
+msgid "Place ID"
+msgstr "地点 ID"
+
+#: inc_php/unitecreator_api_integrations.class.php:500
+msgid "Optional. You can specify the maximum number of events: from 1 to 2500. The default value is %d."
+msgstr "选填。您可以指定事件的最大数量：从 1 到 2500。默认值为 %d。"
+
+#: inc_php/unitecreator_api_integrations.class.php:499
+msgid "Events Limit"
+msgstr "事件限制"
+
+#: inc_php/unitecreator_api_integrations.class.php:492
+msgid "Date (oldest)"
+msgstr "日期（最早的）"
+
+#: inc_php/unitecreator_api_integrations.class.php:491
+msgid "Date (newest)"
+msgstr "日期（最新）"
+
+#: inc_php/unitecreator_api_integrations.class.php:482
+msgid "This month"
+msgstr "本月"
+
+#: inc_php/unitecreator_api_integrations.class.php:481
+msgid "This week"
+msgstr "本周"
+
+#: inc_php/unitecreator_api_integrations.class.php:480
+msgid "Tomorrow's"
+msgstr "明天的"
+
+#: inc_php/unitecreator_api_integrations.class.php:479
+msgid "Today's"
+msgstr "今天的"
+
+#: inc_php/unitecreator_api_integrations.class.php:478
+msgid "Upcoming"
+msgstr "即将推出"
+
+#: inc_php/unitecreator_api_integrations.class.php:476
+msgid "Date Range"
+msgstr "日期范围"
+
+#: inc_php/unitecreator_api_integrations.class.php:471
+msgid "You can find the calendar ID on a calendar's \"Settings\" page under \"Integrate Calendar\".<br />The calendar must be <a href='%s' target='_blank'>public</a>."
+msgstr "您可以在日历的“设置”页面的“集成日历”下找到日历 ID。<br />日历必须是<a href='%s' target='_blank'>公开</a>。"
+
+#: inc_php/unitecreator_api_integrations.class.php:470
+msgid "Calendar ID"
+msgstr "日历 ID"
+
+#: inc_php/unitecreator_api_integrations.class.php:449
+#: inc_php/unitecreator_api_integrations.class.php:507
+#: inc_php/unitecreator_api_integrations.class.php:535
+#: inc_php/unitecreator_api_integrations.class.php:569
+#: inc_php/unitecreator_api_integrations.class.php:614
+#: inc_php/unitecreator_api_integrations.class.php:664
+msgid "Optional. You can specify the cache time of results in minutes. The default value is %d minutes."
+msgstr "选填。您可以指定结果的缓存时间（以分钟为单位）。默认值为 %d 分钟。"
+
+#: inc_php/unitecreator_api_integrations.class.php:448
+#: inc_php/unitecreator_api_integrations.class.php:506
+#: inc_php/unitecreator_api_integrations.class.php:534
+#: inc_php/unitecreator_api_integrations.class.php:568
+#: inc_php/unitecreator_api_integrations.class.php:613
+#: inc_php/unitecreator_api_integrations.class.php:663
+msgid "Cache Time"
+msgstr "缓存时间"
+
+#: inc_php/unitecreator_api_integrations.class.php:443
+msgid "Optional. You can specify a comma separated list of currency codes to include, otherwise all currencies will be displayed."
+msgstr "选填。您可以指定要包含的以逗号分隔的货币代码列表，否则将显示所有货币。"
+
+#: inc_php/unitecreator_api_integrations.class.php:442
+msgid "Include Currencies"
+msgstr "包括货币"
+
+#: inc_php/unitecreator_api_integrations.class.php:437
+msgid "Optional. You can specify the number of decimals for the rate: from %d to %d. The default value is %d."
+msgstr "选填。您可以指定比率的小数位数：从 %d 到 %d。默认值为 %d。"
+
+#: inc_php/unitecreator_api_integrations.class.php:436
+msgid "Rate Precision"
+msgstr "比率精度"
+
+#: inc_php/unitecreator_api_integrations.class.php:431
+msgid "Enter the three-letter <a href='%s' target='_blank'>currency code</a>."
+msgstr "输入三个字母<a href='%s' target='_blank'>货币代码</a>。"
+
+#: inc_php/unitecreator_api_integrations.class.php:430
+msgid "Currency Code"
+msgstr "货币代码"
+
+#: inc_php/framework/settings_output.class.php:481
+msgid "Set custom attributes for the link element. Separate attribute keys from values using the | (pipe) character. Separate key-value pairs with a comma."
+msgstr "为链接元素设置自定义属性。使用  |（分隔符）将属性键与值分离。用英文逗号分隔键值对。"
+
+#: inc_php/framework/settings_output.class.php:478
+msgid "key|value"
+msgstr "key|value"
+
+#: inc_php/framework/settings_output.class.php:470
+msgid "Custom attributes"
+msgstr "自定义属性"
+
+#: inc_php/framework/settings_output.class.php:463
+msgid "Add nofollow"
+msgstr "添加 nofollow"
+
+#: inc_php/framework/settings_output.class.php:452
+msgid "Open in new window"
+msgstr "新窗口打开"
+
+#: inc_php/framework/settings_output.class.php:437
+msgid "Link options"
+msgstr "链接选项"
+
+#: inc_php/framework/settings_output.class.php:432
+msgid "Link URL"
+msgstr "链接 URL"
+
+#: views/templates/menu.php:76
 msgid "Support"
 msgstr "支持"
 
-#: views/templates/menu.php:68
+#: views/templates/menu.php:66
 msgid "Account"
 msgstr "帐户"
 
-#: views/templates/menu.php:29
+#: views/templates/menu.php:27
 msgid "Backgrounds"
 msgstr "背景"
 
-#: views/templates/head.php:53
+#: views/templates/head.php:42
 msgid "View Demos"
 msgstr "查看演示"
 
@@ -207,20 +430,20 @@ msgstr "获取当前查询作为查询库。适合存档页面定制。对于简
 msgid "Current Query as a Base"
 msgstr "当前查询作为基础"
 
-#: provider/gutenberg_integrate.class.php:96
+#: provider/gutenberg_integrate.class.php:97
 msgid "Elementor Widgets"
 msgstr "Elementor 小部件"
 
 #: provider/core/plugins/unlimited_elements/provider_core_admin.class.php:102
-#: views/templates/menu.php:8
+#: views/templates/menu.php:7
 msgid "Home"
 msgstr "首页"
 
-#: inc_php/unitecreator_settings.class.php:630
+#: inc_php/unitecreator_settings.class.php:625
 msgid "Link From Meta Field"
 msgstr "从元字段链接"
 
-#: inc_php/unitecreator_settings.class.php:629
+#: inc_php/unitecreator_settings.class.php:624
 msgid "Disable Link"
 msgstr "禁用链接"
 
@@ -411,27 +634,27 @@ msgid "This Week"
 msgstr "本周"
 
 #: provider/core/plugins/unlimited_elements/provider_core_admin.class.php:112
-#: views/objects/form_entries_view.class.php:1020 views/templates/menu.php:49
+#: views/objects/form_entries_view.class.php:1020 views/templates/menu.php:47
 msgid "Form Entries"
 msgstr "表单条目"
 
-#: inc_php/unitecreator_form.class.php:461
+#: inc_php/unitecreator_form.class.php:515
 msgid "Unnamed"
 msgstr "未命名"
 
-#: inc_php/unitecreator_form.class.php:304
+#: inc_php/unitecreator_form.class.php:523
 msgid "Untitled"
 msgstr "无标题"
 
-#: inc_php/unitecreator_form.class.php:225
+#: inc_php/unitecreator_form.class.php:274
 msgid "Unable to submit form."
 msgstr "无法提交表单。"
 
-#: inc_php/unitecreator_form.class.php:222
+#: inc_php/unitecreator_form.class.php:271
 msgid "Form has been successfully submitted."
 msgstr "表单已成功提交。"
 
-#: inc_php/unitecreator_actions.class.php:276
+#: inc_php/unitecreator_actions.class.php:273
 msgid "Widgets Removed"
 msgstr "已删除小部件"
 
@@ -472,11 +695,11 @@ msgstr "未找到任何修订"
 msgid "Revisions"
 msgstr "修订"
 
-#: inc_php/unitecreator_actions.class.php:194
+#: inc_php/unitecreator_actions.class.php:191
 msgid "Revision restored."
 msgstr "修订已恢复。"
 
-#: inc_php/unitecreator_actions.class.php:185
+#: inc_php/unitecreator_actions.class.php:182
 msgid "Revision created."
 msgstr "已创建修订。"
 
@@ -557,59 +780,59 @@ msgstr "来自无限元素的实时复制粘贴"
 msgid "Dismiss Notice"
 msgstr "关闭通知"
 
-#: inc_php/unitecreator_actions.class.php:638
+#: inc_php/unitecreator_actions.class.php:635
 msgid "Notice Postponed"
 msgstr "通知推迟"
 
-#: inc_php/unitecreator_actions.class.php:632
+#: inc_php/unitecreator_actions.class.php:629
 msgid "Notice Dismissed"
 msgstr "通知被关闭"
 
-#: inc_php/framework/functions.class.php:2743
+#: inc_php/framework/functions.class.php:2766
 msgid "minute"
 msgstr "分钟"
 
-#: inc_php/framework/functions.class.php:2743
+#: inc_php/framework/functions.class.php:2766
 msgid "minutes"
 msgstr "分钟"
 
-#: inc_php/framework/functions.class.php:2740
+#: inc_php/framework/functions.class.php:2763
 msgid "hour"
 msgstr "小时"
 
-#: inc_php/framework/functions.class.php:2740
+#: inc_php/framework/functions.class.php:2763
 msgid "hours"
 msgstr "小时"
 
-#: inc_php/framework/functions.class.php:2736
+#: inc_php/framework/functions.class.php:2759
 msgid "day"
 msgstr "天"
 
-#: inc_php/framework/functions.class.php:2736
+#: inc_php/framework/functions.class.php:2759
 msgid "days"
 msgstr "天"
 
-#: inc_php/framework/functions.class.php:2732
+#: inc_php/framework/functions.class.php:2755
 msgid "week"
 msgstr "周"
 
-#: inc_php/framework/functions.class.php:2732
+#: inc_php/framework/functions.class.php:2755
 msgid "weeks"
 msgstr "周"
 
-#: inc_php/framework/functions.class.php:2728
+#: inc_php/framework/functions.class.php:2751
 msgid "month"
 msgstr "月"
 
-#: inc_php/framework/functions.class.php:2728
+#: inc_php/framework/functions.class.php:2751
 msgid "months"
 msgstr "月"
 
-#: inc_php/framework/functions.class.php:2724
+#: inc_php/framework/functions.class.php:2747
 msgid "year"
 msgstr "年"
 
-#: inc_php/framework/functions.class.php:2724
+#: inc_php/framework/functions.class.php:2747
 msgid "years"
 msgstr "年"
 
@@ -625,19 +848,19 @@ msgstr "联合表单条件"
 msgid "* In case of multiple units, the min, max apply to px unit only."
 msgstr "* 如果有多个单位，最小值、最大值仅适用于 px 单位。"
 
-#: inc_php/unitecreator_form.class.php:69
+#: inc_php/unitecreator_form.class.php:73
 msgid "Field Value"
 msgstr "字段值"
 
-#: inc_php/unitecreator_form.class.php:61
+#: inc_php/unitecreator_form.class.php:65
 msgid "Condition"
 msgstr "条件"
 
-#: inc_php/unitecreator_form.class.php:44
+#: inc_php/unitecreator_form.class.php:48
 msgid "Field Name"
 msgstr "字段名称"
 
-#: inc_php/unitecreator_form.class.php:37
+#: inc_php/unitecreator_form.class.php:41
 msgid "Operator"
 msgstr "运算符"
 
@@ -677,7 +900,7 @@ msgstr "网站 Body 背景"
 msgid "Font Size"
 msgstr "字号"
 
-#: inc_php/framework/settings_output.class.php:1625
+#: inc_php/framework/settings_output.class.php:1733
 msgid "Choose Styles"
 msgstr "选择样式"
 
@@ -709,7 +932,7 @@ msgstr "请选择 Contact From 7"
 msgid "Contact Form 7"
 msgstr "Contact Form 7"
 
-#: inc_php/unitecreator_settings.class.php:674
+#: inc_php/unitecreator_settings.class.php:669
 msgid "The Contact Form 7 Plugin is not installed"
 msgstr "Contact Form 7 插件未安装"
 
@@ -717,7 +940,7 @@ msgstr "Contact Form 7 插件未安装"
 msgid "Edit Widget Items"
 msgstr "编辑小部件项目"
 
-#: inc_php/unitecreator_addon.class.php:1797
+#: inc_php/unitecreator_addon.class.php:1807
 msgid "Select Images"
 msgstr "选择图片"
 
@@ -737,7 +960,7 @@ msgstr "当前文章元中的分类项"
 msgid "Only Direct Children"
 msgstr "仅直接子项"
 
-#: inc_php/unitecreator_settings.class.php:606
+#: inc_php/unitecreator_settings.class.php:603
 msgid "Use 'Schema Collect' option where there are multiple schemas on page. The last schema should be 'Output' type, others are 'Collect' type"
 msgstr "如果页面上有多个架构，请使用“Schema 架构收集”选项。最后一个架构应为“Output”类型，其他架构为“Collect”类型"
 
@@ -797,15 +1020,15 @@ msgstr "文章  (Pro)"
 msgid "Dynamic Popup"
 msgstr "动态弹窗"
 
-#: inc_php/unitecreator_settings.class.php:648
+#: inc_php/unitecreator_settings.class.php:643
 msgid "This option works with \"Dynamic Post Popup\" widget. Please put it to the page."
 msgstr "此选项适用于“动态帖子弹出窗口”小部件。请把它放到页面上。"
 
-#: inc_php/unitecreator_settings.class.php:628
+#: inc_php/unitecreator_settings.class.php:623
 msgid "Dynamic Post Popup"
 msgstr "动态文章弹窗"
 
-#: inc_php/unitecreator_settings.class.php:627
+#: inc_php/unitecreator_settings.class.php:622
 msgid "Post Link"
 msgstr "文章链接"
 
@@ -870,8 +1093,8 @@ msgstr "默认值"
 msgid "Meta Field Value"
 msgstr "元字段值"
 
-#: inc_php/framework/functions.class.php:2761
-#: inc_php/framework/functions.class.php:2763
+#: inc_php/framework/functions.class.php:2784
+#: inc_php/framework/functions.class.php:2786
 #: views/objects/addon_view.class.php:1901
 msgid "ago"
 msgstr "前"
@@ -998,6 +1221,7 @@ msgstr "Ajax、Url 更改和返回按钮"
 msgid "Add More Parent Connect (for controller only)"
 msgstr "添加更多父连接（仅适用于控制器）"
 
+#: inc_php/unitecreator_settings.class.php:1479
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2293
 msgid "Current Post Data"
 msgstr "当前文章数据"
@@ -1839,7 +2063,7 @@ msgstr "UE可见性条件"
 msgid "Include after elementor-frontend.js"
 msgstr "包含在 elementor-frontend.js 之后"
 
-#: inc_php/unitecreator_settings.class.php:660
+#: inc_php/unitecreator_settings.class.php:655
 #: provider/provider_helper.class.php:103
 #: provider/provider_settings.class.php:1642
 msgid "Meta Field Name"
@@ -1921,18 +2145,22 @@ msgstr "文章 Meta"
 msgid "Current Time Stamp"
 msgstr "当前时间戳"
 
+#: inc_php/unitecreator_settings.class.php:1491
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2304
 msgid "Debug Data Type"
 msgstr "Debug (调试) 数据类型"
 
+#: inc_php/unitecreator_settings.class.php:1476
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2290
 msgid "Posts Titles and Meta"
 msgstr "文章标题和Meta"
 
+#: inc_php/unitecreator_settings.class.php:1475
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2289
 msgid "Posts Titles"
 msgstr "文章标题"
 
+#: inc_php/unitecreator_settings.class.php:1472
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2286
 msgid "Items Only"
 msgstr "仅项目"
@@ -1945,6 +2173,7 @@ msgstr "此类别中不存在父属性（下拉列表、复选框或单选项）
 msgid "Show Image Sizes Select"
 msgstr "显示图像尺寸选择"
 
+#: inc_php/unitecreator_settings.class.php:845
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2047
 msgid "Size"
 msgstr "尺寸"
@@ -1971,7 +2200,7 @@ msgstr "基本"
 msgid "Add Image Size Select"
 msgstr "添加图像尺寸选择"
 
-#: inc_php/unitecreator_client_text.php:109
+#: inc_php/unitecreator_client_text.php:110
 #: inc_php/unitecreator_dialog_param.class.php:225
 msgid "Border Radius"
 msgstr "Border Radius (边框圆角)"
@@ -2022,12 +2251,12 @@ msgstr "启用显示条件"
 msgid "Default Max Posts"
 msgstr "默认最大文章数"
 
-#: inc_php/unitecreator_client_text.php:111
+#: inc_php/unitecreator_client_text.php:112
 #: inc_php/unitecreator_dialog_param.class.php:227
 msgid "Hover Animations"
 msgstr "悬停动画"
 
-#: inc_php/unitecreator_client_text.php:110
+#: inc_php/unitecreator_client_text.php:111
 #: inc_php/unitecreator_dialog_param.class.php:226
 msgid "Css Filters"
 msgstr "CSS 滤镜"
@@ -2453,6 +2682,7 @@ msgstr "项目"
 msgid "Get Only Sticky Posts"
 msgstr "仅获取置顶文章"
 
+#: inc_php/unitecreator_settings.class.php:1452
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2259
 msgid "Advanced"
 msgstr "高级"
@@ -2464,15 +2694,17 @@ msgstr "高级"
 msgid "Loading Data..."
 msgstr "加载数据中..."
 
-#: inc_php/unitecreator_actions.class.php:531
-#: inc_php/unitecreator_actions.class.php:533
+#: inc_php/unitecreator_actions.class.php:528
+#: inc_php/unitecreator_actions.class.php:530
 msgid "Widget Updated"
 msgstr "组件已更新"
 
-#: inc_php/unitecreator_actions.class.php:514
+#: inc_php/unitecreator_actions.class.php:511
 msgid "Widget Installed"
 msgstr "组件已安装"
 
+#: inc_php/unitecreator_api_integrations.class.php:643
+#: inc_php/unitecreator_settings.class.php:1466
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2280
 #: provider/functions_wordpress.class.php:1444
 #: provider/functions_wordpress.class.php:1494
@@ -2546,6 +2778,7 @@ msgstr "使用分页组件"
 msgid "When turned on, the pagination will appear in archive or single pages, you have option to use the \"Posts Pagination\" widget for all the styling options"
 msgstr "启用分页后，分页将显示在存档或单个页面中，您可以选择对所有样式选项使用“文章分页(UE组件库内组件/需手动安装)”组件"
 
+#: inc_php/unitecreator_settings.class.php:842
 #: provider/core/plugins/unlimited_elements/dialog_param_elementor.class.php:650
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2043
 msgid "Image Size"
@@ -2579,11 +2812,11 @@ msgstr "背景图片位置"
 msgid "Include Sticky Posts"
 msgstr "包括置顶文章"
 
-#: inc_php/unitecreator_settings.class.php:368
+#: inc_php/unitecreator_settings.class.php:372
 msgid "Number Of Items"
 msgstr "项目数量"
 
-#: inc_php/unitecreator_settings.class.php:364
+#: inc_php/unitecreator_settings.class.php:368
 msgid "Number of instagram items. Leave empty for default number ( %d ) set by the widget"
 msgstr "instagram 项目数。将组件设置的默认数字（%d）留空"
 
@@ -3245,7 +3478,7 @@ msgstr "激活Blox Pro"
 msgid "Please type post title"
 msgstr "请输入文章标题类型"
 
-#: provider/provider_helper.class.php:709
+#: provider/provider_helper.class.php:717
 msgid "Page Name"
 msgstr "页面名称"
 
@@ -3374,7 +3607,7 @@ msgstr "[所有类别]"
 msgid "Price"
 msgstr "价格"
 
-#: provider/provider_params_processor.class.php:4749
+#: provider/provider_params_processor.class.php:4779
 msgid "menu not selected"
 msgstr "菜单未选择"
 
@@ -3485,7 +3718,7 @@ msgstr "Upress许可证"
 
 #: provider/core/plugins/unlimited_elements/addontype_elementor_template.class.php:45
 #: provider/core/plugins/unlimited_elements/provider_core_admin.class.php:109
-#: views/templates/menu.php:39
+#: views/templates/menu.php:37
 msgid "Templates"
 msgstr "模板"
 
@@ -3510,7 +3743,7 @@ msgstr "组件"
 #: provider/core/plugins/unlimited_elements/addontype_elementor.class.php:28
 #: provider/core/plugins/unlimited_elements/provider_core_admin.class.php:104
 #: provider/core/plugins/unlimited_elements/views/addons_elementor.php:36
-#: views/templates/menu.php:19
+#: views/templates/menu.php:17
 msgid "Widgets"
 msgstr "组件"
 
@@ -3818,27 +4051,29 @@ msgstr "模板导入失败"
 msgid "Select Style"
 msgstr "选择样式"
 
-#: inc_php/unitecreator_settings.class.php:1453
+#: inc_php/unitecreator_settings.class.php:1589
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2619
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2750
 msgid "Posts Query"
 msgstr "文章查询(UE)"
 
-#: inc_php/unitecreator_settings.class.php:1451
+#: inc_php/unitecreator_settings.class.php:1587
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2617
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2860
 msgid "Products Query"
 msgstr "产品查询(UE)"
 
-#: inc_php/unitecreator_settings.class.php:1300
+#: inc_php/unitecreator_settings.class.php:1351
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2360
 msgid "Section "
 msgstr "区段"
 
+#: inc_php/unitecreator_settings.class.php:1454
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2275
 msgid "Show widget data for debugging purposes. Please turn off this option when you releasing the widget"
 msgstr "显示组件数据以进行调试。释放小部件时，请关闭此选项"
 
+#: inc_php/unitecreator_settings.class.php:1456
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2268
 msgid "Show Widget Data For Debug"
 msgstr "显示组件数据进行调试"
@@ -4120,6 +4355,8 @@ msgstr "隐藏空"
 msgid "Order Direction"
 msgstr "排序方向"
 
+#: inc_php/unitecreator_api_integrations.class.php:489
+#: inc_php/unitecreator_api_integrations.class.php:641
 #: provider/provider_settings.class.php:306
 #: provider/provider_settings.class.php:665
 #: provider/provider_settings.class.php:865
@@ -4513,6 +4750,7 @@ msgstr "数据集"
 msgid "Google Map"
 msgstr "谷歌地图"
 
+#: inc_php/unitecreator_client_text.php:107
 #: inc_php/unitecreator_dialog_param.class.php:203
 #: provider/provider_settings.class.php:2707
 msgid "Instagram"
@@ -4549,45 +4787,45 @@ msgstr "找不到"
 msgid "Record"
 msgstr "记录"
 
-#: inc_php/framework/functions.class.php:1074
+#: inc_php/framework/functions.class.php:1097
 msgid "No Sanitize (not recomended)"
 msgstr "未清理（不建议）"
 
-#: inc_php/framework/functions.class.php:1073
+#: inc_php/framework/functions.class.php:1096
 msgid "Sanitize Text Field"
 msgstr "清理文本字段"
 
-#: inc_php/framework/functions.class.php:1072
+#: inc_php/framework/functions.class.php:1095
 msgid "Sanitize KEY"
 msgstr "清理密钥"
 
-#: inc_php/framework/functions.class.php:1071
+#: inc_php/framework/functions.class.php:1094
 msgid "Sanitize ID"
 msgstr "清理ID"
 
-#: inc_php/framework/settings_output.class.php:1064
+#: inc_php/framework/settings_output.class.php:1160
 msgid "Duplicate Item"
 msgstr "复制项目"
 
-#: inc_php/framework/settings_output.class.php:1060
+#: inc_php/framework/settings_output.class.php:1156
 #: inc_php/unitecreator_dialog_param.class.php:1206
 msgid "Delete Item"
 msgstr "删除项目"
 
-#: inc_php/framework/settings_output.class.php:1053
+#: inc_php/framework/settings_output.class.php:1149
 #: views/objects/addon_view.class.php:856
 msgid "Item"
 msgstr "项目"
 
-#: inc_php/framework/settings_output.class.php:1031
+#: inc_php/framework/settings_output.class.php:1127
 msgid "No Items Found"
 msgstr "找不到项目"
 
-#: inc_php/framework/settings_output.class.php:752
+#: inc_php/framework/settings_output.class.php:845
 msgid "Select Map"
 msgstr "选择地图"
 
-#: inc_php/framework/settings_output.class.php:668
+#: inc_php/framework/settings_output.class.php:761
 msgid "Configure"
 msgstr "配置"
 
@@ -4660,83 +4898,83 @@ msgstr "中间"
 msgid "Center"
 msgstr "居中"
 
-#: inc_php/unitecreator_actions.class.php:607
+#: inc_php/unitecreator_actions.class.php:604
 msgid "Template Imported"
 msgstr "模板已导入"
 
-#: inc_php/unitecreator_actions.class.php:546
+#: inc_php/unitecreator_actions.class.php:543
 msgid "Screenshot Saved"
 msgstr "截图已保存"
 
-#: inc_php/unitecreator_actions.class.php:522
+#: inc_php/unitecreator_actions.class.php:519
 msgid "Template Installed"
 msgstr "模板已安装"
 
-#: inc_php/unitecreator_actions.class.php:487
+#: inc_php/unitecreator_actions.class.php:484
 msgid "Product Activated"
 msgstr "产品激活"
 
-#: inc_php/unitecreator_actions.class.php:430
-#: inc_php/unitecreator_actions.class.php:438
-#: inc_php/unitecreator_actions.class.php:568
+#: inc_php/unitecreator_actions.class.php:427
+#: inc_php/unitecreator_actions.class.php:435
+#: inc_php/unitecreator_actions.class.php:565
 msgid "Settings Saved"
 msgstr "设置已保存"
 
-#: inc_php/unitecreator_actions.class.php:392
+#: inc_php/unitecreator_actions.class.php:389
 msgid "Addons Imported"
 msgstr "导入的组件"
 
-#: inc_php/unitecreator_actions.class.php:371
+#: inc_php/unitecreator_actions.class.php:368
 msgid "Test data deleted"
 msgstr "删除测试数据"
 
-#: inc_php/unitecreator_actions.class.php:351
-#: inc_php/unitecreator_actions.class.php:359
+#: inc_php/unitecreator_actions.class.php:348
+#: inc_php/unitecreator_actions.class.php:356
 msgid "Saved"
 msgstr "已保存"
 
-#: inc_php/unitecreator_actions.class.php:308
+#: inc_php/unitecreator_actions.class.php:305
 msgid "Duplicated Successfully"
 msgstr "复制成功"
 
-#: inc_php/unitecreator_actions.class.php:300
+#: inc_php/unitecreator_actions.class.php:297
 msgid "Done Operation"
 msgstr "完成操作"
 
-#: inc_php/unitecreator_actions.class.php:284
-#: inc_php/unitecreator_actions.class.php:292
+#: inc_php/unitecreator_actions.class.php:281
+#: inc_php/unitecreator_actions.class.php:289
 msgid "Order Saved"
 msgstr "排序已保存"
 
-#: inc_php/unitecreator_actions.class.php:268
+#: inc_php/unitecreator_actions.class.php:265
 msgid "Widgets updated successfully"
 msgstr "组件已成功更新"
 
-#: inc_php/unitecreator_actions.class.php:260
+#: inc_php/unitecreator_actions.class.php:257
 msgid "Widget updated successfully"
 msgstr "组件已成功更新"
 
-#: inc_php/unitecreator_actions.class.php:252
+#: inc_php/unitecreator_actions.class.php:249
 msgid "Widget added successfully"
 msgstr "组件已添加成功"
 
-#: inc_php/unitecreator_actions.class.php:233
+#: inc_php/unitecreator_actions.class.php:230
 msgid "The addon deleted successfully"
 msgstr "组件删除成功"
 
-#: inc_php/unitecreator_actions.class.php:210
+#: inc_php/unitecreator_actions.class.php:207
 msgid "Updated."
 msgstr "已更新。"
 
-#: inc_php/unitecreator_actions.class.php:134
+#: inc_php/unitecreator_actions.class.php:131
 msgid "Order updated"
 msgstr "排序已更新"
 
-#: inc_php/unitecreator_actions.class.php:126
+#: inc_php/unitecreator_actions.class.php:123
 msgid "Category updated"
 msgstr "分类已更新"
 
-#: inc_php/unitecreator_actions.class.php:118
+#: inc_php/unitecreator_actions.class.php:115
 msgid "The category deleted successfully"
 msgstr "已成功删除分类"
 
@@ -4821,13 +5059,13 @@ msgstr "停止移动模式"
 msgid "Move Mode"
 msgstr "移动模式"
 
-#: inc_php/framework/settings_output.class.php:1947
+#: inc_php/framework/settings_output.class.php:2055
 #: inc_php/unitecreator_params_editor.class.php:131
 #: views/objects/mappicker_view.class.php:103
 msgid "Style"
 msgstr "样式"
 
-#: inc_php/framework/settings_output.class.php:1946
+#: inc_php/framework/settings_output.class.php:2054
 #: inc_php/unitecreator_dialog_param.class.php:192
 #: inc_php/unitecreator_params_editor.class.php:107
 #: provider/core/plugins/unlimited_elements/elementor/control_example.php:26
@@ -5085,7 +5323,7 @@ msgstr "升级到PRO版本<br>以使用此组件"
 
 #: inc_php/addontypes/unitecreator_addontype_bgaddon.class.php:29
 #: provider/core/plugins/unlimited_elements/addontype_elementor.class.php:32
-#: provider/provider_admin.class.php:630 views/templates/head.php:63
+#: provider/provider_admin.class.php:630 views/templates/head.php:52
 msgid "Go Pro"
 msgstr "到专业版本"
 
@@ -5152,33 +5390,33 @@ msgstr "分隔线"
 msgid "Divider"
 msgstr "分隔线"
 
-#: inc_php/unitecreator_settings.class.php:1221
+#: inc_php/unitecreator_settings.class.php:777
 msgid "New Category"
 msgstr "新建分类"
 
-#: inc_php/unitecreator_settings.class.php:357
+#: inc_php/unitecreator_settings.class.php:361
 msgid "Instagram User"
 msgstr "Instagram 用户"
 
-#: inc_php/unitecreator_settings.class.php:349
+#: inc_php/unitecreator_settings.class.php:353
 msgid "Type instagram user (@username). This method is deprecated. Please connect with your instagram user from general settings"
 msgstr "输入instagram用户（@username）。 不建议使用此方法。 请通过常规设置与您的instagram用户联系"
 
-#: inc_php/unitecreator_settings.class.php:330
+#: inc_php/unitecreator_settings.class.php:334
 msgid "Get data from instagram user: "
 msgstr "从instagram用户获取数据："
 
-#: inc_php/unitecreator_addon.class.php:1847
+#: inc_php/unitecreator_addon.class.php:1857
 msgid "no settings for this widget"
 msgstr "没有此组件的设置"
 
-#: inc_php/unitecreator_addon.class.php:1833
+#: inc_php/unitecreator_addon.class.php:1843
 msgid "Fonts"
 msgstr "字体"
 
-#: inc_php/unitecreator_addon.class.php:1793
+#: inc_php/unitecreator_addon.class.php:1803
 #: inc_php/unitecreator_params_editor.class.php:115
-#: inc_php/unitecreator_settings.class.php:1296
+#: inc_php/unitecreator_settings.class.php:1347
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2356
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:2644
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:3230
@@ -5186,11 +5424,11 @@ msgstr "字体"
 msgid "General"
 msgstr "常规"
 
-#: inc_php/unitecreator_addon.class.php:344
+#: inc_php/unitecreator_addon.class.php:345
 msgid "Double Name, please remove"
 msgstr "重复名称，请重命名"
 
-#: inc_php/unitecreator_addon.class.php:107
+#: inc_php/unitecreator_addon.class.php:108
 #: views/objects/addon_view.class.php:909
 msgid "Widget Name"
 msgstr "组件名称"
@@ -5419,7 +5657,7 @@ msgstr "查看缩略图"
 #: inc_php/manager/unitecreator_manager_addons.class.php:2229
 #: inc_php/manager/unitecreator_manager_addons.class.php:2241
 #: inc_php/unitecreator_browser.class.php:604
-#: inc_php/unitecreator_output.class.php:1123
+#: inc_php/unitecreator_output.class.php:1127
 #: views/objects/layouts_view.class.php:462
 #: views/objects/layouts_view.class.php:518
 #: views/objects/objects_list_view.class.php:150
@@ -5544,7 +5782,7 @@ msgstr " 属性"
 
 #: inc_php/manager/unitecreator_manager.class.php:233
 #: inc_php/manager/unitecreator_manager_addons.class.php:1247
-#: inc_php/unitecreator_actions.class.php:454
+#: inc_php/unitecreator_actions.class.php:451
 #: views/objects/layouts_view.class.php:237
 msgid "Category Updated"
 msgstr "分类已更新"
@@ -5568,7 +5806,7 @@ msgstr "编辑分类"
 
 #: inc_php/manager/unitecreator_manager_addons.class.php:1210
 #: inc_php/unitecreator_dialog_param.class.php:1760
-#: inc_php/unitecreator_settings.class.php:533
+#: inc_php/unitecreator_settings.class.php:538
 #: provider/functions_wordpress.class.php:1512
 #: views/system/video_dialog.php:188
 msgid "Description"
@@ -5643,7 +5881,7 @@ msgstr "上传 "
 msgid " export zip file (or files)"
 msgstr " 导出zip文件（或多个文件）"
 
-#: inc_php/framework/settings_output.class.php:626
+#: inc_php/framework/settings_output.class.php:719
 #: inc_php/manager/unitecreator_manager_addons.class.php:1082
 #: views/objects/layouts_view.class.php:59
 msgid "Select "
@@ -5752,181 +5990,181 @@ msgstr "尚无库文件！"
 msgid "Missing Preview Link"
 msgstr "缺少预览链接"
 
-#: inc_php/unitecreator_client_text.php:155
+#: inc_php/unitecreator_client_text.php:156
 #: inc_php/unitecreator_params_editor.class.php:42
 #: inc_php/unitecreator_params_editor.class.php:119
 msgid "Edit Section"
 msgstr "编辑菜单项"
 
-#: inc_php/unitecreator_client_text.php:154
+#: inc_php/unitecreator_client_text.php:155
 msgid "Section Anchor"
 msgstr "区段 锚"
 
-#: inc_php/unitecreator_client_text.php:153
+#: inc_php/unitecreator_client_text.php:154
 msgid "Hidden Addon"
 msgstr "隐藏组件"
 
-#: inc_php/unitecreator_client_text.php:152
+#: inc_php/unitecreator_client_text.php:153
 msgid "Hidden Column"
 msgstr "隐藏列"
 
-#: inc_php/unitecreator_client_text.php:151
+#: inc_php/unitecreator_client_text.php:152
 msgid "Hidden Row"
 msgstr "隐藏行"
 
-#: inc_php/unitecreator_client_text.php:150
+#: inc_php/unitecreator_client_text.php:151
 msgid "Less Actions"
 msgstr "Less Actions"
 
-#: inc_php/unitecreator_client_text.php:149
+#: inc_php/unitecreator_client_text.php:150
 msgid "More Actions"
 msgstr "更多动作"
 
-#: inc_php/unitecreator_client_text.php:148
+#: inc_php/unitecreator_client_text.php:149
 msgid "Row Layout"
 msgstr "行布局"
 
 #: inc_php/addontypes/unitecreator_addontype_layout_section.class.php:23
-#: inc_php/unitecreator_client_text.php:147
+#: inc_php/unitecreator_client_text.php:148
 msgid "Section"
 msgstr "区段"
 
-#: inc_php/unitecreator_client_text.php:146
+#: inc_php/unitecreator_client_text.php:147
 msgid "Row"
 msgstr "行"
 
-#: inc_php/unitecreator_client_text.php:145
-#: provider/provider_admin.class.php:626 views/templates/menu.php:59
+#: inc_php/unitecreator_client_text.php:146
+#: provider/provider_admin.class.php:626 views/templates/menu.php:57
 msgid "Settings"
 msgstr "设置"
 
-#: inc_php/unitecreator_client_text.php:144
+#: inc_php/unitecreator_client_text.php:145
 msgid "Move Addon"
 msgstr "移动组件"
 
-#: inc_php/unitecreator_client_text.php:143
+#: inc_php/unitecreator_client_text.php:144
 msgid "Move Column"
 msgstr "移动列"
 
-#: inc_php/unitecreator_client_text.php:142
+#: inc_php/unitecreator_client_text.php:143
 msgid "Move Section"
 msgstr "移动区段"
 
-#: inc_php/unitecreator_client_text.php:141
+#: inc_php/unitecreator_client_text.php:142
 msgid "Move Row"
 msgstr "移动行"
 
-#: inc_php/unitecreator_client_text.php:140
+#: inc_php/unitecreator_client_text.php:141
 msgid "Add Column"
 msgstr "添加列"
 
-#: inc_php/unitecreator_client_text.php:139
+#: inc_php/unitecreator_client_text.php:140
 msgid "Column Settings"
 msgstr "列设置"
 
-#: inc_php/unitecreator_client_text.php:138
+#: inc_php/unitecreator_client_text.php:139
 msgid "Duplicate Column"
 msgstr "复制列"
 
-#: inc_php/unitecreator_client_text.php:137
+#: inc_php/unitecreator_client_text.php:138
 msgid "Delete Column"
 msgstr "删除列"
 
-#: inc_php/unitecreator_client_text.php:136
+#: inc_php/unitecreator_client_text.php:137
 msgid "In Buffer"
 msgstr "在缓冲区"
 
-#: inc_php/unitecreator_client_text.php:134
+#: inc_php/unitecreator_client_text.php:135
 msgid "Paste Section"
 msgstr "粘贴区段"
 
-#: inc_php/unitecreator_client_text.php:133
-#: inc_php/unitecreator_client_text.php:156
+#: inc_php/unitecreator_client_text.php:134
+#: inc_php/unitecreator_client_text.php:157
 #: inc_php/unitecreator_params_editor.class.php:121
 msgid "Copy Section"
 msgstr "复制区段"
 
-#: inc_php/unitecreator_client_text.php:132
+#: inc_php/unitecreator_client_text.php:133
 msgid "Duplicate Section"
 msgstr "复制区段"
 
-#: inc_php/unitecreator_client_text.php:131
-#: inc_php/unitecreator_client_text.php:157
+#: inc_php/unitecreator_client_text.php:132
+#: inc_php/unitecreator_client_text.php:158
 msgid "Delete Section"
 msgstr "删除段"
 
-#: inc_php/unitecreator_client_text.php:130
+#: inc_php/unitecreator_client_text.php:131
 msgid "Copy Row"
 msgstr "复制行"
 
-#: inc_php/unitecreator_client_text.php:129
+#: inc_php/unitecreator_client_text.php:130
 msgid "Duplicate Row"
 msgstr "复制行"
 
-#: inc_php/unitecreator_client_text.php:128
+#: inc_php/unitecreator_client_text.php:129
 msgid "Delete Row"
 msgstr "删除行"
 
-#: inc_php/unitecreator_client_text.php:126
+#: inc_php/unitecreator_client_text.php:127
 msgid "Choose Addon"
 msgstr "选择扩展"
 
 #: inc_php/unitecreator_browser.class.php:845
-#: inc_php/unitecreator_client_text.php:125
+#: inc_php/unitecreator_client_text.php:126
 #: provider/wpml_integrate.class.php:52
 msgid "Not Selected"
 msgstr "未选定"
 
-#: inc_php/unitecreator_client_text.php:124
+#: inc_php/unitecreator_client_text.php:125
 msgid "Never Include"
 msgstr "从不包括"
 
-#: inc_php/unitecreator_client_text.php:123
+#: inc_php/unitecreator_client_text.php:124
 msgid "Always"
 msgstr "总是"
 
-#: inc_php/unitecreator_client_text.php:122
+#: inc_php/unitecreator_client_text.php:123
 #: views/objects/addon_view.class.php:661
 msgid "Include Settings"
 msgstr "包括设置"
 
-#: inc_php/unitecreator_client_text.php:121
+#: inc_php/unitecreator_client_text.php:122
 msgid "Add Include"
 msgstr "添加库"
 
-#: inc_php/unitecreator_client_text.php:120
+#: inc_php/unitecreator_client_text.php:121
 msgid "Delete Include"
 msgstr "删除库"
 
-#: inc_php/unitecreator_client_text.php:119
+#: inc_php/unitecreator_client_text.php:120
 msgid "Bulk"
 msgstr "批量"
 
-#: inc_php/unitecreator_client_text.php:116 views/testaddonnew.php:49
+#: inc_php/unitecreator_client_text.php:117 views/testaddonnew.php:49
 msgid "Save"
 msgstr "保存"
 
 #: inc_php/unitecreator_assets.class.php:1305
-#: inc_php/unitecreator_client_text.php:115
+#: inc_php/unitecreator_client_text.php:116
 msgid "Edit File"
 msgstr "编辑文件"
 
-#: inc_php/unitecreator_client_text.php:114
+#: inc_php/unitecreator_client_text.php:115
 #: provider/core/plugins/unlimited_elements/elementor/controls/control_audio.php:40
 msgid "Choose Audio"
 msgstr "选择音频"
 
-#: inc_php/unitecreator_client_text.php:113
+#: inc_php/unitecreator_client_text.php:114
 #: provider/core/plugins/unlimited_elements/elementor/elementor_controls.class.php:160
 msgid "Choose Image"
 msgstr "选择图像"
 
-#: inc_php/unitecreator_client_text.php:108
+#: inc_php/unitecreator_client_text.php:109
 #: inc_php/unitecreator_dialog_param.class.php:220
 msgid "Box Shadow"
 msgstr "盒子阴影"
 
-#: inc_php/unitecreator_client_text.php:107
+#: inc_php/unitecreator_client_text.php:108
 #: inc_php/unitecreator_dialog_param.class.php:221
 msgid "Text Shadow"
 msgstr "文字阴影"
@@ -6182,7 +6420,7 @@ msgstr "编辑项目"
 msgid "Update Item"
 msgstr "更新项目"
 
-#: inc_php/framework/settings_output.class.php:1025
+#: inc_php/framework/settings_output.class.php:1121
 #: inc_php/manager/unitecreator_manager_inline.class.php:123
 #: inc_php/manager/unitecreator_manager_inline.class.php:146
 #: inc_php/unitecreator_client_text.php:45
@@ -6235,7 +6473,7 @@ msgstr "布局已保存"
 msgid "Layout Imported"
 msgstr "已导入布局"
 
-#: inc_php/unitecreator_actions.class.php:462
+#: inc_php/unitecreator_actions.class.php:459
 #: inc_php/unitecreator_client_text.php:29
 msgid "Layout Updated"
 msgstr "布局已更新"
@@ -6355,7 +6593,7 @@ msgstr "只有下拉式和单选框字段类型用于条件输入"
 msgid "Saving to library"
 msgstr "保存到库中"
 
-#: inc_php/unitecreator_client_text.php:135
+#: inc_php/unitecreator_client_text.php:136
 #: inc_php/unitecreator_helperhtml.class.php:110
 msgid "Save To Library"
 msgstr "保存到库"
@@ -6370,7 +6608,7 @@ msgstr "复制中"
 #: inc_php/manager/unitecreator_manager_inline.class.php:102
 #: inc_php/manager/unitecreator_manager_inline.class.php:113
 #: inc_php/manager/unitecreator_manager_inline.class.php:163
-#: inc_php/unitecreator_client_text.php:118
+#: inc_php/unitecreator_client_text.php:119
 #: inc_php/unitecreator_helperhtml.class.php:108
 #: provider/core/plugins/create_addons/plugin.php:49
 #: provider/core/plugins/create_addons/plugin.php:69
@@ -6395,7 +6633,7 @@ msgstr "删除中"
 #: inc_php/manager/unitecreator_manager_inline.class.php:112
 #: inc_php/manager/unitecreator_manager_inline.class.php:164
 #: inc_php/unitecreator_assets.class.php:1402
-#: inc_php/unitecreator_client_text.php:117
+#: inc_php/unitecreator_client_text.php:118
 #: inc_php/unitecreator_helperhtml.class.php:106
 #: views/objects/layouts_view.class.php:510
 #: views/objects/objects_list_view.class.php:183 views/testaddonnew.php:56
@@ -6414,31 +6652,32 @@ msgstr "编辑"
 msgid "not chosen"
 msgstr "未被选中"
 
-#: inc_php/unitecreator_settings.class.php:340
+#: inc_php/unitecreator_api_integrations.class.php:1082
+#: inc_php/unitecreator_settings.class.php:344
 #: provider/core/plugins/unlimited_elements/provider_core_admin.class.php:114
-#: provider/core/plugins/unlimited_elements/views/settingselementor.php:82
+#: provider/core/plugins/unlimited_elements/views/settingselementor.php:90
 #: views/objects/mappicker_view.class.php:192 views/settings.php:52
 msgid "General Settings"
 msgstr "常规设置"
 
-#: inc_php/unitecreator_params_processor.class.php:1496
+#: inc_php/unitecreator_params_processor.class.php:1510
 msgid " menu"
 msgstr "菜单"
 
-#: inc_php/unitecreator_params_processor.class.php:1496
+#: inc_php/unitecreator_params_processor.class.php:1510
 msgid "No items in "
 msgstr "中没有项目 "
 
-#: inc_php/unitecreator_params_processor.class.php:1462
+#: inc_php/unitecreator_params_processor.class.php:1476
 msgid "No menu selected"
 msgstr "未选择菜单"
 
-#: inc_php/unitecreator_params_processor.class.php:1167
+#: inc_php/unitecreator_params_processor.class.php:1181
 msgid "Instagram Gallery Error: "
 msgstr "Instagram 图库错误："
 
-#: inc_php/unitecreator_addon.class.php:1434
-#: inc_php/unitecreator_addon.class.php:1814
+#: inc_php/unitecreator_addon.class.php:1443
+#: inc_php/unitecreator_addon.class.php:1824
 #: inc_php/unitecreator_dialog_param.class.php:840
 #: inc_php/unitecreator_params_processor.class.php:631
 #: provider/core/plugins/unlimited_elements/elementor/elementor_widget.class.php:501
@@ -6528,13 +6767,14 @@ msgstr "选择字体系列"
 msgid "---- Select Page Font----"
 msgstr "----选择页面字体----"
 
+#: inc_php/unitecreator_api_integrations.class.php:603
 #: inc_php/unitecreator_settings_output.class.php:690
 #: provider/core/plugins/unlimited_elements/dialog_param_elementor.class.php:415
 #: provider/core/plugins/unlimited_elements/dialog_param_elementor.class.php:464
 msgid "Units"
 msgstr "单位"
 
-#: inc_php/framework/settings_output.class.php:529
+#: inc_php/framework/settings_output.class.php:622
 #: inc_php/unitecreator_settings_output.class.php:577
 msgid "Choose"
 msgstr "选择"
@@ -6544,13 +6784,13 @@ msgstr "选择"
 msgid "Please select assets path"
 msgstr "请选择资源路径"
 
-#: inc_php/framework/settings_output.class.php:492
+#: inc_php/framework/settings_output.class.php:585
 #: inc_php/unitecreator_settings_output.class.php:521
 msgid "Change"
 msgstr "变更"
 
-#: inc_php/framework/settings_output.class.php:491
-#: inc_php/framework/settings_output.class.php:664
+#: inc_php/framework/settings_output.class.php:584
+#: inc_php/framework/settings_output.class.php:757
 #: inc_php/framework/table.class.php:551
 #: inc_php/unitecreator_browser.class.php:254
 #: inc_php/unitecreator_settings_output.class.php:520
@@ -6559,13 +6799,13 @@ msgstr "变更"
 msgid "Clear"
 msgstr "清除"
 
-#: inc_php/framework/settings_output.class.php:487
+#: inc_php/framework/settings_output.class.php:580
 #: inc_php/unitecreator_settings_output.class.php:516
 #: provider/views/master_view.php:46
 msgid "Select Image"
 msgstr "选择图像"
 
-#: inc_php/framework/settings_output.class.php:471
+#: inc_php/framework/settings_output.class.php:564
 #: inc_php/unitecreator_settings_output.class.php:505
 msgid "Image Url"
 msgstr "图片 URL"
@@ -6604,7 +6844,7 @@ msgstr "顶部"
 msgid "Click Me"
 msgstr "点击我"
 
-#: inc_php/unitecreator_actions.class.php:554
+#: inc_php/unitecreator_actions.class.php:551
 #: inc_php/unitecreator_settings_output.class.php:129
 msgid "Section Saved"
 msgstr "菜单项已保存"
@@ -6618,7 +6858,7 @@ msgstr "正在保存...."
 msgid "Save Section"
 msgstr "保存菜单项"
 
-#: inc_php/unitecreator_globals.class.php:276
+#: inc_php/unitecreator_globals.class.php:282
 #: views/objects/form_entries_view.class.php:140
 #: views/objects/form_entries_view.class.php:554
 #: views/objects/form_entry_view.class.php:104
@@ -6626,7 +6866,7 @@ msgid "Page"
 msgstr "页面"
 
 #: inc_php/unitecreator_browser.class.php:363
-#: inc_php/unitecreator_globals.class.php:275
+#: inc_php/unitecreator_globals.class.php:281
 #: views/objects/addon_view.class.php:400
 #: views/objects/layouts_view.class.php:458
 #: views/objects/objects_list_view.class.php:146
@@ -6634,7 +6874,7 @@ msgid "Category"
 msgstr "分类"
 
 #: inc_php/addontypes/unitecreator_addontype.class.php:54
-#: inc_php/unitecreator_globals.class.php:274
+#: inc_php/unitecreator_globals.class.php:280
 msgid "Addon"
 msgstr "组件"
 

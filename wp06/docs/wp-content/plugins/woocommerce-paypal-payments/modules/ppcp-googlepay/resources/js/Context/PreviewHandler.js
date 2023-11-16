@@ -1,6 +1,6 @@
 import BaseHandler from "./BaseHandler";
 
-class CartHandler extends BaseHandler {
+class PreviewHandler extends BaseHandler {
 
     constructor(buttonConfig, ppcpConfig, externalHandler) {
         super(buttonConfig, ppcpConfig, externalHandler);
@@ -28,4 +28,4 @@ class CartHandler extends BaseHandler {
 
 }
 
-export default CartHandler;
+export default PreviewHandler;

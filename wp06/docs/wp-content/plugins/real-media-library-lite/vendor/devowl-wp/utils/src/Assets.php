@@ -691,6 +691,8 @@ JS;
                     'data-alt-type="application/ld+json"',
                     // Compatibility with Swift Performance
                     'data-dont-merge',
+                    // Compatibility with WP Meteor
+                    'data-wpmeteor-nooptimize="true"',
                 ]), \sprintf(
                     // function(k, v) {
                     //     if (["%1$s"].indexOf(k) > -1 && typeof v === "string" && v.startsWith(%3$d)) {

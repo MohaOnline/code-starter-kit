@@ -12,9 +12,11 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   public ?string $newImageData = null;
   public ?string $promptEnding = null;
   public bool $casuallyFineTuned = false;
+  public ?string $responseFormat = null;
   public ?int $promptTokens = null;
   
-  public function __construct( ?string $prompt = '', int $maxTokens = 1024, string $model = MWAI_FALLBACK_MODEL ) {
+  public function __construct( ?string $prompt = '', int $maxTokens = 1024,
+    string $model = MWAI_FALLBACK_MODEL ) {
     parent::__construct( $prompt );
     $this->setModel( $model );
     $this->setMaxTokens( $maxTokens );
@@ -77,7 +79,9 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
             }
           }
         }
-        $text .= "=#=$role\n$content=#=\n";
+        else {
+          $text .= "=#=$role\n$content=#=\n";
+        }
       }
     }
     else {
@@ -106,23 +110,14 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
         array_unshift( $this->messages, $context );
       }
 
-      // If there is a newImageData, it means we are using the Vision API with Image Upload to the OpenAI servers
-      // instead of using the URL. In that case, we need to update the URL with the newImageData.
-      if ( !empty( $this->newImageData ) ) {
-        $lastKey = key( array_slice( $this->messages, -1, 1, true ) );
-        if ( is_array( $this->messages[$lastKey]['content'] ) ) {
-          foreach ( $this->messages[$lastKey]['content'] as &$message ) {
-            if ( $message['type'] === 'image_url' ) {
-              $message['image_url']['url'] = "data:image/jpeg;base64,{$this->newImageData}";
-              break;
-            }
-          }
-          unset( $message );
-        }
+      // NOTE: If nobody complains about this, we can probably get rid of everything
+      // related to the casuallyFineTuned. This was added on November 13th, 2023.
+      if ( $this->casuallyFineTuned ) {
+        error_log( 'AI Engine: The casuallyFineTuned parameter is deprecated.' );
       }
     }
 
-    //NOTE: Removed the checks related to the MaxTokens (as of November 8th)
+    // NOTE: Removed the checks related to the MaxTokens (as of November 8th)
     // Let's see if we can remove this completely.
 
     // Make sure the max tokens are respected.
@@ -186,6 +181,17 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
   public function setPrompt( $prompt ) {
     parent::setPrompt( $prompt );
     $this->validateMessages();
+  }
+
+  /**
+   * The type of return expected from the API. It can be either null or "json".
+   * @param int $maxResults The maximum number of completions.
+   */
+  public function setResponseFormat( $responseFormat ) {
+    if ( !empty( $responseFormat ) && $responseFormat !== 'json' ) {
+      throw new Exception( "AI Engine: The response format can only be null or json." );
+    }
+    $this->responseFormat = $responseFormat;
   }
 
   /**
@@ -317,16 +323,27 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     $this->validateMessages();
   }
 
+  private function getImageURL( $image ) {
+    if ( !empty( $this->newImage ) ) {
+      return $this->newImage;
+    }
+    if ( !empty( $this->newImageData ) ) {
+      return "data:image/jpeg;base64,{$this->newImageData}";
+    }
+  }
+
+
   private function validateMessages(): void {
     // Messages should end with either the prompt or, if exists, the newMessage.
     $message = empty( $this->newMessage ) ? $this->prompt : $this->newMessage;
     $content = $message;
 
     // If there is an image, we need to adapt it to Vision.
-    if ( !empty( $this->newImage ) ) {
+    $imageURL = $this->getImageURL( $this->newImage );
+    if ( !empty( $imageURL ) ) {
       $content = [
         [ "type" => "text", "text" => $message ],
-        [ "type" => "image_url", "image_url" => [ "url" => $this->newImage ] ]
+        [ "type" => "image_url", "image_url" => [ "url" => $imageURL ] ]
       ];
     }
 
@@ -476,6 +493,9 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     }
     if ( !empty( $params['envId'] ) ) {
       $this->setEnvId( $params['envId'] );
+    }
+    if ( !empty( $params['responseFormat'] ) ) {
+      $this->setResponseFormat( $params['responseFormat'] );
     }
   }
 }

@@ -1,11 +1,11 @@
 === AI Engine: Chatbots, Generators, Assistants, GPT 4 and more! ===
 Contributors: TigrouMeow
-Tags: ai, chatgpt, gpt, openai, chatbot, copilot
+Tags: ai, gpt, openai, chatbot, copilot, chatgpt
 Donate link: https://meowapps.com/donation/
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.9.95
+Stable tag: 1.9.98
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,11 +82,31 @@ Languages: English.
 
 == Changelog ==
 
+= 1.9.98 (2023/11/16) =
+* Update: Enhanced the Images Generator a lot, you can now add tasks to it, and let them run. The idea is to move this experience at some point to the Post Editor. 
+* Update: The URLs returned by DALL-E are now properly converted into Markdown (and therefore, HTML on the front-end).
+* Update: Meow_MWAI_Query_Image is now using DALL-E 3 by default, and 1792x1024 as the resolution.
+* Update: Better Discussions UI, displaying the images if they are still available.
+* 🎵 Discuss with other users about features and issues on [my Discord](https://discord.gg/bHDGh38).
+* 🌴 Keep us motivated with [a little review here](https://wordpress.org/support/plugin/ai-engine/reviews/). Thank you!
+
+= 1.9.97 (2023/11/15) =
+* Add: Support for DALL-E 3.
+* Fix: Many little fixes.
+
+= 1.9.96 (2023/11/13) =
+* Add: GPT-4 model without Vision (since its RPM is much higher).
+* Add: simpleJsonQuery function, to retrieve a JSON from the AI.
+* Add: New Transcription tab with Image to Text, Audio to Text, Prompt to JSON.
+* Add: Useful information are dynamically added under Max Tokens fields. Let's try to make the issues around Max Tokens easier to understand and handle!
+* Add: Support for errors from OpenAI while using streaming.
+* Fix: MaxTokens in the forms was not working properly.
+* Fix: Android Speech Recognition was not working properly.
+* Fix: Issue with inputs and textareas when they were used as Output in the Forms.
+
 = 1.9.95 (2023/11/10) =
 * Add: New "Images" section in the Settings related to "Vision".
 * Update: Much better handling of images (where/how it's stored and sent to the models, their expiries, etc).
-* 🎵 Discuss with other users about features and issues on [my Discord](https://discord.gg/bHDGh38).
-* 🌴 Keep us motivated with [a little review here](https://wordpress.org/support/plugin/ai-engine/reviews/). Thank you!
 
 = 1.9.94 (2023/11/07) =
 * Add: Support for GPT-4 Turbo.

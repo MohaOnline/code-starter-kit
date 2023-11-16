@@ -25,12 +25,36 @@ function automatorwp_utilities_times_option() {
                 'type' => 'text',
                 'attributes' => array(
                     'type' => 'number',
-                    'min' => '1',
                 ),
+                'sanitization_cb' => 'automatorwp_times_option_sanitization_cb',
                 'default' => 1
             )
         )
     );
+}
+
+/**
+ * Handles sanitization for the times option field. Ensures a field's value is greater than 0.
+ * 
+ * @since 1.0.0
+ *
+ * @param  mixed      $value        The unsanitized value from the form.
+ * @param  array      $field_args   Array of field arguments.
+ * @param  CMB2_Field $field        The field object
+ *
+ * @return int                      Sanitized value to be stored.
+ */
+function automatorwp_times_option_sanitization_cb( $value, $field_args, $field ) {
+
+    // Prevent incorrect values or numbers less than 1
+    if ( ! is_numeric( $value ) || $value < 1 ) {
+        $sanitized_value = 1;
+    } else {
+        $sanitized_value = absint( $value );
+    }
+
+    return $sanitized_value;
+
 }
 
 /**

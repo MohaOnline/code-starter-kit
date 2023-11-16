@@ -10,21 +10,27 @@
 defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
 class GlobalsUnlimitedElements{
-	
+
 	public static $enableDashboard = true;
+		
+	public static $enableForms = false;
 	
-	public static $enableForms = false; // enable the forms functionality
-	public static $enableGoogleApi = false;
 	public static $enableGutenbergSupport = false;
 	
-	public static $showAdminNotices = false;
+	public static $showAdminNotices = true;
 	public static $debugAdminNotices = false;
-
+	
+	public static $enableApiIntegrations = false;
+	
+	public static $enableGoogleAPI = false;
+	public static $enableWeatherAPI = false;
+	public static $enableCurrencyAPI = false;
+	
 	public static $enableInsideNotification = true;
 
-	//public static $insideNotificationText = "BLACK FRIDAY SALE STARTS NOW! <br> Grab the PRO version for 50% off. <br> <a href='https://unlimited-elements.com/pricing/' target='_blank'>Get It Now</a> ";
+	public static $insideNotificationText = "BLACK FRIDAY SALE STARTS NOW! <br> Grab the PRO version for 50% off. <br> <a href='https://unlimited-elements.com/pricing/' target='_blank'>Get It Now</a> ";
 	//public static $insideNotificationText = "Unlimited Elements Birthday Sale!!! <br> 50% OFF - all plans! <br> <a style='text-decoration:underline;' href='https://unlimited-elements.com/pricing/' target='_blank'>Get It Now!</a> ";
-	public static $insideNotificationText = "Unlock Access To All PRO Widgets and Features.  <a href='https://unlimited-elements.com/pricing/' target='_blank'>Upgrade Now</a> ";
+	//public static $insideNotificationText = "Unlock Access To All PRO Widgets and Features.  <a href='https://unlimited-elements.com/pricing/' target='_blank'>Upgrade Now</a> ";
 	public static $insideNotificationUrl = "https://unlimited-elements.com/pricing/";
 
 	const PLUGIN_NAME = "unlimitedelements";
@@ -82,14 +88,14 @@ class GlobalsUnlimitedElements{
 		//self::$showAdminNotices = true;
 
 		self::$urlTemplatesList = admin_url("edit.php?post_type=elementor_library&tabs_group=library");
-		
+
 		self::$urlAccount = admin_url("admin.php?page=unlimitedelements-account");
-				
+
 		UniteProviderFunctionsUC::addAction('admin_init', array("GlobalsUnlimitedElements", 'initAdminNotices'));
-		
+
 		if(self::$enableGutenbergSupport == true)
 			self::initGutenbergIntegration();
-		
+
 	}
 
 	/**
@@ -100,15 +106,13 @@ class GlobalsUnlimitedElements{
 		if(GlobalsUnlimitedElements::$showAdminNotices === false)
 			return;
 
-		/*
 		UCAdminNotices::init(array(
 			new UCAdminNoticeBanner(),
 //			new UCAdminNoticeSimpleExample(),
 //			new UCAdminNoticeDoubly(),
 //			new UCAdminNoticeRating(),
 		));
-		*/
-
+		
 	}
 
 	/**

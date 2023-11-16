@@ -5,8 +5,8 @@ Contributors: echoplugins
 Tags: knowledge base, docs, ChatGPT, documentation, documents, faq, knowledgebase, help, AI, GPT-3, openai, wiki, faqs, articles, support
 Requires at least: 5.2
 Requires PHP: 5.6
-Tested up to: 6.3
-Stable tag: 11.0.1
+Tested up to: 6.4
+Stable tag: 11.1.0
 License: GPL2+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -221,13 +221,18 @@ Read about ChatGPT at [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT "Chat GPT"
 
 == Changelog ==
 
+= 11.1.0 =
+Release Date: NOv 10, 2023
+
+* New: FAQ Schema for FAQs
+
 = 11.0.1 =
 Release Date: Aug 14, 2023
 
 * Fix: Cleanup and minor fixes
 
 = 11.0.0 =
-Release Date: Aug 7, 2023
+Release Date: Aug 6, 2023
 
 * New: Modular Layouts
 * Update: WordPress 6.3 compatibility

@@ -56,14 +56,14 @@ $advanced_ads_admin_notices = apply_filters(
 						. '</p></div>',
 			'global' => false,
 		],
-		// Black Friday 2022 promotion.
-		'bfcm22'          => [
+		// Black Friday 2023 promotion.
+		'bfcm23'          => [
 			'type'   => 'promo',
 			'text'   => sprintf(
 				/* translators: %1$s is the markup for the discount value, %2$s starts a button link, %3$s closes the button link. */
-				__( 'Save %1$s on all products with our Black Friday / Cyber Monday offer! %2$sGet All Access%3$s', 'advanced-ads' ),
+				__( 'Save %1$s on all products with our Black Friday / Cyber Monday offer! %2$sGet this deal%3$s', 'advanced-ads' ),
 				'<span style="font-weight: bold; font-size: 1.6em; vertical-align: sub;">30%</span>',
-				'<a class="button button-primary" target="_blank" href="https://wpadvancedads.com/checkout/?edd_action=add_to_cart&download_id=95170&edd_options[price_id]=1&discount=BFCM2022&utm_source=advanced-ads&utm_medium=link&utm_campaign=bfcm-2022">',
+				'<a class="button button-primary" target="_blank" href="https://wpadvancedads.com/pricing/?utm_source=advanced-ads&utm_medium=link&utm_campaign=bfcm-2023">',
 				'</a>'
 			),
 			'global' => true,

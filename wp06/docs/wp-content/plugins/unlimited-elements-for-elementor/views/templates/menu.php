@@ -1,17 +1,15 @@
 <div class="ue-root ue-menu">
-	
-	<?php if(GlobalsUnlimitedElements::$enableDashboard == true):?>
-	<a
-		class="ue-menu-item <?php echo $view === GlobalsUnlimitedElements::VIEW_DASHBOARD ? "ue-active" : ""; ?>"
-		href="<?php echo HelperUC::getViewUrl(GlobalsUnlimitedElements::VIEW_DASHBOARD); ?>"
-	>
-		<?php echo esc_html__("Home", "unlimited-elements-for-elementor"); ?>
-		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
-			<path d="M15.167 22.168h7V11.642L14 5.29l-8.167 6.352v10.526h7v-7h2.334v7Zm9.333 1.166c0 .645-.522 1.167-1.167 1.167H4.667A1.167 1.167 0 0 1 3.5 23.334V11.071c0-.36.166-.7.45-.92l9.334-7.26a1.166 1.166 0 0 1 1.432 0l9.333 7.26c.285.22.451.56.451.92v12.263Z" />
-		</svg>
-	</a>
-	<?php endif?>
-	
+	<?php if(GlobalsUnlimitedElements::$enableDashboard === true): ?>
+		<a
+			class="ue-menu-item <?php echo $view === GlobalsUnlimitedElements::VIEW_DASHBOARD ? "ue-active" : ""; ?>"
+			href="<?php echo HelperUC::getViewUrl(GlobalsUnlimitedElements::VIEW_DASHBOARD); ?>"
+		>
+			<?php echo esc_html__("Home", "unlimited-elements-for-elementor"); ?>
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+				<path d="M15.167 22.168h7V11.642L14 5.29l-8.167 6.352v10.526h7v-7h2.334v7Zm9.333 1.166c0 .645-.522 1.167-1.167 1.167H4.667A1.167 1.167 0 0 1 3.5 23.334V11.071c0-.36.166-.7.45-.92l9.334-7.26a1.166 1.166 0 0 1 1.432 0l9.333 7.26c.285.22.451.56.451.92v12.263Z" />
+			</svg>
+		</a>
+	<?php endif ?>
 	<a
 		class="ue-menu-item <?php echo $view === GlobalsUnlimitedElements::VIEW_ADDONS_ELEMENTOR ? "ue-active" : ""; ?>"
 		href="<?php echo HelperUC::getViewUrl(GlobalsUnlimitedElements::VIEW_ADDONS_ELEMENTOR); ?>"
@@ -63,7 +61,7 @@
 	</a>
 	<a
 		class="ue-menu-item"
-		href="<?php echo GlobalsUnlimitedElements::$urlAccount?>"
+		href="<?php echo GlobalsUnlimitedElements::$urlAccount; ?>"
 	>
 		<?php echo esc_html__("Account", "unlimited-elements-for-elementor"); ?>
 		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">

@@ -127,9 +127,9 @@ class Submit extends Field {
 
 	public function sanitizeFieldData( $data ) {
 		$cleanData         = [];
-		$cleanData["type"] = $data["type"];
+		$cleanData["type"] = sanitize_text_field($data["type"]);
 		if ( isset( $data["name"] ) ) {
-			$name              = trim( strip_tags( $data["name"] ) );
+			$name              = sanitize_text_field(trim( strip_tags( $data["name"] ) ));
 			$cleanData["name"] = $name ? $name : $this->fieldDefaultData["name"];
 		}
 

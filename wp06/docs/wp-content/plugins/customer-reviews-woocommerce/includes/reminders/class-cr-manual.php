@@ -72,7 +72,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 						( '' === $order->get_meta( '_ivole_review_reminder', true ) && 'cr' === get_option( 'ivole_scheduler_type', 'wp' ) )
 					) {
 						$actions['ivole'] = array(
-							'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=ivole_manual_review_reminder&order_id=' . $order_id ), 'ivole-manual-review-reminder', 'ivole_nonce' ),
+							'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=ivole_manual_review_reminder&order_id=' . $order_id ), 'cr-man-rem', 'cr_manual_reminder' ),
 							'name'      => __( 'Sync the order with CR Cron', 'customer-reviews-woocommerce' ),
 							'action'    => "view ivole-order ivole-order-cr ivole-o-" . $order_id,
 						);
@@ -85,7 +85,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 							}
 						}
 						$actions['ivole'] = array(
-							'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=ivole_manual_review_reminder&order_id=' . $order_id ), 'ivole-manual-review-reminder', 'ivole_nonce' ),
+							'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=ivole_manual_review_reminder&order_id=' . $order_id ), 'cr-man-rem', 'cr_manual_reminder' ),
 							'name'      => __( 'Send review reminder now', 'customer-reviews-woocommerce' ),
 							'action'    => "view ivole-order ivole-o-" . $order_id . ' ' . $whatsapp_class,
 						);
@@ -119,6 +119,17 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 		public function manual_review_reminder() {
 			if ( isset( $_POST['order_id'] ) ) {
 				$order_id = intval( $_POST['order_id'] );
+
+				if ( ! wp_verify_nonce( $_POST['nonce'], 'cr-man-rem' ) ) {
+					wp_send_json(
+						array(
+							'code' => 101,
+							'message' => __( 'A security token expired, please refresh the page and try again.', 'customer-reviews-woocommerce' ),
+							'order_id' => $order_id
+						)
+					);
+				}
+
 				$order = wc_get_order( $order_id );
 
 				if ( ! $order  ) {
@@ -355,7 +366,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 				wp_register_script( 'cr-manual-review-reminder', plugins_url( 'js/admin-manual.js', dirname( dirname( __FILE__ ) ) ), array( 'jquery' ), Ivole::CR_VERSION, false );
 
 				$send_button = '<ul class="cr-send-menu">';
-				$send_button .= '<li class="cr-send-email">' . __( 'Email', 'customer-reviews-woocommerce' );
+				$send_button .= '<li class="cr-send-email" data-nonce="' . wp_create_nonce( 'cr-man-rem' ) . '">' . __( 'Email', 'customer-reviews-woocommerce' );
 				$send_button .= '<span class="dashicons dashicons-email"></span></li>';
 				//
 				$send_button .= '<li class="cr-send-whatsapp" data-tip="' . esc_attr__( 'A review invitation cannot be sent by WhatsApp because no phone number is found in the order.', 'customer-reviews-woocommerce' ) . '">';
@@ -365,7 +376,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 				$send_button .= '<li class="cr-send-wa-cons"><span class="cr-send-wa-cons-msg">';
 				$send_button .= __( 'Has the customer provided a consent to receive a review invitation?', 'customer-reviews-woocommerce' );
 				$send_button .= '</span><span class="cr-send-wa-cons-btn">';
-				$send_button .= '<a href="" class="cr-send-wa-cons-yes">' . __( 'Yes', 'customer-reviews-woocommerce' ) . '</a>';
+				$send_button .= '<a href="" class="cr-send-wa-cons-yes" data-nonce="' . wp_create_nonce( 'cr-man-wa-cons' ) . '">' . __( 'Yes', 'customer-reviews-woocommerce' ) . '</a>';
 				$send_button .= '<a href="" class="cr-send-wa-cons-no">' . __( 'No', 'customer-reviews-woocommerce' ) . '</a>';
 				$send_button .= '<span class="cr-send-wa-spinner"></span>';
 				$send_button .= '</span></li>';
@@ -387,7 +398,7 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 				$send_button .= '<li class="cr-send-wa-fbck"><span class="cr-send-wa-fbck-msg">';
 				$send_button .= __( 'Have you sent the review invitation?', 'customer-reviews-woocommerce' );
 				$send_button .= '</span><span class="cr-send-wa-fbck-btn">';
-				$send_button .= '<a href="" class="cr-send-wa-fbck-yes">' . __( 'Yes', 'customer-reviews-woocommerce' ) . '</a>';
+				$send_button .= '<a href="" class="cr-send-wa-fbck-yes" data-nonce="' . wp_create_nonce( 'cr-man-wa-fbck' ) . '">' . __( 'Yes', 'customer-reviews-woocommerce' ) . '</a>';
 				$send_button .= '<a href="" class="cr-send-wa-fbck-no">' . __( 'No', 'customer-reviews-woocommerce' ) . '</a>';
 				$send_button .= '<span class="cr-send-wa-spinner"></span>';
 				$send_button .= '</span></li></ul>';
@@ -409,6 +420,17 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 		public function manual_wa_review_reminder() {
 			if ( isset( $_POST['order_id'] ) ) {
 				$order_id = intval( $_POST['order_id'] );
+
+				if ( ! wp_verify_nonce( $_POST['nonce'], 'cr-man-wa-cons' ) ) {
+					wp_send_json(
+						array(
+							'code' => 101,
+							'message' => __( 'A security token expired, please refresh the page and try again.', 'customer-reviews-woocommerce' ),
+							'order_id' => $order_id
+						)
+					);
+				}
+
 				$order = wc_get_order( $order_id );
 
 				if ( ! $order  ) {
@@ -460,6 +482,17 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 		public function manual_review_reminder_conf() {
 			if ( isset( $_POST['order_id'] ) ) {
 				$order_id = intval( $_POST['order_id'] );
+
+				if ( ! wp_verify_nonce( $_POST['nonce'], 'cr-man-wa-fbck' ) ) {
+					wp_send_json(
+						array(
+							'code' => 101,
+							'message' => __( 'A security token expired, please refresh the page and try again.', 'customer-reviews-woocommerce' ),
+							'order_id' => $order_id
+						)
+					);
+				}
+
 				$order = wc_get_order( $order_id );
 
 				if ( ! $order  ) {
@@ -507,8 +540,11 @@ if ( ! class_exists( 'CR_Manual' ) ) :
 		}
 
 		public function is_phone_exists( $order ) {
+			$shipping_phone = '';
 			$billing_phone = $order->get_billing_phone();
-			$shipping_phone = $order->get_shipping_phone();
+			if ( method_exists( $order, 'get_shipping_phone' ) ) {
+				$shipping_phone = $order->get_shipping_phone();
+			}
 			$billing_phone = preg_replace( "/[^0-9]/", '', $billing_phone );
 			$shipping_phone = preg_replace( "/[^0-9]/", '', $shipping_phone );
 			if ( $billing_phone || $shipping_phone ) {

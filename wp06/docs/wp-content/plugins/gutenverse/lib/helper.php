@@ -8,6 +8,7 @@
  */
 
 use Gutenverse\Gutenverse;
+use Gutenverse\Style_Generator;
 
 if ( ! function_exists( 'jlog' ) ) {
 	/**
@@ -427,8 +428,8 @@ if ( ! function_exists( 'is_gutenverse_compatible' ) ) {
 	/**
 	 * Check if gutenverse is compatible.
 	 */
-	function is_gutenverse_compatible() {
-		return defined( 'GUTENBERG_VERSION' ) || version_compare( $GLOBALS['wp_version'], '5.9', '>=' );
+	function is_gutenverse_compatible( $version_minimum = '5.9' ) {
+		return defined( 'GUTENBERG_VERSION' ) || version_compare( $GLOBALS['wp_version'], $version_minimum, '>=' );
 	}
 }
 
@@ -536,7 +537,7 @@ if ( ! function_exists( 'gutenverse_template_part_content' ) ) {
 				if ( 0 === validate_file( $attributes['slug'] ) && file_exists( $template_part_file_path ) ) {
 					$content = file_get_contents( $template_part_file_path );
 					$content = is_string( $content ) && '' !== $content
-						? _inject_theme_attribute_in_block_template_content( $content )
+						? gutenverse_inject_theme_attribute_in_block_template_content( $content )
 						: '';
 				}
 
@@ -568,6 +569,87 @@ if ( ! function_exists( 'gutenverse_template_part_content' ) ) {
 		}
 
 		return $content;
+	}
+}
+if ( ! function_exists( 'gutenverse_flatten_blocks' ) ) {
+	/**
+	 * Flatten Blocks
+	 *
+	 * @param blocks $blocks .
+	 *
+	 * @return blocks
+	 */
+	function gutenverse_flatten_blocks( $blocks ) {
+		if ( is_gutenverse_compatible() ) {
+			// use Gutenberg or WP 5.9 & above version.
+			return _flatten_blocks( $blocks );
+		}
+
+		/**
+		 * Below is the native functionality of "_flatten_blocks".
+		 * Just to prevent fatal error if somehow user able to install this plugin on WP below 5.9.
+		 */
+		$all_blocks = array();
+		$queue      = array();
+		foreach ( $blocks as &$block ) {
+			$queue[] = &$block;
+		}
+
+		while ( count( $queue ) > 0 ) { //phpcs:ignore
+			$block = &$queue[0];
+			array_shift( $queue );
+			$all_blocks[] = &$block;
+
+			if ( ! empty( $block['innerBlocks'] ) ) {
+				foreach ( $block['innerBlocks'] as &$inner_block ) {
+					$queue[] = &$inner_block;
+				}
+			}
+		}
+
+		return $all_blocks;
+	}
+}
+if ( ! function_exists( 'gutenverse_inject_theme_attribute_in_block_template_content' ) ) {
+	/**
+	 * Inject Theme Attribute
+	 *
+	 * @param template_content $template_content Content .
+	 */
+	function gutenverse_inject_theme_attribute_in_block_template_content( $template_content ) {
+		if ( is_gutenverse_compatible('6.4') ) {
+			// use Gutenberg or WP 6.4 & above version.
+			return traverse_and_serialize_blocks( parse_blocks( $template_content ), '_inject_theme_attribute_in_template_part_block' );
+		}
+
+		/**
+		 * Below is the native functionality of "traverse_and_serialize_blocks( parse_blocks( $template_content ), '_inject_theme_attribute_in_template_part_block' )t".
+		 * Just to prevent fatal error if somehow user able to install this plugin on WP below 5.9.
+		 */
+		$has_updated_content = false;
+		$new_content         = '';
+		$template_blocks     = parse_blocks( $template_content );
+
+		$blocks = gutenverse_flatten_blocks( $template_blocks );
+		foreach ( $blocks as &$block ) {
+			if (
+				'core/template-part' === $block['blockName'] &&
+				! isset( $block['attrs']['theme'] )
+			) {
+				$block['attrs']['theme'] = wp_get_theme()->get_stylesheet();
+				$has_updated_content     = true;
+			}
+		}
+
+		if ( $has_updated_content ) {
+			foreach ( $template_blocks as &$block ) {
+				$new_content .= serialize_block( $block );
+			}
+
+			return $new_content;
+		}
+
+		return $template_content;
 	}
 }
 

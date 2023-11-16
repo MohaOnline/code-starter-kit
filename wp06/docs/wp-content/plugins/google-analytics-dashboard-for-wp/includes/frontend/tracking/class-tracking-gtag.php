@@ -399,6 +399,7 @@ class ExactMetrics_Tracking_Gtag extends ExactMetrics_Tracking_Abstract {
 									'page': 'page_path',
 									'location': 'page_location',
 									'title': 'page_title',
+									'referrer' : 'page_referrer',
 								};
 								for (arg in args) {
 									<?php // Note: we do || instead of && because FBIA can't encode && properly.?>

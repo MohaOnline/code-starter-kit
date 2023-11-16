@@ -12,7 +12,7 @@
  * Plugin Name:       Advanced Ads
  * Plugin URI:        https://wpadvancedads.com
  * Description:       Manage and optimize your ads in WordPress
- * Version:           1.47.4
+ * Version:           1.47.5
  * Author:            Advanced Ads GmbH
  * Author URI:        https://wpadvancedads.com
  * Text Domain:       advanced-ads
@@ -33,7 +33,7 @@ if ( defined( 'ADVADS_FILE' ) ) {
 }
 
 define( 'ADVADS_FILE', __FILE__ );
-define( 'ADVADS_VERSION', '1.47.4' );
+define( 'ADVADS_VERSION', '1.47.5' );
 
 // Load the autoloader.
 require_once __DIR__ . '/includes/class-autoloader.php';

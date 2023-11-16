@@ -2999,6 +2999,12 @@ class EPKB_KB_Config_Specs {
 				),
 				'default'     => 'content'
 			),
+			'faq_schema_toggle'                 => array(
+				'label'       => __( 'FAQs Schema', 'echo-knowledge-base' ),
+				'name'        => 'faq_schema_toggle',
+				'type'        => EPKB_Input_Filter::CHECKBOX,
+				'default'     => 'off'
+			),
 		);
 
 		// add CORE LAYOUTS SHARED configuration

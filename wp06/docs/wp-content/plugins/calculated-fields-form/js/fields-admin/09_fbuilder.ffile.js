@@ -23,7 +23,7 @@
 			thumb_height: '',
 			display:function()
 				{
-					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><label>'+this.title+''+((this.required)?"*":"")+'</label><div class="dfield"><input type="file" disabled class="field '+this.size+'" /><span class="uh">'+this.userhelp+'</span></div><div class="clearer" /></div>';
+					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><label>'+this.title+''+((this.required)?"*":"")+'</label><div class="dfield"><input type="file" disabled class="field disabled '+this.size+'" /><span class="uh">'+this.userhelp+'</span></div><div class="clearer" /></div>';
 				},
 			editItemEvents:function()
 				{

@@ -1,12 +1,3 @@
-(function( $ ) {
-   'use strict';
-
-   // $(document).ready( function() {
-      // console.log( phpVars );
-   // });
-
-})( jQuery );
-
 document.addEventListener('DOMContentLoaded', function() {
 
    // console.log( phpVars );

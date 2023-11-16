@@ -12,11 +12,29 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 	class UniteServicesUC{
 
 		/**
+		 * include exchange rate api
+		 */
+		public function includeExchangeRateAPI(){
+
+			$pathAPI = GlobalsUC::$pathPlugin."inc_php/framework/exchangerate/includes.php";
+			require_once($pathAPI);
+		}
+
+		/**
 		 * include google api
 		 */
 		public function includeGoogleAPI(){
 
 			$pathAPI = GlobalsUC::$pathPlugin."inc_php/framework/google/includes.php";
+			require_once($pathAPI);
+		}
+
+		/**
+		 * include open weather api
+		 */
+		public function includeOpenWeatherAPI(){
+
+			$pathAPI = GlobalsUC::$pathPlugin."inc_php/framework/openweather/includes.php";
 			require_once($pathAPI);
 		}
 
@@ -47,14 +65,13 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		public function getInstagramData($user, $maxItems = null, $isDebug = false){
 
 			$arrData = $this->getInstagramSavedDataArray();
-
+						
 			$accessToken = UniteFunctionsUC::getVal($arrData, "access_token");
-
-			if(empty($accessToken)){
-				$api = new InstagramAPINewUC();
-			}
-			else
-				$api = new InstagramAPIOfficialUC();
+			
+			if(empty($accessToken))
+				UniteFunctionsUC::throwError("Please connect instagram from general settings -> instagram");
+			
+			$api = new InstagramAPIOfficialUC();
 
 			$response = $api->getItemsData($user,null,null,$maxItems);
 

@@ -145,22 +145,22 @@ class NumberField extends Field {
 
     public function sanitizeFieldData($data) {
         $cleanData = [];
-        $cleanData["type"] = $data["type"];
+        $cleanData["type"] = sanitize_text_field($data["type"]);
         if (isset($data["name"])) {
-            $name = trim(strip_tags($data["name"]));
+            $name = sanitize_text_field(trim(strip_tags($data["name"])));
             $cleanData["name"] = $name ? $name : $this->fieldDefaultData["name"];
         }
         if (isset($data["desc"])) {
-            $cleanData["desc"] = trim(strip_tags($data["desc"]));
+            $cleanData["desc"] = sanitize_text_field(trim(strip_tags($data["desc"])));
         }
         if (isset($data["values"])) {
             $values = array_filter(explode("\n", trim(strip_tags($data["values"]))));
             foreach ($values as $k => $value) {
-                $cleanData["values"][] = trim($value);
+                $cleanData["values"][] = sanitize_text_field(trim($value));
             }
         }
         if (isset($data["icon"])) {
-            $cleanData["icon"] = trim(strip_tags($data["icon"]));
+            $cleanData["icon"] = sanitize_text_field(trim(strip_tags($data["icon"])));
         }
         if (isset($data["required"])) {
             $cleanData["required"] = intval($data["required"]);

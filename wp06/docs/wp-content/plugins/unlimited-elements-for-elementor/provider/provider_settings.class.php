@@ -2751,7 +2751,7 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 			
 		}else {
 		
-			//fre version - add placeholders
+			//free version - add placeholders
 			
 			$objMultisourceSettings = new UniteCreatorSettingsMultisource();
 		}

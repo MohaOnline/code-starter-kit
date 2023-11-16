@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.21.17 (2023-11-16)
+
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Dependency updates @devowl-wp/real-utils 1.12.1</summary>
+
+
+**_Purpose of dependency:_** _Create cross-selling ads, about page, rating and newsletter input for WP Real plugins._
+##### Maintenance
+
+* fix non-ASCII characters in POT msg strings (CU-86932nwn8)</details>
+
+<details><summary>Dependency updates @devowl-wp/utils 1.16.1</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Bug Fixes
+
+* compatibility with WP Meteor optimization plugin (CU-86933j1zb)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.7.7</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* always use auto_source=others in Weblate autotranslate to avoid picking inconsistent strings across projects (CU-86932nwn8)
+* do not fuzzy autotranslate machine translated strings (CU-86932nwn8)
+* use auto translate others instead of download and upload ZIP when creating feature branch in Weblate (CU-86932nwn8)
+
+
+##### Reverts
+
+* back to ZIP download/upload as it is faster than autotranslate with others (CU-86932nwn8)</details>
+
+
+
+
+
 ## 4.21.16 (2023-11-07)
 
 

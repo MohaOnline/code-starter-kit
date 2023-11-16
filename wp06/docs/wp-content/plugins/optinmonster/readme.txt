@@ -2,9 +2,9 @@
 Contributors: optinmonster, griffinjt, smub
 Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, popup maker, email marketing, exit popup, ecommerce, woocommerce, lightbox
 Requires at least: 4.7.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.3
-Stable tag: 2.14.1
+Stable tag: 2.15.0
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -461,6 +461,12 @@ Syed Balkhi
 
 **Most Recent Changes:**
 
+= Popup Builder 2.15.0 =
+* Improved connection flow and onboarding for new/existing users.
+* Fixed filtering bug on Playbooks page.
+* Improved process for those intending to upgrade.
+* Various npm package updates used for generating our JavaScript code.
+
 = Popup Builder 2.14.1 =
 * Updates to the OptinMonster submenu.
 * Removed code related to the output and retrieval of legacy campaigns.
@@ -525,50 +531,5 @@ Syed Balkhi
 * Fixed issue where errors could appear on the campaign output settings page preventing output settings from being edited.
 * Fixed an issue where campaign output settings could disappear making if difficult to edit the output settings.
 * Various npm package updates used for generating our JavaScript code.
-
-= Popup Builder 2.12.2 =
-* Security update to ensure OptinMonster shortcodes can only load from the campaign post-type.
-
-= Popup Builder 2.12.1 =
-* Fixed Template preview button text stuck on "Loading Preview".
-
-= Popup Builder 2.12.0 =
-* Fixed wp_enqueue_script error on widgets page.
-* Addresses issues with page caching by fetching rules data for Easy Digital Downloads and WooCommerce via ajax.
-* Small improvements to onbaording
-* Updated bundled version of Vue and related dependencies to address some security scanners.
-* Introduced Playbooks to the plugin
-
-= Popup Builder 2.11.2 =
-* Fixed issue where plain-text shortcode output could be parsed by search engines.
-* Set minimum Elementor support to 3.1.0, and fix deprecated function warnings.
-* Update code initialization logic to allow just-in-time loading and preventing some errors.
-* Various npm packages updates used for generating our JavaScript code.
-* Remove references to Bronto, as Bronto shutdown as a service.
-* Fix issue where inline campaigns would be could show excerpts.
-
-= Popup Builder 2.11.1 =
-* Fix occasional undefined variable warning in logs
-* Maintenance updates to some JS packages
-* Removed some unused development files
-* Improve date-oriented rules
-* Improved performance on notifications
-* Improved some of the Output Settings labels to be more accurate.
-
-= Popup Builder 2.11.0 =
-* Added new `optinmonster_prevent_all_campaigns` filter to allow preventing campaigns in custom conditions.
-* Updated the schedule link to actually display the campaign schedule feature.
-* Fix issue with WP Forms event listener when our api script loaded later.
-* Fix issue where a conversion was registered despite WP Forms recaptcha error.
-* Fix issue where plugin admin page requests may fail for accounts with large numbers of campaigns.
-* Various npm package updates.
-* Added new menu item.
-
-= Popup Builder 2.10.0 =
-* Update/improve the campaign auto-insertion (after X words/paragraphs) feature.
-* Fix issue where WP Forms datepicker could sometimes be hidden behind the campaign.
-* Fix display of the Quick Links widget for RTL viewers.
-* Added filter for defining the post types that will work with the auto-insertion feature.
-* Introduced some tools to improve compatibility with WordFence.
 
 **[View entire popup builder changelog](https://plugins.svn.wordpress.org/optinmonster/trunk/CHANGELOG.md)**

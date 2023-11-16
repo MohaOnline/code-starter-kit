@@ -74,12 +74,12 @@ class UniteCreatetorParamsProcessorMultisource{
 			}
 
 		}
-		
+
 		if(empty($imageTitle))
 			return(false);
-		
+
 		//if no image param - show some message
-		
+
 		HelperHtmlUC::outputErrorMessage("Multisource Error: Missing <b>image size attribute</b> for: <b>$imageTitle</b> image attribute. Please add it to attributes list. Special Attribute -> Image Size");
 
 	}
@@ -120,7 +120,8 @@ class UniteCreatetorParamsProcessorMultisource{
 		//debug meta - show meta fields
 
 		if($this->showDebugMeta == true)
-			HelperUC::$operations->putPostsCustomFieldsDebug($arrPosts);
+			HelperUC::$operations->putPostsCustomFieldsDebug($arrPosts, true);
+
 
 		//get the post items array
 
@@ -152,7 +153,7 @@ class UniteCreatetorParamsProcessorMultisource{
 		$arrTerms = $this->objProcessor->getWPTermsData($this->arrValues, $paramTerms["name"], $this->processType, $paramTerms, $this->inputData);
 
 		if($this->showDebugMeta == true)
-			HelperUC::$operations->putTermsCustomFieldsDebug($arrTerms);
+			HelperUC::$operations->putTermsCustomFieldsDebug($arrTerms, true);
 
 
 		return($arrTerms);
@@ -200,7 +201,7 @@ class UniteCreatetorParamsProcessorMultisource{
 		$arrItems = UniteFunctionsWPUC::getMenuItems($menuID, $isOnlyParents);
 
 		if($this->showDebugMeta == true)
-			HelperUC::$operations->putMenuCustomFieldsDebug($arrItems);
+			HelperUC::$operations->putMenuCustomFieldsDebug($arrItems, true);
 
 		return($arrItems);
 	}
@@ -599,12 +600,9 @@ class UniteCreatetorParamsProcessorMultisource{
 			}
 		}
 
-		// add api keys
-		$params["google_api_key"] = HelperProviderCoreUC_EL::getGeneralSetting("google_api_key");
-
 		// get api data
 		$type = UniteFunctionsUC::getVal($params, "type");
-		$data = UniteCreatorAPIIntegrations::getInstance()->getData($type, $params);
+		$data = UniteCreatorAPIIntegrations::getInstance()->getDataForMultisource($type, $params);
 
 		return $data;
 	}
@@ -936,7 +934,9 @@ class UniteCreatetorParamsProcessorMultisource{
 
 				$postID = UniteFunctionsUC::getVal($dataItem, "id");
 
-				$value = UniteFunctionsWPUC::getPostCustomField($postID, $metaKey);
+				$arrCustomFieldValues = UniteFunctionsWPUC::getPostCustomFields($postID, false);
+
+				$value = UniteFunctionsUC::getVal($arrCustomFieldValues, $metaKey);
 
 				//show debug
 				if($this->showDebugData == true && $this->showDataType == "input"){

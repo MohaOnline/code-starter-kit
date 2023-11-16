@@ -957,6 +957,24 @@ h3:hover > .advads-help:before {
 	border: 0;
 	text-align: center;
 	color: #fff;
+	overflow: visible;
+	padding: 1px 60px;
+	background: url('../img/promo-background.svg' );
+}
+.advads-notice.notice-promo > p {
+	position: relative;
+	margin: .5em auto;
+	width: fit-content;
+}
+.advads-notice.notice-promo > p:before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 70px;
+	height: 70px;
+	top: calc(-.5em - 10px);
+	left: -65px;
+	background: url('../img/aa-promo-icon.svg') center left/contain no-repeat;
 }
 .advads-notice.notice.notice-promo .button{
 	background-color: transparent;

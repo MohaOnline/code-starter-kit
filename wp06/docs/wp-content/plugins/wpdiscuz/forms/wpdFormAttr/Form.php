@@ -215,7 +215,8 @@ class Form {
     }
 
     public function isShowSubscriptionBar() {
-        $isSubscriptionBarEnabled = $this->generalOptions["show_subscription_bar"];
+	    // default enabled if the setting does not exist in the db
+        $isSubscriptionBarEnabled = isset($this->generalOptions["show_subscription_bar"]) ? (int) $this->generalOptions["show_subscription_bar"] : 1;
         // default enabled if the setting does not exist in the db
         $guestCanSubscribe = isset($this->generalOptions["guest_can_subscribe"]) ? (int) $this->generalOptions["guest_can_subscribe"] : 1;
         // default roles if the setting does not exist in the db
@@ -673,13 +674,13 @@ class Form {
             $validData["guest_can_comment"] = intval($options["guest_can_comment"]);
         }
         if (isset($options["header_text_single"])) {
-            $validData["header_text_single"] = $options["header_text_single"];
+            $validData["header_text_single"] = sanitize_text_field($options["header_text_single"]);
         }
         if (isset($options["header_text_plural"])) {
-            $validData["header_text_plural"] = $options["header_text_plural"];
+            $validData["header_text_plural"] = sanitize_text_field($options["header_text_plural"]);
         }
         if (isset($options["lang"])) {
-            $validData["lang"] = $options["lang"];
+            $validData["lang"] = sanitize_text_field($options["lang"]);
         }
         if (isset($options["show_subscription_bar"])) {
             $validData["show_subscription_bar"] = intval($options["show_subscription_bar"]);
@@ -694,11 +695,11 @@ class Form {
             $validData["show_subscription_agreement"] = intval($options["show_subscription_agreement"]);
         }
         if (isset($options["subscription_agreement_label"]) && trim($options["subscription_agreement_label"])) {
-            $validData["subscription_agreement_label"] = $options["subscription_agreement_label"];
+            $validData["subscription_agreement_label"] = wp_kses_post($options["subscription_agreement_label"]);
         }
         $themes = $this->getThemes();
         if (isset($options["theme"]) && isset($themes[$options["theme"]])) {
-            $validData["theme"] = $options["theme"];
+            $validData["theme"] = sanitize_text_field($options["theme"]);
         }
         $layouts = $this->getLayouts($validData["theme"]);
         if (isset($options["layout"]) && ( $layout = intval($options["layout"]) ) && in_array($layout, $layouts)) {
@@ -710,7 +711,7 @@ class Form {
             $validData["enable_post_rating"] = intval($options["enable_post_rating"]);
         }
         if (!empty($options["post_rating_title"])) {
-            $validData["post_rating_title"] = $options["post_rating_title"];
+            $validData["post_rating_title"] = sanitize_text_field($options["post_rating_title"]);
         }
         if (isset($options["allow_guests_rate_on_post"])) {
             $validData["allow_guests_rate_on_post"] = intval($options["allow_guests_rate_on_post"]);
@@ -1427,7 +1428,7 @@ class Form {
                                 <?php $subscriptionAgreementLabel = isset($this->generalOptions["subscription_agreement_label"]) && $this->generalOptions["subscription_agreement_label"] ? $this->generalOptions["subscription_agreement_label"] : esc_html__("I allow to use my email address and send notification about new comments and replies (you can unsubscribe at any time).", "wpdiscuz"); ?>
                                 <textarea
                                     name="<?php echo esc_attr(wpdFormConst::WPDISCUZ_META_FORMS_GENERAL_OPTIONS); ?>[subscription_agreement_label]"
-                                    style="width:80%;"><?php echo $subscriptionAgreementLabel; ?></textarea>
+                                    style="width:80%;"><?php echo wp_kses_post($subscriptionAgreementLabel); ?></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -1731,6 +1732,7 @@ class Form {
             }
         } else {
             $this->generalOptions["guest_can_see_comments"] = isset($this->generalOptions["guest_can_see_comments"]) ? $this->generalOptions["guest_can_see_comments"] : 1;
+            $this->generalOptions["guest_can_comment"] = isset($this->generalOptions["guest_can_comment"]) ? $this->generalOptions["guest_can_comment"] : 1;
             $user_can_comment = $this->generalOptions["guest_can_see_comments"] && $this->generalOptions["guest_can_comment"];
         }
         if ($user_can_comment && class_exists("WooCommerce") && get_post_type($postId) === "product") {
@@ -1831,8 +1833,8 @@ class Form {
                         unset($generalOptions["postidsArray"][$key]);
                     }
                 }
-                $generalOptions["postid"] = implode(", ", $generalOptions["postidsArray"]);
-                update_post_meta($existsFormID, wpdFormConst::WPDISCUZ_META_FORMS_GENERAL_OPTIONS, $generalOptions);
+                $generalOptions["postid"] = sanitize_text_field(implode(", ", $generalOptions["postidsArray"]));
+                update_post_meta($existsFormID, wpdFormConst::WPDISCUZ_META_FORMS_GENERAL_OPTIONS,$generalOptions);
             }
             $ids[$id] = $this->formID;
         }

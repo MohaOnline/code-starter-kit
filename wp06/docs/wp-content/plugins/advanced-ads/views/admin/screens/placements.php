@@ -146,7 +146,7 @@ $message = Params::get( 'message' );
 						$_placement['type'] = 'default';
 						$type_missing       = true;
 					}
-					if ( 'default' === ( $_placement['type'] ?? '' ) ) {
+					if ( ( $_placement['type'] ?? 'default' ) === 'default' ) {
 						$_placement['type']     = 'default';
 						$quick_actions['usage'] = '<a href="#modal-' . esc_attr( $_placement_slug ) . '-usage" class="usage-modal-link">' . esc_html__( 'show usage', 'advanced-ads' ) . '</a>';
 					}

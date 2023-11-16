@@ -25,10 +25,10 @@ class AutomatorWP_WordPress_User_Meta_Update extends AutomatorWP_Integration_Tri
             'integration'       => $this->integration,
             'label'             => __( 'User meta gets updated with a value', 'automatorwp' ),
             'select_option'     => __( 'User <strong>meta gets updated</strong> with a value', 'automatorwp' ),
-            /* translators: %1$s: Key. %2$s: Value. %3$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User meta %1$s gets updated with %2$s %3$s time(s)', 'automatorwp' ), '{meta_key}', '{meta_value}', '{times}' ),
-            /* translators: %1$s: Key. %2$s: Value. */
-            'log_label'         => sprintf( __( 'User meta %1$s gets updated with %2$s', 'automatorwp' ), '{meta_key}', '{meta_value}' ),
+            /* translators: %1$s: Key. %2$s: Condition. %3$s: Value. %4$s: Number of times. */
+            'edit_label'        => sprintf( __( 'User meta %1$s gets updated with a value %2$s %3$s %4$s time(s)', 'automatorwp' ), '{meta_key}', '{condition}', '{meta_value}', '{times}' ),
+            /* translators: %1$s: Key. %2$s: Condition. %3$s: Value. */
+            'log_label'         => sprintf( __( 'User meta %1$s gets updated with a value %2$s %3$s', 'automatorwp' ), '{meta_key}', '{condition}', '{meta_value}' ),
             'action'            => array(
                 'added_user_meta',
                 'updated_user_meta'
@@ -37,6 +37,7 @@ class AutomatorWP_WordPress_User_Meta_Update extends AutomatorWP_Integration_Tri
             'priority'          => 10,
             'accepted_args'     => 4,
             'options'           => array(
+				'condition' => automatorwp_utilities_condition_option(),
                 'meta_key' => array(
                     'from' => 'meta_key',
                     /* translators: Refers to meta key */
@@ -129,7 +130,7 @@ class AutomatorWP_WordPress_User_Meta_Update extends AutomatorWP_Integration_Tri
         }
 
         // Don't deserve if value doesn't matches with the trigger option
-        if( $trigger_options['meta_value'] !== '' && $trigger_options['meta_value'] !== $event['meta_value'] ) {
+		if ( $trigger_options['meta_value'] !== '' && ! automatorwp_condition_matches( $event['meta_value'], $trigger_options['meta_value'], $trigger_options['condition'] ) ) {
             return false;
         }
 

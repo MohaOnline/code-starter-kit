@@ -46,9 +46,8 @@ if ( ! class_exists( 'CR_Review_Reminder_Settings' ) ):
 			add_action( 'woocommerce_admin_settings_sanitize_option_ivole_delay', array( $this, 'save_sending_delay' ), 10, 3 );
 
 			add_action( 'wp_ajax_ivole_check_license_email_ajax', array( $this, 'check_license_email_ajax' ) );
-			add_action( 'wp_ajax_ivole_verify_email_ajax', array( $this, 'ivole_verify_email_ajax' ) );
-
-			add_action( 'admin_footer', array( $this, 'output_page_javascript' ) );
+			add_action( 'wp_ajax_cr_verify_email_ajax', array( $this, 'verify_email_ajax' ) );
+			add_action( 'wp_ajax_cr_verify_dkim_ajax', array( $this, 'verify_dkim_ajax' ) );
 		}
 
 		public function register_tab( $tabs ) {
@@ -497,20 +496,68 @@ if ( ! class_exists( 'CR_Review_Reminder_Settings' ) ):
 				</th>
 				<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 					<input name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] ); ?>"
-					type="text" style="display:none; vertical-align:middle; margin: 0 10px 0 0;"
+					type="text" style="display:none;"
 					class="<?php echo esc_attr( trim( 'cr-email-from-input ' . $value['class'] ) ); ?>"
 					placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 					/>
 					<?php echo $description; ?>
-					<span id="ivole_email_from_verify_status" style="display:none;padding:5px;vertical-align:middle;border-radius:3px;line-height:20px;margin:5px 10px 5px 0;"></span>
-					<input
-					type="button"
-					id="ivole_email_from_verify_button"
-					value="Verify"
-					class="button-primary"
-					style="display:none;vertical-align:middle;"
-					/>
 					<p id="ivole_email_from_status"></p>
+					<div class="cr-email-verify-status">
+						<span class="cr-email-verify-status-ind"></span>
+						<span class="cr-email-verify-status-lbl">
+							<?php
+								echo CR_Admin::ivole_wc_help_tip(
+									__(
+										'Before you can send emails via CusRev (AWS SES) mailer, it is necessary to verify that you own the email address. If you have not verified an email address yet, click on the Verify button to start the verification process.',
+										'customer-reviews-woocommerce'
+									)
+								);
+								_e( 'Email verification', 'customer-reviews-woocommerce' );
+							?>
+						</span>
+						<input
+							type="button"
+							id="ivole_email_from_verify_button"
+							value="Verify"
+							class="button-primary cr-email-verify-button"
+						/>
+					</div>
+					<div class="cr-dkim-verify-status">
+						<span class="cr-dkim-verify-status-ind"></span>
+						<span class="cr-email-verify-status-lbl">
+							<?php
+								echo CR_Admin::ivole_wc_help_tip(
+									__(
+											'DKIM stands for DomainKeys Identified Mail. DKIM-signed messages help receiving mail servers validate that a message was not forged or altered in transit. Enabling DKIM reduces the risk that your emails could go to SPAM.',
+											'customer-reviews-woocommerce'
+										)
+								);
+								_e( 'DKIM signature', 'customer-reviews-woocommerce' );
+							?>
+						</span>
+						<input
+							type="button"
+							value="Enable DKIM"
+							class="button-primary cr-dkim-enable-button"
+							style="display:none;vertical-align:middle;"
+						/>
+					</div>
+					<div class="cr-dns-records-acc">
+						<h3>
+							<?php
+								_e( 'DNS Records', 'customer-reviews-woocommerce' );
+								echo CR_Admin::ivole_wc_help_tip(
+									__(
+											'DNS records are used for DKIM authentication. Publish CNAME records from the table below to your domain’s DNS provider to enable DKIM signature for emails sent by CusRev mailer.',
+											'customer-reviews-woocommerce'
+										)
+								);
+							?>
+						</h3>
+						<div>
+							<?php $this->show_dns_table(); ?>
+						</div>
+					</div>
 				</td>
 			</tr>
 			<?php
@@ -764,118 +811,55 @@ if ( ! class_exists( 'CR_Review_Reminder_Settings' ) ):
 				// the license is active, so check if current from email address is verified
 				$verify = new CR_Email_Verify();
 				$vval = $verify->is_verified();
-				wp_send_json( array( 'license' => $lval['code'], 'email' => $vval ) );
+				$dkim = $verify->is_dkim_verified();
+
+				wp_send_json(
+					array(
+						'license' => $lval['code'],
+						'email' => $vval['code'],
+						'fromEmail' => $vval['fromEmail'],
+						'fromName' => $vval['fromName'],
+						'emailFooter' => $vval['emailFooter'],
+						'dkim' => $dkim
+					)
+				);
 			} else {
-				wp_send_json( array( 'license' => $lval['code'], 'email' => 0 ) );
+				wp_send_json(
+					array (
+						'license' => $lval['code'],
+						'email' => 0,
+						'fromEmail' => '',
+						'fromName' => '',
+						'emailFooter' => '',
+						'dkim' => ''
+					)
+				);
 			}
 		}
 
-		/**
-		* Function to verify an email
-		*/
-		public function ivole_verify_email_ajax() {
+		public function verify_email_ajax() {
 			$email = strval( $_POST['email'] );
 			$verify = new CR_Email_Verify();
 			$vval = $verify->verify_email( $email );
-			wp_send_json( array( 'verification' => $vval['res'], 'email' => $email, 'message' => $vval['message'] ) );
+			wp_send_json(
+				array(
+					'verification' => $vval['res'],
+					'email' => $email,
+					'message' => $vval['message']
+				)
+			);
 		}
 
-		public function output_page_javascript() {
-			if (
-				$this->is_this_tab() ||
-				$this->is_other_tab( 'emails' ) ||
-				$this->is_other_tab( 'forms' )
-			) {
-				?>
-				<script type="text/javascript">
-				jQuery(function($) {
-					// Load of Review Reminder page and check of From Email verification
-					if( jQuery('#ivole_email_from.cr-email-from-input').length > 0 || jQuery('#ivole_form_rating_bar_status').length > 0 ) {
-						var data = {
-							'action': 'ivole_check_license_email_ajax',
-							'email': '<?php echo get_option( 'ivole_email_from', '' ); ?>'
-						};
-						jQuery('#ivole_email_from_status').text( '<?php echo __( 'Checking license...', 'customer-reviews-woocommerce' ); ?>' );
-						jQuery('#ivole_email_from_name_status').text( '<?php echo __( 'Checking license...', 'customer-reviews-woocommerce' ); ?>' );
-						jQuery('#ivole_email_footer_status').text( '<?php echo __( 'Checking license...', 'customer-reviews-woocommerce' ); ?>' );
-						jQuery('#ivole_form_rating_bar_status').text( '<?php echo __( 'Checking license...', 'customer-reviews-woocommerce' ); ?>' );
-						jQuery('#ivole_form_geolocation_status').text( '<?php echo __( 'Checking license...', 'customer-reviews-woocommerce' ); ?>' );
-						jQuery.post(ajaxurl, data, function(response) {
-							jQuery('#ivole_email_footer_status').css('visibility', 'visible');
-
-							if (1 === response.license) {
-								jQuery('#ivole_email_from').val( '<?php echo get_option( 'ivole_email_from', '' ); ?>' );
-								jQuery('#ivole_email_from').show();
-								jQuery('#ivole_email_from_verify_status').show().css( 'display', 'inline-block' );
-								jQuery('#ivole_email_from_name').show();
-								jQuery('#ivole_email_from_name').val( <?php echo json_encode( get_option( 'ivole_email_from_name', Ivole_Email::get_blogname() ), JSON_HEX_APOS|JSON_HEX_QUOT ); ?> );
-								jQuery('#ivole_email_from_name_status').hide();
-								jQuery('#ivole_email_footer').show();
-								jQuery('#ivole_email_footer').val( <?php echo json_encode( get_option( 'ivole_email_footer', "" ), JSON_HEX_APOS|JSON_HEX_QUOT ); ?> );
-								jQuery('#ivole_email_footer_status').text( '<?php echo esc_html__( 'While editing the footer text please make sure to keep the unsubscribe link markup:', 'customer-reviews-woocommerce' ); ?> <a href="{{unsubscribeLink}}" style="color:#555555; text-decoration: underline; line-height: 12px; font-size: 10px;">unsubscribe</a>.' );
-								jQuery('#ivole_form_rating_bar_fs').show();
-								jQuery('#ivole_form_rating_bar_status').hide();
-								jQuery('#ivole_form_geolocation_fs').show();
-								jQuery('#ivole_form_geolocation_status').hide();
-
-								if (1 === response.email){
-									jQuery('#ivole_email_from_verify_status').css('background', '#00FF00');
-									jQuery('#ivole_email_from_verify_status').text( 'Verified' );
-									jQuery('#ivole_email_from_status').text( '' );
-									jQuery('#ivole_email_from_status').hide();
-								} else {
-									jQuery('#ivole_email_from_verify_status').css('background', '#FA8072');
-									jQuery('#ivole_email_from_verify_status').text( 'Unverified' );
-									jQuery('#ivole_email_from_verify_button').show();
-									jQuery('#ivole_email_from_status').text( 'This email address is unverified. You must verify it to send emails.' );
-								}
-							} else {
-								jQuery('#ivole_email_from').val( '' );
-								jQuery('#ivole_email_from_status').html( 'Review reminders are sent by CusRev from \'feedback@cusrev.com\'. This indicates to customers that review process is independent and trustworthy. \'From Address\' can be modified with the <a href="<?php echo admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ); ?>">professional license</a> for CusRev.' );
-								jQuery('#ivole_email_from_name_status').html( 'Since review invitations are sent via CusRev, \'From Name\' will be based on \'Shop Name\' (see above) with a reference to CusRev. This field can be modified with the <a href="<?php echo admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ); ?>">professional license</a> for CusRev.' );
-								jQuery('#ivole_email_footer_status').html( 'To comply with the international laws about sending emails (CAN-SPAM act, CASL laws, etc), CusRev will automatically add a footer with address of the sender and an opt-out link. The footer can be modified with the <a href="<?php echo admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ); ?>">professional license</a> for CusRev.' );
-								jQuery('#ivole_form_rating_bar_status').html( 'CusRev creates review forms that support two visual styles of rating bars: smiley/frowny faces and stars. The default style is smiley/frowny faces. This option can be modified with the <a href="<?php echo admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ); ?>">professional license</a> for CusRev.' );
-								jQuery('#ivole_form_geolocation_status').html( 'CusRev supports automatic determination of geolocation and gives reviewers an option to indicate where they are from. For example, "England, United Kingdom". This feature requires the <a href="<?php echo admin_url( 'admin.php?page=cr-reviews-settings&tab=license-key' ); ?>">professional license</a> for CusRev.' );
-							}
-							// integration with qTranslate-X - add translation for elements that are loaded with a delay
-							if (typeof qTranslateConfig !== 'undefined' && typeof qTranslateConfig.qtx !== 'undefined') {
-								qTranslateConfig.qtx.addContentHook( document.getElementById( 'ivole_email_from_name' ), null, null );
-								qTranslateConfig.qtx.addContentHook( document.getElementById( 'ivole_email_footer' ), null, null );
-							}
-						});
-					}
-
-					// Click on Verify From Email button
-					jQuery('#ivole_email_from_verify_button').click(function(){
-						var data = {
-							'action': 'ivole_verify_email_ajax',
-							'email': jQuery('#ivole_email_from').val()
-						};
-						jQuery('#ivole_email_from_verify_button').prop('disabled', true);
-						jQuery('#ivole_email_from_status').text( 'Sending verification email...' );
-						jQuery.post(ajaxurl, data, function(response) {
-							if ( 1 === response.verification ) {
-								jQuery('#ivole_email_from_status').text( 'A verification email from Amazon Web Services has been sent to \'' + response.email + '\'. Please open the email and click the verification URL to confirm that you are the owner of this email address. After verification, reload this page to see updated status of verification.' );
-								jQuery('#ivole_email_from_verify_button').css('visibility', 'hidden');
-							} else if ( 2 === response.verification ) {
-								jQuery('#ivole_email_from_status').text( 'Verification error: ' + response.message + '.' );
-								jQuery('#ivole_email_from_verify_button').prop('disabled', false);
-							} else if ( 3 === response.verification ) {
-								jQuery('#ivole_email_from_status').text( 'Verification error: ' + response.message + '. Please refresh the page to see the updated verification status.' );
-								jQuery('#ivole_email_from_verify_button').prop('disabled', false);
-							} else if ( 99 === response.verification ) {
-								jQuery('#ivole_email_from_status').text( 'Verification error: please enter a valid email address.' );
-								jQuery('#ivole_email_from_verify_button').prop('disabled', false);
-							} else {
-								jQuery('#ivole_email_from_status').text( 'Verification error.' );
-								jQuery('#ivole_email_from_verify_button').prop('disabled', false);
-							}
-						});
-					});
-				});
-				</script>
-				<?php
-			}
+		public function verify_dkim_ajax() {
+			$email = strval( $_POST['email'] );
+			$verify = new CR_Email_Verify();
+			$vval = $verify->verify_dkim( $email );
+			wp_send_json(
+				array(
+					'verification' => $vval['code'],
+					'tokens' => $vval['tokens']
+				)
+			);
 		}
 
 		public function admin_notice_scheduler() {
@@ -1031,6 +1015,49 @@ if ( ! class_exists( 'CR_Review_Reminder_Settings' ) ):
 
 		public static function get_max_delays() {
 			return apply_filters( 'cr_max_sending_delays', 1 );
+		}
+
+		public function show_dns_table() {
+			?>
+			<div class="cr-dns-table-cont">
+				<table class="widefat cr-dns-table" cellspacing="0">
+					<thead>
+						<tr>
+							<th class="cr-dns-col-type">
+								<?php _e( 'Type', 'customer-reviews-woocommerce' ); ?>
+							</th>
+							<th class="cr-dns-col-name">
+								<?php _e( 'Name', 'customer-reviews-woocommerce' ); ?>
+							</th>
+							<th class="cr-dns-col-value">
+								<?php _e( 'Value', 'customer-reviews-woocommerce' ); ?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="cr-dns-template-row">
+							<td class="cr-dns-cell-type">
+								<div class="cr-dns-cell-cont">
+									CNAME
+								</div>
+							</td>
+							<td class="cr-dns-cell-name">
+								<div class="cr-dns-cell-cont">
+									<span class="dashicons dashicons-clipboard"></span>
+									<span class="cr-dns-cell-text"></span>
+								</div>
+							</td>
+							<td class="cr-dns-cell-value">
+								<div class="cr-dns-cell-cont">
+									<span class="dashicons dashicons-clipboard"></span>
+									<span class="cr-dns-cell-text"></span>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<?php
 		}
 
 	}

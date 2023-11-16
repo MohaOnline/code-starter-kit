@@ -42,13 +42,13 @@ class HTMLField extends Field {
 
     public function sanitizeFieldData($data) {
         $cleanData = [];
-        $cleanData["type"] = $data["type"];
+        $cleanData["type"] = sanitize_text_field($data["type"]);
         if (isset($data["name"])) {
-            $name = trim(strip_tags($data["name"]));
+            $name = sanitize_text_field(trim(strip_tags($data["name"])));
             $cleanData["name"] = $name ? $name : $this->fieldDefaultData["name"];
         }
         if (isset($data["value"])) {
-            $cleanData["value"] = trim($data["value"]);
+            $cleanData["value"] = wp_kses_post(trim($data["value"]));
         }
         if (isset($data["is_show_sform"])) {
             $cleanData["is_show_sform"] = intval($data["is_show_sform"]);

@@ -1,3 +1,10 @@
+### 5.13.2
+
+- Freemius-related security improvements
+- Tested compatibility with WordPress 6.3
+- Added compatibility with PHP 8.2
+
+
 ### 5.13.1
 
 This update features security improvements and is recommended for all users

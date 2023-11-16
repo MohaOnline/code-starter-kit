@@ -320,14 +320,14 @@ class Advanced_Ads_Admin_Notices {
 			return;
 		}
 
-		// register Black Friday 2022 deals.
-		if ( time() > 1669291200 &&
-			time() <= 1669723200 && Conditional::is_screen_advanced_ads() ) {
+		// register Black Friday 2023 deals.
+		if ( time() > 1700654400 &&
+			time() <= 1701172800 && Conditional::is_screen_advanced_ads() ) {
 			$options = $this->options();
 			$closed  = isset( $options['closed'] ) ? $options['closed'] : [];
 
-			if ( ! isset( $closed['bfcm22'] ) ) {
-				$this->notices[] = 'bfcm22';
+			if ( ! isset( $closed['bfcm23'] ) ) {
+				$this->notices[] = 'bfcm23';
 			}
 		}
 

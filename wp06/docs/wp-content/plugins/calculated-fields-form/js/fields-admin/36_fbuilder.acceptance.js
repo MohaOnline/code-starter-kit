@@ -20,7 +20,7 @@
             onoff:0,
 			display:function()
 				{
-					var	str = '<div class="one_column"><input class="field" disabled="true" type="checkbox"/> '+this.title+((this.required)?"*":"")+'</div>';
+					var	str = '<div class="one_column"><input class="field disabled" disabled="true" type="checkbox"/> '+this.title+((this.required)?"*":"")+'</div>';
 					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><div class="dfield">'+str+'<span class="uh">'+this.userhelp+'</span></div><div class="clearer" /></div>';
 				},
 			editItemEvents:function()

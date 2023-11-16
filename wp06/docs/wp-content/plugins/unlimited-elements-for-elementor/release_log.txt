@@ -1,4 +1,20 @@
 
+
+version 1.5.86:
+
+- bug fix: better prepare post custom fields for the post multisource
+- bug fix: links from meta field works now
+- change: updated twig version to 3.x
+- bug fix: fixed the ob_end_clean bug
+- feature: added woo_addcart_ajax_attributes_button in twig for the button
+- feature: added option to show original settings values in widget debug
+- feature: added troubleshooting setting not to show php deprecated warnings
+- change: updated instagram data with date released field
+- bug fix: in post query - excluded posts not in from posts in
+- bug fix: fixed a small bug in the unite gallery library
+
+
+
 version 1.5.85:
 
 * fixed a small bug with multisource image param message

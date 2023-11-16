@@ -4,8 +4,8 @@ Donate link: https://quadmenu.com/
 Tags: quadmenu, menu, megamenu, mega menu, responsive menu, mobile menu, wordpress mega menu, horizontal menu, vertical menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, shortcode, sidebar, icons, dashicons
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 6.3
-Stable tag: 3.0.7
+Tested up to: 6.4
+Stable tag: 3.0.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,9 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [https://quadmenu.com/documentation/installation/](https://quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+3.0.8
+* Fixed. Redux Framework error
 
 3.0.7
 * Fixed. Menu item title filter

@@ -586,5 +586,153 @@
 			} );
 		}
 
+		// Load of Review Reminder page and check of From Email verification
+		if( jQuery('#ivole_email_from.cr-email-from-input').length > 0 || jQuery('#ivole_form_rating_bar_status').length > 0 ) {
+			var data = {
+				'action': 'ivole_check_license_email_ajax'
+			};
+			jQuery('#ivole_email_from_status').text( cr_settings_object.checking_license );
+			jQuery('#ivole_email_from_name_status').text( cr_settings_object.checking_license );
+			jQuery('#ivole_email_footer_status').text( cr_settings_object.checking_license );
+			jQuery('#ivole_form_rating_bar_status').text( cr_settings_object.checking_license );
+			jQuery('#ivole_form_geolocation_status').text( cr_settings_object.checking_license );
+			jQuery.post(ajaxurl, data, function(response) {
+				jQuery('#ivole_email_footer_status').css('visibility', 'visible');
+
+				if (1 === response.license) {
+					jQuery('#ivole_email_from').val( response.fromEmail );
+					jQuery('#ivole_email_from').show();
+					jQuery('.cr-email-verify-status').show();
+					jQuery('#ivole_email_from_name').show();
+					jQuery('#ivole_email_from_name').val( response.fromName );
+					jQuery('#ivole_email_from_name_status').hide();
+					jQuery('#ivole_email_footer').show();
+					jQuery('#ivole_email_footer').val( response.emailFooter );
+					jQuery('#ivole_email_footer_status').text( cr_settings_object.footer_status );
+					jQuery('#ivole_form_rating_bar_fs').show();
+					jQuery('#ivole_form_rating_bar_status').hide();
+					jQuery('#ivole_form_geolocation_fs').show();
+					jQuery('#ivole_form_geolocation_status').hide();
+
+					if (1 === response.email) {
+						jQuery('.cr-email-verify-status-ind').css('background', '#00FF00');
+						jQuery('.cr-email-verify-status-ind').text( 'Verified' );
+						jQuery('#ivole_email_from_status').text( '' );
+						jQuery('#ivole_email_from_status').hide();
+						jQuery('.cr-dkim-verify-status').show();
+						jQuery('.cr-dkim-verify-status-ind').css('background', '#FA8072');
+						jQuery('.cr-dkim-verify-status-ind').text( cr_settings_object.dns_disabled );
+						if ( response.dkim ) {
+							if ( 1 === response.dkim.code ) {
+								jQuery('.cr-dkim-verify-status-ind').css('background', '#00FF00');
+								jQuery('.cr-dkim-verify-status-ind').text( cr_settings_object.dns_enabled );
+							} else if ( 2 === response.dkim.code ) {
+								jQuery('.cr-dkim-verify-status-ind').css('background', '#FFDC00');
+								jQuery('.cr-dkim-verify-status-ind').text( cr_settings_object.dns_pending );
+								jQuery('#ivole_email_from_status').text( 'DKIM verification is pending. Publish DNS records from the table below to your domain’s DNS provider. Detection of these records may take up to 72 hours.' );
+								jQuery('#ivole_email_from_status').show();
+							} else {
+								jQuery('#ivole_email_from_status').text( 'DKIM is disabled. It is recommended to enable DKIM to improve deliverability of emails.' );
+								jQuery('#ivole_email_from_status').show();
+								jQuery('.cr-dkim-enable-button').show();
+							}
+							crDNSRecordsTableAdd( response.dkim.tokens, false );
+						}
+					} else {
+						jQuery('.cr-email-verify-status-ind').css('background', '#FA8072');
+						jQuery('.cr-email-verify-status-ind').text( 'Unverified' );
+						jQuery('#ivole_email_from_verify_button').show();
+						jQuery('#ivole_email_from_status').text( 'This email address is unverified. You must verify it to send emails.' );
+					}
+				} else {
+					jQuery('#ivole_email_from').val( '' );
+					jQuery('#ivole_email_from_status').html( cr_settings_object.info_from );
+					jQuery('#ivole_email_from_name_status').html( cr_settings_object.info_from_name );
+					jQuery('#ivole_email_footer_status').html( cr_settings_object.info_footer );
+					jQuery('#ivole_form_rating_bar_status').html( cr_settings_object.info_rating_bar );
+					jQuery('#ivole_form_geolocation_status').html( cr_settings_object.info_geolocation );
+				}
+				// integration with qTranslate-X - add translation for elements that are loaded with a delay
+				if (typeof qTranslateConfig !== 'undefined' && typeof qTranslateConfig.qtx !== 'undefined') {
+					qTranslateConfig.qtx.addContentHook( document.getElementById( 'ivole_email_from_name' ), null, null );
+					qTranslateConfig.qtx.addContentHook( document.getElementById( 'ivole_email_footer' ), null, null );
+				}
+			});
+		}
+
+		jQuery('#ivole_email_from_verify_button').click(function() {
+			let data = {
+				'action': 'cr_verify_email_ajax',
+				'email': jQuery('#ivole_email_from').val()
+			};
+			jQuery('#ivole_email_from_verify_button').prop('disabled', true);
+			jQuery('#ivole_email_from_status').text( 'Sending a verification email...' );
+			jQuery.post(ajaxurl, data, function(response) {
+				if ( 1 === response.verification ) {
+					jQuery('#ivole_email_from_status').text( 'A verification email from Amazon Web Services has been sent to \'' + response.email + '\'. Please open the email and click on the verification URL to confirm that you are the owner of this email address. After verification, reload this page to see an updated status of the email verification.' );
+					jQuery('#ivole_email_from_verify_button').css('visibility', 'hidden');
+				} else if ( 2 === response.verification ) {
+					jQuery('#ivole_email_from_status').text( 'Verification error: ' + response.message + '.' );
+					jQuery('#ivole_email_from_verify_button').prop('disabled', false);
+				} else if ( 3 === response.verification ) {
+					jQuery('#ivole_email_from_status').text( 'Verification error: ' + response.message + '. Please refresh the page to see the updated verification status.' );
+					jQuery('#ivole_email_from_verify_button').prop('disabled', false);
+				} else if ( 99 === response.verification ) {
+					jQuery('#ivole_email_from_status').text( 'Verification error: please enter a valid email address.' );
+					jQuery('#ivole_email_from_verify_button').prop('disabled', false);
+				} else {
+					jQuery('#ivole_email_from_status').text( 'Verification error.' );
+					jQuery('#ivole_email_from_verify_button').prop('disabled', false);
+				}
+			});
+		});
+
+		jQuery('.cr-dkim-enable-button').on( 'click', function(){
+			jQuery(this).prop('disabled', true);
+			jQuery('#ivole_email_from_status').text( 'Requesting DNS records to enable DKIM authentication...' );
+			jQuery('#ivole_email_from_status').show();
+			let data = {
+				'action': 'cr_verify_dkim_ajax',
+				'email': jQuery('#ivole_email_from').val()
+			};
+			jQuery.post(ajaxurl, data, function(response) {
+				if ( 1 === response.verification ) {
+					crDNSRecordsTableAdd( response.tokens, 0 );
+					jQuery('#ivole_email_from_status').text( 'DNS records for DKIM authentication have been generated. Publish DNS records from the table below to your domain’s DNS provider. Detection of these records may take up to 72 hours. Reload this page to see an updated status of the DKIM authentication.' );
+					jQuery('.cr-dkim-enable-button').css('visibility', 'hidden');
+				} else {
+					jQuery('#ivole_email_from_status').text( 'An error occured while requesting DNS records for DKIM authentication.' );
+					jQuery('.cr-dkim-enable-button').prop('disabled', false);
+				}
+			});
+		} );
+
+		function crDNSRecordsTableAdd( tokens, actv ) {
+			tokens.forEach ( token => {
+				let newRow = jQuery('.cr-dns-template-row').clone();
+				newRow.removeClass('cr-dns-template-row');
+				newRow.find('.cr-dns-cell-name .cr-dns-cell-text').text(token.name);
+				newRow.find('.cr-dns-cell-value .cr-dns-cell-text').text(token.value)
+				newRow.appendTo('.cr-dns-table tbody');
+			} );
+			if ( 0 < tokens.length ) {
+				jQuery('.cr-dns-records-acc').show();
+				jQuery('.cr-dns-records-acc').accordion({
+					collapsible: true,
+					active: actv
+				});
+				jQuery('.cr-dns-records-acc .cr-dns-table td .dashicons').tipTip( {
+					activation: 'click',
+					content: cr_settings_object.dns_copied,
+					defaultPosition: 'top',
+					delay: 100
+				} );
+				jQuery('.cr-dns-records-acc .cr-dns-table td .dashicons').on( 'click', function(e) {
+					let value = jQuery(this).closest('.cr-dns-cell-cont').find('.cr-dns-cell-text').text();
+					navigator.clipboard.writeText(value);
+				} );
+			}
+		}
+
 	} );
 } () );

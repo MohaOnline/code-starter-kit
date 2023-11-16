@@ -1,4 +1,4 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -6,29 +6,34 @@
 /*!******************************!*\
   !*** ./assets/src/js/api.js ***!
   \******************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * List API on backend
  */
 
-if (undefined === lpGlobalSettings) {
-  throw new Error('lpGlobalSettings is undefined');
+const lplistAPI = {};
+if ('undefined' !== typeof lpDataAdmin) {
+  lplistAPI.admin = {
+    apiAdminNotice: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/admin-notices',
+    apiAdminOrderStatic: lpDataAdmin.lp_rest_url + 'lp/v1/orders/statistic',
+    apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
+    apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
+    apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+  };
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
-  admin: {
-    apiAdminNotice: lpGlobalSettings.rest + 'lp/v1/admin/tools/admin-notices',
-    apiAdminOrderStatic: lpGlobalSettings.rest + 'lp/v1/orders/statistic',
-    apiAddons: lpGlobalSettings.rest + 'lp/v1/addon/all',
-    apiAddonAction: lpGlobalSettings.rest + 'lp/v1/addon/action',
-    apiSearchCourses: lpGlobalSettings.rest + 'lp/v1/admin/tools/search-course',
-    apiAssignUserCourse: lpGlobalSettings.rest + 'lp/v1/admin/tools/assign-user-course'
-  },
-  frontend: {
-    apiWidgets: lpGlobalSettings.lp_rest_url + 'lp/v1/widgets/api'
-  }
-});
+if ('undefined' !== typeof lpData) {
+  lplistAPI.frontend = {
+    apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
 
 /***/ }),
 
@@ -36,13 +41,13 @@ if (undefined === lpGlobalSettings) {
 /*!********************************!*\
   !*** ./assets/src/js/utils.js ***!
   \********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   lpAddQueryArgs: function() { return /* binding */ lpAddQueryArgs; },
-/* harmony export */   lpFetchAPI: function() { return /* binding */ lpFetchAPI; },
-/* harmony export */   lpGetCurrentURLNoParam: function() { return /* binding */ lpGetCurrentURLNoParam; }
+/* harmony export */   lpAddQueryArgs: () => (/* binding */ lpAddQueryArgs),
+/* harmony export */   lpFetchAPI: () => (/* binding */ lpFetchAPI),
+/* harmony export */   lpGetCurrentURLNoParam: () => (/* binding */ lpGetCurrentURLNoParam)
 /* harmony export */ });
 const lpFetchAPI = (url, data = {}, functions = {}) => {
   if ('function' === typeof functions.before) {
@@ -112,37 +117,37 @@ const lpAddQueryArgs = (endpoint, args) => {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
+(() => {
 /*!*******************************************!*\
   !*** ./assets/src/js/frontend/widgets.js ***!
   \*******************************************/
@@ -167,12 +172,12 @@ function widgetRestAPI() {
       body: JSON.stringify({
         ...widget,
         ...{
-          params_url: lpGlobalSettings.lpArchiveSkeleton
+          params_url: lpData.urlParams
         }
       })
     };
-    if (0 !== lpGlobalSettings.user_id) {
-      paramsFetch.headers['X-WP-Nonce'] = lpGlobalSettings.nonce;
+    if (0 !== parseInt(lpData.user_id)) {
+      paramsFetch.headers['X-WP-Nonce'] = lpData.nonce;
     }
     const callBack = {
       before: () => {},
@@ -207,7 +212,8 @@ function widgetRestAPI() {
 document.addEventListener('DOMContentLoaded', function (event) {
   widgetRestAPI();
 });
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=widgets.js.map

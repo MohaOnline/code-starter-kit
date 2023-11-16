@@ -1040,3 +1040,7 @@
 	Bug Fix: Adding missing dist files to SVN
 9.0.3 - 2023-11-02 - Timothy Jacobs, Lisa Canini, Jared Hill, John Hooks
 	Bug Fix: Remove an extra folder containing duplicate plugin files
+9.1.0 - 2023-11-15 - Timothy Jacobs, Lisa Canini, Jared Hill
+	New: Add support for creating custom firewall rules.
+	Enhancement: Add support for configuring firewall settings from the Firewall page.
+	Bug Fix: The firewall page would appear empty when geolocation could not retrieve a country code.

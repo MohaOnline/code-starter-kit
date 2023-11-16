@@ -20,7 +20,7 @@
 			userhelp:"A description of the section goes here.",
 			display:function()
 				{
-					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><input type="button" class="button-secondary" disabled value="'+cff_esc_attr(this.sValue)+'"><span class="uh">'+this.userhelp+'</span><div class="clearer" /></div>';
+					return '<div class="fields '+this.name+' '+this.ftype+'" id="field'+this.form_identifier+'-'+this.index+'" title="'+this.name+'"><div class="arrow ui-icon ui-icon-play "></div><div title="Delete" class="remove ui-icon ui-icon-trash "></div><div title="Duplicate" class="copy ui-icon ui-icon-copy "></div><input type="button" class="button-secondary disabled" disabled value="'+cff_esc_attr(this.sValue)+'"><span class="uh">'+this.userhelp+'</span><div class="clearer" /></div>';
 				},
 			editItemEvents:function()
 				{

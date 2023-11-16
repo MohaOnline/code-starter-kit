@@ -1,14 +1,17 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/apps/js/frontend/quiz/components/attempts/index.js":
 /*!***********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/attempts/index.js ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
@@ -115,7 +118,7 @@ function timeDifference(earlierDate, laterDate) {
 
   return oDiff;
 }
-/* harmony default export */ __webpack_exports__["default"] = (Attempts);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Attempts);
 
 /***/ }),
 
@@ -123,10 +126,13 @@ function timeDifference(earlierDate, laterDate) {
 /*!*****************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/buttons/button-check.js ***!
   \*****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
@@ -185,7 +191,7 @@ class ButtonCheck extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compon
     })));
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)((select, {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)((select, {
   question: {
     id
   }
@@ -215,10 +221,13 @@ class ButtonCheck extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compon
 /*!****************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/buttons/button-hint.js ***!
   \****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -255,7 +264,7 @@ class ButtonHint extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Compone
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Hint', 'learnpress'))) : '';
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withDispatch)((dispatch, {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withDispatch)((dispatch, {
   id
 }) => {
   const {
@@ -274,12 +283,13 @@ class ButtonHint extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Compone
 /*!**********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/buttons/index.js ***!
   \**********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   MaybeShowButton: function() { return /* binding */ MaybeShowButton; }
+/* harmony export */   MaybeShowButton: () => (/* binding */ MaybeShowButton),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -590,7 +600,7 @@ const MaybeShowButton = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compo
       return checkedQuestions.indexOf(question.id) === -1 && theButton;
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
   const {
     getData,
     getCurrentQuestion
@@ -669,10 +679,13 @@ const MaybeShowButton = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compo
 /*!**********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/content/index.js ***!
   \**********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
@@ -694,7 +707,7 @@ const Content = () => {
     }
   });
 };
-/* harmony default export */ __webpack_exports__["default"] = (Content);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Content);
 
 /***/ }),
 
@@ -702,10 +715,13 @@ const Content = () => {
 /*!***********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/duration/index.js ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const formatDuration = seconds => {
   let d;
   const dayInSeconds = 3600 * 24;
@@ -722,7 +738,7 @@ const formatDuration = seconds => {
   const html = x.join(':');
   return html;
 };
-/* harmony default export */ __webpack_exports__["default"] = (formatDuration);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatDuration);
 
 /***/ }),
 
@@ -730,20 +746,20 @@ const formatDuration = seconds => {
 /*!**************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/index.js ***!
   \**************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Attempts: function() { return /* reexport safe */ _attempts__WEBPACK_IMPORTED_MODULE_5__["default"]; },
-/* harmony export */   Buttons: function() { return /* reexport safe */ _buttons__WEBPACK_IMPORTED_MODULE_3__["default"]; },
-/* harmony export */   Content: function() { return /* reexport safe */ _content__WEBPACK_IMPORTED_MODULE_1__["default"]; },
-/* harmony export */   Meta: function() { return /* reexport safe */ _meta__WEBPACK_IMPORTED_MODULE_2__["default"]; },
-/* harmony export */   Questions: function() { return /* reexport safe */ _questions__WEBPACK_IMPORTED_MODULE_4__["default"]; },
-/* harmony export */   Result: function() { return /* reexport safe */ _result__WEBPACK_IMPORTED_MODULE_7__["default"]; },
-/* harmony export */   Status: function() { return /* reexport safe */ _status__WEBPACK_IMPORTED_MODULE_8__["default"]; },
-/* harmony export */   Timer: function() { return /* reexport safe */ _timer__WEBPACK_IMPORTED_MODULE_6__["default"]; },
-/* harmony export */   Title: function() { return /* reexport safe */ _title__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */   Attempts: () => (/* reexport safe */ _attempts__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   Buttons: () => (/* reexport safe */ _buttons__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   Content: () => (/* reexport safe */ _content__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   Meta: () => (/* reexport safe */ _meta__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   Questions: () => (/* reexport safe */ _questions__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   Result: () => (/* reexport safe */ _result__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   Status: () => (/* reexport safe */ _status__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   Timer: () => (/* reexport safe */ _timer__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   Title: () => (/* reexport safe */ _title__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _title__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./title */ "./assets/src/apps/js/frontend/quiz/components/title/index.js");
 /* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content */ "./assets/src/apps/js/frontend/quiz/components/content/index.js");
@@ -770,10 +786,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/meta/index.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
@@ -835,7 +854,7 @@ const Meta = () => {
     }));
   })));
 };
-/* harmony default export */ __webpack_exports__["default"] = (Meta);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Meta);
 
 /***/ }),
 
@@ -843,10 +862,13 @@ const Meta = () => {
 /*!**************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/questions/buttons.js ***!
   \**************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _buttons_button_hint__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button-hint */ "./assets/src/apps/js/frontend/quiz/components/buttons/button-hint.js");
@@ -885,7 +907,7 @@ const Buttons = function Buttons(props) {
     }, buttons[name] && buttons[name]());
   }));
 };
-/* harmony default export */ __webpack_exports__["default"] = (Buttons);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Buttons);
 
 /***/ }),
 
@@ -893,10 +915,13 @@ const Buttons = function Buttons(props) {
 /*!************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/questions/index.js ***!
   \************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1035,7 +1060,7 @@ class Questions extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Componen
     }))));
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, a, b) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, a, b) => {
   const {
     getData,
     getQuestions
@@ -1067,10 +1092,13 @@ class Questions extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Componen
 /*!***************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/questions/question.js ***!
   \***************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1271,7 +1299,7 @@ class Question extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component
     })));
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, {
   question: {
     id
   }
@@ -1307,10 +1335,13 @@ class Question extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component
 /*!*********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/result/index.js ***!
   \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1563,7 +1594,7 @@ const Result = () => {
     return oDiff;
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Result);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Result);
 
 /***/ }),
 
@@ -1571,10 +1602,13 @@ const Result = () => {
 /*!*********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/status/index.js ***!
   \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1693,7 +1727,7 @@ const Status = () => {
     onClick: submit
   }, !submitting ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Finish Quiz', 'learnpress') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Submitting…', 'learnpress'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_timer__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 };
-/* harmony default export */ __webpack_exports__["default"] = (Status);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Status);
 
 /***/ }),
 
@@ -1701,10 +1735,13 @@ const Status = () => {
 /*!********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/timer/index.js ***!
   \********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1779,7 +1816,7 @@ const Timer = () => {
     value: timeSpend
   }));
 };
-/* harmony default export */ __webpack_exports__["default"] = (Timer);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Timer);
 
 /***/ }),
 
@@ -1787,17 +1824,20 @@ const Timer = () => {
 /*!********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/components/title/index.js ***!
   \********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const Title = () => {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "The title");
 };
-/* harmony default export */ __webpack_exports__["default"] = (Title);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Title);
 
 /***/ }),
 
@@ -1805,10 +1845,13 @@ const Title = () => {
 /*!***************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/index.js ***!
   \***************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -1882,7 +1925,7 @@ class Quiz extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
     return undefined !== status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, !isReviewing && 'completed' === status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Result, null), !isReviewing && notStarted && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Meta, null), 'started' === status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Status, null), (-1 !== ['completed', 'started'].indexOf(status) || isReviewing) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Questions, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Buttons, null), isA && !isReviewing && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_4__.Attempts, null)));
   }
 }
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)(select => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__.compose)([(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)(select => {
   const {
     getQuestions,
     getData
@@ -1914,28 +1957,28 @@ class Quiz extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 /*!***********************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/store/actions.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   __requestBeforeStartQuiz: function() { return /* binding */ __requestBeforeStartQuiz; },
-/* harmony export */   __requestCheckAnswerSuccess: function() { return /* binding */ __requestCheckAnswerSuccess; },
-/* harmony export */   __requestShowHintSuccess: function() { return /* binding */ __requestShowHintSuccess; },
-/* harmony export */   __requestStartQuizSuccess: function() { return /* binding */ __requestStartQuizSuccess; },
-/* harmony export */   __requestSubmitQuiz: function() { return /* binding */ __requestSubmitQuiz; },
-/* harmony export */   __requestSubmitQuizSuccess: function() { return /* binding */ __requestSubmitQuizSuccess; },
-/* harmony export */   checkAnswer: function() { return /* binding */ checkAnswer; },
-/* harmony export */   markQuestionRendered: function() { return /* binding */ markQuestionRendered; },
-/* harmony export */   sendKey: function() { return /* binding */ sendKey; },
-/* harmony export */   setCurrentPage: function() { return /* binding */ setCurrentPage; },
-/* harmony export */   setCurrentQuestion: function() { return /* binding */ setCurrentQuestion; },
-/* harmony export */   setQuizData: function() { return /* binding */ setQuizData; },
-/* harmony export */   setQuizMode: function() { return /* binding */ setQuizMode; },
-/* harmony export */   showHint: function() { return /* binding */ showHint; },
-/* harmony export */   startQuiz: function() { return /* binding */ startQuiz; },
-/* harmony export */   submitQuiz: function() { return /* binding */ submitQuiz; },
-/* harmony export */   updateUserQuestionAnswers: function() { return /* binding */ updateUserQuestionAnswers; }
+/* harmony export */   __requestBeforeStartQuiz: () => (/* binding */ __requestBeforeStartQuiz),
+/* harmony export */   __requestCheckAnswerSuccess: () => (/* binding */ __requestCheckAnswerSuccess),
+/* harmony export */   __requestShowHintSuccess: () => (/* binding */ __requestShowHintSuccess),
+/* harmony export */   __requestStartQuizSuccess: () => (/* binding */ __requestStartQuizSuccess),
+/* harmony export */   __requestSubmitQuiz: () => (/* binding */ __requestSubmitQuiz),
+/* harmony export */   __requestSubmitQuizSuccess: () => (/* binding */ __requestSubmitQuizSuccess),
+/* harmony export */   checkAnswer: () => (/* binding */ checkAnswer),
+/* harmony export */   markQuestionRendered: () => (/* binding */ markQuestionRendered),
+/* harmony export */   sendKey: () => (/* binding */ sendKey),
+/* harmony export */   setCurrentPage: () => (/* binding */ setCurrentPage),
+/* harmony export */   setCurrentQuestion: () => (/* binding */ setCurrentQuestion),
+/* harmony export */   setQuizData: () => (/* binding */ setQuizData),
+/* harmony export */   setQuizMode: () => (/* binding */ setQuizMode),
+/* harmony export */   showHint: () => (/* binding */ showHint),
+/* harmony export */   startQuiz: () => (/* binding */ startQuiz),
+/* harmony export */   submitQuiz: () => (/* binding */ submitQuiz),
+/* harmony export */   updateUserQuestionAnswers: () => (/* binding */ updateUserQuestionAnswers)
 /* harmony export */ });
 /* harmony import */ var _learnpress_data_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @learnpress/data-controls */ "@learnpress/data-controls");
 /* harmony import */ var _learnpress_data_controls__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_learnpress_data_controls__WEBPACK_IMPORTED_MODULE_0__);
@@ -2257,10 +2300,13 @@ function sendKey(keyPressed) {
 /*!*********************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/store/index.js ***!
   \*********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducer */ "./assets/src/apps/js/frontend/quiz/store/reducer.js");
@@ -2284,7 +2330,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.registerStore)('le
   }
 });
 (0,_middlewares__WEBPACK_IMPORTED_MODULE_4__["default"])(store);
-/* harmony default export */ __webpack_exports__["default"] = (store);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 /***/ }),
 
@@ -2292,10 +2338,13 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.registerStore)('le
 /*!***************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/store/middlewares.js ***!
   \***************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var refx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! refx */ "./node_modules/refx/refx.js");
 /* harmony import */ var refx__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(refx__WEBPACK_IMPORTED_MODULE_0__);
 /**
@@ -2339,7 +2388,7 @@ function applyMiddlewares(store) {
   store.dispatch = enhancedDispatch;
   return store;
 }
-/* harmony default export */ __webpack_exports__["default"] = (applyMiddlewares);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (applyMiddlewares);
 
 /***/ }),
 
@@ -2347,14 +2396,15 @@ function applyMiddlewares(store) {
 /*!***********************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/store/reducer.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   blocks: function() { return /* binding */ blocks; },
-/* harmony export */   setItemStatus: function() { return /* binding */ setItemStatus; },
-/* harmony export */   userQuiz: function() { return /* binding */ userQuiz; }
+/* harmony export */   blocks: () => (/* binding */ blocks),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   setItemStatus: () => (/* binding */ setItemStatus),
+/* harmony export */   userQuiz: () => (/* binding */ userQuiz)
 /* harmony export */ });
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
@@ -2598,7 +2648,7 @@ const blocks = flow(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.combineReducers
     return state;
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.combineReducers)({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.combineReducers)({
   blocks,
   userQuiz
 }));
@@ -2609,27 +2659,27 @@ const blocks = flow(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.combineReducers
 /*!*************************************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz/store/selectors.js ***!
   \*************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getCurrentQuestion: function() { return /* binding */ getCurrentQuestion; },
-/* harmony export */   getData: function() { return /* binding */ getData; },
-/* harmony export */   getDefaultRestArgs: function() { return /* binding */ getDefaultRestArgs; },
-/* harmony export */   getItemStatus: function() { return /* binding */ getItemStatus; },
-/* harmony export */   getProp: function() { return /* binding */ getProp; },
-/* harmony export */   getQuestion: function() { return /* binding */ getQuestion; },
-/* harmony export */   getQuestionAnswered: function() { return /* binding */ getQuestionAnswered; },
-/* harmony export */   getQuestionMark: function() { return /* binding */ getQuestionMark; },
-/* harmony export */   getQuestionOptions: function() { return /* binding */ getQuestionOptions; },
-/* harmony export */   getQuestions: function() { return /* binding */ getQuestions; },
-/* harmony export */   getQuestionsSelectedAnswers: function() { return /* binding */ getQuestionsSelectedAnswers; },
-/* harmony export */   getQuizAnswered: function() { return /* binding */ getQuizAnswered; },
-/* harmony export */   getQuizAttempts: function() { return /* binding */ getQuizAttempts; },
-/* harmony export */   getUserMark: function() { return /* binding */ getUserMark; },
-/* harmony export */   isCheckedAnswer: function() { return /* binding */ isCheckedAnswer; },
-/* harmony export */   isCorrect: function() { return /* binding */ isCorrect; }
+/* harmony export */   getCurrentQuestion: () => (/* binding */ getCurrentQuestion),
+/* harmony export */   getData: () => (/* binding */ getData),
+/* harmony export */   getDefaultRestArgs: () => (/* binding */ getDefaultRestArgs),
+/* harmony export */   getItemStatus: () => (/* binding */ getItemStatus),
+/* harmony export */   getProp: () => (/* binding */ getProp),
+/* harmony export */   getQuestion: () => (/* binding */ getQuestion),
+/* harmony export */   getQuestionAnswered: () => (/* binding */ getQuestionAnswered),
+/* harmony export */   getQuestionMark: () => (/* binding */ getQuestionMark),
+/* harmony export */   getQuestionOptions: () => (/* binding */ getQuestionOptions),
+/* harmony export */   getQuestions: () => (/* binding */ getQuestions),
+/* harmony export */   getQuestionsSelectedAnswers: () => (/* binding */ getQuestionsSelectedAnswers),
+/* harmony export */   getQuizAnswered: () => (/* binding */ getQuizAnswered),
+/* harmony export */   getQuizAttempts: () => (/* binding */ getQuizAttempts),
+/* harmony export */   getUserMark: () => (/* binding */ getUserMark),
+/* harmony export */   isCheckedAnswer: () => (/* binding */ isCheckedAnswer),
+/* harmony export */   isCorrect: () => (/* binding */ isCorrect)
 /* harmony export */ });
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
@@ -2866,10 +2916,13 @@ function getUserMark(state) {
 /*!**********************************************************************!*\
   !*** ./assets/src/apps/js/frontend/show-lp-overlay-complete-item.js ***!
   \**********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _utils_lp_modal_overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/lp-modal-overlay */ "./assets/src/apps/js/utils/lp-modal-overlay.js");
 
 const lpModalOverlayCompleteItem = {
@@ -2910,7 +2963,7 @@ const lpModalOverlayCompleteItem = {
     }
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (lpModalOverlayCompleteItem);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lpModalOverlayCompleteItem);
 
 /***/ }),
 
@@ -2918,7 +2971,7 @@ const lpModalOverlayCompleteItem = {
 /*!********************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/compatible.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 /**
  * Compatible with Page Builder.
@@ -2986,13 +3039,13 @@ LP.Hook.addAction('lp-question-compatible-builder', () => {
 /*!************************************************************************************!*\
   !*** ./assets/src/apps/js/frontend/single-curriculum/components/items-progress.js ***!
   \************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getResponse: function() { return /* binding */ getResponse; },
-/* harmony export */   itemsProgress: function() { return /* binding */ itemsProgress; }
+/* harmony export */   getResponse: () => (/* binding */ getResponse),
+/* harmony export */   itemsProgress: () => (/* binding */ itemsProgress)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
@@ -3049,10 +3102,13 @@ const getResponse = async ele => {
 /*!******************************************************!*\
   !*** ./assets/src/apps/js/utils/lp-modal-overlay.js ***!
   \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const $ = jQuery;
 let elLPOverlay = null;
 const lpModalOverlay = {
@@ -3105,7 +3161,7 @@ const lpModalOverlay = {
     this.elTitle.html(content);
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (lpModalOverlay);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lpModalOverlay);
 
 /***/ }),
 
@@ -3113,7 +3169,7 @@ const lpModalOverlay = {
 /*!******************************************!*\
   !*** ./node_modules/classnames/index.js ***!
   \******************************************/
-/***/ (function(module, exports) {
+/***/ ((module, exports) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	Copyright (c) 2018 Jed Watson.
@@ -3182,7 +3238,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /*!***********************************!*\
   !*** ./node_modules/refx/refx.js ***!
   \***********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -3241,7 +3297,7 @@ module.exports = refx;
 /*!************************!*\
   !*** external "React" ***!
   \************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["React"];
@@ -3252,7 +3308,7 @@ module.exports = window["React"];
 /*!**************************************!*\
   !*** external ["LP","dataControls"] ***!
   \**************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["LP"]["dataControls"];
@@ -3263,7 +3319,7 @@ module.exports = window["LP"]["dataControls"];
 /*!*********************************!*\
   !*** external ["wp","compose"] ***!
   \*********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["compose"];
@@ -3274,7 +3330,7 @@ module.exports = window["wp"]["compose"];
 /*!******************************!*\
   !*** external ["wp","data"] ***!
   \******************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["data"];
@@ -3285,7 +3341,7 @@ module.exports = window["wp"]["data"];
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
   \*********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["element"];
@@ -3296,7 +3352,7 @@ module.exports = window["wp"]["element"];
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
   \******************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["i18n"];
@@ -3307,7 +3363,7 @@ module.exports = window["wp"]["i18n"];
 /*!*****************************!*\
   !*** external ["wp","url"] ***!
   \*****************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["url"];
@@ -3342,56 +3398,57 @@ module.exports = window["wp"]["url"];
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!*********************************************!*\
   !*** ./assets/src/apps/js/frontend/quiz.js ***!
   \*********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   init: function() { return /* binding */ init; }
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   init: () => (/* binding */ init)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -3406,7 +3463,7 @@ const {
     default: Modal
   }
 } = LP;
-/* harmony default export */ __webpack_exports__["default"] = (_quiz_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_quiz_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
 const init = (elem, settings) => {
   // For no require enroll
   if (lpQuizSettings.checkNorequizenroll === 1) {
@@ -3448,7 +3505,8 @@ const init = (elem, settings) => {
   })), [...document.querySelectorAll(elem)][0]);
   LP.Hook.doAction('lp-quiz-compatible-builder');
 };
-}();
+})();
+
 (window.LP = window.LP || {}).quiz = __webpack_exports__;
 /******/ })()
 ;

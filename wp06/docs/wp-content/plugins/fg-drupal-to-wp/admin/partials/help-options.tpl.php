@@ -35,6 +35,7 @@
 <li><strong>Set featured image from:</strong> You can set the WordPress featured image from the Drupal image field, or from the first image of the content, or don't set a featured image.</li>
 <li><strong>Import only the featured images:</strong> By selecting this option, the images contained in the post content won't be imported to the WordPress media library.</li>
 <li><strong>Remove the first image from the content:</strong> this option can be useful if your theme displays the featured image at the top of the article, to avoid the same image displayed twice.</li>
+<li><strong>Don't generate the thumbnails:</strong> this option will download the original images, but will prevent WordPress from generating all the resized images. In this case, you will have to resize them aferwards with another plugin.</li>
 <li><strong>Import external media:</strong> If you want to import the medias that are not on your site, check the "External media" option. Be aware that it can reduce the speed of the import or even hang the import.</li>
 <li><strong>Import media with duplicate names:</strong> If you have several images with the exact same filename in different directories, you need to check the "media with duplicate names" option. In this case, all the filenames will be named with the directory as a prefix.</li>
 <li><strong>Force media import:</strong> If you already imported some images and these images are corrupted on WordPress (images with a size of 0Kb for instance), you can force the media import. It will overwrite the already imported images. In a normal use, you should keep this option unchecked.</li>
@@ -42,14 +43,23 @@
 </ul>
 </p>
 
-<p><strong>SEO <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong>
-<ul>
-<li><strong>Redirect the Drupal URLs:</strong> With this option checked, the old Drupal article links will be automatically redirected to the new WordPress URLs. It uses "301 redirect". By this way, the SEO will be kept. The plugin must remain active to redirect the URLs.</li>
-</ul></p>
+<p><strong>Custom post types format <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong> You can choose either ACF, Pods or Toolset Types. You need to install the selected plugin.</p>
 
 <p><strong>Users <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong>
 <ul>
 <li><strong>Allow Unicode characters in the usernames:</strong> With this option checked, the non latin characters will be kept in the usernames (like Greek, Cyrillic, Arabic, ...). Otherwise these characters will be converted to latin characters.</li>
+</ul></p>
+
+<p><strong>Links <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong> You can choose to import the "link" fields as:<br />
+	<ul>
+		<li><strong>Links:</strong> with a title and an URL</li>
+		<li><strong>URL:</strong> with just the URL</li>
+	</ul>
+</p>
+
+<p><strong>SEO <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong>
+<ul>
+<li><strong>Redirect the Drupal URLs:</strong> With this option checked, the old Drupal article links will be automatically redirected to the new WordPress URLs. It uses "301 redirect". By this way, the SEO will be kept. The plugin must remain active to redirect the URLs.</li>
 </ul></p>
 
 <p><strong>Partial import <span class="fgd2wp_premium_feature">(Premium feature)</span>:</strong> If you don't want to import all the Drupal data, you can use this option. Please note that even if you don't use this option and if you rerun the import, the already imported content won't be imported twice.</p>

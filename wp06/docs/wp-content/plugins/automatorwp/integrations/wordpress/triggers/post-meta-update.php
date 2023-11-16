@@ -25,15 +25,16 @@ class AutomatorWP_WordPress_Post_Meta_Update extends AutomatorWP_Integration_Tri
             'integration'       => $this->integration,
             'label'             => __( 'Post meta gets updated with a value', 'automatorwp' ),
             'select_option'     => __( 'Post <strong>meta gets updated</strong> with a value', 'automatorwp' ),
-            /* translators: %1$s: Post title. %2$s: Key. %3$s: Value. %4$s: Number of times. */
-            'edit_label'        => sprintf( __( '%1$s meta %2$s gets updated with %3$s %4$s time(s)', 'automatorwp' ), '{post}', '{meta_key}', '{meta_value}', '{times}' ),
-            /* translators: %1$s: Post title. %2$s: Key. %3$s: Value. */
-            'log_label'         => sprintf( __( '%1$s meta %2$s gets updated with %3$s', 'automatorwp' ), '{post}', '{meta_key}', '{meta_value}' ),
+            /* translators: %1$s: Post title. %2$s: Key. %3$s: Condition. %4$s: Value. %5$s: Number of times. */
+            'edit_label'        => sprintf( __( '%1$s meta %2$s gets updated with a value %3$s %4$s %5$s time(s)', 'automatorwp' ), '{post}', '{meta_key}', '{condition}', '{meta_value}', '{times}' ),
+            /* translators: %1$s: Post title. %2$s: Key. %3$s: Condition. %4$s: Value. */
+            'log_label'         => sprintf( __( '%1$s meta %2$s gets updated with a value %3$s %4$s', 'automatorwp' ), '{post}', '{meta_key}', '{condition}', '{meta_value}' ),
             'action'            => 'updated_post_meta',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 4,
             'options'           => array(
+                'condition' => automatorwp_utilities_condition_option(),
                 'post' => automatorwp_utilities_post_option( array(
                     'post_type'             => 'any',
                     'option_none_label'     => __( 'Any post', 'automatorwp' ),
@@ -141,7 +142,7 @@ class AutomatorWP_WordPress_Post_Meta_Update extends AutomatorWP_Integration_Tri
         }
 
         // Don't deserve if value doesn't matches with the trigger option
-        if( $trigger_options['meta_value'] !== '' && $trigger_options['meta_value'] !== $event['meta_value'] ) {
+		if ( $trigger_options['meta_value'] !== '' && ! automatorwp_condition_matches( $event['meta_value'], $trigger_options['meta_value'], $trigger_options['condition'] ) ) {
             return false;
         }
 

@@ -560,8 +560,8 @@
         $processPercentage = intval((sizeof($this->siteConfig['finishedTables']) / $this->siteConfig['amountOfTables']) * 20);
         $this->progress(20 + $processPercentage);
 
-        if ((time() - $startTime) > 5) {
-          $this->setContinuation(3, (intval($this->siteConfig['batch']) + 1));
+        if ((time() - $startTime) >= 4) {
+          $this->setContinuation(2, (intval($this->siteConfig['batch']) + 1));
           break;
         }
 

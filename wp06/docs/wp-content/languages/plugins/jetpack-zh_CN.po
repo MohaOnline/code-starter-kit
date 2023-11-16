@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-06 18:25:19+0000\n"
+"PO-Revision-Date: 2023-11-13 20:21:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,26 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Jetpack &#8211; WP Security, Backup, Speed, &amp; Growth - Stable (latest release)\n"
+
+#: _inc/blocks/send-a-message/block.json
+msgctxt "block title"
+msgid "Send A Message"
+msgstr "发送消息"
+
+#: _inc/blocks/nextdoor/block.json
+msgctxt "block keyword"
+msgid "neighbor"
+msgstr "邻居"
+
+#: _inc/blocks/nextdoor/block.json
+msgctxt "block description"
+msgid "Embed a Nextdoor post for your neighbors on your blog."
+msgstr "在博客上为您的邻居嵌入一篇 Nextdoor 文章。"
+
+#: _inc/blocks/nextdoor/block.json
+msgctxt "block title"
+msgid "Nextdoor"
+msgstr "Nextdoor"
 
 #: _inc/blocks/blogging-prompt/block.json
 msgctxt "block style label"
@@ -38,6 +58,10 @@ msgstr "当有人关注您的博客时向其发送的欢迎文本。"
 msgid "Welcome email text"
 msgstr "欢迎电子邮件文本"
 
+#: modules/masterbar/masterbar/class-masterbar.php:931
+msgid "My Sites"
+msgstr "我的站点"
+
 #: modules/masterbar/masterbar/class-masterbar.php:436
 msgid "Go to your profile page on WordPress.com"
 msgstr "前往您在 WordPress.com 上的个人资料页面"
@@ -46,26 +70,39 @@ msgstr "前往您在 WordPress.com 上的个人资料页面"
 msgid "WordPress.com Profile"
 msgstr "WordPress.com 个人资料"
 
+#. translators: %s is a link to the Calypso settings page.
+#: modules/masterbar/admin-menu/class-atomic-admin-menu.php:510
+msgid "You are currently using the Classic view, which doesn't offer the same set of features as the Default view. To access additional settings and features, <a href=\"%s\">switch to the Default view</a>. "
+msgstr "您当前正在使用经典视图，其所提供的功能集与默认视图不同。 如需访问其他设置和功能，<a href=\"%s\">请切换为默认视图</a>。 "
+
 #: modules/masterbar/admin-menu/class-admin-menu.php:352
 msgid "Monetize"
 msgstr "货币化"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1022
+#: extensions/blocks/subscriptions/subscriptions.php:1023
 msgid "I am already a subscriber"
 msgstr "我已经是订阅者"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1019
+#: extensions/blocks/subscriptions/subscriptions.php:1020
 msgid "I am already a paid-subscriber"
 msgstr "我已经是付费订阅者"
 
 #. translators:  Placeholder is the tier name
-#: extensions/blocks/subscriptions/subscriptions.php:1015
+#: extensions/blocks/subscriptions/subscriptions.php:1016
 msgid "I am already a <i>%s</i> paid-subscriber"
 msgstr "我已经是 <i>%s</i> 的付费订阅者"
 
-#: extensions/blocks/subscriptions/subscriptions.php:951
+#: extensions/blocks/subscriptions/subscriptions.php:952
 msgid "Switch Accounts"
 msgstr "切换帐户"
+
+#: extensions/blocks/subscriptions/subscriptions.php:180
+msgid "Paid Subscribers (all plans)"
+msgstr "付费订阅者（所有套餐）"
+
+#: extensions/blocks/nextdoor/nextdoor.php:57
+msgid "Nextdoor embed"
+msgstr "已嵌入 Nextdoor"
 
 #: _inc/blocks/tock/block.json
 msgctxt "block description"
@@ -144,11 +181,11 @@ msgid "IP address `%1$s` just failed is_usable_domain check as it is in the priv
 msgstr "IP 地址‘%1$s’刚刚未通过“is_usable_domain”检查，因为其位于私人网络上。"
 
 #. translators: %s is the name of the site.
-#: extensions/blocks/subscriptions/subscriptions.php:940
+#: extensions/blocks/subscriptions/subscriptions.php:941
 msgid "Upgrade to get access to the rest of this post and other exclusive content."
 msgstr "升级以查看本文章剩余内容以及其他专享内容。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:934
+#: extensions/blocks/subscriptions/subscriptions.php:935
 msgid "Upgrade to continue reading"
 msgstr "升级以继续阅读"
 
@@ -206,11 +243,11 @@ msgstr "站点监控"
 msgid "My Mailboxes"
 msgstr "我的邮箱"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1054
+#: extensions/blocks/subscriptions/subscriptions.php:1055
 msgid "Please check your inbox to confirm your subscription."
 msgstr "请查看您的收件箱，以确认您的订阅。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1052
+#: extensions/blocks/subscriptions/subscriptions.php:1053
 msgid "Verify your email to continue reading"
 msgstr "验证您的电子邮件以继续阅读"
 
@@ -373,6 +410,11 @@ msgstr "信使"
 msgctxt "block keyword"
 msgid "whatsapp"
 msgstr "whatsapp"
+
+#: _inc/blocks/send-a-message/block.json
+msgctxt "block description"
+msgid "Let your visitors send you messages with the tap of a button."
+msgstr "让访客通过轻点按钮向您发送消息。"
 
 #: _inc/blocks/repeat-visitor/block.json
 msgctxt "block keyword"
@@ -1365,24 +1407,24 @@ msgstr "URL 密钥不存在。"
 msgid "Lead Capture Form"
 msgstr "销售线索收集表单"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1085
+#: extensions/blocks/subscriptions/subscriptions.php:1086
 msgid "Upgrade subscription"
 msgstr "升级订阅"
 
-#: extensions/blocks/subscriptions/subscriptions.php:1083
+#: extensions/blocks/subscriptions/subscriptions.php:1084
 msgid "You're currently a free subscriber. Upgrade your subscription to get access to the rest of this post and other paid-subscriber only content."
 msgstr "您当前是免费订阅者。 升级订阅以查看本文章剩余内容以及其他付费订阅者专享内容。"
 
 #. translators: %s is the name of the site.
-#: extensions/blocks/subscriptions/subscriptions.php:943
+#: extensions/blocks/subscriptions/subscriptions.php:944
 msgid "Subscribe to get access to the rest of this post and other subscriber-only content."
 msgstr "订阅以查看本文章剩余内容以及其他订阅者专享内容。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:941
+#: extensions/blocks/subscriptions/subscriptions.php:942
 msgid "Become a paid subscriber to get access to the rest of this post and other exclusive content."
 msgstr "成为付费订阅者，以查看本文章剩余内容以及其他专属内容。"
 
-#: extensions/blocks/subscriptions/subscriptions.php:935
+#: extensions/blocks/subscriptions/subscriptions.php:936
 msgid "Subscribe to continue reading"
 msgstr "订阅以继续阅读"
 
@@ -2429,7 +2471,7 @@ msgid "#%d (no title)"
 msgstr "#%d（无标题）"
 
 #. translators: %s is the permalink url to the current post.
-#: extensions/blocks/subscriptions/subscriptions.php:775
+#: extensions/blocks/subscriptions/subscriptions.php:776
 msgid "<p><a href='%s'>View post</a> to subscribe to site newsletter.</p>"
 msgstr "<p><a href='%s'>查看文章</a>，订阅站点电子报。</p>"
 

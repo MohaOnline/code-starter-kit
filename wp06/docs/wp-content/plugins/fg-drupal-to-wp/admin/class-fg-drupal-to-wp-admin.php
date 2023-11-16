@@ -474,7 +474,7 @@ if ( !class_exists('FG_Drupal_to_WordPress_Admin', false) ) {
 
 			$data['importer'] = $this->importer;
 			$data['title'] = __('Import Drupal', 'fg-drupal-to-wp');
-			$data['description'] = __('This plugin will import articles, stories, pages, images, categories and tags from a Drupal database into WordPress.<br />Compatible with Drupal versions 4, 5, 6, 7, 8 and 9.', 'fg-drupal-to-wp');
+			$data['description'] = __('This plugin will import articles, stories, pages, images, categories and tags from a Drupal database into WordPress.<br />Compatible with Drupal versions 4, 5, 6, 7, 8, 9 and 10.', 'fg-drupal-to-wp');
 			$data['description'] .= "<br />\n" . sprintf(__('For any issue, please read the <a href="%s" target="_blank">FAQ</a> first.', 'fg-drupal-to-wp'), $this->faq_url);
 			$data['database_info'] = $this->get_database_info();
 

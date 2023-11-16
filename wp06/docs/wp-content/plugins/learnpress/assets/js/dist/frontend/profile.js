@@ -1,16 +1,16 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/apps/js/frontend/profile/avatar.js":
 /*!*******************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile/avatar.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ Avatar; }
+/* harmony export */   "default": () => (/* binding */ Avatar)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -368,12 +368,12 @@ async function getCroppedImg(imageSrc, pixelCrop, rotation = 0, flip = {
 /*!************************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile/course-list.js ***!
   \************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ CourseList; }
+/* harmony export */   "default": () => (/* binding */ CourseList)
 /* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
@@ -466,10 +466,13 @@ const pagination = () => {
 /*!***********************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile/course-tab.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -582,7 +585,7 @@ const courseTab = () => {
     }
   };
 };
-/* harmony default export */ __webpack_exports__["default"] = (courseTab);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (courseTab);
 
 /***/ }),
 
@@ -590,12 +593,12 @@ const courseTab = () => {
 /*!**************************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile/order-recover.js ***!
   \**************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ recoverOrder; }
+/* harmony export */   "default": () => (/* binding */ recoverOrder)
 /* harmony export */ });
 const $ = window.jQuery;
 function recoverOrder() {
@@ -639,10 +642,13 @@ function recoverOrder() {
 /*!**********************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile/statistic.js ***!
   \**********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -684,7 +690,7 @@ const courseStatistics = () => {
   const data = JSON.parse(elArgStatistic.value);
   getResponse(elements, data);
 };
-/* harmony default export */ __webpack_exports__["default"] = (courseStatistics);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (courseStatistics);
 
 /***/ }),
 
@@ -692,7 +698,7 @@ const courseStatistics = () => {
 /*!***********************************************!*\
   !*** ./node_modules/normalize-wheel/index.js ***!
   \***********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__(/*! ./src/normalizeWheel.js */ "./node_modules/normalize-wheel/src/normalizeWheel.js");
 
@@ -703,7 +709,7 @@ module.exports = __webpack_require__(/*! ./src/normalizeWheel.js */ "./node_modu
 /*!******************************************************************!*\
   !*** ./node_modules/normalize-wheel/src/ExecutionEnvironment.js ***!
   \******************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 /**
@@ -757,7 +763,7 @@ module.exports = ExecutionEnvironment;
 /*!******************************************************************!*\
   !*** ./node_modules/normalize-wheel/src/UserAgent_DEPRECATED.js ***!
   \******************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
@@ -1049,7 +1055,7 @@ module.exports = UserAgent_DEPRECATED;
 /*!**************************************************************!*\
   !*** ./node_modules/normalize-wheel/src/isEventSupported.js ***!
   \**************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 /**
@@ -1123,7 +1129,7 @@ module.exports = isEventSupported;
 /*!************************************************************!*\
   !*** ./node_modules/normalize-wheel/src/normalizeWheel.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 /**
@@ -1315,14 +1321,14 @@ module.exports = normalizeWheel;
 /*!******************************************************!*\
   !*** ./node_modules/react-easy-crop/index.module.js ***!
   \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ Cropper; },
-/* harmony export */   getInitialCropFromCroppedAreaPercentages: function() { return /* binding */ getInitialCropFromCroppedAreaPercentages; },
-/* harmony export */   getInitialCropFromCroppedAreaPixels: function() { return /* binding */ getInitialCropFromCroppedAreaPixels; }
+/* harmony export */   "default": () => (/* binding */ Cropper),
+/* harmony export */   getInitialCropFromCroppedAreaPercentages: () => (/* binding */ getInitialCropFromCroppedAreaPercentages),
+/* harmony export */   getInitialCropFromCroppedAreaPixels: () => (/* binding */ getInitialCropFromCroppedAreaPixels)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/react-easy-crop/node_modules/tslib/tslib.es6.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
@@ -2145,34 +2151,34 @@ var Cropper = /** @class */function (_super) {
 /*!**********************************************************************!*\
   !*** ./node_modules/react-easy-crop/node_modules/tslib/tslib.es6.js ***!
   \**********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   __assign: function() { return /* binding */ __assign; },
-/* harmony export */   __asyncDelegator: function() { return /* binding */ __asyncDelegator; },
-/* harmony export */   __asyncGenerator: function() { return /* binding */ __asyncGenerator; },
-/* harmony export */   __asyncValues: function() { return /* binding */ __asyncValues; },
-/* harmony export */   __await: function() { return /* binding */ __await; },
-/* harmony export */   __awaiter: function() { return /* binding */ __awaiter; },
-/* harmony export */   __classPrivateFieldGet: function() { return /* binding */ __classPrivateFieldGet; },
-/* harmony export */   __classPrivateFieldSet: function() { return /* binding */ __classPrivateFieldSet; },
-/* harmony export */   __createBinding: function() { return /* binding */ __createBinding; },
-/* harmony export */   __decorate: function() { return /* binding */ __decorate; },
-/* harmony export */   __exportStar: function() { return /* binding */ __exportStar; },
-/* harmony export */   __extends: function() { return /* binding */ __extends; },
-/* harmony export */   __generator: function() { return /* binding */ __generator; },
-/* harmony export */   __importDefault: function() { return /* binding */ __importDefault; },
-/* harmony export */   __importStar: function() { return /* binding */ __importStar; },
-/* harmony export */   __makeTemplateObject: function() { return /* binding */ __makeTemplateObject; },
-/* harmony export */   __metadata: function() { return /* binding */ __metadata; },
-/* harmony export */   __param: function() { return /* binding */ __param; },
-/* harmony export */   __read: function() { return /* binding */ __read; },
-/* harmony export */   __rest: function() { return /* binding */ __rest; },
-/* harmony export */   __spread: function() { return /* binding */ __spread; },
-/* harmony export */   __spreadArrays: function() { return /* binding */ __spreadArrays; },
-/* harmony export */   __values: function() { return /* binding */ __values; }
+/* harmony export */   __assign: () => (/* binding */ __assign),
+/* harmony export */   __asyncDelegator: () => (/* binding */ __asyncDelegator),
+/* harmony export */   __asyncGenerator: () => (/* binding */ __asyncGenerator),
+/* harmony export */   __asyncValues: () => (/* binding */ __asyncValues),
+/* harmony export */   __await: () => (/* binding */ __await),
+/* harmony export */   __awaiter: () => (/* binding */ __awaiter),
+/* harmony export */   __classPrivateFieldGet: () => (/* binding */ __classPrivateFieldGet),
+/* harmony export */   __classPrivateFieldSet: () => (/* binding */ __classPrivateFieldSet),
+/* harmony export */   __createBinding: () => (/* binding */ __createBinding),
+/* harmony export */   __decorate: () => (/* binding */ __decorate),
+/* harmony export */   __exportStar: () => (/* binding */ __exportStar),
+/* harmony export */   __extends: () => (/* binding */ __extends),
+/* harmony export */   __generator: () => (/* binding */ __generator),
+/* harmony export */   __importDefault: () => (/* binding */ __importDefault),
+/* harmony export */   __importStar: () => (/* binding */ __importStar),
+/* harmony export */   __makeTemplateObject: () => (/* binding */ __makeTemplateObject),
+/* harmony export */   __metadata: () => (/* binding */ __metadata),
+/* harmony export */   __param: () => (/* binding */ __param),
+/* harmony export */   __read: () => (/* binding */ __read),
+/* harmony export */   __rest: () => (/* binding */ __rest),
+/* harmony export */   __spread: () => (/* binding */ __spread),
+/* harmony export */   __spreadArrays: () => (/* binding */ __spreadArrays),
+/* harmony export */   __values: () => (/* binding */ __values)
 /* harmony export */ });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -2409,7 +2415,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 /*!************************!*\
   !*** external "React" ***!
   \************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["React"];
@@ -2420,7 +2426,7 @@ module.exports = window["React"];
 /*!**********************************!*\
   !*** external ["wp","apiFetch"] ***!
   \**********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["apiFetch"];
@@ -2431,7 +2437,7 @@ module.exports = window["wp"]["apiFetch"];
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
   \*********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["element"];
@@ -2442,7 +2448,7 @@ module.exports = window["wp"]["element"];
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
   \******************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["i18n"];
@@ -2453,7 +2459,7 @@ module.exports = window["wp"]["i18n"];
 /*!*****************************!*\
   !*** external ["wp","url"] ***!
   \*****************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 module.exports = window["wp"]["url"];
@@ -2488,49 +2494,49 @@ module.exports = window["wp"]["url"];
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!************************************************!*\
   !*** ./assets/src/apps/js/frontend/profile.js ***!
@@ -2558,7 +2564,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
 if (document.getElementById('learnpress-avatar-upload')) {
   wp.element.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_profile_avatar__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('learnpress-avatar-upload'));
 }
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=profile.js.map

@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.2.37 =
+
+* Includes some modifications in the forms builder to improve the user experience by selecting, duplicating, or deleting fields from the form.
+* Includes a new option in the Date control to make the calendar always visible.
+* Fixes some inaccuracies in the date/time operations.
+
 = 1.2.36 =
 
 * Implements the SINGLEDIGIT operation.

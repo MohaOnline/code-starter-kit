@@ -196,7 +196,7 @@ function asenha_add_settings_page()
 								<a href="#" id="have-sponsored" class="asenha-have-sponsored">I've sponsored ASE</a>
 							</div>
 							<div class="nudge-stats">
-								<p class="nudge-description">This free version of ASE has consumed more than <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">250 hours of dev time</a>. At v6.0.7 (released on November 10, 2023) and 10,000+ active installs, there have been <a href="https://bowo.io/asenha-sp-gth-ndg" target="_blank">6 monthly sponsors</a> and <a href="https://bowo.io/asenha-sp-ppl-ndg" target="_blank">54 one-time sponsors</a>. You can be one today!</p>
+								<p class="nudge-description">This free version of ASE has consumed more than <a href="https://wordpress.org/plugins/admin-site-enhancements/#developers" target="_blank">250 hours of dev time</a>. At v6.0.8.1 (released on November 1e, 2023) and 10,000+ active installs, there have been <a href="https://bowo.io/asenha-sp-gth-ndg" target="_blank">6 monthly sponsors</a> and <a href="https://bowo.io/asenha-sp-ppl-ndg" target="_blank">54 one-time sponsors</a>. You can be one today!</p>
 							</div>
 						</div>
 						<div class="nudge-secondary">
@@ -823,7 +823,7 @@ function asenha_public_scripts( $hook_suffix )
         wp_enqueue_script(
             'asenha-public',
             ASENHA_URL . 'assets/js/external-permalinks.js',
-            array( 'jquery' ),
+            array(),
             ASENHA_VERSION,
             false
         );
@@ -834,7 +834,7 @@ function asenha_public_scripts( $hook_suffix )
     
     // Media Categories
     $enable_media_categories = ( array_key_exists( 'enable_media_categories', $options ) ? $options['enable_media_categories'] : false );
-    if ( $enable_media_categories && !is_admin() ) {
+    if ( $enable_media_categories && !is_admin() && is_user_logged_in() ) {
         wp_enqueue_style(
             'asenha-media-categories-frontend',
             ASENHA_URL . 'assets/css/media-categories-frontend.css',

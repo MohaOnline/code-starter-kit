@@ -15,6 +15,7 @@ use WooCommerce\PayPalCommerce\Applepay\Assets\ApplePayButton;
 use WooCommerce\PayPalCommerce\Applepay\Assets\AppleProductStatus;
 use WooCommerce\PayPalCommerce\Applepay\Assets\DataToAppleButtonScripts;
 use WooCommerce\PayPalCommerce\Applepay\Assets\BlocksPaymentMethod;
+use WooCommerce\PayPalCommerce\Applepay\Assets\PropertiesDictionary;
 use WooCommerce\PayPalCommerce\Applepay\Helper\ApmApplies;
 use WooCommerce\PayPalCommerce\Applepay\Helper\AvailabilityNotice;
 use WooCommerce\PayPalCommerce\Onboarding\Environment;
@@ -56,9 +57,14 @@ return array(
 			$container->get( 'wcgateway.is-ppcp-settings-page' ),
 			$container->get( 'applepay.available' ) || ( ! $container->get( 'applepay.is_referral' ) ),
 			$container->get( 'applepay.server_supported' ),
-			$settings->has( 'applepay_validated' ) ? $settings->get( 'applepay_validated' ) === true : false,
+			$container->get( 'applepay.is_validated' ),
 			$container->get( 'applepay.button' )
 		);
+	},
+
+	'applepay.is_validated'                      => static function ( ContainerInterface $container ): bool {
+		$settings = $container->get( 'wcgateway.settings' );
+		return $settings->has( 'applepay_validated' ) ? $settings->get( 'applepay_validated' ) === true : false;
 	},
 
 	'applepay.apple-product-status'              => static function( ContainerInterface $container ): AppleProductStatus {
@@ -83,6 +89,18 @@ return array(
 	'applepay.server_supported'                  => static function ( ContainerInterface $container ): bool {
 		return ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== 'off';
 	},
+	'applepay.is_browser_supported'              => static function ( ContainerInterface $container ): bool {
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$user_agent = wp_unslash( $_SERVER['HTTP_USER_AGENT'] ?? '' );
+		if ( $user_agent ) {
+			foreach ( PropertiesDictionary::ALLOWED_USER_AGENTS as $allowed_agent ) {
+				if ( strpos( $user_agent, $allowed_agent ) !== false ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	},
 	'applepay.url'                               => static function ( ContainerInterface $container ): string {
 		$path = realpath( __FILE__ );
 		if ( false === $path ) {
@@ -100,7 +118,6 @@ return array(
 		return new DataToAppleButtonScripts( $container->get( 'applepay.sdk_script_url' ), $container->get( 'wcgateway.settings' ) );
 	},
 	'applepay.button'                            => static function ( ContainerInterface $container ): ApplePayButton {
-
 		return new ApplePayButton(
 			$container->get( 'wcgateway.settings' ),
 			$container->get( 'woocommerce.logger.woocommerce' ),
@@ -108,7 +125,8 @@ return array(
 			$container->get( 'applepay.url' ),
 			$container->get( 'ppcp.asset-version' ),
 			$container->get( 'applepay.data_to_scripts' ),
-			$container->get( 'wcgateway.settings.status' )
+			$container->get( 'wcgateway.settings.status' ),
+			$container->get( 'button.helper.cart-products' )
 		);
 	},
 	'applepay.blocks-payment-method'             => static function ( ContainerInterface $container ): PaymentMethodTypeInterface {
@@ -130,7 +148,43 @@ return array(
 		return apply_filters(
 			'woocommerce_paypal_payments_applepay_supported_country_currency_matrix',
 			array(
+				'CA' => array(
+					'AUD',
+					'CAD',
+					'CHF',
+					'CZK',
+					'DKK',
+					'EUR',
+					'GBP',
+					'HKD',
+					'HUF',
+					'JPY',
+					'NOK',
+					'NZD',
+					'PLN',
+					'SEK',
+					'SGD',
+					'USD',
+				),
 				'GB' => array(
+					'AUD',
+					'CAD',
+					'CHF',
+					'CZK',
+					'DKK',
+					'EUR',
+					'GBP',
+					'HKD',
+					'HUF',
+					'JPY',
+					'NOK',
+					'NZD',
+					'PLN',
+					'SEK',
+					'SGD',
+					'USD',
+				),
+				'IT' => array(
 					'AUD',
 					'CAD',
 					'CHF',
@@ -154,24 +208,6 @@ return array(
 					'EUR',
 					'GBP',
 					'JPY',
-					'USD',
-				),
-				'CA' => array(
-					'AUD',
-					'CAD',
-					'CHF',
-					'CZK',
-					'DKK',
-					'EUR',
-					'GBP',
-					'HKD',
-					'HUF',
-					'JPY',
-					'NOK',
-					'NZD',
-					'PLN',
-					'SEK',
-					'SGD',
 					'USD',
 				),
 			)

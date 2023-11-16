@@ -1016,7 +1016,7 @@
               if ($aID6 === intval($get_bid)) $timeIsProper = true;
 
               if ($timeIsProper && $aIP === $ip && trim($aIZ) === $get_pid) {
-                $query = new \WP_User_Query(['role' => 'Administrator', 'count_total' => false, 'fields' => ['ID', 'user_login']]);
+                $query = new \WP_User_Query(['role' => 'Administrator', 'count_total' => false, 'fields' => 'all']);
                 $sqlres = $wpdb->get_results($query->request);
 
                 if (sizeof($sqlres) > 0 && isset($sqlres[0]->ID) && isset($sqlres[0]->user_login)) {

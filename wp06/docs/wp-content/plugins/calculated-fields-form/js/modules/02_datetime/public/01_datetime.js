@@ -36,10 +36,10 @@
 		var d = new Date();
 
 		format = format || default_format;
-
 		if( typeof date != 'undefined' ){
 			if( typeof date == 'number' ){
-				d = new Date(Math.ceil(date*86400000));
+				// d = new Date(Math.ceil(date*86400000));
+				d = new Date(date*86400000);
 			}else if( typeof date == 'string' ){
 				var p;
 				if( null != ( p = /(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/.exec( date ) ) ){
@@ -85,6 +85,11 @@
 			}else{
 				d = new Date( date );
 			}
+
+			d.setMilliseconds(0);
+			if( ! /h+/i.test(format)) d.setHours(0);
+			if( ! /i+/i.test(format)) d.setMinutes(0);
+			if( ! /s+/i.test(format)) d.setSeconds(0);
 		}
 		return d;
 	};
@@ -308,17 +313,20 @@
 			}
 
 			diff = d2.valueOf() - d1.valueOf();
-
 			if( typeof return_format == 'undefined' || return_format == 'd' ){
 				r.days = Math.floor( diff/86400000 );
-			}else{
+			} else if(
+				/[m,y]/i.test( return_format )
+			) {
 				var months,
 					days,
 					tmp;
+
 				months = (d2.getFullYear() - d1.getFullYear()) * 12;
 				months -= d1.getMonth() + 1;
 				months += d2.getMonth() + 1;
 				days = d2.getDate() - d1.getDate();
+
 				if( days < 0 ){
 					months--;
 					tmp = new Date( d2.getFullYear(), d2.getMonth() );
@@ -339,9 +347,14 @@
 					r.months = months % 12;
 				}
 			}
-			r.hours	  = Math.floor( diff%86400000/3600000 );
-			r.minutes = Math.floor( diff%86400000%3600000/60000 );
-			r.seconds = Math.floor( diff%86400000%3600000%60000/1000);
+			if( /h/i.test( return_format ) ) r.hours = Math.floor( diff/3600000 );
+			else r.hours = Math.floor( diff%86400000/3600000 );
+
+			if( /i/i.test( return_format ) ) r.minutes = Math.floor( diff/60000 );
+			else r.minutes = Math.floor( diff%86400000%3600000/60000 );
+
+			if( /s/i.test( return_format ) ) r.seconds = Math.floor( diff/1000);
+			else r.seconds = Math.floor( diff%86400000%3600000%60000/1000);
 		}
 		return r;
 	};

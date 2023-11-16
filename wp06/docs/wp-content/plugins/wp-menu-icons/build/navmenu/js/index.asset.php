@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('lodash', 'wp-components', 'wp-element', 'wp-i18n', 'wpmi-components', 'wpmi-store'), 'version' => '15f89282d7f2eca1a23d');
+<?php return array('dependencies' => array('lodash', 'react', 'wp-components', 'wp-element', 'wp-i18n', 'wpmi-components', 'wpmi-store'), 'version' => 'f490a015017a688ef858');

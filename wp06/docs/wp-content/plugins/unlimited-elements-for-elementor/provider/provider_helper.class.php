@@ -528,7 +528,15 @@ class HelperProviderUC{
 	 * global init function that common to the admin and front
 	 */
 	public static function globalInit(){
-
+		
+		//disable deprecated warnings - global setting
+		
+		$disableDeprecated = HelperProviderCoreUC_EL::getGeneralSetting("disable_deprecated_warnings");
+		$disableDeprecated = UniteFunctionsUC::strToBool($disableDeprecated);
+		
+		if($disableDeprecated == true)
+			UniteFunctionsUC::disableDeprecatedWarnings();
+		
 		add_filter(UniteCreatorFilters::FILTER_MODIFY_GENERAL_SETTINGS, array("HelperProviderUC", "setGeneralSettings"));
 
 		//add_action("widgets_init", array("HelperProviderUC", "registerWidgets"));

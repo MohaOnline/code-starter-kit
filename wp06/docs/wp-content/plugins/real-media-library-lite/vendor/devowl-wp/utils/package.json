@@ -1,6 +1,6 @@
 {
     "name": "@devowl-wp/utils",
-    "version": "1.16.0",
+    "version": "1.16.1",
     "private": true,
     "description": "Utility functionality for all your WordPress plugins.",
     "homepage": "https://devowl.io",
@@ -105,7 +105,7 @@
     "devDependencies": {
         "@devowl-wp/composer-licenses": "^0.1.14",
         "@devowl-wp/continuous-integration": "^0.4.3",
-        "@devowl-wp/continuous-localization": "^0.7.6",
+        "@devowl-wp/continuous-localization": "^0.7.7",
         "@devowl-wp/eslint-config": "^0.2.3",
         "@devowl-wp/monorepo-utils": "^0.1.10",
         "@devowl-wp/node-gitlab-ci": "^0.7.7",

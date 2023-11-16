@@ -362,9 +362,9 @@ class InstagramAPIOfficialUC{
 		$this->initAccessData();
 		
 		$arrUserData = $this->requestUser();
-				
+		
 		$arrItemsData = $this->requestMedia();
-				
+		
 		$objItems = new InstaObjUserUCItemsUC();
 		$objItems->initOfficialAPI($arrItemsData, $arrUserData);
 		

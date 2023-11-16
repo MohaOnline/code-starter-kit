@@ -576,7 +576,7 @@ class UCOperations extends UniteElementsBaseUC{
 	 * put debug of post custom fields
 	 */
 	public function putPostCustomFieldsDebug($postID, $showCustomFields = false){
-
+		
 		if($postID == "current"){
 			$post = get_post();
 			$postID = $post->ID;
@@ -587,7 +587,7 @@ class UCOperations extends UniteElementsBaseUC{
 			return (false);
 
 		$postTitle = $post->post_title;
-
+		
 		if($showCustomFields == false)
 			$arrCustomFields = UniteFunctionsWPUC::getPostMeta($postID);
 		else{
@@ -649,7 +649,7 @@ class UCOperations extends UniteElementsBaseUC{
 	/**
 	 * terms custom fields debug
 	 */
-	public function putTermsCustomFieldsDebug($arrTerms){
+	public function putTermsCustomFieldsDebug($arrTerms,$showCustomFields = false){
 		
 		if(empty($arrTerms))
 			return (false);
@@ -662,15 +662,15 @@ class UCOperations extends UniteElementsBaseUC{
 			else
 				$termID = $term->term_id;
 
-			$this->putTermCustomFieldsDebug($term);
+			$this->putTermCustomFieldsDebug($term,$showCustomFields);
 		}
 	}
 
 	/**
 	 * put posts meta fields debug
 	 */
-	public function putPostsCustomFieldsDebug($arrPosts){
-
+	public function putPostsCustomFieldsDebug($arrPosts, $showCustomFields = false){
+	
 		if(empty($arrPosts))
 			return (false);
 
@@ -679,14 +679,14 @@ class UCOperations extends UniteElementsBaseUC{
 		foreach($arrPosts as $post){
 			$postID = $post->ID;
 			
-			$this->putPostCustomFieldsDebug($postID);
+			$this->putPostCustomFieldsDebug($postID, $showCustomFields);
 		}
 	}
 
 	/**
 	 * put posts meta fields debug
 	 */
-	public function putMenuCustomFieldsDebug($arrItems){
+	public function putMenuCustomFieldsDebug($arrItems,$showCustomFields = false){
 
 		if(empty($arrItems))
 			return (false);
@@ -696,8 +696,8 @@ class UCOperations extends UniteElementsBaseUC{
 		foreach($arrItems as $item){
 
 			$menuItemID = UniteFunctionsUC::getVal($item, "id");
-				
-			$this->putPostCustomFieldsDebug($menuItemID);
+			
+			$this->putPostCustomFieldsDebug($menuItemID, $showCustomFields);
 		}
 	}
 	

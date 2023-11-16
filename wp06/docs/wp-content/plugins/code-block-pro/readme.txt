@@ -1,8 +1,8 @@
 === Code Block Pro - Beautiful Syntax Highlighting ===
 Contributors:      kbat82, dcooney
 Tags:              block, code, syntax, snippet, highlighter, JavaScript, php, js, vs code
-Tested up to:      6.3
-Stable tag:        1.24.1
+Tested up to:      6.4
+Stable tag:        1.25.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ Star [Code Block Pro](https://github.com/KevinBatdorf/code-block-pro) on GitHub!
 = Features =
 - Includes 25+ built-in themes to choose from.
 - Supports over 140 programming languages
-- Modern programming web fonts - locally hosted
+- 10+ Modern programming web fonts - locally hosted
 - Line numbers
 - Line highlighting (static and on hover)
 - Blur highlighting (with reveal on hover)
@@ -309,6 +309,13 @@ Themes are rendered inside the editor as you type or make changes, so the code b
 5. ANSI support for rendering control sequences
 
 == Changelog ==
+
+= 1.25.0 - 2023-11-13 =
+- Feature: Allow for overriding copy button text and invoke a callback
+- Feature: Added new programming fonts, Monaspace (5), Geist, Cozette and Deja Vu
+- Feature: Add pluggable sidebar slots to allow others to add functionality
+- Tweak: Reorganized sidebar based on common daily usage
+- Legal: Added (open source) license files for all fonts
 
 = 1.24.1 - 2023-10-11 =
 - Tweak: Line numbers width is now calculated based on the longest line number * font width

@@ -24,11 +24,5 @@
         "description": "The number of minutes a firewall violation should be remembered."
       }
     }
-  },
-  "feature-flags": {
-    "customFirewallRules": {
-      "title": "Custom Firewall Rules",
-      "description": "Enables a UI to create custom firewall rules."
-    }
   }
 }

@@ -1,23 +1,39 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/src/apps/js/frontend/api.js":
-/*!********************************************!*\
-  !*** ./assets/src/apps/js/frontend/api.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./assets/src/js/api.js":
+/*!******************************!*\
+  !*** ./assets/src/js/api.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * List API on backend
  */
-if (undefined === lpGlobalSettings) {
-  throw new Error('lpGlobalSettings is undefined');
+
+const lplistAPI = {};
+if ('undefined' !== typeof lpDataAdmin) {
+  lplistAPI.admin = {
+    apiAdminNotice: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/admin-notices',
+    apiAdminOrderStatic: lpDataAdmin.lp_rest_url + 'lp/v1/orders/statistic',
+    apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
+    apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
+    apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+  };
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
-  apiCourses: lpGlobalSettings.lp_rest_url + 'lp/v1/courses/archive-course'
-});
+if ('undefined' !== typeof lpData) {
+  lplistAPI.frontend = {
+    apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
 
 /***/ })
 
@@ -48,26 +64,43 @@ if (undefined === lpGlobalSettings) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
-/*!******************************************************!*\
-  !*** ./assets/src/apps/js/frontend/course-filter.js ***!
-  \******************************************************/
+(() => {
+/*!*************************************************!*\
+  !*** ./assets/src/js/frontend/course-filter.js ***!
+  \*************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./assets/src/apps/js/frontend/api.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api */ "./assets/src/js/api.js");
 
 const classCourseFilter = 'lp-form-course-filter';
 
@@ -146,11 +179,11 @@ window.lpCourseFilter = {
     let paramsFetch = {
       method: 'GET'
     };
-    if (0 !== lpGlobalSettings.user_id) {
+    if (0 !== parseInt(lpData.user_id)) {
       paramsFetch = {
         ...paramsFetch,
         headers: {
-          'X-WP-Nonce': lpGlobalSettings.nonce
+          'X-WP-Nonce': lpData.nonce
         }
       };
     }
@@ -176,7 +209,9 @@ window.lpCourseFilter = {
     const filterCourses = {
       paged: 1
     };
-    window.lpCourseList.updateEventTypeBeforeFetch('filter');
+    if ('undefined' !== typeof window.lpCourseList) {
+      window.lpCourseList.updateEventTypeBeforeFetch('filter');
+    }
     for (const pair of formData.entries()) {
       const key = pair[0];
       const value = formData.getAll(key);
@@ -184,10 +219,10 @@ window.lpCourseFilter = {
         filterCourses[key] = value;
       }
     }
-    if (lpGlobalSettings.is_course_archive && lpGlobalSettings.lpArchiveLoadAjax && elListCourse && skeleton) {
+    if ('undefined' !== typeof lpSettingCourses && lpData.is_course_archive && lpSettingCourses.lpArchiveLoadAjax && elListCourse && skeleton && 'undefined' !== typeof window.lpCourseList) {
       window.lpCourseList.triggerFetchAPI(filterCourses);
     } else {
-      const courseUrl = lpGlobalSettings.courses_url || '';
+      const courseUrl = lpData.courses_url || '';
       const url = new URL(courseUrl);
       Object.keys(filterCourses).forEach(arg => {
         url.searchParams.set(arg, filterCourses[arg]);
@@ -212,7 +247,7 @@ window.lpCourseFilter = {
       form.elements[i].removeAttribute('checked');
     }
     // If on the page archive course will call btnSubmit click.
-    if (lpGlobalSettings.is_course_archive) {
+    if (lpData.is_course_archive) {
       btnSubmit.click();
     }
   },
@@ -248,7 +283,8 @@ window.lpCourseFilter = {
     elChoice.querySelector('input').click();
   }
 };
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=course-filter.js.map

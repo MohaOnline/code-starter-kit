@@ -81,6 +81,13 @@ class EPKB_Faqs_Shortcode {
 		$output_kb_faq_shortcode = true;
 		$faq_container_class = empty( $attributes['class'] ) ? '' : ' ' . $attributes['class'];
 
+        // init FAQ schema json
+		$faq_schema_json = [
+			'@context'   => 'https://schema.org',
+			'@type'      => 'FAQPage',
+			'mainEntity' => [],
+		];
+
 		ob_start(); ?>
 		<div class="epkb-faqs-container<?php echo esc_html( $faq_container_class ) . ' ' . esc_html( $presetClass ); ?>"><?php
 
@@ -157,8 +164,19 @@ class EPKB_Faqs_Shortcode {
 
 						if ( $kb_config['faq_shortcode_content_mode'] == 'excerpt' ) {
 							$post_content = $article->post_excerpt;
-						}   ?>
+						}
 
+                        // add article title and content to the FAQ schema
+						if ( $kb_config['faq_schema_toggle'] == 'on' ) {
+							$faq_schema_json['mainEntity'][] = array(
+								'@type' => 'Question',
+								'name' => get_the_title( $article ),
+								'acceptedAnswer' => array(
+									'@type' => 'Answer',
+									'text' => wp_strip_all_tags( $post_content ),
+								)
+							);
+						}   ?>
 						<div class="epkb-faqs__item-container" id="epkb-faqs-article-<?php echo $article->ID; ?>">
 							<div class="epkb-faqs__item__question">
 								<div class="epkb-faqs__item__question__icon epkbfa epkbfa-plus-square"></div>
@@ -175,7 +193,11 @@ class EPKB_Faqs_Shortcode {
 						</div>  <?php
 					}   ?>
 				</div>  <?php
-			} ?>
+			}
+
+			if ( $kb_config['faq_schema_toggle'] == 'on' ) {    ?>
+				<script type="application/ld+json"><?php echo wp_json_encode( $faq_schema_json ); ?></script>   <?php
+			}   ?>
 		</div>  <?php
 
 		$html = ob_get_clean();

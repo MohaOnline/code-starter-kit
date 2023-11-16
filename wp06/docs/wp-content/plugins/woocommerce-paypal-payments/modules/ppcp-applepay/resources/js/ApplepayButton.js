@@ -4,6 +4,7 @@ import {setVisible} from '../../../ppcp-button/resources/js/modules/Helper/Hidin
 import {setEnabled} from '../../../ppcp-button/resources/js/modules/Helper/ButtonDisabler';
 import FormValidator from "../../../ppcp-button/resources/js/modules/Helper/FormValidator";
 import ErrorHandler from '../../../ppcp-button/resources/js/modules/ErrorHandler';
+import widgetBuilder from "../../../ppcp-button/resources/js/modules/Renderer/WidgetBuilder";
 
 class ApplepayButton {
 
@@ -23,18 +24,17 @@ class ApplepayButton {
             this.ppcpConfig
         );
 
-        //PRODUCT DETAIL PAGE
-        this.refreshContextData();
-
         this.updated_contact_info = []
         this.selectedShippingMethod = []
-        this.nonce = document.getElementById('woocommerce-process-checkout-nonce').value
+        this.nonce = document.getElementById('woocommerce-process-checkout-nonce')?.value || buttonConfig.nonce
 
         this.log = function() {
             if ( this.buttonConfig.is_debug ) {
                 console.log('[ApplePayButton]', ...arguments);
             }
         }
+
+        this.refreshContextData();
     }
 
     init(config) {
@@ -49,7 +49,7 @@ class ApplepayButton {
         const isEligible = this.applePayConfig.isEligible;
         if (isEligible) {
             this.fetchTransactionInfo().then(() => {
-                const isSubscriptionProduct = this.ppcpConfig.data_client_id.has_subscriptions === true;
+                const isSubscriptionProduct = this.ppcpConfig?.data_client_id?.has_subscriptions === true;
                 if (isSubscriptionProduct) {
                     return;
                 }
@@ -146,13 +146,12 @@ class ApplepayButton {
         return session;
     }
 
-
-
-
     /**
      * Add a Apple Pay purchase button
      */
     addButton() {
+        this.log('addButton', this.context);
+
         const wrapper =
             (this.context === 'mini-cart')
                 ? this.buttonConfig.button.mini_cart_wrapper
@@ -161,7 +160,7 @@ class ApplepayButton {
             (this.context === 'mini-cart')
                 ? this.ppcpConfig.button.mini_cart_style.shape
                 : this.ppcpConfig.button.style.shape;
-        const appleContainer = this.context === 'mini-cart' ? document.getElementById("applepay-container-minicart") : document.getElementById("applepay-container");
+        const appleContainer = document.getElementById(wrapper);
         const type = this.buttonConfig.button.type;
         const language = this.buttonConfig.button.lang;
         const color = this.buttonConfig.button.color;
@@ -196,7 +195,7 @@ class ApplepayButton {
             try {
                 const formData = new FormData(document.querySelector(checkoutFormSelector));
                 this.form_saved = Object.fromEntries(formData.entries());
-                // This line should be reviewed, the paypal.Applepay().confirmOrder fails if we add it.
+                // This line should be reviewed, the widgetBuilder.paypal.Applepay().confirmOrder fails if we add it.
                 //this.update_request_data_with_form(paymentDataRequest);
             } catch (error) {
                 console.error(error);
@@ -244,6 +243,11 @@ class ApplepayButton {
             requiredShippingContactFields: ["postalAddress", "email", "phone"],
             requiredBillingContactFields: ["postalAddress", "email", "phone"],
         }
+
+        if (!this.contextHandler.shippingAllowed()) {
+            baseRequest.requiredShippingContactFields = [];
+        }
+
         const paymentDataRequest = Object.assign({}, baseRequest);
         paymentDataRequest.currencyCode = buttonConfig.shop.currencyCode;
         paymentDataRequest.total = {
@@ -260,6 +264,8 @@ class ApplepayButton {
             case 'product':
                 // Refresh product data that makes the price change.
                 this.productQuantity = document.querySelector('input.qty').value;
+                this.products = this.contextHandler.products();
+                this.log('Products updated', this.products);
                 break;
         }
     }
@@ -273,7 +279,7 @@ class ApplepayButton {
         return (applePayValidateMerchantEvent) => {
             this.log('onvalidatemerchant call');
 
-            paypal.Applepay().validateMerchant({
+            widgetBuilder.paypal.Applepay().validateMerchant({
                 validationUrl: applePayValidateMerchantEvent.validationURL
             })
                 .then(validateResult => {
@@ -389,6 +395,7 @@ class ApplepayButton {
                 return {
                     action: 'ppcp_update_shipping_contact',
                     product_id: product_id,
+                    products: JSON.stringify(this.products),
                     caller_page: 'productDetail',
                     product_quantity: this.productQuantity,
                     simplified_contact: event.shippingContact,
@@ -419,6 +426,7 @@ class ApplepayButton {
                 action: 'ppcp_update_shipping_method',
                 shipping_method: event.shippingMethod,
                 product_id: product_id,
+                products: JSON.stringify(this.products),
                 caller_page: 'productDetail',
                 product_quantity: this.productQuantity,
                 simplified_contact: this.updated_contact_info,
@@ -456,6 +464,7 @@ class ApplepayButton {
                             action: 'ppcp_create_order',
                             'caller_page': this.context,
                             'product_id': this.buttonConfig.product.id ?? null,
+                            'products': JSON.stringify(this.products),
                             'product_quantity': this.productQuantity ?? null,
                             'shipping_contact': shippingContact,
                             'billing_contact': billingContact,
@@ -497,7 +506,7 @@ class ApplepayButton {
             this.log('onpaymentauthorized paypal order ID', id, event.payment.token, event.payment.billingContact);
 
             try {
-                const confirmOrderResponse = await paypal.Applepay().confirmOrder({
+                const confirmOrderResponse = await widgetBuilder.paypal.Applepay().confirmOrder({
                     orderId: id,
                     token: event.payment.token,
                     billingContact: event.payment.billingContact,
@@ -508,18 +517,53 @@ class ApplepayButton {
                 if (confirmOrderResponse && confirmOrderResponse.approveApplePayPayment) {
                     if (confirmOrderResponse.approveApplePayPayment.status === "APPROVED") {
                         try {
-                            let data = {
-                                billing_contact: event.payment.billingContact,
-                                shipping_contact: event.payment.shippingContact,
-                                paypal_order_id: id,
-                            };
-                            let authorizationResult = await processInWooAndCapture(data);
-                            if (authorizationResult.result === "success") {
-                                session.completePayment(ApplePaySession.STATUS_SUCCESS)
-                                window.location.href = authorizationResult.redirect
+
+                            if (!this.contextHandler.shippingAllowed()) {
+                                // No shipping, expect immediate capture, ex: PayNow.
+
+                                let approveFailed = false;
+                                await this.contextHandler.approveOrder({
+                                    orderID: id
+                                }, { // actions mock object.
+                                    restart: () => new Promise((resolve, reject) => {
+                                        approveFailed = true;
+                                        resolve();
+                                    }),
+                                    order: {
+                                        get: () => new Promise((resolve, reject) => {
+                                            resolve(null);
+                                        })
+                                    }
+                                });
+
+                                if (!approveFailed) {
+                                    this.log('onpaymentauthorized approveOrder OK');
+                                    session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                                } else {
+                                    this.log('onpaymentauthorized approveOrder FAIL');
+                                    session.completePayment(ApplePaySession.STATUS_FAILURE);
+                                    session.abort()
+                                    console.error(error);
+                                }
+
                             } else {
-                                session.completePayment(ApplePaySession.STATUS_FAILURE)
+                                // Default payment.
+
+                                let data = {
+                                    billing_contact: event.payment.billingContact,
+                                    shipping_contact: event.payment.shippingContact,
+                                    paypal_order_id: id,
+                                };
+                                let authorizationResult = await processInWooAndCapture(data);
+                                if (authorizationResult.result === "success") {
+                                    session.completePayment(ApplePaySession.STATUS_SUCCESS)
+                                    window.location.href = authorizationResult.redirect
+                                } else {
+                                    session.completePayment(ApplePaySession.STATUS_FAILURE)
+                                }
+
                             }
+
                         } catch (error) {
                             session.completePayment(ApplePaySession.STATUS_FAILURE);
                             session.abort()

@@ -49,24 +49,28 @@ class SingleProductHandler extends BaseHandler {
     }
 
     createOrder() {
-        const errorHandler = new ErrorHandler(
-            this.ppcpConfig.labels.error.generic,
-            document.querySelector('.woocommerce-notices-wrapper')
-        );
+        return this.actionHandler().configuration().createOrder(null, null, {
+            'updateCartOptions': {
+                'keepShipping': true
+            }
+        });
+    }
 
-        const actionHandler = new SingleProductActionHandler(
+    actionHandler() {
+        return new SingleProductActionHandler(
             this.ppcpConfig,
             new UpdateCart(
                 this.ppcpConfig.ajax.change_cart.endpoint,
                 this.ppcpConfig.ajax.change_cart.nonce,
             ),
             document.querySelector('form.cart'),
-            errorHandler,
+            this.errorHandler(),
         );
-
-        return actionHandler.configuration().createOrder();
     }
 
+    products() {
+        return this.actionHandler().getProducts();
+    }
 }
 
 export default SingleProductHandler;

@@ -34,27 +34,31 @@ const DEFAULT = {
 	inclusive: true,
 };
 
-export default function RuleForm( { value, onChange } ) {
+export default function RuleForm( { value, onChange, className } ) {
 	const id = useInstanceId( RuleForm, 'solid-rule-form' );
-	const { rules = [ DEFAULT ] } = value;
+	const { config = { rules: [ DEFAULT ] } } = value;
 	const onAndRule = ( after ) => () => {
 		onChange( {
 			...value,
-			rules: rules.toSpliced( after + 1, 0, DEFAULT ),
+			config: {
+				...config,
+				rules: config.rules.toSpliced( after + 1, 0, DEFAULT ),
+			},
 		} );
 	};
 
 	return (
-		<Flex direction="column" gap={ 4 } align="stretch" expanded={ false }>
+		<Flex direction="column" gap={ 4 } align="stretch" expanded={ false } className={ className }>
 			<InputControl
 				value={ value.name ?? '' }
 				onChange={ ( next ) => onChange( { ...value, name: next } ) }
 				label={ __( 'Rule Name', 'better-wp-security' ) }
+				required
 				__next36pxDefaultSize
 			/>
 			<Heading level={ 3 } text={ __( 'If incoming requests match…', 'better-wp-security' ) } weight={ TextWeight.HEAVY } />
 			<Flex direction="column" gap={ 3 } align="stretch" expanded={ false }>
-				{ rules.map( ( rule, i ) => (
+				{ config.rules.map( ( rule, i ) => (
 					<Rule
 						key={ i }
 						idx={ i }
@@ -62,11 +66,17 @@ export default function RuleForm( { value, onChange } ) {
 						onAndRule={ onAndRule( i ) }
 						onChange={ ( newRule ) => onChange( {
 							...value,
-							rules: rules.map( ( oldRule, j ) => j === i ? newRule : oldRule ),
+							config: {
+								...config,
+								rules: config.rules.map( ( oldRule, j ) => j === i ? newRule : oldRule ),
+							},
 						} ) }
-						onDelete={ rules.length === 1 ? null : () => onChange( {
+						onDelete={ config.rules.length === 1 ? null : () => onChange( {
 							...value,
-							rules: rules.toSpliced( i, 1 ),
+							config: {
+								...config,
+								rules: config.rules.toSpliced( i, 1 ),
+							},
 						} ) }
 					/>
 				) ) }
@@ -81,14 +91,27 @@ export default function RuleForm( { value, onChange } ) {
 					<Select
 						inputId={ id + '__action' }
 						options={ ACTIONS }
-						value={ ACTIONS.find( ( action ) => action.value === value.type ) }
-						onChange={ ( next ) => onChange( { ...value, type: next.value, type_params: '' } ) }
+						value={ ACTIONS.find( ( action ) => action.value === config.type ) }
+						onChange={ ( next ) => onChange( {
+							...value,
+							config: {
+								...config,
+								type: next.value,
+								type_params: '',
+							},
+						} ) }
 					/>
 				</BaseControl>
-				{ value.type === 'REDIRECT' && (
+				{ config.type === 'REDIRECT' && (
 					<InputControl
-						value={ value.type_params ?? '' }
-						onChange={ ( next ) => onChange( { ...value, type_params: next } ) }
+						value={ config.type_params ?? '' }
+						onChange={ ( next ) => onChange( {
+							...value,
+							config: {
+								...config,
+								type_params: next,
+							},
+						} ) }
 						type="url"
 						label={ __( 'Redirect Location', 'better-wp-security' ) }
 						__next36pxDefaultSize
@@ -196,6 +219,7 @@ function FieldControl( { id, field, value, onChange } ) {
 					},
 				} ) }
 				isOptionSelected={ ( maybeOption, selected ) => selected.some( ( selectedOption ) => isField( maybeOption.value, selectedOption ) ) }
+				required
 			/>
 		</BaseControl>
 	);
@@ -217,6 +241,7 @@ function SubFieldControl( { field, value, onChange } ) {
 				...value,
 				parameter: field.value + sanitize( next ),
 			} ) }
+			required
 			__next36pxDefaultSize
 		/>
 	);
@@ -254,6 +279,7 @@ function OperatorControl( { id, operator, allowedOperators, value, onChange } ) 
 					},
 				} ) }
 				isDisabled={ ! allowedOperators.length }
+				required
 			/>
 		</BaseControl>
 	);
@@ -287,6 +313,7 @@ function ValueControl( { id, field, operator, value, onChange } ) {
 					} ) }
 					isMulti
 					isClearable
+					required
 				/>
 			</BaseControl>
 		);
@@ -315,6 +342,7 @@ function ValueControl( { id, field, operator, value, onChange } ) {
 						},
 					} ) }
 					isClearable
+					required
 				/>
 			</BaseControl>
 		);
@@ -337,6 +365,7 @@ function ValueControl( { id, field, operator, value, onChange } ) {
 				},
 			} ) }
 			disabled={ ! field }
+			required
 			__next36pxDefaultSize
 		/>
 	);
@@ -376,11 +405,16 @@ const FIELDS = [
 		],
 	},
 	{
+		value: 'server.CONTENT_TYPE',
+		label: __( 'Content Type', 'better-wp-security' ),
+		operators: true,
+	},
+	{
 		value: 'server.HTTP_',
 		label: __( 'Header', 'better-wp-security' ),
 		operators: true,
 		allowSubFields: {
-			example: 'content-type',
+			example: 'user-agent',
 			sanitize( value ) {
 				return value.toUpperCase().replace( '-', '_' );
 			},
@@ -447,7 +481,7 @@ const ACTIONS = [
 	},
 	{
 		value: 'LOG',
-		label: __( 'Log', 'better-wp-security' ),
+		label: __( 'Log only', 'better-wp-security' ),
 	},
 	{
 		value: 'WHITELIST',

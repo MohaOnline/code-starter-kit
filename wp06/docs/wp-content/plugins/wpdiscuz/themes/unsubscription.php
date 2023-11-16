@@ -5,8 +5,8 @@ if (!defined("ABSPATH")) {
 
 get_header();
 ?>
-<div style="margin: 0 auto; padding: 50px 0">
-    <h2>
+<div style="margin: 0 auto; padding: 50px 0" class="wpdc-unsubscription-main">
+    <h2 class="wpdc-unsubscription-message">
         <?php
         global $wpDiscuzSubscriptionMessage;
         $wpdiscuz = wpDiscuz();
@@ -22,11 +22,11 @@ get_header();
 
     if ($userEmail) {
         ?>
-        <div>
-            <a href="<?php echo site_url("/wpdiscuzsubscription/bulkmanagement/"); ?>">
+        <div class="wpdc-unsubscription-bulk">
+            <a href="<?php echo site_url("/wpdiscuzsubscription/bulkmanagement/"); ?>" class="wpdc-unsubscription-manage-link">
                 <?php esc_html_e($wpdiscuz->options->getPhrase("wc_user_settings_email_me_delete_links")) ?>
             </a>( <?php esc_html_e($userEmail);?> )
-            <div>
+            <div class="wpdc-unsubscription-manage-link-desc">
                 <?php esc_html_e($wpdiscuz->options->getPhrase("wc_user_settings_email_me_delete_links_desc")) ?>
             </div>
         </div>

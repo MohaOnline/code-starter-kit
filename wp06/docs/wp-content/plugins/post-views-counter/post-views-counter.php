@@ -2,7 +2,7 @@
 /*
 Plugin Name: Post Views Counter
 Description: Post Views Counter allows you to display how many times a post, page or custom post type had been viewed in a simple, fast and reliable way.
-Version: 1.4.1
+Version: 1.4.2
 Author: dFactory
 Author URI: https://dfactory.co/
 Plugin URI: https://postviewscounter.com/
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 	 * Post Views Counter final class.
 	 *
 	 * @class Post_Views_Counter
-	 * @version	1.4
+	 * @version	1.4.2
 	 */
 	final class Post_Views_Counter {
 
@@ -92,11 +92,11 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 				'toolbar_statistics'	=> true
 			],
 			'other'		=> [
-				// 'menu_position'			=> 'sub',
+				'menu_position'			=> 'top',
 				'deactivation_delete'	=> false,
 				'license'				=> ''
 			],
-			'version'	=> '1.4.1'
+			'version'	=> '1.4.2'
 		];
 
 		// instances
@@ -692,13 +692,8 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 			wp_enqueue_style( 'pvc-pro-style' );
 
 			// add styles
-			wp_add_inline_style( 'pvc-pro-style', '#toplevel_page_post-views-counter .wp-submenu li:nth-of-type(4) {
-				cursor: not-allowed;
-			}
-			#toplevel_page_post-views-counter .wp-submenu li:nth-of-type(4) a {
-				pointer-events: none;
-			}
-			#toplevel_page_post-views-counter .wp-submenu li:nth-of-type(4) a:after, .post-views-counter-settings tr.pvc-pro th:after, .nav-tab-wrapper a.nav-tab.nav-tab-disabled.pvc-pro:after, .post-views-counter-settings tr.pvc-pro-extended label[for="post_views_counter_general_counter_mode_ajax"]:after {
+			wp_add_inline_style( 'pvc-pro-style', '
+			.post-views-counter-settings tr.pvc-pro th:after, .nav-tab-wrapper a.nav-tab.nav-tab-disabled.pvc-pro:after, .post-views-counter-settings tr.pvc-pro-extended label[for="post_views_counter_general_counter_mode_ajax"]:after {
 				content: \'PRO\';
 				display: inline;
 				background-color: #ffc107;
@@ -726,11 +721,11 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 				return $links;
 
 			// submenu?
-			// if ( $this->options['other']['menu_position'] === 'sub' )
+			if ( $this->options['other']['menu_position'] === 'sub' )
 				$url = admin_url( 'options-general.php?page=post-views-counter' );
 			// topmenu?
-			// else
-				// $url = admin_url( 'admin.php?page=post-views-counter' );
+			else
+				$url = admin_url( 'admin.php?page=post-views-counter' );
 
 			array_unshift( $links, sprintf( '<a href="%s">%s</a>', esc_url_raw( $url ), esc_html__( 'Settings', 'post-views-counter' ) ) );
 

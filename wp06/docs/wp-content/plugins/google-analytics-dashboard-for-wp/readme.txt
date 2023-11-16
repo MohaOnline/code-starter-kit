@@ -3,8 +3,8 @@ Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: analytics,google analytics,google analytics dashboard,google analytics plugin,google analytics widget,gtag
 Requires at least: 5.6.0
-Tested up to: 6.3.1
-Stable tag: 7.20.1
+Tested up to: 6.4.1
+Stable tag: 7.21.0
 Requires PHP: 7.2
 License: GPL v3
 
@@ -187,8 +187,17 @@ You can translate Google Analytics Dashboard for WP by ExactMetrics on [translat
 4. Want more features? <a href="https://www.exactmetrics.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase ExactMetrics Pro</a>!
 
 == Changelog ==
+= 7.21.0: November 13, 2023 =
+- New: Social Media report.
+- New: Exclude query parameters from GA4 data stream.
+- Enhancement: Improved compatibility towards WordPress 6.4.1.
+- Fix: We fixed an issue that occurred with Pretty Links.
+
+= 7.20.2: November 01, 2023 =
+- Fix: Popular posts, we fixed a bug occurring in curated popular posts.
+
 = 7.20.1: October 09, 2023 =
-- Fix: We updated our lite emails to render better inside multiple mail clients. We also changed the emails to send out monthly instead of weekly. To disable emails go to Settings -> Advanced - Toggle the "Enable Email Summaries
+- Fix: We updated our lite emails to render better inside multiple mail clients. We also changed the emails to send out monthly instead of weekly. To disable emails go to Settings -> Advanced - Toggle the "Enable Email Summaries.
 
 = 7.20: October 02, 2023 =
 - New: Google Analytics and eCommerce support for WishList Member

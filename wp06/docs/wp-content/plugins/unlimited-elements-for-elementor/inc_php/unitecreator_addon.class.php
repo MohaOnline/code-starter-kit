@@ -40,12 +40,13 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	private $pathAssetsBase, $urlAssetsBase;
 	private $arrStoredData = array();
 	private $operationType = null, $specialType;
-
+	private $arrOriginalValues = array();
+	
 	private static $arrCacheRecords = array();
 	private static $arrCacheCats = null;
 	private static $arrCacheCatsFull = null;
 	private static $defaultOptions = null;
-
+	
 	/**
 	 *
 	 * constructor
@@ -664,7 +665,15 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 
 	protected function a_________GETTERS_________(){
 	}
-
+	
+	/**
+	 * get values that was set before
+	 */
+	public function getOriginalValues(){
+		
+		return($this->arrOriginalValues);
+	}
+	
 	/**
 	 * get the update hash if available
 	 */
@@ -1457,7 +1466,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	public function getParamByType($type){
 
 		$arrParams = $this->params;
-
+				
 		foreach($arrParams as $param){
 			$paramType = UniteFunctionsUC::getVal($param, "type");
 			if($paramType == $type)
@@ -1603,7 +1612,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * check if param type exists
 	 */
 	public function isParamTypeExists($type){
-
+		
 		$param = $this->getParamByType($type);
 
 		if(empty($param))
@@ -1644,7 +1653,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * get data by key
 	 */
 	public function getStoredData($key){
-
+		
 		$data = UniteFunctionsUC::getVal($this->arrStoredData, $key);
 
 		return ($data);
@@ -1761,9 +1770,9 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		return ($arrUrls);
 	}
 
-	private function a______GET_HTML______(){
-	}
+	private function a______GET_HTML______(){}
 
+	
 	/**
 	 * get addon config html
 	 * for vc make another function - get config only
@@ -1781,8 +1790,9 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		$objSettings = new UniteCreatorSettings();
 
 		$source = UniteFunctionsUC::getVal($this->arrHtmlConfigOptions, "source");
+		$objSettings->setCurrentAddon($this);
+		
 		if($source == "addon"){
-			$objSettings->setCurrentAddon($this);
 			$objSettings->addGlobalParam("source", "addon", UniteSettingsUC::TYPE_IMAGE);
 		}
 
@@ -1804,7 +1814,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 					}
 				}
 			}
-
+			
 			$objSettings->initByCreatorParams($arrParams, $this->paramsCats);
 		}
 
@@ -1840,9 +1850,9 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 
 			$objSettings->addFontPanel($arrFontParamNames, $arrFontsData, null, $fontsPanelOptions);
 		}
-
+		
 		$numSettings = $objSettings->getNumSettings();
-
+		
 		if($numSettings == 0){
 			$textEmpty = esc_html__("no settings for this widget", "unlimited-elements-for-elementor");
 
@@ -1850,7 +1860,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		}
 
 		//output
-
+		
 		if($isOutputSidebar == false){
 			$objOutput = new UniteSettingsOutputWideUC();
 			$objOutput->setShowSaps(true);
@@ -2066,7 +2076,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * get main params processed
 	 */
 	public function getProcessedMainParamsValues($processType = null){
-
+		
 		$this->validateInited();
 		
 		if(empty($processType))
@@ -2194,13 +2204,15 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	private function setParamsValuesWork($arrValues, $arrParams, $type){
 
 		$this->validateInited();
-
+		
 		if(empty($arrValues))
 			$arrValues = array();
 
 		if(!is_array($arrValues))
 			UniteFunctionsUC::throwError("The values shoud be array");
-
+		
+		
+			
 		foreach($arrParams as $key => $param){
 			$name = UniteFunctionsUC::getVal($param, "name");
 
@@ -2259,10 +2271,12 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * set params values
 	 */
 	public function setParamsValues($arrValues){
-
+		
 		if(empty($arrValues))
 			$arrValues = array();
 
+		$this->arrOriginalValues = $arrValues;
+		
 		$this->params = $this->setParamsValuesWork($arrValues, $this->params, "main");
 	}
 

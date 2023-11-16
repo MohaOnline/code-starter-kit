@@ -1,5 +1,21 @@
-##### 2.2.11 - 2023-09-14
-* Improvemnet - Clean up the SQL query to make it secure.
+##### 3.0.2 - 2023-11-15
+- Fixed - License not activating via API
+
+##### 3.0.1 - 2023-11-15
+- Fixed - Through Php errors in some cases
+
+##### 3.0 - 2023-11-14
+Added - License Activations
+Added - License and Generator delete endpoints
+Added - License PDF Certificates 
+Added - Migration and Past Order License Generator tools
+Added - License Expiration Format
+Added - Single License Page in My account
+Fixed - UserId variable in lmfwc_add_license function
+Fixed - OrderBy query Vulnerability 
+
+##### 2.2.11 - 2023-09-13
+* Fix - OrderBy Queryy Vulnerability 
 
 ##### 2.2.10 - 2023-08-01
 * Fix - The reported vulnerability has been resolved by updating the Feedback SDK to the latest version.

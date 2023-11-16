@@ -102,7 +102,7 @@
 
 .uc-admin-notice--banner .uc-notice-dismiss:hover,
 .uc-admin-notice--banner .uc-notice-dismiss:focus {
-	color: #3e3ff0;
+	color: #ea3384;
 }
 
 .uc-admin-notice--banner .uc-notice-dismiss::before {
@@ -115,6 +115,7 @@
 	top: 8px;
 	left: 4px;
 }
+
 
 .uc-admin-notice--banner .uc-notice-link {
 	display: block;

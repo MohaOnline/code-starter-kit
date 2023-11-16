@@ -75,7 +75,7 @@ require_once( __DIR__ . '/includes/qna/class-cr-qna-shortcode.php' );
 require_once( __DIR__ . '/includes/qna/class-cr-qna-email.php' );
 
 class Ivole {
-	const CR_VERSION = '5.37.1';
+	const CR_VERSION = '5.38.1';
 
 	public function __construct() {
 		if( function_exists( 'wc' ) ) {
@@ -97,12 +97,12 @@ class Ivole {
 			new CR_Local_Forms_Ajax();
 			new CR_Reviews_Notifications();
 
-			if( 'yes' === get_option( 'ivole_reviews_shortcode', 'no' ) ) {
+			// if( 'yes' === get_option( 'ivole_reviews_shortcode', 'no' ) ) {
 				$cr_all_reviews = new CR_All_Reviews();
 				$cr_reviews_grid = new CR_Reviews_Grid();
 				$cr_reviews_slider = new CR_Reviews_Slider();
 				$cr_qna_shortcode = new CR_Qna_Shortcode( $cr_qna );
-			}
+			// }
 
 			if ( is_admin() ) {
 				$reviews_admin_menu = new Ivole_Reviews_Admin_Menu();

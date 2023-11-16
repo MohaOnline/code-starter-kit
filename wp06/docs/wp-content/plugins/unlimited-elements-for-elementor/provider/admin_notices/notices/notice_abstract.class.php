@@ -201,37 +201,39 @@ abstract class UCAdminNoticeAbstract{
 		
 		$isFreeAllowed = $this->isFreeAllowed();
 		
+		$id = $this->getId();
+		
 		if($isFreeAllowed === false)
-			return 'Notice hidden - free only';
+			return "Notice <b>{$id}</b> hidden - free only";
 		
 		$isDismissed = $this->isDismissed();
 			
 		if($isDismissed === true)
-			return 'Notice hidden - dismissed';
+			return "Notice <b>{$id}</b> hidden - dismissed";
 
 		$isLocationAllowed = $this->isLocationAllowed();
 
 		if($isLocationAllowed === false)
-			return 'Notice hidden - incorrect location';
+			return "Notice <b>{$id}</b> hidden - incorrect location";
 
 		$isConditionAllowed = $this->isConditionAllowed();
 
 		if($isConditionAllowed === false)
-			return 'Notice hidden - false condition';
+			return "Notice <b>{$id}</b> hidden - false condition";
 
 		$dateFormat = 'j F Y H:i:s';
 		$currentTime = time();
 		$startTime = $this->getStartTime();
 
 		if($currentTime < $startTime)
-			return 'Notice hidden - scheduled (will be visible on ' . date($dateFormat, $startTime) . ')';
-
+			return "Notice <b>{$id}</b> hidden - scheduled (will be visible on " . date($dateFormat, $startTime) . ")";
+			
 		$finishTime = $this->getFinishTime();
 
 		if($currentTime <= $finishTime)
-			return 'Notice visible (will be hidden on ' . date($dateFormat, $finishTime) . ')';
+			return "Notice <b>{$id}</b> visible (will be hidden on ". date($dateFormat, $finishTime). ")";
 
-		return 'Notice hidden - permanently';
+		return "Notice <b>{$id}</b> hidden - permanently";
 	}
 
 	/**

@@ -69,6 +69,9 @@ class UniteCreatorTestAddonNewView{
 
 <div id="uc_preview_addon_wrapper" class="uc-preview-addon-wrapper" data-addonid="<?php echo esc_attr($addonID)?>">
 
+<?php 
+	UniteProviderFunctionsUC::putInitHelperHtmlEditor();
+?>
 
 <div class="uc-preview-addon-left" >
 

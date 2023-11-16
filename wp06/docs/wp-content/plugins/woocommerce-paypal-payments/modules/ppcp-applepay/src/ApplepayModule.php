@@ -12,6 +12,7 @@ namespace WooCommerce\PayPalCommerce\Applepay;
 use Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry;
 use WooCommerce\PayPalCommerce\Applepay\Assets\ApplePayButton;
 use WooCommerce\PayPalCommerce\Applepay\Assets\AppleProductStatus;
+use WooCommerce\PayPalCommerce\Applepay\Assets\PropertiesDictionary;
 use WooCommerce\PayPalCommerce\Button\Assets\ButtonInterface;
 use WooCommerce\PayPalCommerce\Button\Assets\SmartButtonInterface;
 use WooCommerce\PayPalCommerce\Applepay\Helper\AvailabilityNotice;
@@ -40,6 +41,7 @@ class ApplepayModule implements ModuleInterface {
 	 * {@inheritDoc}
 	 */
 	public function run( ContainerInterface $c ): void {
+		$module = $this;
 
 		// Clears product status when appropriate.
 		add_action(
@@ -51,38 +53,69 @@ class ApplepayModule implements ModuleInterface {
 			}
 		);
 
-		// Check if the module is applicable, correct country, currency, ... etc.
-		if ( ! $c->get( 'applepay.eligible' ) ) {
-			return;
-		}
+		add_action(
+			'init',
+			static function () use ( $c, $module ) {
 
-		// Load the button handler.
-		$apple_payment_method = $c->get( 'applepay.button' );
-		// add onboarding and referrals hooks.
-		assert( $apple_payment_method instanceof ApplepayButton );
-		$apple_payment_method->initialize();
+				// Check if the module is applicable, correct country, currency, ... etc.
+				if ( ! $c->get( 'applepay.eligible' ) ) {
+					return;
+				}
 
-		// Show notice if there are product availability issues.
-		$availability_notice = $c->get( 'applepay.availability_notice' );
-		assert( $availability_notice instanceof AvailabilityNotice );
-		$availability_notice->execute();
+				// Load the button handler.
+				$apple_payment_method = $c->get( 'applepay.button' );
+				// add onboarding and referrals hooks.
+				assert( $apple_payment_method instanceof ApplepayButton );
+				$apple_payment_method->initialize();
 
-		// Return if server not supported.
-		if ( ! $c->get( 'applepay.server_supported' ) ) {
-			return;
-		}
+				// Show notice if there are product availability issues.
+				$availability_notice = $c->get( 'applepay.availability_notice' );
+				assert( $availability_notice instanceof AvailabilityNotice );
+				$availability_notice->execute();
 
-		// Check if this merchant can activate / use the buttons.
-		// We allow non referral merchants as they can potentially still use ApplePay, we just have no way of checking the capability.
-		if ( ( ! $c->get( 'applepay.available' ) ) && $c->get( 'applepay.is_referral' ) ) {
-			return;
-		}
+				// Return if server not supported.
+				if ( ! $c->get( 'applepay.server_supported' ) ) {
+					return;
+				}
 
-		$this->load_assets( $c, $apple_payment_method );
-		$this->handle_validation_file( $c );
-		$this->render_buttons( $c, $apple_payment_method );
+				// Check if this merchant can activate / use the buttons.
+				// We allow non referral merchants as they can potentially still use ApplePay, we just have no way of checking the capability.
+				if ( ( ! $c->get( 'applepay.available' ) ) && $c->get( 'applepay.is_referral' ) ) {
+					return;
+				}
 
-		$apple_payment_method->bootstrap_ajax_request();
+				if ( $apple_payment_method->is_enabled() ) {
+					$module->load_assets( $c, $apple_payment_method );
+					$module->handle_validation_file( $c, $apple_payment_method );
+					$module->render_buttons( $c, $apple_payment_method );
+					$apple_payment_method->bootstrap_ajax_request();
+				}
+
+				$module->load_admin_assets( $c, $apple_payment_method );
+			},
+			1
+		);
+
+		add_filter(
+			'nonce_user_logged_out',
+			/**
+			 * Prevents nonce from being changed for non logged in users.
+			 *
+			 * @param int $uid The uid.
+			 * @param string|int $action The action.
+			 * @return int
+			 *
+			 * @psalm-suppress MissingClosureParamType
+			 */
+			function ( $uid, $action ) {
+				if ( $action === PropertiesDictionary::NONCE_ACTION ) {
+					return 0;
+				}
+				return $uid;
+			},
+			100,
+			2
+		);
 	}
 
 	/**
@@ -152,6 +185,43 @@ class ApplepayModule implements ModuleInterface {
 	}
 
 	/**
+	 * Registers and enqueues the assets.
+	 *
+	 * @param ContainerInterface $c The container.
+	 * @param ApplePayButton     $button The button.
+	 * @return void
+	 */
+	public function load_admin_assets( ContainerInterface $c, ApplePayButton $button ): void {
+		// Enqueue backend scripts.
+		add_action(
+			'admin_enqueue_scripts',
+			static function () use ( $c, $button ) {
+				if ( ! is_admin() ) {
+					return;
+				}
+
+				/**
+				 * Should add this to the ButtonInterface.
+				 *
+				 * @psalm-suppress UndefinedInterfaceMethod
+				 */
+				$button->enqueue_admin();
+			}
+		);
+
+		// Adds ApplePay component to the backend button preview settings.
+		add_action(
+			'woocommerce_paypal_payments_admin_gateway_settings',
+			function( array $settings ) use ( $c ): array {
+				if ( is_array( $settings['components'] ) ) {
+					$settings['components'][] = 'applepay';
+				}
+				return $settings;
+			}
+		);
+	}
+
+	/**
 	 * Renders the Apple Pay buttons in the enabled places.
 	 *
 	 * @param ContainerInterface $c The container.
@@ -185,9 +255,13 @@ class ApplepayModule implements ModuleInterface {
 	 * Handles the validation file.
 	 *
 	 * @param ContainerInterface $c The container.
+	 * @param ApplePayButton     $button The button.
 	 * @return void
 	 */
-	public function handle_validation_file( ContainerInterface $c ): void {
+	public function handle_validation_file( ContainerInterface $c, ApplePayButton $button ): void {
+		if ( ! $button->is_enabled() ) {
+			return;
+		}
 		$env = $c->get( 'onboarding.environment' );
 		assert( $env instanceof Environment );
 		$is_sandobx = $env->current_environment_is( Environment::SANDBOX );

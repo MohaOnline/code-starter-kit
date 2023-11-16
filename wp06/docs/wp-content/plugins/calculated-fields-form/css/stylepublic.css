@@ -398,6 +398,10 @@ body{
 
 .ui-datepicker{ z-index:9999 !important;min-width:280px;max-width:320px;}
 .ui-datepicker *{font-size:14px !important;}
+#fbuilder .ui-datepicker select.ui-datepicker-month,
+#fbuilder .ui-datepicker select.ui-datepicker-year{width:45% !important;min-height:auto !important;padding:initial !important; margin:initial !important;}
+#fbuilder .ui-datepicker a{box-shadow:none;}
+#fbuilder .datepicker-container{margin-bottom:10px;}
 
 #fbuilder .cff-file-field input[type="file"]{max-width: calc( 100% - 30px);}
 #fbuilder span.files-list,

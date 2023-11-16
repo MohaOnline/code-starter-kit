@@ -24,9 +24,3 @@
           } );
       } );
 }( jQuery ) )
-
-( function($) {
-  $(".is-dismissible").click(function() {  
-    $(this).css("display", "none");      
-  });
-} ) ( jQuery );

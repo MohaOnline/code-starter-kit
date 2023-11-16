@@ -2365,7 +2365,7 @@ class UniteCreatorFiltersProcess{
 		
 		$filterRole = UniteFunctionsUC::getVal($data, "filter_role");
 		if($filterRole == "single")		
-			$filterRole = null;
+			$filterRole = "";
 		
 		$attributes = "";
 		$style = "";
@@ -2590,7 +2590,6 @@ s	 */
 		
 	}
 	
-
 	
 	/**
 	 * test the request filter

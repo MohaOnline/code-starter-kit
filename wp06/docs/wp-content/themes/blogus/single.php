@@ -40,7 +40,7 @@
                   <div class="bs-blog-meta mb-0"> 
                   <?php $blogus_single_post_admin_details = esc_attr(get_theme_mod('blogus_single_post_admin_details','true'));
                   if($blogus_single_post_admin_details == true){ ?>
-                  <span class="bs-author"><a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a> <?php esc_html_e('By','blogus'); ?>
+                  <span class="bs-author"><a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> <img src="<?php echo get_avatar_url(150); ?>" alt="<?php the_author(); ?>"></a> <?php esc_html_e('By','blogus'); ?>
                      <a class="ms-1" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></span>
                 <?php } ?>
                     
@@ -106,7 +106,7 @@
            <?php $blogus_enable_single_admin_details = esc_attr(get_theme_mod('blogus_enable_single_admin_details','true'));
             if($blogus_enable_single_admin_details == true) { ?>
            <div class="bs-info-author-block py-4 px-3 mb-4 flex-column justify-content-center text-center">
-            <a class="bs-author-pic mb-3" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
+            <a class="bs-author-pic mb-3" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><img src="<?php echo get_avatar_url(150); ?>" alt="<?php the_author(); ?>"></a>
                 <div class="flex-grow-1">
                   <h4 class="title"><?php esc_html_e('By','blogus'); ?> <a href ="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
                   <p><?php the_author_meta( 'description' ); ?></p>

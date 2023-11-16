@@ -71,7 +71,11 @@ if (!function_exists('blogus_post_meta')) :
     if($global_post_date =='show-date-author') {
     ?>
     <div class="bs-blog-meta">
-        <span class="bs-author"><a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?><?php the_author(); ?></a> </span>
+        <span class="bs-author">
+            <a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> 
+                <img src="<?php echo get_avatar_url(150); ?>" alt="<?php the_author(); ?>"><?php the_author(); ?>
+            </a> 
+        </span>
         <?php blogus_date_content(); ?>
         <?php $blogus_global_comment_enable = get_theme_mod('blogus_global_comment_enable','true'); 
         if($blogus_global_comment_enable == true) { ?>
@@ -140,8 +144,8 @@ if ( ! function_exists( 'blogus_author_content' ) ) :
     function blogus_author_content() { ?>
     <span class="bs-author"> 
         <a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> 
-        <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?><?php the_author(); ?> 
-        </a>
+            <img src="<?php echo get_avatar_url(150); ?>" alt="<?php the_author(); ?>"><?php the_author(); ?>
+        </a> 
     </span>
 <?php }
 endif;

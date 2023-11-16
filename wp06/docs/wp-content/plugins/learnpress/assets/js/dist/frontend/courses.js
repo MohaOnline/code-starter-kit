@@ -1,33 +1,104 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/src/apps/js/frontend/api.js":
-/*!********************************************!*\
-  !*** ./assets/src/apps/js/frontend/api.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./assets/src/js/api.js":
+/*!******************************!*\
+  !*** ./assets/src/js/api.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * List API on backend
  */
-if (undefined === lpGlobalSettings) {
-  throw new Error('lpGlobalSettings is undefined');
+
+const lplistAPI = {};
+if ('undefined' !== typeof lpDataAdmin) {
+  lplistAPI.admin = {
+    apiAdminNotice: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/admin-notices',
+    apiAdminOrderStatic: lpDataAdmin.lp_rest_url + 'lp/v1/orders/statistic',
+    apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
+    apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
+    apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+  };
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
-  apiCourses: lpGlobalSettings.lp_rest_url + 'lp/v1/courses/archive-course'
-});
+if ('undefined' !== typeof lpData) {
+  lplistAPI.frontend = {
+    apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+  };
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
 
 /***/ }),
 
-/***/ "./assets/src/apps/js/utils/cookies.js":
-/*!*********************************************!*\
-  !*** ./assets/src/apps/js/utils/cookies.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./assets/src/js/utils.js":
+/*!********************************!*\
+  !*** ./assets/src/js/utils.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   lpAddQueryArgs: () => (/* binding */ lpAddQueryArgs),
+/* harmony export */   lpFetchAPI: () => (/* binding */ lpFetchAPI),
+/* harmony export */   lpGetCurrentURLNoParam: () => (/* binding */ lpGetCurrentURLNoParam)
+/* harmony export */ });
+const lpFetchAPI = (url, data = {}, functions = {}) => {
+  if ('function' === typeof functions.before) {
+    functions.before();
+  }
+  fetch(url, {
+    method: 'GET',
+    ...data
+  }).then(response => response.json()).then(response => {
+    if ('function' === typeof functions.success) {
+      functions.success(response);
+    }
+  }).catch(err => {
+    if ('function' === typeof functions.error) {
+      functions.error(err);
+    }
+  }).finally(() => {
+    if ('function' === typeof functions.completed) {
+      functions.completed();
+    }
+  });
+};
+const lpGetCurrentURLNoParam = () => {
+  let currentUrl = window.location.href;
+  const hasParams = currentUrl.includes('?');
+  if (hasParams) {
+    currentUrl = currentUrl.split('?')[0];
+  }
+  return currentUrl;
+};
+const lpAddQueryArgs = (endpoint, args) => {
+  const url = new URL(endpoint);
+  Object.keys(args).forEach(arg => {
+    url.searchParams.set(arg, args[arg]);
+  });
+  return url;
+};
+
+
+/***/ }),
+
+/***/ "./assets/src/js/utils/cookies.js":
+/*!****************************************!*\
+  !*** ./assets/src/js/utils/cookies.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 const Cookies = {
   get: (name, def, global) => {
     let ret;
@@ -78,59 +149,7 @@ const Cookies = {
     Cookies.set(newCookies);
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Cookies);
-
-/***/ }),
-
-/***/ "./assets/src/apps/js/utils/utils.js":
-/*!*******************************************!*\
-  !*** ./assets/src/apps/js/utils/utils.js ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   lpAddQueryArgs: function() { return /* binding */ lpAddQueryArgs; },
-/* harmony export */   lpFetchAPI: function() { return /* binding */ lpFetchAPI; },
-/* harmony export */   lpGetCurrentURLNoParam: function() { return /* binding */ lpGetCurrentURLNoParam; }
-/* harmony export */ });
-const lpFetchAPI = (url, data = {}, functions = {}) => {
-  if ('function' === typeof functions.before) {
-    functions.before();
-  }
-  fetch(url, {
-    method: 'GET',
-    ...data
-  }).then(response => response.json()).then(response => {
-    if ('function' === typeof functions.success) {
-      functions.success(response);
-    }
-  }).catch(err => {
-    if ('function' === typeof functions.error) {
-      functions.error(err);
-    }
-  }).finally(() => {
-    if ('function' === typeof functions.completed) {
-      functions.completed();
-    }
-  });
-};
-const lpGetCurrentURLNoParam = () => {
-  let currentUrl = window.location.href;
-  const hasParams = currentUrl.includes('?');
-  if (hasParams) {
-    currentUrl = currentUrl.split('?')[0];
-  }
-  return currentUrl;
-};
-const lpAddQueryArgs = (endpoint, args) => {
-  const url = new URL(endpoint);
-  Object.keys(args).forEach(arg => {
-    url.searchParams.set(arg, args[arg]);
-  });
-  return url;
-};
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cookies);
 
 /***/ })
 
@@ -162,49 +181,49 @@ const lpAddQueryArgs = (endpoint, args) => {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
-/*!************************************************!*\
-  !*** ./assets/src/apps/js/frontend/courses.js ***!
-  \************************************************/
+(() => {
+/*!*******************************************!*\
+  !*** ./assets/src/js/frontend/courses.js ***!
+  \*******************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./assets/src/apps/js/frontend/api.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utils */ "./assets/src/apps/js/utils/utils.js");
-/* harmony import */ var _utils_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/cookies */ "./assets/src/apps/js/utils/cookies.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api */ "./assets/src/js/api.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./assets/src/js/utils.js");
+/* harmony import */ var _utils_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/cookies */ "./assets/src/js/utils/cookies.js");
 
 
 
-if ('undefined' === typeof lpGlobalSettings) {
-  console.log('lpGlobalSettings is undefined');
+if ('undefined' === typeof lpData || 'undefined' === typeof lpSettingCourses) {
+  console.log('lpData || lpSettingCourses is undefined');
 }
 
 // Call API load courses.
@@ -243,27 +262,27 @@ window.lpCourseList = (() => {
   const classListCourse = 'learn-press-courses';
   const classPaginationCourse = 'learn-press-pagination';
   const classSkeletonArchiveCourse = 'lp-archive-course-skeleton';
-  const lpArchiveLoadAjax = lpGlobalSettings.lpArchiveLoadAjax || 0;
-  const lpArchiveNoLoadAjaxFirst = lpGlobalSettings.lpArchiveNoLoadAjaxFirst || 0;
-  const lpArchiveSkeletonParam = lpGlobalSettings.lpArchiveSkeleton || 0;
-  const currentUrl = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.lpGetCurrentURLNoParam)();
+  const lpArchiveLoadAjax = parseInt(lpSettingCourses.lpArchiveLoadAjax || 0);
+  const lpArchiveNoLoadAjaxFirst = parseInt(lpSettingCourses.lpArchiveNoLoadAjaxFirst) === 1;
+  const lpArchiveSkeletonParam = lpData.urlParams || [];
+  const currentUrl = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpGetCurrentURLNoParam)();
   let filterCourses = {};
-  const typePagination = lpGlobalSettings.lpArchivePaginationType || 'number';
+  const typePagination = lpSettingCourses.lpArchivePaginationType || 'number';
   let typeEventBeforeFetch;
   let timeOutSearch;
   let isLoadingInfinite = false;
   const fetchAPI = (args, callBack = {}) => {
     //console.log( 'Fetch API Courses' );
-    const url = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(_api__WEBPACK_IMPORTED_MODULE_0__["default"].apiCourses, args);
+    const url = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(_api__WEBPACK_IMPORTED_MODULE_0__["default"].frontend.apiCourses, args);
     let paramsFetch = {};
-    if (0 !== lpGlobalSettings.user_id) {
+    if (0 !== parseInt(lpData.user_id)) {
       paramsFetch = {
         headers: {
-          'X-WP-Nonce': lpGlobalSettings.nonce
+          'X-WP-Nonce': lpData.nonce
         }
       };
     }
-    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.lpFetchAPI)(url, paramsFetch, callBack);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpFetchAPI)(url, paramsFetch, callBack);
   };
   return {
     init: () => {
@@ -295,7 +314,7 @@ window.lpCourseList = (() => {
       }
       e.preventDefault();
       filterCourses.order_by = target.value;
-      window.location.href = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, filterCourses);
+      window.location.href = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, filterCourses);
     },
     onChangeTypeLayout: (e, target) => {
       if ('lp-switch-layout-btn' !== target.getAttribute('name')) {
@@ -317,7 +336,7 @@ window.lpCourseList = (() => {
       }
     },
     clickNumberPage: (e, target) => {
-      if (!lpArchiveLoadAjax || lpGlobalSettings.noLoadCoursesJs) {
+      if (!lpArchiveLoadAjax || parseInt(lpSettingCourses.noLoadCoursesJs)) {
         return;
       }
       if (target.classList.contains('page-numbers')) {
@@ -435,7 +454,7 @@ window.lpCourseList = (() => {
       const skeleton = elListCourse.querySelector(`.${classSkeletonArchiveCourse}`);
       return {
         before: () => {
-          window.history.pushState('', '', (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, args));
+          window.history.pushState('', '', (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, args));
           window.localStorage.setItem('lp_filter_courses', JSON.stringify(args));
           if (skeleton) {
             skeleton.style.display = 'block';
@@ -683,7 +702,8 @@ window.lpCourseList = (() => {
 })();
 window.lpCourseList.init();
 window.lpCourseList.ajaxEnableLoadPage();
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=courses.js.map

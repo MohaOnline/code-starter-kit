@@ -1,6 +1,6 @@
 {
     "name": "@devowl-wp/freemium",
-    "version": "1.3.63",
+    "version": "1.3.64",
     "private": true,
     "description": "Make your plugin to a freemium plugin with predefined Envato support",
     "homepage": "https://devowl.io",
@@ -92,7 +92,7 @@
     "devDependencies": {
         "@devowl-wp/composer-licenses": "^0.1.14",
         "@devowl-wp/continuous-integration": "^0.4.3",
-        "@devowl-wp/continuous-localization": "^0.7.6",
+        "@devowl-wp/continuous-localization": "^0.7.7",
         "@devowl-wp/eslint-config": "^0.2.3",
         "@devowl-wp/monorepo-utils": "^0.1.10",
         "@devowl-wp/node-gitlab-ci": "^0.7.7",
@@ -100,7 +100,7 @@
         "@devowl-wp/phpcs-config": "^0.1.13",
         "@devowl-wp/phpunit-config": "^0.1.11",
         "@devowl-wp/ts-config": "^0.1.12",
-        "@devowl-wp/utils": "^1.16.0",
+        "@devowl-wp/utils": "^1.16.1",
         "@devowl-wp/webpack-config": "^0.2.21",
         "@types/jest": "~29.5.5",
         "fork-ts-checker-webpack-plugin": "~8.0.0",

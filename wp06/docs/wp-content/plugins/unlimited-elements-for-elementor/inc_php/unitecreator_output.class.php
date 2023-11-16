@@ -30,8 +30,11 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	private $systemOutputID = null;
 	private $isModePreview = false;
 	private $arrOptions;
+	
 	private $isShowDebugData = false;
 	private $debugDataType = "";
+	private $valuesForDebug = null;
+	
 	private $itemsSource = "";
 
 	private static $arrScriptsHandles = array();
@@ -49,7 +52,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	private static $arrGeneratedIDs = array();
 
 	private $lastSelectorStyle = "";
-
+	private $htmlDebug = "";
+	
 
 	/**
 	 * construct
@@ -1308,6 +1312,45 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 	private function ___________DEBUG_DATA___________(){}
 
+	/**
+	 * check and output debug if needed
+	 */
+	public function checkOutputDebug($objAddon = null){
+		
+		if(empty($objAddon))
+			$objAddon = $this->addon;
+		
+		$arrValues = $objAddon->getOriginalValues();
+		
+		if(empty($arrValues))
+			return(false);
+			
+		$isShowData = UniteFunctionsUC::getVal($arrValues, "show_widget_debug_data");
+		
+		$isShowData = UniteFunctionsUC::strToBool($isShowData);
+		
+		if($isShowData == false)
+			return(false);
+		
+		$dataType = UniteFunctionsUC::getVal($arrValues, "widget_debug_data_type");
+				
+		$this->showDebugData($isShowData, $dataType, $arrValues);
+		
+	}
+	
+	
+	/**
+	 * set to show debug data of the addon
+	 */
+	public function showDebugData($isShow = true, $dataType = null, $arrValues = null){
+
+		$this->isShowDebugData = $isShow;
+		$this->debugDataType = $dataType;
+		
+		$this->valuesForDebug = $arrValues;
+		
+	}
+	
 
 	/**
 	 * put debug data html
@@ -1315,26 +1358,39 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	private function putDebugDataHtml_default($arrData, $arrItemData){
 
 		$isShowData = $this->debugDataType != "items_only";
-
+		
+		$html = "";
+		
 		if($isShowData == true){
 
 			//modify the data
 			$arrData = UniteFunctionsUC::modifyDataArrayForShow($arrData);
 
-			dmp($arrData);
+			$html .= dmpGet($arrData);
 		}
-
-		dmp("<b>Widget Items Data</b>");
+		
+		//show settings values
+		
+		if($this->debugDataType == "settings_values"){
+			
+			$html .= dmpGet("<b>----------- Settings Values -----------</b>");
+			
+			$html .= dmpGet($this->valuesForDebug);
+		}
+		
+		
+		$html .= dmpGet("<b>Widget Items Data</b>");
 
 		if(empty($arrItemData)){
-			dmp("no items found");
-			return(false);
+			$html .= dmpGet("no items found");
+			return($html);
 		}
 
 		$arrItemData = $this->modifyItemsDataForShow($arrItemData);
 
-		dmp($arrItemData);
-
+		$html .= dmpGet($arrItemData);
+		
+		return($html);
 	}
 
 	/**
@@ -1382,15 +1438,16 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 		if(empty($post)){
 
-			dmp("no current post found");
-			return(false);
+			$html = "no current post found";
+			
+			return($html);
 		}
 
 		$arrPost = $this->modifyDebugArray($post);
+		
+		$html = htmlGet("<b> ------- Post  ------- </b>");
 
-		dmp("<b> ------- Post  ------- </b>");
-
-		dmp($arrPost);
+		$html .= htmlGet($arrPost);
 
 		dmp("<b> ------- Post Meta ------- </b>");
 
@@ -1398,28 +1455,31 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 		$meta = $this->modifyDebugArray($meta);
 
-		dmp($meta);
+		$html .= htmlGet($meta);
 
-		dmp("<b> ----------Terms--------- </b>");
+		$html .= htmlGet("<b> ----------Terms--------- </b>");
 
 		$terms = UniteFunctionsWPUC::getPostTerms($post);
 
-		dmp($terms);
+		$html .= htmlGet($terms);
 
+		return($html);
 	}
 
 	/**
 	 * put debug data - posts
 	 */
 	private function putDebugDataHtml_posts($arrItemData){
-
+		
 		$numPosts = count($arrItemData);
-
-		dmp("Found $numPosts posts.");
+		
+		$html = "";
+		
+		$html .= dmpGet("Found $numPosts posts.");
 
 		if(empty($arrItemData))
-			return(false);
-
+			return($html);
+		
 		$isShowMeta = ($this->debugDataType == "post_meta");
 
 		foreach($arrItemData as $index => $item){
@@ -1462,19 +1522,20 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 			$text = "{$num}. <b>$title</b> (<i style='font-size:13px;'>$alias{$htmlAfterAlias}, $id | $strTerms </i>), menu order: $menuOrder";
 
-			dmp($text);
-
+			$html .= dmpGet($text);
+		
 			if($isShowMeta == false)
 				continue;
 
 			$postMeta = get_post_meta($id, "", false);
 
 			$postMeta = UniteFunctionsUC::modifyDataArrayForShow($postMeta, true);
-
-			dmp($postMeta);
-
+			
+			$html .= dmpGet($postMeta);
+			
 			//$postMeta = get_post_meta($post_id)
 
+			return($html);
 		}
 
 
@@ -1514,16 +1575,16 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 		return($arrItems);
 	}
-
+	
 	/**
 	 * put debug data
 	 */
 	private function putDebugDataHtml($arrData, $arrItemData){
+		
+		$html = "<div style='font-size:16px;color:black;text-decoration:none;background-color:white;padding:3px;'>";
 
-		echo "<div style='font-size:16px;color:black;text-decoration:none;background-color:white;'>";
-
-		dmp("<b>Widget Debug Data</b> (turned on by setting in widget advanced section)<br>");
-
+		$html .= dmpGet("<b>Widget Debug Data</b> (turned on by setting in widget advanced section)<br>",true);
+		
 		//get data from listing
 		$paramListing = $this->addon->getListingParamForOutput();
 
@@ -1537,21 +1598,22 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			case "post_titles":
 			case "post_meta":
 
-				$this->putDebugDataHtml_posts($arrItemData);
-
+				$html .= $this->putDebugDataHtml_posts($arrItemData);
+				
 			break;
 			case "current_post_data":
 
-				$this->putDebugDataHTML_currentPostData();
-
+				$html .= $this->putDebugDataHTML_currentPostData();
+			
 			break;
 			default:
-				$this->putDebugDataHtml_default($arrData, $arrItemData);
+				$html .= $this->putDebugDataHtml_default($arrData, $arrItemData);
 			break;
 		}
-
-		echo "</div>";
-
+		
+		$html .= "</div>";
+		
+		$this->htmlDebug = $html;
 	}
 
 
@@ -1603,16 +1665,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		return($html);
 	}
 
-
-	/**
-	 * set to show debug data of the addon
-	 */
-	public function showDebugData($isShow = true, $dataType = null){
-
-		$this->isShowDebugData = $isShow;
-		$this->debugDataType = $dataType;
-
-	}
 
 
 	/**
@@ -1698,7 +1750,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * place output by shortcode
 	 */
 	public function getHtmlBody($scriptHardCoded = true, $putCssIncludes = false, $putCssInline = true, $params = null){
-
+		
 		$this->validateInited();
 
 		$title = $this->addon->getTitle(true);
@@ -1707,13 +1759,18 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 
 		$settings = HelperProviderCoreUC_EL::getGeneralSettingsValues();
 		$isOutputComments = UniteFunctionsUC::strToBool($isOutputComments);
-
-
+		
 		try{
-
+			
 			$html = $this->objTemplate->getRenderedHtml(self::TEMPLATE_HTML);
 			$html = $this->processHtml($html);
-
+			
+			if(!empty($this->htmlDebug)){
+				
+				$html = $this->htmlDebug . $html;
+				
+			}
+			
 			//make css
 			$css = $this->objTemplate->getRenderedHtml(self::TEMPLATE_CSS);
 
@@ -2157,20 +2214,20 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * init the template
 	 */
 	private function initTemplate(){
-
+		
 		$this->validateInited();
-
+		
 		//set params
 		$arrData = $this->getConstantData();
 
 		$arrParams = $this->getAddonParams();
 
 		$arrData = array_merge($arrData, $arrParams);
-
+		
 		//set templates
 		$html = $this->addon->getHtml();
 		$css = $this->addon->getCss();
-
+		
 		//set item css call
 		$cssItem = $this->addon->getCssItem();
 		$cssItem = trim($cssItem);
@@ -2181,7 +2238,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$js = $this->addon->getJs();
 
 		$arrModify = $this->modifyTemplatesForOutput($html, $css, $js);
-
+		
 		if(!empty($arrModify)){
 			$html = $arrModify["html"];
 			$css = $arrModify["css"];
@@ -2356,19 +2413,19 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			$this->objTemplate->addTemplate(self::TEMPLATE_CSS_ITEM, $cssItem);
 
 		}
-
+		
 		if(!empty($paramPostsList)){
 			$postListValue = UniteFunctionsUC::getVal($paramPostsList, "value");
 			
 			if(!empty($paramPostsList) && is_array($postListValue) )
 				$arrData = array_merge($arrData, $postListValue);
 		}
-
-
+		
 		//show debug data
 		if($this->isShowDebugData == true)
 			$this->putDebugDataHtml($arrData, $arrItemData);
-
+		
+		
 	}
 
 
@@ -2394,7 +2451,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * init by addon
 	 */
 	public function initByAddon(UniteCreatorAddon $addon){
-
+		
 		if(empty($addon))
 			UniteFunctionsUC::throwError("Wrong addon given");
 
@@ -2422,9 +2479,9 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		}
 
 		$this->initDynamicParams();
-
+		
 		$this->initTemplate();
-
+		
 	}
 
 
