@@ -3,13 +3,13 @@ import "./_/utils.js"
 let number = 0;
 console.log(123);
 
-console.log(Number.MIN_VALUE);
+console.log('Number.MIN_VALUE:', Number.MIN_VALUE);
 console.log(Number.MAX_VALUE);
 
 // Safe & Unsafe Range.
 console.log(Number.MIN_SAFE_INTEGER);       // -2^53 + 1
-console.log(Number.MAX_SAFE_INTEGER);       //  2^53 - 1
-console.log(Number.MAX_SAFE_INTEGER * 10);  // Rounding off.
+console.log('Number.MAX_SAFE_INTEGER:', Number.MAX_SAFE_INTEGER);           //  2^53 - 1
+console.log('Number.MAX_SAFE_INTEGER * 10:', Number.MAX_SAFE_INTEGER * 10); // Rounding off.
 
 // Useful Math Utils.
 console.log('Discard 3.5 fractional part: ', Math.trunc(3.5));
