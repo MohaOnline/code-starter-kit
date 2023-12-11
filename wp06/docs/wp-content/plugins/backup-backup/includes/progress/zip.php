@@ -77,6 +77,7 @@
         'uid' => get_current_user_id(),
         'source_query_output' => (defined('BMI_DB_MAX_ROWS_PER_QUERY') ? BMI_DB_MAX_ROWS_PER_QUERY : ''),
         'db_backup_engine' => $dbBackupEngine,
+        'multisite' => (defined('MULTISITE') ? MULTISITE : 'false'),
         'config' => array(
           'ABSPATH' => ABSPATH,
           'DB_NAME' => (defined('DB_NAME') ? DB_NAME : ''),

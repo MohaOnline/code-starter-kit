@@ -2,7 +2,7 @@
 const { ColorPicker, ColorIndicator, Popover, Button, Flex } = wp.components;
 const { useState, useEffect } = wp.element;
 const { __ } = wp.i18n;
-import { jsx } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 
 export default ({ color, setColor, onFocus }) => {
   const [open, setOpen] = useState(false);
@@ -31,6 +31,12 @@ export default ({ color, setColor, onFocus }) => {
           onFocusOutside={(e) => {
             setOpen(false);
           }}
+          css={css`
+            .components-color-picker,
+            .react-colorful {
+              width: 100%;
+            }
+          `}
         >
           <ColorPicker
             color={color || ""}

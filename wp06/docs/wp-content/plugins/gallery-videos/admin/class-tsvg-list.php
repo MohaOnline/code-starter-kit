@@ -14,18 +14,19 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 	}
 	public static function tsvg_get_galleries( $tsvg_per_page = 10, $tsvg_page_number = 1 ) {
 		global $wpdb;
-		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
-		$tsvg_get_sql = "SELECT `id`,`TS_VG_Title`,`TS_VG_Option`,`TS_VG_Sort`,`created_at` FROM {$tsvg_db_manager_table}";
-		if ( isset( $_REQUEST['s'] ) ) {
-			$tsvg_get_sql .= ' WHERE TS_VG_Title LIKE "%%' . sanitize_text_field( $_REQUEST['s'] ) . '%%"';
-		}
-		if ( isset( $_REQUEST['orderby'] ) && ! empty( sanitize_text_field( $_REQUEST['orderby'] ) ) ) {
-			$tsvg_get_sql .= ' ORDER BY ' . sanitize_text_field( $_REQUEST['orderby'] );
-			$tsvg_get_sql .= isset( $_REQUEST['order'] ) && ! empty( sanitize_text_field($_REQUEST['order']) ) ? ' ' . sanitize_text_field( $_REQUEST['order'] ) : ' ASC';
-		}
-		$tsvg_get_sql   .= " LIMIT $tsvg_per_page";
-		$tsvg_get_sql   .= ' OFFSET ' . ( $tsvg_page_number - 1 ) * $tsvg_per_page;
-		$tsvg_get_result = $wpdb->get_results( $wpdb->prepare( $tsvg_get_sql ), 'ARRAY_A' );
+		$tsvg_get_result = $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT `id`,`TS_VG_Title`,`TS_VG_Option`,`TS_VG_Sort`,`created_at` FROM %1$s %2$s %3$s ORDER BY %4$s %5$s LIMIT %6$d OFFSET %7$d',
+				esc_sql( $wpdb->prefix . 'ts_galleryv_manager' ),
+				isset( $_REQUEST['s'] ) && ! empty( sanitize_text_field( $_REQUEST['s'] ) ) ? "WHERE TS_VG_Title like " : " ",
+				isset( $_REQUEST['s'] ) && ! empty( sanitize_text_field( $_REQUEST['s'] ) ) ? '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' : " ",
+				isset( $_REQUEST['orderby'] ) && ! empty( sanitize_text_field( $_REQUEST['orderby'] ) ) ? sanitize_text_field( $_REQUEST['orderby'] ) : "id",
+				isset( $_REQUEST['order'] ) && ! empty( sanitize_text_field($_REQUEST['order']) ) ? ' ' . sanitize_text_field( $_REQUEST['order'] ) : "ASC",
+				(int) $tsvg_per_page,
+				(int) ( $tsvg_page_number - 1 ) * $tsvg_per_page,
+			),
+			ARRAY_A
+		);
 		return $tsvg_get_result;
 	}
 	public static function tsvg_remove_record( $id ) {
@@ -65,7 +66,7 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 			array( '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
 		);
 		$tsvg_insert_id = $wpdb->insert_id;
-		$tsvg_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id`, `TS_VG_SetType`, `TS_VG_SetName`, `TS_VG_Options` FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d", $id ) );
+		$tsvg_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id`, `TS_VG_SetType`, `TS_VG_SetName`, `TS_VG_Options` FROM {$tsvg_db_videos_table} WHERE TS_VG_SetType = %d ", $id ) );
 		if ( count( $tsvg_video_records ) != 0 ) {
 			$tsvg_video_records_sort = explode( ',', $tsvg_record->TS_VG_Sort );
 			$tsvg_video_records_columned = array_column( json_decode( json_encode( $tsvg_video_records ), true ), null, 'id' );
@@ -81,7 +82,7 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 					array( '%d', '%d', '%s', '%s' )
 				);
 			}
-			$tsvg_insert_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id` FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d", (int) $tsvg_insert_id ) );
+			$tsvg_insert_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id` FROM {$tsvg_db_videos_table} WHERE TS_VG_SetType = %d", (int) $tsvg_insert_id ) );
 			$tsvg_insert_video_records_sort = implode( ',', array_column( json_decode( json_encode( $tsvg_insert_video_records ), true ), 'id' ) );
 			$wpdb->update( $tsvg_db_manager_table, array( 'TS_VG_Sort' => $tsvg_insert_video_records_sort ), array( 'id' => $tsvg_insert_id ), array( '%s' ), array( '%d' ) );
 		}
@@ -104,7 +105,7 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 		);
 		$tsvg_theme_key = $tsvg_themes_arr[ $tsvg_theme ];
 		$tsvg_design_options = $tsvg_get_all->tsvg_get_theme_params( $tsvg_theme_key );
-		$tsvg_record  = $wpdb->get_row( $wpdb->prepare( "SELECT `TS_VG_Title`, `TS_VG_Option`, `TS_VG_Style`, `TS_VG_Settings`,`TS_VG_Option_Style`, `TS_VG_Sort` FROM $tsvg_db_manager_table WHERE id = %d", $tsvg_id ) );
+		$tsvg_record  = $wpdb->get_row( $wpdb->prepare( "SELECT `TS_VG_Title`, `TS_VG_Option`, `TS_VG_Style`, `TS_VG_Settings`,`TS_VG_Option_Style`, `TS_VG_Sort` FROM {$tsvg_db_manager_table} WHERE id = %d", $tsvg_id ) );
 		$wpdb->insert(
 			$tsvg_db_manager_table,
 			array(
@@ -122,7 +123,7 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 			array( '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
 		);
 		$tsvg_insert_id = $wpdb->insert_id;
-		$tsvg_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id`, `TS_VG_SetType`, `TS_VG_SetName`, `TS_VG_Options` FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d", $tsvg_id ) );
+		$tsvg_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id`, `TS_VG_SetType`, `TS_VG_SetName`, `TS_VG_Options` FROM {$tsvg_db_videos_table} WHERE TS_VG_SetType = %d", $tsvg_id ) );
 		if ( count( $tsvg_video_records ) != 0 ) {
 			$tsvg_video_records_sort = explode( ',', $tsvg_record->TS_VG_Sort );
 			$tsvg_video_records_columned = array_column( json_decode( json_encode( $tsvg_video_records ), true ), null, 'id' );
@@ -138,16 +139,15 @@ class TS_Video_Gallery_List_Table extends WP_List_Table {
 					array( '%d', '%d', '%s', '%s' )
 				);
 			}
-			$tsvg_insert_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id` FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d", (int) $tsvg_insert_id ) );
+			$tsvg_insert_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT `id` FROM {$tsvg_db_videos_table} WHERE TS_VG_SetType = %d ", (int) $tsvg_insert_id ) );
 			$tsvg_insert_video_records_sort = implode( ',', array_column( json_decode( json_encode( $tsvg_insert_video_records ), true ), 'id' ) );
 			$wpdb->update( $tsvg_db_manager_table, array( 'TS_VG_Sort' => $tsvg_insert_video_records_sort ), array( 'id' => $tsvg_insert_id ), array( '%s' ), array( '%d' ) );
 		}
 	}
 	public static function tsvg_records_count() {
 		global $wpdb;
-		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
-		$tsvg_sql = "SELECT COUNT(*) FROM {$tsvg_db_manager_table}";
-		return $wpdb->get_var( $wpdb->prepare( $tsvg_sql ) );
+		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . "ts_galleryv_manager" );
+		return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $tsvg_db_manager_table . " WHERE id > %d" , 0) );
 	}
 	public function no_items() {
 		_e( 'No galleries avaliable.' );

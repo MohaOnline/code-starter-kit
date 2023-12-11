@@ -2,7 +2,7 @@
 /*
 Plugin Name: Cookie Notice & Compliance for GDPR / CCPA
 Description: Cookie Notice allows you to you elegantly inform users that your site uses cookies and helps you comply with GDPR, CCPA and other data privacy laws.
-Version: 2.4.11.1
+Version: 2.4.13
 Author: Hu-manity.co
 Author URI: https://hu-manity.co/
 Plugin URI: https://cookie-compliance.co/
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) )
  * Cookie Notice class.
  *
  * @class Cookie_Notice
- * @version	2.4.11.1
+ * @version	2.4.13
  */
 class Cookie_Notice {
 
@@ -128,7 +128,7 @@ class Cookie_Notice {
 			'subscription'			=> 'basic',
 			'threshold_exceeded'	=> false
 		],
-		'version'	=> '2.4.11'
+		'version'	=> '2.4.13'
 	];
 
 	/**
@@ -226,6 +226,7 @@ class Cookie_Notice {
 
 		// actions
 		add_action( 'plugins_loaded', [ $this, 'set_status_data' ] );
+		add_action( 'plugins_loaded', [ $this, 'set_database_version' ], 0 );
 		add_action( 'init', [ $this, 'register_shortcodes' ] );
 		add_action( 'init', [ $this, 'wpsc_add_cookie' ] );
 		add_action( 'init', [ $this, 'set_plugin_links' ] );
@@ -234,6 +235,19 @@ class Cookie_Notice {
 		add_action( 'admin_footer', [ $this, 'deactivate_plugin_template' ] );
 		add_action( 'wp_ajax_cn_dismiss_notice', [ $this, 'ajax_dismiss_admin_notice' ] );
 		add_action( 'wp_ajax_cn-deactivate-plugin', [ $this, 'deactivate_plugin' ] );
+	}
+
+	/**
+	 * Set current plugin version from database.
+	 *
+	 * @return void
+	 */
+	public function set_database_version() {
+		// get current version
+		if ( $this->is_network_admin() )
+			$this->db_version = get_site_option( 'cookie_notice_version', '1.0.0' );
+		else
+			$this->db_version = get_option( 'cookie_notice_version', '1.0.0' );
 	}
 
 	/**
@@ -655,15 +669,7 @@ class Cookie_Notice {
 
 		$current_update = 9;
 
-		// get current database version
-		if ( $network )
-			$current_db_version = get_site_option( 'cookie_notice_version', '1.0.0' );
-		else
-			$current_db_version = get_option( 'cookie_notice_version', '1.0.0' );
-
-		$this->db_version = $current_db_version;
-
-		if ( version_compare( $current_db_version, $this->defaults['version'], '<' ) ) {
+		if ( version_compare( $this->db_version, $this->defaults['version'], '<' ) ) {
 			if ( $this->options['general']['update_version'] < $current_update ) {
 				// check version, if update version is lower than plugin version, set update notice to true
 				$this->options['general']['update_version'] = $current_update;

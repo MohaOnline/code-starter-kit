@@ -1,6 +1,7 @@
 <?php
 
 use QuadLayers\QuadMenu\Plugin;
+use QuadLayers\QuadMenu\Compiler;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
@@ -64,7 +65,7 @@ if ( ! function_exists( 'quadmenu_compiler_enqueue' ) ) {
 			return;
 		}
 
-		QuadMenu_Compiler::instance()->enqueue();
+		Compiler::instance()->enqueue();
 	}
 }
 
@@ -78,13 +79,13 @@ if ( ! function_exists( 'quadmenu_compiler_integration' ) ) {
 if ( ! function_exists( 'quadmenu_do_compiler' ) ) {
 
 	function quadmenu_do_compiler() {
-		QuadMenu_Compiler::instance()->do_compiler( true );
+		Compiler::instance()->do_compiler( true );
 	}
 }
 
 if ( ! function_exists( 'quadmenu_compiler_variables' ) ) {
 
 	function quadmenu_compiler_variables() {
-		return QuadMenu_Compiler::instance()->redux_compiler();
+		return Compiler::instance()->redux_compiler();
 	}
 }

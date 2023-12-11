@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52
+class ComposerStaticInit21d87e4f11b525c281922b632b62beec
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
@@ -274,7 +274,7 @@ class ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52
         'LicenseManagerForWooCommerce\\Controllers\\Generator' => __DIR__ . '/../..' . '/includes/Controllers/Generator.php',
         'LicenseManagerForWooCommerce\\Controllers\\License' => __DIR__ . '/../..' . '/includes/Controllers/License.php',
         'LicenseManagerForWooCommerce\\Crypto' => __DIR__ . '/../..' . '/includes/Crypto.php',
-        'LicenseManagerForWooCommerce\\Enums\\ActivationSource' => __DIR__ . '/../..' . '/includes/Enums/ActivationSource.php',
+        'LicenseManagerForWooCommerce\\Enums\\ActivationProcessor' => __DIR__ . '/../..' . '/includes/Enums/ActivationProcessor.php',
         'LicenseManagerForWooCommerce\\Enums\\ColumnType' => __DIR__ . '/../..' . '/includes/Enums/ColumnType.php',
         'LicenseManagerForWooCommerce\\Enums\\LicenseSource' => __DIR__ . '/../..' . '/includes/Enums/LicenseSource.php',
         'LicenseManagerForWooCommerce\\Enums\\LicenseStatus' => __DIR__ . '/../..' . '/includes/Enums/LicenseStatus.php',
@@ -409,9 +409,9 @@ class ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8cb35c0c5c6a1d1abe8967cb5626ee52::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit21d87e4f11b525c281922b632b62beec::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit21d87e4f11b525c281922b632b62beec::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit21d87e4f11b525c281922b632b62beec::$classMap;
 
         }, null, ClassLoader::class);
     }

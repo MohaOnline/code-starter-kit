@@ -14,7 +14,7 @@ define('FILEORGANIZER_BASE', plugin_basename(FILEORGANIZER_FILE));
 define('FILEORGANIZER_PRO_BASE', 'fileorganizer-pro/fileorganizer-pro.php');
 define('FILEORGANIZER_URL', plugins_url('', FILEORGANIZER_FILE));
 define('FILEORGANIZER_BASE_NAME', basename(FILEORGANIZER_DIR));
-define('FILEORGANIZER_VERSION', '1.0.4');
+define('FILEORGANIZER_VERSION', '1.0.5');
 define('FILEORGANIZER_WP_CONTENT_DIR', defined('WP_CONTENT_FOLDERNAME') ? WP_CONTENT_FOLDERNAME : 'wp-content');
 define('FILEORGANIZER_DEV', file_exists(dirname(__FILE__).'/dev.php') ? 1 : 0);
 define('FILEORGANIZER_API', 'https://api.fileorganizer.net/');

@@ -454,7 +454,7 @@ if (! class_exists('CR_Ajax_Reviews')) :
 							$last_page = true;
 						}
 						if( 0 < self::$rating ) {
-							$all = CR_Ajax_Reviews::count_ratings( $_POST['productID'], 0 );
+							$all = self::count_ratings( $_POST['productID'], 0 );
 						}
 						$show_more_label = sprintf(
 							__( 'Show more reviews (%d)', 'customer-reviews-woocommerce' ),
@@ -484,12 +484,47 @@ if (! class_exists('CR_Ajax_Reviews')) :
 
 		public static function count_ratings( $product_id, $rating ) {
 			$post_in = array();
-			//Polylang integration
+
 			if( function_exists( 'pll_current_language' ) && function_exists( 'PLL' ) && apply_filters( 'cr_reviews_polylang_merge', true ) ) {
+				//Polylang integration
 				global $polylang;
 				$translationIds = PLL()->model->post->get_translations( $product_id );
 				foreach ( $translationIds as $key => $translationID ) {
 					$post_in[] = $translationID;
+				}
+			} elseif (
+				has_filter( 'wpml_object_id' ) &&
+				has_filter( 'wpml_is_comment_query_filtered' ) &&
+				has_filter( 'wpml_element_trid' ) &&
+				has_filter( 'wpml_get_element_translations' )
+			) {
+				// WPML integration
+				$is_filtered = false;
+				if( wp_doing_ajax() ) {
+					if( isset( $_COOKIE[self::WPML_COOKIE] ) && 'no' === $_COOKIE[self::WPML_COOKIE] ) {
+						$is_filtered = false;
+					} else {
+						$is_filtered = true;
+					}
+				} else {
+					$is_filtered = apply_filters( 'wpml_is_comment_query_filtered', true, $product_id );
+				}
+				if( false === $is_filtered ) {
+					$trid = apply_filters( 'wpml_element_trid', NULL, $product_id, 'post_product' );
+					if( $trid ) {
+						$translations = apply_filters( 'wpml_get_element_translations', NULL, $trid, 'post_product' );
+						if( $translations && is_array( $translations ) ) {
+							foreach ($translations as $translation) {
+								if( isset( $translation->element_id ) ) {
+									$post_in[] = intval( $translation->element_id );
+								}
+							}
+							global $sitepress;
+							if ( $sitepress ) {
+								remove_filter( 'comments_clauses', [ $sitepress, 'comments_clauses' ], 10 );
+							}
+						}
+					}
 				}
 			} else {
 				$post_in = array( $product_id );

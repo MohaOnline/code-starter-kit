@@ -780,7 +780,7 @@ class ElementsKit_Widget_Piechart extends Widget_Base {
 		$globals_vars = !empty($settings['__globals__']) ? array_filter($settings['__globals__']) : [];
 		if($globals_vars) {
 			foreach($globals_vars as $key => $globals_var) {
-				parse_str(parse_url($globals_var, PHP_URL_QUERY), $queryParams);
+				parse_str(wp_parse_url($globals_var, PHP_URL_QUERY), $queryParams);
 				if (isset($queryParams['id']) && isset($kit_items[$queryParams['id']]['value'])) {
 					$global_colors[$key] = $kit_items[$queryParams['id']]['value'];
 				}

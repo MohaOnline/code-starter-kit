@@ -374,7 +374,28 @@ class Utilities {
 		]);
 		
 		if ( ! $templates_loop->have_posts() ) {
-			$template = null;
+			if ( defined('ICL_LANGUAGE_CODE') ) {
+				$original_post = get_page_by_path($template, OBJECT, 'wpr_templates');
+				if ( $original_post ) {
+					$original_post_id = $original_post->ID;
+					$language_code = ICL_LANGUAGE_CODE;
+				
+					$translated_post_id = icl_object_id($original_post_id, 'wpr_templates', false, $language_code);
+					
+					if ( $translated_post_id ) {
+						$translated_post = get_post($translated_post_id);
+						$translated_slug = $translated_post->post_name;
+					
+						if ( $translated_slug ) {
+							$template = $translated_slug;
+						} else {
+							$template = null;
+						}
+					}
+				}
+			} else {
+				$template = null;
+			}
 		} else {
 			$template = $template;
 		}
@@ -634,7 +655,7 @@ class Utilities {
 
 
 	/**
-	** Get Custom Meta Keys
+	** Get Post Custom Meta Keys
 	*/
 	public static function get_custom_meta_keys() { // needs ajaxifying
 		$data = [];
@@ -659,6 +680,50 @@ class Utilities {
 			}
 
 			$data[ $post_type_slug ] = array_unique( $data[ $post_type_slug ] );
+		}
+
+		foreach ( $data as $array ) {
+			$merged_meta_keys = array_unique( array_merge( $merged_meta_keys, $array ) );
+		}
+		
+		// Rekey
+		$merged_meta_keys = array_values($merged_meta_keys);
+
+		for ( $i = 0; $i < count( $merged_meta_keys ); $i++ ) {
+			$options[ $merged_meta_keys[$i] ] = $merged_meta_keys[$i];
+		}
+
+		return [ $data, $options ];
+	}
+
+
+	/**
+	** Get Taxonomy Custom Meta Keys
+	*/
+	public static function get_custom_meta_keys_tax() { // needs ajaxifying
+		$data = [];
+		$options = [];
+		$merged_meta_keys = [];
+		$tax_types = Utilities::get_custom_types_of( 'tax', false );
+
+		foreach ( $tax_types as $taxonomy_slug => $post_type_name ) {
+			$data[ $taxonomy_slug ] = [];
+			$taxonomies = get_terms( $taxonomy_slug );
+
+			foreach (  $taxonomies as $key => $tax ) {
+				$meta_keys = get_term_meta( $tax->term_id );
+				$meta_keys = array_keys($meta_keys);
+
+				if ( ! empty($meta_keys) ) {
+					for ( $i = 0; $i < count( $meta_keys ); $i++ ) {
+						if ( '_' !== substr( $meta_keys[$i], 0, 1 ) ) {
+							array_push( $data[$taxonomy_slug], $meta_keys[$i] );
+						}
+					}
+				}
+			}
+
+			$data[ $taxonomy_slug ] = array_unique( $data[ $taxonomy_slug ] );
 		}
 
 		foreach ( $data as $array ) {

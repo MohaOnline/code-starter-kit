@@ -243,27 +243,26 @@ class Module {
 		$element->add_control(
 			'premium_gdivider_defaults',
 			array(
-				'label'     => __( 'Shapes', 'premium-addons-for-elementor' ),
-				'type'      => Premium_Image_Choose::TYPE,
-				'options'   => Helper_Functions::get_svg_shapes(),
-                'render_type' => 'template',
-                'prefix_class' => 'premium-',
-				'default'   => 'shape22',
-				'condition' => array(
+				'label'        => __( 'Shapes', 'premium-addons-for-elementor' ),
+				'type'         => Premium_Image_Choose::TYPE,
+				'options'      => Helper_Functions::get_svg_shapes(),
+				'render_type'  => 'template',
+				'prefix_class' => 'premium-',
+				'default'      => 'shape22',
+				'condition'    => array(
 					'premium_global_divider_sw' => 'yes',
 					'premium_gdivider_source'   => 'default',
 				),
 			)
 		);
 
-		$element->add_control(
+		$element->add_responsive_control(
 			'premium_gdivider_pos',
 			array(
-				'label'        => __( 'Position', 'premium-addons-for-elementor' ),
-				'type'         => Controls_Manager::CHOOSE,
-				'prefix_class' => 'premium-shape-divider__',
-				'render_type'  => 'template',
-				'options'      => array(
+				'label'       => __( 'Position', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::CHOOSE,
+				'render_type' => 'template',
+				'options'     => array(
 					'top'    => array(
 						'title' => __( 'Top', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-arrow-up',
@@ -281,13 +280,14 @@ class Module {
 						'icon'  => 'eicon-arrow-right',
 					),
 				),
-				'default'      => 'bottom',
-				'toggle'       => false,
-				'prefix_class' => 'premium-shape-divider__',
-				'condition'    => array(
+				'default'     => 'bottom',
+				'toggle'      => false,
+				'condition'   => array(
 					'premium_global_divider_sw' => 'yes',
 				),
-
+				'selectors'   => array(
+					'{{WRAPPER}}' => '--pa-sh-divider-pos:{{VALUE}}',
+				),
 			)
 		);
 
@@ -377,7 +377,7 @@ class Module {
 					'size' => 150,
 				),
 				'selectors'   => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg' => 'height:{{SIZE}}px',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg' => 'height:{{SIZE}}px',
 				),
 				'condition'   => array(
 					'premium_global_divider_sw' => 'yes',
@@ -403,8 +403,8 @@ class Module {
 					'size' => 100,
 				),
 				'selectors'   => array(
-					'{{WRAPPER}}.premium-shape-divider__top .premium-shape-divider__shape-container svg, {{WRAPPER}}.premium-shape-divider__bottom .premium-shape-divider__shape-container svg' => 'width: calc( {{SIZE}}% + 2px );',
-					'{{WRAPPER}}.premium-shape-divider__right .premium-shape-divider__shape-container svg, {{WRAPPER}}.premium-shape-divider__left .premium-shape-divider__shape-container svg' => 'width: calc( var(--premium-shape-divider-h) + {{SIZE}}px ) !important;',
+					'{{WRAPPER}}.premium-shape-divider__top #premium-shape-divider-{{ID}} svg, {{WRAPPER}}.premium-shape-divider__bottom #premium-shape-divider-{{ID}} svg' => 'width: calc( {{SIZE}}% + 2px );',
+					'{{WRAPPER}}.premium-shape-divider__right #premium-shape-divider-{{ID}} svg, {{WRAPPER}}.premium-shape-divider__left #premium-shape-divider-{{ID}} svg' => 'width: calc( var(--premium-shape-divider-h) + {{SIZE}}px ) !important;',
 				),
 				'condition'   => array(
 					'premium_global_divider_sw' => 'yes',
@@ -431,15 +431,15 @@ class Module {
 					'size' => 4,
 				),
 				'selectors'   => array(
-					'{{WRAPPER}}.premium-shape-divider__bottom:not(.premium-sh-no-stretch-yes) .premium-shape-divider__shape-container' => 'transform: scaleX({{SIZE}}); --pa-divider-scale: {{SIZE}}',
-					'{{WRAPPER}}.premium-shape-divider__top:not(.premium-sh-no-stretch-yes) .premium-shape-divider__shape-container' => 'transform: scaleX({{SIZE}}) rotateX(180deg); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__bottom:not(.premium-sh-no-stretch-yes) #premium-shape-divider-{{ID}}' => 'transform: scaleX({{SIZE}}); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__top:not(.premium-sh-no-stretch-yes) #premium-shape-divider-{{ID}}' => 'transform: scaleX({{SIZE}}) rotateX(180deg); --pa-divider-scale: {{SIZE}}',
 
-					'{{WRAPPER}}.premium-shape-divider__bottom.premium-sh-no-stretch-yes .premium-shape-divider__shape-container' => 'transform: scale({{SIZE}}); --pa-divider-scale: {{SIZE}}',
-					'{{WRAPPER}}.premium-shape-divider__top.premium-sh-no-stretch-yes .premium-shape-divider__shape-container' => 'transform: scale({{SIZE}}) rotateX(180deg); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__bottom.premium-sh-no-stretch-yes #premium-shape-divider-{{ID}}' => 'transform: scale({{SIZE}}); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__top.premium-sh-no-stretch-yes #premium-shape-divider-{{ID}}' => 'transform: scale({{SIZE}}) rotateX(180deg); --pa-divider-scale: {{SIZE}}',
 
-					'{{WRAPPER}}.premium-shape-divider__right:not(.premium-sh-no-stretch-yes) .premium-shape-divider__shape-container, {{WRAPPER}}.premium-shape-divider__left:not(.premium-sh-no-stretch-yes) .premium-shape-divider__shape-container' => 'transform: scaleY({{SIZE}}); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__right:not(.premium-sh-no-stretch-yes) #premium-shape-divider-{{ID}}, {{WRAPPER}}.premium-shape-divider__left:not(.premium-sh-no-stretch-yes) #premium-shape-divider-{{ID}}' => 'transform: scaleY({{SIZE}}); --pa-divider-scale: {{SIZE}}',
 
-					'{{WRAPPER}}.premium-shape-divider__right.premium-sh-no-stretch-yes .premium-shape-divider__shape-container, {{WRAPPER}}.premium-shape-divider__left.premium-sh-no-stretch-yes .premium-shape-divider__shape-container' => 'transform: scale({{SIZE}}); --pa-divider-scale: {{SIZE}}',
+					'{{WRAPPER}}.premium-shape-divider__right.premium-sh-no-stretch-yes #premium-shape-divider-{{ID}}, {{WRAPPER}}.premium-shape-divider__left.premium-sh-no-stretch-yes #premium-shape-divider-{{ID}}' => 'transform: scale({{SIZE}}); --pa-divider-scale: {{SIZE}}',
 				),
 				'condition'   => array(
 					'premium_global_divider_sw' => 'yes',
@@ -461,7 +461,7 @@ class Module {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container' => '{{premium_gdivider_pos.VALUE}}: {{SIZE}}px;',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}}' => '{{premium_gdivider_pos.VALUE}}: {{SIZE}}px;',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -491,14 +491,14 @@ class Module {
 			array(
 				'label'        => __( 'Prevent Stretch', 'premium-addons-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-                'description'=> __('This option is used it you want to animate the divider without stretching the SVG.', 'premium-addons-pro'),
+                'description'=> __('This option is used if you want to animate the divider without stretching the SVG.', 'premium-addons-pro'),
 				'prefix_class' => 'premium-sh-no-stretch-',
-                'default' => 'yes',
+				'default'      => 'yes',
 				'render_type'  => 'template',
 				'condition'    => array(
-					'premium_global_divider_sw' => 'yes',
-					'premium_gdivider_animate'  => 'yes',
-                    'premium_gdivider_defaults!' => 'shape22',
+					'premium_global_divider_sw'  => 'yes',
+					'premium_gdivider_animate'   => 'yes',
+					'premium_gdivider_defaults!' => 'shape22',
 				),
 			)
 		);
@@ -533,11 +533,11 @@ class Module {
 					'unit' => 'px',
 				),
 				'selectors' => array(
-					'{{WRAPPER}}.premium-shape-divider-anime-yes:not(.premium-shape22) .premium-shape-divider__shape-container' => 'animation-duration: {{SIZE}}s;',
+					'{{WRAPPER}}.premium-shape-divider-anime-yes:not(.premium-shape22) #premium-shape-divider-{{ID}}' => 'animation-duration: {{SIZE}}s;',
 				),
 				'condition' => array(
-					'premium_global_divider_sw' => 'yes',
-					'premium_gdivider_animate'  => 'yes',
+					'premium_global_divider_sw'  => 'yes',
+					'premium_gdivider_animate'   => 'yes',
 					'premium_gdivider_defaults!' => 'shape22',
 				),
 			)
@@ -555,12 +555,12 @@ class Module {
 				),
 				'default'   => 'alternate',
 				'condition' => array(
-					'premium_global_divider_sw' => 'yes',
-					'premium_gdivider_animate'  => 'yes',
+					'premium_global_divider_sw'  => 'yes',
+					'premium_gdivider_animate'   => 'yes',
 					'premium_gdivider_defaults!' => 'shape22',
 				),
 				'selectors' => array(
-					'{{WRAPPER}}.premium-shape-divider-anime-yes:not(.premium-shape22) .premium-shape-divider__shape-container' => 'animation-direction: {{VALUE}};',
+					'{{WRAPPER}}.premium-shape-divider-anime-yes:not(.premium-shape22) #premium-shape-divider-{{ID}}' => 'animation-direction: {{VALUE}};',
 				),
 			)
 		);
@@ -594,6 +594,22 @@ class Module {
 			)
 		);
 
+		$element->add_control(
+			'premium_gdivider_hide',
+			array(
+				'label'       => __( 'Hide Shape On', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => Helper_Functions::get_all_breakpoints(),
+				'separator'   => 'after',
+				'multiple'    => true,
+				'label_block' => true,
+				'default'     => array(),
+				'condition'   => array(
+					'premium_global_divider_sw' => 'yes',
+				),
+			)
+		);
+
 		$element->end_controls_tab();
 	}
 
@@ -617,7 +633,7 @@ class Module {
 			)
 		);
 
-        $papro_activated = apply_filters( 'papro_activated', false );
+		$papro_activated = apply_filters( 'papro_activated', false );
 
 		$element->add_control(
 			'premium_gdivider_bg_type',
@@ -644,8 +660,8 @@ class Module {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#afafaf',
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg,
-                    {{WRAPPER}} .premium-shape-divider__shape-container svg *' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg,
+                    {{WRAPPER}} #premium-shape-divider-{{ID}} svg *' => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -654,7 +670,7 @@ class Module {
 			)
 		);
 
-        if ( ! $papro_activated ) {
+		if ( ! $papro_activated ) {
 
 			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
 
@@ -664,10 +680,10 @@ class Module {
 					'type'            => Controls_Manager::RAW_HTML,
 					'raw'             => __( 'This option is available in Premium Addons Pro. ', 'premium-addons-for-elementor' ) . '<a href="' . esc_url( $get_pro ) . '" target="_blank">' . __( 'Upgrade now!', 'premium-addons-for-elementor' ) . '</a>',
 					'content_classes' => 'papro-upgrade-notice',
-					'condition' => array(
-                        'premium_global_divider_sw' => 'yes',
-                        'premium_gdivider_bg_type!'  => 'color',
-                    ),
+					'condition'       => array(
+						'premium_global_divider_sw' => 'yes',
+						'premium_gdivider_bg_type!' => 'color',
+					),
 				)
 			);
 
@@ -687,9 +703,9 @@ class Module {
 						'step' => 0.1,
 					),
 				),
-                'separator'=> 'before',
+				'separator' => 'before',
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg' => 'stroke-width: {{SIZE}}px;',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg' => 'stroke-width: {{SIZE}}px;',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -703,7 +719,7 @@ class Module {
 				'label'     => __( 'Stroke Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg' => 'stroke: {{VALUE}};',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg' => 'stroke: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -728,7 +744,7 @@ class Module {
 					'size' => 0.3,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg' => 'opacity: {{SIZE}};',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -742,7 +758,7 @@ class Module {
 				'label'     => __( 'Z-Index', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::NUMBER,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-shape-divider__shape-container svg' => 'z-index: {{VALUE}};',
+					'{{WRAPPER}} #premium-shape-divider-{{ID}} svg' => 'z-index: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_global_divider_sw' => 'yes',
@@ -772,7 +788,6 @@ class Module {
 
 		$old_template = $template;
 		ob_start();
-
 		?>
 		<#
 			var isEnabled = 'yes' === settings.premium_global_divider_sw ? true : false;
@@ -835,7 +850,8 @@ class Module {
 					} else if( settings.premium_gdivider_grad_xpos ) {
 						var gradType = settings.premium_gdivider_grad_type,
 							gradPos = 'linear' === gradType ? settings.premium_gdivider_grad_angle.size : [settings.premium_gdivider_grad_xpos.size, settings.premium_gdivider_grad_ypos.size ],
-							gradOptions = {
+                            gradUnit = 'linear' === gradType ? 'deg' : '',
+                            gradOptions = {
 								'gradType'  : gradType,
 								'firstColor': settings.premium_gdivider_grad_firstcolor,
 								'secColor'  : settings.premium_gdivider_grad_secondcolor,
@@ -865,7 +881,7 @@ class Module {
 									<#
 										if ( 'linear' === gradOptions.gradType ) {
 											view.addRenderAttribute( 'grad_data', {
-												'gradientTransform': 'rotate(' + gradOptions.pos + ')'
+												'gradientTransform': 'rotate(' + gradOptions.pos + gradUnit + ')'
 											});
 											#>
 											<linearGradient {{{view.getRenderAttributeString( 'grad_data' ) }}}>
@@ -899,10 +915,25 @@ class Module {
 					shapeHTML = '' !== settings.premium_gdivider_defaults ? shapesData[ settings.premium_gdivider_defaults ]['imagesmall'] : '';
 				}
 
+				function getContainerClasses() {
+					var classes = 'premium-shape-divider__shape-container',
+						hiddenDevices = settings.premium_gdivider_hide;
+
+					if ( hiddenDevices.length ) {
+						hiddenDevices.forEach(function(device) {
+							classes += ' elementor-hidden-' + device;
+						});
+
+						classes += ' premium-addons-element';
+					}
+
+					return classes;
+				}
+
 				if ( '' !== shapeHTML ) {
 					view.addRenderAttribute( 'paShapeDivider', {
 						'id': 'premium-shape-divider-' + view.getID(),
-						'class': 'premium-shape-divider__shape-container',
+						'class': getContainerClasses(),
 						'style': 'visibility:hidden; opacity:0;'
 					});
 					#>
@@ -965,9 +996,10 @@ class Module {
 			$source           = $settings['premium_gdivider_source'];
 			$divider_settings = array();
 			$is_edit_mode     = \Elementor\Plugin::$instance->editor->is_edit_mode();
-			$hidden_style     = 'style="visibility:hidden; position: absolute; opacity:0;"';
+			$hidden_style     = 'visibility:hidden; position: absolute; opacity:0;';
 			$shape            = '';
 			$custom_fill      = 'color' !== $settings['premium_gdivider_bg_type'];
+			$shape_classes    = Helper_Functions::get_element_classes( $settings['premium_gdivider_hide'], array( 'premium-shape-divider__shape-container' ) );
 
 			if ( 'default' !== $source ) {
 				$shape = $settings['premium_gdivider_custom'];
@@ -978,8 +1010,18 @@ class Module {
 			if ( $custom_fill ) {
 				$this->add_custom_fill( $id, $settings );
 			}
+
+			$element->add_render_attribute(
+				'shape_divider_cont' . $id,
+				array(
+					'class' => $shape_classes,
+					'id'    => 'premium-shape-divider-' . esc_attr( $id ),
+					'style' => $hidden_style,
+				)
+			);
+
 			?>
-				<div id="premium-shape-divider-<?php echo esc_attr( $id ); ?>" class="premium-shape-divider__shape-container" <?php echo $hidden_style; ?>>
+				<div <?php echo wp_kses_post( $element->get_render_attribute_string( 'shape_divider_cont' . $id ) ); ?>>
 					<?php echo $shape; ?>
 				</div>
 			<?php
@@ -1011,6 +1053,7 @@ class Module {
 			// gradient
 			$gradient_type = $settings['premium_gdivider_grad_type'];
 			$grad_pos      = 'linear' === $gradient_type ? $settings['premium_gdivider_grad_angle']['size'] : array( $settings['premium_gdivider_grad_xpos']['size'], $settings['premium_gdivider_grad_ypos']['size'] );
+            $grad_unit = 'linear' === $gradient_type ? 'deg' : '';
 
 			$grad_options = array(
 				'gradType'   => $gradient_type,
@@ -1023,7 +1066,7 @@ class Module {
 
 			if ( 'linear' === $grad_options['gradType'] ) {
 				$tag_close = '</linearGradient>';
-				$svg_html .= '<linearGradient id="pa-shape-divider-fill-' . $id . '" gradientUnits="objectBoundingBox"  gradientTransform="rotate(' . $grad_options['pos'] . ')">';
+				$svg_html .= '<linearGradient id="pa-shape-divider-fill-' . $id . '" gradientUnits="objectBoundingBox"  gradientTransform="rotate(' . $grad_options['pos'] . $grad_unit.  ')">';
 			} else {
 				$tag_close = '</radialGradient>';
 				$svg_html .= '<radialGradient id="pa-shape-divider-fill-' . $id . '" gradientUnits="objectBoundingBox" cx="' . $grad_options['pos'][0] . '%" cy="' . $grad_options['pos'][1] . '%">';

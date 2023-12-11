@@ -277,7 +277,17 @@ function breeze_cache( $buffer, $flags ) {
 	if ( isset( $GLOBALS['breeze_config']['cache_options']['breeze-cross-origin'] ) && filter_var( $GLOBALS['breeze_config']['cache_options']['breeze-cross-origin'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		// Buffer encoding
+		if ( version_compare( PHP_VERSION, '8.2.0', '<' ) ) {
 		$buffer = mb_convert_encoding( $buffer, 'HTML-ENTITIES', 'UTF-8' );
+		} else {
+			$buffer = mb_encode_numericentity(
+				htmlspecialchars_decode(
+					htmlentities($buffer, ENT_NOQUOTES, 'UTF-8', false)
+					,ENT_NOQUOTES
+				), [0x80, 0x10FFFF, 0, ~0],
+				'UTF-8'
+			);
+		}
 		// Regular expression pattern to match anchor (a) tags
 		$pattern = '/<a\s+(.*?)>/si';
 		$buffer = preg_replace_callback( $pattern, 'breeze_cc_process_match', $buffer );

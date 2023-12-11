@@ -57,6 +57,14 @@ class Premium_Template_Tags {
 	 */
 	protected $options;
 
+    /**
+	 * Elementor Templates List
+     *
+	 * @since 4.10.15
+	 * @var e_temps_list
+	 */
+	private static $e_temps_list = null;
+
 	/**
 	 * Class contructor
 	 */
@@ -175,12 +183,18 @@ class Premium_Template_Tags {
 	 */
 	public function get_elementor_page_list() {
 
-		$pagelist = get_posts(
-			array(
-				'post_type' => 'elementor_library',
-				'showposts' => 999,
-			)
-		);
+        if ( null === self::$e_temps_list ) {
+
+            self::$e_temps_list = get_posts(
+                array(
+                    'post_type' => 'elementor_library',
+                    'showposts' => 999,
+                )
+            );
+
+        }
+
+		$pagelist = self::$e_temps_list;
 
 		if ( ! empty( $pagelist ) && ! is_wp_error( $pagelist ) ) {
 
@@ -373,6 +387,7 @@ class Premium_Template_Tags {
 	 * @return array
 	 */
 	public static function get_default_posts_list( $post_type ) {
+
 		$list = get_posts(
 			array(
 				'post_type'              => $post_type,

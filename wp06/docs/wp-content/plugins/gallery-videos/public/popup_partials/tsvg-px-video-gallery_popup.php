@@ -18,7 +18,7 @@
         top: 0;
         left: 0;
         z-index: 9999999999;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     #tsvgParallaxColorBoxWrapper<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
         max-width: none;
@@ -687,7 +687,12 @@
                 return this.rel
             },
             href: function () {
-                return t(this).attr("data-href")
+                let isAutoplay<?php echo esc_attr( $tsvg_shortcode_id ); ?> = jQuery('.tsvg-main-content-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-tsvg-autoplay'),
+                    url = t(this).attr("data-href");
+                if(isAutoplay<?php echo esc_attr( $tsvg_shortcode_id ); ?> == 'true'){
+                    url = url + "?autoplay=1&mute=1";
+                }
+                return url;
             },
             title: function () {
                 return t(this).attr("data-name")

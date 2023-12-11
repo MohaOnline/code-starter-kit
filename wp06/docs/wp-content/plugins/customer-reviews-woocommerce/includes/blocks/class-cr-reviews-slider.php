@@ -23,6 +23,7 @@ if ( ! class_exists( 'CR_Reviews_Slider' ) ) {
 			add_action( 'init', array( $this, 'register_slider_script' ) );
 			add_action( 'init', array( $this, 'register_block' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_scripts' ) );
+			add_action( 'cr_slider_before_review_text', array( $this, 'display_custom_questions' ), 10, 1 );
 		}
 
 		public function register_shortcode() {
@@ -267,10 +268,14 @@ if ( ! class_exists( 'CR_Reviews_Slider' ) ) {
 					$args_s = array(
 						'status'      => 'approve',
 						'post_status' => 'publish',
-						'post_id'			=> $shop_page_id,
+						'post__in'    => CR_Reviews_List_Table::get_shop_page(),
 						'meta_key'    => 'rating',
 						'orderby'     => $order_by
 					);
+					if ( function_exists( 'pll_current_language' ) ) {
+						// Polylang compatibility
+						$args_s['lang'] = '';
+					}
 					$shop_reviews = [];
 					if( 'RAND' === $order ) {
 						$all_shop_reviews = get_comments( $args_s );
@@ -557,6 +562,21 @@ if ( ! class_exists( 'CR_Reviews_Slider' ) ) {
 			$clauses['where'] .= " AND CHAR_LENGTH({$wpdb->comments}.comment_content) >= " . $this->min_chars;
 
 			return $clauses;
+		}
+
+		public function display_custom_questions( $review ) {
+			if( 0 === intval( $review->comment_parent ) ) {
+				$custom_questions = new CR_Custom_Questions();
+				$custom_questions->read_questions( $review->comment_ID );
+				$questions = $custom_questions->get_questions( 2, false );
+
+				if ( $questions ) {
+					$output  = '<div class="cr-sldr-custom-questions">';
+					$output .= $questions;
+					$output .= '</div>';
+					echo $output;
+				}
+			}
 		}
 
 	}

@@ -237,6 +237,11 @@ if ( ! class_exists( 'CR_Endpoint' ) ) :
 									if( $customer_user_id ) {
 										wp_set_current_user( $customer_user_id );
 									}
+									// deactivate AutomateWoo hook because otherwise it might trigger a PHP error
+									if ( class_exists( '\AutomateWoo\Session_Tracker' ) ) {
+										remove_action( 'comment_post', array( '\AutomateWoo\Session_Tracker', 'capture_from_comment' ), 10 );
+									}
+									//
 									do_action( 'comment_post', $review_id, $commentdata['comment_approved'], $commentdata );
 									// set the previous current user back
 									if( $current_user ) {
@@ -468,6 +473,11 @@ if ( ! class_exists( 'CR_Endpoint' ) ) :
 										if( $customer_user_id ) {
 											wp_set_current_user( $customer_user_id );
 										}
+										// deactivate AutomateWoo hook because otherwise it might trigger a PHP error
+										if ( class_exists( '\AutomateWoo\Session_Tracker' ) ) {
+											remove_action( 'comment_post', array( '\AutomateWoo\Session_Tracker', 'capture_from_comment' ), 10 );
+										}
+										//
 										do_action( 'comment_post', $review_id, $commentdata['comment_approved'], $commentdata );
 										// set the previous current user back
 										if( $current_user ) {

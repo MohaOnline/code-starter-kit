@@ -59,6 +59,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo $rating . '/5'; ?>
 					</div>
 				</div>
+				<?php
+					do_action( 'cr_slider_before_review_text', $review );
+				?>
 				<div class="middle-row">
 					<div class="review-content">
 						<div class="review-text">

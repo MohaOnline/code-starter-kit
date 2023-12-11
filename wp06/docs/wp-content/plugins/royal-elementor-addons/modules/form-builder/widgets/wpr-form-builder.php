@@ -4,13 +4,12 @@ namespace WprAddons\Modules\FormBuilder\Widgets;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Core\Schemes\Color;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
 use WprAddons\Classes\Utilities;
@@ -2685,6 +2684,7 @@ class Wpr_Form_Builder extends Widget_Base {
 				'default' => '#222',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-step-content i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpr-step-content svg' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .wpr-step-content' => 'color: {{VALUE}};'
 				]
 			]
@@ -2731,6 +2731,7 @@ class Wpr_Form_Builder extends Widget_Base {
 				'default' => '#222',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-step-active .wpr-step-content i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpr-step-active .wpr-step-content svg' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .wpr-step-active .wpr-step-content' => 'color: {{VALUE}};'
 				]
 			]
@@ -2777,6 +2778,7 @@ class Wpr_Form_Builder extends Widget_Base {
 				'default' => '#222',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-step-finish .wpr-step-content i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpr-step-finish .wpr-step-content svg' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .wpr-step-finish .wpr-step-content' => 'color: {{VALUE}};'
 				]
 			]
@@ -2925,6 +2927,7 @@ class Wpr_Form_Builder extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-step' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-step svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'step_type' => ['icon', 'icon_text']

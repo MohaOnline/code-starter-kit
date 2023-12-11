@@ -12,7 +12,11 @@
 
 .cp_cff_12 #fbuilder h1,
 .cp_cff_12 #fbuilder h2,
-.cp_cff_12 #fbuilder h3{ text-transform:uppercase; }
+.cp_cff_12 #fbuilder h3,
+.cp_cff_12 #fbuilder h4,
+.cp_cff_12 #fbuilder h5,
+.cp_cff_12 #fbuilder h6,
+.cp_cff_12 #fbuilder .fform p{ text-transform:uppercase; }
 
 .cp_cff_12 #fbuilder  .fields:not(.cff-container-field){padding: 10px;}
 

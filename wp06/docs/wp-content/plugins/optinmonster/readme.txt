@@ -4,7 +4,7 @@ Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, po
 Requires at least: 4.7.0
 Tested up to: 6.4
 Requires PHP: 5.3
-Stable tag: 2.15.0
+Stable tag: 2.15.1
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -236,16 +236,26 @@ See our [Press &amp; Brand Assets page](https://optinmonster.com/press/ "OptinMo
 
 If you like this WordPress popup plugin, then consider checking out our other projects:
 
-* <a href="https://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best WordPress form plugin (trusted by over 3 million users).
-* <a href="https://www.monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - See the Stats that Matter and Grow Your Business with Confidence. Best Google Analytics Plugin for WordPress.
-* <a href="https://www.seedprod.com/" rel="friend" title="SeedProd">SeedProd</a> - Jumpstart your website with the #1 Coming Soon & Maintenance Mode Plugin for WordPress.
-* <a href="https://wpmailsmtp.com">WP Mail SMTP</a> - Improve email deliverability for your contact form and online store with the most popular SMTP plugin for WordPress.
-* <a href="https://rafflepress.com/">RafflePress</a> - Best WordPress giveaway and contest plugin.
+* <a href="https://wpforms.com/" rel="friend">WPForms</a> – #1 drag and drop online form builder for WordPress (trusted by 5 million sites).
+* <a href="https://aioseo.com/" rel="friend">AIOSEO</a> – The original WordPress SEO plugin to help you rank higher in search results (trusted by over 3 million sites).
+* <a href="https://www.monsterinsights.com/" rel="friend">MonsterInsights</a> – See the stats that matter and grow your business with confidence. Best Google Analytics plugin for WordPress.
+* <a href="https://www.seedprod.com/" rel="friend">SeedProd</a> – Create beautiful landing pages with our powerful drag &amp; drop landing page builder.
+* <a href="https://wpmailsmtp.com/" rel="friend">WP Mail SMTP</a> – Improve email deliverability for your contact form with the most popular SMTP plugin for WordPress.
+* <a href="https://smashballoon.com/" rel="friend">Smash Balloon</a> – #1 social feeds plugin for WordPress - display social media content in WordPress without code.
+* <a href="https://wpcode.com/" rel="friend">WPCode</a> - Must have WordPress code snippet management plugin to help you future-proof website customization (trusted by 1.5 million sites).
+* <a href="https://duplicator.com/" rel="friend">Duplicator</a> - Popular WordPress backup and migration plugin used by over 1 million websites.
+* <a href="https://wpsimplepay.com/" rel="friend">WP Simple Pay</a> – #1 Stripe payments plugin for WordPress. Start accepting one-time or recurring payments without a shopping cart.
+* <a href="https://www.pushengage.com/" rel="friend">PushEngage</a> – Connect with visitors after they leave your website with the leading web push notification plugin.
+* <a href="https://rafflepress.com/" rel="friend">RafflePress</a> – Best WordPress giveaway and contest plugin to grow traffic and social followers.
+* <a href="https://trustpulse.com/" rel="friend">TrustPulse</a> – Add real-time social proof notifications to boost your store conversions by up to 15%.
+* <a href="https://searchwp.com/" rel="friend">SearchWP</a> – The most advanced custom WordPress search plugin to improve WordPress search quality.
+* <a href="https://affiliatewp.com/" rel="friend">AffiliateWP</a> – #1 affiliate management plugin for WordPress. Add a referral program to your online store.
+* <a href="https://easydigitaldownloads.com/" rel="friend">Easy Digital Downloads</a> – The best WordPress eCommerce plugin to sell digital products (eBooks, software, music, and more).
+* <a href="https://www.wpcharitable.com/" rel="friend">WPCharitable</a> - Top-rated WordPress donation and fundraising plugin for WordPress.
 
 To get the most value out of your growing email list, see our <a href="https://optinmonster.com/beginners-guide-to-email-marketing/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpreadme" rel="friend">beginner's guide to email marketing</a>.
 
 Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> to learn from our <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress Tutorials</a> and find out about other <a href="http://www.wpbeginner.com/category/plugins/" rel="friend" title="Best WordPress Plugins">best WordPress plugins</a>.
-
 
 == Installation ==
 
@@ -460,6 +470,10 @@ Syed Balkhi
 == Changelog ==
 
 **Most Recent Changes:**
+
+= Popup Builder 2.15.1 =
+* Updates and improvements to our Gutenberg block.
+* Improved connection flow.
 
 = Popup Builder 2.15.0 =
 * Improved connection flow and onboarding for new/existing users.

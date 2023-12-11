@@ -725,7 +725,7 @@
 	jQuery( document ).ready(function() {
 		jQuery('.tsvg-section-<?php echo esc_attr( $tsvg_js_shortcode_id ); ?>').fadeIn();
 	});
-	jQuery(document).on("click", '.tsvg-content-popup-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?>', function (event) {
+	jQuery(document).on("click", '.tsvg-cp-block-view-<?php echo esc_attr( $tsvg_shortcode_id ); ?>', function (event) {
 		jQuery('.tsvg-content-popup-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').css('display','block');
 		let tsvgAutoplay = jQuery('.tsvg-content-popup-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-tsvg-autoplay'),
 	    	tsvgVideoURL = jQuery(this).attr('data-tsvg-href'),
@@ -733,7 +733,7 @@
 	    	tsvgTarget = jQuery(this).attr('data-tsvg-target'),
 	    	tsvgImgURL = jQuery(this).find('img').attr('src'),
 	    	tsvgTitle = jQuery(this).find('h2').text(),
-	    	tsvgParagraph = jQuery(this).find('.tsvg-cp-block-desc-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').html(),
+			tsvgParagraph = jQuery(this).find('.tsvg-cp-block-desc-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-tsvg-show') == 'true' ? jQuery(this).find('.tsvg-cp-block-desc-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').html() :  '' ,
 	    	tsvgIndex = jQuery(".tsvg-cp-blocks-container-<?php echo esc_attr( $tsvg_shortcode_id ); ?> > ul > li").index(jQuery(this)),
 	    	tsvgContentPopupMode = jQuery('.tsvg-content-popup-info-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-mode');
 	    jQuery('#tsvg-content-popup-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-content-popup-element-paragraph-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  a').attr('href', '');
@@ -975,6 +975,7 @@
 				jQuery('.tsvg-content-popup-overlay-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').removeAttr('style');
 		    }, 400)
 		}
+		jQuery('.tsvg-content-popup-element-iframe-<?php echo esc_attr( $tsvg_shortcode_id ); ?> iframe').attr('src', '');
 	})
 	jQuery(document).on("click", '.tsvg-content-popup-arrow-close-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-content-popup-arrow-close', function (event) {
 		let tsvgContentPopupMode = jQuery('.tsvg-content-popup-info-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-mode');
@@ -1061,6 +1062,7 @@
 				jQuery('.tsvg-content-popup-overlay-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').removeAttr('style');
 		    }, 400)
 		}
+		jQuery('.tsvg-content-popup-element-iframe-<?php echo esc_attr( $tsvg_shortcode_id ); ?> iframe').attr('src', '');
 	})
 	jQuery(document).on("click", '.tsvg-content-popup-arrow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-content-popup-arrow-left', function (event) {
 		let tsvgIndex = jQuery('.tsvg-content-popup-info-<?php echo esc_attr( $tsvg_shortcode_id ); ?>').attr('data-idx'),

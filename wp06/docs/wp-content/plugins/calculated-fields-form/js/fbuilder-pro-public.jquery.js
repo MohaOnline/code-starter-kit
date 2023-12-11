@@ -1,4 +1,4 @@
-	$.fbuilder['version'] = '1.2.37';
+	$.fbuilder['version'] = '1.2.42';
 	$.fbuilder['controls'] = $.fbuilder['controls'] || {};
 	$.fbuilder['forms'] = $.fbuilder['forms'] || {};
 
@@ -19,7 +19,8 @@
 	{
         if(typeof value == 'string')
             value = value.replace(/<script\b.*\bscript>/ig, '')
-                         .replace(/<script[^>]*>/ig, '');
+                         .replace(/<script[^>]*>/ig, '')
+						 .replace(/(\b)(on[a-z]+)\s*=/ig, "$1_$2=");
 		return value;
 	};
 
@@ -627,6 +628,9 @@
 		$.extend(fform.prototype,
 			{
 				title:"Untitled Form",
+				titletag: 'H2',
+				textalign: 'default',
+				headertextcolor:'',
 				description:"This is my form. Please fill it out. It's awesome!",
 				formlayout:"top_aligned",
 				formtemplate:"",
@@ -638,7 +642,9 @@
 				animation_effect:'fade',
                 autocomplete:1,
 				show:function(){
-                    return '<div class="fform" id="field">'+( !/^\s*$/.test( this.title ) ? '<h2 class="cff-form-title">'+this.title+'</h2>' : '' )+( !/^\s*$/.test( this.description ) ? '<span class="cff-form-description">'+this.description+'</span>' : '' )+'</div>';
+					let css = (this.textalign != 'default') ? 'text-align:'+this.textalign+';' : '';
+					if(this.headertextcolor != '') css+='color:'+this.headertextcolor+';';
+				    return '<div class="fform" id="field">'+( !/^\s*$/.test( this.title ) ? '<'+this.titletag+' class="cff-form-title" style="'+css+'">'+this.title+'</'+this.titletag+'>' : '' )+( !/^\s*$/.test( this.description ) ? '<span class="cff-form-description" style="'+css+'">'+this.description+'</span>' : '' )+'</div>';
 				},
                 after_show:function( id ){
                     // Common validators
@@ -772,6 +778,8 @@
 								   obj = $.extend(true, {}, obj,d[0][i]);
 								   obj.name = obj.name+opt.identifier;
 								   obj.form_identifier = opt.identifier;
+								   if( 'fieldlayout' in obj && obj.fieldlayout != 'default' )
+									   obj.csslayout = ('csslayout' in obj ? obj.csslayout+' ' : '' )+obj.fieldlayout
 								   obj.init();
 								   /* items[items.length] = obj; */
 								   items[i] = obj;

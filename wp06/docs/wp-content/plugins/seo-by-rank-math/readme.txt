@@ -5,7 +5,7 @@ Tags: seo, sitemap, google search console, schema, redirection, WordPress SEO
 Tested up to: 6.4.1
 Requires at least: 6.0
 Requires PHP: 7.4
-Stable tag: 1.0.206
+Stable tag: 1.0.208.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -583,17 +583,15 @@ Please drop us an email at support@rankmath.com and we would be more than happy 
 
 == Changelog ==
 
-= 1.0.206 [Nov 15, 2023] =
-- Added: [New filter to disable the Rich Text editor](https://rankmath.com/kb/filters-hooks-api-developer/#disable-rich-text-editor-taxonomy) in the Taxonomy description
-- Improved: Typing effect for the Content AI output
-- Removed: [Grammarly option](https://rankmath.com/kb/how-to-use-content-ai/#enable-grammarly) as the API will be deprecated in a couple of months
-- Fixed: Deprecated warnings in PHP 8.1 and higher
-- Fixed: Missing [Content AI Command Center option](https://rankmath.com/kb/using-content-ai-in-block-editor/#command-center) when the Jetpack plugin is active
-- Fixed: Timezone issue for the `startDate` & `endDate` properties of the [Event Schema](https://rankmath.com/kb/event-schema/) on sites that do not use UTC timezone
-- Fixed: Incorrect scheduled dates shown for the [Analytics Data fetch](https://rankmath.com/kb/general-settings/#analytics-database)
-- Fixed: [Power words test](https://rankmath.com/kb/score-100-in-tests/#use-of-power-word-in-title) is now displayed on sites that use [custom Power Words](https://rankmath.com/kb/filters-hooks-api-developer/#add-custom-power-words)
-- Fixed: [HTML Sitemap](https://rankmath.com/kb/html-sitemap/) issue when sorted by [modified date](https://rankmath.com/kb/configure-sitemaps/#sort-by)
-- Fixed: PHP error related to [Instant Indexing](https://rankmath.com/kb/how-to-use-indexnow/) on some setups
+= 1.0.208 [Dec 07, 2023] =
+- Improved: Content AI is now optimized to deliver results quickly
+- Improved: [Bulk Generate SEO Meta tags](https://rankmath.com/kb/bulk-generate-seo-meta-tags/) feature is now restricted to Paid Content AI users
+- Fixed: [Sitemap Index](https://rankmath.com/kb/sitemaps-seo-benefits/#xml-sitemap) was incorrectly using noindexed post data for `Last Modified` date
+- Fixed: [Update SEO Score tool](https://rankmath.com/kb/seo-score-not-available/#update-seo-scores) now handles encoded characters in Post URL correctly
+- Removed: Google Mobile-Friendly tool from the [Quick Actions admin menu](https://rankmath.com/kb/quick-actions/) as Google deprecated it
+
+= 1.0.208.1 [Dec 07, 2023] =
+- Fixed: Cache issue was causing Content AI to not work properly.
 
 
 Full changelog can be found here - **[Rank Math changelog](https://rankmath.com/changelog/?utm_source=Plugin&utm_medium=Changelog&utm_campaign=WP)**

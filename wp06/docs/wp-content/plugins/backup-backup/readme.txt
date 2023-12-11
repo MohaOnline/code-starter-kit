@@ -1,13 +1,13 @@
-=== Backup Migration Staging ===
+=== Backup Migration ===
 Contributors: Migrate
-Tags: Backup, Migration, Staging, Migrate, Backups, Restore, All In One, Duplicate, Clone, Import, Export, Transfer
+Tags: Migration, Backup, Staging, Migrate, Backups, Restore, All In One, Duplicate, Clone, Import, Export, Transfer
 Requires at least: 4.6
-Tested up to: 6.4.1
-Stable tag: 1.3.5
+Tested up to: 6.4.2
+Stable tag: 1.3.8
 License: GPLv3
 Requires PHP: 5.6
 
-Backup Migration Staging
+Backup Migration
 
 == Description ==
 
@@ -162,6 +162,28 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 5. The plugin should be shown below the settings menu.
 
 == Changelog ==
+
+= 1.3.8 =
+* [FIX] Patched reported CVE - please upgrade
+* [NOTE] Tested with WP 6.4.2
+
+= 1.3.7 =
+* [PRO] Fixed staility of Google Drive connection getting disconnected randomly
+* [FIX] Scheduled backup status and minimized change of internal server error email
+* [CHANGE] New protected directory for temporary backup database dump
+* [CHANGE] Backup temporary chunk files moved to new directory
+* [CHANGE] Decreased accessibility time of progress logs when user gets logged out after restoration
+* [CHANGE] Increased tolerance for scheduled backups time
+
+= 1.3.6 =
+* [CHANGE] Modified restoration order, now prefix will be replaced before plugin activation
+* [CHANGE] Default prefix of staging site will be shorter now to support long named tables
+* [FIX] Secured exported tables and moved extraction path to plugin data directory
+* [FIX] Created dedicated temporary path for process files (@Dmitrii Ignatyev)
+* [FIX] Backup process when permission-protected files were included in file list
+* [FIX] Issues with plugin activation when WP_Widget plugin was included in backup
+* [FIX] Automatic backup removal of unlocked backups after scheduled backup
+* Updated readme 
 
 = 1.3.5 =
 * Fixed bug with staging sites creation on larger sites
@@ -667,7 +689,7 @@ Vietnamese: [Tạo sao lưu, khôi phục các bản sao lưu và di chuyển c�
 
 == Upgrade Notice ==
 
-= 1.3.5 =
-What's new in 1.3.5?
-* Fixed bug with staging sites creation on larger sites
-* Fixed displayed warnings in debug logs (after migration process)
+= 1.3.8 =
+What's new in 1.3.8?
+* [FIX] Patched reported CVE - please upgrade
+* [NOTE] Tested with WP 6.4.2

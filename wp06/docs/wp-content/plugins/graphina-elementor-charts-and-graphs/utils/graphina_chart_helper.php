@@ -17,7 +17,7 @@ use Elementor\Core\Schemes\Typography as Scheme_Typography;
 function graphina_default_setting($key, $dataType = "int")
 {
     $list = [
-        "max_series_value" => 30,
+        "max_series_value" => 31,
         "categories" => [
             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
             'Jan1', 'Feb1', 'Mar1', 'Apr1', 'May1', 'Jun1', 'July1', 'Aug1', 'Sep1', 'Oct1', 'Nov1', 'Dec1',
@@ -945,6 +945,17 @@ function graphina_common_chart_setting($this_ele, $type = 'chart_id', $showDataL
                     'type' => Controls_Manager::SELECT,
                     'default' => graphina_position_type("vertical", true),
                     'options' => graphina_position_type("vertical"),
+                    'conditions' => $dataLabelFontColorCondition,
+                ]
+            );
+            
+            $this_ele->add_control(
+                'iq_' . $type . '_chart_datalabel_orientation',
+                [
+                    'label' => esc_html__('Position', 'graphina-charts-for-elementor'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => graphina_position_type("orientation", true),
+                    'options' => graphina_position_type("orientation"),
                     'conditions' => $dataLabelFontColorCondition,
                 ]
             );
@@ -2242,7 +2253,10 @@ function graphina_style_section($this_ele, $type = 'chart_id')
         [
             'name' => 'iq_' . $type . '_subtitle_typography',
             'label' => esc_html__('Typography', 'graphina-charts-for-elementor'),
-            'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+            // 'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+            'global' => [
+                'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_SECONDARY,
+            ],
             'selector' => '{{WRAPPER}} .graphina-chart-sub-heading',
             'condition' => ['iq_' . $type . '_is_card_desc_show' => 'yes']
         ]
@@ -4614,6 +4628,16 @@ function graphinaYaxisOpposite($this_ele, $type)
                 ]
             ]
         );
+        if(in_array($type,['column'])){
+            $this_ele->add_control(
+                'iq_' . $type . '_chart_yaxis_max_width',
+                [
+                    'label' => esc_html__('Max Width', 'graphina-charts-for-elementor'),
+                    'type' => Controls_Manager::NUMBER,
+                    'default' => 'auto',
+                ]
+            );
+        }
     }
 
     $this_ele->add_control(
@@ -5714,6 +5738,7 @@ function graphina_advance_v_axis_setting($this_ele, $type = 'chart_id', $showFix
                     'type' => Controls_Manager::HEADING,
                 ]
             );
+            
             $this_ele->add_control(
                 'iq_' . $type . '_chart_vaxis_label_position_show',
                 [

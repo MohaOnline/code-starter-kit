@@ -274,7 +274,7 @@ if ( ! class_exists( 'CR_Email_Func' ) ) :
 			ob_start();
 			$cr_email_heading = $data['email']['header'];
 			$cr_email_body = $data['email']['body'];
-			$cr_email_review_btn = __( 'Review', 'customer-reviews-woocommerce' );
+			$cr_email_review_btn = $data['email']['reviewBtn'];
 			$cr_email_footer = $data['email']['footer'];
 			$cr_email_color_bg = get_option( 'ivole_email_color_bg', '#0f9d58' );
 			$cr_email_color_text = get_option( 'ivole_email_color_text', '#ffffff' );
@@ -323,7 +323,7 @@ if ( ! class_exists( 'CR_Email_Func' ) ) :
 			);
 		}
 
-		public static function send_email( $data, $is_test ) {
+		public static function send_email( $data, $is_test, $data_extra ) {
 			$mailer = get_option( 'ivole_mailer_review_reminder', 'cr' );
 			if( 'wp' === $mailer ) {
 				$headers = ['Content-Type: text/html; charset=UTF-8'];
@@ -333,6 +333,9 @@ if ( ! class_exists( 'CR_Email_Func' ) ) :
 				if ( filter_var( $data['email']['replyTo'], FILTER_VALIDATE_EMAIL ) ) {
 					$headers[] = 'Reply-To: ' . $data['email']['replyTo'];
 				}
+				// need to enhance $data with a review button translation that is available only for no verification mode
+				$data['email']['reviewBtn'] = $data_extra['reviewBtn'];
+				//
 				$message = self::get_local_email_template( $data, $is_test );
 				if( 0 === $message['code'] ) {
 					$message['template'] = apply_filters(

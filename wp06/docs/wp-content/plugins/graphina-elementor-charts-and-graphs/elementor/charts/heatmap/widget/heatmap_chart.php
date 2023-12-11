@@ -677,7 +677,7 @@ class Heatmap_chart extends Widget_Base
                             options: heatmapOptions,
                             series: [{name: '', data: []}],
                             animation: true,
-                            setting_date:<?php echo json_encode($settings); ?>
+                            setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                         },
                         '<?php esc_attr_e($mainId); ?>'
                     );

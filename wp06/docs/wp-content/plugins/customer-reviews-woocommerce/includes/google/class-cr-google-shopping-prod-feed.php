@@ -456,6 +456,9 @@ class CR_Google_Shopping_Prod_Feed {
 			$products = $products_tmp;
 		}
 
+		// it is necessary to provide a default tax location for correct calculation of tax inclusive prices
+		add_filter( 'woocommerce_get_tax_location', array( $this, 'get_tax_location' ), 10, 3 );
+
 		$products = array_map( function( $product ) use( $identifiers, $attributes ) {
 			/**
 			* @var WC_Product $product
@@ -701,6 +704,9 @@ class CR_Google_Shopping_Prod_Feed {
 			return $_product;
 		}, $products );
 
+		// remove the filter for a default tax location
+		remove_filter( 'woocommerce_get_tax_location', array( $this, 'get_tax_location' ), 10 );
+
 		$this->cron_options['current'] = $this->cron_options['offset'];
 		$this->cron_options['offset'] = $this->cron_options['offset'] + $this->cron_options['limit'];
 		$this->cron_options['total'] = $total_products;
@@ -879,6 +885,27 @@ class CR_Google_Shopping_Prod_Feed {
 
 	public static function clear_utf8_for_xml( $str ) {
 		return preg_replace( '/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $str );
+	}
+
+	public function get_tax_location( $location, $tax_class, $customer ) {
+		$location = array();
+
+		if ( is_null( $customer ) && WC()->customer ) {
+			$customer = WC()->customer;
+		}
+
+		if ( ! empty( $customer ) ) {
+			$location = $customer->get_taxable_address();
+		} else {
+			$location = array(
+				WC()->countries->get_base_country(),
+				WC()->countries->get_base_state(),
+				WC()->countries->get_base_postcode(),
+				WC()->countries->get_base_city(),
+			);
+		}
+
+		return $location;
 	}
 
 }

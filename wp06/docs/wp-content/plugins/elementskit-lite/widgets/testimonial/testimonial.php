@@ -155,7 +155,14 @@ class ElementsKit_Widget_Testimonial extends Widget_Base {
 				'condition' => [
 					'ekit_testimonial_wartermark_enable' => 'yes',
 					'ekit_testimonial_style' => ['style5']
-				]
+				],
+				'selectors_dictionary' => [
+					'top' => 'position: unset;',
+					'bottom' => 'bottom: 30px; right: 30px;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ekit_testimonial_style_5 .elementskit-watermark-icon' => '{{VALUE}}',
+				],
 			]
 		);
 
@@ -860,6 +867,9 @@ class ElementsKit_Widget_Testimonial extends Widget_Base {
                     '{{WRAPPER}} .elementkit-testimonial-col' => 'align-self: {{VALUE}};'
                 ],
 				'default' => 'center',
+				'condition' => [
+					'ekit_testimonial_style' => 'style1',
+				],
 			]
 		);
 
@@ -886,6 +896,7 @@ class ElementsKit_Widget_Testimonial extends Widget_Base {
                     '{{WRAPPER}} .elementskit-commentor-content' => 'text-align: {{VALUE}};',
                     '{{WRAPPER}} .elementskit-testimonial_card' => 'text-align: {{VALUE}};',
                     '{{WRAPPER}} .elementskit-profile-info' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskit-commentor-bio' => 'text-align: {{VALUE}}; justify-content: {{VALUE}}',
                     '{{WRAPPER}} .ekit_testimonial_style_5 .elementskit-commentor-header' => 'text-align: {{VALUE}};',
                 ]
 			]

@@ -13,8 +13,6 @@
                 hasCustomFill = $('#premium-shape-divider-fill-'+ id).length,
                 hasWaveAnime = $scope.hasClass('premium-shape-divider-anime-yes') && $scope.hasClass('premium-shape22');
 
-            // add the fill first
-
             if ( hasCustomFill ) {
                 // set the fill viewBox
                 var shapeViewBox = $('#premium-shape-divider-' + id + ' svg').attr('viewBox');
@@ -25,8 +23,12 @@
             }
 
             if ( ! isEditMode ) {
+                $scope.append($('#premium-shape-divider-fill-' + id ));
                 $scope.append($('#premium-shape-divider-' + id ));
             }
+
+            updateShapePosition();
+            updateShapeSize();
 
             $scope.find('#premium-shape-divider-' + id).css({ visibility: 'inherit', opacity: 'inherit' });
 
@@ -60,34 +62,36 @@
                 $scope.find('#premium-shape-divider-' + id + ' svg').attr('preserveAspectRatio', 'none');
             }
 
-            var adjustSize = $scope.hasClass('premium-shape-divider__left') || $scope.hasClass('premium-shape-divider__right');
+            // add shape events.
+            $(window).off('resize.paUpdateShapePos'); // to update the event while editing.
+            $(window).on('resize.paUpdateShapePos', updateShapePosition);
 
             $(window).off('resize.paShapeResize');
+            $(window).on('resize.paShapeResize', updateShapeSize);
 
-            if ( adjustSize ) {
-                var containerHeight = $scope.outerHeight() + 'px';
+            function updateShapePosition() {
+                var shapePos = getComputedStyle($scope[0]).getPropertyValue('--pa-sh-divider-pos');
+                $scope.removeClass('premium-shape-divider__top premium-shape-divider__bottom premium-shape-divider__right premium-shape-divider__left').addClass('premium-shape-divider__' + shapePos);
+            }
 
-                $scope.find('#premium-shape-divider-' + id + ' svg').css({
-                    'width': '103%',
-                    'transform' : $scope.hasClass('premium-shape-divider__right') ? 'rotate(-90deg) translate(0,-100%)' : 'rotate(90deg) translate(0,-100%)',
-                    'width': containerHeight,
-                }).get(0).style.setProperty("--premium-shape-divider-h", containerHeight); // this needs to add for each devices
+            function updateShapeSize() {
 
-                $(window).on('resize.paShapeResize', function() {
+                var adjustSize = $scope.hasClass('premium-shape-divider__left') || $scope.hasClass('premium-shape-divider__right');
+
+                if ( adjustSize ) {
                     var containerHeight = $scope.outerHeight() + 'px';
 
                     $scope.find('#premium-shape-divider-' + id + ' svg').css({
+                        'width': '103%',
+                        'transform' : $scope.hasClass('premium-shape-divider__right') ? 'rotate(-90deg) translate(0,-100%)' : 'rotate(90deg) translate(0,-100%)',
                         'width': containerHeight,
-                    });
-                });
+                    }).get(0).style.setProperty("--premium-shape-divider-h", containerHeight); // this needs to add for each devices.
+
+                } else {
+                    $scope.find('#premium-shape-divider-' + id + ' svg').attr('style','');
+                }
             }
         };
-
-        // I can observer the change by using setInterval and check/compare the height with the current one.
-
-        // var resizeObserver = new ResizeObserver(function() {
-        //     console.log("The element was resized");
-        // });
 
         elementorFrontend.hooks.addAction("frontend/element_ready/section", premiumShapeDividerHandler);
         elementorFrontend.hooks.addAction("frontend/element_ready/column", premiumShapeDividerHandler);

@@ -4,7 +4,7 @@
 Plugin Name: Popular Brand SVG Icons - Simple Icons
 Plugin URI: https://thememason.com/plugins/popular-brand-svg-icons-simple-icons/
 Description: An easy to use SVG icons plugin with over 500+ brand icons. Use these icons in your menus, widgets, posts, or pages.
-Version: 2.8.3
+Version: 2.8.4
 Author: Theme Mason
 Author URI: https://thememason.com/
 License: GPL2
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 // global vars
-define ( 'SIMPLE_ICONS_VERSION', '2.8.3');
+define ( 'SIMPLE_ICONS_VERSION', '2.8.4');
 define ( 'SIMPLE_ICONS_DEBUG', false);
 define ( 'SIMPLE_ICONS_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 define ( 'SIMPLE_ICONS_PLUGIN_PATH', plugin_dir_path( __FILE__ ));

@@ -16,8 +16,8 @@
  * Plugin Name:       Graphina - Elementor Charts and Graphs
  * Plugin URI:        https://iqonicthemes.com
  * Description:       Your ultimate charts and graphs solution to enhance visual effects. Create versatile, advanced and interactive charts on your website.
- * Version:           1.8.6
- * Elementor tested up to: 3.15.1
+ * Version:           1.8.7
+ * Elementor tested up to: 3.17.3
  * Elementor Pro tested up to: 3.7.7
  * Author:            Iqonic Design
  * Author URI:        https://iqonic.design/
@@ -45,7 +45,7 @@ if (!defined('GRAPHINA_BASE_PATH'))
  * Start at version 1.5.7 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('GRAPHINA_CHARTS_FOR_ELEMENTOR_VERSION', '1.8.6');
+define('GRAPHINA_CHARTS_FOR_ELEMENTOR_VERSION', '1.8.7');
 
 if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
@@ -134,14 +134,14 @@ if(gettype($data) == 'boolean'){
 
 require_once plugin_dir_path(__FILE__) . 'admin/class-graphina-charts-for-elementor-admin.php';
 
-(new Graphina_Charts_For_Elementor_Admin('1.8.6'));
+(new Graphina_Charts_For_Elementor_Admin('1.8.7'));
 
 
 
 add_action( 'admin_notices', function() {
-    if(isGraphinaProInstall() && isGraphinaPro() && (version_compare(graphinaGetPluginVersion('graphina-pro-charts-for-elementor'),'1.4.2', '<'))) {
+    if(isGraphinaProInstall() && isGraphinaPro() && (version_compare(graphinaGetPluginVersion('graphina-pro-charts-for-elementor'),'1.4.3', '<'))) {
         echo '<div class="notice notice-warning is-dismissible">
-              <p style="font-size: 15px;"><b><span style="color:#b10101;">Important:</span> The latest graphina plugin (version 1.8.6) requires the latest graphina pro (version 1.4.2). Please update the graphina pro to the latest version. Click <a href="https://themeforest.net/downloads" target="_blank">here</a> to download the latest version.</b></p>
+              <p style="font-size: 15px;"><b><span style="color:#b10101;">Important:</span> The latest graphina plugin (version 1.8.7) requires the latest graphina pro (version 1.4.3). Please update the graphina pro to the latest version. Click <a href="https://themeforest.net/downloads" target="_blank">here</a> to download the latest version.</b></p>
               </div>';
     }
 } );

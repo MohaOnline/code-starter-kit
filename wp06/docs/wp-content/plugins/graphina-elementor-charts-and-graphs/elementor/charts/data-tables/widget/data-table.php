@@ -249,7 +249,7 @@ class Data_Table extends Widget_Base
                     10=>__(10),
                     50=>__(50),
                     100=>__(100),
-                    'all'=>__('All'),
+                    -1=>__('All'),
                 ]
             ]
         );
@@ -895,6 +895,7 @@ class Data_Table extends Widget_Base
                         sort: '<?php echo $settings['iq_' . $type . 'table_sort'] == 'yes' ?>',
                         pagingType: '<?php echo $settings['iq_' . $type . 'pagination_type']; ?>',
                         scrollX: '<?php echo $settings['iq_' . $type . 'table_scroll']; ?>',
+                        pageLength: '<?php echo $settings['iq_' . $type . '_pagelength']; ?>',
                         responsive: true,
                         rowReorder: {
                             selector: 'td:nth-child(2)'

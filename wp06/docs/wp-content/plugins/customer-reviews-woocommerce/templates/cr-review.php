@@ -14,7 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 
-	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
+	<?php
+		$verified = wc_review_is_from_verified_owner( $comment->comment_ID );
+		$cr_comment_container_class = 'comment_container';
+		if ( $verified ) {
+			$cr_comment_container_class .= ' cr-verified-owner';
+		}
+	?>
+
+	<div id="comment-<?php comment_ID(); ?>" class="<?php echo esc_attr( $cr_comment_container_class ); ?>">
 
 		<?php
 
@@ -41,7 +49,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php
 
-			$verified = wc_review_is_from_verified_owner( $comment->comment_ID );
 			$shop_manager = false;
 			if( isset( $comment->user_id ) ) {
 				if( user_can( $comment->user_id, 'manage_woocommerce' ) ) {

@@ -24,16 +24,71 @@ if ('undefined' !== typeof lpDataAdmin) {
     apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
     apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
     apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
-    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+    apiSearchUsers: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-user',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course',
+    apiUnAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/unassign-user-course'
   };
 }
 if ('undefined' !== typeof lpData) {
   lplistAPI.frontend = {
     apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
-    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course',
+    apiAJAX: lpData.lp_rest_url + 'lp/v1/load_content_via_ajax/'
   };
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
+
+/***/ }),
+
+/***/ "./assets/src/js/utils.js":
+/*!********************************!*\
+  !*** ./assets/src/js/utils.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   lpAddQueryArgs: () => (/* binding */ lpAddQueryArgs),
+/* harmony export */   lpFetchAPI: () => (/* binding */ lpFetchAPI),
+/* harmony export */   lpGetCurrentURLNoParam: () => (/* binding */ lpGetCurrentURLNoParam)
+/* harmony export */ });
+const lpFetchAPI = (url, data = {}, functions = {}) => {
+  if ('function' === typeof functions.before) {
+    functions.before();
+  }
+  fetch(url, {
+    method: 'GET',
+    ...data
+  }).then(response => response.json()).then(response => {
+    if ('function' === typeof functions.success) {
+      functions.success(response);
+    }
+  }).catch(err => {
+    if ('function' === typeof functions.error) {
+      functions.error(err);
+    }
+  }).finally(() => {
+    if ('function' === typeof functions.completed) {
+      functions.completed();
+    }
+  });
+};
+const lpGetCurrentURLNoParam = () => {
+  let currentUrl = window.location.href;
+  const hasParams = currentUrl.includes('?');
+  if (hasParams) {
+    currentUrl = currentUrl.split('?')[0];
+  }
+  return currentUrl;
+};
+const lpAddQueryArgs = (endpoint, args) => {
+  const url = new URL(endpoint);
+  Object.keys(args).forEach(arg => {
+    url.searchParams.set(arg, args[arg]);
+  });
+  return url;
+};
+
 
 /***/ })
 
@@ -101,6 +156,8 @@ var __webpack_exports__ = {};
   \*************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api */ "./assets/src/js/api.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./assets/src/js/utils.js");
+
 
 const classCourseFilter = 'lp-form-course-filter';
 
@@ -175,7 +232,10 @@ window.lpCourseFilter = {
     }
     controller = new AbortController();
     signal = controller.signal;
-    const url = _api__WEBPACK_IMPORTED_MODULE_0__["default"].apiCourses + '?c_search=' + keyword + '&c_suggest=1';
+    let url = _api__WEBPACK_IMPORTED_MODULE_0__["default"].frontend.apiCourses + '?c_search=' + keyword + '&c_suggest=1';
+    if (lpData.urlParams.hasOwnProperty('lang')) {
+      url += '&lang=' + lpData.urlParams.lang;
+    }
     let paramsFetch = {
       method: 'GET'
     };
@@ -202,10 +262,83 @@ window.lpCourseFilter = {
       }
     });
   },
+  loadWidgetFilterREST: widgetForm => {
+    const parent = widgetForm.closest('.learnpress-widget-wrapper');
+    if (!parent) {
+      return;
+    }
+    const widgetData = parent.dataset.widget ? JSON.parse(parent.dataset.widget) : '';
+    const url = _api__WEBPACK_IMPORTED_MODULE_0__["default"].frontend.apiWidgets;
+    const formData = new FormData(widgetForm);
+    const filterCourses = {
+      paged: 1
+    };
+    const elLoadingChange = parent.querySelector('.lp-widget-loading-change');
+    elLoadingChange.style.display = 'block';
+    for (const pair of formData.entries()) {
+      const key = pair[0];
+      const value = formData.getAll(key);
+      if (!filterCourses.hasOwnProperty(key)) {
+        let value_convert = value;
+        if ('object' === typeof value) {
+          value_convert = value.join(',');
+        }
+        filterCourses[key] = value_convert;
+      }
+    }
+    if ('undefined' !== typeof lpData.urlParams.page_term_id_current) {
+      filterCourses.page_term_id_current = lpData.urlParams.page_term_id_current;
+    } else if ('undefined' !== typeof lpData.urlParams.page_tag_id_current) {
+      filterCourses.page_tag_id_current = lpData.urlParams.page_tag_id_current;
+    }
+    const filterParamsUrl = {
+      params_url: filterCourses
+    };
+    // Send lang to API if exist for multiple lang.
+    if (lpData.urlParams.hasOwnProperty('lang')) {
+      filterParamsUrl.params_url.lang = lpData.urlParams.lang;
+    }
+    const paramsFetch = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...widgetData,
+        ...filterParamsUrl
+      })
+    };
+    if (0 !== parseInt(lpData.user_id)) {
+      paramsFetch.headers['X-WP-Nonce'] = lpData.nonce;
+    }
+    const callBack = {
+      before: () => {},
+      success: res => {
+        const {
+          data,
+          status,
+          message
+        } = res;
+        if (data && status === 'success') {
+          widgetForm.innerHTML = data;
+        } else if (message) {
+          parent.insertAdjacentHTML('afterbegin', `<div class="lp-ajax-message error" style="display:block">${message}</div>`);
+        }
+      },
+      error: error => {},
+      completed: () => {
+        elLoadingChange.style.display = 'none';
+      }
+    };
+
+    // Call API load widget
+    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpFetchAPI)(url, paramsFetch, callBack);
+  },
   submit: form => {
     const formData = new FormData(form); // Create a FormData object from the form
     const elListCourse = document.querySelector('.learn-press-courses');
-    const skeleton = document.querySelector('.lp-archive-course-skeleton');
+
+    //const skeleton = elListCourse.querySelector( '.lp-archive-course-skeleton' );
     const filterCourses = {
       paged: 1
     };
@@ -219,10 +352,21 @@ window.lpCourseFilter = {
         filterCourses[key] = value;
       }
     }
-    if ('undefined' !== typeof lpSettingCourses && lpData.is_course_archive && lpSettingCourses.lpArchiveLoadAjax && elListCourse && skeleton && 'undefined' !== typeof window.lpCourseList) {
+    if ('undefined' !== typeof lpData.urlParams.page_term_id_current) {
+      filterCourses.page_term_id_current = lpData.urlParams.page_term_id_current;
+    }
+    if ('undefined' !== typeof lpData.urlParams.page_tag_id_current) {
+      filterCourses.page_tag_id_current = lpData.urlParams.page_tag_id_current;
+    }
+
+    // Send lang to API if exist for multiple lang.
+    if (lpData.urlParams.hasOwnProperty('lang')) {
+      filterCourses.lang = lpData.urlParams.lang;
+    }
+    if ('undefined' !== typeof lpSettingCourses && lpData.is_course_archive && lpSettingCourses.lpArchiveLoadAjax && elListCourse && 'undefined' !== typeof window.lpCourseList) {
       window.lpCourseList.triggerFetchAPI(filterCourses);
     } else {
-      const courseUrl = lpData.courses_url || '';
+      const courseUrl = lpData.urlParams.page_term_url || lpData.courses_url || '';
       const url = new URL(courseUrl);
       Object.keys(filterCourses).forEach(arg => {
         url.searchParams.set(arg, filterCourses[arg]);
@@ -250,6 +394,9 @@ window.lpCourseFilter = {
     if (lpData.is_course_archive) {
       btnSubmit.click();
     }
+
+    // Load AJAX widget by params
+    window.lpCourseFilter.loadWidgetFilterREST(form);
   },
   showHideSearchResult: target => {
     const elResult = document.querySelector('.lp-course-filter-search-result');
@@ -265,10 +412,27 @@ window.lpCourseFilter = {
   },
   triggerInputChoice: target => {
     if (target.tagName === 'INPUT') {
+      const parent = target.closest('.lp-course-filter__field');
+      if (!parent) {
+        return;
+      }
+
+      // Filter courses
+      const form = parent.closest(`.${classCourseFilter}`);
+      const btnSubmit = form.querySelector('.course-filter-submit');
+      let enableLoadAJAXCourses = false;
+      enableLoadAJAXCourses = 'undefined' !== typeof lpSettingCourses ? parseInt(lpSettingCourses.lpArchiveLoadAjax) : 0;
+      const elListCourse = document.querySelector('.learn-press-courses');
+      if (elListCourse && enableLoadAJAXCourses) {
+        btnSubmit.click();
+      }
+
+      // Load AJAX widget by params
+      window.lpCourseFilter.loadWidgetFilterREST(form);
       return;
     }
 
-    // Choice field
+    // Click el parent of input to tick/untick field
     let elChoice;
     if (target.classList.contains('lp-course-filter__field')) {
       elChoice = target;

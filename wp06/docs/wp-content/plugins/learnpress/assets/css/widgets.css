@@ -107,10 +107,7 @@
   padding-bottom: 12px;
 }
 .lp-form-course-filter .lp-form-course-filter__item .lp-form-course-filter__title {
-  font-size: 1.125em;
   font-weight: 500;
-  margin-bottom: 12px;
-  text-transform: capitalize;
 }
 .lp-form-course-filter .lp-form-course-filter__item .lp-form-course-filter__content {
   position: relative;
@@ -238,6 +235,93 @@
   margin-right: 4px;
 }
 
+@keyframes lp-rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lp-rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.ajaxload {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #7b7b7b;
+  content: "";
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-animation: lp-rotating 1s linear infinite;
+  -moz-animation: lp-rotating 1s linear infinite;
+  animation: lp-rotating 1s linear infinite;
+}
+.ajaxload::after {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background: #dedede;
+  content: "";
+}
+
+.lp-ajaxload-style-1 {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.lp-ajaxload-style-1::before, .lp-ajaxload-style-1::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #ddd;
+  content: "";
+}
+.lp-ajaxload-style-1::after {
+  clip: rect(0, 32px, 16px, 16px);
+  border-color: #2fa7ff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-animation: lp-rotating 1s linear infinite;
+  -moz-animation: lp-rotating 1s linear infinite;
+  animation: lp-rotating 1s linear infinite;
+}
+
 .learnpress.widget {
   margin-bottom: 30px;
 }
@@ -246,14 +330,17 @@
     max-width: 400px;
   }
 }
-.learnpress.widget .widgettitle {
-  margin-top: 0;
-  margin-bottom: 2px;
-  font-size: 1.25em;
-  font-weight: 600;
-}
 .learnpress.widget .learnpress-widget-wrapper {
   margin-top: 16px;
+  position: relative;
+}
+.learnpress.widget .learnpress-widget-wrapper .lp-widget-loading-change {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1607843137);
+  top: 0;
 }
 .learnpress.widget h3 {
   margin-bottom: 20px;
@@ -573,40 +660,4 @@
 }
 .learnpress-widget-wrapper__restapi ul {
   padding: 0;
-}
-
-.lp-course-filter .price__item, .lp-course-filter .instructor__item, .lp-course-filter .level__item, .lp-course-filter .term-list__item {
-  display: flex;
-  justify-content: space-between;
-}
-.lp-course-filter .price__item label, .lp-course-filter .instructor__item label, .lp-course-filter .level__item label, .lp-course-filter .term-list__item label {
-  cursor: pointer;
-}
-.lp-course-filter .lp-search-keyword {
-  position: relative;
-}
-.lp-course-filter .lp-search-keyword input {
-  width: 100%;
-}
-.lp-course-filter .lp-search-keyword i.loading {
-  font-style: normal;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.lp-course-filter .lp-search-keyword i.loading::before {
-  display: inline-block;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f110";
-  -webkit-animation: lp-rotating 1s linear infinite;
-  -moz-animation: lp-rotating 1s linear infinite;
-  animation: lp-rotating 1s linear infinite;
-}
-.lp-course-filter ul.lp-suggest-result li {
-  padding: 8px 15px;
-}
-.lp-course-filter ul > li {
-  list-style: none;
 }

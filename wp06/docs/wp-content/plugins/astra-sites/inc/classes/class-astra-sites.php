@@ -1729,8 +1729,10 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 			if ( 'spectra-one' === get_option( 'stylesheet', 'astra' ) ) {
 				$spectra_theme = 'installed-and-active';
 			}
+			$enable_block_builder = apply_filters( 'st_enable_block_page_builder', false );
 			$default_page_builder = ( 'installed-and-active' === $spectra_theme ) ? 'fse' : Astra_Sites_Page::get_instance()->get_setting( 'page_builder' );
-
+			$default_page_builder = ( $enable_block_builder && empty( $default_page_builder ) ) ? 'gutenberg' : $default_page_builder;
+			
 			if ( is_callable( '\SureCart\Models\ApiToken::get()' ) ) {
 				$surecart_store_exist = \SureCart\Models\ApiToken::get();
 			}

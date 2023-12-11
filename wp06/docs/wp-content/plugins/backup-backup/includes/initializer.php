@@ -84,6 +84,17 @@
       }
 
       if (defined('BMI_RESTORE_SECRET') && defined('BMI_POST_CONTINUE_RESTORE') && BMI_POST_CONTINUE_RESTORE === true) {
+        
+        if (!isset($_POST['bmi_restore_secret'])) exit;
+        
+        // Check the secret
+        $bmi_secret_storage = BMI_TMP . DIRECTORY_SEPARATOR . '.restore_secret';
+        if (file_exists($bmi_secret_storage)) {
+          $bmi_saved_secret = file_get_contents($bmi_secret_storage);
+          if ($bmi_saved_secret === $_POST['bmi_restore_secret']) {
+            $bmi_continue_module = true;
+          } else exit;
+        } else exit;
 
         $_SERVER['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest';
         $_POST['f'] = 'continue_restore_process';
@@ -401,7 +412,7 @@
           }
           $this->handleErrorDuringBackup($msg, $file, $line, $progress);
 
-          $fullPath = BMI_ROOT_DIR . '/tmp' . '/';
+          $fullPath = BMI_TMP . DIRECTORY_SEPARATOR;
           array_map('unlink', glob($fullPath . '*.tmp'));
           array_map('unlink', glob($fullPath . '*.gz'));
         }
@@ -562,7 +573,7 @@
     }
 
     public function backup_inproper_time($should_time) {
-      $plan_file = BMI_INCLUDES . '/htaccess/.plan';
+      $plan_file = BMI_TMP . DIRECTORY_SEPARATOR . '.plan';
       if (!file_exists($plan_file) || intval($should_time) < 1234567890) return;
 
       Logger::log('Sending notification about backup being late');
@@ -585,8 +596,8 @@
       if (Dashboard\bmi_get_config('CRON:ENABLED') !== true) return;
 
       $now = time();
-      if (file_exists(BMI_INCLUDES . '/htaccess/.last')) {
-        $last = @file_get_contents(BMI_INCLUDES . '/htaccess/.last');
+      if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.last')) {
+        $last = @file_get_contents(BMI_TMP . DIRECTORY_SEPARATOR . '.last');
         $last_status = explode('.', $last)[0];
         $last_time = intval(explode('.', $last)[1]);
       } else {
@@ -594,9 +605,9 @@
         $last_status = 0;
       }
 
-      if (file_exists(BMI_INCLUDES . '/htaccess/.plan')) {
-        $plan = intval(@file_get_contents(BMI_INCLUDES . '/htaccess/.plan'));
-        if ($last_time < $plan && ((time() - $plan) > 3600)) {
+      if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.plan')) {
+        $plan = intval(@file_get_contents(BMI_TMP . DIRECTORY_SEPARATOR . '.plan'));
+        if ($last_time < $plan && ((time() - $plan) > 7200)) {
           if ($last_status !== '0') {
             $this->backup_inproper_time($plan);
             if (!wp_next_scheduled('bmi_do_backup_right_now')) {
@@ -687,7 +698,7 @@
       }
     }
 
-    public function handle_after_cron() {
+    public static function handle_after_cron() {
       require_once BMI_INCLUDES . DIRECTORY_SEPARATOR . 'scanner' . DIRECTORY_SEPARATOR . 'backups.php';
       $backups = new Backups();
       $list = $backups->getAvailableBackups();
@@ -711,13 +722,14 @@
       $cron_dates = array_slice($cron_dates, 0, -(intval(Dashboard\bmi_get_config('CRON:KEEP'))));
       foreach ($cron_dates as $key => $value) {
         $name = $cron_list[$cron_dates[$key]];
+        $name = explode('#%&', $name)[1];
         Logger::log(__("Removing backup due to keep rules: ", 'backup-backup') . $name);
         @unlink(BMI_BACKUPS . DIRECTORY_SEPARATOR . $name);
       }
     }
 
     public function set_last_cron($status, $time) {
-      $file = BMI_INCLUDES . '/htaccess/.last';
+      $file = BMI_TMP . DIRECTORY_SEPARATOR . '.last';
       file_put_contents($file, $status . '.' . $time);
     }
 
@@ -774,8 +786,8 @@
 
     public function handle_cron_backup() {
 
-      $plan_file = BMI_INCLUDES . '/htaccess/.plan';
-      $last_file = BMI_INCLUDES . '/htaccess/.last';
+      $plan_file = BMI_TMP . DIRECTORY_SEPARATOR . '.plan';
+      $last_file = BMI_TMP . DIRECTORY_SEPARATOR . '.last';
 
       // Abort if disabled
       if (Dashboard\bmi_get_config('CRON:ENABLED') !== true) {
@@ -791,7 +803,7 @@
       if (!file_exists($plan_file)) return;
 
       // Planned time
-      $plan = intval(@file_get_contents(BMI_INCLUDES . '/htaccess/.plan'));
+      $plan = intval(@file_get_contents(BMI_TMP . DIRECTORY_SEPARATOR . '.plan'));
 
       // Check difference
       if ((time() - $plan) > 3600) {
@@ -842,10 +854,13 @@
           $handler = new BMI_Ajax();
           $handler->resetLatestLogs();
           $backup = $handler->prepareAndMakeBackup(true);
-
+          
           if ($backup['status'] == 'success') {
-            Logger::log(__("Automatic backup successed: ", 'backup-backup') . $backup['filename']);
-            $this->handle_after_cron();
+            if (isset($backup['filename'])) {
+              Logger::log(__("Automatic backup successed: ", 'backup-backup') . $backup['filename']);
+            } else {
+              Logger::log(__("Automatic backup successed", 'backup-backup'));
+            }
             $this->set_last_cron('1', $now);
           } elseif ($backup['status'] == 'msg') {
             $this->handle_cron_error($backup['why']);
@@ -862,6 +877,8 @@
         $this->handle_cron_error($e);
         $this->set_last_cron('5', $now);
       }
+      
+      $this->handle_after_cron();
 
       if (file_exists(BMI_BACKUPS . '/.cron')) {
         @unlink(BMI_BACKUPS . '/.cron');
@@ -872,7 +889,7 @@
       wp_clear_scheduled_hook('bmi_do_backup_right_now');
       wp_schedule_single_event($time, 'bmi_do_backup_right_now');
 
-      $file = BMI_INCLUDES . '/htaccess/.plan';
+      $file = BMI_TMP . DIRECTORY_SEPARATOR . '.plan';
       file_put_contents($file, $time);
     }
 
@@ -949,7 +966,7 @@
     public function handle_after_actions() {
 
       // Handle After Migration actions
-      $afterMigrationLock = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.migrationFinished';
+      $afterMigrationLock = BMI_TMP . DIRECTORY_SEPARATOR . '.migrationFinished';
       if (file_exists($afterMigrationLock)) {
         if (strpos(site_url(), 'tastewp') !== false) {
 
@@ -1050,6 +1067,17 @@
 
               $backupname = $get_bid;
               $file = $this->fixSlashes(BMI_BACKUPS . DIRECTORY_SEPARATOR . $backupname);
+              
+              $outsideDir = false;
+              if (!(file_exists($file) && $this->fixSlashes(dirname($file)) == $this->fixSlashes(BMI_BACKUPS))) {
+                $outsideDir = true;
+              }
+              
+              if (strpos(strtolower(mime_content_type($file)), 'zip') === false || $outsideDir) {
+                header('HTTP/1.0 423 Locked');
+                _e("Incorrect usage of the query request.", 'backup-backup');
+                exit;
+              }
 
               if (Dashboard\bmi_get_config('OTHER:DOWNLOAD:DIRECT') == 'true') {
                 if (file_exists(BMI_BACKUPS . DIRECTORY_SEPARATOR . '.htaccess')) @unlink(BMI_BACKUPS . DIRECTORY_SEPARATOR . '.htaccess');
@@ -1062,49 +1090,48 @@
               }
 
               // Prevent parent directory downloading
-              if (file_exists($file) && $this->fixSlashes(dirname($file)) == $this->fixSlashes(BMI_BACKUPS)) {
-                if (ob_get_contents()) ob_end_clean();
+              if (ob_get_contents()) ob_end_clean();
 
-                if ($this->isFunctionEnabled('ignore_user_abort')) @ignore_user_abort(true);
-                if ($this->isFunctionEnabled('set_time_limit')) @set_time_limit(16000);
-                if ($this->isFunctionEnabled('headers_sent') && $this->isFunctionEnabled('session_status')) {
-                  if (!headers_sent() && session_status() === PHP_SESSION_DISABLED) {
-                    if ($this->isFunctionEnabled('ini_set')) {
-                      @ini_set('max_execution_time', '259200');
-                      @ini_set('max_input_time', '259200');
-                      @ini_set('session.gc_maxlifetime', '1200');
-                      @ini_set('memory_limit', '-1');
-                      if (@ini_get('zlib.output_compression')) {
-                        @ini_set('zlib.output_compression', 'Off');
-                      }
+              if ($this->isFunctionEnabled('ignore_user_abort')) @ignore_user_abort(true);
+              if ($this->isFunctionEnabled('set_time_limit')) @set_time_limit(16000);
+              if ($this->isFunctionEnabled('headers_sent') && $this->isFunctionEnabled('session_status')) {
+                if (!headers_sent() && session_status() === PHP_SESSION_DISABLED) {
+                  if ($this->isFunctionEnabled('ini_set')) {
+                    @ini_set('max_execution_time', '259200');
+                    @ini_set('max_input_time', '259200');
+                    @ini_set('session.gc_maxlifetime', '1200');
+                    @ini_set('memory_limit', '-1');
+                    if (@ini_get('zlib.output_compression')) {
+                      @ini_set('zlib.output_compression', 'Off');
                     }
                   }
                 }
-
-                if (strlen(session_id()) > 0) session_write_close();
-
-                $fp = @fopen($file, 'rb');
-
-                // header('X-Sendfile: ' . $file);
-                // header('X-Sendfile-Type: X-Accel-Redirect');
-                // header('X-Accel-Redirect: ' . $file);
-                // header('X-Accel-Buffering: yes');
-                header('Expires: 0');
-                header('Pragma: public');
-                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-                header('Content-Disposition: attachment; filename="' . $backupname . '"');
-                header('Content-Type: application/octet-stream');
-                header('Content-Transfer-Encoding: binary');
-                header('Content-Length: ' . filesize($file));
-                header('Content-Description: File Transfer');
-                http_response_code(200);
-
-                if (ob_get_level()) ob_end_clean();
-
-                fpassthru($fp);
-                fclose($fp);
-                exit;
               }
+
+              if (strlen(session_id()) > 0) session_write_close();
+
+              $fp = @fopen($file, 'rb');
+
+              // header('X-Sendfile: ' . $file);
+              // header('X-Sendfile-Type: X-Accel-Redirect');
+              // header('X-Accel-Redirect: ' . $file);
+              // header('X-Accel-Buffering: yes');
+              header('Expires: 0');
+              header('Pragma: public');
+              header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+              header('Content-Disposition: attachment; filename="' . $backupname . '"');
+              header('Content-Type: application/octet-stream');
+              header('Content-Transfer-Encoding: binary');
+              header('Content-Length: ' . filesize($file));
+              header('Content-Description: File Transfer');
+              http_response_code(200);
+
+              if (ob_get_level()) ob_end_clean();
+
+              fpassthru($fp);
+              fclose($fp);
+              exit;
+
             } else {
               if (ob_get_contents()) ob_end_clean();
               header('HTTP/1.0 423 Locked');
@@ -1191,14 +1218,14 @@
               } else if ($get_pid == 'latest_full.log') {
                 $progress = dirname(BMI_BACKUPS) . DIRECTORY_SEPARATOR . 'backups' . DIRECTORY_SEPARATOR . 'latest_progress.log';
                 $logs = dirname(BMI_BACKUPS) . DIRECTORY_SEPARATOR . 'backups' . DIRECTORY_SEPARATOR . 'latest.log';
-                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 5))) || current_user_can('administrator')) {
+                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 1))) || current_user_can('administrator')) {
                   if (ob_get_level()) ob_end_clean();
                   readfile($progress);
                   echo "\n";
                   $this->readFileSensitive($logs);
                   exit;
                 } else {
-                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 5)) {
+                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 1)) {
                     if (ob_get_level()) ob_end_clean();
                     echo __("Due to security reasons access to this file is disabled at this moment.", 'backup-backup') . "\n";
                     echo __("Human readable: file expired.", 'backup-backup');
@@ -1212,14 +1239,14 @@
               } else if ($get_pid == 'latest_migration_full.log') {
                 $progress = dirname(BMI_BACKUPS) . DIRECTORY_SEPARATOR . 'backups' . DIRECTORY_SEPARATOR . 'latest_migration_progress.log';
                 $logs = dirname(BMI_BACKUPS) . DIRECTORY_SEPARATOR . 'backups' . DIRECTORY_SEPARATOR . 'latest_migration.log';
-                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 5))) || current_user_can('administrator')) {
+                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 1))) || current_user_can('administrator')) {
                   if (ob_get_level()) ob_end_clean();
                   readfile($progress);
                   echo "\n";
                   $this->readFileSensitive($logs);
                   exit;
                 } else {
-                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 5)) {
+                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 1)) {
                     if (ob_get_level()) ob_end_clean();
                     echo __("Due to security reasons access to this file is disabled at this moment.", 'backup-backup') . "\n";
                     echo __("Human readable: file expired.", 'backup-backup');
@@ -1233,14 +1260,14 @@
               } else if ($get_pid == 'latest_staging_full.log') {
                 $progress = BMI_STAGING . DIRECTORY_SEPARATOR . 'latest_staging_progress.log';
                 $logs = BMI_STAGING . DIRECTORY_SEPARATOR . 'latest_staging.log';
-                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 5))) || current_user_can('administrator')) {
+                if ((file_exists($progress) && file_exists($logs) && ((time() - filemtime($progress)) < (60 * 1))) || current_user_can('administrator')) {
                   if (ob_get_level()) ob_end_clean();
                   readfile($progress);
                   echo "\n";
                   $this->readFileSensitive($logs);
                   exit;
                 } else {
-                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 5)) {
+                  if (file_exists($progress) && !(time() - filemtime($progress)) < (60 * 1)) {
                     if (ob_get_level()) ob_end_clean();
                     echo __("Due to security reasons access to this file is disabled at this moment.", 'backup-backup') . "\n";
                     echo __("Human readable: file expired.", 'backup-backup');
@@ -1255,7 +1282,7 @@
                 $file = dirname(BMI_BACKUPS) . DIRECTORY_SEPARATOR . 'backups' . DIRECTORY_SEPARATOR . $get_pid;
                 if ($get_pid == 'latest_staging.log') $file = BMI_STAGING . DIRECTORY_SEPARATOR . $get_pid;
                 if ($get_pid == 'latest_staging_progress.log') $file = BMI_STAGING . DIRECTORY_SEPARATOR . $get_pid;
-                if (file_exists($file) && (((time() - filemtime($file)) < (60 * 5)) || current_user_can('administrator'))) {
+                if (file_exists($file) && (((time() - filemtime($file)) < (60 * 1)) || current_user_can('administrator'))) {
                   if (ob_get_level()) ob_end_clean();
 
                   $this->readFileSensitive($file);
@@ -1269,7 +1296,7 @@
                   echo __("[DOWNLOAD GENERATED] Last update (date): ", 'backup-backup') . date('Y-m-d H:i:s', filemtime($file)) . " \n";
                   exit;
                 } else {
-                  if (file_exists($file) && !(time() - filemtime($file)) < (60 * 5)) {
+                  if (file_exists($file) && !(time() - filemtime($file)) < (60 * 1)) {
                     if (ob_get_level()) ob_end_clean();
                     echo __("Due to security reasons access to this file is disabled at this moment.", 'backup-backup') . "\n";
                     echo __("Human readable: file expired.", 'backup-backup');

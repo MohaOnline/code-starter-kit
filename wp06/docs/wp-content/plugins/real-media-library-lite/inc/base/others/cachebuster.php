@@ -1,16 +1,16 @@
 <?php
-// Cachebusters generated on 2023-11-16 11:09:20
+// Cachebusters generated on 2023-11-28 04:55:29
 return [
 	'src/public/dist/i18n-dependency-map-default-lite.json'=> '99914b932bd37a50b983c5e7c90ae93b',
 	'src/public/dist/i18n-dependency-map-default-pro.json'=> '99914b932bd37a50b983c5e7c90ae93b',
 	'src/public/dist/rml.css'=> '222162dba7e9a96448125bcd47c46557',
-	'src/public/dist/rml.css.map'=> 'a0a57806b836e6a364f2472da0e7970d',
-	'src/public/dist/rml.lite.js'=> '1c3473af8394420cf512c56598b8f7c3',
+	'src/public/dist/rml.css.map'=> '8ddfb737878763cf1da0e0685eb80562',
+	'src/public/dist/rml.lite.js'=> '5b31256e816047966eae1568c204d212',
 	'src/public/dist/rml.lite.js.LICENSE.txt'=> '3f4acc96697998db106cf76b25abccf2',
-	'src/public/dist/rml.lite.js.map'=> 'b8ae650e5fd4669691f9710b1fdf12ea',
-	'src/public/dist/rml.pro.js'=> 'dade9128ed971e9741d3e0754fc871ce',
+	'src/public/dist/rml.lite.js.map'=> '07d76ebbe4b25fab21e1fdbdc0008af6',
+	'src/public/dist/rml.pro.js'=> '477ae8157b8acb931346a168c3398bbd',
 	'src/public/dist/rml.pro.js.LICENSE.txt'=> '3f4acc96697998db106cf76b25abccf2',
-	'src/public/dist/rml.pro.js.map'=> 'ad2f151aab6f1c66f7d3e12ab3ffaf86',
+	'src/public/dist/rml.pro.js.map'=> '51b9ed2ddc2b04d0a767d26575e06a53',
 	'src/public/dist/rml_gutenberg.lite.js'=> '7400d9b23a15253d6ad4970e1cd2538f',
 	'src/public/dist/rml_gutenberg.lite.js.map'=> '7976a4c0d8fa1cb4f75a5be2108fcba7',
 	'src/public/dist/rml_gutenberg.lite.js.pot'=> '43b22b0ff1681d57cfabd31528efba0f',

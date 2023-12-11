@@ -75,7 +75,8 @@
 
 				if( null != ( p = /(\d{1,2})[:\.](\d{1,2})([:\.](\d{1,2}))?\s*([ap]m)?/i.exec( date ) ) ){
 					if(/h+/i.test( format ) ){
-						if( typeof p[ 5 ] != 'undefined' && /pm/i.test( p[ 5 ] ) ) p[ 1 ] = ( p[ 1 ]*1 + 12 ) % 24;
+						if( typeof p[ 5 ] != 'undefined' && /pm/i.test( p[ 5 ] ) && p[ 1 ]*1 != 12 ) p[ 1 ] = ( p[ 1 ]*1 + 12 ) % 24;
+						if( typeof p[ 5 ] != 'undefined' && /am/i.test( p[ 5 ] ) && p[ 1 ]*1 == 12 ) p[ 1 ] = 0;
 						d.setHours( p[ 1 ] );
 					}
 

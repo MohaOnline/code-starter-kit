@@ -254,8 +254,12 @@ form.cn-options-submit-disabled .submit {
 .cn-consent-log .cn-consent-log-item {
 	font-size: 14px;
 	display: block;
-	margin-bottom: 20px;
-	cursor: default;
+	cursor: pointer;
+}
+
+.cn-consent-log .cn-consent-log-item.disabled {
+        cursor: default;
+        pointer-events: none;
 }
 
 .cn-consent-log .cn-consent-log-item input {
@@ -264,7 +268,7 @@ form.cn-options-submit-disabled .submit {
 
 .cn-consent-log .cn-consent-log-item span {
 	display: block;
-	margin: 0 0 0 8px;
+	margin: 9px;
 	padding: 0;
 	vertical-align: text-top;
 }
@@ -276,7 +280,6 @@ form.cn-options-submit-disabled .submit {
 	transition-timing-function: ease-in-out;
 	text-decoration: underline;
 	font-weight: 600;
-	cursor: pointer;
 	position: relative;
 }
 
@@ -296,24 +299,19 @@ form.cn-options-submit-disabled .submit {
 	position: absolute;
 }
 
-.cn-consent-log .cn-consent-log-item .cn-consent-log-head.disabled {
+.cn-consent-log .cn-consent-log-item.disabled .cn-consent-log-head {
 	color: #bbb;
 	transition-property: none;
 	transition-duration: unset;
 	transition-timing-function: unset;
 	text-decoration: underline;
 	font-weight: 600;
-	cursor: default;
 	position: relative;
 	pointer-events: none;
 }
 
 .cn-consent-log .cn-consent-log-item input:checked~.cn-consent-log-head:before {
 	transform: rotate(135deg);
-}
-
-.cn-consent-log .cn-consent-log-item input:checked~.cn-consent-log-head.disabled:before {
-	transform: none;
 }
 
 .cn-consent-logs-row {
@@ -330,9 +328,9 @@ form.cn-options-submit-disabled .submit {
 
 .cn-consent-logs-data .spinner {
 	position: relative;
-    top: 38px;
-    margin: 0;
-    padding: 0;
+        top: 38px;
+        margin: 0;
+        padding: 0;
 	float: none;
 	left: calc( 50% - 10px );
 }

@@ -277,7 +277,7 @@
 		</main>
 		',
         esc_attr( $tsvg_shortcode_id ),
-		esc_attr( $tsvg_style_options->TotalSoft_GV_2_36 ),
+		esc_attr( $tsvg_style_options->TotalSoft_GV_2_09 ),
 		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_07 ),
 		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_02 ),
 		esc_attr( $tsvg_setting_options->TotalSoft_VGallery_Set_01 ),

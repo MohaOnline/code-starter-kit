@@ -24,13 +24,16 @@ if ('undefined' !== typeof lpDataAdmin) {
     apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
     apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
     apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
-    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+    apiSearchUsers: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-user',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course',
+    apiUnAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/unassign-user-course'
   };
 }
 if ('undefined' !== typeof lpData) {
   lplistAPI.frontend = {
     apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
-    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course',
+    apiAJAX: lpData.lp_rest_url + 'lp/v1/load_content_via_ajax/'
   };
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
@@ -162,7 +165,7 @@ function widgetRestAPI() {
     return;
   }
   const getResponse = ele => {
-    const widget = ele.dataset.widget ? JSON.parse(ele.dataset.widget) : '';
+    const widgetData = ele.dataset.widget ? JSON.parse(ele.dataset.widget) : '';
     const url = _api__WEBPACK_IMPORTED_MODULE_1__["default"].frontend.apiWidgets;
     const paramsFetch = {
       method: 'POST',
@@ -170,7 +173,7 @@ function widgetRestAPI() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        ...widget,
+        ...widgetData,
         ...{
           params_url: lpData.urlParams
         }
@@ -195,7 +198,7 @@ function widgetRestAPI() {
       },
       error: error => {},
       completed: () => {
-        delete ele.dataset.widget;
+        //delete ele.dataset.widget;
         ele.querySelector('.lp-skeleton-animation').remove();
       }
     };

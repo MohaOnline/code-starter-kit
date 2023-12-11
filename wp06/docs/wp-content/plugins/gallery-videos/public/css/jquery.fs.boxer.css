@@ -83,12 +83,11 @@
 }
 #boxer .boxer-close:before {
 	position: absolute;
-	top: 0;
+	top:0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	content: "\00d7";
-	display: block;
 	font-size: 22px;
 	font-weight: 700;
 	line-height: 26px;

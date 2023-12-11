@@ -1041,7 +1041,7 @@ ul .clearfix {
 }
 
 #wpfooter {
-  z-index: 20;
+  z-index: 5;
 }
 
 .learn-press-advertisement-slider {
@@ -5997,16 +5997,6 @@ body.lp-item-moving {
   -ms-animation: rotating4 2s linear infinite;
   -o-animation: rotating4 2s linear infinite;
   animation: rotating4 2s linear infinite;
-}
-
-#learn-press-assign-course .assign-to-container div, #learn-press-unassign-course .assign-to-container div {
-  margin-bottom: 1rem;
-}
-#learn-press-assign-course .assign-to-container label, #learn-press-unassign-course .assign-to-container label {
-  vertical-align: baseline;
-}
-#learn-press-assign-course .assign-to-container .select2-container, #learn-press-unassign-course .assign-to-container .select2-container {
-  margin-top: 1rem;
 }
 
 .learn-press-tip {

@@ -3,6 +3,121 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.21.20 (2023-11-28)
+
+
+### Refactoring
+
+* remove all cypress dependencies and tests (CU-8692yek74)
+
+
+### Testing
+
+* migrate E2E tests to playwright (CU-8692yek74)
+* migrate E2E tests to playwright (CU-8692yek74)
+
+
+<details><summary>Dependency updates @devowl-wp/utils 1.17.2</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Refactoring
+
+* remove all cypress dependencies and tests (CU-8692yek74)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.4.5</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Refactoring
+
+* remove all cypress dependencies and tests (CU-8692yek74)
+
+
+##### Testing
+
+* introduce @devowl-wp/playwright-utils with smoke test functionality (CU-8692yek74)</details>
+
+<details><summary>Development dependency update @devowl-wp/eslint-config 0.2.4</summary>
+
+
+**_Purpose of dependency:_** _Provide eslint configuration for our complete monorepo._
+##### Refactoring
+
+* remove all cypress dependencies and tests (CU-8692yek74)</details>
+
+<details><summary>Development dependency update @devowl-wp/node-gitlab-ci 0.7.9</summary>
+
+
+**_Purpose of dependency:_** _Create dynamic GitLab CI pipelines in JavaScript or TypeScript for each project. Reuse and inherit instructions and avoid duplicate code!_
+##### Bug Fixes
+
+* update Gitlab YAML typings (CU-8692yek74)</details>
+
+
+
+
+
+## 4.21.19 (2023-11-24)
+
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.4.4</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Continuous Integration
+
+* show inconsistent translations always in translation status (CU-86932cagc)
+* validate production docker compose config on compose YAML changes (CU-86934wg6z)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.7.9</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* do find propagated string translations from other components when merging a branch to another (CU-86932nwn8)</details>
+
+<details><summary>Development dependency update @devowl-wp/node-gitlab-ci 0.7.8</summary>
+
+
+**_Purpose of dependency:_** _Create dynamic GitLab CI pipelines in JavaScript or TypeScript for each project. Reuse and inherit instructions and avoid duplicate code!_
+##### Bug Fixes
+
+* also delete skipped pipelines and pipelines of deleted branches</details>
+
+
+
+
+
+## 4.21.18 (2023-11-22)
+
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Dependency updates @devowl-wp/utils 1.17.0</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Features
+
+* introduce batch requests (CU-86930ub71)
+* introduce TCF 2.2 / GVL v3 compatibility (CU-863gt04va)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.7.8</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* machine translate all unfinished strings as changed strings are not detected with nottranslated (CU-86932nwn8)</details>
+
+
+
+
+
 ## 4.21.17 (2023-11-16)
 
 **Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.

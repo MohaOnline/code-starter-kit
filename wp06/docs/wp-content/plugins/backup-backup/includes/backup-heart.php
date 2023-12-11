@@ -27,6 +27,29 @@
       return $headers;
     }
   }
+  
+  // Filter and prevent PHP filter injection
+  function filterChainFix($content) {
+    
+    // Make sure it exist and is string
+    if (!is_string($content)) die("Incorrect parameters.");
+    
+    // Check if it's not larger than max allowed path length (default systems)
+    if (strlen($content) > 256) die("Incorrect parameters.");
+    
+    // Check if the path does not contain "php:"
+    if (strpos($content, "php:")) die("Incorrect parameters.");
+    
+    // Check if the path contain "|", it's not possible to use this character with our backups paths
+    if (strpos($content, "|")) die("Incorrect parameters.");
+    
+    // Check if the directory/file exist otherwise fail
+    if (!(is_dir($content) || file_exists($content))) die("Incorrect parameters.");
+    
+    // Return correct content
+    return $content;
+    
+  }
 
   // Get fields from header
   if (isFunctionEnabled('getallheaders')) {
@@ -50,7 +73,7 @@
   define('BMI_CLI_REQUEST', false);
 
   // Load some constants
-  define('ABSPATH', $fields['content-abs']);
+  define('ABSPATH', filterChainFix($fields['content-abs']));
   if (substr($fields['content-content'], -1) != '/') {
     $fields['content-content'] = $fields['content-content'] . '/';
   }
@@ -59,7 +82,7 @@
   }
   define('BMI_CONFIG_DIR', $fields['content-configdir']);
   define('BMI_BACKUPS', $fields['content-backups']);
-  define('BMI_ROOT_DIR', $fields['content-dir']);
+  define('BMI_ROOT_DIR', filterChainFix($fields['content-dir']));
   // define('BMI_SHARE_LOGS_ALLOWED', $fields['content-shareallowed']);
   define('BMI_INCLUDES', BMI_ROOT_DIR . 'includes');
   define('BMI_SAFELIMIT', intval($fields['content-safelimit']));
@@ -115,13 +138,13 @@
   try {
 
     // Load bypasser
-    require_once BMI_INCLUDES . '/bypasser.php';
+    require_once filterChainFix(BMI_INCLUDES) . '/bypasser.php';
     $request = new BMI_Backup_Heart(true,
       $fields['content-configdir'],
       $fields['content-content'],
       $fields['content-backups'],
-      $fields['content-abs'],
-      $fields['content-dir'],
+      filterChainFix($fields['content-abs']),
+      filterChainFix($fields['content-dir']),
       $fields['content-url'],
       [
         'identy' => $fields['content-identy'],
@@ -132,8 +155,8 @@
         'start' => $fields['content-start'],
         'filessofar' => $fields['content-filessofar'],
         'total_files' => $fields['content-total'],
-        'browser' => $fields['content-browser']
-        // 'shareallowed' => $fields['content-shareallowed']
+        'browser' => $fields['content-browser'],
+        'bmitmp' => $fields['content-bmitmp']
       ],
       $fields['content-it'],
       $fields['content-dbit'],

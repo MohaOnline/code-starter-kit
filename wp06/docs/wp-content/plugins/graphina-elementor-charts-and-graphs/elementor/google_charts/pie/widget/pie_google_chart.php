@@ -422,7 +422,7 @@ class Pie_google_chart extends Widget_Base
                                     series: data,
                                     animation: true,
                                     renderType: 'PieChart',
-                                    setting_date:<?php echo json_encode($settings); ?>
+                                    setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                                 },
                                 '<?php esc_attr_e($mainId); ?>',
                                 '<?php echo $this->get_chart_type(); ?>',

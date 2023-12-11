@@ -339,6 +339,9 @@ class Module {
 		$docs = array(
 			'https://premiumaddons.com/docs/elementor-display-conditions-tutorial/' => __( 'Getting started »', 'premium-addons-for-elementor' ),
 			'https://premiumaddons.com/docs/elementor-editor-not-loading-with-display-conditions/' => __( 'Fix editor not loading with Display Conditions enabled »', 'premium-addons-for-elementor' ),
+            'https://premiumaddons.com/docs/how-to-show-hide-element-based-on-browser-elementor-display-conditions/' => __( 'Show/Hide Element Based on Browser »', 'premium-addons-for-elementor' ),
+            'https://premiumaddons.com/docs/how-to-show-hide-element-on-specific-time-range-elementor-display-conditions/' => __( 'Show/Hide Element Based on Time Range »', 'premium-addons-for-elementor' ),
+            'https://premiumaddons.com/docs/how-to-show-hide-element-with-location-elementor-display-conditions/' => __( 'Show/Hide Element Based on Location »', 'premium-addons-for-elementor' ),
 		);
 
 		$doc_index = 1;

@@ -151,12 +151,12 @@
 
       // Name
       // $this->tmp = untrailingslashit(ABSPATH) . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
-      $this->tmp = untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
+      $this->tmp = BMI_TMP . DIRECTORY_SEPARATOR . 'backup-migration_' . $this->tmptime;
       $GLOBALS['bmi_current_tmp_restore'] = $this->tmp;
       $GLOBALS['bmi_current_tmp_restore_unique'] = $this->tmptime;
 
       // Scan file
-      $this->scanFile = untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.restore_scan_' . $this->tmptime;
+      $this->scanFile = BMI_TMP . DIRECTORY_SEPARATOR . '.restore_scan_' . $this->tmptime;
 
       // Prepare database connection
       $this->db = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -216,6 +216,14 @@
       $files = [];
       $dirs = [];
 
+      $preventMoveFiles = [
+        'wp-config.php',
+        'debug.log',
+        '.user.ini',
+        'php.ini',
+        '.htaccess'
+      ];
+
       foreach ($rii as $file) {
         if (!$file->isDir()) {
           $files[] = substr($file->getPathname(), $sublen);
@@ -241,12 +249,7 @@
       }
 
       for ($i = 0; $i < sizeof($files); ++$i) {
-        if (strpos($files[$i], 'debug.log') !== false) {
-          array_splice($files, $i, 1);
-
-          break;
-        }
-        if (strpos($files[$i], 'wp-config.php') !== false && $this->same_domain != true) {
+        if (in_array(basename($files[$i]), $preventMoveFiles) !== false) {
           array_splice($files, $i, 1);
 
           break;
@@ -382,18 +385,18 @@
         @unlink($this->scanFile);
       }
 
-      $sc = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.restore_secret';
+      $sc = BMI_TMP . DIRECTORY_SEPARATOR . '.restore_secret';
       if (file_exists($sc)) {
         @unlink($sc);
       }
 
-      $tblmap = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.table_map';
+      $tblmap = BMI_TMP . DIRECTORY_SEPARATOR . '.table_map';
       if (file_exists($tblmap)) {
         @unlink($tblmap);
       }
 
       $allowedFiles = ['wp-config.php', '.htaccess', '.litespeed', '.default.json', 'driveKeys.php', '.autologin.php', '.migrationFinished'];
-      foreach (glob(untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
 
         $basename = basename($filename);
 
@@ -403,7 +406,7 @@
 
       }
 
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.*') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . '.*') as $filename) {
 
         $basename = basename($filename);
 
@@ -414,7 +417,7 @@
 
       }
 
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'restore_scan_*') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'restore_scan_*') as $filename) {
 
         $basename = basename($filename);
 
@@ -864,8 +867,18 @@
         $storage = $this->tmp . DIRECTORY_SEPARATOR . 'db_tables';
         $importer = new EvenBetterDatabaseImport($storage, false, $manifest, $this->migration, $this->splitting, $this->isCLI);
         $importer->alter_tables();
+        
+        // Modify the WP Config and replace
+        $this->replaceDbPrefixInWPConfig($manifest);
+        
+        $importer->enablePlugins();
       } else {
         $this->v3Importer->alter_tables();
+        
+        // Modify the WP Config and replace
+        $this->replaceDbPrefixInWPConfig($manifest);
+        
+        $this->v3Importer->enablePlugins();
       }
 
       $this->migration->log(__('Database restored', 'backup-backup'), 'SUCCESS');
@@ -1314,7 +1327,7 @@
       $pro_gd_client_id = get_option('bmi_pro_gd_client_id', false);
 
       if ($pro_gd_token != false && $pro_gd_client_id != false) {
-        $tempKeyDriveFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'driveKeys.php';
+        $tempKeyDriveFile = BMI_TMP . DIRECTORY_SEPARATOR . 'driveKeys.php';
         $content = "<?php \n";
         $content .= "//" . $pro_gd_token . "\n";
         $content .= "//" . $pro_gd_client_id . "\n";
@@ -1327,7 +1340,7 @@
 
       $this->migration->log(__('Making new secret key for current restore process.', 'backup-backup'), 'STEP');
       $secret = $this->randomString();
-      file_put_contents(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.restore_secret', $secret);
+      file_put_contents(BMI_TMP . DIRECTORY_SEPARATOR . '.restore_secret', $secret);
       $this->migration->log(__('Secret key generated, it will be returned to you (ping).', 'backup-backup'), 'SUCCESS');
 
       return $secret;
@@ -1938,13 +1951,17 @@
 
             // Alter all tables
             if ($this->v3RestoreUsed == true) {
+              
               $this->alter_tables_v3($manifest);
+              
             } else {
+              
               $this->alter_tables($manifest);
+              
+              // Modify the WP Config and replace
+              $this->replaceDbPrefixInWPConfig($manifest);
+              
             }
-
-            // Modify the WP Config and replace
-            $this->replaceDbPrefixInWPConfig($manifest);
 
             // User is logged off at this point, try to log in
             $this->makeNewLoginSession($manifest);

@@ -308,6 +308,7 @@ return array(
     'RebelCode\\Wpra\\Core\\ModularModule' => $baseDir . '/src/ModularModule.php',
     'RebelCode\\Wpra\\Core\\Modules\\AddonsModule' => $baseDir . '/src/Modules/AddonsModule.php',
     'RebelCode\\Wpra\\Core\\Modules\\AssetsModule' => $baseDir . '/src/Modules/AssetsModule.php',
+    'RebelCode\\Wpra\\Core\\Modules\\BlackFriday23Module' => $baseDir . '/src/Modules/BlackFriday23Module.php',
     'RebelCode\\Wpra\\Core\\Modules\\BlacklistToolModule' => $baseDir . '/src/Modules/BlacklistToolModule.php',
     'RebelCode\\Wpra\\Core\\Modules\\BulkAddToolModule' => $baseDir . '/src/Modules/BulkAddToolModule.php',
     'RebelCode\\Wpra\\Core\\Modules\\CoreModule' => $baseDir . '/src/Modules/CoreModule.php',

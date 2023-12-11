@@ -2,9 +2,9 @@
 Contributors: softaculous
 Tags: FileOrganizer, file manager, wordpress file manager, file explorer, upload files, File Manage, Edit Files, Delete Files, elfinder, ftp, file transfer, update, create, delete, view, edit, rename, editor, explorer, softaculous, webuzo, Control Panel, Admin
 Requires at least: 5.5
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.5
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -49,6 +49,9 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box, Look
 6. File archive as ZIP
 
 == Changelog ==
+
+= 1.0.5 (Nov 29, 2023) =
+* [Task] Tested compatibility with WordPress 6.4. No functional changes made. The plugin is fully compatible with WordPress 6.4.
 
 = 1.0.4 (sep 19, 2023) =
 * [Improvement] FileOrganizer file manager is now only accessible for users with the 'Activate Plugins' role. And in the Pro version other roles can be granted file manager access by the Supper administrator.

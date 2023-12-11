@@ -5,13 +5,25 @@ body{
 .cp_cff_box #fbuilder{background:#fff;}
 .cp_cff_box #fbuilder .fform {text-align: center;}
 .cp_cff_box #fbuilder .fform h1,
-.cp_cff_box #fbuilder .fform h2{
+.cp_cff_box #fbuilder .fform h2,
+.cp_cff_box #fbuilder .fform h3,
+.cp_cff_box #fbuilder .fform h4,
+.cp_cff_box #fbuilder .fform h5,
+.cp_cff_box #fbuilder .fform h6,
+.cp_cff_box #fbuilder .fform p{
     text-align: center;
     padding: 0;
     margin: 0px;
     color: #5C5C5C;
-    font-size:x-large;
 }
+
+.cp_cff_box #fbuilder .fform h1{font-size:2em;}
+.cp_cff_box #fbuilder .fform h2{font-size:1.6em;}
+.cp_cff_box #fbuilder .fform h3{font-size:1.4em;}
+.cp_cff_box #fbuilder .fform h4{font-size:1.1em;}
+.cp_cff_box #fbuilder .fform h5{font-size:0.9em;}
+.cp_cff_box #fbuilder .fform h6{font-size:0.8em;}
+
 .cp_cff_box #fbuilder fieldset,
 .cp_cff_box #fbuilder fieldset legend,
 .cp_cff_box #fbuilder  .fields:not(.cff-container-field){

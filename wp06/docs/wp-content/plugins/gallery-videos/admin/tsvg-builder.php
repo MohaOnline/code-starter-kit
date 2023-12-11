@@ -532,6 +532,86 @@ if ( $this->tsvg_build == 'new' ) {
 					'change_param' => 'px'
 				)
 			);
+			$tsvg_builder_arr['Link Option'] = array(
+				'TotalSoft_GV_2_01' => array (
+						'label'      => 'Border Width',
+						'type'       => 'range',
+						'options'    => array(
+								'min' => 0,
+								'max' => 10
+						),
+						'change' => '--tsvg_lo_bdw_' . $this->tsvg_build_id,
+						'change_param' => 'px'
+				),
+				'TotalSoft_GV_2_02' => array (
+						'label'      => 'Border Style',
+						'type'       => 'select-position-efect',
+						'options'    => array(
+								'none'   => 'None',
+								'solid'  => 'Solid',
+								'dotted' => 'Dotted',
+								'dashed' => 'Dashed'
+						),
+						'change_attr' => '--tsvg_lo_bds_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_03' => array (
+						'label'      => 'Border Color',
+						'type'       => 'color',
+						'change_prop' => '--tsvg_lo_bdc_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_04' => array (
+						'label'		 => 'Border Radius',
+						'type'		 => 'range',
+						'options'	 => array(
+								'min' => 0,
+								'max' => 10
+						),
+						'change' => '--tsvg_lo_bdr_' . $this->tsvg_build_id,
+						'change_param' => 'px'
+				),
+				'TotalSoft_GV_2_05' => array (
+						'label' => 'Link Text',
+						'type'  => 'text',
+						'change_elem' => '.tsvg-grid-slide-href-' . $this->tsvg_build_id,
+						'change_attr' => ''
+				),
+				'TotalSoft_GV_2_06' => array (
+						'label' => 'Background Color',
+						'type'  => 'color',
+						'change_prop' => '--tsvg_lo_bc_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_07' => array (
+						'label' => 'Text Color',
+						'type'  => 'color',
+						'change_prop' => '--tsvg_lo_c_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_08' => array (
+						'label' => 'Font Size',
+						'type'  => 'range',
+						'options' => array (
+								'min' => 8,
+								'max' => 48
+						),	
+						'change' => '--tsvg_lo_fs_' . $this->tsvg_build_id,
+						'change_param' => 'px'
+				),
+				'TotalSoft_GV_2_09' => array (
+						'label' => 'Font Family',
+						'type'  => 'select',
+						'options' => $tsvg_font_families,
+						'change_attr' => '--tsvg_lo_ff_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_10' => array (
+						'label' => 'Hover Background Color',
+						'type'  => 'color',
+						'change_prop' => '--tsvg_lo_hbc_' . $this->tsvg_build_id
+				),
+				'TotalSoft_GV_2_11' => array (
+						'label' => 'Hover Text Color',
+						'type'  => 'color',
+						'change_prop' => '--tsvg_lo_hc_' . $this->tsvg_build_id
+				)
+		);
 			$tsvg_builder_arr['Popup Title Options'] = array(
 				'TotalSoft_GV_2_22' => array(
 					'label'       => 'Show Title',
@@ -776,7 +856,7 @@ if ( $this->tsvg_build == 'new' ) {
 					'type'         => 'range',
 					'options'      => array(
 						'min' => 0,
-						'max' => 200
+						'max' => 50
 					),
 					'change'       => '--tsvg_general_bd_r_' . $this->tsvg_build_id,
 					'change_param' => 'px'
@@ -1396,11 +1476,11 @@ if ( $this->tsvg_build == 'new' ) {
 					'change'       => '--tsvg_go_ps_' . $this->tsvg_build_id,
 					'change_param' => 'px'
 				),
-				'TotalSoft_GV_1_10'         => array(
-					'label'       => 'Shadow Color',
-					'type'        => 'color',
-					'change_prop' => '--tsvg_go_sc_' . $this->tsvg_build_id
-				)
+				// 'TotalSoft_GV_1_10'         => array(
+				// 	'label'       => 'Shadow Color',
+				// 	'type'        => 'color',
+				// 	'change_prop' => '--tsvg_go_sc_' . $this->tsvg_build_id
+				// )
 			);
 			$tsvg_builder_arr['Video Options']      = array(
 				'TotalSoft_GV_1_11' => array(
@@ -1596,7 +1676,7 @@ if ( $this->tsvg_build == 'new' ) {
 					'type'         => 'range',
 					'options'      => array(
 						'min' => 0,
-						'max' => 100
+						'max' => 30
 					),
 					'change'       => '--tsvg_popup_cio_r_' . $this->tsvg_build_id,
 					'change_param' => 'px'
@@ -2764,7 +2844,7 @@ if ( $this->tsvg_build == 'new' ) {
 					'type'         => 'range',
 					'options'      => array(
 						'min' => 0,
-						'max' => 100
+						'max' => 30
 					),
 					'change'       => '--tsvg_lo_border_Radius_' . $this->tsvg_build_id,
 					'change_param' => 'px'
@@ -2826,16 +2906,6 @@ if ( $this->tsvg_build == 'new' ) {
 					),
 					'change'       => '--tsvg_popup_po_v_h_' . $this->tsvg_build_id,
 					'change_param' => ''
-				),
-				'TotalSoft_GV_2_36' => array(
-					'label'       => 'Autoplay Videos',
-					'type'        => 'input-toggle',
-					'options'     => array(
-						'yes' => 'true',
-						'no'  => 'false'
-					),
-					'change_elem' => '.tsvg-main-content-' . $this->tsvg_build_id,
-					'change_attr' => 'data-tsvg-autoplay'
 				)
 			);
 			$tsvg_builder_arr['Slider General Options']     = array(

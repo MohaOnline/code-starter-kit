@@ -569,6 +569,7 @@ class Column_chart extends Widget_Base
                             borderRadius: parseInt('<?php echo $settings['iq_' . $type . '_chart_plot_border_radius'] ?>') || 0,
                             dataLabels: {
                                 position: '<?php echo $settings['iq_' . $type . '_chart_datalabel_position_show'] ?>',
+                                orientation: '<?php echo $settings['iq_' . $type . '_chart_datalabel_orientation'] ?>',
                             }
                         },
                     },
@@ -672,19 +673,21 @@ class Column_chart extends Widget_Base
                             rotate: parseInt('<?php echo $settings['iq_' . $type . '_chart_yaxis_datalabel_rotate'] ?>') || 0,
                             offsetX: parseInt('<?php echo $settings['iq_' . $type . '_chart_yaxis_datalabel_offset_x'] ?>') || 0,
                             offsetY: parseInt('<?php echo $settings['iq_' . $type . '_chart_yaxis_datalabel_offset_y'] ?>') || 0,
+                            maxWidth: parseInt('<?php echo $settings['iq_' . $type . '_chart_yaxis_max_width'] ?>')|| "auto" ,
                             style: {
                                 colors: '<?php echo strval($settings['iq_' . $type . '_chart_font_color']) ?>',
                                 fontSize: '<?php echo $settings['iq_' . $type . '_chart_font_size']['size'] . $settings['iq_' . $type . '_chart_font_size']['unit'] ?>',
                                 fontFamily: '<?php echo $settings['iq_' . $type . '_chart_font_family'] ?>',
                                 fontWeight: '<?php echo $settings['iq_' . $type . '_chart_font_weight'] ?>'
-                            }
+                            },
                         },
                         tooltip: {
                             enabled: "<?php echo !empty($settings['iq_' . $type . '_chart_yaxis_tooltip_show']) && $settings['iq_' . $type . '_chart_yaxis_tooltip_show'] === 'yes';?>"
                         },
                         crosshairs: {
                             show: "<?php echo !empty($settings['iq_' . $type . '_chart_yaxis_crosshairs_show']) && $settings['iq_' . $type . '_chart_yaxis_crosshairs_show'] === 'yes';?>"
-                        }
+                        },
+                       
                     },
                     colors: '<?php echo $gradient; ?>'.split('_,_'),
                     fill: {
@@ -718,7 +721,12 @@ class Column_chart extends Widget_Base
                         },
                         tooltipHoverFormatter: function(seriesName, opts) {
                             if('<?php echo !empty($settings['iq_' . $type . '_chart_legend_show_series_value']) && $settings['iq_' . $type . '_chart_legend_show_series_value'] === 'yes' ?>'){
-                                return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex]}</strong></div>`
+
+                                let divEl= document.createElement("div");
+                                divEl.classList.add("legend-info");
+                                divEl.append(document.createElement("span").innerText=seriesName,":",document.createElement("strong").innerText=opts.w.globals.series[opts.seriesIndex])
+                                return divEl.outerHTML;
+                                // return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex]}</strong></div>`
                             }
                             return seriesName
                         }
@@ -776,6 +784,13 @@ class Column_chart extends Widget_Base
 
                 if ("<?php echo esc_html($settings['iq_' . $type . '_chart_yaxis_label_show']); ?>" === "yes") {
                     columnOptions.yaxis.labels.formatter = function (val) {
+                        if('<?php echo !empty($settings['iq_' . $type . '_is_chart_horizontal']) && $settings['iq_' . $type . '_is_chart_horizontal'] === 'yes' ?>'){
+                            val = '<?php echo esc_html($yLabelPrefix); ?>' + val + '<?php echo esc_html($yLabelPostfix); ?>';
+                            if(val){
+                                val = val.split(',')
+                            }
+                            return val;
+                        }
                         let stackCondition = !('<?php echo $settings['iq_' . $type . '_chart_stacked'] == 'yes' &&  $settings['iq_' . $type . '_chart_stack_type'] === '100%'?>') 
                         if(stackCondition ){
                             let decimal = parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_yaxis_prefix_postfix_decimal_point']) ? $settings['iq_' . $type . '_chart_yaxis_prefix_postfix_decimal_point'] : 0; ?>') || 0;
@@ -920,7 +935,7 @@ class Column_chart extends Widget_Base
                             options: columnOptions,
                             series: [{name: '', data: []}],
                             animation: true,
-                            setting_date:<?php echo json_encode($settings); ?>
+                            setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                         },
                         '<?php esc_attr_e($mainId); ?>'
                     );

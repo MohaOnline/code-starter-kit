@@ -1,6 +1,7 @@
 <?php
 
 namespace Elementor;
+
 if (!defined('ABSPATH')) exit;
 
 /**
@@ -109,6 +110,39 @@ class Donut_chart extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'iq_' . $type . 'is_semi_circular_donut_chart',
+            [
+                'label' => __('Enable Semi-Circular Donut Chart?', 'graphina-charts-for-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Hide', 'graphina-charts-for-elementor'),
+                'label_off' => esc_html__('Show', 'graphina-charts-for-elementor'),
+                'default' => false
+            ]
+        );
+        $this->add_control(
+            'iq_' . $type . 'semi_circular_donut_chart_start_angle',
+            [
+                'label' => __("Start Angle", 'graphina-charts-for-elementor'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 0,
+                'min' => -360,
+                'max' => 360,
+                'condition' => ['iq_' . $type . 'is_semi_circular_donut_chart' => 'yes']
+            ]
+        );
+        $this->add_control(
+            'iq_' . $type . 'semi_circular_donut_chart_end_angle',
+            [
+                'label' => __("End Angle", 'graphina-charts-for-elementor'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 360,
+                'min' => -360,
+                'max' => 360,
+                'condition' => ['iq_' . $type . 'is_semi_circular_donut_chart' => 'yes']
+            ]
+        );
+
         graphina_common_chart_setting($this, $type, false, false, false, false);
 
         graphina_tooltip($this, $type, true, false);
@@ -203,7 +237,7 @@ class Donut_chart extends Widget_Base
 
         graphina_chart_style($this, $type);
 
-        graphina_chart_filter_style($this,$type);
+        graphina_chart_filter_style($this, $type);
 
         if (function_exists('graphina_pro_password_style_section')) {
             graphina_pro_password_style_section($this, $type);
@@ -225,8 +259,7 @@ class Donut_chart extends Widget_Base
         $callAjax = false;
         $loadingText = esc_html__((isset($settings['iq_' . $type . '_chart_no_data_text']) ? $settings['iq_' . $type . '_chart_no_data_text'] : ''), 'graphina-charts-for-elementor');
 
-        $exportFileName = (
-            !empty($settings['iq_' . $type . '_can_chart_show_toolbar']) && $settings['iq_' . $type . '_can_chart_show_toolbar'] === 'yes'
+        $exportFileName = (!empty($settings['iq_' . $type . '_can_chart_show_toolbar']) && $settings['iq_' . $type . '_can_chart_show_toolbar'] === 'yes'
             && !empty($settings['iq_' . $type . '_export_filename'])
         ) ? $settings['iq_' . $type . '_export_filename'] : $mainId;
 
@@ -268,13 +301,12 @@ class Donut_chart extends Widget_Base
         $localStringType = graphina_common_setting_get('thousand_seperator');
         $forminatorPercentageEnable = $settings['iq_' . $type . '_chart_data_option'] === 'forminator' && !empty($settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage'])
             && $settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage'] === 'yes';
-        $forminatorPercentageDecimal = !empty($settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage_decimal'])  ?$settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage_decimal'] : 0;
+        $forminatorPercentageDecimal = !empty($settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage_decimal'])  ? $settings['iq_' . $type . '_section_chart_forminator_aggregate_percentage_decimal'] : 0;
         graphina_chart_widget_content($this, $mainId, $settings);
         if (isRestrictedAccess('donut', $mainId, $settings, false) === false) {
 
-            ?>
+?>
             <script>
-
                 var myElement = document.querySelector(".donut-chart-<?php esc_attr_e($mainId); ?>");
 
                 if (typeof isInit === 'undefined') {
@@ -283,7 +315,7 @@ class Donut_chart extends Widget_Base
                 isInit['<?php esc_attr_e($mainId); ?>'] = false;
 
                 var donutOptions = {
-                    series: [<?php  echo   esc_html($value); ?>],
+                    series: [<?php echo   esc_html($value); ?>],
                     chart: {
                         background: '<?php echo strval($settings['iq_' . $type . '_chart_background_color1']); ?>',
                         height: parseInt('<?php echo $settings['iq_' . $type . '_chart_height']; ?>'),
@@ -292,8 +324,8 @@ class Donut_chart extends Widget_Base
                         locales: [JSON.parse('<?php echo apexChartLocales(); ?>')],
                         defaultLocale: "en",
                         toolbar: {
-                            offsetX: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_toolbar_offsetx']) ? $settings['iq_' . $type . '_chart_toolbar_offsetx'] : 0 ;?>') || 0,
-                            offsetY: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_toolbar_offsety']) ? $settings['iq_' . $type . '_chart_toolbar_offsety'] : 0 ;?>')|| 0,
+                            offsetX: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_toolbar_offsetx']) ? $settings['iq_' . $type . '_chart_toolbar_offsetx'] : 0; ?>') || 0,
+                            offsetY: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_toolbar_offsety']) ? $settings['iq_' . $type . '_chart_toolbar_offsety'] : 0; ?>') || 0,
                             show: '<?php echo $settings['iq_' . $type . '_can_chart_show_toolbar'] === "yes"; ?>',
                             export: {
                                 csv: {
@@ -308,9 +340,10 @@ class Donut_chart extends Widget_Base
                             }
                         },
                         animations: {
-                            enabled: '<?php echo($settings['iq_' . $type . '_chart_animation'] === "yes") ?>',
+                            enabled: '<?php echo ($settings['iq_' . $type . '_chart_animation'] === "yes") ?>',
                             speed: parseInt('<?php echo $settings['iq_' . $type . '_chart_animation_speed']; ?>'),
-                            //delay: '<?php //echo $settings['iq_' . $type . '_chart_animation_delay']; ?>//',
+                            //delay: '<?php //echo $settings['iq_' . $type . '_chart_animation_delay']; 
+                                        ?>//',
                             dynamicAnimation: {
                                 enabled: true
                             }
@@ -318,6 +351,13 @@ class Donut_chart extends Widget_Base
                     },
                     plotOptions: {
                         pie: {
+                            <?php
+                            if ($settings['iq_' . $type . 'is_semi_circular_donut_chart'] === "yes") {
+                            ?>
+                                startAngle: <?php echo $settings['iq_' . $type . 'semi_circular_donut_chart_start_angle'] ?>,
+                                endAngle: <?php echo $settings['iq_' . $type . 'semi_circular_donut_chart_end_angle'] ?>,
+                            <?php
+                            } ?>
                             donut: {
                                 size: '<?php echo $settings['iq_' . $type . '_chart_inner_radius']; ?>%',
                                 labels: {
@@ -330,21 +370,21 @@ class Donut_chart extends Widget_Base
                                     },
                                     total: {
                                         show: '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_total_title_show']) && $settings['iq_' . $type . '_chart_datalabel_total_title_show'] == 'yes' ?>',
-                                        showAlways:'<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_total_title_always']) && $settings['iq_' . $type . '_chart_datalabel_total_title_always'] == 'yes' ?>',
+                                        showAlways: '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_total_title_always']) && $settings['iq_' . $type . '_chart_datalabel_total_title_always'] == 'yes' ?>',
                                         label: '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_total_title']) ? $settings['iq_' . $type . '_chart_datalabel_total_title'] : 'Total' ?>',
                                         fontFamily: '<?php echo $settings['iq_' . $type . '_chart_font_family'] ?>',
                                         fontWeight: '<?php echo $settings['iq_' . $type . '_chart_font_weight'] ?>',
                                         color: '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_font_color']) ? strval($settings['iq_' . $type . '_chart_datalabel_font_color']) : '#000000' ?>',
-                                        formatter: function (w) {
+                                        formatter: function(w) {
                                             let totals = w.globals.seriesTotals.reduce((a, b) => {
                                                 return a + b;
                                             }, 0)
-                                            let prefix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings[ 'iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
-                                            let postfix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_postfix' ]) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
+                                            let prefix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings['iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
+                                            let postfix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_postfix']) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
                                             let valueInStringShow = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer']) ? $settings['iq_' . $type . '_chart_label_pointer'] : 'no' ?>'
                                             let valueInString = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer_number']) ? $settings['iq_' . $type . '_chart_label_pointer_number'] : 0 ?>'
                                             if ('<?php echo !empty($settings['iq_' . $type . '_chart_number_format_commas']) && $settings['iq_' . $type . '_chart_number_format_commas'] == 'yes' ?>') {
-                                                totals = graphinNumberWithCommas(totals,'<?php echo $localStringType ?>')
+                                                totals = graphinNumberWithCommas(totals, '<?php echo $localStringType ?>')
                                             } else if (valueInStringShow == 'yes') {
                                                 totals = graphinaAbbrNum(totals, valueInString);
                                             }
@@ -374,7 +414,7 @@ class Donut_chart extends Widget_Base
                             fontWeight: '<?php echo $settings['iq_' . $type . '_chart_font_weight']; ?>',
                             colors: ['<?php echo isset($settings['iq_' . $type . '_chart_datalabel_font_color']) ? strval($settings['iq_' . $type . '_chart_datalabel_font_color']) : '#ffffff'; ?>'],
                         },
-                        background:{
+                        background: {
                             enabled: false
                         },
                         dropShadow: {
@@ -400,10 +440,10 @@ class Donut_chart extends Widget_Base
                         }
                     },
                     legend: {
-                        showForSingleSeries:true,
+                        showForSingleSeries: true,
                         show: '<?php echo $settings['iq_' . $type . '_chart_legend_show'] === "yes" && $label != '' && $value != ''; ?>',
-                        position: '<?php echo !empty($settings['iq_' . $type . '_chart_legend_position']) ? esc_html($settings['iq_' . $type . '_chart_legend_position']) : 'bottom' ; ?>',
-                        horizontalAlign: '<?php echo !empty($settings['iq_' . $type . '_chart_legend_horizontal_align']) ? esc_html($settings['iq_' . $type . '_chart_legend_horizontal_align']) : 'center' ; ?>',
+                        position: '<?php echo !empty($settings['iq_' . $type . '_chart_legend_position']) ? esc_html($settings['iq_' . $type . '_chart_legend_position']) : 'bottom'; ?>',
+                        horizontalAlign: '<?php echo !empty($settings['iq_' . $type . '_chart_legend_horizontal_align']) ? esc_html($settings['iq_' . $type . '_chart_legend_horizontal_align']) : 'center'; ?>',
                         fontSize: '<?php echo $settings['iq_' . $type . '_chart_font_size']['size'] . $settings['iq_' . $type . '_chart_font_size']['unit']; ?>',
                         fontFamily: '<?php echo $settings['iq_' . $type . '_chart_font_family']; ?>',
                         fontWeight: '<?php echo $settings['iq_' . $type . '_chart_font_weight']; ?>',
@@ -411,8 +451,12 @@ class Donut_chart extends Widget_Base
                             colors: '<?php echo strval($settings['iq_' . $type . '_chart_font_color']); ?>'
                         },
                         formatter: function(seriesName, opts) {
-                            if('<?php echo !empty($settings['iq_' . $type . '_chart_legend_show_series_value']) && $settings['iq_' . $type . '_chart_legend_show_series_value'] === 'yes' ?>'){
-                                return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex]}</strong></div>`;
+                            if ('<?php echo !empty($settings['iq_' . $type . '_chart_legend_show_series_value']) && $settings['iq_' . $type . '_chart_legend_show_series_value'] === 'yes' ?>') {
+                                let divEl= document.createElement("div");
+                                divEl.classList.add("legend-info");
+                                divEl.append(document.createElement("span").innerText=seriesName,":",document.createElement("strong").innerText=opts.w.globals.series[opts.seriesIndex])
+                                return divEl.outerHTML;
+                                // return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex]}</strong></div>`;
                             }
                             return seriesName
                         }
@@ -425,24 +469,24 @@ class Donut_chart extends Widget_Base
                             fontFamily: '<?php echo $settings['iq_' . $type . '_chart_font_family']; ?>'
                         },
                         y: {
-                            formatter: function(val,w) {
-                                let valueInStringShow =  '<?php echo !empty($settings[ 'iq_' . $type . '_chart_label_pointer']) ? $settings[ 'iq_' . $type . '_chart_label_pointer'] : 'no' ?>'
-                                let valueInString =  '<?php echo !empty($settings[ 'iq_' . $type . '_chart_label_pointer_number']) ? $settings[ 'iq_' . $type . '_chart_label_pointer_number'] : 0 ?>'
-                                let prefix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings[ 'iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
-                                let postfix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_postfix' ]) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
-                                if('<?php  echo !empty($settings[ 'iq_' . $type . '_chart_number_format_commas' ]) && $settings[ 'iq_' . $type . '_chart_number_format_commas' ] === 'yes' ?>'){
-                                    val= graphinNumberWithCommas(val,'<?php echo $localStringType ?>')
-                                }else{
-                                    val = valueInStringShow == 'no' ? val : graphinaAbbrNum(val , valueInString);
+                            formatter: function(val, w) {
+                                let valueInStringShow = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer']) ? $settings['iq_' . $type . '_chart_label_pointer'] : 'no' ?>'
+                                let valueInString = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer_number']) ? $settings['iq_' . $type . '_chart_label_pointer_number'] : 0 ?>'
+                                let prefix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings['iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
+                                let postfix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_postfix']) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
+                                if ('<?php echo !empty($settings['iq_' . $type . '_chart_number_format_commas']) && $settings['iq_' . $type . '_chart_number_format_commas'] === 'yes' ?>') {
+                                    val = graphinNumberWithCommas(val, '<?php echo $localStringType ?>')
+                                } else {
+                                    val = valueInStringShow == 'no' ? val : graphinaAbbrNum(val, valueInString);
                                 }
-                                if("<?php echo $forminatorPercentageEnable; ?>"){
+                                if ("<?php echo $forminatorPercentageEnable; ?>") {
                                     let totals = w.globals.seriesTotals.reduce((a, b) => {
-                                        return  a + b;
+                                        return a + b;
                                     }, 0)
-                                    if(postfix.trim() === ''){
+                                    if (postfix.trim() === '') {
                                         postfix = '%';
                                     }
-                                    return prefix + val+" (" + parseFloat(val/totals * 100).toFixed('<?php echo $forminatorPercentageDecimal;?>') +postfix+")"
+                                    return prefix + val + " (" + parseFloat(val / totals * 100).toFixed('<?php echo $forminatorPercentageDecimal; ?>') + postfix + ")"
                                 }
                                 return prefix + val + postfix
                             }
@@ -450,49 +494,51 @@ class Donut_chart extends Widget_Base
                     },
                     stroke: {
                         show: '<?php echo $settings['iq_' . $type . '_chart_stroke_show'] === "yes"; ?>',
-                        width: parseInt('<?php echo  $settings['iq_' . $type . '_chart_stroke_show'] === "yes" ? $settings['iq_' . $type . '_chart_stroke_width'] : 0 ; ?>')
+                        width: parseInt('<?php echo  $settings['iq_' . $type . '_chart_stroke_show'] === "yes" ? $settings['iq_' . $type . '_chart_stroke_width'] : 0; ?>')
                     },
                     responsive: [{
-                        breakpoint: 1024,
-                        options: {
-                            chart: {
-                                height: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_height_tablet']) ? $settings['iq_' . $type . '_chart_height_tablet'] : $settings['iq_' . $type . '_chart_height'] ; ?>')
+                            breakpoint: 1024,
+                            options: {
+                                chart: {
+                                    height: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_height_tablet']) ? $settings['iq_' . $type . '_chart_height_tablet'] : $settings['iq_' . $type . '_chart_height']; ?>')
+                                }
                             }
-                        }
-                    },
+                        },
                         {
                             breakpoint: 674,
                             options: {
                                 chart: {
-                                    height: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_height_mobile']) ? $settings['iq_' . $type . '_chart_height_mobile'] : $settings['iq_' . $type . '_chart_height'] ;  ?>')
+                                    height: parseInt('<?php echo !empty($settings['iq_' . $type . '_chart_height_mobile']) ? $settings['iq_' . $type . '_chart_height_mobile'] : $settings['iq_' . $type . '_chart_height'];  ?>')
                                 }
                             }
                         }
                     ]
                 };
 
-                if("<?php echo $settings['iq_' . $type . '_chart_datalabels_format'] === 'yes'?>"){
-                    let valueInStringShow =  '<?php echo !empty($settings[ 'iq_' . $type . '_chart_label_pointer']) ? $settings[ 'iq_' . $type . '_chart_label_pointer'] : 'no' ?>'
-                    let valueInStringValue =  '<?php echo !empty($settings[ 'iq_' . $type . '_chart_label_pointer_number']) ? $settings[ 'iq_' . $type . '_chart_label_pointer_number'] : 0 ?>'
-                    let showlabel = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabels_format_showlabel']) ? $settings[ 'iq_' . $type . '_chart_datalabels_format_showlabel'] : 'no' ?>'
-                    let showValue = '<?php echo !empty($settings[  'iq_' . $type . '_chart_datalabels_format_showValue']) ? $settings[  'iq_' . $type . '_chart_datalabels_format_showValue'] : 'no' ?>'
-                    let prefix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings[ 'iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
-                    let postfix = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_datalabel_format_postfix' ]) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
-                    let numberformat = '<?php echo !empty($settings[ 'iq_' . $type . '_chart_number_format_commas' ]) ? $settings['iq_' . $type . '_chart_number_format_commas'] : 'no' ?>'
-                    if(typeof chartDatalabelsFormat !== "undefined"){
-                        chartDatalabelsFormat(donutOptions, showlabel, showValue, numberformat, prefix, postfix ,valueInStringShow, valueInStringValue,'<?php echo $forminatorPercentageEnable;?>','<?php echo $forminatorPercentageDecimal;?>');
+                if ("<?php echo $settings['iq_' . $type . '_chart_datalabels_format'] === 'yes' ?>") {
+                    let valueInStringShow = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer']) ? $settings['iq_' . $type . '_chart_label_pointer'] : 'no' ?>'
+                    let valueInStringValue = '<?php echo !empty($settings['iq_' . $type . '_chart_label_pointer_number']) ? $settings['iq_' . $type . '_chart_label_pointer_number'] : 0 ?>'
+                    let showlabel = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabels_format_showlabel']) ? $settings['iq_' . $type . '_chart_datalabels_format_showlabel'] : 'no' ?>'
+                    let showValue = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabels_format_showValue']) ? $settings['iq_' . $type . '_chart_datalabels_format_showValue'] : 'no' ?>'
+                    let prefix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_prefix']) ? $settings['iq_' . $type . '_chart_datalabel_format_prefix'] : '' ?>'
+                    let postfix = '<?php echo !empty($settings['iq_' . $type . '_chart_datalabel_format_postfix']) ? $settings['iq_' . $type . '_chart_datalabel_format_postfix'] : '' ?>'
+                    let numberformat = '<?php echo !empty($settings['iq_' . $type . '_chart_number_format_commas']) ? $settings['iq_' . $type . '_chart_number_format_commas'] : 'no' ?>'
+                    if (typeof chartDatalabelsFormat !== "undefined") {
+                        chartDatalabelsFormat(donutOptions, showlabel, showValue, numberformat, prefix, postfix, valueInStringShow, valueInStringValue, '<?php echo $forminatorPercentageEnable; ?>', '<?php echo $forminatorPercentageDecimal; ?>');
                     }
                 }
 
                 if (typeof initNowGraphina !== "undefined") {
                     initNowGraphina(
-                        myElement,
-                        {
+                        myElement, {
                             ele: document.querySelector(".donut-chart-<?php esc_attr_e($mainId); ?>"),
                             options: donutOptions,
-                            series: [{name: '', data: []}],
+                            series: [{
+                                name: '',
+                                data: []
+                            }],
                             animation: true,
-                            setting_date:<?php echo json_encode($settings); ?>
+                            setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                         },
                         '<?php esc_attr_e($mainId); ?>'
                     );
@@ -500,14 +546,13 @@ class Donut_chart extends Widget_Base
                 if (window.ajaxIntervalGraphina_<?php echo $mainId; ?> !== undefined) {
                     clearInterval(window.ajaxIntervalGraphina_<?php echo $mainId; ?>)
                 }
-
             </script>
-            <?php
+<?php
         }
         if ($settings['iq_' . $type . '_chart_data_option'] !== 'manual') {
-            if($settings['iq_' . $type . '_chart_data_option'] === 'forminator'){
+            if ($settings['iq_' . $type . '_chart_data_option'] === 'forminator') {
                 graphina_ajax_reload(true, [], $type, $mainId);
-            }else if(isGraphinaPro()){
+            } else if (isGraphinaPro()) {
                 graphina_ajax_reload($callAjax, [], $type, $mainId);
             }
         }

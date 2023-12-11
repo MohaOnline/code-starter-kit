@@ -99,119 +99,119 @@ msgid "When using Bulk Edit, you can change the metadata (categories, author, et
 msgstr "使用批量编辑时，您可以一次性更改所有选定帖子的元数据（类别、作者等）。要从分组中移除一篇文章，只需点击批量编辑区域中其名称旁边的 %s<span class=\"screen-reader-text\">移除</span>按钮即可。"
 
 #. translators: 1: WordPress Release Notes link, 2: WordPress version number.
-#: wp-admin/about.php:295
+#: wp-admin/about.php:320
 msgid "<a href=\"%1$s\">Read the WordPress %2$s Release Notes</a> for information on installation, enhancements, fixed issues, release contributors, learning resources, and the list of file changes."
 msgstr "<a href=\"%1$s\">阅读 WordPress %2$s 发行说明</a>，了解有关安装、增强功能、修复问题、发行贡献者、学习资源和文件更改列表的信息。"
 
-#. translators: %s: WordPress Field Guide link.
-#: wp-admin/about.php:276
+#. translators: 1: WordPress Field Guide link, 2: WordPress version number.
+#: wp-admin/about.php:301
 msgid "Explore the <a href=\"%1$s\">WordPress %2$s Field Guide</a>. Learn about the changes in this release with detailed developer notes to help you build with WordPress."
 msgstr "探索 <a href=\"%1$s\">WordPress %2$s Field Guide</a>。通过详细的开发人员说明了解此版本中的更改，以帮助您使用 WordPress 构建。"
 
-#: wp-admin/about.php:233
+#: wp-admin/about.php:258
 msgid "Every release is committed to making WordPress accessible to everyone. 6.4 brings List View improvements and aria-label support for the Navigation block, among other highlights. The admin user interface (UI) includes enhancements to button placements, \"Add New\" menu items context, and Site Health spoken messages."
 msgstr "每个版本都致力于让每个人都能使用 WordPress。6.4 带来了列表视图改进和导航块的ria-标签支持等亮点。管理用户界面（UI）包括对按钮位置、\"添加新内容 \"菜单项上下文和网站健康状况口语信息的改进。"
 
-#: wp-admin/about.php:223
+#: wp-admin/about.php:248
 msgid "WordPress 6.4 includes more than 100 performance updates for a faster and more efficient experience. Enhancements focus on template loading performance for Block Themes and Classic Themes, usage of the script loading strategies “defer” and “async” in core, blocks, and themes, and optimization of autoloaded options."
 msgstr "WordPress 6.4 包含 100 多项性能更新，带来更快、更高效的体验。增强的重点是区块主题和经典主题的模板加载性能，核心、块和主题中脚本加载策略 \"defer \"和 \"async \"的使用，以及自动加载选项的优化。"
 
-#: wp-admin/about.php:210
+#: wp-admin/about.php:235
 msgid "Block Hooks is a new powerful feature that enables plugins to auto-insert blocks into content relative to another block. Think of it as recommendations to make your work with blocks more intuitive. A new \"Plugins\" panel gives you complete control to match them to your needs—add, dismiss, and rearrange Block Hooks as desired."
 msgstr "区块钩子是一项新的强大功能，可使插件自动将区块插入到与另一个区块相对应的内容中。可以把它看作是让你更直观地使用区块的建议。新的 \"插件 \"面板让你完全可以根据自己的需要来匹配它们--根据需要添加、取消和重新排列区块钩子。"
 
-#: wp-admin/about.php:209
+#: wp-admin/about.php:234
 msgid "Introducing Block Hooks"
 msgstr "引入区块钩子"
 
-#: wp-admin/about.php:193
+#: wp-admin/about.php:218
 msgid "Get creative with new background images in Group blocks and ensure consistent image dimensions with placeholder aspect ratios. Do you want to add buttons to your Navigation block? You can now do it conveniently without custom CSS. If you're working with synced patterns, alignment settings stay intact for a seamless pattern creation experience."
 msgstr "在组块中使用新的背景图片发挥创意，并通过占位符的宽高比确保图片尺寸一致。您想在导航区块中添加按钮吗？现在无需自定义 CSS 即可轻松实现。如果您使用的是同步图案，对齐设置将保持不变，为您带来无缝的图案创建体验。"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:217
 msgid "Build your creative vision with more design tools"
 msgstr "利用更多设计工具打造你的创意构想"
 
-#: wp-admin/about.php:183
+#: wp-admin/about.php:208
 msgid "https://make.wordpress.org/core/2023/10/05/core-editor-improvement-ensuring-excellence-in-the-writing-experience/"
 msgstr "https://make.wordpress.org/core/2023/10/05/core-editor-improvement-ensuring-excellence-in-the-writing-experience/"
 
 #. translators: %s: New enhancements link.
-#: wp-admin/about.php:182
+#: wp-admin/about.php:207
 msgid "<a href=\"%s\">New enhancements</a> ensure your content creation journey is smooth. Find new keyboard shortcuts in List View, refined list merging, and enhanced control over link settings. A revamped and cohesive toolbar experience for Navigation, List, and Quote blocks lets you efficiently work with the tooling options you need."
 msgstr "<a href=\"%s\">新的增强功能</a>可确保您的内容创建之旅顺利进行。在列表视图中找到新的键盘快捷键，改进列表合并功能，并增强对链接设置的控制。导航、列表和报价块的工具栏体验经过改进，具有凝聚力，可让您高效地使用所需的工具选项。"
 
-#: wp-admin/about.php:177
+#: wp-admin/about.php:202
 msgid "Enjoy new writing improvements"
 msgstr "享受新的写作改进"
 
-#: wp-admin/about.php:166
+#: wp-admin/about.php:191
 msgid "Need to use your custom patterns on another site? It's simple! Import and export them as JSON files from the Site Editor's patterns view."
 msgstr "需要在其他网站上使用您的自定义样板？很简单！从网站编辑器的模式视图中导入或导出它们为 JSON 文件。"
 
-#: wp-admin/about.php:165
+#: wp-admin/about.php:190
 msgid "Share patterns across sites"
 msgstr "跨站点共享样板"
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:184
 msgid "New media previews for Gallery and Image blocks in List View let you visualize and locate at a glance where images on your content are."
 msgstr "为列表视图中的图库和图像块新增了媒体预览功能，让您一目了然地查看和定位内容中的图像位置。"
 
-#: wp-admin/about.php:158
+#: wp-admin/about.php:183
 msgid "Image previews in List View"
 msgstr "列表视图中的图像预览"
 
-#: wp-admin/about.php:152
+#: wp-admin/about.php:177
 msgid "Set custom names for Group blocks to easily organize and differentiate parts of your content. These names will be visible in List View."
 msgstr "为组块设置自定义名称，可轻松组织和区分内容的各个部分。这些名称将在列表视图中可见。"
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:176
 msgid "Rename Group blocks"
 msgstr "重新命名区块组"
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:164
 msgid "https://make.wordpress.org/core/2023/09/12/core-editor-improvement-commanding-the-command-palette/"
 msgstr "https://make.wordpress.org/core/2023/09/12/core-editor-improvement-commanding-the-command-palette/"
 
 #. translators: %s: Command palette improvement link.
-#: wp-admin/about.php:138
+#: wp-admin/about.php:163
 msgid "Enjoy <a href=\"%s\">a refreshed design and more commands</a> to find what you're looking for, perform tasks efficiently, and save time as you create."
 msgstr "<a href=\"%s\">全新的设计和更多的命令</a>，让您在创建过程中查找所需内容、高效执行任务并节省时间。"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:158
 msgid "Get more done with the Command Palette"
 msgstr "使用命令调板完成更多工作"
 
-#: wp-admin/about.php:127
+#: wp-admin/about.php:152
 msgid "Organize your synced and unsynced patterns with categories. Explore advanced filtering in the Patterns section of the inserter to find them all more intuitively."
 msgstr "按类别整理已同步和未同步的图案。在插入器的 \"模式 \"部分探索高级过滤功能，更直观地找到所有样板。"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:151
 msgid "Categorize and filter patterns"
 msgstr "分类和过滤模式"
 
-#: wp-admin/about.php:120
+#: wp-admin/about.php:145
 msgid "Turn lightbox functionality on for interactive, full-screen images with a simple click. Apply it globally or to specific images to customize the viewing experience."
 msgstr "只需点击一下，即可打开灯箱功能，获得全屏互动图像。将其应用于全局或特定图片，以定制查看体验。"
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:144
 msgid "Add a lightbox effect to images"
 msgstr "为图片添加灯箱效果"
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:127
 msgid "https://make.wordpress.org/core/2023/08/24/introducing-twenty-twenty-four/"
 msgstr "https://make.wordpress.org/core/2023/08/24/introducing-twenty-twenty-four/"
 
 #. translators: %s: Introduction to Twenty Twenty-Four link.
-#: wp-admin/about.php:101
+#: wp-admin/about.php:126
 msgid "Experience the latest advancements in site editing with <a href=\"%s\">Twenty Twenty-Four</a>. Built with three distinct use cases in mind, the versatility of the new default theme makes it an ideal choice for almost any type of website. Dive into its collection of templates and patterns and unlock a world of creative possibilities with just a few tweaks."
 msgstr "使用 <a href=\"%s\">Twenty Twenty-Four</a> 体验网站编辑的最新进展。新的默认主题考虑了三种不同的使用情况，其多功能性使其成为几乎所有类型网站的理想选择。您只需稍加调整，就能深入了解其模板和模式集合，开启一个充满创意的世界。"
 
-#: wp-admin/about.php:96
+#: wp-admin/about.php:121
 msgid "Say hello to<br>Twenty Twenty-Four"
 msgstr "哈喽<br>Twenty Twenty-Four"
 
-#: wp-admin/about.php:89
+#: wp-admin/about.php:114
 msgid "Every version of WordPress empowers your creative freedom, and WordPress 6.4 is no different. New features and upgrades to your site editing, design, and writing experience allow your ideas to take shape seamlessly. Elevate your site-building journey with the flexibility and power of WordPress 6.4."
 msgstr "每个版本的 WordPress 都能赋予您创作自由，WordPress 6.4 也不例外。网站编辑、设计和写作体验的新功能和升级，让您的创意天衣无缝地成形。借助 WordPress 6.4 的灵活性和强大功能，提升您的网站建设之旅。"
 
@@ -232,7 +232,7 @@ msgid "Your WordPress version is %1$s, however the new plugin version requires %
 msgstr "你的WordPress版本是 %1$s，但新插件版本需要 %2$s。"
 
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:68
+#: wp-admin/about.php:68 wp-admin/about.php:93
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -697,7 +697,7 @@ msgid "Do you use WordPress for work, for personal projects, or even just for fu
 msgstr "您使用 WordPress 是为了工作、个人项目，还是只是为了好玩？您可以帮助塑造为全球数百万网站提供支持的开源项目的长期成功。"
 
 #. translators: 1: Learn WordPress link, 2: Workshops link.
-#: wp-admin/about.php:255
+#: wp-admin/about.php:280
 msgid "<a href=\"%1$s\">Learn WordPress</a> is a free resource for new and experienced WordPress users. Learn is stocked with how-to videos on using various features in WordPress, <a href=\"%2$s\">interactive workshops</a> for exploring topics in-depth, and lesson plans for diving deep into specific areas of WordPress."
 msgstr "<a href=\"%1$s\">Learn WordPress</a> 是面向 WordPress 新老用户的免费资源。Learn中包含关于如何使用WordPress中各种功能的视频、用于深入探讨主题的<a href=\"%2$s\">交互式研讨会</a>，以及用于深入研究WordPress特定领域的课程计划。"
 
@@ -849,12 +849,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">定制器文档</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:381
+#: wp-admin/about.php:406
 msgid "https://wordpress.org/download/"
 msgstr "https://cn.wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:378
+#: wp-admin/about.php:403
 msgid "This is the final release of WordPress %s"
 msgstr "这是 WordPress %s 的最终版本"
 
@@ -1189,21 +1189,21 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "联系 WordPress 核心开发人员以确保您不会再遇到这个问题。"
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:375
+#: wp-admin/about.php:400
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "重要！您使用的 WordPress 版本（%1$s）即将停止接收安全更新。 为了确保您站点的安全，请尽快 <a href=\"%2$s\">更新到最新的 WordPress 版本</a>。"
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:372
+#: wp-admin/about.php:397
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "重要！您使用的 WordPress 版本（%1$s）已不再受到支持，您的站点将不会再接收到任何的安全更新。 为了确保您站点的安全，请尽快 <a href=\"%2$s\">更新到最新的 WordPress 版本</a>。"
 
-#: wp-admin/about.php:277
+#: wp-admin/about.php:302
 msgid "https://make.wordpress.org/core/2023/10/23/wordpress-6-4-field-guide/"
 msgstr "https://make.wordpress.org/core/2023/10/23/wordpress-6-4-field-guide/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:246
+#: wp-admin/about.php:271
 msgid "Learn more about WordPress %s"
 msgstr "了解 WordPress %s"
 
@@ -2112,7 +2112,7 @@ msgstr "添加新的应用程序密码"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "此功能需要创建应用程序密码，但不需要更新用户信息。"
 
-#: wp-admin/about.php:316
+#: wp-admin/about.php:341
 msgid "Go to Updates"
 msgstr "转到“更新”页面"
 
@@ -2438,7 +2438,7 @@ msgstr "\"%1$s\"的值小于\"%2$s\""
 msgid "Environment type"
 msgstr "环境类型"
 
-#: wp-admin/about.php:232
+#: wp-admin/about.php:257
 msgid "Accessibility"
 msgstr "无障碍"
 
@@ -4078,7 +4078,7 @@ msgstr "https://make.wordpress.org/hosting/handbook/handbook/server-environment/
 msgid "The WordPress Hosting Team maintains a list of those modules, both recommended and required, in <a href=\"%1$s\" %2$s>the team handbook%3$s</a>."
 msgstr "WordPress 主机团队维护着一份必需和推荐的模组列表，列于<a href=\"%1$s\" %2$s>团队手册%3$s</a>。"
 
-#: wp-admin/about.php:222 wp-admin/includes/class-wp-site-health.php:259
+#: wp-admin/about.php:247 wp-admin/includes/class-wp-site-health.php:259
 #: wp-admin/includes/class-wp-site-health.php:737
 #: wp-admin/includes/class-wp-site-health.php:884
 #: wp-admin/includes/class-wp-site-health.php:1122
@@ -5361,7 +5361,7 @@ msgstr "未能安装"
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:298 wp-admin/includes/update.php:323
+#: wp-admin/about.php:323 wp-admin/includes/update.php:323
 #: wp-admin/index.php:119 wp-admin/install.php:249 wp-admin/update-core.php:94
 #: wp-admin/upgrade.php:81
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
@@ -7689,7 +7689,7 @@ msgid "(Currently set to: %s)"
 msgstr "（当前设置为：%s）"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:346
+#: wp-admin/about.php:371
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>版本%s</strong>修正了一个安全问题。"
 
@@ -7701,15 +7701,15 @@ msgstr "https://cn.gravatar.com/"
 msgid "Profile Picture"
 msgstr "资料图片"
 
-#: wp-admin/about.php:343
+#: wp-admin/about.php:48 wp-admin/about.php:368
 msgid "Maintenance and Security Releases"
 msgstr "维护和安全更新"
 
-#: wp-admin/about.php:340
+#: wp-admin/about.php:365
 msgid "Security Releases"
 msgstr "安全更新"
 
-#: wp-admin/about.php:337
+#: wp-admin/about.php:362
 msgid "Maintenance Releases"
 msgstr "维护更新"
 
@@ -10996,44 +10996,45 @@ msgstr "在浏览站点时显示工具栏"
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:65 wp-admin/about.php:369
+#: wp-admin/about.php:65 wp-admin/about.php:90 wp-admin/about.php:394
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "欲了解更多，参见<a href=\"%s\">发行注记</a>。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:363
+#: wp-admin/about.php:388
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修补了安全漏洞、修正了 %2$s 个问题。"
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:357
+#: wp-admin/about.php:78 wp-admin/about.php:382
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修补了安全漏洞、修正了 %2$s 个问题。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:53 wp-admin/about.php:351
+#: wp-admin/about.php:53 wp-admin/about.php:376
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修复了 %2$s 个问题。"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:348
+#: wp-admin/about.php:373
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>版本 %s</strong> 修正了一些安全问题。"
 
-#: wp-admin/about.php:342
+#: wp-admin/about.php:367
 msgid "Maintenance and Security Release"
 msgstr "维护和安全更新"
 
-#: wp-admin/about.php:339
+#: wp-admin/about.php:364
 msgid "Security Release"
 msgstr "安全更新"
 
-#: wp-admin/about.php:48 wp-admin/about.php:336
+#: wp-admin/about.php:361
 msgid "Maintenance Release"
 msgstr "维护更新"
 
@@ -11307,15 +11308,15 @@ msgid "Because this is a multisite installation, you may add accounts that alrea
 msgstr "由于当前多站点功能已经开启，您可以直接通过输入用户名或电子邮箱地址的方式将站点网络中的现有用户添加到站点中，然后为其指定用户角色。如需修改密码等其他信息，您需要拥有网络管理员的权限，访问“管理网络”>“所有用户”，然后将鼠标放置在用户名上方，点击出现的“编辑”链接。"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:83
+#: wp-admin/about.php:108
 msgid "Welcome to WordPress %s"
 msgstr "欢迎使用 WordPress %s"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:348
 msgid "Go to Dashboard &rarr; Home"
 msgstr "转到“仪表盘” &rarr; “首页”页面"
 
-#: wp-admin/about.php:316
+#: wp-admin/about.php:341
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "转到“仪表盘” &rarr; “更新”页面"
 
@@ -13043,7 +13044,7 @@ msgstr "WordPress 更新"
 msgid "Edit menu item"
 msgstr "编辑菜单项"
 
-#: wp-admin/about.php:323 wp-admin/includes/network.php:166
+#: wp-admin/about.php:348 wp-admin/includes/network.php:166
 msgid "Go to Dashboard"
 msgstr "转到“仪表盘”页面"
 

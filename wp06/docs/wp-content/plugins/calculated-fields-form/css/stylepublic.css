@@ -6,18 +6,30 @@ body{
 #fbuilder .clearer{clear:both;display:block;width:100%;}
 
 #fbuilder,
-#fbuilder *{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+#fbuilder *{
+    -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
+}
 #fbuilder .fields,#fbuilder .fform{padding:5px 0px;clear:both;}
 #fbuilder .fform:empty{display:none;}
+#fbuilder .fform .cff-form-description{display:block;}
 #fbuilder .fields:not(.cff-container-field){padding:5px;}
 #fbuilder .fform h1,
-#fbuilder .fform h2{margin:5px 0px;padding:0px;}
+#fbuilder .fform h2,
+#fbuilder .fform h3,
+#fbuilder .fform h4,
+#fbuilder .fform h5,
+#fbuilder .fform h6,
+#fbuilder .fform p{margin:5px 0px;padding:0px;}
 
 #fbuilder h1,
 #fbuilder h2,
 #fbuilder h3,
 #fbuilder h4,
 #fbuilder h5,
+#fbuilder h6,
 #fbuilder span,
 #fbuilder p,
 #fbuilder a,
@@ -353,22 +365,37 @@ body{
 
 
 #fbuilder .dfield{position:relative;}
-#fbuilder .top_aligned .fields label{}
-#fbuilder .top_aligned .fields .dfield{padding-top:5px;}
 
 @media print, screen and (min-width: 640px) {
-	#fbuilder .left_aligned .fields:not(.section_breaks)>label:not(:empty){float:left;width:35%;padding-right:10px;}
-	#fbuilder .left_aligned .fields label:not(:empty) + .dfield{float:left;width:65%;}
-	#fbuilder .right_aligned .fields:not(.section_breaks)>label:not(:empty){float:left;width:35%;text-align:right;padding-right:10px;}
-	#fbuilder .right_aligned .fields label:not(:empty) + .dfield{float:left;width:65%;}
+	#fbuilder .left_aligned .fields:not(.section_breaks)>label:not(:empty),
+	#fbuilder [id*="fieldlist"]:not(.left_aligned) .left_aligned.fields:not(.section_breaks)>label:not(:empty){float:left;width:35%;padding-right:10px;text-align:left;}
+	#fbuilder .left_aligned .fields label:not(:empty) + .dfield,
+	#fbuilder [id*="fieldlist"]:not(.left_aligned) .left_aligned.fields label:not(:empty) + .dfield{float:left;width:65%;}
+	#fbuilder .right_aligned .fields:not(.section_breaks)>label:not(:empty),
+	#fbuilder [id*="fieldlist"]:not(.right_aligned) .right_aligned.fields:not(.section_breaks)>label:not(:empty){float:left;width:35%;text-align:right;padding-right:10px;}
+	#fbuilder .right_aligned .fields label:not(:empty) + .dfield,
+	#fbuilder [id*="fieldlist"]:not(.right_aligned) .right_aligned.fields label:not(:empty) + .dfield{float:left;width:65%;}
 }
-#fbuilder .right_aligned .fields .dfield label{text-align:left;}
 
-*[dir="rtl"] #fbuilder .left_aligned .fields label:not(:empty){float:right;}
-*[dir="rtl"] #fbuilder .left_aligned .fields label:not(:empty) + .dfield{float:right;}
-*[dir="rtl"] #fbuilder .right_aligned .fields:not(.section_breaks) label:not(:empty){float:right;text-align:left;}
-*[dir="rtl"] #fbuilder .right_aligned .fields label:not(:empty) + .dfield{float:right;}
-*[dir="rtl"] #fbuilder .right_aligned .fields:not(.section_breaks) .dfield label{text-align:right;}
+#fbuilder .top_aligned .fields>label{float:none;width:100%;padding-right:0;padding-left:0;text-align:left;}
+#fbuilder [id*="fieldlist"]:not(.top_aligned) .top_aligned.fields>label{float:none;width:100%;padding-right:0;padding-left:0;text-align:left;}
+#fbuilder .top_aligned .fields .dfield{padding-top:5px;float:none;width:100%;}
+#fbuilder [id*="fieldlist"]:not(.top_aligned) .top_aligned.fields .dfield{padding-top:5px;float:none;width:100%;}
+
+*[dir="rtl"] #fbuilder .left_aligned .fields label:not(:empty),
+*[dir="rtl"] #fbuilder [id*="fieldlist"]:not(.left_aligned) .left_aligned.fields label:not(:empty){float:right;}
+
+*[dir="rtl"] #fbuilder .left_aligned .fields label:not(:empty) + .dfield,
+*[dir="rtl"] #fbuilder [id*="fieldlist"]:not(.left_aligned) .left_aligned.fields label:not(:empty) + .dfield{float:right;}
+
+*[dir="rtl"] #fbuilder .right_aligned .fields:not(.section_breaks) label:not(:empty),
+*[dir="rtl"] #fbuilder [id*="fieldlist"]:not(.right_aligned) .right_aligned.fields:not(.section_breaks) label:not(:empty){float:right;text-align:left;}
+
+*[dir="rtl"] #fbuilder .right_aligned .fields label:not(:empty) + .dfield,
+*[dir="rtl"] #fbuilder [id*="fieldlist"]:not(.right_aligned) .right_aligned.fields label:not(:empty) + .dfield{float:right;}
+
+*[dir="rtl"] #fbuilder .right_aligned .fields:not(.section_breaks) .dfield label,
+*[dir="rtl"] #fbuilder [id*="fieldlist"]:not(.right_aligned) .right_aligned.fields:not(.section_breaks) .dfield label{text-align:right;}
 
 #fbuilder .one_column label,
 #fbuilder .two_column label,
@@ -396,7 +423,7 @@ body{
 
 #fbuilder .cpefb_error.message:empty{display:none !important;}
 
-.ui-datepicker{ z-index:9999 !important;min-width:280px;max-width:320px;}
+.ui-datepicker{ z-index:99999 !important;min-width:280px;max-width:320px;}
 .ui-datepicker *{font-size:14px !important;}
 #fbuilder .ui-datepicker select.ui-datepicker-month,
 #fbuilder .ui-datepicker select.ui-datepicker-year{width:45% !important;min-height:auto !important;padding:initial !important; margin:initial !important;}
@@ -558,6 +585,7 @@ body{
 #fbuilder .discount-container:empty{display:none;}
 
 @media print{
+	#fbuilder .cff-button-field,
 	#fbuilder button,
 	#fbuilder input[type="button"],
 	#fbuilder input[type="reset"],
@@ -655,3 +683,6 @@ body{
 #fbuilder .cff-spinner input{max-width: calc( 100% - 70px );margin-left:5px !important;margin-right:5px !important;}
 
 #fbuilder .cff-qrcode-container{margin-bottom:10px;}
+
+#fbuilder .cff-page-break-after{page-break-after:always !important;}
+#fbuilder .cff-page-break-before{page-break-before:always !important;}

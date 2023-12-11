@@ -48,7 +48,14 @@ if ( ! class_exists( 'CR_Review_Notification_Email' ) ) :
 				case 'review_notification':
 					$this->subject = __( 'New Review(s) from {customer_name}', 'customer-reviews-woocommerce' );
 					$this->heading = __( 'Notification about new reviews', 'customer-reviews-woocommerce' );
-					$this->body = "<b>{customer_name}</b> has posted new review(s) about your store and/or products. Here is a copy of their review(s):\n\n{reviews_list}\n\n\n\n{reviews_button}";
+					$this->body = sprintf(
+						__(
+							'%1$s has posted new review(s) about your store and/or products. Here is a copy of their review(s):%2$s',
+							'customer-reviews-woocommerce'
+						),
+						'<b>{customer_name}</b>',
+						'{reviews_list}{reviews_button}'
+					);
 					$this->template_name = 'email-review-notification.php';
 					$this->replace['button-label'] = __( 'Manage Reviews', 'customer-reviews-woocommerce' );
 					$this->replace['reviews-link'] = admin_url( 'admin.php?page=cr-reviews' );

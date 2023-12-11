@@ -715,7 +715,7 @@ function del_2fa_confirm_all(msg){
 	
 		<div class="postbox-header">
 		<h2 class="hndle ui-sortable-handle">
-			<span><?php echo __('Custom Redirects based on roles', 'loginizer'); ?><span style="color:red; margin-left:5px;">New</span></span>
+			<span><?php echo __('Custom Redirects based on roles', 'loginizer'); ?></span>
 		</h2>
 		</div>
 		

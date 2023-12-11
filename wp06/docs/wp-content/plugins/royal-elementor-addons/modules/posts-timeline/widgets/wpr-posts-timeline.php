@@ -7,12 +7,12 @@ use Elementor\Repeater;
 use Elementor\Controls_Manager;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Core\Schemes\Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use WprAddons\Classes\Utilities;
 
 class Wpr_Posts_Timeline extends Widget_Base {
@@ -50,6 +50,40 @@ class Wpr_Posts_Timeline extends Widget_Base {
     	if ( empty(get_option('wpr_wl_plugin_links')) )
         return 'https://wordpress.org/support/plugin/royal-elementor-addons/';
     }
+	
+	public $my_query;	
+	public $animation;
+	public $animation_loadmore_left;
+	public $animation_loadmore_right;		
+	public $timeline_fill;
+	public $show_readmore;		
+	public $pagination_type;
+	public $pagination_max_page;
+	public $pagination_max_pages;
+	public $animation_class;
+	public $timeline_layout;
+	public $timeline_layout_wrapper;
+	public $item_url_count;				
+	public $thumbnail_size;
+	public $thumbnail_custom_dimension;
+	public $show_year_label;
+	public $timeline_year;            
+	public $image;
+	public $slides_to_show;
+	public $horizontal_inner_class;
+	public $horizontal_timeline_class;
+	public $swiper_class;
+	public $timeline_description;
+	public $story_date_label;
+	public $story_extra_label;
+	public $timeline_story_title;
+	public $title_key;
+	public $year_key;
+	public $date_label_key;
+	public $extra_label_key;
+	public $description_key;
+	public $background_image;
+	public $background_class;
 
 	public function wpr_aos_animation_array() {
 		return [
@@ -989,6 +1023,7 @@ class Wpr_Posts_Timeline extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}  .wpr-icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}}  .wpr-icon svg' => 'fill: {{VALUE}}'
 				],
 				'default' => '#000',
 				'condition' => [
@@ -1077,6 +1112,7 @@ class Wpr_Posts_Timeline extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}  .wpr-timeline-media i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}}  .wpr-timeline-media svg' => 'fill: {{VALUE}}'
 				],
 				'condition' => [
 					'repeater_media' => 'icon',
@@ -1173,6 +1209,7 @@ class Wpr_Posts_Timeline extends Widget_Base {
 				],
                 'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .wpr-timeline-media i' => 'display: block; text-align: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .wpr-timeline-media svg' => 'text-align: {{VALUE}};'
 				],
 				'condition' => [
 					// 'timeline_content' => 'custom',
@@ -3184,7 +3221,6 @@ class Wpr_Posts_Timeline extends Widget_Base {
 			[
 				'name' => 'date_typography',
 				'label' => __('Typography', 'wpr-addons'),
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-inner-date-label',
 				'fields_options' => [
 					'typography' => [
@@ -4079,6 +4115,7 @@ class Wpr_Posts_Timeline extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-wrapper .wpr-icon i' => 'font-size: {{SIZE}}{{UNIT}} !important',
+					'{{WRAPPER}} .wpr-wrapper .wpr-icon svg' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;'
 				],
 				'separator' => 'before'
 			]

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - TablePress &#8211; Tables in WordPress made easy - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-02 09:23:14+0000\n"
+"PO-Revision-Date: 2023-11-24 14:05:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,17 +35,61 @@ msgstr "默认样式编辑器的截图属于 TablePress 高级版本的一部分
 msgid "Change your tables’ default style without touching CSS code!"
 msgstr "更改表格的默认样式而不需要修改 CSS 代码！"
 
+#: views/view-list.php:103 views/view-options.php:97
+msgid "Choose from multiple style variations or define your own color scheme in an easy-to-use visual tool!"
+msgstr "从多种风格中选择，或在易于使用的视觉工具中定义你自己的配色方案！"
+
 #: views/view-list.php:102 views/view-options.php:96
 msgid "The TablePress premium versions come with a table default style customizer!"
 msgstr "TablePress 高级版自带表格默认样式编辑器！"
+
+#: views/view-list.php:98
+msgid "Here’s the latest great addition:"
+msgstr "下面是最新加入的精彩特性："
 
 #: views/view-list.php:91 views/view-options.php:102
 msgid "Find out more"
 msgstr "了解更多"
 
+#: views/view-list.php:87
+msgid "More great features and priority email support are available with a Premium license plan. <a href=\"%s\">Check them out!</a>"
+msgstr "更多精彩特性以及优先的电子邮件支持需要高级许可证。<a href=\"%s\">了解更多！</a>"
+
+#: views/view-import.php:147
+msgid "You can automate the import of tables from URLs or server files with the <a href=\"%1$s\">“%2$s” premium feature</a>!"
+msgstr "你可以使用<a href=\"%1$s\">“%2$s“ 高级特性</a>自动化从 URL 或服务器上的文件导入表格！"
+
 #: views/view-import.php:146
 msgid "Pro Tip:"
 msgstr "专家提示："
+
+#: controllers/environment-checks.php:75
+msgid "<a href=\"%s\">Learn more about updating PHP</a> or contact your server administrator."
+msgstr "<a href=\"%s\">了解更多关于更新 PHP</a> 或联系你的服务器管理员。"
+
+#: controllers/environment-checks.php:72
+msgid "Your server is running a version of PHP that is too old for the TablePress plugin to work. TablePress requires PHP %s or newer, where newer versions are recommended."
+msgstr "你的服务器上运行的 PHP 版本太老了，TablePress 插件无法正常工作。TablePress 要求 PHP %s 或更新版本，越新的版本越好。"
+
+#: controllers/environment-checks.php:41
+msgid "Please ask your site’s administrator to update WordPress to at least version %1$s!"
+msgstr "请让你的网站管理员更新 WordPress 到至少 %1$s 版本！"
+
+#: controllers/environment-checks.php:39
+msgid "Please <a href=\"%1$s\">update your WordPress installation</a> to at least version %2$s!"
+msgstr "请至少 <a href=\"%1$s\">更新你的 WordPress</a> 到 %2$s 版本！"
+
+#: controllers/environment-checks.php:33
+msgid "The installed version of WordPress is too old for the TablePress plugin! TablePress requires an up-to-date version!"
+msgstr "当前安装的 WordPress 版本过低！TablePress 需要使用更新的版本。"
+
+#: classes/class-tablepress.php:723
+msgid "Change the default styling of your tables in the visual style customizer."
+msgstr "在可视化样式自定义工具中更改默认的表格样式。"
+
+#: classes/class-tablepress.php:722
+msgid "Default Style Customizer"
+msgstr "预设样式自定义工具"
 
 #: views/class-all-tables-list-table.php:176
 msgid "Select table “%s”"
@@ -402,6 +446,10 @@ msgstr "导入表格的功能现在更强大了！您可以直接拖放文件到
 msgid "TablePress feature: Drag and Drop Import with Format Detection"
 msgstr "TablePress特色功能：拖放导入并探测文件类型"
 
+#: views/view-import.php:74
+msgid "TablePress can import tables from common spreadsheet applications, like XLSX files from Excel, or CSV, ODS, HTML, and JSON files."
+msgstr "TablePress 能够从常见电子表格应用的表格文件导入表格，如Excel的XLSX文件，或者CSV、ODS、HTML和JSON文件。"
+
 #: views/view-edit.php:650
 msgid "Right-clicking the table content fields will open a context menu for quick access to common editing tools."
 msgstr "右键单击表格内容区域将会打开一个上下文菜单，从而快速访问常见的编辑工具。"
@@ -415,15 +463,15 @@ msgstr "您知道吗？"
 msgid "TablePress feature: Context menu"
 msgstr "TablePress特色功能：上下文菜单"
 
-#: classes/class-view.php:461
+#: classes/class-view.php:471
 msgid "For help, please follow <a href=\"https://www.enable-javascript.com/\">the instructions on how to enable JavaScript in your browser</a>."
 msgstr "要寻求帮助，请参照<a href=\"https://www.enable-javascript.com/\">关于在您的浏览器中启用JavaScript的说明</a>。"
 
-#: classes/class-view.php:460
+#: classes/class-view.php:470
 msgid "This screen requires JavaScript. Please enable JavaScript in your browser settings."
 msgstr "本页面需要 JavaScript。请在您的浏览器设置中启用 JavaScript。"
 
-#: classes/class-view.php:457 controllers/environment-checks.php:30
+#: classes/class-view.php:467 controllers/environment-checks.php:30
 #: controllers/environment-checks.php:69
 msgid "Attention: Unfortunately, there is a problem!"
 msgstr "注意：很遗憾，但是这里有点问题！"
@@ -566,7 +614,7 @@ msgstr "升级为高级版"
 msgid "Check out the Premium version of TablePress!"
 msgstr "了解高级版TablePress！"
 
-#: classes/class-view.php:417
+#: classes/class-view.php:426
 msgid "Upgrade to Premium"
 msgstr "升级到高级版"
 
@@ -1015,7 +1063,7 @@ msgstr "您可以从这里将一个表格插入到一个文章或者静态页。
 msgid "List of Tables"
 msgstr "表格列表"
 
-#: classes/class-view.php:464 views/view-edit.php:616
+#: classes/class-view.php:474 views/view-edit.php:616
 msgid "Back to the List of Tables"
 msgstr "回到“表格列表”"
 
@@ -1641,7 +1689,7 @@ msgstr "插件页面"
 msgid "TablePress Table"
 msgstr "TablePress 表格"
 
-#: classes/class-view.php:479 views/view-edit.php:394
+#: classes/class-view.php:489 views/view-edit.php:394
 #: views/view-options.php:207
 msgid "Save Changes"
 msgstr "保存更改"

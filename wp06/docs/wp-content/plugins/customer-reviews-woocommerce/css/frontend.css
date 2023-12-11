@@ -334,6 +334,7 @@ div.cr-recaptcha { margin-bottom: 1.5em; }
 	padding: 30px 0;
 	border-bottom: 1px solid #E5E9EB;
 	position: relative;
+	align-items: center;
 }
 .cr-all-reviews-shortcode .cr-review-form-item img,
 .cr-ajax-reviews-review-form .cr-review-form-item img {
@@ -2738,7 +2739,7 @@ img.ivole-verified-badge-ext-icon {
 .cr-reviews-slider .cr-review-card .top-row {
 	display: flex;
 	padding: 16px 0 16px 0;
-	border-bottom: solid 2px #F4F4F4;
+	border-bottom: solid 2px #aaaaaa;
 	margin: 0 10px 0 10px;
 }
 
@@ -2862,7 +2863,7 @@ img.ivole-verified-badge-ext-icon {
 	margin: 0 15px 0 15px;
 }
 .cr-reviews-slider .cr-review-card .rating-row {
-	padding: 17px 0 12px 0;
+	padding: 17px 0 17px 0;
 	display: flex;
 	align-items: center;
 	margin: 0 10px 0 10px;
@@ -2924,6 +2925,17 @@ img.ivole-verified-badge-ext-icon {
 	padding: 10px;
 	margin-top: 10px;
 	line-height: 1;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-questions {
+	border-radius: inherit;
+	display: block;
+	padding: 0;
+	margin: 0 10px 17px 10px;
+	line-height: 1;
+	border-top: 1px dashed #aaaaaa;
+	border-bottom: 1px dashed #aaaaaa;
+	font-size: 14px;
 }
 
 .cr-reviews-grid .cr-review-card .review-product .product-thumbnail,
@@ -2995,6 +3007,34 @@ img.ivole-verified-badge-ext-icon {
 	display: inline;
 	border-radius: 0;
 }
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question {
+	display: flex;
+	align-items: center;
+	margin: 15px 0;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question.cr-sldr-checkbox {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question .cr-sldr-p {
+	margin: 0;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question.cr-sldr-checkbox .cr-sldr-p {
+	margin-bottom: 7px;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question.cr-sldr-checkbox ul {
+	margin: 0 0 0 25px;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-question .cr-sldr-label {
+	font-weight: 550;
+}
+
 .cr-reviews-grid .cr-review-card .crstar-rating,
 .cr-reviews-slider .cr-review-card .crstar-rating {
 	overflow: hidden;
@@ -3005,6 +3045,14 @@ img.ivole-verified-badge-ext-icon {
 	width: 172px;
 	font-family: crstar;
 	letter-spacing: 8px;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-questions .crstar-rating {
+	font-size: 18px;
+	height: 18px;
+	letter-spacing: 6px;
+	width: 135px;
+	color: #aaaaaa;
 }
 
 .cr-reviews-grid .cr-review-card .crstar-rating::before,
@@ -3018,6 +3066,10 @@ img.ivole-verified-badge-ext-icon {
 	width: 100%;
 }
 
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-questions .crstar-rating::before {
+	font-size: 18px;
+}
+
 .cr-reviews-grid .cr-review-card .crstar-rating span,
 .cr-reviews-slider .cr-review-card .crstar-rating span {
 	overflow: hidden;
@@ -3027,6 +3079,10 @@ img.ivole-verified-badge-ext-icon {
 	position: absolute;
 	padding-top: 1em;
 	font-size: 25px;
+}
+
+.cr-reviews-slider .cr-review-card .cr-sldr-custom-questions .crstar-rating span {
+	font-size: 18px;
 }
 
 .cr-reviews-grid .cr-review-card .crstar-rating span::before,

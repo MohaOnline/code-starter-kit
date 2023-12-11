@@ -4,11 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10
+class ComposerStaticInit373905cbd6b6be5594d85dc5ba0c0af9
 {
     public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'ad27a566e2c29b3589d96cf971fa8042' => __DIR__ . '/../..' . '/api/order-functions.php',
     );
 
@@ -31,6 +31,7 @@ class ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10
             'WooCommerce\\PayPalCommerce\\Googlepay\\' => 37,
             'WooCommerce\\PayPalCommerce\\Compat\\' => 34,
             'WooCommerce\\PayPalCommerce\\Common\\' => 34,
+            'WooCommerce\\PayPalCommerce\\CardFields\\' => 38,
             'WooCommerce\\PayPalCommerce\\Button\\' => 34,
             'WooCommerce\\PayPalCommerce\\Blocks\\' => 34,
             'WooCommerce\\PayPalCommerce\\Applepay\\' => 36,
@@ -127,6 +128,10 @@ class ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10
         array (
             0 => __DIR__ . '/../..' . '/lib/common',
         ),
+        'WooCommerce\\PayPalCommerce\\CardFields\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules/ppcp-card-fields/src',
+        ),
         'WooCommerce\\PayPalCommerce\\Button\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules/ppcp-button/src',
@@ -205,9 +210,9 @@ class ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc5e3d730957af79ae2479453bdb9bd10::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit373905cbd6b6be5594d85dc5ba0c0af9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit373905cbd6b6be5594d85dc5ba0c0af9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit373905cbd6b6be5594d85dc5ba0c0af9::$classMap;
 
         }, null, ClassLoader::class);
     }

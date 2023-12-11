@@ -40,6 +40,10 @@ class GooglepayButton {
             return;
         }
 
+        if (!this.contextHandler.validateContext()) {
+            return;
+        }
+
         this.googlePayConfig = config;
         this.allowedPaymentMethods = config.allowedPaymentMethods;
         this.baseCardPaymentMethod = this.allowedPaymentMethods[0];
@@ -107,7 +111,7 @@ class GooglepayButton {
         }
 
         if (['cart-block', 'checkout-block'].indexOf(this.context) !== -1) {
-            config.ppcpButtonWrapper = '#express-payment-method-ppcp-gateway';
+            config.ppcpButtonWrapper = '#express-payment-method-ppcp-gateway-paypal';
         }
 
         return config;
@@ -163,6 +167,10 @@ class GooglepayButton {
 
         this.waitForWrapper(wrapper, () => {
             jQuery(wrapper).addClass('ppcp-button-' + ppcpStyle.shape);
+
+            if (ppcpStyle.height) {
+                jQuery(wrapper).css('height', `${ppcpStyle.height}px`)
+            }
 
             const button =
                 this.paymentsClient.createButton({

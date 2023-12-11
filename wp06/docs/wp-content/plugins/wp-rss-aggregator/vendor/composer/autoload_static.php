@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9
+class ComposerStaticInit79383636f96469c52bc2e7c6981a8774
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -491,6 +491,7 @@ class ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9
         'RebelCode\\Wpra\\Core\\ModularModule' => __DIR__ . '/../..' . '/src/ModularModule.php',
         'RebelCode\\Wpra\\Core\\Modules\\AddonsModule' => __DIR__ . '/../..' . '/src/Modules/AddonsModule.php',
         'RebelCode\\Wpra\\Core\\Modules\\AssetsModule' => __DIR__ . '/../..' . '/src/Modules/AssetsModule.php',
+        'RebelCode\\Wpra\\Core\\Modules\\BlackFriday23Module' => __DIR__ . '/../..' . '/src/Modules/BlackFriday23Module.php',
         'RebelCode\\Wpra\\Core\\Modules\\BlacklistToolModule' => __DIR__ . '/../..' . '/src/Modules/BlacklistToolModule.php',
         'RebelCode\\Wpra\\Core\\Modules\\BulkAddToolModule' => __DIR__ . '/../..' . '/src/Modules/BulkAddToolModule.php',
         'RebelCode\\Wpra\\Core\\Modules\\CoreModule' => __DIR__ . '/../..' . '/src/Modules/CoreModule.php',
@@ -1044,10 +1045,10 @@ class ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd49f1f64f66282c995d3d7cf12ec03e9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit79383636f96469c52bc2e7c6981a8774::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit79383636f96469c52bc2e7c6981a8774::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit79383636f96469c52bc2e7c6981a8774::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit79383636f96469c52bc2e7c6981a8774::$classMap;
 
         }, null, ClassLoader::class);
     }

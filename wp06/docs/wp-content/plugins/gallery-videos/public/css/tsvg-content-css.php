@@ -1,4 +1,7 @@
 <style type="text/css">
+	section.tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
+		margin-bottom:50px;
+	}
 	.tsvg_flex_col {
 		display: -ms-flexbox;
 		display: -webkit-flex;

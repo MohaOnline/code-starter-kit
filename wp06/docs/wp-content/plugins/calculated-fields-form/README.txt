@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator,calculated,quote calculator,forms,form editor,advanced forms,payment calculator,payment,recurring payment,quote,fields,calculated field,price calculator,email,form design,paypal,equation editor,formula,equation,quote calculator,post,posts,plugin,widget,admin,sidebar,images,image,page,shortcode,products form,woocommerce,addons,layout,session,post,cookie,get,webhook,Dropbox,pdf,language
 Requires at least: 3.0.5
 Tested up to: 6.4
-Stable tag: 1.2.37
+Stable tag: 1.2.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -999,6 +999,34 @@ A: Please, follow the steps below:
 
 == Changelog ==
 
+= 1.2.42 =
+
+* Modifies the predefined value assignments of controls to allow numbers with leading zeros.
+
+= 1.2.41 =
+
+* Improves the plugin security thanks to emad.
+* Includes a new feature to align the fields' labels through their settings.
+* Includes new features to align the form title and description, select the header tag to apply, as well as modify their colors through the form settings tab.
+* Fixes minor errors in the form templates.
+* Modifies the Users Permissions add-on and data source fields backend (Developer and Platinum plugin versions).
+
+= 1.2.40 =
+
+* Includes a pair of classes to allow including page breaks on printed forms.
+* Modifies the Date/Time control.
+* Modifies the z-index on Datepickers to display them when forms are loaded into Elementor pop-ups.
+
+= 1.2.39 =
+
+* Implements the RANDOM operation. It allows getting random numbers in a range.
+* Modifies the forms builder dashboard.
+
+= 1.2.38 =
+
+* Fixes an issue in the DATEOBJ operation.
+* Includes some styles to force the browser to print the on/off controls and fields' backgrounds by pressing the Print button or calling the PRINTFORM operation.
+
 = 1.2.37 =
 
 * Includes some modifications in the forms builder to improve the user experience by selecting, duplicating, or deleting fields from the form.
@@ -1016,33 +1044,3 @@ A: Please, follow the steps below:
 * Modifies the Phone control.
 * Fixes a conflict with third-party code in the browser persistence module.
 * Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
-
-= 1.2.34 =
-
-* Fixes an issue with the maxlength attribute of fields.
-* Fixes a conflict on pages that load multiple jQuery versions.
-* Implements the JSONTOCSV operation to generate a CSV file directly on the client side.
-* Modifies the quantity integration between WooCommerce products and form fields (Developer and Platinum plugin versions).
-
-= 1.2.33 =
-
-* Fixes a minor issue with the set_step method in the slider controls.
-
-= 1.2.32 =
-
-* Fixes an issue in the tooltips.
-
-= 1.2.31 =
-
-* Implements the Cookies Operations modules to write, read, check, and delete cookies.
-* Modifies the QR control to stop the camera once it scans the QR code.
-
-= 1.2.30 =
-
-* Modifies the Checkbox control to allow configuring a minimum number of choice to select, and not only a maximum.
-
-= 1.2.29 =
-
-* Prevents that variables included with the CP_CALCULATED_FIELDS_VAR shortcode overwrite global and other context variables (Thanks to NGÔ THIÊN AN (ancorn_ from VNPT-VCI)).
-* Modifies the CFFCHART operation to allow the use of ChartJS 4.X.X API versions (Developer and Platinum versions of the plugin).
-* Modifies the WebHook add-on (Developer and Platinum versions of the plugin).

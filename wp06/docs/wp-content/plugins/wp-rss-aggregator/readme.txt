@@ -3,9 +3,9 @@ Contributors: RebelCode, jeangalea, markzahra, Mekku
 Plugin URI: https://www.wprssaggregator.com
 Tags: RSS import, RSS aggregator, autoblog, feed to post, news aggregator, rss to post, content curation, feed import, content syndication, rss feeds, podcast feed, youtube
 Requires at least: 4.0 or higher
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.4
-Stable tag: 4.23.3
+Stable tag: 4.23.4
 License: GPLv3
 
 The most powerful and reliable RSS aggregator for WordPress. Build a news aggregator, autoblog, and more in minutes with unlimited RSS feeds.
@@ -254,6 +254,13 @@ Our complete Knowledge Base with FAQs can be found [here](https://kb.wprssaggreg
 
 
 == Changelog ==
+
+= 4.23.4 (2023-11-18) =
+**Added**
+- Black Friday offer links.
+
+**Changed**
+- Updated the "More Features" page.
 
 = 4.23.3 (2023-11-01) =
 **Changed**

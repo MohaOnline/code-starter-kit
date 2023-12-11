@@ -9,6 +9,7 @@ if ( ! class_exists( 'CR_WPML' ) ) :
 	class CR_WPML {
 
 		public static function translate_admin( $fields ) {
+			$fields['ivole_review_button'] = __( 'Review', 'customer-reviews-woocommerce' );
 			if ( has_action( 'wpml_register_single_string' ) ) {
 				//tab = Review Reminder
 				$fields_to_translate = array(
@@ -25,7 +26,8 @@ if ( ! class_exists( 'CR_WPML' ) ) :
 					'ivole_email_heading_coupon',
 					'ivole_email_body_coupon',
 					'ivole_customer_consent_text',
-					'ivole_verified_owner'
+					'ivole_verified_owner',
+					'ivole_review_button'
 				);
 				foreach ( $fields_to_translate as $field_to_translate ) {
 					if ( isset( $fields[$field_to_translate] ) ) {

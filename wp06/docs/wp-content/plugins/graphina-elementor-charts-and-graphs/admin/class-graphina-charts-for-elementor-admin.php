@@ -26,6 +26,9 @@ class Graphina_Charts_For_Elementor_Admin{
             </script>
             <?php
         });
+
+        add_action('admin_notices', [$this, 'iqonic_sale_banner_notice']);
+        add_action('wp_ajax_iq_dismiss_notice', [$this, 'iq_dismiss_notice']);
        
     }
 
@@ -559,5 +562,38 @@ class Graphina_Charts_For_Elementor_Admin{
         }
         return [ 'data' =>'', 'status' => $status , 'message' => $message];
     }
-  
+    public function iqonic_sale_banner_notice()
+    {
+        $type="plugins" ;
+        $product="graphina"; 
+        $get_sale_detail= get_transient('iq-notice');
+        if(is_null($get_sale_detail) || $get_sale_detail===false ){
+            $get_sale_detail =wp_remote_get("https://assets.iqonic.design/wp-product-notices/notices.json?ver=" . wp_rand()) ;
+            set_transient('iq-notice',$get_sale_detail ,3600)  ;
+        }
+
+        if (!is_wp_error($get_sale_detail) && $content = json_decode(wp_remote_retrieve_body($get_sale_detail), true)) {
+            if(get_user_meta(get_current_user_id(),$content['data']['notice-id'],true)) return;
+            
+            $currentTime =  current_datetime();
+            if (($content['data']['start-sale-timestamp']  < $currentTime->getTimestamp() && $currentTime->getTimestamp() < $content['data']['end-sale-timestamp'] )&& isset($content[$type][$product])){
+
+            ?>
+            <div class="iq-notice notice notice-success is-dismissible" style="padding: 0;">
+                <a target="_blank" href="<?php echo esc_url($content[$type][$product]['sale-ink']??"#")  ?>">
+                    <img src="<?php echo esc_url($content[$type][$product]['banner-img'] ??"#" )  ?>" style="object-fit: contain;padding: 0;margin: 0;display: block;" width="100%" alt="">
+                </a>
+                <input type="hidden" id="iq-notice-id" value="<?php echo esc_html($content['data']['notice-id']) ?>">
+                <input type="hidden" id="iq-notice-nounce" value="<?php echo wp_create_nonce('iq-dismiss-notice') ?>">
+            </div>
+            <?php
+                wp_enqueue_script('iq-admin-notice',GRAPHINA_URL."/admin/assets/js/iq-admin-notice.js",['jquery'],false,true);
+            }
+        }
+    }
+    public function iq_dismiss_notice() {
+        if(wp_verify_nonce($_GET['nounce'],'iq-dismiss-notice')){
+            update_user_meta(get_current_user_id(),$_GET['key'],1);
+        }
+    }
 }

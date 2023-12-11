@@ -108,6 +108,19 @@
 #fbuilder .fields .ui-icon.ui-icon-trash:hover{color: #ca0404;}
 
 #fieldlist{flex: 1 1 auto;}
+#fieldlist:empty:before{
+	content: 'Drag an element from the left to here';
+	color: #5e5873;
+	font-size:25px;
+	font-weight:400;
+	text-align:center;
+	display:block;
+	padding:50px 30px;
+	width:80%;
+	margin-left:50%;
+	transform:translateX(-50%);
+	margin-top:150px;
+}
 #fieldlist .cff-button-drag{width:90% !important;}
 
 .cff-custom-table input{margin-left:5px; margin-right:5px;}
@@ -134,7 +147,8 @@
 .button.n span{color:#AED0EA}
 .cff-active-column{border:1px solid #0073aa; padding:5px;display:inline-block;}
 #fbuilder{height:790px;overflow:auto;position:relative;display:flex;flex-flow:column;}
-#fbuilder .fields{border:1px solid transparent;padding:3px 10px 14px 10px;margin:5px 0px;display:block;position:relative;}
+#fbuilder .fields{border:1px solid transparent;padding:3px 10px 14px 10px;margin:5px 0px;display:block;position:relative;box-sizing:border-box;}
+#fbuilder .dfield{box-sizing:border-box;}
 #fbuilder .fields.cff-error{border-color:#FF0000 !important;}
 #fbuilder .fields.cff-error::before{background-color:#FFF !important;border-color:#FF0000 !important; color:#FF0000 !important;}
 #fbuilder .fields:before {content: attr(title); background-color:#FFF1A0;text-shadow: 1px 1px 0px rgba(255, 255, 255, .4); padding:3px 5px; margin:0 5px 5px 10px; display:table;border: 1px solid rgba(0,0,0,.2);}
@@ -272,7 +286,17 @@ input [readonly] {background-color: #f00;}
 #fbuilder .fform.ui-selected .arrow{display:inline}
 #fbuilder .fform.ui-over{border:1px dashed #888;}
 #fbuilder .fform h1,
-#fbuilder .fform h2{margin:5px 0px;padding:0px;}
+#fbuilder .fform h2,
+#fbuilder .fform h3,
+#fbuilder .fform h4,
+#fbuilder .fform h5,
+#fbuilder .fform h6{margin:5px 0px;padding:0px;}
+#fbuilder .fform h1{font-size:2.6em;}
+#fbuilder .fform h2{font-size:2em;}
+#fbuilder .fform h3{font-size:1.5em;}
+#fbuilder .fform h4{font-size:1.3em;}
+#fbuilder .fform h5{font-size:1em;}
+#fbuilder .fform h6{font-size:0.8em;}
 input.disabled {background: #fff;color: #888;cursor: default;}
 #fbuilder .fields .disabled{pointer-events:none;}
 label1{display:inline}
@@ -285,12 +309,22 @@ textarea {resize: none}
 .two_column{float:left;width:48%}
 .three_column{float:left;width:30%}
 .side_by_side{float:left;}
-.top_aligned .fields label{}
-.top_aligned .fields .dfield{}
-.left_aligned .fields label{float:left;width:31%}
-.left_aligned .fields .dfield{float:left;width:65%;}
-.right_aligned .fields label{float:left;width:31%;text-align:right;padding:3px 3px 0px 0px}
-.right_aligned .fields .dfield{float:left;width:65%}
+
+.top_aligned .fields label,
+#fieldlist .top_aligned.fields label{float:none;width:100%;}
+.top_aligned .fields .dfield,
+#fieldlist .top_aligned.fields .dfield{float:none;width:100%;}
+
+.left_aligned .fields label,
+#fieldlist .left_aligned.fields label{float:left;width:31%}
+.left_aligned .fields .dfield,
+#fieldlist .left_aligned.fields .dfield{float:left;width:65%;}
+
+.right_aligned .fields label,
+#fieldlist .right_aligned.fields label{float:left;width:31%;text-align:right;padding:3px 3px 0px 0px}
+.right_aligned .fields .dfield,
+#fieldlist .right_aligned.fields .dfield{float:left;width:65%}
+
 #tabs  span.uh,
 #fbuilder span.uh{display:block;font-size:80%;clear:both}
 #fbuilder .section_break{border-top:1px dotted #555;clear:both}
@@ -568,4 +602,38 @@ a.helpfbuilder{font-size:80%;text-decoration:underline;color:#00f;cursor:pointer
   border-radius:50%;border-top:6px solid #333;
   border-right:4px solid transparent;
   animation:cffspinner .6s linear infinite;
+}
+
+/**** Controls ****/
+
+/**** Radio Buttons Group ****/
+
+.form-builder .cff-radio-group-ctrl{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+.form-builder .cff-radio-group-ctrl input{
+	display:none;
+}
+.form-builder .cff-radio-group-ctrl input:checked+span{
+	background:rgba(140, 143, 148, 0.3);
+	text-shadow: 1px 1px white
+}
+.form-builder .cff-radio-group-ctrl label{
+	flex-grow:1;
+}
+.form-builder .cff-radio-group-ctrl label span{
+	display:block;
+	text-align:center;
+	border: 1px solid rgb(140, 143, 148);
+	padding:5px;
+}
+.form-builder .cff-radio-group-ctrl  label:first-child span{
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+.form-builder .cff-radio-group-ctrl  label:last-child span{
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
 }

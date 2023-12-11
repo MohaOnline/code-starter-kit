@@ -141,13 +141,13 @@
 		border: none;
 		opacity: 1;
 		width: 100%!important;
-		height: 100%!important; 
+		height: 0!important; 
 	}
 	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-thumbnails-block-effect-inner {
 		position: relative;
 		padding-bottom: 56.25%;
 		width: 100%!important;
-		height: 100%!important; 
+		height: 0!important; 
 	}
 	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-thumbnails-block-effect-inner>img {
 		position: absolute;
@@ -218,6 +218,13 @@
 		z-index: 9999999999;
 		font-size: var(--tsvg_vi_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
+	.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .adipoli-before .ts-vgallery::before ,
+	.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .adipoli-before .ts-vgallery-emoji::before {
+		font: var(--tsvg_vi_s_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) "FontAwesome";
+	}
+	.tsvg-thumbnails-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .adipoli-before .ts-vgallery::before{
+		color: var(--tsvg_vi_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) !important;
+	}
 	#boxer-overlay.tsvg-boxer-overlay-<?php echo esc_attr( $tsvg_shortcode_id ); ?> {
 		background: var(--tsvg_popup_op_oc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 		position: fixed !important;
@@ -231,6 +238,9 @@
 	}
 	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-popup_bacg='true']{
 		background: var(--tsvg_popup_op_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
+	}
+	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-popup_bacg='false']{
+		background: var(--tsvg_popup_op_oc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
 	}
 	#boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>[data-tsvg-titl_bacg='true'] .boxer-container , #boxer.tsvg-boxer-<?php echo esc_attr( $tsvg_shortcode_id ); ?>.mobile .boxer-content {
 	   	background: var(--tsvg_popup_tip_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>);
@@ -391,7 +401,7 @@
 		$tsvg_media_img_url                  = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_video.png', __DIR__ ) ) : esc_url( $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im );
 		$tsvg_videos_data_html .= sprintf(
 			'
-			<li class="tsvg-thumbnails-block tsvg-thumbnails-block-%1$s"  data-tsvg-ef="%2$s" data-tsvg-id="%3$s" style="-moz-animation-delay:  %4ss;-webkit-animation-delay:  %4ss;animation-delay:  %4ss;">
+			<li class="tsvg-thumbnails-block tsvg-thumbnails-block-%1$s"  data-tsvg-ef="%2$s" data-tsvg-id="%3$s" style="-moz-animation-delay:  %4$ss;-webkit-animation-delay:  %4$ss;animation-delay:  %4$ss;">
 				<figure class="tsvg-thumbnails-block-effect">
 					<a  href="%5$s" class="tsvg-thumbnails-block-effect-inner tsvg-thumbnails-block-effect-inner-%1$s" data-gallery="video_gallery_%1$s" data-id="%1$s" title="%6$s">
 						<img  width="" height="" src="%7$s" alt="%6$s"  title="%6$s" class="tsvg-thumbnails-block-img-%1$s">

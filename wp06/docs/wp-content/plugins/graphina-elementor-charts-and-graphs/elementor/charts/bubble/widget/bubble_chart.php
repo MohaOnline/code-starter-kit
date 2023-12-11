@@ -309,16 +309,16 @@ class Bubble_chart extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'iq_' . $type . '_chart_xaxis_tooltip_show',
-            [
-                'label' => esc_html__('Tooltip', 'graphina-charts-for-elementor'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Hide', 'graphina-charts-for-elementor'),
-                'label_off' => esc_html__('Show', 'graphina-charts-for-elementor'),
-                'default' => ''
-            ]
-        );
+        // $this->add_control(
+        //     'iq_' . $type . '_chart_xaxis_tooltip_show',
+        //     [
+        //         'label' => esc_html__('Tooltip', 'graphina-charts-for-elementor'),
+        //         'type' => Controls_Manager::SWITCHER,
+        //         'label_on' => esc_html__('Hide', 'graphina-charts-for-elementor'),
+        //         'label_off' => esc_html__('Show', 'graphina-charts-for-elementor'),
+        //         'default' => ''
+        //     ]
+        // );
 
         $this->add_control(
             'iq_' . $type . '_chart_xaxis_datalabel_show',
@@ -937,7 +937,7 @@ class Bubble_chart extends Widget_Base
                             options: bubbleOptions,
                             series: [{name: '', data: []}],
                             animation: true,
-                            setting_date:<?php echo json_encode($settings); ?>
+                            setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                         },
                         '<?php esc_attr_e($mainId); ?>'
                     );

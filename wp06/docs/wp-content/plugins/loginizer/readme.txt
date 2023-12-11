@@ -2,9 +2,9 @@
 Contributors: softaculous, loginizer, pagelayer
 Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip, whitelist ip, blacklist ip, failed attempts, lockouts, hack, authentication, login, security, rename login url, rename login, rename wp-admin, secure wp-admin, rename admin url, secure admin, brute force protection
 Requires at least: 3.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.5
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -79,6 +79,12 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 1.8.2 =
+* [Task] Tested on WordPress 6.4.
+* [Improvement] Now SSO can live for multiple Login attempts, default being 1 and maximum is 15 Login access.
+* [Imrpovement] Now SSO can live longer for upto 2 days.
+* [Bug-Fixes] A few Warning related to PHP 8.2 has been fixed
 
 = 1.8.1 =
 *[Bug-Fix] There was an issue while checking checksum, if the WordPress install was in en_US but the language was set to some other languages from the settings, then the checksum was comparing the checksums from the language selected in WordPress settings which is now always the language of the install, this has been fixed.

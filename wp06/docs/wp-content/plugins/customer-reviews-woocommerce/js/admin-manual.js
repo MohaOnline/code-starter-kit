@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
 			}
 		}
 		if (order_id > -1) {
+			// check if WhatsApp enabled
 			if ( jQuery(this).hasClass( 'cr-whatsapp-act' ) ) {
 				// if there are any previous menu elements, remove them
 				let prevMenus = jQuery(this).parent().find('.cr-send-menu');
@@ -35,6 +36,11 @@ jQuery(document).ready(function($) {
 				}
 				// save order ID
 				menu.data( 'orderid', order_id );
+				// save nonce
+				const urlParams = new URLSearchParams( jQuery(this).attr('href') );
+				if ( urlParams.has( 'cr_manual_reminder' ) ) {
+					menu.data( 'nonce', urlParams.get( 'cr_manual_reminder' ) );
+				}
 				// display a special tooltip when no valid phone number is available in an order
 				if ( jQuery(this).hasClass( 'cr-no-phone' ) ) {
 					jQuery(this).parent().find( '.cr-send-whatsapp' ).tipTip( {
@@ -50,11 +56,12 @@ jQuery(document).ready(function($) {
 			}
 			// if there is no WhatsApp option, get nonce from the URL
 			const urlParams = new URLSearchParams( jQuery(this).attr('href') );
+			let nonce = '';
 			if ( urlParams.has( 'cr_manual_reminder' ) ) {
-				jQuery(this).data( 'nonce', urlParams.get( 'cr_manual_reminder' ) );
+				nonce = urlParams.get( 'cr_manual_reminder' );
 			}
 			//
-			crSendReminderEmail( this, order_id );
+			crSendReminderEmail( this, order_id, nonce );
 		}
 	});
 	jQuery( '.wp-list-table' ).on( 'mouseleave', '.cr-send-menu:not(.cr-send-menu-wa,.cr-send-menu-wa2,.cr-send-menu-wa3,.cr-send-menu-wa4)', function() {
@@ -107,8 +114,9 @@ jQuery(document).ready(function($) {
 	jQuery( '.wp-list-table' ).on( 'click', '.cr-send-email', function(e) {
 		e.preventDefault();
 		let orderID = jQuery(this).closest( '.cr-send-menu' ).data( 'orderid' );
+		let nonce = jQuery(this).closest( '.cr-send-menu' ).data( 'nonce' );
 		if ( orderID ) {
-			crSendReminderEmail( this, orderID );
+			crSendReminderEmail( this, orderID, nonce );
 		}
 		jQuery( this ).closest( '.cr-send-menu' ).remove();
 		return false;
@@ -117,12 +125,13 @@ jQuery(document).ready(function($) {
 	jQuery( '.wp-list-table' ).on( 'click', '.cr-send-wa-cons-yes', function(e) {
 		e.preventDefault();
 		let orderID = jQuery(this).closest( '.cr-send-menu' ).data( 'orderid' );
+		let nonce = jQuery(this).closest( '.cr-send-menu' ).data( 'nonce' );
 		if ( orderID ) {
 			jQuery(this).closest( '.cr-send-wa-cons-btn' ).addClass( 'cr-send-wa-btn-spnr' );
 			let data = {
 				'action': 'cr_manual_review_reminder_wa',
 				'order_id': orderID,
-				'nonce': jQuery(this).data('nonce')
+				'nonce': nonce
 			};
 			jQuery.post( {
 				url: ajaxurl,
@@ -156,10 +165,11 @@ jQuery(document).ready(function($) {
 	jQuery( '.wp-list-table' ).on( 'click', '.cr-send-wa-fbck-yes', function(e) {
 		jQuery(this).closest( '.cr-send-wa-fbck-btn' ).addClass( 'cr-send-wa-btn-spnr' );
 		let orderID = jQuery(this).closest( '.cr-send-menu' ).data( 'orderid' );
+		let nonce = jQuery(this).closest( '.cr-send-menu' ).data( 'nonce' );
 		let data = {
 			'action': 'cr_manual_review_reminder_conf',
 			'order_id': orderID,
-			'nonce': jQuery(this).data('nonce')
+			'nonce': nonce
 		};
 		jQuery.post( {
 			url: ajaxurl,
@@ -182,7 +192,7 @@ jQuery(document).ready(function($) {
 		return false;
 	} );
 	// a function to trigger sending of an email
-	function crSendReminderEmail( ref, orderID ) {
+	function crSendReminderEmail( ref, orderID, nonce ) {
 		let sending = CrManualStrings.sending;
 		if(
 			jQuery(this).hasClass( 'ivole-order-cr' ) ||
@@ -197,7 +207,7 @@ jQuery(document).ready(function($) {
 			let data = {
 				'action': 'ivole_manual_review_reminder',
 				'order_id': orderID,
-				'nonce': jQuery(ref).data('nonce')
+				'nonce': nonce
 			};
 			jQuery.post(ajaxurl, data, function(response) {
 				if ( response.code === 1 ) {

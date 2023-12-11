@@ -26,12 +26,12 @@
 
             generateGlobalTooltip();
 
-            if ( 'viewport' === settings.trigger ) {
+            if ('viewport' === settings.trigger) {
                 elementorFrontend.waypoint($scope, function () {
-                    if ( '' !== settings.target) {
-                        $scope.find(settings.target).tooltipster( 'open' );
+                    if ('' !== settings.target) {
+                        $scope.find(settings.target).tooltipster('open');
                     } else {
-                        $scope.tooltipster( 'open' );
+                        $scope.tooltipster('open');
                     }
                 });
             }
@@ -75,18 +75,18 @@
                 var content = settings.content,
                     triggerClick = null,
                     triggerHover = null,
-                    isSmallDevice = ['tablet', 'tablet_extra', 'mobile', 'mobile_extra'].includes( elementorFrontend.getCurrentDeviceMode() ),
-                    stopTooltip = ! elementorFrontend.isEditMode() && 'template' === settings.type && '' !== settings.uniqueClass && ! settings.isTourStarter;
+                    isSmallDevice = ['tablet', 'tablet_extra', 'mobile', 'mobile_extra'].includes(elementorFrontend.getCurrentDeviceMode()),
+                    stopTooltip = !elementorFrontend.isEditMode() && 'template' === settings.type && '' !== settings.uniqueClass && !settings.isTourStarter;
 
                 //Always trigger on click on touch devices.
-                if ( isSmallDevice || settings.trigger === 'click') {
+                if (isSmallDevice || settings.trigger === 'click') {
                     triggerClick = stopTooltip ? false : true;
                     triggerHover = false;
 
                 } else if (settings.trigger === 'hover') {
                     triggerClick = false;
                     triggerHover = stopTooltip ? false : true;
-                } else if ( 'viewport' === settings.trigger ) {
+                } else if ('viewport' === settings.trigger) {
                     triggerClick = false;
                     triggerHover = false;
                 }
@@ -95,19 +95,20 @@
                 settings.triggerHover = triggerHover;
 
                 // init tooltipster.
-                if ( '' !== settings.target) {
-                    $scope.attr('data-tooltip-content','#tooltip_content-' + id).find(settings.target).tooltipster( getTooltipsterSettings( settings ) );
+                if ('' !== settings.target) {
+                    $scope.attr('data-tooltip-content', '#tooltip_content-' + id).find(settings.target).tooltipster(getTooltipsterSettings(settings));
                 } else {
-                    $scope.attr('data-tooltip-content','#tooltip_content-' + id).tooltipster( getTooltipsterSettings( settings ) );
+                    $scope.attr('data-tooltip-content', '#tooltip_content-' + id).tooltipster(getTooltipsterSettings(settings));
                 }
 
-                if ( elementorFrontend.isEditMode()) {
+                if (elementorFrontend.isEditMode()) {
+
                     // update options.
                     var onViewPort = 'viewport' === settings.trigger;
                     var newOptions = {
                         functionBefore: function () {
 
-                            if ( settings.hideOn.includes( elementorFrontend.getCurrentDeviceMode() ) ) {
+                            if (settings.hideOn.includes(elementorFrontend.getCurrentDeviceMode())) {
                                 return false;
                             }
                         },
@@ -119,53 +120,53 @@
                             var type = settings.type;
 
                             //prevent class overlapping
-                            var items = $('.tooltipster-box-'+id),
+                            var items = $('.tooltipster-box-' + id),
                                 length = items.length;
 
-                            if(items.length > 1 ) {
-                                delete items[length-1];
-                                items.removeClass('tooltipster-box-'+id);
+                            if (items.length > 1) {
+                                delete items[length - 1];
+                                items.removeClass('tooltipster-box-' + id);
                             }
 
                             // update content.
-                            if ( 'template' === settings.type ) {
+                            if ('template' === settings.type) {
 
-                            var templateID = $("#tooltip_content-" + id).data('template-id');
+                                var templateID = $("#tooltip_content-" + id).data('template-id');
 
-                            if (undefined !== templateID && '' !== templateID) {
+                                if (undefined !== templateID && '' !== templateID) {
 
-                                $.ajax({
-                                    type: 'GET',
-                                    url: PremiumSettings.ajaxurl,
-                                    data: {
-                                        action: 'get_elementor_template_content',
-                                        templateID: templateID
-                                    }
-                                }).success(function (response) {
-                                    var data;
-
-                                    try {
-                                        data = JSON.parse(response).data;
-                                    } catch (error) {
-                                        data = response.data;
-                                    }
-
-                                    if (undefined !== data.template_content) {
-
-                                        if ( '' !== settings.target) {
-                                            $scope.find(settings.target).tooltipster( 'content', data.template_content );
-                                        } else {
-                                            $scope.tooltipster( 'content', data.template_content);
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: PremiumSettings.ajaxurl,
+                                        data: {
+                                            action: 'get_elementor_template_content',
+                                            templateID: templateID
                                         }
-                                    }
-                                });
-                            }
+                                    }).success(function (response) {
+                                        var data;
+
+                                        try {
+                                            data = JSON.parse(response).data;
+                                        } catch (error) {
+                                            data = response.data;
+                                        }
+
+                                        if (undefined !== data.template_content) {
+
+                                            if ('' !== settings.target) {
+                                                $scope.find(settings.target).tooltipster('content', data.template_content);
+                                            } else {
+                                                $scope.tooltipster('content', data.template_content);
+                                            }
+                                        }
+                                    });
+                                }
                             } else {
 
-                                if ( '' !== settings.target) {
-                                    $scope.find(settings.target).tooltipster('content',  $("#tooltip_content-" + id).detach() );
+                                if ('' !== settings.target) {
+                                    $scope.find(settings.target).tooltipster('content', $("#tooltip_content-" + id).detach());
                                 } else {
-                                    $scope.tooltipster( 'content',  $("#tooltip_content-" + id).detach() );
+                                    $scope.tooltipster('content', $("#tooltip_content-" + id).detach());
                                 }
                             }
 
@@ -200,16 +201,16 @@
                         maxWidth: settings.maxWidth,
                         distance: settings.distance,
                         interactive: settings.interactive,
-                        side: settings.side.split(','),
+                        side: 'string' === typeof settings.side ? settings.side.split(',') : settings.side[0],
                         zindex: settings.zIndex
                     };
 
                     // update settings
                     Object.keys(newOptions).forEach(function (key) {
-                        if ( '' !== settings.target) {
-                            $scope.find(settings.target).tooltipster('option',"" + key, newOptions[key] );
+                        if ('' !== settings.target) {
+                            $scope.find(settings.target).tooltipster('option', "" + key, newOptions[key]);
                         } else {
-                            $scope.tooltipster('option',"" + key, newOptions[key] );
+                            $scope.tooltipster('option', "" + key, newOptions[key]);
                         }
                     });
                 }
@@ -220,7 +221,7 @@
                     var event = ('hover' === settings.trigger) ? 'mouseenter.paRand' + id : 'click.paRand' + id;
 
                     $scope.off(event);
-                    $scope.on( event ,function() {
+                    $scope.on(event, function () {
 
                         var state = '' !== settings.target ? $scope.find(settings.target).tooltipster('status').state : $scope.tooltipster('status').state;
 
@@ -239,14 +240,14 @@
 
                 if (settings.follow_mouse) {
 
-                    $scope.on('mousemove.paTooltipsFollower' + id ,function(e) {
+                    $scope.on('mousemove.paTooltipsFollower' + id, function (e) {
 
                         var element = $('.tooltipster-box-' + id).closest('.premium-tooltipster-base');
 
                         $(element).css({
                             "transition": "left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s, top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s",
                             "transform": "translate(-50%,-50%)",
-                            "cursor":"crosshair"
+                            "cursor": "crosshair"
                         });
 
                         MouseFollower(e.pageX, e.pageY, element);
@@ -254,27 +255,27 @@
                 }
             }
 
-            function getTooltipsterSettings( settings ) {
+            function getTooltipsterSettings(settings) {
                 var onViewPort = 'viewport' === settings.trigger;
 
                 var tooltipSettings = {
 
                     functionBefore: function () {
 
-                        if ( settings.hideOn.includes( elementorFrontend.getCurrentDeviceMode() ) ) {
+                        if (settings.hideOn.includes(elementorFrontend.getCurrentDeviceMode())) {
                             return false;
                         }
 
                         closeTooltips();
                     },
-                    functionInit: function(instance, helper) {
+                    functionInit: function (instance, helper) {
 
-                        if ( !helper ) {
+                        if (!helper) {
                             return;
                         }
 
-                        if ( ! elementorFrontend.isEditMode() ) {
-                            if ( '' !== settings.uniqueClass ) {
+                        if (!elementorFrontend.isEditMode()) {
+                            if ('' !== settings.uniqueClass) {
                                 addTourEvents();
                             }
 
@@ -285,8 +286,8 @@
                             $(".premium-global-tooltips-wrapper-temp-" + id).remove();
                         }
 
-                        if ( '' !== settings.uniqueClass) {
-                            if ( '' !== settings.target) {
+                        if ('' !== settings.uniqueClass) {
+                            if ('' !== settings.target) {
                                 $scope.find(settings.target).attr('pa-tooltip-selector', settings.uniqueClass);
 
                             } else {
@@ -302,12 +303,12 @@
                         var type = settings.type;
 
                         //prevent class overlapping
-                        var items = $('.tooltipster-box-'+id),
+                        var items = $('.tooltipster-box-' + id),
                             length = items.length;
 
-                        if(items.length > 1 ) {
-                            delete items[length-1];
-                            items.removeClass('tooltipster-box-'+id);
+                        if (items.length > 1) {
+                            delete items[length - 1];
+                            items.removeClass('tooltipster-box-' + id);
                         }
 
                         // render lottie animation.
@@ -322,7 +323,7 @@
                     },
                     contentAsHTML: true,
                     contentCloning: true,
-                    plugins:['sideTip'],
+                    plugins: ['sideTip'],
                     animation: settings.anime,
                     animationDuration: settings.duration,
                     delay: settings.delay,
@@ -344,7 +345,7 @@
                     distance: settings.distance,
                     interactive: settings.interactive && !settings.follow_mouse,
                     minIntersection: 16,
-                    side: settings.side.split(','),
+                    side: 'string' === typeof settings.side ? settings.side.split(',') : settings.side[0],
                     zIndex: settings.zindex || 9999999
                 };
 
@@ -353,21 +354,21 @@
 
             function addTourEvents() {
 
-                if ( '' !== settings.uniqueClass) {
+                if ('' !== settings.uniqueClass) {
 
                     var tooltipTriggers = $("div[class*='tooltip-']");
 
-                    tooltipTriggers.each(function( index, trigger ) {
+                    tooltipTriggers.each(function (index, trigger) {
 
                         var classes = $(trigger).attr('class').split(' ');
 
-                        for (var i=0; i < classes.length; i++) {
+                        for (var i = 0; i < classes.length; i++) {
 
                             var triggerId = classes[i];
 
-                            if ('tooltip-' === triggerId.slice(0,8)) {
+                            if ('tooltip-' === triggerId.slice(0, 8)) {
                                 $(trigger).off('click.paTourTrigger');
-                                $(trigger).on('click.paTourTrigger', function(e) {
+                                $(trigger).on('click.paTourTrigger', function (e) {
                                     e.preventDefault();
 
                                     closeTooltips();
@@ -387,20 +388,20 @@
             function MouseFollower(pageX, pageY, element) {
                 TweenLite.to(element, 1, {
                     css: {
-                      left: pageX,
-                      top: pageY,
+                        left: pageX,
+                        top: pageY,
                     },
                 });
             }
 
             function updateGalleryContent(src) {
                 var randSrc = getRandomImage(src),
-                    newContent = '<div id="tooltip_content-' + id +'" class="premium-global-tooltip-content premium-tooltip-content-wrapper-' + id + '"><span class="premium-tooltip-gallery"><img src="'+randSrc+'"></span></div></div>';
+                    newContent = '<div id="tooltip_content-' + id + '" class="premium-global-tooltip-content premium-tooltip-content-wrapper-' + id + '"><span class="premium-tooltip-gallery"><img src="' + randSrc + '"></span></div></div>';
 
-                if ( '' !== settings.target) {
-                    $scope.find(settings.target).tooltipster('content', newContent );
+                if ('' !== settings.target) {
+                    $scope.find(settings.target).tooltipster('content', newContent);
                 } else {
-                    $scope.tooltipster('content', newContent );
+                    $scope.tooltipster('content', newContent);
                 }
             }
 
@@ -412,7 +413,7 @@
             function closeTooltips() {
                 var instances = $.tooltipster.instances();
 
-                $.each(instances, function(i, instance) {
+                $.each(instances, function (i, instance) {
                     instance.close();
                 });
             }

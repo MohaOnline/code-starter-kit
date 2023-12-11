@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable tag: 5.38.1
+Stable tag: 5.38.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -229,6 +229,23 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.38.5 =
+* Improvement: use the default country/region of a shop when calculating tax-inclusive prices for Google Shopping Product XML feed
+* Improvement: a body of the review notification email for reviews collected via self-hosted aggregated review forms is translatable
+* Improvement: a safeguard to prevent AutomateWoo from crashing on submission of new reviews
+* Bug fix: WPML could not translate string on self-hosted aggregated review forms for languages that are not available on WordPress.org
+= 5.38.4 =
+* Improvement: additional rating criteria and answers to additional questions are displayed on the reviews slider
+* Improvement: compatibility of [cusrev_reviews_slider] shortcode for shop reviews with Polylang
+= 5.38.3 =
+* Improvement: compatibility with Klarna checkout v3 for consent checkbox
+* Improvement: a possibility to translate 'Review' button with basic email templates and local review forms
+* Bug fix: Email body of review reminders could not be translated with WPML when using local review forms
+= 5.38.2 =
+* Bug fix: media upload section was shown with CusRev visual style even if 'Attach Images/Videos' option was disabled
+* Bug fix: cURL errors were not handled correctly
+* Bug fix: review summary bar was not displayed with WPML option to show reviews in all languages
+* Bug fix: vulnerability in Ajax requests for manual review reminders
 = 5.38.1 =
 * Bug fix: an error in a security token check when triggering a review reminder manually
 * Improvement: check for get_shipping_phone method in old WooCommerce versions

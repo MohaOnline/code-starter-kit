@@ -21,7 +21,12 @@ body{
 }
 
 .cp_cff_dark_notebook #fbuilder .fform h1,
-.cp_cff_dark_notebook #fbuilder .fform h2{
+.cp_cff_dark_notebook #fbuilder .fform h2,
+.cp_cff_dark_notebook #fbuilder .fform h3,
+.cp_cff_dark_notebook #fbuilder .fform h4,
+.cp_cff_dark_notebook #fbuilder .fform h5,
+.cp_cff_dark_notebook #fbuilder .fform h6,
+.cp_cff_dark_notebook #fbuilder .fform p{
     margin-top: 0;
 	color: #FFF;
 }

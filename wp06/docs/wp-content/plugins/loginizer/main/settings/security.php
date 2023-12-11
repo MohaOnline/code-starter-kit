@@ -761,6 +761,7 @@ function add_lz_bl_users(){
 					$usernames = isset($_POST['lz_bl_users']) && is_array($_POST['lz_bl_users']) ? $_POST['lz_bl_users'] : $loginizer['username_blacklist'];
 					
 					if(empty($usernames)){
+						$usernames = array();
 						$usernames[] = '';
 					}
 					
@@ -825,6 +826,7 @@ function add_lz_bl_domains(){
 					$domains = isset($_POST['lz_bl_domains']) && is_array($_POST['lz_bl_domains']) ? $_POST['lz_bl_domains'] : $loginizer['domains_blacklist'];
 					
 					if(empty($domains)){
+						$domains = array();
 						$domains[] = '';
 					}
 					

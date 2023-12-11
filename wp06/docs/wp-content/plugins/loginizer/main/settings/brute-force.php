@@ -695,7 +695,7 @@ function loginizer_page_brute_force(){
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="trusted_ips"><?php echo __('Trusted IP\'s','loginizer'); ?><span style="color:red; margin-left:5px;">New</span></label></th>
+				<th scope="row" valign="top"><label for="trusted_ips"><?php echo __('Trusted IP\'s','loginizer'); ?></label></th>
 				<td>
 					<input type="checkbox" <?php echo lz_POSTchecked('trusted_ips', (empty($loginizer['trusted_ips']) ? false : true)); ?> name="trusted_ips" id="trusted_ips"/>
 					<?php _e('If enabled Loginizer will only allow whitlisted IP\'s to Login.', 'loginizer'); ?>

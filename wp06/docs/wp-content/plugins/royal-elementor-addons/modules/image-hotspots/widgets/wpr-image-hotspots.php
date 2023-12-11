@@ -6,11 +6,11 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Core\Schemes\Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Repeater;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Icons;
@@ -652,7 +652,6 @@ class Wpr_Image_Hotspots extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'hotspot_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-hotspot-text',
 				'separator' => 'before',
 			]
@@ -706,6 +705,7 @@ class Wpr_Image_Hotspots extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-hotspot-content i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-hotspot-content svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -751,6 +751,8 @@ class Wpr_Image_Hotspots extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}}.wpr-hotspot-icon-position-left .wpr-hotspot-text ~ i' => 'margin-right: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}}.wpr-hotspot-icon-position-right .wpr-hotspot-text ~ i' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.wpr-hotspot-icon-position-left .wpr-hotspot-text ~ svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.wpr-hotspot-icon-position-right .wpr-hotspot-text ~ svg' => 'margin-left: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -877,7 +879,6 @@ class Wpr_Image_Hotspots extends Widget_Base {
 			[
 				'name' => 'tooltip_typography',
 				'label' => esc_html__( 'Typography', 'wpr-addons' ),
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-hotspot-tooltip',
 			]
 		);

@@ -347,3 +347,7 @@ button.sample-download-btn {
 .d-none{
     display:none !important;
 }
+
+.graphina-filter-div-button{
+    line-height: 0 !important;
+  }

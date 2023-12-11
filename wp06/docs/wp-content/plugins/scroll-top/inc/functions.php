@@ -115,12 +115,14 @@ function scroll_top_scrollup_init() {
 		echo '
 		<script id="scrolltop-custom-js">
 		jQuery(document).ready(function($){
-			$.scrollUp({
-				scrollSpeed: ' . (int) $speed . ',
-				animation: \'' . $animate . /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ '\',
-				scrollText: \'' . $scroll_type . /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ '\',
-				scrollDistance: ' . (int) $dist . ',
-				scrollTarget: \'' . esc_attr( $scroll_target ) . '\'
+			$(window).load(function() {
+				$.scrollUp({
+					scrollSpeed: ' . (int) $speed . ',
+					animation: \'' . $animate . /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ '\',
+					scrollText: \'' . $scroll_type . /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ '\',
+					scrollDistance: ' . (int) $dist . ',
+					scrollTarget: \'' . esc_attr( $scroll_target ) . '\'
+				});
 			});
 		});
 		</script>' . "\n";

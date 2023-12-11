@@ -10,8 +10,8 @@ class TS_Video_Gallery_Widget extends WP_Widget {
 	public function tsvg_get_all_records( $tsvg_return = false, $tsvg_id = '' ) {
 		global $wpdb;
 		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
-		$tsvg_sql = 'SELECT `id`,`TS_VG_Title` FROM ' . $tsvg_db_manager_table;
-		$tsvg_all_records   = $wpdb->get_results( $wpdb->prepare( $tsvg_sql ), 'ARRAY_A' );
+		$tsvg_sql = $wpdb->prepare("SELECT `id`,`TS_VG_Title` FROM {$tsvg_db_manager_table}");
+		$tsvg_all_records   = $wpdb->get_results(  $tsvg_sql, ARRAY_A );
 		if ( $tsvg_return == true ) {
 			$tsvg_return_options = '';
 			array_unshift(

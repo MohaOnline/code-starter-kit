@@ -13,6 +13,7 @@ use PremiumAddons\Modules\PremiumSectionFloatingEffects\Module as Floating_Effec
 use PremiumAddons\Modules\Woocommerce\Module as Woocommerce;
 use PremiumAddons\Modules\PremiumGlobalTooltips\Module as GlobalTooltips;
 use PremiumAddons\Modules\PremiumShapeDivider\Module as Shape_Divider;
+use PremiumAddons\Modules\PremiumWrapperLink\Module as Wrapper_Link;
 use PremiumAddons\Includes\Assets_Manager;
 use PremiumAddons\Includes\Premium_Template_Tags;
 use ElementorPro\Plugin as PluginPro;
@@ -922,6 +923,14 @@ class Addons_Integration {
 			true
 		);
 
+		wp_register_script(
+			'pa-wrapper-link',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-wrapper-link' . $suffix . '.js',
+			array( 'jquery' ),
+			PREMIUM_ADDONS_VERSION,
+			true
+		);
+
 		// Localize jQuery with required data for Global Add-ons.
 		if ( self::$modules['premium-floating-effects'] ) {
 			wp_localize_script(
@@ -1510,7 +1519,6 @@ class Addons_Integration {
 			self::$modules['premium-notifications'],
 			self::$modules['premium-pinterest-feed'],
 			self::$modules['premium-contactform'],
-			self::$modules['premium-shape-divider'],
 		);
 
 		$blog_modules = array(
@@ -1585,7 +1593,7 @@ class Addons_Integration {
 			Equal_Height::get_instance();
 		}
 
-		if ( self::$modules['pa-display-conditions'] || self::$modules['premium-shape-divider'] ) {
+		if ( self::$modules['pa-display-conditions'] ) {
 			require_once PREMIUM_ADDONS_PATH . 'widgets/dep/urlopen.php';
 			Display_Conditions::get_instance();
 		}
@@ -1604,6 +1612,10 @@ class Addons_Integration {
 
         if ( self::$modules['premium-shape-divider'] ) {
 			Shape_Divider::get_instance();
+		}
+
+		if ( self::$modules['premium-wrapper-link'] ) {
+			Wrapper_Link::get_instance();
 		}
 	}
 

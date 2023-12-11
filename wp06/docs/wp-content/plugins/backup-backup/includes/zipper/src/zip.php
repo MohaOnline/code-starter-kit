@@ -214,7 +214,7 @@ class Zip {
     $abs = BMP::fixSlashes(ABSPATH) . DIRECTORY_SEPARATOR;
 
     $dbbackupname = 'bmi_database_backup.sql';
-    $database_file = BMP::fixSlashes(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . $dbbackupname);
+    $database_file = BMP::fixSlashes(BMI_TMP . DIRECTORY_SEPARATOR . $dbbackupname);
     $database_file_dir = BMP::fixSlashes((dirname($database_file))) . DIRECTORY_SEPARATOR;
     $better_database_files_dir = $database_file_dir . 'db_tables';
 
@@ -370,13 +370,14 @@ class Zip {
           'shareallowed' => BMP::canShareLogsOrShouldAsk(),
           'dbiteratio' => 0,
           'dblast' => 0,
+          'bmitmp' => BMI_TMP,
           'url' => $url
         ];
 
         $fix = true;
-        $Xfiles = glob(BMI_INCLUDES . '/htaccess' . '/.BMI-*');
+        $Xfiles = glob(BMI_TMP . DIRECTORY_SEPARATOR . '.BMI-*');
         foreach ($Xfiles as $xfile) if (is_file($xfile)) unlink($xfile);
-        touch(BMI_INCLUDES . '/htaccess' . '/.' . $identy);
+        touch(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy);
 
         if ($fix === true) {
           if (BMI_LEGACY_HARD_VERSION === false && $cron === false) {
@@ -394,26 +395,29 @@ class Zip {
 
         sleep(2);
         if (file_exists(BMI_BACKUPS . DIRECTORY_SEPARATOR . '.running')) {
-          if (file_exists(BMI_INCLUDES . '/htaccess' . '/.' . $identy . '-running')) {
+          if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy . '-running')) {
             // $this->zip_progress->log(__('Request received correctly – backup is running.', 'backup-backup'), 'SUCCESS');
-            BMP::res(['status' => 'background', 'filename' => $this->backupname]);
+            if ($cron === true) return ['status' => 'background', 'filename' => $this->backupname];
+            else BMP::res(['status' => 'background', 'filename' => $this->backupname]);
             exit;
           } else {
             $this->zip_progress->log(__('Could not find any response from the server, trying again in 3 seconds.', 'backup-backup'), 'WARN');
             sleep(3);
-            if (file_exists(BMI_INCLUDES . '/htaccess' . '/.' . $identy . '-running')) {
+            if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy . '-running')) {
               // $this->zip_progress->log(__('Request received correctly – backup is running.', 'backup-backup'), 'SUCCESS');
-              BMP::res(['status' => 'background', 'filename' => $this->backupname]);
+              if ($cron === true) return ['status' => 'background', 'filename' => $this->backupname];
+              else BMP::res(['status' => 'background', 'filename' => $this->backupname]);
               exit;
             } else {
               $this->zip_progress->log(__('Still nothing backup probably is not running.', 'backup-backup'), 'WARN');
-              if (file_exists(BMI_INCLUDES . '/htaccess' . '/.' . $identy . '-running')) @unlink(BMI_INCLUDES . '/htaccess' . '/.' . $identy . '-running');
-              if (file_exists(BMI_INCLUDES . '/htaccess' . '/.' . $identy)) @unlink(BMI_INCLUDES . '/htaccess' . '/.' . $identy);
+              if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy . '-running')) @unlink(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy . '-running');
+              if (file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy)) @unlink(BMI_TMP . DIRECTORY_SEPARATOR . '.' . $identy);
               throw new \Exception('Backup could not run on your server, please check global logs.');
             }
           }
         } else {
-          BMP::res(['status' => 'background', 'filename' => $this->backupname]);
+          if ($cron === true) return ['status' => 'background', 'filename' => $this->backupname];
+          else BMP::res(['status' => 'background', 'filename' => $this->backupname]);
           exit;
         }
 
@@ -433,11 +437,11 @@ class Zip {
       // require the lib
       if (!class_exists('PclZip')) {
         if (!defined('PCLZIP_TEMPORARY_DIR')) {
-          $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+          $bmi_tmp_dir = BMI_TMP;
           if (!file_exists($bmi_tmp_dir)) {
             @mkdir($bmi_tmp_dir, 0775, true);
           }
-          define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+          define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
         }
         if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {
           $this->zip_progress->log(__('Using dedicated PclZIP for Premium Users.', 'backup-backup'), 'INFO');
@@ -534,17 +538,20 @@ class Zip {
           if (file_exists(BMI_BACKUPS . '/.abort')) {
             break;
           }
-
+          
+          $back = 0;
           $chunk = $chunks[$i];
           $chunk = array_filter($chunk, function ($path) {
-            if (is_readable($path) && file_exists($path)) return true;
+            if (is_readable($path) && file_exists($path) && !is_link($path)) return true;
             else {
               $this->zip_progress->log(sprintf(__("Excluding file that cannot be read: %s", 'backup-backup'), $path), 'warn');
               return false;
             }
           });
           
-          $back = $lib->add($chunk, PCLZIP_OPT_REMOVE_PATH, $abs, PCLZIP_OPT_ADD_PATH, 'wordpress' . DIRECTORY_SEPARATOR/*, PCLZIP_OPT_ADD_TEMP_FILE_ON*/, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $safe_limit);
+          if (sizeof($chunk) > 0) {
+            $back = $lib->add($chunk, PCLZIP_OPT_REMOVE_PATH, $abs, PCLZIP_OPT_ADD_PATH, 'wordpress' . DIRECTORY_SEPARATOR, PCLZIP_OPT_ADD_TEMP_FILE_ON, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $safe_limit);
+          }
           if ($back == 0) {
             $this->zip_failed($lib->errorInfo(true));
             return false;
@@ -607,7 +614,7 @@ class Zip {
         $this->zip_progress->log(__("Adding manifest...", 'backup-backup'), 'INFO');
         try {
 
-          $maback = $lib->add($files, PCLZIP_OPT_REMOVE_PATH, $database_file_dir, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $safe_limit);
+          $maback = $lib->add($files, PCLZIP_OPT_REMOVE_PATH, $database_file_dir, PCLZIP_OPT_ADD_TEMP_FILE_ON, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $safe_limit);
 
           if ($maback == 0) {
             $this->zip_failed($lib->errorInfo(true));
@@ -761,11 +768,11 @@ class Zip {
 
     if (!class_exists('PclZip')) {
       if (!defined('PCLZIP_TEMPORARY_DIR')) {
-        $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+        $bmi_tmp_dir = BMI_TMP;
         if (!file_exists($bmi_tmp_dir)) {
           @mkdir($bmi_tmp_dir, 0775, true);
         }
-        define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+        define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
       }
 
       if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {

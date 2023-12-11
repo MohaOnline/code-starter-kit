@@ -93,6 +93,7 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 					// WPML integration
 					if ( has_filter( 'wpml_translate_single_string' ) ) {
 						do_action( 'wpml_switch_language', strtolower( $this->language ) );
+						load_plugin_textdomain( 'customer-reviews-woocommerce' );
 					}
 					// TranslatePress integration
 					global $TRP_LANGUAGE;

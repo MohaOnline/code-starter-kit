@@ -5,7 +5,7 @@ Requires at least: 5.9
 Tested up to: 6.4
 Requires PHP: 7.4
 Requires PHP Architecture: 64 Bits
-Stable tag: 2.5.11
+Stable tag: 2.5.13
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -111,23 +111,22 @@ Yes, you can run both at the same time, and we recommend it! In the US, advertis
 
 == Changelog ==
 
+= 2.5.13 - 2023-12-06 =
+* Fix - Change Budget Recommendations values.
+* Tweak - Use a single daily budget instead of a range.
+
+= 2.5.12 - 2023-11-22 =
+* Dev - Fix E2E gtag events tests.
+* Dev - Update WordPress CS to 3.0.
+* Dev - Update phpunit polyfills to 1.1 for WP 6.4.
+* Tweak - Add filter to be able to build custom shipping method rate handers.
+* Tweak - Remove rewrite rules flush.
+
 = 2.5.11 - 2023-11-07 =
 * Add - Record tracking events for moving steps on the campaign creation and editing pages.
 * Tweak - Add tracking for campaign count.
 * Tweak - WC 8.3 compatibility.
 * Tweak - WP 6.4 compatibility.
 * Update - Use new Woo.com domain.
-
-= 2.5.10 - 2023-10-18 =
-* Tweak - Add correct Destinations for Supported Countries in Coupons.
-* Tweak - Declare cart_checkout_blocks feature compatibility.
-
-= 2.5.9 - 2023-10-10 =
-* Dev - E2E - Setup Google Ads Step 2 - Create your paid campaign.
-* Dev - E2E - Setup Google Ads Step 3 - Setup billing data.
-* Dev - E2E tests - Track gtag event on specific page.
-* Dev - Prevent Prefix Vendor to be added twice.
-* Fix - Avoid creating two campaigns after completing the Google Ads onboarding.
-* Fix - The auto-refresh processing of billing status in the Google Ads onboarding flow.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/google-listings-and-ads/trunk/changelog.txt).

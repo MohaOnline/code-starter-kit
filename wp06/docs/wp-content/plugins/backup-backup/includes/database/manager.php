@@ -31,7 +31,7 @@ class BMI_Database {
     $mysqli->select_db($this->name);
     $mysqli->query("SET NAMES 'utf8'");
 
-    $file = fopen(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . $backup_name, 'w');
+    $file = fopen(BMI_TMP . DIRECTORY_SEPARATOR . $backup_name, 'w');
     $queryTables = $mysqli->query('SHOW TABLES');
     while ($row = $queryTables->fetch_row()) $target_tables[] = $row[0];
 

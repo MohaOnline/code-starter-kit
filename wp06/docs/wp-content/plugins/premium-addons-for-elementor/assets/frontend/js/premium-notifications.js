@@ -101,9 +101,10 @@
                     direction = settings.posts_box_position,
                     cookies = settings.cookies;
 
-                $($iconWrap[0].children[1]).css('display', 'none');
+                if ('yes' === settings.add_icon_with_no_posts && $number.length === 0) {
 
-                if ($number.length === 0) {
+                    $($iconWrap[0].children[1]).css('display', 'none');
+
                     this.addIconForNoPosts();
                 }
 

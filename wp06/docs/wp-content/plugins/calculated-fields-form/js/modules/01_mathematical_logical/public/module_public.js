@@ -12,7 +12,37 @@ fbuilderjQuery[ 'fbuilder' ][ 'modules' ][ 'default' ] = {
 		{
 			if( !window[ math_prop[ i ] ] )
 			{
-				window[ math_prop[ i ] ] = window[ math_prop[ i ].toUpperCase() ] = Math[ math_prop[ i ] ];
+				if( 'random' != math_prop[ i ] ) {
+					window[ math_prop[ i ] ] = window[ math_prop[ i ].toUpperCase() ] = Math[ math_prop[ i ] ];
+				} else {
+					window[ math_prop[ i ] ] = window[ math_prop[ i ].toUpperCase() ] = function( args ) {
+						args = args || {};
+						let _n = Math.random(),
+							_min = 'min' in args ? Math.max( args['min'], 0 ) : 0,
+							_max = 'max' in args ? Math.min( args['max'], Number.MAX_SAFE_INTEGER ) : ( _min ? Number.MAX_SAFE_INTEGER : 1 ),
+							_int = 'int' in args && args['int'] ? 1 : 0,
+							_tmp;
+
+						if ( _int ) {
+							_min = Math.ceil( _min );
+							_max = Math.floor( _max );
+						}
+
+						_tmp = Math.min( _min, _max );
+						_max = Math.max( _min, _max );
+						_min = _tmp;
+
+
+						if ( _int ) {
+							_n = _n  * ( _max - _min + 1 ) + _min;
+							_n = Math.floor( _n );
+						} else {
+							_n = _n  * ( _max - _min ) + _min;
+						}
+
+						return _n;
+					};
+				}
 			}
 		}
 

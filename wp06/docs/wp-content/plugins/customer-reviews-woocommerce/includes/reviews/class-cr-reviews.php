@@ -452,7 +452,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 			$one = (float)$this->count_ratings( $product_id, 1 );
 			$one_percent = floor( $one / $all * 100 );
 			$one_rounding = $one / $all * 100 - $one_percent;
-			$hundred = $five_percent + $four_percent + $three_percent + $two_percent + $one_percent;
+			// $hundred = $five_percent + $four_percent + $three_percent + $two_percent + $one_percent;
 			// if( $hundred < 100 ) {
 			// 	$to_distribute = 100 - $hundred;
 			// 	$roundings = array( '5' => $five_rounding, '4' => $four_rounding, '3' => $three_rounding, '2' => $two_rounding, '1' => $one_rounding );
@@ -463,11 +463,22 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 			$product = wc_get_product( $product_id );
 			if( $product ) {
 				$average = $product->get_average_rating();
-				//Polylang integration
+				// Polylang integration
 				if( function_exists( 'pll_current_language' ) && function_exists( 'PLL' ) && apply_filters( 'cr_reviews_polylang_merge', true ) ) {
 					global $polylang;
 					$translationIds = PLL()->model->post->get_translations( $product_id );
 					if( 0 < count( $translationIds ) ) {
+						$average = ( 5 * $five + 4 * $four + 3 * $three + 2 * $two + 1 * $one ) / $all;
+					}
+				} elseif (
+					has_filter( 'wpml_object_id' ) &&
+					has_filter( 'wpml_is_comment_query_filtered' ) &&
+					has_filter( 'wpml_element_trid' ) &&
+					has_filter( 'wpml_get_element_translations' )
+				) {
+					// WPML integration
+					$is_filtered = apply_filters( 'wpml_is_comment_query_filtered', true, $product_id );
+					if( false === $is_filtered ) {
 						$average = ( 5 * $five + 4 * $four + 3 * $three + 2 * $two + 1 * $one ) / $all;
 					}
 				}
@@ -567,12 +578,46 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 	}
 	private function count_ratings( $product_id, $rating ) {
 		$post_in = array();
-		//Polylang integration
 		if( function_exists( 'pll_current_language' ) && function_exists( 'PLL' ) && apply_filters( 'cr_reviews_polylang_merge', true ) ) {
+			// Polylang integration
 			global $polylang;
 			$translationIds = PLL()->model->post->get_translations( $product_id );
 			foreach ( $translationIds as $key => $translationID ) {
 				$post_in[] = $translationID;
+			}
+		} elseif (
+			has_filter( 'wpml_object_id' ) &&
+			has_filter( 'wpml_is_comment_query_filtered' ) &&
+			has_filter( 'wpml_element_trid' ) &&
+			has_filter( 'wpml_get_element_translations' )
+		) {
+			// WPML integration
+			$is_filtered = false;
+			if( wp_doing_ajax() ) {
+				if( isset( $_COOKIE[CR_Ajax_Reviews::WPML_COOKIE] ) && 'no' === $_COOKIE[CR_Ajax_Reviews::WPML_COOKIE] ) {
+					$is_filtered = false;
+				} else {
+					$is_filtered = true;
+				}
+			} else {
+				$is_filtered = apply_filters( 'wpml_is_comment_query_filtered', true, $product_id );
+			}
+			if( false === $is_filtered ) {
+				$trid = apply_filters( 'wpml_element_trid', NULL, $product_id, 'post_product' );
+				if( $trid ) {
+					$translations = apply_filters( 'wpml_get_element_translations', NULL, $trid, 'post_product' );
+					if( $translations && is_array( $translations ) ) {
+						foreach ($translations as $translation) {
+							if( isset( $translation->element_id ) ) {
+								$post_in[] = intval( $translation->element_id );
+							}
+						}
+						global $sitepress;
+						if ( $sitepress ) {
+							remove_filter( 'comments_clauses', [ $sitepress, 'comments_clauses' ], 10 );
+						}
+					}
+				}
 			}
 		} else {
 			$post_in = array( $product_id );

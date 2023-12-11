@@ -75,7 +75,7 @@
                     <td style="padding: 30px 0 30px 0;">
                         <img
                                 src="<?php echo $args['email_image']; ?>"
-                                width="600" alt="SiteGround Security weekly report"
+                                width="600" alt="SiteGround Security Optimizer weekly report"
                                 style="max-height: 300px;"/>
                     </td>
                 </tr>

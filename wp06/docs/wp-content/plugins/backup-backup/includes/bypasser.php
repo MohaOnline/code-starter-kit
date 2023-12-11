@@ -10,6 +10,7 @@
   use BMI\Plugin\Dashboard as Dashboard;
   use BMI\Plugin\Database\BMI_Database as Database;
   use BMI\Plugin\Database\BMI_Database_Exporter as BetterDatabaseExport;
+  use BMI\Plugin\Backup_Migration_Plugin as BMP;
   use BMI\Plugin\BMI_Pro_Core as Pro_Core;
   use BMI\Plugin AS BMI;
 
@@ -60,11 +61,16 @@
     public $lock_cli;
     
     public $_zip;
+    public $_lib;
     public $batches_left;
 
     // Prepare the request details
     function __construct($curl = false, $config = false, $content = false, $backups = false, $abs = false, $dir = false, $url = false, $remote_settings = [], $it = 0, $dbit = 0, $dblast = 0) {
-
+      
+      if (isset($remote_settings['bmitmp'])) {
+        if (!defined('BMI_TMP')) define('BMI_TMP', $remote_settings['bmitmp']);
+      }
+      
       $this->it = intval($it);
       $this->dbit = intval($dbit);
       $this->abs = $abs;
@@ -84,19 +90,13 @@
       $this->rev = intval($remote_settings['rev']);
       $this->backupstart = $remote_settings['start'];
       $this->filessofar = intval($remote_settings['filessofar']);
-      $this->identyfile = BMI_INCLUDES . '/htaccess' . '/.' . $this->identy;
+      $this->identyfile = BMI_TMP . DIRECTORY_SEPARATOR . '.' . $this->identy;
       $this->browserSide = ($remote_settings['browser'] === true || $remote_settings['browser'] === 'true') ? true : false;
 
-      // if (isset($remote_settings['shareallowed'])) {
-      //   $this->shareallowed = $remote_settings['shareallowed'];
-      // } else {
-      //   $this->shareallowed = 'ask';
-      // }
-
-      $this->identyFolder = BMI_INCLUDES . '/htaccess/bg-' . $this->identy;
-      $this->fileList = BMI_INCLUDES . '/htaccess/files_latest.list';
-      $this->dbfile = BMI_INCLUDES . '/htaccess/bmi_database_backup.sql';
-      $this->db_dir_v2 = BMI_INCLUDES . '/htaccess/db_tables';
+      $this->identyFolder = BMI_TMP . DIRECTORY_SEPARATOR . 'bg-' . $this->identy;
+      $this->fileList = BMI_TMP . DIRECTORY_SEPARATOR . 'files_latest.list';
+      $this->dbfile = BMI_TMP . DIRECTORY_SEPARATOR . 'bmi_database_backup.sql';
+      $this->db_dir_v2 = BMI_TMP . DIRECTORY_SEPARATOR . 'db_tables';
       $this->db_v2_engine = false;
 
       $this->headersSet = false;
@@ -141,11 +141,11 @@
           'Content-Start:' . $this->backupstart,
           'Content-Filessofar:' . $this->filessofar,
           'Content-Total:' . $this->total_files,
-          // 'Content-Shareallowed:' . $this->shareallowed,
           'Content-Rev:' . $this->rev,
           'Content-It:' . $this->it,
           'Content-Dbit:' . $this->dbit,
           'Content-Dblast:' . $this->dblast,
+          'Content-Bmitmp:' . BMI_TMP,
           'Content-Browser:' . $this->browserSide ? 'true' : 'false'
         );
 
@@ -153,7 +153,7 @@
         //   define('CURL_HTTP_VERSION_2_0', CURL_HTTP_VERSION_1_0);
         // }
 
-        // $ckfile = tempnam(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess', "CURLCOOKIE");
+        // $ckfile = tempnam(BMI_TMP, "CURLCOOKIE");
         $c = curl_init();
              curl_setopt($c, CURLOPT_POST, 1);
              curl_setopt($c, CURLOPT_TIMEOUT, 10);
@@ -224,8 +224,8 @@
 
       // Remove list if exists
       $identyfile = $this->identyfile;
-      $logfile = BMI_INCLUDES . '/htaccess/bmi_logs_this_backup.log';
-      $clidata = BMI_INCLUDES . '/htaccess/bmi_cli_data.json';
+      $logfile = BMI_TMP . DIRECTORY_SEPARATOR . 'bmi_logs_this_backup.log';
+      $clidata = BMI_TMP . DIRECTORY_SEPARATOR . 'bmi_cli_data.json';
       if (file_exists($this->fileList)) @unlink($this->fileList);
       if (file_exists($this->dbfile)) @unlink($this->dbfile);
       if (file_exists($this->manifest)) @unlink($this->manifest);
@@ -252,16 +252,6 @@
         foreach ($files as $file) if (is_file($file)) unlink($file);
         if (is_dir($this->db_dir_v2)) @rmdir($this->db_dir_v2);
       }
-
-      // Remove cookie files
-      if (file_exists($this->dir . '/tmp')) {
-        $files = glob($this->dir . '/tmp/*');
-        foreach ($files as $file) if (is_file($file)) unlink($file);
-      }
-
-      // Remove temporary files
-      $files = glob(BMI_INCLUDES . '/htaccess/CURLCOOKIE*');
-      foreach ($files as $file) if (is_file($file)) @unlink($file);
 
     }
 
@@ -325,7 +315,7 @@
       $this->remove_commons();
 
       // Remove backup
-      if (file_exists(BMI_BACKUPS . '/' . $this->backupname)) @unlink(BMI_BACKUPS . '/' . $this->backupname);
+      if (file_exists(BMI_BACKUPS . DIRECTORY_SEPARATOR . $this->backupname)) @unlink(BMI_BACKUPS . DIRECTORY_SEPARATOR . $this->backupname);
 
       // Abort step
       $this->output->log('Aborting backup... ', 'STEP');
@@ -402,7 +392,7 @@
           $skip = false;
           if ($currsize > ($limitcrl * (1024 * 1024))) $skip = true;
 
-          $groupFile = $folder . '/' . $this->identy . '-' . $suffix . '.files';
+          $groupFile = $folder . DIRECTORY_SEPARATOR . $this->identy . '-' . $suffix . '.files';
           $group = fopen($groupFile, 'a');
                    fwrite($group, $line . ',' . $size . "\r\n");
                    fclose($group);
@@ -430,7 +420,7 @@
     // Final batch
     public function get_final_batch() {
 
-      $db_root_dir = BMI_INCLUDES . '/htaccess' . '/';
+      $db_root_dir = BMI_TMP . DIRECTORY_SEPARATOR;
       $logs = $db_root_dir . 'bmi_logs_this_backup.log';
 
       $log_file = fopen($logs, 'w');
@@ -476,7 +466,7 @@
 
         $largest = $files[0]; $prev_size = 0;
         for ($i = 0; $i < sizeof($files); ++$i) {
-          $curr_size = filesize($this->identyFolder . '/' . $files[$i]);
+          $curr_size = filesize($this->identyFolder . DIRECTORY_SEPARATOR . $files[$i]);
           if ($curr_size > $prev_size) {
             $largest = $files[$i];
             $prev_size = $curr_size;
@@ -488,7 +478,7 @@
           $this->final_batch = true;
         }
 
-        return $this->identyFolder . '/' . $largest;
+        return $this->identyFolder . DIRECTORY_SEPARATOR . $largest;
 
       } else {
 
@@ -549,7 +539,8 @@
             $back = BMI_BACKUPS . DIRECTORY_SEPARATOR . $this->backupname;
             if (BMI_CLI_REQUEST) {
               if (!isset($this->zip_initialized)) {
-                $this->_zip->open($back, \ZipArchive::CREATE);
+                if (file_exists($back)) $this->_zip->open($back);
+                else $this->_zip->open($back, \ZipArchive::CREATE);
               }
             } else {
               if (file_exists($back)) $this->_zip->open($back);
@@ -638,12 +629,12 @@
           // Check if PclZip exists
           if (!class_exists('PclZip')) {
             if (!defined('PCLZIP_TEMPORARY_DIR')) {
-              $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+              $bmi_tmp_dir = BMI_TMP;
               if (!file_exists($bmi_tmp_dir)) {
                 @mkdir($bmi_tmp_dir, 0775, true);
               }
 
-              define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+              define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
             }
           }
 
@@ -655,6 +646,9 @@
             require_once $alternative;
             if ($this->it === 1) {
               $this->output->log('Using dedicated PclZIP for Pro', 'INFO');
+              if ($dbLog == true) {
+                $this->output->log('Adding database SQL file(s) to the backup file.', 'STEP');
+              }
             }
           }
 
@@ -671,13 +665,27 @@
           if (sizeof($files) <= 0) {
             return false;
           }
+          
+          $back = 0;
+          $files = array_filter($files, function ($path) {
+            if (is_readable($path) && file_exists($path) && !is_link($path)) return true;
+            else {
+              $this->output->log("Excluding file that cannot be read: " . $path, 'warn');
+              return false;
+            }
+          });
 
           // Add files
-          if ($final) {
+          if ($final || $dbLog) {
 
             // Final configuration
-            $back = $this->_lib->add($files, PCLZIP_OPT_REMOVE_PATH, BMI_INCLUDES . '/htaccess' . '/', PCLZIP_OPT_TEMP_FILE_THRESHOLD, $this->safelimit);
-            $this->final_made = true;
+            if (sizeof($files) > 0) {
+              $back = $this->_lib->add($files, PCLZIP_OPT_REMOVE_PATH, BMI_TMP . DIRECTORY_SEPARATOR, PCLZIP_OPT_ADD_TEMP_FILE_ON, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $this->safelimit);
+            }
+            
+            if ($dbLog === false) {
+              $this->final_made = true;
+            }
 
           } else {
 
@@ -685,7 +693,9 @@
             $add_path = 'wordpress' . DIRECTORY_SEPARATOR;
 
             // Casual configuration
-            $back = $this->_lib->add($files, PCLZIP_OPT_REMOVE_PATH, ABSPATH, PCLZIP_OPT_ADD_PATH, $add_path, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $this->safelimit);
+            if (sizeof($files) > 0) {
+              $back = $this->_lib->add($files, PCLZIP_OPT_REMOVE_PATH, ABSPATH, PCLZIP_OPT_ADD_PATH, $add_path, PCLZIP_OPT_ADD_TEMP_FILE_ON, PCLZIP_OPT_TEMP_FILE_THRESHOLD, $this->safelimit);
+            }
 
           }
 
@@ -733,7 +743,7 @@
           $db_files = scandir($this->db_dir_v2);
           foreach ($db_files as $i => $name) {
             if (!($name == '.' || $name == '..')) {
-              $files[] = $this->db_dir_v2 . '/' . $name;
+              $files[] = $this->db_dir_v2 . DIRECTORY_SEPARATOR . $name;
             }
           }
         }
@@ -770,9 +780,9 @@
 
         $file = null;
         if ($files[$i][0] . $files[$i][1] . $files[$i][2] === '@1@') {
-          $file = WP_CONTENT_DIR . '/' . substr($files[$i], 3);
+          $file = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . substr($files[$i], 3);
         } else if ($files[$i][0] . $files[$i][1] . $files[$i][2] === '@2@') {
-          $file = ABSPATH . '/' . substr($files[$i], 3);
+          $file = ABSPATH . DIRECTORY_SEPARATOR . substr($files[$i], 3);
         } else {
           $file = $files[$i];
         }
@@ -987,7 +997,7 @@
 
       // DB File Name for that type of backup
       $dbbackupname = 'bmi_database_backup.sql';
-      $database_file = $this->fixSlashes(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . $dbbackupname);
+      $database_file = $this->fixSlashes(BMI_TMP . DIRECTORY_SEPARATOR . $dbbackupname);
 
       if (Dashboard\bmi_get_config('BACKUP:DATABASE') == 'true') {
 
@@ -1037,7 +1047,7 @@
 
           if (BMI_CLI_REQUEST === true || $dbBatchingEnabled === false) {
 
-            $this->output->log('Exporting database via bypasser.php @ CLI', 'VERBOSE');
+            $this->output->log('Exporting database via bypasser.php @ CLI || batching disabled', 'VERBOSE');
             $results = $db_exporter->export();
 
             $this->output->log("Database backup finished", 'SUCCESS');
@@ -1130,6 +1140,9 @@
         ABSPATH . WPINC . '/class-wp-http-response.php',
         ABSPATH . WPINC . '/class-wp-http-requests-response.php',
         ABSPATH . WPINC . '/class-wp-http-requests-hooks.php',
+        ABSPATH . WPINC . '/widgets.php',
+        ABSPATH . WPINC . '/class-wp-widget.php',
+        ABSPATH . WPINC . '/class-wp-widget-factory.php',
         ABSPATH . WPINC . '/class-wp-user-request.php',
         ABSPATH . WPINC . '/user.php',
         ABSPATH . WPINC . '/class-wp-user-query.php',
@@ -1207,7 +1220,10 @@
     }
 
     public function actionsAfterProcess($success = false) {
-
+      
+      $this->loadWordPressAndBackupPlugin();
+      BMP::handle_after_cron();
+      
       return null;
 
     }

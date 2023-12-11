@@ -1307,9 +1307,9 @@ $elements = array(
 				'is_pro' => true,
 				'demo'   => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-badge-global-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
 			),
-            array(
-				'key'    => 'premium-shape-divider',
-				'demo'   => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-animated-shape-divider-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
+			array(
+				'key'  => 'premium-shape-divider',
+				'demo' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-animated-shape-divider-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
 			),
 			array(
 				'key'  => 'premium-floating-effects',
@@ -1333,6 +1333,10 @@ $elements = array(
 			array(
 				'key'  => 'premium-global-tooltips',
 				'demo' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-tooltip-global-addon/', 'settings-page', 'wp-dash', 'dashboard' ),
+			),
+			array(
+				'key'  => 'premium-wrapper-link',
+				'demo' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/elementor-global-wrapper-link-addon-tutorial', 'settings-page', 'wp-dash', 'dashboard' ),
 			),
 		),
 	),

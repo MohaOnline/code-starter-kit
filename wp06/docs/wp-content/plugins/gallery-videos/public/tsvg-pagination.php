@@ -66,9 +66,9 @@
 		--tsvg_s_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_04 ) ); ?>;
 		--tsvg_s_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_03 ) ); ?>;
 		--tsvg_s_h_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_10 ) ); ?>;
-		--tsvg_s_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_07 ) ); ?>;
+		--tsvg_s_h_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_09 ) ); ?>;
 		--tsvg_s_ac_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_08 ) ); ?>;
-		--tsvg_s_ac_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_09 ) ); ?>;
+		--tsvg_s_ac_bc_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_07 ) ); ?>;
 		--tsvg_s_fs_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo filter_var( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_05 ), FILTER_VALIDATE_INT ); ?>px;
 		--tsvg_s_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_06 ) ); ?>;
 		--tsvg_s_b_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_pagination_options->TotalSoft_VGallery_Sty_11 ) ); ?>;
@@ -283,7 +283,6 @@
 	}
 	.tsvg_position_select[data-change-elem=".tsvg-pagination-pages"] >.tsvg_position_item {
 	  	padding-bottom:0!important;
-	  	/* padding-left:20px; */
 	}
 	.tsvg_position_select[data-change-elem=".tsvg-pagination-pages-wrapper"] >.tsvg_position_item {
 	  	padding-bottom:0!important;
@@ -304,6 +303,9 @@
 	 	margin:0;
 	 	left: 0;
 	}
+	.tsvg-pagination-pages .tsvg-pagination-page-item .tsvg-pagination-page-link .ts-vgallery {
+		line-height: 1.4;
+	} 
 	@-webkit-keyframes line {
 	 	5%, 10% {
 			transform: translateY(-30px);
@@ -457,7 +459,6 @@
 	  	display:inline-block!important;
 	}
 	#tsvg-section-<?php echo esc_attr($tsvg_shortcode_id);?> .tsvg-layout-item-show-none{
-		/* display: none !important; */
 		visibility: hidden !important;
 	}
 </style>

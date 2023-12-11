@@ -39,7 +39,7 @@ class Setup
     /**
      * @var int
      */
-    const DB_VERSION = 108;
+    const DB_VERSION = 109;
 
     /**
      * Installation script.
@@ -138,6 +138,8 @@ class Setup
 
     /**
      * Create the necessary database tables.
+     * 
+     * Some of the code written, maintained by Darko Gjorgjijoski
      */
     public static function createTables()
     {

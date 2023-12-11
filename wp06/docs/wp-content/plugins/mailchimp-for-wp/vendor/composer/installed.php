@@ -3,7 +3,7 @@
         'name' => 'ibericode/mailchimp-for-wordpress',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'e3652d90a2830744dfb614f456aa9c1cfe7efa64',
+        'reference' => '3284e46ff32fe8fa47c1f46eb6227a9f13dabe89',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'ibericode/mailchimp-for-wordpress' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'e3652d90a2830744dfb614f456aa9c1cfe7efa64',
+            'reference' => '3284e46ff32fe8fa47c1f46eb6227a9f13dabe89',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

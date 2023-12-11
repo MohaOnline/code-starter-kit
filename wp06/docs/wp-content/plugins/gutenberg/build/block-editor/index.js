@@ -35049,14 +35049,24 @@ const transform_styles_transformStyles = (styles, wrapperSelector = '') => {
     ignoredSelectors = [],
     baseURL
   }) => {
-    return lib_postcss([wrapperSelector && build_default()(wrapperSelector, {
-      ignoredSelectors: [...ignoredSelectors, wrapperSelector]
-    }), baseURL && postcss_urlrebase_default()({
-      rootUrl: baseURL
-    })].filter(Boolean)).process(css, {}).css; // use sync PostCSS API
+    try {
+      return lib_postcss([wrapperSelector && build_default()(wrapperSelector, {
+        ignoredSelectors: [...ignoredSelectors, wrapperSelector]
+      }), baseURL && postcss_urlrebase_default()({
+        rootUrl: baseURL
+      })].filter(Boolean)).process(css, {}).css; // use sync PostCSS API
+    } catch (error) {
+      if (error instanceof CssSyntaxError) {
+        // eslint-disable-next-line no-console
+        console.warn('wp.blockEditor.transformStyles Failed to transform CSS.', error.message + '\n' + error.showSourceCode(false));
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('wp.blockEditor.transformStyles Failed to transform CSS.', error);
+      }
+      return null;
+    }
   });
 };
-
 /* harmony default export */ var transform_styles = (transform_styles_transformStyles);
 
 ;// CONCATENATED MODULE: ./packages/block-editor/build-module/components/editor-styles/index.js

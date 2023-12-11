@@ -137,7 +137,7 @@ if( method_exists( $product, 'get_id' ) ) {
 				$item_id = $cr_product_id;
 				$item_name = $product->get_name();
 				$item_pic = wp_get_attachment_image_url( $product->get_image_id(), 'thumbnail', false );
-				$media_upload = true;
+				$media_upload = ( 'yes' === get_option( 'ivole_attach_image', 'no' ) ? true : false );
 				$cr_form_item_media_array = array();
 				$cr_form_item_media_desc = __( 'Add photos or video to your review', 'customer-reviews-woocommerce' );
 				wc_get_template(

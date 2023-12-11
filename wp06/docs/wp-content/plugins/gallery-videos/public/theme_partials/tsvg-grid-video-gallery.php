@@ -11,6 +11,7 @@
 		--tsvg_to_ff_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_12 ) ); ?>;
 		--tsvg_to_c_<?php echo esc_attr( $tsvg_shortcode_id ); ?>:<?php echo htmlspecialchars( esc_html( $tsvg_style_options->TotalSoft_GV_1_13 ) ); ?>;
 	}
+
 	.tsvg-grid-slide-desc-<?php echo esc_attr( $tsvg_shortcode_id ); ?> p span{
 		font-size: 14px;
 		color:#000000 !important;
@@ -300,7 +301,10 @@
 		position: relative;
 		padding-top: 56.25%;
 	}
-   	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide figure iframe,.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide figure img, .tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide  figure video {
+
+   	#tsvg-section-<?php echo esc_attr( $tsvg_shortcode_id ); ?>   .tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide figure iframe,
+	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide figure img, 
+	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide  figure video {
 		height: auto;
 		min-width: 100%!important;
 		position: absolute;
@@ -316,6 +320,11 @@
 		max-height:auto!important;
 		margin-left: 0!important;
 	}
+	.tsvg-grid-slide-desc-<?php echo esc_attr( $tsvg_shortcode_id ); ?> img.emoji[draggable='false'] {
+		min-width: 1em !important;
+    	min-height: 1em !important;
+		position:unset !important;
+	}
 	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide  figure img {
 		height: auto;
 		width: auto;
@@ -324,7 +333,7 @@
 	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?>  .tsvg-grid-slide-div {
 		overflow-y: auto;
 		overflow-x: hidden;
-		/* margin-top: 5px; */
+		margin-top: 5px;
 		padding-right: 10px;
 		padding: 0 20px;
 		padding-left: 15px;
@@ -430,6 +439,10 @@
 	.tsvg-grid-slideshow-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-slide .tsvg-media-wrapper iframe{
 		width:100%;
 	}
+	.tsvg-grid-layout-item-block-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-layout-item-title-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
+		padding: 10px 0;
+    	line-height: 0.7em !important;
+	}
 	.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-layout-item-caption-<?php echo esc_attr( $tsvg_shortcode_id ); ?>,.tsvg-grid-content-items-<?php echo esc_attr( $tsvg_shortcode_id ); ?> .tsvg-grid-layout-item-title-<?php echo esc_attr( $tsvg_shortcode_id ); ?>{
 		display: none;
 		/* margin: 0 !important; */
@@ -466,7 +479,7 @@ foreach ( $tsvg_videos_data as $key => $value ) {
 	$tsvg_block_img_url = $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im == '' ? esc_url( plugins_url( 'img/tsvg_no_img.jpg', __DIR__ ) ) : esc_url( $tsvg_videos_data_object->TotalSoftVGallery_Vid_Im );
 	$tsvg_videos_data_html .= sprintf(
 		'
-      	<li class="tsvg-grid-layout-item tsvg-grid-layout-item-%1$s" data-tsvg-id="%3$s" style="-moz-animation-delay: 0.%4$ss;-webkit-animation-delay: 0.%4$ss;animation-delay: 0.%4$ss;">
+      	<li class="tsvg-grid-layout-item tsvg-grid-layout-item-%1$s" data-tsvg-id="%3$s" style="-moz-animation-delay: %4$ss;-webkit-animation-delay: %4$ss;animation-delay: %4$ss;">
       	  	<figure class="tsvg-grid-layout-item-block-%1$s" data-tsvg-effect="%5$s" data-tsvg-bool="%6$s">
       	  	  	<img  width="" height="" src="%7$s" alt="img" >
       	  	  	<h3 class="tsvg-grid-layout-item-title-%1$s"  data-tsvg-title="%8$s">

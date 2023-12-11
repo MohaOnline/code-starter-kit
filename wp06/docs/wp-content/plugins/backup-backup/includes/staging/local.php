@@ -98,7 +98,7 @@
     }
 
     private function generateUniquePrefix() {
-      return 'b' . date('m') . 'mi' . date('d') . '_stg' . substr(time(), -5) . '_';
+      return 'bmstg' . substr(time(), -4) . '_';
     }
 
     private function generateDatabasePrefix() {
@@ -368,7 +368,8 @@
       global $wpdb;
 
       // Create new table
-      $sql = "CREATE TABLE %i LIKE %i;";
+      // $sql = "CREATE TABLE %i LIKE %i;";
+      $sql = "CREATE TABLE %i AS SELECT * FROM %i;";
       $sql = $wpdb->prepare($sql, [$destination, $source]);
       $wpdb->query($sql);
 
@@ -379,15 +380,15 @@
       }
 
       // Duplicate data
-      $sql = "INSERT INTO %i SELECT * from %i;";
-      $sql = $wpdb->prepare($sql, [$destination, $source]);
-      $wpdb->query($sql);
+      // $sql = "INSERT INTO %i SELECT * from %i;";
+      // $sql = $wpdb->prepare($sql, [$destination, $source]);
+      // $wpdb->query($sql);
 
-      if ($wpdb->last_error !== '') {
-        $translated = __('There was an error during database table data duplication:', 'backup-backup') . ' ' . $wpdb->last_error;
-        $english = 'There was an error during database table data duplication:' . ' ' . $wpdb->last_error;
-        $this->returnError($translated, $english);
-      }
+      // if ($wpdb->last_error !== '') {
+      //   $translated = __('There was an error during database table data duplication:', 'backup-backup') . ' ' . $wpdb->last_error;
+      //   $english = 'There was an error during database table data duplication:' . ' ' . $wpdb->last_error;
+      //   $this->returnError($translated, $english);
+      // }
 
     }
 
@@ -455,8 +456,8 @@
       if (!isset($this->siteConfig['batch']) || $this->siteConfig['batch'] == 1) {
         $this->log(__('Scanning all files on your website, it may take a while...', 'backup-backup'), 'STEP');
 
-        $pathDirsListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_directories';
-        $pathFilesListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_files';
+        $pathDirsListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_directories';
+        $pathFilesListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_files';
 
         $this->siteConfig['total_size'] = 0;
         $this->siteConfig['total_files'] = 0;
@@ -768,7 +769,7 @@
           $this->siteConfig['dirSeek'] = 0;
         }
 
-        $pathDirsListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_directories';
+        $pathDirsListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_directories';
 
         $file = new \SplFileObject($pathDirsListFile);
         $file->seek($file->getSize());
@@ -830,7 +831,7 @@
           $this->siteConfig['fileSeek'] = 0;
         }
 
-        $pathFilesListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_files';
+        $pathFilesListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_files';
 
         $file = new \SplFileObject($pathFilesListFile);
         $file->seek($file->getSize());

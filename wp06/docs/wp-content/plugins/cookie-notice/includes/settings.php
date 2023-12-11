@@ -37,7 +37,7 @@ class Cookie_Notice_Settings {
 		add_action( 'admin_menu', [ $this, 'admin_menu_options' ] );
 		add_action( 'network_admin_menu', [ $this, 'admin_menu_options' ] );
 		add_action( 'after_setup_theme', [ $this, 'load_defaults' ] );
-		add_action( 'admin_init', [ $this, 'load_modules' ] );
+		add_action( 'plugins_loaded', [ $this, 'load_modules' ], 0 );
 		add_action( 'admin_init', [ $this, 'validate_network_options' ], 9 );
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
@@ -49,15 +49,48 @@ class Cookie_Notice_Settings {
 	}
 
 	/**
+	 * Check whether caching compatibility is enabled. Also just before saving settings.
+	 *
+	 * @return bool
+	 */
+	public function is_caching_compatibility() {
+		// get current value from database
+		$db_cc = Cookie_Notice()->options['general']['caching_compatibility'];
+
+		// if it is enabled allow immediately
+		if ( $db_cc )
+			return true;
+
+		// check caching compatibility before it is saved, needed when we change caching_compatibility from false to true
+		if ( ! ( isset( $_POST['save_cookie_notice_options'], $_POST['action'], $_POST['_wpnonce'], $_POST['option_page'], $_POST['cookie_notice_options'] ) && $_POST['option_page'] === 'cookie_notice_options' && wp_verify_nonce( $_POST['_wpnonce'], 'cookie_notice_options-options' ) !== false ) )
+			return false;
+
+		// check availability of caching compatibility itself
+		if ( ! isset( $_POST['cookie_notice_options']['caching_compatibility'] ) )
+			return false;
+
+		// get active caching plugins
+		$active_plugins = cn_get_active_caching_plugins();
+
+		// return caching compatibility on the fly
+		return ! empty( $active_plugins );
+	}
+
+	/**
 	 * Load additional modules.
 	 *
 	 * @return void
 	 */
 	public function load_modules() {
-		if ( Cookie_Notice()->options['general']['caching_compatibility'] ) {
+		// caching compatibility enabled?
+		if ( $this->is_caching_compatibility() ) {
 			// wp fastest cache
 			if ( cn_is_plugin_active( 'wpfastestcache' ) )
 				include_once( COOKIE_NOTICE_PATH . 'includes/modules/wp-fastest-cache/wp-fastest-cache.php' );
+
+			// wp-optimize
+			if ( cn_is_plugin_active( 'wpoptimize' ) )
+				include_once( COOKIE_NOTICE_PATH . 'includes/modules/wp-optimize/wp-optimize.php' );
 		}
 	}
 
@@ -1335,7 +1368,7 @@ class Cookie_Notice_Settings {
 
 			// set app status
 			if ( ! empty( $input['app_id'] ) && ! empty( $input['app_key'] ) ) {
-				$app_data = $cn->welcome_api->get_app_config( $input['app_id'], true );
+				$app_data = $cn->welcome_api->get_app_config( $input['app_id'], true, false );
 
 				if ( $cn->check_status( $app_data['status'] ) === 'active' && $cn->options['general']['app_id'] !== $input['app_id'] ) {
 					// get_app_analytics requires fresh app data
@@ -1345,7 +1378,7 @@ class Cookie_Notice_Settings {
 					];
 
 					// update analytics data
-					$cn->welcome_api->get_app_analytics( $input['app_id'], true );
+					$cn->welcome_api->get_app_analytics( $input['app_id'], true, false );
 
 					$this->analytics_app_data = [];
 				}
@@ -1697,6 +1730,8 @@ class Cookie_Notice_Settings {
 				update_option( 'cookie_notice_status', $cn->defaults['data'] );
 			}
 		}
+
+		do_action( 'cn_configuration_updated', 'settings' );
 
 		return $input;
 	}

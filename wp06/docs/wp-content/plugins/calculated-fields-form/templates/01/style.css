@@ -5,7 +5,12 @@ body{
 .cp_cff_letter{background:url("bg_top.png") 0 0 repeat-x #E4E4E4; border:1px solid #C4C4C4; padding:10px;}
 .cp_cff_letter #fbuilder{}
 .cp_cff_letter #fbuilder h1,
-.cp_cff_letter #fbuilder h2{color:#204a70;}
+.cp_cff_letter #fbuilder h2,
+.cp_cff_letter #fbuilder h3,
+.cp_cff_letter #fbuilder h4,
+.cp_cff_letter #fbuilder h5,
+.cp_cff_letter #fbuilder h6,
+.cp_cff_letter #fbuilder .fform p{color:#204a70;}
 
 
 .cp_cff_letter #fbuilder input[type="password"],

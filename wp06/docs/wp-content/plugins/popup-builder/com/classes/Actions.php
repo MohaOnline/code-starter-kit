@@ -19,7 +19,8 @@ class Actions
 	public function init()
 	{
 		add_action('init', array($this, 'wpInit'), 100);
-		add_action('init', array($this, 'postTypeInit'), 9999);
+		add_action('init', array($this, 'callUnsubcribeUserByEmail'), 9999);
+		add_action('admin_init', array($this, 'postTypeInit'), 9999);
 		if (method_exists('sgpb\AdminHelper', 'updatesInit') && !has_action('admin_init', array( 'sgpb\AdminHelper', 'updatesInit'))){
 			add_action('admin_init', array( 'sgpb\AdminHelper', 'updatesInit'), 9999);
 		}
@@ -886,26 +887,63 @@ class Actions
 
 	public function postTypeInit()
 	{
-		if (isset($_POST['sgpb-is-preview']) && $_POST['sgpb-is-preview'] == 1 && isset($_POST['post_ID'])) {
-			$postId = sanitize_text_field($_POST['post_ID']);
-			$post = get_post($postId);
-			$this->savePost($postId, $post, false);
+		/**
+		 * We only allow administrator to do this action
+		*/ 			
+		if ( ! current_user_can( 'administrator' ) ) {
+			
+			return;
 		}
+
 		$adminUrl = admin_url();
 
 		if (isset($_GET['page']) && sanitize_text_field($_GET['page']) == 'PopupBuilder') {
 			_e('<span>Popup Builder plugin has been successfully updated. Please <a href="'.esc_url($adminUrl).'edit.php?post_type='.SG_POPUP_POST_TYPE.'">click here</a> to go to the new Dashboard of the plugin.</span>', SG_POPUP_TEXT_DOMAIN);
 			wp_die();
 		}
+		
 
+		AdminHelper::removeUnnecessaryCodeFromPopups();
+		
+		/**
+		 * We only allow administrator to do this action
+		*/ 
+		if (isset($_POST['sgpb-is-preview']) && $_POST['sgpb-is-preview'] == 1 && isset($_POST['post_ID'])) {			
+		
+			/* Validate nonce */			
+			$nonce = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( $_POST['_wpnonce'] ) : '';			
+			$postId = sanitize_text_field($_POST['post_ID']);			
+
+			if ( empty( $nonce ) || !wp_verify_nonce( $nonce, 'update-post_'.$postId ) ) { 		
+				return;
+			}
+			
+			$post = get_post($postId);
+			
+			/**
+			* We only allow administrator to do this action
+			*/
+		
+			$this->savePost($postId, $post, false);
+		}	
+		
+	}
+
+	public function callUnsubcribeUserByEmail()
+	{			
+		/**
+		 * We collect GET parameters for Unsubscriber such as 'sgpbUnsubscribe', 'email', 'popup ID'. 
+		 * This happens when User wants to unsubcibe on the Subscription Popup through Link in email.
+		*/ 
 		$unsubscribeArgs = $this->collectUnsubscriberArgs();
+		
 		if (!empty($unsubscribeArgs)) {
 			$this->unsubscribe($unsubscribeArgs);
 		}
 
-		AdminHelper::removeUnnecessaryCodeFromPopups();
-
+		// This should call with init hook to register new post type popup
 		$this->customPostTypeObj = new RegisterPostType();
+		
 	}
 
 	public function collectUnsubscriberArgs()

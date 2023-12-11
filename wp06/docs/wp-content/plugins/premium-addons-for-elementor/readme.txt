@@ -3,9 +3,9 @@ Contributors: Leap13, Rimoun
 Tags: elementor, elementor addons, widgets, elementor elements, templates
 Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme
 Requires at least: 5.0
-Tested Up To: 6.3.2
+Tested Up To: 6.4.1
 Requires PHP: 7.0
-Stable Tag: 4.10.14
+Stable Tag: 4.10.15
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -246,6 +246,13 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.15 =
+
+- New: Added Wrapper Link addon - [here](https://premiumaddons.com/docs/elementor-global-wrapper-link-addon-tutorial).
+- Tweak: Added option to Trigger Animation on Click in Lottie Animations widget.
+- Fixed: Gap after slides issue with Infinite animation in Advanced Media Carousel widget.
+- Fixed: Lightbox Styling options not working in Media Grid widget.
 
 = 4.10.14 =
 

@@ -303,29 +303,34 @@ class Premium_Banner extends Widget_Base {
 				'condition' => array(
 					'premium_banner_height' => 'custom',
 				),
+				'range'     => array(
+					'px' => array(
+						'min'  => 1,
+						'max'  => 600,
+					),
+				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-banner-ib' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-banner-ib img' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
 
-		$this->add_responsive_control(
-			'premium_banner_img_vertical_align',
+        $this->add_responsive_control(
+			'image_fit',
 			array(
-				'label'     => __( 'Vertical Align', 'premium-addons-for-elementor' ),
+				'label'     => __( 'Image Fit', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'cover'   => __( 'Cover', 'premium-addons-for-elementor' ),
+					'fill'    => __( 'Fill', 'premium-addons-for-elementor' ),
+					'contain' => __( 'Contain', 'premium-addons-for-elementor' ),
+				),
+				'default'   => 'fill',
+				'selectors' => array(
+					'{{WRAPPER}} .premium-banner-ib img' => 'object-fit: {{VALUE}}',
+				),
 				'condition' => array(
 					'premium_banner_height' => 'custom',
-				),
-				'options'   => array(
-					'flex-start' => __( 'Top', 'premium-addons-for-elementor' ),
-					'center'     => __( 'Middle', 'premium-addons-for-elementor' ),
-					'flex-end'   => __( 'Bottom', 'premium-addons-for-elementor' ),
-					'inherit'    => __( 'Full', 'premium-addons-for-elementor' ),
-				),
-				'default'   => 'flex-start',
-				'selectors' => array(
-					'{{WRAPPER}} .premium-banner-img-wrap' => 'align-items: {{VALUE}}; -webkit-align-items: {{VALUE}};',
 				),
 			)
 		);
@@ -1305,16 +1310,8 @@ class Premium_Banner extends Widget_Base {
 				</div>
 			<?php endif; ?>
 			<?php if ( ! empty( $settings['premium_banner_image']['url'] ) ) : ?>
-				<?php if ( 'custom' === $settings['premium_banner_height'] ) : ?>
-					<div class="premium-banner-img-wrap">
-				<?php endif; ?>
-					<?php echo wp_kses_post( $image_html ); ?>
-				<?php if ( 'custom' === $settings['premium_banner_height'] ) : ?>
-					</div>
-					<?php
-				endif;
-			endif;
-			?>
+                <?php echo wp_kses_post( $image_html ); ?>
+            <?php endif; ?>
 			<?php if ( 'animation11' === $settings['premium_banner_image_animation'] ) : ?>
 				<div class="premium-banner-gradient"></div>
 			<?php endif; ?>
@@ -1435,13 +1432,7 @@ class Premium_Banner extends Widget_Base {
 					</div>
 				<# } #>
 				<# if( '' !== settings.premium_banner_image.url ) { #>
-					<# if( 'custom' === settings.premium_banner_height ) { #>
-						<div class="premium-banner-img-wrap">
-					<# } #>
-						{{{imageHtml}}}
-					<# if( 'custom' === settings.premium_banner_height ) { #>
-						</div>
-					<# } #>
+                    {{{imageHtml}}}
 				<# } #>
 				<# if( 'animation11' === settings.premium_banner_image_animation ) { #>
 					<div class="premium-banner-gradient"></div>

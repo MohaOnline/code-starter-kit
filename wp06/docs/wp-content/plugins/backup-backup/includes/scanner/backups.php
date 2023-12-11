@@ -43,6 +43,8 @@
 
     public function getManifestFromZip($zip_path, &$zipper) {
 
+      if (!file_exists($zip_path)) return false;
+
       // Get manifest content
       $md5_file_summary_path = BMI_BACKUPS . DIRECTORY_SEPARATOR. 'md5summary.php';
       $zip_modification_time = filemtime($zip_path);
@@ -158,6 +160,7 @@
       for ($i = 0; $i < sizeof($backups); ++$i) {
 
         $backup = $backups[$i];
+        if (!file_exists($backup['path'])) continue;
         $manifest = $this->getManifestFromZip($backup['path'] . '/' . $backup['filename'], $zipper);
         if ($manifest) $manifests[$backup['filename']] = $manifest;
 

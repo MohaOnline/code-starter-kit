@@ -129,7 +129,7 @@ class Plugin {
 		// Form Builder
 		// TODO:: ommit if form builder turned off if possible
 		require WPR_ADDONS_PATH . 'classes/modules/wpr-form-handlers.php';
-
+		
 		// Admin Files
 		if ( is_admin() ) {
 			// Pro Features Notice
@@ -161,6 +161,9 @@ class Plugin {
 
 			// Secondary Image
 			require WPR_ADDONS_PATH . 'admin/metabox/wpr-secondary-image.php';
+
+			// Dropdown Category Filter for Wpr Templates
+			require WPR_ADDONS_PATH . 'admin/includes/wpr-templates-category-filter.php';
 
 			// Hide Theme Notice
 			// TODO: Remove this and fix with Transients
@@ -263,54 +266,6 @@ class Plugin {
 			);
 		} );
 	}
-
-    public function wpr_get_page_content($request) {
-        // $page_id = $_POST['wpr_compare_page_id'];  
-        $page_id = $request->get_param('id');
-        
-        // Check if the page was created with Elementor
-        if (\Elementor\Plugin::$instance->db->is_built_with_elementor($page_id)) {
-            // $content = \Elementor\Plugin::$instance->frontend->get_builder_content($page_id);
-            // return new WP_REST_Response(array('content' => $content), 200);
-			
-            $post_id = $request->get_param( 'id' );
-            $post = get_post( $post_id );
-
-            if ( ! $post ) {
-                return new WP_Error( 'invalid_post_id', __( 'Invalid post ID' ), array( 'status' => 404 ) );
-            }
-
-            $response = new WP_REST_Response( $post->post_content, 200 );
-
-            if ( class_exists( '\Elementor\Plugin' ) ) {
-                $elementor = \Elementor\Plugin::$instance->frontend->get_builder_content( $post_id, true );
-                if ( ! empty( $elementor ) ) {
-                    $response->set_data( $elementor );
-                }
-            }
-
-            return $response;
-        } else {
-            $page = get_post($page_id);  
-            if ($page) {
-                $content = apply_filters('the_content', $page->post_content);
-                return new WP_REST_Response(array('content' => $content), 200);
-            } else {
-                return new WP_Error('page_not_found', 'Page not found', array('status' => 404));
-            }
-        }
-        wp_die();
-    }
-
-    public function register_compare_custom_routes() {
-		add_action( 'rest_api_init', function() {
-			register_rest_route('wpraddons/v1', '/page-content/(?P<id>\d+)', array(
-				'methods' => 'GET',
-				'callback' => [$this, 'wpr_get_page_content'],
-				'permission_callback' => '__return_true'
-			));
-		});
-    }
 
 	public function register_custom_controls() {
 

@@ -369,8 +369,23 @@ class Graphina_Charts_For_Elementor_Public
         return $config;
     }
 
+    public function convertStdClassToArray($object) {
+        if (is_object($object)) {
+            // Convert stdClass object to an array
+            $object = (array)$object;
+        }
+        if (is_array($object)) {
+            // Recursively convert all elements in the array
+            foreach ($object as &$value) {
+                $value = $this->convertStdClassToArray($value);
+            }
+        }
+        return $object;
+    }
+    
+    
     public function action_get_graphina_chart_settings()
-    {
+    {   
         $google_chart_data = [
             'count' => 0,
             'title_array' => [],
@@ -387,8 +402,19 @@ class Graphina_Charts_For_Elementor_Public
         ) {
 
             try {
-
                 $settings = $_POST['fields'];
+
+
+                if (empty($settings)) {
+                    // Replace $element_id with the actual ID of your Elementor element
+                    $element_id = explode("_", $_POST['chart_id'])[0];
+                    $document = Plugin::$instance->documents->get($_POST['page_id']);
+
+
+
+                    $elementor_data_array = $document ? $document->get_elements_data('draft') : [];
+                    $settings = self::getElementorElementSettingByID($elementor_data_array, $element_id);
+                }
                 $type = $_POST['chart_type'];
                 $id = $_POST['chart_id'];
                 $selected_item = $_POST['selected_field'];
@@ -432,6 +458,7 @@ class Graphina_Charts_For_Elementor_Public
                         $dataType = $type;
                         break;
                 }
+               
                 if ( $settings['iq_' . $type . '_chart_data_option'] !== 'manual') {
                     if(isGraphinaPro() && $settings['iq_' . $type . '_chart_data_option'] !== 'forminator'){
                         $data = graphina_pro_chart_content($settings, $id, $type, $dataType,$selected_item);
@@ -439,12 +466,14 @@ class Graphina_Charts_For_Elementor_Public
                         if(graphinaForminatorAddonActive()){
                             $data = apply_filters('graphina_forminator_addon_data', $data,$type,$settings);
                         }
+
                     }
+                
                     if (!empty($data['fail']) && $data['fail'] === 'permission') {
                         wp_send_json(['status' => true, 'instant_init' => false, 'fail' => true, 'fail_message' => !empty($data['fail_message']) ? $data['fail_message'] : '', 'chart_id' => $id, 'chart_option' => [],'category_count' => 0]);
                     }
                 }
-                $category_count = count($data['category']);
+                $category_count = is_null($data['category']) ? 0 : count($data['category']);
                 if(in_array($type,['area_google','bar_google','column_google','line_google','pie_google','donut_google','gauge_google','geo_google','org_google'])){
                     $google_chart_data = $this->get_google_chart_format_data($data,$settings,$type);
                 }else{
@@ -488,6 +517,11 @@ class Graphina_Charts_For_Elementor_Public
                             ]
                         ]
                     ];
+
+                    if($type=='radar'){
+                       unset( $optionSetting['stroke']);
+                    }
+
                     if ($type === 'radar' && $category_count > 0) {
                         $optionSetting['xaxis']['labels']['style']['colors'] = array_fill(0,$category_count,strval($settings['iq_' . $type . '_chart_font_color']));
                     }
@@ -693,8 +727,30 @@ class Graphina_Charts_For_Elementor_Public
         }
 
         wp_send_json(['status' => false, 'chart_id' => $id, 'data' => ['head' => [],'body' => []]]);
-        die;
 
+    }
+    public static function getElementorElementSettingByID($elements, $targetId) {
+        foreach ($elements as $element) {
+            if ($element['id'] === $targetId) {
+
+                $element_controls = Plugin::$instance->widgets_manager->get_widget_types()[$element['widgetType']]->get_stack( false )['controls']  ;
+                foreach ($element_controls as $key => $control_val){
+                    if(!isset($element['settings'][$key])){
+                        $element['settings'][$key] = $control_val['default'];
+                    }
+                }
+
+                return $element['settings'];
+            }
+    
+            if (!empty($element['elements'])) {
+                $settings = self::getElementorElementSettingByID($element['elements'], $targetId);
+                if ($settings !== null) {
+                    return $settings;
+                }
+            }
+        }
+        return null;
     }
 }
 

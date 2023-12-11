@@ -3,7 +3,7 @@
         'name' => 'wprss/core',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => 'fb22a25fa9e821d06fe41efefbb62685b0dbd361',
+        'reference' => '0a46f86095f2aa29696e1d3fbc3ac00ae538cc84',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -340,7 +340,7 @@
         'wprss/core' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'fb22a25fa9e821d06fe41efefbb62685b0dbd361',
+            'reference' => '0a46f86095f2aa29696e1d3fbc3ac00ae538cc84',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

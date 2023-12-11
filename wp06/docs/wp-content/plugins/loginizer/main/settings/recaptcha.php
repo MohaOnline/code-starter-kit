@@ -242,9 +242,9 @@ input[type="text"], textarea, select {
 				<td>
 					<select name="captcha_status" id="captcha_status" onchange="lz_captcha_status();">
 						<?php
-							echo '<option '.lz_POSTselect('captcha_status', 0, (empty($loginizer['captcha_key']) && empty($loginizer['captcha_no_google']) ? true : false)).' value="0">'.__('Disabled', 'loginizer').'</value>
-							<option '.lz_POSTselect('captcha_status', 1, (!empty($loginizer['captcha_key']) ? true : false)).' value="1">'.__('Google reCAPTCHA', 'loginizer').'</value>
-							<option '.lz_POSTselect('captcha_status', 2, (!empty($loginizer['captcha_no_google']) ? true : false)).' value="2">'.__('Math Captcha', 'loginizer').'</value>';
+							echo '<option '.lz_POSTselect('captcha_status', 0, (empty($loginizer['captcha_key']) && empty($loginizer['captcha_no_google']) ? true : false)).' value="0">'.__('Disabled', 'loginizer').'</option>
+							<option '.lz_POSTselect('captcha_status', 1, (!empty($loginizer['captcha_key']) ? true : false)).' value="1">'.__('Google reCAPTCHA', 'loginizer').'</option>
+							<option '.lz_POSTselect('captcha_status', 2, (!empty($loginizer['captcha_no_google']) ? true : false)).' value="2">'.__('Math Captcha', 'loginizer').'</option>';
 						?>
 					</select>
 				</td>

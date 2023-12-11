@@ -1259,9 +1259,10 @@ class Cookie_Notice_Welcome_API {
 	 *
 	 * @param string $app_id
 	 * @param bool $force_update
+	 * @param bool $force_action
 	 * @return void
 	 */
-	public function get_app_analytics( $app_id = '', $force_update = false ) {
+	public function get_app_analytics( $app_id = '', $force_update = false, $force_action = true ) {
 		// get main instance
 		$cn = Cookie_Notice();
 
@@ -1335,6 +1336,9 @@ class Cookie_Notice_Welcome_API {
 
 			// update status data
 			$cn->set_status_data();
+
+			if ( $force_action )
+				do_action( 'cn_configuration_updated', 'analytics' );
 		}
 	}
 
@@ -1343,9 +1347,10 @@ class Cookie_Notice_Welcome_API {
 	 *
 	 * @param string $app_id
 	 * @param bool $force_update
+	 * @param bool $force_action
 	 * @return void|array
 	 */
-	public function get_app_config( $app_id = '', $force_update = false ) {
+	public function get_app_config( $app_id = '', $force_update = false, $force_action = true ) {
 		// get main instance
 		$cn = Cookie_Notice();
 
@@ -1445,6 +1450,9 @@ class Cookie_Notice_Welcome_API {
 
 		// update status data
 		$cn->set_status_data();
+
+		if ( $force_action )
+			do_action( 'cn_configuration_updated', 'config' );
 
 		return $status_data;
 	}

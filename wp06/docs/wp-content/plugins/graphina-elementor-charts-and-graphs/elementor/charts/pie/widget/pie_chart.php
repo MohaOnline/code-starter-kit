@@ -397,7 +397,11 @@ class Pie_chart extends Widget_Base
                         },
                         formatter: function(seriesName, opts) {
                             if('<?php echo !empty($settings['iq_' . $type . '_chart_legend_show_series_value']) && $settings['iq_' . $type . '_chart_legend_show_series_value'] === 'yes' ?>'){
-                                return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex]}</strong></div>`;
+                                let divEl= document.createElement("div");
+                                divEl.classList.add("legend-info");
+                                divEl.append(document.createElement("span").innerText=seriesName,":",document.createElement("strong").innerText=opts.w.globals.series[opts.seriesIndex])
+                                return divEl.outerHTML;
+                                // return `<div class="legend-info"><span>${seriesName}</span>:<strong>${opts.w.globals.series[opts.seriesIndex]}</strong></div>`;
                             }
                             return seriesName
                         }
@@ -478,7 +482,7 @@ class Pie_chart extends Widget_Base
                             options: pieOptions,
                             series: [{name: '', data: []}],
                             animation: true,
-                            setting_date:<?php echo json_encode($settings); ?>
+                            setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                         },
                         '<?php esc_attr_e($mainId); ?>'
                     );

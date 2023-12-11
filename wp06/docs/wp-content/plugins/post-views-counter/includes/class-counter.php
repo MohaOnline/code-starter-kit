@@ -228,6 +228,7 @@ class Post_Views_Counter_Counter {
 		// get main instance
 		$pvc = Post_Views_Counter();
 
+		// actions
 		add_action( 'wp_ajax_pvc-view-posts', [ $this, 'queue_count' ] );
 		add_action( 'wp_ajax_nopriv_pvc-view-posts', [ $this, 'queue_count' ] );
 		add_action( 'wp_print_footer_scripts', [ $this, 'print_queue_count' ], 11 );
@@ -301,9 +302,8 @@ class Post_Views_Counter_Counter {
 					// set new cookie
 					$count_visit = $this->save_cookie( $post_id );
 				}
-			} else {
+			} else
 				$count_visit = $this->save_cookie_storage( $post_id, $content_data );
-			}
 		}
 
 		// filter visit counting
@@ -458,7 +458,14 @@ class Post_Views_Counter_Counter {
 		if ( empty( $post_types ) || ! is_singular( $post_types ) )
 			return;
 
-		$this->check_post( (int) get_the_ID() );
+		// get current post id
+		$post_id = (int) get_the_ID();
+
+		// allow to run check post?
+		if ( ! (bool) apply_filters( 'pvc_run_check_post', true, $post_id ) )
+			return;
+
+		$this->check_post( $post_id );
 	}
 
 	/**

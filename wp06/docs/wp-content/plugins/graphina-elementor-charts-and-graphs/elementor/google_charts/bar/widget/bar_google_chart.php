@@ -428,7 +428,15 @@ class Bar_google_chart extends Widget_Base
                         if($key >= $category_count){
                             break;
                         }
-                        $valueData = !empty($value['iq_' . $type . '_chart_value_3_' . $j]) ? $value['iq_' . $type . '_chart_value_3_' . $j] : randomValueGenerator(0, 200);
+                        if (!empty($value['iq_' . $type . '_chart_value_3_' . $j]) && is_numeric($value['iq_' . $type . '_chart_value_3_' . $j]) && floor($value['iq_' . $type . '_chart_value_3_' . $j]) == $value['iq_' . $type . '_chart_value_3_' . $j]) {
+                            $numeric_val = (int)$value['iq_' . $type . '_chart_value_3_' . $j];
+                        }else if(!empty($value['iq_' . $type . '_chart_value_3_' . $j]) && filter_var($value['iq_' . $type . '_chart_value_3_' . $j], FILTER_VALIDATE_FLOAT) !== false) {
+                            $numeric_val = (float)$value['iq_' . $type . '_chart_value_3_' . $j];
+                        }else{
+                            $numeric_val = (int)$value['iq_' . $type . '_chart_value_3_' . $j];
+                        }
+
+                        $valueData = !empty($value['iq_' . $type . '_chart_value_3_' . $j]) ? $numeric_val : randomValueGenerator(0, 200);
                         $barData[$key][] = $valueData;
                         if($settings['iq_' . $type . '_chart_annotation_show'] === 'yes'){
                             $barData[$key][] = $annotationPrefix .$valueData.$annotationPostfix;
@@ -593,7 +601,7 @@ class Bar_google_chart extends Widget_Base
                                 series: data,
                                 animation: true,
                                 renderType:'BarChart',
-                                setting_date:<?php echo json_encode($settings); ?>
+                                setting_date:<?php echo Plugin::$instance->editor->is_edit_mode()?  json_encode($settings) : 'null' ; ?>
                             },
                             '<?php esc_attr_e($mainId); ?>',
                             '<?php echo $this->get_chart_type(); ?>',

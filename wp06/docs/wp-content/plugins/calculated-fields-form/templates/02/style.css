@@ -13,7 +13,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e513e', end
 }
 
 .cp_cff_professional #fbuilder{color:#FFF;text-shadow:0px 1px 0px #000000;font-weight:normal;}
-.cp_cff_professional .fform h2{color:#FFF;}
+.cp_cff_professional .fform h1,
+.cp_cff_professional .fform h2,
+.cp_cff_professional .fform h3,
+.cp_cff_professional .fform h4,
+.cp_cff_professional .fform h5,
+.cp_cff_professional .fform h6,
+.cp_cff_professional .fform p{color:#FFF;}
 .cp_cff_professional #fbuilder .cpefb_error.message{text-shadow:none;color:#000;}
 .cp_cff_professional #fbuilder .fields label{color:#FFF;}
 .cp_cff_professional #fbuilder .dfield label,

@@ -81,7 +81,7 @@ class BMI_Even_Better_Database_Restore {
     $this->storage = $storage;
     $this->logger = &$logger;
     $this->manifest = &$manifest;
-    $this->tablemap = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.table_map';
+    $this->tablemap = BMI_TMP . DIRECTORY_SEPARATOR . '.table_map';
 
     if ($firstDB) $this->initMessage();
 
@@ -690,7 +690,7 @@ class BMI_Even_Better_Database_Restore {
 
   }
 
-  private function enablePlugins() {
+  public function enablePlugins() {
 
     global $wpdb;
 
@@ -762,7 +762,6 @@ class BMI_Even_Better_Database_Restore {
     $this->logger->progress(98);
     $this->prepareFinalDatabase();
     $this->replaceTableNames($this->map['tables']);
-    $this->enablePlugins();
 
   }
 

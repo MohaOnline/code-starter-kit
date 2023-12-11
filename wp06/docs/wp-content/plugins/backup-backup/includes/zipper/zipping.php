@@ -89,11 +89,11 @@
       } else {
         if (!class_exists('PclZip')) {
           if (!defined('PCLZIP_TEMPORARY_DIR')) {
-            $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+            $bmi_tmp_dir = BMI_TMP;
             if (!file_exists($bmi_tmp_dir)) {
               @mkdir($bmi_tmp_dir, 0775, true);
             }
-            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
           }
           if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {
             require_once BMI_PRO_PCLZIP;
@@ -143,11 +143,11 @@
 
         if (!class_exists('PclZip')) {
           if (!defined('PCLZIP_TEMPORARY_DIR')) {
-            $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+            $bmi_tmp_dir = BMI_TMP;
             if (!file_exists($bmi_tmp_dir)) {
               @mkdir($bmi_tmp_dir, 0775, true);
             }
-            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
           }
           if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {
             require_once BMI_PRO_PCLZIP;
@@ -195,11 +195,11 @@
       } else {
         if (!class_exists('PclZip')) {
           if (!defined('PCLZIP_TEMPORARY_DIR')) {
-            $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+            $bmi_tmp_dir = BMI_TMP;
             if (!file_exists($bmi_tmp_dir)) {
               @mkdir($bmi_tmp_dir, 0775, true);
             }
-            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
           }
           if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {
             require_once BMI_PRO_PCLZIP;
@@ -231,11 +231,11 @@
         // Load lib
         if (!class_exists('PclZip')) {
           if (!defined('PCLZIP_TEMPORARY_DIR')) {
-            $bmi_tmp_dir = BMI_ROOT_DIR . '/tmp';
+            $bmi_tmp_dir = BMI_TMP;
             if (!file_exists($bmi_tmp_dir)) {
               @mkdir($bmi_tmp_dir, 0775, true);
             }
-            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . '/bmi-');
+            define('PCLZIP_TEMPORARY_DIR', $bmi_tmp_dir . DIRECTORY_SEPARATOR . 'bmi-');
           }
           if (defined('BMI_PRO_PCLZIP') && file_exists(BMI_PRO_PCLZIP)) {
             require_once BMI_PRO_PCLZIP;

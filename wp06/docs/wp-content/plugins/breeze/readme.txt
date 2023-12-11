@@ -4,7 +4,7 @@ Tags: cache,caching, performance, wp-cache, cdn, combine, compress, speed plugin
 Requires at least: 6.0
 Tested up to: 6.4.1
 Requires PHP: 7.4
-Stable tag: 2.0.32
+Stable tag: 2.0.33
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,13 @@ Yes. The process of setting up CloudFlare with Breeze is easy. Check out the fol
 Using Gzip, Breeze compresses the request files, further reducing the size of the download files and speeding up the user experience.
 
 == Changelog ==
+
+= 2.0.33=
+
+* Fix: Breeze plugin is now fully compatible with PHP 8.2 as all the compatibility issues are solved.
+* Fix: Lazy load option is enhanced to ensure compatibility with diverse themes and avoid image or video loading conflicts.
+* Fix: Host font locally option is improved to handle special characters effectively, enhancing font display.
+* Fix: WooCommerce cart caching is prevented when the preload option is enabled, preventing unwanted cart data caching.
 
 = 2.0.32=
 

@@ -3,14 +3,13 @@ namespace WprAddons\Modules\WooGrid\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Core\Schemes\Color;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
 use WprAddons\Classes\Utilities;
@@ -39,7 +38,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 	}
 
 	public function get_keywords() {
-		return [ 'royal', 'shop grid', 'product grid', 'woocommerce', 'product slider', 'product carousel', 'isotope', 'massonry grid', 'filterable grid' ];
+		return [ 'royal', 'shop grid', 'product grid', 'woocommerce', 'product slider', 'product carousel', 'isotope', 'massonry grid', 'filterable grid', 'loop grid' ];
 	}
 
 	public function get_script_depends() {
@@ -106,6 +105,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'date',
 				'options' => [
+					'default' => esc_html__( 'Default', 'wpr-addons' ),
 					'date' => esc_html__( 'Date', 'wpr-addons' ),
 					'sales' => esc_html__( 'Sales', 'wpr-addons' ),
 					'rating' => esc_html__( 'Rating', 'wpr-addons' ),
@@ -198,7 +198,20 @@ class Wpr_Woo_Grid extends Widget_Base {
 		);
 	}
 	
-	public function add_control_sort_and_results_count() {}
+	public function add_control_sort_and_results_count() {
+		$this->add_control(
+			'layout_sort_and_results_count',
+			[
+				'label' => sprintf( __( 'Show Sorting %s', 'wpr-addons' ), '<i class="eicon-pro-icon"></i>' ),
+				'type' => Controls_Manager::SWITCHER,
+				'separator' => 'before',
+				'classes' => 'wpr-pro-control',
+				'condition' => [
+					'layout_select!' => 'slider',
+				]
+			]
+		);
+	}
 	
 	public function add_section_grid_sorting() {}
 	
@@ -625,6 +638,23 @@ class Wpr_Woo_Grid extends Widget_Base {
 		);
 
 		$this->add_control_query_selection();
+
+        $this->add_control(
+			'order_direction',
+			[
+				'label' => esc_html__( 'Order', 'wpr-addons'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'DESC',
+				'label_block' => false,
+				'options' => [
+					'ASC' => esc_html__( 'Ascending', 'wpr-addons'),
+					'DESC' => esc_html__( 'Descending', 'wpr-addons'),
+				],
+				'condition' => [
+					'query_randomize!' => 'rand',
+				]
+			]
+		);
 
 		// Upgrade to Pro Notice
 		Utilities::upgrade_pro_notice( $this, Controls_Manager::RAW_HTML, 'woo-grid', 'query_selection', ['pro-fr','pro-os','pro-us','pro-cs'] );
@@ -3766,7 +3796,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'title_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-title a'
 			]
 		);
@@ -3907,7 +3936,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'excerpt_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-excerpt'
 			]
 		);
@@ -4181,7 +4209,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'categories_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-product-categories'
 			]
 		);
@@ -4522,7 +4549,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'tags_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-product-tags'
 			]
 		);
@@ -4732,6 +4758,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'default' => '#D2CDCD',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-woo-rating i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpr-woo-rating svg' => 'fill: {{VALUE}};'
 				],
 			]
 		);
@@ -4766,6 +4793,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-woo-rating i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-woo-rating svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
 				],
 				'separator' => 'before',
 			]
@@ -4799,7 +4827,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'product_rating_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-woo-rating span'
 			]
 		);
@@ -4951,7 +4978,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'product_status_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-status .inner-block > span'
 			]
 		);
@@ -5131,7 +5157,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'product_price_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-price .inner-block > span'
 			]
 		);
@@ -5334,7 +5359,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'product_sale_dates_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-sale_dates .inner-block > .wpr-sale-dates'
 			]
 		);
@@ -5605,7 +5629,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'add_to_cart_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-add-to-cart a'
 			]
 		);
@@ -5765,7 +5788,8 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'default' => '#333333',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-wishlist-add span' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-wishlist-add i' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .wpr-wishlist-add i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-wishlist-add svg' => 'fill: {{VALUE}}'
 				]
 			]
 		);
@@ -5806,7 +5830,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'btn_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-wishlist-add span, {{WRAPPER}} .wpr-wishlist-add i, .wpr-wishlist-remove span, {{WRAPPER}} .wpr-wishlist-remove i',
 				'fields_options' => [
 					'typography' => [
@@ -5859,6 +5882,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'default' => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-wishlist-add:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-wishlist-add:hover svg' => 'fill: {{VALUE}}',
 					'{{WRAPPER}} .wpr-wishlist-add:hover span' => 'color: {{VALUE}}'
 				]
 			]
@@ -5914,8 +5938,10 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .wpr-wishlist-remove span' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .wpr-wishlist-remove i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-wishlist-remove svg' => 'fill: {{VALUE}}',
 					'{{WRAPPER}} .wpr-wishlist-remove:hover span' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-wishlist-remove:hover i' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .wpr-wishlist-remove:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-wishlist-remove:hover svg' => 'fill: {{VALUE}}'
 				]
 			]
 		);
@@ -6082,7 +6108,8 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'default' => '#333333',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-compare-add span' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-compare-add i' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .wpr-compare-add i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-compare-add svg' => 'fill: {{VALUE}}'
 				]
 			]
 		);
@@ -6123,7 +6150,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'comp_btn_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-compare-add span, {{WRAPPER}} .wpr-compare-add i, .wpr-compare-remove span, {{WRAPPER}} .wpr-compare-remove i',
 				'fields_options' => [
 					'typography' => [
@@ -6176,6 +6202,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'default' => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-compare-add:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-compare-add:hover svg' => 'fill: {{VALUE}}',
 					'{{WRAPPER}} .wpr-compare-add:hover span' => 'color: {{VALUE}}'
 				]
 			]
@@ -6231,8 +6258,10 @@ class Wpr_Woo_Grid extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .wpr-compare-remove span' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .wpr-compare-remove i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-compare-remove svg' => 'fill: {{VALUE}}',
 					'{{WRAPPER}} .wpr-compare-remove:hover span' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .wpr-compare-remove:hover i' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .wpr-compare-remove:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-compare-remove:hover svg' => 'fill: {{VALUE}}'
 				]
 			]
 		);
@@ -6522,7 +6551,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'lightbox_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-lightbox'
 			]
 		);
@@ -7433,7 +7461,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'linked_products',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-linked-products-heading *'
 			]
 		);
@@ -7696,7 +7723,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'filters_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-filters li'
 			]
 		);
@@ -8063,7 +8089,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'pagination_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-pagination'
 			]
 		);
@@ -8333,7 +8358,6 @@ class Wpr_Woo_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'pwd_protected_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-grid-item-protected p'
 			]
 		);
@@ -8468,7 +8492,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 					// 'no_found_rows' => 1,
 					'posts_per_page' => $settings['query_posts_per_page'],
 					'orderby' => 'post__in',
-					'order' => 'asc',
+					'order' => $settings['order_direction'],
 					'paged' => $paged,
 					'post__in' => $this->my_upsells,
 					'meta_query' => $meta_query
@@ -8515,7 +8539,7 @@ class Wpr_Woo_Grid extends Widget_Base {
 					// 'no_found_rows' => 1,
 					'posts_per_page' => $settings['query_posts_per_page'],
 					// 'orderby' => 'post__in',
-					'order' => 'asc',
+					'order' => $settings['order_direction'],
 					'paged' => $paged,
 					'post__in' => $this->crossell_ids,
 					// 'meta_query' => $meta_query
@@ -8534,16 +8558,19 @@ class Wpr_Woo_Grid extends Widget_Base {
 			$args['orderby']  = 'meta_value_num';
 		} elseif ( 'price-low' === $settings['query_orderby'] ) {
 			$args['meta_key'] = '_price';
-			$args['order'] = 'ASC';
+			$args['order'] = $settings['order_direction'];
 			$args['orderby']  = 'meta_value_num';
 		} elseif ( 'price-high' === $settings['query_orderby'] ) {
 			$args['meta_key'] = '_price';
-			$args['order'] = 'DESC';
+			$args['order'] = $settings['order_direction'];
 			$args['orderby']  = 'meta_value_num';
 		} elseif ( 'random' === $settings['query_orderby'] ) {
 			$args['orderby']  = 'rand';
-		} else {
+		} elseif ( 'date' === $settings['query_orderby'] ) {
 			$args['orderby']  = 'date';
+		} else {
+			$args['orderby']  = 'menu_order';
+			$args['order']  = $settings['order_direction'];
 		}
 
 		// Exclude Items without F/Image
@@ -8595,7 +8622,9 @@ class Wpr_Woo_Grid extends Widget_Base {
 			$args['tax_query'] = $this->get_tax_query_args();
 			$args['meta_query'] = $this->get_meta_query_args();
 			$args['posts_per_page'] = $posts_per_page;
-			$args['orderby'] = $settings['query_randomize'];
+			if (!empty($settings['query_randomize'])) {
+				$args['orderby'] = $settings['query_randomize'];
+			}
 		}
 
 		// Sorting
@@ -8605,15 +8634,15 @@ class Wpr_Woo_Grid extends Widget_Base {
 				$args['orderby']  = 'meta_value_num';
 			} elseif ( 'rating' === $_GET['orderby'] ) {
 				$args['meta_key'] = '_wc_average_rating';
-				$args['order'] = 'DESC';
+				$args['order'] = $settings['order_direction'];
 				$args['orderby']  = 'meta_value_num';
 			} elseif ( 'price' === $_GET['orderby'] ) {
 				$args['meta_key'] = '_price';
-				$args['order'] = 'ASC';
+				$args['order'] = $settings['order_direction'];
 				$args['orderby']  = 'meta_value_num';
 			} elseif ( 'price-desc' === $_GET['orderby'] ) {
 				$args['meta_key'] = '_price';
-				$args['order'] = 'DESC';
+				$args['order'] = $settings['order_direction'];
 				$args['orderby']  = 'meta_value_num';
 			} elseif ( 'random' === $_GET['orderby'] ) {
 				$args['orderby']  = 'rand';
@@ -8621,12 +8650,12 @@ class Wpr_Woo_Grid extends Widget_Base {
 				$args['orderby']  = 'date';
 			} else if ( 'title' === $_GET['orderby'] ){
 				$args['orderby']  = 'title';
-				$args['order'] = 'ASC';
+				$args['order'] = $settings['order_direction'];
 			} else if ( 'title-desc' === $_GET['orderby'] ) {
 				$args['orderby']  = 'title';
-				$args['order'] = 'DESC';
+				$args['order'] = $settings['order_direction'];
 			} else {
-				$args['order'] = 'ASC';
+				$args['order'] = $settings['order_direction'];
 				$args['orderby']  = 'menu_order';
 			}
 		}
@@ -9246,9 +9275,19 @@ class Wpr_Woo_Grid extends Widget_Base {
 
 		echo '<div class="'. esc_attr($class) .'">';
 			echo '<div class="inner-block">';
+			
+			// WooCommerce Hook: Before Add to Cart Button
+			// do_action('woocommerce_before_shop_loop_item');
 
-			// Button HTML
-			echo '<a '. implode( ' ', $attributes ) .'><span>'. $button_HTML .'</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			if ( $button_HTML != apply_filters( 'woocommerce_loop_add_to_cart_link', $button_HTML, $product ) ) {
+				echo apply_filters( 'woocommerce_loop_add_to_cart_link', $button_HTML, $product );
+			} else {
+				// Button HTML
+				echo '<a '. implode( ' ', $attributes ) .'><span>'. $button_HTML .'</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+		
+			// WooCommerce Hook: After Add to Cart Button
+			// do_action('woocommerce_after_shop_loop_item');
 
 			echo '</div>';
 		echo '</div>';
@@ -10314,6 +10353,10 @@ class Wpr_Woo_Grid extends Widget_Base {
 
 				// Media Hover
 				echo '<div class="wpr-grid-media-hover wpr-animation-wrap">';
+
+					// Filter to compensate woo incompatibility
+					echo apply_filters('wpr_grid_media_hover_content', '', get_the_ID());
+
 					// Media Overlay
 					$this->render_media_overlay( $settings );
 

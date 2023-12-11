@@ -483,7 +483,7 @@ function loginizer_admin_menu() {
 	add_submenu_page('loginizer', __($loginizer['prefix'].'reCAPTCHA Settings', 'loginizer'), __('reCAPTCHA', 'loginizer'), 'activate_plugins', 'loginizer_recaptcha', 'loginizer_recaptcha_settings');
 	
 	// Temporary Login
-	add_submenu_page('loginizer', __($loginizer['prefix'].'SSO', 'loginizer'), __('Single Sign On', 'loginizer') . ((time() < strtotime('8 September 2023')) ? ' <span style="color:red;">New</span>' : ''), 'activate_plugins', 'loginizer_sso', 'loginizer_sso_settings');
+	add_submenu_page('loginizer', __($loginizer['prefix'].'SSO', 'loginizer'), __('Single Sign On', 'loginizer'). ((time() < strtotime('30 November 2023')) ? ' <span style="color:yellow;">Update</span>' : ''), 'activate_plugins', 'loginizer_sso', 'loginizer_sso_settings');
 	
 	// Security Settings
 	if(!defined('SITEPAD')){

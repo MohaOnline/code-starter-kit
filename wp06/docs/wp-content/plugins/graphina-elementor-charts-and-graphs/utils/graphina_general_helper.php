@@ -429,12 +429,12 @@ function graphina_chart_widget_content($this_,$mainId,$settings){
         <div class="">
             <?php if (!empty($settings['iq_'.$type.'_is_card_heading_show']) && $settings['iq_'.$type.'_is_card_heading_show'] === 'yes'
                 && !empty($settings['iq_'.$type.'_chart_card_show']) && $settings['iq_'.$type.'_chart_card_show']  === 'yes') { ?>
-                <h4 class="heading graphina-chart-heading" style="<?php echo $heading_text_align.$heading_color; ?>">
+                <h4 class="heading graphina-chart-heading" style="<?php  echo isset($_REQUEST['action']) ?'' : $heading_text_align.$heading_color; ?>">
                     <?php echo html_entity_decode($title); ?>
                 </h4>
             <?php }
             if (!empty($settings['iq_'.$type.'_is_card_desc_show']) && $settings['iq_'.$type.'_is_card_desc_show'] === 'yes'  && !empty($settings['iq_'.$type.'_chart_card_show']) && $settings['iq_'.$type.'_chart_card_show'] === 'yes') { ?>
-                <p class="sub-heading graphina-chart-sub-heading" style="<?php echo $subheading_text_align.$subheading_color; ?>">
+                <p class="sub-heading graphina-chart-sub-heading" style="<?php  echo isset($_REQUEST['action']) ?'' : $subheading_text_align.$subheading_color; ?>">
                     <?php echo html_entity_decode($description); ?>
                 </p>
             <?php } ?>
@@ -497,7 +497,7 @@ function graphina_chart_widget_content($this_,$mainId,$settings){
 }
 
 function graphina_widget_id($this_el){
-    $post_id = get_the_ID();
+    $post_id = get_queried_object_id();
     $post_id = !empty($post_id) ? '_'.$post_id : '';
     return $this_el->get_id().$post_id;
 }

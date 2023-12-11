@@ -242,7 +242,7 @@ input[type="text"], textarea, select {
 		<table class="wp-list-table fixed striped users" cellspacing="1" border="0" width="95%" cellpadding="10" align="center">
 		<?php
 			echo '
-			<tr>				
+			<tr>
 				<th align="left" width="25%">'.__('Loginizer Version', 'loginizer').'</th>
 				<td>'.LOGINIZER_VERSION.(defined('LOGINIZER_PREMIUM') ? ' (<font color="green">'.__('Security PRO Version','loginizer').'</font>)' : '').'</td>
 			</tr>';
@@ -413,7 +413,11 @@ lz_ip_method_handle();
 				<th style="width:10%; background:#EFEFEF;">'.__('Actual', 'loginizer').'</th>
 			</tr>';
 			
-			$wp_content = basename(dirname(__FILE__, 5));
+			if(version_compare(phpversion(), '7.0') < 0){
+				$wp_content = basename(dirname(dirname(dirname(dirname(dirname(__FILE__))))));
+			}else {
+				$wp_content = basename(dirname(__FILE__, 5));
+			}
 			
 			$files_to_check = array('/' => array('0755', '0750'),
 								'/wp-admin' => array('0755'),

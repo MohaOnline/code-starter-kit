@@ -111,6 +111,7 @@
         checkBreakPoint(settings);
 
         if ($scope.hasClass('premium-nav-hor')) {
+            $(window).resize();
             checkMegaContentWidth();
         }
 

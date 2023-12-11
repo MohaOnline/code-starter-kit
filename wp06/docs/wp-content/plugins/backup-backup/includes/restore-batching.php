@@ -93,6 +93,9 @@
       ABSPATH . WPINC . '/class-wp-http-response.php',
       ABSPATH . WPINC . '/class-wp-http-requests-response.php',
       ABSPATH . WPINC . '/class-wp-http-requests-hooks.php',
+      ABSPATH . WPINC . '/widgets.php',
+      ABSPATH . WPINC . '/class-wp-widget.php',
+      ABSPATH . WPINC . '/class-wp-widget-factory.php',
       ABSPATH . WPINC . '/class-wp-user-request.php',
       ABSPATH . WPINC . '/user.php',
       ABSPATH . WPINC . '/class-wp-user-query.php',
@@ -190,18 +193,6 @@
   // Validate the secret
   if (gettype($_POST['bmi_restore_secret']) == 'string' && strlen($_POST['bmi_restore_secret']) == '64') {
 
-    // For now we don't trust the user
-    $bmi_continue_module = false;
-
-    // Check the secret
-    $bmi_secret_storage = __DIR__ . '/htaccess/.restore_secret';
-    if (file_exists($bmi_secret_storage)) {
-      $bmi_saved_secret = file_get_contents($bmi_secret_storage);
-      if ($bmi_saved_secret === $_POST['bmi_restore_secret']) {
-        $bmi_continue_module = true;
-      } else exit;
-    } else exit;
-
     // Set definition for handler
     define('BMI_RESTORE_SECRET', $_POST['bmi_restore_secret']);
     define('BMI_POST_CONTINUE_RESTORE', true);
@@ -209,12 +200,7 @@
     // Tell WP to not use Themes and set Base Path
     define('BASE_PATH', bmi_find_wordpress_base_path() . '/');
 
-    // Third time just for sure
-    if ($bmi_continue_module === true) {
-
-      // Use WP Globals and load WordPress
-      bmiLoadWordPressAndBackupPlugin();
-
-    }
+    // Use WP Globals and load WordPress
+    bmiLoadWordPressAndBackupPlugin();
 
   }

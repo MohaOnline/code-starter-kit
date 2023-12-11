@@ -441,7 +441,7 @@
       $this->siteConfig['password'] = $this->getRandomPassword();
       $this->saveConfigSite();
 
-      $pathToScript = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.autologin.php';
+      $pathToScript = BMI_TMP . DIRECTORY_SEPARATOR . '.autologin.php';
 
       $mudirPath = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'mu-plugins';
       if (defined('WPMU_PLUGIN_DIR')) $mudirPath = WPMU_PLUGIN_DIR;
@@ -791,8 +791,8 @@
     protected function cleanup() {
 
       $this->log('Cleaning up not needed files and parsing configs.', 'VERBOSE');
-      $pathDirsListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_directories';
-      $pathFilesListFile = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.staging_files';
+      $pathDirsListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_directories';
+      $pathFilesListFile = BMI_TMP . DIRECTORY_SEPARATOR . '.staging_files';
       $staging_lock = BMI_STAGING . '/.staging_lock';
 
       if (file_exists($pathDirsListFile)) @unlink($pathDirsListFile);

@@ -40,6 +40,21 @@ function loginizer_sso(){
 		return;
 	}
 
+	$sso_ttl = 600;
+	if(!empty($_POST['sso_ttl']) && is_numeric($_POST['sso_ttl'])){
+		$sso_ttl = (int) sanitize_text_field($_POST['sso_ttl']);
+	}
+	
+	$sso_attempts = 1;
+	if(!empty($_POST['sso_attempts']) && is_numeric($_POST['sso_attempts'])){
+		$sso_attempts = (int) sanitize_text_field($_POST['sso_attempts']);
+		
+		// The attempts need to be 15 or less
+		if($sso_attempts > 15 || $sso_attempts < 1){
+			$sso_attempts = 1;
+		}
+	}
+
 	$username = sanitize_text_field($_POST['sso_user']);
 	$user = get_user_by('login', $username);
 	
@@ -49,7 +64,7 @@ function loginizer_sso(){
 		return;
 	}
 
-	$loginizer['sso_link'] = loginizer_create_sso($user->ID);
+	$loginizer['sso_link'] = loginizer_create_sso($user->ID, $sso_ttl, $sso_attempts);
 
 	loginizer_sso_t();
 }
@@ -77,6 +92,7 @@ function loginizer_delete_sso(){
 	foreach($sso_ids as $sso_id){
 		delete_user_meta($sso_id, 'loginizer_sso_' . $sso_id);
 		delete_user_meta($sso_id, 'loginizer_sso_' . $sso_id . '_expires');
+		delete_user_meta($sso_id, 'loginizer_sso_' . $sso_id . '_attempts');
 		
 		if(!empty($sso_links)){
 			unset($sso_links[$sso_id]);
@@ -194,6 +210,33 @@ jQuery(document).ready(function(){
 				</td>
 			</tr>
 			<tr>
+				<td scope="row" valign="top">
+					<label for="lz-sso-ttl"><?php esc_html_e('Time to Live', 'loginizer'); ?></label><br>
+					<span class="exp"><?php esc_html_e('Select the duration for which the SSO stays alive', 'loginizer'); ?></span>
+				</td>
+				<td>
+					<select id="lz-sso-ttl" name="sso_ttl" style="width:175px;">
+						<option value="300">5 minutes</option>
+						<option value="600">10 minutes</option>
+						<option value="1800">30 minutes</option>
+						<option value="3600">1 hour</option>
+						<option value="21600">6 hours</option>
+						<option value="43200">12 hours</option>
+						<option value="86400">24 hours</option>
+						<option value="172800">2 Days</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td scope="row" valign="top">
+					<label for="lz-sso-attempts"><?php esc_html_e('Login Attempts', 'loginizer'); ?></label><br>
+					<span class="exp"><?php esc_html_e('Number of times you want your user to be able to login through same link by default it\'s 1 time and maximum is 15 times', 'loginizer'); ?></span>
+				</td>
+				<td>
+					<input type="number" id="lz-sso-attempts" name="sso_attempts" min="1" max="15" placeholder="Attempt Count" value="1" style="width:175px;">
+				</td>
+			</tr>
+			<tr>
 				<td>
 				</td>
 				<td>
@@ -212,6 +255,7 @@ jQuery(document).ready(function(){
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php esc_html_e('User ID','loginizer'); ?></th>
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php esc_html_e('Username','loginizer'); ?></th>
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php esc_html_e('SSO Link','loginizer'); ?></th>
+				<th scope="row" valign="top" style="background:#EFEFEF;"><?php esc_html_e('Attempts Remaining','loginizer'); ?></th>
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php esc_html_e('Expiring in','loginizer'); ?> <span class="dashicons dashicons-clock"></span></th>
 			</tr>
 			
@@ -225,6 +269,7 @@ jQuery(document).ready(function(){
 				foreach($sso_links as $u_id => $sso_link){
 					$user_info = get_userdata($u_id);
 					$expire_utime = get_user_meta($u_id, 'loginizer_sso_'.$u_id.'_expires', true);
+					$sso_attempts = get_user_meta($u_id, 'loginizer_sso_'.$u_id.'_attempts', true);
 
 					if(empty($expire_utime)){
 						$expired_links[] = $u_id;
@@ -240,6 +285,7 @@ jQuery(document).ready(function(){
 					<td>'.esc_html($u_id).'</td>
 					<td>'.esc_html($user_info->user_login).'</td>
 					<td>'.esc_url($sso_link).'</td>
+					<td>'.esc_html($sso_attempts).'</td>
 					<td>'.esc_html(human_time_diff(time(), $expire_utime)).'</td>
 					</tr>';
 				}

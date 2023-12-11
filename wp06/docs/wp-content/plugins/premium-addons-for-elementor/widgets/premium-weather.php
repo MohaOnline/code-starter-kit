@@ -3839,11 +3839,12 @@ class Premium_Weather extends Widget_Base {
 						</div>
 					<?php
 					return;
-				}
+				} else {
+                    $expire_time = HOUR_IN_SECONDS * $settings['reload'];
 
-				$expire_time = HOUR_IN_SECONDS * $settings['reload'];
+                    set_transient( $transient_name, $weather_data, $expire_time );
+                }
 
-				set_transient( $transient_name, $weather_data, $expire_time );
 			}
 		} else {
 

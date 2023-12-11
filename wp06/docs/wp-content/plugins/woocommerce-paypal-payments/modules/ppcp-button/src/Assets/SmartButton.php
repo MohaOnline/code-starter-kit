@@ -397,7 +397,15 @@ class SmartButton implements SmartButtonInterface {
 
 		$default_pay_order_hook = 'woocommerce_pay_order_before_submit';
 
-		$get_hook = function ( string $location ) use ( $default_pay_order_hook ): ?array {
+		/**
+		 * The filter returning if the current theme is a block theme or not.
+		 */
+		$is_block_theme = (bool) apply_filters(
+			'woocommerce_paypal_payments_messages_renderer_is_block',
+			wp_is_block_theme()
+		);
+
+		$get_hook = function ( string $location ) use ( $default_pay_order_hook, $is_block_theme ): ?array {
 			switch ( $location ) {
 				case 'checkout':
 					return $this->messages_renderer_hook( $location, 'woocommerce_review_order_before_payment', 10 );
@@ -408,9 +416,13 @@ class SmartButton implements SmartButtonInterface {
 				case 'product':
 					return $this->messages_renderer_hook( $location, $this->single_product_renderer_hook(), 30 );
 				case 'shop':
-					return $this->messages_renderer_hook( $location, 'woocommerce_archive_description', 10 );
+					return $is_block_theme
+						? $this->messages_renderer_block( $location, 'core/query-title', 10 )
+						: $this->messages_renderer_hook( $location, 'woocommerce_archive_description', 10 );
 				case 'home':
-					return $this->messages_renderer_hook( $location, 'loop_start', 20 );
+					return $is_block_theme
+						? $this->messages_renderer_block( $location, 'core/navigation', 10 )
+						: $this->messages_renderer_hook( $location, 'loop_start', 20 );
 				default:
 					return null;
 			}
@@ -421,11 +433,15 @@ class SmartButton implements SmartButtonInterface {
 			return false;
 		}
 
-		add_action(
-			$hook['name'],
-			array( $this, 'message_renderer' ),
-			$hook['priority']
-		);
+		if ( $hook['blockName'] ?? false ) {
+			$this->message_renderer( $hook );
+		} else {
+			add_action(
+				$hook['name'],
+				array( $this, 'message_renderer' ),
+				$hook['priority']
+			);
+		}
 
 		// Looks like there are no hooks like woocommerce_review_order_before_payment on the pay for order page, so have to move using JS.
 		if ( $location === 'pay-now' && $hook['name'] === $default_pay_order_hook &&
@@ -704,9 +720,11 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 
 	/**
 	 * Renders the HTML for the credit messaging.
+	 *
+	 * @param array|null $block_params If it's to be rendered after a block, contains the block params.
+	 * @return void
 	 */
-	public function message_renderer(): void {
-
+	public function message_renderer( $block_params = array() ): void {
 		$product = wc_get_product();
 
 		$location      = $this->location();
@@ -727,12 +745,57 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 		 */
 		do_action( "ppcp_before_{$location_hook}_message_wrapper" );
 
-		echo '<div id="ppcp-messages" data-partner-attribution-id="Woo_PPCP"></div>';
+		$messages_placeholder = '<div id="ppcp-messages" data-partner-attribution-id="Woo_PPCP"></div>';
+
+		if ( is_array( $block_params ) && ( $block_params['blockName'] ?? false ) ) {
+			$this->render_after_block(
+				$block_params['blockName'],
+				'<div class="wp-block-group alignwide">' . $messages_placeholder . '</div>',
+				$block_params['priority'] ?? 10
+			);
+		} else {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $messages_placeholder;
+		}
 
 		/**
 		 * A hook executed after rendering of the PCP Pay Later messages wrapper.
 		 */
 		do_action( "ppcp_after_{$location_hook}_message_wrapper" );
+	}
+
+	/**
+	 * Renders content after a given block.
+	 *
+	 * @param string $name The name of the block to render after.
+	 * @param string $content The content to be rendered.
+	 * @param int    $priority The 'render_block' hook priority.
+	 * @return void
+	 */
+	private function render_after_block( string $name, string $content, int $priority = 10 ): void {
+		add_filter(
+			'render_block',
+			/**
+			 * Adds content after a given block.
+			 *
+			 * @param string $block_content The block content.
+			 * @param array|mixed $block_params The block params.
+			 * @return string
+			 *
+			 * @psalm-suppress MissingClosureParamType
+			 */
+			function ( $block_content, $block_params ) use ( $name, $content, $priority ) {
+				if (
+					is_array( $block_params )
+					&& ( $block_params['blockName'] ?? null ) === $name
+				) {
+					$block_content .= $content;
+				}
+				return $block_content;
+			},
+			$priority,
+			2
+		);
 	}
 
 	/**
@@ -973,6 +1036,7 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 			'subscription_plan_id'                    => $this->subscription_helper->paypal_subscription_id(),
 			'variable_paypal_subscription_variations' => $this->subscription_helper->variable_paypal_subscription_variations(),
 			'subscription_product_allowed'            => $this->subscription_helper->checkout_subscription_product_allowed(),
+			'locations_with_subscription_product'     => $this->subscription_helper->locations_with_subscription_product(),
 			'enforce_vault'                           => $this->has_subscriptions(),
 			'can_save_vault_token'                    => $this->can_save_vault_token(),
 			'is_free_trial_cart'                      => $is_free_trial_cart,
@@ -985,29 +1049,39 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 				'mini_cart_wrapper'     => '#ppc-button-minicart',
 				'is_mini_cart_disabled' => $this->is_button_disabled( 'mini-cart' ),
 				'cancel_wrapper'        => '#ppcp-cancel',
-				'mini_cart_style'       => array(
-					'layout'  => $this->style_for_context( 'layout', 'mini-cart' ),
-					'color'   => $this->style_for_context( 'color', 'mini-cart' ),
-					'shape'   => $this->style_for_context( 'shape', 'mini-cart' ),
-					'label'   => $this->style_for_context( 'label', 'mini-cart' ),
-					'tagline' => $this->style_for_context( 'tagline', 'mini-cart' ),
-					'height'  => $this->settings->has( 'button_mini-cart_height' ) && $this->settings->get( 'button_mini-cart_height' ) ? $this->normalize_height( (int) $this->settings->get( 'button_mini-cart_height' ) ) : 35,
+				'mini_cart_style'       => $this->normalize_style(
+					array(
+						'layout'  => $this->style_for_context( 'layout', 'mini-cart' ),
+						'color'   => $this->style_for_context( 'color', 'mini-cart' ),
+						'shape'   => $this->style_for_context( 'shape', 'mini-cart' ),
+						'label'   => $this->style_for_context( 'label', 'mini-cart' ),
+						'tagline' => $this->style_for_context( 'tagline', 'mini-cart' ),
+						'height'  => $this->normalize_height( $this->style_for_context( 'height', 'mini-cart', 35 ), 25, 55 ),
+					)
 				),
-				'style'                 => array(
-					'layout'  => $this->style_for_context( 'layout', $this->context() ),
-					'color'   => $this->style_for_context( 'color', $this->context() ),
-					'shape'   => $this->style_for_context( 'shape', $this->context() ),
-					'label'   => $this->style_for_context( 'label', $this->context() ),
-					'tagline' => $this->style_for_context( 'tagline', $this->context() ),
+				'style'                 => $this->normalize_style(
+					array(
+						'layout'  => $this->style_for_context( 'layout', $this->context() ),
+						'color'   => $this->style_for_context( 'color', $this->context() ),
+						'shape'   => $this->style_for_context( 'shape', $this->context() ),
+						'label'   => $this->style_for_context( 'label', $this->context() ),
+						'tagline' => $this->style_for_context( 'tagline', $this->context() ),
+						'height'  => in_array( $this->context(), array( 'cart-block', 'checkout-block' ), true )
+							? $this->normalize_height( $this->style_for_context( 'height', $this->context(), 48 ), 40, 55 )
+							: null,
+					)
 				),
 			),
 			'separate_buttons'                        => array(
 				'card' => array(
 					'id'      => CardButtonGateway::ID,
 					'wrapper' => '#ppc-button-' . CardButtonGateway::ID,
-					'style'   => array(
-						'shape' => $this->style_for_context( 'shape', $this->context() ),
-						// TODO: color black, white from the gateway settings.
+					'style'   => $this->normalize_style(
+						array(
+							'shape'  => $this->style_for_apm( 'shape', 'card' ),
+							'color'  => $this->style_for_apm( 'color', 'card', 'black' ),
+							'layout' => $this->style_for_apm( 'poweredby_tagline', 'card', false ) === $this->normalize_style_value( true ) ? 'vertical' : 'horizontal',
+						)
 					),
 				),
 			),
@@ -1076,13 +1150,6 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 
 		if ( 'pay-now' === $this->context() ) {
 			$localize['pay_now'] = $this->pay_now_script_data();
-		}
-
-		if ( $this->style_for_context( 'layout', 'mini-cart' ) !== 'horizontal' ) {
-			$localize['button']['mini_cart_style']['tagline'] = false;
-		}
-		if ( $this->style_for_context( 'layout', $this->context() ) !== 'horizontal' ) {
-			$localize['button']['style']['tagline'] = false;
 		}
 
 		if ( $this->is_paypal_continuation() ) {
@@ -1204,9 +1271,12 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 		}
 
 		if ( in_array( $context, array( 'checkout-block', 'cart-block' ), true ) ) {
-			$disable_funding = array_diff(
-				array_keys( $this->all_funding_sources ),
-				array( 'venmo', 'paylater' )
+			$disable_funding = array_merge(
+				$disable_funding,
+				array_diff(
+					array_keys( $this->all_funding_sources ),
+					array( 'venmo', 'paylater' )
+				)
 			);
 		}
 
@@ -1341,16 +1411,18 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 	}
 
 	/**
-	 * Determines the style for a given indicator in a given context.
+	 * Determines the style for a given property in a given context.
 	 *
-	 * @param string $style The style.
+	 * @param string $style The name of the style property.
 	 * @param string $context The context.
+	 * @param ?mixed $default The default value.
 	 *
-	 * @return string
+	 * @return string|int
 	 */
-	private function style_for_context( string $style, string $context ): string {
-		// Use the cart/checkout styles for blocks.
-		$context = str_replace( '-block', '', $context );
+	private function style_for_context( string $style, string $context, $default = null ) {
+		if ( $context === 'checkout-block' ) {
+			$context = 'checkout-block-express';
+		}
 
 		$defaults = array(
 			'layout'  => 'vertical',
@@ -1366,31 +1438,87 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 			$context = 'general';
 		}
 
-		$value = isset( $defaults[ $style ] ) ?
-			$defaults[ $style ] : '';
-		$value = $this->settings->has( 'button_' . $style ) ?
-			$this->settings->get( 'button_' . $style ) : $value;
-		$value = $this->settings->has( 'button_' . $context . '_' . $style ) ?
-			$this->settings->get( 'button_' . $context . '_' . $style ) : $value;
+		return $this->get_style_value( "button_{$context}_${style}" )
+			?? $this->get_style_value( "button_${style}" )
+			?? ( $default ? $this->normalize_style_value( $default ) : null )
+			?? $this->normalize_style_value( $defaults[ $style ] ?? '' );
+	}
 
+	/**
+	 * Determines the style for a given property in a given APM.
+	 *
+	 * @param string $style The name of the style property.
+	 * @param string $apm The APM name, such as 'card'.
+	 * @param ?mixed $default The default value.
+	 *
+	 * @return string|int
+	 */
+	private function style_for_apm( string $style, string $apm, $default = null ) {
+		return $this->get_style_value( "${apm}_button_${style}" )
+			?? ( $default ? $this->normalize_style_value( $default ) : null )
+			?? $this->style_for_context( $style, 'checkout' );
+	}
+
+	/**
+	 * Returns the style property value or null.
+	 *
+	 * @param string $key The style property key in the settings.
+	 * @return string|int|null
+	 */
+	private function get_style_value( string $key ) {
+		if ( ! $this->settings->has( $key ) ) {
+			return null;
+		}
+		return $this->normalize_style_value( $this->settings->get( $key ) );
+	}
+
+	/**
+	 * Converts the style property value to string.
+	 *
+	 * @param mixed $value The style property value.
+	 * @return string|int
+	 */
+	private function normalize_style_value( $value ) {
 		if ( is_bool( $value ) ) {
 			$value = $value ? 'true' : 'false';
+		}
+		if ( is_int( $value ) ) {
+			return $value;
 		}
 		return (string) $value;
 	}
 
 	/**
-	 * Returns a value between 25 and 55.
+	 * Fixes the style.
 	 *
-	 * @param int $height The input value.
+	 * @param array $style The style properties.
+	 * @return array
+	 */
+	private function normalize_style( array $style ): array {
+		if ( array_key_exists( 'tagline', $style ) && ( ! array_key_exists( 'layout', $style ) || $style['layout'] !== 'horizontal' ) ) {
+			$style['tagline'] = false;
+		}
+		if ( array_key_exists( 'height', $style ) && ! $style['height'] ) {
+			unset( $style['height'] );
+		}
+		return $style;
+	}
+
+	/**
+	 * Returns a number between min and max.
+	 *
+	 * @param mixed $height The input value.
+	 * @param int   $min The minimum value.
+	 * @param int   $max The maximum value.
 	 * @return int The normalized output value.
 	 */
-	private function normalize_height( int $height ): int {
-		if ( $height < 25 ) {
-			return 25;
+	private function normalize_height( $height, int $min, int $max ): int {
+		$height = (int) $height;
+		if ( $height < $min ) {
+			return $min;
 		}
-		if ( $height > 55 ) {
-			return 55;
+		if ( $height > $max ) {
+			return $max;
 		}
 
 		return $height;
@@ -1460,6 +1588,37 @@ document.querySelector("#payment").before(document.querySelector("#ppcp-messages
 		return array(
 			'name'     => $hook,
 			'priority' => $priority,
+		);
+	}
+
+	/**
+	 * Returns the block name that will be used for rendering Pay Later messages after.
+	 *
+	 * @param string $location The location name like 'checkout', 'shop'. See render_message_wrapper_registrar.
+	 * @param string $default_block The default name of the block.
+	 * @param int    $default_priority The default priority of the 'render_block' hook.
+	 * @return array An array with 'blockName' and 'priority' keys.
+	 */
+	private function messages_renderer_block( string $location, string $default_block, int $default_priority ): array {
+		$location_hook = $this->location_to_hook( $location );
+
+		/**
+		 * The filter returning the action name that will be used for rendering Pay Later messages.
+		 */
+		$block_name = (string) apply_filters(
+			"woocommerce_paypal_payments_${location_hook}_messages_renderer_block",
+			$default_block
+		);
+		/**
+		 * The filter returning the action priority that will be used for rendering Pay Later messages.
+		 */
+		$priority = (int) apply_filters(
+			"woocommerce_paypal_payments_${location_hook}_messages_renderer_block_priority",
+			$default_priority
+		);
+		return array(
+			'blockName' => $block_name,
+			'priority'  => $priority,
 		);
 	}
 

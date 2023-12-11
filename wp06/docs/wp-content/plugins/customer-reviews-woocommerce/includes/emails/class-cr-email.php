@@ -22,6 +22,7 @@ class Ivole_Email {
 	public $replyto;
 	public $language;
 	public $footer;
+	public $review_button;
 	public $find = array();
 	public $replace = array();
 	public static $default_body = "Hi {customer_first_name},\n\nThank you for shopping with us!\n\nWe would love if you could help us and other customers by reviewing products that you recently purchased in order #{order_id}. It only takes a minute and it would really help others. Click the button below and leave your review!\n\nBest wishes,\n{site_title}";
@@ -40,6 +41,7 @@ class Ivole_Email {
 		$this->from_name				= get_option( 'ivole_email_from_name', Ivole_Email::get_blogname() );
 		$this->replyto					= get_option( 'ivole_email_replyto', get_option( 'admin_email' ) );
 		$this->footer						= get_option( 'ivole_email_footer', '' );
+		$this->review_button		= __( 'Review', 'customer-reviews-woocommerce' );
 
 		// fetch language - either from the plugin's option or from WordPress standard locale
 		if ( 'yes' !== get_option( 'ivole_verified_reviews', 'no' ) ) {
@@ -65,6 +67,7 @@ class Ivole_Email {
 			$this->form_body = qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage( $this->form_body );
 			$this->from_name = qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage( $this->from_name );
 			$this->footer = qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage( $this->footer );
+			$this->review_button = qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage( $this->review_button );
 			if( 'QQ' === $this->language ) {
 				global $q_config;
 				$this->language = strtoupper( $q_config['language'] );
@@ -90,6 +93,7 @@ class Ivole_Email {
 			$this->from_name = apply_filters( 'wpml_translate_single_string', $this->from_name, 'ivole', 'ivole_email_from_name', $wpml_current_language );
 			$this->replyto = apply_filters( 'wpml_translate_single_string', $this->replyto, 'ivole', 'ivole_email_replyto', $wpml_current_language );
 			$this->footer = apply_filters( 'wpml_translate_single_string', $this->footer, 'ivole', 'ivole_email_footer', $wpml_current_language );
+			$this->review_button = apply_filters( 'wpml_translate_single_string', $this->review_button, 'ivole', 'ivole_review_button', $wpml_current_language );
 			if ( empty( $this->from_name ) ) {
 				$this->from_name = self::get_blogname();
 			}
@@ -112,6 +116,7 @@ class Ivole_Email {
 			$this->from_name = pll_translate_string( $this->from_name, $polylang_current_language );
 			$this->replyto = pll_translate_string( $this->replyto, $polylang_current_language );
 			$this->footer = pll_translate_string( $this->footer, $polylang_current_language );
+			$this->review_button = pll_translate_string( $this->review_button, $polylang_current_language );
 			if ( empty( $this->from_name ) ) {
 				$this->from_name = self::get_blogname();
 			}
@@ -133,6 +138,7 @@ class Ivole_Email {
 				$this->from_name = trp_translate( $this->from_name, $trp_order_language, false );
 				$this->replyto = trp_translate( $this->replyto, $trp_order_language, false );
 				$this->footer = trp_translate( $this->footer, $trp_order_language, false );
+				$this->review_button = trp_translate( $this->review_button, $trp_order_language, false );
 				if ( empty( $this->from_name ) ) {
 					$this->from_name = self::get_blogname();
 				}
@@ -487,13 +493,16 @@ class Ivole_Email {
 			);
 			$is_test = true;
 		}
+		$data_extra = array(
+			'reviewBtn' => $this->review_button
+		);
 		$license = get_option( 'ivole_license_key', '' );
 		if( strlen( $license ) > 0 ) {
 			$data['licenseKey'] = $license;
 		}
-		$result = CR_Email_Func::send_email( $data, $is_test );
+		$result = CR_Email_Func::send_email( $data, $is_test, $data_extra );
 		if( false === $result ) {
-			return array( 2, curl_error( $ch ) );
+			return array( 2, 'cURL error' );
 		}
 		//error_log( $result );
 		$result = json_decode( $result );

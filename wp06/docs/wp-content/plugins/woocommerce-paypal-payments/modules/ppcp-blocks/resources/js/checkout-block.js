@@ -1,12 +1,19 @@
 import {useEffect, useState} from '@wordpress/element';
 import {registerExpressPaymentMethod, registerPaymentMethod} from '@woocommerce/blocks-registry';
 import {mergeWcAddress, paypalAddressToWc, paypalOrderToWcAddresses} from "./Helper/Address";
-import {loadPaypalScript} from '../../../ppcp-button/resources/js/modules/Helper/ScriptLoading'
+import {
+    loadPaypalScriptPromise
+} from '../../../ppcp-button/resources/js/modules/Helper/ScriptLoading'
+import {
+    normalizeStyleForFundingSource
+} from '../../../ppcp-button/resources/js/modules/Helper/Style'
 import buttonModuleWatcher from "../../../ppcp-button/resources/js/modules/ButtonModuleWatcher";
 
 const config = wc.wcSettings.getSetting('ppcp-gateway_data');
 
 window.ppcpFundingSource = config.fundingSource;
+
+let registeredContext = false;
 
 const PayPalComponent = ({
                              onClick,
@@ -18,45 +25,35 @@ const PayPalComponent = ({
                              activePaymentMethod,
                              shippingData,
                              isEditing,
+                             fundingSource,
 }) => {
     const {onPaymentSetup, onCheckoutFail, onCheckoutValidation} = eventRegistration;
     const {responseTypes} = emitResponse;
 
     const [paypalOrder, setPaypalOrder] = useState(null);
 
+    const methodId = fundingSource ? `${config.id}-${fundingSource}` : config.id;
+
     useEffect(() => {
         // fill the form if in continuation (for product or mini-cart buttons)
         if (!config.scriptData.continuation || !config.scriptData.continuation.order || window.ppcpContinuationFilled) {
             return;
         }
-        const paypalAddresses = paypalOrderToWcAddresses(config.scriptData.continuation.order);
-        const wcAddresses = wp.data.select('wc/store/cart').getCustomerData();
-        const addresses = mergeWcAddress(wcAddresses, paypalAddresses);
-        wp.data.dispatch('wc/store/cart').setBillingAddress(addresses.billingAddress);
-        if (shippingData.needsShipping) {
-            wp.data.dispatch('wc/store/cart').setShippingAddress(addresses.shippingAddress);
+        try {
+            const paypalAddresses = paypalOrderToWcAddresses(config.scriptData.continuation.order);
+            const wcAddresses = wp.data.select('wc/store/cart').getCustomerData();
+            const addresses = mergeWcAddress(wcAddresses, paypalAddresses);
+            wp.data.dispatch('wc/store/cart').setBillingAddress(addresses.billingAddress);
+            if (shippingData.needsShipping) {
+                wp.data.dispatch('wc/store/cart').setShippingAddress(addresses.shippingAddress);
+            }
+        } catch (err) {
+            // sometimes the PayPal address is missing, skip in this case.
+            console.log(err);
         }
         // this useEffect should run only once, but adding this in case of some kind of full re-rendering
         window.ppcpContinuationFilled = true;
     }, [])
-
-    const [loaded, setLoaded] = useState(false);
-    useEffect(() => {
-        if (!loaded) {
-            loadPaypalScript(config.scriptData, () => {
-                setLoaded(true);
-
-                buttonModuleWatcher.registerContextBootstrap(config.scriptData.context, {
-                    createOrder: () => {
-                        return createOrder();
-                    },
-                    onApprove: (data, actions) => {
-                        return handleApprove(data, actions);
-                    },
-                });
-            });
-        }
-    }, [loaded]);
 
     const createOrder = async () => {
         try {
@@ -233,7 +230,7 @@ const PayPalComponent = ({
     }
 
     useEffect(() => {
-        if (activePaymentMethod !== config.id) {
+        if (activePaymentMethod !== methodId) {
             return;
         }
 
@@ -269,7 +266,7 @@ const PayPalComponent = ({
     }, [onPaymentSetup, paypalOrder, activePaymentMethod]);
 
     useEffect(() => {
-        if (activePaymentMethod !== config.id) {
+        if (activePaymentMethod !== methodId) {
             return;
         }
         const unsubscribe = onCheckoutFail(({ processingResponse }) => {
@@ -296,15 +293,26 @@ const PayPalComponent = ({
         )
     }
 
-    if (!loaded) {
-        return null;
+    if (!registeredContext) {
+        buttonModuleWatcher.registerContextBootstrap(config.scriptData.context, {
+            createOrder: () => {
+                return createOrder();
+            },
+            onApprove: (data, actions) => {
+                return handleApprove(data, actions);
+            },
+        });
+        registeredContext = true;
     }
+
+    const style = normalizeStyleForFundingSource(config.scriptData.button.style, fundingSource);
 
     const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
     return (
         <PayPalButton
-            style={config.scriptData.button.style}
+            fundingSource={fundingSource}
+            style={style}
             onClick={handleClick}
             onCancel={onClose}
             onError={onClose}
@@ -316,20 +324,61 @@ const PayPalComponent = ({
 }
 
 const features = ['products'];
-let registerMethod = registerExpressPaymentMethod;
-if (config.scriptData.continuation) {
-    features.push('ppcp_continuation');
-    registerMethod = registerPaymentMethod;
+
+if ((config.addPlaceOrderMethod || config.usePlaceOrder) && !config.scriptData.continuation) {
+    let descriptionElement = <div dangerouslySetInnerHTML={{__html: config.description}}></div>;
+    if (config.placeOrderButtonDescription) {
+        descriptionElement = <div>
+            <p dangerouslySetInnerHTML={{__html: config.description}}></p>
+            <p style={{textAlign: 'center'}} className={'ppcp-place-order-description'} dangerouslySetInnerHTML={{__html: config.placeOrderButtonDescription}}></p>
+        </div>;
+    }
+
+    registerPaymentMethod({
+        name: config.id,
+        label: <div dangerouslySetInnerHTML={{__html: config.title}}/>,
+        content: descriptionElement,
+        edit: descriptionElement,
+        placeOrderButtonLabel: config.placeOrderButtonText,
+        ariaLabel: config.title,
+        canMakePayment: () => config.enabled,
+        supports: {
+            features: features,
+        },
+    });
 }
 
-registerMethod({
-    name: config.id,
-    label: <div dangerouslySetInnerHTML={{__html: config.title}}/>,
-    content: <PayPalComponent isEditing={false}/>,
-    edit: <PayPalComponent isEditing={true}/>,
-    ariaLabel: config.title,
-    canMakePayment: () => config.enabled,
-    supports: {
-        features: features,
-    },
-});
+if (config.scriptData.continuation) {
+    registerPaymentMethod({
+        name: config.id,
+        label: <div dangerouslySetInnerHTML={{__html: config.title}}/>,
+        content: <PayPalComponent isEditing={false}/>,
+        edit: <PayPalComponent isEditing={true}/>,
+        ariaLabel: config.title,
+        canMakePayment: () => true,
+        supports: {
+            features: [...features, 'ppcp_continuation'],
+        },
+    });
+} else if (!config.usePlaceOrder) {
+    const paypalScriptPromise = loadPaypalScriptPromise(config.scriptData);
+
+    for (const fundingSource of ['paypal', ...config.enabledFundingSources]) {
+        registerExpressPaymentMethod({
+            name: `${config.id}-${fundingSource}`,
+            paymentMethodId: config.id,
+            label: <div dangerouslySetInnerHTML={{__html: config.title}}/>,
+            content: <PayPalComponent isEditing={false} fundingSource={fundingSource}/>,
+            edit: <PayPalComponent isEditing={true} fundingSource={fundingSource}/>,
+            ariaLabel: config.title,
+            canMakePayment: async () => {
+                await paypalScriptPromise;
+
+                return paypal.Buttons({fundingSource}).isEligible();
+            },
+            supports: {
+                features: features,
+            },
+        });
+    }
+}

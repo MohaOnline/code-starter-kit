@@ -36,12 +36,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Media_Wheel extends Widget_Base {
 
-    /**
+	/**
 	 * Template Instance
 	 *
 	 * @var template_instance
 	 */
 	protected $template_instance;
+
+	/**
+	 * Check for Self Hosted Videos
+	 *
+	 * @var is_self_hosted
+	 */
+	private static $check_self_hosted = false;
 
 	/**
 	 * Retrieve Template Instance.
@@ -105,6 +112,7 @@ class Premium_Media_Wheel extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return array(
+			'pa-prettyphoto',
 			'pa-flipster',
 			'premium-addons',
 		);
@@ -120,9 +128,11 @@ class Premium_Media_Wheel extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-            'elementor-waypoints',
+			'pa-tweenmax',
+			'elementor-waypoints',
 			'mousewheel-js',
 			'pa-flipster',
+			'prettyPhoto-js',
 			'premium-addons',
 		);
 	}
@@ -169,6 +179,7 @@ class Premium_Media_Wheel extends Widget_Base {
 
 		$this->add_items_controls();
 		$this->add_advanced_controls();
+		$this->add_light_box_controls();
 
 		// style controls.
 		$this->add_img_style_controls();
@@ -176,6 +187,8 @@ class Premium_Media_Wheel extends Widget_Base {
 		$this->add_info_style_controls();
 		$this->add_items_style_controls();
 		$this->add_navigation_style();
+		$this->add_light_box_icon_style();
+		$this->add_light_box_style();
 	}
 
 	private function add_items_controls() {
@@ -234,6 +247,104 @@ class Premium_Media_Wheel extends Widget_Base {
 				),
 				'condition' => array(
 					'pa_media_type!' => 'template',
+				),
+			)
+		);
+
+		$repeater->add_responsive_control(
+			'mw_image_obj_pos',
+			array(
+				'label'     => __( 'Image Position', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''              => __( 'Default', 'premium-addons-for-elementor' ),
+					'center center' => __( 'Center Center', 'premium-addons-for-elementor' ),
+					'center left'   => __( 'Center Left', 'premium-addons-for-elementor' ),
+					'center right'  => __( 'Center Right', 'premium-addons-for-elementor' ),
+					'top center'    => __( 'Top Center', 'premium-addons-for-elementor' ),
+					'top left'      => __( 'Top Left', 'premium-addons-for-elementor' ),
+					'top right'     => __( 'Top Right', 'premium-addons-for-elementor' ),
+					'bottom center' => __( 'Bottom Center', 'premium-addons-for-elementor' ),
+					'bottom left'   => __( 'Bottom Left', 'premium-addons-for-elementor' ),
+					'bottom right'  => __( 'Bottom Right', 'premium-addons-for-elementor' ),
+					'initial'       => __( 'Custom', 'premium-addons-for-elementor' ),
+				),
+				'default'   => '',
+				'selectors' => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__item-img, {{WRAPPER}} {{CURRENT_ITEM}} .vid-overlay' => 'object-position: {{VALUE}}',
+				),
+				'condition' => array(
+					'pa_media_type!' => 'template',
+				),
+			)
+		);
+
+		$repeater->add_responsive_control(
+			'mw_image_obj_pos_x',
+			array(
+				'label'          => __( 'X Position', 'premium-addons-for-elementor' ),
+				'type'           => Controls_Manager::SLIDER,
+				'size_units'     => array( 'px', '%' ),
+				'range'          => array(
+					'px' => array(
+						'min' => -800,
+						'max' => 800,
+					),
+					'%'  => array(
+						'min' => -100,
+						'max' => 100,
+					),
+				),
+				'default'        => array(
+					'size' => 0,
+				),
+				'tablet_default' => array(
+					'size' => 0,
+				),
+				'mobile_default' => array(
+					'size' => 0,
+				),
+				'selectors'      => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__item-img, {{WRAPPER}} {{CURRENT_ITEM}} .vid-overlay' => 'object-position: {{SIZE}}{{UNIT}} {{mw_image_obj_pos_y.SIZE}}{{mw_image_obj_pos_y.UNIT}};',
+				),
+				'condition'      => array(
+					'pa_media_type!'   => 'template',
+					'mw_image_obj_pos' => 'initial',
+				),
+			)
+		);
+
+		$repeater->add_responsive_control(
+			'mw_image_obj_pos_y',
+			array(
+				'label'          => __( 'Y Position', 'premium-addons-for-elementor' ),
+				'type'           => Controls_Manager::SLIDER,
+				'size_units'     => array( 'px', '%' ),
+				'range'          => array(
+					'px' => array(
+						'min' => -800,
+						'max' => 800,
+					),
+					'%'  => array(
+						'min' => -100,
+						'max' => 100,
+					),
+				),
+				'default'        => array(
+					'size' => 0,
+				),
+				'tablet_default' => array(
+					'size' => 0,
+				),
+				'mobile_default' => array(
+					'size' => 0,
+				),
+				'selectors'      => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__item-img, {{WRAPPER}} {{CURRENT_ITEM}} .vid-overlay' => 'object-position: {{mw_image_obj_pos_x.SIZE}}{{mw_image_obj_pos_x.UNIT}} {{SIZE}}{{UNIT}};',
+				),
+				'condition'      => array(
+					'pa_media_type!'   => 'template',
+					'mw_image_obj_pos' => 'initial',
 				),
 			)
 		);
@@ -377,6 +488,19 @@ class Premium_Media_Wheel extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'media_wheel_video_loop',
+			array(
+				'label'        => __( 'Loop', 'premium-addons-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'true',
+				'condition'    => array(
+					'pa_media_type'          => 'video',
+					'media_wheel_video_type' => 'hosted',
+				),
+			)
+		);
+
+		$repeater->add_control(
 			'media_wheel_video_icon_switcher',
 			array(
 				'label'     => __( 'Show Play Icon', 'premium-addons-for-elementor' ),
@@ -423,8 +547,8 @@ class Premium_Media_Wheel extends Widget_Base {
 					'size' => 25,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__video-icon i'       => 'font-size: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__video-icon svg'       => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon i'       => 'font-size: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon svg'       => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
 				),
 				'condition'  => array(
 					'pa_media_type'                   => 'video',
@@ -439,8 +563,8 @@ class Premium_Media_Wheel extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__video-icon i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-adv-carousel__video-icon svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon svg' => 'fill: {{VALUE}}',
 				),
 				'condition' => array(
 					'pa_media_type'                   => 'video',
@@ -847,6 +971,7 @@ class Premium_Media_Wheel extends Widget_Base {
 				'selectors'  => array(
 					'{{WRAPPER}}.premium-adv-carousel__horizontal .premium-adv-carousel__items'       => 'column-gap: {{SIZE}}{{UNIT}}',
 					'{{WRAPPER}}.premium-adv-carousel__vertical .premium-adv-carousel__items'       => 'row-gap: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.premium-adv-carousel__horizontal'       => '--pa-wheel-spacing: {{SIZE}}',
 				),
 				'condition'  => array(
 					'media_wheel_animation' => 'infinite',
@@ -987,23 +1112,23 @@ class Premium_Media_Wheel extends Widget_Base {
 		$this->add_control(
 			'media_wheel_scroll',
 			array(
-				'label'   => __( 'Animate By Mousewheel', 'premium-addons-for-elementor' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'     => __( 'Animate By Mousewheel', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => array(
+					'media_wheel_animation!' => 'infinite',
+					// 'media_wheel_scroll'     => 'yes',
+					// 'media_wheel_autoplay'   => 'yes',
+				),
 			)
 		);
 
 		$this->add_control(
 			'pause_on_hover',
 			array(
-				'label'     => __( 'Pause on Hover', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
-				'condition' => array(
-					// 'media_wheel_animation!' => 'infinite',
-					// 'media_wheel_scroll'     => 'yes',
-					// 'media_wheel_autoplay'   => 'yes',
-				),
+				'label'   => __( 'Pause on Hover', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+				'default' => 'yes',
 			)
 		);
 
@@ -1036,6 +1161,104 @@ class Premium_Media_Wheel extends Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}}.premium-adv-carousel__vertical .premium-adv-carousel__container:after' => 'background:linear-gradient(to bottom, {{VALUE}}, #F291D800 10%, #F291D800 90%, {{VALUE}}) !important',
 					'{{WRAPPER}}.premium-adv-carousel__horizontal .premium-adv-carousel__container:after' => 'background:linear-gradient(to right, {{VALUE}}, #F291D800 10%, #F291D800 90%, {{VALUE}}) !important',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+	}
+
+	private function add_light_box_controls() {
+		$this->start_controls_section(
+			'media_lightbox_section',
+			array(
+				'label' => __( 'Lightbox', 'premium-addons-for-elementor' ),
+			)
+		);
+
+		$this->add_control(
+			'media_light_box',
+			array(
+				'label'     => __( 'Lightbox', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'media_lightbox_type',
+			array(
+				'label'     => __( 'Lightbox Style', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'default',
+				'options'   => array(
+					'default' => __( 'PrettyPhoto', 'premium-addons-for-elementor' ),
+					'yes'     => __( 'Elementor', 'premium-addons-for-elementor' ),
+					'no'      => __( 'Other Lightbox Plugin', 'premium-addons-for-elementor' ),
+				),
+				'condition' => array(
+					'media_light_box' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lightbox_show_title',
+			array(
+				'label'     => __( 'Show Image Title', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => array(
+					'media_light_box'     => 'yes',
+					'media_lightbox_type' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'media_lightbox_theme',
+			array(
+				'label'     => __( 'Lightbox Theme', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'pp_default'    => __( 'Default', 'premium-addons-for-elementor' ),
+					'light_rounded' => __( 'Light Rounded', 'premium-addons-for-elementor' ),
+					'dark_rounded'  => __( 'Dark Rounded', 'premium-addons-for-elementor' ),
+					'light_square'  => __( 'Light Square', 'premium-addons-for-elementor' ),
+					'dark_square'   => __( 'Dark Square', 'premium-addons-for-elementor' ),
+					'facebook'      => __( 'Facebook', 'premium-addons-for-elementor' ),
+				),
+				'default'   => 'pp_default',
+				'condition' => array(
+					'media_light_box'     => 'yes',
+					'media_lightbox_type' => 'default',
+				),
+			)
+		);
+
+		$this->add_control(
+			'media_overlay_gallery',
+			array(
+				'label'     => __( 'Overlay Gallery Images', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'media_light_box'     => 'yes',
+					'media_lightbox_type' => 'default',
+				),
+			)
+		);
+
+		$this->add_control(
+			'media_lightbox_icon',
+			array(
+				'label'     => __( 'Lightbox Icon', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::ICONS,
+				'default'   => array(
+					'library' => 'fa-solid',
+					'value'   => 'fas fa-search',
+				),
+				'condition' => array(
+					'media_light_box' => 'yes',
 				),
 			)
 		);
@@ -1114,8 +1337,8 @@ class Premium_Media_Wheel extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-adv-carousel__video-icon i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .premium-adv-carousel__video-icon svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon svg' => 'fill: {{VALUE}}',
 				),
 			)
 		);
@@ -1126,7 +1349,7 @@ class Premium_Media_Wheel extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-adv-carousel__video-icon' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1145,7 +1368,7 @@ class Premium_Media_Wheel extends Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-adv-carousel__video-icon' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon' => 'border-radius: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
@@ -1168,7 +1391,7 @@ class Premium_Media_Wheel extends Widget_Base {
 					'size' => 0,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-adv-carousel__video-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pa-media-icons-wrapper .premium-adv-carousel__video-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1894,6 +2117,262 @@ class Premium_Media_Wheel extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	private function add_light_box_icon_style() {
+		$this->start_controls_section(
+			'lighbox_icon_style',
+			array(
+				'label' => __( 'Lightbox Icon', 'premium-addons-for-elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_responsive_control(
+			'lighbox_icon_position',
+			array(
+				'label'       => __( 'Position', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SLIDER,
+				'size_units'  => array( 'px', '%', 'em', 'custom' ),
+				'range'       => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 300,
+					),
+				),
+				'label_block' => true,
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-adv-carousel__item .pa-media-icons-inner-container' => 'top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'lighbox_icon_size',
+			array(
+				'label'       => __( 'Size', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SLIDER,
+				'size_units'  => array( 'px', 'em' ),
+				'range'       => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 50,
+					),
+				),
+				'default'     => array(
+					'size' => 20,
+					'unit' => 'px',
+				),
+				'label_block' => true,
+				'selectors'   => array(
+					'{{WRAPPER}} .pa-media-icons-inner-container i' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .pa-media-icons-inner-container svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'lighbox_icon_style_padding',
+			array(
+				'label'      => __( 'Padding', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .pa-media-magnific-image span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->start_controls_tabs( 'lighbox_icon_style_tabs' );
+
+		$this->start_controls_tab(
+			'lighbox_icon_style_normal',
+			array(
+				'label' => __( 'Normal', 'premium-addons-for-elementor' ),
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_color',
+			array(
+				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .pa-media-magnific-image i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .pa-media-magnific-image svg' => 'fill: {{VALUE}}; color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_background',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .pa-media-magnific-image span' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'lighbox_icon_style_border',
+				'selector' => '{{WRAPPER}} .pa-media-magnific-image span',
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .pa-media-magnific-image span' => 'border-radius: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'label'    => __( 'Shadow', 'premium-addons-for-elementor' ),
+				'name'     => 'lighbox_icon_style_shadow',
+				'selector' => '{{WRAPPER}} .pa-media-magnific-image span',
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'lighbox_icon_style_hover',
+			array(
+				'label' => __( 'Hover', 'premium-addons-for-elementor' ),
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_color_hover',
+			array(
+				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .pa-media-magnific-image:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .pa-media-magnific-image:hover svg' => 'fill: {{VALUE}}; color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_background_hover',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .pa-media-magnific-image:hover span' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'lighbox_icon_style_border_hover',
+				'selector' => '{{WRAPPER}} .pa-media-magnific-image:hover span',
+			)
+		);
+
+		$this->add_control(
+			'lighbox_icon_style_border_radius_hover',
+			array(
+				'label'      => __( 'Border Radius', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .pa-media-magnific-image:hover span' => 'border-radius: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'label'    => __( 'Shadow', 'premium-addons-for-elementor' ),
+				'name'     => 'lighbox_icon_style_shadow_hover',
+				'selector' => '{{WRAPPER}} .pa-media-magnific-image:hover span',
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+	}
+
+	private function add_light_box_style() {
+
+		$this->start_controls_section(
+			'section_lightbox_style',
+			array(
+				'label'     => __( 'Lightbox', 'premium-addons-for-elementor' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'media_lightbox_type' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lightbox_color',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'#elementor-lightbox-slideshow-{{ID}}, #elementor-lightbox-{{ID}}' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lightbox_ui_color',
+			array(
+				'label'     => __( 'UI Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'#elementor-lightbox-slideshow-{{ID}} .dialog-lightbox-close-button, #elementor-lightbox-{{ID}} .dialog-lightbox-close-button' => 'color: {{VALUE}};',
+					'#elementor-lightbox-slideshow-{{ID}} svg, #elementor-lightbox-{{ID}} svg' => 'fill: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'lightbox_ui_hover_color',
+			array(
+				'label'     => __( 'UI Hover Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'#elementor-lightbox-slideshow-{{ID}} .dialog-lightbox-close-button:hover, #elementor-lightbox-{{ID}} .dialog-lightbox-close-button:hover' => 'color: {{VALUE}};',
+					'#elementor-lightbox-slideshow-{{ID}} svg:hover, #elementor-lightbox-{{ID}} svg:hover' => 'fill: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+	}
+
 	/**
 	 * Render Advanced Media widِget output on the frontend.
 	 *
@@ -1902,8 +2381,6 @@ class Premium_Media_Wheel extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-
-		$id = $this->get_id();
 
 		$settings = $this->get_settings_for_display();
 
@@ -1960,7 +2437,35 @@ class Premium_Media_Wheel extends Widget_Base {
 			$wheel_settings['spacing']  = floatval( $settings['media_wheel_spacing']['size'] );
 			$wheel_settings['start']    = '' === $settings['media_whee_start'] ? 'center' : $settings['media_whee_start'];
 
-			$this->add_render_attribute( 'inner', 'style', 'visibility:hidden;' );
+		}
+
+		$this->add_render_attribute( 'inner', 'style', 'visibility:hidden;' );
+
+		$lightbox = $settings['media_light_box'];
+
+		$lightbox_type = $settings['media_lightbox_type'];
+
+		if ( 'yes' === $lightbox ) {
+
+			$wheel_settings = array_merge(
+				$wheel_settings,
+				array(
+					'light_box'     => $lightbox,
+					'lightbox_type' => $lightbox_type,
+					'overlay'       => 'yes' === $settings['media_overlay_gallery'] ? true : false,
+					'theme'         => $settings['media_lightbox_theme'],
+				)
+			);
+
+		} else {
+			$this->add_render_attribute(
+				'wheel',
+				array(
+					'class' => array(
+						'premium-adv-carousel-no-lightbox',
+					),
+				)
+			);
 		}
 
 		$this->add_render_attribute(
@@ -2048,6 +2553,8 @@ class Premium_Media_Wheel extends Widget_Base {
 
 		$papro_activated = apply_filters( 'papro_activated', false );
 
+		$lightbox = $widget_settings['media_light_box'];
+
 		if ( $papro_activated ) {
 
 			$hover_effect = 'premium-hover-effects__' . $widget_settings['image_hover_effect'];
@@ -2059,6 +2566,16 @@ class Premium_Media_Wheel extends Widget_Base {
 		foreach ( $items as $index => $item ) {
 
 			$media_type = $item['pa_media_type'];
+
+			$image_id = apply_filters( 'wpml_object_id', $item['media_wheel_img']['id'], 'elementor_library', true );
+
+			$image_by_id = get_post( $image_id );
+
+			$alt = '';
+
+			if ( isset( $image_by_id->post_title ) ) {
+				$alt = apply_filters( 'pa_media_alt', get_post( $image_id )->post_title );
+			}
 
 			if ( 'template' === $media_type ) {
 				$hover_effect = '';
@@ -2097,7 +2614,8 @@ class Premium_Media_Wheel extends Widget_Base {
 								<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'wheel_img' . $index ) ); ?>>
 							<?php
 						} elseif ( 'video' === $media_type ) {
-								$this->render_carousel_video( $item, $index, $hover_effect );
+								$video_data         = $this->render_carousel_video( $item, $index, $hover_effect );
+								$item['video_link'] = $video_data;
 						} else {
 							$template_name = empty( $item['section_template'] ) ? $item['live_temp_content'] : $item['section_template'];
 							?>
@@ -2120,27 +2638,41 @@ class Premium_Media_Wheel extends Widget_Base {
 
 							echo '<a class="premium-adv-carousel__item-link" href="' . esc_url( $link ) . '" ' . esc_html( $target ) . '></a>';
 						}
+
 						?>
 					</div>
+
+					<?php
+					if ( 'yes' === $lightbox ) {
+						?>
+						<div class="pa-media-icons-wrapper">
+							<div class="pa-media-icons-inner-container">
+								<?php $this->render_icons( $item, $index, $alt ); ?>
+							</div>
+						</div>
+						<?php
+					}
+					?>
+
 					<?php
 					if ( $media_info ) {
 						?>
-								<div class="premium-adv-carousel__media-info-wrap">
-								<?php
-								if ( ! empty( $item['media_title'] ) ) {
-									?>
-												<span class="premium-adv-carousel__media-title"><?php echo esc_html( $item['media_title'] ); ?></span>
-										<?php
-								}
-
-								if ( ! empty( $item['media_desc'] ) ) {
-									?>
-											<span class="premium-adv-carousel__media-desc"><?php echo esc_html( $item['media_desc'] ); ?></span>
-										<?php
-								}
-								?>
-								</div>
+						<div class="premium-adv-carousel__media-info-wrap">
 							<?php
+							if ( ! empty( $item['media_title'] ) ) {
+								?>
+									<span class="premium-adv-carousel__media-title"><?php echo esc_html( $item['media_title'] ); ?></span>
+								<?php
+							}
+
+							if ( ! empty( $item['media_desc'] ) ) {
+								?>
+									<span class="premium-adv-carousel__media-desc"><?php echo esc_html( $item['media_desc'] ); ?></span>
+								<?php
+							}
+							?>
+						</div>
+						<?php
 					}
 					?>
 				</div>
@@ -2161,21 +2693,18 @@ class Premium_Media_Wheel extends Widget_Base {
 	 */
 	private function render_carousel_video( $item, $index, $hover_effect ) {
 
-		$settings = $this->get_settings_for_display();
-
-		$type = $item['media_wheel_video_type'];
-
-		$key = 'video_' . $index;
+		$videoType = $item['media_wheel_video_type'];
 
 		$video_thumb = $item['media_wheel_img']['url'];
 
 		$video_alt = Control_Media::get_image_alt( $item['media_wheel_img'] );
 
-		$play_icon_enabled = 'yes' === $item['media_wheel_video_icon_switcher'];
+		$params = $this->get_embed_params( $item );
 
-		if ( 'hosted' !== $type ) {
-			$params      = $this->get_embed_params( $item );
-			$link        = Embed::get_embed_url( $item['media_wheel_video_link'], $params );
+		$link = Embed::get_embed_url( $item['media_wheel_video_link'], $params );
+
+		if ( 'hosted' !== $videoType ) {
+
 			$video_props = Embed::get_video_properties( $link );
 			$id          = $video_props['video_id'];
 			$type        = $video_props['provider'];
@@ -2183,14 +2712,15 @@ class Premium_Media_Wheel extends Widget_Base {
 			$thumbnail   = $this->get_thumbnail( $item, $id );
 
 		} else {
-			$params    = $this->get_hosted_params( $item );
-			$thumbnail = '';
+			self::$check_self_hosted = true;
+			$params                  = $this->get_hosted_params( $item );
+			$thumbnail               = '';
 		}
 
 		$thumbnail = empty( $thumbnail ) ? $video_thumb : $thumbnail;
 
 		?>
-			<div class="premium-adv-carousel__video-wrap"  data-type="<?php echo esc_html( $item['media_wheel_video_type'] ); ?>">
+			<div class="premium-adv-carousel__video-wrap"  data-type="<?php echo esc_html( $item['media_wheel_video_type'] ); ?>" <?php echo wp_kses_post( $this->get_render_attribute_string( 'video_container' ) ); ?>>
 				<?php if ( 'hosted' !== $item['media_wheel_video_type'] ) : ?>
 					<div class="premium-adv-carousel__iframe-wrap" data-src="<?php echo esc_url( $link ); ?>"></div>
 					<?php
@@ -2201,17 +2731,7 @@ class Premium_Media_Wheel extends Widget_Base {
 					<video src="<?php echo esc_url( $link ); ?>" <?php echo wp_kses_post( Utils::render_html_attributes( $params ) ); ?>></video>
 				<?php endif; ?>
 				<img  class="premium-adv-carousel__vid-overlay <?php echo $hover_effect; ?>" src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $video_alt ); ?>">
-				<?php
-				if ( $play_icon_enabled ) {
-					?>
-						<span class="premium-adv-carousel__video-icon">
-					<?php
-						Icons_Manager::render_icon( $item['media_wheel_videos_icon'], array( 'aria-hidden' => 'true' ) );
-					?>
-					</span>
-					<?php
-				}
-				?>
+
 			</div>
 		<?php
 
@@ -2261,7 +2781,193 @@ class Premium_Media_Wheel extends Widget_Base {
 			$video_params['muted'] = 'muted';
 		}
 
+		if ( $item['media_wheel_video_loop'] ) {
+			$video_params['loop'] = '';
+		}
+
 		return $video_params;
+	}
+
+	/**
+	 * Render Icons
+	 *
+	 * Render Lightbox and URL Icons HTML
+	 *
+	 * @since 3.6.4
+	 * @access protected
+	 *
+	 * @param array   $item grid image repeater item.
+	 * @param integer $index item index.
+	 * @param string  $alt image alternative text.
+	 */
+	private function render_icons( $item, $index, $alt ) {
+
+		$settings = $this->get_settings_for_display();
+
+		$lightbox_key = 'image_lightbox_' . $index;
+
+		$link_key = 'image_link_' . $index;
+
+		$href = $item['media_wheel_img']['url'];
+
+		$lightbox = $settings['media_light_box'];
+
+		$lightbox_type = $settings['media_lightbox_type'];
+
+		$media_type = $item['pa_media_type'];
+
+		$id = $this->get_id();
+
+		$play_icon_enabled = 'yes' === $item['media_wheel_video_icon_switcher'];
+
+		if ( 'video' === $media_type ) {
+
+			$type = $item['media_wheel_video_type'];
+
+			$this->add_render_attribute(
+				$lightbox_key,
+				array(
+					'class'    => array(
+						'pa-media-lightbox-wrap',
+						'pa-media-magnific-image',
+						'pa-media-video-icon',
+					),
+					'tabindex' => 0,
+				)
+			);
+
+			$lightbox_options = array(
+				'privacy' => 'yes',
+			);
+
+			if ( 'default' !== $lightbox_type ) {
+
+				if ( 1 === count( $settings['media_wheel_repeater'] ) || self::$check_self_hosted ) {
+
+						$lightbox_options = array(
+							'type'         => 'video',
+							'videoType'    => $item['media_wheel_video_type'],
+							'url'          => $item['video_link'],
+							'modalOptions' => array(
+								'id'               => 'elementor-lightbox-' . $id,
+								'videoAspectRatio' => '169',
+							),
+						);
+
+						if ( 'hosted' === $type ) {
+							$lightbox_options['videoParams'] = $this->get_hosted_params( $item );
+						}
+				}
+
+				$this->add_render_attribute(
+					$lightbox_key,
+					array(
+						'data-elementor-open-lightbox'  => 'yes',
+						'data-elementor-lightbox'       => wp_json_encode( $lightbox_options ),
+						'data-elementor-lightbox-video' => $item['video_link'],
+					)
+				);
+
+				// Make sure videos slideshow is enabled only when there are no self hosted videos
+				// Self hosted videos causes issue with slideshow
+				if ( ! self::$check_self_hosted ) {
+					$this->add_render_attribute( $lightbox_key, 'data-elementor-lightbox-slideshow', count( $settings['media_wheel_repeater'] ) > 1 ? $this->get_id() : false );
+				}
+			} else {
+
+				$rel = sprintf( 'prettyPhoto[premium-media-%s]', $this->get_id() );
+
+				$link = ( 'hosted' === $type ) ? $item['video_link'] : $item['video_link'] . '&iframe=true';
+
+				$this->add_render_attribute(
+					$lightbox_key,
+					array(
+						'href'     => $link,
+						'data-rel' => $rel,
+					)
+				);
+			}
+
+			if ( $play_icon_enabled ) {
+				?>
+				<div>
+					<a <?php echo wp_kses_post( $this->get_render_attribute_string( $lightbox_key ) ); ?>>
+						<span class="premium-adv-carousel__video-icon">
+						<?php
+							Icons_Manager::render_icon( $item['media_wheel_videos_icon'], array( 'aria-hidden' => 'true' ) );
+						?>
+						</span>
+					</a>
+				</div>
+				<?php
+			}
+
+			if ( 'yes' !== $item['media_wheel_video_icon_switcher'] ) {
+				?>
+				<div>
+					<a <?php echo wp_kses_post( $this->get_render_attribute_string( $lightbox_key ) ); ?>>
+						<span>
+							<?php
+							Icons_Manager::render_icon( $settings['media_lightbox_icon'], array( 'aria-hidden' => 'true' ) );
+							?>
+						</span>
+					</a>
+				</div>
+				<?php
+			}
+			return;
+		}
+
+		if ( 'yes' !== $item['media_wheel_link_switcher'] ) {
+
+			$this->add_render_attribute(
+				$lightbox_key,
+				array(
+					'class' => 'pa-media-magnific-image',
+					'href'  => $href,
+				)
+			);
+
+			if ( 'default' !== $lightbox_type ) {
+
+				$this->add_render_attribute(
+					$lightbox_key,
+					array(
+						'data-elementor-open-lightbox' => $lightbox_type,
+						'data-elementor-lightbox-slideshow' => count( $settings['media_wheel_repeater'] ) > 1 ? $id : false,
+					)
+				);
+
+				if ( 'yes' === $settings['lightbox_show_title'] ) {
+
+					$this->add_render_attribute( $lightbox_key, 'data-elementor-lightbox-title', $alt );
+
+				}
+			} else {
+
+				$rel = sprintf( 'prettyPhoto[premium-media-%s]', $this->get_id() );
+
+				$this->add_render_attribute(
+					$lightbox_key,
+					array(
+						'data-rel' => $rel,
+					)
+				);
+
+			}
+
+			?>
+
+				<a <?php echo wp_kses_post( $this->get_render_attribute_string( $lightbox_key ) ); ?>>
+					<span>
+						<?php
+						Icons_Manager::render_icon( $settings['media_lightbox_icon'], array( 'aria-hidden' => 'true' ) );
+						?>
+					</span>
+				</a>
+			<?php
+		}
+
 	}
 
 }

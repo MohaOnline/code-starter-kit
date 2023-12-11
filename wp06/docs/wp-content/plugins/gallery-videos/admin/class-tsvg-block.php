@@ -33,8 +33,8 @@ class TS_Video_Gallery_Block {
 	public function tsvg_get_all_records() {
         global $wpdb;
 		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
-        $tsvg_sql = "SELECT `id`,`TS_VG_Title` FROM " . $tsvg_db_manager_table;
-        $tsvg_all_records = $wpdb->get_results( $wpdb->prepare($tsvg_sql) , "ARRAY_A");
+        $tsvg_sql = $wpdb->prepare("SELECT `id`,`TS_VG_Title` FROM {$tsvg_db_manager_table} WHERE id > %d ", 0);
+        $tsvg_all_records = $wpdb->get_results( $tsvg_sql , ARRAY_A);
         return $tsvg_all_records;
     }
 	public function tsvg_editor_scripts() {

@@ -189,9 +189,9 @@ class Cookie_Notice_Consent_Logs_List_Table extends WP_List_Table {
 	 */
 	function column_cb( $item ) {
 		return '
-		<label for="cn-consent-log-' . esc_attr( $item['slug'] ) . '" class="cn-consent-log-item">
+		<label for="cn-consent-log-' . esc_attr( $item['slug'] ) . '" class="cn-consent-log-item ' . ( $item['total'] === 0 ? ' disabled' : '' ) . '">
 			<input id="cn-consent-log-' . esc_attr( $item['slug'] ) . '" type="checkbox">
-			<span class="cn-consent-log-head' . ( $item['total'] === 0 ? ' disabled' : '' ) . '"></span>
+			<span class="cn-consent-log-head"></span>
 		</label>';
 	}
 

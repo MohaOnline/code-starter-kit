@@ -119,27 +119,46 @@ trait Activator
      * `dbDelta` does currently not support removing indices from tables so updating e.g. `UNIQUE KEYS` does not work.
      * For this, you need to add a new index name and remove the old one.
      *
+     * The index needs to be configured like this:
+     *
+     * ```
+     * $indexConfigurations = [
+     *   'PRIMARY' = ['myColumn1', 'myColumn2']
+     * ]
+     * ```
+     *
      * @param string $tableName This is not escaped, so use only the result of `$this->getTableName()`!
-     * @param string[] $indexNames
+     * @param array[] $indexConfigurations
      * @see https://whtly.com/2010/04/02/wp-dbdelta-function-cannot-modify-unique-keys/
      */
-    public function removeIndicesFromTable($tableName, $indexNames)
+    public function removeIndicesFromTable($tableName, $indexConfigurations)
     {
         global $wpdb;
         // phpcs:disable WordPress.DB.PreparedSQL
-        $existingIndexes = $wpdb->get_results("SHOW INDEX FROM {$tableName}", ARRAY_A);
+        $existingIndexesNonGrouped = $wpdb->get_results("SHOW INDEX FROM {$tableName}", ARRAY_A);
         // phpcs:enable WordPress.DB.PreparedSQL
-        if ($existingIndexes) {
+        if ($existingIndexesNonGrouped) {
             $removeIndexes = [];
-            foreach ($existingIndexes as $existingIndex) {
-                if (\in_array(\strtolower($existingIndex['Key_name']), $indexNames, \true)) {
-                    $removeIndexes[] = $existingIndex['Key_name'];
+            $existingIndexes = [];
+            foreach ($existingIndexesNonGrouped as $idxRow) {
+                $existingIndexes[$idxRow['Key_name']] = $existingIndexes[$idxRow['Key_name']] ?? [];
+                $existingIndexes[$idxRow['Key_name']][] = $idxRow['Column_name'];
+            }
+            $indexNames = \array_keys($indexConfigurations);
+            foreach ($existingIndexes as $keyName => $columns) {
+                if (\in_array($keyName, $indexNames, \true) && \join(',', $columns) === \join(',', $indexConfigurations[$keyName])) {
+                    $removeIndexes[] = $keyName;
                 }
             }
             $removeIndexes = \array_unique($removeIndexes);
             foreach ($removeIndexes as $rm) {
+                if ($rm === 'PRIMARY') {
+                    $rm = 'PRIMARY KEY';
+                } else {
+                    $rm = "INDEX {$rm}";
+                }
                 // phpcs:disable WordPress.DB.PreparedSQL
-                $wpdb->query("ALTER TABLE {$tableName} DROP INDEX {$rm}");
+                $wpdb->query("ALTER TABLE {$tableName} DROP {$rm}");
                 // phpcs:enable WordPress.DB.PreparedSQL
             }
         }
@@ -159,6 +178,7 @@ trait Activator
         // phpcs:enable WordPress.DB.PreparedSQL
         if ($existingColumns) {
             $removeColumns = [];
+            $columnNames = \array_map('strtolower', $columnNames);
             foreach ($existingColumns as $existingColumn) {
                 if (\in_array(\strtolower($existingColumn['Field']), $columnNames, \true)) {
                     $removeColumns[] = $existingColumn['Field'];

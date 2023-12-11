@@ -582,10 +582,22 @@ function getDataForChartsAjax(request_fields, type, id, selected_field = '',butt
         }
     };
 
-    if (request_fields['iq_' + type + '_chart_filter_enable'] != undefined && request_fields['iq_' + type + '_chart_filter_enable'] == 'yes') {
+    if (request_fields&&  request_fields['iq_' + type + '_chart_filter_enable'] != undefined && request_fields['iq_' + type + '_chart_filter_enable'] == 'yes') {
         selected_field = graphinaGetSelectOptionValue(id);
     }
+	if(!jQuery('body').hasClass("elementor-editor-active")){
+		request_fields = [];
+      
+	}
+    var classList = jQuery("body").attr("class").split(' ');
 
+    for (var i = 0; i < classList.length; i++) {
+        var match = classList[i].match(/(page|post)/);
+        if (match) {
+            var output = classList[i].match(/\d+/);
+           
+        }
+    }
     jQuery.ajax({
         url: graphina_localize.ajaxurl,
         type: "post",
@@ -596,6 +608,7 @@ function getDataForChartsAjax(request_fields, type, id, selected_field = '',butt
             button_filter_value:button_filter_value,
             chart_type: type,
             chart_id: id,
+            page_id : output[0],
             fields: request_fields
         },
         success: function(response) {
@@ -697,7 +710,7 @@ function getDataForChartsAjax(request_fields, type, id, selected_field = '',butt
         error: function() {
             console.log('fail');
         }
-    });
+    });        
 
 }
 
@@ -999,7 +1012,7 @@ function setFieldsFromForminator(request_fields, response, type) {
 
 function graphina_google_chart_ajax_reload(callAjax,type,chart_id,ajaxReload,ajaxIntervalTime){
     let setting = graphina_localize.graphinaAllGraphsOptions[chart_id].setting_date;
-    if(typeof getDataForChartsAjax !== "undefined" && callAjax === "1") {
+	if(typeof getDataForChartsAjax !== "undefined" && callAjax === "1") {
         getDataForChartsAjax(setting, type, chart_id);
         if(ajaxReload === 'true'){
             window['ajaxIntervalGraphina_' + chart_id] = setInterval(function () {

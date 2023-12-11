@@ -5,7 +5,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('LOGINIZER_VERSION', '1.8.1');
+define('LOGINIZER_VERSION', '1.8.2');
 define('LOGINIZER_DIR', dirname(LOGINIZER_FILE));
 define('LOGINIZER_URL', plugins_url('', LOGINIZER_FILE));
 define('LOGINIZER_PRO_URL', 'https://loginizer.com/features#compare');
@@ -446,10 +446,10 @@ $site_name';
 	$loginizer['2fa_custom_login_redirect'] = get_option('loginizer_2fa_custom_redirect');
 	$loginizer['limit_session'] = get_option('loginizer_limit_session');
 
-	if(wp_doing_ajax()){
+	if((function_exists('wp_doing_ajax') && wp_doing_ajax()) || (defined( 'DOING_AJAX' ) && DOING_AJAX)){
 		include_once LOGINIZER_DIR . '/main/ajax.php';
 	}
-	
+
 	if(is_admin()){
 		include_once LOGINIZER_DIR . '/main/admin.php';
 	}
@@ -580,7 +580,7 @@ function loginizer_can_login(){
 	$result = lz_selectquery($sel_query);
 	
 	if(!empty($result['count']) && ($result['count'] % $loginizer['max_retries']) == 0){
-		
+
 		// Has he reached max lockouts ?
 		if($result['lockout'] >= $loginizer['max_lockouts']){
 			$loginizer['lockout_time'] = $loginizer['lockouts_extend'];

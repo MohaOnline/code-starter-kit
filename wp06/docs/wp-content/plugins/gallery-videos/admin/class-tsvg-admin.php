@@ -39,8 +39,8 @@ class TS_Video_Gallery_Admin extends TS_Video_Gallery_Function {
 					$tsvg_get_record = false;
 					$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
 					$tsvg_db_videos_table = esc_sql( $wpdb->prefix . 'ts_galleryv_videos' );
-					$tsvg_sql = 'SELECT * FROM ' . $tsvg_db_manager_table . ' WHERE id = ' . sanitize_text_field($_GET['tsvg-id']);
-					$tsvg_get_record = $wpdb->get_row( $wpdb->prepare($tsvg_sql) , ARRAY_A );
+					$tsvg_sql = $wpdb->prepare("SELECT * FROM {$tsvg_db_manager_table} WHERE id = %d ", sanitize_text_field($_GET['tsvg-id'] ));
+					$tsvg_get_record = $wpdb->get_row($tsvg_sql, ARRAY_A);
 					if ( is_array( $tsvg_get_record ) ) {
 						$tsvg_get_record['TS_VG_Title'] = html_entity_decode( htmlspecialchars_decode( $tsvg_get_record['TS_VG_Title'] ), ENT_QUOTES );
 						$tsvg_record_style = json_decode( $tsvg_get_record['TS_VG_Style'], true );
@@ -59,8 +59,8 @@ class TS_Video_Gallery_Admin extends TS_Video_Gallery_Function {
 						$tsvg_get_record['TS_VG_Option_Style'] = json_encode( $tsvg_record_option_style, true );
 						$tsvg_get_record['TS_VG_Old_User'] = html_entity_decode( htmlspecialchars_decode( $tsvg_get_record['TS_VG_Old_User'] ), ENT_QUOTES );
 						$tsvg_get_record['TS_VG_Settings'] = json_encode( $tsvg_record_settings, true );
-						$tsvg_video_sql = 'SELECT * FROM ' . $tsvg_db_videos_table . ' WHERE TS_VG_SetType = ' . (int) sanitize_text_field($_GET['tsvg-id']);
-						$tsvg_get_video_records = $wpdb->get_results( $wpdb->prepare($tsvg_video_sql) , ARRAY_A );
+						$tsvg_video_sql = $wpdb->prepare("SELECT * FROM ".$tsvg_db_videos_table." WHERE TS_VG_SetType = %d ", (int) sanitize_text_field($_GET['tsvg-id']));
+						$tsvg_get_video_records = $wpdb->get_results( $tsvg_video_sql , ARRAY_A );
 						foreach ( $tsvg_get_video_records as $key => $value ) {
 							$tsvg_get_video_records[ $key ]['TS_VG_SetName'] = html_entity_decode( htmlspecialchars_decode( $value['TS_VG_SetName'] ), ENT_QUOTES );
 						}

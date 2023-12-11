@@ -97,7 +97,9 @@ return array(
 			$payment_token_repository,
 			$logger,
 			$api_shop_country,
-			$container->get( 'api.endpoint.order' )
+			$container->get( 'api.endpoint.order' ),
+			$container->get( 'api.factory.paypal-checkout-url' ),
+			$container->get( 'wcgateway.place-order-button-text' )
 		);
 	},
 	'wcgateway.credit-card-gateway'                        => static function ( ContainerInterface $container ): CreditCardGateway {
@@ -141,7 +143,9 @@ return array(
 			$container->get( 'wcgateway.settings.allow_card_button_gateway.default' ),
 			$container->get( 'onboarding.environment' ),
 			$container->get( 'vaulting.repository.payment-token' ),
-			$container->get( 'woocommerce.logger.woocommerce' )
+			$container->get( 'woocommerce.logger.woocommerce' ),
+			$container->get( 'api.factory.paypal-checkout-url' ),
+			$container->get( 'wcgateway.place-order-button-text' )
 		);
 	},
 	'wcgateway.disabler'                                   => static function ( ContainerInterface $container ): DisableGateways {
@@ -182,6 +186,11 @@ return array(
 		);
 	},
 
+	'wcgateway.is-ppcp-settings-standard-payments-page'    => static function ( ContainerInterface $container ): bool {
+		return $container->get( 'wcgateway.is-ppcp-settings-page' )
+			&& $container->get( 'wcgateway.current-ppcp-settings-page-id' ) === PayPalGateway::ID;
+	},
+
 	'wcgateway.current-ppcp-settings-page-id'              => static function ( ContainerInterface $container ): string {
 		if ( ! $container->get( 'wcgateway.is-ppcp-settings-page' ) ) {
 			return '';
@@ -204,7 +213,9 @@ return array(
 		static function ( ContainerInterface $container ): Settings {
 			return new Settings(
 				$container->get( 'wcgateway.button.default-locations' ),
-				$container->get( 'wcgateway.settings.dcc-gateway-title.default' )
+				$container->get( 'wcgateway.settings.dcc-gateway-title.default' ),
+				$container->get( 'wcgateway.settings.pay-later.default-button-locations' ),
+				$container->get( 'wcgateway.settings.pay-later.default-messaging-locations' )
 			);
 		}
 	),
@@ -345,7 +356,10 @@ return array(
 			$logger,
 			$environment,
 			$subscription_helper,
-			$order_helper
+			$order_helper,
+			$container->get( 'api.factory.purchase-unit' ),
+			$container->get( 'api.factory.payer' ),
+			$container->get( 'api.factory.shipping-preference' )
 		);
 	},
 	'wcgateway.processor.refunds'                          => static function ( ContainerInterface $container ): RefundProcessor {
@@ -1151,6 +1165,34 @@ return array(
 		);
 	},
 
+	'wcgateway.use-place-order-button'                     => function ( ContainerInterface $container ) : bool {
+		/**
+		 * Whether to use the standard "Place order" button with redirect to PayPal instead of the PayPal smart buttons.
+		 */
+		return apply_filters(
+			'woocommerce_paypal_payments_use_place_order_button',
+			false
+		);
+	},
+	'wcgateway.place-order-button-text'                    => function ( ContainerInterface $container ) : string {
+		/**
+		 * The text for the standard "Place order" button, when the "Place order" button mode is enabled.
+		 */
+		return apply_filters(
+			'woocommerce_paypal_payments_place_order_button_text',
+			__( 'Proceed to PayPal', 'woocommerce-paypal-payments' )
+		);
+	},
+	'wcgateway.place-order-button-description'             => function ( ContainerInterface $container ) : string {
+		/**
+		 * The text for additional description, when the "Place order" button mode is enabled.
+		 */
+		return apply_filters(
+			'woocommerce_paypal_payments_place_order_button_description',
+			__( 'Clicking "Proceed to PayPal" will redirect you to PayPal to complete your purchase.', 'woocommerce-paypal-payments' )
+		);
+	},
+
 	'wcgateway.helper.vaulting-scope'                      => static function ( ContainerInterface $container ): bool {
 		try {
 			$token = $container->get( 'api.bearer' )->bearer();
@@ -1355,6 +1397,11 @@ return array(
 			'mini-cart' => 'Mini Cart',
 		);
 	},
+	'wcgateway.button.default-locations'                   => static function( ContainerInterface $container ): array {
+		$button_locations = $container->get( 'wcgateway.button.locations' );
+		unset( $button_locations['mini-cart'] );
+		return array_keys( $button_locations );
+	},
 	'wcgateway.settings.pay-later.messaging-locations'     => static function( ContainerInterface $container ): array {
 		$button_locations = $container->get( 'wcgateway.button.locations' );
 		unset( $button_locations['mini-cart'] );
@@ -1366,8 +1413,10 @@ return array(
 			)
 		);
 	},
-	'wcgateway.button.default-locations'                   => static function( ContainerInterface $container ): array {
-		return array_keys( $container->get( 'wcgateway.settings.pay-later.messaging-locations' ) );
+	'wcgateway.settings.pay-later.default-messaging-locations' => static function( ContainerInterface $container ): array {
+		$locations = $container->get( 'wcgateway.settings.pay-later.messaging-locations' );
+		unset( $locations['home'] );
+		return array_keys( $locations );
 	},
 	'wcgateway.settings.pay-later.button-locations'        => static function( ContainerInterface $container ): array {
 		$settings = $container->get( 'wcgateway.settings' );
@@ -1378,6 +1427,9 @@ return array(
 		$smart_button_selected_locations = $settings->has( 'smart_button_locations' ) ? $settings->get( 'smart_button_locations' ) : array();
 
 		return array_intersect_key( $button_locations, array_flip( $smart_button_selected_locations ) );
+	},
+	'wcgateway.settings.pay-later.default-button-locations' => static function( ContainerInterface $container ): array {
+		return $container->get( 'wcgateway.button.default-locations' );
 	},
 	'wcgateway.ppcp-gateways'                              => static function ( ContainerInterface $container ): array {
 		return array(

@@ -2178,7 +2178,7 @@ class ElementsKit_Widget_Pricing extends Widget_Base {
             Group_Control_Background::get_type(),
             array(
                 'name'     => 'ekit_pricing_btn_bg_color_group',
-				'exclude' => ['image'],
+				'exclude' => ['image'], // PHPCS:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'selector' => '{{WRAPPER}} .elementskit-single-pricing a.elementskit-pricing-btn',
             )
         );
@@ -2208,7 +2208,7 @@ class ElementsKit_Widget_Pricing extends Widget_Base {
             Group_Control_Background::get_type(),
             array(
                 'name'     => 'ekit_pricing_btn_bg_hover_color_group',
-				'exclude' => ['image'],
+				'exclude' => ['image'], // PHPCS:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'selector' => '{{WRAPPER}} .elementskit-single-pricing a.elementskit-pricing-btn:hover',
             )
         );

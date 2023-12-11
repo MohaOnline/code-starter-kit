@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-16 19:19:03+0000\n"
+"PO-Revision-Date: 2023-11-28 09:54:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,11 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - WooCommerce - Stable (latest release)\n"
+
+#. translators: %1$s Coupon codes, %2$s Reason
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:212
+msgid "\"%1$s\" was removed from the cart. %2$s"
+msgstr "已将“%1$s”从购物车中移除。 %2$s"
 
 #: packages/woocommerce-blocks/assets/js/blocks/page-content-wrapper/block.json
 #: packages/woocommerce-blocks/build/page-content-wrapper/block.json
@@ -1024,7 +1029,7 @@ msgstr "运用 Jetpack 的性能增强工具提高您商店的速度并优化 SE
 msgid "Optimize store performance with Jetpack Boost"
 msgstr "使用 Jetpack Boost 优化商店性能"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:478
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:570
 msgid "Invalid order ID or key provided."
 msgstr "提供的订单 ID 或密钥无效。"
 
@@ -7041,7 +7046,7 @@ msgctxt "block title"
 msgid "Express Checkout"
 msgstr "快速结账"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:459
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:551
 #: packages/woocommerce-blocks/build/cart-frontend.js:2
 #: packages/woocommerce-blocks/build/cart.js:2
 #: packages/woocommerce-blocks/build/checkout-frontend.js:2
@@ -8025,39 +8030,39 @@ msgid "The provided email address is not valid"
 msgstr "提供的电子邮件地址无效"
 
 #. translators: %s Field label.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:403
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:419
 msgid "%s is required"
 msgstr "%s 是必填项"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:316
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:332
 msgid "billing address"
 msgstr "账单地址"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:316
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:332
 msgid "shipping address"
 msgstr "配送地址"
 
 #. translators: %s Address type.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:315
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:331
 msgid "There was a problem with the provided %s:"
 msgstr "提供的 %s 存在问题："
 
 #. translators: %s country code.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:284
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:300
 msgid "Sorry, we do not allow orders from the provided country (%s)"
 msgstr "抱歉，我们不支持来自所提供国家/地区 (%s) 的订单"
 
 #. translators: %s country code.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:269
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:285
 msgid "Sorry, we do not ship orders to the provided country (%s)"
 msgstr "抱歉，我们不配送发往所提供国家/地区 (%s) 的订单"
 
 #. translators: %s provided email.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:244
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:260
 msgid "The provided email address (%s) is not valid—please provide a valid email address"
 msgstr "提供的电子邮件地址 (%s) 无效，请提供有效的电子邮件地址"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:234
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:250
 msgid "A valid email address is required"
 msgstr "必须提供有效的电子邮件地址"
 
@@ -10359,7 +10364,7 @@ msgstr "变体选项"
 msgid "%d left in stock"
 msgstr "%d 库存剩余"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:374
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:390
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "Country/Region"
 msgstr "国家/地区"
@@ -10662,7 +10667,7 @@ msgid "State/County code, or name of the state, county, province, or district."
 msgstr "州/郡代码，或州、郡、省或区的名称。"
 
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:45
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:370
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:386
 #: packages/woocommerce-blocks/build/checkout.js:26
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "Apartment, suite, etc."
@@ -10817,7 +10822,7 @@ msgid "Cart item is invalid."
 msgstr "购物车项目无效。"
 
 #. translators: %s Coupon codes.
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:211
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:226
 msgid "Invalid coupons were removed from the cart: \"%s\""
 msgstr "无效的优惠券已从购物车中移除：“%s”"
 
@@ -15137,7 +15142,7 @@ msgstr "城镇/乡村"
 
 #: includes/class-wc-countries.php:977 includes/class-wc-countries.php:1292
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:63
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:386
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:402
 #: assets/client/admin/chunks/analytics-report-customers.js:1
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "Postal code"
@@ -16435,7 +16440,7 @@ msgstr "%1$s 无效。您可以在<a target=\"_blank\" href=\"%2$s\">此处</a>�
 #. translators: %s: product name
 #: includes/class-wc-cart.php:793
 #: includes/shortcodes/class-wc-shortcode-checkout.php:167
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:557
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:649
 msgid "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused."
 msgstr "抱歉，我们的“%1$s”库存不足，无法满足您的订单要求（可用库存量为 %2$s）。对于由此带来的任何不便，我们深表歉意。"
 
@@ -19307,7 +19312,7 @@ msgstr "请输入有效的电邮地址"
 
 #. translators: %s: product name
 #: includes/shortcodes/class-wc-shortcode-checkout.php:153
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:530
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:622
 msgid "Sorry, \"%s\" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused."
 msgstr "抱歉，“%s“已售罄，因此不能支付这个订单， 由此造成的不便，我们深表歉意。"
 
@@ -35165,7 +35170,7 @@ msgstr "还没设置账单地址。"
 #: includes/admin/class-wc-admin-setup-wizard.php:511
 #: includes/wc-account-functions.php:102
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:39
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:366
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:382
 #: assets/client/admin/app/index.js:2
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 #: packages/woocommerce-blocks/build/wc-shipping-method-pickup-location.js:232
@@ -36038,7 +36043,7 @@ msgstr "电子邮件"
 msgid "State / County or state code"
 msgstr "省级区域或其代码"
 
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:382
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:398
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "State/County"
 msgstr "省份"
@@ -36057,7 +36062,7 @@ msgstr "邮编"
 #: includes/admin/settings/class-wc-settings-tax.php:244
 #: includes/admin/settings/views/html-settings-tax.php:35
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:51
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:378
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:394
 #: src/Admin/API/Reports/Customers/Controller.php:563
 #: templates/cart/shipping-calculator.php:80 assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-customers.js:1
@@ -36071,7 +36076,7 @@ msgstr "城市"
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:60
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:119
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:33
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:362
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:378
 #: packages/woocommerce-blocks/build/checkout.js:26
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "Company"
@@ -36083,7 +36088,7 @@ msgstr "公司"
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:115
 #: includes/class-wc-countries.php:738 includes/class-wc-form-handler.php:279
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:27
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:358
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:374
 #: templates/myaccount/form-edit-account.php:31
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "Last name"
@@ -36095,7 +36100,7 @@ msgstr "姓氏"
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:111
 #: includes/class-wc-countries.php:731 includes/class-wc-form-handler.php:278
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/V1/AbstractAddressSchema.php:21
-#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:354
+#: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:370
 #: templates/myaccount/form-edit-account.php:27
 #: packages/woocommerce-blocks/build/wc-settings.js:1
 msgid "First name"

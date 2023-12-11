@@ -191,7 +191,7 @@ class Compiler {
 
 	public static function less_variables( &$data, $header = '' ) {
 
-		$html = array(); // QuadMenu_Compiler::less_themes();
+		$html = array(); // Themes::less_themes();
 
 		if ( ! is_array( $data ) ) {
 			return $data;

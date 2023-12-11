@@ -113,7 +113,6 @@
 		display: block;
 		float: left;
 		margin-top: 1px;
-		overflow: hidden;
 		line-height: 25px;
 		cursor: pointer;
 	}
@@ -444,7 +443,7 @@
             }, tsvg_pp_settings);
             var matchedObjects = this, percentBased = false, correctSizes, pp_open, tsvg_pp_content_height, tsvg_pp_content_width, tsvg_pp_container_height, tsvg_pp_container_ts_width, windowHeight = $(window).height(), windowWidth = $(window).width(), pp_slideshow;
             doresize = true, scroll_pos = _get_scroll<?php echo esc_attr( $tsvg_shortcode_id ); ?>();
-            $(window).unbind('resize').resize(function () {
+            $(window).resize(function () {
                 tsvg_center_overlay<?php echo esc_attr( $tsvg_shortcode_id ); ?>();
                 tsvg_resize_overlay<?php echo esc_attr( $tsvg_shortcode_id ); ?>();
             });

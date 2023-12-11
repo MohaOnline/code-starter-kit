@@ -33,7 +33,7 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 				'recipients_option' => 'sg_security_notification_emails',
 				'subject'           => __( 'Weekly Activity for ', 'sg-security' ) . Helper_Service::get_site_url(),
 				'body_method'       => array( '\SG_Security\Activity_Log\Activity_Log_Weekly_Emails', 'generate_message_body' ),
-				'from_name'         => 'SiteGround Security',
+				'from_name'         => 'Security Optimizer by SiteGround',
 			)
 		);
 	}
@@ -91,13 +91,28 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 		// Sanitize paths.
 		$assets = $weekly_emails->prepare_paths( $assets );
 
+		// Get the locale.
+		$locale = get_locale();
+
+		// Locales that need translation.
+		$maybe_translate = array(
+			'es_ES',
+			'it_IT',
+			'de_DE',
+		);
+
+		// If the locale is not in the array, set the default locale.
+		if ( ! in_array( $locale, $maybe_translate, true ) ) {
+			$locale = 'en_US';
+		}
+
 		// Mail template arguments.
 		$args = array(
 			'domain'               => Helper_Service::get_site_url(),
 			'activity_log_link'    => $activity_log_url,
 			'unsubscribe_link'     => $activity_log_url,
-			'start_time'           => $start_date->format( 'F d' ),
-			'end_time'             => $end_date->format( 'F d, Y' ),
+			'start_time'           => ( 'en_US' === $locale ) ? $start_date->format( 'F d' ) : $weekly_emails->translate_dates( $start_date, $locale, 'start' ),
+			'end_time'             => ( 'en_US' === $locale ) ? $end_date->format( 'F d, Y' ) : $weekly_emails->translate_dates( $end_date, $locale, 'end' ),
 			'is_siteground'        => Helper_Service::is_siteground(),
 			'agreed_email_consent' => (int) get_option( 'siteground_email_consent', 0 ),
 			'total_human'          => $total_human,
@@ -332,5 +347,71 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 
 		// Return the assets array.
 		return $assets;
+	}
+
+	/**
+	 * Translate dates based on locale.
+	 *
+	 * @since 1.4.8
+	 *
+	 * @param  DateTime $date   DateTime Object containing the specific start/end date.
+	 * @param  string   $locale The application locale.
+	 * @param  string   $type   The type of date - start/end.
+	 *
+	 * @return string           The translated date.
+	 */
+	public function translate_dates( $date, $locale, $type ) {
+		// Months translations.
+		$translations = array(
+			'es_ES' => array(
+				'January'   => 'enero',
+				'February'  => 'febrero',
+				'March'     => 'marzo',
+				'April'     => 'abril',
+				'May'       => 'mayo',
+				'June'      => 'junio',
+				'July'      => 'julio',
+				'August'    => 'agosto',
+				'September' => 'septiembre',
+				'October'   => 'octubre',
+				'November'  => 'noviembre',
+				'December'  => 'diciembre',
+			),
+			'it_IT' => array(
+				'January'   => 'gennaio',
+				'February'  => 'febbraio',
+				'March'     => 'marzo',
+				'April'     => 'aprile',
+				'May'       => 'maggio',
+				'June'      => 'giugno',
+				'July'      => 'luglio',
+				'August'    => 'agosto',
+				'September' => 'settembre',
+				'October'   => 'ottobre',
+				'November'  => 'novembre',
+				'December'  => 'dicembre',
+			),
+			'de_DE' => array(
+				'January'   => 'Januar',
+				'February'  => 'Februar',
+				'March'     => 'März',
+				'April'     => 'April',
+				'May'       => 'Mai',
+				'June'      => 'Juni',
+				'July'      => 'Juli',
+				'August'    => 'August',
+				'September' => 'September',
+				'October'   => 'Oktober',
+				'November'  => 'November',
+				'December'  => 'Dezember',
+			),
+		);
+
+		// Translate the dates based on types.
+		if ( 'start' === $type ) {
+			return $translations[ $locale ][ $date->format( 'F' ) ] . ' ' . $date->format( 'd' );
+		}
+
+		return $translations[ $locale ][ $date->format( 'F' ) ] . ' ' . $date->format( 'd, Y' );
 	}
 }

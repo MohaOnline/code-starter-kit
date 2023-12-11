@@ -104,6 +104,8 @@ class Content_AI_Page {
 			rank_math()->version,
 			true
 		);
+
+		wp_set_script_translations( 'rank-math-content-ai-page', 'rank-math' );
 	}
 
 	/**
@@ -164,10 +166,6 @@ class Content_AI_Page {
 	 * @return array          New actions.
 	 */
 	public function post_bulk_actions( $actions ) {
-		if ( ! Helper::is_site_connected() || ! Helper::get_content_ai_credits() || ! Helper::get_content_ai_plan() ) {
-			return $actions;
-		}
-
 		$actions['rank_math_ai_options']                             = __( '&#8595; Rank Math Content AI', 'rank-math' );
 		$actions['rank_math_content_ai_fetch_seo_title']             = esc_html__( 'Write SEO Title with AI', 'rank-math' );
 		$actions['rank_math_content_ai_fetch_seo_description']       = esc_html__( 'Write SEO Description with AI', 'rank-math' );
@@ -312,6 +310,9 @@ class Content_AI_Page {
 
 		<div id="editor2" data-settings='<?php echo esc_attr( wp_json_encode( $editor_settings ) ); ?>' data-post-id="<?php echo esc_attr( $post->ID ); ?>"></div>
 		<?php
+
+		wp_set_script_translations( 'rank-math-content-ai', 'rank-math' );
+		wp_set_script_translations( 'rank-math-content-ai-page', 'rank-math' );
 	}
 
 	/**

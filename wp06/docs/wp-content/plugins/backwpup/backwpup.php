@@ -5,7 +5,7 @@
  * Description: WordPress Backup Plugin
  * Author: WP MEDIA SAS
  * Author URI: https://wp-media.me/
- * Version: 4.0.1
+ * Version: 4.0.2
  * Requires at least: 3.9
  * Requires PHP: 7.2
  * Text Domain: backwpup

@@ -773,7 +773,8 @@
         $this->actionsAfterProcess();
 
         // Return error
-        return ['status' => 'error'];
+        if ($cron == true) return ['status' => 'success'];
+        else return ['status' => 'error'];
       } else {
         $zip_progress->log(__("Yup it is writable...", 'backup-backup'), 'success');
       }
@@ -852,7 +853,8 @@
           $this->actionsAfterProcess();
 
           // Return error
-          return ['status' => 'error'];
+          if ($cron == true) return ['status' => 'success'];
+          else return ['status' => 'error'];
         } else {
           $zip_progress->log(__("Confirmed, there is more than enough space, checked: ", 'backup-backup') . ($bytes) . __(" bytes", 'backup-backup'), 'success');
           $zip_progress->bytes = $this->total_size_for_backup;
@@ -875,7 +877,9 @@
       $zip_progress->log(__("Backup initialized...", 'backup-backup'), 'success');
       $zip_progress->log(__("Initializing archiving system...", 'backup-backup'), 'step');
 
-      return $this->createBackup($files, ABSPATH, $name, $zip_progress, $cron, $isCLI);
+      $bckpres = $this->createBackup($files, ABSPATH, $name, $zip_progress, $cron, $isCLI);
+      if ($cron == true) return ['status' => 'success'];
+      else return $bckpres;
     }
 
     public function fixLitespeed() {
@@ -980,7 +984,7 @@
         return ['status' => 'msg', 'why' => __('Backup process aborted.', 'backup-backup'), 'level' => 'info'];
       }
 
-      if (!file_exists($backup_path)) {
+      if (!file_exists($backup_path) && !$cron) {
 
         // Make sure it's open
         $zip_progress->start();
@@ -1005,7 +1009,8 @@
         $this->actionsAfterProcess();
 
         // Return error
-        return ['status' => 'error'];
+        if ($cron == true) return ['status' => 'success'];
+        else return ['status' => 'error'];
       }
 
       // End zip log
@@ -1726,6 +1731,10 @@
 
       $error = 0;
       $created = false;
+      
+      if (!preg_match("/^[a-zA-Z0-9\_\-\/]+$/", $dir_path)) {
+        return ['status' => 'msg', 'why' => __('Entered directory/path name does not match allowed characters (Local Storage).', 'backup-backup'), 'level' => 'warning'];
+      }
 
       if (!file_exists($dir_path)) {
         $created = true;
@@ -1778,6 +1787,9 @@
 
           $staging_cur_dir = BMP::fixSlashes($curr_path) . DIRECTORY_SEPARATOR . 'staging';
           $staging_new_dir = BMP::fixSlashes($dir_path) . DIRECTORY_SEPARATOR . 'staging';
+          
+          $tmp_cur_dir = BMP::fixSlashes($curr_path) . DIRECTORY_SEPARATOR . 'tmp';
+          $tmp_new_dir = BMP::fixSlashes($dir_path) . DIRECTORY_SEPARATOR . 'tmp';
 
           update_option('BMI::STORAGE::LOCAL::PATH', $new_dir);
 
@@ -1786,11 +1798,19 @@
             if (!file_exists($new_dir)) @mkdir($new_dir, 0755, true);
             if (!file_exists($backups_new_dir)) @mkdir($backups_new_dir, 0755, true);
             if (!file_exists($staging_new_dir)) @mkdir($staging_new_dir, 0755, true);
+            if (!file_exists($tmp_new_dir)) @mkdir($tmp_new_dir, 0755, true);
 
             $scanned_directory_staging = array_diff(scandir($staging_cur_dir), ['..', '.']);
             foreach ($scanned_directory_staging as $i => $file) {
               if (file_exists($staging_cur_dir . DIRECTORY_SEPARATOR . $file) && !is_dir($staging_cur_dir . DIRECTORY_SEPARATOR . $file)) {
                 rename($staging_cur_dir . DIRECTORY_SEPARATOR . $file, $staging_new_dir . DIRECTORY_SEPARATOR . $file);
+              }
+            }
+            
+            $scanned_directory_tmp = array_diff(scandir($tmp_cur_dir), ['..', '.']);
+            foreach ($scanned_directory_tmp as $i => $file) {
+              if (file_exists($tmp_cur_dir . DIRECTORY_SEPARATOR . $file) && !is_dir($tmp_cur_dir . DIRECTORY_SEPARATOR . $file)) {
+                rename($tmp_cur_dir . DIRECTORY_SEPARATOR . $file, $tmp_new_dir . DIRECTORY_SEPARATOR . $file);
               }
             }
 
@@ -1817,6 +1837,11 @@
             if (file_exists($staging_cur_dir . DIRECTORY_SEPARATOR . 'index.php')) @unlink($staging_cur_dir . DIRECTORY_SEPARATOR . 'index.php');
             if (file_exists($staging_cur_dir . DIRECTORY_SEPARATOR . 'index.html')) @unlink($staging_cur_dir . DIRECTORY_SEPARATOR . 'index.html');
             if (file_exists($staging_cur_dir)) @rmdir($staging_cur_dir);
+            
+            if (file_exists($tmp_cur_dir . DIRECTORY_SEPARATOR . '.htaccess')) @unlink($tmp_cur_dir . DIRECTORY_SEPARATOR . '.htaccess');
+            if (file_exists($tmp_cur_dir . DIRECTORY_SEPARATOR . 'index.php')) @unlink($tmp_cur_dir . DIRECTORY_SEPARATOR . 'index.php');
+            if (file_exists($tmp_cur_dir . DIRECTORY_SEPARATOR . 'index.html')) @unlink($tmp_cur_dir . DIRECTORY_SEPARATOR . 'index.html');
+            if (file_exists($tmp_cur_dir)) @rmdir($tmp_cur_dir);
 
             if (file_exists($cur_dir . DIRECTORY_SEPARATOR . 'complete_logs.log')) @unlink($cur_dir . DIRECTORY_SEPARATOR . 'complete_logs.log');
             if (file_exists($cur_dir)) @rmdir($cur_dir);
@@ -2547,7 +2572,7 @@
       }
 
       if ($legacy === false && (!defined('BMI_USING_CLI_FUNCTIONALITY') || BMI_USING_CLI_FUNCTIONALITY === false)) {
-        $list_file = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'files_latest.list';
+        $list_file = BMI_TMP . DIRECTORY_SEPARATOR . 'files_latest.list';
         if (file_exists($list_file)) @unlink($list_file);
         $files_list = fopen($list_file, 'a');
         if ($first_big === false) fwrite($files_list, sizeof($files) . "_-1\r\n");
@@ -2723,7 +2748,7 @@
           'minute' => $this->post['minute']
         ], time());
 
-        $file = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.plan';
+        $file = BMI_TMP . DIRECTORY_SEPARATOR . '.plan';
         if (file_exists($file)) {
           $earlier = intval(file_get_contents($file));
         } else {
@@ -2806,7 +2831,7 @@
       }
 
       $allowedFiles = ['wp-config.php', '.htaccess', '.litespeed', '.default.json', 'driveKeys.php', '.autologin.php', '.migrationFinished'];
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.*') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . '.*') as $filename) {
 
         $basename = basename($filename);
 
@@ -2817,7 +2842,7 @@
 
       }
 
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'BMI-*', GLOB_ONLYDIR) as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'BMI-*', GLOB_ONLYDIR) as $filename) {
 
         $basename = basename($filename);
 
@@ -2828,7 +2853,7 @@
 
       }
 
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'bg-BMI-*', GLOB_ONLYDIR) as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'bg-BMI-*', GLOB_ONLYDIR) as $filename) {
 
         $basename = basename($filename);
 
@@ -2843,9 +2868,9 @@
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.backup_cli_lock_ended';
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.backup_cli_lock_end';
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.running';
-      $filesToBeRemoved[] = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'db_tables';
-      $filesToBeRemoved[] = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'bmi_backup_manifest.json';
-      $filesToBeRemoved[] = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'files_latest.list';
+      $filesToBeRemoved[] = BMI_TMP . DIRECTORY_SEPARATOR . 'db_tables';
+      $filesToBeRemoved[] = BMI_TMP . DIRECTORY_SEPARATOR . 'bmi_backup_manifest.json';
+      $filesToBeRemoved[] = BMI_TMP . DIRECTORY_SEPARATOR . 'files_latest.list';
 
       if (is_array($filesToBeRemoved) || is_object($filesToBeRemoved)) {
         foreach ((array) $filesToBeRemoved as $file) {
@@ -2876,7 +2901,7 @@
 
       }
 
-      foreach (glob(untrailingslashit(BMI_INCLUDES) . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'backup-migration_??????????') as $filename) {
 
         $basename = basename($filename);
 
@@ -2887,7 +2912,7 @@
       }
 
       $allowedFiles = ['wp-config.php', '.htaccess', '.litespeed', '.default.json', 'driveKeys.php', '.autologin.php', '.migrationFinished'];
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.*') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . '.*') as $filename) {
 
         $basename = basename($filename);
 
@@ -2898,7 +2923,7 @@
 
       }
 
-      foreach (glob(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . 'restore_scan_*') as $filename) {
+      foreach (glob(BMI_TMP . DIRECTORY_SEPARATOR . 'restore_scan_*') as $filename) {
 
         $basename = basename($filename);
 
@@ -2926,8 +2951,8 @@
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.migration_lock_ended';
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.cli_download_last';
       $filesToBeRemoved[] = BMI_BACKUPS . DIRECTORY_SEPARATOR . '.running';
-      $filesToBeRemoved[] = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.restore_secret';
-      $filesToBeRemoved[] = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.table_map';
+      $filesToBeRemoved[] = BMI_TMP . DIRECTORY_SEPARATOR . '.restore_secret';
+      $filesToBeRemoved[] = BMI_TMP . DIRECTORY_SEPARATOR . '.table_map';
 
       if (is_array($filesToBeRemoved) || is_object($filesToBeRemoved)) {
         foreach ((array) $filesToBeRemoved as $file) {
@@ -3123,7 +3148,7 @@
 
     public function actionsAfterProcess($success = false, $triggeredBy = 'backup') {
 
-      $afterMigrationLock = BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.migrationFinished';
+      $afterMigrationLock = BMI_TMP . DIRECTORY_SEPARATOR . '.migrationFinished';
 
       if ($success) {
 
@@ -3134,6 +3159,8 @@
         if (file_exists($afterMigrationLock)) @unlink($afterMigrationLock);
 
       }
+      
+      BMP::handle_after_cron();
 
       return null;
 

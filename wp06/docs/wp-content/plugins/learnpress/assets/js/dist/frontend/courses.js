@@ -24,13 +24,16 @@ if ('undefined' !== typeof lpDataAdmin) {
     apiAddons: lpDataAdmin.lp_rest_url + 'lp/v1/addon/all',
     apiAddonAction: lpDataAdmin.lp_rest_url + 'lp/v1/addon/action',
     apiSearchCourses: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-course',
-    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course'
+    apiSearchUsers: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/search-user',
+    apiAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/assign-user-course',
+    apiUnAssignUserCourse: lpDataAdmin.lp_rest_url + 'lp/v1/admin/tools/unassign-user-course'
   };
 }
 if ('undefined' !== typeof lpData) {
   lplistAPI.frontend = {
     apiWidgets: lpData.lp_rest_url + 'lp/v1/widgets/api',
-    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course'
+    apiCourses: lpData.lp_rest_url + 'lp/v1/courses/archive-course',
+    apiAJAX: lpData.lp_rest_url + 'lp/v1/load_content_via_ajax/'
   };
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lplistAPI);
@@ -262,6 +265,7 @@ window.lpCourseList = (() => {
   const classListCourse = 'learn-press-courses';
   const classPaginationCourse = 'learn-press-pagination';
   const classSkeletonArchiveCourse = 'lp-archive-course-skeleton';
+  const classCoursesPageResult = 'courses-page-result';
   const lpArchiveLoadAjax = parseInt(lpSettingCourses.lpArchiveLoadAjax || 0);
   const lpArchiveNoLoadAjaxFirst = parseInt(lpSettingCourses.lpArchiveNoLoadAjaxFirst) === 1;
   const lpArchiveSkeletonParam = lpData.urlParams || [];
@@ -313,8 +317,13 @@ window.lpCourseList = (() => {
         return;
       }
       e.preventDefault();
-      filterCourses.order_by = target.value;
-      window.location.href = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, filterCourses);
+      const filterCourses = JSON.parse(window.localStorage.getItem('lp_filter_courses')) || {};
+      filterCourses.order_by = target.value || '';
+      if ('undefined' !== typeof lpSettingCourses && lpData.is_course_archive && lpSettingCourses.lpArchiveLoadAjax) {
+        window.lpCourseList.triggerFetchAPI(filterCourses);
+      } else {
+        window.location.href = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.lpAddQueryArgs)(currentUrl, filterCourses);
+      }
     },
     onChangeTypeLayout: (e, target) => {
       if ('lp-switch-layout-btn' !== target.getAttribute('name')) {
@@ -483,6 +492,12 @@ window.lpCourseList = (() => {
           // Insert Pagination.
           const pagination = res.data.pagination || '';
           elListCourse.insertAdjacentHTML('afterend', pagination);
+
+          // Set showing results page.
+          const elCoursesPageResult = document.querySelector(`.${classCoursesPageResult}`);
+          if (elCoursesPageResult) {
+            elCoursesPageResult.innerHTML = res.data.from_to || '';
+          }
         },
         error: error => {
           elListCourse.innerHTML += `<div class="lp-ajax-message error" style="display:block">${error.message || 'Error'}</div>`;
@@ -575,6 +590,12 @@ window.lpCourseList = (() => {
         success: res => {
           elListCourse.insertAdjacentHTML('beforeend', res.data.content || '');
           elListCourse.insertAdjacentHTML('afterend', res.data.pagination || '');
+
+          // Set showing results page.
+          const elCoursesPageResult = document.querySelector(`.${classCoursesPageResult}`);
+          if (elCoursesPageResult) {
+            elCoursesPageResult.innerHTML = res.data.from_to || '';
+          }
         },
         error: error => {
           elListCourse.innerHTML += `<div class="lp-ajax-message error" style="display:block">${error.message || 'Error'}</div>`;
@@ -612,6 +633,12 @@ window.lpCourseList = (() => {
           elListCourse.insertAdjacentHTML('beforeend', res.data.content || '');
           if (res.data.pagination) {
             elListCourse.insertAdjacentHTML('afterend', res.data.pagination || '');
+          }
+
+          // Set showing results page.
+          const elCoursesPageResult = document.querySelector(`.${classCoursesPageResult}`);
+          if (elCoursesPageResult) {
+            elCoursesPageResult.innerHTML = res.data.from_to || '';
           }
         },
         error: error => {
@@ -685,6 +712,12 @@ window.lpCourseList = (() => {
                 skeleton.style.display = 'none';
                 const pagination = res.data.pagination || '';
                 elListCourse.insertAdjacentHTML('afterend', pagination);
+
+                // Set showing results page.
+                const elCoursesPageResult = document.querySelector(`.${classCoursesPageResult}`);
+                if (elCoursesPageResult) {
+                  elCoursesPageResult.innerHTML = res.data.from_to || '';
+                }
               }
             }, 1);
           }

@@ -7,7 +7,7 @@ class TS_Video_Gallery {
 		if ( defined( 'TSVG_VERSION' ) ) {
 			$this->version = TSVG_VERSION;
 		} else {
-			$this->version = '2.1.4';
+			$this->version = '2.1.6';
 		}
 		$this->plugin_name = 'TS Video Gallery';
 		add_shortcode( 'Total_Soft_Gallery_Video', array( $this, 'ts_video_gallery_shortcode' ) );
@@ -48,8 +48,8 @@ class TS_Video_Gallery {
 		global $wpdb;
 		$tsvg_db_videos_table = esc_sql( $wpdb->prefix . 'ts_galleryv_videos' );
 		$tsvg_db_manager_table = esc_sql( $wpdb->prefix . 'ts_galleryv_manager' );
-		$tsvg_videoes_table_check = $wpdb->get_results( $wpdb->prepare( 'SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s', esc_sql( $wpdb->dbname ), $tsvg_db_videos_table ) );
-		$tsvg_galleries_table_check = $wpdb->get_results( $wpdb->prepare( 'SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s', esc_sql( $wpdb->dbname ), $tsvg_db_manager_table ) );
+		$tsvg_videoes_table_check = $wpdb->get_results( $wpdb->prepare( "SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s", esc_sql( $wpdb->dbname ), $tsvg_db_videos_table ) );
+		$tsvg_galleries_table_check = $wpdb->get_results( $wpdb->prepare( "SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s", esc_sql( $wpdb->dbname ), $tsvg_db_manager_table ) );
 		if ( empty( $tsvg_videoes_table_check ) || empty( $tsvg_galleries_table_check ) ) {
 			$tsvg_galleries_table_create = 'CREATE TABLE IF NOT EXISTS ' . $tsvg_db_manager_table . '( id INTEGER(10) UNSIGNED AUTO_INCREMENT, TS_VG_Title VARCHAR(155) DEFAULT "", TS_VG_Option longtext NOT NULL, TS_VG_Style longtext NOT NULL, TS_VG_Settings longtext NOT NULL, TS_VG_Option_Style longtext NOT NULL,   TS_VG_Sort longtext NOT NULL,   TS_VG_Old_User longtext NOT NULL,created_at VARCHAR(50) NOT NULL,updated_at VARCHAR(50) NOT NULL, PRIMARY KEY (id))';
 			$tsvg_videoes_table_create = 'CREATE TABLE IF NOT EXISTS ' . $tsvg_db_videos_table . '( id INTEGER(10) UNSIGNED AUTO_INCREMENT,TS_VG_SetType int(11) NOT NULL, TS_VG_SetName VARCHAR(255) NOT NULL, TS_VG_Options longtext NOT NULL, PRIMARY KEY (id))';
@@ -60,10 +60,10 @@ class TS_Video_Gallery {
 			$tsvg_videoes_table_convert   = 'ALTER TABLE ' . $tsvg_db_videos_table . ' CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci';
 			$wpdb->query( $tsvg_galleries_table_convert );
 			$wpdb->query( $tsvg_videoes_table_convert );
-			$tsvg_old_table_check = $wpdb->get_results( $wpdb->prepare( 'SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s', esc_sql( $wpdb->dbname ), esc_sql( $wpdb->prefix . 'totalsoft_galleryv_manager' ) ) );
+			$tsvg_old_table_check = $wpdb->get_results( $wpdb->prepare( "SELECT  table_name FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s", esc_sql( $wpdb->dbname ), esc_sql( $wpdb->prefix . 'totalsoft_galleryv_manager' ) ) );
 			if ( ! empty( $tsvg_old_table_check ) ) {
-				$tsvg_sql = 'SELECT * FROM ' . esc_sql( $wpdb->prefix . 'totalsoft_galleryv_manager' );
-				$tsvg_old_records = $wpdb->get_results( $wpdb->prepare( $tsvg_sql ), ARRAY_A );
+				$tsvg_sql = $wpdb->prepare("SELECT * FROM " . esc_sql( $wpdb->prefix . "totalsoft_galleryv_manager" ) );
+				$tsvg_old_records = $wpdb->get_results(  $tsvg_sql , ARRAY_A );
 				$tsvg_pagination_options        = array(
 					'TotalSoft_VGallery_Sty_01' => 'Next',
 					'TotalSoft_VGallery_Sty_02' => 'Prev',
@@ -111,8 +111,8 @@ class TS_Video_Gallery {
 						'TotalSoft_VGallery_Set_08' => 'ef-1',
 					);
 					$tsvg_old_record_settings['TotalSoft_VGallery_Set_01'] = str_replace( 'load','load-more', $tsvg_old_record_settings['TotalSoft_VGallery_Set_01'] );
-					$tsvg_old_record_style_part_a = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . esc_sql( $wpdb->prefix . 'totalsoft_galleryv_dbt_1' ) . ' WHERE TotalSoftGalleryV_SetName = %s', $tsvg_old_record['tsvg_old_record_theme_id'] ), ARRAY_A );
-					$tsvg_old_record_style_part_b = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . esc_sql( $wpdb->prefix . 'totalsoft_galleryv_dbt_2' ) . ' WHERE TotalSoftGalleryV_SetName = %s', $tsvg_old_record['tsvg_old_record_theme_id'] ), ARRAY_A );
+					$tsvg_old_record_style_part_a = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . esc_sql( $wpdb->prefix . "totalsoft_galleryv_dbt_1" ) . " WHERE TotalSoftGalleryV_SetName = %s", $tsvg_old_record['tsvg_old_record_theme_id'] ), ARRAY_A );
+					$tsvg_old_record_style_part_b = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . esc_sql( $wpdb->prefix . "totalsoft_galleryv_dbt_2" ) . " WHERE TotalSoftGalleryV_SetName = %s", $tsvg_old_record['tsvg_old_record_theme_id'] ), ARRAY_A );
 					$tsvg_old_record_styles = array_merge( $tsvg_old_record_style_part_a, $tsvg_old_record_style_part_b );
 					if (!array_key_exists("TotalSoft_GV_FG_PT",$tsvg_old_record_styles))
 					{
@@ -383,7 +383,7 @@ class TS_Video_Gallery {
 					unset( $tsvg_old_record_styles['TotalSoftGalleryV_SetID'] );
 					unset( $tsvg_old_record_styles['TotalSoftGalleryV_SetName'] );
 					unset( $tsvg_old_record_styles['TotalSoftGalleryV_SetType'] );
-					$tsvg_old_video_records = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . esc_sql( $wpdb->prefix . 'totalsoft_galleryv_videos' ) . ' WHERE GalleryV_ID = %d', (int) $tsvg_old_record['id'] ), ARRAY_A );
+					$tsvg_old_video_records = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . esc_sql( $wpdb->prefix . "totalsoft_galleryv_videos" ) . " WHERE GalleryV_ID = %d", (int) $tsvg_old_record['id'] ), ARRAY_A );
 					for ( $a = 0; $a < count( $tsvg_old_video_records ); $a++ ) {
 						if ( ! empty( $tsvg_old_video_records ) ) {
 							$tsvg_old_video_options['TotalSoftVGallery_Vid_desc']  = $tsvg_old_video_records[ $a ]['TotalSoftGallery_Video_VDesc'];
@@ -435,20 +435,24 @@ class TS_Video_Gallery {
 	private function load_dependencies() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tsvg-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tsvg-function.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tsvg-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tsvg-list.php';
+		if (is_admin()) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tsvg-admin.php';
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tsvg-list.php';
+		}
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tsvg-block.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tsvg-widget.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tsvg-public.php';
 		$this->loader = new TS_Video_Gallery_Loader();
 	}
 	private function define_admin_hooks() {
-		$plugin_admin = new TS_Video_Gallery_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_menu', 9 );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_submenu', 90 );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_builder_submenu', 100 );
+		if (is_admin()) {
+			$plugin_admin = new TS_Video_Gallery_Admin( $this->get_plugin_name(), $this->get_version() );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_menu', 9 );
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_submenu', 90 );
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'tsvg_admin_builder_submenu', 100 );
+		}
 	}
 	private function define_public_hooks() {
 		function tsvg_register_widget() {
@@ -495,14 +499,14 @@ class TS_Video_Gallery {
 				$tsvg_options_data['TS_VG_Style'] = json_decode( $tsvg_options_data['TS_VG_Style'], true );
 				$tsvg_options_data['TS_VG_Style'] = (object) $tsvg_options_data['TS_VG_Style'];
 				$tsvg_options_data['TS_VG_Old_User'] =html_entity_decode( htmlspecialchars_decode( $tsvg_options_data['TS_VG_Old_User'] ), ENT_QUOTES );
-				$tsvg_default_video        = esc_url("https://www.youtube.com/embed/IxxHeAUtcS4");
-				$tsvg_get_videos_data             = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d",(int) $tsvg_shortcode_id ) );
+				$tsvg_default_video = esc_url("https://www.youtube.com/embed/IxxHeAUtcS4");
+				$tsvg_get_videos_data = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $tsvg_db_videos_table WHERE TS_VG_SetType = %d",(int) $tsvg_shortcode_id ) );
 			} elseif ( array_key_exists( $tsvg_shortcode_id, $tsvg_themes ) ) {
-				$tsvg_default_data                                        = $this->tsvg_function_class->tsvg_get_all_params();
+				$tsvg_default_data = $this->tsvg_function_class->tsvg_get_all_params();
 				$tsvg_default_data['TS_VG_Option']['TS_vgallery_Q_Theme'] = $tsvg_themes[ $tsvg_shortcode_id ];
-				$tsvg_theme_default_data                                     = $this->tsvg_function_class->tsvg_get_theme_params( $tsvg_shortcode_id );
-				$tsvg_design_options                                   = $tsvg_default_data['TS_VG_Style'];
-				$tsvg_options_data        = array(
+				$tsvg_theme_default_data = $this->tsvg_function_class->tsvg_get_theme_params( $tsvg_shortcode_id );
+				$tsvg_design_options = $tsvg_default_data['TS_VG_Style'];
+				$tsvg_options_data       = array(
 					'id'                 => $tsvg_shortcode_id,
 					'TS_VG_Title'        => $tsvg_default_data['TS_VG_Title'],
 					'TS_VG_Settings'     => json_encode( $tsvg_default_data['TS_VG_Settings'] ),

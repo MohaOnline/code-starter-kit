@@ -166,7 +166,7 @@ export default ({ setSettings, settings }) => {
             {__("Add Link", "presto-player")}
           </Button>
           {visible && (
-            <Popover position="bottom center" onClose={() => setVisible(false)}>
+            <Popover css={css`margin-top: 10px`} position="bottom right" onClose={() => setVisible(false)}>
               <LinkControl value={settings} onChange={onChangeLink} />
             </Popover>
           )}

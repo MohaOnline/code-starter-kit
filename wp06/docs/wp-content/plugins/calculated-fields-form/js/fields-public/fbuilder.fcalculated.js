@@ -35,7 +35,7 @@
                 },
 			show:function()
 				{
-					this.predefined = this._getAttr('predefined');
+					this.predefined = this._getAttr('predefined', true);
 					return '<div class="fields '+cff_esc_attr(this.csslayout)+' '+this.name+' cff-calculated-field" id="field'+this.form_identifier+'-'+this.index+'" style="'+((this.hidefield)? 'padding:0;margin:0;border:0;opacity:0;width:0;height:0;overflow:hidden;' : '')+'"><label '+( ! this.hidefield ? 'for="'+this.name+'"' : '' )+'>'+this.title+''+((this.required) ? '<span class="r">*</span>' : '')+'</label><div class="dfield"><input aria-label="'+cff_esc_attr(this.title)+'" id="'+this.name+'" name="'+this.name+'" '+((this.readonly) ? ' readonly ' : '')+' '+((!/^\s*$/.test(this.min)) ? 'min="'+cff_esc_attr($.fbuilder.parseVal(this._getAttr('min'), this.thousandSeparator, this.decimalSymbol))+'" ' : '')+((!/^\s*$/.test(this.max)) ? ' max="'+cff_esc_attr($.fbuilder.parseVal(this._getAttr('max'), this.thousandSeparator, this.decimalSymbol))+'" ' : '')+' class="codepeoplecalculatedfield field '+this.size+((this.required)?" required":"")+'" type="'+((this.hidefield) ? 'hidden' : 'text')+'" value="'+cff_esc_attr(this.predefined)+'" />'+((!this.hidefield) ? '<span class="uh">'+this.userhelp+'</span>' : '')+'</div><div class="clearer"></div></div>';
 				},
             after_show:function()

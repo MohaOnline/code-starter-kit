@@ -3,11 +3,10 @@ namespace WprAddons\Modules\SharingButtons\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Color;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Repeater;
 use WprAddons\Classes\Utilities;
 
@@ -291,6 +290,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon i' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before'
 			]
@@ -312,6 +312,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon i' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon svg' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}',
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-label' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}',
 				],
 			]
@@ -333,6 +334,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -365,7 +367,6 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'sharing_label_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-label',
 				'condition' => [
 					'sharing_show_label' => 'yes',
@@ -535,6 +536,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				'default' => '#ffffff',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon svg' => 'fill: {{VALUE}}'
 				],
 			]
 		);
@@ -547,6 +549,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				'default' => '#4A45D2',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon i' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon svg' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -610,6 +613,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				'default' => '#ffffff',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon:hover svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -622,6 +626,7 @@ class Wpr_Sharing_Buttons extends Widget_Base {
 				'default' => '#605BE5',
 				'selectors' => [
 					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon:hover i' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpr-sharing-buttons .wpr-sharing-icon:hover svg' => 'background-color: {{VALUE}}',
 				],
 			]
 		);

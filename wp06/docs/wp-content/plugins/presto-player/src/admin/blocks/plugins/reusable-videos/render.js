@@ -1,12 +1,16 @@
 import { __ } from "@wordpress/i18n";
-import { PanelBody, Button, Spinner } from "@wordpress/components";
+import {
+  PanelBody,
+  Button,
+  Spinner,
+  SearchControl,
+} from "@wordpress/components";
 import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment, useEffect, useState, useCallback } from "@wordpress/element";
 import { dispatch, useSelect } from "@wordpress/data";
 import { createBlock, getBlockType } from "@wordpress/blocks";
 import apiFetch from "@wordpress/api-fetch";
 
-import SearchForm from "./SearchForm";
 import InserterShortcodeInput from "./ShortcodeInput";
 import Video from "./Video";
 const { parse } = wp.blockSerializationDefaultParser;
@@ -246,11 +250,9 @@ export default () => {
         <InserterShortcodeInput />
 
         <PanelBody title={__("Media Hub", "presto-player")}>
-          <SearchForm
-            placeholder="Search media..."
-            value={search}
-            onChange={(search) => searchFor(search)}
-          />
+          <div>
+            <SearchControl value={search} onChange={searchFor} />
+          </div>
           <div className="block-editor-inserter__panel-content">
             {videosPanel()}
           </div>

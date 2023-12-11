@@ -41,6 +41,7 @@
 		display: flex;
 		justify-content: center;
 		overflow: hidden;
+		cur
 		list-style: none !important;
 		width: 100%;
 		max-width:calc( calc(100% - calc(2 * var(--tsvg_general_place_between_<?php echo esc_attr( $tsvg_shortcode_id ); ?>) *  var(--tsvg_general_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>)) ) / var(--tsvg_general_img_w_<?php echo esc_attr( $tsvg_shortcode_id ); ?>))!important;

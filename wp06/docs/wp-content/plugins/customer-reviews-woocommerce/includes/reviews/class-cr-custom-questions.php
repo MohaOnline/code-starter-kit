@@ -105,7 +105,7 @@ if ( ! class_exists( 'CR_Custom_Questions' ) ) :
 			}
 		}
 
-		public function output_questions( $f = false, $hr = true ) {
+		public function get_questions( $f, $hr ) {
 			$fr = '';
 			if( $f ) {
 				$fr = 'f';
@@ -119,23 +119,27 @@ if ( ! class_exists( 'CR_Custom_Questions' ) ) :
 				) {
 					$title = ( isset( $this->questions[$i]->label ) && $this->questions[$i]->label ) ? $this->questions[$i]->label : $this->questions[$i]->title;
 					switch( $this->questions[$i]->type ) {
-						case 'radio':
-							if( isset( $this->questions[$i]->value ) ) {
-								$output .= '<p class="iv' . $fr . '-custom-question-p"><span class="iv' . $fr . '-custom-question-radio">' . $this->questions[$i]->title .
-									'</span> : ' . $this->questions[$i]->value . '</p>';
-							}
-							break;
 						case 'checkbox':
-							if( isset( $this->questions[$i]->values ) &&
-						 			is_array( $this->questions[$i]->values ) ) {
+							if (
+								isset( $this->questions[$i]->values ) &&
+								is_array( $this->questions[$i]->values )
+							) {
 								$count_values = count( $this->questions[$i]->values );
 								$output_temp = '';
 								for( $j = 0; $j < $count_values; $j++ ) {
 									$output_temp .= '<li>' . $this->questions[$i]->values[$j] . '</li>';
 								}
 								if( $count_values > 0 ) {
-									$output .= '<p class="iv' . $fr . '-custom-question-checkbox">' . $this->questions[$i]->title . ' : </p>';
-									$output .= '<ul class="iv' . $fr . '-custom-question-ul">' . $output_temp . '</ul>';
+									if ( 2 === $f ) {
+										// slider layout
+										$output .= '<div class="cr-sldr-custom-question cr-sldr-checkbox">';
+										$output .= '<p class="cr-sldr-p"><span class="cr-sldr-label">' . $title . '</span> :</p>';
+										$output .= '<ul class="iv' . $fr . '-custom-question-ul">' . $output_temp . '</ul>';
+										$output .= '</div>';
+									} else {
+										$output .= '<p class="iv' . $fr . '-custom-question-checkbox">' . $this->questions[$i]->title . ' : </p>';
+										$output .= '<ul class="iv' . $fr . '-custom-question-ul">' . $output_temp . '</ul>';
+									}
 								}
 							}
 							break;
@@ -143,8 +147,18 @@ if ( ! class_exists( 'CR_Custom_Questions' ) ) :
 							if( isset( $this->questions[$i]->value ) ) {
 								if( $this->questions[$i]->value > 0 ) {
 									if( $f ) {
-										$output .= '<div class="cr' . $fr . '-custom-question-rating-cont"><div class="cr' . $fr . '-custom-question-rating">' . $title . ' :</div>';
-										$output .= wc_get_rating_html( $this->questions[$i]->value ) . '</div>';
+										if ( 2 === $f ) {
+											// slider layout
+											$output .= '<div class="cr-sldr-custom-question"><div class="rating">';
+											$output .= '<div class="crstar-rating">';
+											$output .= '<span style="width:' . esc_attr( ( $this->questions[$i]->value / 5 ) * 100 ) . '%;"></span>';
+											$output .= '</div></div>';
+											$output .= '<div class="cr' . $fr . '-custom-question-rating">' . $title . '</div></div>';
+										} else {
+											// list layout
+											$output .= '<div class="cr' . $fr . '-custom-question-rating-cont"><div class="cr' . $fr . '-custom-question-rating">' . $title . ' :</div>';
+											$output .= wc_get_rating_html( $this->questions[$i]->value ) . '</div>';
+										}
 									} else {
 										$output .= '<div class="cr' . $fr . '-custom-question-rating-cont"><span class="cr' . $fr . '-custom-question-rating">' . $title . ' :</span>';
 										$output .= '<span class="iv' . $fr . '-star-rating">';
@@ -157,17 +171,20 @@ if ( ! class_exists( 'CR_Custom_Questions' ) ) :
 								}
 							}
 							break;
+						case 'radio':
 						case 'comment':
-							if( isset( $this->questions[$i]->value ) ) {
-								$output .= '<p class="iv' . $fr . '-custom-question-p"><span class="iv' . $fr . '-custom-question-radio">' . $this->questions[$i]->title .
-									'</span> : ' . $this->questions[$i]->value . '</p>';
-							}
-							break;
 						case 'number':
 						case 'text':
 							if( isset( $this->questions[$i]->value ) ) {
-								$output .= '<p class="iv' . $fr . '-custom-question-p"><span class="iv' . $fr . '-custom-question-radio">' . $title .
-									'</span> : ' . $this->questions[$i]->value . '</p>';
+								if ( 2 === $f ) {
+									// slider layout
+									$output .= '<div class="cr-sldr-custom-question">';
+									$output .= '<p class="cr-sldr-p"><span class="cr-sldr-label">' . $title . '</span> : ' . $this->questions[$i]->value . '</p>';
+									$output .= '</div>';
+								} else {
+									$output .= '<p class="iv' . $fr . '-custom-question-p"><span class="iv' . $fr . '-custom-question-radio">' . $title .
+										'</span> : ' . $this->questions[$i]->value . '</p>';
+								}
 							}
 							break;
 						default:
@@ -177,13 +194,24 @@ if ( ! class_exists( 'CR_Custom_Questions' ) ) :
 			}
 			if( strlen( $output ) > 0 ) {
 				if( $f ) {
-					$output = '<hr class="iv' . $fr . '-custom-question-hr">' . $output . '<hr class="iv' . $fr . '-custom-question-hr">';
+					if ( 2 === $f ) {
+						// do not add <hr>
+					} else {
+						$output = '<hr class="iv' . $fr . '-custom-question-hr">' . $output . '<hr class="iv' . $fr . '-custom-question-hr">';
+					}
 				} else {
 					if( $hr ) {
 						$output = '<hr class="iv' . $fr . '-custom-question-hr">' . $output;
 					}
 				}
-				echo apply_filters( 'cr_custom_questions', $output );
+			}
+			return $output;
+		}
+
+		public function output_questions( $f = false, $hr = true ) {
+			$qs = $this->get_questions( $f, $hr );
+			if ( $qs ) {
+				echo apply_filters( 'cr_custom_questions', $qs );
 			}
 		}
 

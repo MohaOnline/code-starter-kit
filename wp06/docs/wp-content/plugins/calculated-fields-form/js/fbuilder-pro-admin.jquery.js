@@ -278,6 +278,24 @@
 					$.fbuilder.reloadItems({'form':1});
 				});
 
+				$("#fTitleTag").change(function()
+				{
+					theForm.titletag = $(this).val();
+					$.fbuilder.reloadItems({'form':1});
+				});
+
+				$("[name='fTextAlign']").click(function()
+				{
+					theForm.textalign = $("[name='fTextAlign']:checked").val();
+					$.fbuilder.reloadItems({'form':1});
+				});
+
+				$("#fHeaderColor").on('change input', function()
+				{
+					theForm.headertextcolor = $(this).val();
+					$.fbuilder.reloadItems({'form':1});
+				});
+
 				$("#fEvalEquations").click(function()
 				{
 					theForm.evalequations = ($(this).is( ':checked' )) ? 1 : 0;
@@ -528,7 +546,7 @@
 					if( typeof field[ 'display' ] != 'undefined' )
 					{
 						var e  = $('.'+field['name']),
-							n  = $(cff_sanitize(field.display())),
+							n  = $(cff_sanitize(field.display()).replace(/(\b)fields(\b)/i, '$1fields$2'+('fieldlayout' in field && field.fieldlayout != 'default' ? ' '+field.fieldlayout : ''))),
 							as = true; // Call after_show
 
 						if( n.find( '.dfield:eq(0)>.fcontainer>.fieldscontainer').length )
@@ -596,7 +614,7 @@
 						item.parent = '';
 						fieldsIndex[ item.name ] = i;
 
-                        $("#fieldlist").append(cff_sanitize(item.display()));
+						$("#fieldlist").append(cff_sanitize(item.display()).replace(/(\b)fields(\b)/i, '$1fields$2'+('fieldlayout' in item && item.fieldlayout != 'default' ? ' '+item.fieldlayout : '')));
 						if ( i == selected )
 						{
 							$("#field-"+i).addClass("ui-selected");
@@ -661,6 +679,9 @@
 		$.extend(fform.prototype,
 			{
 				title:"Untitled Form",
+				titletag:"H2",
+				textalign:"default",
+				headertextcolor:"",
 				description:"This is my form. Please fill it out. It's awesome!",
 				formlayout:"top_aligned",
 				formtemplate:$.fbuilder.default_template,
@@ -676,12 +697,16 @@
 				customstyles:"",
 				display:function()
 				{
-					return cff_sanitize('<div class="fform" id="field"><div class="arrow ui-icon ui-icon-play "></div><h2>'+this.title+'</h2><span>'+this.description+'</span></div>');
+					let css = '';
+					if(this.textalign != 'default') css+='text-align:'+this.textalign+';'
+					if(this.headertextcolor != '') css+='color:'+this.headertextcolor+';';
+					return cff_sanitize('<div class="fform" id="field"><div class="arrow ui-icon ui-icon-play "></div><'+this.titletag+' style="'+css+'">'+this.title+'</'+this.titletag+'><span style="display:block;'+css+'">'+this.description+'</span></div>');
 				},
 
 				showAllSettings:function()
 				{
-					var layout 	    = '',
+					var me 			= this,
+						layout 	    = '',
 						template    = '<option value="">Use default template</option>',
 						thumbnail   = '',
 						description = '',
@@ -690,14 +715,14 @@
 
 					for ( var i = 0; i< $.fbuilder.showSettings.formlayoutList.length; i++ )
 					{
-						layout += '<option value="'+cff_esc_attr($.fbuilder.showSettings.formlayoutList[i].id)+'" '+(($.fbuilder.showSettings.formlayoutList[i].id==this.formlayout)?"selected":"")+'>'+cff_esc_attr($.fbuilder.showSettings.formlayoutList[i].name)+'</option>';
+						layout += '<option value="'+cff_esc_attr($.fbuilder.showSettings.formlayoutList[i].id)+'" '+(($.fbuilder.showSettings.formlayoutList[i].id==me.formlayout)?"selected":"")+'>'+cff_esc_attr($.fbuilder.showSettings.formlayoutList[i].name)+'</option>';
 					}
 
 					for ( var i in $.fbuilder.showSettings.formTemplateDic )
 					{
 						if( /^\s*$/.test( i ) ) break;
 						selected = '';
-						if( $.fbuilder.showSettings.formTemplateDic[i].prefix==this.formtemplate )
+						if( $.fbuilder.showSettings.formTemplateDic[i].prefix==me.formtemplate )
 						{
 							selected = 'SELECTED';
 							if( typeof $.fbuilder.showSettings.formTemplateDic[i].thumbnail != 'undefined' )
@@ -714,28 +739,44 @@
 						template += '<option value="'+cff_esc_attr($.fbuilder.showSettings.formTemplateDic[i].prefix)+'" ' + selected + '>'+cff_esc_attr($.fbuilder.showSettings.formTemplateDic[i].title)+'</option>';
 					}
 
-					str += '<div><label>Form Name</label><input type="text" class="large" name="fTitle" id="fTitle" value="'+cff_esc_attr(this.title)+'" /></div><div><label>Description</label><textarea class="large" name="fDescription" id="fDescription">'+cff_esc_attr(this.description)+'</textarea></div>'+
+					str += '<div><label>Form Name</label><input type="text" class="large" name="fTitle" id="fTitle" value="'+cff_esc_attr(me.title)+'" /></div>'+
+					'<div><label>Form Name Tag</label><select class="large" id="fTitleTag" name="fTitleTag">'+
+					['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].reduce(function(o, t){ return o += '<option value="'+t+'" '+(t == me.titletag ? 'SELECTED' : '')+'>'+t+'</option>';}, '')+
+					'</select></div>'+
+					'<div><label>Description</label><textarea class="large" name="fDescription" id="fDescription">'+cff_esc_attr(me.description)+'</textarea></div>'+
+
+					'<div><label>Text Align</label>'+
+					'<div class="cff-radio-group-ctrl">'+
+					'<label><input type="radio" name="fTextAlign" value="default" '+(me.textalign == 'default' ? 'checked' : '')+'><span>Default</span></label>'+
+					'<label><input type="radio" name="fTextAlign" value="left" '+(me.textalign == 'left' ? 'checked' : '')+'><span>Left</span></label>'+
+					'<label><input type="radio" name="fTextAlign" value="center" '+(me.textalign == 'center' ? 'checked' : '')+'><span>Center</span></label>'+
+					'<label><input type="radio" name="fTextAlign" value="right" '+(me.textalign == 'right' ? 'checked' : '')+'><span>Right</span></label></div></div>'+
+
+					'<div style="margin-top:10px;"><label style="display:inline-block;">Text Color</label> <input type="color" id="fHeaderColor" name="fHeaderColor" value="'+me.headertextcolor+'"></div>'+
+					/* General Settings */
+					'<hr style="margin-top:10px;" />'+
+					'<h3>Form Settings</h3>'+
 					'<div><label>Label Placement</label><select name="fLayout" id="fLayout" class="large">'+layout+'</select></div>'+
-					'<div><label>Direction</label><select name="fDirection" id="fDirection" class="large"><option value="ltr" '+(this.direction == 'ltr' ? 'SELECTED' : '')+'>LTR</option><option value="rtl" '+(this.direction == 'rtl' ? 'SELECTED' : '')+'>RTL</option></select></div>'+
-					'<div><label><input type="checkbox" name="fLoadingAnimation" id="fLoadingAnimation" '+( ( this.loading_animation ) ? 'CHECKED' : '' )+' /> Display loading form animation</label></div><div><label><input type="checkbox" name="fAutocomplete" id="fAutocomplete" '+( ( this.autocomplete ) ? 'CHECKED' : '' )+' /> Enable autocompletion</label></div><div><label><input type="checkbox" name="fPersistence" id="fPersistence" '+( ( this.persistence ) ? 'CHECKED' : '' )+' /> Enable the browser\'s persistence (the data are stored locally on browser)</label></div>';
+					'<div><label>Direction</label><select name="fDirection" id="fDirection" class="large"><option value="ltr" '+(me.direction == 'ltr' ? 'SELECTED' : '')+'>LTR</option><option value="rtl" '+(me.direction == 'rtl' ? 'SELECTED' : '')+'>RTL</option></select></div>'+
+					'<div><label><input type="checkbox" name="fLoadingAnimation" id="fLoadingAnimation" '+( ( me.loading_animation ) ? 'CHECKED' : '' )+' /> Display loading form animation</label></div><div><label><input type="checkbox" name="fAutocomplete" id="fAutocomplete" '+( ( me.autocomplete ) ? 'CHECKED' : '' )+' /> Enable autocompletion</label></div><div><label><input type="checkbox" name="fPersistence" id="fPersistence" '+( ( me.persistence ) ? 'CHECKED' : '' )+' /> Enable the browser\'s persistence (the data are stored locally on browser)</label></div>';
 
 					if(typeof $.fbuilder.controls[ 'fCalculated' ] != 'undefined')
 					{
 						str += '<hr />';
-						str += '<div><label><input type="checkbox" name="fEvalEquations" id="fEvalEquations" '+( ( this.evalequations ) ? 'CHECKED' : '' )+' /> Dynamically evaluate the equations associated with the calculated fields</label></div>';
-						str += '<div><label><input type="checkbox" name="fEvalEquationsDelay" id="fEvalEquationsDelay" '+( ( this.evalequations_delay ) ? 'CHECKED' : '' )+' /> Delay the equations evaluation (evaluate the equations after rendering the form)</label></div>';
+						str += '<div><label><input type="checkbox" name="fEvalEquations" id="fEvalEquations" '+( ( me.evalequations ) ? 'CHECKED' : '' )+' /> Dynamically evaluate the equations associated with the calculated fields</label></div>';
+						str += '<div><label><input type="checkbox" name="fEvalEquationsDelay" id="fEvalEquationsDelay" '+( ( me.evalequations_delay ) ? 'CHECKED' : '' )+' /> Delay the equations evaluation (evaluate the equations after rendering the form)</label></div>';
 
-						str += '<div class="groupBox"><label><input type="radio" name="fEvalEquationsEvent" name="fEvalEquationsEvent" value="1" '+( ( this.evalequationsevent == 1 ) ? 'CHECKED' : '' )+' /> Eval the equations in the onchange events</label><label><input type="radio" name="fEvalEquationsEvent" name="fEvalEquationsEvent" value="2" '+( ( 'undefined' == typeof this.evalequationsevent || this.evalequationsevent == 2 ) ? 'CHECKED' : '' )+' /> Eval the equations in the onchange and keyup events</label></div>';
+						str += '<div class="groupBox"><label><input type="radio" name="fEvalEquationsEvent" name="fEvalEquationsEvent" value="1" '+( ( me.evalequationsevent == 1 ) ? 'CHECKED' : '' )+' /> Eval the equations in the onchange events</label><label><input type="radio" name="fEvalEquationsEvent" name="fEvalEquationsEvent" value="2" '+( ( 'undefined' == typeof me.evalequationsevent || me.evalequationsevent == 2 ) ? 'CHECKED' : '' )+' /> Eval the equations in the onchange and keyup events</label></div>';
 						str += '<hr />';
 					}
 
 					str += '<div><label>Form Template</label><select name="fTemplate" id="fTemplate" class="large">'+template+'</select></div><div style="text-align:center;padding:10px 0;"><span id="fTemplateThumbnail">'+thumbnail+'</span><div></div><span  id="fTemplateDescription">'+description+'</span></div>'+
-                    '<div><label><input type="checkbox" name="fAnimateForm" id="fAnimateForm" '+( ( this.animate_form ) ? 'CHECKED' : '' )+' /> Animate page breaks in multipage forms, and dependencies</label></div>'+
+                    '<div><label><input type="checkbox" name="fAnimateForm" id="fAnimateForm" '+( ( me.animate_form ) ? 'CHECKED' : '' )+' /> Animate page breaks in multipage forms, and dependencies</label></div>'+
                     '<div><label>Animation effect</label><select name="fAnimationEffect" id="fAnimationEffect" class="large">'+
-					'<option value="fade" '+( (this.animation_effect == 'fade') ? 'SELECTED' : '' )+'>Fade</option>'+
-					'<option value="slide" '+( (this.animation_effect == 'slide') ? 'SELECTED' : '' )+'>Slide</option>'+
+					'<option value="fade" '+( (me.animation_effect == 'fade') ? 'SELECTED' : '' )+'>Fade</option>'+
+					'<option value="slide" '+( (me.animation_effect == 'slide') ? 'SELECTED' : '' )+'>Slide</option>'+
 					'</select></div>'+
-                    '<div class="cff-editor-container"><label><div class="cff-editor-extend-shrink" title="Fullscreen"></div>Customize Form Design <i>(Enter the CSS rules. <a href="http://cff.dwbooster.com/faq#q82" target="_blank">More information</a>)</i></label><textarea id="fCustomStyles" style="width:100%;height:150px;">'+cff_esc_attr(this.customstyles)+'</textarea></div>' ;
+                    '<div class="cff-editor-container"><label><div class="cff-editor-extend-shrink" title="Fullscreen"></div>Customize Form Design <i>(Enter the CSS rules. <a href="http://cff.dwbooster.com/faq#q82" target="_blank">More information</a>)</i></label><textarea id="fCustomStyles" style="width:100%;height:150px;">'+cff_esc_attr(me.customstyles)+'</textarea></div>' ;
 
 					return str;
 				}
@@ -984,9 +1025,16 @@
         {
             return '<label><b>Field Type: '+$.fbuilder[ 'getNameByIdFromType' ]( v )+'</b></label>';
         },
-		showTitle: function(v)
+		showTitle: function(v, l)
 		{
-			return '<label>Field Label</label><textarea class="large" name="sTitle" id="sTitle">'+cff_esc_attr(v)+'</textarea>';
+			l = l || 'default';
+			return '<label>Field Label</label><textarea class="large" name="sTitle" id="sTitle">'+cff_esc_attr(v)+'</textarea>'+
+					'<div><label>Label Placement</label>'+
+					'<div class="cff-radio-group-ctrl">'+
+					'<label><input type="radio" name="sFieldLayout" value="default" '+(l == 'default' ? 'checked' : '')+'><span>Default</span></label>'+
+					'<label><input type="radio" name="sFieldLayout" value="top_aligned" '+(l == 'top_aligned' ? 'checked' : '')+'><span>Top</span></label>'+
+					'<label><input type="radio" name="sFieldLayout" value="left_aligned" '+(l == 'left_aligned' ? 'checked' : '')+'><span>Left</span></label>'+
+					'<label><input type="radio" name="sFieldLayout" value="right_aligned" '+(l == 'right_aligned' ? 'checked' : '')+'><span>Right</span></label></div></div>';
 		},
 		showShortLabel: function( v )
 		{
@@ -1073,6 +1121,7 @@
 		{
 			form_identifier:"",
 			name:"",
+			fieldlayout:"default",
 			shortlabel:"",
 			index:-1,
 			ftype:"",
@@ -1108,6 +1157,12 @@
 					{
 						var str = $(this).val();
 						e.data.obj.title = str.replace(/\n/g,"<br />");
+						$.fbuilder.reloadItems( {'field': e.data.obj} );
+					});
+
+				$("[name='sFieldLayout']").bind("click", {obj: this}, function(e)
+					{
+						e.data.obj.fieldlayout = $("[name='sFieldLayout']:checked").val();
 						$.fbuilder.reloadItems( {'field': e.data.obj} );
 					});
 
@@ -1352,7 +1407,7 @@
 
 			showTitle:function()
 			{
-				return $.fbuilder.showSettings.showTitle(this.title);
+				return $.fbuilder.showSettings.showTitle(this.title, 'fieldlayout' in this ? this.fieldlayout : null );
 			},
 
 			showName:function()

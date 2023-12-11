@@ -1648,10 +1648,14 @@ function lp_archive_skeleton_get_args(): array {
 	if ( learn_press_is_course_category() || learn_press_is_course_tag() ) {
 		$cat = get_queried_object();
 
-		// For case not filter by term_id
-		if ( ! isset( $args['term_id'] ) ) {
-			$args['term_id'] = $cat->term_id;
+		// Info of page
+		if ( learn_press_is_course_category() ) {
+			$args['page_term_id_current'] = $cat->term_id;
+		} elseif ( learn_press_is_course_tag() ) {
+			$args['page_tag_id_current'] = $cat->term_id;
 		}
+
+		$args['page_term_url'] = get_term_link( $cat );
 	}
 
 	$args = apply_filters( 'lp/template/archive-course/skeleton/args', $args );

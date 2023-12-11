@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-12T18:58:53+00:00\n"
+"POT-Creation-Date: 2023-12-07T16:56:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 
@@ -18,7 +18,7 @@ msgstr ""
 
 #: admin/analytics/components/DatePicker.js:22
 #: admin/blocks/shared/audio-placeholder.js:41
-#: admin/blocks/shared/components/ColorPopup.js:76
+#: admin/blocks/shared/components/ColorPopup.js:82
 #: admin/blocks/shared/placeholder.js:52
 msgid "Apply"
 msgstr ""
@@ -32,7 +32,7 @@ msgstr ""
 #: admin/blocks/shared/audio-placeholder.js:144
 #: admin/blocks/shared/audioPresets/Edit.js:340
 #: admin/blocks/shared/audioPresets/Preset.js:241
-#: admin/blocks/shared/components/ColorPopup.js:73
+#: admin/blocks/shared/components/ColorPopup.js:79
 #: admin/blocks/shared/overlays/Edit.js:205
 #: admin/blocks/shared/placeholder.js:151
 #: admin/blocks/shared/placeholder.js:155
@@ -919,32 +919,28 @@ msgstr ""
 msgid "A youtube video wrapped in an awesome player."
 msgstr ""
 
-#: admin/blocks/plugins/reusable-videos/render.js:170
+#: admin/blocks/plugins/reusable-videos/render.js:174
 msgid "No videos found."
 msgstr ""
 
-#: admin/blocks/plugins/reusable-videos/render.js:175
+#: admin/blocks/plugins/reusable-videos/render.js:179
 msgid "Create A Reusable Video"
 msgstr ""
 
-#: admin/blocks/plugins/reusable-videos/render.js:193
-#: admin/blocks/plugins/reusable-videos/render.js:248
+#: admin/blocks/plugins/reusable-videos/render.js:197
+#: admin/blocks/plugins/reusable-videos/render.js:252
 #: Services/Menu.php:30
 #: Services/Menu.php:31
 msgid "Media Hub"
 msgstr ""
 
-#: admin/blocks/plugins/reusable-videos/render.js:239
 #: admin/blocks/plugins/reusable-videos/render.js:243
+#: admin/blocks/plugins/reusable-videos/render.js:247
 #: Integrations/BeaverBuilder/ReusableVideoModule/Module.php:16
 #: Integrations/BeaverBuilder/ReusableVideoModule/Module.php:17
 #: Services/Menu.php:20
 #: Services/Menu.php:21
 msgid "Presto Player"
-msgstr ""
-
-#: admin/blocks/plugins/reusable-videos/SearchForm.js:40
-msgid "Reset search"
 msgstr ""
 
 #: admin/blocks/plugins/reusable-videos/ShortcodeInput.js:8
@@ -1367,7 +1363,7 @@ msgstr ""
 msgid "Add Chapter"
 msgstr ""
 
-#: admin/blocks/shared/components/ColorPopup.js:56
+#: admin/blocks/shared/components/ColorPopup.js:62
 #: Services/Translation.php:108
 msgid "Reset"
 msgstr ""

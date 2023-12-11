@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder, widgets for Elementor, header footer 
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -650,6 +650,13 @@ Visit  [wpmet](https://wpmet.com/)  to learn more about how to get the best of W
 
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.0.3 (2023-11-27)
+Fixed: Improve accessibility, performance, and security best practices with 10up/plugin-check tool
+Fixed: Optimize testimonial widget markup for improved performance
+Fixed: Resolve testimonial conditional issue and align control
+Added: Header offcanvas close button text control
+Fixed: Client logo widget nav SVG support
+
 ElementsKit Elementor Addons Version: 3.0.2 (2023-11-08)
 Fixed: Fix ajax loading icon issue for nav menu widget
 Fixed: Team widget popup compatibility with elementor loop grid widget

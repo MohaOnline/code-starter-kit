@@ -544,7 +544,7 @@ class Post_Views_Counter_Settings {
 				],
 				'reports'	=> [
 					'label'			=> __( 'Reports', 'post-views-counter' ),
-					'option_name'	=> 'post_views_counter_settings_reports',
+					'option_name'	=> 'post_views_counter_settings_reports'
 				],
 				'other'		=> [
 					'label'			=> __( 'Other', 'post-views-counter' ),
@@ -1004,7 +1004,7 @@ class Post_Views_Counter_Settings {
 		}
 
 		$html .= '
-				<p class="description">' . __( 'Use it exclude specific user roles from post views count.', 'post-views-counter' ) . '</p>
+				<p class="description">' . __( 'Use it to exclude specific user roles from post views count.', 'post-views-counter' ) . '</p>
 			</div>';
 
 		return $html;
@@ -1198,7 +1198,7 @@ class Post_Views_Counter_Settings {
 
 		return $input;
 	}
-	
+
 	/**
 	 * Reports page placeholder.
 	 */
@@ -1219,7 +1219,7 @@ class Post_Views_Counter_Settings {
 			</div>
 		</form>';
 	}
- 
+
 	/**
 	 * Validate license.
 	 *

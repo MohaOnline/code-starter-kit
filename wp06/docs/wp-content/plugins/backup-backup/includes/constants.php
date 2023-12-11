@@ -117,6 +117,9 @@
   if (!defined('BMI_BACKUPS_ROOT')) {
     define('BMI_BACKUPS_ROOT', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backup-migration');
   }
+  if (!defined('BMI_TMP')) {
+    define('BMI_TMP', BMI_BACKUPS_ROOT . DIRECTORY_SEPARATOR . 'tmp');
+  }
   if (!defined('BMI_BACKUPS')) {
     define('BMI_BACKUPS', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backup-migration' . DIRECTORY_SEPARATOR . 'backups');
   }
@@ -133,6 +136,9 @@
   }
   if (!file_exists(BMI_CONFIG_DIR)) {
     mkdir(BMI_CONFIG_DIR, 0755, true);
+  }
+  if (!file_exists(BMI_TMP)) {
+    mkdir(BMI_TMP, 0755, true);
   }
 
   // Secure config and logs
@@ -153,6 +159,15 @@
   }
   if (!file_exists(BMI_STAGING . DIRECTORY_SEPARATOR . '.htaccess')) {
     copy(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.htaccess', BMI_STAGING . DIRECTORY_SEPARATOR . '.htaccess');
+  }
+  if (!file_exists(BMI_TMP . DIRECTORY_SEPARATOR . 'index.php')) {
+    touch(BMI_TMP . DIRECTORY_SEPARATOR . 'index.php');
+  }
+  if (!file_exists(BMI_TMP . DIRECTORY_SEPARATOR . 'index.html')) {
+    touch(BMI_TMP . DIRECTORY_SEPARATOR . 'index.html');
+  }
+  if (!file_exists(BMI_TMP . DIRECTORY_SEPARATOR . '.htaccess')) {
+    copy(BMI_INCLUDES . DIRECTORY_SEPARATOR . 'htaccess' . DIRECTORY_SEPARATOR . '.htaccess', BMI_TMP . DIRECTORY_SEPARATOR . '.htaccess');
   }
 
   // Secure backups (if in backup dir)

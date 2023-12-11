@@ -223,7 +223,7 @@ class CR_Email_Coupon {
 		}
 		$result = CR_Email_Func::send_email_coupon( $data, true );
 		if( false === $result ) {
-			return array( 2, curl_error( $ch ) );
+			return array( 2, 'cURL error' );
 		}
 		//error_log( $result );
 		$result = json_decode( $result );

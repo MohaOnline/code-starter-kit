@@ -5,7 +5,7 @@
 
     var adminNotices = {
         'radius': 'radius_notice',
-        'divider': 'shape_divider',
+        'bf23': 'bf23_notice',
     };
 
     if (undefined !== notice) {

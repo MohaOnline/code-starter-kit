@@ -1022,7 +1022,7 @@ class Module {
 									case 'gallery':
 										var gallery = settings.premium_tooltip_gallery;
 
-										if( ! gallery )
+										if( ! gallery[0] )
 											break;
 
 										content = gallery;

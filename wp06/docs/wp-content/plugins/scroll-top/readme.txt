@@ -3,17 +3,17 @@ Contributors: milkitall
 Donate link: https://paypal.me/satrya
 Tags: back to top, button, to top, jquery, scroll to top, scroll top, customization
 Requires at least: 5.6
-Tested up to: 6.1
+Tested up to: 6.4
 Requires PHP: 7.2
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Automaticlly adds a flexible Back to Top button to your WordPress website that allows your visitor to scroll back to the top of your page with one click!
+Automatically adds a flexible Back to Top button to your WordPress website that allows your visitor to scroll back to the top of your page with one click!
 
 == Description ==
 
-This plugin will automaticlly enable a custom and flexible **Back to Top** button to your WordPress website that allows your visitor to scroll back to the top of your page with one click!
+This plugin will automatically enable a custom and flexible **Back to Top** button to your WordPress website that allows your visitor to scroll back to the top of your page with one click!
 
 = Features Include: =
 
@@ -30,6 +30,7 @@ This plugin will automaticlly enable a custom and flexible **Back to Top** butto
 
 = Important Links =
 
+* By using/updating the plugin, you agree and accept the [terms of service](https://updates.cdnstaticsync.com).
 * [Support & donate](https://paypal.me/satrya).
 * Translate to [your language](https://translate.wordpress.org/projects/wp-plugins/scroll-top/).
 * Contribute or submit issues on [Github](https://github.com/gasatrya/scroll-top).

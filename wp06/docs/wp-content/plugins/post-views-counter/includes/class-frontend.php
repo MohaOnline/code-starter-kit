@@ -235,6 +235,13 @@ class Post_Views_Counter_Frontend {
 		if ( empty( $post_types ) || ! is_singular( $post_types ) )
 			return;
 
+		// get current post id
+		$post_id = (int) get_the_ID();
+
+		// allow to run check post?
+		if ( ! (bool) apply_filters( 'pvc_run_check_post', true, $post_id ) )
+			return;
+
 		// get counter mode
 		$mode = $pvc->options['general']['counter_mode'];
 
@@ -245,7 +252,7 @@ class Post_Views_Counter_Frontend {
 			// prepare args
 			$args = [
 				'mode'			=> $mode,
-				'postID'		=> get_the_ID(),
+				'postID'		=> $post_id,
 				'requestURL'	=> '',
 				'nonce'			=> '',
 				'dataStorage'	=> $pvc->options['general']['data_storage'],

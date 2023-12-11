@@ -9,7 +9,18 @@
 
 .cp_cff_13 #fbuilder h1,
 .cp_cff_13 #fbuilder h2,
-.cp_cff_13 #fbuilder h3{ font-size: 23px; font-weight: 600; line-height: 1.3; margin:0;}
+.cp_cff_13 #fbuilder h3,
+.cp_cff_13 #fbuilder h4,
+.cp_cff_13 #fbuilder h5,
+.cp_cff_13 #fbuilder h6,
+.cp_cff_13 #fbuilder .fform p{ font-weight: 600; margin:0;}
+
+.cp_cff_13 #fbuilder h1{font-size:2.6em;}
+.cp_cff_13 #fbuilder h2{font-size:2em;}
+.cp_cff_13 #fbuilder h3{font-size:1.5em;}
+.cp_cff_13 #fbuilder h4{font-size:1.3em;}
+.cp_cff_13 #fbuilder h5{font-size:1em;}
+.cp_cff_13 #fbuilder h6{font-size:0.8em;}
 
 .cp_cff_13 #fbuilder input,
 .cp_cff_13 #fbuilder select,

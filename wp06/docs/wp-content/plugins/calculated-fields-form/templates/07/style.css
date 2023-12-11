@@ -23,11 +23,23 @@ body{
     margin: -30px -30px 30px -30px;
 }
 .cp_cff_minimalist #fbuilder .fform h1,
-.cp_cff_minimalist #fbuilder .fform h2{
+.cp_cff_minimalist #fbuilder .fform h2,
+.cp_cff_minimalist #fbuilder .fform h3,
+.cp_cff_minimalist #fbuilder .fform h4,
+.cp_cff_minimalist #fbuilder .fform h5,
+.cp_cff_minimalist #fbuilder .fform h6,
+.cp_cff_minimalist #fbuilder .fform p{
 	color: #AAA;
-    font-size: 2em;
     font-family: 'Open Sans Condensed', sans-serif;
 }
+
+.cp_cff_minimalist #fbuilder .fform h1{font-size:2.6em;}
+.cp_cff_minimalist #fbuilder .fform h2{font-size:2em;}
+.cp_cff_minimalist #fbuilder .fform h3{font-size:1.5em;}
+.cp_cff_minimalist #fbuilder .fform h4{font-size:1.3em;}
+.cp_cff_minimalist #fbuilder .fform h5{font-size:1em;}
+.cp_cff_minimalist #fbuilder .fform h6{font-size:0.8em;}
+
 
 .cp_cff_minimalist #fbuilder input[type="date"],
 .cp_cff_minimalist #fbuilder input[type="datetime"],

@@ -2,14 +2,22 @@
 # This file is distributed under the same license as the Plugins - Redis Object Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-27 08:54:33+0000\n"
+"PO-Revision-Date: 2023-11-17 01:10:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.9\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Redis Object Cache - Stable (latest release)\n"
+
+#: includes/class-plugin.php:1390
+msgid "Object cache drop-in is not writable."
+msgstr "对象缓存 Drop-in（强化扩展）不可写。"
+
+#: includes/class-plugin.php:1375
+msgid "File modifications are not allowed."
+msgstr "不允许修改文件。"
 
 #. translators: %s = Object Cache Pro.
 #: includes/ui/settings.php:83
@@ -22,20 +30,20 @@ msgstr "需要更高的性能和可靠性？"
 
 #. translators: %1$s = Formatted object-cache.php file name, %2$s = Formatted
 #. wp-content directory name.
-#: includes/object-cache.php:2942
+#: includes/object-cache.php:2939
 msgid "To disable Redis, delete the %1$s file in the %2$s directory."
 msgstr "要禁用 Redis，请删除 %2$s 目录中的 %1$s 文件。"
 
-#: includes/object-cache.php:2930
+#: includes/object-cache.php:2927
 msgid "Is the Redis server running?"
 msgstr "Redis 服务器是否正在运行？"
 
-#: includes/object-cache.php:2929
+#: includes/object-cache.php:2926
 msgid "Is the correct Redis host and port set?"
 msgstr "Redis 主机和端口设置是否正确？"
 
 #. translators: %s = Formatted wp-config.php file name.
-#: includes/object-cache.php:2924
+#: includes/object-cache.php:2921
 msgid "WordPress is unable to establish a connection to Redis. This means that the connection information in your %s file are incorrect, or that the Redis server is not reachable."
 msgstr "WordPress 无法建立与 Redis 的连接。这意味着您的 %s 文件中的连接信息不正确，或者无法访问 Redis 服务器。"
 
@@ -56,11 +64,11 @@ msgid "Redis is unreachable:"
 msgstr "Redis 无法访问："
 
 #. translators: %s = Link to installation instructions.
-#: includes/object-cache.php:2935
+#: includes/object-cache.php:2932
 msgid "If you need help, please read the <a href=\"%s\">installation instructions</a>."
 msgstr "如果您需要帮助，请阅读<a href=\"%s\">安装说明</a>。"
 
-#: includes/object-cache.php:2917
+#: includes/object-cache.php:2914
 msgid "Error establishing a Redis connection"
 msgstr "建立 Redis 连接时出错"
 
@@ -76,29 +84,29 @@ msgstr "无法启用对象缓存。 Redis 服务器无法访问：%s"
 
 #. translators: 1: Hit ratio, 2: Hits, 3: Misses. 4: Human-readable size of
 #. cache.
-#: includes/class-plugin.php:803
+#: includes/class-plugin.php:801
 msgid "(Current page) Hit Ratio: %1$s%%, Hits %2$s, Misses: %3$s, Size: %4$s"
 msgstr "（当前页）命中率：%1$s%%，命中 %2$s，未命中：%3$s，大小：%4$s"
 
 #. translators: %s = The status of the Redis connection.
-#: includes/class-plugin.php:783
+#: includes/class-plugin.php:781
 msgid "Status: %s"
 msgstr "状态：%s"
 
-#: includes/class-plugin.php:852
+#: includes/class-plugin.php:850
 msgid "Flushing cache..."
 msgstr "刷新缓存..."
 
-#: includes/class-plugin.php:545
+#: includes/class-plugin.php:543
 msgid "Drop-in is outdated"
 msgstr "Drop-in（加载项） 已过时"
 
-#: includes/class-plugin.php:541
+#: includes/class-plugin.php:539
 msgid "Not enabled"
 msgstr "未启用"
 
 #. translators: %s = Action link to update the drop-in.
-#: includes/class-plugin.php:1120
+#: includes/class-plugin.php:1106
 msgid "The Object Cache Pro plugin appears to be installed and should be used. You can safely <a href=\"%s\">uninstall Redis Object Cache</a>."
 msgstr "Object Cache Pro 插件似乎已安装并且应该使用。您可以安全地<a href=\"%s\">卸载 Redis 对象缓存</a>。"
 
@@ -138,15 +146,15 @@ msgstr "已复制！"
 msgid "Copy diagnostics to clipboard"
 msgstr "将诊断复制到剪贴板"
 
-#: includes/class-plugin.php:1393
+#: includes/class-plugin.php:1410
 msgid "Content directory is not writable."
 msgstr "内容目录不可写。"
 
-#: includes/class-plugin.php:1152
+#: includes/class-plugin.php:1138
 msgid "Object Cache Pro!"
 msgstr "对象缓存专业版！"
 
-#: includes/class-plugin.php:291
+#: includes/class-plugin.php:289
 msgctxt "verb"
 msgid "Upgrade to Pro"
 msgstr "升级到专业版"
@@ -192,7 +200,7 @@ msgstr "为原始性能重写"
 msgid "%s are disabled for this site."
 msgstr "该站点已禁用 %s。"
 
-#: includes/class-plugin.php:549
+#: includes/class-plugin.php:547
 msgid "Drop-in is invalid"
 msgstr "Drop-in（加载项）  是无效的"
 
@@ -200,31 +208,31 @@ msgstr "Drop-in（加载项）  是无效的"
 msgid "https://objectcache.pro"
 msgstr "https://objectcache.pro"
 
-#: includes/class-plugin.php:1411
+#: includes/class-plugin.php:1428
 msgid "Copied test file couldn’t be deleted."
 msgstr "无法删除复制的测试文件。"
 
-#: includes/class-plugin.php:1407
+#: includes/class-plugin.php:1424
 msgid "Couldn’t verify test file contents."
 msgstr "无法验证测试文件内容。"
 
-#: includes/class-plugin.php:1401
+#: includes/class-plugin.php:1418
 msgid "Copied test file doesn’t exist."
 msgstr "复制的测试文件不存在。"
 
-#: includes/class-plugin.php:1397
+#: includes/class-plugin.php:1414
 msgid "Failed to copy test file."
 msgstr "未能复制测试文件。"
 
-#: includes/class-plugin.php:1388
+#: includes/class-plugin.php:1405
 msgid "Test file exists, but couldn’t be deleted."
 msgstr "测试文件存在，但无法删除。"
 
-#: includes/class-plugin.php:1383
+#: includes/class-plugin.php:1400
 msgid "Object cache file doesn’t exist."
 msgstr "对象缓存文件不存在。"
 
-#: includes/class-plugin.php:1376
+#: includes/class-plugin.php:1379
 msgid "Could not initialize filesystem."
 msgstr "无法初始化文件系统。"
 
@@ -233,24 +241,24 @@ msgid "Username:"
 msgstr "用户名："
 
 #. translators: %s = Link to settings page.
-#: includes/class-plugin.php:711
+#: includes/class-plugin.php:709
 msgid "A foreign object cache drop-in was found. To use Redis for object caching, please <a href=\"%s\">enable the drop-in</a>."
 msgstr "找到一个外部对象缓存加载项。要使用 Redis 进行对象缓存，请<a href=\"%s\">启用该加载项</a>。"
 
-#: includes/class-plugin.php:391
+#: includes/class-plugin.php:389
 msgid "Enable object cache to collect data."
 msgstr "启用对象缓存来收集数据。"
 
-#: includes/class-plugin.php:390
+#: includes/class-plugin.php:388
 msgid "Not enough data collected, yet."
 msgstr "尚未收集足够的数据。"
 
-#: includes/class-plugin.php:251 includes/class-plugin.php:767
+#: includes/class-plugin.php:249 includes/class-plugin.php:765
 #: includes/ui/widget.php:38
 msgid "Settings"
 msgstr "设置"
 
-#: includes/class-plugin.php:194
+#: includes/class-plugin.php:192
 msgid "Metrics"
 msgstr "指标"
 
@@ -262,7 +270,7 @@ msgstr "WordPress 正在使用外部对象缓存插件，并且未使用 Redis �
 msgid "The Redis Object Cache drop-in is not installed. Use WP CLI or go to \"Settings -> Redis\" to enable drop-in."
 msgstr "未安装 Redis 对象缓存加载项。使用 WP CLI 或转到“设置 -> Redis”以启用 drop-in(加载项)。"
 
-#: includes/class-plugin.php:738 includes/class-qm-collector.php:34
+#: includes/class-plugin.php:736 includes/class-qm-collector.php:34
 #: includes/class-qm-output.php:37
 msgid "Object Cache"
 msgstr "对象缓存"
@@ -341,22 +349,22 @@ msgstr "命中"
 msgid "Hit Ratio"
 msgstr "命中率"
 
-#: includes/class-plugin.php:389 includes/ui/tabs/metrics.php:32
+#: includes/class-plugin.php:387 includes/ui/tabs/metrics.php:32
 #: includes/ui/widget.php:33
 msgid "Calls"
 msgstr "调用"
 
-#: includes/class-plugin.php:388 includes/ui/tabs/metrics.php:27
+#: includes/class-plugin.php:386 includes/ui/tabs/metrics.php:27
 #: includes/ui/widget.php:28
 msgid "Ratio"
 msgstr "比率"
 
-#: includes/class-plugin.php:387 includes/ui/tabs/metrics.php:22
+#: includes/class-plugin.php:385 includes/ui/tabs/metrics.php:22
 #: includes/ui/widget.php:23
 msgid "Bytes"
 msgstr "字节"
 
-#: includes/class-plugin.php:386 includes/ui/tabs/metrics.php:17
+#: includes/class-plugin.php:384 includes/ui/tabs/metrics.php:17
 #: includes/ui/widget.php:18
 msgid "Time"
 msgstr "时间"
@@ -371,7 +379,7 @@ msgstr "资源"
 
 #. translators: %1$d = number of objects. %2$s = human-readable size of cache.
 #. %3$s = name of the used client.
-#: includes/class-plugin.php:1273
+#: includes/class-plugin.php:1259
 msgid "Retrieved %1$d objects (%2$s) from Redis using %3$s."
 msgstr "使用 %3$s 从 Redis 检索了 %1$d 个对象 (%2$s)。"
 
@@ -398,16 +406,16 @@ msgid "This doesn’t appear to be a valid number."
 msgstr "这似乎不是一个有效的数字。"
 
 #. translators: %s = Link to the plugin's settings screen.
-#: includes/class-plugin.php:1203
+#: includes/class-plugin.php:1189
 msgid "Object Cache Pro is a <u>business class</u> object cache that’s highly-optimized for WooCommerce to provide true reliability, peace of mind and faster load times for your store. <a style=\"color: #bb77ae;\" href=\"%s\">Learn more »</a>"
 msgstr "Object Cache Pro 是一款<u>商业级</u>对象缓存，针对 WooCommerce 进行了高度优化，可为您的商店提供真正的可靠性、安心和更快的加载时间。 <a style=\"color: #bb77ae;\" href=\"%s\">了解更多 »</a>"
 
-#: includes/class-plugin.php:1200
+#: includes/class-plugin.php:1186
 msgid "Object Cache Pro + WooCommerce = ❤️"
 msgstr "Object Cache Pro + WooCommerce = ❤️"
 
 #. translators: %s = Link to the plugin setting screen.
-#: includes/class-plugin.php:1155
+#: includes/class-plugin.php:1141
 msgid "A <u>business class</u> object cache backend. Truly reliable, highly-optimized and fully customizable, with a <u>dedicated engineer</u> when you most need it. <a href=\"%s\">Learn more »</a>"
 msgstr "一个<u>商业化</u>对象缓存后端。真正可靠、高度优化和完全可定制，在您最需要的时候配备一名<u>专业工程师</u>。<a href=\"%s\">了解更多信息 »</a>"
 
@@ -427,15 +435,15 @@ msgstr "全局组"
 msgid "Status"
 msgstr "状态"
 
-#: includes/class-plugin.php:200
+#: includes/class-plugin.php:198
 msgid "Diagnostics"
 msgstr "诊断"
 
-#: includes/class-plugin.php:1045 includes/cli/class-commands.php:164
+#: includes/class-plugin.php:1031 includes/cli/class-commands.php:164
 msgid "Object cache drop-in could not be updated."
 msgstr "无法更新对象缓存加载项。"
 
-#: includes/class-plugin.php:1039 includes/cli/class-commands.php:162
+#: includes/class-plugin.php:1025 includes/cli/class-commands.php:162
 msgid "Updated object cache drop-in and enabled Redis object cache."
 msgstr "更新了对象缓存加载项并启用了 Redis 对象缓存。"
 
@@ -459,11 +467,11 @@ msgstr "是"
 msgid "Servers:"
 msgstr "服务器："
 
-#: includes/class-plugin.php:188
+#: includes/class-plugin.php:186
 msgid "Overview"
 msgstr "概览"
 
-#: includes/class-plugin.php:537 includes/class-qm-collector.php:77
+#: includes/class-plugin.php:535 includes/class-qm-collector.php:77
 msgid "Disabled"
 msgstr "未启用"
 
@@ -479,48 +487,48 @@ msgstr "Till Krüss"
 msgid "https://wordpress.org/plugins/redis-cache/"
 msgstr "https://wordpress.org/plugins/redis-cache/"
 
-#: includes/class-plugin.php:934
+#: includes/class-plugin.php:932
 msgid "Object cache could not be flushed."
 msgstr "无法刷新对象缓存。"
 
-#: includes/class-plugin.php:928
+#: includes/class-plugin.php:926
 msgid "Object cache flushed."
 msgstr "对象缓存已刷新。"
 
-#: includes/class-plugin.php:1014 includes/cli/class-commands.php:123
+#: includes/class-plugin.php:1000 includes/cli/class-commands.php:123
 msgid "Object cache could not be disabled."
 msgstr "无法禁用对象缓存。"
 
-#: includes/class-plugin.php:1008 includes/cli/class-commands.php:121
+#: includes/class-plugin.php:994 includes/cli/class-commands.php:121
 msgid "Object cache disabled."
 msgstr "对象缓存已禁用"
 
-#: includes/class-plugin.php:978 includes/cli/class-commands.php:82
+#: includes/class-plugin.php:970 includes/cli/class-commands.php:82
 msgid "Object cache could not be enabled."
 msgstr "无法启用对象缓存。"
 
-#: includes/class-plugin.php:972 includes/cli/class-commands.php:80
+#: includes/class-plugin.php:964 includes/cli/class-commands.php:80
 msgid "Object cache enabled."
 msgstr "启用对象缓存。"
 
 #. translators: %s = Action link to update the drop-in.
-#: includes/class-plugin.php:704
+#: includes/class-plugin.php:702
 msgid "The Redis object cache drop-in is outdated. Please <a href=\"%s\">update the drop-in</a>."
 msgstr "Redis 对象缓存插件加载项已过时。请<a href=\"%s\">更新插件</a>。"
 
-#: includes/class-plugin.php:558 includes/ui/tabs/overview.php:258
+#: includes/class-plugin.php:556 includes/ui/tabs/overview.php:258
 msgid "Unknown"
 msgstr "未知"
 
-#: includes/class-plugin.php:555
+#: includes/class-plugin.php:553
 msgid "Not connected"
 msgstr "未连接"
 
-#: includes/class-plugin.php:554
+#: includes/class-plugin.php:552
 msgid "Connected"
 msgstr "已连接"
 
-#: includes/class-plugin.php:152
+#: includes/class-plugin.php:150
 msgid "Redis"
 msgstr "Redis"
 
@@ -532,7 +540,7 @@ msgstr "禁用对象缓存"
 msgid "Enable Object Cache"
 msgstr "启用对象缓存"
 
-#: includes/class-plugin.php:759 includes/ui/tabs/overview.php:270
+#: includes/class-plugin.php:757 includes/ui/tabs/overview.php:270
 msgid "Flush Cache"
 msgstr "刷新缓存"
 
@@ -565,7 +573,7 @@ msgid "Client:"
 msgstr "客户端："
 
 #. Plugin Name of the plugin
-#: includes/class-plugin.php:151 includes/class-plugin.php:223
+#: includes/class-plugin.php:149 includes/class-plugin.php:221
 #: includes/ui/settings.php:19
 msgid "Redis Object Cache"
 msgstr "Redis Object Cache"

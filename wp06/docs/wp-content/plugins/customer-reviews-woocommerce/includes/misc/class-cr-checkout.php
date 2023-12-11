@@ -83,13 +83,31 @@ if ( ! class_exists( 'CR_Checkout' ) ) :
 				$klarna_order_id = $order->get_transaction_id();
 				$klarna_order = KCO_WC()->api->get_klarna_order( $klarna_order_id );
 
-				if ( isset( $klarna_order['merchant_requested']['additional_checkboxes'] ) ) {
-					foreach ( $klarna_order['merchant_requested']['additional_checkboxes'] as $checkbox ) {
-						if ( 'cr_customer_consent' === $checkbox['id'] ) {
-							if ( $checkbox['checked'] ) {
-								$order->update_meta_data( '_ivole_cr_consent', 'yes' );
-							} else {
-								$order->update_meta_data( '_ivole_cr_consent', 'no' );
+				// V2 of Klarna Checkout API
+				if ( isset( $klarna_order['merchant_requested'] ) ) {
+					if ( isset( $klarna_order['merchant_requested']['additional_checkboxes'] ) ) {
+						foreach ( $klarna_order['merchant_requested']['additional_checkboxes'] as $checkbox ) {
+							if ( 'cr_customer_consent' === $checkbox['id'] ) {
+								if ( $checkbox['checked'] ) {
+									$order->update_meta_data( '_ivole_cr_consent', 'yes' );
+								} else {
+									$order->update_meta_data( '_ivole_cr_consent', 'no' );
+								}
+							}
+						}
+					}
+				}
+
+				// V3 of Klarna Checkout API
+				if ( isset( $klarna_order['options'] ) ) {
+					if ( isset( $klarna_order['options']['additional_checkboxes'] ) ) {
+						foreach ( $klarna_order['options']['additional_checkboxes'] as $checkbox ) {
+							if ( 'cr_customer_consent' === $checkbox['id'] ) {
+								if ( $checkbox['checked'] ) {
+									$order->update_meta_data( '_ivole_cr_consent', 'yes' );
+								} else {
+									$order->update_meta_data( '_ivole_cr_consent', 'no' );
+								}
 							}
 						}
 					}

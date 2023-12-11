@@ -3,14 +3,16 @@ Contributors: iqonicdesign
 Tags: elementor charts, elementor graphs, Wordpress data visualization, elementor addon,  elementor apex charts,  graphina, area chart, data visualization, donut chart, dynamic charts, dynamic CSV charts, dynamic data, elementor apex charts, elementor charts, elementor counters, elementor datatable, elementor graphs, google sheets, graph, line chart, pie chart
 Requires PHP: 7.4.0
 Requires at least: 5.9
-Tested up to: 6.3
-Stable tag: 1.8.6
+Tested up to: 6.4.1
+Stable tag: 1.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Most Powerful Data visualization plugin for WordPress Elementor. The easiest way to build gorgeous Charts & Graphs on your Elementor website.
 
 == Description ==
+
+[Cyber Week Sale Extended- Enjoy 30% OFF on Graphina Pro Plugin!](https://codecanyon.net/item/graphinapro-elementor-dynamic-charts-datatable/28654061?irgwc=1&clickid=0Jv36I3fwxyPW%3A61gJT-E1V0UkFXw9XSCTRtxw0&iradid=275988&irpid=2777823&iradtype=ONLINE_TRACKING_LINK&irmptype=mediapartner&mp_value1=&utm_campaign=af_impact_radius_2777823&utm_medium=affiliate&utm_source=impact_radius)
 
 # Its like WordPress Elementor Charts on STEROIDS* 💊
 Creating WordPress Charts and Graphs is hard and boring. We make it a whole lot EASIER, QUICKER, more POWERFUL, and more FUN.
@@ -226,6 +228,12 @@ Yes, we'd love to hear from you at <a href="mailto:hello@iqonic.design">hello@iq
 
 
 == Changelog ==
+
+= 1.8.7 - 18/11/2023 =
+- [Update] Apexcharts Library
+- WordPress version 6.4 compatible 
+- Elementor version 3.17 compatible 
+- Bug fix
 
 = 1.8.6 - 28/08/2023 =
 - WordPress version 6.3 compatible 

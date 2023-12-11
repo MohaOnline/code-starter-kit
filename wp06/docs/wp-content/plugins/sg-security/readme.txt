@@ -1,10 +1,10 @@
 === Security Optimizer - The All-In-One WordPress Protection Plugin ===
 Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, ignatggeorgiev
-Tags: security, firewall, malware scanner, web application firewall, two factor authentication, block hackers, country blocking, clean hacked site, blocklist, waf, login security
+Tags: security, firewall, malware scanner, web application firewall, two factor authentication, block hackers, country blocking, clean hacked site, blocklist, waf, login security, free
 Requires at least: 4.7
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,11 +12,11 @@ Secure your WordPress site from brute-force attacks, threats, malware, and bots.
 
 == Description ==
 
-**Secure your WordPress site from brute-force attacks, threats, malware, and bots. Free to use and easy to set up. Bulletproof your WordPress security in a few clicks against a range of security breaches, including brute-force attacks, malware threats, bots, etc.**
-Proactively monitor your site’s security to detect any suspicious activity and take immediate actions to safeguard your site and prevent further damage with these essential features:
+**Bulletproof your website security in a few clicks against a range of security breaches, including brute-force attacks, malware threats and bots, with our free WordPress security plugin - Security Optimizer.**
 
+Proactively monitor your site’s security to detect any suspicious activity and take immediate actions to protect your site and prevent further damage with these essential features:
 
-* Enable **Two-Factor Authentication** for an extra layer of security
+* Enable **2FA (Two-Factor Authentication)** for an extra layer of website security
 * Set **Limit Login Attempts** to deter malicious login attempts and brute-force attacks
 * Change your default login URL to **Custom Login URL** to avoid attacks
 * Activate **Advanced XSS Protection** to fortify your website against malicious attacks
@@ -26,7 +26,7 @@ Proactively monitor your site’s security to detect any suspicious activity and
 * Use **Activity Log** to monitor your site and quickly prevent malicious actions
 * **Post-Hack Actions** to take immediate actions and prevent further damages
 
-Developed by the security experts at [SiteGround](https://www.siteground.com/wordpress-plugins/siteground-security) and trusted by over 900,000 webmasters, for its robust security shield and ease of use to secure WordPress applications from possible attacks on any hosting platform.
+Developed by the website security experts at [SiteGround](https://www.siteground.com/wordpress-plugins/siteground-security) and trusted by over 900,000 webmasters for its robust security shield and ease of use to safeguard WordPress applications from possible attacks on any hosting platform.
 
 = AWARDS: =
 
@@ -38,15 +38,11 @@ Developed by the security experts at [SiteGround](https://www.siteground.com/wor
 
 = Plugin Tutorial =
 
-All-inclusive Security Plugin by SiteGround for Every WordPress Site
-Unveil the vast array of features and unleash the full potential of our plugin in our [Security Optimizer Tutorial](https://www.siteground.com/tutorials/wordpress/sg-security/).
-
+Unveil the vast array of features and unleash the full potential of our security plugin in our [Security Optimizer Tutorial](https://www.siteground.com/tutorials/wordpress/sg-security/).
 
 == SITE PROTECTION FEATURES ==
 
-Safeguard your WordPress application using our powerful site security toolset. Our comprehensive features are specifically designed to strengthen your website's defenses against malware, exploits, and various malicious activities. With these tools at your disposal, you can ensure the utmost protection for your website:
-
-
+Safeguard your WordPress application using our powerful site security toolset. Our comprehensive features are specifically designed to strengthen your website's defenses against malware, exploits, and various malicious activities. With these tools at your disposal, you can ensure the utmost bot, malware and brute force protection for your website:
 
 = Lock and Protect System Folders =
 
@@ -69,7 +65,7 @@ Prevent content scraping and specific attacks on your site by disabling RSS and 
 
 = Advanced XSS Protection =
 
-Add an extra layer of security against cross-site scripting (XSS) attacks by enabling Advanced XSS Protection, bolstering the overall security of your website.
+Add an extra layer of website security against cross-site scripting (XSS) attacks by enabling Advanced XSS Protection, bolstering the overall security of your website.
 
 = Delete Default Readme.html =
 
@@ -83,16 +79,15 @@ Personalize your login URL to thwart potential attacks and create a strong entry
 
 = Login Access =
 
-Restrict login page access to specific IP addresses or IP ranges, effectively thwarting malicious login attempts and deterring brute-force attacks.
+Restrict login page access to specific IP addresses or IP ranges, effectively thwarting malicious login attempts and deterring brute force attacks.
 
-= Two-Factor Authentication =
+= 2FA (Two-Factor Authentication) =
 
-Immerse your website in an impenetrable shield of security with Two-Factor Authentication. This formidable feature demands that all admin users furnish a unique token, generated exclusively through the Google Authentication application, during the login process.
+Immerse your website in an impenetrable shield of security with 2FA. This formidable feature demands that all admin users furnish a unique token, generated exclusively through the Google Authentication application, during the login process.
 
 = Disable Common Usernames =
 
-Don't fall victim to predictable security breaches! The use of common usernames, such as
-'admin,' poses a significant threat to the integrity of your website. Activate this option to disable the creation of common usernames. If any weak usernames already exist, we'll prompt you to provide new, stronger alternatives.
+Don't fall victim to predictable security breaches! The use of common usernames, such as 'admin,' poses a significant threat to the integrity of your website. Activate this option to disable the creation of common usernames. If any weak usernames already exist, we'll prompt you to provide new, stronger alternatives.
 
 = Limit Login Attempts =
 
@@ -100,7 +95,7 @@ Maintain control over unauthorized access attempts with Limit Login Attempts. Se
 
 == ACTIVITY MONITORING ==
 
-Monitor your website and login page for unauthorized visitors and brute-force attempts to prevent malicious actions.
+Monitor your website and login page for unauthorized visitors and brute force attempts to prevent malicious actions
 
 = Activity Log =
 
@@ -108,10 +103,10 @@ The Activity Log page provides you with a comprehensive view of the activities p
 
 = Weekly Security Reports =
 
-Receive a weekly traffic summary of your website directly to your inbox through Weekly Security Reports. This report compiles data on both bot and human traffic, along with details about blocked login and visit attempts to proactively monitor traffic and promptly identify suspicious activity.
+Receive a weekly traffic summary for your website directly to your inbox. This **Weekly Security Report** compiles data on both bot and human traffic, along with details about blocked login and visit attempts to proactively monitor traffic and promptly identify suspicious activity.
 
 == POST-HACK ACTIONS ==
-Take immediate measures to safeguard your website if you suspect a compromise and prevent further damage. Here, you'll find convenient solutions to address the situation effectively:
+Take immediate measures to protect your website if you suspect a compromise and prevent further damage. Here, you'll find convenient solutions to address the situation effectively:
 
 = Reinstall All Free Plugins =
 
@@ -148,6 +143,14 @@ By enforcing a password reset, you can ensure that all users are prompted to cha
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress Security Optimizer by SiteGround listing
 
 == Changelog ==
+
+= Version 1.4.8 =
+
+Release Date: Nov 22nd, 2023
+
+* Dashboard visuals improvements
+* Readme file improvements
+* Weekly Security Report improved translations
 
 = Version 1.4.7 =
 Release Date: Oct 24th, 2023

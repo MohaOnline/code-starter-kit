@@ -21,7 +21,11 @@ function wpr_addons_theme_builder_page() {
 
 <div class="wpr-settings-page-header">
     <h1><?php echo esc_html(Utilities::get_plugin_name(true)); ?></h1>
+
     <p><?php esc_html_e( 'The most powerful Elementor Addon in the universe.', 'wpr-addons' ); ?></p>
+    <!-- <a href="https://royaladdons.frill.co/b/6m4d5qm4/feature-ideas" class="" target="_blank" style="padding: 8px 22px;">
+        <?php echo esc_html__( 'Request New Feature', 'wpr-addons' ); ?>
+    </a> -->
 
     <!-- Custom Template -->
     <div class="wpr-preview-buttons">
@@ -35,19 +39,20 @@ function wpr_addons_theme_builder_page() {
             }
             ?>
         </div>
+        
+        <a href="https://www.youtube.com/watch?v=kE1zmi3fxh8" class="wpr-dynamic-tutorial wpr-options-button button" target="_blank" style="padding: 8px 22px;">
+            <?php echo esc_html__( 'Dynamic Websites Tutorial', 'wpr-addons' ); ?>
+            <span class="dashicons dashicons-video-alt3"></span>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=f_3tNiBC3dw" class="wpr-how-to-use-woo-builder wpr-options-button button" target="_blank" style="padding: 8px 22px; margin-left: 10px;">
+            <?php echo esc_html__( 'WooCommerce Builder Tutorial', 'wpr-addons' ); ?>
+            <span class="dashicons dashicons-video-alt3"></span>
+        </a>
 
         <a href="https://www.youtube.com/watch?v=cwkhwO_rPuo" class="wpr-how-to-use-theme-builder wpr-options-button button" target="_blank" style="padding: 8px 22px; margin-left: 10px;">
-            <?php echo esc_html__( 'How to use Theme Builder', 'wpr-addons' ); ?>
+            <?php echo esc_html__( 'Theme Builder Tutorial', 'wpr-addons' ); ?>
             <span class="dashicons dashicons-video-alt3"></span>
-        </a>
-        <a href="https://www.youtube.com/watch?v=f_3tNiBC3dw" class="wpr-how-to-use-woo-builder wpr-options-button button" target="_blank" style="padding: 8px 22px; margin-left: 10px;">
-            <?php echo esc_html__( 'How to use WooCommerce Builder', 'wpr-addons' ); ?>
-            <span class="dashicons dashicons-video-alt3"></span>
-        </a>
-
-        <a href="https://royaladdons.frill.co/b/6m4d5qm4/feature-ideas" class="wpr-options-button button" target="_blank" style="padding: 8px 22px;">
-            <?php echo esc_html__( 'Request New Feature', 'wpr-addons' ); ?>
-            <span class="dashicons dashicons-star-empty"></span>
         </a>
     </div>
 </div>
@@ -97,6 +102,18 @@ function wpr_addons_theme_builder_page() {
         </a>
     </div>
 
+
+<?php
+    if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
+        $url = '';
+        if ( 'wpr_tab_my_templates' === $active_tab ) {
+            $url = admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' );
+        } else {
+            $url = admin_url( 'edit.php?s&post_status=all&post_type=wpr_templates&wpr_template_type='. str_replace("wpr_tab_", "", $active_tab) .'&filter_action=Filter' );
+        }
+        echo '<a href="' . esc_url( $url ) . '" class="button button-primary wpr-translate-templates wpr-options-button"><span class="dashicons dashicons-admin-site"></span><span>Translate WPML Templates</span></a>';
+    }
+?>
     <?php if ( $active_tab == 'wpr_tab_header' ) : ?>
 
         <!-- Save Conditions -->

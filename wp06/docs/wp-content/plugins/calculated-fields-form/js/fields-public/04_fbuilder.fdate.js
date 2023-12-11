@@ -252,20 +252,24 @@
 				},
 			set_minDate:function(v, ignore)
 				{
-					var e = $('[id*="'+this.name+'"].hasDatepicker');
+					var e = $('[id*="'+this.name+'"].hasDatepicker'), f;
 					if(e.length)
 					{
 						e.datepicker('option', 'minDate', (ignore) ? null : v);
-						e.change();
+						if( e.has('.datepicker-container') ) { f = e; e = e.siblings('.date-component'); }
+						if(e.val() != '') e.change();
+						else if( f ) f.find('.ui-state-active').removeClass('ui-state-active');
 					}
 				},
 			set_maxDate:function(v, ignore)
 				{
-					var e = $('[id*="'+this.name+'"].hasDatepicker');
+					var e = $('[id*="'+this.name+'"].hasDatepicker'), f;
 					if(e.length)
 					{
 						e.datepicker('option', 'maxDate', (ignore) ? null : v);
-						e.change();
+						if( e.has('.datepicker-container') ) { f = e; e = e.siblings('.date-component'); }
+						if(e.val() != '') e.change();
+						else if( f ) f.find('.ui-state-active').removeClass('ui-state-active');
 					}
 				},
 			set_DefaultDate : function(init)
@@ -297,7 +301,7 @@
 					if(me.defaultDate != "") p.defaultDate = me.defaultDate;
 					dp.datepicker(p);
                     if(!me.predefinedClick || !!init == false) dp.datepicker("setDate", dd);
-                    if(!me._validateDate()) dp.datepicker("setDate", '');
+                    if(!me._validateDate()){ dp.datepicker("setDate", ''); $("#"+me.name+"_datepicker_container .ui-state-active").removeClass('ui-state-active');}
 				},
 			set_DefaultTime : function()
 				{
@@ -351,7 +355,7 @@
 
                     if(me.predefinedClick) attr = 'placeholder';
                     if(me.showDatepicker && ! me.alwaysVisible) format_label.push(me.dformat);
-					else{ date_tag_type = 'hidden'; disabled='disabled';}
+					else{ date_tag_type = 'hidden'; if( ! me.alwaysVisible ) disabled='disabled';}
                     if(me.showTimepicker) format_label.push('HH:mm');
 					this.predefined = this._getAttr('predefined');
 					return '<div class="fields '+cff_esc_attr(me.csslayout)+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label '+(me.showDatepicker ? 'for="'+n+'_date"' : '')+'>'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+((format_label.length) ? ' <span class="dformat">('+format_label.join(' ')+')</span>' : '')+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+cff_esc_attr(me.predefined)+'"/>'+

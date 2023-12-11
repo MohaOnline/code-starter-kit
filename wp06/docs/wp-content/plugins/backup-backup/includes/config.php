@@ -179,6 +179,7 @@
       if (!defined('BMI_CONFIG_DIR')) define('BMI_CONFIG_DIR', $localStoragePath);
       if (!defined('BMI_BACKUPS')) define('BMI_BACKUPS', $localStoragePath . DIRECTORY_SEPARATOR . 'backups');
       if (!defined('BMI_STAGING')) define('BMI_STAGING', $localStoragePath . DIRECTORY_SEPARATOR . 'staging');
+      if (!defined('BMI_TMP')) define('BMI_TMP', BMI_BACKUPS_ROOT . DIRECTORY_SEPARATOR . 'tmp');
       
       $bmi_initial_config_dirpath = $localStoragePath;
       $bmi_initial_config_filepath = $newConfigStaticPath;

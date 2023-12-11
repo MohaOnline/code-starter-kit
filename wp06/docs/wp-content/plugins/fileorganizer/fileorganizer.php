@@ -3,7 +3,7 @@
 Plugin Name: FileOrganizer
 Plugin URI: https://wordpress.org/plugins/fileorganizer/
 Description: FileOrganizer is a plugin that helps you to manage all files in your WordPress Site.
-Version: 1.0.4
+Version: 1.0.5
 Author: Softaculous Team
 Author URI: https://fileorganizer.net
 Text Domain: fileorganizer

@@ -45,9 +45,9 @@ class Content_AI {
 		$this->filter( 'rank_math/metabox/post/values', 'add_metadata', 10, 2 );
 		$this->action( 'cmb2_admin_init', 'add_content_ai_metabox', 11 );
 		$this->action( 'rank_math/deregister_site', 'remove_credits_data' );
-		$this->ajax( 'get_content_ai_credits', 'update_content_ai_credits' );
 		$this->filter( 'rank_math/elementor/dark_styles', 'add_dark_style' );
 		$this->filter( 'rank_math/status/rank_math_info', 'content_ai_info' );
+		$this->action( 'rank_math/connect/account_connected', 'refresh_content_ai_credits' );
 	}
 
 	/**
@@ -175,6 +175,8 @@ class Content_AI {
 			true
 		);
 
+		wp_set_script_translations( 'rank-math-content-ai', 'rank-math' );
+
 		$this->localized_data();
 	}
 
@@ -230,19 +232,6 @@ class Content_AI {
 	}
 
 	/**
-	 * Ajax callback to update the Content AI Credits.
-	 */
-	public function update_content_ai_credits() {
-		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
-		$this->has_cap_ajax( 'content_ai' );
-		$this->success(
-			[
-				'credits' => Helper::get_content_ai_credits( true ),
-			]
-		);
-	}
-
-	/**
 	 * Whether to load Content AI data.
 	 */
 	public static function can_add_tab() {
@@ -267,6 +256,8 @@ class Content_AI {
 		Helper::add_json( 'contentAIErrors', Helper::get_content_ai_errors() );
 		Helper::add_json( 'connectData', AdminHelper::get_registration_data() );
 		Helper::add_json( 'registerWriteShortcut', version_compare( get_bloginfo( 'version' ), '6.2', '>=' ) );
+		Helper::add_json( 'contentAiMigrating', get_site_transient( 'rank_math_content_ai_migrating_user' ) );
+		Helper::add_json( 'contentAiUrl', CONTENT_AI_URL . '/ai/' );
 	}
 
 	/**
@@ -294,6 +285,17 @@ class Content_AI {
 		array_splice( $rankmath['fields'], 3, 0, $content_ai );
 
 		return $rankmath;
+	}
+
+	/**
+	 * Refresh Content AI credits when account is connected.
+	 *
+	 * @param array $data Authentication data.
+	 *
+	 * @return void
+	 */
+	public function refresh_content_ai_credits( $data ) {
+		Helper::get_content_ai_credits( true );
 	}
 
 	/**
