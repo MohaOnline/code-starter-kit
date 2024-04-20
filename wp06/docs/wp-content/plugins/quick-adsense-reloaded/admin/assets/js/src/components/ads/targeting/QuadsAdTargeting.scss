@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Jan 28, 2020, 11:41:08 AM
+    Author     : Magazine3
+*/
+
+.quads-include{
+  background-color: yellowgreen;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.quads-exclude{
+  background-color: yellow;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quads-panel-body tr.quads-tr-position{
+  display: inline-flex;
+}
+
+.quads-panel-body td:nth-child(1) {
+    margin-top: 15px;
+}
+.position_content div label{
+  padding: 10px;
+}
+.position_content div {
+    padding-bottom: 15px !important;
+}
+p.description_adr {
+    text-align: center;
+    margin: 0px 0px -16px 0px;
+    right: 15%;
+    position: relative;
+    bottom: 33px;
+}
+.ad_rotator_grid {
+  float: unset;
+}

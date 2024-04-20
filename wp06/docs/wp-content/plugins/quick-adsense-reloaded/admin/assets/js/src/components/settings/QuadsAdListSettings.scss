@@ -1,0 +1,689 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Jan 28, 2020, 11:41:08 AM
+    Author     : Magazine3
+*/
+.alert_get_pro{
+  font-size: 12px;
+}
+.alert_get_pro .quads-got_pro.premium_features_btn{
+  margin: 0;
+}
+.quads-settings-saved-msg{
+  background: blue;  
+  color: #fff;  
+  display: block;
+  width: 100%;
+  background: greee;
+  padding: 10px;
+  margin: 0 0 5px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: arial,sans-serif;
+  line-height: 17px;
+  position: relative;
+  pointer-events: all!important;
+  display: block;
+  position: fixed;
+  width: 200px;
+  pointer-events: none!important;
+  letter-spacing: normal;
+  z-index: 9999999;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 5px 5px 5px grey;
+}
+.quads-settings-tab ul {
+  margin: 0;
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 20px 0px;
+  border-bottom: 1px solid #E1E1E1;
+  
+}
+.quads-settings-tab ul li a {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;    
+}
+.quads-settings-tab ul li a:focus{
+  outline: 0;
+  box-shadow: none;
+}
+.quads-settings-tab ul h2{
+  margin: 0;
+}
+a.quads-nav-link-active {
+  border-bottom: 3px solid #005af0 !important;
+  position: relative;
+  padding: 19px 20px;
+  color: #005af0 !important;
+}
+.quads-settings-tab ul li {
+  display: inline-block; 
+  line-height: 22px;
+  margin-bottom: 0;
+}
+.quads-settings-content{
+  background-color: #fff;
+  min-height: 500px;
+  display: inline-grid;
+  grid-template-columns: 1fr 250px;
+  width: 100%;
+  grid-gap: 30px;
+}
+.quads-settings-tab-container {
+  padding: 15px 25px 25px 30px;
+}
+.quads-settings-tab-container .form-table{
+    margin-top: 0;
+}
+.quads-settings-tab-container label {
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+.quads-settings-tab-container th{
+    width: 280px;
+}
+#quads-submit-button{
+  margin: 15px;
+}
+.quads-premium-cus{
+  margin-top: 5px;  
+  width: 300px;
+  padding: 18px 20px;
+  margin: 4px 2px;
+}
+
+.quads-help-support input,textarea,select{
+  width: 100%;  
+}
+.quads-help-support select{
+  max-width: 100%;  
+}
+.quads-system-info{
+  width: 580px;
+    height: 400px;
+    font-family: Menlo, Monaco, monospace;
+    background: none;
+    white-space: pre;
+    overflow: auto;
+    display: block;
+}
+.quads-save-settings{
+  padding: 25px;
+}
+.importampforwpmsgprocessing{
+      background-color: rgb(237, 247, 237);
+      padding: 6px 16px;
+    font-size: 0.875rem;
+}
+
+/** New CSS **/
+.quads-settings-tab-container .quads-hs{
+  display: inline-grid;
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+.quads-docm{
+  order:1;
+  flex: 1 0 40%;
+  margin-top:20px;
+}
+.quads-help-support{
+  width:100%;
+}
+a.quads-doc-link{
+  background: #fff;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.13);
+  display: inline-block;
+  padding: 35px;
+  width:100%;
+  text-decoration:none;
+  text-align:center;
+  transition:all 0.3s ease-in-out 0s;
+  box-sizing: border-box;
+}
+a.quads-doc-link:hover{
+  box-shadow: 0 7px 35px 0 rgba(0,0,0,.18);
+}
+.quads-doc-link h4{
+  font-size: 23px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #434264;
+  margin:0px 0px 15px;
+}
+.quads-doc-link p{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: #5c6771;
+  margin:0px 0px 15px;
+}
+.quads-doc-link span{
+  color: #005af0;
+  font-size: 14px;
+  font-weight: 500;
+  border-width: 0;
+}
+.quads-pre-cu{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.quads-bnr{
+  margin-top:30px;
+}
+
+@media(min-width:1280px){
+  .quads-docm {
+    width: 300px;
+  }
+
+}
+
+@media(max-width:1200px){
+  .quads-settings-tab-container .quads-hs {
+    grid-gap: 30px;
+  }
+}
+
+@media(max-width:1180px){
+  .quads-settings-content {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width:980px){
+  .quads-settings-content {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .quads-bnr {
+    margin-top: 0;
+  }
+}
+@media(max-width:600px){
+  .quads-settings-tab-container .quads-hs{
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+}
+
+.adblock_support .quads-modal-popup-content{
+      max-width: 980px !important;
+}
+.adblock_support .quads-modal-popup-content{
+    position: initial;
+}
+
+.adblock_support .quads-modal-popup-content {
+    max-width: 96% !important;
+}
+
+.quads-modal-popup.adblock_support{
+position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    }
+
+  .adblock_support  .quads-modal-popup-content h3{
+    padding:15px 20px !important;
+    border-bottom: 1px solid #ccc;
+    }
+
+  .adblock_support .quads-modal-close {
+
+
+    color: #444;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    border-left: 1px solid #ccc;
+    line-height: 2;
+    padding: 0px 15px;
+    }
+
+   .adblock_support .form-table td {
+
+    margin-bottom: 9px;
+    padding: 15px 10px;
+    line-height: 1.3;
+    vertical-align: middle;
+    text-align: left;
+
+}
+
+
+ .adblock_support .quads-modal-content {
+    background: #fff;
+}
+ .adblock_support .notice_type span{
+  width:100%;
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+
+ .adblock_support .quads-save-close{
+      width: 100%;
+    display: inline-block;
+    position: sticky;
+    bottom: 20px;
+    top: auto;
+    right: 0;
+    background: #f1f1f1;
+    left: 0;
+}
+
+.quads-modal-content.adsforwp-quads-popup{
+      text-align: left;
+}
+.quads-modal-content.adsforwp-quads-popup .quads-switch{
+    margin-left: 40px;
+}input.quads-premium-cus {
+  width: 300px;
+    float: left;
+    height: 10px;
+    padding: 18px 20px;
+    margin: 4px 2px;
+     }
+     .quads-message {
+  display: block;
+  padding: 10px;
+  border: 1px solid #FBFBFB;
+  border-radius: 2px;
+  background-color: #F8F8F7;
+  position: absolute;
+  max-width: 500px;
+  z-index: 9999;
+  display: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+  line-height: 20px;
+  text-transform: none;
+  font-size: 14px; }
+  .quads-icon-chevron-right:before {
+    content: "\e900";
+}
+.quads-icon-chevron-left:before {
+    content: "\e900";
+    transform: rotate(180deg);
+}
+.quads-icon-chevron-down:before {
+    content: "\e901";
+    transform: scale(0.6);
+}
+.quads-icon-chevron-up:before {
+    content: "\e902";
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+}
+.quads-icon-rollback:before {
+    content: "\e903";
+}
+.quads-icon-addon:before,
+.quads-addonSubMenuItem:before {
+    content: "\e904";
+}
+.quads-icon-addons:before,
+#quads-nav-addons:before {
+    content: "\e905";
+}
+.quads-icon-book:before {
+    content: "\e906";
+}
+.quads-icon-cdn:before,
+#quads-nav-page_cdn:before {
+    content: "\e907";
+}
+.quads-icon-database:before,
+#quads-nav-database:before {
+    content: "\e908";
+}
+.quads-icon-export:before {
+    content: "\e909";
+}
+.quads-icon-files:before,
+#quads-nav-cache:before {
+    content: "\e90a";
+}
+.quads-icon-help:before {
+    content: "\e90b";
+}
+.quads-icon-home:before,
+#quads-nav-dashboard:before {
+    content: "\e90c";
+}
+.quads-icon-import:before {
+    content: "\e90d";
+}
+.quads-icon-important:before {
+    content: "\e90e";
+}
+.quads-icon-information:before {
+    content: "\e90f";
+}
+.quads-icon-information2:before {
+    content: "\e910";
+}
+.quads-icon-interrogation:before {
+    content: "\e911";
+}
+.quads-icon-media:before,
+#quads-nav-media:before {
+    content: "\e912";
+}
+.quads-icon-plus:before {
+    content: "\e913";
+}
+.quads-Page#dashboard .quads-infoAccount:before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: #e0e4e9;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 6px;
+    text-align: center;
+    top: 2px;
+    font-size: 0.5rem;
+    line-height: 1.625;
+}
+.quads-Page#dashboard .quads-infoAccount.quads-isValid {
+    color: #00a66b;
+}
+.quads-infoAccount.quads-isValid:before {
+    content: "\e920";
+    font-family: "quads-icomoon";
+    speak: none;
+    background: #3ece9d;
+    top: -1px;
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 6px;
+    text-align: center;
+    top: 0px;
+    font-size: .5rem;
+    line-height: 1.625;
+}
+.quads-renewal-banner {
+    background: #ffd400;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    padding: 8px;
+}
+.quads-renew-message {
+    margin: 0 16px;
+}
+.quads-renew-message > p {
+    font-size: 18px;
+    margin: 0 0;
+    font-weight: normal;
+}
+.quads-renew-cta {
+    display: block;
+    background: #2b2b2b;
+    border-radius: 64px;
+    color: #ffd400;
+    font-size: 15px;
+    line-height: 1.125;
+    font-weight: 600;
+    padding: 9px 14px;
+    text-decoration: none;
+}
+.quads-renew-cta:hover,
+.quads-renew-cta:active,
+.quads-renew-cta:focus {
+    color: #fff;
+}
+.quads-renew-cta::after {
+    content: "\2192";
+    font-weight: normal;
+    margin-left: 8px;
+}
+.quads-button {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 8px 24px;
+    text-align: center;    
+    box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: -0.08px;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #fff !important;
+    white-space: nowrap;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: all 200ms ease-out;
+    -webkit-transition: all 200ms ease-out;
+    font-size: 0.8125rem;
+    line-height: 1.53846;
+    bottom: 0px;
+}
+.quads-button:hover,
+.quads-button:focus {
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0px 7px 14px rgba(50, 50, 93, 0.25);
+}
+.quads-button--small {
+    padding: 6px 5px;
+    letter-spacing: 0px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.81818;
+    text-transform: inherit;
+}
+.quads-button-btn {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    background: #005aef;
+}
+.quads-button-btn:before {
+    position: absolute;
+    line-height: 1.33333;
+}
+.quads-button--fixed {
+    position: fixed;
+    display: flex;
+    padding: 8px 16px;
+    right: 24px;
+    bottom: 32px;
+    border-radius: 16px;
+}
+.quads-button--fixed:before {
+    font-size: 1.125rem;
+    line-height: 1;
+    margin-right: 8px;
+}
+.quads-button:focus {
+    outline: none;
+    color: #fff !important;
+}
+.quads-infoAccount.quads-isValid {
+    color: #00A66B;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+}.quads-infoAccountt.quads-isValids {
+    color: #00A66B;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+}.activated_p {
+    display: contents;
+}
+.activated_messg {
+    font-size: initial;
+    font-weight: 600;
+}.Key_msg {
+    margin-top: 10px;
+}.quads-optionHeader .quads-title2 {
+        line-height: 24px;
+    color: #005af0;
+    padding-right: 40px;
+    font-weight: 600;
+    font-size: 16px;
+}.quads-title2 {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+}.quads-icon-user:before {
+    content: "\e914";
+    top: 11px;
+    right: 13px;
+    font-size: 13px;
+}.quads-bnr-inv {
+    margin-top: 30px;
+}.quads_fivestar.updated {
+    display: none;
+}.q-r-m{
+  font-weight: bold;
+  }.quads-Page-inner{
+    border: 1px solid #ececec;
+    padding: 0 0 20px 15px;
+    margin-top: 20px;
+  }.pro_key_btn{
+    width: 199px;
+    float: left;
+  }.q-r-m-e {
+    font-weight: bold;
+    color: #FF0000;
+}.quads-isinValid {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+}
+.getprocheckbox{
+  font-size: 11px;
+  background: #546e7a;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 2px;
+
+}
+a.quads_pro_link{
+  font-size: 11px;
+    background: #546e7a;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-left: 2px;
+  text-decoration: none;
+}
+.RoleBasedAccess{
+  width: 82%;
+  +a.quads-general-helper.quads-general-helper-new {
+    margin-top: -34px;
+}
+}
+
+th.blocked_data_main {
+  display: block;
+}td.blocked_data {
+  display: block;
+}
+span.blocked_ids{
+  padding-right: 10px;
+  cursor: pointer;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #1d2327;
+  display: inline-block;
+  margin: -8px 0px -7px 0px;
+}p.blocked_values{
+  cursor: default;
+    line-height: 1;
+    font-weight: 600;
+    color: #1d2327;
+}input#btn_clear_all_ips {
+  background-color: #005aef;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  padding: 3px 18px;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-weight: 400;
+}
+.no_id {
+  padding-top: 10px;
+}span.blocked_ids_in {
+  vertical-align: top;
+  line-height: 1.3;
+  font-weight: 600;
+}a.blocked_ids_href{
+  right: 8px;
+}td.b_in, tr.b_in {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}div#blocked_id_main {
+  padding-top: 10px;
+}table#blocked_id_table {
+  border-collapse: collapse;
+}td.b_in_ {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}tr.b_in_ {
+  font-weight: bold;
+}
+select#abtesting_report {
+  margin: 0px 0px 5px 0px;
+}
+.quads-refresh {
+  margin-left: 5px;
+  background: #005aef;
+  color: #fff;
+  font-size: 16px !important;
+  padding: 2px;
+  border-radius: 4px;
+  vertical-align: bottom;
+  cursor: pointer;
+}
+.quads-user {
+  margin-left: 5px;
+  color: #fff;
+  padding: 2px;
+  vertical-align: bottom;
+}
