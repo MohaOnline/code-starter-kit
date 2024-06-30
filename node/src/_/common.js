@@ -1,3 +1,4 @@
+/* Configure logs function to be trackable globally. */
 export const TRACKABLE_LOGS = true;
 
 /**
