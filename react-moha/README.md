@@ -76,16 +76,19 @@ Happy hacking!
 ### References:
 
 - [Create React App](https://github.com/facebook/create-react-app)
+- https://github.com/facebook/create-react-app/blob/main/CHANGELOG.md
+- [React Framework Changelog](https://github.com/facebook/react/blob/main/CHANGELOG.md)
 
 ## 常用信息
 
 ### 常用命令
 
-| 命令            | 作用                    |
-|---------------|-----------------------|
-| npm start     | 开发模式启动应用，更新代码实时反馈到浏览器 |
-| npm run build | 生产环境用文件生成             |
-| npm test      |                       |
+| 命令                               | 作用                    |
+|----------------------------------|-----------------------|
+| npm install react-scripts@latest | 升级应用                  |
+| npm start                        | 开发模式启动应用，更新代码实时反馈到浏览器 |
+| npm run build                    | 生产环境用文件生成             |
+| npm test                         |                       |
 
 ### 常用目录与文件
 
@@ -106,6 +109,13 @@ Happy hacking!
 ### 参考
 
 - [Update create-react-app](https://github.com/facebook/create-react-app/blob/main/CHANGELOG.md)
+
+## 程序说明
+
+|                        |   |
+|------------------------|---|
+| components/Showcase.js |   |
+|                        |   |
 
 ## Available Scripts
 
