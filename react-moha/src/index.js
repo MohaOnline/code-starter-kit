@@ -5,6 +5,8 @@ import App from './App';
 import UserGuide from './tutorials/macos/UserGuide';
 import reportWebVitals from './reportWebVitals';
 
+// be referred in index.html as start point of the application.
+
 /*
 React Normal Flow:
    ReactDOM.createRoot(htmlDOM).render(React Elements);
@@ -36,11 +38,11 @@ root.render(
         <React.Fragment // Comments could be in JSX tag.
         >
             {/* refer to ... */}
-            {frag}
+            {/*{frag}*/}
 
             <App/>
         </React.Fragment>
-        {React.createElement(UserGuide)}
+        {/*{React.createElement(UserGuide)}*/}
 
     </React.StrictMode> // Could be <></> from React 16.2
 );
