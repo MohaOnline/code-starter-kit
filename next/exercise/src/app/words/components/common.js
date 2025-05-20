@@ -32,20 +32,30 @@ export const handleKeyDown = (event, status, setStatus) => {
 
   if (event.key === 'ArrowRight') {
     console.debug('next word');
+
     setStatus({
       ...status, // 复制现有状态
-      currentWord: status.currentWord + 1, // 更新 currentWord
+      currentWordIndex: status.currentWordIndex + 1, // 更新 currentWord
     });
   }
 
   if (event.key === 'ArrowLeft') {
     console.debug('previous word');
 
+    setStatus({
+      ...status, // 复制现有状态
+      isPlaying: false,
+      currentWordIndex: Math.max(0, status.currentWordIndex - 1),
+    });
   }
 
   if (event.key === ' ') {
     console.debug('play pronunciation');
 
+    setStatus({
+      ...status, // 复制现有状态
+      isPlaying: !status.isPlaying,
+    });
   }
 
 };

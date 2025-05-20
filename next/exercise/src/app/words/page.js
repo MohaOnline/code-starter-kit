@@ -8,7 +8,8 @@ import list from './CET4_T.json';
 export default function Words() {
 
   const [status, setStatus] = useState({
-    currentWord: 0,
+    currentWordIndex: 0,
+    isPlaying: true,
   });
 
   // 键盘事件处理
@@ -27,12 +28,33 @@ export default function Words() {
 
   });
 
+  // 是否自动播放单词
+  useEffect(() => {
+
+    let timer;
+
+    if (status.isPlaying) {
+      timer = setInterval(() => {
+        console.debug('auto next word.');
+
+        setStatus({
+          ...status, // 复制现有状态
+          currentWordIndex: status.currentWordIndex + 1, // 更新 currentWord
+        });
+      }, 2000);
+    }
+
+    return () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
+  });
+
   return (
       <React.Fragment>
-        <div>{list[status.currentWord].name}</div>
-        <div>{list[status.currentWord].trans.join(', ')}</div>
+        <div>{list[status.currentWordIndex].name}</div>
+        <div>{list[status.currentWordIndex].trans.join(', ')}</div>
       </React.Fragment>
   );
 }
-
-export {FuncSample};
