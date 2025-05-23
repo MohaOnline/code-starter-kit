@@ -9,6 +9,7 @@ import {handleKeyDown} from '../words/components/common';
 export default function Page() {
   const [status, setStatus] = useState({
     currentWordIndex: 0,
+    playedWordIndex: -1,
     isPlaying: false,
     words: [],
   });
@@ -57,7 +58,7 @@ export default function Page() {
   useEffect(() => {
     if (status.words.length > 0 &&
         status.words[status.currentWordIndex]?.voice_id_us) {
-      
+
       // 清理现有定时器和音频
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -73,21 +74,73 @@ export default function Page() {
         audioRef.current.currentTime = 0;
       }
 
-      // if (status.isPlaying) {
-      // }
-      // 创建新的音频实例
-      audioRef.current = new Audio(audio);
+      if (status.isPlaying !== false || status.currentWordIndex !==
+          status.playedWordIndex) {
 
-      // 播放音频
-      audioRef.current.play().catch(error => {
-        console.error('Audio playback failed:', error);
-      });
+        audioRef.current = new Audio(audio);
+
+        // 监听音频元数据加载以获取时长
+        audioRef.current.addEventListener('loadedmetadata', () => {
+          const duration = audioRef.current.duration * 1000; // 转换为毫秒
+
+          console.debug('Audio duration:', duration);
+          console.debug('isPlaying;', status.isPlaying);
+          console.debug('currentWordIndex;', status.currentWordIndex);
+          console.debug('playedWordIndex:', status.playedWordIndex);
+
+          // 播放音频
+          audioRef.current.play().catch(error => {
+            console.error('Audio playback failed:', error);
+          });
+
+          status.playedWordIndex = status.currentWordIndex;
+          setStatus({
+            ...status, // 复制现有状态
+            playedWordIndex: status.currentWordIndex,
+          });
+
+          // 监听音频播放结束
+          const handleAudioEnded = () => {
+            console.debug('Audio ended');
+            console.debug('playedWordIndex:', status.playedWordIndex);
+
+            // 音频播放完毕后开始计时
+            intervalRef.current = setInterval(() => {
+              if (status.isPlaying) {
+                if (status.currentWordIndex + 1 <= status.words.length - 1) {
+                  setStatus({
+                    ...status, // 复制现有状态
+                    currentWordIndex: status.currentWordIndex + 1, // 更新 currentWord
+                  });
+                } else {
+                  setStatus({
+                    ...status, // 复制现有状态
+                    isPlaying: !status.isPlaying,
+                  });
+                }
+
+              }
+            }, duration); // 使用音频时长作为延迟
+          };
+
+          audioRef.current.addEventListener('ended', handleAudioEnded);
+
+          // 清理音频事件监听
+          return () => {
+            audioRef.current.removeEventListener('ended', handleAudioEnded);
+          };
+        });
+      }
 
       // 清理函数
       return () => {
         if (audioRef.current) {
           audioRef.current.pause();
           audioRef.current = null;
+        }
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
         }
       };
     }
@@ -109,9 +162,9 @@ export default function Page() {
                 className={'word'}>{status.words[status.currentWordIndex].word}</div>
 
             <div
-                className={'translation'}>{status.words[status.currentWordIndex].part_of_speech
+                className={'translation'}>{status.words[status.currentWordIndex].pos
                 ? '[' +
-                status.words[status.currentWordIndex].part_of_speech + ']'
+                status.words[status.currentWordIndex].pos + ']'
                 :
                 '[组]'} {status.words[status.currentWordIndex].translation}</div>
 
