@@ -77,7 +77,7 @@ export default function Notebook() {
     if (words.length > 0 && words[status.currentWordIndex]?.voice_id_us) {
 
       const firstChar = words[status.currentWordIndex].voice_id_us[0].toLowerCase();
-      const audio = `/refs/voices/en-US-JennyNeural/${firstChar}/${words[status.currentWordIndex].voice_id_us}.wav`;
+      const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${words[status.currentWordIndex].voice_id_us}.wav`;
 
       // 停止当前音频
       if (audioRef.current) {
@@ -101,7 +101,7 @@ export default function Notebook() {
         }
       };
     }
-  }, [status.currentWordIndex, words]);
+  }, [status, words]);
 
   if (words.length === 0) return <div>Loading...</div>;
 
@@ -119,6 +119,7 @@ export default function Notebook() {
           color: 'rgb(120, 210, 120)',
           height: '85vh',
         }}>
+          <div>
           <div style={{
             opacity: 0.6,
           }} dangerouslySetInnerHTML={{
@@ -127,7 +128,7 @@ export default function Notebook() {
           }}></div>
           <div
               style={{
-                margin: '60px 0 0 0',
+                margin: '0 0 0 0',
                 'font-size': '60px',
                 'letter-spacing': '3px',
               }}>{words[status.currentWordIndex].word}</div>
@@ -139,7 +140,8 @@ export default function Notebook() {
 
           <div
               style={{
-                margin: '60px 0 0 0',
+                margin: '50px 0 0 0',
+                'font-size': '28px',
                 opacity: 0.6,
               }}>{words[status.currentWordIndex].part_of_speech
               ? '[' +
@@ -148,6 +150,7 @@ export default function Notebook() {
               '[组]'} {words[status.currentWordIndex].translation}</div>
 
           <div></div>
+          </div>
         </div>
 
         <div onClick={(event) => {

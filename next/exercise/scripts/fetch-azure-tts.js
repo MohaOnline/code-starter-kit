@@ -18,7 +18,7 @@ const speechConfig = SpeechConfig.fromSubscription(
     process.env.SPEECH_KEY,
     process.env.SPEECH_REGION,
 );
-speechConfig.speechSynthesisVoiceName = process.env.SPEECH_VOICE;
+speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
 console.log(speechConfig);
 
 // 延迟函数
@@ -30,7 +30,7 @@ function generateSSML(word, phonetic_us, phonetic_uk) {
   const textToSpeak = word; // word 或 script 已在上层处理
   // return `
   //   <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  //     <voice name="${process.env.SPEECH_VOICE}">
+  //     <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
   //       ${phonetic
   //     ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
   //     : textToSpeak}
@@ -39,8 +39,9 @@ function generateSSML(word, phonetic_us, phonetic_uk) {
   // `;
 
   return `
-    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-      <voice name="${process.env.SPEECH_VOICE}">
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+      0, 5)}">
+      <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
         ${textToSpeak}
       </voice>
     </speak>
@@ -80,7 +81,7 @@ async function fetchAzureTTS() {
       const firstChar = voice_id_us[0].toLowerCase(); // UUID 第一个字符
       const filePath = path.resolve(
           process.cwd(),
-          `./public/refs/voices/${process.env.SPEECH_VOICE}/${firstChar}/${voice_id_us}.wav`,
+          `./public/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${voice_id_us}.wav`,
       );
 
       // 检查文件是否存在
