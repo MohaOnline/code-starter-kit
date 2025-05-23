@@ -54,7 +54,7 @@ export default function Notebook() {
     };
   });
 
-  //
+  // 获取单词
   useEffect(() => {
     const fetchWords = async () => {
 
@@ -72,7 +72,7 @@ export default function Notebook() {
     fetchWords();
   }, []);
 
-  // 当 current 或 words 改变时播放音频
+  // 当 currentWordIndex 或 words 改变时播放音频
   useEffect(() => {
     if (words.length > 0 && words[status.currentWordIndex]?.voice_id_us) {
 

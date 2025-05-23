@@ -33,9 +33,14 @@ export const handleKeyDown = (event, status, setStatus) => {
   if (event.key === 'ArrowRight') {
     console.debug('next word');
 
+    let next = status.currentWordIndex + 1;
+    if (status.words !== undefined) {
+      next = Math.min(status.words.length - 1, next);
+    }
+
     setStatus({
       ...status, // 复制现有状态
-      currentWordIndex: status.currentWordIndex + 1, // 更新 currentWord
+      currentWordIndex: next, // 更新 currentWord
     });
   }
 

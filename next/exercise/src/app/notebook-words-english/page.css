@@ -1,0 +1,21 @@
+.word-container {
+    display: grid;
+    place-items: center;
+    font-size: 34px;
+    margin: auto;
+    width: 1024px;
+    text-align: center;
+    font-family: serif;
+    height: 85vh;
+}
+
+.word-container .word {
+    font-size: 70px;
+    letter-spacing: 3px;
+}
+
+.word-container .translation {
+    margin: 50px 0 0 0;
+    font-size: 28px;
+    opacity: 0.6;
+}

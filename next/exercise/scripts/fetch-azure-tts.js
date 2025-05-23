@@ -75,7 +75,10 @@ async function fetchAzureTTS() {
         phonetic_us,
         phonetic_uk,
       } = row;
+
       const textToSpeak = script || word; // 优先使用 script，否则用 word
+
+      // 不同的发音都使用 us ID
       if (!voice_id_us) continue;
 
       const firstChar = voice_id_us[0].toLowerCase(); // UUID 第一个字符
