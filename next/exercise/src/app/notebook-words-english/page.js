@@ -3,6 +3,7 @@ import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
 import {FaPlay, FaPause} from 'react-icons/fa';
+import {Dialog, Transition} from '@headlessui/react';
 
 import {handleKeyDown} from '../words/components/common';
 
@@ -12,6 +13,8 @@ export default function Page() {
     playedWordIndex: -1,
     isPlaying: false,
     words: [],
+    isDialogOpen: false,
+    dialogData: {},
   });
 
   const audioRef = useRef(null);
@@ -104,7 +107,7 @@ export default function Page() {
             console.debug('Audio ended');
             console.debug('playedWordIndex:', status.playedWordIndex);
 
-            // 音频播放完毕后开始计时
+            // 音频播放完毕后开始计时，播放到最后单词时停止。
             intervalRef.current = setInterval(() => {
               if (status.isPlaying) {
                 if (status.currentWordIndex + 1 <= status.words.length - 1) {
@@ -146,6 +149,16 @@ export default function Page() {
     }
   }, [status.isPlaying, status.currentWordIndex]);
 
+  const searchEdit = async (word) => {
+    try {
+      if (!status.dialogData.word) {
+        setStatus({...status, dialogData: {word: word}});
+      }
+    } catch (error) {
+      console.error('Failed to search word:', error);
+    }
+  };
+
   if (status.words?.length === 0) return <div>Loading...</div>;
 
   return (
@@ -172,11 +185,65 @@ export default function Page() {
           </div>
         </div>
 
-        <div onClick={(event) => {
+        <div className={'text-center'} onClick={(event) => {
           event.key = ' ';
           keyDownCallback(event);
         }}>{status.isPlaying ?
-            <FaPause/> : <FaPlay/>}</div>
+            <FaPause/> : <FaPlay/>}
+        </div>
+
+        <div className="text-right">
+          <button
+              onClick={() => setStatus({
+                ...status, // 复制现有状态
+                isDialogOpen: true,
+              })}
+              className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600"
+          >
+            Add
+          </button>
+        </div>
+
+        <Transition show={status.isDialogOpen}>
+          <Dialog onClose={() => setStatus({
+            ...status, // 复制现有状态
+            isDialogOpen: false,
+          })} className="relative z-50">
+
+            <div className="fixed inset-0 bg-black/30" aria-hidden="true"/>
+            <div
+                className="fixed inset-0 flex items-center justify-center p-4">
+              <Dialog.Panel
+                  className="bg-gray-600 rounded-lg p-6 max-w-lg w-full">
+                <input
+                    type="text"
+                    defaultValue={status.dialogData.word
+                        ? status.dialogData.word
+                        : status.words[status.currentWordIndex].word}
+                    onBlur={(e) => searchEdit(e.target.value)}
+                    className="flex-1 p-2 border rounded"
+                    placeholder="Enter word to search"
+                />
+
+                <div className="flex justify-end gap-2">
+                  <button
+                      onClick={() => {
+                        status.dialogData.word = '';
+                        setStatus({
+                          ...status, // 复制现有状态
+                          isDialogOpen: false,
+                        });
+                      }}
+                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </Dialog.Panel>
+            </div>
+
+          </Dialog>
+        </Transition>
       </>
   );
 }

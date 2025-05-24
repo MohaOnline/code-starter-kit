@@ -10,6 +10,8 @@ export default function index(params) {
       <h1>L: {lexoRank.format()}</h1>
       <h1>L2: {lexoRank2.format()}</h1>
       <h1>LexoRank: {lexoRank.between(lexoRank2).format()}</h1>
+      <h1>L: {lexoRank2.genNext().format()}</h1>
+      <h1>L: {lexoRank2.genNext().genNext().format()}</h1>
     </>
   );
 }
