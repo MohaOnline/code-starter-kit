@@ -4,6 +4,9 @@ import './page.css';
 import React, {useEffect, useRef, useState} from 'react';
 import {FaPlay, FaPause, FaTrash} from 'react-icons/fa';
 import {Dialog, Transition} from '@headlessui/react';
+import {toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {handleKeyDown} from '../words/components/common';
 
@@ -213,7 +216,18 @@ export default function Page() {
 
         <div className="text-right">
           <button
-              onClick={() => {
+              onClick={async () => {
+                // search current word
+                try {
+                  const response = await fetch(
+                      `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`);
+                  const data = await response.json();
+
+                } catch (error) {
+                  console.error('Failed to search english-chinese:', error);
+                  toast.error('查询失败，请检查网络或稍后再试');
+                }
+
                 setStatus({
                 ...status, // 复制现有状态
                 isDialogOpen: true,
@@ -234,25 +248,38 @@ export default function Page() {
                       },
                     ],
                   },
-                })
+                });
               }}
               className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600"
           >
             Edit / Add
           </button>
+          <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+          />
         </div>
 
-        <Transition show={status.isDialogOpen}>
+        <Transition show={status.isDialogOpen}
+                    className="">
           <Dialog onClose={() => setStatus({
             ...status, // 复制现有状态
             isDialogOpen: false,
           })} className="relative z-50">
 
             <div className="fixed inset-0 bg-black/30" aria-hidden="true"/>
+
             <div
-                className="fixed inset-0 flex items-center justify-center p-4">
+                className="fixed inset-0 flex items-center justify-center p-4 ">
               <Dialog.Panel
-                  className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full">
+                  className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
                 <input name={'note-word-id'} type={'hidden'}
                        value={status.dialogData.id
                            ? status.dialogData.id
@@ -468,28 +495,27 @@ export default function Page() {
 
                                     }}
                                 >
-
-
                                   <FaTrash/>
                                 </button>
                               </div>
+                              <textarea
+                                  className={'w-full p-2 border rounded mt-2'}
+                                  placeholder={'解释'}>
+
+                              </textarea>
+
+                              <textarea
+                                  className={'w-full p-2 border rounded '}
+                                  placeholder={'追加解释'}>
+
+                              </textarea>
                             </div>
                         );
                       }
                   )
                 }
 
-                <textarea
-                    className={'w-full p-2 border rounded mt-2'}
-                    placeholder={'解释'}>
 
-                </textarea>
-
-                <textarea
-                    className={'w-full p-2 border rounded '}
-                    placeholder={'追加解释'}>
-
-                </textarea>
 
                 {/* 对话框操作区 */}
                 <div className="flex justify-end gap-2 mt-2 ">
