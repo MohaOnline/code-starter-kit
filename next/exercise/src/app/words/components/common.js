@@ -24,7 +24,11 @@ import {atom, useAtom} from 'jotai';
 // }
 
 export const handleKeyDown = (event, status, setStatus) => {
-  event.preventDefault();
+  if (status.isDialogOpen) {
+    return;
+  } else {
+    event.preventDefault();
+  }
 
   if (event.key === 'F5') {
     console.log('F5 被阻止');
@@ -42,9 +46,7 @@ export const handleKeyDown = (event, status, setStatus) => {
       ...status, // 复制现有状态
       currentWordIndex: next, // 更新 currentWord
     });
-  }
-
-  if (event.key === 'ArrowLeft') {
+  } else if (event.key === 'ArrowLeft') {
     console.debug('previous word');
 
     setStatus({
@@ -52,9 +54,7 @@ export const handleKeyDown = (event, status, setStatus) => {
       isPlaying: false,
       currentWordIndex: Math.max(0, status.currentWordIndex - 1),
     });
-  }
-
-  if (event.key === ' ') {
+  } else if (event.key === ' ') {
     console.debug('play pronunciation');
 
     setStatus({

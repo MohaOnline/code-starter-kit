@@ -2,7 +2,7 @@
 import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
-import {FaPlay, FaPause} from 'react-icons/fa';
+import {FaPlay, FaPause, FaTrash} from 'react-icons/fa';
 import {Dialog, Transition} from '@headlessui/react';
 
 import {handleKeyDown} from '../words/components/common';
@@ -14,7 +14,7 @@ export default function Page() {
     isPlaying: false,
     words: [],
     isDialogOpen: false,
-    dialogData: {},
+    dialogData: {translations: []},
   });
 
   const audioRef = useRef(null);
@@ -161,6 +161,25 @@ export default function Page() {
 
   if (status.words?.length === 0) return <div>Loading...</div>;
 
+  function addTranslation() {
+    setStatus(
+        {
+          ...status,
+          dialogData: {
+            ...status.dialogData,
+            translations: [
+              ...status.dialogData.translations, {
+                cid: '',
+                pos: '',
+                phonetic_us: '',
+                phonetic_uk: '',
+                translation: '',
+                script: '',
+              }],
+          },
+        });
+  }
+
   return (
       <>
         <div className={'word-container'}>
@@ -194,13 +213,32 @@ export default function Page() {
 
         <div className="text-right">
           <button
-              onClick={() => setStatus({
+              onClick={() => {
+                setStatus({
                 ...status, // 复制现有状态
                 isDialogOpen: true,
-              })}
+                  dialogData: {
+                    id: status.words[status.currentWordIndex].id,
+                    nid: status.words[status.currentWordIndex].nid,
+                    weight: status.words[status.currentWordIndex].weight,
+                    eid: status.words[status.currentWordIndex].eid,
+                    word: status.words[status.currentWordIndex].word,
+                    translations: [
+                      {
+                        cid: status.words[status.currentWordIndex].cid,
+                        pos: status.words[status.currentWordIndex].pos,
+                        phonetic_us: status.words[status.currentWordIndex].phonetic_us,
+                        phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
+                        translation: status.words[status.currentWordIndex].translation,
+                        script: status.words[status.currentWordIndex].translation_script,
+                      },
+                    ],
+                  },
+                })
+              }}
               className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600"
           >
-            Add
+            Edit / Add
           </button>
         </div>
 
@@ -214,27 +252,273 @@ export default function Page() {
             <div
                 className="fixed inset-0 flex items-center justify-center p-4">
               <Dialog.Panel
-                  className="bg-gray-600 rounded-lg p-6 max-w-lg w-full">
+                  className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full">
+                <input name={'note-word-id'} type={'hidden'}
+                       value={status.dialogData.id
+                           ? status.dialogData.id
+                           : status.words[status.currentWordIndex].id}
+                />
+                <input name={'notebook-id'} type={'hidden'}
+                       value={status.dialogData.nid
+                           ? status.dialogData.nid
+                           : status.words[status.currentWordIndex].nid}
+                />
+                <input name={'eid'} type={'hidden'} value={status.dialogData.eid
+                    ? status.dialogData.eid
+                    : status.words[status.currentWordIndex].eid}
+                />
                 <input
                     type="text"
                     defaultValue={status.dialogData.word
                         ? status.dialogData.word
                         : status.words[status.currentWordIndex].word}
                     onBlur={(e) => searchEdit(e.target.value)}
-                    className="flex-1 p-2 border rounded"
+                    className="w-full p-2 border rounded"
                     placeholder="Enter word to search"
                 />
+                <input
+                    type="text"
+                    value={status.dialogData.accent
+                        ? status.dialogData.accent
+                        : status.words[status.currentWordIndex].accent}
+                    onChange={(e) => setStatus(
+                        {
+                          ...status,
+                          dialogData: {
+                            ...status.dialogData,
+                            accent: e.target.value,
+                          },
+                        })}
+                    className="w-full mt-2 p-2 border rounded"
+                    placeholder="accent"
+                />
+                <input
+                    type="text"
+                    value={status.dialogData.script
+                        ? status.dialogData.script
+                        : status.words[status.currentWordIndex].script}
+                    onChange={(e) => setStatus(
+                        {
+                          ...status,
+                          dialogData: {
+                            ...status.dialogData,
+                            accent: e.target.value,
+                          },
+                        })}
+                    className="w-full mt-2 p-2 border rounded"
+                    placeholder="script"
+                />
+                {
+                  status.dialogData.translations.map((translation, index) => {
 
-                <div className="flex justify-end gap-2">
+                        if (translation.deleted) return null;
+
+                        return (
+                            <div key={index}
+                                 className="translation mt-2 bg-gray-950/70">
+                              <div className={'flex items-center gap-2'}>
+                                <input name={'cid'} type={'hidden'}
+                                       value={translation.cid}
+                                />
+                                <input
+                                    type="text"
+                                    className="w-10 p-2 pl-1 pr-1 border rounded"
+                                    placeholder="PoS"
+                                    value={translation.pos}
+                                    onChange={(e) => {
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        pos: e.target.value,
+                                      };
+                                      setStatus(
+                                          {
+                                            ...status,
+                                            dialogData: {
+                                              ...status.dialogData,
+                                              translations: translations,
+                                            },
+                                          });
+                                    }}
+                                />
+                                <input
+                                    type="text"
+                                    value={translation.phonetic_uk}
+                                    onChange={(e) => {
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        phonetic_uk: e.target.value,
+                                      };
+                                      setStatus(
+                                          {
+                                            ...status,
+                                            dialogData: {
+                                              ...status.dialogData,
+                                              translations: translations,
+                                            },
+                                          });
+                                    }}
+                                    className="flex-1 p-2 pl-1 pr-1 border rounded"
+                                    placeholder="UK "
+                                />
+                                <input
+                                    type="text"
+                                    value={translation.phonetic_us}
+                                    onChange={(e) => {
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        phonetic_us: e.target.value,
+                                      };
+                                      setStatus(
+                                          {
+                                            ...status,
+                                            dialogData: {
+                                              ...status.dialogData,
+                                              translations: translations,
+                                            },
+                                          });
+                                    }}
+                                    className="flex-1 p-2 pl-1 pr-1 border rounded"
+                                    placeholder="US "
+                                />
+
+                                <input
+                                    type="checkbox"
+                                />
+                              </div>
+                              <div className="flex items-center gap-2 mt-2">
+                                <input
+                                    type="text"
+                                    value={translation.translation}
+                                    onChange={(e) => {
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        translation: e.target.value,
+                                      };
+                                      setStatus(
+                                          {
+                                            ...status,
+                                            dialogData: {
+                                              ...status.dialogData,
+                                              translations: translations,
+                                            },
+                                          });
+                                    }}
+                                    className="flex-1 p-2 pl-1 pr-1 border rounded"
+                                    placeholder="Translation"
+                                />
+                                <input
+                                    type="text"
+                                    value={translation.script}
+                                    onChange={(e) => {
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        script: e.target.value,
+                                      };
+                                      setStatus(
+                                          {
+                                            ...status,
+                                            dialogData: {
+                                              ...status.dialogData,
+                                              translations: translations,
+                                            },
+                                          });
+                                    }}
+                                    className="flex-1 p-2 pl-1 pr-1 border rounded"
+                                    placeholder="Script"
+                                />
+                                <button
+                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700"
+                                    onClick={() => {
+
+                                      if (translation.cid) {
+                                        // 已入库数据仅隐藏。
+                                        const translations = [...status.dialogData.translations];
+                                        translations[index] = {
+                                          ...translation,
+                                          deleted: true,
+                                        };
+                                        setStatus(
+                                            {
+                                              ...status,
+                                              dialogData: {
+                                                ...status.dialogData,
+                                                translations: translations,
+                                              },
+                                            });
+                                      } else {
+                                        const translations = [
+                                          ...status.dialogData.translations.slice(0,
+                                              index),
+                                          ...status.dialogData.translations.slice(
+                                              index + 1)];
+                                        setStatus(
+                                            {
+                                              ...status,
+                                              dialogData: {
+                                                ...status.dialogData,
+                                                translations: translations,
+                                              },
+                                            });
+                                      }
+
+                                    }}
+                                >
+
+
+                                  <FaTrash/>
+                                </button>
+                              </div>
+                            </div>
+                        );
+                      }
+                  )
+                }
+
+                <textarea
+                    className={'w-full p-2 border rounded mt-2'}
+                    placeholder={'解释'}>
+
+                </textarea>
+
+                <textarea
+                    className={'w-full p-2 border rounded '}
+                    placeholder={'追加解释'}>
+
+                </textarea>
+
+                {/* 对话框操作区 */}
+                <div className="flex justify-end gap-2 mt-2 ">
+                  <button
+                      onClick={() => {addTranslation(true);}}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700"
+                  >
+                    Add Translation
+                  </button>
+
+                  <button
+                      onClick={() => {}}
+                      className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 active:bg-green-700"
+                  >
+                    Save
+                  </button>
+
                   <button
                       onClick={() => {
                         status.dialogData.word = '';
                         setStatus({
                           ...status, // 复制现有状态
                           isDialogOpen: false,
+                          dialogData: {
+                            translations: [],
+                          },
                         });
                       }}
-                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 active:bg-gray-900"
                   >
                     Cancel
                   </button>
