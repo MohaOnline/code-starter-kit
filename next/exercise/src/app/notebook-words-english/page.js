@@ -152,19 +152,79 @@ export default function Page() {
     }
   }, [status.isPlaying, status.currentWordIndex]);
 
-  const searchEdit = async (word) => {
+  /**
+   * 检索已入库单词
+   */
+  const searchExistingWordsEnglishChinese = async (word) => {
+
+    // search current word
     try {
-      if (!status.dialogData.word) {
-        setStatus({...status, dialogData: {word: word}});
+      const response = await fetch(
+          `/api/words-english-chinese?word=${word}`);
+      const data = await response.json();
+      console.log(data);
+
+      // 存在的单词压成对象数组在 data.data 中
+      if (data?.data.length > 0) {
+        setStatus({
+          ...status, // 复制现有状态
+          isDialogOpen: true,
+          dialogData: data.data[0],
+        });
+        toast.info(`${word} found.`);
+      } else {
+
+        setStatus({
+          ...status, // 复制现有状态
+          dialogData: {
+            eid: '',
+            word: status.dialogData.word,
+            accent: '',
+            script: '',
+            syllable: '',
+            translations: [
+              {
+                id: '',
+                cid: '',
+                nid: '',
+                pos: '',
+                phonetic_us: '',
+                phonetic_uk: '',
+                translation: '',
+                script: '',
+                noted: false,
+                note: '',
+                note_explain: '',
+              }],
+          },
+        });
+        toast.error(`${word} not found.`);
       }
+      // if data.
+
     } catch (error) {
-      console.error('Failed to search word:', error);
+      console.error('Failed to search english-chinese:', error);
+      toast.error('查询失败，请检查网络或稍后再试');
     }
+    // try {
+    //   if (!status.dialogData.word) {
+    //     setStatus({...status, dialogData: {word: word}});
+    //   }
+    // } catch (error) {
+    //   console.error('Failed to search word:', error);
+    // }
   };
 
   if (status.words?.length === 0) return <div>Loading...</div>;
 
   function addTranslation() {
+    for (let i = status.dialogData.translations.length - 1; i >= 0; i--) {
+      if (status.dialogData.translations[i].deleted === true) {
+        status.dialogData.translations[i].deleted = false;
+        setStatus({...status});
+        return;
+      }
+    }
     setStatus(
         {
           ...status,
@@ -173,11 +233,13 @@ export default function Page() {
             translations: [
               ...status.dialogData.translations, {
                 cid: '',
+                nid: '',
                 pos: '',
                 phonetic_us: '',
                 phonetic_uk: '',
                 translation: '',
                 script: '',
+                noted: false,
               }],
           },
         });
@@ -215,6 +277,7 @@ export default function Page() {
         </div>
 
         <div className="text-right">
+          {/* Edit / Add Button */}
           <button
               onClick={async () => {
                 // search current word
@@ -222,41 +285,51 @@ export default function Page() {
                   const response = await fetch(
                       `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`);
                   const data = await response.json();
+                  console.log(data);
+
+                  if (data?.data.length > 0) {
+                    setStatus({
+                      ...status, // 复制现有状态
+                      isDialogOpen: true,
+                      dialogData: data.data[0],
+                    });
+                  } else {
+                    setStatus({
+                      ...status, // 复制现有状态
+                      isDialogOpen: true,
+                      dialogData: {
+                        id: status.words[status.currentWordIndex].id,
+                        nid: status.words[status.currentWordIndex].nid,
+                        weight: status.words[status.currentWordIndex].weight,
+                        eid: status.words[status.currentWordIndex].eid,
+                        word: status.words[status.currentWordIndex].word,
+                        translations: [
+                          {
+                            cid: status.words[status.currentWordIndex].cid,
+                            pos: status.words[status.currentWordIndex].pos,
+                            phonetic_us: status.words[status.currentWordIndex].phonetic_us,
+                            phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
+                            translation: status.words[status.currentWordIndex].translation,
+                            script: status.words[status.currentWordIndex].translation_script,
+                          },
+                        ],
+                      },
+                    });
+                  }
+                  // if data.
 
                 } catch (error) {
                   console.error('Failed to search english-chinese:', error);
                   toast.error('查询失败，请检查网络或稍后再试');
                 }
-
-                setStatus({
-                ...status, // 复制现有状态
-                isDialogOpen: true,
-                  dialogData: {
-                    id: status.words[status.currentWordIndex].id,
-                    nid: status.words[status.currentWordIndex].nid,
-                    weight: status.words[status.currentWordIndex].weight,
-                    eid: status.words[status.currentWordIndex].eid,
-                    word: status.words[status.currentWordIndex].word,
-                    translations: [
-                      {
-                        cid: status.words[status.currentWordIndex].cid,
-                        pos: status.words[status.currentWordIndex].pos,
-                        phonetic_us: status.words[status.currentWordIndex].phonetic_us,
-                        phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
-                        translation: status.words[status.currentWordIndex].translation,
-                        script: status.words[status.currentWordIndex].translation_script,
-                      },
-                    ],
-                  },
-                });
               }}
               className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600"
           >
             Edit / Add
           </button>
           <ToastContainer
-              position="top-center"
-              autoClose={3000}
+              position="top-right"
+              autoClose={4000}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick
@@ -272,42 +345,43 @@ export default function Page() {
           <Dialog onClose={() => setStatus({
             ...status, // 复制现有状态
             isDialogOpen: false,
+            dialogData: {translations: []},
           })} className="relative z-50">
 
+            {/* Shade */}
             <div className="fixed inset-0 bg-black/30" aria-hidden="true"/>
 
             <div
                 className="fixed inset-0 flex items-center justify-center p-4 ">
+              {/* Scrollable */}
               <Dialog.Panel
                   className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
-                <input name={'note-word-id'} type={'hidden'}
-                       value={status.dialogData.id
-                           ? status.dialogData.id
-                           : status.words[status.currentWordIndex].id}
-                />
-                <input name={'notebook-id'} type={'hidden'}
-                       value={status.dialogData.nid
-                           ? status.dialogData.nid
-                           : status.words[status.currentWordIndex].nid}
-                />
-                <input name={'eid'} type={'hidden'} value={status.dialogData.eid
-                    ? status.dialogData.eid
-                    : status.words[status.currentWordIndex].eid}
-                />
+                <div className={'flex'}>
                 <input
                     type="text"
-                    defaultValue={status.dialogData.word
-                        ? status.dialogData.word
-                        : status.words[status.currentWordIndex].word}
-                    onBlur={(e) => searchEdit(e.target.value)}
-                    className="w-full p-2 border rounded"
-                    placeholder="Enter word to search"
+                    value={status.dialogData.word}
+                    onChange={(e) => setStatus(
+                        {
+                          ...status,
+                          dialogData: {
+                            ...status.dialogData,
+                            word: e.target.value,
+                          },
+                        })}
+                    onBlur={(e) => searchExistingWordsEnglishChinese(
+                        e.target.value)}
+                    className="flex-1 p-2 border rounded"
+                    onFocus={(e) => e.target.select()}
+                    placeholder="Word..."
                 />
+                  <input name={'eid'} type={'text'}
+                         value={status.dialogData.eid}
+                         readOnly={true}
+                         className={'w-auto p-2 border pointer-events-none'}
+                  /></div>
                 <input
                     type="text"
-                    value={status.dialogData.accent
-                        ? status.dialogData.accent
-                        : status.words[status.currentWordIndex].accent}
+                    value={status.dialogData.accent}
                     onChange={(e) => setStatus(
                         {
                           ...status,
@@ -317,23 +391,35 @@ export default function Page() {
                           },
                         })}
                     className="w-full mt-2 p-2 border rounded"
-                    placeholder="accent"
+                    placeholder="Accent..."
                 />
                 <input
                     type="text"
-                    value={status.dialogData.script
-                        ? status.dialogData.script
-                        : status.words[status.currentWordIndex].script}
+                    value={status.dialogData.syllable}
                     onChange={(e) => setStatus(
                         {
                           ...status,
                           dialogData: {
                             ...status.dialogData,
-                            accent: e.target.value,
+                            syllable: e.target.value,
                           },
                         })}
                     className="w-full mt-2 p-2 border rounded"
-                    placeholder="script"
+                    placeholder="Syllable..."
+                />
+                <input
+                    type="text"
+                    value={status.dialogData.script}
+                    onChange={(e) => setStatus(
+                        {
+                          ...status,
+                          dialogData: {
+                            ...status.dialogData,
+                            script: e.target.value,
+                          },
+                        })}
+                    className="w-full mt-2 p-2 border rounded"
+                    placeholder="Script..."
                 />
                 {
                   status.dialogData.translations.map((translation, index) => {
@@ -344,6 +430,12 @@ export default function Page() {
                             <div key={index}
                                  className="translation mt-2 bg-gray-950/70">
                               <div className={'flex items-center gap-2'}>
+                                <input name={'note-word-id'} type={'hidden'}
+                                       value={translation.id}
+                                />
+                                <input name={'notebook-id'} type={'hidden'}
+                                       value={translation.nid}
+                                />
                                 <input name={'cid'} type={'hidden'}
                                        value={translation.cid}
                                 />
@@ -413,6 +505,22 @@ export default function Page() {
 
                                 <input
                                     type="checkbox"
+                                    checked={translation.noted}
+                                    onChange={(e) => {
+                                      const isChecked = e.target.checked;
+                                      const translations = [...status.dialogData.translations];
+                                      translations[index] = {
+                                        ...translation,
+                                        noted: isChecked,
+                                      };
+                                      setStatus({
+                                        ...status,
+                                        dialogData: {
+                                          ...status.dialogData,
+                                          translations: translations,
+                                        },
+                                      });
+                                    }}
                                 />
                               </div>
                               <div className="flex items-center gap-2 mt-2">
@@ -500,15 +608,15 @@ export default function Page() {
                               </div>
                               <textarea
                                   className={'w-full p-2 border rounded mt-2'}
-                                  placeholder={'解释'}>
+                                  placeholder={'笔记...'}>
 
                               </textarea>
 
-                              <textarea
-                                  className={'w-full p-2 border rounded '}
-                                  placeholder={'追加解释'}>
+                              {/*<textarea*/}
+                              {/*    className={'w-full p-2 border rounded '}*/}
+                              {/*    placeholder={'笔记：解释...'}>*/}
 
-                              </textarea>
+                              {/*</textarea>*/}
                             </div>
                         );
                       }
@@ -516,18 +624,53 @@ export default function Page() {
                 }
 
 
-
                 {/* 对话框操作区 */}
                 <div className="flex justify-end gap-2 mt-2 ">
                   <button
-                      onClick={() => {addTranslation(true);}}
+                      onClick={() => {addTranslation();}}
                       className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700"
                   >
                     Add Translation
                   </button>
 
+                  {/* 提交单词 */}
                   <button
-                      onClick={() => {}}
+                      onClick={async () => {
+                        try {
+
+                          const response = await fetch(
+                              '/api/words-english-chinese',
+                              {
+                                method: 'POST',
+                                headers: {
+                                  'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(status.dialogData),
+                              });
+
+                          if (response.ok) {
+                            const data = await response.json();
+                            console.log(data);
+
+                            if (data.success && data.data) {
+                              toast.success(
+                                  'Successfully added to notebook!' +
+                                  JSON.stringify(data.data));
+
+                              setStatus({
+                                ...status, // 复制现有状态
+                                dialogData: data.data,
+                              });
+
+                            }
+                          } else {
+                            toast.error('Failed to add to notebook!');
+                          }
+                        } catch (error) {
+                          toast.error('Failed to save:' + error.message);
+                        }
+
+                      }}
                       className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 active:bg-green-700"
                   >
                     Save
