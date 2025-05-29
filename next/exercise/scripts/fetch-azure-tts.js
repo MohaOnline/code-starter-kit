@@ -1,4 +1,4 @@
-// 加载 .env 文件（仅在独立脚本中需要）
+// 加载 .env 文件（仅在独立脚本中需要） ː  ˈ  ˌ
 import {config} from 'dotenv';
 import path from 'path';
 import fs from 'fs/promises';
@@ -28,24 +28,24 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 function generateSSML(word, phonetic_us, phonetic_uk) {
   const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
   const textToSpeak = word; // word 或 script 已在上层处理
-  // return `
-  //   <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  //     <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
-  //       ${phonetic
-  //     ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
-  //     : textToSpeak}
-  //     </voice>
-  //   </speak>
-  // `;
-
   return `
-    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
-      0, 5)}">
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
       <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
-        ${textToSpeak}
+        ${phonetic
+      ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
+      : textToSpeak}
       </voice>
     </speak>
   `;
+
+  // return `
+  //   <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+  //     0, 5)}">
+  //     <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
+  //       ${textToSpeak}
+  //     </voice>
+  //   </speak>
+  // `;
 }
 
 async function fetchAzureTTS() {

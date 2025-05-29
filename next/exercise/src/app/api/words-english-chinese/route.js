@@ -199,6 +199,11 @@ export async function POST(request) {
       for (const translation of data.translations) {
         console.log('Save translations:', translation);
 
+        // 把 azure 不能识别的音标换成 IPA
+        // https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
+        translation.phonetic_uk = translation.phonetic_uk.replace(/'/g, 'ˈ').
+            replace(/ɔ/g, 'ɒ').replace(/i/g, 'ɪ');
+
         if (translation.cid) {
           const [updateResult] = await connection.query(
               `UPDATE words_english_chinese
