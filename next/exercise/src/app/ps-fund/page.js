@@ -7,6 +7,7 @@ export default function index(params) {
   return (
     <>
       <h1>UUID: {uuid()}</h1>
+      <h1>UUID: {uuid()}</h1>
       <h1>L: {lexoRank.format()}</h1>
       <h1>L2: {lexoRank2.format()}</h1>
       <h1>LexoRank: {lexoRank.between(lexoRank2).format()}</h1>

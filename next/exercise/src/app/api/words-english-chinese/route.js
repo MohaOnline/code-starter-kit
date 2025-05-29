@@ -1,6 +1,8 @@
 import {use} from 'react';
 import {NextResponse} from 'next/server';
 import mysql from 'mysql2/promise';
+import {v4 as uuid} from 'uuid';
+import LexoRank from 'lexorank';
 
 // Database configuration
 const dbConfig = {
@@ -30,6 +32,7 @@ export async function GET(request) {
     connection = await mysql.createConnection(dbConfig);
 
     // Execute the SQL query
+    // 单纯查词接口，是否在笔记本里进攻参考。
     const [rows] = await connection.execute(`
         SELECT words_english_chinese_summary.*,
                notebook_words_english.id          as wid,
@@ -75,6 +78,7 @@ export async function GET(request) {
               noted: !!row.wid,
               note: row.note ? row.note : '',
               note_explain: row.note_explain ? row.note_explain : '',
+              deleted: !!row.chinese_deleted,
             },
           ],
         });
@@ -96,6 +100,7 @@ export async function GET(request) {
           noted: !!row.wid,
           note: row.note ? row.note : '',
           note_explain: row.note_explain ? row.note_explain : '',
+          deleted: !!row.chinese_deleted,
         });
       }
     });
@@ -189,6 +194,69 @@ export async function POST(request) {
       }
       // 不存在eid 插入记录。
     }
+
+    if (data.translations?.length > 0) {
+      for (const translation of data.translations) {
+        console.log('Save translations:', translation);
+
+        if (translation.cid) {
+          const [updateResult] = await connection.query(
+              `UPDATE words_english_chinese
+               SET part_of_speech = ?,
+                   phonetic_uk    = ?,
+                   phonetic_us    = ?,
+                   translation    = ?,
+                   script         = ?,
+                   deleted        =?
+               WHERE id = ?`, // 根据 cid 或其他唯一标识符来更新
+              [
+                translation.pos,
+                translation.phonetic_uk,
+                translation.phonetic_us,
+                translation.translation,
+                translation.script,
+                translation.deleted,
+                translation.cid, // 根据 cid 找到要更新的记录
+              ]);
+
+          if (updateResult.affectedRows === 0) {
+            console.error('无法更新 words_english_chinese:', data.word);
+            throw new Error('更新 words_english_chinese 失败: ' + data.word);
+          } else {
+
+            console.log('trans update: ', updateResult);
+          }
+        } else {
+          const [insertResult] = await connection.query(
+              `INSERT INTO words_english_chinese (part_of_speech, english_id,
+                                                  phonetic_uk, phonetic_us,
+                                                  translation, script,
+                                                  voice_id_uk, voice_id_us,
+                                                  voice_id_translation)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
+                translation.pos,
+                data.eid,
+                translation.phonetic_uk,
+                translation.phonetic_us,
+                translation.translation,
+                translation.script,
+                translation.voice_id_uk = uuid(),
+                translation.voice_id_us = uuid(),
+                translation.voice_id_translation = uuid(),
+              ]);
+
+          if (insertResult.affectedRows === 0) {
+            console.error('无法插入 words_english_chinese:', data.word);
+            throw new Error('插入 words_english_chinese 失败: ' + data.word);
+          } else {
+            console.log('trans insert: ', insertResult);
+            translation.cid = insertResult.insertId;
+          }
+        }
+      }
+    }
+
+
 
     await connection.commit();
     return NextResponse.json({success: true, data: data}, {status: 200});
