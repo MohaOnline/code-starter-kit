@@ -27,13 +27,25 @@ export default function Page() {
 
   // 键盘事件处理
   useEffect(() => {
+    // 处理中文输入法 ESC 意外关闭 Dialog
+    const handleCompositionStart = () => {
+      setStatus({...status, isComposing: true});
+    };
+
+    const handleCompositionEnd = () => {
+      setStatus({...status, isComposing: false});
+    };
 
     // 添加键盘事件监听器
     document.addEventListener('keydown', keyDownCallback);
+    document.addEventListener('compositionstart', handleCompositionStart);
+    document.addEventListener('compositionend', handleCompositionEnd);
 
     // 清理函数（组件卸载时移除键盘监听器）
     return () => {
       document.removeEventListener('keydown', keyDownCallback);
+      document.removeEventListener('compositionstart', handleCompositionStart);
+      document.removeEventListener('compositionend', handleCompositionEnd);
     };
 
   });

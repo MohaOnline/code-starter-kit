@@ -24,7 +24,13 @@ import {atom, useAtom} from 'jotai';
 // }
 
 export const handleKeyDown = (event, status, setStatus) => {
+
   if (status.isDialogOpen) {
+
+    if (event.key === 'Escape' && document.activeElement.tagName === 'INPUT' &&
+        document.activeElement.type === 'text' && !!status.isComposing) {
+      event.preventDefault(); // 阻止 ESC 键的默认行为
+    }
     return;
   } else {
     event.preventDefault();
