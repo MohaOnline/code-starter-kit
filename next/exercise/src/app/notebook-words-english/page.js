@@ -2,7 +2,7 @@
 import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
-import {FaPlay, FaPause, FaTrash} from 'react-icons/fa';
+import {FaPlay, FaPause, FaTrash, FaVolumeUp} from 'react-icons/fa';
 import {Dialog, Transition} from '@headlessui/react';
 import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
@@ -14,6 +14,8 @@ export default function Page() {
   const [status, setStatus] = useState({
     currentWordIndex: 0,
     playedWordIndex: -1,
+    playCurrent: null,
+    onWheel: false,       // 滚动时，不播放录音。
     isPlaying: false,
     words: [],
     isDialogOpen: false,
@@ -92,8 +94,9 @@ export default function Page() {
         audioRef.current.currentTime = 0;
       }
 
-      if (status.isPlaying !== false || status.currentWordIndex !==
-          status.playedWordIndex) {
+      if (!status.onWheel &&
+          (status.isPlaying !== false || status.currentWordIndex !==
+              status.playedWordIndex)) {
 
         audioRef.current = new Audio(audio);
 
@@ -133,7 +136,8 @@ export default function Page() {
                 } else {
                   setStatus({
                     ...status, // 复制现有状态
-                    isPlaying: !status.isPlaying,
+                    // isPlaying: !status.isPlaying,
+                    currentWordIndex: 0,
                   });
                 }
 
@@ -163,6 +167,18 @@ export default function Page() {
       };
     }
   }, [status.isPlaying, status.currentWordIndex]);
+
+  const playCurrentWord = () => {
+    const firstChar = status.words[status.currentWordIndex].voice_id_us[0].toLowerCase();
+    const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_us}.wav`;
+
+    audioRef.current = new Audio(audio);
+    audioRef.current.play().catch(error => {
+      console.error('Audio playback failed:', error);
+    });
+  };
+
+  status.playCurrent = () => playCurrentWord();
 
   /**
    * 检索已入库单词
@@ -267,19 +283,46 @@ export default function Page() {
               __html: status.words[status.currentWordIndex].phonetic_us ||
                   status.words[status.currentWordIndex].phonetic_uk || '&nbsp;',
             }}></div>
-            <div
-                className={'word'}>{status.words[status.currentWordIndex].word}</div>
 
             <div
-                className={'translation'}>{status.words[status.currentWordIndex].pos
+                className={'word'}
+                onClick={playCurrentWord}>{status.words[status.currentWordIndex].word}</div>
+
+            <div
+                className={'pos'}>&nbsp;{status.words[status.currentWordIndex].pos
                 ? '[' +
                 status.words[status.currentWordIndex].pos + ']'
                 :
-                '[组]'} {status.words[status.currentWordIndex].translation}</div>
+                ' '}&nbsp;</div>
+            <div
+                className={'translation'}>{status.words[status.currentWordIndex].translation}</div>
 
-            <div></div>
           </div>
         </div>
+
+        <div
+            className={'text-center'}
+            onWheel={(event) => {
+              status.onWheel = true;
+              status.isPlaying = false;
+
+              const delta = event.deltaY;
+              if (delta > 0) {
+                console.log('向下滚动 ' + delta);
+                setStatus({
+                  ...status, // 复制现有状态
+                  currentWordIndex: Math.min(status.words.length - 1,
+                      status.currentWordIndex + delta),
+                });
+              } else {
+                console.log('向上滚动' + delta);
+                setStatus({
+                  ...status, // 复制现有状态
+                  currentWordIndex: Math.max(0,
+                      status.currentWordIndex + delta),
+                });
+              }
+            }}>{status.currentWordIndex + 1} / {status.words.length}</div>
 
         <div className={'text-center'} onClick={(event) => {
           event.key = ' ';
@@ -335,7 +378,7 @@ export default function Page() {
                   toast.error('查询失败，请检查网络或稍后再试');
                 }
               }}
-              className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600"
+              className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600 border"
           >
             Edit / Add
           </button>

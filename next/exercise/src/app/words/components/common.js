@@ -24,6 +24,7 @@ import {atom, useAtom} from 'jotai';
 // }
 
 export const handleKeyDown = (event, status, setStatus) => {
+  status.onWheel = false;
 
   if (status.isDialogOpen) {
 
@@ -69,6 +70,10 @@ export const handleKeyDown = (event, status, setStatus) => {
       // currentWordIndex: Math.max(0, status.currentWordIndex - 1),
       currentWordIndex: nextIndex,
     });
+  } else if (event.key === 'v') {
+    console.debug('play current pronunciation');
+    status.playCurrent();
+
   } else if (event.key === ' ') {
     console.debug('play pronunciation');
 
