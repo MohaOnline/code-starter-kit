@@ -273,6 +273,29 @@ export default function Page() {
         });
   }
 
+  const handleWordWheel = (event) => {
+
+    status.onWheel = true;
+    status.isPlaying = false;
+
+    const delta = event.deltaY;
+    if (delta > 0) {
+      console.log('向下滚动 ' + delta);
+      setStatus({
+        ...status, // 复制现有状态
+        currentWordIndex: Math.min(status.words.length - 1,
+            status.currentWordIndex + delta),
+      });
+    } else {
+      console.log('向上滚动' + delta);
+      setStatus({
+        ...status, // 复制现有状态
+        currentWordIndex: Math.max(0,
+            status.currentWordIndex + delta),
+      });
+    }
+  };
+
   return (
       <>
         <div className={'word-container'}>
@@ -286,7 +309,7 @@ export default function Page() {
 
             <div
                 className={'word'}
-                onClick={playCurrentWord}>{status.words[status.currentWordIndex].word}</div>
+                onWheel={handleWordWheel}>{status.words[status.currentWordIndex].word}</div>
 
             <div
                 className={'pos'}>&nbsp;{status.words[status.currentWordIndex].pos
@@ -301,30 +324,12 @@ export default function Page() {
         </div>
 
         <div
-            className={'text-center'}
-            onWheel={(event) => {
-              status.onWheel = true;
-              status.isPlaying = false;
+            className={'operation text-center'} onClick={playCurrentWord}
+            onWheel={handleWordWheel}>{status.currentWordIndex +
+            1} / {status.words.length} <FaVolumeUp/></div>
 
-              const delta = event.deltaY;
-              if (delta > 0) {
-                console.log('向下滚动 ' + delta);
-                setStatus({
-                  ...status, // 复制现有状态
-                  currentWordIndex: Math.min(status.words.length - 1,
-                      status.currentWordIndex + delta),
-                });
-              } else {
-                console.log('向上滚动' + delta);
-                setStatus({
-                  ...status, // 复制现有状态
-                  currentWordIndex: Math.max(0,
-                      status.currentWordIndex + delta),
-                });
-              }
-            }}>{status.currentWordIndex + 1} / {status.words.length}</div>
-
-        <div className={'text-center'} onClick={(event) => {
+        <div
+            onClick={(event) => {
           event.key = ' ';
           keyDownCallback(event);
         }}>{status.isPlaying ?
@@ -332,7 +337,7 @@ export default function Page() {
         </div>
 
         <div className="text-right">
-          {/* Edit / Add Button */}
+          {/* Open Editor Dialog */}
           <button
               onClick={async () => {
                 // search current word
@@ -380,7 +385,7 @@ export default function Page() {
               }}
               className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600 border"
           >
-            Edit / Add
+            Editor
           </button>
           <ToastContainer
               position="top-right"

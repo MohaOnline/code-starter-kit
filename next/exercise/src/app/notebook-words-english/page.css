@@ -19,3 +19,8 @@
     font-size: 28px;
     opacity: 0.6;
 }
+
+svg {
+    display: inline;
+    vertical-align: text-top;
+}
