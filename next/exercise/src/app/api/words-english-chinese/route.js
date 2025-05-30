@@ -17,6 +17,8 @@ const speechConfig = SpeechConfig.fromSubscription(
     process.env.SPEECH_REGION,
 );
 speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
+speechConfig.speechSynthesisLanguage = process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+    0, 5);
 
 function generateSSML(word, phonetic_us, phonetic_uk) {
   const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
@@ -346,7 +348,7 @@ export async function POST(request) {
             translation.cid = insertResult.insertId;
           }
 
-          await fetchAzureTTS(data.word, data.script, translation.voice_id_us,
+          await fetchAzureTTS(data.word, data.script, translation.voice_id_uk,
               translation.phonetic_us, translation.phonetic_uk);
         }
 

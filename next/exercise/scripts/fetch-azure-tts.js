@@ -18,7 +18,10 @@ const speechConfig = SpeechConfig.fromSubscription(
     process.env.SPEECH_KEY,
     process.env.SPEECH_REGION,
 );
+// speechConfig.speechRecognitionLanguage = 'en-GB';
 speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
+speechConfig.speechSynthesisLanguage = process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+    0, 5);
 console.log(speechConfig);
 
 // 延迟函数
@@ -62,7 +65,7 @@ async function fetchAzureTTS() {
 
     // 查询 voice_id_uk, word, script
     const [rows] = await connection.execute(`
-        SELECT word, script, phonetic_uk, phonetic_us, voice_id_uk, voice_id_us
+        SELECT word, script, phonetic_uk, phonetic_us, voice_id_uk, voice_id_uk
         FROM words_english_chinese_summary
         -- LIMIT 1
     `);
@@ -70,7 +73,7 @@ async function fetchAzureTTS() {
     // 处理每条记录
     for (const row of rows) {
       const {
-        voice_id_us,
+        voice_id_uk,
         script,
         word,
         phonetic_us,
@@ -80,12 +83,12 @@ async function fetchAzureTTS() {
       const textToSpeak = script || word; // 优先使用 script，否则用 word
 
       // 不同的发音都使用 us ID
-      if (!voice_id_us) continue;
+      if (!voice_id_uk) continue;
 
-      const firstChar = voice_id_us[0].toLowerCase(); // UUID 第一个字符
+      const firstChar = voice_id_uk[0].toLowerCase(); // UUID 第一个字符
       const filePath = path.resolve(
           process.cwd(),
-          `./public/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${voice_id_us}.wav`,
+          `./public/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${voice_id_uk}.wav`,
       );
 
       // 检查文件是否存在
@@ -93,7 +96,7 @@ async function fetchAzureTTS() {
         await fs.access(filePath, fs.constants.F_OK);
       } catch (error) {
         // 文件不存在，生成 TTS
-        console.log(`Generating TTS for UUID ${voice_id_us}: ${textToSpeak}`);
+        console.log(`Generating TTS for UUID ${voice_id_uk}: ${textToSpeak}`);
 
         // 创建目录（如果不存在）
         const dirPath = path.dirname(filePath);

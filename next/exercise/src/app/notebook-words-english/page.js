@@ -77,7 +77,7 @@ export default function Page() {
   // 播放音频: 当 currentWordIndex 或 words 改变时
   useEffect(() => {
     if (status.words.length > 0 &&
-        status.words[status.currentWordIndex]?.voice_id_us) {
+        status.words[status.currentWordIndex]?.voice_id_uk) {
 
       // 清理现有定时器和音频
       if (intervalRef.current) {
@@ -85,8 +85,8 @@ export default function Page() {
         intervalRef.current = null;
       }
 
-      const firstChar = status.words[status.currentWordIndex].voice_id_us[0].toLowerCase();
-      const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_us}.wav`;
+      const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
+      const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
 
       // 停止当前音频
       if (audioRef.current) {
@@ -169,8 +169,8 @@ export default function Page() {
   }, [status.isPlaying, status.currentWordIndex]);
 
   const playCurrentWord = () => {
-    const firstChar = status.words[status.currentWordIndex].voice_id_us[0].toLowerCase();
-    const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_us}.wav`;
+    const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
+    const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
 
     audioRef.current = new Audio(audio);
     audioRef.current.play().catch(error => {
