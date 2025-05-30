@@ -649,6 +649,20 @@ export default function Page() {
                   <button
                       onClick={async () => {
                         try {
+                          // Save word in Dialog
+
+                          if (status.currentWordIndex === 0) {
+                            status.dialogData.weight1 = status.words[status.currentWordIndex].weight;
+                            status.dialogData.weight2 = '';
+                          } else if (status.currentWordIndex ===
+                              status.words.length - 1) {
+                            status.dialogData.weight1 = '';
+                            status.dialogData.weight2 = status.words[status.currentWordIndex].weight;
+                          } else {
+                            status.dialogData.weight1 = status.words[status.currentWordIndex].weight;
+                            status.dialogData.weight2 = status.words[status.currentWordIndex +
+                            1].weight;
+                          }
 
                           const response = await fetch(
                               '/api/words-english-chinese',
@@ -668,6 +682,54 @@ export default function Page() {
                               toast.success(
                                   'Successfully added to notebook!' +
                                   JSON.stringify(data.data));
+
+                              if (!!data.data.translations) {
+                                data.data.translations.forEach(
+                                    (translation) => {
+
+                                      if (translation.weight) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+
+                                        const word = {
+                                          id: translation.id,
+                                          cid: translation.cid,
+                                          nid: translation.nid,
+                                          note: translation.note,
+                                          pos: translation.pos,
+                                          note_explain: translation.note_explain,
+                                          eid: data.data.eid,
+                                          script: data.data.script,
+                                          word: data.data.word,
+                                          accent: data.data.accent,
+                                          translation: translation.translation,
+                                          translation_script: translation.script,
+                                          weight: translation.weight,
+                                          phonetic_uk: translation.phonetic_uk,
+                                          phonetic_us: translation.phonetic_us,
+                                          voice_id_uk: translation.voice_id_uk,
+                                          voice_id_us: translation.voice_id_us,
+                                          voice_id_translation: translation.voice_id_translation,
+                                        };
+
+                                        if (!!data.data.weight1 &&
+                                            !data.data.weight2) {
+                                          status.words.unshift(word);
+                                        } else if (!data.data.weight1 &&
+                                            !!data.data.weight2) {
+                                          status.words.push(word);
+                                          status.currentWordIndex++;
+                                        } else if (!!data.data.weight1 &&
+                                            !!data.data.weight2) {
+                                          status.words.splice(
+                                              status.currentWordIndex + 1, 0,
+                                              word);
+                                          status.currentWordIndex++;
+                                        }
+
+                                        delete translation.weight;
+                                      } // if (translation.weight)
+
+                                    }); // translations.forEach
+                              }
 
                               setStatus({
                                 ...status, // 复制现有状态

@@ -4,6 +4,8 @@ import {LexoRank} from 'lexorank';
 export default function index(params) {
   const lexoRank = LexoRank.middle();
   const lexoRank2 = lexoRank.genNext();
+  LexoRank.parse('0|hzzzzz:');
+
   return (
     <>
       <h1>UUID: {uuid()}</h1>

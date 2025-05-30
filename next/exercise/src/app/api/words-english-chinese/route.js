@@ -2,7 +2,95 @@ import {use} from 'react';
 import {NextResponse} from 'next/server';
 import mysql from 'mysql2/promise';
 import {v4 as uuid} from 'uuid';
-import LexoRank from 'lexorank';
+import {LexoRank} from 'lexorank';
+import path from 'path';
+import fs from 'fs/promises';
+import {
+  SpeechConfig,
+  SpeechSynthesizer,
+  AudioConfig, ResultReason,
+} from 'microsoft-cognitiveservices-speech-sdk';
+
+// 配置 Azure TTS
+const speechConfig = SpeechConfig.fromSubscription(
+    process.env.SPEECH_KEY,
+    process.env.SPEECH_REGION,
+);
+speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
+
+function generateSSML(word, phonetic_us, phonetic_uk) {
+  const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
+  const textToSpeak = word; // word 或 script 已在上层处理
+  return `
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+      0, 5)}">
+      <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
+        ${phonetic
+      ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
+      : textToSpeak}
+      </voice>
+    </speak>
+  `;
+}
+
+async function fetchAzureTTS(
+    word, script, voice_id_us, phonetic_us, phonetic_uk) {
+
+  const textToSpeak = script || word; // 优先使用 script，否则用 word
+
+  const firstChar = voice_id_us[0].toLowerCase(); // UUID 第一个字符
+  const filePath = path.resolve(
+      process.cwd(),
+      `./public/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${voice_id_us}.wav`,
+  );
+
+  // 检查文件是否存在
+  try {
+    await fs.access(filePath, fs.constants.F_OK);
+  } catch (error) {
+    // 文件不存在，生成 TTS
+    console.log(`Generating TTS for UUID ${voice_id_us}: ${textToSpeak}`);
+
+    // 创建目录（如果不存在）
+    const dirPath = path.dirname(filePath);
+    await fs.mkdir(dirPath, {recursive: true});
+
+    // 生成 SSML
+    const ssml = generateSSML(textToSpeak, phonetic_us, phonetic_uk);
+    console.log(ssml);
+
+    // 配置音频输出
+    const audioConfig = AudioConfig.fromAudioFileOutput(filePath);
+    const synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
+
+    // 生成语音
+    const result = await new Promise((resolve, reject) => {
+      synthesizer.speakSsmlAsync(
+          ssml,
+          (result) => {
+            synthesizer.close();
+            resolve(result);
+          },
+          (error) => {
+
+            synthesizer.close();
+            reject(error);
+          },
+      );
+    });
+
+    if (result.reason === ResultReason.SynthesizingAudioCompleted) {
+      console.log(`TTS generated and saved to ${filePath}`);
+    } else {
+      await fs.unlink(filePath).catch(() => {});
+      console.error(
+          `TTS failed for ${textToSpeak}: ${result.errorDetails}`);
+      return result.errorDetails;
+    }
+  }
+
+  return '';
+}
 
 // Database configuration
 const dbConfig = {
@@ -202,7 +290,7 @@ export async function POST(request) {
         // 把 azure 不能识别的音标换成 IPA
         // https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
         translation.phonetic_uk = translation.phonetic_uk.replace(/'/g, 'ˈ').
-            replace(/ɔ/g, 'ɒ').replace(/i/g, 'ɪ');
+            replace(/ɔ/g, 'ɒ').replace(/i/g, 'ɪ').replace(/\(ə\)/g, '');
 
         if (translation.cid) {
           const [updateResult] = await connection.query(
@@ -257,8 +345,75 @@ export async function POST(request) {
             console.log('trans insert: ', insertResult);
             translation.cid = insertResult.insertId;
           }
+
+          await fetchAzureTTS(data.word, data.script, translation.voice_id_us,
+              translation.phonetic_us, translation.phonetic_uk);
         }
-      }
+
+        if (!!translation.noted && !translation.id) {
+          // 计算 weight，放入 translation。
+          if (!!data.weight1 && !data.weight2) {
+            const lexoRank = LexoRank.parse(data.weight1);
+            translation.weight = lexoRank.genPrev().format();
+            data.weight1 = translation.weight;
+          } else if (!data.weight1 && !!data.weight2) {
+            const lexoRank = LexoRank.parse(data.weight2);
+            data.weight2 = translation.weight = lexoRank.genNext().format();
+          } else {
+            const lexoRank1 = LexoRank.parse(data.weight1);
+            const lexoRank2 = LexoRank.parse(data.weight2);
+            translation.weight = lexoRank1.between(lexoRank2).format();
+            data.weight1 = translation.weight;
+          }
+
+          const [insertResult] = await connection.query(
+              `INSERT INTO notebook_words_english (uid,
+                                                   notebook_id,
+                                                   english_id,
+                                                   chinese_id,
+                                                   note,
+                                                   weight,
+                                                   note_explain)
+               VALUES (6, 1, ?, ?, ?, ?, ?)`, [
+                data.eid,
+                translation.cid,
+                translation.note,
+                translation.weight,
+                '',
+              ]);
+
+          if (insertResult.affectedRows === 0) {
+            console.error('无法插入 notebook_words_english:', data.word);
+            throw new Error('插入 notebook_words_english 失败: ' + data.word);
+          } else {
+            console.log('note insert: ', insertResult);
+            translation.id = insertResult.insertId;
+            translation.nid = 1;
+          }
+        } else if (!!translation.noted && !translation.id) {
+          const [updateResult] = await connection.query(
+              `UPDATE notebook_words_english
+               SET note_explain = ?,
+                   note         = ?,
+                   deleted      = ?
+               WHERE id = ?`, // 根据 cid 或其他唯一标识符来更新
+              [
+                '',
+                translation.note || '',
+                translation.deleted,
+                translation.id, // 根据 id 找到要更新的记录
+              ]);
+
+          if (updateResult.affectedRows === 0) {
+            console.error('无法更新 notebook_words_english:', translation.id);
+            throw new Error(
+                '更新 notebook_words_english 失败: ' + translation.id);
+          } else {
+            console.log('note update: ', updateResult);
+          }
+        } // end if 插入单词笔记本
+
+      } // 循环结束 for (const translation of data.translations)
     }
 
 

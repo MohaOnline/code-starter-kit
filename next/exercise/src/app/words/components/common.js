@@ -44,8 +44,11 @@ export const handleKeyDown = (event, status, setStatus) => {
     console.debug('next word');
 
     let next = status.currentWordIndex + 1;
-    if (status.words !== undefined) {
-      next = Math.min(status.words.length - 1, next);
+    // if (status.words !== undefined) {
+    //   next = Math.min(status.words.length - 1, next);
+    // }
+    if (next >= status.words.length - 1) {
+      next = 0;
     }
 
     setStatus({
@@ -55,10 +58,16 @@ export const handleKeyDown = (event, status, setStatus) => {
   } else if (event.key === 'ArrowLeft') {
     console.debug('previous word');
 
+    let nextIndex = status.currentWordIndex - 1;
+    if (nextIndex < 0) {
+      nextIndex = status.words.length - 1;
+    }
+
     setStatus({
       ...status, // 复制现有状态
       isPlaying: false,
-      currentWordIndex: Math.max(0, status.currentWordIndex - 1),
+      // currentWordIndex: Math.max(0, status.currentWordIndex - 1),
+      currentWordIndex: nextIndex,
     });
   } else if (event.key === ' ') {
     console.debug('play pronunciation');

@@ -29,7 +29,8 @@ function generateSSML(word, phonetic_us, phonetic_uk) {
   const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
   const textToSpeak = word; // word 或 script 已在上层处理
   return `
-    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+      0, 5)}">
       <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
         ${phonetic
       ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
@@ -90,9 +91,6 @@ async function fetchAzureTTS() {
       // 检查文件是否存在
       try {
         await fs.access(filePath, fs.constants.F_OK);
-        console.log(
-            `File exists for UUID ${voice_id_us}: ${filePath}, skipping...`);
-
       } catch (error) {
         // 文件不存在，生成 TTS
         console.log(`Generating TTS for UUID ${voice_id_us}: ${textToSpeak}`);
