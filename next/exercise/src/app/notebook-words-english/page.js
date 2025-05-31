@@ -2,7 +2,7 @@
 import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
-import {FaPlay, FaPause, FaTrash, FaVolumeUp} from 'react-icons/fa';
+import {FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync} from 'react-icons/fa';
 import {Dialog, Transition} from '@headlessui/react';
 import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
@@ -541,6 +541,20 @@ export default function Page() {
                                     className="flex-1 p-2 pl-1 pr-1 border rounded"
                                     placeholder="UK "
                                 />
+                                <button
+                                    className="px-4 py-2 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border"
+                                    onClick={async () => {
+                                      if (translation.cid) {
+                                        const response = await fetch(
+                                            `/api/words-english-azure-tts?cid=${translation.cid}`);
+                                        const data = await response.json();
+                                        console.log(data);
+                                        toast.info(JSON.stringify(data));
+                                      }
+                                    }}
+                                >
+                                  <FaSync/>
+                                </button>
                                 <input
                                     type="text"
                                     value={translation.phonetic_us}
@@ -627,7 +641,7 @@ export default function Page() {
                                     placeholder="Script"
                                 />
                                 <button
-                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700"
+                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700 border"
                                     onClick={() => {
 
                                       if (translation.cid) {
@@ -688,7 +702,7 @@ export default function Page() {
                 <div className="flex justify-end gap-2 mt-2 ">
                   <button
                       onClick={() => {addTranslation();}}
-                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700"
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 border"
                   >
                     Add Translation
                   </button>
@@ -775,6 +789,12 @@ export default function Page() {
 
                                         delete translation.weight;
                                       } // if (translation.weight)
+                                      else if (!data.data.noted) {
+                                        // 删除 note 如何处理
+                                        // status.words.splice(
+                                        //     status.currentWordIndex + 1, 0,
+                                        //     translation);
+                                      }
 
                                     }); // translations.forEach
                               }
@@ -793,7 +813,7 @@ export default function Page() {
                         }
 
                       }}
-                      className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 active:bg-green-700"
+                      className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 active:bg-green-700 border"
                   >
                     Save
                   </button>
@@ -809,7 +829,7 @@ export default function Page() {
                           },
                         });
                       }}
-                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 active:bg-gray-900"
+                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 active:bg-gray-900 border"
                   >
                     Cancel
                   </button>

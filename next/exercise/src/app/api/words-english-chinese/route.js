@@ -8,7 +8,7 @@ import fs from 'fs/promises';
 import {
   SpeechConfig,
   SpeechSynthesizer,
-  AudioConfig, ResultReason,
+  AudioConfig, ResultReason, SpeechSynthesisOutputFormat,
 } from 'microsoft-cognitiveservices-speech-sdk';
 
 // 配置 Azure TTS
@@ -19,6 +19,7 @@ const speechConfig = SpeechConfig.fromSubscription(
 speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
 speechConfig.speechSynthesisLanguage = process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
     0, 5);
+speechConfig.speechSynthesisOutputFormat = SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm;
 
 function generateSSML(word, phonetic_us, phonetic_uk) {
   const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
@@ -102,6 +103,7 @@ const dbConfig = {
   database: process.env.DB_NAME || 'your_database',
 };
 
+/** 打开编辑对话框时查询 */
 export async function GET(request) {
 
   let connection;
@@ -129,7 +131,8 @@ export async function GET(request) {
                notebook_words_english.uid,
                notebook_words_english.notebook_id as nid,
                notebook_words_english.note,
-               notebook_words_english.note_explain
+               notebook_words_english.note_explain,
+               notebook_words_english.deleted
         FROM words_english_chinese_summary
                  LEFT JOIN notebook_words_english
                            on words_english_chinese_summary.chinese_id =
@@ -152,7 +155,7 @@ export async function GET(request) {
           syllable: row.syllable ? row.syllable : '',
           translations: [
             {
-              id: row.wid ? row.wid : '',
+              id: row.wid ? row.wid : '', // word id = note id
               nid: row.nid ? row.nid : '',
               cid: row.chinese_id ? row.chinese_id : '',
               pos: row.part_of_speech ? row.part_of_speech : '',
@@ -165,7 +168,7 @@ export async function GET(request) {
               voice_id_translation: row.voice_id_translation
                   ? row.voice_id_translation
                   : '',
-              noted: !!row.wid,
+              noted: !!row.wid && !row.deleted,
               note: row.note ? row.note : '',
               note_explain: row.note_explain ? row.note_explain : '',
               deleted: !!row.chinese_deleted,
@@ -187,7 +190,7 @@ export async function GET(request) {
           voice_id_translation: row.voice_id_translation
               ? row.voice_id_translation
               : '',
-          noted: !!row.wid,
+          noted: !!row.wid && !row.deleted,
           note: row.note ? row.note : '',
           note_explain: row.note_explain ? row.note_explain : '',
           deleted: !!row.chinese_deleted,
@@ -292,7 +295,7 @@ export async function POST(request) {
         // 把 azure 不能识别的音标换成 IPA
         // https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
         translation.phonetic_uk = translation.phonetic_uk.replace(/'/g, 'ˈ').
-            replace(/ɔ/g, 'ɒ').replace(/i/g, 'ɪ').replace(/\(ə\)/g, '');
+            replace(/ɔ/g, 'ɒ').replace(/i(?!ː)/g, 'ɪ').replace(/\(ə\)/g, '');
 
         if (translation.cid) {
           const [updateResult] = await connection.query(
@@ -392,7 +395,7 @@ export async function POST(request) {
             translation.id = insertResult.insertId;
             translation.nid = 1;
           }
-        } else if (!!translation.noted && !translation.id) {
+        } else if (translation.id) {
           const [updateResult] = await connection.query(
               `UPDATE notebook_words_english
                SET note_explain = ?,
@@ -402,7 +405,7 @@ export async function POST(request) {
               [
                 '',
                 translation.note || '',
-                translation.deleted,
+                !translation.noted,
                 translation.id, // 根据 id 找到要更新的记录
               ]);
 

@@ -7,7 +7,7 @@ import mysql from 'mysql2/promise';
 import {
   SpeechConfig,
   SpeechSynthesizer,
-  AudioConfig, ResultReason,
+  AudioConfig, ResultReason, SpeechSynthesisOutputFormat,
 } from 'microsoft-cognitiveservices-speech-sdk';
 
 // 加载 .env.local 文件
@@ -22,6 +22,8 @@ const speechConfig = SpeechConfig.fromSubscription(
 speechConfig.speechSynthesisVoiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE;
 speechConfig.speechSynthesisLanguage = process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
     0, 5);
+speechConfig.speechSynthesisOutputFormat = SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm;
+
 console.log(speechConfig);
 
 // 延迟函数
@@ -31,25 +33,25 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 function generateSSML(word, phonetic_us, phonetic_uk) {
   const phonetic = phonetic_us || phonetic_uk || ''; // 优先使用 phonetic_us，否则用 phonetic_uk
   const textToSpeak = word; // word 或 script 已在上层处理
-  return `
-    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
-      0, 5)}">
-      <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
-        ${phonetic
-      ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
-      : textToSpeak}
-      </voice>
-    </speak>
-  `;
-
   // return `
   //   <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
   //     0, 5)}">
   //     <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
-  //       ${textToSpeak}
+  //       ${phonetic
+  //     ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
+  //     : textToSpeak}
   //     </voice>
   //   </speak>
   // `;
+
+  return `
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
+      0, 5)}">
+      <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
+        ${textToSpeak}
+      </voice>
+    </speak>
+  `;
 }
 
 async function fetchAzureTTS() {

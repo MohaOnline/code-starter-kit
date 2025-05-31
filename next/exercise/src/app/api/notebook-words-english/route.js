@@ -9,6 +9,7 @@ const dbConfig = {
   database: process.env.DB_NAME || 'your_database',
 };
 
+/**  */
 export async function GET() {
   try {
     // Create database connection
@@ -18,6 +19,7 @@ export async function GET() {
     const [rows] = await connection.execute(`
         SELECT *
         FROM notebook_words_english_summary
+        WHERE deleted <> true
         ORDER BY weight;
     `);
 
