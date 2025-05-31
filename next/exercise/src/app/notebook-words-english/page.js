@@ -20,6 +20,7 @@ export default function Page() {
     words: [],
     isDialogOpen: false,
     dialogData: {translations: []},
+    isProcessing: false,
   });
 
   const audioRef = useRef(null);
@@ -544,12 +545,23 @@ export default function Page() {
                                 <button
                                     className="px-4 py-2 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border"
                                     onClick={async () => {
-                                      if (translation.cid) {
-                                        const response = await fetch(
-                                            `/api/words-english-azure-tts?cid=${translation.cid}`);
-                                        const data = await response.json();
-                                        console.log(data);
-                                        toast.info(JSON.stringify(data));
+                                      try {
+                                        if (translation.cid) {
+                                          setStatus({
+                                            ...status,
+                                            isProcessing: true,
+                                          });
+                                          const response = await fetch(
+                                              `/api/words-english-azure-tts?cid=${translation.cid}`);
+                                          const data = await response.json();
+                                          console.log(data);
+                                          toast.info(JSON.stringify(data));
+                                        }
+                                      } finally {
+                                        setStatus({
+                                          ...status,
+                                          isProcessing: false,
+                                        });
                                       }
                                     }}
                                 >
@@ -726,6 +738,12 @@ export default function Page() {
                             1].weight;
                           }
 
+                          // setStatus({...status, isProcessing: true});
+                          setStatus((prevStatus) => ({
+                            ...prevStatus,
+                            isProcessing: true,
+                          }));
+
                           const response = await fetch(
                               '/api/words-english-chinese',
                               {
@@ -749,28 +767,30 @@ export default function Page() {
                                 data.data.translations.forEach(
                                     (translation) => {
 
-                                      if (translation.weight) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+                                      const word = {
+                                        id: translation.id,
+                                        cid: translation.cid,
+                                        nid: translation.nid,
+                                        note: translation.note,
+                                        pos: translation.pos,
+                                        note_explain: translation.note_explain,
+                                        eid: data.data.eid,
+                                        script: data.data.script,
+                                        word: data.data.word,
+                                        accent: data.data.accent,
+                                        translation: translation.translation,
+                                        translation_script: translation.script,
+                                        weight: translation.weight,
+                                        phonetic_uk: translation.phonetic_uk,
+                                        phonetic_us: translation.phonetic_us,
+                                        voice_id_uk: translation.voice_id_uk,
+                                        voice_id_us: translation.voice_id_us,
+                                        voice_id_translation: translation.voice_id_translation,
+                                      };
 
-                                        const word = {
-                                          id: translation.id,
-                                          cid: translation.cid,
-                                          nid: translation.nid,
-                                          note: translation.note,
-                                          pos: translation.pos,
-                                          note_explain: translation.note_explain,
-                                          eid: data.data.eid,
-                                          script: data.data.script,
-                                          word: data.data.word,
-                                          accent: data.data.accent,
-                                          translation: translation.translation,
-                                          translation_script: translation.script,
-                                          weight: translation.weight,
-                                          phonetic_uk: translation.phonetic_uk,
-                                          phonetic_us: translation.phonetic_us,
-                                          voice_id_uk: translation.voice_id_uk,
-                                          voice_id_us: translation.voice_id_us,
-                                          voice_id_translation: translation.voice_id_translation,
-                                        };
+                                      if (translation.weight) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+                                        console.debug(
+                                            'trans has valid weight');
 
                                         if (!!data.data.weight1 &&
                                             !data.data.weight2) {
@@ -789,20 +809,35 @@ export default function Page() {
 
                                         delete translation.weight;
                                       } // if (translation.weight)
-                                      else if (!data.data.noted) {
-                                        // 删除 note 如何处理
-                                        // status.words.splice(
-                                        //     status.currentWordIndex + 1, 0,
-                                        //     translation);
+                                      else if (!translation.noted) {
+                                        for (let index = status.words.length -
+                                            1; index >= 0; index--) {
+                                          if (
+                                              status.words[index].eid ===
+                                              word.eid &&
+                                              status.words[index].cid ===
+                                              word.cid
+                                          ) {
+                                            status.words.splice(index, 1);
+
+                                            if (index <
+                                                status.currentWordIndex ||
+                                                status.currentWordIndex >=
+                                                status.words.length) {
+                                              status.currentWordIndex--;
+                                            }
+                                          }
+                                        }
                                       }
 
                                     }); // translations.forEach
                               }
 
-                              setStatus({
-                                ...status, // 复制现有状态
-                                dialogData: data.data,
-                              });
+                              // setStatus({
+                              //   ...status, // 复制现有状态
+                              //   dialogData: data.data,
+                              // });
+                              status.dialogData = data.data;
 
                             }
                           } else {
@@ -810,6 +845,8 @@ export default function Page() {
                           }
                         } catch (error) {
                           toast.error('Failed to save:' + error.message);
+                        } finally {
+                          setStatus({...status, isProcessing: false});
                         }
 
                       }}
@@ -839,6 +876,13 @@ export default function Page() {
 
           </Dialog>
         </Transition>
+
+        {/* 全屏遮罩 */}
+        {status.isProcessing && (
+            <div className={'overlay'}>
+              <div className={'loader'}>Processing...</div>
+            </div>
+        )}
       </>
   );
 }

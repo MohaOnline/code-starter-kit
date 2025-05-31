@@ -118,7 +118,8 @@ export async function GET(request) {
       }, {status: 200});
     }
     const params = [];
-    params.push(`${word}%`);
+    // params.push(`${word}%`);
+    params.push(`${word}`);
 
     // Create database connection
     connection = await mysql.createConnection(dbConfig);
@@ -132,12 +133,14 @@ export async function GET(request) {
                notebook_words_english.notebook_id as nid,
                notebook_words_english.note,
                notebook_words_english.note_explain,
-               notebook_words_english.deleted
+               notebook_words_english.deleted,
+               notebook_words_english.weight
         FROM words_english_chinese_summary
                  LEFT JOIN notebook_words_english
                            on words_english_chinese_summary.chinese_id =
                               notebook_words_english.chinese_id
-        WHERE word LIKE ?
+#         WHERE word LIKE ?
+        WHERE word = ?
         ORDER BY id
         ;
     `, params);
@@ -170,6 +173,7 @@ export async function GET(request) {
                   : '',
               noted: !!row.wid && !row.deleted,
               note: row.note ? row.note : '',
+              weight: row.weight || '',
               note_explain: row.note_explain ? row.note_explain : '',
               deleted: !!row.chinese_deleted,
             },
@@ -295,6 +299,7 @@ export async function POST(request) {
         // 把 azure 不能识别的音标换成 IPA
         // https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
         translation.phonetic_uk = translation.phonetic_uk.replace(/'/g, 'ˈ').
+            replace(/∫/g, 'ʃ').
             replace(/ɔ/g, 'ɒ').replace(/i(?!ː)/g, 'ɪ').replace(/\(ə\)/g, '');
 
         if (translation.cid) {
@@ -355,6 +360,7 @@ export async function POST(request) {
               translation.phonetic_us, translation.phonetic_uk);
         }
 
+
         if (!!translation.noted && !translation.id) {
           // 计算 weight，放入 translation。
           if (!!data.weight1 && !data.weight2) {
@@ -396,18 +402,50 @@ export async function POST(request) {
             translation.nid = 1;
           }
         } else if (translation.id) {
+
+          // noted 但是 weight 已有了，需要清除，否则回传后会再加入 client
+          let needClean = false;
+
+          if (!translation.noted) {
+            translation.weight = '';
+          } else if (!!translation.noted && !translation.weight) {
+
+            // 计算 weight，放入 translation。
+            if (!!data.weight1 && !data.weight2) {
+              const lexoRank = LexoRank.parse(data.weight1);
+              translation.weight = lexoRank.genPrev().format();
+              data.weight1 = translation.weight;
+            } else if (!data.weight1 && !!data.weight2) {
+              const lexoRank = LexoRank.parse(data.weight2);
+              data.weight2 = translation.weight = lexoRank.genNext().format();
+            } else {
+              const lexoRank1 = LexoRank.parse(data.weight1);
+              const lexoRank2 = LexoRank.parse(data.weight2);
+              translation.weight = lexoRank1.between(lexoRank2).format();
+              data.weight1 = translation.weight;
+            }
+          } else {
+            needClean = true;
+          }
+
           const [updateResult] = await connection.query(
               `UPDATE notebook_words_english
                SET note_explain = ?,
                    note         = ?,
-                   deleted      = ?
+                   deleted = ?,
+                   weight  =?
                WHERE id = ?`, // 根据 cid 或其他唯一标识符来更新
               [
                 '',
                 translation.note || '',
                 !translation.noted,
+                translation.noted ? translation.weight : '',
                 translation.id, // 根据 id 找到要更新的记录
               ]);
+
+          if (needClean) {
+            translation.weight = '';
+          }
 
           if (updateResult.affectedRows === 0) {
             console.error('无法更新 notebook_words_english:', translation.id);
