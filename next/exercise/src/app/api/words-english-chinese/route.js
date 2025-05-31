@@ -299,7 +299,7 @@ export async function POST(request) {
         // 把 azure 不能识别的音标换成 IPA
         // https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
         translation.phonetic_uk = translation.phonetic_uk.replace(/'/g, 'ˈ').
-            replace(/∫/g, 'ʃ').
+            replace(/∫/g, 'ʃ').replace(/æ/g, 'æ').
             replace(/ɔ/g, 'ɒ').replace(/i(?!ː)/g, 'ɪ').replace(/\(ə\)/g, '');
 
         if (translation.cid) {

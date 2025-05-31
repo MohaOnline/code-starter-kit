@@ -267,6 +267,8 @@ export default function Page() {
                 phonetic_us: '',
                 phonetic_uk: '',
                 translation: '',
+                note: '',
+                note_explain: '',
                 script: '',
                 noted: false,
               }],
@@ -302,7 +304,7 @@ export default function Page() {
         <div className={'word-container'}>
           <div>
             <div style={{
-              opacity: 0.6,
+              opacity: 0.65,
             }} dangerouslySetInnerHTML={{
               __html: status.words[status.currentWordIndex].phonetic_us ||
                   status.words[status.currentWordIndex].phonetic_uk || '&nbsp;',

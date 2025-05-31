@@ -10,14 +10,16 @@
 }
 
 .word-container .word {
-    font-size: 180px;
+    font-size: 190px;
     letter-spacing: 10px;
+    height: 300px;
+    line-height: 150px;
 }
 
 .word-container .translation {
     margin: 100px 0 0 0;
     font-size: 28px;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 
 svg {
