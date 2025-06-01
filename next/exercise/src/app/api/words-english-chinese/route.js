@@ -28,9 +28,7 @@ function generateSSML(word, phonetic_us, phonetic_uk) {
     <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE.slice(
       0, 5)}">
       <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE}">
-        ${phonetic
-      ? `<phoneme alphabet="ipa" ph="${phonetic}">${textToSpeak}</phoneme>`
-      : textToSpeak}
+        ${textToSpeak}
       </voice>
     </speak>
   `;
@@ -400,16 +398,15 @@ export async function POST(request) {
             console.log('note insert: ', insertResult);
             translation.id = insertResult.insertId;
             translation.nid = 1;
+            translation.new = true;
           }
         } else if (translation.id) {
-
-          // noted 但是 weight 已有了，需要清除，否则回传后会再加入 client
-          let needClean = false;
 
           if (!translation.noted) {
             translation.weight = '';
           } else if (!!translation.noted && !translation.weight) {
 
+            translation.new = true;
             // 计算 weight，放入 translation。
             if (!!data.weight1 && !data.weight2) {
               const lexoRank = LexoRank.parse(data.weight1);
@@ -424,8 +421,6 @@ export async function POST(request) {
               translation.weight = lexoRank1.between(lexoRank2).format();
               data.weight1 = translation.weight;
             }
-          } else {
-            needClean = true;
           }
 
           const [updateResult] = await connection.query(
@@ -442,10 +437,6 @@ export async function POST(request) {
                 translation.noted ? translation.weight : '',
                 translation.id, // 根据 id 找到要更新的记录
               ]);
-
-          if (needClean) {
-            translation.weight = '';
-          }
 
           if (updateResult.affectedRows === 0) {
             console.error('无法更新 notebook_words_english:', translation.id);

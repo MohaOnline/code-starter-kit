@@ -3,6 +3,7 @@ import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
 import {FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync} from 'react-icons/fa';
+import {PiHandWaving, PiRocket} from 'react-icons/pi';
 import {Dialog, Transition} from '@headlessui/react';
 import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
@@ -12,13 +13,8 @@ import {handleKeyDown} from '../words/components/common';
 
 export default function Page() {
 
-  let savedIndex = parseInt(localStorage.getItem('wordStatus'), 10);
-  if (isNaN(savedIndex)) {
-    savedIndex = 0;
-  }
-
   const [status, setStatus] = useState({
-    currentWordIndex: savedIndex,
+    currentWordIndex: 0,
     playedWordIndex: -1,
     playCurrent: null,
     onWheel: false,       // 滚动时，不播放录音。
@@ -59,11 +55,11 @@ export default function Page() {
 
   });
 
-  // 保存当前播放索引到 localStorage
-  useEffect(() => {
-    // localStorage.setItem('wordStatus', JSON.stringify(status));
-    localStorage.setItem('wordStatus', status.currentWordIndex);
-  }, [status.currentWordIndex]);
+  // // 保存当前播放索引到 localStorage
+  // useEffect(() => {
+  //   // localStorage.setItem('wordStatus', JSON.stringify(status));
+  //   localStorage.setItem('wordStatus', status.currentWordIndex);
+  // }, [status.currentWordIndex]);
 
   // 获取单词
   useEffect(() => {
@@ -73,9 +69,18 @@ export default function Page() {
       const json = await response.json();
 
       if (json.success) {
+        try {
+          let savedIndex = 0;
+          savedIndex = parseInt(localStorage.getItem('wordStatus'), 10);
+          if (isNaN(savedIndex)) {
+            savedIndex = 0;
+          }
+          status.currentWordIndex = savedIndex;
+        } catch (e) {}
+        status.words = json.data;
         setStatus({
           ...status, // 复制现有状态
-          words: json.data,
+          // words: json.data,
         });
       } else {
         console.error('API 报错');
@@ -328,6 +333,94 @@ export default function Page() {
     }
   };
 
+  /**  */
+  const handlePutEnd = async (event) => {
+    console.log('handlePutEnd');
+
+    if (status.currentWordIndex === status.words.length - 1) {
+      return;
+    }
+
+    const response = await fetch(
+        '/api/notebook/words/english',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'put_end',
+            word: status.words[status.currentWordIndex],
+          }),
+        });
+
+    if (!response.ok) {
+      toast.error('Failed to put word to the end.');
+      return;
+    } else if (response.ok) {
+      toast.success('Successfully put word end.');
+    }
+
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    if (jsonResponse.success) {
+      if (jsonResponse.data.weight !==
+          status.words[status.currentWordIndex].weight) {
+        const [item] = status.words.splice(status.currentWordIndex, 1);
+        status.words.push(item);
+        setStatus({
+          ...status,
+        });
+      }
+    }
+
+  };
+
+  const handlePutTop = async (event) => {
+
+    console.log('handlePutTop');
+
+    if (status.currentWordIndex === 0) {
+      return;
+    }
+
+    const response = await fetch(
+        '/api/notebook/words/english',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'put_top',
+            word: status.words[status.currentWordIndex],
+          }),
+        });
+
+    if (!response.ok) {
+      toast.error('Failed to put word to the top.');
+      return;
+    } else if (response.ok) {
+      toast.success('Successfully put word top.');
+    }
+
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    if (jsonResponse.success) {
+      if (jsonResponse.data.weight !==
+          status.words[status.currentWordIndex].weight) {
+        const [item] = status.words.splice(status.currentWordIndex, 1);
+        status.words.unshift(item);
+        setStatus({
+          ...status,
+        });
+      }
+    }
+
+  };
+
   return (
       <>
         <div className={'word-container'}>
@@ -360,6 +453,15 @@ export default function Page() {
             onWheel={handleWordWheel}>{status.currentWordIndex +
             1} / {status.words.length} <FaVolumeUp/></div>
 
+        <div className={'operation text-center button'}>
+          <button className={'put_top'} onClick={handlePutTop}><PiRocket/>
+          </button>
+
+          <button className={'put_end'} onClick={handlePutEnd}><PiRocket/>
+          </button>
+        </div>
+
+
         <div
             onClick={(event) => {
           event.key = ' ';
@@ -368,7 +470,7 @@ export default function Page() {
             <FaPause/> : <FaPlay/>}
         </div>
 
-        <div className="text-right">
+        <div className="text-center">
           {/* Open Editor Dialog */}
           <button
               onClick={async () => {
@@ -421,7 +523,7 @@ export default function Page() {
           </button>
           <ToastContainer
               position="top-right"
-              autoClose={4000}
+              autoClose={3000}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick
@@ -769,7 +871,7 @@ export default function Page() {
                             1].weight;
                           }
 
-                          // setStatus({...status, isProcessing: true});
+                          // 锁屏
                           setStatus((prevStatus) => ({
                             ...prevStatus,
                             isProcessing: true,
@@ -819,7 +921,7 @@ export default function Page() {
                                         voice_id_translation: translation.voice_id_translation,
                                       };
 
-                                      if (translation.weight) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+                                      if (translation.new) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
                                         console.debug(
                                             'trans has valid weight');
 
@@ -838,7 +940,7 @@ export default function Page() {
                                           status.currentWordIndex++;
                                         }
 
-                                        delete translation.weight;
+                                        delete translation.new;
                                       } // if (translation.weight)
                                       else if (!translation.noted) {
                                         for (let index = status.words.length -

@@ -48,7 +48,7 @@ export const handleKeyDown = (event, status, setStatus) => {
     // if (status.words !== undefined) {
     //   next = Math.min(status.words.length - 1, next);
     // }
-    if (next >= status.words.length - 1) {
+    if (next > status.words.length - 1) {
       next = 0;
     }
 
@@ -83,4 +83,5 @@ export const handleKeyDown = (event, status, setStatus) => {
     });
   }
 
+  localStorage.setItem('wordStatus', status.currentWordIndex);
 };
