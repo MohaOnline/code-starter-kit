@@ -194,6 +194,7 @@ export async function GET(request) {
               : '',
           noted: !!row.wid && !row.deleted,
           note: row.note ? row.note : '',
+          weight: row.weight || '',
           note_explain: row.note_explain ? row.note_explain : '',
           deleted: !!row.chinese_deleted,
         });
