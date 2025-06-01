@@ -11,8 +11,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import {handleKeyDown} from '../words/components/common';
 
 export default function Page() {
+
+  let savedIndex = parseInt(localStorage.getItem('wordStatus'), 10);
+  if (isNaN(savedIndex)) {
+    savedIndex = 0;
+  }
+
   const [status, setStatus] = useState({
-    currentWordIndex: 0,
+    currentWordIndex: savedIndex,
     playedWordIndex: -1,
     playCurrent: null,
     onWheel: false,       // 滚动时，不播放录音。
@@ -53,6 +59,12 @@ export default function Page() {
 
   });
 
+  // 保存当前播放索引到 localStorage
+  useEffect(() => {
+    // localStorage.setItem('wordStatus', JSON.stringify(status));
+    localStorage.setItem('wordStatus', status.currentWordIndex);
+  }, [status.currentWordIndex]);
+
   // 获取单词
   useEffect(() => {
     const fetchWords = async () => {
@@ -67,8 +79,25 @@ export default function Page() {
         });
       } else {
         console.error('API 报错');
-        throw new Error('API 返回错误：success 为 false');
+        toast.error('cant load words from API.');
       }
+
+      // try {
+      //   const savedStatus = (localStorage.getItem('wordStatus')) ? JSON.parse(
+      //       localStorage.getItem('wordStatus')) : {};
+      //   console.log(savedStatus);
+      //
+      //   if (savedStatus.words?.length > 0) {
+      //     status.currentWordIndex = (savedStatus.currentWordIndex >=
+      //         json.data.length)
+      //         ? json.data.length - 1
+      //         : savedStatus.currentWordIndex;
+      //   } else {
+      //     status.currentWordIndex = 0;
+      //   }
+      // } catch (error) {
+      //   console.error('localStorage 获取失败:', error);
+      // }
 
     };
 
