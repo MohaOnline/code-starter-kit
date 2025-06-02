@@ -2,14 +2,24 @@
 import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
-import {FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync} from 'react-icons/fa';
+import {
+  FaPlay,
+  FaPause,
+  FaTrash,
+  FaVolumeUp,
+  FaSync,
+  FaHome,
+  FaListUl,
+} from 'react-icons/fa';
 import {PiHandWaving, PiRocket} from 'react-icons/pi';
+
 import {Dialog, Transition} from '@headlessui/react';
 import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {handleKeyDown} from '../words/components/common';
+import NavTop from '../lib/components/NavTop.js';
 
 export default function Page() {
 
@@ -423,25 +433,29 @@ export default function Page() {
 
   return (
       <>
+        <NavTop/>
         <div className={'word-container'}>
           <div>
-            <div style={{
-              opacity: 0.65,
-            }} dangerouslySetInnerHTML={{
+            <div>
+              <span className={'phonetic'} dangerouslySetInnerHTML={{
               __html: status.words[status.currentWordIndex].phonetic_us ||
                   status.words[status.currentWordIndex].phonetic_uk || '&nbsp;',
-            }}></div>
+              }}></span>
+
+              <span className={'pos'}>&nbsp;
+                {status.words[status.currentWordIndex].pos
+                    ? '[' +
+                    status.words[status.currentWordIndex].pos + ']'
+                    :
+                    ' '}
+                &nbsp;</span>
+            </div>
 
             <div
                 className={'word'}
                 onWheel={handleWordWheel}>{status.words[status.currentWordIndex].word}</div>
 
-            <div
-                className={'pos'}>&nbsp;{status.words[status.currentWordIndex].pos
-                ? '[' +
-                status.words[status.currentWordIndex].pos + ']'
-                :
-                ' '}&nbsp;</div>
+
             <div
                 className={'translation'}>{status.words[status.currentWordIndex].translation}</div>
 

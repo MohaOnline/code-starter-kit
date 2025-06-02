@@ -15,6 +15,9 @@ export default function Home() {
               priority
           />
           <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+            <li><a
+                className={'rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto'}
+                href="/notebook-words-english">单词本</a></li>
             <li className="mb-2 tracking-[-.01em]">
               Get started by editing{' '}
               <code
