@@ -117,6 +117,9 @@ export async function POST(request) {
       responseData = word;
     }
 
+    console.log(word);
+    console.log(responseData);
+
     await dbConnection.commit();
   } catch (error) {
     if (dbConnection) {

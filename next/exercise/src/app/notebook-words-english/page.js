@@ -400,7 +400,7 @@ export default function Page() {
       if (jsonResponse.data.weight !==
           status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
-        status.words.push(item);
+        status.words.push(jsonResponse.data);
         setStatus({
           ...status,
         });
@@ -444,7 +444,7 @@ export default function Page() {
       if (jsonResponse.data.weight !==
           status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
-        status.words.unshift(item);
+        status.words.unshift(jsonResponse.data);
         setStatus({
           ...status,
         });
@@ -494,7 +494,7 @@ export default function Page() {
       if (jsonResponse.data.weight !==
           status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
-        status.words.splice(status.currentWordIndex - 1, 0, item);
+        status.words.splice(status.currentWordIndex - 1, 0, jsonResponse.data);
         status.currentWordIndex--;
         setStatus({
           ...status,
