@@ -22,10 +22,10 @@ span.pos {
 }
 
 .word-container .word {
-    font-size: 190px;
+    font-size: 180px;
     letter-spacing: 10px;
-    height: 300px;
-    line-height: 150px;
+    height: 360px;
+    line-height: 170px;
 }
 
 .word-container .translation {
@@ -39,6 +39,29 @@ svg {
     vertical-align: text-top;
 }
 
+div.operation {
+}
+
+div.operation:hover {
+}
+
+.search-form input {
+    opacity: .5;
+}
+
+div.operation svg {
+    opacity: 0.5;
+    /* 添加过渡动画 */
+    transition: opacity 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+
+div.operation svg:hover {
+    opacity: 0.7;
+
+}
 
 div.operation.button {
     position: relative;

@@ -145,6 +145,7 @@ export async function GET(request) {
 
     const words = [];
 
+    if (Array.isArray(rows) && rows.length > 0)
     rows.map((row, index) => {
       if (words.length === 0 ||
           words[words.length - 1].eid !== row.id) {
@@ -263,7 +264,8 @@ export async function POST(request) {
 
       console.log('Update words_english:', updateResult);
 
-      if (updateResult.affectedRows === 0) {
+      if (!updateResult || !('affectedRows' in updateResult) ||
+          updateResult.affectedRows === 0) {
         console.error('无法更新 words_english:', data.eid);
         throw new Error('更新 words_english 失败');
       }
@@ -282,7 +284,8 @@ export async function POST(request) {
 
       console.log('Insert words_english:', insertResult);
 
-      if (insertResult.affectedRows === 0) {
+      if (!insertResult || !('affectedRows' in insertResult) ||
+          insertResult.affectedRows === 0) {
         console.error('无法插入 words_english:', data.word);
         throw new Error('更新 words_english 失败');
       } else {
@@ -321,7 +324,8 @@ export async function POST(request) {
                 translation.cid, // 根据 cid 找到要更新的记录
               ]);
 
-          if (updateResult.affectedRows === 0) {
+          if (!updateResult || !('affectedRows' in updateResult) ||
+              updateResult.affectedRows === 0) {
             console.error('无法更新 words_english_chinese:', data.word);
             throw new Error('更新 words_english_chinese 失败: ' + data.word);
           } else {
@@ -347,7 +351,8 @@ export async function POST(request) {
                 translation.voice_id_translation = uuid(),
               ]);
 
-          if (insertResult.affectedRows === 0) {
+          if (!insertResult || !('affectedRows' in insertResult) ||
+              insertResult.affectedRows === 0) {
             console.error('无法插入 words_english_chinese:', data.word);
             throw new Error('插入 words_english_chinese 失败: ' + data.word);
           } else {
@@ -392,7 +397,8 @@ export async function POST(request) {
                 '',
               ]);
 
-          if (insertResult.affectedRows === 0) {
+          if (!insertResult || !('affectedRows' in insertResult) ||
+              insertResult.affectedRows === 0) {
             console.error('无法插入 notebook_words_english:', data.word);
             throw new Error('插入 notebook_words_english 失败: ' + data.word);
           } else {
@@ -439,7 +445,8 @@ export async function POST(request) {
                 translation.id, // 根据 id 找到要更新的记录
               ]);
 
-          if (updateResult.affectedRows === 0) {
+          if (!updateResult || !('affectedRows' in updateResult) ||
+              updateResult.affectedRows === 0) {
             console.error('无法更新 notebook_words_english:', translation.id);
             throw new Error(
                 '更新 notebook_words_english 失败: ' + translation.id);

@@ -26,17 +26,35 @@ import {atom, useAtom} from 'jotai';
 export const handleKeyDown = (event, status, setStatus) => {
   status.onWheel = false;
 
+  // 对话框开启的处理
   if (status.isDialogOpen) {
 
     if (event.key === 'Escape' && document.activeElement.tagName === 'INPUT' &&
+        document.activeElement instanceof HTMLInputElement &&
         document.activeElement.type === 'text' && !!status.isComposing) {
       event.preventDefault(); // 阻止 ESC 键的默认行为
+    } else if (event.key === 'Tab') {
+      console.debug('Tab Down');
+      status.isTabPressed = true;
+      setStatus({
+        ...status, // 复制现有状态
+      });
     }
     return;
-  } else {
-    event.preventDefault();
+  }
+  // 对话框未开启的处理
+  else {
+    if (document.activeElement.tagName === 'INPUT' &&
+        document.activeElement instanceof HTMLInputElement &&
+        document.activeElement.type === 'text') {
+      return;
+      
+    } else {
+      event.preventDefault?.();
+    }
   }
 
+  console.log(event.key);
   if (event.key === 'F5') {
     console.log('F5 被阻止');
   }

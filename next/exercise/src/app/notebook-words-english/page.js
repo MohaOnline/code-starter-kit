@@ -2,16 +2,20 @@
 import './page.css';
 
 import React, {useEffect, useRef, useState} from 'react';
+import {CgPlayTrackNextR, CgPlayTrackPrevR} from 'react-icons/cg';
+
 import {
   FaPlay,
   FaPause,
   FaTrash,
   FaVolumeUp,
-  FaSync,
-  FaHome,
-  FaListUl,
+  FaSync, FaSearch,
 } from 'react-icons/fa';
 import {PiHandWaving, PiRocket} from 'react-icons/pi';
+import {RiFileSearchLine} from 'react-icons/ri';
+import * as Icons from '@/app/lib/libs';
+import {LuSquarePlay} from 'react-icons/lu';
+
 
 import {Dialog, Transition} from '@headlessui/react';
 import {toast} from 'react-toastify';
@@ -19,7 +23,7 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {handleKeyDown} from '../words/components/common';
-import NavTop from '../lib/components/NavTop.js';
+import NavTop from '@/app/lib/components/NavTop.js';
 
 export default function Page() {
 
@@ -33,12 +37,26 @@ export default function Page() {
     isDialogOpen: false,
     dialogData: {translations: []},
     isProcessing: false,
+    isComposing: false,
+    isTabPressed: false,
+    searchText: '',
   });
 
   const audioRef = useRef(null);
   const intervalRef = useRef(null);
 
   const keyDownCallback = (event) => handleKeyDown(event, status, setStatus);
+  const keyUpCallback = (event) => handleKeyUp(event, status, setStatus);
+
+  const handleKeyUp = (event, status, setStatus) => {
+    if (event.key === 'Tab') {
+      console.debug('Tab Up');
+      status.isTabPressed = false;
+      setStatus({
+        ...status, // 复制现有状态
+      });
+    }
+  };
 
   // 键盘事件处理
   useEffect(() => {
@@ -53,12 +71,14 @@ export default function Page() {
 
     // 添加键盘事件监听器
     document.addEventListener('keydown', keyDownCallback);
+    document.addEventListener('keyup', keyUpCallback);
     document.addEventListener('compositionstart', handleCompositionStart);
     document.addEventListener('compositionend', handleCompositionEnd);
 
     // 清理函数（组件卸载时移除键盘监听器）
     return () => {
       document.removeEventListener('keydown', keyDownCallback);
+      document.removeEventListener('keyup', keyUpCallback);
       document.removeEventListener('compositionstart', handleCompositionStart);
       document.removeEventListener('compositionend', handleCompositionEnd);
     };
@@ -230,6 +250,7 @@ export default function Page() {
    */
   const searchExistingWordsEnglishChinese = async (word) => {
 
+    if (!status.isTabPressed) {return;}
     // search current word
     try {
       const response = await fetch(
@@ -463,9 +484,60 @@ export default function Page() {
         </div>
 
         <div
-            className={'operation text-center'} onClick={playCurrentWord}
-            onWheel={handleWordWheel}>{status.currentWordIndex +
-            1} / {status.words.length} <FaVolumeUp/></div>
+            className={'operation text-center'}
+            onWheel={handleWordWheel}>
+          {status.currentWordIndex +
+              1} / {status.words.length}</div>
+
+        <div className={'operation text-center'}>
+          <form className={'inline search-form'}
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  if (status.searchText && status.words?.length > 1) {
+                    let index = 0;
+                    for (index = 1; index < status.words.length; index++) {
+                      let i = index + status.currentWordIndex;
+                      if (i >= status.words.length) {
+                        i = i - status.words.length;
+                      }
+                      const word = status.words[i];
+                      if (word.word.toLowerCase().
+                              includes(status.searchText.toLowerCase()) ||
+                          word.translation.toLowerCase().
+                              includes(status.searchText.toLowerCase())) {
+                        setStatus({
+                          ...status,
+                          currentWordIndex: i,
+                        });
+                        break;
+                      }
+                    }
+                    if (index === status.words.length) {
+                      toast.error('Not found.');
+                    }
+                  }
+                }}>
+            <input className={'focus:outline-none border'}
+                   type={'text'}
+                   value={status.searchText}
+                   onChange={(event) => {
+                     setStatus({...status, searchText: event.target.value});
+                   }}
+            />
+            <button type="submit" className="ml-2"><RiFileSearchLine/>
+            </button>
+          </form>
+          <span onClick={(event) => {
+            keyDownCallback({...event, key: ' '});
+          }}> {status.isPlaying ?
+              <FaPause/> : <LuSquarePlay/>}</span>
+          <span onClick={(event) => {
+            keyDownCallback({...event, key: 'ArrowLeft'});
+          }}> <CgPlayTrackPrevR/> </span>
+          <span onClick={(event) => {
+            keyDownCallback({...event, key: 'ArrowRight'});
+          }}> <CgPlayTrackNextR/> </span>
+          <span onClick={playCurrentWord}><FaVolumeUp/></span></div>
 
         <div className={'operation text-center button'}>
           <button className={'put_top'} onClick={handlePutTop}><PiRocket/>
@@ -475,14 +547,6 @@ export default function Page() {
           </button>
         </div>
 
-
-        <div
-            onClick={(event) => {
-          event.key = ' ';
-          keyDownCallback(event);
-        }}>{status.isPlaying ?
-            <FaPause/> : <FaPlay/>}
-        </div>
 
         <div className="text-center">
           {/* Open Editor Dialog */}
@@ -548,8 +612,7 @@ export default function Page() {
           />
         </div>
 
-        <Transition show={status.isDialogOpen}
-                    className="">
+        <Transition show={status.isDialogOpen}>
           <Dialog onClose={() => setStatus({
             ...status, // 复制现有状态
             isDialogOpen: false,

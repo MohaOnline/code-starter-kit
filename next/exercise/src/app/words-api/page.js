@@ -109,13 +109,13 @@ export default function Notebook() {
       <React.Fragment>
         <div className={'word-container'} style={{
           display: 'grid',
-          'place-items': 'center',
-          'font-size': '34px',
+          placeItems: 'center',
+          fontSize: '34px',
           margin: 'auto',
           width: '800px',
-          'text-align': 'center',
-          'font-family': 'serif',
-          'background-color': 'black',
+          textAlign: 'center',
+          fontFamily: 'serif',
+          backgroundColor: 'black',
           color: 'rgb(120, 210, 120)',
           height: '85vh',
         }}>
@@ -129,8 +129,8 @@ export default function Notebook() {
           <div
               style={{
                 margin: '0 0 0 0',
-                'font-size': '60px',
-                'letter-spacing': '3px',
+                fontSize: '60px',
+                letterSpacing: '3px',
               }}>{words[status.currentWordIndex].word}</div>
 
           {/*<div dangerouslySetInnerHTML={{*/}
@@ -141,7 +141,7 @@ export default function Notebook() {
           <div
               style={{
                 margin: '50px 0 0 0',
-                'font-size': '28px',
+                fontSize: '28px',
                 opacity: 0.6,
               }}>{words[status.currentWordIndex].part_of_speech
               ? '[' +
@@ -154,8 +154,8 @@ export default function Notebook() {
         </div>
 
         <div onClick={(event) => {
-          event.key = ' ';
-          keyDownCallback(event);
+
+          keyDownCallback({...event, key: ' '});
         }}>{status.isPlaying ?
             <FaPause/> : <FaPlay/>}</div>
 

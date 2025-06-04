@@ -49,7 +49,8 @@ export async function POST(request) {
           [newWeight, word.id],
       );
 
-      if (updateResult.affectedRows === 0) {
+      if (!updateResult || !('affectedRows' in updateResult) ||
+          updateResult.affectedRows === 0) {
         console.error('无法更新 notebook_words_english:', word.id);
         throw new Error('更新 notebook_words_english 错误: ' + word.id);
       }
@@ -78,7 +79,8 @@ export async function POST(request) {
           [newWeight, word.id],
       );
 
-      if (updateResult.affectedRows === 0) {
+      if (!updateResult || !('affectedRows' in updateResult) ||
+          updateResult.affectedRows === 0) {
         console.error('无法更新 notebook_words_english:', word.id);
         throw new Error('更新 notebook_words_english 错误: ' + word.id);
       }
