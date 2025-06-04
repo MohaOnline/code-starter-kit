@@ -15,6 +15,7 @@ import {PiHandWaving, PiRocket} from 'react-icons/pi';
 import {RiFileSearchLine} from 'react-icons/ri';
 import * as Icons from '@/app/lib/libs';
 import {LuSquarePlay} from 'react-icons/lu';
+import {GiPlayerPrevious} from 'react-icons/gi';
 
 
 import {Dialog, Transition} from '@headlessui/react';
@@ -452,6 +453,57 @@ export default function Page() {
 
   };
 
+  const handlePutPrevious = async (event) => {
+
+    if (status.currentWordIndex === 0) {
+      return;
+    }
+
+    if (status.currentWordIndex === 1) {
+      return handlePutTop(event);
+    }
+
+    console.log('handlePutPrevious');
+
+    const response = await fetch(
+        '/api/notebook/words/english',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'put_previous',
+            word: status.words[status.currentWordIndex],
+            weight1: status.words[status.currentWordIndex - 1].weight,
+            weight2: status.words[status.currentWordIndex - 2].weight,
+          }),
+        });
+
+    if (!response.ok) {
+      toast.error('Failed to put word to previous.');
+      return;
+    } else if (response.ok) {
+      toast.success('Successfully put word previous.');
+    }
+
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    if (jsonResponse.success) {
+      if (jsonResponse.data.weight !==
+          status.words[status.currentWordIndex].weight) {
+        const [item] = status.words.splice(status.currentWordIndex, 1);
+        status.words.splice(status.currentWordIndex - 1, 0, item);
+        status.currentWordIndex--;
+        setStatus({
+          ...status,
+        });
+      }
+    }
+
+  };
+
   return (
       <>
         <NavTop/>
@@ -490,6 +542,8 @@ export default function Page() {
               1} / {status.words.length}</div>
 
         <div className={'operation text-center'}>
+          <span className={'put_previous'}
+                onClick={handlePutPrevious}> <GiPlayerPrevious/> </span>
           <form className={'inline search-form'}
                 onSubmit={(event) => {
                   event.preventDefault();
@@ -504,7 +558,8 @@ export default function Page() {
                       if (word.word.toLowerCase().
                               includes(status.searchText.toLowerCase()) ||
                           word.translation.toLowerCase().
-                              includes(status.searchText.toLowerCase())) {
+                              includes(status.searchText.toLowerCase()) ||
+                          i + 1 + '' === status.searchText) {
                         setStatus({
                           ...status,
                           currentWordIndex: i,
@@ -1036,6 +1091,17 @@ export default function Page() {
                                                 status.words.length) {
                                               status.currentWordIndex--;
                                             }
+                                          }
+                                        }
+                                      } else {
+                                        for (let index = status.words.length -
+                                            1; index >= 0; index--) {
+                                          if (status.words[index].eid ===
+                                              word.eid &&
+                                              status.words[index].cid ===
+                                              word.cid) {
+                                            status.words.splice(index, 1, word);
+                                            break;
                                           }
                                         }
                                       }

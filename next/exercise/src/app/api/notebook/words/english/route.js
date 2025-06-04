@@ -20,7 +20,7 @@ export async function POST(request) {
     dbConnection = await mysql.createConnection(dbConfig);
     await dbConnection.beginTransaction();
 
-    const {action, word} = await request.json();
+    const {action, word, weight1, weight2} = await request.json();
 
     // 验证输入
     if (!action || !word || !word.id) {
@@ -90,7 +90,31 @@ export async function POST(request) {
     } else if (action === 'put_next') {
       // 重设密码
     } else if (action === 'put_previous') {
-      // 重设密码
+      if (!weight1 || !weight2) {
+        throw new Error('Invalid request: weight1, weight2 is missing');
+      }
+
+      // TODO 验证 weight1, weight2 在 notebook_words_english 中有 2 个
+
+      const lexoRank1 = LexoRank.parse(weight1);
+      const lexoRank2 = LexoRank.parse(weight2);
+      const newWeight = lexoRank1.between(lexoRank2).format();
+
+      const [updateResult] = await dbConnection.query(
+          `UPDATE notebook_words_english
+           SET weight = ?
+           WHERE id = ?`,
+          [newWeight, word.id],
+      );
+
+      if (!updateResult || !('affectedRows' in updateResult) ||
+          updateResult.affectedRows === 0) {
+        console.error('无法更新 notebook_words_english:', word.id);
+        throw new Error('更新 notebook_words_english 错误: ' + word.id);
+      }
+
+      word.weight = newWeight;
+      responseData = word;
     }
 
     await dbConnection.commit();

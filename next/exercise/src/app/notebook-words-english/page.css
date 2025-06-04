@@ -36,7 +36,7 @@ span.pos {
 
 svg {
     display: inline;
-    vertical-align: text-top;
+    vertical-align: top;
 }
 
 div.operation {
