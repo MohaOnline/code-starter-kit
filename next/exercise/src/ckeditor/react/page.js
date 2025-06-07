@@ -69,8 +69,9 @@ https://ckeditor.com/docs/ckeditor4/latest/examples/react.html#/state-lifting
 https://ckeditor.com/cke4/addon/codemirror
 https://codemirror.net/examples/bundle/
 
-
-
+-- 集成文件管理
+https://ckeditor.com/docs/ckeditor4/latest/guide/dev_file_browse_upload.html
+https://ckeditor.com/docs/ckeditor4/latest/guide/dev_dialog_add_file_browser.html
 
 *
 *
