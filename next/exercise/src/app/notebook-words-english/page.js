@@ -25,6 +25,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {handleKeyDown} from '../words/components/common';
 import NavTop from '@/app/lib/components/NavTop.js';
+import {GiPlayerNext} from '@/app/lib/libs';
 
 export default function Page() {
 
@@ -409,6 +410,53 @@ export default function Page() {
 
   };
 
+  const handlePutNext = async (event) => {
+
+    if (status.currentWordIndex === status.words.length - 1) {
+      return;
+    }
+
+    console.log('handlePutNext');
+
+    const response = await fetch(
+        '/api/notebook/words/english',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'put_next',
+            word: status.words[status.currentWordIndex],
+            weight1: status.words[status.currentWordIndex + 1].weight,
+            weight2: status.words[status.currentWordIndex + 2].weight,
+          }),
+        });
+
+    if (!response.ok) {
+      toast.error('Failed to put word to the next.');
+      return;
+    } else if (response.ok) {
+      toast.success('Successfully put word to next.');
+    }
+
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    if (jsonResponse.success) {
+      if (jsonResponse.data.weight !==
+          status.words[status.currentWordIndex].weight) {
+        const [item] = status.words.splice(status.currentWordIndex, 1);
+        status.words.splice(status.currentWordIndex + 1, 0, jsonResponse.data);
+        status.currentWordIndex++;
+        setStatus({
+          ...status,
+        });
+      }
+    }
+
+  };
+
   const handlePutTop = async (event) => {
 
     console.log('handlePutTop');
@@ -544,6 +592,8 @@ export default function Page() {
         <div className={'operation text-center'}>
           <span className={'put_previous'}
                 onClick={handlePutPrevious}> <GiPlayerPrevious/> </span>
+          <span className={'put_next'}
+                onClick={handlePutNext}> <GiPlayerNext/> </span>
           <form className={'inline search-form'}
                 onSubmit={(event) => {
                   event.preventDefault();

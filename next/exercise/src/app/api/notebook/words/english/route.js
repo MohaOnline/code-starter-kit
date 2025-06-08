@@ -87,9 +87,7 @@ export async function POST(request) {
 
       word.weight = newWeight;
       responseData = word;
-    } else if (action === 'put_next') {
-      // 重设密码
-    } else if (action === 'put_previous') {
+    } else if (action === 'put_previous' || action === 'put_next') {
       if (!weight1 || !weight2) {
         throw new Error('Invalid request: weight1, weight2 is missing');
       }
