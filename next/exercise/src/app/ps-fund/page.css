@@ -1,0 +1,11 @@
+.logs {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+/*button:active {*/
+/*  不要使用：按钮往下的页面布局会抖动
+      padding-top: 9px;
+      padding-bottom: 7px; */
+/*    transform: translateY(2px); */
+/*}*/

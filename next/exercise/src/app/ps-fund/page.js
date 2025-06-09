@@ -1,3 +1,5 @@
+'use client';
+
 import {v4 as uuid} from 'uuid';
 import {
   LexoDecimal,
@@ -6,8 +8,16 @@ import {
   LexoRank,
 } from 'lexorank';
 import LexoRankBucket from 'lexorank/lib/lexoRank/lexoRankBucket.js';
+import {Button} from '@/components/ui/button';
+import {useState} from 'react';
 
-export default function index(params) {
+import './page.css';
+
+export default function Page(params) {
+  const [logs, setLogs] = useState('');
+  let [weight1, setWeight1] = useState(LexoRank.middle());
+  const [weight2, setWeight2] = useState(LexoRank.middle());
+
   const lexoRank = LexoRank.middle();
   const lexoRank2 = LexoRank.min();
   let t = LexoRank.parse('0|8zzzzz:').genNext();
@@ -40,8 +50,24 @@ export default function index(params) {
   console.log(l1.between(l2).format());
   console.log(l1.between(l2).genNext().format());
 
+  const genNextWeight1 = () => {
+    setWeight1(weight1 = weight1.genNext());
+    setLogs((logs) => {
+      logs = 'weight1.genNext(); weight1.format();  \\\\' +
+          weight1.format() + '<br/>\n' + logs;
+      return logs;
+    });
+  };
+
   return (
     <>
+      <div className={'logs'} dangerouslySetInnerHTML={{__html: logs}}></div>
+      <Button className={'active:translate-y-[2px] transition-transform'}
+              onClick={genNextWeight1}>Previous
+        Weight1</Button> <Button
+        className={'active:translate-y-[2px] transition-transform'}
+        onClick={genNextWeight1}>Next
+      Weight1</Button>
       <h1>UUID: {uuid()}</h1>
       <h1>UUID: {uuid()}</h1>
       <h1>L: {lexoRank.format()}</h1>
