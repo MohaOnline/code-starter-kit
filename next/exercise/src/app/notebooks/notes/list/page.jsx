@@ -1,8 +1,12 @@
 'use client';
 
-import ModeToggle from '@/components/mode-toggle';
 import {useEffect, useState} from 'react';
 import {toast} from 'react-toastify';
+import ModeToggle from '@/components/mode-toggle';
+import {Button} from '@/components/ui/button';
+
+import Note from '../libs/Note';
+
 
 export default function Page() {
 
@@ -41,8 +45,17 @@ export default function Page() {
       <div className="w-full">
         <ModeToggle/>
         <h1 className="text-3xl font-bold">
-          Notebook Words English
+          Notes
         </h1>
+        <div className="operation">
+          <Button
+              className="active:translate-y-[1px] transition-transform">Add</Button>
+        </div>
+        <div className="notes flex flex-col gap-4">
+          {status.notes.map((note) => (
+              <Note key={note.id} note={note}/>
+          ))}
+        </div>
       </div>
   );
 }

@@ -1,0 +1,11 @@
+div.note {
+}
+
+div.note h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.note div.operation {
+    text-align: right;
+}
