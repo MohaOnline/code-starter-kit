@@ -589,6 +589,8 @@ export default function Page() {
               1} / {status.words.length}</div>
 
         <div className={'operation text-center'}>
+          <span className={'put_top'} onClick={handlePutTop}><PiRocket />
+          </span>
           <span className={'put_previous'}
                 onClick={handlePutPrevious}> <GiPlayerPrevious/> </span>
           <span className={'put_next'}
@@ -624,6 +626,7 @@ export default function Page() {
             <input className={'focus:outline-none border'}
                    type={'text'}
                    value={status.searchText}
+                   onFocus={(e) => e.target.select()}
                    onChange={(event) => {
                      setStatus({...status, searchText: event.target.value});
                    }}
@@ -641,18 +644,12 @@ export default function Page() {
           <span onClick={(event) => {
             keyDownCallback({...event, key: 'ArrowRight'});
           }}> <CgPlayTrackNextR/> </span>
-          <span onClick={playCurrentWord}><FaVolumeUp/></span></div>
-
-        <div className={'operation text-center button'}>
-          <button className={'put_top'} onClick={handlePutTop}><PiRocket/>
-          </button>
-
-          <button className={'put_end'} onClick={handlePutEnd}><PiRocket/>
-          </button>
-        </div>
+          <span onClick={playCurrentWord}><FaVolumeUp/></span>
+          <span className={'put_end'} onClick={handlePutEnd}><PiRocket />
+          </span></div>
 
 
-        <div className="text-center">
+        <div className="text-center mt-2">
           {/* Open Editor Dialog */}
           <button
               onClick={async () => {
@@ -857,7 +854,7 @@ export default function Page() {
                                     placeholder="UK "
                                 />
                                 <button
-                                    className="px-4 py-2 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border"
+                                    className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
                                     onClick={async () => {
                                       try {
                                         if (translation.cid) {
@@ -967,7 +964,7 @@ export default function Page() {
                                     placeholder="Script"
                                 />
                                 <button
-                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700 border"
+                                    className="px-4 py-3 bg-red-900 text-white rounded hover:bg-red-500 active:bg-red-700 border flex justify-center items-center"
                                     onClick={() => {
 
                                       if (translation.cid) {
