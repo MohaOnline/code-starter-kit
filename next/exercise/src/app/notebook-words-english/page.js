@@ -345,23 +345,22 @@ export default function Page() {
 
   const handleWordWheel = (event) => {
 
-    status.onWheel = true;
+    status.onWheel = false;
     status.isPlaying = false;
 
     const delta = event.deltaY;
     if (delta > 0) {
       console.log('向下滚动 ' + delta);
+      status.currentWordIndex = Math.min(status.words.length - 1,
+        status.currentWordIndex + 1);
       setStatus({
         ...status, // 复制现有状态
-        currentWordIndex: Math.min(status.words.length - 1,
-            status.currentWordIndex + delta),
       });
     } else {
       console.log('向上滚动' + delta);
+      status.currentWordIndex = Math.max(0, status.currentWordIndex -1);
       setStatus({
         ...status, // 复制现有状态
-        currentWordIndex: Math.max(0,
-            status.currentWordIndex + delta),
       });
     }
   };
@@ -559,14 +558,14 @@ export default function Page() {
           <div>
             <div>
               <span className={'phonetic'} dangerouslySetInnerHTML={{
-              __html: status.words[status.currentWordIndex].phonetic_us ||
-                  status.words[status.currentWordIndex].phonetic_uk || '&nbsp;',
+              __html: status.words[status.currentWordIndex]?.phonetic_us ||
+                  status.words[status.currentWordIndex]?.phonetic_uk || '&nbsp;',
               }}></span>
 
               <span className={'pos'}>&nbsp;
-                {status.words[status.currentWordIndex].pos
+                {status.words[status.currentWordIndex]?.pos
                     ? '[' +
-                    status.words[status.currentWordIndex].pos + ']'
+                    status.words[status.currentWordIndex]?.pos + ']'
                     :
                     ' '}
                 &nbsp;</span>
@@ -577,7 +576,7 @@ export default function Page() {
                 onWheel={handleWordWheel}>{status.words[status.currentWordIndex].word}</div>
 
 
-            <div
+            <div onWheel={handleWordWheel}
                 className={'translation'}>{status.words[status.currentWordIndex].translation}</div>
 
           </div>
