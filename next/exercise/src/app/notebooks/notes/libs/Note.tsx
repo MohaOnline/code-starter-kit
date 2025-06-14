@@ -32,13 +32,38 @@ export default function Note({note}: NoteProps) {
         isEditing: false,
         setEditing: null,
     });
-    status.note = note;
     status.set = setStatus;
-    status.setEditing = (isEditing: boolean) => setStatus({...status, isEditing: isEditing});
+    status.setEditing = (isEditing: boolean) => setStatus(prev => ({...prev, isEditing: isEditing}));
+
+    // Handle changes of note items.
     const handleChange = (e) => {
+
         const {name, value} = e.target;
-        setStatus(prev => ({...prev, [name]: value}));
+        setStatus({
+             ...status, 
+             note: { ...status.note, [name]: value } 
+        });
     };
+
+    // Handle saving function.
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        const response = await fetch(
+            '/api/notebooks/notes/crud',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'update',
+                    note: status.note,
+                }),
+            });
+        const data = await response.json();
+        console.log(data);
+        status.setEditing(false);
+    }
 
     return (
         <>
@@ -48,13 +73,13 @@ export default function Note({note}: NoteProps) {
                 <div className="operation">
                     <Button className={'active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
                             onClick={() => {
-                                status.set({...status, isEditing: true})
+                                status.setEditing(true);
                             }}>Edit</Button>
                 </div>
             </div>
 
-            <Drawer open={status.isEditing} onOpenChange={status.setEditing}>
-                <DrawerContent>
+            <Drawer open={status.isEditing} onOpenChange={status.setEditing} dismissible={false} >
+                <DrawerContent >
                     <DrawerHeader>
                         <DrawerTitle>Edit Note</DrawerTitle>
                         <DrawerDescription>Modify the title and body of your note.</DrawerDescription>
@@ -73,16 +98,19 @@ export default function Note({note}: NoteProps) {
                             onChange={handleChange}
                             className="w-full p-2 border"
                             placeholder="Body"
-                            rows={4}
+                            rows={10}
                         />
                     </div>
                     <DrawerFooter>
                         <div className={'flex gap-4'}>
-                            <Button onClick={status.note.save} className="bg-blue-500 text-white">
-                                Save
+                            <Button onClick={handleUpdate} className="bg-blue-500 text-white">
+                                Update
                             </Button>
                             <DrawerClose asChild>
-                                <Button variant="outline">Cancel</Button>
+                                <Button variant="outline" onClick={() => {
+                                    status.isEditing = false;
+                                    setStatus({...status});
+                                }}>Cancel</Button>
                             </DrawerClose></div>
                     </DrawerFooter>
                 </DrawerContent>

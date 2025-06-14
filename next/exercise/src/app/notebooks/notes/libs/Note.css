@@ -9,3 +9,8 @@ div.note h2 {
 div.note div.operation {
     text-align: right;
 }
+
+/* Drawer Header Styles. */
+[data-slot="drawer-header"] {
+  display: none;
+}

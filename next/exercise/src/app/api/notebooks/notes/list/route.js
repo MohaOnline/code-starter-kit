@@ -350,8 +350,10 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
 
 npm add prisma @prisma/client
+npm install @prisma/client
 npx prisma init
-
+npx prisma db pull
+npx prisma generate    需要 next 转换 commonJS 格式，next.config.mjs： transpilePackages: ['@prisma/client', 'prisma'],
 
 */
 

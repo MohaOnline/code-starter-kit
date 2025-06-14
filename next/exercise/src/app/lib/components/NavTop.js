@@ -14,7 +14,7 @@ export default function NavTop() {
       <div className={'nav'}><Link href="/"><FaHome></FaHome></Link>
         <Link href={'/notebook-words-english'}> <BsPostcard/></Link>
         <Link href={'/notebooks/words/english/list'}> <FaListUl/></Link>
-        <Link href={'/notebooks/se/list'}> <GrTechnology/></Link>
+        <Link href={'/notebooks/notes/list'}> <GrTechnology/></Link>
         <Link href={'/notebooks/se/cards'}> <GiMaterialsScience/></Link>
         <Link href={'/notebooks/se/cards'}> <MdOutlineBiotech/></Link>
       </div>

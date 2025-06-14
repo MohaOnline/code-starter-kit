@@ -37,6 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Changelog
 
+2025/06/13
+
+
+
 2025/05/17
 
 - 添加键盘控制支持
