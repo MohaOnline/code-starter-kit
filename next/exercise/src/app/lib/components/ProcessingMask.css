@@ -1,0 +1,22 @@
+
+
+.processing.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: all;
+    background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 确保遮罩在最上层 */
+}
+
+.processing.loader {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    /*animation: pulse 1.5s infinite; !* 可选：加载动画 *!*/
+}

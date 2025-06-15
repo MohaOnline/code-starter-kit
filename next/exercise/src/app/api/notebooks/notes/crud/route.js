@@ -19,6 +19,10 @@ export async function POST(request) {
         console.log(result);
         // 可以继续用 tx 处理更多逻辑
       });
+    } else if (data?.action === 'add') {
+      
+      result = await prisma.$executeRaw`INSERT INTO notebooks_notes (title, body) VALUES (${data.note.title}, ${data.note.body})`;
+      console.log(result);
     }
 
     console.log('note updated:' + JSON.stringify(data.note));

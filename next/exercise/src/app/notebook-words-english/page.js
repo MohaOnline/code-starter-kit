@@ -373,6 +373,11 @@ export default function Page() {
       return;
     }
 
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: true,
+    }));
+
     const response = await fetch(
         '/api/notebook/words/english',
         {
@@ -385,6 +390,11 @@ export default function Page() {
             word: status.words[status.currentWordIndex],
           }),
         });
+
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: false,
+    }));
 
     if (!response.ok) {
       toast.error('Failed to put word to the end.');
@@ -417,6 +427,11 @@ export default function Page() {
 
     console.log('handlePutNext');
 
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: true,
+    }));
+
     const response = await fetch(
         '/api/notebook/words/english',
         {
@@ -431,6 +446,11 @@ export default function Page() {
             weight2: status.words[status.currentWordIndex + 2].weight,
           }),
         });
+
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: false,
+    }));
 
     if (!response.ok) {
       toast.error('Failed to put word to the next.');
@@ -464,6 +484,11 @@ export default function Page() {
       return;
     }
 
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: true,
+    }));
+
     const response = await fetch(
         '/api/notebook/words/english',
         {
@@ -476,6 +501,11 @@ export default function Page() {
             word: status.words[status.currentWordIndex],
           }),
         });
+
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: false,
+    }));
 
     if (!response.ok) {
       toast.error('Failed to put word to the top.');
@@ -512,6 +542,12 @@ export default function Page() {
 
     console.log('handlePutPrevious');
 
+
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: true,
+    }));
+
     const response = await fetch(
         '/api/notebook/words/english',
         {
@@ -526,6 +562,12 @@ export default function Page() {
             weight2: status.words[status.currentWordIndex - 2].weight,
           }),
         });
+
+
+    setStatus((prev)=>({
+      ...prev,
+      isProcessing: false,
+    }));
 
     if (!response.ok) {
       toast.error('Failed to put word to previous.');
@@ -731,7 +773,7 @@ export default function Page() {
                 <div className={'flex'}>
                 <input
                     type="text"
-                    value={status.dialogData.word}
+                    value={status.dialogData.word||''}
                     onChange={(e) => setStatus(
                         {
                           ...status,
@@ -747,13 +789,13 @@ export default function Page() {
                     placeholder="Word..."
                 />
                   <input name={'eid'} type={'text'}
-                         value={status.dialogData.eid}
+                         value={status.dialogData.eid||''}
                          readOnly={true}
                          className={'w-auto p-2 border pointer-events-none'}
                   /></div>
                 <input
                     type="text"
-                    value={status.dialogData.accent}
+                    value={status.dialogData.accent||''}
                     onChange={(e) => setStatus(
                         {
                           ...status,
@@ -767,7 +809,7 @@ export default function Page() {
                 />
                 <input
                     type="text"
-                    value={status.dialogData.syllable}
+                    value={status.dialogData.syllable||''}
                     onChange={(e) => setStatus(
                         {
                           ...status,
@@ -781,7 +823,7 @@ export default function Page() {
                 />
                 <input
                     type="text"
-                    value={status.dialogData.script}
+                    value={status.dialogData.script||''}
                     onChange={(e) => setStatus(
                         {
                           ...status,
@@ -803,19 +845,19 @@ export default function Page() {
                                  className="translation mt-2 bg-gray-950/70">
                               <div className={'flex items-center gap-2'}>
                                 <input name={'note-word-id'} type={'hidden'}
-                                       value={translation.id}
+                                       value={translation.id||''}
                                 />
                                 <input name={'notebook-id'} type={'hidden'}
-                                       value={translation.nid}
+                                       value={translation.nid||''}
                                 />
                                 <input name={'cid'} type={'hidden'}
-                                       value={translation.cid}
+                                       value={translation.cid||''}
                                 />
                                 <input
                                     type="text"
                                     className="w-10 p-2 pl-1 pr-1 border rounded"
                                     placeholder="PoS"
-                                    value={translation.pos}
+                                    value={translation.pos||''}
                                     onChange={(e) => {
                                       const translations = [...status.dialogData.translations];
                                       translations[index] = {
@@ -834,7 +876,7 @@ export default function Page() {
                                 />
                                 <input
                                     type="text"
-                                    value={translation.phonetic_uk}
+                                    value={translation.phonetic_uk||''}
                                     onChange={(e) => {
                                       const translations = [...status.dialogData.translations];
                                       translations[index] = {
@@ -880,7 +922,7 @@ export default function Page() {
                                 </button>
                                 <input
                                     type="text"
-                                    value={translation.phonetic_us}
+                                    value={translation.phonetic_us||''}
                                     onChange={(e) => {
                                       const translations = [...status.dialogData.translations];
                                       translations[index] = {
@@ -902,7 +944,7 @@ export default function Page() {
 
                                 <input
                                     type="checkbox"
-                                    checked={translation.noted}
+                                    checked={translation.noted||''}
                                     onChange={(e) => {
                                       const isChecked = e.target.checked;
                                       const translations = [...status.dialogData.translations];
@@ -923,7 +965,7 @@ export default function Page() {
                               <div className="flex items-center gap-2 mt-2">
                                 <input
                                     type="text"
-                                    value={translation.translation}
+                                    value={translation.translation||''}
                                     onChange={(e) => {
                                       const translations = [...status.dialogData.translations];
                                       translations[index] = {
@@ -944,7 +986,7 @@ export default function Page() {
                                 />
                                 <input
                                     type="text"
-                                    value={translation.script}
+                                    value={translation.script||''}
                                     onChange={(e) => {
                                       const translations = [...status.dialogData.translations];
                                       translations[index] = {

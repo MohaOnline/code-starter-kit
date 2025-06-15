@@ -6,11 +6,17 @@ import ModeToggle from '@/components/mode-toggle';
 import {Button} from '@/components/ui/button';
 
 import Note from '../libs/Note';
+import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
+import {NoteDialog} from "@/app/notebooks/notes/libs/NoteDialog";
 
 
 export default function Page() {
 
-  const [status, setStatus] = useState({notes: []});
+  const [status, setStatus] = useState({
+    isProcessing: false,
+    isAdding: false,  
+    notes: [],
+  });
 
   // 加载所有 notes
   useEffect(() => {
@@ -48,14 +54,14 @@ export default function Page() {
           Notes
         </h1>
         <div className="operation">
-          <Button
-              className="active:translate-y-[1px] transition-transform">Add</Button>
+            <NoteDialog note={{}}/>
         </div>
         <div className="notes flex flex-col gap-4">
           {status.notes.map((note) => (
               <Note key={note.id} note={note}/>
           ))}
         </div>
+        <ProcessingMask />
       </div>
   );
 }
