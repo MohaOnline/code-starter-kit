@@ -1,13 +1,19 @@
 import { atom, useAtom } from 'jotai';
 
-interface statusAtom {
-    isProcessing: boolean,
-}
+/**
+ * import { useStatus } from '@/app/lib/atoms';
+ * 
+ * const [status, setStatus] = useStatus();
+ */
 
 export const notebookAtom = atom({isProcessing: false});
 export const englishWordsAtom = atom({});
 
-export const status = atom({isProcessing: false});
+// 通用 status，所有数据在此周转。
+export const status = atom({
+    types: [],
+    isProcessing: false
+});
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
 export function useStatus() {

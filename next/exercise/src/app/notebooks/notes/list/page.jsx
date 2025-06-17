@@ -1,14 +1,14 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import {toast} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import ModeToggle from '@/components/mode-toggle';
 import {Button} from '@/components/ui/button';
 
 import Note from '../libs/Note';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
-import {NoteDialog} from "@/app/notebooks/notes/libs/NoteDialog";
-
+import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
+import NavTop from '@/app/lib/components/NavTop';
 
 export default function Page() {
 
@@ -48,20 +48,35 @@ export default function Page() {
   }, []);
 
   return (
-      <div className="w-full">
-        <ModeToggle/>
-        <h1 className="text-3xl font-bold">
-          Notes
-        </h1>
-        <div className="operation">
-            <NoteDialog note={{}}/>
-        </div>
-        <div className="notes flex flex-col gap-4">
-          {status.notes.map((note) => (
-              <Note key={note.id} note={note}/>
-          ))}
-        </div>
-        <ProcessingMask />
+    <div className="w-full">
+      <NavTop />
+      <h1 className="text-3xl font-bold text-center">
+        Notes
+      </h1>
+
+      {/* 笔记添加 */}
+      <div className="operation text-right">
+        <NoteDialog note={{}} />
       </div>
+
+      <div className="notes flex flex-col gap-4">
+        {status.notes.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
+      </div>
+      <ProcessingMask />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <div className="text-right"><ModeToggle /></div>
+    </div>
   );
 }

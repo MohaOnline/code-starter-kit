@@ -26,6 +26,8 @@ if (isDev) {
   }
 }
 
+console.log('allowedDevOrigins', allowedDevOrigins);
+
 const nextConfig = {
   allowedDevOrigins: allowedDevOrigins,
   experimental: {serverActions: {bodySizeLimit: '100mb'}},

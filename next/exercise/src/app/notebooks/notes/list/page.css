@@ -127,6 +127,6 @@
     }
 }
 
-div.operation {
+div.operation.right {
     text-align: right;
 }

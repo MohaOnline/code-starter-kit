@@ -109,6 +109,7 @@ export default function Page() {
           }
           status.currentWordIndex = savedIndex;
         } catch (e) {}
+
         status.words = json.data;
         setStatus({
           ...status, // 复制现有状态
