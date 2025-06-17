@@ -11,7 +11,14 @@ export const englishWordsAtom = atom({});
 
 // 通用 status，所有数据在此周转。
 export const status = atom({
+    notes: [],
     types: [],
+    type: {
+        id: '',
+        title: '',
+        title_sub: '',
+    },
+    isAdding: false,
     isProcessing: false
 });
 

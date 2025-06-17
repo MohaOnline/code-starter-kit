@@ -21,21 +21,26 @@ export function NoteTypeSelector({ types }) {
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    // modal={true} 必须，否则鼠标滚动无效：https://github.com/shadcn-ui/ui/discussions/4175
+    <Popover modal={true} open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" className="w-[300px] justify-between">
-          {selected ? `${selected.title}: ${selected.title_sub} (${selected.id})` : '选择笔记类型'}
+          {status.type?.id
+            ? `${status.type.title} : ${status.type.title_sub} (${status.type.id})`
+            : '笔记类型 ...'}
         </Button>
       </PopoverTrigger>
 
       <PopoverContent className="w-[300px] p-0">
         <Command>
           <CommandInput placeholder="笔记类型..." />
-          <CommandList>
+          <CommandList className={'max-h-[300px] overflow-y-auto'}>
             {types.map((type) => (
               <CommandItem key={type.id} onSelect={() => handleSelect(type)}>
-                {`${type.title}: ${type.title_sub} (${type.id})`}
-                {selected?.id === type.id && <Check className="ml-auto h-4 w-4" />}
+                {`${type.title} : ${type.title_sub} (${type.id})`}
+
+                {status.type?.id === type.id &&
+                  <Check className="ml-auto h-4 w-4"/>}
               </CommandItem>
             ))}
           </CommandList>

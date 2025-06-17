@@ -67,7 +67,6 @@ export function NoteDialog({note}) {
                         <Input id="username-1" name="username" defaultValue="@peduarte" />
                     </div>
                     <div className="grid gap-3">
-                        <Label htmlFor="">Note Type</Label>
                         <NoteTypeSelector types={status.types} />
                     </div>
                     <div className="grid gap-3">
