@@ -106,7 +106,7 @@ const TranslationSentenceForm = (handleNoteChange: React.ChangeEventHandler<HTML
   );
 }
 
-export const NoteDialogFormItemRender = () => {
+export const NoteDialogFormItemRender = ({}) => {
   const [status, setStatus] = useStatus()    // 自定义状态管理
 
   function handleNoteFormItemChange (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {

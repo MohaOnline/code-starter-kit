@@ -12,36 +12,42 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
+
+
 import "./Note.css"
 
 interface NoteProps {
     note: {
         id: number | string;
+        tid: number | string;
         title: string;
         body: string;
+        question: string;
+        answer: string;
         save: null;
     };
 }
 
 
-/* component 有 note 参数，也可有别的参数，打包成一个对象传入。 */
+/* React component 有 note 参数，也可有别的参数，打包成一个对象传入。 */
 export default function Note({note}: NoteProps) {
-    const [status, setStatus] = useState({
+    const [local, setLocal] = useState({
         set: null,
         note: note,
-        isEditing: false,
+        isEditing: false,   // 开关编辑 Drawer
         setEditing: null,
     });
-    status.set = setStatus;
-    status.setEditing = (isEditing: boolean) => setStatus(prev => ({...prev, isEditing: isEditing}));
+    local.set = setLocal;
+    local.setEditing = (isEditing: boolean) => setLocal(prev => ({...prev, isEditing: isEditing}));
+
 
     // Handle changes of note items.
     const handleChange = (e) => {
 
         const {name, value} = e.target;
-        setStatus({
-             ...status, 
-             note: { ...status.note, [name]: value } 
+        setLocal({
+             ...local, 
+             note: { ...local.note, [name]: value } 
         });
     };
 
@@ -57,28 +63,33 @@ export default function Note({note}: NoteProps) {
                 },
                 body: JSON.stringify({
                     action: 'update',
-                    note: status.note,
+                    note: local.note,
                 }),
             });
         const data = await response.json();
         console.log(data);
-        status.setEditing(false);
+        local.setEditing(false);
     }
 
     return (
         <>
             <div className="border note flex flex-col gap-4">
-                <h2>{note.title}</h2>
-                <div>{note.body}</div>
+                {note.tid === '16' && 
+                  <><div dangerouslySetInnerHTML={{__html: note.question}}></div>
+                    <div dangerouslySetInnerHTML={{__html: note.answer}}></div>
+                  </>}
+                  
+                {note.tid != '16' && <><h2>{note.title}</h2><div>{note.body}</div></>}
+
                 <div className="operation">
                     <Button className={'active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
                             onClick={() => {
-                                status.setEditing(true);
+                                local.setEditing(true);
                             }}>Edit</Button>
                 </div>
             </div>
 
-            <Drawer open={status.isEditing} onOpenChange={status.setEditing} dismissible={false} >
+            <Drawer open={local.isEditing} onOpenChange={local.setEditing} dismissible={false} >
                 <DrawerContent >
                     <DrawerHeader>
                         <DrawerTitle>Edit Note</DrawerTitle>
@@ -87,14 +98,14 @@ export default function Note({note}: NoteProps) {
                     <div className="p-4">
                         <input
                             name="title"
-                            value={status.note.title}
+                            value={local.note.title}
                             onChange={handleChange}
                             className="w-full p-2 mb-4 border"
                             placeholder="Title"
                         />
                         <textarea
                             name="body"
-                            value={status.note.body}
+                            value={local.note.body}
                             onChange={handleChange}
                             className="w-full p-2 border"
                             placeholder="Body"
@@ -108,8 +119,8 @@ export default function Note({note}: NoteProps) {
                             </Button>
                             <DrawerClose asChild>
                                 <Button variant="outline" onClick={() => {
-                                    status.isEditing = false;
-                                    setStatus({...status});
+                                    local.isEditing = false;
+                                    setLocal({...local});
                                 }}>Cancel</Button>
                             </DrawerClose></div>
                     </DrawerFooter>
