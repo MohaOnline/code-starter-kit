@@ -10,14 +10,29 @@ export const notebookAtom = atom({isProcessing: false});
 export const englishWordsAtom = atom({});
 
 // 通用 status，所有数据在此周转。
+// Define the status atom without the handler function
 export const status = atom({
     notes: [],
-    types: [],
-    type: {
+    note: {
         id: '',
         title: '',
-        title_sub: '',
+        body: '',
+        question: '',
+        answer: '',
+        type_id: '',
+        type_title: '',
+        type_title_sub: '',
+        note: '',
+        note_extra: '',
+        type: {
+            id: '',
+            title: '',
+            title_sub: '',
+        },
+        body_script: '',
+        body_extra: '',
     },
+    types: [],
     isAdding: false,
     isProcessing: false
 });

@@ -15,7 +15,10 @@ export function NoteTypeSelector({ types }) {
     setSelected(type);
     setStatus((prev) => ({
       ...prev,
-      type: type,
+      note: {
+        ...prev.note,
+        type: type,
+      },
     }))
     setOpen(false);
   };
@@ -25,8 +28,8 @@ export function NoteTypeSelector({ types }) {
     <Popover modal={true} open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" className="w-[300px] justify-between">
-          {status.type?.id
-            ? `${status.type.title} : ${status.type.title_sub} (${status.type.id})`
+          {status.note?.type?.id
+            ? `${status.note?.type?.title} : ${status.note?.type?.title_sub} (${status.note?.type?.id})`
             : '笔记类型 ...'}
         </Button>
       </PopoverTrigger>
@@ -39,7 +42,7 @@ export function NoteTypeSelector({ types }) {
               <CommandItem key={type.id} onSelect={() => handleSelect(type)}>
                 {`${type.title} : ${type.title_sub} (${type.id})`}
 
-                {status.type?.id === type.id &&
+                {status.note?.type?.id === type.id &&
                   <Check className="ml-auto h-4 w-4"/>}
               </CommandItem>
             ))}

@@ -17,14 +17,15 @@ import { Textarea } from "@/components/ui/textarea"
 
 import { useStatus } from '@/app/lib/atoms';
 import { NoteTypeSelector } from "./NoteTypeSelector";
+import { NoteDialogFormItemRender } from './NoteDialogForms'
 
 import './NoteDialog.css';
 
 export function NoteDialog({note}) {
     const [open, setOpen] = useState(false);
-    const [status, setStatus] = useStatus();
+    const [status, setStatus] = useStatus()    // 自定义状态管理
 
-    // Load types data.
+    // Load note types data.
     useEffect(() => {
         fetch('/api/notebooks/types/list')
             .then(res => res.json())
@@ -49,29 +50,20 @@ export function NoteDialog({note}) {
             <DialogTrigger asChild>
                 <Button variant="outline" onClick={() => setOpen(true)}>Add</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[650px] md:max-w-[750px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
+                    <DialogTitle>Note</DialogTitle>
                     <DialogDescription>
                         Make changes to your profile here. Click save when you&apos;re
                         done.
                     </DialogDescription>
                 </DialogHeader>
+
                 <div className="grid gap-4">
-                    <div className="grid gap-3">
-                        <Label htmlFor="title">Name</Label>
-                        <Input id="title" name="name" defaultValue="Pedro Duarte" />
-                    </div>
-                    <div className="grid gap-3">
-                        <Label htmlFor="username-1">Username</Label>
-                        <Input id="username-1" name="username" defaultValue="@peduarte" />
-                    </div>
                     <div className="grid gap-3">
                         <NoteTypeSelector types={status.types} />
                     </div>
-                    <div className="grid gap-3">
-                        <Textarea id="body" name="username" defaultValue="@peduarte" />
-                    </div>
+                    <NoteDialogFormItemRender />
                 </div>
                 <DialogFooter>
                     <DialogClose asChild>
@@ -80,8 +72,38 @@ export function NoteDialog({note}) {
                     <Button onClick={() => {
                         console.log('save clicked');
                         setStatus(prev => ({ ...prev, isProcessing: true }));
-                        setStatus(prev => ({ ...prev, isProcessing: false }));
-                        
+
+                        let action = 'create';
+                        if (status.note.id) {
+                            action = 'update';
+                        }
+
+                        fetch('/api/notebooks/notes/crud', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                action: action,
+                                note: status.note,
+                            }),
+                        })
+                        .then(res => res.json())
+                        .then(json => {
+                            console.log('API Response:', json); // 更明确的日志标识
+                            // 更新状态，包括将返回的note数据合并到状态中
+                            setStatus(prev => ({
+                                ...prev,
+                                isProcessing: false,
+                                // 如果是创建操作，确保使用返回的note数据（包含新ID）
+                                note: action === 'create' && json.success ? json.note : prev.note
+                            }));
+                            setOpen(false);
+                        })
+                        .catch(err => {
+                            console.error('Fetch API error: /api/notebooks/notes/crud');
+                            setStatus(prev => ({ ...prev, isProcessing: false }));
+                        });
                     }} type="submit">Save</Button>
                 </DialogFooter>
             </DialogContent>
