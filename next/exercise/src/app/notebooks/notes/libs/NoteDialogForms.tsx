@@ -1,8 +1,17 @@
+'use client';
+
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
 import { CKEditor } from 'ckeditor4-react'
+import CodeMirror from '@uiw/react-codemirror';
+import { html } from '@codemirror/lang-html';
+import { oneDark } from '@codemirror/theme-one-dark';
+import { linter, lintGutter } from '@codemirror/lint';
+import { htmlCompletionSource, htmlLanguage } from '@codemirror/lang-html';
+import { syntaxTree } from '@codemirror/language';
+import { autocompletion } from '@codemirror/autocomplete';
 
 import { useStatus } from '@/app/lib/atoms'
 
@@ -12,13 +21,56 @@ const TranslationSentenceForm = (handleNoteChange: React.ChangeEventHandler<HTML
       <div className="grid gap-3">
         <Label htmlFor="question">Question</Label>
         <Textarea id="question" name="question"
-                  value={status.note?.question || ''}
+                  value={status.note?.question || '<p><span aria-label="" data-voice-id="" ></span></p>'}
                   onChange={handleNoteChange}/>
       </div>
       <div className="grid gap-3">
         <Label htmlFor="answer">Answer</Label>
-        <Textarea id="answer" name="answer" value={status.note?.answer || ''}
-                  onChange={handleNoteChange}/>
+        <CodeMirror
+          value={status.note?.answer || '<p><span aria-label="" data-voice-id="" ></span></p>'}
+          height="200px"
+          theme={oneDark}
+          extensions={[
+            html(),
+            autocompletion({
+              override: [htmlCompletionSource]
+            }),
+            lintGutter(),
+            linter(view => {
+              const diagnostics = [];
+              const tree = syntaxTree(view.state);
+              
+              // 简单的HTML语法检查示例
+              tree.cursor().iterate(node => {
+                if (node.type.name === 'Element' && node.node.parent?.type.name === 'Document') {
+                  const tagName = view.state.doc.sliceString(node.from + 1, node.from + node.node.firstChild.name.length + 1).toLowerCase();
+                  
+                  // 检查未闭合的标签
+                  if (!node.node.lastChild || node.node.lastChild.type.name !== 'CloseTag') {
+                    diagnostics.push({
+                      from: node.from,
+                      to: node.to,
+                      severity: 'error',
+                      message: `未闭合的标签: <${tagName}>`
+                    });
+                  }
+                }
+              });
+              
+              return diagnostics;
+            })
+          ]}
+          onChange={(value) => {
+            // 模拟事件对象以兼容现有的handleNoteChange函数
+            const e = {
+              target: {
+                name: 'answer',
+                value: value
+              }
+            };
+            handleNoteChange(e as any);
+          }}
+        />
       </div>
       <div className="grid gap-3">
         <Label htmlFor="note">Note</Label>
@@ -52,6 +104,11 @@ export const NoteDialogFormItemRender = () => {
     )
   }
 
+  /**
+   * 处理 ckeditor onChange 事件
+   * 
+   * @param name 字段名
+   */
   function handleCKEditorChange(name: string) {
     return (event: any) => {
       const data = event.editor.getData();
