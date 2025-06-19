@@ -3,8 +3,8 @@
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-
-import { CKEditor } from 'ckeditor4-react'
+// "ckeditor4-react": "^4.3.0",
+// import { CKEditor } from 'ckeditor4-react'
 import CodeMirror from '@uiw/react-codemirror';
 import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
@@ -12,65 +12,83 @@ import { linter, lintGutter } from '@codemirror/lint';
 import { htmlCompletionSource, htmlLanguage } from '@codemirror/lang-html';
 import { syntaxTree } from '@codemirror/language';
 import { autocompletion } from '@codemirror/autocomplete';
+import { EditorView } from '@codemirror/view';
 
 import { useStatus } from '@/app/lib/atoms'
 
+const NoteHTMLCodeArea = ({
+  handleNoteChange ,
+  status , 
+  name,
+  height='6em'}: {
+  handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  status: any;
+  name: string;
+  height?: string;
+}) => {
+  return (
+    <>
+      <CodeMirror id={name} 
+        value={status.note?.[name] || '<p><span aria-label="" data-voice-id=""></span></p>'}
+        height={height}
+        maxWidth='100%'
+        theme={oneDark}
+        extensions={[
+          html(),
+          autocompletion({  // 添加自动关闭 tag 的功能
+            override: [htmlCompletionSource]
+          }),
+          EditorView.lineWrapping,    // 代码/内容自动换行
+          lintGutter(),
+          linter(view => {
+            const diagnostics = [];
+            const tree = syntaxTree(view.state);
+            
+            // 简单的HTML语法检查示例
+            tree.cursor().iterate(node => {
+              if (node.type.name === 'Element' && node.node.parent?.type.name === 'Document') {
+                const tagName = view.state.doc.sliceString(node.from + 1, node.from + node.node.firstChild.name.length + 1).toLowerCase();
+                
+                // 检查未闭合的标签
+                if (!node.node.lastChild || node.node.lastChild.type.name !== 'CloseTag') {
+                  diagnostics.push({
+                    from: node.from,
+                    to: node.to,
+                    severity: 'error',
+                    message: `未闭合的标签: <${tagName}>`
+                  });
+                }
+              }
+            });
+            
+            return diagnostics;
+          })
+        ]}
+        onChange={(value) => {
+          // 模拟事件对象以兼容现有的handleNoteChange函数
+          const e = {
+            target: {
+              name: name,
+              value: value
+            }
+          };
+          handleNoteChange(e as any);
+        }}
+      />
+    </>
+  )
+}
 const TranslationSentenceForm = (handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, status: any) => {
+
   return (
     <>
       <div className="grid gap-3">
         <Label htmlFor="question">Question</Label>
-        <Textarea id="question" name="question"
-                  value={status.note?.question || '<p><span aria-label="" data-voice-id="" ></span></p>'}
-                  onChange={handleNoteChange}/>
+        <NoteHTMLCodeArea handleNoteChange={handleNoteChange} status={status} name="question" />
       </div>
       <div className="grid gap-3">
         <Label htmlFor="answer">Answer</Label>
-        <CodeMirror
-          value={status.note?.answer || '<p><span aria-label="" data-voice-id="" ></span></p>'}
-          height="200px"
-          theme={oneDark}
-          extensions={[
-            html(),
-            autocompletion({
-              override: [htmlCompletionSource]
-            }),
-            lintGutter(),
-            linter(view => {
-              const diagnostics = [];
-              const tree = syntaxTree(view.state);
-              
-              // 简单的HTML语法检查示例
-              tree.cursor().iterate(node => {
-                if (node.type.name === 'Element' && node.node.parent?.type.name === 'Document') {
-                  const tagName = view.state.doc.sliceString(node.from + 1, node.from + node.node.firstChild.name.length + 1).toLowerCase();
-                  
-                  // 检查未闭合的标签
-                  if (!node.node.lastChild || node.node.lastChild.type.name !== 'CloseTag') {
-                    diagnostics.push({
-                      from: node.from,
-                      to: node.to,
-                      severity: 'error',
-                      message: `未闭合的标签: <${tagName}>`
-                    });
-                  }
-                }
-              });
-              
-              return diagnostics;
-            })
-          ]}
-          onChange={(value) => {
-            // 模拟事件对象以兼容现有的handleNoteChange函数
-            const e = {
-              target: {
-                name: 'answer',
-                value: value
-              }
-            };
-            handleNoteChange(e as any);
-          }}
-        />
+        <NoteHTMLCodeArea handleNoteChange={handleNoteChange} status={status} name="answer" />
       </div>
       <div className="grid gap-3">
         <Label htmlFor="note">Note</Label>
@@ -143,7 +161,7 @@ const NoteDialogFormScienceEngineering = (
         <Textarea id="body" name="body" value={data.body || ''}
                   onChange={handleNoteChange}/>
       </div>
-      <CKEditor initData={status.note?.note || ''} value={status.note?.note || ''}
+      {/* <CKEditor initData={status.note?.note || ''} value={status.note?.note || ''}
                 config={{
                   versionCheck: false,  // https://forum.xwiki.org/t/cke-editor-warning-4-22-1-version-not-secure/14020/13
                   toolbar: [
@@ -159,7 +177,7 @@ const NoteDialogFormScienceEngineering = (
                   height: 200,
                   removePlugins: 'elementspath',
                   resize_enabled: false
-                }} />
+                }} /> */}
     </>
   )
 }
