@@ -37,6 +37,7 @@
     "dark-mode-toggle": "^0.17.0",
     "dotenv": "^16.5.0",
     "eslint-linter-browserify": "^9.29.0",
+    "he": "^1.2.0",
     "jotai": "^2.12.5",
     "katex": "^0.16.22",
     "lexical": "^0.32.1",

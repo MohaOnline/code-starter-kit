@@ -9,41 +9,26 @@ import Note from '../libs/Note';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
+import { useStatus } from '@/app/lib/atoms';
 
 export default function Page() {
 
-  const [status, setStatus] = useState({
-    isProcessing: false,
-    isAdding: false,  
-    notes: [],
-  });
+  const [status, setStatus] = useStatus();
 
   // 加载所有 notes
   useEffect(() => {
-    const fetchApi = async () => {
-
-      const response = await fetch('/api/notebooks/notes/list');
-      const json = await response.json();
-
-      if (json.success) {
-        status.notes = json.notes;
-        setStatus({
-          ...status, // 复制现有状态
-          // words: json.data,
-        });
-      } else {
-        console.error('API 报错');
-        toast.error('cant load words from API.');
-      }
-
-    };
-
-    try {
-      fetchApi().then();
-    } catch (e) {
-      console.error(e.message);
-      toast.error('cant load words from API.');
-    }
+    fetch('/api/notebooks/notes/list')
+    .then(res => res.json())
+    .then(json => {
+        setStatus((prev) => ({
+            ...prev,
+            notes: json.notes,
+        }))
+    })
+    .catch(err => {
+        console.error('Fetch API error: /api/notebooks/notes/list');
+        toast.error('cant load notes from API.');
+    });    
 
   }, []);
 
