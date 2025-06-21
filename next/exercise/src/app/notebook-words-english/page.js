@@ -160,6 +160,7 @@ export default function Page() {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
+        audioRef.current = null;
       }
 
       if (!status.onWheel &&
@@ -169,24 +170,25 @@ export default function Page() {
         audioRef.current = new Audio(audio);
 
         // 监听音频元数据加载以获取时长
-        audioRef.current.addEventListener('loadedmetadata', () => {
-          const duration = audioRef.current.duration * 1000; // 转换为毫秒
+        audioRef.current?.addEventListener('loadedmetadata', () => {
+          const duration = audioRef.current?.duration * 1000 + 500; // 转换为毫秒
 
           console.debug('Audio duration:', duration);
           console.debug('isPlaying;', status.isPlaying);
           console.debug('currentWordIndex;', status.currentWordIndex);
           console.debug('playedWordIndex:', status.playedWordIndex);
 
-          // 播放音频
-          audioRef.current.play().catch(error => {
-            console.error('Audio playback failed:', error);
-          });
+          if (audioRef.current){          // 播放音频
+            audioRef.current.play().catch(error => {
+              console.error('Audio playback failed:', error);
+            });
 
-          status.playedWordIndex = status.currentWordIndex;
-          setStatus({
-            ...status, // 复制现有状态
-            playedWordIndex: status.currentWordIndex,
-          });
+            status.playedWordIndex = status.currentWordIndex;
+            setStatus({
+              ...status, // 复制现有状态
+              playedWordIndex: status.currentWordIndex,
+            });
+          }
 
           // 监听音频播放结束
           const handleAudioEnded = () => {
@@ -213,7 +215,7 @@ export default function Page() {
             }, duration); // 使用音频时长作为延迟
           };
 
-          audioRef.current.addEventListener('ended', handleAudioEnded);
+          audioRef.current?.addEventListener('ended', handleAudioEnded);
 
           // 清理音频事件监听
           return () => {
@@ -226,6 +228,7 @@ export default function Page() {
       return () => {
         if (audioRef.current) {
           audioRef.current.pause();
+          audioRef.current.currentTime = 0;
           audioRef.current = null;
         }
         if (intervalRef.current) {
