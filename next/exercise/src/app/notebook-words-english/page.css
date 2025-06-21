@@ -50,6 +50,10 @@ div.operation:hover {
     opacity: .5;
 }
 
+div.operation:hover .search-form input {
+    opacity: 1;
+}
+
 div.operation svg {
     opacity: 0.5;
     /* 添加过渡动画 */
