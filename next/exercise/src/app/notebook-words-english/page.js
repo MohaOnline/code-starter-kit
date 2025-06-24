@@ -11,11 +11,10 @@ import {
   FaVolumeUp,
   FaSync, FaSearch,
 } from 'react-icons/fa';
-import {PiHandWaving, PiRocket} from 'react-icons/pi';
+import {PiHandWaving, PiRocket, PiGearFineLight, PiGear} from 'react-icons/pi';
 import {RiFileSearchLine} from 'react-icons/ri';
-import * as Icons from '@/app/lib/libs';
 import {LuSquarePlay} from 'react-icons/lu';
-import {GiPlayerPrevious} from 'react-icons/gi';
+import {GiPlayerPrevious, GiPlayerNext, GiGears} from 'react-icons/gi';
 
 
 import {Dialog, Transition} from '@headlessui/react';
@@ -23,9 +22,9 @@ import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useStatus } from '@/app/lib/atoms';
 import {handleKeyDown} from '../words/components/common';
 import NavTop from '@/app/lib/components/NavTop.js';
-import {GiPlayerNext} from '@/app/lib/libs';
 
 export default function Page() {
 
@@ -239,6 +238,7 @@ export default function Page() {
     }
   }, [status.isPlaying, status.currentWordIndex]);
 
+  /** 播放当前单词音频。 */
   const playCurrentWord = () => {
     const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
     const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
@@ -691,6 +691,7 @@ export default function Page() {
             keyDownCallback({...event, key: 'ArrowRight'});
           }}> <CgPlayTrackNextR/> </span>
           <span onClick={playCurrentWord}><FaVolumeUp/></span>
+          <span onClick={()=>{}}><PiGear/></span>
           <span className={'put_end'} onClick={handlePutEnd}><PiRocket />
           </span></div>
 

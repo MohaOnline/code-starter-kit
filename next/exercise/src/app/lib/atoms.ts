@@ -34,7 +34,12 @@ export const status = atom({
     },
     types: [],
     isAdding: false,
-    isProcessing: false
+    isProcessing: false,
+    isPlaying: false,
+
+    // Words announcing data:
+    words: [],
+    currentWordIndex: 0,
 });
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
