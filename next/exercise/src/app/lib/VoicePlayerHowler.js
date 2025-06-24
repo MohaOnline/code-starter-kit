@@ -2,6 +2,21 @@
 
 import { Howl } from 'howler';
 
+function preciseTimeout(callback, delay) {
+  const start = performance.now();
+
+  function check() {
+    const now = performance.now();
+    if (now - start >= delay) {
+      callback();
+    } else {
+      requestAnimationFrame(check);
+    }
+  }
+
+  requestAnimationFrame(check);
+}
+
 export class VoicePlayerHowler {
   constructor(){
     this.durations = [];
@@ -10,7 +25,7 @@ export class VoicePlayerHowler {
     this.currentIndex = 0;
   }
 
-  play(audioURls, onCompleteCallback, interval = 1000) {
+  play(audioURls, onCompleteCallback, interval = 500) {
     this.stop(); // 先清理之前的播放器状态
 
     this.isPlaying = true;
@@ -34,14 +49,14 @@ export class VoicePlayerHowler {
             const pauseTime = (this.durations[this.currentIndex] || 0) + interval;
 
             if (this.currentIndex < (this.howls.length - 1) && this.isPlaying) {
-              setTimeout(() => {
+              preciseTimeout(() => {
                 this.currentIndex += 1;
                 this.howls[this.currentIndex].play();
               }, pauseTime);
             } else {
               this.stop();
 
-              onCompleteCallback();
+              preciseTimeout(onCompleteCallback, pauseTime);
             }
           },
 
@@ -59,7 +74,9 @@ export class VoicePlayerHowler {
   } // Play method.
 
   stop() {
+    // 重置状态
     this.isPlaying = false;
+    this.currentIndex = 0;
 
     // 停止并卸载所有 Howl 实例
     this.howls.forEach(howl => {
@@ -70,10 +87,6 @@ export class VoicePlayerHowler {
     // 清空数组
     this.howls = [];
     this.durations = [];
-
-    // 重置状态
-    this.isPlaying = false;
-    this.currentIndex = 0;
   }
 
 }
