@@ -38,7 +38,7 @@ export class VoicePlayerHowler {
     this.activeTimeouts = []; // 跟踪活跃的定时器
   }
 
-  play(audioURls, onCompleteCallback, interval = 500) {
+  play(audioURls, onCompleteCallback=()=>{}, interval = 500) {
     this.stop(); // 先清理之前的播放器状态
 
     this.isPlaying = true;
@@ -60,6 +60,8 @@ export class VoicePlayerHowler {
             if (!this.isPlaying) return;
 
             const pauseTime = (this.durations[this.currentIndex] || 0) + interval;
+
+            console.debug('pauseTime:', pauseTime);
 
             if (this.currentIndex < (this.howls.length - 1) && this.isPlaying) {
               const cancelTimeout = preciseTimeout(() => {

@@ -25,6 +25,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useStatus } from '@/app/lib/atoms';
 import {handleKeyDown} from '../words/components/common';
 import NavTop from '@/app/lib/components/NavTop.js';
+import {VoicePlayerHowler} from '@/app/lib/VoicePlayerHowler';
 
 export default function Page() {
 
@@ -141,11 +142,52 @@ export default function Page() {
     fetchWords();
   }, []);
 
+  // Turn current word to next.
+  const autoNextWord = () => {
+      if (status.isPlaying) { // 单词是否自动播放
+          nextWord();
+      }
+  }
+
+  const nextWord = () => {
+      if (status.currentWordIndex < status.words.length - 1) {
+          setStatus(prev => ({
+              ...prev,
+              currentWordIndex: prev.currentWordIndex + 1,
+          }))
+      }
+      else {
+          setStatus(prev => ({
+              ...prev,
+              currentWordIndex: 0,
+          }))
+      }
+  }
+
+  const player = new VoicePlayerHowler();
   // 播放音频: 当 currentWordIndex 或 words 改变时
   useEffect(() => {
     if (status.words.length > 0 &&
         status.words[status.currentWordIndex]?.voice_id_uk) {
 
+          let voiceURLs = [];
+
+          const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
+          const englishURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
+
+          voiceURLs.push(englishURL);
+
+          // 暂停时不播放声音
+          if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex){
+            player.play(voiceURLs, autoNextWord, 0);
+            status.playedWordIndex = status.currentWordIndex;
+          }
+
+    }
+
+    return () => player.stop();
+
+/*          
       // 清理现有定时器和音频
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -235,18 +277,22 @@ export default function Page() {
           intervalRef.current = null;
         }
       };
-    }
+     
+    } // if */ 
   }, [status.isPlaying, status.currentWordIndex]);
 
   /** 播放当前单词音频。 */
   const playCurrentWord = () => {
     const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
     const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
+    player.play([audio]);
 
+    /*
     audioRef.current = new Audio(audio);
     audioRef.current.play().catch(error => {
       console.error('Audio playback failed:', error);
     });
+    */
   };
 
   status.playCurrent = () => playCurrentWord();
