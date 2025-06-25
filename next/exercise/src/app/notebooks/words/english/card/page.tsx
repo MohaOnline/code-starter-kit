@@ -13,6 +13,12 @@ export default function Example () {
     const player = new VoicePlayerHowler();
 
     // Turn current word to next.
+    const autoNextWord = () => {
+        if (status.isPlaying) { // 单词是否自动播放
+            nextWord();
+        }
+    }
+
     const nextWord = () => {
         if (status.currentWordIndex < status.words.length - 1) {
             setStatus(prev => ({
@@ -53,7 +59,7 @@ export default function Example () {
 
             voiceURLs.push(englishURL);
 
-            player.play(voiceURLs, nextWord);
+            player.play(voiceURLs, autoNextWord);
         }
 
         return () => player.stop();
@@ -62,7 +68,11 @@ export default function Example () {
     return (
         <div className="container">
             <Button onClick={() => {
-                nextWord();
+                setStatus(prev => ({
+                    ...prev,
+                    isPlaying: true,
+                }))
+                autoNextWord();
             }}
             onWheel={()=>{
                 nextWord();

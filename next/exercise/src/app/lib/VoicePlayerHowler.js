@@ -33,7 +33,7 @@ export class VoicePlayerHowler {
   constructor(){
     this.durations = [];
     this.howls = [];      // instances of Howl.
-    this.isPlaying = false;
+    this.isPlaying = false; // 是否收到 stop 命令，play -> True, stop -> False.
     this.currentIndex = 0;
     this.activeTimeouts = []; // 跟踪活跃的定时器
   }
