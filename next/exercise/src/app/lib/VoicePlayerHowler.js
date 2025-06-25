@@ -4,17 +4,29 @@ import { Howl } from 'howler';
 
 function preciseTimeout(callback, delay) {
   const start = performance.now();
+  let rafId;
+  let cancelled = false;
 
   function check() {
+    if (cancelled) return;
+    
     const now = performance.now();
     if (now - start >= delay) {
       callback();
     } else {
-      requestAnimationFrame(check);
+      rafId = requestAnimationFrame(check);
     }
   }
 
-  requestAnimationFrame(check);
+  rafId = requestAnimationFrame(check);
+  
+  // 返回取消函数
+  return () => {
+    cancelled = true;
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+  };
 }
 
 export class VoicePlayerHowler {
@@ -23,6 +35,7 @@ export class VoicePlayerHowler {
     this.howls = [];      // instances of Howl.
     this.isPlaying = false;
     this.currentIndex = 0;
+    this.activeTimeouts = []; // 跟踪活跃的定时器
   }
 
   play(audioURls, onCompleteCallback, interval = 500) {
@@ -49,14 +62,16 @@ export class VoicePlayerHowler {
             const pauseTime = (this.durations[this.currentIndex] || 0) + interval;
 
             if (this.currentIndex < (this.howls.length - 1) && this.isPlaying) {
-              preciseTimeout(() => {
+              const cancelTimeout = preciseTimeout(() => {
                 this.currentIndex += 1;
                 this.howls[this.currentIndex].play();
               }, pauseTime);
+              this.activeTimeouts.push(cancelTimeout);
             } else {
               this.stop();
 
-              preciseTimeout(onCompleteCallback, pauseTime);
+              const cancelTimeout = preciseTimeout(onCompleteCallback, pauseTime);
+              this.activeTimeouts.push(cancelTimeout);
             }
           },
 
@@ -77,6 +92,14 @@ export class VoicePlayerHowler {
     // 重置状态
     this.isPlaying = false;
     this.currentIndex = 0;
+
+    // 取消所有活跃的定时器
+    this.activeTimeouts.forEach(cancelFn => {
+      if (typeof cancelFn === 'function') {
+        cancelFn();
+      }
+    });
+    this.activeTimeouts = [];
 
     // 停止并卸载所有 Howl 实例
     this.howls.forEach(howl => {
