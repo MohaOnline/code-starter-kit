@@ -93,6 +93,77 @@ async function fetchAzureTTS(
   return '';
 }
 
+
+function generateSSMLTranslation(translation) {
+  const textToSpeak = translation; // word 或 script 已在上层处理
+  return `
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE.slice(
+      0, 5)}">
+      <voice name="${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}">
+        ${textToSpeak}
+      </voice>
+    </speak>
+  `;
+}
+
+async function fetchAzureTTSTranslation(
+    translation, script, voice_id) {
+
+  const textToSpeak = script || translation; // 优先使用 script，否则用 word
+
+  const firstChar = voice_id[0].toLowerCase(); // UUID 第一个字符
+  const filePath = path.resolve(
+      process.cwd(),
+      `./public/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstChar}/${voice_id}.wav`,
+  );
+
+  // 检查文件是否存在
+  try {
+    await fs.access(filePath, fs.constants.F_OK);
+  } catch (error) {
+    // 文件不存在，生成 TTS
+    console.log(`Generating TTS for UUID ${voice_id}: ${textToSpeak}`);
+
+    // 创建目录（如果不存在）
+    const dirPath = path.dirname(filePath);
+    await fs.mkdir(dirPath, {recursive: true});
+
+    // 生成 SSML
+    const ssml = generateSSMLTranslation(textToSpeak);
+    console.log(ssml);
+
+    // 配置音频输出
+    const audioConfig = AudioConfig.fromAudioFileOutput(filePath);
+    const synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
+
+    // 生成语音
+    const result = await new Promise((resolve, reject) => {
+      synthesizer.speakSsmlAsync(
+          ssml,
+          (result) => {
+            synthesizer.close();
+            resolve(result);
+          },
+          (error) => {
+            synthesizer.close();
+            reject(error);
+          },
+      );
+    });
+
+    if (result.reason === ResultReason.SynthesizingAudioCompleted) {
+      console.log(`TTS generated and saved to ${filePath}`);
+    } else {
+      await fs.unlink(filePath).catch(() => {});
+      console.error(
+          `TTS failed for ${textToSpeak}: ${result.errorDetails}`);
+      return result.errorDetails;
+    }
+  }
+
+  return '';
+}
+
 // Database configuration
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
@@ -362,6 +433,9 @@ export async function POST(request) {
 
           await fetchAzureTTS(data.word, data.script, translation.voice_id_uk,
               translation.phonetic_us, translation.phonetic_uk);
+
+          await fetchAzureTTSTranslation(translation.translation, translation.script,
+              translation.voice_id_translation);
         }
 
 

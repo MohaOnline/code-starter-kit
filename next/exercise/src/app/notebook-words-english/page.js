@@ -265,12 +265,7 @@ export default function Page() {
     if (status.words.length > 0 &&
         status.words[status.currentWordIndex]?.voice_id_uk) {
 
-          let voiceURLs = [];
-
-          const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
-          const englishURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
-
-          voiceURLs.push(englishURL);
+          const voiceURLs = generateVoiceURLs(status.currentWordIndex);
 
           // 暂停时不播放声音
           if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex){
@@ -376,11 +371,79 @@ export default function Page() {
     } // if */ 
   }, [status.isPlaying, status.currentWordIndex]);
 
+  /** 将连续相同的URL交错排列 */
+  const alternateVoiceURLs = (urls) => {
+    if (urls.length <= 1) return urls;
+    
+    // 分组相同的URL
+    const groups = [];
+    let currentGroup = [urls[0]];
+    
+    for (let i = 1; i < urls.length; i++) {
+      if (urls[i] === urls[i - 1]) {
+        currentGroup.push(urls[i]);
+      } else {
+        groups.push(currentGroup);
+        currentGroup = [urls[i]];
+      }
+    }
+    groups.push(currentGroup);
+    
+    // 如果只有一组，直接返回
+    if (groups.length === 1) return urls;
+    
+    // 交错排列
+    const result = [];
+    const maxLength = Math.max(...groups.map(group => group.length));
+    
+    for (let i = 0; i < maxLength; i++) {
+      for (let j = 0; j < groups.length; j++) {
+        if (i < groups[j].length) {
+          result.push(groups[j][i]);
+        }
+      }
+    }
+    
+    return result;
+  };
+
+  /** 根据audioConfig生成语音URL数组 */
+  const generateVoiceURLs = (wordIndex) => {
+    const word = status.words[wordIndex];
+    if (!word?.voice_id_uk) return [];
+
+    let voiceURLs = [];
+
+    if (status.audioConfig.english.repeatCount) {
+      const firstChar = word.voice_id_uk[0].toLowerCase();
+      const englishURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${word.voice_id_uk}.wav`;
+      for (let i = 0; i < status.audioConfig.english.repeatCount; i++) {
+        voiceURLs.push(englishURL);
+      }
+    }
+
+    if (status.audioConfig.chinese.repeatCount) {
+      const firstCharChinese = word.voice_id_translation[0].toLowerCase();
+      const chineseURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstCharChinese}/${word.voice_id_translation}.wav`;
+      for (let i = 0; i < status.audioConfig.chinese.repeatCount; i++) {
+        voiceURLs.push(chineseURL);
+      }
+    }
+
+    // 如果启用交错播放，重新排列URL
+    if (status.audioConfig.alternatePlay && voiceURLs.length > 0) {
+      voiceURLs = alternateVoiceURLs(voiceURLs);
+    }
+
+    return voiceURLs;
+  };
+
   /** 播放当前单词音频。 */
   const playCurrentWord = () => {
-    const firstChar = status.words[status.currentWordIndex].voice_id_uk[0].toLowerCase();
-    const audio = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${status.words[status.currentWordIndex].voice_id_uk}.wav`;
-    player.play([audio]);
+    const voiceURLs = generateVoiceURLs(status.currentWordIndex);
+    if (voiceURLs.length > 0) {
+      player.play(voiceURLs, ()=>{}, 0);
+    }
 
     /*
     audioRef.current = new Audio(audio);
@@ -1135,6 +1198,31 @@ export default function Page() {
                                     className="flex-1 p-2 pl-1 pr-1 border rounded"
                                     placeholder="Translation"
                                 />
+                                <button
+                                    className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
+                                    onClick={async () => {
+                                      try {
+                                        if (translation.cid) {
+                                          setStatus({
+                                            ...status,
+                                            isProcessing: true,
+                                          });
+                                          const response = await fetch(
+                                              `/api/words-english-translation-azure-tts?cid=${translation.cid}`);
+                                          const data = await response.json();
+                                          console.log(data);
+                                          toast.info(JSON.stringify(data));
+                                        }
+                                      } finally {
+                                        setStatus({
+                                          ...status,
+                                          isProcessing: false,
+                                        });
+                                      }
+                                    }}
+                                >
+                                  <FaSync/>
+                                </button>
                                 <input
                                     type="text"
                                     value={translation.script||''}
