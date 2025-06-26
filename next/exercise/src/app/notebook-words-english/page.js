@@ -22,10 +22,85 @@ import {toast} from 'react-toastify';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Shadcn UI 组件
+import {
+  Dialog as ShadcnDialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+
 import { useStatus } from '@/app/lib/atoms';
 import {handleKeyDown} from '../words/components/common';
 import NavTop from '@/app/lib/components/NavTop.js';
 import {VoicePlayerHowler} from '@/app/lib/VoicePlayerHowler';
+
+// 默认音频配置
+const DEFAULT_AUDIO_CONFIG = {
+  // 全局设置
+  alternatePlay: false,  // 是否交错播放
+  volume: 100,           // 音量 50%, 75%, 100%, 125%, 150%
+  speed: 100,            // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
+  // 英文设置
+  english: {
+    repeatCount: 1,     // 发音次数 0-5
+    pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
+    showText: true,     // 是否显示英文
+  },
+  // 中文设置
+  chinese: {
+    repeatCount: 0,     // 发音次数 0-5
+    pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
+    showText: true,     // 是否显示中文
+  },
+};
+
+// 从 localStorage 读取音频配置
+const loadAudioConfig = () => {
+  try {
+    const saved = localStorage.getItem('audioConfig');
+    console.log('audioConfig', saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // 验证配置结构，确保所有必需字段存在
+      const config = {
+        alternatePlay: parsed.alternatePlay ?? DEFAULT_AUDIO_CONFIG.alternatePlay,
+        volume: parsed.volume ?? DEFAULT_AUDIO_CONFIG.volume,
+        speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
+        english: {
+          repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
+          pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
+          showText: parsed.english?.showText ?? DEFAULT_AUDIO_CONFIG.english.showText,
+        },
+        chinese: {
+          repeatCount: parsed.chinese?.repeatCount ?? DEFAULT_AUDIO_CONFIG.chinese.repeatCount,
+          pauseTime: parsed.chinese?.pauseTime ?? DEFAULT_AUDIO_CONFIG.chinese.pauseTime,
+          showText: parsed.chinese?.showText ?? DEFAULT_AUDIO_CONFIG.chinese.showText,
+        },
+      };
+
+      console.log('processed audioConfig', config);
+      return config;
+    }
+  } catch (error) {
+    console.error('读取音频配置失败:', error);
+  }
+  return DEFAULT_AUDIO_CONFIG;
+};
+
+// 保存音频配置到 localStorage
+const saveAudioConfig = (config) => {
+  try {
+    localStorage.setItem('audioConfig', JSON.stringify(config));
+  } catch (error) {
+    console.error('保存音频配置失败:', error);
+  }
+};
 
 export default function Page() {
 
@@ -42,10 +117,20 @@ export default function Page() {
     isComposing: false,
     isTabPressed: false,
     searchText: '',
+    // 配置对话框状态
+    isConfigDialogOpen: false,
+    // 音频配置（初始化时使用默认值，将在 useEffect 中从 localStorage 读取）
+    audioConfig: DEFAULT_AUDIO_CONFIG,
   });
 
-  const audioRef = useRef(null);
-  const intervalRef = useRef(null);
+  // 更新音频配置并保存到 localStorage
+  const updateAudioConfig = (newConfig) => {
+    setStatus(prev => ({
+      ...prev,
+      audioConfig: newConfig
+    }));
+    saveAudioConfig(newConfig);
+  };
 
   const keyDownCallback = (event) => handleKeyDown(event, status, setStatus);
   const keyUpCallback = (event) => handleKeyUp(event, status, setStatus);
@@ -111,10 +196,11 @@ export default function Page() {
         } catch (e) {}
 
         status.words = json.data;
-        setStatus({
-          ...status, // 复制现有状态
-          // words: json.data,
-        });
+        setStatus(prev=>({
+          ...prev, // 复制现有状态
+          currentWordIndex: status.currentWordIndex,
+          words: json.data,
+        }));
       } else {
         console.error('API 报错');
         toast.error('cant load words from API.');
@@ -140,6 +226,15 @@ export default function Page() {
     };
 
     fetchWords();
+
+    const savedConfig = loadAudioConfig();
+    console.log('savedConfig', savedConfig);
+    status.audioConfig = savedConfig;
+    setStatus(prev => ({
+      ...prev,
+      audioConfig: savedConfig
+    }));
+
   }, []);
 
   // Turn current word to next.
@@ -663,13 +758,16 @@ export default function Page() {
                 &nbsp;</span>
             </div>
 
-            <div
-                className={'word'}
-                onWheel={handleWordWheel}>{status.words[status.currentWordIndex].word}</div>
+            <div className={'word'} onWheel={handleWordWheel}>
+              {status.words[status.currentWordIndex].word}
+            </div>
 
-
-            <div onWheel={handleWordWheel}
-                className={'translation'}>{status.words[status.currentWordIndex].translation}</div>
+            
+            <div onWheel={handleWordWheel} className={'translation'} dangerouslySetInnerHTML={{
+              __html: status.audioConfig.chinese.showText ? status.words[status.currentWordIndex].translation : '&nbsp;',
+            }}>
+            </div>
+            
 
           </div>
         </div>
@@ -737,7 +835,9 @@ export default function Page() {
             keyDownCallback({...event, key: 'ArrowRight'});
           }}> <CgPlayTrackNextR/> </span>
           <span onClick={playCurrentWord}><FaVolumeUp/></span>
-          <span onClick={()=>{}}><PiGear/></span>
+          <span onClick={() => {
+            setStatus(prev => ({...prev, isConfigDialogOpen: true}));
+          }}><PiGear/></span>
           <span className={'put_end'} onClick={handlePutEnd}><PiRocket />
           </span></div>
 
@@ -1291,6 +1391,255 @@ export default function Page() {
 
           </Dialog>
         </Transition>
+
+        {/* 配置对话框 */}
+        <ShadcnDialog open={status.isConfigDialogOpen} onOpenChange={(open) => {
+          setStatus(prev => ({...prev, isConfigDialogOpen: open}));
+        }}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>音频播放配置</DialogTitle>
+            </DialogHeader>
+            
+            <div className="space-y-6">
+              {/* 上栏：全局设置 */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">全局设置</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* 音量 */}
+                  <div className="space-y-2">
+                    <Label>音量: {status.audioConfig.volume}%</Label>
+                    <Slider
+                      value={[status.audioConfig.volume]}
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          volume: value
+                        });
+                      }}
+                      min={50}
+                      max={150}
+                      step={25}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>50%</span>
+                      <span>75%</span>
+                      <span>100%</span>
+                      <span>125%</span>
+                      <span>150%</span>
+                    </div>
+                  </div>
+                  
+                  {/* 播放速度 */}
+                  <div className="space-y-2">
+                    <Label>播放速度: {status.audioConfig.speed}%</Label>
+                    <Slider
+                      value={[status.audioConfig.speed]}
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          speed: value
+                        });
+                      }}
+                      min={50}
+                      max={225}
+                      step={25}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>50%</span>
+                      <span>100%</span>
+                      <span>150%</span>
+                      <span>200%</span>
+                      <span>225%</span>
+                    </div>
+                  </div>
+
+                  {/* 交错播放 */}
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={status.audioConfig.alternatePlay}
+                      onCheckedChange={(checked) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          alternatePlay: checked
+                        });
+                      }}
+                    />
+                    <Label>交错播放</Label>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              <Separator />
+              
+              {/* 下栏：左右分栏 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* 左栏：英文设置 */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">英文设置</h3>
+                  
+                  {/* 发音次数 */}
+                  <div className="space-y-2">
+                    <Label>发音次数: {status.audioConfig.english.repeatCount}次</Label>
+                    <Slider
+                      value={[status.audioConfig.english.repeatCount]}
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          english: {
+                            ...status.audioConfig.english,
+                            repeatCount: value
+                          }
+                        });
+                      }}
+                      min={0}
+                      max={5}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>0</span>
+                      <span>1</span>
+                      <span>2</span>
+                      <span>3</span>
+                      <span>4</span>
+                      <span>5</span>
+                    </div>
+                  </div>
+                  
+                  {/* 停顿时间 */}
+                  <div className="space-y-2">
+                    <Label>停顿时间: {status.audioConfig.english.pauseTime}秒</Label>
+                    <Slider
+                      value={[status.audioConfig.english.pauseTime * 4]} // 转换为0-5的范围
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          english: {
+                            ...status.audioConfig.english,
+                            pauseTime: value / 4 // 转换回实际值
+                          }
+                        });
+                      }}
+                      min={0}
+                      max={5}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>0</span>
+                      <span>0.25</span>
+                      <span>0.5</span>
+                      <span>0.75</span>
+                      <span>1</span>
+                      <span>1.25</span>
+                    </div>
+                  </div>
+                  
+                  {/* 显示英文 */}
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={status.audioConfig.english.showText}
+                      onCheckedChange={(checked) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          english: {
+                            ...status.audioConfig.english,
+                            showText: checked
+                          }
+                        });
+                      }}
+                    />
+                    <Label>显示英文</Label>
+                  </div>
+                </div>
+                
+                {/* 右栏：中文设置 */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">中文设置</h3>
+                  
+                  {/* 发音次数 */}
+                  <div className="space-y-2">
+                    <Label>发音次数: {status.audioConfig.chinese.repeatCount}次</Label>
+                    <Slider
+                      value={[status.audioConfig.chinese.repeatCount]}
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          chinese: {
+                            ...status.audioConfig.chinese,
+                            repeatCount: value
+                          }
+                        });
+                      }}
+                      min={0}
+                      max={5}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>0</span>
+                      <span>1</span>
+                      <span>2</span>
+                      <span>3</span>
+                      <span>4</span>
+                      <span>5</span>
+                    </div>
+                  </div>
+                  
+                  {/* 停顿时间 */}
+                  <div className="space-y-2">
+                    <Label>停顿时间: {status.audioConfig.chinese.pauseTime || 0}秒</Label>
+                    <Slider
+                      value={[(status.audioConfig.chinese.pauseTime || 0) * 4]} // 转换为0-5的范围
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          chinese: {
+                            ...status.audioConfig.chinese,
+                            pauseTime: value / 4 // 转换回实际值
+                          }
+                        });
+                      }}
+                      min={0}
+                      max={5}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>0</span>
+                      <span>0.25</span>
+                      <span>0.5</span>
+                      <span>0.75</span>
+                      <span>1</span>
+                      <span>1.25</span>
+                    </div>
+                  </div>
+                  
+                  {/* 显示中文 */}
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={status.audioConfig.chinese.showText}
+                      onCheckedChange={(checked) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          chinese: {
+                            ...status.audioConfig.chinese,
+                            showText: checked
+                          }
+                        });
+                      }}
+                    />
+                    <Label>显示中文</Label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </ShadcnDialog>
 
         {/* 全屏遮罩 */}
         {status.isProcessing && (

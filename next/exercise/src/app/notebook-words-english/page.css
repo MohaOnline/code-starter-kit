@@ -1,3 +1,14 @@
+:root {
+  /* shadcn UI colors for green-on-black theme */
+  --primary: rgb(120, 210, 120);
+  --primary-foreground: #000000;
+  --muted: rgb(40, 40, 40);
+  --muted-foreground: rgb(160, 160, 160);
+  --input: rgb(60, 60, 60);
+  --ring: rgb(120, 210, 120);
+  --border: rgb(80, 80, 80);
+}
+
 div.nav {
     position: absolute;
 }
