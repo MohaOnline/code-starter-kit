@@ -3,7 +3,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {FaPlay, FaPause} from 'react-icons/fa';
 
-import {handleKeyDown} from '../words/components/common';
+import {handleKeyDown} from '../lib/common';
 
 export default function Notebook() {
 

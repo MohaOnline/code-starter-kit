@@ -36,7 +36,7 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 
 import { useStatus } from '@/app/lib/atoms';
-import {handleKeyDown} from '../words/components/common';
+import {handleKeyDown} from '../lib/common';
 import NavTop from '@/app/lib/components/NavTop.js';
 import {VoicePlayerHowler} from '@/app/lib/VoicePlayerHowler';
 

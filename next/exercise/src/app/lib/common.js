@@ -99,6 +99,19 @@ export const handleKeyDown = (event, status, setStatus) => {
       ...status, // 复制现有状态
       isPlaying: !status.isPlaying,
     });
+  } else if (event.key === 'c') {
+    console.debug('toggle chinese text display');
+
+    setStatus({
+      ...status, // 复制现有状态
+      audioConfig: {
+        ...status.audioConfig,
+        chinese: {
+          ...status.audioConfig.chinese,
+          showText: !status.audioConfig.chinese.showText,
+        },
+      },
+    });
   }
 
   localStorage.setItem('wordStatus', status.currentWordIndex);

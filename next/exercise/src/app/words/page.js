@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {FaPlay, FaPause} from 'react-icons/fa';
 
-import {handleKeyDown} from './components/common';
+import {handleKeyDown} from '../lib/common';
 
 import list from './CET4_T.json';
 
