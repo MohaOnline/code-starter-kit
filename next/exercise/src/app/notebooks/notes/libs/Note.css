@@ -1,5 +1,4 @@
-div.note {
-}
+
 
 div.note h2 {
     font-size: 20px;
@@ -13,4 +12,36 @@ div.note div.operation {
 /* Drawer Header Styles. */
 [data-slot="drawer-header"] {
   display: none;
+}
+
+h2.note-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+div.note-body {
+  font-size: 16px;
+}
+
+div.note-body p {
+  text-indent: 2em;
+  line-height: 2.5;
+  margin: 0.8em 0;
+}
+
+div.chinese-composition-title h2, div.chinese-composition-body p {
+  line-height: 1.5;
+  font-family: 'microsoft yahei',SimHei,'PingFang SC',system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",tahoma,arial,'helvetica neue','hiragino sans gb',sans-serif;
+}
+
+div.chinese-composition-title h2 {
+  text-align: center;
+  font-size: 20px;
+}
+
+div.chinese-composition-body p {
+  font-size: 16px;
+  text-indent: 2em;
+  line-height: 2.5;
+  margin: 0.8em 0;
 }

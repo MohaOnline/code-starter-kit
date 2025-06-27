@@ -74,15 +74,25 @@ export default function Note({note}: NoteProps) {
     return (
         <>
             <div className="border note flex flex-col gap-4">
-                {note.tid === '16' && 
+                {note.tid === '16' && // 单句英文翻译，显示 Question & Answer
                   <><div dangerouslySetInnerHTML={{__html: note.question}}></div>
                     <div dangerouslySetInnerHTML={{__html: note.answer}}></div>
                   </>}
                   
-                {note.tid != '16' && <><h2>{note.title}</h2><div>{note.body}</div></>}
+                {/* 单句英文翻译以外的，显示 Title & Body */}
+                {note.tid === '5' && 
+                <><div className='chinese-composition-title'><h2>{note.title}</h2></div>
+                  <div className='chinese-composition-body' dangerouslySetInnerHTML={{__html: note.body}}></div>
+                </>}
+                  
+                {/* 单句英文翻译以外的，显示 Title & Body */}
+                {note.tid != '16' && note.tid != '5' && 
+                <><h2 className='note-title'>{note.title}</h2>
+                  <div className='note-body' dangerouslySetInnerHTML={{__html: note.body}}></div>
+                </>}
 
                 <div className="operation">
-                    <Button className={'active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
+                    <Button className={'border bg-background text-primary hover:bg-muted active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
                             onClick={() => {
                                 local.setEditing(true);
                             }}>Edit</Button>
