@@ -39,6 +39,7 @@ import { useStatus } from '@/app/lib/atoms';
 import {handleKeyDown} from '../lib/common';
 import NavTop from '@/app/lib/components/NavTop.js';
 import {VoicePlayerHowler} from '@/app/lib/VoicePlayerHowler';
+import ModeToggle from '@/components/mode-toggle';
 
 // 默认音频配置
 const DEFAULT_AUDIO_CONFIG = {
@@ -968,6 +969,7 @@ export default function Page() {
               pauseOnHover
           />
         </div>
+        <div className="text-right"><ModeToggle /></div>
 
         <Transition show={status.isDialogOpen}>
           <Dialog onClose={() => setStatus({
