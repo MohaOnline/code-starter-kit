@@ -266,12 +266,9 @@ export default function Page() {
     if (status.words.length > 0 &&
         status.words[status.currentWordIndex]?.voice_id_uk) {
 
-          const voiceURLs = generateVoiceURLs(status.currentWordIndex);
-
           // 暂停时不播放声音
           if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex){
-            player.stop();
-            player.play(voiceURLs, autoNextWord, 0);
+            playCurrentWord(autoNextWord);
             status.playedWordIndex = status.currentWordIndex;
           }
 
@@ -441,10 +438,12 @@ export default function Page() {
   };
 
   /** 播放当前单词音频。 */
-  const playCurrentWord = () => {
+  const playCurrentWord = (onCompleteCallback = ()=>{}) => {
     const voiceURLs = generateVoiceURLs(status.currentWordIndex);
     if (voiceURLs.length > 0) {
-      player.play(voiceURLs, ()=>{}, 0);
+      player.stop();
+      player.setVolume(status.audioConfig.volume / 100);
+      player.play(voiceURLs, onCompleteCallback, 0);
     }
 
     /*
@@ -899,7 +898,7 @@ export default function Page() {
           <span onClick={(event) => {
             keyDownCallback({...event, key: 'ArrowRight'});
           }}> <CgPlayTrackNextR/> </span>
-          <span onClick={playCurrentWord}><FaVolumeUp/></span>
+          <span onClick={(e) => playCurrentWord()}><FaVolumeUp/></span>
           <span onClick={() => {
             setStatus(prev => ({...prev, isConfigDialogOpen: true}));
           }}><PiGear/></span>
@@ -1507,6 +1506,7 @@ export default function Page() {
                           ...status.audioConfig,
                           volume: value
                         });
+                        player.setVolume(value / 100);
                       }}
                       min={50}
                       max={150}

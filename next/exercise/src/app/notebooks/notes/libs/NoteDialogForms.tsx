@@ -140,6 +140,7 @@ export const NoteDialogFormItemRender = ({}) => {
     }
   }
 
+  // 仅根据 note.type.id 来判断
   if (status.note?.type?.id ==='16'){
     return TranslationSentenceForm(handleNoteFormItemChange, status);
   }

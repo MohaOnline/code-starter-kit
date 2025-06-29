@@ -59,10 +59,12 @@ export function NoteDialog({note}) {
                     </DialogDescription>
                 </DialogHeader>
 
+                {/* 笔记类型选择 */}
                 <div className="grid gap-4">
                     <div className="grid gap-3">
                         <NoteTypeSelector types={status.types} />
                     </div>
+
                     <NoteDialogFormItemRender />
                 </div>
                 <DialogFooter>

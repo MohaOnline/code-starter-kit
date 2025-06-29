@@ -120,7 +120,7 @@ export const handleKeyDown = (event, status, setStatus) => {
  * 
  * @param {*} callback 
  * @param {*} delay 
- * @returns cancel function.
+ * @returns cancel function. 取消函数，调用、执行后会取消定时器。
  */
 export function preciseTimeout(callback, delay) {
   const start = performance.now();
@@ -148,3 +148,4 @@ export function preciseTimeout(callback, delay) {
     }
   };
 }
+

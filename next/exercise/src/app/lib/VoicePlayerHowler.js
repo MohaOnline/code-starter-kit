@@ -47,11 +47,18 @@ export class VoicePlayerHowler {
     };
   }
 
+  setVolume(volume) {
+    console.log('setVolume:', volume);
+    Howler.volume(volume);
+    this.volume = volume;
+  }
+
   play(audioURls, onCompleteCallback=()=>{}, interval = 500) {
     this.stop(); // 先清理之前的播放器状态
 
     this.isPlaying = true;
     this.currentIndex = 0;
+    console.log('volume:', this.volume);
 
     this.howls = audioURls.map((url, index) => {
 
@@ -60,11 +67,25 @@ export class VoicePlayerHowler {
         const howl = new Howl({
           src: [url],
           format: url.endsWith('.wav') ? 'wav' : 'mp3',
+          volume: this.volume || 1,
 
           onload: () => {
             this.durations[index] = howl.duration() * 1000 + interval; // 存储时长（毫秒）
             // console.log('onload:', howl._sounds[0]._node.bufferSource);
             // console.log('onload:', HowlCache);
+            // console.log(this.ctx);
+            console.log(Howler.ctx);
+            fetch(url)
+              .then(response => response.arrayBuffer())
+              .then(arrayBuffer => {
+                const audioContext = Howler.ctx;
+                audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
+                  const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
+                  console.log(this.durations[index]);
+                  // this.durations[index] -= silentDuration;
+                });
+              })
+              .catch(error => console.error('Error:', error));
           },
 
           onend: () => {
