@@ -270,6 +270,7 @@ export default function Page() {
 
           // 暂停时不播放声音
           if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex){
+            player.stop();
             player.play(voiceURLs, autoNextWord, 0);
             status.playedWordIndex = status.currentWordIndex;
           }

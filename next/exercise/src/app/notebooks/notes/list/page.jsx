@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * 候选控件：
+ * - https://github.com/jedwatson/react-select
+ */
+
 import {useEffect, useState} from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import ModeToggle from '@/components/mode-toggle';

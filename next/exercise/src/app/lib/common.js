@@ -1,5 +1,4 @@
-import {createContext} from 'react';
-import {atom, useAtom} from 'jotai';
+
 
 // // 导出的 atom 可以在项目中的任何地方通过 useAtom 或其他 Jotai API 使用，确保状态的一致性。
 // export const currentWordIndexAtom = atom(0);
@@ -116,3 +115,36 @@ export const handleKeyDown = (event, status, setStatus) => {
 
   localStorage.setItem('wordStatus', status.currentWordIndex);
 };
+
+/**
+ * 
+ * @param {*} callback 
+ * @param {*} delay 
+ * @returns cancel function.
+ */
+export function preciseTimeout(callback, delay) {
+  const start = performance.now();
+  let rafId;
+  let cancelled = false;
+
+  function check() {
+    if (cancelled) return;
+    
+    const now = performance.now();
+    if (now - start >= delay) {
+      callback();
+    } else {
+      rafId = requestAnimationFrame(check);
+    }
+  }
+
+  rafId = requestAnimationFrame(check);
+  
+  // 返回取消函数
+  return () => {
+    cancelled = true;
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+  };
+}

@@ -1,7 +1,7 @@
 import {ThemeProvider} from 'next-themes';
 import {Geist, Geist_Mono} from 'next/font/google';
 
-import './page.css';
+import '@/app/notebooks/css/page.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

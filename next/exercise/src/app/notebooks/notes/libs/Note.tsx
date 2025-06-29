@@ -76,11 +76,10 @@ export default function Note({note}: NoteProps) {
             <div className="border note flex flex-col gap-4">
                 {note.tid === '16' && // 单句英文翻译，显示 Question & Answer
                   <><div dangerouslySetInnerHTML={{__html: note.question}}></div>
-                    <div dangerouslySetInnerHTML={{__html: note.answer}}></div>
+                    <div className='answer' dangerouslySetInnerHTML={{__html: note.answer}}></div>
                   </>}
                   
-                {/* 单句英文翻译以外的，显示 Title & Body */}
-                {note.tid === '5' && 
+                {note.tid === '5' && // 中文作文
                 <><div className='chinese-composition-title'><h2>{note.title}</h2></div>
                   <div className='chinese-composition-body' dangerouslySetInnerHTML={{__html: note.body}}></div>
                 </>}
