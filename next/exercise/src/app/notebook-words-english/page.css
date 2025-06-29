@@ -55,12 +55,15 @@ div.operation {
 }
 
 div.operation:hover {
+
 }
 
 .search-form input {
     opacity: .5;
 }
 
+div.operation .search-form input:focus, 
+div.operation .search-form input:active, 
 div.operation:hover .search-form input {
     opacity: 1;
 }
