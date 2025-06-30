@@ -111,6 +111,19 @@ export const handleKeyDown = (event, status, setStatus) => {
         },
       },
     });
+  } else if (event.key === 'e') {
+    console.debug('toggle english text display');
+
+    setStatus({
+      ...status, // 复制现有状态
+      audioConfig: {
+        ...status.audioConfig,
+        english: {
+          ...status.audioConfig.english,
+          showText: !status.audioConfig.english.showText,
+        },
+      },
+    });
   }
 
   localStorage.setItem('wordStatus', status.currentWordIndex);

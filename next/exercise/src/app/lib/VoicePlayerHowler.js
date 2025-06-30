@@ -11,6 +11,13 @@ export class VoicePlayerHowler {
     this.isPlaying = false; // 是否收到 stop 命令，play -> True, stop -> False.
     this.currentIndex = 0;
     this.activeTimeouts = []; // 跟踪活跃的定时器
+
+    this.speed = 1.0;
+
+    this.en_waitVoiceLength = true;
+    this.cn_waitVoiceLength = true;
+    this.en_interval = 250;
+    this.cn_interval = 250;
   }
 
     // 分析 AudioBuffer 检测静音
@@ -53,7 +60,21 @@ export class VoicePlayerHowler {
     this.volume = volume;
   }
 
-  play(audioURls, onCompleteCallback=()=>{}, interval = 500) {
+  setSpeed(speed) {
+    console.log('setSpeed:', speed);
+    // Howler.rate(speed);
+    this.speed = speed;
+  }
+
+  // 设置播放间隔
+  setVoiceInterval(en_waitVoiceLength = true, cn_waitVoiceLength = true, en_interval = 250, cn_interval = 250) {
+    this.en_waitVoiceLength = en_waitVoiceLength;
+    this.cn_waitVoiceLength = cn_waitVoiceLength;
+    this.en_interval = en_interval;
+    this.cn_interval = cn_interval;
+  }
+
+  play(audioURls, onCompleteCallback=()=>{}) {
     this.stop(); // 先清理之前的播放器状态
 
     this.isPlaying = true;
@@ -68,30 +89,56 @@ export class VoicePlayerHowler {
           src: [url],
           format: url.endsWith('.wav') ? 'wav' : 'mp3',
           volume: this.volume || 1,
+          rate: this.speed || 1.0,
 
           onload: () => {
-            this.durations[index] = howl.duration() * 1000 + interval; // 存储时长（毫秒）
-            // console.log('onload:', howl._sounds[0]._node.bufferSource);
-            // console.log('onload:', HowlCache);
-            // console.log(this.ctx);
-            console.log(Howler.ctx);
-            fetch(url)
-              .then(response => response.arrayBuffer())
-              .then(arrayBuffer => {
-                const audioContext = Howler.ctx;
-                audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
-                  const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
-                  console.log(this.durations[index]);
-                  // this.durations[index] -= silentDuration;
-                });
-              })
-              .catch(error => console.error('Error:', error));
+
+            if (url.includes('en-')) {
+              if (this.en_waitVoiceLength) {
+                this.durations[index] = howl.duration() * 1000; // 存储时长（毫秒）
+                // console.log('onload:', howl._sounds[0]._node.bufferSource);
+                // console.log('onload:', HowlCache);
+                // console.log(this.ctx);
+                // console.log(Howler.ctx);
+                fetch(url)
+                  .then(response => response.arrayBuffer())
+                  .then(arrayBuffer => {
+                    const audioContext = Howler.ctx;
+                    audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
+                      const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
+                      console.log(this.durations[index]);
+                      // this.durations[index] -= silentDuration;
+                    });
+                  })
+                  .catch(error => console.error('Error:', error));
+              }
+
+              this.durations[index] = this.en_interval;
+            }
+            else if (url.includes('zh-')) {
+              if (this.cn_waitVoiceLength) {
+                this.durations[index] = howl.duration() * 1000; // 存储时长（毫秒）
+                fetch(url)
+                  .then(response => response.arrayBuffer())
+                  .then(arrayBuffer => {
+                    const audioContext = Howler.ctx;
+                    audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
+                      const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
+                      console.log(this.durations[index]);
+                      // this.durations[index] -= silentDuration;
+                    });
+                  })
+                  .catch(error => console.error('Error:', error));
+              }
+
+              this.durations[index] = this.cn_interval;
+            }
           },
 
           onend: () => {
             if (!this.isPlaying) return;
 
-            const pauseTime = (this.durations[this.currentIndex] || 0) + interval;
+            const pauseTime = (this.durations[this.currentIndex] || 0);
 
             console.debug('pauseTime:', pauseTime);
 

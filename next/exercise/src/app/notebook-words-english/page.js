@@ -52,12 +52,14 @@ const DEFAULT_AUDIO_CONFIG = {
     repeatCount: 1,     // 发音次数 0-5
     pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
     showText: true,     // 是否显示英文
+    waitVoiceLength: true, // 是否等待音频时长
   },
   // 中文设置
   chinese: {
     repeatCount: 0,     // 发音次数 0-5
     pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
     showText: true,     // 是否显示中文
+    waitVoiceLength: true, // 是否等待音频时长
   },
 };
 
@@ -77,11 +79,13 @@ const loadAudioConfig = () => {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
           showText: parsed.english?.showText ?? DEFAULT_AUDIO_CONFIG.english.showText,
+          waitVoiceLength: parsed.english?.waitVoiceLength ?? DEFAULT_AUDIO_CONFIG.english.waitVoiceLength,
         },
         chinese: {
           repeatCount: parsed.chinese?.repeatCount ?? DEFAULT_AUDIO_CONFIG.chinese.repeatCount,
           pauseTime: parsed.chinese?.pauseTime ?? DEFAULT_AUDIO_CONFIG.chinese.pauseTime,
           showText: parsed.chinese?.showText ?? DEFAULT_AUDIO_CONFIG.chinese.showText,
+          waitVoiceLength: parsed.chinese?.waitVoiceLength ?? DEFAULT_AUDIO_CONFIG.chinese.waitVoiceLength,
         },
       };
 
@@ -442,8 +446,10 @@ export default function Page() {
     const voiceURLs = generateVoiceURLs(status.currentWordIndex);
     if (voiceURLs.length > 0) {
       player.stop();
+      player.setSpeed(status.audioConfig.speed / 100);
       player.setVolume(status.audioConfig.volume / 100);
-      player.play(voiceURLs, onCompleteCallback, 0);
+      player.setVoiceInterval(status.audioConfig.english.waitVoiceLength, status.audioConfig.chinese.waitVoiceLength, status.audioConfig.english.pauseTime, status.audioConfig.chinese.pauseTime);
+      player.play(voiceURLs, onCompleteCallback);
     }
 
     /*
@@ -822,17 +828,16 @@ export default function Page() {
                 &nbsp;</span>
             </div>
 
-            <div className={'word'} onWheel={handleWordWheel}>
-              {status.words[status.currentWordIndex].word}
+            <div onWheel={handleWordWheel} className={'word'} dangerouslySetInnerHTML={{
+              __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : '&nbsp;',
+            }}>
             </div>
 
-            
             <div onWheel={handleWordWheel} className={'translation'} dangerouslySetInnerHTML={{
               __html: status.audioConfig.chinese.showText ? status.words[status.currentWordIndex].translation : '&nbsp;',
             }}>
             </div>
             
-
           </div>
         </div>
 
@@ -1533,17 +1538,17 @@ export default function Page() {
                           speed: value
                         });
                       }}
-                      min={50}
-                      max={225}
-                      step={25}
+                      min={90}
+                      max={110}
+                      step={5}
                       className="w-full"
                     />
                     <div className="flex justify-between text-xs text-gray-500">
-                      <span>50%</span>
+                      <span>90%</span>
+                      <span>95%</span>
                       <span>100%</span>
-                      <span>150%</span>
-                      <span>200%</span>
-                      <span>225%</span>
+                      <span>105%</span>
+                      <span>110%</span>
                     </div>
                   </div>
 
@@ -1629,6 +1634,23 @@ export default function Page() {
                       <span>1.25</span>
                     </div>
                   </div>
+
+                  {/* 等待音频时长 */}
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={status.audioConfig.english.waitVoiceLength}
+                      onCheckedChange={(checked) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          english: {
+                            ...status.audioConfig.english,
+                            waitVoiceLength: checked
+                          }
+                        });
+                      }}
+                    />
+                    <Label>等待音频时长</Label>
+                  </div>
                   
                   {/* 显示英文 */}
                   <div className="flex items-center space-x-2">
@@ -1646,6 +1668,7 @@ export default function Page() {
                     />
                     <Label>显示英文</Label>
                   </div>
+
                 </div>
                 
                 {/* 右栏：中文设置 */}
@@ -1709,6 +1732,23 @@ export default function Page() {
                       <span>1.25</span>
                     </div>
                   </div>
+
+                  {/* 等待音频时长 */}
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={status.audioConfig.chinese.waitVoiceLength}
+                      onCheckedChange={(checked) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          chinese: {
+                            ...status.audioConfig.chinese,
+                            waitVoiceLength: checked
+                          }
+                        });
+                      }}
+                    />
+                    <Label>等待音频时长</Label>
+                  </div>
                   
                   {/* 显示中文 */}
                   <div className="flex items-center space-x-2">
@@ -1726,6 +1766,7 @@ export default function Page() {
                     />
                     <Label>显示中文</Label>
                   </div>
+
                 </div>
               </div>
             </div>
