@@ -137,6 +137,16 @@ export default function Note({note}) {
                                     alignItems: 'center',
                                     gap: '12px'
                                 }}
+                                onMouseEnter={(e) => {
+                                    if (!isSelected) {
+                                        (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.25)';
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (!isSelected) {
+                                        (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.15)';
+                                    }
+                                }}
                             >
                                 <input
                                     type="radio"
