@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/command';
 import { Check, ChevronsUpDown, X, Square, CheckSquare } from 'lucide-react';
 
-import Note from '../libs/Note';
+import Note from '@/app/notebooks/notes/libs/NoteListeningDialog';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
@@ -52,6 +52,20 @@ export default function Page() {
         toast.error('cant load notes from API.');
     });    
 
+  }, []);
+
+  useEffect(() => {
+    setStatus((prev) => ({
+      ...prev,
+      note: {
+        ...prev.note,
+        type: {
+          title: 'Listening Dialog',
+          title_sub: '高中',
+          id: '9',
+        },
+      },
+    }));
   }, []);
 
   return (

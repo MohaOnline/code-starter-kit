@@ -85,10 +85,13 @@ export default function Note({note}: NoteProps) {
                 </>}
                   
                 {/* 单句英文翻译以外的，显示 Title & Body */}
-                {note.tid != '16' && note.tid != '5' && 
+                {
+                note.tid != '16' && 
+                note.tid != '5' && 
                 <><h2 className='note-title'>{note.title}</h2>
                   <div className='note-body' dangerouslySetInnerHTML={{__html: note.body}}></div>
-                </>}
+                </>
+                }
 
                 <div className="operation">
                     <Button className={'border bg-background text-primary hover:bg-muted active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
