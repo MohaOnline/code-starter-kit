@@ -10,7 +10,11 @@ div.note div.operation {
 }
 
 /* Drawer Header Styles. */
-[data-slot="drawer-header"] {
+[data-vaul-drawer] div.bg-muted {
+  display: none;
+}
+
+[data-vaul-drawer] div[data-slot="drawer-header"] {
   display: none;
 }
 
