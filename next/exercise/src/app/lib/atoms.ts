@@ -40,6 +40,13 @@ export const status = atom({
     // Words announcing data:
     words: [],
     currentWordIndex: 0,
+
+    // listening dialog
+    notesListeningDialog: {
+        notes: [],
+        currentNoteIndex: 0,
+        isPlaying: false,
+    }
 });
 
 // 自定义 Hook 也是一个以 'use' 开头的函数

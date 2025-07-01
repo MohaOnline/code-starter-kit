@@ -41,10 +41,10 @@ export default function Page() {
     .then(json => {
         setStatus((prev) => ({
             ...prev,
-            note: {
-              ...prev.note,
+            notesListeningDialog: {
+              ...prev.notesListeningDialog,
+              notes: json.notes,
             },
-            notes: json.notes,
         }))
     })
     .catch(err => {
@@ -76,12 +76,13 @@ export default function Page() {
       </h1>
 
       {/* 笔记添加 */}
-      <div className="operation text-right">
+      <div className="operation text-right flex items-center justify-end gap-2 mb-2">
         <NoteDialog note={{}} />
+        <ModeToggle />
       </div>
 
       <div className="notes flex flex-col gap-4">
-        {status.notes
+        {status.notesListeningDialog.notes
           ?.map((note) => (
             <Note key={note.id} note={note} />
           ))}
@@ -98,7 +99,7 @@ export default function Page() {
         draggable
         pauseOnHover
       />
-      <div className="text-right"><ModeToggle /></div>
+      
     </div>
   );
 }

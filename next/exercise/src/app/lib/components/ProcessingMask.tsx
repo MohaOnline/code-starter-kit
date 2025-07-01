@@ -1,6 +1,5 @@
 'use client';
 
-import { useAtom } from 'jotai';
 import { useStatus } from '@/app/lib/atoms';
 
 import './ProcessingMask.css';
