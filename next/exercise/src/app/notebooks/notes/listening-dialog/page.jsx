@@ -30,7 +30,7 @@ import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
 import { useStatus } from '@/app/lib/atoms';
 
-export default function Page() {
+export default function NotesListeningDialog() {
 
   const [status, setStatus] = useStatus();
 
@@ -80,6 +80,8 @@ export default function Page() {
         <NoteDialog note={{}} />
         <ModeToggle />
       </div>
+
+      {status.notesListeningDialog?.notes?.length === 0 && <div>Loading...</div>}
 
       <div className="notes flex flex-col gap-4">
         {status.notesListeningDialog.notes

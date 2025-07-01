@@ -32,3 +32,58 @@ body {
 /*img, svg {*/
 /*  display: inline;*/
 /*}*/
+
+/* 旧浏览器fallback - 不支持transform时 */
+@supports not (transform: translate(-50%, -50%)) {
+  [data-slot="dialog-content"] {
+    position: fixed !important;
+    top: 5% !important;
+    left: 2.5% !important;
+    right: 2.5% !important;
+    bottom: 5% !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    width: auto !important;
+    min-width: 320px !important;
+    max-width: 1200px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* IE8-IE11特定修复 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  [data-slot="dialog-content"] {
+    position: fixed !important;
+    top: 5% !important;
+    left: 2.5% !important;
+    right: 2.5% !important;
+    bottom: 5% !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    width: auto !important;
+    min-width: 320px !important;
+    max-width: 1200px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* 非常老的浏览器 - 绝对定位fallback */
+.ie-fallback [data-slot="dialog-content"],
+.old-browser [data-slot="dialog-content"] {
+  position: absolute !important;
+  top: 5% !important;
+  left: 2.5% !important;
+  right: 2.5% !important;
+  bottom: 5% !important;
+  margin: 0 auto !important;
+  transform: none !important;
+  width: auto !important;
+  min-width: 320px !important;
+  max-width: 1200px !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+

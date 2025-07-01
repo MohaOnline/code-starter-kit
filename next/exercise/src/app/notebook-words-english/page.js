@@ -811,7 +811,7 @@ export default function Page() {
   return (
       <>
         <NavTop/>
-        <div className={'word-container'}>
+        <div className={'word-container'} onWheel={handleWordWheel}>
           <div>
             <div>
               <span className={'phonetic'} dangerouslySetInnerHTML={{
@@ -828,12 +828,12 @@ export default function Page() {
                 &nbsp;</span>
             </div>
 
-            <div onWheel={handleWordWheel} className={'word'} dangerouslySetInnerHTML={{
+            <div className={'word'} dangerouslySetInnerHTML={{
               __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : '&nbsp;',
             }}>
             </div>
 
-            <div onWheel={handleWordWheel} className={'translation'} dangerouslySetInnerHTML={{
+            <div className={'translation'} dangerouslySetInnerHTML={{
               __html: status.audioConfig.chinese.showText ? status.words[status.currentWordIndex].translation : '&nbsp;',
             }}>
             </div>
@@ -841,9 +841,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div
-            className={'operation text-center'}
-            onWheel={handleWordWheel}>
+        <div className={'operation text-center'}>
           {status.currentWordIndex +
               1} / {status.words.length}</div>
 
