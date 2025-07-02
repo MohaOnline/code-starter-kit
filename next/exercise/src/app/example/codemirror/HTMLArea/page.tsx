@@ -81,7 +81,7 @@ $$\\ce{2H2 + O2 -> 2H2O}$$
         <h2 className="text-xl font-semibold mb-2">Interactive Editor</h2>
         <HTMLArea
           value={content}
-          onChange={handleContentChange}
+          handleNoteChange={handleContentChange}
           height="500px"
           name="main-html-editor"
         />

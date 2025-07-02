@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -50,8 +49,8 @@ export function NoteDialog({note}) {
             <DialogTrigger asChild>
                 <Button variant="outline" onClick={() => setOpen(true)}>Add</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[650px] md:max-w-[750px]">
-                <DialogHeader>
+            <DialogContent className="sm:max-w-[650px] md:max-w-[750px] max-h-[80vh] flex flex-col">
+                <DialogHeader className="flex-shrink-0">
                     <DialogTitle>Note</DialogTitle>
                     <DialogDescription>
                         Make changes to your profile here. Click save when you&apos;re
@@ -60,14 +59,14 @@ export function NoteDialog({note}) {
                 </DialogHeader>
 
                 {/* 笔记类型选择 */}
-                <div className="grid gap-4">
+                <div className="grid gap-4 overflow-y-auto flex-1 pr-2">
                     <div className="grid gap-3">
                         <NoteTypeSelector types={status.types} />
                     </div>
 
                     <NoteDialogFormItemRender />
                 </div>
-                <DialogFooter>
+                <DialogFooter className="flex-shrink-0 mt-4">
                     <DialogClose asChild>
                         <Button variant="outline">Cancel</Button>
                     </DialogClose>

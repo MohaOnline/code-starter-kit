@@ -12,14 +12,14 @@ import { Button } from '@/components/ui/button';
 
 interface HTMLAreaProps {
   value?: string;
-  onChange?: (value: any) => void;
+  handleNoteChange?: (value: any) => void;
   height?: string;
   name?: string;
 }
 
 const HTMLArea: React.FC<HTMLAreaProps> = ({ 
   value = '', 
-  onChange, 
+  handleNoteChange, 
   height = '400px',
   name
 }) => {
@@ -83,7 +83,7 @@ const HTMLArea: React.FC<HTMLAreaProps> = ({
         value: val,
       }
     };
-    onChange?.(e);
+      handleNoteChange?.(e);
   };
 
   // 插入代码到编辑器

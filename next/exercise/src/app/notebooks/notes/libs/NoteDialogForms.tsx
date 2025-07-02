@@ -15,6 +15,7 @@ import { autocompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
 
 import { useStatus } from '@/app/lib/atoms'
+import HTMLArea from '@/app/lib/components/HTMLArea';
 
 const NoteHTMLCodeArea = ({
   handleNoteChange ,
@@ -78,6 +79,8 @@ const NoteHTMLCodeArea = ({
     </>
   )
 }
+
+// 单句翻译
 const TranslationSentenceForm = (handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, status: any) => {
 
   return (
@@ -89,6 +92,38 @@ const TranslationSentenceForm = (handleNoteChange: React.ChangeEventHandler<HTML
       <div className="grid gap-3">
         <Label htmlFor="answer">Answer</Label>
         <NoteHTMLCodeArea handleNoteChange={handleNoteChange} status={status} name="answer" />
+      </div>
+      <div className="grid gap-3">
+        <Label htmlFor="note">Note</Label>
+        <Textarea id="note" name="note"
+                  value={status.note?.note || ''}
+                  onChange={handleNoteChange}/>
+      </div>
+      <div className="grid gap-3">
+        <Label htmlFor="note_extra">Note Extra</Label>
+        <Textarea id="note_extra" name="note_extra"
+                  value={status.note?.note_extra || ''}
+                  onChange={handleNoteChange}/>
+      </div>
+    </>
+  );
+}
+
+const ListeningDialogForm = (handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, status: any) => {
+
+  return (
+    <>
+      <div className="grid gap-3">
+        <Label htmlFor="question">Question</Label>
+        <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
+
+        <Label htmlFor="question_voice">Question Voice</Label>
+        <Input id="question_voice" name="question_voice"
+                  value={status.note?.question_voice || ''}
+                  onChange={handleNoteChange}/>
+      </div>
+      <div className="grid gap-3">
+        <Label htmlFor="answer">Answer</Label>
       </div>
       <div className="grid gap-3">
         <Label htmlFor="note">Note</Label>
@@ -141,6 +176,11 @@ export const NoteDialogFormItemRender = ({}) => {
   }
 
   // 仅根据 note.type.id 来判断
+  // 听力理解
+  if (status.note?.type?.id ==='9'){
+    return ListeningDialogForm(handleNoteFormItemChange, status);
+  }
+
   if (status.note?.type?.id ==='16'){
     return TranslationSentenceForm(handleNoteFormItemChange, status);
   }
@@ -148,6 +188,8 @@ export const NoteDialogFormItemRender = ({}) => {
   return (<></>);
 }
 
+
+// Useless, only for reference.
 const NoteDialogFormScienceEngineering = (
   handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, data, status) => {
   return (
