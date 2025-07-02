@@ -49,7 +49,7 @@ export function NoteDialog({note}) {
             <DialogTrigger asChild>
                 <Button variant="outline" onClick={() => setOpen(true)}>Add</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[650px] md:max-w-[750px] max-h-[80vh] flex flex-col">
+            <DialogContent className="sm:max-w-[650px] md:max-w-[1200px] max-h-[90vh] flex flex-col">
                 <DialogHeader className="flex-shrink-0">
                     <DialogTitle>Note</DialogTitle>
                     <DialogDescription>
@@ -66,6 +66,7 @@ export function NoteDialog({note}) {
 
                     <NoteDialogFormItemRender />
                 </div>
+                
                 <DialogFooter className="flex-shrink-0 mt-4">
                     <DialogClose asChild>
                         <Button variant="outline">Cancel</Button>

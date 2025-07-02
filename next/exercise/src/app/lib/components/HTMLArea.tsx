@@ -20,7 +20,7 @@ interface HTMLAreaProps {
 const HTMLArea: React.FC<HTMLAreaProps> = ({ 
   value = '', 
   handleNoteChange, 
-  height = '400px',
+  height = '200px',
   name
 }) => {
   const [htmlContent, setHtmlContent] = useState(value);

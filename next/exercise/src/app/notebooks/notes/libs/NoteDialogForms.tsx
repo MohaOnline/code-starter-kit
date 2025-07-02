@@ -3,13 +3,18 @@
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-// "ckeditor4-react": "^4.3.0",
-// import { CKEditor } from 'ckeditor4-react'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
 import CodeMirror from '@uiw/react-codemirror';
-import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { linter, lintGutter } from '@codemirror/lint';
-import { htmlCompletionSource, htmlLanguage } from '@codemirror/lang-html';
+import { htmlCompletionSource, htmlLanguage, html} from '@codemirror/lang-html';
 import { syntaxTree } from '@codemirror/language';
 import { autocompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
@@ -114,17 +119,63 @@ const ListeningDialogForm = (handleNoteChange: React.ChangeEventHandler<HTMLInpu
   return (
     <>
       <div className="grid gap-3">
-        <Label htmlFor="question">Question</Label>
-        <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
 
-        <Label htmlFor="question_voice">Question Voice</Label>
-        <Input id="question_voice" name="question_voice"
-                  value={status.note?.question_voice || ''}
-                  onChange={handleNoteChange}/>
+        <Label htmlFor="figures">Question Voice</Label>
+        <Input id="figures" name="figures" value={status.note?.figures || ''}
+               onChange={handleNoteChange}/>
       </div>
       <div className="grid gap-3">
+        <Label>Choices</Label>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">A:</span>
+          <Input id="choise_a" name="choise_a" value={status.note?.choise_a || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">B:</span>
+          <Input id="choise_b" name="choise_b" value={status.note?.choise_b || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">C:</span>
+          <Input id="choise_c" name="choise_c" value={status.note?.choise_c || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">D:</span>
+          <Input id="choise_d" name="choise_d" value={status.note?.choise_d || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+
         <Label htmlFor="answer">Answer</Label>
+        <Select
+          value={status.note?.answer || ''}
+          onValueChange={(value) => {
+            const event = {
+              target: {
+                name: 'answer',
+                value: value
+              }
+            } as React.ChangeEvent<HTMLInputElement>;
+            handleNoteChange(event);
+          }}
+        >
+
+          <SelectTrigger>
+            <SelectValue placeholder="Correct Answer" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="choise_a">A</SelectItem>
+            <SelectItem value="choise_b">B</SelectItem>
+            <SelectItem value="choise_c">C</SelectItem>
+            <SelectItem value="choise_d">D</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Label htmlFor="question">Question</Label>
+        <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
       </div>
+
       <div className="grid gap-3">
         <Label htmlFor="note">Note</Label>
         <Textarea id="note" name="note"
