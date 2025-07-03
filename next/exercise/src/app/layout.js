@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
+import AuthSessionProvider from '@/components/providers/session-provider';
 
 import './globals.css'
 
@@ -32,7 +33,10 @@ export default function RootLayout ({ children }) {
                         enableSystem
                         disableTransitionOnChange
     >
-      <JotaiProvider>{children}</JotaiProvider></NextThemesProvider>
+      <AuthSessionProvider>
+        <JotaiProvider>{children}</JotaiProvider>
+      </AuthSessionProvider>
+    </NextThemesProvider>
     </body>
     </html>
   )
