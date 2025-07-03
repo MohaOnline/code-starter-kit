@@ -32,6 +32,7 @@ import { HTMLArea } from '@/app/lib/components/HTMLArea';
 import "./Note.css"
 import { NoteDialog } from './NoteDialog';
 import { useStatus } from '@/app/lib/atoms';
+import { toast } from 'react-toastify';
 
 /**
  * 听力: 对话 编辑对话框
@@ -125,6 +126,7 @@ export function NoteListeningDialog({note}) {
         note: note,
         isEditing: false,       // 开关编辑 Drawer
         setEditing: null,
+        showAnswer: 0,          // 0: 不显示，1: 显示正确答案，2: 显示所有选项
         answers: {},            // 存储答案选择
         shuffledChoices: [],    // 随机排序的选项
     });
@@ -265,10 +267,21 @@ export function NoteListeningDialog({note}) {
                 </div>
 
                 <div className='answer' dangerouslySetInnerHTML={{__html: note.answer}}></div>
-                <div dangerouslySetInnerHTML={{__html: note.question}}></div>
-                  
 
+                {local.showAnswer == 1 &&
+                <div dangerouslySetInnerHTML={{__html: note.question}}></div>}
+                  
                 <div className="operation">
+                    {local.showAnswer != 2 &&
+                    <Button variant="outline" onClick={() => {
+                        if (!local.answers[note.id]) {
+                            toast.error('请先选择答案');
+                            return;
+                        }
+                        setLocal(prev => ({...prev, showAnswer: prev.showAnswer++}));
+                    
+                    }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
+
                     <NoteDialog note={note} preOpenCallback = {()=>{
                         const n = status.notesListeningDialog.notes.find(n => n.id === note.id);
                         console.log(n);
