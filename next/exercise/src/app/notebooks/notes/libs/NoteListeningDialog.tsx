@@ -1,6 +1,7 @@
 /**
- *
+ * 听力
  */
+'use client';
 
 import {useState, useEffect} from 'react';
 import {Button} from "@/components/ui/button";
@@ -15,20 +16,119 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
+import { HTMLArea } from '@/app/lib/components/HTMLArea';
 
 import "./Note.css"
+import { NoteDialog } from './NoteDialog';
+import { useStatus } from '@/app/lib/atoms';
 
+/**
+ * 听力: 对话 编辑对话框
+ * 
+ * @param handleNoteChange 
+ * @param status 
+ * @returns 
+ */
+export const NoteListeningDialogForm = (handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, status: any) => {
+
+  return (
+    <>
+      <div className="grid gap-3">
+        <Label htmlFor="figures">Question Voice</Label>
+        <Input id="figures" name="figures" value={status.note?.figures || ''}
+               onChange={handleNoteChange}/>
+      </div>
+      <div className="grid gap-3">
+        <Label>Choices</Label>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">A:</span>
+          <Input id="choise_a" name="choise_a" value={status.note?.choise_a || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">B:</span>
+          <Input id="choise_b" name="choise_b" value={status.note?.choise_b || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">C:</span>
+          <Input id="choise_c" name="choise_c" value={status.note?.choise_c || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-medium min-w-[20px]">D:</span>
+          <Input id="choise_d" name="choise_d" value={status.note?.choise_d || ''}
+                 onChange={handleNoteChange} className="flex-1"/>
+        </div>
+
+        <Label htmlFor="answer">Answer</Label>
+        <Select
+          value={status.note?.answer || ''}
+          onValueChange={(value) => {
+            const event = {
+              target: {
+                name: 'answer',
+                value: value
+              }
+            } as React.ChangeEvent<HTMLInputElement>;
+            handleNoteChange(event);
+          }}
+        >
+
+          <SelectTrigger>
+            <SelectValue placeholder="Correct Answer" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="choise_a">A</SelectItem>
+            <SelectItem value="choise_b">B</SelectItem>
+            <SelectItem value="choise_c">C</SelectItem>
+            <SelectItem value="choise_d">D</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Label htmlFor="question">Question</Label>
+        <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
+      </div>
+
+      <div className="grid gap-3">
+        <Label htmlFor="note">Note</Label>
+        <Textarea id="note" name="note"
+                  value={status.note?.note || ''}
+                  onChange={handleNoteChange}/>
+      </div>
+      <div className="grid gap-3">
+        <Label htmlFor="note_extra">Note Extra</Label>
+        <Textarea id="note_extra" name="note_extra"
+                  value={status.note?.note_extra || ''}
+                  onChange={handleNoteChange}/>
+      </div>
+    </>
+  );
+}
 
 /* React component 有 note 参数，也可有别的参数，打包成一个对象传入。 */
-export default function Note({note}) {
+export function NoteListeningDialog({note}) {
+    const [status, setStatus] = useStatus(); // 通过 status 和 note.id 把 status.note = status.notesListeningDialog.notes.find(note => note.id === note.id).
     const [local, setLocal] = useState({
         set: null,
         note: note,
-        isEditing: false,   // 开关编辑 Drawer
+        isEditing: false,       // 开关编辑 Drawer
         setEditing: null,
-        answers: {},  // 存储答案选择
-        shuffledChoices: [],  // 随机排序的选项
+        answers: {},            // 存储答案选择
+        shuffledChoices: [],    // 随机排序的选项
     });
+
     local.set = setLocal;
     local.setEditing = (isEditing: boolean) => setLocal(prev => ({...prev, isEditing: isEditing}));
 
@@ -51,7 +151,7 @@ export default function Note({note}) {
         setLocal(prev => ({...prev, shuffledChoices: shuffled}));
     }, [note]);
 
-    // 处理答案选择
+    // 响应答案选择（无答案检查）
     const handleAnswerChange = (choiceKey) => {
         setLocal(prev => {
             const currentAnswer = prev.answers[note.id];
@@ -169,50 +269,24 @@ export default function Note({note}) {
                   
 
                 <div className="operation">
-                    <Button className={'border bg-background text-primary hover:bg-muted active:translate-y-[1px] active:translate-x-[1px] transition-transform'}
-                            onClick={() => {
-                                local.setEditing(true);
-                            }}>Edit</Button>
+                    <NoteDialog note={{}} onClick={()=>{
+                        const n = status.notesListeningDialog.notes.find(n => n.id === note.id);
+                        console.log(n);
+                        setStatus(prev=>({
+                            ...prev,
+                            note: {
+                                ...n,
+                                type:{
+                                    title: n.type,
+                                    title_sub: n.type_sub,
+                                    id: n.tid,
+                                }
+                            },
+                        }))
+                    }}/>
                 </div>
             </div>
 
-            <Drawer open={local.isEditing} onOpenChange={local.setEditing} dismissible={false} >
-                <DrawerContent >
-                    <DrawerHeader>
-                        <DrawerTitle>Edit Note</DrawerTitle>
-                        <DrawerDescription>Modify the title and body of your note.</DrawerDescription>
-                    </DrawerHeader>
-                    <div className="p-4">
-                        <input
-                            name="title"
-                            value={local.note.title}
-                            onChange={handleChange}
-                            className="w-full p-2 mb-4 border"
-                            placeholder="Title"
-                        />
-                        <textarea
-                            name="body"
-                            value={local.note.body}
-                            onChange={handleChange}
-                            className="w-full p-2 border"
-                            placeholder="Body"
-                            rows={10}
-                        />
-                    </div>
-                    <DrawerFooter>
-                        <div className={'flex gap-4'}>
-                            <Button onClick={handleUpdate} className="bg-blue-500 text-white">
-                                Update
-                            </Button>
-                            <DrawerClose asChild>
-                                <Button variant="outline" onClick={() => {
-                                    local.isEditing = false;
-                                    setLocal({...local});
-                                }}>Cancel</Button>
-                            </DrawerClose></div>
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
         </>
     );
 }

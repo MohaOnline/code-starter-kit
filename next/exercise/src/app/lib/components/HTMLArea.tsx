@@ -17,7 +17,7 @@ interface HTMLAreaProps {
   name?: string;
 }
 
-const HTMLArea: React.FC<HTMLAreaProps> = ({ 
+export const HTMLArea: React.FC<HTMLAreaProps> = ({ 
   value = '', 
   handleNoteChange, 
   height = '200px',
@@ -339,5 +339,3 @@ const HTMLArea: React.FC<HTMLAreaProps> = ({
     </div>
   );
 };
-
-export default HTMLArea;

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,14 +15,31 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
-import { useStatus } from '@/app/lib/atoms';
+import CodeMirror from '@uiw/react-codemirror';
+import { oneDark } from '@codemirror/theme-one-dark';
+import { linter, lintGutter } from '@codemirror/lint';
+import { htmlCompletionSource, htmlLanguage, html} from '@codemirror/lang-html';
+import { syntaxTree } from '@codemirror/language';
+import { autocompletion } from '@codemirror/autocomplete';
+import { EditorView } from '@codemirror/view';
+
 import { NoteTypeSelector } from "./NoteTypeSelector";
-import { NoteDialogFormItemRender } from './NoteDialogForms'
+import { NoteListeningDialogForm } from './NoteListeningDialog';
 
-import './NoteDialog.css';
+import { useStatus } from '@/app/lib/atoms'
 
-export function NoteDialog({note}) {
+import './Note.css';
+import { NoteTranslationSentenceForm } from "./NoteTranslationSentence";
+
+export function NoteDialog({note, onClick = null}) {
     const [open, setOpen] = useState(false);
     const [status, setStatus] = useStatus()    // 自定义状态管理
 
@@ -39,6 +58,8 @@ export function NoteDialog({note}) {
             });
     }, []);
 
+    console.log('NoteDialog', onClick);
+
     return (
         <Dialog open={open} onOpenChange={(b) => {
             if (!status.isProcessing) {
@@ -47,9 +68,12 @@ export function NoteDialog({note}) {
             }
         }}>
             <DialogTrigger asChild>
-                <Button variant="outline" onClick={() => setOpen(true)}>Add</Button>
+                <Button variant="outline" onClick={() => {
+                  setOpen(true);
+                  onClick?.();
+                }}>{onClick? 'Edit' : 'Add'}</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[650px] md:max-w-[1200px] max-h-[90vh] flex flex-col">
+            <DialogContent className="sm:max-w-[650px] md:max-w-[1400px] max-h-[90vh] flex flex-col">
                 <DialogHeader className="flex-shrink-0">
                     <DialogTitle>Note</DialogTitle>
                     <DialogDescription>
@@ -111,4 +135,38 @@ export function NoteDialog({note}) {
             </DialogContent>
         </Dialog>
     )
+}
+
+/**
+ * 
+ * @returns 
+ */
+export const NoteDialogFormItemRender = ({}) => {
+  const [status, setStatus] = useStatus()    // 自定义状态管理
+
+  function handleNoteFormItemChange (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    console.log('handleNoteFormItemChange', e.target.name, e.target.value)
+
+    setStatus((prev) => ({
+        ...prev,
+        note: {
+          ...prev.note,
+          [e.target.name]: e.target.value,
+        },
+      }),
+    )
+  }
+
+  // 仅根据 note.type.id 来判断
+  // 听力理解
+  if (status.note?.type?.id ==='9'){
+    return NoteListeningDialogForm(handleNoteFormItemChange, status);
+  }
+
+  // 单句翻译
+  if (status.note?.type?.id ==='16'){
+    return NoteTranslationSentenceForm(handleNoteFormItemChange, status);
+  }
+
+  return (<></>);
 }

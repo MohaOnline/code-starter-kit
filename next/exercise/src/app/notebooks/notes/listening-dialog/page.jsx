@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/command';
 import { Check, ChevronsUpDown, X, Square, CheckSquare } from 'lucide-react';
 
-import Note from '@/app/notebooks/notes/libs/NoteListeningDialog';
+import { NoteListeningDialog } from '@/app/notebooks/notes/libs/NoteListeningDialog';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
@@ -86,7 +86,7 @@ export default function NotesListeningDialog() {
       <div className="notes flex flex-col gap-4">
         {status.notesListeningDialog.notes
           ?.map((note) => (
-            <Note key={note.id} note={note} />
+            <NoteListeningDialog key={note.id} note={note} />
           ))}
       </div>
       <ProcessingMask />
