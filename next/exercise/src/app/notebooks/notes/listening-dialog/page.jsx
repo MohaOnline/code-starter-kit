@@ -36,7 +36,7 @@ export default function NotesListeningDialog() {
 
   // 加载所有 notes
   useEffect(() => {
-    fetch('/api/notebooks/notes/list/9')
+    fetch('/api/notebooks/notes/list/11')
     .then(res => res.json())
     .then(json => {
         setStatus((prev) => ({
@@ -54,20 +54,6 @@ export default function NotesListeningDialog() {
 
   }, []);
 
-  useEffect(() => {
-    setStatus((prev) => ({
-      ...prev,
-      note: {
-        ...prev.note,
-        type: {
-          title: 'Listening Dialog',
-          title_sub: '高中',
-          id: '9',
-        },
-      },
-    }));
-  }, []);
-
   return (
     <div className="w-full">
       <NavTop />
@@ -77,7 +63,19 @@ export default function NotesListeningDialog() {
 
       {/* 笔记添加 */}
       <div className="operation text-right flex items-center justify-end gap-2 mb-2">
-        <NoteDialog note={{}} />
+        <NoteDialog preOpenCallback={() => {
+          setStatus((prev) => ({
+            ...prev,
+            note: {
+              ...prev.note,
+              type: {
+                title: '英语听力：对话',
+                title_sub: '高中',
+                id: '11',
+              },
+            },
+          }));
+        }} />
         <ModeToggle />
       </div>
 

@@ -39,9 +39,15 @@ import { useStatus } from '@/app/lib/atoms'
 import './Note.css';
 import { NoteTranslationSentenceForm } from "./NoteTranslationSentence";
 
-export function NoteDialog({note, onClick = null}) {
+/**
+ * 通过 note 来判断是添加还是编辑
+ * 
+ * @param preOpenCallback 设置打开对话框前的回调函数
+ * @returns JSX
+ */
+export function NoteDialog({note = null, preOpenCallback = null}) {
     const [open, setOpen] = useState(false);
-    const [status, setStatus] = useStatus()    // 自定义状态管理
+    const [status, setStatus] = useStatus()    // 检查对话框状态：添加、编辑
 
     // Load note types data.
     useEffect(() => {
@@ -58,7 +64,7 @@ export function NoteDialog({note, onClick = null}) {
             });
     }, []);
 
-    console.log('NoteDialog', onClick);
+    console.log('NoteDialog', preOpenCallback);
 
     return (
         <Dialog open={open} onOpenChange={(b) => {
@@ -70,8 +76,8 @@ export function NoteDialog({note, onClick = null}) {
             <DialogTrigger asChild>
                 <Button variant="outline" onClick={() => {
                   setOpen(true);
-                  onClick?.();
-                }}>{onClick? 'Edit' : 'Add'}</Button>
+                  preOpenCallback?.();
+                }}>{note ? 'Edit' : 'Add'}</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[650px] md:max-w-[1400px] max-h-[90vh] flex flex-col">
                 <DialogHeader className="flex-shrink-0">
@@ -158,8 +164,8 @@ export const NoteDialogFormItemRender = ({}) => {
   }
 
   // 仅根据 note.type.id 来判断
-  // 听力理解
-  if (status.note?.type?.id ==='9'){
+  // 听力理解：对话（高中、四级？、六级？……）
+  if (status.note?.type?.id ==='11'){
     return NoteListeningDialogForm(handleNoteFormItemChange, status);
   }
 
@@ -167,6 +173,8 @@ export const NoteDialogFormItemRender = ({}) => {
   if (status.note?.type?.id ==='16'){
     return NoteTranslationSentenceForm(handleNoteFormItemChange, status);
   }
+
+  // 普通笔记：IT
 
   return (<></>);
 }

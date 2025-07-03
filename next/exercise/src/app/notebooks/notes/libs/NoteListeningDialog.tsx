@@ -269,7 +269,7 @@ export function NoteListeningDialog({note}) {
                   
 
                 <div className="operation">
-                    <NoteDialog note={{}} onClick={()=>{
+                    <NoteDialog note={note} preOpenCallback = {()=>{
                         const n = status.notesListeningDialog.notes.find(n => n.id === note.id);
                         console.log(n);
                         setStatus(prev=>({
