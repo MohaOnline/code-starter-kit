@@ -127,7 +127,7 @@ export function NoteListeningDialog({note}) {
         isEditing: false,       // 开关编辑 Drawer
         setEditing: null,
         showAnswer: 0,          // 0: 不显示，1: 显示正确答案，2: 显示所有选项
-        answers: {},            // 存储答案选择
+        answer: null,            // 存储答案选择
         shuffledChoices: [],    // 随机排序的选项
     });
 
@@ -156,23 +156,17 @@ export function NoteListeningDialog({note}) {
     // 响应答案选择（无答案检查）
     const handleAnswerChange = (choiceKey) => {
         setLocal(prev => {
-            const currentAnswer = prev.answers[note.id];
             // 如果点击的是已选中的选项，则取消选择
-            if (currentAnswer === choiceKey) {
-                const newAnswers = { ...prev.answers };
-                delete newAnswers[note.id];
+            if (prev.answer === choiceKey) {
                 return {
                     ...prev,
-                    answers: newAnswers
+                    answer: null
                 };
             }
             // 否则选择新的选项
             return {
                 ...prev,
-                answers: {
-                    ...prev.answers,
-                    [note.id]: choiceKey
-                }
+                answer: choiceKey
             };
         });
     };
@@ -213,7 +207,7 @@ export function NoteListeningDialog({note}) {
             <div className="border note flex flex-col gap-4">
                 <div className='options'>
                     {local.shuffledChoices.map((choice, index) => {
-                        const isSelected = local.answers[note.id] === choice.key;
+                        const isSelected = local.answer === choice.key;
                         return (
                             <div 
                                 key={choice.key}
@@ -239,11 +233,13 @@ export function NoteListeningDialog({note}) {
                                     alignItems: 'center',
                                     gap: '12px'
                                 }}
+
                                 onMouseEnter={(e) => {
                                     if (!isSelected) {
                                         (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.25)';
                                     }
                                 }}
+                                
                                 onMouseLeave={(e) => {
                                     if (!isSelected) {
                                         (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.15)';
@@ -274,10 +270,11 @@ export function NoteListeningDialog({note}) {
                 <div className="operation">
                     {local.showAnswer != 2 &&
                     <Button variant="outline" onClick={() => {
-                        if (!local.answers[note.id]) {
+                        if (!local.answer) {
                             toast.error('请先选择答案');
                             return;
                         }
+
                         setLocal(prev => ({...prev, showAnswer: prev.showAnswer++}));
                     
                     }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
