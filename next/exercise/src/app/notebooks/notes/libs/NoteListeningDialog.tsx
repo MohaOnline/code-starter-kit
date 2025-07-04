@@ -174,6 +174,9 @@ export function NoteListeningDialog({note}) {
     // 初始化音频和波形
     useEffect(() => {
         if (note.figures && waveformRef.current) {
+            // 标记组件是否已卸载
+            let isMounted = true;
+            
             // 创建音频上下文以优化音频处理
              const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
             
@@ -181,13 +184,14 @@ export function NoteListeningDialog({note}) {
             if (audioContext.state === 'suspended') {
                 audioContext.resume();
             }
+            
             // 初始化WaveSurfer
-             const wavesurfer = WaveSurfer.create({
+            let wavesurfer = WaveSurfer.create({
                  container: waveformRef.current,
                  waveColor: 'rgb(120, 210, 120)',
                  progressColor: 'rgb(255, 255, 0)',
                  cursorColor: 'rgb(255, 255, 255)',
-                 barWidth: 2,
+                 barWidth: 1,
                  barRadius: 3,
                  height: 60,
                  normalize: true,
@@ -199,6 +203,16 @@ export function NoteListeningDialog({note}) {
                  dragToSeek: false   // 禁用拖拽定位，使用自定义选择
              });
 
+             // 检查组件是否仍然挂载
+             if (!isMounted) {
+                 try {
+                     wavesurfer.destroy();
+                 } catch (error) {
+                     console.warn('Error destroying wavesurfer during early cleanup:', error);
+                 }
+                 return;
+             }
+
              // 加载音频文件
              wavesurfer.load(`/refs${note.figures}`);
 
@@ -207,7 +221,7 @@ export function NoteListeningDialog({note}) {
                 src: [`/refs${note.figures}`],
                 html5: false,  // 使用Web Audio API而不是HTML5 Audio
                 format: ['wav', 'mp3'],  // 指定支持的音频格式
-                volume: 1.0,  // 设置音量
+                volume: 1.2,  // 设置音量
                 rate: 1.0,    // 设置播放速率
                 onload: () => {
                     setLocal(prev => ({
@@ -371,6 +385,10 @@ export function NoteListeningDialog({note}) {
 
             // 清理函数
             return () => {
+                // 标记组件已卸载
+                isMounted = false;
+                
+                // 清理Howl实例
                 if (howl) {
                     try {
                         howl.unload();
@@ -378,16 +396,30 @@ export function NoteListeningDialog({note}) {
                         console.warn('Error unloading howl:', error);
                     }
                 }
+                
+                // 清理WaveSurfer实例
                 if (wavesurfer) {
                     try {
-                        // 检查wavesurfer是否仍然有效
-                        if (typeof wavesurfer.destroy === 'function') {
-                            wavesurfer.destroy();
-                        }
+                        // 使用setTimeout延迟销毁，避免与正在进行的操作冲突
+                        setTimeout(() => {
+                            try {
+                                if (typeof wavesurfer.destroy === 'function') {
+                                    wavesurfer.destroy();
+                                    wavesurfer = null;
+                                }
+                            } catch (error) {
+                                // 忽略AbortError，这是正常的清理过程
+                                if (error.name !== 'AbortError') {
+                                    console.warn('Error destroying wavesurfer:', error);
+                                }
+                            }
+                        }, 100);
                     } catch (error) {
-                        console.warn('Error destroying wavesurfer:', error);
+                        console.warn('Error scheduling wavesurfer cleanup:', error);
                     }
                 }
+                
+                // 清理音频上下文
                 if (audioContext && audioContext.state !== 'closed') {
                     try {
                         audioContext.close();
@@ -395,6 +427,7 @@ export function NoteListeningDialog({note}) {
                         console.warn('Error closing audio context:', error);
                     }
                 }
+                
                 // 移除事件监听器
                 if (waveformRef.current) {
                     try {
@@ -567,9 +600,9 @@ export function NoteListeningDialog({note}) {
                 {note.figures && (
                     <div className="waveform-container" style={{
                         backgroundColor: 'rgba(120, 210, 120, 0.1)',
-                        border: '2px solid rgb(120, 210, 120)',
-                        borderRadius: '8px',
-                        padding: '16px',
+                        border: '1px solid rgb(120, 210, 120)',
+                        // borderRadius: '8px',
+                        padding: '10px',
                         margin: '8px 0'
                     }}>
                         {/* 波形显示 */}
@@ -629,6 +662,9 @@ export function NoteListeningDialog({note}) {
                                 variant="outline" 
                                 size="sm"
                                 onClick={stopAudio}
+                                style={{
+                                    display: 'none',
+                                }}
                             >
                                 Stop
                             </Button>
