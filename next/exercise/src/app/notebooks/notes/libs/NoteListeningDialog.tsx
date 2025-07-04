@@ -3,7 +3,7 @@
  */
 'use client';
 
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from "@/components/ui/button";
 import {
     Drawer,
@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/select'
 
 import { HTMLArea } from '@/app/lib/components/HTMLArea';
+import { FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6';
 
 import "./Note.css"
 import { NoteDialog } from './NoteDialog';
@@ -129,6 +130,7 @@ export function NoteListeningDialog({note}) {
         showAnswer: 0,          // 0: 不显示，1: 显示正确答案，2: 显示所有选项
         answer: null,            // 存储答案选择
         shuffledChoices: [],    // 随机排序的选项
+        hoveredChoice: null,    // 当前悬停的选项
     });
 
     local.set = setLocal;
@@ -208,6 +210,50 @@ export function NoteListeningDialog({note}) {
                 <div className='options'>
                     {local.shuffledChoices.map((choice, index) => {
                         const isSelected = local.answer === choice.key;
+                        const isCorrect = choice.key === note.answer;
+                        const shouldShowResult = local.showAnswer > 0;
+
+                        const isHovered = local.hoveredChoice === choice.key;
+
+                        const getStyle = () => {
+                            let style: React.CSSProperties = {
+                                border: '1px solid rgb(120, 210, 120)',
+                                backgroundColor: isSelected 
+                                    ? 'rgb(120, 210, 120)' 
+                                    : 'rgba(120, 210, 120, 0.15)',
+                                color: isSelected ? 'black' : 'rgb(120, 210, 120)',
+                                padding: '12px 16px',
+                                margin: '8px 0',
+                                borderRadius: '8px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                position: 'relative',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px'
+                            };
+
+                            // 处理悬停效果
+                            if (!isSelected && local.showAnswer === 0 && isHovered) {
+                                style.backgroundColor = 'rgba(120, 210, 120, 0.25)';
+                            }
+
+                            if (shouldShowResult) {
+                                style.cursor = 'default';
+                                if (isCorrect) {
+                                    style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+                                    style.borderColor = 'green';
+                                    style.color = 'rgb(120, 210, 120)';
+                                } else if (isSelected && !isCorrect) {
+                                    style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+                                    style.borderColor = 'red';
+                                    style.color = 'rgb(120, 210, 120)';
+                                }
+                            }
+
+                            return style;
+                        }
+
                         return (
                             <div 
                                 key={choice.key}
@@ -216,33 +262,18 @@ export function NoteListeningDialog({note}) {
                                         ? 'choice-selected' 
                                         : 'choice-unselected'
                                 }`}
-                                onClick={() => handleAnswerChange(choice.key)}
-                                style={{
-                                    border: '1px solid rgb(120, 210, 120)',
-                                    backgroundColor: isSelected 
-                                        ? 'rgb(120, 210, 120)' 
-                                        : 'rgba(120, 210, 120, 0.15)',
-                                    color: isSelected ? 'black' : 'rgb(120, 210, 120)',
-                                    padding: '12px 16px',
-                                    margin: '8px 0',
-                                    borderRadius: '8px',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                    position: 'relative',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '12px'
-                                }}
+                                onClick={() => local.showAnswer === 0 && handleAnswerChange(choice.key)}
+                                style={getStyle()}
 
-                                onMouseEnter={(e) => {
-                                    if (!isSelected) {
-                                        (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.25)';
+                                onMouseEnter={() => {
+                                    if (!isSelected && local.showAnswer === 0) {
+                                        setLocal(prev => ({...prev, hoveredChoice: choice.key}));
                                     }
                                 }}
                                 
-                                onMouseLeave={(e) => {
-                                    if (!isSelected) {
-                                        (e.target as HTMLElement).style.backgroundColor = 'rgba(120, 210, 120, 0.15)';
+                                onMouseLeave={() => {
+                                    if (!isSelected && local.showAnswer === 0) {
+                                        setLocal(prev => ({...prev, hoveredChoice: null}));
                                     }
                                 }}
                             >
@@ -256,16 +287,19 @@ export function NoteListeningDialog({note}) {
                                         display: 'none'
                                     }}
                                 />
-                                <div dangerouslySetInnerHTML={{__html: choice.content}}></div>
+                                <div dangerouslySetInnerHTML={{__html: choice.content}} style={{flexGrow: 1}}></div>
+                                {local.showAnswer > 0 && choice.key === note.answer && <FaRegCircleCheck style={{ color: 'green' }} />}
+                                {local.showAnswer > 0 && local.answer === choice.key && choice.key !== note.answer && <FaRegCircleXmark style={{ color: 'red' }} />}
                             </div>
                         );
                     })}
                 </div>
 
-                <div className='answer' dangerouslySetInnerHTML={{__html: note.answer}}></div>
-
-                {local.showAnswer == 1 &&
+                {local.showAnswer > 0 &&
                 <div dangerouslySetInnerHTML={{__html: note.question}}></div>}
+
+                {local.showAnswer > 1 &&
+                <div dangerouslySetInnerHTML={{__html: note.note}}></div>}
                   
                 <div className="operation">
                     {local.showAnswer != 2 &&
