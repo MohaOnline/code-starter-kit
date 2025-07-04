@@ -15,6 +15,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
+import { AiFillPlayCircle, AiTwotonePlaySquare } from "react-icons/ai";
 
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -206,7 +207,13 @@ export function NoteListeningDialog({note}) {
 
     return (
         <>
-            <div className="border note flex flex-col gap-4">
+            <div className="border note flex flex-col">
+                <div className="operation">
+                    <Button variant="outline" >
+                      <AiFillPlayCircle onClick={() => {
+                        
+                    }} />
+                    </Button></div>
                 <div className='options'>
                     {local.shuffledChoices.map((choice, index) => {
                         const isSelected = local.answer === choice.key;
@@ -301,7 +308,7 @@ export function NoteListeningDialog({note}) {
                 {local.showAnswer > 1 &&
                 <div dangerouslySetInnerHTML={{__html: note.note}}></div>}
                   
-                <div className="operation">
+                <div className="operation" style={{}}>
                     {local.showAnswer != 2 &&
                     <Button variant="outline" onClick={() => {
                         if (!local.answer) {
@@ -312,6 +319,8 @@ export function NoteListeningDialog({note}) {
                         setLocal(prev => ({...prev, showAnswer: prev.showAnswer++}));
                     
                     }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
+
+
 
                     <NoteDialog note={note} preOpenCallback = {()=>{
                         const n = status.notesListeningDialog.notes.find(n => n.id === note.id);

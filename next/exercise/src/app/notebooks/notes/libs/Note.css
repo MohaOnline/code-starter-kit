@@ -6,7 +6,8 @@ div.note h2 {
 }
 
 div.note div.operation {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* Drawer Header Styles. */
