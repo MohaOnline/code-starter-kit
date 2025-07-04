@@ -141,6 +141,10 @@ export function NoteListeningDialog({note}) {
         waveSurfer: null,       // WaveSurfer实例
         currentTime: 0,         // 当前播放时间
         duration: 0,            // 音频总时长
+        // 选择区域相关状态
+        selectionStart: null,
+        selectionEnd: null,
+        isSelecting: false
     });
     
     const waveformRef = useRef(null);
@@ -170,17 +174,29 @@ export function NoteListeningDialog({note}) {
     // 初始化音频和波形
     useEffect(() => {
         if (note.figures && waveformRef.current) {
+            // 创建音频上下文以优化音频处理
+             const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+            
+            // 确保音频上下文处于运行状态
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
             // 初始化WaveSurfer
              const wavesurfer = WaveSurfer.create({
                  container: waveformRef.current,
                  waveColor: 'rgb(120, 210, 120)',
-                 progressColor: 'rgb(80, 170, 80)',
-                 cursorColor: 'rgb(120, 210, 120)',
+                 progressColor: 'rgb(255, 255, 0)',
+                 cursorColor: 'rgb(255, 255, 255)',
                  barWidth: 2,
                  barRadius: 3,
                  height: 60,
                  normalize: true,
-                 mediaControls: false
+                 mediaControls: false,
+                 sampleRate: 44100,  // 设置采样率
+                 interact: true,     // 启用交互
+                 hideScrollbar: true, // 隐藏滚动条
+                 autoplay: false,    // 禁止自动播放
+                 dragToSeek: true    // 启用拖拽定位
              });
 
              // 加载音频文件
@@ -189,7 +205,10 @@ export function NoteListeningDialog({note}) {
             // 初始化Howler
             const howl = new Howl({
                 src: [`/refs${note.figures}`],
-                html5: true,
+                html5: false,  // 使用Web Audio API而不是HTML5 Audio
+                format: ['wav', 'mp3'],  // 指定支持的音频格式
+                volume: 1.0,  // 设置音量
+                rate: 1.0,    // 设置播放速率
                 onload: () => {
                     setLocal(prev => ({
                         ...prev,
@@ -229,6 +248,52 @@ export function NoteListeningDialog({note}) {
                  setLocal(prev => ({...prev, currentTime: currentTime}));
              });
 
+             // 添加区域选择事件监听
+             let isMouseDown = false;
+             let startTime = null;
+
+             const handleMouseDown = (e) => {
+                 isMouseDown = true;
+                 const rect = waveformRef.current.getBoundingClientRect();
+                 const x = e.clientX - rect.left;
+                 const progress = x / rect.width;
+                 startTime = progress * wavesurfer.getDuration();
+                 setLocal(prev => ({
+                     ...prev,
+                     isSelecting: true,
+                     selectionStart: startTime,
+                     selectionEnd: startTime
+                 }));
+             };
+
+             const handleMouseMove = (e) => {
+                 if (!isMouseDown) return;
+                 const rect = waveformRef.current.getBoundingClientRect();
+                 const x = e.clientX - rect.left;
+                 const progress = Math.max(0, Math.min(1, x / rect.width));
+                 const endTime = progress * wavesurfer.getDuration();
+                 setLocal(prev => ({
+                     ...prev,
+                     selectionEnd: endTime
+                 }));
+             };
+
+             const handleMouseUp = () => {
+                 if (isMouseDown) {
+                     isMouseDown = false;
+                     setLocal(prev => ({
+                         ...prev,
+                         isSelecting: false
+                     }));
+                 }
+             };
+
+             // 绑定事件监听器
+             waveformRef.current.addEventListener('mousedown', handleMouseDown);
+             waveformRef.current.addEventListener('mousemove', handleMouseMove);
+             waveformRef.current.addEventListener('mouseup', handleMouseUp);
+             document.addEventListener('mouseup', handleMouseUp); // 全局监听鼠标释放
+
             setLocal(prev => ({
                 ...prev,
                 howlInstance: howl,
@@ -243,6 +308,16 @@ export function NoteListeningDialog({note}) {
                 if (wavesurfer) {
                     wavesurfer.destroy();
                 }
+                if (audioContext && audioContext.state !== 'closed') {
+                    audioContext.close();
+                }
+                // 移除事件监听器
+                if (waveformRef.current) {
+                    waveformRef.current.removeEventListener('mousedown', handleMouseDown);
+                    waveformRef.current.removeEventListener('mousemove', handleMouseMove);
+                    waveformRef.current.removeEventListener('mouseup', handleMouseUp);
+                }
+                document.removeEventListener('mouseup', handleMouseUp);
             };
         }
     }, [note.figures]);
@@ -262,6 +337,22 @@ export function NoteListeningDialog({note}) {
                 const currentTime = local.howlInstance.seek();
                 setLocal(prev => ({...prev, currentTime: currentTime || 0}));
                 
+                // 检查是否播放到选中区域结束
+                if (local.selectionStart !== null && local.selectionEnd !== null) {
+                    const startTime = Math.min(local.selectionStart, local.selectionEnd);
+                    const endTime = Math.max(local.selectionStart, local.selectionEnd);
+                    
+                    if (currentTime >= endTime) {
+                        if (local.isLooping) {
+                            // 循环播放选中区域
+                            local.howlInstance.seek(startTime);
+                        } else {
+                            // 停止播放
+                            local.howlInstance.pause();
+                        }
+                    }
+                }
+                
                 // 同步WaveSurfer进度
                  if (local.waveSurfer && local.duration > 0) {
                      const progress = (currentTime || 0) / local.duration;
@@ -275,7 +366,7 @@ export function NoteListeningDialog({note}) {
                 clearInterval(interval);
             }
         };
-    }, [local.isPlaying, local.howlInstance, local.duration]);
+    }, [local.isPlaying, local.howlInstance, local.duration, local.selectionStart, local.selectionEnd, local.isLooping]);
 
     // 音频控制函数
     const togglePlayPause = () => {
@@ -283,14 +374,15 @@ export function NoteListeningDialog({note}) {
         
         if (local.isPlaying) {
             local.howlInstance.pause();
-            if (local.waveSurfer) {
-                local.waveSurfer.pause();
-            }
+            // WaveSurfer 只用于显示，不播放音频
         } else {
-            local.howlInstance.play();
-            if (local.waveSurfer) {
-                local.waveSurfer.play();
+            // 如果有选中区域，从选中区域开始播放
+            if (local.selectionStart !== null && local.selectionEnd !== null) {
+                const startTime = Math.min(local.selectionStart, local.selectionEnd);
+                local.howlInstance.seek(startTime);
             }
+            local.howlInstance.play();
+            // WaveSurfer 只用于显示，不播放音频
         }
     };
 
@@ -298,13 +390,22 @@ export function NoteListeningDialog({note}) {
         if (!local.howlInstance) return;
         
         local.howlInstance.stop();
+        // WaveSurfer 只用于显示，重置到开始位置
         if (local.waveSurfer) {
-            local.waveSurfer.stop();
+            local.waveSurfer.seekTo(0);
         }
     };
 
     const toggleLoop = () => {
         setLocal(prev => ({...prev, isLooping: !prev.isLooping}));
+    };
+
+    const clearSelection = () => {
+        setLocal(prev => ({
+            ...prev,
+            selectionStart: null,
+            selectionEnd: null
+        }));
     };
 
     // 响应答案选择（无答案检查）
@@ -369,7 +470,24 @@ export function NoteListeningDialog({note}) {
                         margin: '8px 0'
                     }}>
                         {/* 波形显示 */}
-                        <div ref={waveformRef} style={{ marginBottom: '12px' }}></div>
+                        <div style={{ position: 'relative', marginBottom: '12px' }}>
+                            <div ref={waveformRef}></div>
+                            {/* 选中区域覆盖层 */}
+                            {local.selectionStart !== null && local.selectionEnd !== null && local.duration > 0 && (
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: `${(Math.min(local.selectionStart, local.selectionEnd) / local.duration) * 100}%`,
+                                        width: `${(Math.abs(local.selectionEnd - local.selectionStart) / local.duration) * 100}%`,
+                                        height: '60px',
+                                        backgroundColor: 'rgba(0, 123, 255, 0.3)',
+                                        pointerEvents: 'none',
+                                        borderRadius: '2px'
+                                    }}
+                                />
+                            )}
+                        </div>
                         
                         {/* 音频控制按钮 */}
                         <div className="audio-controls flex items-center gap-3">
@@ -402,9 +520,28 @@ export function NoteListeningDialog({note}) {
                             </div>
                             
                             {/* 时间显示 */}
-                            <div className="text-sm text-gray-600">
-                                {Math.floor(local.currentTime)}s / {Math.floor(local.duration)}s
+                            <div className="time-display text-sm text-gray-600">
+                                {Math.floor(local.currentTime / 60)}:{String(Math.floor(local.currentTime % 60)).padStart(2, '0')} / 
+                                {Math.floor(local.duration / 60)}:{String(Math.floor(local.duration % 60)).padStart(2, '0')}
+                                {local.selectionStart !== null && local.selectionEnd !== null && (
+                                    <div className="selection-info text-xs text-blue-600 mt-1">
+                                        选中: {Math.floor(Math.min(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.min(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')} - 
+                                        {Math.floor(Math.max(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.max(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')}
+                                    </div>
+                                )}
                             </div>
+                            
+                            {/* 清除选择按钮 */}
+                            {local.selectionStart !== null && local.selectionEnd !== null && (
+                                <Button 
+                                    variant="outline" 
+                                    size="sm"
+                                    onClick={clearSelection}
+                                    className="text-xs"
+                                >
+                                    清除选择
+                                </Button>
+                            )}
                         </div>
                     </div>
                 )}

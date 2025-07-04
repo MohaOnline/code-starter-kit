@@ -64,7 +64,7 @@ export function NoteDialog({note = null, preOpenCallback = null}) {
             });
     }, []);
 
-    console.log('NoteDialog', preOpenCallback);
+    // console.log('NoteDialog', preOpenCallback);
 
     return (
         <Dialog open={open} onOpenChange={(b) => {
