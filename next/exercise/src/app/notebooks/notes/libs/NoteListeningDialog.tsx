@@ -3,7 +3,7 @@
  */
 'use client';
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Button} from "@/components/ui/button";
 import {
     Drawer,
@@ -15,7 +15,8 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
-import { AiFillPlayCircle, AiTwotonePlaySquare } from "react-icons/ai";
+import { AiFillPlayCircle, AiTwotonePlaySquare, AiFillPauseCircle } from "react-icons/ai";
+import { Switch } from "@/components/ui/switch";
 
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -30,6 +31,8 @@ import {
 
 import { HTMLArea } from '@/app/lib/components/HTMLArea';
 import { FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6';
+import { Howl } from 'howler';
+import WaveSurfer from 'wavesurfer.js';
 
 import "./Note.css"
 import { NoteDialog } from './NoteDialog';
@@ -132,7 +135,15 @@ export function NoteListeningDialog({note}) {
         answer: null,            // 存储答案选择
         shuffledChoices: [],    // 随机排序的选项
         hoveredChoice: null,    // 当前悬停的选项
+        isPlaying: false,       // 音频播放状态
+        isLooping: false,       // 循环播放状态
+        howlInstance: null,     // Howler实例
+        waveSurfer: null,       // WaveSurfer实例
+        currentTime: 0,         // 当前播放时间
+        duration: 0,            // 音频总时长
     });
+    
+    const waveformRef = useRef(null);
 
     local.set = setLocal;
     local.setEditing = (isEditing: boolean) => setLocal(prev => ({...prev, isEditing: isEditing}));
@@ -155,6 +166,146 @@ export function NoteListeningDialog({note}) {
         
         setLocal(prev => ({...prev, shuffledChoices: shuffled}));
     }, [note]);
+
+    // 初始化音频和波形
+    useEffect(() => {
+        if (note.figures && waveformRef.current) {
+            // 初始化WaveSurfer
+             const wavesurfer = WaveSurfer.create({
+                 container: waveformRef.current,
+                 waveColor: 'rgb(120, 210, 120)',
+                 progressColor: 'rgb(80, 170, 80)',
+                 cursorColor: 'rgb(120, 210, 120)',
+                 barWidth: 2,
+                 barRadius: 3,
+                 height: 60,
+                 normalize: true,
+                 mediaControls: false
+             });
+
+             // 加载音频文件
+             wavesurfer.load(`/refs${note.figures}`);
+
+            // 初始化Howler
+            const howl = new Howl({
+                src: [`/refs${note.figures}`],
+                html5: true,
+                onload: () => {
+                    setLocal(prev => ({
+                        ...prev,
+                        duration: howl.duration()
+                    }));
+                },
+                onplay: () => {
+                    setLocal(prev => ({...prev, isPlaying: true}));
+                },
+                onpause: () => {
+                    setLocal(prev => ({...prev, isPlaying: false}));
+                },
+                onstop: () => {
+                    setLocal(prev => ({...prev, isPlaying: false, currentTime: 0}));
+                },
+                onend: () => {
+                    if (!local.isLooping) {
+                        setLocal(prev => ({...prev, isPlaying: false, currentTime: 0}));
+                    }
+                }
+            });
+
+            // 设置循环
+            howl.loop(local.isLooping);
+
+            // WaveSurfer事件监听
+             wavesurfer.on('ready', () => {
+                 setLocal(prev => ({
+                     ...prev,
+                     duration: wavesurfer.getDuration()
+                 }));
+             });
+
+             wavesurfer.on('interaction', () => {
+                 const currentTime = wavesurfer.getCurrentTime();
+                 howl.seek(currentTime);
+                 setLocal(prev => ({...prev, currentTime: currentTime}));
+             });
+
+            setLocal(prev => ({
+                ...prev,
+                howlInstance: howl,
+                waveSurfer: wavesurfer
+            }));
+
+            // 清理函数
+            return () => {
+                if (howl) {
+                    howl.unload();
+                }
+                if (wavesurfer) {
+                    wavesurfer.destroy();
+                }
+            };
+        }
+    }, [note.figures]);
+
+    // 更新循环状态
+    useEffect(() => {
+        if (local.howlInstance) {
+            local.howlInstance.loop(local.isLooping);
+        }
+    }, [local.isLooping]);
+
+    // 更新播放时间
+    useEffect(() => {
+        let interval;
+        if (local.isPlaying && local.howlInstance) {
+            interval = setInterval(() => {
+                const currentTime = local.howlInstance.seek();
+                setLocal(prev => ({...prev, currentTime: currentTime || 0}));
+                
+                // 同步WaveSurfer进度
+                 if (local.waveSurfer && local.duration > 0) {
+                     const progress = (currentTime || 0) / local.duration;
+                     local.waveSurfer.seekTo(progress);
+                 }
+            }, 100);
+        }
+        
+        return () => {
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    }, [local.isPlaying, local.howlInstance, local.duration]);
+
+    // 音频控制函数
+    const togglePlayPause = () => {
+        if (!local.howlInstance) return;
+        
+        if (local.isPlaying) {
+            local.howlInstance.pause();
+            if (local.waveSurfer) {
+                local.waveSurfer.pause();
+            }
+        } else {
+            local.howlInstance.play();
+            if (local.waveSurfer) {
+                local.waveSurfer.play();
+            }
+        }
+    };
+
+    const stopAudio = () => {
+        if (!local.howlInstance) return;
+        
+        local.howlInstance.stop();
+        if (local.waveSurfer) {
+            local.waveSurfer.stop();
+        }
+    };
+
+    const toggleLoop = () => {
+        setLocal(prev => ({...prev, isLooping: !prev.isLooping}));
+    };
 
     // 响应答案选择（无答案检查）
     const handleAnswerChange = (choiceKey) => {
@@ -208,6 +359,56 @@ export function NoteListeningDialog({note}) {
     return (
         <>
             <div className="border note flex flex-col">
+                {/* 波形显示和音频控制区域 */}
+                {note.figures && (
+                    <div className="waveform-container" style={{
+                        backgroundColor: 'rgba(120, 210, 120, 0.1)',
+                        border: '2px solid rgb(120, 210, 120)',
+                        borderRadius: '8px',
+                        padding: '16px',
+                        margin: '8px 0'
+                    }}>
+                        {/* 波形显示 */}
+                        <div ref={waveformRef} style={{ marginBottom: '12px' }}></div>
+                        
+                        {/* 音频控制按钮 */}
+                        <div className="audio-controls flex items-center gap-3">
+                            <Button 
+                                variant="outline" 
+                                size="sm"
+                                onClick={togglePlayPause}
+                                className="flex items-center gap-2"
+                            >
+                                {local.isPlaying ? <AiFillPauseCircle /> : <AiFillPlayCircle />}
+                                {local.isPlaying ? 'Pause' : 'Play'}
+                            </Button>
+                            
+                            <Button 
+                                variant="outline" 
+                                size="sm"
+                                onClick={stopAudio}
+                            >
+                                Stop
+                            </Button>
+                            
+                            {/* 循环播放开关 */}
+                            <div className="flex items-center gap-2">
+                                <Label htmlFor="loop-switch" className="text-sm">Loop</Label>
+                                <Switch
+                                    id="loop-switch"
+                                    checked={local.isLooping}
+                                    onCheckedChange={toggleLoop}
+                                />
+                            </div>
+                            
+                            {/* 时间显示 */}
+                            <div className="text-sm text-gray-600">
+                                {Math.floor(local.currentTime)}s / {Math.floor(local.duration)}s
+                            </div>
+                        </div>
+                    </div>
+                )}
+                
                 <div className="operation">
                     <Button variant="outline" >
                       <AiFillPlayCircle onClick={() => {
@@ -316,7 +517,7 @@ export function NoteListeningDialog({note}) {
                             return;
                         }
 
-                        setLocal(prev => ({...prev, showAnswer: prev.showAnswer++}));
+                        setLocal(prev => ({...prev, showAnswer: prev.showAnswer + 1}));
                     
                     }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
 
