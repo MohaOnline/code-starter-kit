@@ -193,10 +193,10 @@ export function NoteListeningDialog({note}) {
                  normalize: true,
                  mediaControls: false,
                  sampleRate: 44100,  // 设置采样率
-                 interact: true,     // 启用交互
+                 interact: false,    // 禁用默认交互，使用自定义选择
                  hideScrollbar: true, // 隐藏滚动条
                  autoplay: false,    // 禁止自动播放
-                 dragToSeek: true    // 启用拖拽定位
+                 dragToSeek: false   // 禁用拖拽定位，使用自定义选择
              });
 
              // 加载音频文件
@@ -242,22 +242,33 @@ export function NoteListeningDialog({note}) {
                  }));
              });
 
-             wavesurfer.on('interaction', () => {
-                 const currentTime = wavesurfer.getCurrentTime();
-                 howl.seek(currentTime);
-                 setLocal(prev => ({...prev, currentTime: currentTime}));
-             });
+             // 移除interaction事件监听，因为我们使用自定义的鼠标事件处理
+             // wavesurfer.on('interaction', () => {
+             //     const currentTime = wavesurfer.getCurrentTime();
+             //     howl.seek(currentTime);
+             //     setLocal(prev => ({...prev, currentTime: currentTime}));
+             // });
 
              // 添加区域选择事件监听
              let isMouseDown = false;
              let startTime = null;
+             let mouseDownTime = 0;
+             let hasMouseMoved = false;
 
              const handleMouseDown = (e) => {
+                 // 阻止WaveSurfer的默认点击行为
+                 e.preventDefault();
+                 e.stopPropagation();
+                 
                  isMouseDown = true;
+                 hasMouseMoved = false;
+                 mouseDownTime = Date.now();
+                 
                  const rect = waveformRef.current.getBoundingClientRect();
                  const x = e.clientX - rect.left;
-                 const progress = x / rect.width;
+                 const progress = Math.max(0, Math.min(1, x / rect.width));
                  startTime = progress * wavesurfer.getDuration();
+                 
                  setLocal(prev => ({
                      ...prev,
                      isSelecting: true,
@@ -268,23 +279,81 @@ export function NoteListeningDialog({note}) {
 
              const handleMouseMove = (e) => {
                  if (!isMouseDown) return;
+                 
+                 e.preventDefault();
+                 e.stopPropagation();
+                 
+                 hasMouseMoved = true;
+                 
                  const rect = waveformRef.current.getBoundingClientRect();
                  const x = e.clientX - rect.left;
                  const progress = Math.max(0, Math.min(1, x / rect.width));
                  const endTime = progress * wavesurfer.getDuration();
+                 
                  setLocal(prev => ({
                      ...prev,
                      selectionEnd: endTime
                  }));
              };
 
-             const handleMouseUp = () => {
+             const handleMouseUp = (e) => {
                  if (isMouseDown) {
+                     e.preventDefault();
+                     e.stopPropagation();
+                     
                      isMouseDown = false;
-                     setLocal(prev => ({
-                         ...prev,
-                         isSelecting: false
-                     }));
+                     const clickDuration = Date.now() - mouseDownTime;
+                     
+                     // 判断是单击还是拖拽
+                     const isClick = !hasMouseMoved && clickDuration < 300; // 300ms内且没有移动鼠标
+                     
+                     if (isClick) {
+                         // 单击：定位播放位置并清除选择
+                         const clickTime = startTime;
+                         howl.seek(clickTime);
+                         setLocal(prev => ({
+                             ...prev,
+                             isSelecting: false,
+                             selectionStart: null,
+                             selectionEnd: null,
+                             currentTime: clickTime
+                         }));
+                         
+                         // 同步WaveSurfer进度
+                         if (wavesurfer) {
+                              try {
+                                  if (typeof wavesurfer.getDuration === 'function' && 
+                                      typeof wavesurfer.seekTo === 'function' && 
+                                      wavesurfer.getDuration() > 0) {
+                                      const progress = clickTime / wavesurfer.getDuration();
+                                      wavesurfer.seekTo(progress);
+                                  }
+                              } catch (error) {
+                                  console.warn('Error syncing wavesurfer progress:', error);
+                              }
+                          }
+                     } else {
+                         // 拖拽：检查选择区域是否有效
+                         setLocal(prev => {
+                             const minDuration = 0.1; // 最小选择时长
+                             const duration = Math.abs(prev.selectionEnd - prev.selectionStart);
+                             
+                             if (duration < minDuration) {
+                                 // 如果选择区域太小，清除选择
+                                 return {
+                                     ...prev,
+                                     isSelecting: false,
+                                     selectionStart: null,
+                                     selectionEnd: null
+                                 };
+                             }
+                             
+                             return {
+                                 ...prev,
+                                 isSelecting: false
+                             };
+                         });
+                     }
                  }
              };
 
@@ -303,21 +372,44 @@ export function NoteListeningDialog({note}) {
             // 清理函数
             return () => {
                 if (howl) {
-                    howl.unload();
+                    try {
+                        howl.unload();
+                    } catch (error) {
+                        console.warn('Error unloading howl:', error);
+                    }
                 }
                 if (wavesurfer) {
-                    wavesurfer.destroy();
+                    try {
+                        // 检查wavesurfer是否仍然有效
+                        if (typeof wavesurfer.destroy === 'function') {
+                            wavesurfer.destroy();
+                        }
+                    } catch (error) {
+                        console.warn('Error destroying wavesurfer:', error);
+                    }
                 }
                 if (audioContext && audioContext.state !== 'closed') {
-                    audioContext.close();
+                    try {
+                        audioContext.close();
+                    } catch (error) {
+                        console.warn('Error closing audio context:', error);
+                    }
                 }
                 // 移除事件监听器
                 if (waveformRef.current) {
-                    waveformRef.current.removeEventListener('mousedown', handleMouseDown);
-                    waveformRef.current.removeEventListener('mousemove', handleMouseMove);
-                    waveformRef.current.removeEventListener('mouseup', handleMouseUp);
+                    try {
+                        waveformRef.current.removeEventListener('mousedown', handleMouseDown);
+                        waveformRef.current.removeEventListener('mousemove', handleMouseMove);
+                        waveformRef.current.removeEventListener('mouseup', handleMouseUp);
+                    } catch (error) {
+                        console.warn('Error removing event listeners:', error);
+                    }
                 }
-                document.removeEventListener('mouseup', handleMouseUp);
+                try {
+                    document.removeEventListener('mouseup', handleMouseUp);
+                } catch (error) {
+                    console.warn('Error removing document event listener:', error);
+                }
             };
         }
     }, [note.figures]);
@@ -355,8 +447,14 @@ export function NoteListeningDialog({note}) {
                 
                 // 同步WaveSurfer进度
                  if (local.waveSurfer && local.duration > 0) {
-                     const progress = (currentTime || 0) / local.duration;
-                     local.waveSurfer.seekTo(progress);
+                     try {
+                         if (typeof local.waveSurfer.seekTo === 'function') {
+                             const progress = (currentTime || 0) / local.duration;
+                             local.waveSurfer.seekTo(progress);
+                         }
+                     } catch (error) {
+                         console.warn('Error seeking wavesurfer:', error);
+                     }
                  }
             }, 100);
         }
@@ -374,15 +472,14 @@ export function NoteListeningDialog({note}) {
         
         if (local.isPlaying) {
             local.howlInstance.pause();
-            // WaveSurfer 只用于显示，不播放音频
         } else {
             // 如果有选中区域，从选中区域开始播放
             if (local.selectionStart !== null && local.selectionEnd !== null) {
                 const startTime = Math.min(local.selectionStart, local.selectionEnd);
                 local.howlInstance.seek(startTime);
+                setLocal(prev => ({...prev, currentTime: startTime}));
             }
             local.howlInstance.play();
-            // WaveSurfer 只用于显示，不播放音频
         }
     };
 
@@ -392,7 +489,13 @@ export function NoteListeningDialog({note}) {
         local.howlInstance.stop();
         // WaveSurfer 只用于显示，重置到开始位置
         if (local.waveSurfer) {
-            local.waveSurfer.seekTo(0);
+            try {
+                if (typeof local.waveSurfer.seekTo === 'function') {
+                    local.waveSurfer.seekTo(0);
+                }
+            } catch (error) {
+                console.warn('Error resetting wavesurfer position:', error);
+            }
         }
     };
 
@@ -471,7 +574,7 @@ export function NoteListeningDialog({note}) {
                     }}>
                         {/* 波形显示 */}
                         <div style={{ position: 'relative', marginBottom: '12px' }}>
-                            <div ref={waveformRef}></div>
+                            <div ref={waveformRef} style={{ position: 'relative', zIndex: 1 }}></div>
                             {/* 选中区域覆盖层 */}
                             {local.selectionStart !== null && local.selectionEnd !== null && local.duration > 0 && (
                                 <div
@@ -479,11 +582,32 @@ export function NoteListeningDialog({note}) {
                                         position: 'absolute',
                                         top: 0,
                                         left: `${(Math.min(local.selectionStart, local.selectionEnd) / local.duration) * 100}%`,
-                                        width: `${(Math.abs(local.selectionEnd - local.selectionStart) / local.duration) * 100}%`,
+                                        width: `${Math.max(1, (Math.abs(local.selectionEnd - local.selectionStart) / local.duration) * 100)}%`,
                                         height: '60px',
-                                        backgroundColor: 'rgba(0, 123, 255, 0.3)',
+                                        backgroundColor: 'rgba(0, 123, 255, 0.4)',
+                                        border: '2px solid rgba(0, 123, 255, 0.8)',
                                         pointerEvents: 'none',
-                                        borderRadius: '2px'
+                                        borderRadius: '2px',
+                                        zIndex: 2,
+                                        boxSizing: 'border-box'
+                                    }}
+                                />
+                            )}
+                            {/* 正在选择时的实时覆盖层 */}
+                            {local.isSelecting && local.selectionStart !== null && local.selectionEnd !== null && local.duration > 0 && (
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: `${(Math.min(local.selectionStart, local.selectionEnd) / local.duration) * 100}%`,
+                                        width: `${Math.max(1, (Math.abs(local.selectionEnd - local.selectionStart) / local.duration) * 100)}%`,
+                                        height: '60px',
+                                        backgroundColor: 'rgba(255, 193, 7, 0.3)',
+                                        border: '2px dashed rgba(255, 193, 7, 0.8)',
+                                        pointerEvents: 'none',
+                                        borderRadius: '2px',
+                                        zIndex: 3,
+                                        boxSizing: 'border-box'
                                     }}
                                 />
                             )}
@@ -523,13 +647,14 @@ export function NoteListeningDialog({note}) {
                             <div className="time-display text-sm text-gray-600">
                                 {Math.floor(local.currentTime / 60)}:{String(Math.floor(local.currentTime % 60)).padStart(2, '0')} / 
                                 {Math.floor(local.duration / 60)}:{String(Math.floor(local.duration % 60)).padStart(2, '0')}
-                                {local.selectionStart !== null && local.selectionEnd !== null && (
-                                    <div className="selection-info text-xs text-blue-600 mt-1">
-                                        选中: {Math.floor(Math.min(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.min(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')} - 
-                                        {Math.floor(Math.max(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.max(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')}
-                                    </div>
-                                )}
                             </div>
+                            {local.selectionStart !== null && local.selectionEnd !== null && (
+                                <div className="selection-info text-xs text-blue-400">
+                                    选中: {Math.floor(Math.min(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.min(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')}
+                                    {' - '}
+                                    {Math.floor(Math.max(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.max(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')}
+                                </div>
+                            )}
                             
                             {/* 清除选择按钮 */}
                             {local.selectionStart !== null && local.selectionEnd !== null && (
@@ -587,12 +712,12 @@ export function NoteListeningDialog({note}) {
                                 style.cursor = 'default';
                                 if (isCorrect) {
                                     style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-                                    style.borderColor = 'green';
+                                    style.borderColor = 'lightgreen';
                                     style.color = 'rgb(120, 210, 120)';
                                 } else if (isSelected && !isCorrect) {
                                     style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
-                                    style.borderColor = 'red';
-                                    style.color = 'rgb(120, 210, 120)';
+                                    style.borderColor = 'lightred';
+                                    style.color = 'rgb(255, 160, 160)';
                                 }
                             }
 
@@ -633,8 +758,8 @@ export function NoteListeningDialog({note}) {
                                     }}
                                 />
                                 <div dangerouslySetInnerHTML={{__html: choice.content}} style={{flexGrow: 1}}></div>
-                                {local.showAnswer > 0 && choice.key === note.answer && <FaRegCircleCheck style={{ color: 'green' }} />}
-                                {local.showAnswer > 0 && local.answer === choice.key && choice.key !== note.answer && <FaRegCircleXmark style={{ color: 'red' }} />}
+                                {local.showAnswer > 0 && choice.key === note.answer && <FaRegCircleCheck style={{ color: 'lightgreen' }} />}
+                                {local.showAnswer > 0 && local.answer === choice.key && choice.key !== note.answer && <FaRegCircleXmark style={{ color: 'lightred' }} />}
                             </div>
                         );
                     })}
