@@ -4,6 +4,7 @@ import {BsPostcard} from 'react-icons/bs';
 import {GrTechnology} from 'react-icons/gr';
 import {GiMaterialsScience} from 'react-icons/gi';
 import {MdOutlineBiotech} from 'react-icons/md';
+import { GrDocument, GrAssistListening } from "react-icons/gr";
 
 
 import React from 'react';
@@ -17,6 +18,7 @@ export default function NavTop() {
         <Link href={'/notebooks/notes/list'}> <GrTechnology/></Link>
         <Link href={'/notebooks/se/cards'}> <GiMaterialsScience/></Link>
         <Link href={'/notebooks/se/cards'}> <MdOutlineBiotech/></Link>
+        <Link href={'/notebooks/notes/listening-dialog'}> <GrAssistListening/></Link>
       </div>
   );
 }

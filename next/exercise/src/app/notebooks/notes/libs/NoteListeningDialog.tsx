@@ -136,7 +136,7 @@ export function NoteListeningDialog({note}) {
         shuffledChoices: [],    // 随机排序的选项
         hoveredChoice: null,    // 当前悬停的选项
         isPlaying: false,       // 音频播放状态
-        isLooping: false,       // 循环播放状态
+        isLooping: true,        // 循环播放状态
         howlInstance: null,     // Howler实例
         waveSurfer: null,       // WaveSurfer实例
         currentTime: 0,         // 当前播放时间
@@ -204,9 +204,11 @@ export function NoteListeningDialog({note}) {
              });
 
              // 检查组件是否仍然挂载
+             // TODO：是否真的需要
              if (!isMounted) {
                  try {
                      wavesurfer.destroy();
+                     wavesurfer = null;
                  } catch (error) {
                      console.warn('Error destroying wavesurfer during early cleanup:', error);
                  }
@@ -221,7 +223,7 @@ export function NoteListeningDialog({note}) {
                 src: [`/refs${note.figures}`],
                 html5: false,  // 使用Web Audio API而不是HTML5 Audio
                 format: ['wav', 'mp3'],  // 指定支持的音频格式
-                volume: 1.2,  // 设置音量
+                volume: 1.0,  // 设置音量
                 rate: 1.0,    // 设置播放速率
                 onload: () => {
                     setLocal(prev => ({
@@ -707,12 +709,6 @@ export function NoteListeningDialog({note}) {
                     </div>
                 )}
                 
-                <div className="operation">
-                    <Button variant="outline" >
-                      <AiFillPlayCircle onClick={() => {
-                        
-                    }} />
-                    </Button></div>
                 <div className='options'>
                     {local.shuffledChoices.map((choice, index) => {
                         const isSelected = local.answer === choice.key;

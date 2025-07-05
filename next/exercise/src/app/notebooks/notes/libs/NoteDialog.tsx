@@ -30,11 +30,12 @@ import { htmlCompletionSource, htmlLanguage, html} from '@codemirror/lang-html';
 import { syntaxTree } from '@codemirror/language';
 import { autocompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
+import { toast } from 'react-toastify';
 
 import { NoteTypeSelector } from "./NoteTypeSelector";
 import { NoteListeningDialogForm } from './NoteListeningDialog';
 
-import { useStatus } from '@/app/lib/atoms'
+import { initStatusNote, useStatus } from '@/app/lib/atoms';
 
 import './Note.css';
 import { NoteTranslationSentenceForm } from "./NoteTranslationSentence";
@@ -123,13 +124,69 @@ export function NoteDialog({note = null, preOpenCallback = null}) {
                         .then(res => res.json())
                         .then(json => {
                             console.log('API Response:', json); // 更明确的日志标识
-                            // 更新状态，包括将返回的note数据合并到状态中
-                            setStatus(prev => ({
-                                ...prev,
-                                isProcessing: false,
-                                // 如果是创建操作，确保使用返回的note数据（包含新ID）
-                                note: action === 'create' && json.success ? json.note : prev.note
-                            }));
+
+                            if (json.success) {
+                                // 更新状态，包括将返回的note数据合并到状态中
+                                setStatus(prev => ({
+                                    ...prev,
+                                    isProcessing: false,
+                                    // 如果是创建操作，确保使用返回的note数据（包含新ID）
+                                    note: initStatusNote(),
+                                }));
+                            }
+                            else {
+                                toast.error(json.error);
+                                return;
+                            }
+
+                            if (action === 'create') {
+                                // 刷新笔记列表
+                                setStatus(prev => ({
+                                    ...prev,
+                                    notes: [json.note,...prev.notes],
+                                }));
+
+                                // 听力理解：对话
+                                if (json.note?.type?.id === '11') {
+                                    // 刷新听力列表
+                                    setStatus(prev => ({
+                                        ...prev,
+                                        notesListeningDialog: {
+                                            ...prev.notesListeningDialog,
+                                            notes: [json.note,...prev.notesListeningDialog.notes],
+                                        },
+                                    }));
+                                }
+                            }
+                            else if (action === 'update') {
+                                // 听力理解：对话
+                                console.log('==update', json.note?.type?.id);
+
+                                if (json.note?.type?.id === '11') {
+                                    // 刷新听力列表
+                                    status.notesListeningDialog.notes = status.notesListeningDialog.notes.map((item) => {
+                                        if (item.id === json.note.id) {
+                                            return {
+                                                ...json.note,
+                                                type: json.note.type.title,
+                                            };
+                                        }
+                                        return item;
+                                    });
+
+                                    console.log('==update', status.notesListeningDialog.notes);
+
+                                    // 刷新笔记列表
+                                    setStatus(prev => ({
+                                        ...prev,
+                                        notesListeningDialog: {
+                                            ...prev.notesListeningDialog,
+                                            notes: status.notesListeningDialog.notes,
+                                        },
+                                    }));
+                                }
+                            }
+
                             setOpen(false);
                         })
                         .catch(err => {

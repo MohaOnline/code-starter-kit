@@ -9,11 +9,30 @@ import { atom, useAtom } from 'jotai';
 export const notebookAtom = atom({isProcessing: false});
 export const englishWordsAtom = atom({});
 
-// 通用 status，所有数据在此周转。
-// Define the status atom without the handler function
-export const status = atom({
-    notes: [],
-    note: {
+export interface NoteType {
+    id: string;
+    title: string;
+    title_sub: string;
+}
+
+export interface Note {
+    id: string;
+    title: string;
+    body: string;
+    question: string;
+    answer: string;
+    type_id: string;
+    type_title: string;
+    type_title_sub: string;
+    note: string;
+    note_extra: string;
+    type: NoteType;
+    body_script: string;
+    body_extra: string;
+}
+
+export function initStatusNote(): Note {
+    return {
         id: '',
         title: '',
         body: '',
@@ -31,7 +50,14 @@ export const status = atom({
         },
         body_script: '',
         body_extra: '',
-    },
+    }
+}
+
+// 通用 status，所有数据在此周转。
+// Define the status atom without the handler function
+export const status = atom({
+    notes: [],
+    note: initStatusNote(),
     types: [],
     isAdding: false,
     isProcessing: false,

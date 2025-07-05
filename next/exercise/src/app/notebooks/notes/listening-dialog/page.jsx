@@ -29,6 +29,7 @@ import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
 import { useStatus } from '@/app/lib/atoms';
+import { AiFillPlayCircle } from 'react-icons/ai';
 
 export default function NotesListeningDialog() {
 
@@ -63,6 +64,11 @@ export default function NotesListeningDialog() {
 
       {/* 笔记添加 */}
       <div className="operation text-right flex items-center justify-end gap-2 mb-2">
+                    <Button variant="outline" >
+                      <AiFillPlayCircle onClick={() => {
+                        
+                    }} />
+                    </Button>
         <NoteDialog preOpenCallback={() => {
           setStatus((prev) => ({
             ...prev,

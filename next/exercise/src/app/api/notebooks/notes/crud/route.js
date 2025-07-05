@@ -10,12 +10,28 @@ export async function POST(request) {
 
   let result = null;
 
+  // 预处理文本
+  // 听力对话：Question
+
   try {
     const data = await request.json();
     if (data?.action === 'update') {
 
       await prisma.$transaction(async (tx) => {
-        result = await tx.$executeRaw`UPDATE notebooks_notes SET title = ${data.note.title}, body = ${data.note.body} WHERE id = ${data.note.id}`;
+        result = await tx.$executeRaw`UPDATE notebooks_notes SET 
+            title = ${data.note.title || ''},
+            body = ${data.note.body || ''}, 
+            question = ${data.note.question || ''}, 
+            answer = ${data.note.answer || ''}, 
+            choise_a = ${data.note.choise_a || ''},
+            choise_b = ${data.note.choise_b || ''},
+            choise_c = ${data.note.choise_c || ''},
+            choise_d = ${data.note.choise_d || ''},
+            figures = ${data.note.figures || ''},
+            note = ${data.note.note || ''},
+            note_extra = ${data.note.note_extra || ''} 
+          WHERE id = ${data.note.id}`;
+
         console.log(result);
         // 可以继续用 tx 处理更多逻辑
       });
@@ -27,12 +43,17 @@ export async function POST(request) {
           pid: BigInt(0), // 根据模型定义，pid是必填字段
           nbid: BigInt(0), // 根据模型定义，nbid是必填字段
           tid: data.note.type.id ? BigInt(data.note.type.id) : BigInt(0),
-          title: data.note.title,
-          body: data.note.body,
-          question: data.note.question,
-          note: data.note.note,
-          answer: data.note.answer,
-          note_extra: data.note.note_extra
+          title: data.note.title || '',
+          body: data.note.body || '',
+          question: data.note.question || '',
+          answer: data.note.answer || '',
+          choise_a: data.note.choise_a || '',
+          choise_b: data.note.choise_b || '',
+          choise_c: data.note.choise_c || '',
+          choise_d: data.note.choise_d || '',
+          figures: data.note.figures || '',
+          note: data.note.note || '',
+          note_extra: data.note.note_extra || ''
           // 其他字段会使用默认值
         }
       });
@@ -63,7 +84,7 @@ export async function POST(request) {
     }
 
     console.log('note crud:' + JSON.stringify(data.note));
-    return jsonResponse({ success: true, note: data.note });
+    return jsonResponse({ success: true, action: data.action, note: data.note });
   } catch (error) {
     console.error('Query error:', error);
     return jsonResponse({ success: false, error: 'DB Error' }, 500);
