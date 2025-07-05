@@ -125,38 +125,44 @@ export function NoteDialog({note = null, preOpenCallback = null}) {
                         .then(json => {
                             console.log('API Response:', json); // 更明确的日志标识
 
-                            if (json.success) {
-                                // 更新状态，包括将返回的note数据合并到状态中
-                                setStatus(prev => ({
-                                    ...prev,
-                                    isProcessing: false,
-                                    // 如果是创建操作，确保使用返回的note数据（包含新ID）
-                                    note: initStatusNote(),
-                                }));
+                            if (!json.success) {
+                                toast.error('API Response: ' + json.error);
+                                return;
                             }
                             else {
-                                toast.error(json.error);
-                                return;
+                                toast.success('Save success');
                             }
 
                             if (action === 'create') {
-                                // 刷新笔记列表
-                                setStatus(prev => ({
-                                    ...prev,
-                                    notes: [json.note,...prev.notes],
-                                }));
-
-                                // 听力理解：对话
-                                if (json.note?.type?.id === '11') {
-                                    // 刷新听力列表
-                                    setStatus(prev => ({
+                                setStatus(prev => {
+                                    const updatedState = {
                                         ...prev,
-                                        notesListeningDialog: {
+                                        notes: [
+                                            {
+                                                ...json.note, 
+                                                type: json.note.type.title,
+                                                type_sub: json.note.type.title_sub,
+                                                tid: json.note.type.id,
+                                            }, ...prev.notes],
+                                        note: {...prev.note, ...json.note},
+                                    };
+                                    
+                                    // 听力理解：对话
+                                    if (json.note?.type?.id === '11') {
+                                        updatedState.notesListeningDialog = {
                                             ...prev.notesListeningDialog,
-                                            notes: [json.note,...prev.notesListeningDialog.notes],
-                                        },
-                                    }));
-                                }
+                                            notes: [
+                                                {
+                                                    ...json.note, 
+                                                    type: json.note.type.title,
+                                                    type_sub: json.note.type.title_sub,
+                                                    tid: json.note.type.id,
+                                                }, ...prev.notesListeningDialog.notes],
+                                        };
+                                    }
+                                    
+                                    return updatedState;
+                                });
                             }
                             else if (action === 'update') {
                                 // 听力理解：对话
@@ -187,10 +193,13 @@ export function NoteDialog({note = null, preOpenCallback = null}) {
                                 }
                             }
 
-                            setOpen(false);
                         })
                         .catch(err => {
                             console.error('Fetch API error: /api/notebooks/notes/crud');
+                            toast.error('Save failed' + err.message);
+                        })
+                        .finally(() => {
+                            // setOpen(false);
                             setStatus(prev => ({ ...prev, isProcessing: false }));
                         });
                     }} type="submit">Save</Button>

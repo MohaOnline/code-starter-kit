@@ -3,7 +3,7 @@ import {prisma, jsonResponse} from '@/lib/prisma';
 
 export async function GET(request, { params }) {
   try {
-    const { tid } = params;
+    const { tid } = await params;
     
     // 验证 tid 参数
     if (!tid) {
@@ -12,8 +12,9 @@ export async function GET(request, { params }) {
 
     let rows = await prisma.$queryRaw`
         SELECT *
-        FROM notebooks_notes_summary
-        WHERE tid = ${tid}
+          FROM notebooks_notes_summary
+         WHERE tid = ${tid}
+      ORDER BY weight ASC
     `;
 
     console.log(rows);

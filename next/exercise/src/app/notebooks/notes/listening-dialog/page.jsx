@@ -28,7 +28,7 @@ import { NoteListeningDialog } from '@/app/notebooks/notes/libs/NoteListeningDia
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { NoteDialog } from "@/app/notebooks/notes/libs/NoteDialog";
 import NavTop from '@/app/lib/components/NavTop';
-import { useStatus } from '@/app/lib/atoms';
+import { initStatusNote, useStatus } from '@/app/lib/atoms';
 import { AiFillPlayCircle } from 'react-icons/ai';
 
 export default function NotesListeningDialog() {
@@ -73,7 +73,7 @@ export default function NotesListeningDialog() {
           setStatus((prev) => ({
             ...prev,
             note: {
-              ...prev.note,
+              ...initStatusNote(),
               type: {
                 title: '英语听力：对话',
                 title_sub: '高中',

@@ -132,7 +132,7 @@ export function NoteListeningDialog({note}) {
         isEditing: false,       // 开关编辑 Drawer
         setEditing: null,
         showAnswer: 0,          // 0: 不显示，1: 显示正确答案，2: 显示所有选项
-        answer: null,            // 存储答案选择
+        answer: null,           // 存储答案选择
         shuffledChoices: [],    // 随机排序的选项
         hoveredChoice: null,    // 当前悬停的选项
         isPlaying: false,       // 音频播放状态
@@ -223,7 +223,7 @@ export function NoteListeningDialog({note}) {
                 src: [`/refs${note.figures}`],
                 html5: false,  // 使用Web Audio API而不是HTML5 Audio
                 format: ['wav', 'mp3'],  // 指定支持的音频格式
-                volume: 1.0,  // 设置音量
+                volume: 1.5,  // 设置音量
                 rate: 1.0,    // 设置播放速率
                 onload: () => {
                     setLocal(prev => ({
