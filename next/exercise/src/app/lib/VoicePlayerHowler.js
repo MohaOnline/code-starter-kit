@@ -5,7 +5,7 @@ import { Howl, Howler, cache as HowlCache } from 'howler';
 import { preciseTimeout } from '@/app/lib/common';
 
 export class VoicePlayerHowler {
-  constructor(){
+  constructor() {
     this.durations = [];
     this.howls = [];      // instances of Howl.
     this.isPlaying = false; // 是否收到 stop 命令，play -> True, stop -> False.
@@ -20,14 +20,14 @@ export class VoicePlayerHowler {
     this.cn_interval = 250;
   }
 
-    // 分析 AudioBuffer 检测静音
+  // 分析 AudioBuffer 检测静音
   analyzeAudioBuffer(audioBuffer, index) {
     const channelData = audioBuffer.getChannelData(0); // 获取第一个声道
     const sampleRate = audioBuffer.sampleRate;
     const silenceThreshold = 0.01; // 静音阈值
     const silenceDurationMs = 800; // 静音持续时间（毫秒）
     const silenceSamples = (silenceDurationMs / 1000) * sampleRate;
-    
+
     // 从末尾开始检测静音
     let silentSamplesFromEnd = 0;
     for (let i = channelData.length - 1; i >= 0; i--) {
@@ -37,16 +37,16 @@ export class VoicePlayerHowler {
         break;
       }
     }
-    
+
     // 计算实际音频结束时间（排除末尾静音）
     const silentDurationMs = (silentSamplesFromEnd / sampleRate) * 1000;
     const actualDuration = (audioBuffer.duration * 1000) - silentDurationMs;
-    
+
     console.log(`Audio ${index}: Total duration: ${audioBuffer.duration * 1000}ms, Silent from end: ${silentDurationMs}ms, Actual duration: ${actualDuration}ms`);
-    
+
     // 更新实际播放时长
     this.durations[index] = Math.max(actualDuration, 100); // 最少100ms
-    
+
     return {
       totalDuration: audioBuffer.duration * 1000,
       silentDuration: silentDurationMs,
@@ -72,9 +72,10 @@ export class VoicePlayerHowler {
     this.cn_waitVoiceLength = cn_waitVoiceLength;
     this.en_interval = en_interval;
     this.cn_interval = cn_interval;
+    console.log('setVoiceInterval:', this.en_waitVoiceLength, this.cn_waitVoiceLength, this.en_interval, this.cn_interval);
   }
 
-  play(audioURls, onCompleteCallback=()=>{}) {
+  play(audioURls, onCompleteCallback = () => { }) {
     this.stop(); // 先清理之前的播放器状态
 
     this.isPlaying = true;
@@ -92,6 +93,7 @@ export class VoicePlayerHowler {
           rate: this.speed || 1.0,
 
           onload: () => {
+            this.durations[index] = 0;
 
             if (url.includes('en-')) {
               if (this.en_waitVoiceLength) {
@@ -105,7 +107,7 @@ export class VoicePlayerHowler {
                   .then(arrayBuffer => {
                     const audioContext = Howler.ctx;
                     audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
-                      const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
+                      const { silentDuration } = this.analyzeAudioBuffer(audioBuffer, index);
                       console.log(this.durations[index]);
                       // this.durations[index] -= silentDuration;
                     });
@@ -113,7 +115,7 @@ export class VoicePlayerHowler {
                   .catch(error => console.error('Error:', error));
               }
 
-              this.durations[index] = this.en_interval;
+              this.durations[index] += this.en_interval;
             }
             else if (url.includes('zh-')) {
               if (this.cn_waitVoiceLength) {
@@ -123,7 +125,7 @@ export class VoicePlayerHowler {
                   .then(arrayBuffer => {
                     const audioContext = Howler.ctx;
                     audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
-                      const {silentDuration} = this.analyzeAudioBuffer(audioBuffer, index);
+                      const { silentDuration } = this.analyzeAudioBuffer(audioBuffer, index);
                       console.log(this.durations[index]);
                       // this.durations[index] -= silentDuration;
                     });
@@ -131,7 +133,7 @@ export class VoicePlayerHowler {
                   .catch(error => console.error('Error:', error));
               }
 
-              this.durations[index] = this.cn_interval;
+              this.durations[index] += this.cn_interval;
             }
           },
 
