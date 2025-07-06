@@ -29,8 +29,8 @@ export const handleKeyDown = (event, status, setStatus) => {
   if (status.isDialogOpen) {
 
     if (event.key === 'Escape' && document.activeElement.tagName === 'INPUT' &&
-        document.activeElement instanceof HTMLInputElement &&
-        document.activeElement.type === 'text' && !!status.isComposing) {
+      document.activeElement instanceof HTMLInputElement &&
+      document.activeElement.type === 'text' && !!status.isComposing) {
       event.preventDefault(); // 阻止 ESC 键的默认行为
     } else if (event.key === 'Tab') {
       console.debug('Tab Down');
@@ -44,10 +44,10 @@ export const handleKeyDown = (event, status, setStatus) => {
   // 对话框未开启的处理
   else {
     if (document.activeElement.tagName === 'INPUT' &&
-        document.activeElement instanceof HTMLInputElement &&
-        document.activeElement.type === 'text') {
+      document.activeElement instanceof HTMLInputElement &&
+      document.activeElement.type === 'text') {
       return;
-      
+
     } else {
       event.preventDefault?.();
     }
@@ -135,14 +135,14 @@ export const handleKeyDown = (event, status, setStatus) => {
  * @param {*} delay 
  * @returns cancel function. 取消函数，调用、执行后会取消定时器。
  */
-export function preciseTimeout3(callback, delay) {
+export function preciseTimeout1(callback, delay) {
   const start = performance.now();
   let rafId;
   let cancelled = false;
 
   function check() {
     if (cancelled) return;
-    
+
     const now = performance.now();
     if (now - start >= delay) {
       callback();
@@ -152,7 +152,7 @@ export function preciseTimeout3(callback, delay) {
   }
 
   rafId = requestAnimationFrame(check);
-  
+
   // 返回取消函数
   return () => {
     cancelled = true;
@@ -169,7 +169,7 @@ export function preciseTimeout3(callback, delay) {
  * @param {number} delay 延迟时间（毫秒）
  * @returns {Function} 取消函数
  */
-export function preciseTimeout2(callback, delay) {
+export function preciseTimeout(callback, delay) {
   const start = performance.now();
   let cancelled = false;
   let timeoutId;
@@ -181,17 +181,17 @@ export function preciseTimeout2(callback, delay) {
 
   function check() {
     if (cancelled) return;
-    
+
     const now = performance.now();
     const elapsed = now - start;
-    
+
     if (elapsed >= delay) {
       callback();
     } else {
       const remaining = delay - elapsed;
       // 使用较短的间隔进行检查，提高精度
       const checkInterval = Math.min(remaining, 4); // 最多4ms间隔
-      
+
       timeoutId = setTimeout(() => {
         if (!cancelled) {
           port2.postMessage(null);
@@ -201,10 +201,10 @@ export function preciseTimeout2(callback, delay) {
   }
 
   port1.onmessage = check;
-  
+
   // 启动检查
   port2.postMessage(null);
-  
+
   // 返回取消函数
   return () => {
     cancelled = true;
@@ -222,9 +222,9 @@ export function preciseTimeout2(callback, delay) {
  * @param {number} delay 延迟时间（毫秒）
  * @returns {Function} 取消函数
  */
-export function preciseTimeout(callback, delay) {
+export function preciseTimeout3(callback, delay) {
   let cancelled = false;
-  
+
   // 创建一个简单的 Worker
   const workerCode = `
     let startTime;
@@ -252,22 +252,22 @@ export function preciseTimeout(callback, delay) {
       }
     };
   `;
-  
+
   const blob = new Blob([workerCode], { type: 'application/javascript' });
   const workerUrl = URL.createObjectURL(blob);
   const worker = new Worker(workerUrl);
-  
-  worker.onmessage = function(e) {
+
+  worker.onmessage = function (e) {
     if (e.data.type === 'complete' && !cancelled) {
       callback();
       worker.terminate();
       URL.revokeObjectURL(workerUrl);
     }
   };
-  
+
   // 启动定时器
   worker.postMessage({ type: 'start', delay });
-  
+
   // 返回取消函数
   return () => {
     cancelled = true;

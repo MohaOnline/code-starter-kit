@@ -5,10 +5,10 @@
  * - https://github.com/jedwatson/react-select
  */
 
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import ModeToggle from '@/components/mode-toggle';
-import {Button} from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Popover,
   PopoverContent,
@@ -38,20 +38,20 @@ export default function NotesListeningDialog() {
   // 加载所有 notes
   useEffect(() => {
     fetch('/api/notebooks/notes/list/11')
-    .then(res => res.json())
-    .then(json => {
+      .then(res => res.json())
+      .then(json => {
         setStatus((prev) => ({
-            ...prev,
-            notesListeningDialog: {
-              ...prev.notesListeningDialog,
-              notes: json.notes,
-            },
+          ...prev,
+          notesListeningDialog: {
+            ...prev.notesListeningDialog,
+            notes: json.notes,
+          },
         }))
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.error('Fetch API error: /api/notebooks/notes/list');
         toast.error('cant load notes from API.');
-    });    
+      });
 
   }, []);
 
@@ -64,11 +64,11 @@ export default function NotesListeningDialog() {
 
       {/* 笔记添加 */}
       <div className="operation text-right flex items-center justify-end gap-2 mb-2">
-                    <Button variant="outline" >
-                      <AiFillPlayCircle onClick={() => {
-                        
-                    }} />
-                    </Button>
+        <Button variant="outline" >
+          <AiFillPlayCircle onClick={() => {
+
+          }} />
+        </Button>
         <NoteDialog preOpenCallback={() => {
           setStatus((prev) => ({
             ...prev,
@@ -105,7 +105,7 @@ export default function NotesListeningDialog() {
         draggable
         pauseOnHover
       />
-      
+
     </div>
   );
 }
