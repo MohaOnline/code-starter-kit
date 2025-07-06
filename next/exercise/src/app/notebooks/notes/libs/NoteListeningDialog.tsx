@@ -124,7 +124,7 @@ export const NoteListeningDialogForm = (handleNoteChange: React.ChangeEventHandl
 }
 
 /* React component 有 note 参数，也可有别的参数，打包成一个对象传入。 */
-export function NoteListeningDialog({note}) {
+export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}) {
     const [status, setStatus] = useStatus(); // 通过 status 和 note.id 把 status.note = status.notesListeningDialog.notes.find(note => note.id === note.id).
     const [local, setLocal] = useState({
         set: null,
@@ -243,6 +243,10 @@ export function NoteListeningDialog({note}) {
                 onend: () => {
                     if (!local.isLooping) {
                         setLocal(prev => ({...prev, isPlaying: false, currentTime: 0}));
+                        // 触发顺序播放的下一个音频
+                        setTimeout(() => {
+                            window.dispatchEvent(new CustomEvent('sequentialAudioEnded'));
+                        }, 100);
                     }
                 }
             });
@@ -500,6 +504,40 @@ export function NoteListeningDialog({note}) {
             }
         };
     }, [local.isPlaying, local.howlInstance, local.duration, local.selectionStart, local.selectionEnd, local.isLooping]);
+
+    // 监听顺序播放事件
+    useEffect(() => {
+        const handleDisableAllLoops = () => {
+            setLocal(prev => ({...prev, isLooping: false}));
+        };
+
+        const handlePlaySequentialAudio = (event) => {
+            if (event.detail.noteIndex === noteIndex) {
+                // 播放当前音频
+                if (local.howlInstance) {
+                    // 确保从头开始播放
+                    local.howlInstance.seek(0);
+                    local.howlInstance.play();
+                }
+            }
+        };
+
+        const handleStopSequentialAudio = () => {
+            if (local.howlInstance && local.isPlaying) {
+                local.howlInstance.pause();
+            }
+        };
+
+        window.addEventListener('disableAllLoops', handleDisableAllLoops);
+        window.addEventListener('playSequentialAudio', handlePlaySequentialAudio);
+        window.addEventListener('stopSequentialAudio', handleStopSequentialAudio);
+
+        return () => {
+            window.removeEventListener('disableAllLoops', handleDisableAllLoops);
+            window.removeEventListener('playSequentialAudio', handlePlaySequentialAudio);
+            window.removeEventListener('stopSequentialAudio', handleStopSequentialAudio);
+        };
+    }, [noteIndex, local.howlInstance, local.isPlaying]);
 
     // 音频控制函数
     const togglePlayPause = () => {
