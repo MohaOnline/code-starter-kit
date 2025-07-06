@@ -135,7 +135,7 @@ export const handleKeyDown = (event, status, setStatus) => {
  * @param {*} delay 
  * @returns cancel function. 取消函数，调用、执行后会取消定时器。
  */
-export function preciseTimeout(callback, delay) {
+export function preciseTimeout3(callback, delay) {
   const start = performance.now();
   let rafId;
   let cancelled = false;
@@ -159,6 +159,121 @@ export function preciseTimeout(callback, delay) {
     if (rafId) {
       cancelAnimationFrame(rafId);
     }
+  };
+}
+
+/**
+ * 使用 MessageChannel 实现的精确定时器，不依赖 requestAnimationFrame
+ * 在浏览器最小化时仍能正常工作
+ * @param {Function} callback 回调函数
+ * @param {number} delay 延迟时间（毫秒）
+ * @returns {Function} 取消函数
+ */
+export function preciseTimeout2(callback, delay) {
+  const start = performance.now();
+  let cancelled = false;
+  let timeoutId;
+
+  // 方法1: 使用 MessageChannel 实现高精度定时
+  const channel = new MessageChannel();
+  const port1 = channel.port1;
+  const port2 = channel.port2;
+
+  function check() {
+    if (cancelled) return;
+    
+    const now = performance.now();
+    const elapsed = now - start;
+    
+    if (elapsed >= delay) {
+      callback();
+    } else {
+      const remaining = delay - elapsed;
+      // 使用较短的间隔进行检查，提高精度
+      const checkInterval = Math.min(remaining, 4); // 最多4ms间隔
+      
+      timeoutId = setTimeout(() => {
+        if (!cancelled) {
+          port2.postMessage(null);
+        }
+      }, checkInterval);
+    }
+  }
+
+  port1.onmessage = check;
+  
+  // 启动检查
+  port2.postMessage(null);
+  
+  // 返回取消函数
+  return () => {
+    cancelled = true;
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    port1.close();
+    port2.close();
+  };
+}
+
+/**
+ * 使用 Web Worker 实现的精确定时器（备选方案）
+ * @param {Function} callback 回调函数
+ * @param {number} delay 延迟时间（毫秒）
+ * @returns {Function} 取消函数
+ */
+export function preciseTimeout(callback, delay) {
+  let cancelled = false;
+  
+  // 创建一个简单的 Worker
+  const workerCode = `
+    let startTime;
+    let targetDelay;
+    let intervalId;
+    
+    self.onmessage = function(e) {
+      if (e.data.type === 'start') {
+        startTime = performance.now();
+        targetDelay = e.data.delay;
+        
+        function check() {
+          const elapsed = performance.now() - startTime;
+          if (elapsed >= targetDelay) {
+            self.postMessage({ type: 'complete' });
+          } else {
+            // 使用较短间隔检查，提高精度
+            setTimeout(check, Math.min(targetDelay - elapsed, 4));
+          }
+        }
+        
+        check();
+      } else if (e.data.type === 'cancel') {
+        self.close();
+      }
+    };
+  `;
+  
+  const blob = new Blob([workerCode], { type: 'application/javascript' });
+  const workerUrl = URL.createObjectURL(blob);
+  const worker = new Worker(workerUrl);
+  
+  worker.onmessage = function(e) {
+    if (e.data.type === 'complete' && !cancelled) {
+      callback();
+      worker.terminate();
+      URL.revokeObjectURL(workerUrl);
+    }
+  };
+  
+  // 启动定时器
+  worker.postMessage({ type: 'start', delay });
+  
+  // 返回取消函数
+  return () => {
+    cancelled = true;
+    worker.postMessage({ type: 'cancel' });
+    worker.terminate();
+    URL.revokeObjectURL(workerUrl);
   };
 }
 
