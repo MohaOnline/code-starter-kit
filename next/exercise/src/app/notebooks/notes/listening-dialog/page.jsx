@@ -181,7 +181,29 @@ export default function NotesListeningDialog() {
           ?.map((note, index) => (
             <div 
               key={note.id}
-              onClick={() => {
+              onClick={(e) => {
+                // 检查是否有文字被选中，如果有则不触发点击事件
+                const selection = window.getSelection();
+                if (selection && selection.toString().length > 0) {
+                  return;
+                }
+                
+                // 检查点击的目标是否是可交互元素
+                const target = e.target;
+                if (target instanceof HTMLElement) {
+                  if (target.tagName === 'BUTTON' || 
+                      target.tagName === 'INPUT' || 
+                      target.tagName === 'TEXTAREA' || 
+                      target.closest('button') || 
+                      target.closest('input') || 
+                      target.closest('textarea') ||
+                      target.closest('.audio-controls') ||
+                      target.closest('.choice-option') ||
+                      target.closest('.operation')) {
+                    return;
+                  }
+                }
+                
                 setStatus((prev) => ({
                   ...prev,
                   notesListeningDialog: {
