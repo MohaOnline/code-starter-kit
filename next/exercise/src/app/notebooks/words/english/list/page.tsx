@@ -147,9 +147,7 @@ function WordColumn({
 }
 
 export default function WordListPage() {
-  const [allWords, setAllWords] = useState<Word[]>([]);
-  const [leftWords, setLeftWords] = useState<Word[]>([]);
-  const [rightWords, setRightWords] = useState<Word[]>([]);
+  const [words, setWords] = useState<Word[]>([]);
   const [leftSearch, setLeftSearch] = useState('');
   const [rightSearch, setRightSearch] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -175,10 +173,7 @@ export default function WordListPage() {
       .then(response => response.json())
       .then(json => {
         if (json.success) {
-          setAllWords(json.data);
-          // Both columns show all words
-          setLeftWords(json.data);
-          setRightWords(json.data);
+          setWords(json.data);
         }
       })
       .catch(err => {
@@ -223,7 +218,7 @@ export default function WordListPage() {
 
   const handleLeftSearch = useCallback((direction: 'next' | 'prev') => {
     const currentIndex = direction === 'next' ? leftSearchIndexRef.current + 1 : leftSearchIndexRef.current - 1;
-    const foundIndex = searchInWords(leftWords, leftSearch, currentIndex, direction);
+    const foundIndex = searchInWords(words, leftSearch, currentIndex, direction);
     
     if (foundIndex !== -1) {
       leftSearchIndexRef.current = foundIndex;
@@ -232,11 +227,11 @@ export default function WordListPage() {
     } else {
       toast.info('没有找到');
     }
-  }, [leftWords, leftSearch, searchInWords]);
+  }, [words, leftSearch, searchInWords]);
 
   const handleRightSearch = useCallback((direction: 'next' | 'prev') => {
     const currentIndex = direction === 'next' ? rightSearchIndexRef.current + 1 : rightSearchIndexRef.current - 1;
-    const foundIndex = searchInWords(rightWords, rightSearch, currentIndex, direction);
+    const foundIndex = searchInWords(words, rightSearch, currentIndex, direction);
     
     if (foundIndex !== -1) {
       rightSearchIndexRef.current = foundIndex;
@@ -245,7 +240,7 @@ export default function WordListPage() {
     } else {
       toast.info('没有找到');
     }
-  }, [rightWords, rightSearch, searchInWords]);
+  }, [words, rightSearch, searchInWords]);
 
   // Reset search index when search term changes
   useEffect(() => {
@@ -306,86 +301,48 @@ export default function WordListPage() {
     const activeId = active.id as string;
     const overId = over.id as string;
     
-    const [activeColumn, activeWordId] = activeId.split('-');
-    const [overColumn, overWordId] = overId.split('-');
+    const [, activeWordId] = activeId.split('-');
+    const [, overWordId] = overId.split('-');
     
     const activeWordIdNum = parseInt(activeWordId);
     const overWordIdNum = parseInt(overWordId);
     
-    // Find the dragged word
-    const draggedWord = [...leftWords, ...rightWords].find(w => w.id === activeWordIdNum);
-    if (!draggedWord) return;
+    // Find indices in the main words array
+    const oldIndex = words.findIndex(w => w.id === activeWordIdNum);
+    const newIndex = words.findIndex(w => w.id === overWordIdNum);
+    
+    if (oldIndex === -1 || newIndex === -1 || oldIndex === newIndex) return;
     
     try {
-      if (activeColumn === overColumn) {
-        // Same column reordering
-        const words = activeColumn === 'left' ? leftWords : rightWords;
-        const setWords = activeColumn === 'left' ? setLeftWords : setRightWords;
-        
-        const oldIndex = words.findIndex(w => w.id === activeWordIdNum);
-        const newIndex = words.findIndex(w => w.id === overWordIdNum);
-        
-        if (oldIndex !== newIndex) {
-          const newWords = arrayMove(words, oldIndex, newIndex);
-          
-          // Calculate new weight
-          let referenceWeights: any = {};
-          if (newIndex === 0) {
-            referenceWeights = { after: newWords[1]?.weight };
-            await updateWordWeight(activeWordIdNum, 'start', referenceWeights);
-          } else if (newIndex === newWords.length - 1) {
-            referenceWeights = { before: newWords[newIndex - 1]?.weight };
-            await updateWordWeight(activeWordIdNum, 'end', referenceWeights);
-          } else {
-            referenceWeights = {
-              before: newWords[newIndex - 1]?.weight,
-              after: newWords[newIndex + 1]?.weight
-            };
-            await updateWordWeight(activeWordIdNum, 'between', referenceWeights);
-          }
-          
-          setWords(newWords);
-        }
+      // Create new array with moved item
+      const newWords = arrayMove(words, oldIndex, newIndex);
+      
+      // Calculate new weight based on position in the reordered array
+      let referenceWeights: any = {};
+      if (newIndex === 0) {
+        referenceWeights = { after: newWords[1]?.weight };
+        const newWeight = await updateWordWeight(activeWordIdNum, 'start', referenceWeights);
+        newWords[newIndex].weight = newWeight;
+      } else if (newIndex === newWords.length - 1) {
+        referenceWeights = { before: newWords[newIndex - 1]?.weight };
+        const newWeight = await updateWordWeight(activeWordIdNum, 'end', referenceWeights);
+        newWords[newIndex].weight = newWeight;
       } else {
-        // Cross-column move
-        const sourceWords = activeColumn === 'left' ? leftWords : rightWords;
-        const targetWords = activeColumn === 'left' ? rightWords : leftWords;
-        const setSourceWords = activeColumn === 'left' ? setLeftWords : setRightWords;
-        const setTargetWords = activeColumn === 'left' ? setRightWords : setLeftWords;
-        
-        const sourceIndex = sourceWords.findIndex(w => w.id === activeWordIdNum);
-        const targetIndex = targetWords.findIndex(w => w.id === overWordIdNum);
-        
-        // Remove from source
-        const newSourceWords = sourceWords.filter(w => w.id !== activeWordIdNum);
-        
-        // Add to target
-        const newTargetWords = [...targetWords];
-        newTargetWords.splice(targetIndex, 0, draggedWord);
-        
-        // Calculate new weight for target position
-        let referenceWeights: any = {};
-        if (targetIndex === 0) {
-          referenceWeights = { after: newTargetWords[1]?.weight };
-          await updateWordWeight(activeWordIdNum, 'start', referenceWeights);
-        } else if (targetIndex === newTargetWords.length - 1) {
-          referenceWeights = { before: newTargetWords[targetIndex - 1]?.weight };
-          await updateWordWeight(activeWordIdNum, 'end', referenceWeights);
-        } else {
-          referenceWeights = {
-            before: newTargetWords[targetIndex - 1]?.weight,
-            after: newTargetWords[targetIndex + 1]?.weight
-          };
-          await updateWordWeight(activeWordIdNum, 'between', referenceWeights);
-        }
-        
-        setSourceWords(newSourceWords);
-        setTargetWords(newTargetWords);
+        referenceWeights = {
+          before: newWords[newIndex - 1]?.weight,
+          after: newWords[newIndex + 1]?.weight
+        };
+        const newWeight = await updateWordWeight(activeWordIdNum, 'between', referenceWeights);
+        newWords[newIndex].weight = newWeight;
       }
       
+      // Update the single source of truth
+      setWords(newWords);
       toast.success('排序已更新');
     } catch (error) {
-      // Revert on error - reload data
+      console.error('Drag end error:', error);
+      toast.error('更新排序失败');
+      // Reload data on error
       window.location.reload();
     }
   };
@@ -402,8 +359,8 @@ export default function WordListPage() {
       >
         <div className="flex gap-4">
           <WordColumn
-            title={`左列 (${leftWords.length} 个单词)`}
-            words={leftWords}
+            title={`左列 (${words.length} 个单词)`}
+            words={words}
             searchTerm={leftSearch}
             onSearchChange={setLeftSearch}
             onSearchSubmit={handleLeftSearch}
@@ -413,8 +370,8 @@ export default function WordListPage() {
           />
           
           <WordColumn
-            title={`右列 (${rightWords.length} 个单词)`}
-            words={rightWords}
+            title={`右列 (${words.length} 个单词)`}
+            words={words}
             searchTerm={rightSearch}
             onSearchChange={setRightSearch}
             onSearchSubmit={handleRightSearch}
