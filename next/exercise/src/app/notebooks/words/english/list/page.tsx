@@ -39,9 +39,10 @@ interface Word {
 interface SortableWordItemProps {
   word: Word;
   columnId: string;
+  isHighlighted?: boolean;
 }
 
-function SortableWordItem({ word, columnId }: SortableWordItemProps) {
+function SortableWordItem({ word, columnId, isHighlighted = false }: SortableWordItemProps) {
   const {
     attributes,
     listeners,
@@ -66,12 +67,16 @@ function SortableWordItem({ word, columnId }: SortableWordItemProps) {
       style={style}
       {...attributes}
       {...listeners}
-      className="p-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 cursor-grab active:cursor-grabbing mb-2 shadow-sm"
+      className={`p-3 border rounded-lg cursor-grab active:cursor-grabbing mb-2 shadow-sm ${
+        isHighlighted 
+          ? 'border-yellow-600 border-2 bg-gray-900 hover:bg-gray-800' 
+          : 'border-gray-600 bg-gray-900 hover:bg-gray-800'
+      }`}
     >
-      <div className="text-sm font-medium text-gray-900">{word.word}</div>
-      <div className="text-xs text-gray-500">{word.phonetic_uk}</div>
-      <div className="text-xs text-blue-600">{word.pos}</div>
-      <div className="text-sm text-gray-700 mt-1">{word.translation}</div>
+      <div className="text-sm font-medium text-green-400">{word.word}</div>
+      <div className="text-xs text-green-300">{word.phonetic_uk}</div>
+      <div className="text-xs text-green-500">{word.pos}</div>
+      <div className="text-sm text-green-200 mt-1">{word.translation}</div>
     </div>
   );
 }
@@ -84,6 +89,7 @@ interface WordColumnProps {
   onSearchSubmit: (direction: 'next' | 'prev') => void;
   columnId: string;
   scrollRef: React.RefObject<HTMLDivElement>;
+  highlightedIndex: number;
 }
 
 function WordColumn({ 
@@ -93,7 +99,8 @@ function WordColumn({
   onSearchChange, 
   onSearchSubmit, 
   columnId,
-  scrollRef 
+  scrollRef,
+  highlightedIndex
 }: WordColumnProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -103,33 +110,34 @@ function WordColumn({
   };
 
   return (
-    <div className="flex-1 flex flex-col h-[90vh] border border-gray-300 rounded-lg">
-      <div className="p-4 border-b border-gray-200 bg-gray-50">
-        <h2 className="text-lg font-semibold mb-2">{title}</h2>
+    <div className="flex-1 flex flex-col h-[90vh] border border-gray-600 rounded-lg bg-gray-900">
+      <div className="p-4 border-b border-gray-600 bg-gray-900">
+        <h2 className="text-lg font-semibold mb-2 text-green-400">{title}</h2>
         <Input
           placeholder="搜索单词或翻译..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="w-full"
+          className="w-full bg-gray-800 border-gray-600 text-green-300 placeholder-gray-400"
         />
-        <div className="text-xs text-gray-500 mt-1">
+        <div className="text-xs text-gray-400 mt-1">
           回车：向下查找 | Shift+回车：向上查找
         </div>
       </div>
       <div 
         ref={scrollRef}
-        className="flex-1 overflow-y-auto p-4 space-y-2"
+        className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-900"
       >
         <SortableContext 
           items={words.map(word => `${columnId}-${word.id}`)}
           strategy={verticalListSortingStrategy}
         >
-          {words.map((word) => (
+          {words.map((word, index) => (
             <SortableWordItem 
               key={word.id} 
               word={word} 
               columnId={columnId}
+              isHighlighted={index === highlightedIndex && searchTerm.trim() !== ''}
             />
           ))}
         </SortableContext>
@@ -146,6 +154,8 @@ export default function WordListPage() {
   const [rightSearch, setRightSearch] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null);
   const [draggedWord, setDraggedWord] = useState<Word | null>(null);
+  const [leftHighlightedIndex, setLeftHighlightedIndex] = useState(-1);
+  const [rightHighlightedIndex, setRightHighlightedIndex] = useState(-1);
   
   const leftScrollRef = useRef<HTMLDivElement>(null);
   const rightScrollRef = useRef<HTMLDivElement>(null);
@@ -217,6 +227,7 @@ export default function WordListPage() {
     
     if (foundIndex !== -1) {
       leftSearchIndexRef.current = foundIndex;
+      setLeftHighlightedIndex(foundIndex);
       scrollToIndex(leftScrollRef, foundIndex);
     } else {
       toast.info('没有找到');
@@ -229,6 +240,7 @@ export default function WordListPage() {
     
     if (foundIndex !== -1) {
       rightSearchIndexRef.current = foundIndex;
+      setRightHighlightedIndex(foundIndex);
       scrollToIndex(rightScrollRef, foundIndex);
     } else {
       toast.info('没有找到');
@@ -238,10 +250,12 @@ export default function WordListPage() {
   // Reset search index when search term changes
   useEffect(() => {
     leftSearchIndexRef.current = 0;
+    setLeftHighlightedIndex(-1);
   }, [leftSearch]);
 
   useEffect(() => {
     rightSearchIndexRef.current = 0;
+    setRightHighlightedIndex(-1);
   }, [rightSearch]);
 
   const updateWordWeight = async (wordId: number, targetPosition: string, referenceWeights: any) => {
@@ -377,8 +391,8 @@ export default function WordListPage() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">单词排序管理</h1>
+    <div className="container mx-auto p-4 bg-gray-900 min-h-screen">
+      <h1 className="text-2xl font-bold mb-4 text-green-400">单词排序管理</h1>
       
       <DndContext
         sensors={sensors}
@@ -395,6 +409,7 @@ export default function WordListPage() {
             onSearchSubmit={handleLeftSearch}
             columnId="left"
             scrollRef={leftScrollRef}
+            highlightedIndex={leftHighlightedIndex}
           />
           
           <WordColumn
@@ -405,16 +420,17 @@ export default function WordListPage() {
             onSearchSubmit={handleRightSearch}
             columnId="right"
             scrollRef={rightScrollRef}
+            highlightedIndex={rightHighlightedIndex}
           />
         </div>
         
         <DragOverlay>
           {activeId && draggedWord ? (
-            <div className="p-3 border border-gray-200 rounded-lg bg-white shadow-lg opacity-90">
-              <div className="text-sm font-medium text-gray-900">{draggedWord.word}</div>
-              <div className="text-xs text-gray-500">{draggedWord.phonetic_uk}</div>
-              <div className="text-xs text-blue-600">{draggedWord.pos}</div>
-              <div className="text-sm text-gray-700 mt-1">{draggedWord.translation}</div>
+            <div className="p-3 border border-gray-600 rounded-lg bg-gray-900 shadow-lg opacity-90">
+              <div className="text-sm font-medium text-green-400">{draggedWord.word}</div>
+              <div className="text-xs text-green-300">{draggedWord.phonetic_uk}</div>
+              <div className="text-xs text-green-500">{draggedWord.pos}</div>
+              <div className="text-sm text-green-200 mt-1">{draggedWord.translation}</div>
             </div>
           ) : null}
         </DragOverlay>
