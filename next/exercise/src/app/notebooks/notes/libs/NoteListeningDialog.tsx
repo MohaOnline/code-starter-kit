@@ -31,7 +31,7 @@ import {
 
 import { HTMLArea } from '@/app/lib/components/HTMLArea';
 import { FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import WaveSurfer from 'wavesurfer.js';
 
 import "./Note.css"
@@ -550,6 +550,7 @@ export function NoteListeningDialog({ note, isCurrentNote = false, noteIndex = 0
                 local.howlInstance.seek(startTime);
                 setLocal(prev => ({ ...prev, currentTime: startTime }));
             }
+            Howler.volume(3);
             local.howlInstance.play();
         }
     };
