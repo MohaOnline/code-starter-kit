@@ -3,8 +3,8 @@
  */
 'use client';
 
-import React, {useState, useEffect, useRef} from 'react';
-import {Button} from "@/components/ui/button";
+import React, { useState, useEffect, useRef } from 'react';
+import { Button } from "@/components/ui/button";
 import {
     Drawer,
     DrawerClose,
@@ -22,11 +22,11 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from '@/components/ui/select'
 
 import { HTMLArea } from '@/app/lib/components/HTMLArea';
@@ -48,83 +48,81 @@ import { toast } from 'react-toastify';
  */
 export const NoteListeningDialogForm = (handleNoteChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>, status: any) => {
 
-  return (
-    <>
-      <div className="grid gap-3">
-        <Label htmlFor="figures">Question Voice</Label>
-        <Input id="figures" name="figures" value={status.note?.figures || ''}
-               onChange={handleNoteChange}/>
-      </div>
-      <div className="grid gap-3">
-        <Label>Choices</Label>
-        <div className="flex items-center gap-2">
-          <span className="font-medium min-w-[20px]">A:</span>
-          <Input id="choise_a" name="choise_a" value={status.note?.choise_a || ''}
-                 onChange={handleNoteChange} className="flex-1"/>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-medium min-w-[20px]">B:</span>
-          <Input id="choise_b" name="choise_b" value={status.note?.choise_b || ''}
-                 onChange={handleNoteChange} className="flex-1"/>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-medium min-w-[20px]">C:</span>
-          <Input id="choise_c" name="choise_c" value={status.note?.choise_c || ''}
-                 onChange={handleNoteChange} className="flex-1"/>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-medium min-w-[20px]">D:</span>
-          <Input id="choise_d" name="choise_d" value={status.note?.choise_d || ''}
-                 onChange={handleNoteChange} className="flex-1"/>
-        </div>
+    return (
+        <>
+            <div className="grid gap-3">
+                <Label htmlFor="figures">Question Voice</Label>
+                <Input id="figures" name="figures" value={status.note?.figures || ''}
+                    onChange={handleNoteChange} />
+            </div>
+            <div className="grid gap-3">
+                <Label>Choices</Label>
+                <div className="flex items-center gap-2">
+                    <span className="font-medium min-w-[20px]">A:</span>
+                    <Input id="choise_a" name="choise_a" value={status.note?.choise_a || ''}
+                        onChange={handleNoteChange} className="flex-1" />
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="font-medium min-w-[20px]">B:</span>
+                    <Input id="choise_b" name="choise_b" value={status.note?.choise_b || ''}
+                        onChange={handleNoteChange} className="flex-1" />
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="font-medium min-w-[20px]">C:</span>
+                    <Input id="choise_c" name="choise_c" value={status.note?.choise_c || ''}
+                        onChange={handleNoteChange} className="flex-1" />
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="font-medium min-w-[20px]">D:</span>
+                    <Input id="choise_d" name="choise_d" value={status.note?.choise_d || ''}
+                        onChange={handleNoteChange} className="flex-1" />
+                </div>
 
-        <Label htmlFor="answer">Answer</Label>
-        <Select
-          value={status.note?.answer || ''}
-          onValueChange={(value) => {
-            const event = {
-              target: {
-                name: 'answer',
-                value: value
-              }
-            } as React.ChangeEvent<HTMLInputElement>;
-            handleNoteChange(event);
-          }}
-        >
+                <Label htmlFor="answer">Answer</Label>
+                <Select
+                    value={status.note?.answer || ''}
+                    onValueChange={(value) => {
+                        const event = {
+                            target: {
+                                name: 'answer',
+                                value: value
+                            }
+                        } as React.ChangeEvent<HTMLInputElement>;
+                        handleNoteChange(event);
+                    }}
+                >
 
-          <SelectTrigger>
-            <SelectValue placeholder="Correct Answer" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="choise_a">A</SelectItem>
-            <SelectItem value="choise_b">B</SelectItem>
-            <SelectItem value="choise_c">C</SelectItem>
-            <SelectItem value="choise_d">D</SelectItem>
-          </SelectContent>
-        </Select>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Correct Answer" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="choise_a">A</SelectItem>
+                        <SelectItem value="choise_b">B</SelectItem>
+                        <SelectItem value="choise_c">C</SelectItem>
+                        <SelectItem value="choise_d">D</SelectItem>
+                    </SelectContent>
+                </Select>
 
-        <Label htmlFor="question">Question</Label>
-        <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
-      </div>
+                <Label htmlFor="question">Question</Label>
+                <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.question || ''} name="question" />
+            </div>
 
-      <div className="grid gap-3">
-        <Label htmlFor="note">Note</Label>
-        <Textarea id="note" name="note"
-                  value={status.note?.note || ''}
-                  onChange={handleNoteChange}/>
-      </div>
-      <div className="grid gap-3">
-        <Label htmlFor="note_extra">Note Extra</Label>
-        <Textarea id="note_extra" name="note_extra"
-                  value={status.note?.note_extra || ''}
-                  onChange={handleNoteChange}/>
-      </div>
-    </>
-  );
+            <div className="grid gap-3">
+                <Label htmlFor="note">Note</Label>
+                <HTMLArea handleNoteChange={handleNoteChange} value={status.note?.note || ''} name="note" />
+            </div>
+            <div className="grid gap-3">
+                <Label htmlFor="note_extra">Note Extra</Label>
+                <Textarea id="note_extra" name="note_extra"
+                    value={status.note?.note_extra || ''}
+                    onChange={handleNoteChange} />
+            </div>
+        </>
+    );
 }
 
 /* React component 有 note 参数，也可有别的参数，打包成一个对象传入。 */
-export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}) {
+export function NoteListeningDialog({ note, isCurrentNote = false, noteIndex = 0 }) {
     const [status, setStatus] = useStatus(); // 通过 status 和 note.id 把 status.note = status.notesListeningDialog.notes.find(note => note.id === note.id).
     const [local, setLocal] = useState({
         set: null,
@@ -146,11 +144,11 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
         selectionEnd: null,
         isSelecting: false
     });
-    
+
     const waveformRef = useRef(null);
 
     local.set = setLocal;
-    local.setEditing = (isEditing: boolean) => setLocal(prev => ({...prev, isEditing: isEditing}));
+    local.setEditing = (isEditing: boolean) => setLocal(prev => ({ ...prev, isEditing: isEditing }));
 
     // 初始化随机排序的选项
     useEffect(() => {
@@ -160,15 +158,15 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
             { key: 'choise_c', content: note.choise_c },
             { key: 'choise_d', content: note.choise_d }
         ];
-        
+
         // Fisher-Yates 洗牌算法
         const shuffled = [...choices];
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
-        
-        setLocal(prev => ({...prev, shuffledChoices: shuffled}));
+
+        setLocal(prev => ({ ...prev, shuffledChoices: shuffled }));
     }, [note]);
 
     // 初始化音频和波形
@@ -176,54 +174,54 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
         if (note.figures && waveformRef.current) {
             // 标记组件是否已卸载
             let isMounted = true;
-            
+
             // 创建音频上下文以优化音频处理
-             const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-            
+            const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+
             // 确保音频上下文处于运行状态
             if (audioContext.state === 'suspended') {
                 audioContext.resume();
             }
-            
+
             // 初始化WaveSurfer
             let wavesurfer = WaveSurfer.create({
-                 container: waveformRef.current,
-                 waveColor: 'rgb(120, 210, 120)',
-                 progressColor: 'rgb(255, 255, 0)',
-                 cursorColor: 'rgb(255, 255, 255)',
-                 barWidth: 1,
-                 barRadius: 3,
-                 height: 60,
-                 normalize: true,
-                 mediaControls: false,
-                 sampleRate: 44100,  // 设置采样率
-                 interact: false,    // 禁用默认交互，使用自定义选择
-                 hideScrollbar: true, // 隐藏滚动条
-                 autoplay: false,    // 禁止自动播放
-                 dragToSeek: false   // 禁用拖拽定位，使用自定义选择
-             });
+                container: waveformRef.current,
+                waveColor: 'rgb(120, 210, 120)',
+                progressColor: 'rgb(255, 255, 0)',
+                cursorColor: 'rgb(255, 255, 255)',
+                barWidth: 1,
+                barRadius: 3,
+                height: 60,
+                normalize: true,
+                mediaControls: false,
+                sampleRate: 44100,  // 设置采样率
+                interact: false,    // 禁用默认交互，使用自定义选择
+                hideScrollbar: true, // 隐藏滚动条
+                autoplay: false,    // 禁止自动播放
+                dragToSeek: false   // 禁用拖拽定位，使用自定义选择
+            });
 
-             // 检查组件是否仍然挂载
-             // TODO：是否真的需要
-             if (!isMounted) {
-                 try {
-                     wavesurfer.destroy();
-                     wavesurfer = null;
-                 } catch (error) {
-                     console.warn('Error destroying wavesurfer during early cleanup:', error);
-                 }
-                 return;
-             }
+            // 检查组件是否仍然挂载
+            // TODO：是否真的需要
+            if (!isMounted) {
+                try {
+                    wavesurfer.destroy();
+                    wavesurfer = null;
+                } catch (error) {
+                    console.warn('Error destroying wavesurfer during early cleanup:', error);
+                }
+                return;
+            }
 
-             // 加载音频文件
-             wavesurfer.load(`/refs${note.figures}`);
+            // 加载音频文件
+            wavesurfer.load(`/refs${note.figures}`);
 
             // 初始化Howler
             const howl = new Howl({
                 src: [`/refs${note.figures}`],
                 html5: false,  // 使用Web Audio API而不是HTML5 Audio
                 format: ['wav', 'mp3'],  // 指定支持的音频格式
-                volume: 1.5,  // 设置音量
+                volume: 2.0,  // 设置音量
                 rate: 1.0,    // 设置播放速率
                 onload: () => {
                     setLocal(prev => ({
@@ -232,17 +230,17 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                     }));
                 },
                 onplay: () => {
-                    setLocal(prev => ({...prev, isPlaying: true}));
+                    setLocal(prev => ({ ...prev, isPlaying: true }));
                 },
                 onpause: () => {
-                    setLocal(prev => ({...prev, isPlaying: false}));
+                    setLocal(prev => ({ ...prev, isPlaying: false }));
                 },
                 onstop: () => {
-                    setLocal(prev => ({...prev, isPlaying: false, currentTime: 0}));
+                    setLocal(prev => ({ ...prev, isPlaying: false, currentTime: 0 }));
                 },
                 onend: () => {
                     if (!local.isLooping) {
-                        setLocal(prev => ({...prev, isPlaying: false, currentTime: 0}));
+                        setLocal(prev => ({ ...prev, isPlaying: false, currentTime: 0 }));
                         // 触发顺序播放的下一个音频
                         setTimeout(() => {
                             window.dispatchEvent(new CustomEvent('sequentialAudioEnded'));
@@ -255,133 +253,133 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
             howl.loop(local.isLooping);
 
             // WaveSurfer事件监听
-             wavesurfer.on('ready', () => {
-                 setLocal(prev => ({
-                     ...prev,
-                     duration: wavesurfer.getDuration()
-                 }));
-             });
+            wavesurfer.on('ready', () => {
+                setLocal(prev => ({
+                    ...prev,
+                    duration: wavesurfer.getDuration()
+                }));
+            });
 
-             // 移除interaction事件监听，因为我们使用自定义的鼠标事件处理
-             // wavesurfer.on('interaction', () => {
-             //     const currentTime = wavesurfer.getCurrentTime();
-             //     howl.seek(currentTime);
-             //     setLocal(prev => ({...prev, currentTime: currentTime}));
-             // });
+            // 移除interaction事件监听，因为我们使用自定义的鼠标事件处理
+            // wavesurfer.on('interaction', () => {
+            //     const currentTime = wavesurfer.getCurrentTime();
+            //     howl.seek(currentTime);
+            //     setLocal(prev => ({...prev, currentTime: currentTime}));
+            // });
 
-             // 添加区域选择事件监听
-             let isMouseDown = false;
-             let startTime = null;
-             let mouseDownTime = 0;
-             let hasMouseMoved = false;
+            // 添加区域选择事件监听
+            let isMouseDown = false;
+            let startTime = null;
+            let mouseDownTime = 0;
+            let hasMouseMoved = false;
 
-             const handleMouseDown = (e) => {
-                 // 阻止WaveSurfer的默认点击行为
-                 e.preventDefault();
-                 e.stopPropagation();
-                 
-                 isMouseDown = true;
-                 hasMouseMoved = false;
-                 mouseDownTime = Date.now();
-                 
-                 const rect = waveformRef.current.getBoundingClientRect();
-                 const x = e.clientX - rect.left;
-                 const progress = Math.max(0, Math.min(1, x / rect.width));
-                 startTime = progress * wavesurfer.getDuration();
-                 
-                 setLocal(prev => ({
-                     ...prev,
-                     isSelecting: true,
-                     selectionStart: startTime,
-                     selectionEnd: startTime
-                 }));
-             };
+            const handleMouseDown = (e) => {
+                // 阻止WaveSurfer的默认点击行为
+                e.preventDefault();
+                e.stopPropagation();
 
-             const handleMouseMove = (e) => {
-                 if (!isMouseDown) return;
-                 
-                 e.preventDefault();
-                 e.stopPropagation();
-                 
-                 hasMouseMoved = true;
-                 
-                 const rect = waveformRef.current.getBoundingClientRect();
-                 const x = e.clientX - rect.left;
-                 const progress = Math.max(0, Math.min(1, x / rect.width));
-                 const endTime = progress * wavesurfer.getDuration();
-                 
-                 setLocal(prev => ({
-                     ...prev,
-                     selectionEnd: endTime
-                 }));
-             };
+                isMouseDown = true;
+                hasMouseMoved = false;
+                mouseDownTime = Date.now();
 
-             const handleMouseUp = (e) => {
-                 if (isMouseDown) {
-                     e.preventDefault();
-                     e.stopPropagation();
-                     
-                     isMouseDown = false;
-                     const clickDuration = Date.now() - mouseDownTime;
-                     
-                     // 判断是单击还是拖拽
-                     const isClick = !hasMouseMoved && clickDuration < 300; // 300ms内且没有移动鼠标
-                     
-                     if (isClick) {
-                         // 单击：定位播放位置并清除选择
-                         const clickTime = startTime;
-                         howl.seek(clickTime);
-                         setLocal(prev => ({
-                             ...prev,
-                             isSelecting: false,
-                             selectionStart: null,
-                             selectionEnd: null,
-                             currentTime: clickTime
-                         }));
-                         
-                         // 同步WaveSurfer进度
-                         if (wavesurfer) {
-                              try {
-                                  if (typeof wavesurfer.getDuration === 'function' && 
-                                      typeof wavesurfer.seekTo === 'function' && 
-                                      wavesurfer.getDuration() > 0) {
-                                      const progress = clickTime / wavesurfer.getDuration();
-                                      wavesurfer.seekTo(progress);
-                                  }
-                              } catch (error) {
-                                  console.warn('Error syncing wavesurfer progress:', error);
-                              }
-                          }
-                     } else {
-                         // 拖拽：检查选择区域是否有效
-                         setLocal(prev => {
-                             const minDuration = 0.1; // 最小选择时长
-                             const duration = Math.abs(prev.selectionEnd - prev.selectionStart);
-                             
-                             if (duration < minDuration) {
-                                 // 如果选择区域太小，清除选择
-                                 return {
-                                     ...prev,
-                                     isSelecting: false,
-                                     selectionStart: null,
-                                     selectionEnd: null
-                                 };
-                             }
-                             
-                             return {
-                                 ...prev,
-                                 isSelecting: false
-                             };
-                         });
-                     }
-                 }
-             };
+                const rect = waveformRef.current.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const progress = Math.max(0, Math.min(1, x / rect.width));
+                startTime = progress * wavesurfer.getDuration();
 
-             // 绑定事件监听器
-             waveformRef.current.addEventListener('mousedown', handleMouseDown);
-             waveformRef.current.addEventListener('mousemove', handleMouseMove);
-             waveformRef.current.addEventListener('mouseup', handleMouseUp);
-             document.addEventListener('mouseup', handleMouseUp); // 全局监听鼠标释放
+                setLocal(prev => ({
+                    ...prev,
+                    isSelecting: true,
+                    selectionStart: startTime,
+                    selectionEnd: startTime
+                }));
+            };
+
+            const handleMouseMove = (e) => {
+                if (!isMouseDown) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                hasMouseMoved = true;
+
+                const rect = waveformRef.current.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const progress = Math.max(0, Math.min(1, x / rect.width));
+                const endTime = progress * wavesurfer.getDuration();
+
+                setLocal(prev => ({
+                    ...prev,
+                    selectionEnd: endTime
+                }));
+            };
+
+            const handleMouseUp = (e) => {
+                if (isMouseDown) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    isMouseDown = false;
+                    const clickDuration = Date.now() - mouseDownTime;
+
+                    // 判断是单击还是拖拽
+                    const isClick = !hasMouseMoved && clickDuration < 300; // 300ms内且没有移动鼠标
+
+                    if (isClick) {
+                        // 单击：定位播放位置并清除选择
+                        const clickTime = startTime;
+                        howl.seek(clickTime);
+                        setLocal(prev => ({
+                            ...prev,
+                            isSelecting: false,
+                            selectionStart: null,
+                            selectionEnd: null,
+                            currentTime: clickTime
+                        }));
+
+                        // 同步WaveSurfer进度
+                        if (wavesurfer) {
+                            try {
+                                if (typeof wavesurfer.getDuration === 'function' &&
+                                    typeof wavesurfer.seekTo === 'function' &&
+                                    wavesurfer.getDuration() > 0) {
+                                    const progress = clickTime / wavesurfer.getDuration();
+                                    wavesurfer.seekTo(progress);
+                                }
+                            } catch (error) {
+                                console.warn('Error syncing wavesurfer progress:', error);
+                            }
+                        }
+                    } else {
+                        // 拖拽：检查选择区域是否有效
+                        setLocal(prev => {
+                            const minDuration = 0.1; // 最小选择时长
+                            const duration = Math.abs(prev.selectionEnd - prev.selectionStart);
+
+                            if (duration < minDuration) {
+                                // 如果选择区域太小，清除选择
+                                return {
+                                    ...prev,
+                                    isSelecting: false,
+                                    selectionStart: null,
+                                    selectionEnd: null
+                                };
+                            }
+
+                            return {
+                                ...prev,
+                                isSelecting: false
+                            };
+                        });
+                    }
+                }
+            };
+
+            // 绑定事件监听器
+            waveformRef.current.addEventListener('mousedown', handleMouseDown);
+            waveformRef.current.addEventListener('mousemove', handleMouseMove);
+            waveformRef.current.addEventListener('mouseup', handleMouseUp);
+            document.addEventListener('mouseup', handleMouseUp); // 全局监听鼠标释放
 
             setLocal(prev => ({
                 ...prev,
@@ -393,7 +391,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
             return () => {
                 // 标记组件已卸载
                 isMounted = false;
-                
+
                 // 清理Howl实例
                 if (howl) {
                     try {
@@ -402,7 +400,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         console.warn('Error unloading howl:', error);
                     }
                 }
-                
+
                 // 清理WaveSurfer实例
                 if (wavesurfer) {
                     try {
@@ -424,7 +422,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         console.warn('Error scheduling wavesurfer cleanup:', error);
                     }
                 }
-                
+
                 // 清理音频上下文
                 if (audioContext && audioContext.state !== 'closed') {
                     try {
@@ -433,7 +431,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         console.warn('Error closing audio context:', error);
                     }
                 }
-                
+
                 // 移除事件监听器
                 if (waveformRef.current) {
                     try {
@@ -466,13 +464,13 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
         if (local.isPlaying && local.howlInstance) {
             interval = setInterval(() => {
                 const currentTime = local.howlInstance.seek();
-                setLocal(prev => ({...prev, currentTime: currentTime || 0}));
-                
+                setLocal(prev => ({ ...prev, currentTime: currentTime || 0 }));
+
                 // 检查是否播放到选中区域结束
                 if (local.selectionStart !== null && local.selectionEnd !== null) {
                     const startTime = Math.min(local.selectionStart, local.selectionEnd);
                     const endTime = Math.max(local.selectionStart, local.selectionEnd);
-                    
+
                     if (currentTime >= endTime) {
                         if (local.isLooping) {
                             // 循环播放选中区域
@@ -483,21 +481,21 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         }
                     }
                 }
-                
+
                 // 同步WaveSurfer进度
-                 if (local.waveSurfer && local.duration > 0) {
-                     try {
-                         if (typeof local.waveSurfer.seekTo === 'function') {
-                             const progress = (currentTime || 0) / local.duration;
-                             local.waveSurfer.seekTo(progress);
-                         }
-                     } catch (error) {
-                         console.warn('Error seeking wavesurfer:', error);
-                     }
-                 }
+                if (local.waveSurfer && local.duration > 0) {
+                    try {
+                        if (typeof local.waveSurfer.seekTo === 'function') {
+                            const progress = (currentTime || 0) / local.duration;
+                            local.waveSurfer.seekTo(progress);
+                        }
+                    } catch (error) {
+                        console.warn('Error seeking wavesurfer:', error);
+                    }
+                }
             }, 100);
         }
-        
+
         return () => {
             if (interval) {
                 clearInterval(interval);
@@ -508,7 +506,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
     // 监听顺序播放事件
     useEffect(() => {
         const handleDisableAllLoops = () => {
-            setLocal(prev => ({...prev, isLooping: false}));
+            setLocal(prev => ({ ...prev, isLooping: false }));
         };
 
         const handlePlaySequentialAudio = (event) => {
@@ -542,7 +540,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
     // 音频控制函数
     const togglePlayPause = () => {
         if (!local.howlInstance) return;
-        
+
         if (local.isPlaying) {
             local.howlInstance.pause();
         } else {
@@ -550,7 +548,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
             if (local.selectionStart !== null && local.selectionEnd !== null) {
                 const startTime = Math.min(local.selectionStart, local.selectionEnd);
                 local.howlInstance.seek(startTime);
-                setLocal(prev => ({...prev, currentTime: startTime}));
+                setLocal(prev => ({ ...prev, currentTime: startTime }));
             }
             local.howlInstance.play();
         }
@@ -558,7 +556,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
 
     const stopAudio = () => {
         if (!local.howlInstance) return;
-        
+
         local.howlInstance.stop();
         // WaveSurfer 只用于显示，重置到开始位置
         if (local.waveSurfer) {
@@ -573,7 +571,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
     };
 
     const toggleLoop = () => {
-        setLocal(prev => ({...prev, isLooping: !prev.isLooping}));
+        setLocal(prev => ({ ...prev, isLooping: !prev.isLooping }));
     };
 
     const clearSelection = () => {
@@ -606,10 +604,10 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
     // Handle changes of note items.
     const handleChange = (e) => {
 
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setLocal({
-             ...local, 
-             note: { ...local.note, [name]: value } 
+            ...local,
+            note: { ...local.note, [name]: value }
         });
     };
 
@@ -685,11 +683,11 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                                 />
                             )}
                         </div>
-                        
+
                         {/* 音频控制按钮 */}
                         <div className="audio-controls flex items-center gap-3">
-                            <Button 
-                                variant="outline" 
+                            <Button
+                                variant="outline"
                                 size="sm"
                                 onClick={togglePlayPause}
                                 className="flex items-center gap-2"
@@ -697,9 +695,9 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                                 {local.isPlaying ? <AiFillPauseCircle /> : <AiFillPlayCircle />}
                                 {local.isPlaying ? 'Pause' : 'Play'}
                             </Button>
-                            
-                            <Button 
-                                variant="outline" 
+
+                            <Button
+                                variant="outline"
                                 size="sm"
                                 onClick={stopAudio}
                                 style={{
@@ -708,7 +706,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                             >
                                 Stop
                             </Button>
-                            
+
                             {/* 循环播放开关 */}
                             <div className="flex items-center gap-2">
                                 <Label htmlFor="loop-switch" className="text-sm">Loop</Label>
@@ -718,10 +716,10 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                                     onCheckedChange={toggleLoop}
                                 />
                             </div>
-                            
+
                             {/* 时间显示 */}
                             <div className="time-display text-sm text-gray-600">
-                                {Math.floor(local.currentTime / 60)}:{String(Math.floor(local.currentTime % 60)).padStart(2, '0')} / 
+                                {Math.floor(local.currentTime / 60)}:{String(Math.floor(local.currentTime % 60)).padStart(2, '0')} /
                                 {Math.floor(local.duration / 60)}:{String(Math.floor(local.duration % 60)).padStart(2, '0')}
                             </div>
                             {local.selectionStart !== null && local.selectionEnd !== null && (
@@ -731,11 +729,11 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                                     {Math.floor(Math.max(local.selectionStart, local.selectionEnd) / 60)}:{String(Math.floor(Math.max(local.selectionStart, local.selectionEnd) % 60)).padStart(2, '0')}
                                 </div>
                             )}
-                            
+
                             {/* 清除选择按钮 */}
                             {local.selectionStart !== null && local.selectionEnd !== null && (
-                                <Button 
-                                    variant="outline" 
+                                <Button
+                                    variant="outline"
                                     size="sm"
                                     onClick={clearSelection}
                                     className="text-xs"
@@ -746,7 +744,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         </div>
                     </div>
                 )}
-                
+
                 <div className='options'>
                     {local.shuffledChoices.map((choice, index) => {
                         const isSelected = local.answer === choice.key;
@@ -758,8 +756,8 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         const getStyle = () => {
                             let style: React.CSSProperties = {
                                 border: '1px solid rgb(120, 210, 120)',
-                                backgroundColor: isSelected 
-                                    ? 'rgb(120, 210, 120)' 
+                                backgroundColor: isSelected
+                                    ? 'rgb(120, 210, 120)'
                                     : 'rgba(120, 210, 120, 0.15)',
                                 color: isSelected ? 'black' : 'rgb(120, 210, 120)',
                                 padding: '12px 16px',
@@ -795,25 +793,24 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                         }
 
                         return (
-                            <div 
+                            <div
                                 key={choice.key}
-                                className={`choice-option ${
-                                    isSelected 
-                                        ? 'choice-selected' 
-                                        : 'choice-unselected'
-                                }`}
+                                className={`choice-option ${isSelected
+                                    ? 'choice-selected'
+                                    : 'choice-unselected'
+                                    }`}
                                 onClick={() => local.showAnswer === 0 && handleAnswerChange(choice.key)}
                                 style={getStyle()}
 
                                 onMouseEnter={() => {
                                     if (!isSelected && local.showAnswer === 0) {
-                                        setLocal(prev => ({...prev, hoveredChoice: choice.key}));
+                                        setLocal(prev => ({ ...prev, hoveredChoice: choice.key }));
                                     }
                                 }}
-                                
+
                                 onMouseLeave={() => {
                                     if (!isSelected && local.showAnswer === 0) {
-                                        setLocal(prev => ({...prev, hoveredChoice: null}));
+                                        setLocal(prev => ({ ...prev, hoveredChoice: null }));
                                     }
                                 }}
                             >
@@ -827,7 +824,7 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                                         display: 'none'
                                     }}
                                 />
-                                <div dangerouslySetInnerHTML={{__html: choice.content}} style={{flexGrow: 1}}></div>
+                                <div dangerouslySetInnerHTML={{ __html: choice.content }} style={{ flexGrow: 1 }}></div>
                                 {local.showAnswer > 0 && choice.key === note.answer && <FaRegCircleCheck style={{ color: 'lightgreen' }} />}
                                 {local.showAnswer > 0 && local.answer === choice.key && choice.key !== note.answer && <FaRegCircleXmark style={{ color: 'lightred' }} />}
                             </div>
@@ -836,40 +833,40 @@ export function NoteListeningDialog({note, isCurrentNote = false, noteIndex = 0}
                 </div>
 
                 {local.showAnswer > 0 &&
-                <div dangerouslySetInnerHTML={{__html: note.question}}></div>}
+                    <div dangerouslySetInnerHTML={{ __html: note.question }}></div>}
 
                 {local.showAnswer > 1 &&
-                <div dangerouslySetInnerHTML={{__html: note.note}}></div>}
-                  
+                    <div dangerouslySetInnerHTML={{ __html: note.note }}></div>}
+
                 <div className="operation" style={{}}>
                     {local.showAnswer != 2 &&
-                    <Button variant="outline" onClick={() => {
-                        if (!local.answer) {
-                            toast.error('请先选择答案');
-                            return;
-                        }
+                        <Button variant="outline" onClick={() => {
+                            if (!local.answer) {
+                                toast.error('请先选择答案');
+                                return;
+                            }
 
-                        setLocal(prev => ({...prev, showAnswer: prev.showAnswer + 1}));
-                    
-                    }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
+                            setLocal(prev => ({ ...prev, showAnswer: prev.showAnswer + 1 }));
+
+                        }}>{local.showAnswer == 0 ? 'Check' : 'Note'}</Button>}
 
 
 
-                    <NoteDialog note={note} preOpenCallback = {()=>{
+                    <NoteDialog note={note} preOpenCallback={() => {
                         const n = status.notesListeningDialog.notes.find(n => n.id === note.id);
                         console.log(n);
-                        setStatus(prev=>({
+                        setStatus(prev => ({
                             ...prev,
                             note: {
                                 ...n,
-                                type:{
+                                type: {
                                     title: n.type,
                                     title_sub: n.type_sub,
                                     id: n.tid,
                                 }
                             },
                         }))
-                    }}/>
+                    }} />
                 </div>
             </div>
 
