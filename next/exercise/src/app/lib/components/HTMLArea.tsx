@@ -17,9 +17,9 @@ interface HTMLAreaProps {
   name?: string;
 }
 
-export const HTMLArea: React.FC<HTMLAreaProps> = ({ 
-  value = '', 
-  handleNoteChange, 
+export const HTMLArea: React.FC<HTMLAreaProps> = ({
+  value = '',
+  handleNoteChange,
   height = '200px',
   name
 }) => {
@@ -60,7 +60,7 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
     {
       label: 'Span with Voice',
       icon: '🔊',
-      code: '<span aria-label="" speaker="" data_voice_id=""></span>'
+      code: '<span aria-label="" speaker="" data-voice-id=""></span>'
     },
     {
       label: 'Math Formula',
@@ -70,7 +70,7 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
     {
       label: 'Image with Voice',
       icon: '🖼️',
-      code: '<img aria-label="" speaker="" data_voice_id="" src=""/>'
+      code: '<img aria-label="" speaker="" data-voice-id="" src=""/>'
     }
   ];
 
@@ -83,7 +83,7 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
         value: val,
       }
     };
-      handleNoteChange?.(e);
+    handleNoteChange?.(e);
   };
 
   // 插入代码到编辑器
@@ -95,10 +95,10 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
         const { selection } = state;
         const { from, to } = selection.main;
         const selectedText = state.doc.sliceString(from, to);
-        
+
         let insertText = code;
         let cursorPos = from + code.length;
-        
+
         if (selectedText) {
           // 有选中内容：将代码包裹选中内容
           if (code.includes('><')) {
@@ -137,7 +137,7 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
             cursorPos = from + code.length;
           }
         }
-        
+
         view.dispatch({
           changes: { from, to, insert: insertText },
           selection: { anchor: cursorPos }
@@ -154,37 +154,37 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
   // 编辑器滚动同步到预览
   const handleEditorScroll = useCallback(() => {
     if (!scrollSync || !editorRef.current || !previewRef.current || isScrolling) return;
-    
+
     const editor = editorRef.current.view;
     if (editor) {
       const scrollInfo = editor.scrollDOM;
       const scrollTop = scrollInfo.scrollTop;
       const scrollHeight = scrollInfo.scrollHeight - scrollInfo.clientHeight;
       const scrollPercent = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
-      
+
       const preview = previewRef.current;
       const previewScrollHeight = preview.scrollHeight - preview.clientHeight;
       preview.scrollTop = previewScrollHeight * scrollPercent;
-      
+
     }
   }, [scrollSync, isScrolling]);
 
   // 预览滚动同步到编辑器
   const handlePreviewScroll = useCallback(() => {
     if (!scrollSync || !editorRef.current || !previewRef.current || isScrolling) return;
-    
+
     const preview = previewRef.current;
     const scrollTop = preview.scrollTop;
     const scrollHeight = preview.scrollHeight - preview.clientHeight;
     const scrollPercent = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
-    
+
     // setIsScrolling(true);
     const editor = editorRef.current.view;
     if (editor) {
       const editorScrollHeight = editor.scrollDOM.scrollHeight - editor.scrollDOM.clientHeight;
       editor.scrollDOM.scrollTop = editorScrollHeight * scrollPercent;
     }
-    
+
     // setTimeout(() => setIsScrolling(false), 100);
   }, [scrollSync, isScrolling]);
 
@@ -204,18 +204,18 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
 
       const editor = editorRef.current.view;
       const preview = previewRef.current;
-      
+
       if (editor && preview && editor.scrollDOM) {
         const editorScrollDOM = editor.scrollDOM;
-        
+
         editorScrollDOM.addEventListener('scroll', handleEditorScroll);
         preview.addEventListener('scroll', handlePreviewScroll);
-        
+
         cleanupRef.current = () => {
           editorScrollDOM.removeEventListener('scroll', handleEditorScroll);
           preview.removeEventListener('scroll', handlePreviewScroll);
         };
-        
+
         return true;
       }
       return false;
@@ -246,14 +246,14 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
   // 渲染预览内容
   const renderPreview = () => {
     return (
-      <div 
+      <div
         ref={previewRef}
         className="h-full overflow-auto p-4 bg-white dark:bg-gray-900 border-l border-gray-300 dark:border-gray-600"
         style={{ height }}
       >
         <MathJaxContext config={mathJaxConfig}>
           <MathJax hideUntilTypeset="first">
-            <div 
+            <div
               dangerouslySetInnerHTML={{ __html: htmlContent }}
               className="prose max-w-none mathjax-preview dark:prose-invert"
             />
@@ -264,7 +264,7 @@ export const HTMLArea: React.FC<HTMLAreaProps> = ({
   };
 
   return (
-    <div 
+    <div
       className="w-full border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden"
       data-name={name}
     >
