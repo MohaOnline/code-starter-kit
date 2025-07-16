@@ -7,6 +7,100 @@ import { atom, useAtom } from 'jotai';
  */
 
 export const notebookAtom = atom({isProcessing: false});
+
+// 英语单词学习应用状态管理
+export interface AudioConfig {
+  alternatePlay: boolean;
+  volume: number;
+  speed: number;
+  english: {
+    repeatCount: number;
+    pauseTime: number;
+    showText: boolean;
+    waitVoiceLength: boolean;
+  };
+  chinese: {
+    repeatCount: number;
+    pauseTime: number;
+    showText: boolean;
+    waitVoiceLength: boolean;
+  };
+}
+
+export interface Word {
+  id: string;
+  word: string;
+  voice_id_uk: string;
+  voice_id_translation: string;
+  weight: number;
+  translations: Translation[];
+}
+
+export interface Translation {
+  id: string;
+  cid: string;
+  nid: string;
+  pos: string;
+  phonetic_us: string;
+  phonetic_uk: string;
+  translation: string;
+  script: string;
+  noted: boolean;
+  note: string;
+  note_explain: string;
+  deleted?: boolean;
+}
+
+// 单词数据状态
+export const wordsAtom = atom<Word[]>([]);
+export const currentWordIndexAtom = atom<number>(0);
+export const playedWordIndexAtom = atom<number>(-1);
+
+// 音频配置状态
+export const audioConfigAtom = atom<AudioConfig>({
+  alternatePlay: false,
+  volume: 100,
+  speed: 100,
+  english: {
+    repeatCount: 1,
+    pauseTime: 0,
+    showText: true,
+    waitVoiceLength: true,
+  },
+  chinese: {
+    repeatCount: 0,
+    pauseTime: 0,
+    showText: true,
+    waitVoiceLength: true,
+  },
+});
+
+// UI状态
+export const uiStateAtom = atom({
+  isPlaying: false,
+  isDialogOpen: false,
+  isConfigDialogOpen: false,
+  isProcessing: false,
+  isComposing: false,
+  isTabPressed: false,
+  searchText: '',
+  onWheel: false,
+  mode: 'study' as 'study' | 'listen',
+  processingMessage: '',
+});
+
+// 对话框数据状态
+export const dialogDataAtom = atom<{
+  eid?: string;
+  word?: string;
+  accent?: string;
+  script?: string;
+  syllable?: string;
+  translations: Translation[];
+}>({
+  translations: []
+});
+
 export const englishWordsAtom = atom({});
 
 export interface NoteType {
