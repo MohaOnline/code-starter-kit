@@ -1,4 +1,5 @@
 Key Principles
+- Generate and update markdown document to trace what is planned and what is done for the request.
 - Write concise, technical TypeScript code with accurate examples.
 - Write Code for Next.js 15 & App Router.
 - Use functional and declarative programming patterns; avoid classes.
