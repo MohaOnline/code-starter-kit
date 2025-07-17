@@ -29,6 +29,8 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
   const [scrollSync, setScrollSync] = useState(true);
   const [editorHeight, setEditorHeight] = useState(minHeight);
   const [selectedRange, setSelectedRange] = useState<{from: number, to: number} | null>(null);
+  const [showLabels, setShowLabels] = useState(false);
+  const [showPreview, setShowPreview] = useState(true);
   const editorRef = useRef<any>(null);
   const previewRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -341,14 +343,32 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
             title={button.label}
             className="h-8 px-2 text-xs"
           >
-            <span className="mr-1">{button.icon}</span>
-            {button.label}
+            <span className={showLabels ? "mr-1" : ""}>{button.icon}</span>
+            {showLabels && button.label}
           </Button>
         ))}
         <div className="ml-auto flex items-center gap-2">
           <span className="text-xs text-gray-500">
             Height: {editorHeight}
           </span>
+          <label className="flex items-center gap-1 text-sm">
+            <input
+              type="checkbox"
+              checked={showLabels}
+              onChange={(e) => setShowLabels(e.target.checked)}
+              className="w-4 h-4"
+            />
+            Labels
+          </label>
+          <label className="flex items-center gap-1 text-sm">
+            <input
+              type="checkbox"
+              checked={showPreview}
+              onChange={(e) => setShowPreview(e.target.checked)}
+              className="w-4 h-4"
+            />
+            Preview
+          </label>
           <label className="flex items-center gap-1 text-sm">
             <input
               type="checkbox"
@@ -364,7 +384,7 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
       {/* 主要内容区域 */}
       <div className="flex">
         {/* 左侧编辑器 */}
-        <div className="w-1/2">
+        <div className={showPreview ? "w-1/2" : "w-full"}>
           <CodeMirror
             ref={editorRef}
             value={htmlContent}
@@ -402,9 +422,11 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
         </div>
 
         {/* 右侧预览 */}
-        <div className="w-1/2">
-          {renderPreview()}
-        </div>
+        {showPreview && (
+          <div className="w-1/2">
+            {renderPreview()}
+          </div>
+        )}
       </div>
     </div>
   );
