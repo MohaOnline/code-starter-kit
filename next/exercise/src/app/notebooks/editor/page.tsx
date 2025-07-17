@@ -11,6 +11,8 @@ import { NotebookCombobox } from './components/NotebookCombobox';
 import { TypeCombobox } from './components/TypeCombobox';
 import { PreviewArea } from './components/PreviewArea';
 import ModeToggle from '@/components/mode-toggle';
+import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
+import { useStatus } from '@/app/lib/atoms';
 
 interface NoteData {
   id?: number;
@@ -49,12 +51,28 @@ export default function NotebookEditor() {
   const [types, setTypes] = useState<TypeOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [status, setStatus] = useStatus();
 
   // Load options on component mount
   useEffect(() => {
     loadNotebooks();
     loadTypes();
   }, []);
+
+  // Add keyboard shortcut listener for Cmd+S / Ctrl+S
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 's') {
+        event.preventDefault();
+        saveNote();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [noteData, saving]); // Dependencies to ensure saveNote has latest state
 
   const loadNotebooks = async () => {
     try {
@@ -111,6 +129,7 @@ export default function NotebookEditor() {
 
   const saveNote = async () => {
     setSaving(true);
+    setStatus(prev => ({ ...prev, isProcessing: true }));
     try {
       const url = noteData.id 
         ? `/api/notebooks/editor/${noteData.id}`
@@ -143,6 +162,7 @@ export default function NotebookEditor() {
       toast.error('Failed to save note');
     } finally {
       setSaving(false);
+      setStatus(prev => ({ ...prev, isProcessing: false }));
     }
   };
 
@@ -157,7 +177,9 @@ export default function NotebookEditor() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <>
+      <ProcessingMask />
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Notebook Editor</h1>
@@ -340,6 +362,7 @@ export default function NotebookEditor() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
