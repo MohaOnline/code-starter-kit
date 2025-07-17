@@ -1,4 +1,4 @@
-
+'use client';
 
 // // 导出的 atom 可以在项目中的任何地方通过 useAtom 或其他 Jotai API 使用，确保状态的一致性。
 // export const currentWordIndexAtom = atom(0);
@@ -253,15 +253,12 @@ export function preciseTimeout3(callback, delay) {
     };
   `;
 
-  const blob = new Blob([workerCode], { type: 'application/javascript' });
-  const workerUrl = URL.createObjectURL(blob);
-  const worker = new Worker(workerUrl);
+  const worker = new Worker(new URL('./precise-timer-worker.js', import.meta.url), { type: 'module' });
 
   worker.onmessage = function (e) {
     if (e.data.type === 'complete' && !cancelled) {
       callback();
       worker.terminate();
-      URL.revokeObjectURL(workerUrl);
     }
   };
 
@@ -273,7 +270,6 @@ export function preciseTimeout3(callback, delay) {
     cancelled = true;
     worker.postMessage({ type: 'cancel' });
     worker.terminate();
-    URL.revokeObjectURL(workerUrl);
   };
 }
 

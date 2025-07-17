@@ -124,8 +124,7 @@ export async function GET(request) {
 
     // Execute the SQL query
     // 单纯查词接口，是否在笔记本里进攻参考。
-    const [
-      rows] = await connection.execute(`
+    const [rows] = await connection.execute(`
         SELECT translation, chinese_script, voice_id_translation
         FROM words_english_chinese_summary
         WHERE words_english_chinese_summary.chinese_id = ?

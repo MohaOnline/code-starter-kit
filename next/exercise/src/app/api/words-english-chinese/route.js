@@ -11,6 +11,9 @@ import {
   AudioConfig, ResultReason, SpeechSynthesisOutputFormat,
 } from 'microsoft-cognitiveservices-speech-sdk';
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+
 // 配置 Azure TTS
 const speechConfig = SpeechConfig.fromSubscription(
     process.env.SPEECH_KEY,
@@ -190,6 +193,14 @@ export async function GET(request) {
     // params.push(`${word}%`);
     params.push(`${word}`);
 
+    const session = await getServerSession(authOptions)
+    let userId = session?.user?.id;
+    if (!userId) {
+      userId = '6';
+    }
+    console.log('userId: ', userId);
+    params.push(parseInt(userId, 10));
+
     // Create database connection
     connection = await mysql.createConnection(dbConfig);
 
@@ -210,6 +221,7 @@ export async function GET(request) {
                               notebook_words_english.chinese_id
 #         WHERE word LIKE ?
         WHERE word = ?
+        AND uid = ?
         ORDER BY id
         ;
     `, params);
@@ -292,6 +304,11 @@ export async function GET(request) {
   }
 }
 
+/**
+ * 
+ * @param {*} request 
+ * @returns 
+ */
 export async function POST(request) {
 
   let connection;
@@ -438,6 +455,13 @@ export async function POST(request) {
               translation.voice_id_translation);
         }
 
+        // 根据 session 获取 uid。当前用户处理。
+        const session = await getServerSession(authOptions)
+        let userId = session?.user?.id;
+        if (!userId) {
+          userId = '6';
+        }
+        console.log('userId: ', userId);
 
         if (!!translation.noted && !translation.id) {
           // 计算 weight，放入 translation。
@@ -463,7 +487,8 @@ export async function POST(request) {
                                                    note,
                                                    weight,
                                                    note_explain)
-               VALUES (6, 1, ?, ?, ?, ?, ?)`, [
+               VALUES (?, 1, ?, ?, ?, ?, ?)`, [
+                userId,
                 data.eid,
                 translation.cid,
                 translation.note,

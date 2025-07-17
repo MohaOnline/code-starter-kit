@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import mysql from 'mysql2/promise';
 import { LexoRank } from 'lexorank';
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+
 // Database configuration
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',

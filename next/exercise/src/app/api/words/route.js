@@ -1,6 +1,9 @@
 import {NextResponse} from 'next/server';
 import mysql from 'mysql2/promise';
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+
 // Database configuration
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
@@ -13,6 +16,12 @@ export async function GET() {
   try {
     // Create database connection
     const connection = await mysql.createConnection(dbConfig);
+
+    const session = await getServerSession(authOptions)
+    let userId = session?.user?.id;
+    if (!userId) {
+      userId = '6';
+    }
 
     // Execute the SQL query
     const [rows] = await connection.execute(`

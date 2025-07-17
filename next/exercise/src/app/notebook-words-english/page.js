@@ -187,7 +187,10 @@ export default function Page() {
   useEffect(() => {
     const fetchWords = async () => {
 
-      const response = await fetch('/api/notebook-words-english');
+      const response = await fetch('/api/notebook-words-english', {
+        credentials: 'include'
+      });
+      
       const json = await response.json();
 
       if (json.success) {
@@ -1325,8 +1328,7 @@ export default function Page() {
                       if (status.currentWordIndex === 0) {
                         status.dialogData.weight1 = status.words[status.currentWordIndex].weight;
                         status.dialogData.weight2 = '';
-                      } else if (status.currentWordIndex ===
-                        status.words.length - 1) {
+                      } else if (status.currentWordIndex === status.words.length - 1) {
                         status.dialogData.weight1 = '';
                         status.dialogData.weight2 = status.words[status.currentWordIndex].weight;
                       } else {

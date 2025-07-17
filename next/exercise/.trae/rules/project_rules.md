@@ -38,3 +38,26 @@ Key Conventions
 - Avoid for data fetching or state management.
 
 Follow Next.js docs for Data Fetching, Rendering, and Routing.
+
+Next.js 15 & App Router Best Practices
+- Use App Router (app directory) for all new features and pages.
+- Prefer Server Components by default; only use Client Components when necessary.
+- Use TypeScript (.tsx/.ts) file extensions consistently throughout the project.
+- Implement proper loading.tsx, error.tsx, and not-found.tsx files for better UX.
+- Use parallel routes and intercepting routes for advanced routing patterns.
+- Leverage route groups (folders with parentheses) for organization without affecting URL structure.
+- Use generateMetadata for dynamic SEO optimization.
+- Implement proper data fetching with async/await in Server Components.
+- Use Suspense boundaries strategically for progressive loading.
+- Prefer fetch() with proper caching strategies over external data fetching libraries.
+- Use Server Actions for form submissions and mutations.
+- Implement proper error boundaries and error handling.
+- Use middleware.ts for authentication, redirects, and request/response manipulation.
+- Optimize bundle size with dynamic imports and code splitting.
+- Use Next.js Image component with proper sizing and optimization.
+- Implement proper TypeScript strict mode configuration.
+- Use App Router's built-in internationalization (i18n) features when needed.
+- Leverage streaming and partial prerendering for better performance.
+- Use proper caching strategies: force-cache, no-store, revalidate.
+- Implement proper security headers and CSP policies.
+

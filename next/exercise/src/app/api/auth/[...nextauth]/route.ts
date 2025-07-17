@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { prisma } from '@/lib/prisma'
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -59,8 +59,22 @@ const handler = NextAuth({
     }
   },
   session: {
-    strategy: 'jwt'
-  }
-})
+    strategy: 'jwt' as const
+  },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: false // 开发环境设为 false
+      }
+    }
+  },
+  debug: process.env.NODE_ENV === 'development'
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
