@@ -45,6 +45,11 @@ span.pos {
     opacity: 0.9;
 }
 
+.word-container .note {
+    font-size: 18px;
+    opacity: 1.0;
+}
+
 svg {
     display: inline;
     vertical-align: top;

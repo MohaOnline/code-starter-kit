@@ -24,6 +24,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Input } from '@/components/ui/input';
 import { toast } from 'react-toastify';
+import NavTop from '@/app/lib/components/NavTop';
 
 interface Word {
   id: number;
@@ -347,7 +348,8 @@ export default function WordListPage() {
     }
   };
 
-  return (
+  return (<>
+    <NavTop />
     <div className="container mx-auto p-4 bg-gray-900 min-h-screen">
       <h1 className="text-2xl font-bold mb-4 text-green-400">单词排序管理</h1>
       
@@ -392,7 +394,7 @@ export default function WordListPage() {
           ) : null}
         </DragOverlay>
       </DndContext>
-    </div>
+    </div></>
   );
 }
 

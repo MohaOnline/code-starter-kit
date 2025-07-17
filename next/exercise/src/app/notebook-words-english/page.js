@@ -838,15 +838,18 @@ export default function Page() {
 
           <div className={'translation'} dangerouslySetInnerHTML={{
             __html: status.audioConfig.chinese.showText ? status.words[status.currentWordIndex].translation : '&nbsp;',
-          }}>
-          </div>
+          }}></div>
+          
+          <div className={'note'} dangerouslySetInnerHTML={{
+            __html: status.audioConfig.chinese.showText && status.words[status.currentWordIndex].note ?
+               '📗 '+status.words[status.currentWordIndex].note : '&nbsp;',
+          }}></div>
 
         </div>
       </div>
 
       <div className={'operation text-center'}>
-        {status.currentWordIndex +
-          1} / {status.words.length}</div>
+        {status.currentWordIndex + 1} / {status.words.length}</div>
 
       <div className={'operation text-center'}>
         <span className={'put_top'} onClick={handlePutTop}><PiRocket />
@@ -947,6 +950,8 @@ export default function Page() {
                         phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
                         translation: status.words[status.currentWordIndex].translation,
                         script: status.words[status.currentWordIndex].translation_script,
+                        note: status.words[status.currentWordIndex].note,
+                        note_explain: status.words[status.currentWordIndex].note_explain,
                       },
                     ],
                   },
@@ -1294,7 +1299,24 @@ export default function Page() {
                       </div>
                       <textarea
                         className={'w-full p-2 border rounded mt-2'}
-                        placeholder={'笔记...'}>
+                        placeholder={'笔记...'}
+                        value={translation.note || ''}
+                        onChange={(e) => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            note: e.target.value,
+                          };
+                          setStatus(
+                            {
+                              ...status,
+                              dialogData: {
+                                ...status.dialogData,
+                                translations: translations,
+                              },
+                            });
+                        }}                        
+                        >
 
                       </textarea>
 
