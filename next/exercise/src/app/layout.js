@@ -1,8 +1,10 @@
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
 import AuthSessionProvider from '@/components/providers/session-provider';
+import { ToastContainer } from 'react-toastify';
 
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'Create Next App',
@@ -26,6 +28,18 @@ export default function RootLayout ({ children }) {
     >
       <AuthSessionProvider>
         <JotaiProvider>{children}</JotaiProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="auto"
+        />
       </AuthSessionProvider>
     </NextThemesProvider>
     </body>
