@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({children}) {
   return (
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
       </ThemeProvider>
   );

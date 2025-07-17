@@ -13,6 +13,8 @@ import { PreviewArea } from './components/PreviewArea';
 import ModeToggle from '@/components/mode-toggle';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { useStatus } from '@/app/lib/atoms';
+import { ThemeToggle } from '@/app/lib/components/ThemeToggle';
+import HTMLAreaV2 from '@/app/lib/components/HTMLAreaV2';
 
 interface NoteData {
   id?: number;
@@ -179,11 +181,11 @@ export default function NotebookEditor() {
   return (
     <>
       <ProcessingMask />
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen">
       <div className="container mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Notebook Editor</h1>
-          <ModeToggle />
+          <ThemeToggle />
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -245,11 +247,10 @@ export default function NotebookEditor() {
               {/* HTML Content Fields */}
               <div>
                 <Label>Body</Label>
-                <HTMLArea
+                <HTMLAreaV2
                   value={noteData.body || ''}
                   handleNoteChange={handleHTMLAreaChange('body')}
                   name="body"
-                  height="200px"
                 />
               </div>
 
