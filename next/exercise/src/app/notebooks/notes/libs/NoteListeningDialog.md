@@ -10,7 +10,7 @@ toolName: view_files
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
           
 现在我需要修改代码，将四个div改为radio按钮，实现随机排序、样式设计和状态管理。我需要添加状态管理来保存选中的答案，实现随机排序逻辑，并应用指定的样式。
         
@@ -20,7 +20,7 @@ toolName: edit_file_update
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
           
 changes: 
               
@@ -235,7 +235,7 @@ toolName: edit_file_update
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/notebooks/notes/libs/NoteListeningDialog.tsx
           
 changes: 
               

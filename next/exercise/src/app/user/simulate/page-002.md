@@ -10,7 +10,7 @@ toolName: edit_file_update
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/user/simulate/page.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/user/simulate/page.tsx
           
 changes: 
               

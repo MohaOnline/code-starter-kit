@@ -2,7 +2,7 @@
 
 ## 概述
 
-本文档详细分析了用户模拟登录页面 (`/Users/ma3310/p/code-starter-kit/next/exercise/src/app/user/simulate/page.tsx`) 的技术实现，包括功能特性、技术栈、数据库交互、业务逻辑和架构设计。
+本文档详细分析了用户模拟登录页面 (`./code-starter-kit/next/exercise/src/app/user/simulate/page.tsx`) 的技术实现，包括功能特性、技术栈、数据库交互、业务逻辑和架构设计。
 
 ## 核心功能
 

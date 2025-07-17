@@ -10,7 +10,7 @@ toolName: view_files
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/api/notebook-words-english/route.js
+filePath: ./code-starter-kit/next/exercise/src/app/api/notebook-words-english/route.js
           
 现在查看package.json了解项目依赖，然后创建新的API接口用于更新单词权重。
         
@@ -20,7 +20,7 @@ toolName: view_files
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/package.json
+filePath: ./code-starter-kit/next/exercise/package.json
           
 项目已有@dnd-kit/core和lexorank依赖，很好。现在创建更新单词权重的API接口。
         
@@ -30,7 +30,7 @@ toolName: write_to_file
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/api/notebooks/words/update-weight/route.js
+filePath: ./code-starter-kit/next/exercise/src/app/api/notebooks/words/update-weight/route.js
           
 content: import { NextResponse } from 'next/server';
 import mysql from 'mysql2/promise';
@@ -108,7 +108,7 @@ toolName: edit_file_update
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx
           
 changes: 
               
@@ -608,7 +608,7 @@ toolName: edit_file_update
 status: success
           
             
-filePath: /Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx
+filePath: ./code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx
           
 changes: 
               
@@ -654,7 +654,7 @@ Preview
 ## 主要功能
 
 ### 📋 双列布局
-- 创建了 <mcfile name="page.tsx" path="/Users/ma3310/p/code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx"></mcfile> 页面
+- 创建了 <mcfile name="page.tsx" path="./code-starter-kit/next/exercise/src/app/notebooks/words/english/list/page.tsx"></mcfile> 页面
 - 实现90vh高度的双列显示，自动将5000+单词平均分配到左右两列
 - 每列显示单词数量统计
 
@@ -675,7 +675,7 @@ Preview
 - 拖拽完成后实时更新UI显示
 
 ### 💾 数据库集成
-- 创建了 <mcfile name="route.js" path="/Users/ma3310/p/code-starter-kit/next/exercise/src/app/api/notebooks/words/update-weight/route.js"></mcfile> API接口
+- 创建了 <mcfile name="route.js" path="./code-starter-kit/next/exercise/src/app/api/notebooks/words/update-weight/route.js"></mcfile> API接口
 - 使用LexoRank算法计算新的权重值
 - 支持头部、尾部、中间位置的权重计算
 - 拖拽完成后自动更新数据库中的weight字段

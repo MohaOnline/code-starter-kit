@@ -61,12 +61,12 @@
 
 - **MathJax集成**: 支持数学公式渲染
 - **HTML渲染**: 实时预览编辑内容
-- **配置参考**: 使用 `/Users/ma3310/p/code-starter-kit/next/exercise/src/app/lib/components/HTMLArea.tsx#L32-51` 的 MathJax 配置
+- **配置参考**: 使用 `./code-starter-kit/next/exercise/src/app/lib/components/HTMLArea.tsx#L32-51` 的 MathJax 配置
 
 ### 4. API接口需求
 
 #### 4.1 基础路径
-- API路径: `/Users/ma3310/p/code-starter-kit/next/exercise/src/app/api/notebooks/editor`
+- API路径: `./code-starter-kit/next/exercise/src/app/api/notebooks/editor`
 
 #### 4.2 接口列表
 
@@ -112,7 +112,7 @@
   - `weight`: 权重值
 
 #### 5.2 Weight字段生成逻辑
-- **参考实现**: `/Users/ma3310/p/code-starter-kit/next/exercise/src/app/api/notebook/words/english/route.js#L32-43`
+- **参考实现**: `./code-starter-kit/next/exercise/src/app/api/notebook/words/english/route.js#L32-43`
 - **生成规则**: 
   1. 查询同nbid下的最大weight值
   2. 使用LexoRank算法生成下一个权重值
