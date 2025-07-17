@@ -1,9 +1,11 @@
 Key Principles
 - Write concise, technical TypeScript code with accurate examples.
+- Write Code for Next.js 15 & App Router.
 - Use functional and declarative programming patterns; avoid classes.
 - Prefer iteration and modularization over code duplication.
 - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
 - Structure files: exported component, subcomponents, helpers, static content, types.
+- Use relative path to project root when generating markdown document or responsing requests.
 
 Naming Conventions
 - Use lowercase with dashes for directories (e.g., components/auth-wizard).

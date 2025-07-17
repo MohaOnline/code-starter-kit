@@ -22,3 +22,6 @@ self.addEventListener('message', (e) => {
     self.close();
   }
 });
+
+// Export to satisfy ES module requirements
+export {};
