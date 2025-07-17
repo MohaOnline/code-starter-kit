@@ -59,10 +59,6 @@ div.operation {
     position: relative;
 }
 
-div.operation:hover {
-
-}
-
 .search-form input {
     opacity: .5;
 }

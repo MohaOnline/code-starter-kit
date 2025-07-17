@@ -28,9 +28,13 @@ export const handleKeyDown = (event, status, setStatus) => {
   // 对话框开启的处理
   if (status.isDialogOpen) {
 
-    if (event.key === 'Escape' && document.activeElement.tagName === 'INPUT' &&
-      document.activeElement instanceof HTMLInputElement &&
-      document.activeElement.type === 'text' && !!status.isComposing) {
+    if (event.key === 'Escape' && 
+      ((document.activeElement.tagName === 'INPUT' &&
+        document.activeElement instanceof HTMLInputElement &&
+        document.activeElement.type === 'text') ||
+       (document.activeElement.tagName === 'TEXTAREA' &&
+        document.activeElement instanceof HTMLTextAreaElement)) &&
+      !!status.isComposing) {
       event.preventDefault(); // 阻止 ESC 键的默认行为
     } else if (event.key === 'Tab') {
       console.debug('Tab Down');
@@ -47,10 +51,8 @@ export const handleKeyDown = (event, status, setStatus) => {
       document.activeElement instanceof HTMLInputElement &&
       document.activeElement.type === 'text') {
       return;
-
-    } else {
-      event.preventDefault?.();
     }
+    // 不要无条件阻止默认行为，这会影响复制粘贴等系统功能
   }
 
   console.log(event.key);
@@ -59,6 +61,7 @@ export const handleKeyDown = (event, status, setStatus) => {
   }
 
   if (event.key === 'ArrowRight') {
+    event.preventDefault();
     console.debug('next word');
 
     let next = status.currentWordIndex + 1;
@@ -74,6 +77,7 @@ export const handleKeyDown = (event, status, setStatus) => {
       currentWordIndex: next, // 更新 currentWord
     });
   } else if (event.key === 'ArrowLeft') {
+    event.preventDefault();
     console.debug('previous word');
 
     let nextIndex = status.currentWordIndex - 1;
@@ -87,18 +91,21 @@ export const handleKeyDown = (event, status, setStatus) => {
       // currentWordIndex: Math.max(0, status.currentWordIndex - 1),
       currentWordIndex: nextIndex,
     });
-  } else if (event.key === 'v') {
+  } else if (event.key === 'v' && !event.metaKey && !event.ctrlKey) {
+    event.preventDefault();
     console.debug('play current pronunciation');
     status.playCurrent();
 
   } else if (event.key === ' ') {
+    event.preventDefault();
     console.debug('play pronunciation');
 
     setStatus({
       ...status, // 复制现有状态
       isPlaying: !status.isPlaying,
     });
-  } else if (event.key === 'c') {
+  } else if (event.key === 'c' && !event.metaKey && !event.ctrlKey) {
+    event.preventDefault();
     console.debug('toggle chinese text display');
 
     setStatus({
@@ -112,6 +119,7 @@ export const handleKeyDown = (event, status, setStatus) => {
       },
     });
   } else if (event.key === 'e') {
+    event.preventDefault();
     console.debug('toggle english text display');
 
     setStatus({

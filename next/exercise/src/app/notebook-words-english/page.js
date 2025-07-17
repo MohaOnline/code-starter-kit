@@ -581,6 +581,8 @@ export default function Page() {
         ...status, // 复制现有状态
       });
     }
+
+    localStorage.setItem('wordStatus', status.currentWordIndex.toString());
   };
 
   /**  */
@@ -848,7 +850,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className={'operation text-center'}>
+      <div className={'operation text-center'} onWheel={handleWordWheel}>
         {status.currentWordIndex + 1} / {status.words.length}</div>
 
       <div className={'operation text-center'}>
