@@ -225,7 +225,7 @@ export function preciseTimeout2(callback, delay) {
 }
 
 /**
- * 使用 Web Worker 实现的精确定时器（备选方案）
+ * 使用 Web Worker 实现的精确定时器（移动端息屏兼容版本）
  * @param {Function} callback 回调函数
  * @param {number} delay 延迟时间（毫秒）
  * @returns {Function} 取消函数
@@ -233,51 +233,136 @@ export function preciseTimeout2(callback, delay) {
 export function preciseTimeout(callback, delay) {
   let cancelled = false;
 
-  // 创建一个简单的 Worker
-  const workerCode = `
-    let startTime;
-    let targetDelay;
-    let intervalId;
-    
-    self.onmessage = function(e) {
-      if (e.data.type === 'start') {
-        startTime = performance.now();
-        targetDelay = e.data.delay;
-        
-        function check() {
-          const elapsed = performance.now() - startTime;
-          if (elapsed >= targetDelay) {
-            self.postMessage({ type: 'complete' });
-          } else {
-            // 使用较短间隔检查，提高精度
-            setTimeout(check, Math.min(targetDelay - elapsed, 4));
-          }
-        }
-        
-        check();
-      } else if (e.data.type === 'cancel') {
-        self.close();
+  try {
+    // 尝试使用 Web Worker（最佳方案）
+    const worker = new Worker(new URL('./precise-timer-worker.js', import.meta.url), { type: 'module' });
+
+    worker.onmessage = function (e) {
+      if (e.data.type === 'complete' && !cancelled) {
+        callback();
+        worker.terminate();
       }
     };
-  `;
 
-  const worker = new Worker(new URL('./precise-timer-worker.js', import.meta.url), { type: 'module' });
-
-  worker.onmessage = function (e) {
-    if (e.data.type === 'complete' && !cancelled) {
-      callback();
+    worker.onerror = function(error) {
+      console.warn('Worker failed, falling back to alternative timer:', error);
       worker.terminate();
-    }
-  };
+      // 降级到 MessageChannel 方案
+      return preciseTimeoutFallback(callback, delay);
+    };
 
-  // 启动定时器
-  worker.postMessage({ type: 'start', delay });
+    // 启动定时器
+    worker.postMessage({ type: 'start', delay });
+
+    // 返回取消函数
+    return () => {
+      cancelled = true;
+      try {
+        worker.postMessage({ type: 'cancel' });
+        worker.terminate();
+      } catch (e) {
+        // Worker 可能已经终止
+      }
+    };
+  } catch (error) {
+    console.warn('Web Worker not available, using fallback timer:', error);
+    // 降级到备用方案
+    return preciseTimeoutFallback(callback, delay);
+  }
+}
+
+/**
+ * 备用定时器实现 - 使用多种技术组合确保移动端息屏后也能工作
+ * @param {Function} callback 回调函数
+ * @param {number} delay 延迟时间（毫秒）
+ * @returns {Function} 取消函数
+ */
+function preciseTimeoutFallback(callback, delay) {
+  const start = performance.now();
+  let cancelled = false;
+  let timeoutId;
+  let intervalId;
+  let channel;
+  let port1, port2;
+
+  // 方案1: MessageChannel (高优先级)
+  try {
+    channel = new MessageChannel();
+    port1 = channel.port1;
+    port2 = channel.port2;
+
+    function checkTime() {
+      if (cancelled) return;
+
+      const elapsed = performance.now() - start;
+      if (elapsed >= delay) {
+        callback();
+        return;
+      }
+
+      const remaining = delay - elapsed;
+      const nextCheck = Math.min(remaining, 16); // 最多16ms间隔
+
+      timeoutId = setTimeout(() => {
+        if (!cancelled) {
+          port2.postMessage(null);
+        }
+      }, nextCheck);
+    }
+
+    port1.onmessage = checkTime;
+    port2.postMessage(null); // 启动
+
+    // 方案2: 备用 setInterval (低优先级，防止 MessageChannel 失效)
+    intervalId = setInterval(() => {
+      if (cancelled) return;
+      
+      const elapsed = performance.now() - start;
+      if (elapsed >= delay) {
+        callback();
+        clearInterval(intervalId);
+      }
+    }, Math.min(delay / 4, 50)); // 使用较短间隔确保精度
+
+  } catch (error) {
+    console.warn('MessageChannel not available, using setTimeout only:', error);
+    
+    // 方案3: 纯 setTimeout 递归 (最后备用)
+    function recursiveTimeout() {
+      if (cancelled) return;
+      
+      const elapsed = performance.now() - start;
+      if (elapsed >= delay) {
+        callback();
+        return;
+      }
+      
+      const remaining = delay - elapsed;
+      timeoutId = setTimeout(recursiveTimeout, Math.min(remaining, 16));
+    }
+    
+    recursiveTimeout();
+  }
 
   // 返回取消函数
   return () => {
     cancelled = true;
-    worker.postMessage({ type: 'cancel' });
-    worker.terminate();
+    
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    
+    if (port1) {
+      port1.close();
+    }
+    
+    if (port2) {
+      port2.close();
+    }
   };
 }
 
