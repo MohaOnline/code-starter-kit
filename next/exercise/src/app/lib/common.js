@@ -177,7 +177,7 @@ export function preciseTimeout1(callback, delay) {
  * @param {number} delay 延迟时间（毫秒）
  * @returns {Function} 取消函数
  */
-export function preciseTimeout(callback, delay) {
+export function preciseTimeout2(callback, delay) {
   const start = performance.now();
   let cancelled = false;
   let timeoutId;
@@ -230,7 +230,7 @@ export function preciseTimeout(callback, delay) {
  * @param {number} delay 延迟时间（毫秒）
  * @returns {Function} 取消函数
  */
-export function preciseTimeout3(callback, delay) {
+export function preciseTimeout(callback, delay) {
   let cancelled = false;
 
   // 创建一个简单的 Worker
