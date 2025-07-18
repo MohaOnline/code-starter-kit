@@ -38,7 +38,7 @@ import { Separator } from '@/components/ui/separator';
 import { useStatus } from '@/app/lib/atoms';
 import { handleKeyDown } from '../lib/common';
 import NavTop from '@/app/lib/components/NavTop.js';
-import { VoicePlayerHowler } from '@/app/lib/VoicePlayerHowler';
+import { VoicePlayerWithMediaSession } from '@/app/lib/VoicePlayerWithMediaSession';
 import ModeToggle from '@/components/mode-toggle';
 
 // 默认音频配置
@@ -267,7 +267,40 @@ export default function Page() {
     }
   }
 
-  const player = new VoicePlayerHowler();
+  const playerRef = useRef(null);
+  
+  // 初始化播放器
+  useEffect(() => {
+    playerRef.current = new VoicePlayerWithMediaSession();
+    
+    // 设置外部控制回调
+    playerRef.current.setExternalControls(
+      () => {
+        // 上一个单词
+        if (status.currentWordIndex > 0) {
+          setStatus(prev => ({
+            ...prev,
+            currentWordIndex: prev.currentWordIndex - 1,
+          }));
+        } else {
+          setStatus(prev => ({
+            ...prev,
+            currentWordIndex: prev.words.length - 1,
+          }));
+        }
+      },
+      () => {
+        // 下一个单词
+        nextWord();
+      }
+    );
+    
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+    };
+  }, []);
   // 播放音频: 当 currentWordIndex 或 words 改变时
   useEffect(() => {
     if (status.words.length > 0 &&
@@ -281,7 +314,11 @@ export default function Page() {
 
     }
 
-    return () => player.stop();
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.stop();
+      }
+    };
 
     /*          
           // 清理现有定时器和音频
@@ -447,20 +484,25 @@ export default function Page() {
   /** 播放当前单词音频。 */
   const playCurrentWord = (onCompleteCallback = () => { }) => {
     const voiceURLs = generateVoiceURLs(status.currentWordIndex);
-    if (voiceURLs.length > 0) {
-      player.stop();
-      player.setSpeed(status.audioConfig.speed / 100);
-      player.setVolume(status.audioConfig.volume / 100);
-      player.setVoiceInterval(status.audioConfig.english.waitVoiceLength, status.audioConfig.chinese.waitVoiceLength, status.audioConfig.english.pauseTime * 1000, status.audioConfig.chinese.pauseTime * 1000);
-      player.play(voiceURLs, onCompleteCallback);
+    if (voiceURLs.length > 0 && playerRef.current) {
+      const currentWord = status.words[status.currentWordIndex];
+      const wordData = {
+        word: currentWord.word,
+        translation: currentWord.translations?.[0]?.translation || '',
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || ''
+      };
+      
+      playerRef.current.stop();
+      playerRef.current.setSpeed(status.audioConfig.speed / 100);
+      playerRef.current.setVolume(status.audioConfig.volume / 100);
+      playerRef.current.setVoiceInterval(
+        status.audioConfig.english.waitVoiceLength, 
+        status.audioConfig.chinese.waitVoiceLength, 
+        status.audioConfig.english.pauseTime * 1000, 
+        status.audioConfig.chinese.pauseTime * 1000
+      );
+      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
     }
-
-    /*
-    audioRef.current = new Audio(audio);
-    audioRef.current.play().catch(error => {
-      console.error('Audio playback failed:', error);
-    });
-    */
   };
 
   status.playCurrent = () => playCurrentWord();
@@ -1535,7 +1577,9 @@ export default function Page() {
                         ...status.audioConfig,
                         volume: value
                       });
-                      player.setVolume(value / 100);
+                      if (playerRef.current) {
+                        playerRef.current.setVolume(value / 100);
+                      }
                     }}
                     min={50}
                     max={150}
