@@ -35,7 +35,7 @@ function getNestedDirectoryEntries(dirPath, basePath = '', depth = 0) {
 }
 
 async function getDirectoryEntries() {
-    const exampleDir = path.join(process.cwd(), 'src/app/example');
+    const exampleDir = path.join(process.cwd(), 'src/app/examples');
     return getNestedDirectoryEntries(exampleDir);
 }
 
@@ -45,7 +45,7 @@ export default async function Page() {
     return (
         <>
             <ThemeToggle />
-            <h1>Example Pages</h1>
+            <h1>Examples</h1>
             <div className="mt-6">
                 <h2 className="text-lg font-semibold mb-4">Available Examples:</h2>
                 {entries.length > 0 ? (
@@ -61,7 +61,7 @@ export default async function Page() {
                                     </span>
                                 )}
                                 <Link 
-                                    href={`/example/${entry.path}`}
+                                    href={`/examples/${entry.path}`}
                                     className="text-blue-600 hover:text-blue-800 underline transition-colors"
                                 >
                                     {entry.name}
@@ -73,7 +73,7 @@ export default async function Page() {
                         ))}
                     </ul>
                 ) : (
-                    <p className="text-gray-500">No example directories found.</p>
+                    <p className="text-gray-500">No examples directories found.</p>
                 )}
             </div>
         </>

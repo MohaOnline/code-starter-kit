@@ -24,6 +24,9 @@ if (isDev) {
   if (currentHost === '192.168.1.66') {
     allowedDevOrigins = ['http://192.168.1.66'];
   }
+  else if (currentHost.startsWith('192.168.')){
+    allowedDevOrigins.push(`http://${currentHost}`);
+  }
 }
 
 console.log('allowedDevOrigins', allowedDevOrigins);
