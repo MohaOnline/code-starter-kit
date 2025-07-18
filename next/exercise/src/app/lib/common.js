@@ -97,13 +97,13 @@ export const handleKeyDown = (event, status, setStatus) => {
     status.playCurrent();
 
   } else if (event.key === ' ') {
-    event.preventDefault();
     console.debug('play pronunciation');
 
     setStatus({
       ...status, // 复制现有状态
       isPlaying: !status.isPlaying,
     });
+    event?.preventDefault?.();
   } else if (event.key === 'c' && !event.metaKey && !event.ctrlKey) {
     event.preventDefault();
     console.debug('toggle chinese text display');
