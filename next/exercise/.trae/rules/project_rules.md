@@ -2,7 +2,7 @@ Key Principles
 - Generate and update markdown document to trace what is planned and what is done for the request, file could be saved to same folder with "source filename-number" (like: common-001.md, common-002.md) naming custom.
 - Write concise, technical TypeScript code with accurate examples.
 - Write code for Next.js 15 & App Router which this project bases on.
-- Think harder to add enough comments in Simplicated Chinese to explain businese logic, introduce technical knowledge and technical background so other maintainers needn't search and learn too much documents before their coding work even he/she is not familiar with current tech stack.
+- Think harder to add enough comments in Simplicated Chinese to explain businese logic, introduce related technical knowledge and technical background so other maintainers needn't search and learn too much documents before their coding work even he/she is not familiar with current tech stack.
 - Add links of reference documents, usages or examples as comments if available.
 - Use functional and declarative programming patterns; avoid classes.
 - Prefer iteration and modularization over code duplication.
