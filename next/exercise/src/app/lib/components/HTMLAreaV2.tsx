@@ -81,25 +81,90 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
     }
   ];
 
-  // 计算自动高度
+  // 精确计算自动高度
   const calculateAutoHeight = useCallback((content: string) => {
-    const lines = content.split('\n').length;
-    const lineHeight = 20; // 估算每行高度
-    const padding = 40; // 上下padding
-    const calculatedHeight = Math.max(
-      parseInt(minHeight),
-      Math.min(lines * lineHeight + padding, parseInt(maxHeight))
-    );
-    return `${calculatedHeight}px`;
-  }, [minHeight, maxHeight]);
+    if (!editorRef.current || !containerRef.current) {
+      // 如果编辑器还未初始化，使用简单估算
+      const lines = content.split('\n').length;
+      const lineHeight = 20;
+      const padding = 40;
+      const calculatedHeight = Math.max(
+        parseInt(minHeight),
+        Math.min(lines * lineHeight + padding, parseInt(maxHeight))
+      );
+      return `${calculatedHeight}px`;
+    }
 
+    try {
+      const view = editorRef.current.view;
+      if (!view) {
+        return editorHeight; // 返回当前高度
+      }
+
+      // 获取编辑器的实际内容高度
+      const contentHeight = view.contentHeight;
+      const scrollDOM = view.scrollDOM;
+      
+      // 获取编辑器的样式信息
+      const computedStyle = window.getComputedStyle(scrollDOM);
+      const paddingTop = parseInt(computedStyle.paddingTop) || 0;
+      const paddingBottom = parseInt(computedStyle.paddingBottom) || 0;
+      const borderTop = parseInt(computedStyle.borderTopWidth) || 0;
+      const borderBottom = parseInt(computedStyle.borderBottomWidth) || 0;
+      
+      // 计算总的内容高度（包括padding和border）
+      const totalContentHeight = contentHeight + paddingTop + paddingBottom + borderTop + borderBottom;
+      
+      // 获取当前编辑器高度
+      const currentHeight = parseInt(editorHeight);
+      
+      // 设置缓冲区，防止频繁调整高度导致抖动
+      const bufferZone = 30; // 缓冲区大小
+      const expandThreshold = 20; // 扩展阈值
+      const shrinkThreshold = 50; // 收缩阈值
+      
+      let newHeight = currentHeight;
+      
+      // 检查是否需要扩展高度
+      // 如果内容高度 + 扩展阈值 > 当前高度，则扩展
+      if (totalContentHeight + expandThreshold > currentHeight) {
+        newHeight = totalContentHeight + bufferZone;
+      }
+      // 检查是否需要收缩高度
+      // 如果内容高度 + 收缩阈值 < 当前高度，则收缩
+      else if (totalContentHeight + shrinkThreshold < currentHeight) {
+        newHeight = Math.max(totalContentHeight + bufferZone, parseInt(minHeight));
+      }
+      
+      // 确保高度在最小值和最大值之间
+      newHeight = Math.max(parseInt(minHeight), Math.min(newHeight, parseInt(maxHeight)));
+      
+      return `${newHeight}px`;
+    } catch (error) {
+      console.warn('计算自动高度时出错:', error);
+      return editorHeight; // 出错时返回当前高度
+    }
+  }, [minHeight, maxHeight, editorHeight]);
+
+  // 防抖定时器引用
+  const heightUpdateTimerRef = useRef<NodeJS.Timeout | null>(null);
+  
   // 处理内容变化
   const handleContentChange = (val: string) => {
     setHtmlContent(val);
     
-    // 自动调整高度
-    const newHeight = calculateAutoHeight(val);
-    setEditorHeight(newHeight);
+    // 清除之前的定时器
+    if (heightUpdateTimerRef.current) {
+      clearTimeout(heightUpdateTimerRef.current);
+    }
+    
+    // 使用防抖机制延迟更新高度，避免频繁计算
+    heightUpdateTimerRef.current = setTimeout(() => {
+      const newHeight = calculateAutoHeight(val);
+      if (newHeight !== editorHeight) {
+        setEditorHeight(newHeight);
+      }
+    }, 150); // 150ms 防抖延迟
     
     const e = {
       target: {
@@ -109,6 +174,51 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
     };
     handleNoteChange?.(e);
   };
+  
+  // 检查滚动条并调整高度
+  const checkScrollbarAndAdjustHeight = useCallback(() => {
+    if (!editorRef.current) return;
+    
+    try {
+      const view = editorRef.current.view;
+      if (!view) return;
+      
+      const scrollDOM = view.scrollDOM;
+      const hasVerticalScrollbar = scrollDOM.scrollHeight > scrollDOM.clientHeight;
+      
+      if (hasVerticalScrollbar) {
+        // 如果出现了滚动条，计算需要的高度
+        const contentHeight = view.contentHeight;
+        const computedStyle = window.getComputedStyle(scrollDOM);
+        const paddingTop = parseInt(computedStyle.paddingTop) || 0;
+        const paddingBottom = parseInt(computedStyle.paddingBottom) || 0;
+        const borderTop = parseInt(computedStyle.borderTopWidth) || 0;
+        const borderBottom = parseInt(computedStyle.borderBottomWidth) || 0;
+        
+        const totalNeededHeight = contentHeight + paddingTop + paddingBottom + borderTop + borderBottom + 20; // 额外20px缓冲
+        const maxHeightValue = parseInt(maxHeight);
+        
+        // 只有在不超过最大高度的情况下才调整
+        if (totalNeededHeight <= maxHeightValue) {
+          const newHeight = `${totalNeededHeight}px`;
+          if (newHeight !== editorHeight) {
+            setEditorHeight(newHeight);
+          }
+        }
+      }
+    } catch (error) {
+      console.warn('检查滚动条状态时出错:', error);
+    }
+  }, [editorHeight, maxHeight]);
+  
+  // 清理定时器
+  useEffect(() => {
+    return () => {
+      if (heightUpdateTimerRef.current) {
+        clearTimeout(heightUpdateTimerRef.current);
+      }
+    };
+  }, []);
 
   // 保存当前选择范围
   const saveSelection = () => {
@@ -404,6 +514,13 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
                 if (update.selectionSet) {
                   const { from, to } = update.state.selection.main;
                   setSelectedRange({ from, to });
+                }
+                // 监听视图变化，检查是否需要调整高度
+                if (update.viewportChanged || update.geometryChanged) {
+                  // 延迟检查滚动条状态
+                  setTimeout(() => {
+                    checkScrollbarAndAdjustHeight();
+                  }, 50);
                 }
               })
             ]}
