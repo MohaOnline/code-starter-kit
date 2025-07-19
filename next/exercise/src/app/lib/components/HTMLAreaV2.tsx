@@ -4,9 +4,14 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { EditorView } from '@codemirror/view';
+import { EditorView, keymap } from '@codemirror/view';
+import { EditorState } from '@codemirror/state';
 import { autocompletion } from '@codemirror/autocomplete';
 import { htmlCompletionSource } from '@codemirror/lang-html';
+import { bracketMatching } from '@codemirror/language';
+import { standardKeymap } from '@codemirror/commands';
+import { Decoration, DecorationSet, ViewPlugin, ViewUpdate, WidgetType } from '@codemirror/view';
+import { StateField, StateEffect, Range } from '@codemirror/state';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import { Button } from '@/components/ui/button';
 
@@ -175,6 +180,252 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
     handleNoteChange?.(e);
   };
   
+  // HTML标签匹配装饰器
+  const matchingTagEffect = StateEffect.define<{from: number, to: number}[]>();
+  
+  const matchingTagField = StateField.define<DecorationSet>({
+    create() {
+      return Decoration.none;
+    },
+    update(decorations, tr) {
+      decorations = decorations.map(tr.changes);
+      for (let effect of tr.effects) {
+        if (effect.is(matchingTagEffect)) {
+          decorations = Decoration.none;
+          for (let range of effect.value) {
+            decorations = decorations.update({
+              add: [Decoration.mark({
+                class: "cm-matching-tag"
+              }).range(range.from, range.to)]
+            });
+          }
+        }
+      }
+      return decorations;
+    },
+    provide: f => EditorView.decorations.from(f)
+  });
+  
+  // 查找匹配标签的函数
+  const findMatchingTags = useCallback((view: EditorView, pos: number) => {
+    const state = view.state;
+    const doc = state.doc;
+    
+    // 简单的HTML标签匹配逻辑
+    const tagRegex = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
+    let match;
+    const tags: Array<{name: string, from: number, to: number, isClosing: boolean}> = [];
+    
+    // 查找所有标签
+    while ((match = tagRegex.exec(doc.toString())) !== null) {
+      const isClosing = match[0].startsWith('</');
+      const tagName = match[1].toLowerCase();
+      tags.push({
+        name: tagName,
+        from: match.index,
+        to: match.index + match[0].length,
+        isClosing
+      });
+    }
+    
+    // 查找当前光标位置的标签
+    let currentTag = null;
+    for (const tag of tags) {
+      if (pos >= tag.from && pos <= tag.to) {
+        currentTag = tag;
+        break;
+      }
+    }
+    
+    if (!currentTag) return [];
+    
+    // 查找匹配的标签
+    let matchingTag = null;
+    if (currentTag.isClosing) {
+      // 查找对应的开始标签
+      let depth = 1;
+      for (let i = tags.indexOf(currentTag) - 1; i >= 0; i--) {
+        const tag = tags[i];
+        if (tag.name === currentTag.name) {
+          if (tag.isClosing) {
+            depth++;
+          } else {
+            depth--;
+            if (depth === 0) {
+              matchingTag = tag;
+              break;
+            }
+          }
+        }
+      }
+    } else {
+      // 查找对应的结束标签
+      let depth = 1;
+      for (let i = tags.indexOf(currentTag) + 1; i < tags.length; i++) {
+        const tag = tags[i];
+        if (tag.name === currentTag.name) {
+          if (tag.isClosing) {
+            depth--;
+            if (depth === 0) {
+              matchingTag = tag;
+              break;
+            }
+          } else {
+            depth++;
+          }
+        }
+      }
+    }
+    
+    return matchingTag ? [currentTag, matchingTag] : [currentTag];
+  }, []);
+  
+  // 标签匹配插件
+  const tagMatchingPlugin = ViewPlugin.fromClass(class {
+    updateTimer: number | null = null;
+    
+    constructor(view: EditorView) {
+      // 延迟初始化，避免在构造函数中直接更新
+      setTimeout(() => this.scheduleUpdate(view), 0);
+    }
+    
+    update(update: ViewUpdate) {
+      if (update.docChanged || update.selectionSet) {
+        this.scheduleUpdate(update.view);
+      }
+    }
+    
+    scheduleUpdate(view: EditorView) {
+      // 清除之前的定时器
+      if (this.updateTimer !== null) {
+        clearTimeout(this.updateTimer);
+      }
+      
+      // 异步更新，避免在更新过程中触发新的更新
+      this.updateTimer = window.setTimeout(() => {
+        this.updateMatching(view);
+        this.updateTimer = null;
+      }, 0);
+    }
+    
+    updateMatching(view: EditorView) {
+      try {
+        // 检查视图状态是否有效
+        if (!view.state) {
+          return;
+        }
+        
+        const pos = view.state.selection.main.head;
+        const matchingTags = findMatchingTags(view, pos);
+        
+        view.dispatch({
+          effects: matchingTagEffect.of(matchingTags.map(tag => ({
+            from: tag.from,
+            to: tag.to
+          })))
+        });
+      } catch (error) {
+        console.warn('标签匹配更新时出错:', error);
+      }
+    }
+    
+    destroy() {
+      if (this.updateTimer !== null) {
+        clearTimeout(this.updateTimer);
+        this.updateTimer = null;
+      }
+    }
+  });
+
+  // HTML标签跳转命令
+  const toMatchingTag = useCallback((view: EditorView): boolean => {
+    const state = view.state;
+    const selection = state.selection.main;
+    const doc = state.doc;
+    const pos = selection.head;
+    
+    // 获取当前位置的文本
+    const line = doc.lineAt(pos);
+    const lineText = line.text;
+    const linePos = pos - line.from;
+    
+    // 简单的HTML标签匹配逻辑
+    const tagRegex = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
+    let match;
+    const tags: Array<{name: string, pos: number, isClosing: boolean, fullMatch: string}> = [];
+    
+    // 查找所有标签
+    while ((match = tagRegex.exec(doc.toString())) !== null) {
+      const isClosing = match[0].startsWith('</');
+      const tagName = match[1].toLowerCase();
+      tags.push({
+        name: tagName,
+        pos: match.index,
+        isClosing,
+        fullMatch: match[0]
+      });
+    }
+    
+    // 查找当前光标位置的标签
+    let currentTag = null;
+    for (const tag of tags) {
+      if (pos >= tag.pos && pos <= tag.pos + tag.fullMatch.length) {
+        currentTag = tag;
+        break;
+      }
+    }
+    
+    if (!currentTag) return false;
+    
+    // 查找匹配的标签
+    let matchingTag = null;
+    if (currentTag.isClosing) {
+      // 查找对应的开始标签
+      let depth = 1;
+      for (let i = tags.indexOf(currentTag) - 1; i >= 0; i--) {
+        const tag = tags[i];
+        if (tag.name === currentTag.name) {
+          if (tag.isClosing) {
+            depth++;
+          } else {
+            depth--;
+            if (depth === 0) {
+              matchingTag = tag;
+              break;
+            }
+          }
+        }
+      }
+    } else {
+      // 查找对应的结束标签
+      let depth = 1;
+      for (let i = tags.indexOf(currentTag) + 1; i < tags.length; i++) {
+        const tag = tags[i];
+        if (tag.name === currentTag.name) {
+          if (tag.isClosing) {
+            depth--;
+            if (depth === 0) {
+              matchingTag = tag;
+              break;
+            }
+          } else {
+            depth++;
+          }
+        }
+      }
+    }
+    
+    if (matchingTag) {
+      // 跳转到匹配的标签
+      view.dispatch({
+        selection: { anchor: matchingTag.pos, head: matchingTag.pos }
+      });
+      return true;
+    }
+    
+    return false;
+  }, []);
+
   // 检查滚动条并调整高度
   const checkScrollbarAndAdjustHeight = useCallback(() => {
     if (!editorRef.current) return;
@@ -505,6 +756,27 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
               autocompletion({
                 override: [htmlCompletionSource]
               }),
+              bracketMatching(),
+               matchingTagField,
+               tagMatchingPlugin,
+               keymap.of([
+                 ...standardKeymap,
+                 {
+                   key: "Ctrl-j",
+                   run: toMatchingTag
+                 },
+                 {
+                   key: "Cmd-j",
+                   run: toMatchingTag
+                 }
+               ]),
+               EditorView.theme({
+                 ".cm-matching-tag": {
+                   backgroundColor: "rgba(255, 255, 0, 0.3)",
+                   border: "1px solid rgba(255, 255, 0, 0.6)",
+                   borderRadius: "2px"
+                 }
+               }),
               EditorView.lineWrapping,
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
