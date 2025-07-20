@@ -61,7 +61,9 @@ export const handleKeyDown = (event, status, setStatus) => {
   }
 
   if (event.key === 'ArrowRight') {
-    event.preventDefault();
+    if (typeof(event?.preventDefault)==='function'){
+      event?.preventDefault?.();
+    }
     console.debug('next word');
 
     let next = status.currentWordIndex + 1;
@@ -77,7 +79,9 @@ export const handleKeyDown = (event, status, setStatus) => {
       currentWordIndex: next, // 更新 currentWord
     });
   } else if (event.key === 'ArrowLeft') {
-    event.preventDefault();
+    if (typeof(event?.preventDefault)==='function'){
+      event?.preventDefault?.();
+    }
     console.debug('previous word');
 
     let nextIndex = status.currentWordIndex - 1;

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单可编辑示例 - Simple Editable Sample</title>
+    <style>
+        /* 基础样式 - Basic Styles */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        /* 可编辑区域样式 - Editable Area Styles */
+        .editable-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+            min-height: 100px;
+            position: relative;
+            background: #fafafa;
+            transition: border-color 0.3s ease;
+        }
+        
+        .editable-container:hover {
+            border-color: #4CAF50;
+        }
+        
+        .editable-container:focus-within {
+            border-color: #2196F3;
+            background: white;
+        }
+        
+        /* 可编辑块元素 - Editable Block Elements */
+        .editable-block {
+            display: inline-block;
+            min-width: 20px;
+            min-height: 20px;
+            padding: 2px 4px;
+            margin: 1px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            cursor: text;
+            outline: none;
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .editable-block:hover {
+            background: #e3f2fd;
+            border-color: #bbdefb;
+        }
+        
+        .editable-block:focus {
+            background: #fff3e0;
+            border-color: #ffb74d;
+            box-shadow: 0 0 0 2px rgba(255, 183, 77, 0.2);
+        }
+        
+        .editable-block:empty:before {
+            content: attr(data-placeholder);
+            color: #999;
+            font-style: italic;
+        }
+        
+        /* 数学表达式样式 - Math Expression Styles */
+        .math-expression {
+            background: #f0f8ff;
+            border: 1px dashed #4CAF50;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+        }
+        
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        
+        .fraction .numerator {
+            display: block;
+            border-bottom: 1px solid #333;
+            padding-bottom: 2px;
+            margin-bottom: 2px;
+        }
+        
+        .fraction .denominator {
+            display: block;
+            padding-top: 2px;
+        }
+        
+        /* 工具提示 - Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* 示例区域样式 - Example Area Styles */
+        .example-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        
+        /* 响应式设计 - Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .editable-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>简单可编辑示例 Simple Editable Sample</h1>
+        
+        <div class="example-section">
+            <div class="example-title">示例 1: 基础可编辑文本块</div>
+            <div class="editable-container">
+                <div class="tooltip">
+                    <span class="editable-block" contenteditable="true" data-placeholder="点击编辑文本">可编辑文本</span>
+                    <span class="tooltiptext">点击可以编辑这个文本块</span>
+                </div>
+                <span> + </span>
+                <div class="tooltip">
+                    <span class="editable-block" contenteditable="true" data-placeholder="输入更多内容">另一个文本块</span>
+                    <span class="tooltiptext">这也是可编辑的</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <div class="example-title">示例 2: 数学表达式编辑</div>
+            <div class="editable-container math-expression">
+                <span>sin(</span>
+                <span class="editable-block" contenteditable="true" data-placeholder="θ">θ</span>
+                <span> - </span>
+                <div class="fraction">
+                    <div class="numerator">
+                        <span class="editable-block" contenteditable="true" data-placeholder="π">π</span>
+                    </div>
+                    <div class="denominator">
+                        <span class="editable-block" contenteditable="true" data-placeholder="2">2</span>
+                    </div>
+                </div>
+                <span>)</span>
+                <br><br>
+                <div style="border-top: 1px solid #ccc; padding-top: 10px; margin-top: 10px;">
+                    <span class="editable-block" contenteditable="true" data-placeholder="cos">cos</span>
+                    <span>(</span>
+                    <span class="editable-block" contenteditable="true" data-placeholder="θ">θ</span>
+                    <span>)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <div class="example-title">示例 3: 多行可编辑内容</div>
+            <div class="editable-container">
+                <div style="margin-bottom: 10px;">
+                    <strong>标题: </strong>
+                    <span class="editable-block" contenteditable="true" data-placeholder="输入标题">我的数学公式</span>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong>描述: </strong>
+                    <span class="editable-block" contenteditable="true" data-placeholder="输入描述" style="min-width: 200px;">这是一个三角函数的变换</span>
+                </div>
+                <div>
+                    <strong>公式: </strong>
+                    <span class="editable-block" contenteditable="true" data-placeholder="输入公式">f(x) = sin(x + π/4)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <div class="example-title">技术说明</div>
+            <p><strong>实现原理:</strong></p>
+            <ul>
+                <li><code>contenteditable="true"</code> 属性使元素可编辑</li>
+                <li>CSS <code>cursor: text</code> 提供文本编辑光标</li>
+                <li><code>outline: none</code> 移除默认焦点边框</li>
+                <li>自定义样式提供视觉反馈（悬停、焦点状态）</li>
+                <li><code>:empty:before</code> 伪元素显示占位符文本</li>
+                <li>JavaScript 可以进一步增强交互功能</li>
+            </ul>
+            
+            <p><strong>与原始数学编辑器的对比:</strong></p>
+            <ul>
+                <li>原始编辑器使用复杂的自定义元素和隐藏输入框</li>
+                <li>本示例使用标准HTML <code>contenteditable</code> 属性</li>
+                <li>原始编辑器支持复杂的数学符号和公式渲染</li>
+                <li>本示例专注于展示基本的可编辑功能实现</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // 简单的JavaScript增强功能
+        // Simple JavaScript enhancements
+        
+        // 为所有可编辑块添加事件监听器
+        // Add event listeners to all editable blocks
+        document.querySelectorAll('.editable-block').forEach(block => {
+            // 焦点事件 - Focus events
+            block.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            block.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+            // 输入事件 - Input events
+            block.addEventListener('input', function() {
+                console.log('内容已更改:', this.textContent);
+                // 这里可以添加保存逻辑
+                // Save logic can be added here
+            });
+            
+            // 键盘事件 - Keyboard events
+            block.addEventListener('keydown', function(e) {
+                // Enter键创建新行（在某些情况下）
+                // Enter key creates new line (in some cases)
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    // 可以在这里添加特殊的Enter键处理逻辑
+                    // Special Enter key handling logic can be added here
+                }
+            });
+        });
+        
+        // 演示：动态添加新的可编辑块
+        // Demo: Dynamically add new editable blocks
+        function addEditableBlock(container) {
+            const newBlock = document.createElement('span');
+            newBlock.className = 'editable-block';
+            newBlock.contentEditable = true;
+            newBlock.setAttribute('data-placeholder', '新的可编辑块');
+            newBlock.textContent = '点击编辑';
+            container.appendChild(newBlock);
+            
+            // 为新块添加事件监听器
+            // Add event listeners to new block
+            newBlock.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            newBlock.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+        
+        console.log('简单可编辑示例已加载 - Simple Editable Sample loaded');
+        console.log('可编辑块数量:', document.querySelectorAll('.editable-block').length);
+    </script>
+</body>
+</html>

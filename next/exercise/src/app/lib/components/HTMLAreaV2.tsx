@@ -772,7 +772,7 @@ export const HTMLAreaV2: React.FC<HTMLAreaV2Props> = ({
                ]),
                EditorView.theme({
                  ".cm-matching-tag": {
-                   backgroundColor: "rgba(255, 255, 0, 0.3)",
+                   backgroundColor: "rgba(255, 255, 0, 0.2)",
                    border: "1px solid rgba(255, 255, 0, 0.6)",
                    borderRadius: "2px"
                  }

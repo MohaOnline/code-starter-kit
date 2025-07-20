@@ -40,6 +40,7 @@ import { handleKeyDown } from '../lib/common';
 import NavTop from '@/app/lib/components/NavTop.js';
 import { VoicePlayerWithMediaSession } from '@/app/lib/VoicePlayerWithMediaSession';
 import ModeToggle from '@/components/mode-toggle';
+import { ThemeToggle } from '@/app/lib/components/ThemeToggle';
 
 // 默认音频配置
 const DEFAULT_AUDIO_CONFIG = {
@@ -858,6 +859,7 @@ export default function Page() {
   return (
     <>
       <NavTop />
+      <div className="text-right"><ThemeToggle /></div>
       <div className={'word-container'} onWheel={handleWordWheel}>
         <div>
           <div>
@@ -1024,7 +1026,6 @@ export default function Page() {
           pauseOnHover
         />
       </div>
-      <div className="text-right"><ModeToggle /></div>
 
       <Transition show={status.isDialogOpen}>
         <Dialog onClose={() => setStatus({
