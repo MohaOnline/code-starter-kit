@@ -11,7 +11,8 @@ export function ThemeToggle() {
   return (
     <Button
       variant="ghost"
-      size="icon"
+      size="sm"
+      className="cursor-pointer"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <svg

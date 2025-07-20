@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { CgPlayTrackNextR, CgPlayTrackPrevR } from 'react-icons/cg';
 
 import {
+  FaEdit,
   FaPlay,
   FaPause,
   FaTrash,
@@ -15,6 +16,7 @@ import { PiHandWaving, PiRocket, PiGearFineLight, PiGear } from 'react-icons/pi'
 import { RiFileSearchLine } from 'react-icons/ri';
 import { LuSquarePlay } from 'react-icons/lu';
 import { GiPlayerPrevious, GiPlayerNext, GiGears } from 'react-icons/gi';
+import { CiEdit } from "react-icons/ci";
 
 
 import { Dialog, Transition } from '@headlessui/react';
@@ -958,10 +960,8 @@ export default function Page() {
           setStatus(prev => ({ ...prev, isConfigDialogOpen: true }));
         }}><PiGear /></span>
         <span className={'put_end'} onClick={handlePutEnd}><PiRocket />
-        </span></div>
-
-
-      <div className="text-center mt-2">
+        </span>
+        
         {/* Open Editor Dialog */}
         <button
           onClick={async () => {
@@ -1010,22 +1010,23 @@ export default function Page() {
               toast.error('查询失败，请检查网络或稍后再试');
             }
           }}
-          className="px-4 py-2 bg-gray-800 text-green-900 rounded hover:bg-gray-600 border"
+          className="cursor-pointer"
         >
-          Editor
+          <CiEdit />
         </button>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <Transition show={status.isDialogOpen}>
         <Dialog onClose={() => setStatus({

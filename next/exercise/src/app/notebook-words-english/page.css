@@ -33,14 +33,14 @@ span.pos {
 }
 
 .word-container .word {
-    font-size: 180px;
+    font-size: 170px;
     letter-spacing: 10px;
     height: 400px;
     line-height: 170px;
 }
 
 .word-container .translation {
-    margin: 100px 0 0 0;
+    margin: 95px 0 0 0;
     font-size: 28px;
     opacity: 0.9;
 }
