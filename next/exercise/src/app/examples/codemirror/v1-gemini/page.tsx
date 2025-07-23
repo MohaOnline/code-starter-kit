@@ -4,6 +4,7 @@ import { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import CodeMirror from '@uiw/react-codemirror'
 import { html } from '@codemirror/lang-html'
 import { oneDark } from '@codemirror/theme-one-dark'
+import { EditorView } from '@codemirror/view'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -149,7 +150,22 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
     </div>
     
     <div class="section">
-        <h2>Section 3: Code Examples</h2>
+        <h2>Section 3: Math Support</h2>
+        <p>This editor now supports MathJax for rendering mathematical expressions:</p>
+        <p>Inline math: The quadratic formula is \(x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\)</p>
+        <p>Display math:</p>
+        \[\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}\]
+        <p>Another example:</p>
+        \[E = mc^2\]
+        <p>Matrix example:</p>
+        \[\begin{pmatrix}
+        a & b \\
+        c & d
+        \end{pmatrix}\]
+    </div>
+    
+    <div class="section">
+        <h2>Section 4: Code Examples</h2>
         <p>Here are some examples of HTML elements you can create:</p>
         <h3>Tables</h3>
         <table>
@@ -300,8 +316,8 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
           const attributes = tagMatch[2] || ''
           
           // 提取有用的属性用于元素定位
-          const idMatch = attributes.match(/id\s*=\s*["']([^"]+)["']/) // Updated regex
-          const classMatch = attributes.match(/class\s*=\s*["']([^"]+)["']/) // Updated regex
+          const idMatch = attributes.match(/id\s*=\s*["']([^"']+)["']/)
+          const classMatch = attributes.match(/class\s*=\s*["']([^"']+)["']/)
           
           // 获取元素的文本内容（可能在当前行或后续行）
           let textContent = line.replace(/<[^>]*>/g, '').trim()
@@ -658,6 +674,12 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
   // CodeMirror 扩展配置
   const extensions = useMemo(() => [
     html(), // HTML 语法支持
+    // 添加底部缓冲区，让尾部代码也能滚动到基准线附近
+    EditorView.theme({
+      '&': {
+        paddingBottom: '50vh' // 底部添加50%视口高度的缓冲区
+      }
+    })
   ], [])
   
   // 主题配置 - 修复水合错误：确保服务端和客户端一致
@@ -831,13 +853,40 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- MathJax 支持 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          MathJax.startup.promise.then(() => {
+            console.log('MathJax initial typesetting complete');
+          });
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      overflow: hidden; /* 隐藏滚动条 */
+      height: 100vh;
+    }
+    body {
       padding: 20px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      min-height: 200vh; /* 确保内容足够长，可以滚动 */
+      min-height: 300vh; /* 确保内容足够长，可以滚动 */
+      box-sizing: border-box;
     }
     /* 为了测试滚动，添加一些基础样式 */
     h1, h2, h3 { 
@@ -888,6 +937,10 @@ ${htmlCode}
 </body>
 </html>`}
                 className="w-full h-full border-0"
+                style={{ 
+                  minHeight: '600px',
+                  overflow: 'hidden' // 确保 iframe 本身也没有滚动条
+                }}
                 title="HTML Preview"
                 sandbox="allow-scripts allow-same-origin"
               />
