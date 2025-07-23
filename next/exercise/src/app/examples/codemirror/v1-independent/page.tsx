@@ -271,9 +271,216 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [toolbarOriginalTop, isToolbarSticky])
   
-  // 编辑器滚动同步到预览区 - 支持自定义滚动比例
-  const handleEditorScroll = useCallback((scrollTop: number = 0, scrollHeight: number = 100, clientHeight: number = 100, customScrollRatio?: number) => {
-    console.log('🔄 滚动事件触发:', { scrollTop, scrollHeight, clientHeight, customScrollRatio, isScrollSyncing })
+  // 解析HTML代码中指定行附近的元素信息
+  const parseElementAtLine = useCallback((lineNumber: number) => {
+    const lines = htmlCode.split('\n')
+    const targetLine = Math.max(0, Math.min(lineNumber, lines.length - 1))
+    
+    console.log('🔍 开始解析目标行:', { targetLine, totalLines: lines.length })
+    
+    // 查找目标行及其附近的HTML元素
+    let elementInfo = null
+    
+    // 向上和向下搜索，找到最近的HTML标签
+    for (let offset = 0; offset <= 15; offset++) {
+      const searchLines = []
+      if (targetLine - offset >= 0) searchLines.push(targetLine - offset)
+      if (offset > 0 && targetLine + offset < lines.length) searchLines.push(targetLine + offset)
+      
+      for (const searchLine of searchLines) {
+        const line = lines[searchLine].trim()
+        
+        // 跳过空行和注释
+        if (!line || line.startsWith('<!--')) continue
+        
+        // 匹配开始标签，提取标签名和属性
+        const tagMatch = line.match(/<(\w+)([^>]*?)(?:\s*\/)?>/) 
+        if (tagMatch) {
+          const tagName = tagMatch[1].toLowerCase()
+          const attributes = tagMatch[2] || ''
+          
+          // 提取有用的属性用于元素定位
+          const idMatch = attributes.match(/id\s*=\s*["']([^"']+)["']/)
+          const classMatch = attributes.match(/class\s*=\s*["']([^"']+)["']/)
+          
+          // 获取元素的文本内容（可能在当前行或后续行）
+          let textContent = line.replace(/<[^>]*>/g, '').trim()
+          
+          // 如果当前行没有文本内容，查看后续几行
+          if (!textContent && searchLine + 1 < lines.length) {
+            for (let i = 1; i <= 3; i++) {
+              if (searchLine + i < lines.length) {
+                const nextLine = lines[searchLine + i].trim()
+                if (nextLine && !nextLine.startsWith('<')) {
+                  textContent = nextLine.replace(/<[^>]*>/g, '').trim()
+                  if (textContent) break
+                }
+              }
+            }
+          }
+          
+          elementInfo = {
+            tagName,
+            id: idMatch ? idMatch[1] : null,
+            className: classMatch ? classMatch[1] : null,
+            textContent: textContent || null,
+            lineNumber: searchLine,
+            distance: Math.abs(searchLine - targetLine),
+            originalLine: line
+          }
+          
+          console.log('🔍 找到目标元素:', elementInfo)
+          break
+        }
+      }
+      
+      if (elementInfo) break
+    }
+    
+    if (!elementInfo) {
+      console.log('❌ 未找到任何HTML元素在目标行附近')
+    }
+    
+    return elementInfo
+  }, [htmlCode])
+  
+  // 在预览区域中查找对应的元素
+  const findElementInPreview = useCallback((elementInfo: any, previewDocument: Document) => {
+    if (!elementInfo) return null
+    
+    console.log('🔍 开始在预览区域查找元素:', elementInfo)
+    
+    let targetElement = null
+    let matchMethod = ''
+    
+    try {
+      // 优先通过ID查找
+      if (elementInfo.id) {
+        targetElement = previewDocument.getElementById(elementInfo.id)
+        if (targetElement) {
+          matchMethod = 'ID'
+          console.log('🎯 通过ID找到元素:', elementInfo.id)
+          return targetElement
+        }
+      }
+      
+      // 通过类名查找
+      if (elementInfo.className) {
+        const elements = previewDocument.getElementsByClassName(elementInfo.className)
+        if (elements.length > 0) {
+          // 如果有文本内容，尝试匹配最相似的元素
+          if (elementInfo.textContent) {
+            for (let i = 0; i < elements.length; i++) {
+              const element = elements[i] as HTMLElement
+              if (element.textContent?.includes(elementInfo.textContent)) {
+                targetElement = element
+                matchMethod = 'className + textContent'
+                break
+              }
+            }
+          }
+          
+          // 如果没有找到文本匹配的，使用第一个
+          if (!targetElement) {
+            targetElement = elements[0] as HTMLElement
+            matchMethod = 'className'
+          }
+          
+          console.log('🎯 通过类名找到元素:', elementInfo.className, '方法:', matchMethod)
+          return targetElement
+        }
+      }
+      
+      // 通过标签名和文本内容查找
+      if (elementInfo.tagName) {
+        const elements = previewDocument.getElementsByTagName(elementInfo.tagName)
+        console.log(`🔍 找到 ${elements.length} 个 ${elementInfo.tagName} 元素`)
+        
+        let bestMatch = null
+        let bestScore = 0
+        
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i] as HTMLElement
+          let score = 0
+          
+          // 文本内容匹配得分
+          if (elementInfo.textContent && element.textContent) {
+            const elementText = element.textContent.trim().toLowerCase()
+            const targetText = elementInfo.textContent.trim().toLowerCase()
+            
+            if (elementText.includes(targetText)) {
+              score += 10 // 完全包含
+            } else if (targetText.includes(elementText)) {
+              score += 8 // 部分包含
+            } else {
+              // 计算文本相似度
+              const similarity = calculateTextSimilarity(elementText, targetText)
+              score += similarity * 5
+            }
+          }
+          
+          // 位置得分（越靠前得分越高，模拟代码顺序）
+          score += (elements.length - i) * 0.1
+          
+          if (score > bestScore) {
+            bestScore = score
+            bestMatch = element
+            matchMethod = `tagName + similarity(${score.toFixed(2)})`
+          }
+        }
+        
+        if (bestMatch && bestScore > 0.5) {
+          targetElement = bestMatch
+          console.log('🎯 通过标签名和相似度找到最佳匹配元素:', elementInfo.tagName, '得分:', bestScore.toFixed(2))
+        } else if (elements.length > 0) {
+          // 如果没有好的匹配，使用第一个同类型元素
+          targetElement = elements[0] as HTMLElement
+          matchMethod = 'tagName (fallback)'
+          console.log('🎯 通过标签名找到元素(回退):', elementInfo.tagName)
+        }
+      }
+      
+    } catch (error) {
+      console.warn('❌ 查找预览元素失败:', error)
+    }
+    
+    if (targetElement) {
+      console.log('✅ 元素匹配成功:', {
+        method: matchMethod,
+        tagName: targetElement.tagName,
+        id: targetElement.id || 'none',
+        className: targetElement.className || 'none',
+        textPreview: targetElement.textContent?.substring(0, 50) || 'none'
+      })
+    } else {
+      console.log('❌ 未找到匹配的预览元素')
+    }
+    
+    return targetElement
+  }, [])
+  
+  // 计算文本相似度的辅助函数
+  const calculateTextSimilarity = useCallback((text1: string, text2: string): number => {
+    if (!text1 || !text2) return 0
+    
+    const words1 = text1.split(/\s+/).filter(w => w.length > 0)
+    const words2 = text2.split(/\s+/).filter(w => w.length > 0)
+    
+    if (words1.length === 0 || words2.length === 0) return 0
+    
+    let commonWords = 0
+    for (const word1 of words1) {
+      if (words2.some(word2 => word2.includes(word1) || word1.includes(word2))) {
+        commonWords++
+      }
+    }
+    
+    return commonWords / Math.max(words1.length, words2.length)
+  }, [])
+  
+  // 智能滚动同步 - 基于元素匹配
+  const handleEditorScroll = useCallback((scrollTop: number = 0, scrollHeight: number = 100, clientHeight: number = 100, targetLineNumber?: number) => {
+    console.log('🔄 智能滚动同步触发:', { scrollTop, scrollHeight, clientHeight, targetLineNumber, isScrollSyncing })
     
     if (isScrollSyncing || !previewRef.current) {
       console.log('⏸️ 滚动同步跳过:', { isScrollSyncing, hasPreviewRef: !!previewRef.current })
@@ -295,48 +502,76 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
         currentScrollTop: previewDocument.documentElement.scrollTop
       })
       
-      // 计算滚动比例 - 优先使用自定义比例
-      let scrollRatio: number
-      if (customScrollRatio !== undefined) {
-        scrollRatio = Math.max(0, Math.min(1, customScrollRatio))
-        console.log('🎯 使用自定义滚动比例:', scrollRatio.toFixed(3))
+      // 如果提供了目标行号，使用基于元素匹配的智能同步
+      if (targetLineNumber !== undefined) {
+        console.log('🎯 开始基于元素匹配的智能同步，目标行:', targetLineNumber)
+        
+        // 解析目标行附近的元素
+        const elementInfo = parseElementAtLine(targetLineNumber)
+        if (!elementInfo) {
+          console.log('❌ 未找到目标行附近的HTML元素')
+          return
+        }
+        
+        // 在预览区域中查找对应元素
+        const targetElement = findElementInPreview(elementInfo, previewDocument)
+        if (!targetElement) {
+          console.log('❌ 在预览区域中未找到对应元素')
+          return
+        }
+        
+        // 计算元素在预览区域中的位置
+        const elementRect = targetElement.getBoundingClientRect()
+        const previewRect = previewDocument.documentElement.getBoundingClientRect()
+        
+        // 计算目标滚动位置，使元素出现在预览区域的中心附近
+        const previewViewportHeight = previewDocument.documentElement.clientHeight
+        const elementTopInDocument = targetElement.offsetTop
+        const targetScrollTop = Math.max(0, elementTopInDocument - previewViewportHeight / 2)
+        
+        console.log('🎯 元素定位计算:', {
+          elementTagName: targetElement.tagName,
+          elementOffsetTop: elementTopInDocument,
+          previewViewportHeight,
+          targetScrollTop,
+          beforeScroll: previewDocument.documentElement.scrollTop
+        })
+        
+        // 平滑滚动到目标位置
+        previewDocument.documentElement.scrollTop = targetScrollTop
+        
+        console.log('✅ 智能滚动同步完成:', {
+          afterScroll: previewDocument.documentElement.scrollTop,
+          elementVisible: true
+        })
+        
       } else {
+        // 回退到基于比例的滚动同步
+        console.log('📐 使用基于比例的滚动同步')
+        
         const maxEditorScroll = Math.max(0, scrollHeight - clientHeight)
-        scrollRatio = maxEditorScroll > 0 ? scrollTop / maxEditorScroll : 0
-        console.log('📐 编辑器滚动计算:', { maxEditorScroll, scrollRatio })
+        const scrollRatio = maxEditorScroll > 0 ? scrollTop / maxEditorScroll : 0
+        
+        const previewScrollHeight = previewDocument.documentElement.scrollHeight
+        const previewClientHeight = previewDocument.documentElement.clientHeight
+        const maxPreviewScroll = Math.max(0, previewScrollHeight - previewClientHeight)
+        
+        const targetScrollTop = scrollRatio * maxPreviewScroll
+        previewDocument.documentElement.scrollTop = targetScrollTop
+        
+        console.log('✅ 比例滚动同步完成:', {
+          scrollRatio: scrollRatio.toFixed(3),
+          afterScroll: previewDocument.documentElement.scrollTop
+        })
       }
       
-      // 计算预览区对应的滚动位置
-      const previewScrollHeight = previewDocument.documentElement.scrollHeight
-      const previewClientHeight = previewDocument.documentElement.clientHeight
-      const maxPreviewScroll = Math.max(0, previewScrollHeight - previewClientHeight)
-      
-      // 应用相同的滚动比例到预览区
-      const targetScrollTop = scrollRatio * maxPreviewScroll
-      
-      console.log('🎯 预览区滚动计算:', {
-        previewScrollHeight,
-        previewClientHeight,
-        maxPreviewScroll,
-        targetScrollTop,
-        finalScrollRatio: scrollRatio.toFixed(3),
-        beforeScroll: previewDocument.documentElement.scrollTop
-      })
-      
-      previewDocument.documentElement.scrollTop = targetScrollTop
-      
-      console.log('✅ 滚动同步完成:', {
-        afterScroll: previewDocument.documentElement.scrollTop,
-        success: Math.abs(previewDocument.documentElement.scrollTop - targetScrollTop) < 1
-      })
-      
     } catch (error) {
-      console.warn('❌ 预览滚动同步失败:', error)
+      console.warn('❌ 滚动同步失败:', error)
     }
     
     // 防止循环触发
     setTimeout(() => setIsScrollSyncing(false), 50)
-  }, [isScrollSyncing])
+  }, [isScrollSyncing, parseElementAtLine, findElementInPreview, calculateTextSimilarity])
   
   // 页面滚动同步监听器 - 基于中心基准线的智能同步
   useEffect(() => {
@@ -375,19 +610,16 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
           const totalLines = htmlCode.split('\n').length
           const normalizedLine = Math.max(0, Math.min(approximateLine, totalLines - 1))
           
-          // 计算滚动比例
-          const scrollRatio = normalizedLine / Math.max(1, totalLines - 1)
-          
           console.log('🎯 中心基准线代码定位:', {
             centerOffsetInEditor,
             approximateLine,
             normalizedLine,
             totalLines,
-            scrollRatio: scrollRatio.toFixed(3)
+            lineHeight
           })
           
-          // 同步预览区域滚动
-          handleEditorScroll(0, 100, 100, scrollRatio)
+          // 使用智能滚动同步，传递目标行号
+          handleEditorScroll(0, 100, 100, normalizedLine)
         } else {
           console.log('📍 中心基准线不在编辑器范围内')
         }
@@ -591,7 +823,67 @@ export default function CodeMirrorHtmlEditor({}: CodeMirrorHtmlEditorProps) {
             <div className="flex-1 border rounded-lg overflow-hidden bg-white">
               <iframe
                 ref={previewRef}
-                srcDoc={htmlCode}
+                srcDoc={`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 200vh; /* 确保内容足够长，可以滚动 */
+    }
+    /* 为了测试滚动，添加一些基础样式 */
+    h1, h2, h3 { 
+      margin: 20px 0; 
+      padding: 10px;
+      background: rgba(0, 123, 255, 0.1);
+      border-left: 4px solid #007bff;
+    }
+    p { margin: 10px 0; }
+    section { 
+      margin: 30px 0; 
+      padding: 20px; 
+      border: 1px solid #eee;
+      background: rgba(248, 249, 250, 0.5);
+    }
+    .section {
+      margin: 40px 0;
+      padding: 25px;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* 为元素添加视觉标识，便于调试 */
+    [id] {
+      position: relative;
+    }
+    [id]:before {
+      content: attr(id);
+      position: absolute;
+      top: -15px;
+      right: 0;
+      font-size: 10px;
+      color: #6c757d;
+      background: #f8f9fa;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid #dee2e6;
+    }
+  </style>
+</head>
+<body>
+${htmlCode}
+<!-- 添加额外内容确保可以滚动 -->
+<div id="scroll-test-area" style="height: 100vh; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+  <p style="font-size: 18px; color: #666;">滚动测试区域 - 这里是额外的内容用于测试滚动同步功能</p>
+</div>
+</body>
+</html>`}
                 className="w-full h-full border-0"
                 title="HTML Preview"
                 sandbox="allow-scripts allow-same-origin"
