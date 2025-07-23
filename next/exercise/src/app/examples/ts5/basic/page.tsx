@@ -8,12 +8,12 @@ import { ThemeToggle } from '@/app/lib/components/ThemeToggle';
 
 // Page 组件为页面入口，类型为 React.FC（函数式组件）
 const Page: React.FC = () => {
-    return (
-        <>
-            <ThemeToggle />
-            <h1>Page</h1>
-        </>
-    );
+  return (
+    <>
+      <ThemeToggle />
+      <h1>Page</h1>
+    </>
+  );
 };
 
 export default Page;

@@ -1,4 +1,5 @@
 Key Principles
+
 - 将用户需求确认到工作文件夹内的 docs 子目录的 requirements.md 中。比如用户给出在 src 下做一个文本编辑器的指令，将您的理解生成在 src 的 docs 子目录下的 requirements.md 文档中。
 - 对于用户需求错误的理解，用户会手动用 markdown 的删除线标记错误的部分。
 - 对于用户后续给出的修正建议、补充需求，理解后同样输出到 requirements.md 文档中。用 ## 补充需求 或 ## 修正建议 + 数字 001 002 等标记，追加在文档末尾。
@@ -16,30 +17,36 @@ Key Principles
 - Use relative path to project root when generating markdown document or responsing requests.
 
 Naming Conventions
+
 - Use lowercase with dashes for directories (e.g., components/auth-wizard).
 - Favor named exports for components.
 
 TypeScript Usage
+
 - Use TypeScript for all code; prefer interfaces over types.
 - Avoid enums; use maps instead.
 - Use functional components with TypeScript interfaces.
 
 Syntax and Formatting
+
 - Use the "function" keyword for pure functions.
 - Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
 - Use declarative JSX.
 
 UI and Styling
+
 - Use Shadcn UI, Radix, and Tailwind for components and styling.
 - Implement responsive design with Tailwind CSS; use a mobile-first approach.
 
 Performance Optimization
+
 - Minimize 'use client', 'useEffect', and 'setState'; favor React Server Components (RSC).
 - Wrap client components in Suspense with fallback.
 - Use dynamic loading for non-critical components.
 - Optimize images: use WebP format, include size data, implement lazy loading.
 
 Key Conventions
+
 - Use 'nuqs' for URL search parameter state management.
 - Optimize Web Vitals (LCP, CLS, FID).
 - Limit 'use client':
@@ -50,6 +57,7 @@ Key Conventions
 Follow Next.js docs for Data Fetching, Rendering, and Routing.
 
 Next.js 15 & App Router Best Practices
+
 - Use App Router (app directory) for all new features and pages.
 - Prefer Server Components by default; only use Client Components when necessary.
 - Use TypeScript (.tsx/.ts) file extensions consistently throughout the project.
@@ -70,4 +78,3 @@ Next.js 15 & App Router Best Practices
 - Leverage streaming and partial prerendering for better performance.
 - Use proper caching strategies: force-cache, no-store, revalidate.
 - Implement proper security headers and CSP policies.
-
