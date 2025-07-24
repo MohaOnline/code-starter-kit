@@ -56,16 +56,25 @@ export default function NotesListeningDialog() {
 
   }, []);
 
-  // 顺序播放逻辑
+  // 处理顺序播放 - 主要的播放控制逻辑
   const handleSequentialPlay = () => {
+    console.log('🎵 [Sequential Play] 触发顺序播放按钮，当前状态:', {
+      isSequentialPlaying,
+      isPlaying: status.notesListeningDialog?.isPlaying,
+      currentNoteIndex: status.notesListeningDialog.currentNoteIndex,
+      notesCount: status.notesListeningDialog.notes.length
+    });
+    
     if (isSequentialPlaying) {
-      // 暂停顺序播放
+      // 停止顺序播放
+      console.log('⏹️ [Sequential Play] 停止顺序播放');
       setIsSequentialPlaying(false);
       // 停止当前播放的音频
       const currentNote = status.notesListeningDialog.notes[status.notesListeningDialog.currentNoteIndex];
       if (currentNote) {
         // 通过触发自定义事件来停止当前音频
         window.dispatchEvent(new CustomEvent('stopSequentialAudio'));
+        console.log('📡 [Sequential Play] 已发送 stopSequentialAudio 事件');
       }
       // 重置播放状态
       setStatus((prev) => ({
@@ -77,18 +86,29 @@ export default function NotesListeningDialog() {
       }));
     } else {
       // 开始顺序播放
+      console.log('▶️ [Sequential Play] 开始顺序播放');
       setIsSequentialPlaying(true);
-      // 关闭所有音频的循环播放
+      // 关闭所有音频的循环播放，避免影响顺序播放
       window.dispatchEvent(new CustomEvent('disableAllLoops'));
+      console.log('📡 [Sequential Play] 已发送 disableAllLoops 事件');
       // 从当前选中的项开始播放
       const startIndex = status.notesListeningDialog.currentNoteIndex || 0;
       playNoteAtIndex(startIndex);
     }
   };
 
+  // 播放指定索引的笔记 - 核心的音频切换逻辑
   const playNoteAtIndex = (index) => {
+    console.log('🎯 [Play Note] 尝试播放笔记:', {
+      index,
+      noteId: status.notesListeningDialog.notes[index]?.id,
+      notesLength: status.notesListeningDialog.notes.length,
+      isValidIndex: index >= 0 && index < status.notesListeningDialog.notes.length
+    });
+    
     if (index >= status.notesListeningDialog.notes.length) {
       // 播放完所有音频，停止顺序播放
+      console.log('✅ [Play Note] 所有音频播放完成，重置状态');
       setIsSequentialPlaying(false);
       // 重置播放状态
       setStatus((prev) => ({
@@ -110,22 +130,43 @@ export default function NotesListeningDialog() {
         isPlaying: true,
       },
     }));
+    console.log('📝 [Play Note] 已更新 currentNoteIndex 为:', index);
 
     // 播放当前音频
     setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('playSequentialAudio', {
+      const playEvent = new CustomEvent('playSequentialAudio', {
         detail: { noteIndex: index }
-      }));
+      });
+      window.dispatchEvent(playEvent);
+      console.log('📡 [Play Note] 已发送 playSequentialAudio 事件:', {
+        noteIndex: index,
+        noteId: status.notesListeningDialog.notes[index]?.id,
+        noteTitle: status.notesListeningDialog.notes[index]?.title || '无标题'
+      });
     }, 100);
   };
 
-  // 监听音频播放结束事件
+  // 监听音频播放结束事件 - 自动切换到下一个音频的核心逻辑
   useEffect(() => {
     const handleAudioEnded = (event) => {
+      console.log('🔚 [Audio Ended] 收到音频播放结束事件:', {
+        isSequentialPlaying,
+        currentNoteIndex: status.notesListeningDialog.currentNoteIndex,
+        notesLength: status.notesListeningDialog.notes.length,
+        eventDetail: event.detail
+      });
+      
       if (isSequentialPlaying) {
         const nextIndex = status.notesListeningDialog.currentNoteIndex + 1;
+        console.log('➡️ [Audio Ended] 计算下一个索引:', {
+          currentIndex: status.notesListeningDialog.currentNoteIndex,
+          nextIndex,
+          hasNext: nextIndex < status.notesListeningDialog.notes.length
+        });
+        
         if (nextIndex >= status.notesListeningDialog.notes.length) {
           // 播放完所有音频，停止顺序播放
+          console.log('✅ [Audio Ended] 所有音频播放完成，重置状态');
           setIsSequentialPlaying(false);
           setStatus((prev) => ({
             ...prev,
@@ -135,14 +176,21 @@ export default function NotesListeningDialog() {
             },
           }));
         } else {
+          console.log('▶️ [Audio Ended] 播放下一个音频，索引:', nextIndex);
           playNoteAtIndex(nextIndex);
         }
+      } else {
+        console.log('ℹ️ [Audio Ended] 非顺序播放模式，忽略事件');
       }
     };
 
+    // 添加事件监听器
     window.addEventListener('sequentialAudioEnded', handleAudioEnded);
+    console.log('👂 [Event Listener] 已添加 sequentialAudioEnded 事件监听器');
+    
     return () => {
       window.removeEventListener('sequentialAudioEnded', handleAudioEnded);
+      console.log('🗑️ [Event Listener] 已移除 sequentialAudioEnded 事件监听器');
     };
   }, [isSequentialPlaying, status.notesListeningDialog.currentNoteIndex, status.notesListeningDialog.notes.length]);
 
@@ -203,6 +251,13 @@ export default function NotesListeningDialog() {
                     return;
                   }
                 }
+                
+                console.log('👆 [Note Click] 用户点击笔记项:', {
+                  index,
+                  noteId: note.id,
+                  noteTitle: note.title || '无标题',
+                  previousIndex: status.notesListeningDialog.currentNoteIndex
+                });
                 
                 setStatus((prev) => ({
                   ...prev,

@@ -1,17 +1,8 @@
 import {ThemeProvider} from 'next-themes';
-import {Geist, Geist_Mono} from 'next/font/google';
 
 import '@/app/notebooks/css/page.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+// 字体已在根布局的 /fonts/fonts.css 中定义，无需重复加载
 
 export const metadata = {
   title: 'Create Next App',

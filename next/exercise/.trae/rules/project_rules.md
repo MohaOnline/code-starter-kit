@@ -1,8 +1,8 @@
 Key Principles
 
 - **_Definitly_** use relative path to project folder when refer files or folders in markdown documents! For example, use `./src/app/examples/codemirror/basic-v2-pure`, `./docs/ai/qwen-coder/v1/setup-config.md`, etc.
-- 默认服务器已经启动，不需要自行启动服务器。默认服务器运行在 3000 端口。如果需要重启服务器，提示用户重启服务器；**_不要_**直接终止服务器进程后运行 npm run dev。
-- 尽可能复用当前 terminal 环境，不建议每次都打开新的 terminal 窗口。有多轮对话，建议在同一个 terminal 窗口中完成。
+- 默认服务器已经启动，不需要为用户启动服务器。默认服务器运行在 3000 端口。如果需要重启服务器，提示用户手动介入重启服务器；**_不要_**直接终止服务器进程后主动启动服务器，比如运行 `npm run dev`。
+- **_坚持_**复用当前 terminal 环境，不建议每次都打开新的 terminal 窗口。有多轮对话，或者多个命令需要运行，**_耐心_**在同一个 terminal 窗口中**_依次_**完成需要执行的命令。
 - 将用户需求确认到工作文件夹内的 docs 子目录的 requirements.md 中。比如用户给出在 src 下做一个文本编辑器的指令，将您的理解生成在 src 的 docs 子目录下的 requirements.md 文档中。
 - 对于用户需求错误的理解，用户会手动用 markdown 的删除线标记错误的部分。
 - 对于用户后续给出的修正建议、补充需求，理解后同样输出到 requirements.md 文档中。用 ## 补充需求 或 ## 修正建议 + 数字 001 002 等标记，追加在文档末尾。

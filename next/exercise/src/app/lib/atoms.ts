@@ -125,6 +125,7 @@ export interface Note {
     body_extra: string;
 }
 
+// 初始化笔记状态的默认值
 export function initStatusNote(): Note {
     return {
         id: '',
@@ -170,8 +171,50 @@ export const status = atom({
 });
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
+// 提供状态管理和调试日志功能
 export function useStatus() {
     // 在自定义 Hook 内部调用 useAtom 是允许的
-    return useAtom(status);
+    const [statusValue, setStatusValue] = useAtom(status);
+    
+    // 包装 setStatus 函数，添加调试日志
+    const setStatusWithLog = (updater: any) => {
+        if (typeof updater === 'function') {
+            setStatusValue((prevStatus) => {
+                const newStatus = updater(prevStatus);
+                
+                // 检查 notesListeningDialog 相关的状态变化
+                if (newStatus.notesListeningDialog !== prevStatus.notesListeningDialog) {
+                    console.log('📊 [Status Update] notesListeningDialog 状态变化:', {
+                        previous: {
+                            currentNoteIndex: prevStatus.notesListeningDialog.currentNoteIndex,
+                            isPlaying: prevStatus.notesListeningDialog.isPlaying,
+                            notesCount: prevStatus.notesListeningDialog.notes.length
+                        },
+                        new: {
+                            currentNoteIndex: newStatus.notesListeningDialog.currentNoteIndex,
+                            isPlaying: newStatus.notesListeningDialog.isPlaying,
+                            notesCount: newStatus.notesListeningDialog.notes.length
+                        }
+                    });
+                }
+                
+                // 检查全局播放状态变化
+                if (newStatus.isPlaying !== prevStatus.isPlaying) {
+                    console.log('🎵 [Status Update] 全局播放状态变化:', {
+                        previous: prevStatus.isPlaying,
+                        new: newStatus.isPlaying
+                    });
+                }
+                
+                return newStatus;
+            });
+        } else {
+            // 直接设置状态值的情况
+            console.log('📊 [Status Update] 直接状态更新:', updater);
+            setStatusValue(updater);
+        }
+    };
+    
+    return [statusValue, setStatusWithLog];
 }
 
