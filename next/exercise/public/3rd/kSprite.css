@@ -1,0 +1,1052 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-RingStructures_2_press {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -78px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -130px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowAD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -104px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowA_selectD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -78px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -104px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -274px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrowLine {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -108px -36px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kArrowLine_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -36px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kArrowT {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -130px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrow_selectA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -156px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrow_selectD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -182px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrow_selectH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrow_selectL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kArrow_selectT {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -52px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kAtom {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -36px -36px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kAtom_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -72px 0px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kBondA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -208px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondB {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px 0px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondBut {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -72px -36px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kBondBut_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -72px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kBondC {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -52px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondE {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -78px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondF {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -104px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondG {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -130px -144px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px 0px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondI {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px -26px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondJ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px -52px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondK {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px -78px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px -104px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondM {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -180px -130px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondN {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondO {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondP {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -52px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondQ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -78px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBondR {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -104px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -130px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectB {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -156px -170px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectC {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px 0px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -26px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectE {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -52px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectF {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -78px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectG {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -104px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -130px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectI {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -206px -156px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectJ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectK {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -52px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectM {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -78px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectN {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -104px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectO {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -144px -108px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectP {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -156px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectQ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -182px -196px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBond_selectR {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px 0px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBracketA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -26px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kBracket_selectA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -232px -52px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kCopy {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -36px -72px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kEraser {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -72px -72px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kEraser_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -108px 0px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kFormula {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px 0px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kFormula_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -108px -72px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kManipulation {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -108px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kManipulation_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -36px -108px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kNormalText {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -72px -108px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kNormalText_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -108px -108px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kRedo {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -144px 0px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kRing02 {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -130px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -156px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingB {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -182px -222px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingBut {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -144px -36px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kRingBut_select {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -144px -72px;
+  width: 32px;
+  height: 32px;
+}
+.icon-kRingC {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -26px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -52px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingE {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -78px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingF {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -104px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingG {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -130px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -156px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingI {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -182px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingJ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -258px -208px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingK {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -26px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingM {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -52px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingN {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -78px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRingO {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -104px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_select02 {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -130px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectA {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -156px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectB {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -182px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectC {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -208px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectD {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -234px -248px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectE {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px 0px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectF {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -26px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectG {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -52px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectH {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -78px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectI {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -104px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectJ {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -130px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectK {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -156px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectL {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -182px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectM {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -208px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectN {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -284px -234px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kRing_selectO {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: 0px -274px;
+  width: 22px;
+  height: 22px;
+}
+.icon-kUndo {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -36px 0px;
+  width: 32px;
+  height: 32px;
+}
+.icon-periodic {
+  background-image: url(kSprite-1441a7909c.png);
+  background-position: -156px -144px;
+  width: 18px;
+  height: 18px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+  .icon-RingStructures_2_press {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowAD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowA_selectD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowLine {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowLine_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrowT {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrow_selectA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrow_selectD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrow_selectH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrow_selectL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kArrow_selectT {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kAtom {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kAtom_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondB {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondBut {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondBut_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondC {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondE {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondF {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondG {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondI {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondJ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondK {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondM {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondN {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondO {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondP {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondQ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBondR {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectB {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectC {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectE {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectF {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectG {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectI {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectJ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectK {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectM {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectN {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectO {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectP {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectQ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBond_selectR {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBracketA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kBracket_selectA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kCopy {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kEraser {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kEraser_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kFormula {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kFormula_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kManipulation {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kManipulation_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kNormalText {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kNormalText_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRedo {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing02 {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingB {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingBut {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingBut_select {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingC {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingE {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingF {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingG {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingI {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingJ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingK {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingM {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingN {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRingO {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_select02 {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectA {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectB {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectC {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectD {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectE {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectF {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectG {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectH {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectI {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectJ {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectK {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectL {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectM {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectN {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kRing_selectO {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-kUndo {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+  .icon-periodic {
+    background-image: url(kSprite@2x-1441a7909c.png);
+    background-size: 306px 296px;
+  }
+}
