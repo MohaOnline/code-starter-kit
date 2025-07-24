@@ -170,14 +170,31 @@ export const status = atom({
     }
 });
 
+// 定义状态类型
+type StatusType = {
+    notes: any[];
+    note: Note;
+    types: any[];
+    isAdding: boolean;
+    isProcessing: boolean;
+    isPlaying: boolean;
+    words: any[];
+    currentWordIndex: number;
+    notesListeningDialog: {
+        notes: any[];
+        currentNoteIndex: number;
+        isPlaying: boolean;
+    };
+};
+
 // 自定义 Hook 也是一个以 'use' 开头的函数
 // 提供状态管理和调试日志功能
-export function useStatus() {
+export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusType) => StatusType)) => void] {
     // 在自定义 Hook 内部调用 useAtom 是允许的
     const [statusValue, setStatusValue] = useAtom(status);
     
     // 包装 setStatus 函数，添加调试日志
-    const setStatusWithLog = (updater: any) => {
+    const setStatusWithLog = (updater: StatusType | ((prev: StatusType) => StatusType)) => {
         if (typeof updater === 'function') {
             setStatusValue((prevStatus) => {
                 const newStatus = updater(prevStatus);
