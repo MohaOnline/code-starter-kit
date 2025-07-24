@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import os from "os";
+import os from "node:os";
 
 const isDev = process.env.NODE_ENV === "development";
 let allowedDevOrigins = [];
