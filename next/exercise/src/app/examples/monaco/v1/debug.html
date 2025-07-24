@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Editor Debug</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ff0000;
+            background: #2d2d30;
+            margin: 20px 0;
+        }
+        .log {
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monaco Editor 调试页面</h1>
+    
+    <div class="log" id="log">
+        <div>🔍 调试日志将在这里显示...</div>
+    </div>
+    
+    <div class="container" id="editor-container">
+        <div style="padding: 20px; text-align: center; color: #666;">
+            编辑器容器 (600px 高度)
+        </div>
+    </div>
+    
+    <script>
+        // 重写console.log来显示在页面上
+        const logElement = document.getElementById('log');
+        const originalLog = console.log;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const logLine = document.createElement('div');
+            logLine.textContent = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            logElement.appendChild(logLine);
+            logElement.scrollTop = logElement.scrollHeight;
+        };
+        
+        // 测试容器尺寸
+        const container = document.getElementById('editor-container');
+        console.log('📦 容器信息:', {
+            clientWidth: container.clientWidth,
+            clientHeight: container.clientHeight,
+            offsetWidth: container.offsetWidth,
+            offsetHeight: container.offsetHeight,
+            computedHeight: window.getComputedStyle(container).height
+        });
+        
+        // 模拟编辑器初始化
+        setTimeout(() => {
+            console.log('⏰ 延迟检查容器尺寸:', {
+                clientWidth: container.clientWidth,
+                clientHeight: container.clientHeight,
+                offsetWidth: container.offsetWidth,
+                offsetHeight: container.offsetHeight,
+                computedHeight: window.getComputedStyle(container).height
+            });
+        }, 100);
+    </script>
+</body>
+</html>

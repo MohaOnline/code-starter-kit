@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Editor 调试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .debug-panel {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .debug-log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .container {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #007acc;
+            border-radius: 4px;
+            background: #1e1e1e;
+            position: relative;
+        }
+        .info {
+            margin: 10px 0;
+            padding: 8px;
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monaco Editor 调试页面</h1>
+    
+    <div class="debug-panel">
+        <h3>调试日志</h3>
+        <div id="debugLog" class="debug-log">页面加载中...</div>
+    </div>
+    
+    <div class="info">
+        <strong>容器信息:</strong>
+        <div id="containerInfo">检测中...</div>
+    </div>
+    
+    <div id="editorContainer" class="container">
+        <!-- 编辑器容器 -->
+    </div>
+    
+    <script>
+        // 重写console.log以在页面显示
+        const debugLog = document.getElementById('debugLog');
+        const containerInfo = document.getElementById('containerInfo');
+        const container = document.getElementById('editorContainer');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            debugLog.textContent += `${timestamp}: ${message}\n`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+            console.log(message);
+        }
+        
+        function updateContainerInfo() {
+            const info = `
+                宽度: ${container.clientWidth}px (client) / ${container.offsetWidth}px (offset)
+                高度: ${container.clientHeight}px (client) / ${container.offsetHeight}px (offset)
+                计算样式高度: ${window.getComputedStyle(container).height}
+                边框: ${window.getComputedStyle(container).border}
+                位置: ${container.getBoundingClientRect().top}px from top
+            `;
+            containerInfo.innerHTML = info.replace(/\n/g, '<br>');
+        }
+        
+        // 页面加载完成后检查
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🎯 页面DOM加载完成');
+            updateContainerInfo();
+            
+            // 延迟检查
+            setTimeout(() => {
+                log('🎯 延迟检查容器状态');
+                updateContainerInfo();
+                
+                if (container.clientHeight === 0) {
+                    log('❌ 容器高度为0！这是问题所在');
+                } else {
+                    log('✅ 容器高度正常: ' + container.clientHeight + 'px');
+                }
+            }, 100);
+            
+            // 再次延迟检查
+            setTimeout(() => {
+                log('🎯 再次检查容器状态');
+                updateContainerInfo();
+            }, 1000);
+        });
+        
+        // 窗口大小变化时更新
+        window.addEventListener('resize', updateContainerInfo);
+        
+        log('🎯 脚本开始执行');
+    </script>
+</body>
+</html>

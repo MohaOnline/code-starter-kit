@@ -1,0 +1,510 @@
+/**
+ * Monaco Editor 风格的编辑器样式
+ * 
+ * 基于 Monaco Editor 的视觉设计，实现现代化的编辑器界面
+ * 包含编辑器容器、文本渲染、光标、滚动条等所有视觉元素的样式定义
+ */
+
+/* 编辑器根容器 */
+.monaco-editor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 21px;
+  overflow: hidden;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+}
+
+/* 编辑器内容区域 */
+.editor-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 滚动容器 */
+.scroll-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 内容区域 */
+.content-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: text;
+}
+
+/* 行号区域 */
+.line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background-color: #1e1e1e;
+  border-right: 1px solid #3c3c3c;
+  color: #858585;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: right;
+  padding-right: 10px;
+  user-select: none;
+  z-index: 2;
+}
+
+/* 行号项 */
+.line-number {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 21px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: color 0.1s ease;
+}
+
+.line-number:hover {
+  color: #c6c6c6;
+}
+
+.line-number.current-line {
+  color: #c6c6c6;
+  font-weight: bold;
+}
+
+/* 文本渲染区域 */
+.text-area {
+  position: absolute;
+  top: 0;
+  left: 70px; /* 行号宽度 + 边距 */
+  right: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 文本行容器 */
+.text-lines {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 单行文本 */
+.text-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 21px;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* 编辑器行样式 */
+.editor-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 21px;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-left: 10px;
+  color: #d4d4d4;
+  display: flex;
+  align-items: center;
+}
+
+/* 当前行高亮 */
+.text-line.current-line {
+  background-color: #2a2d2e;
+}
+
+/* 文本标记（用于语法高亮） */
+.text-token {
+  display: inline;
+}
+
+/* 语法高亮颜色 */
+.token-keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+.token-string {
+  color: #ce9178;
+}
+
+.token-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.token-number {
+  color: #b5cea8;
+}
+
+.token-operator {
+  color: #d4d4d4;
+}
+
+.token-function {
+  color: #dcdcaa;
+}
+
+.token-variable {
+  color: #9cdcfe;
+}
+
+.token-type {
+  color: #4ec9b0;
+}
+
+.token-punctuation {
+  color: #d4d4d4;
+}
+
+/* 光标样式 */
+.editor-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  background-color: #ffffff;
+  width: 2px;
+  animation: cursor-blink 1.06s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* 光标样式变体 */
+.editor-cursor.block {
+  width: 8.4px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.editor-cursor.underline {
+  height: 2px !important;
+  top: 19px !important;
+}
+
+/* 选择区域 */
+.selection {
+  position: absolute;
+  background-color: #264f78;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 输入处理区域 */
+.input-handler {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 滚动条样式 */
+.vertical-scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 100%;
+  background-color: #1e1e1e;
+  border-left: 1px solid #3c3c3c;
+  z-index: 100;
+}
+
+.horizontal-scrollbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 14px);
+  height: 14px;
+  background-color: #1e1e1e;
+  border-top: 1px solid #3c3c3c;
+  z-index: 100;
+}
+
+/* 滚动条滑块 */
+.vertical-thumb {
+  position: absolute;
+  left: 2px;
+  width: 10px;
+  background-color: #424242;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  min-height: 20px;
+}
+
+.vertical-thumb:hover {
+  background-color: #4f4f4f;
+}
+
+.vertical-thumb:active {
+  background-color: #6f6f6f;
+}
+
+.horizontal-thumb {
+  position: absolute;
+  top: 2px;
+  height: 10px;
+  background-color: #424242;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  min-width: 20px;
+}
+
+.horizontal-thumb:hover {
+  background-color: #4f4f4f;
+}
+
+.horizontal-thumb:active {
+  background-color: #6f6f6f;
+}
+
+/* 滚动条角落 */
+.scrollbar-corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #1e1e1e;
+  border-top: 1px solid #3c3c3c;
+  border-left: 1px solid #3c3c3c;
+}
+
+/* 测量元素（隐藏） */
+.editor-measure {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  visibility: hidden !important;
+  white-space: pre !important;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* 编辑器焦点状态 */
+.monaco-editor:focus-within {
+  border-color: #007acc;
+  box-shadow: 0 0 0 1px #007acc;
+}
+
+/* 编辑器禁用状态 */
+.monaco-editor.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 编辑器只读状态 */
+.monaco-editor.readonly {
+  background-color: #252526;
+}
+
+.monaco-editor.readonly .editor-cursor {
+  display: none;
+}
+
+/* 行高亮（悬停） */
+.text-line:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* 括号匹配高亮 */
+.bracket-match {
+  background-color: #0064001a;
+  border: 1px solid #00640080;
+}
+
+/* 错误标记 */
+.error-marker {
+  border-bottom: 2px wavy #f14c4c;
+}
+
+/* 警告标记 */
+.warning-marker {
+  border-bottom: 2px wavy #ffcc02;
+}
+
+/* 信息标记 */
+.info-marker {
+  border-bottom: 2px wavy #75beff;
+}
+
+/* 查找高亮 */
+.find-match {
+  background-color: #515c6a;
+  border: 1px solid #74879f;
+}
+
+.find-match.current {
+  background-color: #a8ac94;
+  border: 1px solid #f2cc60;
+}
+
+/* 小地图（可选） */
+.minimap {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  width: 120px;
+  height: 100%;
+  background-color: #1e1e1e;
+  border-left: 1px solid #3c3c3c;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.minimap-line {
+  height: 1px;
+  background-color: #3c3c3c;
+  margin-bottom: 1px;
+}
+
+.minimap-viewport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .monaco-editor {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .line-numbers {
+    width: 40px;
+    padding-right: 5px;
+  }
+  
+  .text-area {
+    left: 50px;
+  }
+  
+  .text-line {
+    height: 18px;
+    padding-left: 5px;
+  }
+  
+  .line-number {
+    height: 18px;
+    padding-right: 5px;
+  }
+}
+
+/* 高对比度主题支持 */
+@media (prefers-contrast: high) {
+  .monaco-editor {
+    border-color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .line-numbers {
+    background-color: #000000;
+    border-right-color: #ffffff;
+    color: #ffffff;
+  }
+  
+  .text-line.current-line {
+    background-color: #333333;
+  }
+  
+  .editor-cursor {
+    background-color: #ffffff;
+  }
+  
+  .selection {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .editor-cursor {
+    animation: none;
+  }
+  
+  .vertical-thumb,
+  .horizontal-thumb {
+    transition: none;
+  }
+  
+  .line-number {
+    transition: none;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .monaco-editor {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .line-numbers {
+    background-color: white;
+    color: black;
+    border-right-color: black;
+  }
+  
+  .editor-cursor,
+  .vertical-scrollbar,
+  .horizontal-scrollbar {
+    display: none;
+  }
+  
+  .text-line.current-line {
+    background-color: transparent;
+  }
+}
