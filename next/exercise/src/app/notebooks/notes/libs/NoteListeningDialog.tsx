@@ -146,7 +146,7 @@ export function NoteListeningDialog({ note, isCurrentNote = false, noteIndex = 0
     shuffledChoices: [], // 随机排序的选项
     hoveredChoice: null, // 当前悬停的选项
     isPlaying: false, // 音频播放状态
-    isLooping: true, // 循环播放状态
+    isLooping: false, // 循环播放状态
     howlInstance: null, // Howler实例
     waveSurfer: null, // WaveSurfer实例
     currentTime: 0, // 当前播放时间
@@ -552,6 +552,7 @@ export function NoteListeningDialog({ note, isCurrentNote = false, noteIndex = 0
         noteIndex,
         wasLooping: local.isLooping,
       });
+      local.isLooping = false;
       setLocal(prev => ({ ...prev, isLooping: false }));
     };
 
@@ -572,6 +573,7 @@ export function NoteListeningDialog({ note, isCurrentNote = false, noteIndex = 0
           local.howlInstance.seek(0);
           local.howlInstance.play();
         }
+        local.isLooping = false;
       }
     };
 
