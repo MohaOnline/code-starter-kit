@@ -44,6 +44,19 @@ const nextConfig = {
       },
     ],
   },
+  // 添加重写规则，将 MathLive 字体请求重定向到正确路径
+  async rewrites() {
+    return [
+      {
+        source: '/_next/static/chunks/fonts/:path*',
+        destination: '/fonts/:path*',
+      },
+      {
+        source: '/_next/static/chunks/sounds/:path*', 
+        destination: '/sounds/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

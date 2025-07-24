@@ -1,5 +1,6 @@
 Key Principles
 
+- **_Definitly_** use relative path to project folder when refer files or folders in markdown documents! For example, use `./src/app/examples/codemirror/basic-v2-pure`, `./docs/ai/qwen-coder/v1/setup-config.md`, etc.
 - 将用户需求确认到工作文件夹内的 docs 子目录的 requirements.md 中。比如用户给出在 src 下做一个文本编辑器的指令，将您的理解生成在 src 的 docs 子目录下的 requirements.md 文档中。
 - 对于用户需求错误的理解，用户会手动用 markdown 的删除线标记错误的部分。
 - 对于用户后续给出的修正建议、补充需求，理解后同样输出到 requirements.md 文档中。用 ## 补充需求 或 ## 修正建议 + 数字 001 002 等标记，追加在文档末尾。
