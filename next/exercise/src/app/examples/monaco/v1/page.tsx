@@ -18,9 +18,6 @@ import './styles/editor.css';
  * 5. 自定义滚动 - 虚拟滚动机制，按需渲染
  */
 export default function MonacoEditorDemo() {
-  // 添加调试信息
-  console.log('🎯 [页面] MonacoEditorDemo 组件开始渲染');
-  
   const containerRef = useRef<HTMLDivElement>(null);
   const [model, setModel] = useState<EditorModel | null>(null);
   const [view, setView] = useState<EditorView | null>(null);
@@ -31,42 +28,7 @@ export default function MonacoEditorDemo() {
   const [cursorPosition, setCursorPosition] = useState({ line: 0, column: 0 });
   const [lineCount, setLineCount] = useState(0);
   
-  // 调试状态
-  const [debugInfo, setDebugInfo] = useState<string[]>(['🎯 [页面] 组件状态初始化完成']);
-  
-  const addDebugInfo = (info: string) => {
-    console.log(info); // 同时输出到控制台
-    setDebugInfo(prev => [...prev, `${new Date().toLocaleTimeString()}: ${info}`]);
-  };
-  
-  // 立即添加调试信息
-  React.useEffect(() => {
-    addDebugInfo('🎯 [页面] useEffect 开始执行');
-  }, []);
-  
-  // 添加调试信息
-  useEffect(() => {
-    addDebugInfo('🎯 [页面] MonacoEditorDemo 组件挂载');
-    
-    // 立即检查容器状态
-    const checkContainer = () => {
-      addDebugInfo(`🎯 [页面] 容器引用状态: ${containerRef.current ? '存在' : '不存在'}`);
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        addDebugInfo(`🎯 [页面] 容器尺寸: ${containerRef.current.clientWidth}x${containerRef.current.clientHeight}`);
-        addDebugInfo(`🎯 [页面] 容器位置: top=${rect.top}, left=${rect.left}`);
-        addDebugInfo(`🎯 [页面] 容器样式高度: ${containerRef.current.style.height}`);
-        addDebugInfo(`🎯 [页面] 计算样式高度: ${window.getComputedStyle(containerRef.current).height}`);
-      }
-    };
-    
-    // 立即检查
-    checkContainer();
-    
-    // 延迟检查
-    setTimeout(checkContainer, 100);
-    setTimeout(checkContainer, 500);
-  }, []);
+
   
   useEffect(() => {
     if (!containerRef.current) return;
@@ -85,44 +47,38 @@ export default function MonacoEditorDemo() {
    */
   const initializeEditor = async () => {
     if (!containerRef.current) {
-      addDebugInfo('❌ [页面] 容器引用为空');
       return;
     }
-    
-    addDebugInfo('🎯 [页面] 开始初始化编辑器');
-    addDebugInfo(`🎯 [页面] 容器尺寸: ${containerRef.current.clientWidth}x${containerRef.current.clientHeight}`);
-    addDebugInfo(`🎯 [页面] 容器样式高度: ${containerRef.current.style.height}`);
-    addDebugInfo(`🎯 [页面] 计算样式高度: ${window.getComputedStyle(containerRef.current).height}`);
     
     try {
       // 1. 创建数据模型
       const editorModel = new EditorModel();
       
+      // 定义统一的字体选项
+      const fontOptions = {
+        lineHeight: 21,
+        fontSize: 14,
+        fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace'
+      };
+      
       // 2. 创建视图渲染器（EditorView 自带滚动管理）
-      addDebugInfo('🎯 [页面] 准备创建EditorView');
       const editorView = new EditorView(
         containerRef.current,
         editorModel,
         {
-          lineHeight: 21,
-          fontSize: 14,
-          fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
+          ...fontOptions,
           showLineNumbers: true
         }
       );
-      addDebugInfo('🎯 [页面] EditorView创建完成');
       
-      // 3. 创建光标管理器
+      // 3. 创建光标管理器，使用相同的字体选项
       const cursorMgr = new CursorManager(containerRef.current, editorModel, {
         width: 2,
         color: '#ffffff',
         blinkRate: 530,
-        style: 'line'
+        style: 'line',
+        ...fontOptions
       });
-      
-      // 同步字体度量参数
-      const viewOptions = editorView.getOptions();
-      cursorMgr.updateFontMetrics(viewOptions.fontSize, viewOptions.fontFamily, viewOptions.lineHeight);
       
       // 4. 创建输入处理器
       const inputMgr = new InputHandler(containerRef.current, editorModel, cursorMgr);
@@ -175,7 +131,10 @@ export default function MonacoEditorDemo() {
       // 将点击位置转换为文档坐标
       const rect = containerRef.current!.getBoundingClientRect();
       const viewport = view.getViewport();
-      const x = event.clientX - rect.left + viewport.scrollLeft;
+      
+      // 计算相对于内容区域的坐标（需要减去行号区域的宽度）
+      const lineNumberWidth = 60; // 行号区域宽度，应该与EditorView中的设置一致
+      const x = event.clientX - rect.left - lineNumberWidth + viewport.scrollLeft;
       const y = event.clientY - rect.top + viewport.scrollTop;
       
       // 转换为行列位置
@@ -354,15 +313,7 @@ console.log(message);`;
       <div className="editor-header" style={{ marginBottom: '20px' }}>
         <h1 style={{ margin: '0 0 10px 0', color: '#333' }}>Monaco Editor 演示 - 基于相同原理实现</h1>
         
-        {/* 调试信息面板 */}
-        <div className="debug-info" style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#f8f9fa', borderRadius: '4px', border: '1px solid #e9ecef' }}>
-          <h3 style={{ margin: '0 0 10px 0', fontSize: '14px', fontWeight: 'bold', color: '#333' }}>调试信息:</h3>
-          <div style={{ maxHeight: '120px', overflowY: 'auto', fontSize: '12px', fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace', lineHeight: '1.4' }}>
-            {debugInfo.map((info, index) => (
-              <div key={index} style={{ marginBottom: '2px', color: '#666' }}>{info}</div>
-            ))}
-          </div>
-        </div>
+
         
         <div className="editor-controls" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -396,7 +347,8 @@ console.log(message);`;
         className="monaco-editor"
         style={{
           width: '100%',
-          height: '600px',
+          height: '80vh',
+          minHeight: '600px',
           border: '1px solid #3c3c3c',
           borderRadius: '4px',
           overflow: 'hidden'

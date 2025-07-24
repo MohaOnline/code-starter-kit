@@ -145,7 +145,7 @@ export class EditorView {
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
+      overflow: visible;
     `;
     
     // 创建行号区域
@@ -175,8 +175,8 @@ export class EditorView {
       top: 0;
       left: ${this.options.showLineNumbers ? this.options.lineNumberWidth : 0}px;
       right: 0;
-      height: 100%;
-      overflow: hidden;
+      bottom: 0;
+      overflow: visible;
       z-index: 1;
       transform: translateY(0px);
     `;
@@ -244,19 +244,15 @@ export class EditorView {
    */
   private calculateViewport(): void {
     let containerHeight = this.container.clientHeight;
-    console.log('📏 [calculateViewport] 原始容器高度:', containerHeight);
     
     // 如果容器高度为0，使用默认高度或从样式中获取
     if (containerHeight === 0) {
       const computedStyle = window.getComputedStyle(this.container);
       const styleHeight = computedStyle.height;
-      console.log('📏 [calculateViewport] 从样式获取高度:', styleHeight);
       if (styleHeight && styleHeight !== 'auto' && styleHeight !== '0px') {
         containerHeight = parseInt(styleHeight, 10);
-        console.log('📏 [calculateViewport] 解析后高度:', containerHeight);
       } else {
         containerHeight = 600; // 默认高度
-        console.log('📏 [calculateViewport] 使用默认高度:', containerHeight);
       }
     }
     
@@ -266,22 +262,15 @@ export class EditorView {
     // 计算可视行范围
     const startLine = Math.floor(this.viewport.scrollTop / lineHeight);
     const visibleLines = Math.ceil(containerHeight / lineHeight);
-    const endLine = Math.min(startLine + visibleLines + 1, totalLines - 1); // +1 for buffer
-    
-    console.log('📏 [calculateViewport] 视口计算结果:', {
-      containerHeight,
-      lineHeight,
-      totalLines,
-      startLine,
-      endLine,
-      visibleLines
-    });
+    const endLine = startLine + visibleLines + 2; // +2 for buffer to ensure all content is visible
     
     this.viewport.startLine = Math.max(0, startLine);
-    this.viewport.endLine = Math.max(0, endLine);
+    this.viewport.endLine = Math.min(endLine, totalLines); // 确保不超出行数范围，但允许渲染到最后一行
     this.viewport.visibleLines = visibleLines;
     this.viewport.containerHeight = containerHeight;
     this.viewport.lineHeight = lineHeight;
+    
+
   }
   
   /**
@@ -316,8 +305,6 @@ export class EditorView {
   render(): void {
     if (this.isDisposed) return;
     
-    console.log('🎨 [render] 开始渲染，视口信息:', this.viewport);
-    
     this.lastRenderTime = Date.now();
     
     try {
@@ -339,8 +326,6 @@ export class EditorView {
       
       // 清理不在视口内的行
       this.cleanupOffscreenLines();
-      
-      console.log('🎨 [render] 渲染完成，已渲染行数:', this.renderedLines.size);
       
     } catch (error) {
       console.error('渲染过程中发生错误:', error);
@@ -389,23 +374,19 @@ export class EditorView {
     const fragment = document.createDocumentFragment();
     const newRenderedLines = new Map<number, HTMLDivElement>();
     
-    console.log('📝 [renderContentLines] 渲染行范围:', {
-      startLine: this.viewport.startLine,
-      endLine: this.viewport.endLine,
-      totalLines: this.viewport.endLine - this.viewport.startLine + 1
-    });
-    
     for (let lineNumber = this.viewport.startLine; lineNumber <= this.viewport.endLine; lineNumber++) {
+      if (lineNumber >= this.model.getLineCount()) {
+        break;
+      }
+      
       let lineElement = this.renderedLines.get(lineNumber);
       
       if (!lineElement) {
         // 创建新的行元素
         lineElement = this.createLineElement(lineNumber);
-        console.log('📝 [renderContentLines] 创建新行:', lineNumber);
       } else {
         // 更新现有行元素的位置
         this.updateLinePosition(lineElement, lineNumber);
-        console.log('📝 [renderContentLines] 更新现有行:', lineNumber);
       }
       
       newRenderedLines.set(lineNumber, lineElement);
@@ -414,12 +395,12 @@ export class EditorView {
       if (!lineElement.parentNode) {
         fragment.appendChild(lineElement);
       }
+
     }
     
     // 将新行添加到内容区域
     if (fragment.children.length > 0) {
       this.contentElement.appendChild(fragment);
-      console.log('📝 [renderContentLines] 添加了', fragment.children.length, '个新行到DOM');
     }
     
     // 更新渲染行映射
@@ -456,16 +437,6 @@ export class EditorView {
     const top = relativeLineNumber * this.options.lineHeight;
     const left = -this.viewport.scrollLeft;
     
-    console.log('📍 [updateLinePosition] 行位置计算:', {
-      lineNumber,
-      relativeLineNumber,
-      top,
-      left,
-      lineHeight: this.options.lineHeight,
-      startLine: this.viewport.startLine,
-      scrollLeft: this.viewport.scrollLeft
-    });
-    
     lineElement.style.cssText = `
       position: absolute;
       top: ${top}px;
@@ -474,8 +445,8 @@ export class EditorView {
       height: ${this.options.lineHeight}px;
       line-height: ${this.options.lineHeight}px;
       white-space: pre;
-      font-family: inherit;
-      font-size: inherit;
+      font-family: ${this.options.fontFamily};
+      font-size: ${this.options.fontSize}px;
       color: inherit;
     `;
   }
@@ -597,11 +568,12 @@ export class EditorView {
    */
   private cleanupOffscreenLines(): void {
     const elementsToRemove: HTMLDivElement[] = [];
+    const linesToRemove: number[] = [];
     
     this.renderedLines.forEach((element, lineNumber) => {
       if (lineNumber < this.viewport.startLine || lineNumber > this.viewport.endLine) {
         elementsToRemove.push(element);
-        this.renderedLines.delete(lineNumber);
+        linesToRemove.push(lineNumber);
       }
     });
     
@@ -610,6 +582,11 @@ export class EditorView {
       if (element.parentNode) {
         element.parentNode.removeChild(element);
       }
+    });
+    
+    // 从映射中删除
+    linesToRemove.forEach(lineNumber => {
+      this.renderedLines.delete(lineNumber);
     });
   }
   

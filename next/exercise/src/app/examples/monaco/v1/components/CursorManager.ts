@@ -65,13 +65,24 @@ export class CursorManager {
   // 测量元素（用于精确计算字符宽度）
   private measureElement: HTMLSpanElement;
   
-  constructor(container: HTMLDivElement, model: EditorModel, options?: Partial<CursorStyle>) {
+  constructor(container: HTMLDivElement, model: EditorModel, options?: Partial<CursorStyle & { fontSize?: number; fontFamily?: string; lineHeight?: number }>) {
     this.container = container;
     this.model = model;
     
     if (options) {
       this.style = { ...this.style, ...options };
+      
+      // 更新字体度量信息
+      if (options.fontSize) this.fontSize = options.fontSize;
+      if (options.fontFamily) this.fontFamily = options.fontFamily;
+      if (options.lineHeight) this.lineHeight = options.lineHeight;
     }
+    
+    console.log('🔧 [CursorManager] 初始化字体样式:', {
+      fontFamily: this.fontFamily,
+      fontSize: this.fontSize,
+      lineHeight: this.lineHeight
+    });
     
     this.createCursorElement();
     this.createMeasureElement();
@@ -138,6 +149,8 @@ export class CursorManager {
     this.cursorElement.style.cssText = baseStyle + specificStyle;
   }
   
+
+  
   /**
    * 创建测量元素
    * 用于精确计算字符宽度和行高
@@ -191,9 +204,18 @@ export class CursorManager {
     
     this.measureElement.textContent = text;
     const rect = this.measureElement.getBoundingClientRect();
+    const width = rect.width;
     this.measureElement.textContent = '';
     
-    return rect.width;
+    // 调试信息：记录文本宽度测量
+    if (text.length <= 10) { // 只记录短文本，避免日志过多
+      console.log('📏 [CursorManager] 文本宽度测量:', {
+        text: JSON.stringify(text),
+        width: width.toFixed(2)
+      });
+    }
+    
+    return width;
   }
   
   /**
@@ -236,6 +258,13 @@ export class CursorManager {
     const lineContent = this.model.getLineContent(line);
     let column = 0;
     
+    console.log('🎯 [CursorManager] 坐标转换:', {
+      inputCoords: { x, y },
+      line,
+      lineContent: lineContent.substring(0, 50) + (lineContent.length > 50 ? '...' : ''),
+      lineContentLength: lineContent.length
+    });
+    
     if (lineContent.length > 0 && x > 0) {
       // 二分查找最接近的列位置
       let left = 0;
@@ -263,7 +292,12 @@ export class CursorManager {
           column--;
         }
       }
+      
+      // 确保列号不超过行内容长度
+      column = Math.min(column, lineContent.length);
     }
+    
+    console.log('🎯 [CursorManager] 转换结果:', { line, column });
     
     return { line, column };
   }
@@ -275,9 +309,14 @@ export class CursorManager {
   private updateCursorPosition(): void {
     const coordinates = this.positionToCoordinates(this.position);
     
+    // 光标需要相对于整个容器定位，考虑行号偏移和滚动偏移
+    const lineNumberWidth = 60; // 与EditorView中的设置保持一致
+    const x = coordinates.x + lineNumberWidth - this.container.scrollLeft;
+    const y = coordinates.y - this.container.scrollTop;
+    
     // 更新光标元素的位置
-    this.cursorElement.style.left = `${coordinates.x}px`;
-    this.cursorElement.style.top = `${coordinates.y}px`;
+    this.cursorElement.style.left = `${x}px`;
+    this.cursorElement.style.top = `${y}px`;
     
     // 确保光标在可视区域内
     this.ensureCursorVisible();
