@@ -5,7 +5,7 @@
  * - https://github.com/jedwatson/react-select
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import ModeToggle from '@/components/mode-toggle';
 import { Button } from '@/components/ui/button';
@@ -35,6 +35,9 @@ export default function NotesListeningDialog() {
 
   const [status, setStatus] = useStatus();
   const [isSequentialPlaying, setIsSequentialPlaying] = useState(false);
+  const [isSticky, setIsSticky] = useState(false); // 控制粘性定位状态
+  const operationRef = useRef(null); // 操作栏的引用
+  const originalOffsetTop = useRef(0); // 记录操作栏的原始位置
 
   // 加载所有 notes
   useEffect(() => {
@@ -54,6 +57,29 @@ export default function NotesListeningDialog() {
         toast.error('cant load notes from API.');
       });
 
+  }, []);
+
+  // 监听滚动事件，实现粘性导航栏
+  useEffect(() => {
+    // 记录操作栏的原始位置
+    if (operationRef.current) {
+      originalOffsetTop.current = operationRef.current.offsetTop;
+    }
+
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      // 只有当滚动位置超过操作栏原始位置时才启用粘性定位
+      // 当滚动回到原始位置以上时则取消粘性定位
+      setIsSticky(scrollTop > originalOffsetTop.current);
+    };
+
+    // 添加滚动事件监听器
+    window.addEventListener('scroll', handleScroll);
+    
+    // 清理函数：组件卸载时移除事件监听器
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // 处理顺序播放 - 主要的播放控制逻辑
@@ -202,7 +228,17 @@ export default function NotesListeningDialog() {
       </h1>
 
       {/* 笔记添加 */}
-      <div className="operation text-right flex items-center justify-end gap-2 mb-2">
+      {/* 当操作栏固定时的占位元素，防止内容跳跃 */}
+      {isSticky && <div className="h-16 mb-2"></div>}
+      
+      <div 
+        ref={operationRef}
+        className={`operation text-right flex items-center justify-end gap-2 mb-2 transition-all duration-200 ${
+          isSticky 
+            ? 'fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md px-4 py-2' 
+            : ''
+        }`}
+      >
         <Button variant="outline" onClick={handleSequentialPlay}>
           {isSequentialPlaying && status.notesListeningDialog?.isPlaying ? <AiFillPauseCircle /> : <AiFillPlayCircle />}
         </Button>
