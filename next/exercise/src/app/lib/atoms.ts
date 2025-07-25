@@ -148,9 +148,26 @@ export function initStatusNote(): Note {
     }
 }
 
+// 定义状态类型
+type StatusType = {
+    notes: any[];
+    note: Note;
+    types: any[];
+    isAdding: boolean;
+    isProcessing: boolean;
+    isPlaying: boolean;
+    words: any[];
+    currentWordIndex: number;
+    notesListeningDialog: {
+        notes: any[];
+        currentNoteIndex: number;
+        isPlaying: boolean;
+    };
+};
+
 // 通用 status，所有数据在此周转。
-// Define the status atom without the handler function
-export const status = atom({
+// Define the status atom with proper typing
+export const status = atom<StatusType>({
     notes: [],
     note: initStatusNote(),
     types: [],
@@ -169,23 +186,6 @@ export const status = atom({
         isPlaying: false,
     }
 });
-
-// 定义状态类型
-type StatusType = {
-    notes: any[];
-    note: Note;
-    types: any[];
-    isAdding: boolean;
-    isProcessing: boolean;
-    isPlaying: boolean;
-    words: any[];
-    currentWordIndex: number;
-    notesListeningDialog: {
-        notes: any[];
-        currentNoteIndex: number;
-        isPlaying: boolean;
-    };
-};
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
 // 提供状态管理和调试日志功能

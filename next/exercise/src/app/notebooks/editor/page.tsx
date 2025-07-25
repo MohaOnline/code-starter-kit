@@ -16,6 +16,7 @@ import { useStatus } from "@/app/lib/atoms";
 import { ThemeToggle } from "@/app/lib/components/ThemeToggle";
 import HTMLAreaV2 from "@/app/lib/components/HTMLAreaV2";
 import NavTop from "@/app/lib/components/NavTop";
+import { preprocessText } from "@/app/api/notebooks/notes/crud/route";
 
 interface NoteData {
   id?: number;
@@ -51,7 +52,7 @@ export default function NotebookEditor() {
   const [noteId, setNoteId] = useState<string>("");
   const [noteData, setNoteData] = useState<NoteData>({});
   const [notebooks, setNotebooks] = useState<NotebookOption[]>([]);
-  const [types, setTypes] = useState<TypeOption[]>([]);
+  const [types, setTypes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useStatus();
@@ -133,6 +134,9 @@ export default function NotebookEditor() {
   const saveNote = async () => {
     setSaving(true);
     setStatus(prev => ({ ...prev, isProcessing: true }));
+
+    console.log(preprocessText(noteData.body));
+
     try {
       const url = noteData.id ? `/api/notebooks/editor/${noteData.id}` : "/api/notebooks/editor";
 

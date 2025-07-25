@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Link from "next/link";
 import { FaHome, FaListUl } from "react-icons/fa";
 import { BsPostcard } from "react-icons/bs";
@@ -5,6 +6,7 @@ import { GrTechnology } from "react-icons/gr";
 import { GiMaterialsScience } from "react-icons/gi";
 import { MdOutlineBiotech } from "react-icons/md";
 import { GrDocument, GrAssistListening } from "react-icons/gr";
+import { MdEditNote } from "react-icons/md";
 
 import React from "react";
 import "./NavTop.css";
@@ -25,7 +27,7 @@ export default function NavTop() {
         <GrTechnology />
       </Link>
       <Link href={"/notebooks/editor"}>
-        <GiMaterialsScience />
+        <MdEditNote />
       </Link>
       <Link href={"/notebooks/se/cards"}>
         <MdOutlineBiotech />

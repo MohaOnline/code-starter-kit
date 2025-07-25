@@ -1,28 +1,20 @@
-'use client';
-import './page.css';
+"use client";
+import "./page.css";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { CgPlayTrackNextR, CgPlayTrackPrevR } from 'react-icons/cg';
+import React, { useEffect, useRef, useState } from "react";
+import { CgPlayTrackNextR, CgPlayTrackPrevR } from "react-icons/cg";
 
-import {
-  FaEdit,
-  FaPlay,
-  FaPause,
-  FaTrash,
-  FaVolumeUp,
-  FaSync, FaSearch,
-} from 'react-icons/fa';
-import { PiHandWaving, PiRocket, PiGearFineLight, PiGear } from 'react-icons/pi';
-import { RiFileSearchLine } from 'react-icons/ri';
-import { LuSquarePlay } from 'react-icons/lu';
-import { GiPlayerPrevious, GiPlayerNext, GiGears } from 'react-icons/gi';
+import { FaEdit, FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync, FaSearch } from "react-icons/fa";
+import { PiHandWaving, PiRocket, PiGearFineLight, PiGear } from "react-icons/pi";
+import { RiFileSearchLine } from "react-icons/ri";
+import { LuSquarePlay } from "react-icons/lu";
+import { GiPlayerPrevious, GiPlayerNext, GiGears } from "react-icons/gi";
 import { CiEdit } from "react-icons/ci";
 
-
-import { Dialog, Transition } from '@headlessui/react';
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Dialog, Transition } from "@headlessui/react";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Shadcn UI 组件
 import {
@@ -31,37 +23,37 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
-import { Slider } from '@/components/ui/slider';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
+} from "@/components/ui/dialog";
+import { Slider } from "@/components/ui/slider";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 
-import { useStatus } from '@/app/lib/atoms';
-import { handleKeyDown } from '../lib/common';
-import NavTop from '@/app/lib/components/NavTop.js';
-import { VoicePlayerWithMediaSession } from '@/app/lib/VoicePlayerWithMediaSession';
-import ModeToggle from '@/components/mode-toggle';
-import { ThemeToggle } from '@/app/lib/components/ThemeToggle';
+import { useStatus } from "@/app/lib/atoms";
+import { handleKeyDown } from "../lib/common";
+import NavTop from "@/app/lib/components/NavTop";
+import { VoicePlayerWithMediaSession } from "@/app/lib/VoicePlayerWithMediaSession";
+import ModeToggle from "@/components/mode-toggle";
+import { ThemeToggle } from "@/app/lib/components/ThemeToggle";
 
 // 默认音频配置
 const DEFAULT_AUDIO_CONFIG = {
   // 全局设置
-  alternatePlay: false,  // 是否交错播放
-  volume: 100,           // 音量 50%, 75%, 100%, 125%, 150%
-  speed: 100,            // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
+  alternatePlay: false, // 是否交错播放
+  volume: 100, // 音量 50%, 75%, 100%, 125%, 150%
+  speed: 100, // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
   // 英文设置
   english: {
-    repeatCount: 1,     // 发音次数 0-5
-    pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
-    showText: true,     // 是否显示英文
+    repeatCount: 1, // 发音次数 0-5
+    pauseTime: 0, // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
+    showText: true, // 是否显示英文
     waitVoiceLength: true, // 是否等待音频时长
   },
   // 中文设置
   chinese: {
-    repeatCount: 0,     // 发音次数 0-5
-    pauseTime: 0,       // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
-    showText: true,     // 是否显示中文
+    repeatCount: 0, // 发音次数 0-5
+    pauseTime: 0, // 停顿时间 0, 0.25, 0.5, 0.75, 1, 1.25 秒
+    showText: true, // 是否显示中文
     waitVoiceLength: true, // 是否等待音频时长
   },
 };
@@ -69,8 +61,8 @@ const DEFAULT_AUDIO_CONFIG = {
 // 从 localStorage 读取音频配置
 const loadAudioConfig = () => {
   try {
-    const saved = localStorage.getItem('audioConfig');
-    console.log('audioConfig', saved);
+    const saved = localStorage.getItem("audioConfig");
+    console.log("audioConfig", saved);
     if (saved) {
       const parsed = JSON.parse(saved);
       // 验证配置结构，确保所有必需字段存在
@@ -92,31 +84,30 @@ const loadAudioConfig = () => {
         },
       };
 
-      console.log('processed audioConfig', config);
+      console.log("processed audioConfig", config);
       return config;
     }
   } catch (error) {
-    console.error('读取音频配置失败:', error);
+    console.error("读取音频配置失败:", error);
   }
   return DEFAULT_AUDIO_CONFIG;
 };
 
 // 保存音频配置到 localStorage
-const saveAudioConfig = (config) => {
+const saveAudioConfig = config => {
   try {
-    localStorage.setItem('audioConfig', JSON.stringify(config));
+    localStorage.setItem("audioConfig", JSON.stringify(config));
   } catch (error) {
-    console.error('保存音频配置失败:', error);
+    console.error("保存音频配置失败:", error);
   }
 };
 
 export default function Page() {
-
   const [status, setStatus] = useState({
     currentWordIndex: 0,
     playedWordIndex: -1,
     playCurrent: null,
-    onWheel: false,       // 滚动时，不播放录音。
+    onWheel: false, // 滚动时，不播放录音。
     isPlaying: false,
     words: [],
     isDialogOpen: false,
@@ -124,7 +115,7 @@ export default function Page() {
     isProcessing: false,
     isComposing: false,
     isTabPressed: false,
-    searchText: '',
+    searchText: "",
     // 配置对话框状态
     isConfigDialogOpen: false,
     // 音频配置（初始化时使用默认值，将在 useEffect 中从 localStorage 读取）
@@ -132,20 +123,20 @@ export default function Page() {
   });
 
   // 更新音频配置并保存到 localStorage
-  const updateAudioConfig = (newConfig) => {
+  const updateAudioConfig = newConfig => {
     setStatus(prev => ({
       ...prev,
-      audioConfig: newConfig
+      audioConfig: newConfig,
     }));
     saveAudioConfig(newConfig);
   };
 
-  const keyDownCallback = (event) => handleKeyDown(event, status, setStatus);
-  const keyUpCallback = (event) => handleKeyUp(event, status, setStatus);
+  const keyDownCallback = event => handleKeyDown(event, status, setStatus);
+  const keyUpCallback = event => handleKeyUp(event, status, setStatus);
 
   const handleKeyUp = (event, status, setStatus) => {
-    if (event.key === 'Tab') {
-      console.debug('Tab Up');
+    if (event.key === "Tab") {
+      console.debug("Tab Up");
       status.isTabPressed = false;
       setStatus({
         ...status, // 复制现有状态
@@ -165,19 +156,18 @@ export default function Page() {
     };
 
     // 添加键盘事件监听器
-    document.addEventListener('keydown', keyDownCallback);
-    document.addEventListener('keyup', keyUpCallback);
-    document.addEventListener('compositionstart', handleCompositionStart);
-    document.addEventListener('compositionend', handleCompositionEnd);
+    document.addEventListener("keydown", keyDownCallback);
+    document.addEventListener("keyup", keyUpCallback);
+    document.addEventListener("compositionstart", handleCompositionStart);
+    document.addEventListener("compositionend", handleCompositionEnd);
 
     // 清理函数（组件卸载时移除键盘监听器）
     return () => {
-      document.removeEventListener('keydown', keyDownCallback);
-      document.removeEventListener('keyup', keyUpCallback);
-      document.removeEventListener('compositionstart', handleCompositionStart);
-      document.removeEventListener('compositionend', handleCompositionEnd);
+      document.removeEventListener("keydown", keyDownCallback);
+      document.removeEventListener("keyup", keyUpCallback);
+      document.removeEventListener("compositionstart", handleCompositionStart);
+      document.removeEventListener("compositionend", handleCompositionEnd);
     };
-
   });
 
   // // 保存当前播放索引到 localStorage
@@ -189,22 +179,21 @@ export default function Page() {
   // 获取单词
   useEffect(() => {
     const fetchWords = async () => {
-
-      const response = await fetch('/api/notebook-words-english', {
-        credentials: 'include'
+      const response = await fetch("/api/notebook-words-english", {
+        credentials: "include",
       });
-      
+
       const json = await response.json();
 
       if (json.success) {
         try {
           let savedIndex = 0;
-          savedIndex = parseInt(localStorage.getItem('wordStatus'), 10);
+          savedIndex = parseInt(localStorage.getItem("wordStatus"), 10);
           if (isNaN(savedIndex)) {
             savedIndex = 0;
           }
           status.currentWordIndex = savedIndex;
-        } catch (e) { }
+        } catch (e) {}
 
         status.words = json.data;
         setStatus(prev => ({
@@ -213,8 +202,8 @@ export default function Page() {
           words: json.data,
         }));
       } else {
-        console.error('API 报错');
-        toast.error('cant load words from API.');
+        console.error("API 报错");
+        toast.error("cant load words from API.");
       }
 
       // try {
@@ -233,49 +222,47 @@ export default function Page() {
       // } catch (error) {
       //   console.error('localStorage 获取失败:', error);
       // }
-
     };
 
     fetchWords();
 
     const savedConfig = loadAudioConfig();
-    console.log('savedConfig', savedConfig);
+    console.log("savedConfig", savedConfig);
     status.audioConfig = savedConfig;
     setStatus(prev => ({
       ...prev,
-      audioConfig: savedConfig
+      audioConfig: savedConfig,
     }));
-
   }, []);
 
   // Turn current word to next.
   const autoNextWord = () => {
-    if (status.isPlaying) { // 单词是否自动播放
+    if (status.isPlaying) {
+      // 单词是否自动播放
       nextWord();
     }
-  }
+  };
 
   const nextWord = () => {
     if (status.currentWordIndex < status.words.length - 1) {
       setStatus(prev => ({
         ...prev,
         currentWordIndex: prev.currentWordIndex + 1,
-      }))
-    }
-    else {
+      }));
+    } else {
       setStatus(prev => ({
         ...prev,
         currentWordIndex: 0,
-      }))
+      }));
     }
-  }
+  };
 
   const playerRef = useRef(null);
-  
+
   // 初始化播放器
   useEffect(() => {
     playerRef.current = new VoicePlayerWithMediaSession();
-    
+
     // 设置外部控制回调
     playerRef.current.setExternalControls(
       () => {
@@ -297,7 +284,7 @@ export default function Page() {
         nextWord();
       }
     );
-    
+
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy();
@@ -306,15 +293,12 @@ export default function Page() {
   }, []);
   // 播放音频: 当 currentWordIndex 或 words 改变时
   useEffect(() => {
-    if (status.words.length > 0 &&
-      status.words[status.currentWordIndex]?.voice_id_uk) {
-
+    if (status.words.length > 0 && status.words[status.currentWordIndex]?.voice_id_uk) {
       // 暂停时不播放声音
       if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex) {
         playCurrentWord(autoNextWord);
         status.playedWordIndex = status.currentWordIndex;
       }
-
     }
 
     return () => {
@@ -418,7 +402,7 @@ export default function Page() {
   }, [status.isPlaying, status.currentWordIndex]);
 
   /** 将连续相同的URL交错排列 */
-  const alternateVoiceURLs = (urls) => {
+  const alternateVoiceURLs = urls => {
     if (urls.length <= 1) return urls;
 
     // 分组相同的URL
@@ -454,7 +438,7 @@ export default function Page() {
   };
 
   /** 根据audioConfig生成语音URL数组 */
-  const generateVoiceURLs = (wordIndex) => {
+  const generateVoiceURLs = wordIndex => {
     const word = status.words[wordIndex];
     if (!word?.voice_id_uk) return [];
 
@@ -485,23 +469,23 @@ export default function Page() {
   };
 
   /** 播放当前单词音频。 */
-  const playCurrentWord = (onCompleteCallback = () => { }) => {
+  const playCurrentWord = (onCompleteCallback = () => {}) => {
     const voiceURLs = generateVoiceURLs(status.currentWordIndex);
     if (voiceURLs.length > 0 && playerRef.current) {
       const currentWord = status.words[status.currentWordIndex];
       const wordData = {
         word: currentWord.word,
-        translation: currentWord.translations?.[0]?.translation || '',
-        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || ''
+        translation: currentWord.translations?.[0]?.translation || "",
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
       };
-      
+
       playerRef.current.stop();
       playerRef.current.setSpeed(status.audioConfig.speed / 100);
       playerRef.current.setVolume(status.audioConfig.volume / 100);
       playerRef.current.setVoiceInterval(
-        status.audioConfig.english.waitVoiceLength, 
-        status.audioConfig.chinese.waitVoiceLength, 
-        status.audioConfig.english.pauseTime * 1000, 
+        status.audioConfig.english.waitVoiceLength,
+        status.audioConfig.chinese.waitVoiceLength,
+        status.audioConfig.english.pauseTime * 1000,
         status.audioConfig.chinese.pauseTime * 1000
       );
       playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
@@ -513,13 +497,13 @@ export default function Page() {
   /**
    * 检索已入库单词
    */
-  const searchExistingWordsEnglishChinese = async (word) => {
-
-    if (!status.isTabPressed) { return; }
+  const searchExistingWordsEnglishChinese = async word => {
+    if (!status.isTabPressed) {
+      return;
+    }
     // search current word
     try {
-      const response = await fetch(
-        `/api/words-english-chinese?word=${word}`);
+      const response = await fetch(`/api/words-english-chinese?word=${word}`);
       const data = await response.json();
       console.log(data);
 
@@ -532,38 +516,37 @@ export default function Page() {
         });
         toast.info(`${word} found.`);
       } else {
-
         setStatus({
           ...status, // 复制现有状态
           dialogData: {
-            eid: '',
+            eid: "",
             word: status.dialogData.word,
-            accent: '',
-            script: '',
-            syllable: '',
+            accent: "",
+            script: "",
+            syllable: "",
             translations: [
               {
-                id: '',
-                cid: '',
-                nid: '',
-                pos: '',
-                phonetic_us: '',
-                phonetic_uk: '',
-                translation: '',
-                script: '',
+                id: "",
+                cid: "",
+                nid: "",
+                pos: "",
+                phonetic_us: "",
+                phonetic_uk: "",
+                translation: "",
+                script: "",
                 noted: false,
-                note: '',
-                note_explain: '',
-              }],
+                note: "",
+                note_explain: "",
+              },
+            ],
           },
         });
         toast.error(`${word} not found.`);
       }
       // if data.
-
     } catch (error) {
-      console.error('Failed to search english-chinese:', error);
-      toast.error('查询失败，请检查网络或稍后再试');
+      console.error("Failed to search english-chinese:", error);
+      toast.error("查询失败，请检查网络或稍后再试");
     }
     // try {
     //   if (!status.dialogData.word) {
@@ -584,96 +567,92 @@ export default function Page() {
         return;
       }
     }
-    setStatus(
-      {
-        ...status,
-        dialogData: {
-          ...status.dialogData,
-          translations: [
-            ...status.dialogData.translations, {
-              cid: '',
-              nid: '',
-              pos: '',
-              phonetic_us: '',
-              phonetic_uk: '',
-              translation: '',
-              note: '',
-              note_explain: '',
-              script: '',
-              noted: false,
-            }],
-        },
-      });
+    setStatus({
+      ...status,
+      dialogData: {
+        ...status.dialogData,
+        translations: [
+          ...status.dialogData.translations,
+          {
+            cid: "",
+            nid: "",
+            pos: "",
+            phonetic_us: "",
+            phonetic_uk: "",
+            translation: "",
+            note: "",
+            note_explain: "",
+            script: "",
+            noted: false,
+          },
+        ],
+      },
+    });
   }
 
-  const handleWordWheel = (event) => {
-
+  const handleWordWheel = event => {
     status.onWheel = false;
     status.isPlaying = false;
 
     const delta = event.deltaY;
     if (delta > 0) {
-      console.log('向下滚动 ' + delta);
-      status.currentWordIndex = Math.min(status.words.length - 1,
-        status.currentWordIndex + 1);
+      console.log("向下滚动 " + delta);
+      status.currentWordIndex = Math.min(status.words.length - 1, status.currentWordIndex + 1);
       setStatus({
         ...status, // 复制现有状态
       });
     } else {
-      console.log('向上滚动' + delta);
+      console.log("向上滚动" + delta);
       status.currentWordIndex = Math.max(0, status.currentWordIndex - 1);
       setStatus({
         ...status, // 复制现有状态
       });
     }
 
-    localStorage.setItem('wordStatus', status.currentWordIndex.toString());
+    localStorage.setItem("wordStatus", status.currentWordIndex.toString());
   };
 
   /**  */
-  const handlePutEnd = async (event) => {
-    console.log('handlePutEnd');
+  const handlePutEnd = async event => {
+    console.log("handlePutEnd");
 
     if (status.currentWordIndex === status.words.length - 1) {
       return;
     }
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: true,
     }));
 
-    const response = await fetch(
-      '/api/notebook/words/english',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'put_end',
-          word: status.words[status.currentWordIndex],
-        }),
-      });
+    const response = await fetch("/api/notebook/words/english", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "put_end",
+        word: status.words[status.currentWordIndex],
+      }),
+    });
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: false,
     }));
 
     if (!response.ok) {
-      toast.error('Failed to put word to the end.');
+      toast.error("Failed to put word to the end.");
       return;
     } else if (response.ok) {
-      toast.success('Successfully put word end.');
+      toast.success("Successfully put word end.");
     }
 
     const jsonResponse = await response.json();
     console.log(jsonResponse);
 
     if (jsonResponse.success) {
-      if (jsonResponse.data.weight !==
-        status.words[status.currentWordIndex].weight) {
+      if (jsonResponse.data.weight !== status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
         status.words.push(jsonResponse.data);
         setStatus({
@@ -681,55 +660,50 @@ export default function Page() {
         });
       }
     }
-
   };
 
-  const handlePutNext = async (event) => {
-
+  const handlePutNext = async event => {
     if (status.currentWordIndex === status.words.length - 1) {
       return;
     }
 
-    console.log('handlePutNext');
+    console.log("handlePutNext");
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: true,
     }));
 
-    const response = await fetch(
-      '/api/notebook/words/english',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'put_next',
-          word: status.words[status.currentWordIndex],
-          weight1: status.words[status.currentWordIndex + 1].weight,
-          weight2: status.words[status.currentWordIndex + 2].weight,
-        }),
-      });
+    const response = await fetch("/api/notebook/words/english", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "put_next",
+        word: status.words[status.currentWordIndex],
+        weight1: status.words[status.currentWordIndex + 1].weight,
+        weight2: status.words[status.currentWordIndex + 2].weight,
+      }),
+    });
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: false,
     }));
 
     if (!response.ok) {
-      toast.error('Failed to put word to the next.');
+      toast.error("Failed to put word to the next.");
       return;
     } else if (response.ok) {
-      toast.success('Successfully put word to next.');
+      toast.success("Successfully put word to next.");
     }
 
     const jsonResponse = await response.json();
     console.log(jsonResponse);
 
     if (jsonResponse.success) {
-      if (jsonResponse.data.weight !==
-        status.words[status.currentWordIndex].weight) {
+      if (jsonResponse.data.weight !== status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
         status.words.splice(status.currentWordIndex + 1, 0, jsonResponse.data);
         status.currentWordIndex++;
@@ -738,53 +712,48 @@ export default function Page() {
         });
       }
     }
-
   };
 
-  const handlePutTop = async (event) => {
-
-    console.log('handlePutTop');
+  const handlePutTop = async event => {
+    console.log("handlePutTop");
 
     if (status.currentWordIndex === 0) {
       return;
     }
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: true,
     }));
 
-    const response = await fetch(
-      '/api/notebook/words/english',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'put_top',
-          word: status.words[status.currentWordIndex],
-        }),
-      });
+    const response = await fetch("/api/notebook/words/english", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "put_top",
+        word: status.words[status.currentWordIndex],
+      }),
+    });
 
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: false,
     }));
 
     if (!response.ok) {
-      toast.error('Failed to put word to the top.');
+      toast.error("Failed to put word to the top.");
       return;
     } else if (response.ok) {
-      toast.success('Successfully put word top.');
+      toast.success("Successfully put word top.");
     }
 
     const jsonResponse = await response.json();
     console.log(jsonResponse);
 
     if (jsonResponse.success) {
-      if (jsonResponse.data.weight !==
-        status.words[status.currentWordIndex].weight) {
+      if (jsonResponse.data.weight !== status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
         status.words.unshift(jsonResponse.data);
         setStatus({
@@ -792,11 +761,9 @@ export default function Page() {
         });
       }
     }
-
   };
 
-  const handlePutPrevious = async (event) => {
-
+  const handlePutPrevious = async event => {
     if (status.currentWordIndex === 0) {
       return;
     }
@@ -805,48 +772,43 @@ export default function Page() {
       return handlePutTop(event);
     }
 
-    console.log('handlePutPrevious');
+    console.log("handlePutPrevious");
 
-
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: true,
     }));
 
-    const response = await fetch(
-      '/api/notebook/words/english',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'put_previous',
-          word: status.words[status.currentWordIndex],
-          weight1: status.words[status.currentWordIndex - 1].weight,
-          weight2: status.words[status.currentWordIndex - 2].weight,
-        }),
-      });
+    const response = await fetch("/api/notebook/words/english", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "put_previous",
+        word: status.words[status.currentWordIndex],
+        weight1: status.words[status.currentWordIndex - 1].weight,
+        weight2: status.words[status.currentWordIndex - 2].weight,
+      }),
+    });
 
-
-    setStatus((prev) => ({
+    setStatus(prev => ({
       ...prev,
       isProcessing: false,
     }));
 
     if (!response.ok) {
-      toast.error('Failed to put word to previous.');
+      toast.error("Failed to put word to previous.");
       return;
     } else if (response.ok) {
-      toast.success('Successfully put word previous.');
+      toast.success("Successfully put word previous.");
     }
 
     const jsonResponse = await response.json();
     console.log(jsonResponse);
 
     if (jsonResponse.success) {
-      if (jsonResponse.data.weight !==
-        status.words[status.currentWordIndex].weight) {
+      if (jsonResponse.data.weight !== status.words[status.currentWordIndex].weight) {
         const [item] = status.words.splice(status.currentWordIndex, 1);
         status.words.splice(status.currentWordIndex - 1, 0, jsonResponse.data);
         status.currentWordIndex--;
@@ -855,59 +817,83 @@ export default function Page() {
         });
       }
     }
-
   };
 
   return (
     <>
       <NavTop />
-      <div className="text-right"><ThemeToggle /></div>
-      <div className={'word-container'} onWheel={handleWordWheel}>
+      <div className="text-right">
+        <ThemeToggle />
+      </div>
+      <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
           <div>
-            <span className={'phonetic'} dangerouslySetInnerHTML={{
-              __html: status.words[status.currentWordIndex]?.phonetic_us ||
-                status.words[status.currentWordIndex]?.phonetic_uk || '&nbsp;',
-            }}></span>
+            <span
+              className={"phonetic"}
+              dangerouslySetInnerHTML={{
+                __html:
+                  status.words[status.currentWordIndex]?.phonetic_us ||
+                  status.words[status.currentWordIndex]?.phonetic_uk ||
+                  "&nbsp;",
+              }}
+            ></span>
 
-            <span className={'pos'}>&nbsp;
+            <span className={"pos"}>
+              &nbsp;
               {status.words[status.currentWordIndex]?.pos
-                ? '[' +
-                status.words[status.currentWordIndex]?.pos + ']'
-                :
-                ' '}
-              &nbsp;</span>
+                ? "[" + status.words[status.currentWordIndex]?.pos + "]"
+                : " "}
+              &nbsp;
+            </span>
           </div>
 
-          <div className={'word'} dangerouslySetInnerHTML={{
-            __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : '&nbsp;',
-          }}>
-          </div>
+          <div
+            className={"word"}
+            dangerouslySetInnerHTML={{
+              __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : "&nbsp;",
+            }}
+          ></div>
 
-          <div className={'translation'} dangerouslySetInnerHTML={{
-            __html: status.audioConfig.chinese.showText ? status.words[status.currentWordIndex].translation : '&nbsp;',
-          }}></div>
-          
-          <div className={'note'} dangerouslySetInnerHTML={{
-            __html: status.audioConfig.chinese.showText && status.words[status.currentWordIndex].note ?
-               '📗 '+status.words[status.currentWordIndex].note : '&nbsp;',
-          }}></div>
+          <div
+            className={"translation"}
+            dangerouslySetInnerHTML={{
+              __html: status.audioConfig.chinese.showText
+                ? status.words[status.currentWordIndex].translation
+                : "&nbsp;",
+            }}
+          ></div>
 
+          <div
+            className={"note"}
+            dangerouslySetInnerHTML={{
+              __html:
+                status.audioConfig.chinese.showText && status.words[status.currentWordIndex].note
+                  ? "📗 " + status.words[status.currentWordIndex].note
+                  : "&nbsp;",
+            }}
+          ></div>
         </div>
       </div>
 
-      <div className={'operation text-center'} onWheel={handleWordWheel}>
-        {status.currentWordIndex + 1} / {status.words.length}</div>
+      <div className={"operation text-center"} onWheel={handleWordWheel}>
+        {status.currentWordIndex + 1} / {status.words.length}
+      </div>
 
-      <div className={'operation text-center'}>
-        <span className={'put_top'} onClick={handlePutTop}><PiRocket />
+      <div className={"operation text-center"}>
+        <span className={"put_top"} onClick={handlePutTop}>
+          <PiRocket />
         </span>
-        <span className={'put_previous'}
-          onClick={handlePutPrevious}> <GiPlayerPrevious /> </span>
-        <span className={'put_next'}
-          onClick={handlePutNext}> <GiPlayerNext /> </span>
-        <form className={'inline search-form'}
-          onSubmit={(event) => {
+        <span className={"put_previous"} onClick={handlePutPrevious}>
+          {" "}
+          <GiPlayerPrevious />{" "}
+        </span>
+        <span className={"put_next"} onClick={handlePutNext}>
+          {" "}
+          <GiPlayerNext />{" "}
+        </span>
+        <form
+          className={"inline search-form"}
+          onSubmit={event => {
             event.preventDefault();
             if (status.searchText && status.words?.length > 1) {
               let index = 0;
@@ -917,11 +903,11 @@ export default function Page() {
                   i = i - status.words.length;
                 }
                 const word = status.words[i];
-                if (word.word.toLowerCase().
-                  includes(status.searchText.toLowerCase()) ||
-                  word.translation.toLowerCase().
-                    includes(status.searchText.toLowerCase()) ||
-                  i + 1 + '' === status.searchText) {
+                if (
+                  word.word.toLowerCase().includes(status.searchText.toLowerCase()) ||
+                  word.translation.toLowerCase().includes(status.searchText.toLowerCase()) ||
+                  i + 1 + "" === status.searchText
+                ) {
                   setStatus({
                     ...status,
                     currentWordIndex: i,
@@ -930,45 +916,70 @@ export default function Page() {
                 }
               }
               if (index === status.words.length) {
-                toast.error('Not found.');
+                toast.error("Not found.");
               }
             }
-          }}>
-          <input className={'focus:outline-none border'}
-            type={'text'}
+          }}
+        >
+          <input
+            className={"focus:outline-none border"}
+            type={"text"}
             value={status.searchText}
-            onFocus={(e) => e.target.select()}
-            onChange={(event) => {
+            onFocus={e => e.target.select()}
+            onChange={event => {
               setStatus({ ...status, searchText: event.target.value });
             }}
           />
-          <button type="submit" className="ml-2"><RiFileSearchLine />
+          <button type="submit" className="ml-2">
+            <RiFileSearchLine />
           </button>
         </form>
-        <span onClick={(event) => {
-          keyDownCallback({ ...event, key: ' ' });
-        }}> {status.isPlaying ?
-          <FaPause /> : <LuSquarePlay />}</span>
-        <span onClick={(event) => {
-          keyDownCallback({ ...event, key: 'ArrowLeft' });
-        }}> <CgPlayTrackPrevR /> </span>
-        <span onClick={(event) => {
-          keyDownCallback({ ...event, key: 'ArrowRight' });
-        }}> <CgPlayTrackNextR /> </span>
-        <span onClick={(e) => playCurrentWord()}><FaVolumeUp /></span>
-        <span onClick={() => {
-          setStatus(prev => ({ ...prev, isConfigDialogOpen: true }));
-        }}><PiGear /></span>
-        <span className={'put_end'} onClick={handlePutEnd}><PiRocket />
+        <span
+          onClick={event => {
+            keyDownCallback({ ...event, key: " " });
+          }}
+        >
+          {" "}
+          {status.isPlaying ? <FaPause /> : <LuSquarePlay />}
         </span>
-        
+        <span
+          onClick={event => {
+            keyDownCallback({ ...event, key: "ArrowLeft" });
+          }}
+        >
+          {" "}
+          <CgPlayTrackPrevR />{" "}
+        </span>
+        <span
+          onClick={event => {
+            keyDownCallback({ ...event, key: "ArrowRight" });
+          }}
+        >
+          {" "}
+          <CgPlayTrackNextR />{" "}
+        </span>
+        <span onClick={e => playCurrentWord()}>
+          <FaVolumeUp />
+        </span>
+        <span
+          onClick={() => {
+            setStatus(prev => ({ ...prev, isConfigDialogOpen: true }));
+          }}
+        >
+          <PiGear />
+        </span>
+        <span className={"put_end"} onClick={handlePutEnd}>
+          <PiRocket />
+        </span>
+
         {/* Open Editor Dialog */}
         <button
           onClick={async () => {
             // search current word
             try {
               const response = await fetch(
-                `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`);
+                `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`
+              );
               const data = await response.json();
               console.log(data);
 
@@ -1004,10 +1015,9 @@ export default function Page() {
                 });
               }
               // if data.
-
             } catch (error) {
-              console.error('Failed to search english-chinese:', error);
-              toast.error('查询失败，请检查网络或稍后再试');
+              console.error("Failed to search english-chinese:", error);
+              toast.error("查询失败，请检查网络或稍后再试");
             }
           }}
           className="cursor-pointer"
@@ -1026,204 +1036,287 @@ export default function Page() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        aria-label={undefined}
       />
 
       <Transition show={status.isDialogOpen}>
-        <Dialog onClose={() => setStatus({
-          ...status, // 复制现有状态
-          isDialogOpen: false,
-          dialogData: { translations: [] },
-        })} className="relative z-50">
-
+        <Dialog
+          onClose={() =>
+            setStatus({
+              ...status, // 复制现有状态
+              isDialogOpen: false,
+              dialogData: { translations: [] },
+            })
+          }
+          className="relative z-50"
+        >
           {/* Shade */}
           <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-          <div
-            className="fixed inset-0 flex items-center justify-center p-4 ">
+          <div className="fixed inset-0 flex items-center justify-center p-4 ">
             {/* Scrollable */}
-            <Dialog.Panel
-              className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
-              <div className={'flex'}>
+            <Dialog.Panel className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
+              <div className={"flex"}>
                 <input
                   type="text"
-                  value={status.dialogData.word || ''}
-                  onChange={(e) => setStatus(
-                    {
+                  value={status.dialogData.word || ""}
+                  onChange={e =>
+                    setStatus({
                       ...status,
                       dialogData: {
                         ...status.dialogData,
                         word: e.target.value,
                       },
-                    })}
-                  onBlur={(e) => searchExistingWordsEnglishChinese(
-                    e.target.value)}
+                    })
+                  }
+                  onBlur={e => searchExistingWordsEnglishChinese(e.target.value)}
                   className="flex-1 p-2 border rounded"
-                  onFocus={(e) => e.target.select()}
+                  onFocus={e => e.target.select()}
                   placeholder="Word..."
                 />
-                <input name={'eid'} type={'text'}
-                  value={status.dialogData.eid || ''}
+                <input
+                  name={"eid"}
+                  type={"text"}
+                  value={status.dialogData.eid || ""}
                   readOnly={true}
-                  className={'w-auto p-2 border pointer-events-none'}
-                /></div>
+                  className={"w-auto p-2 border pointer-events-none"}
+                />
+              </div>
               <input
                 type="text"
-                value={status.dialogData.accent || ''}
-                onChange={(e) => setStatus(
-                  {
+                value={status.dialogData.accent || ""}
+                onChange={e =>
+                  setStatus({
                     ...status,
                     dialogData: {
                       ...status.dialogData,
                       accent: e.target.value,
                     },
-                  })}
+                  })
+                }
                 className="w-full mt-2 p-2 border rounded"
                 placeholder="Accent..."
               />
               <input
                 type="text"
-                value={status.dialogData.syllable || ''}
-                onChange={(e) => setStatus(
-                  {
+                value={status.dialogData.syllable || ""}
+                onChange={e =>
+                  setStatus({
                     ...status,
                     dialogData: {
                       ...status.dialogData,
                       syllable: e.target.value,
                     },
-                  })}
+                  })
+                }
                 className="w-full mt-2 p-2 border rounded"
                 placeholder="Syllable..."
               />
               <input
                 type="text"
-                value={status.dialogData.script || ''}
-                onChange={(e) => setStatus(
-                  {
+                value={status.dialogData.script || ""}
+                onChange={e =>
+                  setStatus({
                     ...status,
                     dialogData: {
                       ...status.dialogData,
                       script: e.target.value,
                     },
-                  })}
+                  })
+                }
                 className="w-full mt-2 p-2 border rounded"
                 placeholder="Script..."
               />
-              {
-                status.dialogData.translations.map((translation, index) => {
+              {status.dialogData.translations.map((translation, index) => {
+                if (translation.deleted) return null;
 
-                  if (translation.deleted) return null;
-
-                  return (
-                    <div key={index}
-                      className="translation mt-2 bg-gray-950/70">
-                      <div className={'flex items-center gap-2'}>
-                        <input name={'note-word-id'} type={'hidden'}
-                          value={translation.id || ''}
-                        />
-                        <input name={'notebook-id'} type={'hidden'}
-                          value={translation.nid || ''}
-                        />
-                        <input name={'cid'} type={'hidden'}
-                          value={translation.cid || ''}
-                        />
-                        <input
-                          type="text"
-                          className="w-10 p-2 pl-1 pr-1 border rounded"
-                          placeholder="PoS"
-                          value={translation.pos || ''}
-                          onChange={(e) => {
-                            const translations = [...status.dialogData.translations];
-                            translations[index] = {
-                              ...translation,
-                              pos: e.target.value,
-                            };
-                            setStatus(
-                              {
-                                ...status,
-                                dialogData: {
-                                  ...status.dialogData,
-                                  translations: translations,
-                                },
-                              });
-                          }}
-                        />
-                        <input
-                          type="text"
-                          value={translation.phonetic_uk || ''}
-                          onChange={(e) => {
-                            const translations = [...status.dialogData.translations];
-                            translations[index] = {
-                              ...translation,
-                              phonetic_uk: e.target.value,
-                            };
-                            setStatus(
-                              {
-                                ...status,
-                                dialogData: {
-                                  ...status.dialogData,
-                                  translations: translations,
-                                },
-                              });
-                          }}
-                          className="flex-1 p-2 pl-1 pr-1 border rounded"
-                          placeholder="UK "
-                        />
-                        <button
-                          className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
-                          onClick={async () => {
-                            try {
-                              if (translation.cid) {
-                                setStatus({
-                                  ...status,
-                                  isProcessing: true,
-                                });
-                                const response = await fetch(
-                                  `/api/words-english-azure-tts?cid=${translation.cid}`);
-                                const data = await response.json();
-                                console.log(data);
-                                toast.info(JSON.stringify(data));
-                              }
-                            } finally {
+                return (
+                  <div key={index} className="translation mt-2 bg-gray-950/70">
+                    <div className={"flex items-center gap-2"}>
+                      <input name={"note-word-id"} type={"hidden"} value={translation.id || ""} />
+                      <input name={"notebook-id"} type={"hidden"} value={translation.nid || ""} />
+                      <input name={"cid"} type={"hidden"} value={translation.cid || ""} />
+                      <input
+                        type="text"
+                        className="w-10 p-2 pl-1 pr-1 border rounded"
+                        placeholder="PoS"
+                        value={translation.pos || ""}
+                        onChange={e => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            pos: e.target.value,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                      />
+                      <input
+                        type="text"
+                        value={translation.phonetic_uk || ""}
+                        onChange={e => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            phonetic_uk: e.target.value,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                        className="flex-1 p-2 pl-1 pr-1 border rounded"
+                        placeholder="UK "
+                      />
+                      <button
+                        className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
+                        onClick={async () => {
+                          try {
+                            if (translation.cid) {
                               setStatus({
                                 ...status,
-                                isProcessing: false,
+                                isProcessing: true,
                               });
+                              const response = await fetch(`/api/words-english-azure-tts?cid=${translation.cid}`);
+                              const data = await response.json();
+                              console.log(data);
+                              toast.info(JSON.stringify(data));
                             }
-                          }}
-                        >
-                          <FaSync />
-                        </button>
-                        <input
-                          type="text"
-                          value={translation.phonetic_us || ''}
-                          onChange={(e) => {
-                            const translations = [...status.dialogData.translations];
-                            translations[index] = {
-                              ...translation,
-                              phonetic_us: e.target.value,
-                            };
-                            setStatus(
-                              {
-                                ...status,
-                                dialogData: {
-                                  ...status.dialogData,
-                                  translations: translations,
-                                },
-                              });
-                          }}
-                          className="flex-1 p-2 pl-1 pr-1 border rounded"
-                          placeholder="US "
-                        />
+                          } finally {
+                            setStatus({
+                              ...status,
+                              isProcessing: false,
+                            });
+                          }
+                        }}
+                      >
+                        <FaSync />
+                      </button>
+                      <input
+                        type="text"
+                        value={translation.phonetic_us || ""}
+                        onChange={e => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            phonetic_us: e.target.value,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                        className="flex-1 p-2 pl-1 pr-1 border rounded"
+                        placeholder="US "
+                      />
 
-                        <input
-                          type="checkbox"
-                          checked={translation.noted || ''}
-                          onChange={(e) => {
-                            const isChecked = e.target.checked;
+                      <input
+                        type="checkbox"
+                        checked={translation.noted || ""}
+                        onChange={e => {
+                          const isChecked = e.target.checked;
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            noted: isChecked,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2 mt-2">
+                      <input
+                        type="text"
+                        value={translation.translation || ""}
+                        onChange={e => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            translation: e.target.value,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                        className="flex-1 p-2 pl-1 pr-1 border rounded"
+                        placeholder="Translation"
+                      />
+                      <button
+                        className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
+                        onClick={async () => {
+                          try {
+                            if (translation.cid) {
+                              setStatus({
+                                ...status,
+                                isProcessing: true,
+                              });
+                              const response = await fetch(
+                                `/api/words-english-translation-azure-tts?cid=${translation.cid}`
+                              );
+                              const data = await response.json();
+                              console.log(data);
+                              toast.info(JSON.stringify(data));
+                            }
+                          } finally {
+                            setStatus({
+                              ...status,
+                              isProcessing: false,
+                            });
+                          }
+                        }}
+                      >
+                        <FaSync />
+                      </button>
+                      <input
+                        type="text"
+                        value={translation.script || ""}
+                        onChange={e => {
+                          const translations = [...status.dialogData.translations];
+                          translations[index] = {
+                            ...translation,
+                            script: e.target.value,
+                          };
+                          setStatus({
+                            ...status,
+                            dialogData: {
+                              ...status.dialogData,
+                              translations: translations,
+                            },
+                          });
+                        }}
+                        className="flex-1 p-2 pl-1 pr-1 border rounded"
+                        placeholder="Script"
+                      />
+                      <button
+                        className="px-4 py-3 bg-red-900 text-white rounded hover:bg-red-500 active:bg-red-700 border flex justify-center items-center"
+                        onClick={() => {
+                          if (translation.cid) {
+                            // 已入库数据仅隐藏。
                             const translations = [...status.dialogData.translations];
                             translations[index] = {
                               ...translation,
-                              noted: isChecked,
+                              deleted: true,
                             };
                             setStatus({
                               ...status,
@@ -1232,156 +1325,59 @@ export default function Page() {
                                 translations: translations,
                               },
                             });
-                          }}
-                        />
-                      </div>
-                      <div className="flex items-center gap-2 mt-2">
-                        <input
-                          type="text"
-                          value={translation.translation || ''}
-                          onChange={(e) => {
-                            const translations = [...status.dialogData.translations];
-                            translations[index] = {
-                              ...translation,
-                              translation: e.target.value,
-                            };
-                            setStatus(
-                              {
-                                ...status,
-                                dialogData: {
-                                  ...status.dialogData,
-                                  translations: translations,
-                                },
-                              });
-                          }}
-                          className="flex-1 p-2 pl-1 pr-1 border rounded"
-                          placeholder="Translation"
-                        />
-                        <button
-                          className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
-                          onClick={async () => {
-                            try {
-                              if (translation.cid) {
-                                setStatus({
-                                  ...status,
-                                  isProcessing: true,
-                                });
-                                const response = await fetch(
-                                  `/api/words-english-translation-azure-tts?cid=${translation.cid}`);
-                                const data = await response.json();
-                                console.log(data);
-                                toast.info(JSON.stringify(data));
-                              }
-                            } finally {
-                              setStatus({
-                                ...status,
-                                isProcessing: false,
-                              });
-                            }
-                          }}
-                        >
-                          <FaSync />
-                        </button>
-                        <input
-                          type="text"
-                          value={translation.script || ''}
-                          onChange={(e) => {
-                            const translations = [...status.dialogData.translations];
-                            translations[index] = {
-                              ...translation,
-                              script: e.target.value,
-                            };
-                            setStatus(
-                              {
-                                ...status,
-                                dialogData: {
-                                  ...status.dialogData,
-                                  translations: translations,
-                                },
-                              });
-                          }}
-                          className="flex-1 p-2 pl-1 pr-1 border rounded"
-                          placeholder="Script"
-                        />
-                        <button
-                          className="px-4 py-3 bg-red-900 text-white rounded hover:bg-red-500 active:bg-red-700 border flex justify-center items-center"
-                          onClick={() => {
-
-                            if (translation.cid) {
-                              // 已入库数据仅隐藏。
-                              const translations = [...status.dialogData.translations];
-                              translations[index] = {
-                                ...translation,
-                                deleted: true,
-                              };
-                              setStatus(
-                                {
-                                  ...status,
-                                  dialogData: {
-                                    ...status.dialogData,
-                                    translations: translations,
-                                  },
-                                });
-                            } else {
-                              const translations = [
-                                ...status.dialogData.translations.slice(0,
-                                  index),
-                                ...status.dialogData.translations.slice(
-                                  index + 1)];
-                              setStatus(
-                                {
-                                  ...status,
-                                  dialogData: {
-                                    ...status.dialogData,
-                                    translations: translations,
-                                  },
-                                });
-                            }
-
-                          }}
-                        >
-                          <FaTrash />
-                        </button>
-                      </div>
-                      <textarea
-                        className={'w-full p-2 border rounded mt-2'}
-                        placeholder={'笔记...'}
-                        value={translation.note || ''}
-                        onChange={(e) => {
-                          const translations = [...status.dialogData.translations];
-                          translations[index] = {
-                            ...translation,
-                            note: e.target.value,
-                          };
-                          setStatus(
-                            {
+                          } else {
+                            const translations = [
+                              ...status.dialogData.translations.slice(0, index),
+                              ...status.dialogData.translations.slice(index + 1),
+                            ];
+                            setStatus({
                               ...status,
                               dialogData: {
                                 ...status.dialogData,
                                 translations: translations,
                               },
                             });
-                        }}                        
-                        >
-
-                      </textarea>
-
-                      {/*<textarea*/}
-                      {/*    className={'w-full p-2 border rounded '}*/}
-                      {/*    placeholder={'笔记：解释...'}>*/}
-
-                      {/*</textarea>*/}
+                          }
+                        }}
+                      >
+                        <FaTrash />
+                      </button>
                     </div>
-                  );
-                }
-                )
-              }
+                    <textarea
+                      className={"w-full p-2 border rounded mt-2"}
+                      placeholder={"笔记..."}
+                      value={translation.note || ""}
+                      onChange={e => {
+                        const translations = [...status.dialogData.translations];
+                        translations[index] = {
+                          ...translation,
+                          note: e.target.value,
+                        };
+                        setStatus({
+                          ...status,
+                          dialogData: {
+                            ...status.dialogData,
+                            translations: translations,
+                          },
+                        });
+                      }}
+                    ></textarea>
 
+                    {/*<textarea*/}
+                    {/*    className={'w-full p-2 border rounded '}*/}
+                    {/*    placeholder={'笔记：解释...'}>*/}
+
+                    {/*</textarea>*/}
+                  </div>
+                );
+              })}
 
               {/* 对话框操作区 */}
               <div className="flex justify-end gap-2 mt-2 ">
                 <button
-                  onClick={() => { addTranslation(); }}
+                  onClick={() => {
+                    addTranslation();
+                  }}
                   className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 border"
                 >
                   Add Translation
@@ -1395,120 +1391,97 @@ export default function Page() {
 
                       if (status.currentWordIndex === 0) {
                         status.dialogData.weight1 = status.words[status.currentWordIndex].weight;
-                        status.dialogData.weight2 = '';
+                        status.dialogData.weight2 = "";
                       } else if (status.currentWordIndex === status.words.length - 1) {
-                        status.dialogData.weight1 = '';
+                        status.dialogData.weight1 = "";
                         status.dialogData.weight2 = status.words[status.currentWordIndex].weight;
                       } else {
                         status.dialogData.weight1 = status.words[status.currentWordIndex].weight;
-                        status.dialogData.weight2 = status.words[status.currentWordIndex +
-                          1].weight;
+                        status.dialogData.weight2 = status.words[status.currentWordIndex + 1].weight;
                       }
 
                       // 锁屏
-                      setStatus((prevStatus) => ({
+                      setStatus(prevStatus => ({
                         ...prevStatus,
                         isProcessing: true,
                       }));
 
-                      const response = await fetch(
-                        '/api/words-english-chinese',
-                        {
-                          method: 'POST',
-                          headers: {
-                            'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify(status.dialogData),
-                        });
+                      const response = await fetch("/api/words-english-chinese", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(status.dialogData),
+                      });
 
                       if (response.ok) {
                         const data = await response.json();
                         console.log(data);
 
                         if (data.success && data.data) {
-                          toast.success(
-                            'Successfully added to notebook!' +
-                            JSON.stringify(data.data));
+                          toast.success("Successfully added to notebook!" + JSON.stringify(data.data));
 
                           if (!!data.data.translations) {
-                            data.data.translations.forEach(
-                              (translation) => {
+                            data.data.translations.forEach(translation => {
+                              const word = {
+                                id: translation.id,
+                                cid: translation.cid,
+                                nid: translation.nid,
+                                note: translation.note,
+                                pos: translation.pos,
+                                note_explain: translation.note_explain,
+                                eid: data.data.eid,
+                                script: data.data.script,
+                                word: data.data.word,
+                                accent: data.data.accent,
+                                translation: translation.translation,
+                                translation_script: translation.script,
+                                weight: translation.weight,
+                                phonetic_uk: translation.phonetic_uk,
+                                phonetic_us: translation.phonetic_us,
+                                voice_id_uk: translation.voice_id_uk,
+                                voice_id_us: translation.voice_id_us,
+                                voice_id_translation: translation.voice_id_translation,
+                              };
 
-                                const word = {
-                                  id: translation.id,
-                                  cid: translation.cid,
-                                  nid: translation.nid,
-                                  note: translation.note,
-                                  pos: translation.pos,
-                                  note_explain: translation.note_explain,
-                                  eid: data.data.eid,
-                                  script: data.data.script,
-                                  word: data.data.word,
-                                  accent: data.data.accent,
-                                  translation: translation.translation,
-                                  translation_script: translation.script,
-                                  weight: translation.weight,
-                                  phonetic_uk: translation.phonetic_uk,
-                                  phonetic_us: translation.phonetic_us,
-                                  voice_id_uk: translation.voice_id_uk,
-                                  voice_id_us: translation.voice_id_us,
-                                  voice_id_translation: translation.voice_id_translation,
-                                };
+                              if (translation.new) {
+                                // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+                                console.debug("trans has valid weight");
 
-                                if (translation.new) { // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
-                                  console.debug(
-                                    'trans has valid weight');
+                                if (!!data.data.weight1 && !data.data.weight2) {
+                                  status.words.unshift(word);
+                                } else if (!data.data.weight1 && !!data.data.weight2) {
+                                  status.words.push(word);
+                                  status.currentWordIndex++;
+                                } else if (!!data.data.weight1 && !!data.data.weight2) {
+                                  status.words.splice(status.currentWordIndex + 1, 0, word);
+                                  status.currentWordIndex++;
+                                }
 
-                                  if (!!data.data.weight1 &&
-                                    !data.data.weight2) {
-                                    status.words.unshift(word);
-                                  } else if (!data.data.weight1 &&
-                                    !!data.data.weight2) {
-                                    status.words.push(word);
-                                    status.currentWordIndex++;
-                                  } else if (!!data.data.weight1 &&
-                                    !!data.data.weight2) {
-                                    status.words.splice(
-                                      status.currentWordIndex + 1, 0,
-                                      word);
-                                    status.currentWordIndex++;
-                                  }
+                                delete translation.new;
+                              } // if (translation.weight)
+                              else if (!translation.noted) {
+                                for (let index = status.words.length - 1; index >= 0; index--) {
+                                  if (status.words[index].eid === word.eid && status.words[index].cid === word.cid) {
+                                    status.words.splice(index, 1);
 
-                                  delete translation.new;
-                                } // if (translation.weight)
-                                else if (!translation.noted) {
-                                  for (let index = status.words.length -
-                                    1; index >= 0; index--) {
                                     if (
-                                      status.words[index].eid ===
-                                      word.eid &&
-                                      status.words[index].cid ===
-                                      word.cid
+                                      index < status.currentWordIndex ||
+                                      status.currentWordIndex >= status.words.length
                                     ) {
-                                      status.words.splice(index, 1);
-
-                                      if (index <
-                                        status.currentWordIndex ||
-                                        status.currentWordIndex >=
-                                        status.words.length) {
-                                        status.currentWordIndex--;
-                                      }
-                                    }
-                                  }
-                                } else {
-                                  for (let index = status.words.length -
-                                    1; index >= 0; index--) {
-                                    if (status.words[index].eid ===
-                                      word.eid &&
-                                      status.words[index].cid ===
-                                      word.cid) {
-                                      status.words.splice(index, 1, word);
-                                      break;
+                                      status.currentWordIndex--;
                                     }
                                   }
                                 }
-
-                              }); // translations.forEach
+                              } else {
+                                for (let index = status.words.length - 1; index >= 0; index--) {
+                                  if (status.words[index].eid === word.eid && status.words[index].cid === word.cid) {
+                                    status.words.splice(index, 1, word);
+                                    break;
+                                  }
+                                }
+                              }
+                            }); // translations.forEach
                           }
 
                           // setStatus({
@@ -1516,17 +1489,15 @@ export default function Page() {
                           //   dialogData: data.data,
                           // });
                           status.dialogData = data.data;
-
                         }
                       } else {
-                        toast.error('Failed to add to notebook!');
+                        toast.error("Failed to add to notebook!");
                       }
                     } catch (error) {
-                      toast.error('Failed to save:' + error.message);
+                      toast.error("Failed to save:" + error.message);
                     } finally {
                       setStatus({ ...status, isProcessing: false });
                     }
-
                   }}
                   className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 active:bg-green-700 border"
                 >
@@ -1535,7 +1506,7 @@ export default function Page() {
 
                 <button
                   onClick={() => {
-                    status.dialogData.word = '';
+                    status.dialogData.word = "";
                     setStatus({
                       ...status, // 复制现有状态
                       isDialogOpen: false,
@@ -1551,14 +1522,16 @@ export default function Page() {
               </div>
             </Dialog.Panel>
           </div>
-
         </Dialog>
       </Transition>
 
       {/* 配置对话框 */}
-      <ShadcnDialog open={status.isConfigDialogOpen} onOpenChange={(open) => {
-        setStatus(prev => ({ ...prev, isConfigDialogOpen: open }));
-      }}>
+      <ShadcnDialog
+        open={status.isConfigDialogOpen}
+        onOpenChange={open => {
+          setStatus(prev => ({ ...prev, isConfigDialogOpen: open }));
+        }}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>音频播放配置</DialogTitle>
@@ -1577,7 +1550,7 @@ export default function Page() {
                     onValueChange={([value]) => {
                       updateAudioConfig({
                         ...status.audioConfig,
-                        volume: value
+                        volume: value,
                       });
                       if (playerRef.current) {
                         playerRef.current.setVolume(value / 100);
@@ -1605,7 +1578,7 @@ export default function Page() {
                     onValueChange={([value]) => {
                       updateAudioConfig({
                         ...status.audioConfig,
-                        speed: value
+                        speed: value,
                       });
                     }}
                     min={90}
@@ -1626,16 +1599,15 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={status.audioConfig.alternatePlay}
-                    onCheckedChange={(checked) => {
+                    onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
-                        alternatePlay: checked
+                        alternatePlay: checked,
                       });
                     }}
                   />
                   <Label>交错播放</Label>
                 </div>
-
               </div>
             </div>
 
@@ -1657,8 +1629,8 @@ export default function Page() {
                         ...status.audioConfig,
                         english: {
                           ...status.audioConfig.english,
-                          repeatCount: value
-                        }
+                          repeatCount: value,
+                        },
                       });
                     }}
                     min={0}
@@ -1686,8 +1658,8 @@ export default function Page() {
                         ...status.audioConfig,
                         english: {
                           ...status.audioConfig.english,
-                          pauseTime: value / 4 // 转换回实际值
-                        }
+                          pauseTime: value / 4, // 转换回实际值
+                        },
                       });
                     }}
                     min={0}
@@ -1709,13 +1681,13 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={status.audioConfig.english.waitVoiceLength}
-                    onCheckedChange={(checked) => {
+                    onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
                         english: {
                           ...status.audioConfig.english,
-                          waitVoiceLength: checked
-                        }
+                          waitVoiceLength: checked,
+                        },
                       });
                     }}
                   />
@@ -1726,19 +1698,18 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={status.audioConfig.english.showText}
-                    onCheckedChange={(checked) => {
+                    onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
                         english: {
                           ...status.audioConfig.english,
-                          showText: checked
-                        }
+                          showText: checked,
+                        },
                       });
                     }}
                   />
                   <Label>显示英文</Label>
                 </div>
-
               </div>
 
               {/* 右栏：中文设置 */}
@@ -1755,8 +1726,8 @@ export default function Page() {
                         ...status.audioConfig,
                         chinese: {
                           ...status.audioConfig.chinese,
-                          repeatCount: value
-                        }
+                          repeatCount: value,
+                        },
                       });
                     }}
                     min={0}
@@ -1784,8 +1755,8 @@ export default function Page() {
                         ...status.audioConfig,
                         chinese: {
                           ...status.audioConfig.chinese,
-                          pauseTime: value / 4 // 转换回实际值
-                        }
+                          pauseTime: value / 4, // 转换回实际值
+                        },
                       });
                     }}
                     min={0}
@@ -1807,13 +1778,13 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={status.audioConfig.chinese.waitVoiceLength}
-                    onCheckedChange={(checked) => {
+                    onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
                         chinese: {
                           ...status.audioConfig.chinese,
-                          waitVoiceLength: checked
-                        }
+                          waitVoiceLength: checked,
+                        },
                       });
                     }}
                   />
@@ -1824,19 +1795,18 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={status.audioConfig.chinese.showText}
-                    onCheckedChange={(checked) => {
+                    onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
                         chinese: {
                           ...status.audioConfig.chinese,
-                          showText: checked
-                        }
+                          showText: checked,
+                        },
                       });
                     }}
                   />
                   <Label>显示中文</Label>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1845,8 +1815,8 @@ export default function Page() {
 
       {/* 全屏遮罩 */}
       {status.isProcessing && (
-        <div className={'overlay'}>
-          <div className={'loader'}>Processing...</div>
+        <div className={"overlay"}>
+          <div className={"loader"}>Processing...</div>
         </div>
       )}
     </>
