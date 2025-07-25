@@ -17,6 +17,7 @@ import { ThemeToggle } from "@/app/lib/components/ThemeToggle";
 import HTMLAreaV2 from "@/app/lib/components/HTMLAreaV2";
 import NavTop from "@/app/lib/components/NavTop";
 import { preprocessText } from "@/app/api/notebooks/notes/crud/route";
+import { preprocessTextWithSentenceSplitter } from "@/app/lib/utils";
 
 interface NoteData {
   id?: number;
@@ -135,7 +136,7 @@ export default function NotebookEditor() {
     setSaving(true);
     setStatus(prev => ({ ...prev, isProcessing: true }));
 
-    console.log(preprocessText(noteData.body));
+    console.log(preprocessTextWithSentenceSplitter(noteData.body));
 
     try {
       const url = noteData.id ? `/api/notebooks/editor/${noteData.id}` : "/api/notebooks/editor";
