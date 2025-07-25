@@ -14,7 +14,7 @@ import ModeToggle from "@/components/mode-toggle";
 import { ProcessingMask } from "@/app/lib/components/ProcessingMask";
 import { useStatus } from "@/app/lib/atoms";
 import { ThemeToggle } from "@/app/lib/components/ThemeToggle";
-import HTMLAreaV2 from "@/app/lib/components/HTMLAreaV2";
+import HTMLAreaV3 from "@/app/lib/components/HTMLAreaV3";
 import NavTop from "@/app/lib/components/NavTop";
 import { preprocessText } from "@/app/api/notebooks/notes/crud/route";
 import { preprocessTextWithSentenceSplitter } from "@/app/lib/utils";
@@ -244,12 +244,12 @@ export default function NotebookEditor() {
                 {/* HTML Content Fields */}
                 <div>
                   <Label>Body</Label>
-                  <HTMLAreaV2 value={noteData.body || ""} handleNoteChange={handleHTMLAreaChange("body")} name="body" />
+                  <HTMLAreaV3 value={noteData.body || ""} handleNoteChange={handleHTMLAreaChange("body")} name="body" />
                 </div>
 
                 <div>
                   <Label>Question</Label>
-                  <HTMLAreaV2
+                  <HTMLAreaV3
                     value={noteData.question || ""}
                     handleNoteChange={handleHTMLAreaChange("question")}
                     name="question"
