@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import HTMLAreaV3 from '../lib/components/HTMLAreaV3';
+import React, { useState } from "react";
+import HTMLAreaV3 from "../lib/components/HTMLAreaV3";
 
 /**
  * HTMLAreaV3 演示页面
@@ -41,6 +41,13 @@ console.log(fibonacci(10)); // 输出: 55</code></pre>
     return quicksort(left) + middle + quicksort(right)
 
 print(quicksort([3,6,8,10,1,2,1]))</code></pre>
+
+<p>HTML代码示例（测试转义功能）：</p>
+<pre><code class="language hljs html"><div class="container">
+  <h1>Hello World</h1>
+  <p>这是一个段落 <span class="highlight">高亮文本</span></p>
+  <img src="image.jpg" alt="示例图片" />
+</div></code></pre>
 
 <h2>语音标签示例</h2>
 <p>这是一个带语音的文本：<span aria-label="Hello World" speaker="en-US" data-voice-id="voice1">Hello World</span></p>
@@ -96,9 +103,7 @@ print(quicksort([3,6,8,10,1,2,1]))</code></pre>
 
       <div className="mt-6">
         <h3 className="text-lg font-medium mb-3">当前内容长度</h3>
-        <p className="text-gray-600 dark:text-gray-400">
-          {content.length} 字符
-        </p>
+        <p className="text-gray-600 dark:text-gray-400">{content.length} 字符</p>
       </div>
     </div>
   );
