@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import React from "react";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+import "../css/style.css";
 
 interface NoteData {
   id?: number;
@@ -28,39 +29,37 @@ interface PreviewAreaProps {
 export function PreviewArea({ noteData }: PreviewAreaProps) {
   // MathJax configuration
   const mathJaxConfig = {
-    loader: { load: ['[tex]/mhchem'] },
+    loader: { load: ["[tex]/mhchem"] },
     tex: {
-      packages: { '[+]': ['mhchem'] },
-      inlineMath: [['$', '$']],
-      displayMath: [['$$', '$$']],
+      packages: { "[+]": ["mhchem"] },
+      inlineMath: [["$", "$"]],
+      displayMath: [["$$", "$$"]],
       processEscapes: true,
-      processEnvironments: true
+      processEnvironments: true,
     },
     options: {
       renderActions: {
-        addMenu: [0, '', '']
+        addMenu: [0, "", ""],
       },
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-      ignoreHtmlClass: 'cm-editor|CodeMirror'
+      skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+      ignoreHtmlClass: "cm-editor|CodeMirror",
     },
     startup: {
-      typeset: false
-    }
+      typeset: false,
+    },
   };
 
   const renderSection = (title: string, content: string | undefined) => {
-    if (!content || content.trim() === '') return null;
-    
+    if (!content || content.trim() === "") return null;
+
     return (
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">
-          {title}
-        </h3>
+        <h3 className="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">{title}</h3>
         <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
           <MathJax hideUntilTypeset="first">
             <div
               dangerouslySetInnerHTML={{ __html: content }}
-              className="prose max-w-none dark:prose-invert"
+              className="body-content prose max-w-none dark:prose-invert"
             />
           </MathJax>
         </div>
@@ -74,9 +73,7 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
         {/* Title */}
         {noteData.title && (
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              {noteData.title}
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{noteData.title}</h2>
           </div>
         )}
 
@@ -119,26 +116,32 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
         </div>
 
         {/* Content Sections */}
-        {renderSection('Body', noteData.body)}
-        {renderSection('Question', noteData.question)}
-        {renderSection('Answer', noteData.answer)}
-        {renderSection('Figures', noteData.figures)}
-        {renderSection('Body Script', noteData.body_script)}
-        {renderSection('Body Extra', noteData.body_extra)}
-        {renderSection('Note', noteData.note)}
-        {renderSection('Note Extra', noteData.note_extra)}
+        {renderSection("Body", noteData.body)}
+        {renderSection("Question", noteData.question)}
+        {renderSection("Answer", noteData.answer)}
+        {renderSection("Figures", noteData.figures)}
+        {renderSection("Body Script", noteData.body_script)}
+        {renderSection("Body Extra", noteData.body_extra)}
+        {renderSection("Note", noteData.note)}
+        {renderSection("Note Extra", noteData.note_extra)}
 
         {/* Empty State */}
-        {!noteData.title && !noteData.body && !noteData.question && !noteData.answer && 
-         !noteData.figures && !noteData.body_script && !noteData.body_extra && 
-         !noteData.note && !noteData.note_extra && (
-          <div className="flex items-center justify-center h-64 text-gray-500 dark:text-gray-400">
-            <div className="text-center">
-              <p className="text-lg mb-2">No content to preview</p>
-              <p className="text-sm">Start editing to see the preview</p>
+        {!noteData.title &&
+          !noteData.body &&
+          !noteData.question &&
+          !noteData.answer &&
+          !noteData.figures &&
+          !noteData.body_script &&
+          !noteData.body_extra &&
+          !noteData.note &&
+          !noteData.note_extra && (
+            <div className="flex items-center justify-center h-64 text-gray-500 dark:text-gray-400">
+              <div className="text-center">
+                <p className="text-lg mb-2">No content to preview</p>
+                <p className="text-sm">Start editing to see the preview</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </MathJaxContext>
   );

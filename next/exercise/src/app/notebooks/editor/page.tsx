@@ -135,8 +135,8 @@ export default function NotebookEditor() {
   const saveNote = async () => {
     setSaving(true);
     setStatus(prev => ({ ...prev, isProcessing: true }));
-
-    console.log(preprocessTextWithSentenceSplitter(noteData.body));
+    noteData.body = preprocessTextWithSentenceSplitter(noteData.body);
+    console.log(noteData.body);
 
     try {
       const url = noteData.id ? `/api/notebooks/editor/${noteData.id}` : "/api/notebooks/editor";
@@ -249,11 +249,10 @@ export default function NotebookEditor() {
 
                 <div>
                   <Label>Question</Label>
-                  <HTMLArea
+                  <HTMLAreaV2
                     value={noteData.question || ""}
                     handleNoteChange={handleHTMLAreaChange("question")}
                     name="question"
-                    height="150px"
                   />
                 </div>
 
