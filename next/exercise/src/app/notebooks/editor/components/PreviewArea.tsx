@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { Edit3, RefreshCw } from "lucide-react";
+import { Edit3, RefreshCw, Play, Square } from "lucide-react";
 import { useStatus } from "@/app/lib/atoms";
 import { toast } from "react-toastify";
 import "../css/style.css";
@@ -29,12 +29,24 @@ interface PreviewAreaProps {
   noteData: NoteData;
 }
 
+// 循环模式类型定义
+// Loop mode type definition
+type LoopMode = 'none' | 'single' | 'all';
+
 // 编辑对话框的数据接口
 // Interface for edit dialog data
 interface SpanEditData {
   ariaLabel: string;
   dataSpeaker: string;
   dataVoiceId: string;
+}
+
+// 音频播放状态接口
+// Audio playback state interface
+interface AudioState {
+  isPlaying: boolean;
+  currentVoiceId: string | null;
+  audio: HTMLAudioElement | null;
 }
 
 // 编辑对话框组件
@@ -168,6 +180,33 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // 语音生成状态
   // Voice generation state
   const [isGeneratingVoice, setIsGeneratingVoice] = useState<string | null>(null);
+  
+  // 每个 section 的循环模式设置
+  // Loop mode settings for each section
+  const [sectionLoopModes, setSectionLoopModes] = useState<Record<string, LoopMode>>({});
+  
+  // 音频播放状态
+  // Audio playback state
+  const [audioState, setAudioState] = useState<AudioState>({
+    isPlaying: false,
+    currentVoiceId: null,
+    audio: null
+  });
+  
+  // 强制重新渲染的状态
+  // Force re-render state
+  const [renderKey, setRenderKey] = useState(0);
+  // 清理音频资源
+  // Cleanup audio resources
+  useEffect(() => {
+    return () => {
+      if (audioState.audio) {
+        audioState.audio.pause();
+        audioState.audio = null;
+      }
+    };
+  }, []);
+  
   // MathJax configuration
   const mathJaxConfig = {
     loader: { load: ["[tex]/mhchem"] },
@@ -216,6 +255,159 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       // Trigger re-render by modifying element content
       const event = new Event('input', { bubbles: true });
       editDialog.spanElement.dispatchEvent(event);
+    }
+  };
+  
+  // 处理音频播放
+  // Handle audio playback
+  const handlePlayAudio = (voiceId: string, sectionTitle: string) => {
+    // 如果当前正在播放相同的音频，则停止播放
+    // If currently playing the same audio, stop it
+    if (audioState.isPlaying && audioState.currentVoiceId === voiceId) {
+      stopAudio();
+      return;
+    }
+    
+    // 停止当前播放的音频（如果有的话）
+    // Stop currently playing audio (if any)
+    if (audioState.audio) {
+      audioState.audio.pause();
+      audioState.audio.currentTime = 0;
+      audioState.audio = null;
+    }
+    
+    // 获取当前 section 的循环模式
+    // Get current section's loop mode
+    const loopMode = sectionLoopModes[sectionTitle] || 'none';
+    
+    // 构建音频文件路径
+    // Build audio file path
+    const audioPath = `/audio/${voiceId}.wav`;
+    
+    // 创建新的音频对象
+    // Create new audio object
+    const audio = new Audio(audioPath);
+    
+    // 设置循环模式
+    // Set loop mode
+    if (loopMode === 'single' || loopMode === 'all') {
+      audio.loop = true;
+    }
+    
+    // 设置音频事件监听器
+    // Set audio event listeners
+    audio.addEventListener('canplay', () => {
+      setAudioState({
+        isPlaying: true,
+        currentVoiceId: voiceId,
+        audio: audio
+      });
+      setRenderKey(prev => prev + 1);
+      
+      audio.play().then(() => {
+        toast.success('开始播放音频');
+      }).catch((error) => {
+        console.error('音频播放失败:', error);
+        toast.error('音频播放失败');
+        setAudioState({
+          isPlaying: false,
+          currentVoiceId: null,
+          audio: null
+        });
+        setRenderKey(prev => prev + 1);
+      });
+    });
+    
+    audio.addEventListener('ended', () => {
+      // 检查当前循环模式（可能在播放过程中被改变）
+      // Check current loop mode (might have been changed during playback)
+      const currentLoopMode = sectionLoopModes[sectionTitle] || 'none';
+      if (currentLoopMode === 'none') {
+        setAudioState({
+          isPlaying: false,
+          currentVoiceId: null,
+          audio: null
+        });
+        setRenderKey(prev => prev + 1);
+        toast.info('音频播放完毕');
+      }
+      // 对于 single 和 all 模式，由于设置了 loop=true，会自动循环
+      // For single and all modes, it will loop automatically due to loop=true
+    });
+    
+    audio.addEventListener('error', () => {
+      console.error('音频加载失败:', audioPath);
+      toast.error('音频文件加载失败');
+      setAudioState({
+        isPlaying: false,
+        currentVoiceId: null,
+        audio: null
+      });
+      setRenderKey(prev => prev + 1);
+    });
+    
+    // 开始加载音频
+    // Start loading audio
+    audio.load();
+  };
+  
+  // 停止音频播放
+  // Stop audio playback
+  const stopAudio = () => {
+    if (audioState.audio) {
+      audioState.audio.pause();
+      audioState.audio.currentTime = 0;
+      audioState.audio = null;
+    }
+    setAudioState({
+      isPlaying: false,
+      currentVoiceId: null,
+      audio: null
+    });
+    // 强制重新渲染以更新图标
+    // Force re-render to update icons
+    setRenderKey(prev => prev + 1);
+    toast.info('音频播放已停止');
+  };
+  
+  // 设置 section 的循环模式
+  // Set section loop mode
+  const setSectionLoopMode = (sectionTitle: string, mode: LoopMode) => {
+    setSectionLoopModes(prev => ({
+      ...prev,
+      [sectionTitle]: mode
+    }));
+    
+    // 如果当前正在播放该 section 的音频，更新循环设置
+    // If currently playing audio from this section, update loop settings
+    if (audioState.isPlaying && audioState.audio) {
+      // 查找当前播放的音频属于哪个 section
+      // Find which section the currently playing audio belongs to
+      const currentVoiceId = audioState.currentVoiceId;
+      if (currentVoiceId) {
+        // 检查当前播放的音频是否属于这个 section
+        // Check if the currently playing audio belongs to this section
+        const spanElement = document.querySelector(`[data-voice-id="${currentVoiceId}"]`);
+        if (spanElement) {
+          // 查找包含这个 span 的 section
+          // Find the section containing this span
+          const sectionElement = spanElement.closest('.mb-6');
+          if (sectionElement) {
+            const sectionTitleElement = sectionElement.querySelector('h3');
+            if (sectionTitleElement && sectionTitleElement.textContent === sectionTitle) {
+              // 当前播放的音频属于这个 section，更新循环设置
+              // Currently playing audio belongs to this section, update loop settings
+              if (mode === 'single' || mode === 'all') {
+                audioState.audio.loop = true;
+                toast.info(`已切换到${mode === 'single' ? '单句' : '全文'}循环模式`);
+              } else {
+                audioState.audio.loop = false;
+                toast.info('已切换到不循环模式，播放完毕后将停止');
+              }
+            }
+          }
+        }
+      }
     }
   };
   
@@ -288,52 +480,119 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       const spanId = `span-${Math.random().toString(36).substr(2, 9)}`;
       const modifiedOpenTag = openTag.replace('>', ` data-span-id="${spanId}">`);
       
-      return `${modifiedOpenTag}${innerContent}${closeTag}<span class="span-icons" data-target="${spanId}" style="margin-left: 4px; opacity: 0.7;"><button class="icon-btn edit-btn" data-action="edit" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="编辑 / Edit">✏️</button><button class="icon-btn refresh-btn" data-action="refresh" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="刷新语音 / Refresh Voice">🔄</button></span>`;
+      // 提取 data-voice-id 来判断播放状态
+      // Extract data-voice-id to determine play state
+      const voiceIdMatch = openTag.match(/data-voice-id="([^"]*)"/); 
+      const voiceId = voiceIdMatch ? voiceIdMatch[1] : '';
+      const isCurrentlyPlaying = audioState.isPlaying && audioState.currentVoiceId === voiceId;
+      
+      // 根据播放状态选择图标
+      // Choose icon based on play state
+      const playIcon = isCurrentlyPlaying ? '⏹️' : '▶️';
+      const playTitle = isCurrentlyPlaying ? '停止播放 / Stop Audio' : '播放音频 / Play Audio';
+      
+      return `${modifiedOpenTag}${innerContent}${closeTag}<span class="span-icons" data-target="${spanId}" style="margin-left: 4px; opacity: 0.7;"><button class="icon-btn edit-btn" data-action="edit" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="编辑 / Edit">✏️</button><button class="icon-btn refresh-btn" data-action="refresh" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="刷新语音 / Refresh Voice">🔄</button><button class="icon-btn play-btn" data-action="play" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="${playTitle}">${playIcon}</button></span>`;
     });
   };
   
-  // 处理内容区域的点击事件
-  // Handle content area click events
-  const handleContentClick = (e: React.MouseEvent) => {
-    const target = e.target as HTMLElement;
-    
-    if (target.classList.contains('icon-btn')) {
-      e.preventDefault();
-      e.stopPropagation();
+  // 创建内容点击处理器的工厂函数
+  // Factory function for content click handlers
+  const createContentClickHandler = (sectionTitle: string) => {
+    return (e: React.MouseEvent) => {
+      const target = e.target as HTMLElement;
       
-      const action = target.getAttribute('data-action');
-      const spanId = target.getAttribute('data-target');
-      
-      if (spanId) {
-        const spanElement = document.querySelector(`[data-span-id="${spanId}"]`) as HTMLSpanElement;
+      if (target.classList.contains('icon-btn')) {
+        e.preventDefault();
+        e.stopPropagation();
         
-        if (spanElement) {
-          if (action === 'edit') {
-            handleEditClick(spanElement);
-          } else if (action === 'refresh') {
-            handleRefreshVoice(spanElement);
+        const action = target.getAttribute('data-action');
+        const spanId = target.getAttribute('data-target');
+        
+        if (spanId) {
+          const spanElement = document.querySelector(`[data-span-id="${spanId}"]`) as HTMLSpanElement;
+          
+          if (spanElement) {
+            if (action === 'edit') {
+              handleEditClick(spanElement);
+            } else if (action === 'refresh') {
+              handleRefreshVoice(spanElement);
+            } else if (action === 'play') {
+              const voiceId = spanElement.getAttribute('data-voice-id');
+              if (voiceId) {
+                handlePlayAudio(voiceId, sectionTitle);
+              } else {
+                toast.error('缺少 data-voice-id 属性');
+              }
+            }
           }
         }
       }
-    }
+    };
   };
 
   const renderSection = (title: string, content: string | undefined) => {
     if (!content || content.trim() === "") return null;
     
-    // 为内容添加图标
-    // Add icons to content
+    // 为内容添加图标（依赖 renderKey 确保重新渲染）
+    // Add icons to content (depends on renderKey for re-rendering)
     const contentWithIcons = addIconsToSpans(content);
+    
+    // 获取当前 section 的循环模式
+    // Get current section's loop mode
+    const currentLoopMode = sectionLoopModes[title] || 'none';
 
     return (
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">{title}</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">{title}</h3>
+          
+          {/* 循环模式选择器 / Loop mode selector */}
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-500 dark:text-gray-400">循环模式:</span>
+            <div className="flex space-x-1">
+              <label className="flex items-center space-x-1 text-sm">
+                <input
+                  type="radio"
+                  name={`loop-${title}`}
+                  value="none"
+                  checked={currentLoopMode === 'none'}
+                  onChange={() => setSectionLoopMode(title, 'none')}
+                  className="w-3 h-3"
+                />
+                <span className="text-gray-600 dark:text-gray-300">不循环</span>
+              </label>
+              <label className="flex items-center space-x-1 text-sm">
+                <input
+                  type="radio"
+                  name={`loop-${title}`}
+                  value="single"
+                  checked={currentLoopMode === 'single'}
+                  onChange={() => setSectionLoopMode(title, 'single')}
+                  className="w-3 h-3"
+                />
+                <span className="text-gray-600 dark:text-gray-300">单句循环</span>
+              </label>
+              <label className="flex items-center space-x-1 text-sm">
+                <input
+                  type="radio"
+                  name={`loop-${title}`}
+                  value="all"
+                  checked={currentLoopMode === 'all'}
+                  onChange={() => setSectionLoopMode(title, 'all')}
+                  className="w-3 h-3"
+                />
+                <span className="text-gray-600 dark:text-gray-300">全文循环</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
         <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
           <MathJax hideUntilTypeset="first">
             <div
               dangerouslySetInnerHTML={{ __html: contentWithIcons }}
               className="body-content prose max-w-none dark:prose-invert"
-              onClick={handleContentClick}
+              onClick={createContentClickHandler(title)}
             />
           </MathJax>
         </div>

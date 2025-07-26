@@ -291,7 +291,141 @@ style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 
 - 组件集成测试：ProcessingMask 正确显示和隐藏
 - 用户交互测试：点击刷新图标时遮罩正常工作
 
-## 最新更新 - Toast 通知和音频覆盖功能 / Latest Update - Toast Notifications and Audio Overwrite
+## 最新更新 - 音频播放功能和循环模式 / Latest Update - Audio Playback and Loop Modes
+
+### 新增功能 / New Features
+1. **音频播放功能**
+   - 在每个 `<span>` 标签的图标组中添加播放按钮 (▶️)
+   - 点击播放按钮播放对应的 WAV 音频文件
+   - 播放时图标变为停止按钮 (⏹️)
+   - 支持点击停止按钮停止播放
+
+2. **循环模式选择器**
+   - 在每个 section 标题旁添加循环模式单选组件
+   - 三种模式：不循环、单句循环、全文循环
+   - 每个 section 独立设置循环模式
+   - 播放功能根据所在 section 的循环设置工作
+
+3. **智能播放控制**
+   - 不循环：播放完毕后自动停止
+   - 单句循环：重复播放当前音频文件
+   - 全文循环：重复播放当前音频文件
+   - 播放新音频时自动停止当前播放
+
+### 技术实现 / Technical Implementation
+1. **状态管理**
+   - 添加 `LoopMode` 类型定义：`'none' | 'single' | 'all'`
+   - 添加 `AudioState` 接口管理播放状态
+   - 使用 `sectionLoopModes` 状态管理各 section 的循环设置
+   - 使用 `audioState` 状态管理当前播放状态
+
+2. **音频播放逻辑**
+   - `handlePlayAudio` 函数处理播放/停止切换
+   - 根据循环模式设置 `audio.loop` 属性
+   - 音频文件路径：`/audio/{voiceId}.wav`
+   - 完善的错误处理和用户反馈
+
+3. **动态图标更新**
+   - 修改 `addIconsToSpans` 函数动态生成播放图标
+   - 根据 `audioState` 判断显示播放或停止图标
+   - 使用 `renderKey` 状态强制组件重新渲染
+   - 确保图标状态与播放状态同步
+
+### 代码变更 / Code Changes
+1. **PreviewArea.tsx**
+   - 导入 `Play` 和 `Square` 图标组件
+   - 添加类型定义：`LoopMode`、`AudioState`
+   - 新增状态：`sectionLoopModes`、`audioState`、`renderKey`
+   - 新增函数：`handlePlayAudio`、`stopAudio`、`setSectionLoopMode`
+   - 修改 `addIconsToSpans` 支持动态播放图标
+   - 修改 `createContentClickHandler` 处理播放按钮点击
+   - 修改 `renderSection` 添加循环模式选择器
+   - 添加 `useEffect` 清理音频资源
+
+### 用户界面 / User Interface
+1. **循环模式选择器**
+   - 位置：每个 section 标题右侧
+   - 样式：单选按钮组，响应式设计
+   - 标签："不循环"、"单句循环"、"全文循环"
+   - 默认值："不循环"
+
+2. **播放按钮**
+   - 位置：编辑和刷新图标之后
+   - 图标：▶️ (播放) / ⏹️ (停止)
+   - 悬停提示："播放音频" / "停止播放"
+   - 样式：与其他图标保持一致
+
+### 用户体验 / User Experience
+1. **直观的播放控制**
+   - 图标状态清晰反映播放状态
+   - 点击即可播放/停止，操作简单
+   - Toast 通知提供操作反馈
+
+2. **灵活的循环设置**
+   - 每个 section 独立设置
+   - 实时生效，无需刷新页面
+   - 适应不同的学习和使用场景
+
+3. **资源管理**
+   - 自动停止之前的播放
+   - 组件卸载时清理音频资源
+   - 防止内存泄漏
+
+### 问题修复 (Bug Fixes)
+1. **播放控制修复**
+   - 修复点击停止图标时重新播放的问题，现在正确停止播放
+   - 修复播放新音频时未停止当前播放的问题
+   - 优化音频切换逻辑，确保无缝切换
+
+2. **循环模式动态更新**
+   - 实现循环模式改变时实时影响当前播放行为
+   - 从循环模式切换到不循环时，播放完毕后自动停止
+   - 从不循环切换到循环模式时，当前音频开始循环播放
+   - 添加 Toast 通知提示循环模式切换
+
+3. **状态同步优化**
+   - 改进音频状态管理，确保图标与播放状态同步
+   - 优化事件监听器，避免重复设置
+   - 完善错误处理和用户反馈
+
+### 技术改进 (Technical Improvements)
+1. **音频控制逻辑**
+   - 修改 `handlePlayAudio` 函数，正确处理停止/播放切换
+   - 优化音频对象的创建和销毁流程
+   - 添加音频时间重置 (`currentTime = 0`)
+
+2. **循环模式实时更新**
+   - 增强 `setSectionLoopMode` 函数，支持动态更新当前播放音频的循环设置
+   - 通过 DOM 查询确定当前播放音频所属的 section
+   - 实时更新 `audio.loop` 属性
+
+3. **用户体验提升**
+   - 添加循环模式切换的 Toast 通知
+   - 优化播放完毕的提示信息
+   - 确保操作反馈的及时性和准确性
+
+### 测试验证 (Testing Verification)
+1. **播放功能测试**
+   - ✅ 验证音频文件加载和播放
+   - ✅ 测试播放/停止图标切换
+   - ✅ 确认循环模式正确工作
+   - ✅ 测试停止图标点击停止播放
+   - ✅ 测试播放新音频时停止当前播放
+
+2. **状态管理测试**
+   - ✅ 验证多个 section 独立工作
+   - ✅ 测试播放状态在组件间的同步
+   - ✅ 确认资源清理正常执行
+   - ✅ 测试循环模式动态切换功能
+
+3. **用户交互测试**
+   - ✅ 测试循环模式切换的实时生效
+   - ✅ 验证 Toast 通知的准确性
+   - ✅ 确认音频播放的连贯性
+
+---
+
+## Toast 通知和音频覆盖功能 / Toast Notifications and Audio Overwrite
 
 ### 更新日期 / Update Date
 2024年 - Toast 通知替换 Alert 和音频文件覆盖功能
