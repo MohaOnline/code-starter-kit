@@ -1,6 +1,7 @@
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
 import AuthSessionProvider from '@/components/providers/session-provider';
+import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { ToastContainer } from 'react-toastify';
 
 import './globals.css'
@@ -27,7 +28,10 @@ export default function RootLayout ({ children }) {
                         disableTransitionOnChange
     >
       <AuthSessionProvider>
-        <JotaiProvider>{children}</JotaiProvider>
+        <JotaiProvider>
+          {children}
+          <ProcessingMask />
+        </JotaiProvider>
         <ToastContainer
           position="top-right"
           autoClose={3000}

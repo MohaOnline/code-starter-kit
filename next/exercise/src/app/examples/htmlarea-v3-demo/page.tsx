@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import HTMLAreaV3 from "../lib/components/HTMLAreaV3";
+import HTMLAreaV3 from "../../lib/components/HTMLAreaV3";
 
 /**
  * HTMLAreaV3 演示页面

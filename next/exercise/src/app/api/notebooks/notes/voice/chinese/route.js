@@ -75,19 +75,12 @@ async function generateChineseVoice(text, voiceId, tid) {
     `./public/refs/notes/${directoryName}/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstChar}/${voiceId}.wav`
   );
 
-  // 检查文件是否已存在
-  // Check if file already exists
-  try {
-    await fs.access(filePath, fs.constants.F_OK);
-    console.log(`语音文件已存在: ${filePath}`);
-    console.log(`Voice file already exists: ${filePath}`);
-    return ''; // 文件已存在，无需重新生成 / File exists, no need to regenerate
-  } catch (error) {
-    // 文件不存在，需要生成
-    // File doesn't exist, need to generate
-    console.log(`正在为文本生成中文语音: ${text}`);
-    console.log(`Generating Chinese voice for text: ${text}`);
-  }
+  // 总是生成语音文件，覆盖已存在的文件
+  // Always generate voice file, overwrite existing files
+  console.log(`正在为文本生成中文语音: ${text}`);
+  console.log(`Generating Chinese voice for text: ${text}`);
+  console.log(`目标文件路径: ${filePath}`);
+  console.log(`Target file path: ${filePath}`);
 
   try {
     // 创建目录（如果不存在）

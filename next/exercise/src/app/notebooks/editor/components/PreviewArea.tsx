@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { Edit3, RefreshCw } from "lucide-react";
+import { useStatus } from "@/app/lib/atoms";
+import { toast } from "react-toastify";
 import "../css/style.css";
 
 interface NoteData {
@@ -151,6 +153,10 @@ function EditDialog({ isOpen, onClose, onSave, initialData }: EditDialogProps) {
 }
 
 export function PreviewArea({ noteData }: PreviewAreaProps) {
+  // 全局状态管理 - 用于控制 ProcessingMask
+  // Global state management - for controlling ProcessingMask
+  const [status, setStatus] = useStatus();
+  
   // 编辑对话框状态管理
   // Edit dialog state management
   const [editDialog, setEditDialog] = useState({
@@ -221,9 +227,16 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     const tid = noteData.tid;
     
     if (!ariaLabel || !dataVoiceId || !tid) {
-      alert('缺少必要的参数：aria-label、data-voice-id 或 tid');
+      toast.error('缺少必要的参数：aria-label、data-voice-id 或 tid');
       return;
     }
+    
+    // 启用 ProcessingMask 防止误操作
+    // Enable ProcessingMask to prevent misoperations
+    setStatus(prev => ({
+      ...prev,
+      isProcessing: true
+    }));
     
     setIsGeneratingVoice(dataVoiceId);
     
@@ -243,14 +256,21 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       const result = await response.json();
       
       if (result.success) {
-        alert('语音生成成功！/ Voice generated successfully!');
+        toast.success('语音生成成功！/ Voice generated successfully!');
       } else {
-        alert(`语音生成失败：${result.error}`);
+        toast.error(`语音生成失败：${result.error}`);
       }
     } catch (error) {
       console.error('语音生成请求失败:', error);
-      alert('语音生成请求失败，请检查网络连接');
+      toast.error('语音生成请求失败，请检查网络连接');
     } finally {
+      // 关闭 ProcessingMask
+      // Disable ProcessingMask
+      setStatus(prev => ({
+        ...prev,
+        isProcessing: false
+      }));
+      
       setIsGeneratingVoice(null);
     }
   };

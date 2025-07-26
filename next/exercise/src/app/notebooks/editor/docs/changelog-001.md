@@ -251,6 +251,98 @@ style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 
 5. **语音预览**: 添加语音文件的播放预览功能
 6. **缓存优化**: 实现语音生成结果的客户端缓存
 
+## 最新更新 - ProcessingMask 集成 / Latest Update - ProcessingMask Integration
+
+### 更新日期 / Update Date
+2024年 - ProcessingMask 防误操作功能集成
+
+### 新增功能 / New Features
+
+#### ProcessingMask 集成 / ProcessingMask Integration
+- **功能描述 / Feature Description**: 在点击刷新图标生成语音时启用全屏遮罩，防止用户误操作
+- **实现位置 / Implementation Location**: 
+  - `src/app/notebooks/editor/components/PreviewArea.tsx` - 集成 useStatus hook 和状态控制
+  - `src/app/layout.js` - 添加 ProcessingMask 组件到应用根布局
+  - `src/app/lib/components/ProcessingMask.tsx` - 遮罩组件（已存在）
+  - `src/app/lib/components/ProcessingMask.css` - 遮罩样式（已存在）
+
+#### 技术实现 / Technical Implementation
+1. **状态管理 / State Management**:
+   - 使用 `useStatus` hook 访问全局状态
+   - 在语音生成开始时设置 `isProcessing: true`
+   - 在语音生成结束时设置 `isProcessing: false`
+
+2. **组件集成 / Component Integration**:
+   - 在 `layout.js` 中将 `ProcessingMask` 组件添加到 `JotaiProvider` 内部
+   - 确保遮罩能够访问全局状态并正确显示
+
+3. **用户体验 / User Experience**:
+   - 全屏半透明遮罩防止误操作
+   - 显示 "Processing..." 文字提示
+   - 自动在操作完成后消失
+
+#### 代码变更 / Code Changes
+- **PreviewArea.tsx**: 导入 `useStatus`，在 `handleRefreshVoice` 函数中添加状态控制
+- **layout.js**: 导入并添加 `ProcessingMask` 组件
+- **无新文件创建**: 复用现有的 ProcessingMask 组件和样式
+
+#### 测试验证 / Testing Verification
+- API 测试通过：`/api/notebooks/notes/voice/chinese` 正常响应
+- 组件集成测试：ProcessingMask 正确显示和隐藏
+- 用户交互测试：点击刷新图标时遮罩正常工作
+
+## 最新更新 - Toast 通知和音频覆盖功能 / Latest Update - Toast Notifications and Audio Overwrite
+
+### 更新日期 / Update Date
+2024年 - Toast 通知替换 Alert 和音频文件覆盖功能
+
+### 功能改进 / Feature Improvements
+
+#### 1. Toast 通知系统 / Toast Notification System
+- **改进描述 / Improvement Description**: 将所有 alert 弹窗替换为 toast 通知，提供更好的用户体验
+- **实现位置 / Implementation Location**: `src/app/notebooks/editor/components/PreviewArea.tsx`
+- **技术实现 / Technical Implementation**:
+  - 导入 `react-toastify` 的 `toast` 方法
+  - 替换参数验证失败的 alert 为 `toast.error`
+  - 替换语音生成成功的 alert 为 `toast.success`
+  - 替换语音生成失败的 alert 为 `toast.error`
+  - 替换网络请求失败的 alert 为 `toast.error`
+
+#### 2. 音频文件覆盖功能 / Audio File Overwrite Feature
+- **改进描述 / Improvement Description**: 修改语音生成 API，总是生成新的音频文件并覆盖已存在的文件
+- **实现位置 / Implementation Location**: `src/app/api/notebooks/notes/voice/chinese/route.js`
+- **技术实现 / Technical Implementation**:
+  - 移除文件存在性检查逻辑
+  - 删除 `fs.access` 检查和早期返回
+  - 总是执行语音生成流程
+  - 添加更详细的日志记录
+
+#### 代码变更详情 / Code Change Details
+
+**PreviewArea.tsx 变更**:
+- 导入: `import { toast } from "react-toastify";`
+- 替换: `alert('缺少必要的参数...')` → `toast.error('缺少必要的参数...')`
+- 替换: `alert('语音生成成功！...')` → `toast.success('语音生成成功！...')`
+- 替换: `alert('语音生成失败：...')` → `toast.error('语音生成失败：...')`
+- 替换: `alert('语音生成请求失败...')` → `toast.error('语音生成请求失败...')`
+
+**route.js 变更**:
+- 移除: 文件存在性检查的 try-catch 块
+- 添加: 更详细的生成日志和文件路径日志
+- 行为: 总是生成音频文件，覆盖已存在的文件
+
+#### 用户体验改进 / UX Improvements
+1. **非阻塞通知**: Toast 通知不会阻塞用户操作，比 alert 弹窗体验更好
+2. **视觉一致性**: Toast 通知与应用整体设计风格保持一致
+3. **自动消失**: Toast 通知会自动消失，无需用户手动关闭
+4. **音频更新**: 用户可以重新生成音频文件，确保内容是最新的
+
+#### 测试验证 / Testing Verification
+- Toast 通知功能测试：所有通知类型正常显示
+- 音频覆盖测试：重复请求同一音频文件，确认覆盖行为
+- API 响应测试：验证修改后的 API 正常工作
+- 用户界面测试：确认 toast 容器在根布局中正确配置
+
 ## 依赖变更 / Dependency Changes
 
 ### 新增依赖 / New Dependencies
