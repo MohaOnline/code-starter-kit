@@ -503,6 +503,108 @@ style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 
 - 解决了 React 状态更新延迟导致的显示问题
 - 优化了组件重新渲染的触发时机
 
+## 2024-12-31 Section级别音频播放控制系统 / Section-Level Audio Playback Control System
+
+### 🎵 新增功能 / New Features
+
+**Section标题控制按钮 / Section Title Control Buttons**
+- 在每个section标题右边添加了三个控制按钮：前一个(⏮️)、播放/停止(▶️/⏹️)、下一个(⏭️)
+- 支持快速切换当前播放的句子
+- 播放按钮根据当前播放状态动态显示播放或停止图标
+
+**当前Span状态管理 / Current Span State Management**
+- 新增当前span概念，每个section可以有一个当前选中的span
+- 当前span显示透明淡绿色背景高亮效果
+- 点击任意span可设置为当前span
+- 支持通过前一个/下一个按钮切换当前span
+
+**智能音频播放逻辑 / Intelligent Audio Playback Logic**
+- **不循环模式**: 播放完当前span后，自动依次播放后续span，全部播放完毕后停止
+- **单句循环模式**: 重复播放当前span
+- **全文循环模式**: 播放完所有span后，从第一个span重新开始循环播放
+- 播放过程中自动更新当前span状态和高亮显示
+
+### 🔧 技术实现 / Technical Implementation
+
+**状态管理优化 / State Management Optimization**
+```typescript
+// 当前span状态接口
+interface CurrentSpanState {
+  sectionTitle: string | null;
+  voiceId: string | null;
+  spanElement: HTMLSpanElement | null;
+}
+
+// 自动播放状态管理
+const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+const [currentSpanState, setCurrentSpanState] = useState<Record<string, CurrentSpanState>>({});
+```
+
+**Section级别播放控制 / Section-Level Playback Control**
+- `handleSectionPlayAudio()`: 处理section级别的音频播放逻辑
+- `getSectionSpans()`: 获取section中所有span元素
+- `setCurrentSpan()`: 设置当前span并更新UI
+- `getPreviousSpan()` / `getNextSpan()`: 获取前一个/下一个span
+
+**循环播放逻辑 / Loop Playback Logic**
+- 在`onEnded`事件中根据循环模式决定下一步行为
+- 支持单句循环、顺序播放、全文循环三种模式
+- 自动更新当前span状态，确保UI与播放状态同步
+
+**UI交互优化 / UI Interaction Optimization**
+- 当前span背景色：`rgba(34, 197, 94, 0.2)` (透明淡绿色)
+- 点击span设置为当前span，显示toast提示
+- Section控制按钮悬停效果和状态反馈
+
+### 🎯 用户体验提升 / User Experience Enhancement
+
+**直观的视觉反馈 / Intuitive Visual Feedback**
+- 当前播放的句子有明显的绿色背景高亮
+- 播放按钮图标实时反映播放状态
+- Toast消息提供操作反馈
+
+**便捷的操作方式 / Convenient Operation Methods**
+- 点击句子即可设置为当前句子
+- 使用section级别的控制按钮快速导航
+- 支持键盘和鼠标操作
+
+**智能播放体验 / Intelligent Playback Experience**
+- 根据循环设置自动播放后续内容
+- 播放完毕自动停止，避免无限循环
+- 支持随时停止和重新开始播放
+
+### 📝 代码变更 / Code Changes
+
+**新增文件 / New Files**
+- 无新增文件
+
+**修改文件 / Modified Files**
+- `src/app/notebooks/editor/components/PreviewArea.tsx`:
+  - 新增CurrentSpanState接口定义
+  - 新增currentSpanState和isAutoPlaying状态管理
+  - 新增handleSectionPlayAudio函数实现section级别播放
+  - 新增getSectionSpans、setCurrentSpan、getPreviousSpan、getNextSpan辅助函数
+  - 修改addIconsToSpans函数，为当前span添加高亮样式
+  - 修改createContentClickHandler函数，支持点击span设置当前状态
+  - 修改renderSection函数，添加section级别控制按钮
+  - 修改stopAudio函数，添加停止自动播放逻辑
+
+### ✅ 测试验证 / Testing Verification
+
+**功能测试 / Functional Testing**
+- ✅ 验证section控制按钮的显示和功能
+- ✅ 验证当前span的高亮显示效果
+- ✅ 验证点击span设置当前状态的功能
+- ✅ 验证前一个/下一个按钮的导航功能
+- ✅ 验证不同循环模式下的播放行为
+- ✅ 验证播放/停止按钮的状态切换
+- ✅ 验证自动播放的停止和继续功能
+
+**兼容性测试 / Compatibility Testing**
+- ✅ 确认与现有音频播放功能的兼容性
+- ✅ 确认与循环模式设置的协同工作
+- ✅ 确认UI布局在不同屏幕尺寸下的表现
+
 ## 2024-12-31 音频事件监听器内存泄漏修复 / Audio Event Listener Memory Leak Fix
 
 ### 🔧 关键技术修复 / Critical Technical Fix

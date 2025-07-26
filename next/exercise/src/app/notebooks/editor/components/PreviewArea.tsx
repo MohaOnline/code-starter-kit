@@ -49,6 +49,14 @@ interface AudioState {
   audio: HTMLAudioElement | null;
 }
 
+// 当前span状态接口
+// Current span state interface
+interface CurrentSpanState {
+  sectionTitle: string | null;
+  voiceId: string | null;
+  spanElement: HTMLSpanElement | null;
+}
+
 // 编辑对话框组件
 // Edit dialog component
 interface EditDialogProps {
@@ -190,6 +198,15 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // 强制重新渲染的状态
   // Force re-render state
   const [renderKey, setRenderKey] = useState(0);
+
+  // 当前span状态管理
+  // Current span state management
+  const [currentSpanState, setCurrentSpanState] = useState<Record<string, CurrentSpanState>>({});
+
+  // 自动播放状态管理
+  // Auto-play state management
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+  const [autoPlayQueue, setAutoPlayQueue] = useState<{sectionTitle: string, voiceIds: string[]}>({sectionTitle: '', voiceIds: []});
   // 清理音频资源
   // Cleanup audio resources
   useEffect(() => {
@@ -200,6 +217,77 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       }
     };
   }, []);
+
+  // 获取section中所有的span元素
+  // Get all span elements in a section
+  const getSectionSpans = (sectionTitle: string): HTMLSpanElement[] => {
+    const sectionElements = document.querySelectorAll('.mb-6');
+    for (const sectionElement of sectionElements) {
+      const titleElement = sectionElement.querySelector('h3');
+      if (titleElement && titleElement.textContent === sectionTitle) {
+        const spans = sectionElement.querySelectorAll('span[data-voice-id]') as NodeListOf<HTMLSpanElement>;
+        return Array.from(spans);
+      }
+    }
+    return [];
+  };
+
+  // 设置当前span
+  // Set current span
+  const setCurrentSpan = (sectionTitle: string, voiceId: string) => {
+    const spans = getSectionSpans(sectionTitle);
+    const spanElement = spans.find(span => span.getAttribute('data-voice-id') === voiceId);
+    
+    if (spanElement) {
+      setCurrentSpanState(prev => ({
+        ...prev,
+        [sectionTitle]: {
+          sectionTitle,
+          voiceId,
+          spanElement
+        }
+      }));
+      setRenderKey(prev => prev + 1);
+    }
+  };
+
+  // 获取前一个span
+  // Get previous span
+  const getPreviousSpan = (sectionTitle: string): string | null => {
+    const spans = getSectionSpans(sectionTitle);
+    const currentState = currentSpanState[sectionTitle];
+    
+    if (!currentState || !currentState.voiceId) {
+      return spans.length > 0 ? spans[spans.length - 1].getAttribute('data-voice-id') : null;
+    }
+    
+    const currentIndex = spans.findIndex(span => span.getAttribute('data-voice-id') === currentState.voiceId);
+    if (currentIndex > 0) {
+      return spans[currentIndex - 1].getAttribute('data-voice-id');
+    } else if (spans.length > 0) {
+      return spans[spans.length - 1].getAttribute('data-voice-id'); // 循环到最后一个
+    }
+    return null;
+  };
+
+  // 获取下一个span
+  // Get next span
+  const getNextSpan = (sectionTitle: string): string | null => {
+    const spans = getSectionSpans(sectionTitle);
+    const currentState = currentSpanState[sectionTitle];
+    
+    if (!currentState || !currentState.voiceId) {
+      return spans.length > 0 ? spans[0].getAttribute('data-voice-id') : null;
+    }
+    
+    const currentIndex = spans.findIndex(span => span.getAttribute('data-voice-id') === currentState.voiceId);
+    if (currentIndex >= 0 && currentIndex < spans.length - 1) {
+      return spans[currentIndex + 1].getAttribute('data-voice-id');
+    } else if (spans.length > 0) {
+      return spans[0].getAttribute('data-voice-id'); // 循环到第一个
+    }
+    return null;
+  };
 
   // MathJax configuration
   const mathJaxConfig = {
@@ -428,10 +516,179 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       currentVoiceId: null,
       audio: null,
     });
+    // 停止自动播放
+    // Stop auto-play
+    setIsAutoPlaying(false);
     // 强制重新渲染以更新图标
     // Force re-render to update icons
     setRenderKey(prev => prev + 1);
     toast.info("音频播放已停止");
+  };
+
+  // Section级别的音频播放处理
+  // Section-level audio playback handler
+  const handleSectionPlayAudio = (sectionTitle: string, voiceId: string) => {
+    console.log('handleSectionPlayAudio called:', { sectionTitle, voiceId });
+    
+    // 设置当前span
+    setCurrentSpan(sectionTitle, voiceId);
+    
+    // 停止当前播放的音频（如果有的话）
+    if (audioState.audio) {
+      const currentAudio = audioState.audio;
+      if ((currentAudio as any)._onCanPlay) {
+        currentAudio.removeEventListener("canplay", (currentAudio as any)._onCanPlay);
+      }
+      if ((currentAudio as any)._onEnded) {
+        currentAudio.removeEventListener("ended", (currentAudio as any)._onEnded);
+      }
+      if ((currentAudio as any)._onError) {
+        currentAudio.removeEventListener("error", (currentAudio as any)._onError);
+      }
+      
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio.src = "";
+      console.log('Previous audio stopped and cleaned up');
+    }
+
+    // 获取当前 section 的循环模式
+    const loopMode = sectionLoopModes[sectionTitle] || "none";
+    
+    // 设置自动播放状态
+    setIsAutoPlaying(true);
+    
+    // 构建音频文件路径
+    const tid = noteData.tid;
+    const tidToDirectoryMap: Record<string, string> = {
+      "21": "chinese-compositions",
+      "22": "chinese-poetry",
+      "23": "chinese-literature",
+      "24": "chinese-essays",
+      "25": "chinese-novels",
+    };
+
+    const directory = tidToDirectoryMap[String(tid)];
+    if (!directory) {
+      toast.error("无效的 tid，无法确定音频文件路径");
+      return;
+    }
+
+    const voiceName = process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE || "zh-CN-XiaoxiaoNeural";
+    const firstChar = voiceId.charAt(0).toLowerCase();
+    const audioPath = `/refs/notes/${directory}/${voiceName}/${firstChar}/${voiceId}.wav`;
+
+    // 创建新的音频对象
+    const audio = new Audio(audioPath);
+
+    // 定义事件监听器函数
+    const onCanPlay = () => {
+      console.log('Section audio can play, setting state and starting playback');
+      setAudioState({
+        isPlaying: true,
+        currentVoiceId: voiceId,
+        audio: audio,
+      });
+      setRenderKey(prev => prev + 1);
+
+      audio
+        .play()
+        .then(() => {
+          toast.success("开始播放音频");
+        })
+        .catch(error => {
+          console.error("音频播放失败:", error);
+          toast.error("音频播放失败");
+          setAudioState({
+            isPlaying: false,
+            currentVoiceId: null,
+            audio: null,
+          });
+          setRenderKey(prev => prev + 1);
+          setIsAutoPlaying(false);
+        });
+    };
+
+    const onEnded = () => {
+      console.log('Section audio ended, checking loop mode and auto-play');
+      const currentLoopMode = sectionLoopModes[sectionTitle] || "none";
+      
+      if (currentLoopMode === "single") {
+        // 单句循环：重新播放当前句子
+        console.log('Single loop mode: replaying current span');
+        audio.currentTime = 0;
+        audio.play();
+      } else {
+        // 不循环或全文循环：播放下一句
+        const spans = getSectionSpans(sectionTitle);
+        const currentIndex = spans.findIndex(span => span.getAttribute('data-voice-id') === voiceId);
+        
+        if (currentIndex >= 0 && currentIndex < spans.length - 1) {
+          // 有下一句，播放下一句
+          const nextVoiceId = spans[currentIndex + 1].getAttribute('data-voice-id');
+          if (nextVoiceId) {
+            console.log('Playing next span:', nextVoiceId);
+            setCurrentSpan(sectionTitle, nextVoiceId);
+            setTimeout(() => {
+              handleSectionPlayAudio(sectionTitle, nextVoiceId);
+            }, 100);
+            return;
+          }
+        }
+        
+        // 已经是最后一句
+        if (currentLoopMode === "all") {
+          // 全文循环：从第一句开始
+          if (spans.length > 0) {
+            const firstVoiceId = spans[0].getAttribute('data-voice-id');
+            if (firstVoiceId) {
+              console.log('All loop mode: restarting from first span:', firstVoiceId);
+              setCurrentSpan(sectionTitle, firstVoiceId);
+              setTimeout(() => {
+                handleSectionPlayAudio(sectionTitle, firstVoiceId);
+              }, 100);
+              return;
+            }
+          }
+        }
+        
+        // 不循环或播放完毕：停止播放
+        console.log('Playback finished');
+        setAudioState({
+          isPlaying: false,
+          currentVoiceId: null,
+          audio: null,
+        });
+        setRenderKey(prev => prev + 1);
+        setIsAutoPlaying(false);
+        toast.info("播放完毕");
+      }
+    };
+
+    const onError = () => {
+      console.error("音频加载失败:", audioPath);
+      toast.error("音频文件加载失败");
+      setAudioState({
+        isPlaying: false,
+        currentVoiceId: null,
+        audio: null,
+      });
+      setRenderKey(prev => prev + 1);
+      setIsAutoPlaying(false);
+    };
+
+    // 设置音频事件监听器
+    audio.addEventListener("canplay", onCanPlay);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("error", onError);
+
+    // 保存事件监听器函数引用
+    (audio as any)._onCanPlay = onCanPlay;
+    (audio as any)._onEnded = onEnded;
+    (audio as any)._onError = onError;
+
+    // 开始加载音频
+    audio.load();
   };
 
   // 设置 section 的循环模式
@@ -550,9 +807,19 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       const voiceId = voiceIdMatch ? voiceIdMatch[1] : "";
       const isCurrentlyPlaying = audioState.isPlaying && audioState.currentVoiceId === voiceId;
 
+      // 检查是否为当前span（需要高亮显示）
+      // Check if this is the current span (needs highlighting)
+      let isCurrentSpan = false;
+      for (const sectionTitle in currentSpanState) {
+        if (currentSpanState[sectionTitle]?.voiceId === voiceId) {
+          isCurrentSpan = true;
+          break;
+        }
+      }
+
       // 调试信息
       if (voiceId) {
-        console.log('Icon generation for voiceId:', voiceId, { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId, isCurrentlyPlaying });
+        console.log('Icon generation for voiceId:', voiceId, { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId, isCurrentlyPlaying, isCurrentSpan });
       }
 
       // 根据播放状态选择图标
@@ -560,7 +827,12 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       const playIcon = isCurrentlyPlaying ? "⏹️" : "▶️";
       const playTitle = isCurrentlyPlaying ? "停止播放 / Stop Audio" : "播放音频 / Play Audio";
 
-      return `${modifiedOpenTag}${innerContent}${closeTag}<span class="span-icons" data-target="${spanId}" style="margin-left: 4px; opacity: 0.7;"><button class="icon-btn edit-btn" data-action="edit" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="编辑 / Edit">✏️</button><button class="icon-btn refresh-btn" data-action="refresh" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="刷新语音 / Refresh Voice">🔄</button><button class="icon-btn play-btn" data-action="play" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="${playTitle}">${playIcon}</button></span>`;
+      // 为当前span添加背景色样式
+      // Add background color style for current span
+      const currentSpanStyle = isCurrentSpan ? 'background-color: rgba(34, 197, 94, 0.2); padding: 2px 4px; border-radius: 4px;' : '';
+      const modifiedOpenTagWithStyle = modifiedOpenTag.replace('>', ` style="${currentSpanStyle}">`);
+
+      return `${modifiedOpenTagWithStyle}${innerContent}${closeTag}<span class="span-icons" data-target="${spanId}" style="margin-left: 4px; opacity: 0.7;"><button class="icon-btn edit-btn" data-action="edit" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="编辑 / Edit">✏️</button><button class="icon-btn refresh-btn" data-action="refresh" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="刷新语音 / Refresh Voice">🔄</button><button class="icon-btn play-btn" data-action="play" data-target="${spanId}" style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 1px; color: #666; hover:color: #333;" title="${playTitle}">${playIcon}</button></span>`;
     });
   };
 
@@ -595,6 +867,17 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
             }
           }
         }
+      } else if (target.hasAttribute && target.hasAttribute("data-voice-id")) {
+        // 点击span本身，设置为当前span
+        // Click on span itself, set as current span
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const voiceId = target.getAttribute("data-voice-id");
+        if (voiceId) {
+          setCurrentSpan(sectionTitle, voiceId);
+          toast.info(`已设置当前句子: ${target.getAttribute("aria-label") || voiceId}`);
+        }
       }
     };
   };
@@ -613,7 +896,65 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     return (
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">{title}</h3>
+          <div className="flex items-center space-x-3">
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">{title}</h3>
+            
+            {/* Section播放控制按钮 / Section playback control buttons */}
+            <div className="flex items-center space-x-1">
+              <button
+                onClick={() => {
+                  const prevVoiceId = getPreviousSpan(title);
+                  if (prevVoiceId) {
+                    setCurrentSpan(title, prevVoiceId);
+                    toast.info("已切换到前一句");
+                  }
+                }}
+                className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                title="前一个 / Previous"
+              >
+                ⏮️
+              </button>
+              <button
+                onClick={() => {
+                  const currentState = currentSpanState[title];
+                  if (currentState && currentState.voiceId) {
+                    if (audioState.isPlaying && audioState.currentVoiceId === currentState.voiceId) {
+                      // 停止播放
+                      stopAudio();
+                      setIsAutoPlaying(false);
+                    } else {
+                      // 开始播放当前span
+                      handleSectionPlayAudio(title, currentState.voiceId);
+                    }
+                  } else {
+                    // 没有当前span，播放第一个
+                    const firstVoiceId = getNextSpan(title);
+                    if (firstVoiceId) {
+                      setCurrentSpan(title, firstVoiceId);
+                      handleSectionPlayAudio(title, firstVoiceId);
+                    }
+                  }
+                }}
+                className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                title={audioState.isPlaying && currentSpanState[title]?.voiceId === audioState.currentVoiceId ? "停止播放 / Stop" : "播放 / Play"}
+              >
+                {audioState.isPlaying && currentSpanState[title]?.voiceId === audioState.currentVoiceId ? "⏹️" : "▶️"}
+              </button>
+              <button
+                onClick={() => {
+                  const nextVoiceId = getNextSpan(title);
+                  if (nextVoiceId) {
+                    setCurrentSpan(title, nextVoiceId);
+                    toast.info("已切换到下一句");
+                  }
+                }}
+                className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                title="下一个 / Next"
+              >
+                ⏭️
+              </button>
+            </div>
+          </div>
 
           {/* 循环模式选择器 / Loop mode selector */}
           <div className="flex items-center space-x-2">
