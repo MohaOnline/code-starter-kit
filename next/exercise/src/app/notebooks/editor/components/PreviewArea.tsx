@@ -39,6 +39,7 @@ interface SpanEditData {
   ariaLabel: string;
   dataSpeaker: string;
   dataVoiceId: string;
+  spanContent: string; // 新增：span的内容 / New: span content
 }
 
 // 音频播放状态接口
@@ -114,6 +115,17 @@ function EditDialog({ isOpen, onClose, onSave, initialData }: EditDialogProps) {
 
         <div className="space-y-4">
           <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Span 内容 / Span Content</label>
+            <textarea
+              value={formData.spanContent}
+              onChange={e => setFormData({ ...formData, spanContent: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"
+              rows={3}
+              placeholder="输入 span 显示的内容..."
+            />
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">aria-label</label>
             <textarea
               value={formData.ariaLabel}
@@ -126,13 +138,15 @@ function EditDialog({ isOpen, onClose, onSave, initialData }: EditDialogProps) {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">data-speaker</label>
-            <input
-              type="text"
+            <select
               value={formData.dataSpeaker}
               onChange={e => setFormData({ ...formData, dataSpeaker: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"
-              placeholder="输入 data-speaker 内容..."
-            />
+            >
+              <option value="">无 / None</option>
+              <option value="male">男性 / Male</option>
+              <option value="female">女性 / Female</option>
+            </select>
           </div>
 
           <div>
@@ -171,12 +185,22 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // Global state management - for controlling ProcessingMask
   const [status, setStatus] = useStatus();
 
+  // 本地可编辑的数据副本 - 用于维护编辑后的内容
+  // Local editable data copy - for maintaining edited content
+  const [editableNoteData, setEditableNoteData] = useState<NoteData>(noteData);
+
+  // 当noteData props变化时，更新本地副本
+  // Update local copy when noteData props change
+  useEffect(() => {
+    setEditableNoteData(noteData);
+  }, [noteData]);
+
   // 编辑对话框状态管理
   // Edit dialog state management
   const [editDialog, setEditDialog] = useState({
     isOpen: false,
     spanElement: null as HTMLSpanElement | null,
-    data: { ariaLabel: "", dataSpeaker: "", dataVoiceId: "" } as SpanEditData,
+    data: { ariaLabel: "", dataSpeaker: "", dataVoiceId: "", spanContent: "" } as SpanEditData,
   });
 
   // 语音生成状态
@@ -321,26 +345,189 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     const ariaLabel = spanElement.getAttribute("aria-label") || "";
     const dataSpeaker = spanElement.getAttribute("data-speaker") || "";
     const dataVoiceId = spanElement.getAttribute("data-voice-id") || "";
+    const spanContent = spanElement.textContent || ""; // 获取span的文本内容 / Get span text content
+
+    console.log('handleEditClick called:', { ariaLabel, dataSpeaker, dataVoiceId, spanContent });
+
+    // 找到当前span所属的section
+    // Find the section that contains this span
+    let sectionTitle = "";
+    let currentElement = spanElement.parentElement;
+    while (currentElement) {
+      const titleElement = currentElement.querySelector('h3');
+      if (titleElement) {
+        sectionTitle = titleElement.textContent || "";
+        break;
+      }
+      currentElement = currentElement.parentElement;
+    }
+
+    console.log('Found section title:', sectionTitle);
+
+    // 设置当前span
+    // Set current span
+    if (sectionTitle && dataVoiceId) {
+      setCurrentSpan(sectionTitle, dataVoiceId);
+      console.log('Set current span:', { sectionTitle, dataVoiceId });
+    }
 
     setEditDialog({
       isOpen: true,
       spanElement,
-      data: { ariaLabel, dataSpeaker, dataVoiceId },
+      data: { ariaLabel, dataSpeaker, dataVoiceId, spanContent },
     });
   };
 
   // 处理编辑保存
   // Handle edit save
   const handleEditSave = (data: SpanEditData) => {
+    console.log('handleEditSave called with data:', data);
+    console.log('editDialog.spanElement:', editDialog.spanElement);
+    
     if (editDialog.spanElement) {
-      editDialog.spanElement.setAttribute("aria-label", data.ariaLabel);
-      editDialog.spanElement.setAttribute("data-speaker", data.dataSpeaker);
-      editDialog.spanElement.setAttribute("data-voice-id", data.dataVoiceId);
-
-      // 触发重新渲染（通过修改元素内容）
-      // Trigger re-render by modifying element content
-      const event = new Event("input", { bubbles: true });
-      editDialog.spanElement.dispatchEvent(event);
+      const spanElement = editDialog.spanElement;
+      const originalVoiceId = spanElement.getAttribute("data-voice-id") || "";
+      
+      console.log('Before update - span attributes:', {
+        ariaLabel: spanElement.getAttribute("aria-label"),
+        dataSpeaker: spanElement.getAttribute("data-speaker"),
+        dataVoiceId: spanElement.getAttribute("data-voice-id"),
+        textContent: spanElement.textContent
+      });
+      
+      // 找到当前span所属的section
+      // Find the section that contains this span
+      let sectionTitle = "";
+      let sectionKey = "";
+      
+      // 方法1：向上遍历DOM树查找包含h3的容器
+      // Method 1: Traverse up the DOM tree to find container with h3
+      let currentElement = spanElement.parentElement;
+      while (currentElement && currentElement !== document.body) {
+        // 查找当前元素或其子元素中的h3
+        const titleElement = currentElement.querySelector('h3');
+        if (titleElement) {
+          sectionTitle = titleElement.textContent || "";
+          break;
+        }
+        // 检查当前元素本身是否包含section信息
+        if (currentElement.classList.contains('mb-6')) {
+          const titleInChildren = currentElement.querySelector('h3');
+          if (titleInChildren) {
+            sectionTitle = titleInChildren.textContent || "";
+            break;
+          }
+        }
+        currentElement = currentElement.parentElement;
+      }
+      
+      // 方法2：如果方法1失败，尝试查找所有section容器
+      // Method 2: If method 1 fails, try to find all section containers
+      if (!sectionTitle) {
+        const allSections = document.querySelectorAll('.mb-6');
+        for (const section of allSections) {
+          if (section.contains(spanElement)) {
+            const titleElement = section.querySelector('h3');
+            if (titleElement) {
+              sectionTitle = titleElement.textContent || "";
+              break;
+            }
+          }
+        }
+      }
+      
+      // 根据section标题确定对应的数据字段
+      // Determine the corresponding data field based on section title
+      if (sectionTitle) {
+        const sectionMap: Record<string, keyof NoteData> = {
+          "Body": "body",
+          "Question": "question",
+          "Answer": "answer",
+          "Figures": "figures",
+          "Body Script": "body_script",
+          "Body Extra": "body_extra",
+          "Note": "note",
+          "Note Extra": "note_extra"
+        };
+        sectionKey = sectionMap[sectionTitle] || "";
+      }
+      
+      console.log('Section search details:', {
+        spanElement: spanElement.outerHTML.substring(0, 100),
+        foundSectionTitle: sectionTitle,
+        foundSectionKey: sectionKey,
+        parentElement: spanElement.parentElement?.tagName,
+        grandParent: spanElement.parentElement?.parentElement?.tagName
+      });
+      
+      console.log('Found section for save:', { sectionTitle, sectionKey });
+      
+      if (sectionKey && editableNoteData[sectionKey as keyof NoteData]) {
+        // 更新本地数据副本中的内容
+        // Update content in local data copy
+        const currentContent = editableNoteData[sectionKey as keyof NoteData] as string;
+        
+        // 使用正则表达式找到并替换对应的span内容
+        // Use regex to find and replace the corresponding span content
+        const spanRegex = new RegExp(
+          `(<span[^>]*data-voice-id="${originalVoiceId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>)(.*?)(<\/span>)`,
+          'g'
+        );
+        
+        const updatedContent = currentContent.replace(spanRegex, (match, openTag, innerContent, closeTag) => {
+          // 更新属性
+          let newOpenTag = openTag;
+          newOpenTag = newOpenTag.replace(/aria-label="[^"]*"/, `aria-label="${data.ariaLabel}"`);
+          newOpenTag = newOpenTag.replace(/data-speaker="[^"]*"/, `data-speaker="${data.dataSpeaker}"`);
+          newOpenTag = newOpenTag.replace(/data-voice-id="[^"]*"/, `data-voice-id="${data.dataVoiceId}"`);
+          
+          // 如果没有找到对应属性，则添加
+          if (!newOpenTag.includes('aria-label=')) {
+            newOpenTag = newOpenTag.replace('>', ` aria-label="${data.ariaLabel}">`);
+          }
+          if (!newOpenTag.includes('data-speaker=')) {
+            newOpenTag = newOpenTag.replace('>', ` data-speaker="${data.dataSpeaker}">`);
+          }
+          if (!newOpenTag.includes('data-voice-id=')) {
+            newOpenTag = newOpenTag.replace('>', ` data-voice-id="${data.dataVoiceId}">`);
+          }
+          
+          return newOpenTag + data.spanContent + closeTag;
+        });
+        
+        console.log('Updated content:', { original: currentContent.substring(0, 100), updated: updatedContent.substring(0, 100) });
+        
+        // 更新本地数据副本
+        // Update local data copy
+        setEditableNoteData(prev => ({
+          ...prev,
+          [sectionKey]: updatedContent
+        }));
+        
+        // 更新当前span状态
+        // Update current span state
+        if (sectionTitle && data.dataVoiceId) {
+          setCurrentSpan(sectionTitle, data.dataVoiceId);
+          console.log('Updated current span state:', { sectionTitle, voiceId: data.dataVoiceId });
+        }
+        
+        // 强制重新渲染以更新UI
+        // Force re-render to update UI
+        setRenderKey(prev => {
+          const newKey = prev + 1;
+          console.log('Force re-render, new renderKey:', newKey);
+          return newKey;
+        });
+        
+        toast.success("Span 内容已更新 / Span content updated");
+        console.log('Save completed successfully');
+      } else {
+        console.error('Could not find section key or content:', { sectionTitle, sectionKey });
+        toast.error("保存失败：无法确定section / Save failed: could not determine section");
+      }
+    } else {
+      console.error('No spanElement found in editDialog');
+      toast.error("保存失败：未找到span元素 / Save failed: span element not found");
     }
   };
 
@@ -875,6 +1062,10 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // 为内容添加图标的函数
   // Function to add icons to content
   const addIconsToSpans = (content: string): string => {
+    console.log('addIconsToSpans called, renderKey:', renderKey);
+    console.log('Current span states:', currentSpanState);
+    console.log('Audio state:', { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId });
+    
     // 使用正则表达式匹配 span 标签
     // Use regex to match span tags
     const spanRegex = /(<span[^>]*aria-label="[^"]*"[^>]*data-voice-id="[^"]*"[^>]*>)(.*?)(<\/span>)/g;
@@ -894,16 +1085,25 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       // 检查是否为当前span（需要高亮显示）
       // Check if this is the current span (needs highlighting)
       let isCurrentSpan = false;
+      let matchedSection = "";
       for (const sectionTitle in currentSpanState) {
         if (currentSpanState[sectionTitle]?.voiceId === voiceId) {
           isCurrentSpan = true;
+          matchedSection = sectionTitle;
           break;
         }
       }
 
       // 调试信息
       if (voiceId) {
-        console.log('Icon generation for voiceId:', voiceId, { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId, isCurrentlyPlaying, isCurrentSpan });
+        console.log('Processing span with voiceId:', voiceId, { 
+          isPlaying: audioState.isPlaying, 
+          currentVoiceId: audioState.currentVoiceId, 
+          isCurrentlyPlaying, 
+          isCurrentSpan,
+          matchedSection,
+          innerContent: innerContent.substring(0, 20) + '...'
+        });
       }
 
       // 根据播放状态选择图标
@@ -972,6 +1172,8 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     // 为内容添加图标（依赖 renderKey 确保重新渲染）
     // Add icons to content (depends on renderKey for re-rendering)
     const contentWithIcons = addIconsToSpans(content);
+    
+    console.log('renderSection called:', { title, contentLength: content.length, renderKey });
 
     // 获取当前 section 的循环模式
     // Get current section's loop mode
@@ -1115,9 +1317,9 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
           initialData={editDialog.data}
         />
         {/* Title */}
-        {noteData.title && (
+        {editableNoteData.title && (
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{noteData.title}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{editableNoteData.title}</h2>
           </div>
         )}
 
@@ -1160,25 +1362,25 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
         </div>
 
         {/* Content Sections */}
-        {renderSection("Body", noteData.body)}
-        {renderSection("Question", noteData.question)}
-        {renderSection("Answer", noteData.answer)}
-        {renderSection("Figures", noteData.figures)}
-        {renderSection("Body Script", noteData.body_script)}
-        {renderSection("Body Extra", noteData.body_extra)}
-        {renderSection("Note", noteData.note)}
-        {renderSection("Note Extra", noteData.note_extra)}
+        {renderSection("Body", editableNoteData.body)}
+        {renderSection("Question", editableNoteData.question)}
+        {renderSection("Answer", editableNoteData.answer)}
+        {renderSection("Figures", editableNoteData.figures)}
+        {renderSection("Body Script", editableNoteData.body_script)}
+        {renderSection("Body Extra", editableNoteData.body_extra)}
+        {renderSection("Note", editableNoteData.note)}
+        {renderSection("Note Extra", editableNoteData.note_extra)}
 
         {/* Empty State */}
-        {!noteData.title &&
-          !noteData.body &&
-          !noteData.question &&
-          !noteData.answer &&
-          !noteData.figures &&
-          !noteData.body_script &&
-          !noteData.body_extra &&
-          !noteData.note &&
-          !noteData.note_extra && (
+        {!editableNoteData.title &&
+          !editableNoteData.body &&
+          !editableNoteData.question &&
+          !editableNoteData.answer &&
+          !editableNoteData.figures &&
+          !editableNoteData.body_script &&
+          !editableNoteData.body_extra &&
+          !editableNoteData.note &&
+          !editableNoteData.note_extra && (
             <div className="flex items-center justify-center h-64 text-gray-500 dark:text-gray-400">
               <div className="text-center">
                 <p className="text-lg mb-2">No content to preview</p>
