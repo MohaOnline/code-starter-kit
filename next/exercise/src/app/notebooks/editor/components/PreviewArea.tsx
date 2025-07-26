@@ -255,9 +255,12 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // 处理音频播放
   // Handle audio playback
   const handlePlayAudio = (voiceId: string, sectionTitle: string) => {
+    console.log('handlePlayAudio called:', { voiceId, isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId });
+    
     // 如果当前正在播放相同的音频，则停止播放
     // If currently playing the same audio, stop it
     if (audioState.isPlaying && audioState.currentVoiceId === voiceId) {
+      console.log('Stopping audio for voiceId:', voiceId);
       stopAudio();
       return;
     }
@@ -265,9 +268,23 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     // 停止当前播放的音频（如果有的话）
     // Stop currently playing audio (if any)
     if (audioState.audio) {
-      audioState.audio.pause();
-      audioState.audio.currentTime = 0;
-      audioState.audio = null;
+      const currentAudio = audioState.audio;
+      // 移除当前音频的事件监听器
+      // Remove current audio event listeners
+      if ((currentAudio as any)._onCanPlay) {
+        currentAudio.removeEventListener("canplay", (currentAudio as any)._onCanPlay);
+      }
+      if ((currentAudio as any)._onEnded) {
+        currentAudio.removeEventListener("ended", (currentAudio as any)._onEnded);
+      }
+      if ((currentAudio as any)._onError) {
+        currentAudio.removeEventListener("error", (currentAudio as any)._onError);
+      }
+      
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio.src = "";
+      console.log('Previous audio stopped and cleaned up');
     }
 
     // 获取当前 section 的循环模式
@@ -305,9 +322,10 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       audio.loop = true;
     }
 
-    // 设置音频事件监听器
-    // Set audio event listeners
-    audio.addEventListener("canplay", () => {
+    // 定义事件监听器函数，以便正确移除
+    // Define event listener functions for proper removal
+    const onCanPlay = () => {
+      console.log('Audio can play, setting state and starting playback');
       setAudioState({
         isPlaying: true,
         currentVoiceId: voiceId,
@@ -330,9 +348,10 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
           });
           setRenderKey(prev => prev + 1);
         });
-    });
+    };
 
-    audio.addEventListener("ended", () => {
+    const onEnded = () => {
+      console.log('Audio ended, checking loop mode');
       // 检查当前循环模式（可能在播放过程中被改变）
       // Check current loop mode (might have been changed during playback)
       const currentLoopMode = sectionLoopModes[sectionTitle] || "none";
@@ -347,9 +366,9 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
       }
       // 对于 single 和 all 模式，由于设置了 loop=true，会自动循环
       // For single and all modes, it will loop automatically due to loop=true
-    });
+    };
 
-    audio.addEventListener("error", () => {
+    const onError = () => {
       console.error("音频加载失败:", audioPath);
       toast.error("音频文件加载失败");
       setAudioState({
@@ -358,7 +377,19 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
         audio: null,
       });
       setRenderKey(prev => prev + 1);
-    });
+    };
+
+    // 设置音频事件监听器
+    // Set audio event listeners
+    audio.addEventListener("canplay", onCanPlay);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("error", onError);
+
+    // 将事件监听器函数保存到音频对象上，以便后续移除
+    // Save event listener functions to audio object for later removal
+    (audio as any)._onCanPlay = onCanPlay;
+    (audio as any)._onEnded = onEnded;
+    (audio as any)._onError = onError;
 
     // 开始加载音频
     // Start loading audio
@@ -368,11 +399,30 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // 停止音频播放
   // Stop audio playback
   const stopAudio = () => {
+    console.log('stopAudio called, current state:', { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId });
+    
     if (audioState.audio) {
-      audioState.audio.pause();
-      audioState.audio.currentTime = 0;
-      audioState.audio = null;
+      // 移除所有事件监听器，防止重复触发
+      // Remove all event listeners to prevent duplicate triggers
+      const audio = audioState.audio;
+      if ((audio as any)._onCanPlay) {
+        audio.removeEventListener("canplay", (audio as any)._onCanPlay);
+      }
+      if ((audio as any)._onEnded) {
+        audio.removeEventListener("ended", (audio as any)._onEnded);
+      }
+      if ((audio as any)._onError) {
+        audio.removeEventListener("error", (audio as any)._onError);
+      }
+      
+      // 停止并重置音频
+      // Stop and reset audio
+      audio.pause();
+      audio.currentTime = 0;
+      audio.src = ""; // 清空音频源
+      console.log('Audio stopped and reset');
     }
+    
     setAudioState({
       isPlaying: false,
       currentVoiceId: null,
@@ -496,9 +546,14 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
 
       // 提取 data-voice-id 来判断播放状态
       // Extract data-voice-id to determine play state
-      const voiceIdMatch = openTag.match(/data-voice-id="([^"]*)"/);
+      const voiceIdMatch = openTag.match(/data-voice-id="([^"]*)"/); 
       const voiceId = voiceIdMatch ? voiceIdMatch[1] : "";
       const isCurrentlyPlaying = audioState.isPlaying && audioState.currentVoiceId === voiceId;
+
+      // 调试信息
+      if (voiceId) {
+        console.log('Icon generation for voiceId:', voiceId, { isPlaying: audioState.isPlaying, currentVoiceId: audioState.currentVoiceId, isCurrentlyPlaying });
+      }
 
       // 根据播放状态选择图标
       // Choose icon based on play state
