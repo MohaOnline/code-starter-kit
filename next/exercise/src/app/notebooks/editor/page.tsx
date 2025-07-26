@@ -17,7 +17,7 @@ import { ThemeToggle } from "@/app/lib/components/ThemeToggle";
 import HTMLAreaV3 from "@/app/lib/components/HTMLAreaV3";
 import NavTop from "@/app/lib/components/NavTop";
 import { preprocessText } from "@/app/api/notebooks/notes/crud/route";
-import { preprocessTextWithSentenceSplitter } from "@/app/lib/utils";
+import { preprocessTextWithSentenceSplitter, supplementVoiceID } from "@/app/lib/utils";
 
 interface NoteData {
   id?: number;
@@ -135,8 +135,9 @@ export default function NotebookEditor() {
   const saveNote = async () => {
     setSaving(true);
     setStatus(prev => ({ ...prev, isProcessing: true }));
-    noteData.body = preprocessTextWithSentenceSplitter(noteData.body);
-    console.log(noteData.body);
+    noteData.body_script = preprocessTextWithSentenceSplitter(noteData.body_script || "");
+    noteData.body_script = supplementVoiceID(noteData.body_script);
+    console.log(noteData.body_script);
 
     try {
       const url = noteData.id ? `/api/notebooks/editor/${noteData.id}` : "/api/notebooks/editor";
@@ -248,6 +249,15 @@ export default function NotebookEditor() {
                 </div>
 
                 <div>
+                  <Label>Body Script</Label>
+                  <HTMLAreaV3
+                    value={noteData.body_script || ""}
+                    handleNoteChange={handleHTMLAreaChange("body_script")}
+                    name="body_script"
+                  />
+                </div>
+
+                <div>
                   <Label>Question</Label>
                   <HTMLAreaV3
                     value={noteData.question || ""}
@@ -272,16 +282,6 @@ export default function NotebookEditor() {
                     value={noteData.figures || ""}
                     handleNoteChange={handleHTMLAreaChange("figures")}
                     name="figures"
-                    height="150px"
-                  />
-                </div>
-
-                <div>
-                  <Label>Body Script</Label>
-                  <HTMLArea
-                    value={noteData.body_script || ""}
-                    handleNoteChange={handleHTMLAreaChange("body_script")}
-                    name="body_script"
                     height="150px"
                   />
                 </div>
