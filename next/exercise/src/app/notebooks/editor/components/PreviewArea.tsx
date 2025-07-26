@@ -207,6 +207,10 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
   // Auto-play state management
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [autoPlayQueue, setAutoPlayQueue] = useState<{sectionTitle: string, voiceIds: string[]}>({sectionTitle: '', voiceIds: []});
+  
+  // 批量生成语音状态管理
+  // Batch voice generation state management
+  const [isGeneratingVoices, setIsGeneratingVoices] = useState(false);
   // 清理音频资源
   // Cleanup audio resources
   useEffect(() => {
@@ -691,6 +695,86 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
     audio.load();
   };
 
+  // 批量生成/更新section中所有span的语音文件
+  // Batch generate/update voice files for all spans in a section
+  const handleBatchRefreshVoices = async (sectionTitle: string) => {
+    console.log('开始批量生成语音文件:', sectionTitle);
+    console.log('Starting batch voice generation:', sectionTitle);
+    
+    // 防止重复点击
+    // Prevent duplicate clicks
+    if (isGeneratingVoices) {
+      toast.warning("正在生成语音文件，请稍候...");
+      return;
+    }
+    
+    // 获取section中所有的span元素
+    // Get all span elements in the section
+    const spans = getSectionSpans(sectionTitle);
+    
+    if (spans.length === 0) {
+      toast.warning("该section中没有找到可生成语音的内容");
+      return;
+    }
+    
+    // 提取语音项目数据
+    // Extract voice item data
+    const voiceItems = spans.map(span => {
+      const text = span.getAttribute('aria-label') || span.textContent || '';
+      const voiceId = span.getAttribute('data-voice-id') || '';
+      return { text: text.trim(), voiceId: voiceId.trim() };
+    }).filter(item => item.text && item.voiceId); // 过滤掉空的项目
+    
+    if (voiceItems.length === 0) {
+      toast.warning("该section中没有找到有效的语音数据");
+      return;
+    }
+    
+    setIsGeneratingVoices(true);
+    toast.info(`开始批量生成 ${voiceItems.length} 个语音文件...`);
+    
+    try {
+      // 调用批量生成API
+      // Call batch generation API
+      const response = await fetch('/api/notebooks/notes/voice/chinese/batch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tid: noteData.tid,
+          voiceItems: voiceItems
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        toast.success(`批量生成成功！共生成 ${result.data.summary.success} 个语音文件`);
+        console.log('批量生成结果:', result.data);
+      } else {
+        // 部分成功的情况
+        if (result.data && result.data.summary) {
+          const { summary } = result.data;
+          toast.warning(`批量生成部分成功：成功 ${summary.success} 个，失败 ${summary.failure} 个`);
+          console.log('批量生成结果:', result.data);
+          
+          // 显示错误详情
+          if (result.data.errors && result.data.errors.length > 0) {
+            console.error('生成失败的项目:', result.data.errors);
+          }
+        } else {
+          toast.error(`批量生成失败: ${result.error}`);
+        }
+      }
+    } catch (error) {
+      console.error('批量生成语音文件时发生错误:', error);
+      toast.error('批量生成语音文件时发生网络错误');
+    } finally {
+      setIsGeneratingVoices(false);
+    }
+  };
+
   // 设置 section 的循环模式
   // Set section loop mode
   const setSectionLoopMode = (sectionTitle: string, mode: LoopMode) => {
@@ -954,6 +1038,16 @@ export function PreviewArea({ noteData }: PreviewAreaProps) {
                 ⏭️
               </button>
             </div>
+            
+            {/* Refresh按钮 - 批量生成语音 / Refresh button - Batch generate voices */}
+            <button
+              onClick={() => handleBatchRefreshVoices(title)}
+              className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              title="批量生成/更新语音文件 / Batch generate/update voice files"
+              disabled={isGeneratingVoices}
+            >
+              {isGeneratingVoices ? "🔄" : "🔄"}
+            </button>
           </div>
 
           {/* 循环模式选择器 / Loop mode selector */}

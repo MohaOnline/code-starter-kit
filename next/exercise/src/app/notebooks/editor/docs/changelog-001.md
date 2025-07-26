@@ -503,6 +503,118 @@ style="background: none; border: none; cursor: pointer; padding: 2px; margin: 0 
 - 解决了 React 状态更新延迟导致的显示问题
 - 优化了组件重新渲染的触发时机
 
+## 2024-12-31 批量语音生成功能 / Batch Voice Generation Feature
+
+### 🎵 新增功能 / New Features
+
+**Section级别批量语音生成 / Section-Level Batch Voice Generation**
+- 在每个section标题最右边添加了refresh图标(🔄)
+- 点击refresh图标可批量生成/更新该section中所有span的语音文件
+- 支持批量处理，提高语音文件生成效率
+- 生成过程中显示进度提示和防重复点击保护
+
+**批量语音生成API / Batch Voice Generation API**
+- 新增批量中文语音生成接口：`/api/notebooks/notes/voice/chinese/batch`
+- 支持一次性处理多个语音项目，最大批量处理50个项目
+- 提供详细的生成结果统计和错误报告
+- 包含成功率统计和失败项目详情
+
+### 🔧 技术实现 / Technical Implementation
+
+**批量API接口设计 / Batch API Interface Design**
+```javascript
+// 请求格式 / Request Format
+{
+  "tid": 21,
+  "voiceItems": [
+    {
+      "text": "要转换的文本1",
+      "voiceId": "语音文件的唯一标识1"
+    },
+    {
+      "text": "要转换的文本2",
+      "voiceId": "语音文件的唯一标识2"
+    }
+  ]
+}
+
+// 响应格式 / Response Format
+{
+  "success": true,
+  "data": {
+    "summary": {
+      "total": 10,
+      "success": 9,
+      "failure": 1,
+      "successRate": "90.00%"
+    },
+    "results": [...],
+    "errors": [...]
+  }
+}
+```
+
+**前端批量处理逻辑 / Frontend Batch Processing Logic**
+- `handleBatchRefreshVoices()`: 处理批量语音生成请求
+- `isGeneratingVoices`: 批量生成状态管理，防止重复操作
+- 自动提取section中所有span的文本和voiceId
+- 过滤无效数据，确保批量请求的数据质量
+
+**错误处理和用户反馈 / Error Handling and User Feedback**
+- 完整的错误处理机制，包括网络错误、API错误、部分失败等情况
+- 详细的Toast消息提示，包括成功、警告、错误等不同类型
+- 控制台日志记录，便于调试和问题排查
+- 生成过程中的状态指示和防重复点击保护
+
+### 🎯 用户体验提升 / User Experience Enhancement
+
+**便捷的批量操作 / Convenient Batch Operations**
+- 一键批量生成section中所有语音文件
+- 无需逐个点击，大幅提高操作效率
+- 智能数据提取，自动识别有效的语音项目
+
+**直观的状态反馈 / Intuitive Status Feedback**
+- 生成过程中refresh图标保持旋转状态
+- 详细的进度提示和结果统计
+- 清晰的成功/失败状态区分
+
+**健壮的错误处理 / Robust Error Handling**
+- 部分失败时显示详细的成功/失败统计
+- 网络错误时提供友好的错误提示
+- 防止重复操作，避免资源浪费
+
+### 📝 代码变更 / Code Changes
+
+**新增文件 / New Files**
+- `src/app/api/notebooks/notes/voice/chinese/batch/route.js`: 批量中文语音生成API接口
+
+**修改文件 / Modified Files**
+- `src/app/notebooks/editor/components/PreviewArea.tsx`:
+  - 新增isGeneratingVoices状态管理
+  - 新增handleBatchRefreshVoices函数实现批量语音生成
+  - 在section标题右侧添加refresh图标和点击处理
+  - 集成批量API调用和错误处理逻辑
+
+### ✅ 测试验证 / Testing Verification
+
+**功能测试 / Functional Testing**
+- ✅ 验证refresh图标的显示和点击响应
+- ✅ 验证批量语音生成API的正确调用
+- ✅ 验证生成过程中的状态管理和用户反馈
+- ✅ 验证错误处理和部分失败场景
+- ✅ 验证防重复点击保护机制
+
+**API测试 / API Testing**
+- ✅ 验证批量API的请求参数验证
+- ✅ 验证批量处理逻辑和结果统计
+- ✅ 验证错误处理和响应格式
+- ✅ 验证批量大小限制（最大50个项目）
+
+**兼容性测试 / Compatibility Testing**
+- ✅ 确认与现有音频播放功能的兼容性
+- ✅ 确认与section控制按钮的布局协调
+- ✅ 确认在不同屏幕尺寸下的表现
+
 ## 2024-12-31 Section级别音频播放控制系统 / Section-Level Audio Playback Control System
 
 ### 🎵 新增功能 / New Features
