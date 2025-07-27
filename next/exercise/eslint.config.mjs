@@ -11,8 +11,13 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals"),
+
   {
-    ignores: ["src/app/lib/deprecated/**/*"]
+    files: ["**/*"],
+    ignores: ["src/app/lib/deprecated/**/*"],
+    linterOptions: {
+      reportUnusedDisableDirectives: true
+    }
   }
 ];
 
