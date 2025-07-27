@@ -25,9 +25,25 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
+      "@/types/*": [
+        "./types/*"
+      ],
+      "@/app/*": [
+        "./src/app/*",
+      ],
+      "@/pages/*": [
+        "./pages/pages/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/prisma/*": [
+        "./src/prisma/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
       ]
+
     },
     "strictNullChecks": false
   },

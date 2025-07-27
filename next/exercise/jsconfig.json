@@ -2,7 +2,21 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/app/*": [
+        "./src/app/*"
+      ],
+      "@/pages/*": [
+        "./pages/pages/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/prisma/*": [
+        "./src/prisma/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ]
     }
   },
   "exclude": [

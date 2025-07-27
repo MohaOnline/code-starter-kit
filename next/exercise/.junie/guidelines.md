@@ -1,3 +1,4 @@
 - This project is a Next JS 15 project. Ensure that the generated code runs correctly under Next JS 15.
 - All pages requested to be generated under `src/app/examples` are considered as Sample / Example pages.  Users request code generation in this directory to explore technologies or new features, so generated code does not need to follow existing code style or design patterns; instead, follow official documentation recommendations or best practices.
 - All requests related to folder `src/app/examples` needn't refer to existing functions except invoking API is required, which could refer to API implementation under folder `src/app/api`.
+- While libraries are missing, prompt `deno install [library-name] --allow-scripts` instead of `npm install [library-name]`.
