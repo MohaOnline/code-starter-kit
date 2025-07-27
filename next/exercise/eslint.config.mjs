@@ -14,7 +14,11 @@ const eslintConfig = [
 
   {
     files: ["**/*"],
-    ignores: ["src/app/lib/deprecated/**/*"],
+    ignores: [
+      "src/app/lib/deprecated/**/*",
+      ".next/**/*",
+      "generated/**/*",
+    ],
     linterOptions: {
       reportUnusedDisableDirectives: true
     }
