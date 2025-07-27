@@ -29,22 +29,11 @@ function Page () {
               }}></Script>
       <h1>Crash Course - Start Sample <span>form Pluralsight</span></h1>
 
-      {/*
-          页面加载顺序：
-          1. HTML 解析开始
-          2. beforeInteractive 脚本加载 ✅ (DOMContentLoaded 还未触发)
-          3. DOM 构建完成
-          4. DOMContentLoaded 事件触发 ✅ (事件监听器执行)
-          5. 页面变为交互式
-          6. afterInteractive 脚本加载 ❌ (DOMContentLoaded 已经触发过了)
-          7. 页面空闲时
-          8. lazyOnload 脚本加载 ❌ (DOMContentLoaded 已经触发过了)
-      */}
-        <Script src="/pages/tscc/scripts/refs/employees.js"
-                strategy={'beforeInteractive'}
-                onLoad={() => {
-                    console.log('👋 Script has loaded')
-                }}></Script>
+      <Script src="/pages/tscc/scripts/ts/employees.js"
+              strategy={'beforeInteractive'}
+              onLoad={() => {
+                console.log('👋 Script has loaded')
+              }}></Script>
     </>
   )
 }

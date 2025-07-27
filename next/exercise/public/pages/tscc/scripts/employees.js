@@ -1,31 +1,38 @@
 "use strict";
 
-// 员工类定义，封装员工的基本信息
-class Employee {
-    /**
-     * 构造函数，初始化员工信息
-     * @param {string} firstName - 名
-     * @param {string} lastName - 姓
-     * @param {string} employeeId - 员工编号
-     */
-    constructor(firstName, lastName, employeeId) {
+
+console.log("🪷", typeof Employee);
+
+(function () {
+  if (typeof window.Employee === "undefined") {
+    // 员工类定义，封装员工的基本信息
+    window.Employee = class Employee {
+      /**
+       * 构造函数，初始化员工信息
+       * @param {string} firstName - 名
+       * @param {string} lastName - 姓
+       * @param {string} employeeId - 员工编号
+       */
+      constructor(firstName, lastName, employeeId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeId = employeeId;
         // 调试输出：创建员工对象
         console.debug(`新建员工：${firstName} ${lastName}, ID: ${employeeId}`)
-    }
+      }
 
-    /**
-     * 获取员工的友好展示名
-     * @returns {string}
-     */
-    FriendlyName() {
+      /**
+       * 获取员工的友好展示名
+       * @returns {string}
+       */
+      FriendlyName() {
         // 调试输出：获取友好名
         console.debug(`获取友好名: ${this.firstName} ${this.lastName}`)
         return `${this.firstName} ${this.lastName}`;
-    }
-}
+      }
+    };
+  }
+})();
 
 // 页面加载完成后，执行主逻辑
 document.addEventListener("DOMContentLoaded", function () {
