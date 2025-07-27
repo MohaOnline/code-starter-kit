@@ -22,7 +22,7 @@ export function PagesExamplesLayout ({
     <>
       {/* 统一的 HTML Head 设置 */}
       <Head>
-        <title>{title} - Pages Examples</title>
+        <title>{`${title} - Pages Examples`}</title>
         <meta name="description" content={description}/>
         <meta name="keywords" content={keywords}/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>

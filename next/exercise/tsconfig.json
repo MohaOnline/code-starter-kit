@@ -14,7 +14,7 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -52,10 +52,13 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.js",
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    ".next",
+    "generated",
+    "node_modules",
+    "public",
+    "**/*.js"
   ]
 }

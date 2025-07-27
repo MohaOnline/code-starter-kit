@@ -89,6 +89,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.4.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "22.16.5",
     "@types/react": "19.1.8",
@@ -96,6 +97,7 @@
     "@types/react-window": "^1.8.8",
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "prisma": "^6.12.0",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",

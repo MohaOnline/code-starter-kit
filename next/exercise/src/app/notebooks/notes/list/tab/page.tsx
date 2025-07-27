@@ -33,6 +33,10 @@ interface NoteData {
   type_sub: string;
   title: string;
   body: string;
+  tid: number | string;
+  question: string;
+  answer: string;
+  save: null;
   [key: string]: any;
 }
 
@@ -83,7 +87,7 @@ export default function NotesListTabPage() {
         console.error("❌ [NotesListTab] Fetch API error: /api/notebooks/notes/list", err);
         toast.error("无法从 API 加载笔记数据 / Cannot load notes from API.");
       });
-  }, [setStatus]);
+  }, [/* setStatus */]);
 
   // 监听 selectedType 变化 / Monitor selectedType changes
   useEffect(() => {
