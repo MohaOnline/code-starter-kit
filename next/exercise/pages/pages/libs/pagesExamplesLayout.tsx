@@ -11,12 +11,14 @@ import { pagesExamplesLayoutProps } from '@/pages/libs/interfaces'
 
 
 
-export function PagesExamplesLayout ({
-  children,
-  title = 'Pages Examples',
-  description = 'Pages examples',
-  keywords = 'code demo, example, next.js',
-}: pagesExamplesLayoutProps) {
+export function PagesExamplesLayout(
+  {
+    children,
+    title = 'Pages Examples',
+    description = 'Pages examples',
+    keywords = 'code demo, example, next.js',
+  }: pagesExamplesLayoutProps
+) {
 
   return (
     <>
@@ -71,22 +73,25 @@ export function PagesExamplesLayout ({
  * });
  * ```
  */
-export function withPagesExamplesLayoutLayout (
-  Component: React.ComponentType,
+export function withPagesExamplesLayout(
+  Component: React.ComponentType, // 在 JSX 中尝试使用 `<Component {...props} />` 需要 `Component` 是一个有效的组件类型
   layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>,
 ) {
 
   const WrappedComponent = (props: any) => {
+    // 使用类型安全的方式传递属性
     return (
-      <PagesExamplesLayout {...layoutProps}>
+      <PagesExamplesLayout title={layoutProps?.title}
+                           description={layoutProps?.description}
+                           keywords={layoutProps?.keywords}>
         <Component {...props} />
       </PagesExamplesLayout>
     )
   }
 
   // 保持组件名称用于调试
-  WrappedComponent.displayName = `withPagesExamplesLayout(${Component.displayName ||
-  Component.name})`
+  WrappedComponent.displayName =
+    `withPagesExamplesLayout(${Component.displayName || Component.name || 'Component'})`
 
   return WrappedComponent
 }
@@ -110,10 +115,14 @@ export function withPagesExamplesLayoutLayout (
  * export default MyPage;
  * ```
  */
-export function getTsCcLayout (layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>) {
+export function getPagesExamplesLayout(layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>) {
   return function getLayout (page: React.ReactElement) {
     return (
-      <PagesExamplesLayout {...layoutProps}>
+      <PagesExamplesLayout
+        title={layoutProps?.title}
+        description={layoutProps?.description}
+        keywords={layoutProps?.keywords}
+      >
         {page}
       </PagesExamplesLayout>
     )

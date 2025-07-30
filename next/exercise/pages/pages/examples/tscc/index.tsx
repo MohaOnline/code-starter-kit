@@ -2,12 +2,12 @@
 
 import React from 'react'
 import Script from 'next/script'
-import { withPagesExamplesLayoutLayout } from '@/pages/libs/pagesExamplesLayout'
+import {withPagesExamplesLayout} from '@/pages/libs/pagesExamplesLayout'
 
 /**
  * 演示如何产生一个干净的页面。
  */
-function Page () {
+function Page(): React.ReactNode {
 
   return (
     <>
@@ -16,7 +16,7 @@ function Page () {
           1. HTML 解析开始
           2. beforeInteractive 脚本加载 ✅ (DOMContentLoaded 还未触发)
           3. DOM 构建完成
-          4. DOMContentLoaded 事件触发 ✅ (事件监听器执行)
+          4. DOMContentLoaded 事件触发 ✅ (事件监听器执行) - HTML 文档结构解析完时触发
           5. 页面变为交互式
           6. afterInteractive 脚本加载 ❌ (DOMContentLoaded 已经触发过了)
           7. 页面空闲时
@@ -39,7 +39,7 @@ function Page () {
 }
 
 // 使用通用 Pages Examples 页面布局包装本页面
-export default withPagesExamplesLayoutLayout(Page, {
+export default withPagesExamplesLayout(Page, {
   title: 'TypeScript Crash Course',
   description: '',
   keywords: '',

@@ -60,6 +60,9 @@ class Employee{
 }
 
 // 页面加载完成后，执行主逻辑
+/**
+ * 用 JS 创建 table with th 元素。
+ */
 document.addEventListener("DOMContentLoaded", function () {
   // 初始化静态员工数据（模拟三个员工样例）
   const employees = [

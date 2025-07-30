@@ -1,6 +1,5 @@
 "use strict";
 
-
 console.log("🪷", typeof Employee);
 
 (function () {
@@ -85,3 +84,39 @@ document.addEventListener("DOMContentLoaded", function () {
     // 生成员工信息表
     generateEmployeeTable();
 });
+
+/*
+**标准事件及实际发生时机如下：**
+
+| 事件名 | 发生时机 |
+| --- | --- |
+| `readystatechange` | `document.readyState` 变化时触发。典型顺序为：
+a. `"loading"`：文档开始加载；
+b. `"interactive"`：文档已解析完成，子资源还在加载；
+c. `"complete"`：所有子资源均已加载完成。 |
+| `DOMContentLoaded` | HTML 文档**结构**解析完成，
+文档可操作（不等资源，如图片、样式） |
+| `load` | 所有内容（文档结构 + 所有外部资源，如图片、样式、iframe等）均已加载完成 |
+| `beforeunload` | (离开页面前) 页面即将卸载——刷新、关闭窗口、跳转等动作前 |
+| `unload` | (离开页面时) 页面已经离开（不建议执行耗时任务） |
+
+## 它们的**发生先后顺序**（重点描述）
+1. **`readystatechange: loading`**
+文档开始加载（此时 only HTML being loaded）。
+2. **`readystatechange: interactive`**
+HTML 解析完毕，但子资源（图片、iframe、css等）可能仍在加载。
+3. **`DOMContentLoaded`**
+HTML 结构完全解析，**此事件发生在 `interactive` 后**。
+    - 此时可安全访问并操作 DOM。
+    - 不等 CSS、图片等外部文件。
+
+4. **`readystatechange: complete`**
+所有资源都加载完毕，通常发生在 `load` 前后。
+5. **`load`**
+包括所有外部资源（图片、音频、脚本、样式表等）全部加载完成。
+    - 页面完全可见且互动。
+
+6. **`beforeunload` → `unload`**
+用户离开页面前一刻和页面正式卸载时。**不属于加载流程但属于生命周期主流程**。
+
+ */
