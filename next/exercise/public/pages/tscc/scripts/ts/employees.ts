@@ -70,9 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
     new Employee("Jane", "Smith", "2"),
     new Employee("Bob", "Johnson", "3")
   ];
-  console.info('初始化员工数组：', employees)
+  
+  console.info('🧧初始化员工数组：', employees)
 
   // 生成并插入员工表格到页面
+  /*
+   * 代码所用的 `document.createElement`、`insertRow()`、`insertCell()`、`textContent`、`appendChild()` 以及事件 `addEventListener`，都是每个现代浏览器（包括 Chrome、Edge、Safari、Firefox 等）都支持的标准 DOM API。
+   */
   function generateEmployeeTable() {
     // 创建表格和表头
     const table = document.createElement("table");
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       th.textContent = headerText;
       headerRow.appendChild(th);
     });
+
     console.debug('表头已生成:', headers)
 
     // 依次填充每一行员工信息

@@ -11,7 +11,8 @@
     "start": "next start",
     "bun-start": "bun --bun next start",
     "lint": "next lint",
-    "bun-lint": "bun --bun next lint"
+    "bun-lint": "bun --bun next lint",
+    "watch": "npx tsc --watch --project ./tsconfig.watch.json"
   },
   "dependencies": {
     "@atlaskit/pragmatic-drag-and-drop": "^1.7.4",

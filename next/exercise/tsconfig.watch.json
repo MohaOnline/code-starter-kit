@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+/*
+none	❌（不推荐）	不生成模块代码（仅用于 <script> 脚本）。几乎不用
+commonjs	Node.js（旧版）	生成 require() 和 module.exports，兼容 Node.js 12 及更早版本
+es6 / es2015	ES Modules	生成 import/export，适用于现代浏览器和 Node.js 13+
+es2020	ES Modules	和 es6 类似，但支持更新语法
+esnext	ES Modules（最新）	生成最现代的模块语法，保留某些语法原样（例如 import() 动态导入）
+amd	浏览器 RequireJS	生成 AMD 风格的模块（老旧 Web 项目用）
+umd	通用模块（CommonJS + AMD）	可以在 Node.js 和浏览器中运行
+system	SystemJS	用于动态模块加载的系统（不常用）
+nodenext	Node.js ESM（v16+）	专为使用 .mts/.cts + ESM 的 Node 项目设计
+node16	Node.js ESM（v16）	更严格的 Node 解析模式，适用于 .ts/.js 路径强制后缀规则
+
+Node < 12：commonjs
+Node 12~16：commonjs 或 es2020
+Node 16+：node16 或 nodenext（推荐）
+使用 ES 模块（.mjs 或启用 "type": "module"）：es2020、esnext、nodenext
+*/
+    "module": "esnext",
+    "sourceMap": true, // important for debug through showing log position in ts file.
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "./public/pages/**/*.ts"
+  ],
+  "exclude": [
+    "./public/pages/**/*.js"
+  ]
+}
