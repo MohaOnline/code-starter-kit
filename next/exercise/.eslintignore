@@ -1,0 +1,8 @@
+# 忽略测试相关文件
+**/__tests__/**
+jest.config.js
+jest.setup.js
+# 忽略测试相关文件
+**/__tests__/**
+vitest.config.ts
+vitest.setup.ts

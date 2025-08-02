@@ -221,7 +221,7 @@ export async function GET(request) {
                               notebook_words_english.chinese_id
 #         WHERE word LIKE ?
         WHERE word = ?
-        AND uid = ?
+          AND (uid = ? OR uid IS NULL OR uid = '')
         ORDER BY id
         ;
     `, params);
