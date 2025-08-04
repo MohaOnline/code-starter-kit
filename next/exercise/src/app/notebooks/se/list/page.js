@@ -21,7 +21,7 @@
 
   */
 
-import NavTop from '@/app/lib/components/NavTop.js';
+import NavTop from '@/app/lib/components/NavTop';
 import React from 'react';
 
 const homepage = () => {

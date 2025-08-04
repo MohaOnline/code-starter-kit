@@ -38,7 +38,7 @@ export const HowlerVoicePlayer = ({ audioFiles, onComplete, interval = 1000 }) =
               }
             },
 
-            onerror: (error) => {
+            onplayerror: (error) => {
               console.error('音频播放错误:', file, error);
             },
           });

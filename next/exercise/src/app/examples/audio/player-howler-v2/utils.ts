@@ -21,7 +21,7 @@ export function formatTime(time: number): string {
  * @param duration 总时长
  * @returns 是否有效
  */
-export function isValidTime(time: number, duration: number): boolean {
+export function isValidTime(time: number, duration?: number): boolean {
   return !isNaN(time) && time >= 0 && time <= duration;
 }
 

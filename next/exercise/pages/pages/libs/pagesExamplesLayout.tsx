@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import { pagesExamplesLayoutProps } from '@/pages/libs/interfaces'
+import {pagesExamplesLayoutProps} from '@/pages/libs/interfaces'
 
 /**
  * TS-CC 页面统一布局组件
@@ -11,7 +11,7 @@ import { pagesExamplesLayoutProps } from '@/pages/libs/interfaces'
 
 
 
-export function PagesExamplesLayout(
+export default function PagesExamplesLayout(
   {
     children,
     title = 'Pages Examples',

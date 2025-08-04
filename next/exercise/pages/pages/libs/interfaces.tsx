@@ -6,3 +6,9 @@ export interface pagesExamplesLayoutProps {
   description?: string;
   keywords?: string;
 }
+
+export default function Interfaces() {
+  return (
+    <></>
+  );
+}

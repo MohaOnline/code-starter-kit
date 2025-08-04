@@ -1,6 +1,6 @@
 'use client';
 
-import { Howl, Howler, cache as HowlCache } from 'howler';
+import {Howl, Howler} from 'howler';
 
 import { preciseTimeout } from '@/app/lib/common';
 
@@ -158,7 +158,7 @@ export class VoicePlayerHowler {
             }
           },
 
-          onerror: (error) => {
+          onplayerror: (error) => {
             console.error('VoicePlayerHowler error:', url, error);
           },
         });

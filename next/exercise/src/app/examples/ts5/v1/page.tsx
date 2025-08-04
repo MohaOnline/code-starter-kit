@@ -35,10 +35,12 @@ const TypeScriptBasicReact: () => React.ReactElement = (): React.ReactElement =>
 const TypeScriptBasicReact = () => {
 
   // Primitive types Demo:
+  // 赋值时 type 可以推断，显示指定是冗余的。
   const bodyNormalTemperature: number = 37;
   const explanation: string = '温度自动转换：';
   const ifWarning: boolean = false;
   const bigNumber: bigint = 100n;
+
 
   console.log(typeof demoTypeScriptBasic);
 
@@ -50,7 +52,7 @@ const TypeScriptBasicReact = () => {
         {explanation}
       </div>
     </>
-  );
+  )
 };
 
 // Page 组件为页面入口，类型为 React.FC（函数式组件）

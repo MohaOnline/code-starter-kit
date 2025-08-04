@@ -4,7 +4,7 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import NavTop from '@/app/lib/components/NavTop.js';
+import NavTop from '@/app/lib/components/NavTop';
 import ModeToggle from '@/components/mode-toggle';
 import { WordDisplay } from '@/app/lib/components/notebooks/words/WordDisplay';
 import { AudioControls } from '@/app/lib/components/notebooks/words/AudioControls';

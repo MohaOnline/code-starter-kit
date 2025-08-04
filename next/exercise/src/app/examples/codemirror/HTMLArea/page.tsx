@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import HTMLArea from '@/app/lib/components/HTMLArea';
+import {HTMLArea} from '@/app/lib/components/HTMLArea';
 
 const HTMLAreaExample: React.FC = () => {
   const [content, setContent] = useState(`<p>Welcome to HTMLArea Demo!</p>

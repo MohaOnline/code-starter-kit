@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'next-themes';
 
-import '@/app/example/es6/css/common.css';
+// import '@/app/example/es6/css/common.css';
 
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';

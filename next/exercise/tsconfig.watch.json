@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "esnext",
 /*
 none	❌（不推荐）	不生成模块代码（仅用于 <script> 脚本）。几乎不用
 commonjs	Node.js（旧版）	生成 require() 和 module.exports，兼容 Node.js 12 及更早版本
@@ -20,6 +20,11 @@ Node 16+：node16 或 nodenext（推荐）
 */
     "module": "esnext",
     "sourceMap": true, // important for debug through showing log position in ts file.
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
