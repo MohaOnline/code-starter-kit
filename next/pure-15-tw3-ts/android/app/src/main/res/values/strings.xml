@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">pure-15-tw3-ts</string>
+    <string name="title_activity_main">pure-15-tw3-ts</string>
+    <string name="package_name">cn.net.tanan.pure15tw3ts</string>
+    <string name="custom_url_scheme">cn.net.tanan.pure15tw3ts</string>
+</resources>
