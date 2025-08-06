@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
+     children: React.ReactNode;
+   }>) {
+
   return (
     <html lang="en">
     <Head>
@@ -26,7 +27,7 @@ export default function RootLayout({
     </Head>
 
     <body className={`${GeistSans.className} ${GeistMono.className}`}>
-    {children}
+      {children}
     </body>
     </html>
   );
