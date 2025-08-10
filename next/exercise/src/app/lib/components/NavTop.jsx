@@ -17,8 +17,11 @@ export default function NavTop() {
       <Link href="/">
         <FaHome></FaHome>
       </Link>
-      <Link href={"/notebook-words-english"}>
+      <Link href={"/notebooks/words/english/player"}>
         <BsPostcard />
+      </Link>
+      <Link href={"/notebooks/words/english/player/3/5"}>
+        <BsPostcard/>
       </Link>
       <Link href={"/notebooks/words/english/list"}>
         <FaListUl />
