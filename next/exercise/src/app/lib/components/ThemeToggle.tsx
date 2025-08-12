@@ -4,15 +4,17 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import {cn} from "@/lib/utils"
 
-export function ThemeToggle() {
-  const { setTheme, theme } = useTheme()
+
+export function ThemeToggle({className = "absolute top-0 right-0 w-0 h-5"}) {
+  const {theme, setTheme} = useTheme()
 
   return (
     <Button
       variant="ghost"
       size="sm"
-      className="cursor-pointer"
+      className={cn("cursor-pointer", className)}
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <svg

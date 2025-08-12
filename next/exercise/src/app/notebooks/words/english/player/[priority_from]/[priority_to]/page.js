@@ -31,7 +31,7 @@ import {
   , Bs6Square
   , Bs7Square
   , Bs8Square
-  , Bs9Square
+  , Bs9Square, BsSquare
 } from "react-icons/bs";
 
 
@@ -59,6 +59,8 @@ import NavTop from "@/app/lib/components/NavTop.jsx";
 import {VoicePlayerWithMediaSession} from "@/app/lib/VoicePlayerWithMediaSession.js";
 import ModeToggle from "@/components/mode-toggle";
 import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
+import number from "framework7-icons/react/esm/Number.js";
+import {useWordOperations} from '@/app/notebooks/words/english/common';
 
 // 默认音频配置
 const DEFAULT_AUDIO_CONFIG = {
@@ -129,6 +131,9 @@ const saveAudioConfig = config => {
 };
 
 export default function Page() {
+  // 更新 priority
+  const {handlePriority} = useWordOperations();
+
   const [status, setStatus] = useState({
     currentWordIndex: 0,
     playedWordIndex: -1,
@@ -205,8 +210,8 @@ export default function Page() {
   const params = useParams();
   // 获取单词
   useEffect(() => {
-    const priority_from = params.priority_from;
-    const priority_to = params.priority_to;
+    const priority_from = params.priority_from || 3;
+    const priority_to = params.priority_to || 3;
 
     const fetchWords = async () => {
       const response = await fetch("/api/notebooks/words/english?priority_from=" + priority_from + "&priority_to=" + priority_to, {
@@ -924,17 +929,17 @@ export default function Page() {
       </div>
 
       <div className={"operation text-center"}>
-        <span className={"put_top"} onClick={handlePutTop}>
-          <PiRocket/>
-        </span>
-        <span className={"put_previous"} onClick={handlePutPrevious}>
-          {" "}
-          <GiPlayerPrevious/>{" "}
-        </span>
-        <span className={"put_next"} onClick={handlePutNext}>
-          {" "}
-          <GiPlayerNext/>{" "}
-        </span>
+        {/*  <span className={"put_top"} onClick={handlePutTop}>*/}
+        {/*    <PiRocket/>*/}
+        {/*  </span>*/}
+        {/*  <span className={"put_previous"} onClick={handlePutPrevious}>*/}
+        {/*    {" "}*/}
+        {/*    <GiPlayerPrevious/>{" "}*/}
+        {/*  </span>*/}
+        {/*  <span className={"put_next"} onClick={handlePutNext}>*/}
+        {/*    {" "}*/}
+        {/*    <GiPlayerNext/>{" "}*/}
+        {/*  </span>*/}
         <form
           className={"inline search-form"}
           onSubmit={event => {
@@ -974,119 +979,111 @@ export default function Page() {
               setStatus({...status, searchText: event.target.value});
             }}
           />
-          <button type="submit" className="ml-2">
-            <RiFileSearchLine/>
-          </button>
+          <button type="submit" className=""><RiFileSearchLine/></button>
         </form>
-        <span
-          onClick={event => {
+        <span className="ml-1 mr-2" onClick={event => {
             keyDownCallback({...event, key: " "});
-          }}
-        >
-          {" "}
-          {status.isPlaying ? <FaPause/> : <LuSquarePlay/>}
-        </span>
+        }}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>
+
         <span
           onClick={event => {
             keyDownCallback({...event, key: "ArrowLeft"});
           }}
-        >
-          <CgPlayTrackPrevR/>
-        </span>
+        ><CgPlayTrackPrevR/>
+          </span>
         <span
           onClick={event => {
             keyDownCallback({...event, key: "ArrowRight"});
           }}
-        >
-          {" "}
-          <CgPlayTrackNextR/>{" "}
-        </span>
+        ><CgPlayTrackNextR/>
+          </span>
         <span onClick={e => playCurrentWord()}>
-          <FaVolumeUp/>
-        </span>
-        <span
-          onClick={() => {
-            setStatus(prev => ({...prev, isConfigDialogOpen: true}));
-          }}
-        >
-          <PiGear/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs0SquareFill/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs1SquareFill/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs2SquareFill/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs3SquareFill/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs4SquareFill/>
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <Bs5SquareFill/>
-        </span>
-        <span className={"put_end"} onClick={handlePutEnd}>
-          <PiRocket/>
-        </span>
+            <FaVolumeUp/>
+          </span>
+        {/*  <span*/}
+        {/*    onClick={() => {*/}
+        {/*      setStatus(prev => ({...prev, isConfigDialogOpen: true}));*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <PiGear/>*/}
+        {/*  </span>*/}
+        {/*  /!*<span onClick={e => playCurrentWord()}>*!/*/}
+        {/*  /!*  <Bs0SquareFill/>*!/*/}
+        {/*  /!*</span>*!/*/}
 
-        {/* Open Editor Dialog */}
-        <button
-          onClick={async () => {
-            // search current word
-            try {
-              const response = await fetch(
-                `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`
-              );
-              const data = await response.json();
-              console.log(data);
+        <span onClick={e => handlePriority(1)}>{" "}
+          {(status.words[status.currentWordIndex].priority === 1) ? <Bs1SquareFill/> : <Bs1Square/>}
+        </span>
+        <span onClick={e => handlePriority(2)}>
+          {(status.words[status.currentWordIndex].priority === 2) ? <Bs2SquareFill/> : <Bs2Square/>}
+        </span>
+        <span onClick={e => handlePriority(3)}>
+          {(status.words[status.currentWordIndex].priority === 3) ? <Bs3SquareFill/> : <Bs3Square/>}
+        </span>
+        <span onClick={e => handlePriority(4)}>
+          {(status.words[status.currentWordIndex].priority === 4) ? <Bs4SquareFill/> : <Bs4Square/>}
+        </span>
+        <span onClick={e => handlePriority(5)}>
+          {(status.words[status.currentWordIndex].priority === 5) ? <Bs5SquareFill/> : <Bs5Square/>}
+        </span>
+        {/*  /!*<span className={"put_end"} onClick={handlePutEnd}>*!/*/}
+        {/*  /!*  <PiRocket/>*!/*/}
+        {/*  /!*</span>*!/*/}
 
-              if (data?.data.length > 0) {
-                setStatus({
-                  ...status, // 复制现有状态
-                  isDialogOpen: true,
-                  dialogData: data.data[0],
-                });
-              }
-              else {
-                setStatus({
-                  ...status, // 复制现有状态
-                  isDialogOpen: true,
-                  dialogData: {
-                    id: status.words[status.currentWordIndex].id,
-                    nid: status.words[status.currentWordIndex].nid,
-                    weight: status.words[status.currentWordIndex].weight,
-                    eid: status.words[status.currentWordIndex].eid,
-                    word: status.words[status.currentWordIndex].word,
-                    translations: [
-                      {
-                        cid: status.words[status.currentWordIndex].cid,
-                        pos: status.words[status.currentWordIndex].pos,
-                        phonetic_us: status.words[status.currentWordIndex].phonetic_us,
-                        phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
-                        translation: status.words[status.currentWordIndex].translation,
-                        script: status.words[status.currentWordIndex].translation_script,
-                        note: status.words[status.currentWordIndex].note,
-                        note_explain: status.words[status.currentWordIndex].note_explain,
-                      },
-                    ],
-                  },
-                });
-              }
-              // if data.
-            }
-            catch (error) {
-              console.error("Failed to search english-chinese:", error);
-              toast.error("查询失败，请检查网络或稍后再试");
-            }
-          }}
-          className="cursor-pointer"
-        >
-          <CiEdit/>
-        </button>
+        {/*  /!* Open Editor Dialog *!/*/}
+        {/*  <button*/}
+        {/*    onClick={async () => {*/}
+        {/*      // search current word*/}
+        {/*      try {*/}
+        {/*        const response = await fetch(*/}
+        {/*          `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`*/}
+        {/*        );*/}
+        {/*        const data = await response.json();*/}
+        {/*        console.log(data);*/}
+
+        {/*        if (data?.data.length > 0) {*/}
+        {/*          setStatus({*/}
+        {/*            ...status, // 复制现有状态*/}
+        {/*            isDialogOpen: true,*/}
+        {/*            dialogData: data.data[0],*/}
+        {/*          });*/}
+        {/*        }*/}
+        {/*        else {*/}
+        {/*          setStatus({*/}
+        {/*            ...status, // 复制现有状态*/}
+        {/*            isDialogOpen: true,*/}
+        {/*            dialogData: {*/}
+        {/*              id: status.words[status.currentWordIndex].id,*/}
+        {/*              nid: status.words[status.currentWordIndex].nid,*/}
+        {/*              weight: status.words[status.currentWordIndex].weight,*/}
+        {/*              eid: status.words[status.currentWordIndex].eid,*/}
+        {/*              word: status.words[status.currentWordIndex].word,*/}
+        {/*              translations: [*/}
+        {/*                {*/}
+        {/*                  cid: status.words[status.currentWordIndex].cid,*/}
+        {/*                  pos: status.words[status.currentWordIndex].pos,*/}
+        {/*                  phonetic_us: status.words[status.currentWordIndex].phonetic_us,*/}
+        {/*                  phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,*/}
+        {/*                  translation: status.words[status.currentWordIndex].translation,*/}
+        {/*                  script: status.words[status.currentWordIndex].translation_script,*/}
+        {/*                  note: status.words[status.currentWordIndex].note,*/}
+        {/*                  note_explain: status.words[status.currentWordIndex].note_explain,*/}
+        {/*                },*/}
+        {/*              ],*/}
+        {/*            },*/}
+        {/*          });*/}
+        {/*        }*/}
+        {/*        // if data.*/}
+        {/*      }*/}
+        {/*      catch (error) {*/}
+        {/*        console.error("Failed to search english-chinese:", error);*/}
+        {/*        toast.error("查询失败，请检查网络或稍后再试");*/}
+        {/*      }*/}
+        {/*    }}*/}
+        {/*    className="cursor-pointer"*/}
+        {/*  >*/}
+        {/*    <CiEdit/>*/}
+        {/*  </button>*/}
       </div>
 
       <ToastContainer
