@@ -130,8 +130,6 @@ const saveAudioConfig = config => {
 };
 
 export default function Page() {
-  // 更新 priority
-  const {handlePriority} = useWordOperations();
 
   const [status, setStatus] = useState({
     currentWordIndex: 0,
@@ -151,6 +149,9 @@ export default function Page() {
     // 音频配置（初始化时使用默认值，将在 useEffect 中从 localStorage 读取）
     audioConfig: DEFAULT_AUDIO_CONFIG,
   });
+
+  // 更新 priority
+  const {handlePriority} = useWordOperations(status, setStatus);
 
   // 更新音频配置并保存到 localStorage
   const updateAudioConfig = newConfig => {

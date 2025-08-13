@@ -2,8 +2,7 @@ import {useCallback} from 'react';
 import {toast} from "react-toastify";
 import {useStatus} from '@/app/lib/atoms';
 
-export const useWordOperations = () => {
-  const [status, setStatus] = useStatus();
+export const useWordOperations = (status, setStatus) => {
 
   const handlePriority = useCallback(async (priority) => {
     setStatus(prev => ({...prev, isProcessing: true}));
@@ -41,7 +40,7 @@ export const useWordOperations = () => {
 
     }
     catch (err) {
-      console.error("Failed to set word priority.");
+      console.log("Failed to set word priority.");
       toast.error("Failed to set word priority.");
       setStatus(prev => ({...prev, isProcessing: false}));
     }
