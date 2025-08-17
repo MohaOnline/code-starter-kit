@@ -43,7 +43,7 @@ import {ThemeProvider} from 'next-themes';
 
 import '@/app/notebooks/css/page.css';
 
-// 字体已在根布局的 /fonts/fonts.css 中定义，无需重复加载
+// 字体已在根布局的 /fonts/local.css 中定义，无需重复加载
 ```
 
 ## 修复步骤

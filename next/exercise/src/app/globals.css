@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff;
+  --foreground: #000;
   --font-geist-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 }
@@ -14,6 +14,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
+
+/** 暗黑模式配色 */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000000;
@@ -30,6 +32,7 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+/* 暗黑模式配色 **/
 
 /*img, svg {*/
 /*  display: inline;*/

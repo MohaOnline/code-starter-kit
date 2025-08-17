@@ -9,7 +9,7 @@ export default function RootLayout({children}) {
   return (
       <html lang="en">
       <head>
-        <link rel="stylesheet" href="/fonts/fonts.css" />
+        <link rel="stylesheet" href="/fonts/local.css"/>
       </head>
       <body
           className="antialiased font-sans"
