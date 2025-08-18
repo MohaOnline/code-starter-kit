@@ -229,6 +229,10 @@ export default function Page() {
         }
 
         status.words = json.data;
+
+        if (status.words.length <= status.currentWordIndex) {
+          status.currentWordIndex = status.words.length - 1;
+        }
         setStatus(prev => ({
           ...prev, // 复制现有状态
           currentWordIndex: status.currentWordIndex,

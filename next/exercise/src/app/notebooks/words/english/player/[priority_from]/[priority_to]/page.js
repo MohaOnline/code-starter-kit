@@ -234,6 +234,9 @@ export default function Page() {
         }
 
         status.words = json.data;
+        if (status.words.length <= status.currentWordIndex) {
+          status.currentWordIndex = status.words.length - 1;
+        }
         setStatus(prev => ({
           ...prev, // 复制现有状态
           currentWordIndex: status.currentWordIndex,
@@ -1001,13 +1004,13 @@ export default function Page() {
         <span onClick={e => playCurrentWord()}>
             <FaVolumeUp/>
           </span>
-        {/*  <span*/}
-        {/*    onClick={() => {*/}
-        {/*      setStatus(prev => ({...prev, isConfigDialogOpen: true}));*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <PiGear/>*/}
-        {/*  </span>*/}
+        <span
+          onClick={() => {
+            setStatus(prev => ({...prev, isConfigDialogOpen: true}));
+          }}
+        >
+            <PiGear/>
+          </span>
         {/*  /!*<span onClick={e => playCurrentWord()}>*!/*/}
         {/*  /!*  <Bs0SquareFill/>*!/*/}
         {/*  /!*</span>*!/*/}

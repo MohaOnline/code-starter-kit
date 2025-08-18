@@ -18,6 +18,9 @@ export default function SamplePage() {
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
       </div>
+
+
+
     </>
   );
 }

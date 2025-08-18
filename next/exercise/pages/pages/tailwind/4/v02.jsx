@@ -14,6 +14,7 @@ export default function SamplePage() {
     h1_text: 'text-3xl',
   });
 
+  // 引入 tailwind 变量，暂时无效。
   useEffect(() => {
     // 检查是否已存在相同样式标签，避免重复注入
     const existingStyle = document.querySelector('style[data-tailwind-theme]');

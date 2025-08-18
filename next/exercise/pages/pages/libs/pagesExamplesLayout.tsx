@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Head from 'next/head';
+// import {Html, Head, Main, NextScript} from 'next/document'
 import {useRouter} from 'next/router';
 import {NextThemesProvider} from '@/app/lib/theme-provider';
 import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
@@ -76,27 +77,21 @@ export default function PagesExamplesLayout(
 }
 
 /**
- * 为页面组件添加布局的高阶组件
- * 使用方式：
+ * A higher-order component that wraps the given React component with a layout defined by `PagesExamplesLayout`.
+ * It passes layout properties like `title`, `description`, and `keywords` to the layout, and renders the original component as its child.
  *
- * ```tsx
- * import { withTsCcLayout } from './_layout';
- *
- * function MyPage() {
- *   return <div>页面内容</div>;
- * }
- *
- * export default withTsCcLayout(MyPage, {
- *   title: '我的页面',
- *   description: '页面描述'
- * });
- * ```
+ * @param {React.FunctionComponent} Component - The React component to be wrapped. This must be a valid React component type.
+ * @param {Omit<pagesExamplesLayoutProps, 'children'>} [layoutProps] - Optional metadata for the layout, such as `title`, `description`, and `keywords`.
+ * @return {React.FunctionComponent} A new React functional component that includes the provided component inside the layout.
  */
 export function withPagesExamplesLayout(
-  Component: React.ComponentType, // 在 JSX 中尝试使用 `<Component {...props} />` 需要 `Component` 是一个有效的组件类型
-  layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>,
+  Component: React.FunctionComponent, // 在 JSX 中尝试使用 `<Component {...props} />` 需要 `Component` 是一个有效的组件类型
+  layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>, // Meta data.
 ) {
 
+  console.log('withPagesExamplesLayout: ', Component, layoutProps)
+
+  // pros 传入的所有 属性/值 pairs，比如：name="city_input" value="shanghai"。
   const WrappedComponent = (props: any) => {
     // 使用类型安全的方式传递属性
     return (

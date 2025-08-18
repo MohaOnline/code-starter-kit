@@ -6,8 +6,8 @@ export const routeMeta = {
     keywords:    '',
   },
   '/pages/tailwind/4/v01': {
-    title:       'v01 Basic: Tailwind v5',
-    description: '',
-    keywords:    '',
+    title:       'v01 Basic: Tailwind v4',
+    description: 'Tailwind v4 基本功能演示页面。',
+    keywords:    'basic functionalities tailwind v4',
   },
 };
