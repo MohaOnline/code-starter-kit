@@ -1,5 +1,6 @@
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
+import NextTopLoader from 'nextjs-toploader';
 import AuthSessionProvider from '@/components/providers/session-provider';
 import { ProcessingMask } from '@/app/lib/components/ProcessingMask';
 import { ToastContainer } from 'react-toastify';
@@ -22,6 +23,17 @@ export default function RootLayout ({ children }) {
       className="antialiased font-sans"
       suppressHydrationWarning
     >
+    <NextTopLoader
+      color="#2299DD"
+      initialPosition={0.08}
+      crawlSpeed={200}
+      height={3}
+      crawl={true}
+      showSpinner={true}
+      easing="ease"
+      speed={200}
+      shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+    />
     <NextThemesProvider attribute="class"
                         defaultTheme="system"
                         enableSystem
