@@ -5,6 +5,9 @@ import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
+import {useHeadSupplement} from '@/lib/useHeadSupplement';
+
+
 /**
  * @see /pages/tailwind/4/v01
  * @see /pages/pages/libs/pagesExamplesLayout.tsx
@@ -14,42 +17,55 @@ export default function SamplePage() {
     h1_text: 'text-3xl',
   });
 
-  // 引入 tailwind 变量，暂时无效。
-  useEffect(() => {
-    // 检查是否已存在相同样式标签，避免重复注入
-    const existingStyle = document.querySelector('style[data-tailwind-theme]');
-    if (existingStyle) return;
-
-    // 创建 style 元素
-    const styleElement = document.createElement('style');
-    styleElement.type = 'text/tailwindcss';
-    styleElement.setAttribute('data-tailwind-theme', 'true'); // 用于标识，避免重复
-
-    // 注入样式内容（直接复制您的配置）
-    styleElement.innerHTML = `
+  // Overwrite the default CSS color.
+  useHeadSupplement(`
       .dark {
         --background: #000000;
         --foreground: rgb(120, 210, 120);
+        
+        color: var(--foreground);
+        background-color: var(--background);
       }
       @media (prefers-color-scheme: dark) {
         :root {
           --background: #000000;
           --foreground: rgb(120, 210, 120);
+          
+          color: var(--foreground);
+          background-color: var(--background);
         }
       }
+      
       /* 自定义 class。 */
       @theme {
       }
-    `;
+    `, {
+    type: 'style',
+    styleType: 'text/tailwindcss',
+    identifier: 'v02-tailwind-css'
+  });
 
-    // 追加到 head 元素
-    document.head.appendChild(styleElement);
-
-    // 可选：清理函数，在组件卸载时移除
-    return () => {
-      document.head.removeChild(styleElement);
-    };
-  }, []); // 空依赖数组，确保仅执行一次
+  // tailwind v3 configuration.
+  useHeadSupplement(`
+      tailwind.config = {
+        theme: {
+          // 用了 colors 属性会覆盖所有 tailwind v3 自带 colors。
+          // @see https://v3.tailwindcss.com/docs/customizing-colors
+          /*
+          colors: {
+            
+          }, */
+          extend: {
+            colors: {
+              primary: '#3b82f6', /* used as text-primary */
+            }
+          }
+        }
+      }
+    `, {
+    type: 'script',
+    identifier: 'v02-tailwind-config'
+  })
 
   /**
    * Updates the value of a specific class in the `classValues` object based on the provided event.
@@ -77,10 +93,10 @@ export default function SamplePage() {
   return (
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}
-      <Script src={'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'}/>
+      <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
 
-      Class of H1 ↓: <input className={'border'} value={classValues.h1} onChange={e => handleClassValuesUpdate(e, 'h1')}/>
-      <h1 id={'h1'} className={classValues.h1}>Tailwind v4 Playground</h1>
+      Class of H1 Text↓: <input className={'border'} value={classValues.h1_text} onChange={e => handleClassValuesUpdate(e, 'h1_text')}/>
+      <h1 id={'h1'} className={classValues.h1_text}>Tailwind v3 CDN Playground</h1>
 
       {/* https://www.lipsum.com/ */}
       <div className={'border'}>

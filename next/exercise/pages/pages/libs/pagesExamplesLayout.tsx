@@ -1,8 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import {PagesTopLoader} from 'nextjs-toploader/pages';
-// import {Html, Head, Main, NextScript} from 'next/document'
 import {useRouter} from 'next/router';
+
+import {PagesTopLoader} from 'nextjs-toploader/pages';
+
 import {NextThemesProvider} from '@/app/lib/theme-provider';
 import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
 
@@ -50,15 +51,6 @@ export default function PagesExamplesLayout(
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:title" content={`${title} - Pages Examples`}/>
         <meta name="twitter:description" content={description}/>
-
-        {/*/!* 字体和样式预加载 *!/*/}
-        {/*<link rel="preconnect" href="https://fonts.googleapis.com"/>*/}
-        {/*<link rel="preconnect" href="https://fonts.gstatic.com"*/}
-        {/*      crossOrigin="anonymous"/>*/}
-
-        {/* 网站图标 */}
-        <link rel="icon" href="/favicon.ico"/>
-        <link rel="stylesheet" href="/fonts/local.css"/>
       </Head>
 
       <PagesTopLoader
@@ -83,7 +75,9 @@ export default function PagesExamplesLayout(
           {children}
         </NextThemesProvider>
       ) : (
-        {children}
+        <>
+          {children}
+        </>
       )}
     </>
   )
