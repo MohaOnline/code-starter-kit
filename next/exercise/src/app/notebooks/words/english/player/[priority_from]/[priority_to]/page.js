@@ -497,7 +497,7 @@ export default function Page() {
       }
     }
 
-    if (status.audioConfig.chinese.repeatCount) {
+    if (status.audioConfig.chinese.repeatCount && status.audioConfig.chinese.showText) {
       const firstCharChinese = word.voice_id_translation[0].toLowerCase();
       const chineseURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstCharChinese}/${word.voice_id_translation}.wav`;
       for (let i = 0; i < status.audioConfig.chinese.repeatCount; i++) {
