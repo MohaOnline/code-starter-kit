@@ -95,6 +95,14 @@ export const handleKeyDown = (event, status, setStatus) => {
       // currentWordIndex: Math.max(0, status.currentWordIndex - 1),
       currentWordIndex: nextIndex,
     });
+  }
+  // 按 1 回到第一个单词。
+  else if (event.key === '1' && !event.metaKey && !event.ctrlKey) {
+    setStatus({
+      ...status, // 复制现有状态
+      isPlaying: false,
+      currentWordIndex: 0,
+    });
   } else if (event.key === 'v' && !event.metaKey && !event.ctrlKey) {
     event.preventDefault();
     console.debug('play current pronunciation');
