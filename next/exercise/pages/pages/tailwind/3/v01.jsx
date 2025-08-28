@@ -5,7 +5,7 @@ import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
-import {useHeadSupplement} from '@/lib/useHeadSupplement';
+import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 
 
 /**
@@ -14,82 +14,85 @@ import {useHeadSupplement} from '@/lib/useHeadSupplement';
  */
 export default function SamplePage() {
   const [classValues, setClassValues] = useState({
+    h1: 'text-3xl',
     h1_text: 'text-3xl',
+    h1_bg: 'bg-black',
   });
 
   // Overwrite the default CSS color.
-  useHeadSupplement(`
-      .dark {
+  useElement4HeadSupplement({
+    element: 'style',
+    type: 'text/tailwindcss',
+    identifier: 'v01-tailwind-css'
+  }, `
+    .dark {
+      --background: #000000;
+      --foreground: rgb(120, 210, 120);
+      
+      color: var(--foreground);
+      background-color: var(--background);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
         --background: #000000;
         --foreground: rgb(120, 210, 120);
         
         color: var(--foreground);
         background-color: var(--background);
       }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --background: #000000;
-          --foreground: rgb(120, 210, 120);
-          
-          color: var(--foreground);
-          background-color: var(--background);
-        }
-      }
-      
-      /* 自定义 class。 */
-      @theme {
-      }
-    `, {
-    type: 'style',
-    styleType: 'text/tailwindcss',
-    identifier: 'v02-tailwind-css'
-  });
+    }
+    
+    /* 自定义 class。 */
+    @theme {
+    }
+  `);
 
   // tailwind v3 configuration.
-  useHeadSupplement(`
-      tailwind.config = {
-        theme: {
-          // 用了 colors 属性会覆盖所有 tailwind v3 自带 colors。
-          // @see https://v3.tailwindcss.com/docs/customizing-colors
-          /*
+  useElement4HeadSupplement({
+    element: 'script',
+    identifier: 'v01-tailwind-config'
+  }, `
+    tailwind.config = {
+      theme: {
+        // 用了 colors 属性会覆盖所有 tailwind v3 自带 colors。
+        // @see https://v3.tailwindcss.com/docs/customizing-colors
+        /*
+        colors: {
+          
+        }, */
+        extend: {
           colors: {
-            
-          }, */
-          extend: {
-            colors: {
-              primary: '#3b82f6', /* used as text-primary */
-            }
+            primary: '#3b82f6', /* used as text-primary */
           }
         }
       }
-    `, {
-    type: 'script',
-    identifier: 'v02-tailwind-config'
-  })
+    }
+  `)
 
   /**
    * Updates the value of a specific class in the `classValues` object based on the provided event.
    * 范例：event + 自定义内容一起传入函数。
    *
    * @param {Object} e - The event object triggered by the value change, typically a DOM event.
-   * @param {string} [className=''] - The name of the class whose value is being updated. Defaults to an empty string.
+   * @param {string} [classValueKey=''] - The key of the class whose value is being updated. Defaults to an empty string.
    *
    * @description
    * If a valid `className` is provided, extracts the new value from the event's target and updates the corresponding entry in the `classValues` object.
    * After updating, a new object is created and set to `classValues` to reflect the change. If `className` is falsy or an empty string, the function exits without making any changes.
    */
-  const handleClassValuesUpdate = (e, className = '') => {
-    if (!className) {
+  const handleClassValuesUpdate = (e, classValueKey = '') => {
+    if (!classValueKey) {
       return;
     }
 
-    classValues[className] = e.target.value;
+    classValues[classValueKey] = e.target.value;
     setClassValues({
       ...classValues,
     });
     console.dir(classValues);
   }
 
+  // SamplePage 正式内容
   return (
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}

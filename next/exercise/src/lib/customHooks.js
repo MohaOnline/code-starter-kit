@@ -5,18 +5,18 @@ import {useEffect} from 'react';
 /**
  * 自定义 Hook：动态注入脚本或样式到 head 元素
  *
+ * @param {Object} meta - 配置选项
  * @param {string} content - JavaScript 或 CSS 字符串内容
- * @param {Object} options - 配置选项
- * @param {string} options.type - 类型：'script' 或 'style'
- * @param {string} options.identifier - 用于标识的属性值，避免重复注入
- * @param {string} options.styleType - 样式类型，如 'text/css' 或 'text/tailwindcss'
+ * @param {string} meta.type - 类型：'script' 或 'style'
+ * @param {string} meta.identifier - 用于标识的属性值，避免重复注入
+ * @param {string} meta.styleType - 样式类型，如 'text/css' 或 'text/tailwindcss'
  */
-export const useHeadSupplement = (content, options = {}) => {
+export const useElement4HeadSupplement = (meta = {}, content) => {
   const {
-    type = 'style',
-    styleType = 'text/css',
+    element = 'style',
+    type = 'text/css',
     identifier = 'id-head-supplement',
-  } = options;
+  } = meta;
 
   useEffect(() => {
     const injectContent = () => {
@@ -26,16 +26,16 @@ export const useHeadSupplement = (content, options = {}) => {
 
       let element;
 
-      if (type === 'script') {
+      if (element === 'script') {
         // 创建 script 元素
         element = document.createElement('script');
         element.type = 'text/javascript';
         element.innerHTML = content;
       }
-      else if (type === 'style') {
+      else if (element === 'style') {
         // 创建 style 元素
         element = document.createElement('style');
-        element.type = styleType;
+        element.type = type;
         element.innerHTML = content;
       }
 
@@ -62,5 +62,5 @@ export const useHeadSupplement = (content, options = {}) => {
         document.head.removeChild(element);
       }
     };
-  }, [content, type, styleType, identifier]);
+  }, [content, element, type, identifier]);
 };
