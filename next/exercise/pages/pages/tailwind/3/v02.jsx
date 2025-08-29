@@ -15,6 +15,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
+import {TagFieldSingle} from '@/lib/components/TagFields';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
@@ -26,6 +27,20 @@ const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 export default function SamplePage() {
   const [textClasses, setTextClasses] = useState({});
 
+  const updateTextClasses = (item, value) => {
+    textClasses[item] = value;
+    // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
+    // 遍历所有 key，筛选出 text_ 开头的，拼接起来
+    textClasses.text = Object.entries(textClasses)
+                             .filter(([key, val]) => key.startsWith("text_") && val) // 只取 text_ 开头 & 有值的
+                             .map(([key, val]) => val)
+                             .join(" ");
+
+    setTextClasses({
+      ...textClasses,
+    })
+  }
+
   const tailwind_text_size_classes_array = [
     {title: 'text-3xl', text: 'text-3xl',},
     {title: 'text-4xl', text: 'text-4xl',},
@@ -35,6 +50,9 @@ export default function SamplePage() {
   ]
 
   const tailwind_classes_text_size = [
+    'text-xs',
+    'text-sm',
+    'text-base', // 1rem = 16px, line-height: 1.5rm = 24px.
     'text-3xl',
     'text-4xl',
     'text-5xl',
@@ -42,9 +60,19 @@ export default function SamplePage() {
     'text-7xl',
   ]
 
-  const tailwind_text_color_classes = [
-    {title: 'text-orange-100',},
+  const tailwind_classes_text_align = [
+    'text-left',
+    'text-center',
+    'text-right',
+    'text-justify',
+    'text-start',
+    'text-end',
+  ]
+
+  const tailwind_classes_text_color = [
+    'text-orange-100',
   ];
+
   /**
    * SamplePage 正式内容
    *
@@ -54,6 +82,7 @@ export default function SamplePage() {
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}
       <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
+
       <Stack spacing={2} direction="row" className={'mt-2'}>
         <Autocomplete
           freeSolo
@@ -62,15 +91,17 @@ export default function SamplePage() {
           style={{width: 160}}
           options={tailwind_classes_text_size}
           getOptionLabel={(option) => option}
-          renderValue={(option, getItemProps) => (
-            <Chip size="small" label={option} {...getItemProps()} />
-          )}
+          renderValue={(option, getItemProps) => {
+            console.log('tailwind-classes-of-text-size', 'renderValue', option);
+            return <Chip size="small" label={option} {...getItemProps()} />;
+          }}
           renderInput={(params) =>
             <TextField size="small" {...params}
                        label="Classes of Text size"
                        slotProps={{
                          inputLabel: {shrink: true}
                        }}
+                       placeholder="选择或输入..."
             />
           }
           slotProps={{
@@ -81,20 +112,24 @@ export default function SamplePage() {
             },
           }}
           onChange={(event, value) => {
-            textClasses.text_size = value;
-            textClasses.text = textClasses.text_size;
-
-            setTextClasses({
-              ...textClasses,
-            })
+            console.log('tailwind-classes-of-text-size', 'onChange', value);
+            updateTextClasses('text_size', value);
           }}
+        />
+
+        <TagFieldSingle label={'Classes of Text Align'}
+                        options={tailwind_classes_text_align}
+                        width={150}
+                        placeholder={''}
+                        onChange={(value) => {
+                          updateTextClasses('text_align', value);
+                        }}
         />
 
         <Autocomplete
           multiple
-          freeSolo
           disableCloseOnSelect
-
+          freeSolo
           id="tailwind-classes-of-text"
           size="small"
           style={{width: 300}}
@@ -139,13 +174,14 @@ export default function SamplePage() {
             />
           )}
         /></Stack>
-      {/* https://www.lipsum.com/ */}
-      <div className={'border ' + textClasses.text}>
+
+      {/*Demo https://www.lipsum.com/ */}
+      <section className={'border ' + textClasses.text}>
         恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard
         McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
-      </div>
+      </section>
     </>
   );
 }
