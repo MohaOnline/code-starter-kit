@@ -34,7 +34,7 @@ export default function SamplePage() {
     {title: 'text-7xl', text: 'text-7xl',},
   ]
 
-  const tailwind_text_size_classes = [
+  const tailwind_classes_text_size = [
     'text-3xl',
     'text-4xl',
     'text-5xl',
@@ -60,12 +60,26 @@ export default function SamplePage() {
           id="tailwind-classes-of-text-size"
           size="small"
           style={{width: 160}}
-          options={tailwind_text_size_classes}
+          options={tailwind_classes_text_size}
           getOptionLabel={(option) => option}
           renderValue={(option, getItemProps) => (
             <Chip size="small" label={option} {...getItemProps()} />
           )}
-          renderInput={(params) => <TextField size="small" {...params} label="Classes of Text size"/>}
+          renderInput={(params) =>
+            <TextField size="small" {...params}
+                       label="Classes of Text size"
+                       slotProps={{
+                         inputLabel: {shrink: true}
+                       }}
+            />
+          }
+          slotProps={{
+            listbox: {
+              style: {
+                maxHeight: 400,   // ✅ 下拉框高度，能显示更多
+              },
+            },
+          }}
           onChange={(event, value) => {
             textClasses.text_size = value;
             textClasses.text = textClasses.text_size;
@@ -80,9 +94,10 @@ export default function SamplePage() {
           multiple
           freeSolo
           disableCloseOnSelect
+
           id="tailwind-classes-of-text"
           size="small"
-          style={{width: 160}}
+          style={{width: 300}}
           options={tailwind_text_size_classes_array}
           getOptionLabel={(option) => option.title}
           isOptionEqualToValue={(option, value) => {
@@ -102,8 +117,8 @@ export default function SamplePage() {
               </li>
             );
           }}
-          renderValue={(selected, getTagProps) =>
-            selected.map((option, index) => {
+          renderValue={(selected, getTagProps) => {
+            return selected.map((option, index) => {
               const {key, ...tagProps} = getTagProps({index});
               return (
                 <Chip
@@ -114,7 +129,7 @@ export default function SamplePage() {
                 />
               );
             })
-          }
+          }}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -124,7 +139,6 @@ export default function SamplePage() {
             />
           )}
         /></Stack>
-
       {/* https://www.lipsum.com/ */}
       <div className={'border ' + textClasses.text}>
         恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard
@@ -132,7 +146,6 @@ export default function SamplePage() {
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
       </div>
-
     </>
   );
 }
