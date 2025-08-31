@@ -1011,6 +1011,7 @@ export default function Page() {
           }}
         >
           <input
+            id={"search-input"}
             className={"focus:outline-none border"}
             type={"text"}
             value={status.searchText}

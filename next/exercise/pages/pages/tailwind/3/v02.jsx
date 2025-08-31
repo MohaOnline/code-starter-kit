@@ -16,6 +16,10 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 import {TagFieldSingle} from '@/lib/components/TagFields';
+import {
+  tailwind_classes_text_size,
+  tailwind_classes_text_align
+} from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
@@ -48,30 +52,6 @@ export default function SamplePage() {
     {title: 'text-6xl', text: 'text-6xl',},
     {title: 'text-7xl', text: 'text-7xl',},
   ]
-
-  const tailwind_classes_text_size = [
-    'text-xs',
-    'text-sm',
-    'text-base', // 1rem = 16px, line-height: 1.5rm = 24px.
-    'text-3xl',
-    'text-4xl',
-    'text-5xl',
-    'text-6xl',
-    'text-7xl',
-  ]
-
-  const tailwind_classes_text_align = [
-    'text-left',
-    'text-center',
-    'text-right',
-    'text-justify',
-    'text-start',
-    'text-end',
-  ]
-
-  const tailwind_classes_text_color = [
-    'text-orange-100',
-  ];
 
   /**
    * SamplePage 正式内容
@@ -128,7 +108,8 @@ export default function SamplePage() {
 
         <Autocomplete
           multiple
-          disableCloseOnSelect
+          disableCloseOnSelect  // 因为多选，选择后不关闭
+          limitTags={2}
           freeSolo
           id="tailwind-classes-of-text"
           size="small"
@@ -173,7 +154,8 @@ export default function SamplePage() {
               placeholder="输入或选择..."
             />
           )}
-        /></Stack>
+        />
+      </Stack>
 
       {/*Demo https://www.lipsum.com/ */}
       <section className={'border ' + textClasses.text}>

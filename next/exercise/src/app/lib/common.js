@@ -50,6 +50,10 @@ export const handleKeyDown = (event, status, setStatus) => {
     if (document.activeElement.tagName === 'INPUT' &&
       document.activeElement instanceof HTMLInputElement &&
       document.activeElement.type === 'text') {
+      if (event.key === 'Escape' && event.target.tagName === 'INPUT' && event.target.id === 'search-input') {
+        //event.preventDefault();
+        event.target.blur();
+      }
       return;
     }
     // 不要无条件阻止默认行为，这会影响复制粘贴等系统功能
@@ -145,6 +149,15 @@ export const handleKeyDown = (event, status, setStatus) => {
       },
     });
   }
+  else if (event.key === 'f') {
+    event.preventDefault();
+    console.debug('focus on search input');
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.focus();
+    }
+  }
+
 
   localStorage.setItem('wordStatus', status.currentWordIndex);
 };
