@@ -13,19 +13,27 @@ import Stack from '@mui/material/Stack';
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import {styled, lighten, darken} from '@mui/system';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
-import {TagFieldSingle} from '@/lib/components/TagFields';
+import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
+  TagFieldGroupDistinctValue,
+  TagFieldSingle,
+} from '@/lib/components/TagFields';
+import ResponsiveShowcase from '@/lib/components/custom/showcase/v01';
+
+import {
+  tailwind_classes_text_smoothing,
   tailwind_classes_text_size,
-  tailwind_classes_text_align
+  tailwind_classes_text_align,
 } from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 
 /**
- * @see /pages/tailwind/4/v02
+ * @see /pages/tailwind/3/v02
  * @see /pages/pages/libs/pagesExamplesLayout.tsx
  */
 export default function SamplePage() {
@@ -36,8 +44,8 @@ export default function SamplePage() {
     // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
     // 遍历所有 key，筛选出 text_ 开头的，拼接起来
     textClasses.text = Object.entries(textClasses)
-                             .filter(([key, val]) => key.startsWith("text_") && val) // 只取 text_ 开头 & 有值的
-                             .map(([key, val]) => val)
+                             .filter(([attribute, value]) => attribute.startsWith("text_") && value) // 只取 text_ 开头 & 有值的
+                             .map(([key, value]) => value)
                              .join(" ");
 
     setTextClasses({
@@ -52,6 +60,8 @@ export default function SamplePage() {
     {title: 'text-6xl', text: 'text-6xl',},
     {title: 'text-7xl', text: 'text-7xl',},
   ]
+
+
 
   /**
    * SamplePage 正式内容
@@ -97,13 +107,23 @@ export default function SamplePage() {
           }}
         />
 
-        <TagFieldSingle label={'Classes of Text Align'}
+        <TagFieldSingle label={'Text Align'}
                         options={tailwind_classes_text_align}
                         width={150}
                         placeholder={''}
-                        onChange={(value) => {
+                        updateHandler={(value) => {
                           updateTextClasses('text_align', value);
                         }}
+        />
+
+        <TagFieldGroupDistinctValue label={'Text Smoothing'}
+                                    options={decorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
+                                    placeholder={''}
+                                    updateHandler={(values) => {
+                                      updateTextClasses('text_smoothing', values.map((value) => {
+                                        return typeof value === 'string' ? value : value.name;
+                                      }).join(' '));
+                                    }}
         />
 
         <Autocomplete
@@ -164,6 +184,11 @@ export default function SamplePage() {
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
       </section>
+
+      <ResponsiveShowcase>
+        <h1>Your content here</h1>
+        <p>This will be displayed inside the resizable container</p>
+      </ResponsiveShowcase>
     </>
   );
 }
