@@ -1010,15 +1010,15 @@ export default function Page() {
             }
           }}
         >
-          <input
-            id={"search-input"}
-            className={"focus:outline-none border"}
-            type={"text"}
-            value={status.searchText}
-            onFocus={e => e.target.select()}
-            onChange={event => {
-              setStatus({...status, searchText: event.target.value});
-            }}
+          <input id={"search-input"}
+                 className={"focus:outline-none border"}
+                 type={"text"}
+                 autoComplete="off"
+                 value={status.searchText}
+                 onFocus={e => e.target.select()}
+                 onChange={event => {
+                   setStatus({...status, searchText: event.target.value});
+                 }}
           />
           <button type="submit" className="ml-2">
             <RiFileSearchLine/>
