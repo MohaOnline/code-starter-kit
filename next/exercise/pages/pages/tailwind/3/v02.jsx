@@ -15,14 +15,10 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
-import {addDecorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {TagFieldSingle} from '@/lib/components/TagFields';
-import ResponsiveShowcase from '@/lib/components/custom/showcase/v01';
-
 import {
-  tailwind_classes_text_smoothing,
   tailwind_classes_text_size,
-  tailwind_classes_text_align,
+  tailwind_classes_text_align
 } from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
@@ -105,28 +101,9 @@ export default function SamplePage() {
                         options={tailwind_classes_text_align}
                         width={150}
                         placeholder={''}
-                        updateHandler={(value) => {
+                        onChange={(value) => {
                           updateTextClasses('text_align', value);
                         }}
-        />
-
-
-        <Autocomplete
-          multiple
-          disableCloseOnSelect  // 因为多选，选择后不关闭
-          limitTags={2}
-          freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
-          options={addDecorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
-          groupBy={(option) => option.group}
-          getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
-          sx={{width: 300}}
-          renderInput={(params) => <TextField {...params} label="Text Smooth"/>}
-          onChange={(event, values) => {
-            console.log('tailwind-classes-of-text-smoothing', 'onChange', values);
-            updateTextClasses('text_smooth', values.map((value) => {
-              return value === 'string' ? value : value.name;
-            }).join(' '));
-          }}
         />
 
         <Autocomplete
@@ -187,11 +164,6 @@ export default function SamplePage() {
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
       </section>
-
-      <ResponsiveShowcase>
-        <h1>Your content here</h1>
-        <p>This will be displayed inside the resizable container</p>
-      </ResponsiveShowcase>
     </>
   );
 }

@@ -5,7 +5,7 @@ import _ from "lodash";
 export function TagFieldSingle({
   label = "",
   options = [],
-  updateHandler,
+  onChange,
   width = 200,
   placeholder = "Please select or enter...",
 }) {
@@ -44,8 +44,8 @@ export function TagFieldSingle({
       }}
       onChange={(event, newValue) => {
         setFieldValue(newValue);
-        if (updateHandler) {
-          updateHandler(newValue);
+        if (onChange) {
+          onChange(newValue);
         }
       }}
     />
