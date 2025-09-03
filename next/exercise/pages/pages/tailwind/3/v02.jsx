@@ -114,35 +114,17 @@ export default function SamplePage() {
         <Autocomplete
           multiple
           disableCloseOnSelect  // 因为多选，选择后不关闭
-          limitTags={1}
+          limitTags={2}
           freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
-          size="small"
           options={addDecorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
           groupBy={(option) => option.group}
           getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
-
-          // multiple 必须？点击 option 时调用
-          isOptionEqualToValue={(option, value) => {
-            console.log('tailwind-classes-of-text-smoothing', 'isOptionEqualToValue', option, value);
-            // 处理字符串类型（用户输入）
-            if (typeof option === 'string' && typeof value === 'string') {
-              return option === value;
-            }
-            // 处理对象类型（从选项中选择）
-            if (typeof option === 'object' && typeof value === 'object') {
-              return option.name === value.name;
-            }
-            // 处理混合类型
-            const optionName = typeof option === 'string' ? option : option.name;
-            const valueName = typeof value === 'string' ? value : value.name;
-            return optionName === valueName;
-          }}
           sx={{width: 300}}
           renderInput={(params) => <TextField {...params} label="Text Smooth"/>}
           onChange={(event, values) => {
             console.log('tailwind-classes-of-text-smoothing', 'onChange', values);
             updateTextClasses('text_smooth', values.map((value) => {
-              return typeof value === 'string' ? value : value.name;
+              return value === 'string' ? value : value.name;
             }).join(' '));
           }}
         />
