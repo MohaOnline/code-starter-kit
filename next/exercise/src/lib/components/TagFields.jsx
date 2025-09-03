@@ -1,4 +1,6 @@
+import Script from "next/script";
 import * as React from "react";
+
 import {Autocomplete, TextField, Chip} from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
@@ -6,9 +8,6 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {styled, lighten, darken} from '@mui/system';
 
 import _ from "lodash";
-import Script from "next/script.js";
-import {decorateAndGroupClasses} from "@/pages/tailwind/common/utils.js";
-import {tailwind_classes_text_smoothing} from "@/pages/tailwind/3/v02.tailwind-text.js";
 
 export function TagFieldSingle({
   label = "",
@@ -44,13 +43,14 @@ export function TagFieldSingle({
                       updateHandler(newValue);
                     }
                   }}
-                  renderInput={(params) => (<TextField {...params}
-                                                       size="small"
-                                                       label={label}
-                                                       placeholder={placeholder}
-                                                       slotProps={{
-                                                         inputLabel: {shrink: true}, // ✅ label 始终显示
-                                                       }}
+                  renderInput={(params) => (
+                    <TextField {...params}
+                               size="small"
+                               label={label}
+                               placeholder={placeholder}
+                               slotProps={{
+                                 inputLabel: {shrink: true}, // ✅ label 始终显示
+                               }}
                     />
                   )}
     />
@@ -116,8 +116,7 @@ export function TagFieldGroupSingle({
                           <div style={{fontSize: '14px', fontWeight: 500}}>
                             {option.name}
                           </div>
-                          {option.description && (
-                            <div style={{
+                          {option.description && (<div style={{
                               fontSize: '12px',
                               color: '#666',
                               marginTop: '2px',
@@ -137,7 +136,7 @@ export function TagFieldGroupSingle({
                                                         inputLabel: {shrink: true}, // ✅ label 始终显示
                                                       }}
                   />}
-                  value={fieldValues || []} // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
+                  value={fieldValues || []}                       // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
                   isOptionEqualToValue={(option, value) => {      // 配置 multiple 时必须？点击 option 时调用。比较 option 和 value，所以考虑所有可能
                     console.log(_.kebabCase(label), 'isOptionEqualToValue', option, value);
                     // 处理字符串类型（用户输入）
