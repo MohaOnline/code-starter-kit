@@ -13,7 +13,6 @@ import Stack from '@mui/material/Stack';
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import {styled, lighten, darken} from '@mui/system';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 import {addDecorateAndGroupClasses} from '@/pages/tailwind/common/utils';
@@ -57,22 +56,6 @@ export default function SamplePage() {
     {title: 'text-6xl', text: 'text-6xl',},
     {title: 'text-7xl', text: 'text-7xl',},
   ]
-
-  const GroupHeader = styled('div')(({theme}) => ({
-    position: 'sticky',
-    top: '-8px',
-    padding: '4px 10px',
-    color: '#000',
-    backgroundColor: lighten('#222', 0.85),
-    ...theme.applyStyles('dark', {
-      color: '#fff',
-      backgroundColor: darken('#000', 0.8),
-    }),
-  }));
-
-  const GroupItems = styled('ul')({
-    padding: 0,
-  });
 
   /**
    * SamplePage 正式内容
@@ -143,37 +126,9 @@ export default function SamplePage() {
                         },
                       }}
                       groupBy={(option) => option.group}
-                      renderGroup={(params) => (
-                        <li key={params.key}>
-                          {params.group !== '' && <GroupHeader>{params.group}</GroupHeader>}
-                          <GroupItems>{params.children}</GroupItems>
-                        </li>
-                      )}
                       getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
-                      renderOption={(props, option, {selected}) => {  // selected: boolean - 当前选项是否被选中
-                        const {key, ...optionProps} = props;          // - **`key`**：React 的唯一标识符，用于 diff 算法优化
 
-                        // 处理对象类型（预定义选项）
-                        return (
-                          <li key={key} {...optionProps} style={{padding: '8px 12px'}}>
-                            <div>
-                              <div style={{fontSize: '14px', fontWeight: 500}}>
-                                {option.name}
-                              </div>
-                              {option.description && (
-                                <div style={{
-                                  fontSize: '12px',
-                                  color: '#666',
-                                  marginTop: '2px',
-                                  lineHeight: '1.3'
-                                }}>
-                                  {option.description}
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        );
-                      }}
+
                       renderInput={(params) => <TextField {...params}
                                                           label="Classes of Text Smoothing"
                                                           slotProps={{
