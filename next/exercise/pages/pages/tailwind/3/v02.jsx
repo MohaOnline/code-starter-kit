@@ -72,37 +72,14 @@ export default function SamplePage() {
       <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
 
       <Stack spacing={2} direction="row" className={'mt-2'}>
-        <Autocomplete
-          freeSolo
-          id="tailwind-classes-of-text-size"
-          size="small"
-          style={{width: 160}}
-          options={tailwind_classes_text_size}
-          getOptionLabel={(option) => option}
-          renderValue={(option, getItemProps) => {
-            console.log('tailwind-classes-of-text-size', 'renderValue', option);
-            return <Chip size="small" label={option} {...getItemProps()} />;
-          }}
-          renderInput={(params) =>
-            <TextField size="small" {...params}
-                       label="Classes of Text size"
-                       slotProps={{
-                         inputLabel: {shrink: true}
-                       }}
-                       placeholder="选择或输入..."
-            />
-          }
-          slotProps={{
-            listbox: {
-              style: {
-                maxHeight: 400,   // ✅ 下拉框高度，能显示更多
-              },
-            },
-          }}
-          onChange={(event, value) => {
-            console.log('tailwind-classes-of-text-size', 'onChange', value);
-            updateTextClasses('text_size', value);
-          }}
+
+        <TagFieldSingle label={'Text Size'}
+                        options={tailwind_classes_text_size}
+                        width={150}
+                        placeholder={''}
+                        updateHandler={(value) => {
+                          updateTextClasses('text_size', value);
+                        }}
         />
 
         <TagFieldSingle label={'Text Align'}
