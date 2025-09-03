@@ -5,7 +5,7 @@
  * @param decorations
  * @return {*[]}
  */
-export const decorateAndGroupClasses = (tailwind_classes, decorations = ['', 'hover', 'focus', 'md', 'lg']) => {
+export const addDecorateAndGroupClasses = (tailwind_classes, decorations = ['', 'hover', 'focus', 'md', 'lg']) => {
   let classes = [];
 
   tailwind_classes.forEach(item => {
