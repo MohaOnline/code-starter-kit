@@ -9,7 +9,7 @@ import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 
 
 /**
- * @see /pages/tailwind/3/v01
+ * @see /pages/tailwind/4/v01
  * @see /pages/pages/libs/pagesExamplesLayout.tsx
  */
 export default function SamplePage() {

@@ -1014,7 +1014,6 @@ export default function Page() {
             id={"search-input"}
             className={"focus:outline-none border"}
             type={"text"}
-            autoComplete="off"
             value={status.searchText}
             onFocus={e => e.target.select()}
             onChange={event => {

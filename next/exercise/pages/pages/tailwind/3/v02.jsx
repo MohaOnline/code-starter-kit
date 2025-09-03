@@ -25,7 +25,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 
 /**
- * @see /pages/tailwind/3/v02
+ * @see /pages/tailwind/4/v02
  * @see /pages/pages/libs/pagesExamplesLayout.tsx
  */
 export default function SamplePage() {
