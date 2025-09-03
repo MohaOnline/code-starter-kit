@@ -117,17 +117,10 @@ export default function SamplePage() {
           limitTags={1}
           freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
           size="small"
-          sx={{width: 350}}
           options={addDecorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
-          slotProps={{
-            listbox: {
-              style: {
-                maxHeight: 400, // ✅ 下拉框一次能显示更多
-              },
-            },
-          }}
           groupBy={(option) => option.group}
           getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
+
           // multiple 必须？点击 option 时调用
           isOptionEqualToValue={(option, value) => {
             console.log('tailwind-classes-of-text-smoothing', 'isOptionEqualToValue', option, value);
@@ -144,17 +137,11 @@ export default function SamplePage() {
             const valueName = typeof value === 'string' ? value : value.name;
             return optionName === valueName;
           }}
-          
-          renderInput={(params) => <TextField
-            {...params}
-            label="Classes of Text Smoothing"
-            slotProps={{
-              inputLabel: {shrink: true}, // ✅ label 始终显示
-            }}
-          />}
+          sx={{width: 300}}
+          renderInput={(params) => <TextField {...params} label="Text Smooth"/>}
           onChange={(event, values) => {
             console.log('tailwind-classes-of-text-smoothing', 'onChange', values);
-            updateTextClasses('text_smoothing', values.map((value) => {
+            updateTextClasses('text_smooth', values.map((value) => {
               return typeof value === 'string' ? value : value.name;
             }).join(' '));
           }}
