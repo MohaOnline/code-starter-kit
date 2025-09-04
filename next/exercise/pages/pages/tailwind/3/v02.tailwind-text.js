@@ -8,6 +8,7 @@ export const tailwind_classes_text_color = [
   'text-orange-200',
 ];
 
+//
 export const tailwind_classes_text_size = [
   'text-xs',
   'text-sm',
@@ -20,6 +21,7 @@ export const tailwind_classes_text_size = [
   'text-5xl',
   'text-6xl',
   'text-7xl',
+  'text-[32pt]',
 ];
 
 export const tailwind_classes_text_align = [
@@ -49,4 +51,15 @@ export const tailwind_classes_text_transform = [
   {name: 'lowercase'},
   {name: 'capitalize'},
   {name: 'normal-case', description: '还原大小写'},
+]
+
+// @see https://v3.tailwindcss.com/docs/letter-spacing
+export const tailwind_classes_letter_spacing = [
+  {name: 'tracking-tighter', description: 'letter-spacing: -0.05em;'},
+  {name: 'tracking-tight', description: 'letter-spacing: -0.025em;'},
+  {name: 'tracking-normal', description: 'letter-spacing: 0em;', default: true},
+  {name: 'tracking-wide', description: 'letter-spacing: 0.025em;'},
+  {name: 'tracking-wider', description: 'letter-spacing: 0.05em;'},
+  {name: 'tracking-widest', description: 'letter-spacing: 0.1em;'},
+  {name: 'tracking-[0.25em]', description: '自定义：letter-spacing: 0.25em;'},
 ]

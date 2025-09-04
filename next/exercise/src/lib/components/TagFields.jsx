@@ -61,8 +61,9 @@ export function TagFieldGroupSingle({
   label = "",
   options = [],
   updateHandler,
-  width = 300,
-  placeholder = "Please select or enter...",
+  width = 250,
+  limitTags = 1,
+  placeholder = "", // Placeholder in Text Input Field.
 }) {
   const GroupHeader = styled('div')(({theme}) => ({
     position: 'sticky',
@@ -85,7 +86,7 @@ export function TagFieldGroupSingle({
   return (
     <Autocomplete multiple
                   disableCloseOnSelect  // 因为多选，选择后不关闭
-                  limitTags={1}
+                  limitTags={limitTags}
                   freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
                   id={_.kebabCase(label)}
                   size="small"

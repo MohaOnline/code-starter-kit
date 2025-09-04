@@ -26,7 +26,7 @@ import ResponsiveShowcase from '@/lib/components/custom/showcase/v01';
 import {
   tailwind_classes_text_smoothing,
   tailwind_classes_text_size,
-  tailwind_classes_text_align,
+  tailwind_classes_text_align, tailwind_classes_letter_spacing,
 } from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
@@ -94,7 +94,6 @@ export default function SamplePage() {
         <TagFieldGroupSingle label={'Text Smoothing'}
           // options={decorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
                              options={decorateAndGroupClasses(tailwind_classes_text_smoothing)}
-                             placeholder={''}
                              updateHandler={(values) => {
                                updateTextClasses('text_smoothing', values.map((value) => {
                                  return typeof value === 'string' ? value : value.name;
@@ -102,55 +101,15 @@ export default function SamplePage() {
                              }}
         />
 
-        <Autocomplete
-          multiple
-          disableCloseOnSelect  // 因为多选，选择后不关闭
-          limitTags={2}
-          freeSolo
-          id="tailwind-classes-of-text"
-          size="small"
-          style={{width: 300}}
-          options={tailwind_text_size_classes_array}
-          getOptionLabel={(option) => option.title}
-          isOptionEqualToValue={(option, value) => {
-            return option.title === value.title;
-          }}
-          renderOption={(props, option, {selected}) => {
-            const {key, ...optionProps} = props;
-            return (
-              <li key={key} {...optionProps}>
-                <Checkbox
-                  icon={icon}
-                  checkedIcon={checkedIcon}
-                  style={{marginRight: 8}}
-                  checked={selected}
-                />
-                {option.title}
-              </li>
-            );
-          }}
-          renderValue={(selected, getTagProps) => {
-            return selected.map((option, index) => {
-              const {key, ...tagProps} = getTagProps({index});
-              return (
-                <Chip
-                  variant="outlined"
-                  label={option.title}
-                  key={key}
-                  {...tagProps}
-                />
-              );
-            })
-          }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              variant="outlined"  // 输入框有框
-              label="Choose Tailwind Classes of Text"
-              placeholder="输入或选择..."
-            />
-          )}
+        <TagFieldGroupSingle label={'Letter Spacing'}
+                             options={decorateAndGroupClasses(tailwind_classes_letter_spacing)}
+                             updateHandler={(values) => {
+                               updateTextClasses('text_letter_spacing', values.map((value) => {
+                                 return typeof value === 'string' ? value : value.name;
+                               }).join(' '));
+                             }}
         />
+
       </Stack>
 
       {/*Demo https://www.lipsum.com/ */}
