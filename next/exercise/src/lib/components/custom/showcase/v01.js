@@ -1,6 +1,6 @@
 import React, {useState, useRef, useCallback} from 'react';
 
-const ResponsiveShowcase = ({children}) => {
+export const ExampleShowcase = ({children}) => {
   const [selectedSize, setSelectedSize] = useState('md');
   const [customWidth, setCustomWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -119,5 +119,3 @@ const ResponsiveShowcase = ({children}) => {
     </section>
   );
 };
-
-export default ResponsiveShowcase;
