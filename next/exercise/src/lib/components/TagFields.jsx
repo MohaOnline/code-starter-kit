@@ -1,7 +1,7 @@
 import Script from "next/script";
 import * as React from "react";
 
-import {Autocomplete, TextField, Chip} from "@mui/material";
+import {Autocomplete, TextField, Chip, Snackbar, Alert} from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -16,7 +16,7 @@ export function TagFieldSingle({
   width = 200,
   placeholder = "Please select or enter...",
 }) {
-  const [fieldValue, setFieldValue] = React.useState(null);
+  const [fieldValue, setFieldValue] = React.useState(null); // Options and value held in field.
 
   return (
     <Autocomplete freeSolo
@@ -63,6 +63,7 @@ export function TagFieldGroupSingle({
   updateHandler,
   width = 250,
   limitTags = 1,
+  allowMultiManualValue: allowMultipleManualValues = false, // allow multiple freeSolo values
   placeholder = "", // Placeholder in Text Input Field.
 }) {
   const GroupHeader = styled('div')(({theme}) => ({
@@ -82,8 +83,10 @@ export function TagFieldGroupSingle({
   });
 
   const [fieldValues, setFieldValues] = React.useState([]);
+  const [snackOpen, setSnackOpen] = React.useState(false);
 
   return (
+    <>
     <Autocomplete multiple
                   disableCloseOnSelect  // 因为多选，选择后不关闭
                   limitTags={limitTags}
@@ -169,6 +172,12 @@ export function TagFieldGroupSingle({
                         groupDistinctValues.unshift(value); // Add to beginning to maintain order
                         groupsUsed.add(group);
                       }
+                      else if (allowMultipleManualValues && group === 'custom' && !groupDistinctValues.includes(value)) {
+                        groupDistinctValues.unshift(value);
+                      }
+                      else if (group === 'custom') {
+                        setSnackOpen(true);
+                      }
                     }
 
                     // Update both the filtered values and the text classes
@@ -176,5 +185,22 @@ export function TagFieldGroupSingle({
                     updateHandler(groupDistinctValues);
                   }}
     />
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={3000}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        onClose={() => setSnackOpen(false)}
+      >
+        <Alert
+          severity="warning"
+          sx={{width: '100%'}}
+        >
+          Previous freeSolo value was overwritten as allowMultipleManualValues is false.
+        </Alert>
+      </Snackbar>
+    </>
   );
 }
