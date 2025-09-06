@@ -11,13 +11,8 @@ import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
 import {pagesExamplesLayoutProps} from '@/pages/libs/interfaces'
 
 /**
- * TS-CC 页面统一布局组件
- * 为 ts-cc 目录下的所有子页面提供统一的 HTML head 和 body 结构
- * 子页面只需要提供 body 内容，布局会自动包装
+ * 为 tailwind/4 pages 提供 Dark/Light 选则器。
  */
-
-
-
 export default function PagesExamplesLayout(
   {
     children,
@@ -39,7 +34,7 @@ export default function PagesExamplesLayout(
         <title>{`${title} - Pages Examples`}</title>
         <meta name="description" content={description}/>
         <meta name="keywords" content={keywords}/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <meta name="author" content="Pages Route"/>
 
         {/* Open Graph 标签 */}

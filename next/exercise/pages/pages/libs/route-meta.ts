@@ -15,6 +15,11 @@ export const routeMeta = {
     description: 'Tailwind v3 CDN 演示页面。',
     keywords:    'basic functionalities tailwind v3 cdn',
   },
+  '/pages/tailwind/3/v03': {
+    title:       'Flex: Tailwind v3',
+    description: 'Tailwind v3 CDN 演示页面。',
+    keywords:    'basic functionalities tailwind v3 cdn',
+  },
   '/pages/tailwind/4/v01': {
     title:       'v01 Basic: Tailwind v4',
     description: 'Tailwind v4 基本功能演示页面。',

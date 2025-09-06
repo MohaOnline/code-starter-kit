@@ -139,7 +139,7 @@ export function TagFieldGroupSingle({
                   />}
                   value={fieldValues || []}                       // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
                   isOptionEqualToValue={(option, value) => {      // 配置 multiple 时必须？点击 option 时调用。比较 option 和 value，所以考虑所有可能
-                    console.log(_.kebabCase(label), 'isOptionEqualToValue', option, value);
+                    // console.log(_.kebabCase(label), 'isOptionEqualToValue', option, value);
                     // 处理字符串类型（用户输入）
                     if (typeof option === 'string' && typeof value === 'string') {
                       return option === value;

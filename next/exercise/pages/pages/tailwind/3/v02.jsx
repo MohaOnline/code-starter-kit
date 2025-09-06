@@ -47,22 +47,26 @@ export default function SamplePage() {
     // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
 
     if (item !== 'header') {
+
       textClasses.header = Object.entries(textClasses)
-                                 .filter(([attribute, value]) => attribute.startsWith("header_") && value) // 只取 header_ 开头 & 有值的
-                                 .map(([key, value]) => value)
-                                 .join(" ");
+                                 .filter(([attribute, options]) => attribute.startsWith("header_") && options)
+                                 .flatMap(([key, options]) => options)
+                                 .map((option) => typeof option === 'string' ? option : option.name)
+                                 .join(' ');
     }
 
     // 遍历所有 key，筛选出 text_ 开头的，拼接起来
     textClasses.text = Object.entries(textClasses)
                              .filter(([attribute, value]) => attribute.startsWith("text_") && value) // 只取 text_ 开头 & 有值的
-                             .map(([key, value]) => value)
+                             .flatMap(([key, options]) => options)
+                             .map((option) => typeof option === 'string' ? option : option.name)
                              .join(" ");
 
     if (item !== 'decoration') {
       textClasses.decoration = Object.entries(textClasses)
                                      .filter(([attribute, value]) => attribute.startsWith("decoration_") && value) // 只取 decoration_ 开头 & 有值的
-                                     .map(([key, value]) => value)
+                                     .flatMap(([key, options]) => options)
+                                     .map((option) => typeof option === 'string' ? option : option.name)
                                      .join(" ");
     }
 
@@ -86,9 +90,7 @@ export default function SamplePage() {
                              options={decorateAndGroupClasses(tailwind_classes_text_transform)}
                              width={200}
                              updateHandler={(values) => {
-                               updateStateTextClasses('header_transform', values.map((value) => {
-                                 return typeof value === 'string' ? value : value.name;
-                               }).join(' '));
+                               updateStateTextClasses('header_transform', values);
                              }}
         />
       </Stack>
@@ -116,18 +118,14 @@ export default function SamplePage() {
           // options={decorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
                              options={decorateAndGroupClasses(tailwind_classes_text_smoothing)}
                              updateHandler={(values) => {
-                               updateStateTextClasses('text_smoothing', values.map((value) => {
-                                 return typeof value === 'string' ? value : value.name;
-                               }).join(' '));
+                               updateStateTextClasses('header_transform', values);
                              }}
         />
 
         <TagFieldGroupSingle label={'Letter Spacing'}
                              options={decorateAndGroupClasses(tailwind_classes_letter_spacing)}
                              updateHandler={(values) => {
-                               updateStateTextClasses('text_letter_spacing', values.map((value) => {
-                                 return typeof value === 'string' ? value : value.name;
-                               }).join(' '));
+                               updateStateTextClasses('header_transform', values);
                              }}
         />
 
@@ -136,9 +134,7 @@ export default function SamplePage() {
                              width={400}
                              limitTags={2}
                              updateHandler={(values) => {
-                               updateStateTextClasses('decoration_line', values.map((value) => {
-                                 return typeof value === 'string' ? value : value.name;
-                               }).join(' '));
+                               updateStateTextClasses('header_transform', values);
                              }}
         />
 
