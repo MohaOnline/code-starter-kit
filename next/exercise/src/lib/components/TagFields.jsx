@@ -187,7 +187,7 @@ export function TagFieldGroupSingle({
     />
       <Snackbar
         open={snackOpen}
-        autoHideDuration={3000}
+        autoHideDuration={5000}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'center',
@@ -197,6 +197,7 @@ export function TagFieldGroupSingle({
         <Alert
           severity="warning"
           sx={{width: '100%'}}
+          onClose={() => setSnackOpen(false)}
         >
           Previous freeSolo value was overwritten as allowMultipleManualValues is false.
         </Alert>
