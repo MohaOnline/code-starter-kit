@@ -19,23 +19,23 @@ export const decorateAndGroupClasses = (tailwind_classes, decorations = ['', 'ho
 
       if (description !== '') {
         if (decoration === 'md') {
-          description = '在中等屏幕尺寸及以上' + description;
+          description = '在中等屏幕尺寸及以上：' + description;
         }
         else if (decoration === 'lg') {
-          description = `在大屏及以上` + description;
+          description = `在大屏及以上：` + description;
         }
         else if (decoration === 'hover') {
-          description = '鼠标悬停时' + description;
+          description = '鼠标悬停时：' + description;
         }
-        else if (description === 'focus') {
-          description = '获取焦点时' + description;
+        else if (decoration === 'focus') {
+          description = '获取焦点时：' + description;
         }
       }
 
       classes.push({
         name: name,
         description: description,
-        group: decoration,
+        group: `${decoration ? decoration + ':' : ''}${item.group ? item.group : ''}`,
       });
     })
   });

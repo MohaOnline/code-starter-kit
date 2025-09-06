@@ -70,7 +70,7 @@ export function TagFieldGroupSingle({
     top: '-8px',
     padding: '4px 10px',
     color: '#000',
-    backgroundColor: lighten('rgba(2,71,244,0.74)', 0.85),
+    backgroundColor: lighten('rgba(0,0,0,0.85)', 0.85),
     ...theme.applyStyles('dark', {
       color: '#fff',
       backgroundColor: darken('#000', 0.8),

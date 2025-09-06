@@ -25,8 +25,8 @@ import ResponsiveShowcase from '@/lib/components/custom/showcase/v01';
 
 import {
   tailwind_classes_text_smoothing,
-  tailwind_classes_text_size,
-  tailwind_classes_text_align, tailwind_classes_letter_spacing,
+  tailwind_classes_text_size, tailwind_classes_text_weight,
+  tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration,
 } from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
@@ -39,7 +39,10 @@ const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 export default function SamplePage() {
   const [textClasses, setTextClasses] = useState({});
 
-  const updateTextClasses = (item, value) => {
+  /**
+   *
+   */
+  const updateStateTextClasses = (item, value) => {
     textClasses[item] = value;
     // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
     // 遍历所有 key，筛选出 text_ 开头的，拼接起来
@@ -47,19 +50,17 @@ export default function SamplePage() {
                              .filter(([attribute, value]) => attribute.startsWith("text_") && value) // 只取 text_ 开头 & 有值的
                              .map(([key, value]) => value)
                              .join(" ");
+    if (item !== 'decoration') {
+      textClasses.decoration = Object.entries(textClasses)
+                                     .filter(([attribute, value]) => attribute.startsWith("decoration_") && value) // 只取 decoration_ 开头 & 有值的
+                                     .map(([key, value]) => value)
+                                     .join(" ");
+    }
 
     setTextClasses({
       ...textClasses,
     })
   }
-
-  const tailwind_text_size_classes_array = [
-    {title: 'text-3xl', text: 'text-3xl',},
-    {title: 'text-4xl', text: 'text-4xl',},
-    {title: 'text-5xl', text: 'text-5xl',},
-    {title: 'text-6xl', text: 'text-6xl',},
-    {title: 'text-7xl', text: 'text-7xl',},
-  ]
 
   /**
    * SamplePage 正式内容
@@ -78,7 +79,7 @@ export default function SamplePage() {
                         width={150}
                         placeholder={''}
                         updateHandler={(value) => {
-                          updateTextClasses('text_size', value);
+                          updateStateTextClasses('text_size', value);
                         }}
         />
 
@@ -87,7 +88,7 @@ export default function SamplePage() {
                         width={150}
                         placeholder={''}
                         updateHandler={(value) => {
-                          updateTextClasses('text_align', value);
+                          updateStateTextClasses('text_align', value);
                         }}
         />
 
@@ -95,7 +96,7 @@ export default function SamplePage() {
           // options={decorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
                              options={decorateAndGroupClasses(tailwind_classes_text_smoothing)}
                              updateHandler={(values) => {
-                               updateTextClasses('text_smoothing', values.map((value) => {
+                               updateStateTextClasses('text_smoothing', values.map((value) => {
                                  return typeof value === 'string' ? value : value.name;
                                }).join(' '));
                              }}
@@ -104,7 +105,18 @@ export default function SamplePage() {
         <TagFieldGroupSingle label={'Letter Spacing'}
                              options={decorateAndGroupClasses(tailwind_classes_letter_spacing)}
                              updateHandler={(values) => {
-                               updateTextClasses('text_letter_spacing', values.map((value) => {
+                               updateStateTextClasses('text_letter_spacing', values.map((value) => {
+                                 return typeof value === 'string' ? value : value.name;
+                               }).join(' '));
+                             }}
+        />
+
+        <TagFieldGroupSingle label={'Decoration Line'}
+                             options={decorateAndGroupClasses(tailwind_classes_decoration)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('decoration_line', values.map((value) => {
                                  return typeof value === 'string' ? value : value.name;
                                }).join(' '));
                              }}
@@ -114,10 +126,12 @@ export default function SamplePage() {
 
       {/*Demo https://www.lipsum.com/ */}
       <section className={'border ' + textClasses.text}>
-        恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard
+        恰恰与<u className={textClasses.decoration}>流行观念</u>相反，Lorem Ipsum并不是简简单单的<span className={textClasses.decoration}>随机文本:装饰内容</span>。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard
         McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem
         Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
+
+        <p className={textClasses.decoration}>下划线装饰可以修饰任意文字段：u、p、span、div、etc。</p>
       </section>
 
       <ResponsiveShowcase>
