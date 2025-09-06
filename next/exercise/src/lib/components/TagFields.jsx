@@ -189,7 +189,7 @@ export function TagFieldGroupSingle({
         open={snackOpen}
         autoHideDuration={3000}
         anchorOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'center',
         }}
         onClose={() => setSnackOpen(false)}
