@@ -163,18 +163,21 @@ export default function SamplePage() {
         <p className={textClasses.decoration}>下划线装饰可以修饰任意文字段：u、p、span、div、etc。</p>
 
         <div className="relative rounded-xl overflow-auto p-8">
-          <div className="bg-white rounded-lg shadow-lg ring-1 ring-slate-900/5 py-4 max-w-md mx-auto dark:bg-slate-800 dark:ring-0 dark:highlight-white/5">
+          <div className="bg-white h-16 py-4 rounded-lg shadow-lg ring-1 ring-slate-900/5 max-w-md mx-auto dark:bg-slate-800 dark:ring-0 dark:highlight-white/5">
+            <div className={`leading-none relative `}>
 
-            <div className={`leading-none relative`}>
               <span className={`w-8 h-8 inline-block ${textClasses.vertical} bg-green-200`}>
                 <span className="absolute top-0 border-slate-400 border-t border-b border-dashed w-full h-8 dark:border-slate-700"></span>
-                <span className="absolute top-0 border-blue-400 border-b border-dashed w-full h-4 dark:border-slate-700"></span>
+                <span className="absolute top-0 border-blue-400 border-b border-dashed w-full h-[17px] dark:border-slate-700"></span>
               </span>
-              <span className="relative z-10 text-slate-700 font-medium px-4 dark:text-slate-200 bg-red-200">The quick brown fox jumps over the lazy dog.</span>
+              <span className={`relative z-10 text-slate-700 font-medium px-4 dark:text-slate-200 bg-red-200`}>
+                The quick brown fox jumps over the lazy dog.
+              </span>
+
             </div>
           </div>
-
         </div>
+
       </section>
 
       <Stack spacing={2} direction="row" className={'mt-2'}>

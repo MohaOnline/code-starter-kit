@@ -109,10 +109,10 @@ export const tailwind_classes_decoration = [
 ]
 
 export const tailwind_classes_vertical_align = [
-  {name: 'align-baseline', description: 'vertical-align: baseline;'},
   {name: 'align-top', description: 'vertical-align: top;'},
   {name: 'align-middle', description: 'vertical-align: middle;'},
   {name: 'align-bottom', description: 'vertical-align: bottom;'},
+  {name: 'align-baseline', description: 'vertical-align: baseline;'},
   {name: 'align-text-top', description: 'vertical-align: text-top;'},
   {name: 'align-text-bottom', description: 'vertical-align: text-bottom;'},
   {name: 'align-sub', description: 'vertical-align: sub;'},
