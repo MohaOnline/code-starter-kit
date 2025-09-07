@@ -106,5 +106,16 @@ export const tailwind_classes_decoration = [
   {name: 'underline-offset-2', description: 'text-underline-offset: 2px;', group: 'underline-offset'},
   {name: 'underline-offset-4', description: 'text-underline-offset: 4px;', group: 'underline-offset'},
   {name: 'underline-offset-8', description: 'text-underline-offset: 8px;', group: 'underline-offset'},
+]
 
+export const tailwind_classes_vertical_align = [
+  {name: 'align-baseline', description: 'vertical-align: baseline;'},
+  {name: 'align-top', description: 'vertical-align: top;'},
+  {name: 'align-middle', description: 'vertical-align: middle;'},
+  {name: 'align-bottom', description: 'vertical-align: bottom;'},
+  {name: 'align-text-top', description: 'vertical-align: text-top;'},
+  {name: 'align-text-bottom', description: 'vertical-align: text-bottom;'},
+  {name: 'align-sub', description: 'vertical-align: sub;'},
+  {name: 'align-super', description: 'vertical-align: super;'},
+  {name: 'align-[4px]', description: ''}
 ]

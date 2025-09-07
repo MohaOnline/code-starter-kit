@@ -26,7 +26,7 @@ import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
 import {
   tailwind_classes_text_smoothing,
   tailwind_classes_text_size, tailwind_classes_text_weight, tailwind_classes_text_transform,
-  tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration,
+  tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration, tailwind_classes_vertical_align,
 } from "./v02.tailwind-text";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
@@ -42,6 +42,12 @@ export default function SamplePage() {
   /**
    * 把控件的值更新到 React 的 State。
    */
+  const classNames =
+    (prefix) => (Object.entries(textClasses)
+                       .filter(([attribute, value]) => attribute.startsWith(prefix) && value)
+                       .map((option) => typeof option === 'string' ? option : option.name)
+                       .join(" "));
+
   const updateStateTextClasses = (item, value) => {
     textClasses[item] = value;
     // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
@@ -69,6 +75,12 @@ export default function SamplePage() {
                                      .map((option) => typeof option === 'string' ? option : option.name)
                                      .join(" ");
     }
+
+    textClasses.vertical = Object.entries(textClasses)
+                                 .filter(([attribute, value]) => attribute.startsWith("vertical_") && value) // 只取 vertical_ 开头 & 有值的
+                                 .flatMap(([key, options]) => options)
+                                 .map((option) => typeof option === 'string' ? option : option.name)
+                                 .join(" ");
 
     setTextClasses({
       ...textClasses,
@@ -149,8 +161,31 @@ export default function SamplePage() {
         Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。
 
         <p className={textClasses.decoration}>下划线装饰可以修饰任意文字段：u、p、span、div、etc。</p>
+
+        <div className="relative rounded-xl overflow-auto p-8">
+          <div className="bg-white rounded-lg shadow-lg ring-1 ring-slate-900/5 py-4 max-w-md mx-auto dark:bg-slate-800 dark:ring-0 dark:highlight-white/5">
+
+            <div className={`leading-none relative`}>
+              <span className={`w-8 h-8 inline-block ${textClasses.vertical} bg-green-200`}>
+                <span className="absolute top-0 border-slate-400 border-t border-b border-dashed w-full h-8 dark:border-slate-700"></span>
+                <span className="absolute top-0 border-blue-400 border-b border-dashed w-full h-4 dark:border-slate-700"></span>
+              </span>
+              <span className="relative z-10 text-slate-700 font-medium px-4 dark:text-slate-200 bg-red-200">The quick brown fox jumps over the lazy dog.</span>
+            </div>
+          </div>
+
+        </div>
       </section>
 
+      <Stack spacing={2} direction="row" className={'mt-2'}>
+        <TagFieldGroupSingle label={'Vertical Align'}
+                             options={decorateAndGroupClasses(tailwind_classes_vertical_align)}
+                             width={280}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('vertical_align', values);
+                             }}
+        />
+      </Stack>
 
       <ExampleShowcase>
         <h1>Your content here</h1>
