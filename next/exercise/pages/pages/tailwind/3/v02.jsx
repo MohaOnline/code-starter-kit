@@ -118,14 +118,14 @@ export default function SamplePage() {
           // options={decorateAndGroupClasses(tailwind_classes_text_smoothing).sort((a, b) => a.group.localeCompare(b.group))}
                              options={decorateAndGroupClasses(tailwind_classes_text_smoothing)}
                              updateHandler={(values) => {
-                               updateStateTextClasses('header_transform', values);
+                               updateStateTextClasses('text_smoothing', values);
                              }}
         />
 
         <TagFieldGroupSingle label={'Letter Spacing'}
                              options={decorateAndGroupClasses(tailwind_classes_letter_spacing)}
                              updateHandler={(values) => {
-                               updateStateTextClasses('header_transform', values);
+                               updateStateTextClasses('text_spacing', values);
                              }}
         />
 
@@ -134,7 +134,7 @@ export default function SamplePage() {
                              width={400}
                              limitTags={2}
                              updateHandler={(values) => {
-                               updateStateTextClasses('header_transform', values);
+                               updateStateTextClasses('decoration_line', values);
                              }}
         />
 
