@@ -92,14 +92,15 @@ export function TagFieldGroupSingle({
   const isUserInputValue = (value) => {
     if (!value || typeof value !== 'string') return false;
     return !options.some(option =>  // 传入的 options 里没有 value 这个值。
+      // 传入的永远是 string，其实永远用 option.name 在判断。
       typeof option === 'string' ? option === value : option.name === value
     );
   };
 
   /**
-   * Chip 双击时，把 label string 和 option 位置保留出来。
-   * 用户选中的 options 和 输入的 string 都在 array 里，双击编辑的时候把 array 的位置保存出来。
-   * 渲染 Chip 时，跳过正编辑的 string。
+   * 通过 Autocomplete 的 inputValue 编辑输入框内容用 editingValue 控制。
+   * Chip 双击时，把 fieldValues 相关 index 的内容去除，把内容复制给 editingValue。
+   * 如果内容是用户输入的话，fieldValue 是 string，仅用户输入的数据可以编辑。
    *
    * @param label Chip value: class name string.
    * @param index 设置的多个 value/option 的序号，从 0 开始。
