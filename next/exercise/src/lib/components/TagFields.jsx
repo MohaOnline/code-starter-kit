@@ -18,6 +18,7 @@ export function TagFieldSingle({
 }) {
   const [fieldValue, setFieldValue] = React.useState(null); // Options and value held in field.
 
+  // @see https://mui.com/material-ui/api/autocomplete/
   return (
     <Autocomplete freeSolo
                   id={_.kebabCase(label)}
@@ -85,8 +86,6 @@ export function TagFieldGroupSingle({
   const [fieldValues, setFieldValues] = React.useState([]);
   // Show Snackbar when multiple freeSolo values are overwritten.
   const [warningOverwriteSnackOpen, setWarningOverwriteSnackOpen] = React.useState(false);
-  // 如果是生效的 value 双击编辑 index 为 value 的序号，否则为 -1。
-  const [editingFieldValueIndex, setEditingFieldValueIndex] = React.useState(-1);
   const [editingValue, setEditingValue] = React.useState('');
 
   // 检查当前值是否是用户输入的值（不在预设选项中）
@@ -103,156 +102,148 @@ export function TagFieldGroupSingle({
    * 渲染 Chip 时，跳过正编辑的 string。
    *
    * @param label Chip value: class name string.
-   * @param index 设置的多个 option 的序号，从 0 开始。
+   * @param index 设置的多个 value/option 的序号，从 0 开始。
    */
   const handleChipDoubleClick = (label, index) => {
     if (isUserInputValue(label)) {
-      setEditingFieldValueIndex(index);
+      fieldValues.splice(index, 1);
+      setFieldValues(fieldValues);
       setEditingValue(label);
     }
   };
 
-  const handleBlur = () => {
-    if (editingFieldValueIndex >= 0) {
-      setEditingFieldValueIndex(-1);
-      setEditingValue('');
-    }
-  };
-
+  // @see https://mui.com/material-ui/api/autocomplete/
   return (
     <>
-    <Autocomplete multiple
-                  disableCloseOnSelect  // 因为多选，选择后不关闭
-                  limitTags={limitTags}
-                  freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
-                  id={_.kebabCase(label)}
-                  size="small"
-                  sx={{width: width}}
-                  options={options}
-                  slotProps={{
-                    listbox: {
-                      style: {
-                        maxHeight: 400, // ✅ 下拉框一次能显示更多
+      <Autocomplete multiple
+                    disableCloseOnSelect  // 因为多选，选择后不关闭
+                    limitTags={limitTags}
+                    freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
+                    id={_.kebabCase(label)}
+                    size="small"
+                    sx={{width: width}}
+                    options={options}
+                    slotProps={{
+                      listbox: {
+                        style: {
+                          maxHeight: 400, // ✅ 下拉框一次能显示更多
+                        },
                       },
-                    },
-                  }}
-                  groupBy={(option) => option.group}
-                  renderGroup={(params) => (
-                    <li key={params.key}>
-                      {params.group !== '' && <GroupHeader>{params.group}</GroupHeader>}
-                      <GroupItems>{params.children}</GroupItems>
-                    </li>
-                  )}
-                  renderInput={(params) => <TextField {...params} // https://mui.com/material-ui/react-autocomplete/#controlled-states
-                                                      label={label}
-                                                      placeholder={placeholder}
-                                                      onBlur={handleBlur}
-                                                      slotProps={{
-                                                        inputLabel: {shrink: true}, // ✅ label 始终显示
-                                                      }}
-                  />}
-                  inputValue={editingValue}
-                  onInputChange={(event, newInputValue) => {
-                    setEditingValue(newInputValue);
-                  }}
-                  getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
-                  renderOption={(props, option, {selected}) => {  // selected: boolean - 当前选项是否被选中
-                    const {key, ...optionProps} = props;          // - **`key`**：React 的唯一标识符，用于 diff 算法优化
-
-                    // 处理对象类型（预定义选项）
-                    return (
-                      <li key={key} {...optionProps} style={{padding: '8px 12px'}}>
-                        <div>
-                          <div style={{fontSize: '14px', fontWeight: 500}}>
-                            {option.name}
-                          </div>
-                          {option.description && (<div style={{
-                              fontSize: '12px',
-                              color: '#666',
-                              marginTop: '2px',
-                              lineHeight: '1.3'
-                            }}>
-                              {option.description}
-                            </div>
-                          )}
-                        </div>
+                    }}
+                    groupBy={(option) => option.group}
+                    renderGroup={(params) => (
+                      <li key={params.key}>
+                        {params.group !== '' && <GroupHeader>{params.group}</GroupHeader>}
+                        <GroupItems>{params.children}</GroupItems>
                       </li>
-                    );
-                  }}
-                  value={fieldValues || []}                       // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
-                  renderValue={(options, getOptionProps) => {
-                    console.log(_.kebabCase(label), 'renderValue', options);
-                    return options.map((option, index) => {
-                      const {key, ...optionProps} = getOptionProps({index});
-                      const label = typeof option === 'string' ? option : option.name;
+                    )}
+                    renderInput={(params) => (  // https://mui.com/material-ui/react-autocomplete/#controlled-states
+                      <TextField {...params}
+                                 label={label}
+                                 placeholder={placeholder}
+                                 slotProps={{
+                                   inputLabel: {shrink: true}, // ✅ label 始终显示
+                                 }}
+                      />
+                    )}
+                    inputValue={editingValue}
+                    onInputChange={(event, newInputValue) => {
+                      setEditingValue(newInputValue);
+                    }}
+                    getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
+                    renderOption={(props, option, {selected}) => {  // selected: boolean - 当前选项是否被选中
+                      const {key, ...optionProps} = props;          // - **`key`**：React 的唯一标识符，用于 diff 算法优化
 
-                      if (editingFieldValueIndex === index) {
-                        return null;
-                      }
-
+                      // 处理对象类型（预定义选项）
                       return (
-                        <Chip key={key}
-                              size="small"
-                              label={label}
-                              {...optionProps}
-                              onDoubleClick={() => handleChipDoubleClick(label, index)}
-                              style={{
-                                cursor: isUserInputValue(label) ? 'pointer' : 'default',
-                                backgroundColor: isUserInputValue(label) ? '#e3f2fd' : undefined
-                              }}
-                        />
+                        <li key={key} {...optionProps} style={{padding: '8px 12px'}}>
+                          <div>
+                            <div style={{fontSize: '14px', fontWeight: 500}}>
+                              {option.name}
+                            </div>
+                            {option.description && (<div style={{
+                                fontSize: '12px',
+                                color: '#666',
+                                marginTop: '2px',
+                                lineHeight: '1.3'
+                              }}>
+                                {option.description}
+                              </div>
+                            )}
+                          </div>
+                        </li>
                       );
-                    });
-                  }}
-                  isOptionEqualToValue={(option, value) => {      // 配置 multiple 时必须？点击 option 时调用。比较 option 和 value，所以考虑所有可能
-                    // console.log(_.kebabCase(label), 'isOptionEqualToValue', option, value);
-                    // 处理字符串类型（用户输入）
-                    if (typeof option === 'string' && typeof value === 'string') {
-                      return option === value;
-                    }
-                    // 处理对象类型（从选项中选择）
-                    if (typeof option === 'object' && typeof value === 'object') {
-                      return option.name === value.name;
-                    }
-                    // 处理混合类型
-                    const optionName = typeof option === 'string' ? option : option.name;
-                    const valueName = typeof value === 'string' ? value : value.name;
-                    return optionName === valueName;
-                  }}
-                  onChange={(_e, values) => {  // values：完整的选中数组，更新完 state 后，react 会更新下拉列表选中状态。
-                    console.log(_.kebabCase(label), 'onChange', values);
+                    }}
+                    value={fieldValues || []}                       // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
+                    renderValue={(options, getOptionProps) => {
+                      console.log(_.kebabCase(label), 'renderValue', options);
+                      return options.map((option, index) => {
+                        const {key, ...optionProps} = getOptionProps({index});
+                        const label = typeof option === 'string' ? option : option.name;
 
-                    // Filter to allow only one option per group
-                    const groupDistinctValues = [];
-                    const groupsUsed = new Set();
-
-                    // Process values in reverse order to keep the most recently selected option per group
-                    for (let i = values.length - 1; i >= 0; i--) {
-                      const value = values[i];
-
-                      let group = typeof value === 'string' ? 'custom' : value.group;
-                      if (group === 'custom' && !value.includes(':')) {
-                        group = '';
+                        return (
+                          <Chip key={key}
+                                size="small"
+                                label={label}
+                                {...optionProps}
+                                onDoubleClick={() => handleChipDoubleClick(label, index)}
+                                style={{
+                                  cursor: isUserInputValue(label) ? 'pointer' : 'default',
+                                  backgroundColor: isUserInputValue(label) ? '#e3f2fd' : undefined
+                                }}
+                          />
+                        );
+                      });
+                    }}
+                    isOptionEqualToValue={(option, value) => {      // 配置 multiple 时必须？点击 option 时调用。比较 option 和 value，所以考虑所有可能
+                      // console.log(_.kebabCase(label), 'isOptionEqualToValue', option, value);
+                      // 处理字符串类型（用户输入）
+                      if (typeof option === 'string' && typeof value === 'string') {
+                        return option === value;
                       }
-                      console.log(_.kebabCase(label), 'onChange', value, group);
+                      // 处理对象类型（从选项中选择）
+                      if (typeof option === 'object' && typeof value === 'object') {
+                        return option.name === value.name;
+                      }
+                      // 处理混合类型
+                      const optionName = typeof option === 'string' ? option : option.name;
+                      const valueName = typeof value === 'string' ? value : value.name;
+                      return optionName === valueName;
+                    }}
+                    onChange={(_e, values) => {  // values：完整的选中数组，更新完 state 后，react 会更新下拉列表选中状态。
+                      console.log(_.kebabCase(label), 'onChange', values);
 
-                      if (!groupsUsed.has(group)) {
-                        groupDistinctValues.unshift(value); // Add to beginning to maintain order
-                        groupsUsed.add(group);
-                      }
-                      else if (allowMultipleManualValues && group === 'custom' && !groupDistinctValues.includes(value)) {
-                        groupDistinctValues.unshift(value);
-                      }
-                      else if (group === 'custom') {
-                        setWarningOverwriteSnackOpen(true);
-                      }
-                    }
+                      // Filter to allow only one option per group
+                      const groupDistinctValues = [];
+                      const groupsUsed = new Set();
 
-                    // Update both the filtered values and the text classes
-                    setFieldValues(groupDistinctValues);
-                    updateHandler(groupDistinctValues);
-                  }}
-    />
+                      // Process values in reverse order to keep the most recently selected option per group
+                      for (let i = values.length - 1; i >= 0; i--) {
+                        const value = values[i];
+
+                        let group = typeof value === 'string' ? 'custom' : value.group;
+                        if (group === 'custom' && !value.includes(':')) {
+                          group = '';
+                        }
+                        console.log(_.kebabCase(label), 'onChange', value, group);
+
+                        if (!groupsUsed.has(group)) {
+                          groupDistinctValues.unshift(value); // Add to beginning to maintain order
+                          groupsUsed.add(group);
+                        }
+                        else if (allowMultipleManualValues && group === 'custom' && !groupDistinctValues.includes(value)) {
+                          groupDistinctValues.unshift(value);
+                        }
+                        else if (group === 'custom') {
+                          setWarningOverwriteSnackOpen(true);
+                        }
+                      }
+
+                      // Update both the filtered values and the text classes
+                      setFieldValues(groupDistinctValues);
+                      updateHandler(groupDistinctValues);
+                    }}
+      />
       <Snackbar
         open={warningOverwriteSnackOpen}
         autoHideDuration={5000}
