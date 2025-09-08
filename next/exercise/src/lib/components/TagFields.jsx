@@ -9,6 +9,7 @@ import {styled, lighten, darken} from '@mui/system';
 
 import _ from "lodash";
 
+// TODO 需要添加双击自定义 Chip 修改对应 class name 的功能。
 export function TagFieldSingle({
   label = "",
   options = [],
@@ -58,6 +59,7 @@ export function TagFieldSingle({
   );
 }
 
+// TODO 增加 TextField 手动输入设置 option 到 fieldValue 功能。
 export function TagFieldGroupSingle({
   label = "",
   options = [],
@@ -214,6 +216,7 @@ export function TagFieldGroupSingle({
                     onChange={(_e, values) => {  // values：完整的选中数组，更新完 state 后，react 会更新下拉列表选中状态。
                       console.log(_.kebabCase(label), 'onChange', values);
 
+                      // TODO 输入 string 匹配到 option 的功能。
                       // Filter to allow only one option per group
                       const groupDistinctValues = [];
                       const groupsUsed = new Set();
