@@ -1,3 +1,6 @@
+问题在于 MUI Autocomplete 的 `renderInput` 中，直接设置 `value` 属性会与 Autocomplete 的内部状态管理产生冲突。我们需要通过 `inputValue` 属性来控制输入框的值，并且需要添加回车键处理逻辑来完成编辑。
+
+```javascript
 import Script from "next/script";
 import * as React from "react";
 
@@ -17,14 +20,53 @@ export function TagFieldSingle({
   placeholder = "Please select or enter...",
 }) {
   const [fieldValue, setFieldValue] = React.useState(null); // Options and value held in field.
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState('');
+
+  // 检查当前值是否是用户输入的值（不在预设选项中）
+  const isUserInputValue = (value) => {
+    if (!value || typeof value !== 'string') return false;
+    return !options.includes(value);
+  };
+
+  const handleChipDoubleClick = () => {
+    if (isUserInputValue(fieldValue)) {
+      setIsEditing(true);
+      setInputValue(fieldValue);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && isEditing) {
+      setFieldValue(inputValue);
+      if (updateHandler) {
+        updateHandler(inputValue);
+      }
+      setIsEditing(false);
+      event.preventDefault();
+    }
+  };
+
+  const handleBlur = () => {
+    if (isEditing) {
+      setIsEditing(false);
+    }
+  };
 
   return (
     <Autocomplete freeSolo
+                  open={isEditing}
                   id={_.kebabCase(label)}
                   size="small"
                   style={{width: width}}
                   options={options}
                   getOptionLabel={(option) => option}
+                  inputValue={isEditing ? inputValue : ''}
+                  onInputChange={(event, newInputValue) => {
+                    if (isEditing) {
+                      setInputValue(newInputValue);
+                    }
+                  }}
                   slotProps={{
                     listbox: {
                       style: {
@@ -35,12 +77,25 @@ export function TagFieldSingle({
                   value={fieldValue}
                   renderValue={(option, getItemProps) => {
                     console.log(_.kebabCase(label), 'renderValue', option);
-                    return <Chip size="small" label={option} {...getItemProps()} />;
+                    return (
+                      <Chip 
+                        size="small" 
+                        label={option} 
+                        {...getItemProps()} 
+                        onDoubleClick={handleChipDoubleClick}
+                        style={{
+                          cursor: isUserInputValue(option) ? 'pointer' : 'default',
+                          backgroundColor: isUserInputValue(option) ? '#e3f2fd' : undefined
+                        }}
+                      />
+                    );
                   }}
                   onChange={(event, newValue) => {
-                    setFieldValue(newValue);
-                    if (updateHandler) {
-                      updateHandler(newValue);
+                    if (!isEditing) {
+                      setFieldValue(newValue);
+                      if (updateHandler) {
+                        updateHandler(newValue);
+                      }
                     }
                   }}
                   renderInput={(params) => (
@@ -48,6 +103,8 @@ export function TagFieldSingle({
                                size="small"
                                label={label}
                                placeholder={placeholder}
+                               onKeyDown={handleKeyDown}
+                               onBlur={handleBlur}
                                slotProps={{
                                  inputLabel: {shrink: true}, // ✅ label 始终显示
                                }}
@@ -85,9 +142,10 @@ export function TagFieldGroupSingle({
   const [fieldValues, setFieldValues] = React.useState([]);
   // Show Snackbar when multiple freeSolo values are overwritten.
   const [warningOverwriteSnackOpen, setWarningOverwriteSnackOpen] = React.useState(false);
-  // 如果是生效的 value 双击编辑 index 为 value 的序号，否则为 -1。
-  const [editingFieldValueIndex, setEditingFieldValueIndex] = React.useState(-1);
+
+  const [editingIndex, setEditingIndex] = React.useState(-1);
   const [editingValue, setEditingValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState('');
 
   // 检查当前值是否是用户输入的值（不在预设选项中）
   const isUserInputValue = (value) => {
@@ -107,15 +165,34 @@ export function TagFieldGroupSingle({
    */
   const handleChipDoubleClick = (label, index) => {
     if (isUserInputValue(label)) {
-      setEditingFieldValueIndex(index);
+      setEditingIndex(index);
       setEditingValue(label);
+      setInputValue(label);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && editingIndex >= 0) {
+      const updatedValues = [...fieldValues];
+      updatedValues[editingIndex] = inputValue;
+      
+      setFieldValues(updatedValues);
+      if (updateHandler) {
+        updateHandler(updatedValues);
+      }
+      
+      setEditingIndex(-1);
+      setEditingValue('');
+      setInputValue('');
+      event.preventDefault();
     }
   };
 
   const handleBlur = () => {
-    if (editingFieldValueIndex >= 0) {
-      setEditingFieldValueIndex(-1);
+    if (editingIndex >= 0) {
+      setEditingIndex(-1);
       setEditingValue('');
+      setInputValue('');
     }
   };
 
@@ -125,10 +202,17 @@ export function TagFieldGroupSingle({
                   disableCloseOnSelect  // 因为多选，选择后不关闭
                   limitTags={limitTags}
                   freeSolo  // 支持用户输入，输入内容为 string 类型，所有 option 处理需要考虑单纯 string 的情况
+                  open={editingIndex >= 0}
                   id={_.kebabCase(label)}
                   size="small"
                   sx={{width: width}}
-                  options={options}
+                  options={editingIndex >= 0 ? [] : options}
+                  inputValue={editingIndex >= 0 ? inputValue : ''}
+                  onInputChange={(event, newInputValue) => {
+                    if (editingIndex >= 0) {
+                      setInputValue(newInputValue);
+                    }
+                  }}
                   slotProps={{
                     listbox: {
                       style: {
@@ -143,18 +227,6 @@ export function TagFieldGroupSingle({
                       <GroupItems>{params.children}</GroupItems>
                     </li>
                   )}
-                  renderInput={(params) => <TextField {...params} // https://mui.com/material-ui/react-autocomplete/#controlled-states
-                                                      label={label}
-                                                      placeholder={placeholder}
-                                                      onBlur={handleBlur}
-                                                      slotProps={{
-                                                        inputLabel: {shrink: true}, // ✅ label 始终显示
-                                                      }}
-                  />}
-                  inputValue={editingValue}
-                  onInputChange={(event, newInputValue) => {
-                    setEditingValue(newInputValue);
-                  }}
                   getOptionLabel={(option) => typeof option === 'string' ? option : (option.name)}
                   renderOption={(props, option, {selected}) => {  // selected: boolean - 当前选项是否被选中
                     const {key, ...optionProps} = props;          // - **`key`**：React 的唯一标识符，用于 diff 算法优化
@@ -179,6 +251,15 @@ export function TagFieldGroupSingle({
                       </li>
                     );
                   }}
+                  renderInput={(params) => <TextField {...params}
+                                                      label={label}
+                                                      placeholder={placeholder}
+                                                      onKeyDown={handleKeyDown}
+                                                      onBlur={handleBlur}
+                                                      slotProps={{
+                                                        inputLabel: {shrink: true}, // ✅ label 始终显示
+                                                      }}
+                  />}
                   value={fieldValues || []}                       // 选中 Options, 可以是预配置的 Option 或者主动输入的 string
                   renderValue={(options, getOptionProps) => {
                     console.log(_.kebabCase(label), 'renderValue', options);
@@ -186,8 +267,8 @@ export function TagFieldGroupSingle({
                       const {key, ...optionProps} = getOptionProps({index});
                       const label = typeof option === 'string' ? option : option.name;
 
-                      if (editingFieldValueIndex === index) {
-                        return null;
+                      if (editingIndex === index) {
+                        return null; // 编辑中的 chip 不显示
                       }
 
                       return (
@@ -220,6 +301,11 @@ export function TagFieldGroupSingle({
                     return optionName === valueName;
                   }}
                   onChange={(_e, values) => {  // values：完整的选中数组，更新完 state 后，react 会更新下拉列表选中状态。
+                    if (editingIndex >= 0) {
+                      // 编辑模式下不处理 onChange
+                      return;
+                    }
+
                     console.log(_.kebabCase(label), 'onChange', values);
 
                     // Filter to allow only one option per group
@@ -273,3 +359,34 @@ export function TagFieldGroupSingle({
     </>
   );
 }
+```
+
+
+## 主要修改说明
+
+### 关键修复：
+
+1. **使用 `inputValue` 和 `onInputChange`**：
+    - 替换了直接在 TextField 上设置 `value` 的方式
+    - 使用 Autocomplete 的 `inputValue` 属性来控制输入框显示的值
+    - 通过 `onInputChange` 回调来监听输入变化
+
+2. **TagFieldSingle 改进**：
+    - 添加了 `inputValue` 状态来管理编辑时的输入值
+    - 双击时设置 `inputValue` 为当前 chip 的值
+    - 回车时更新 `fieldValue` 并调用 `updateHandler`
+
+3. **TagFieldGroupSingle 改进**：
+    - 添加了 `inputValue` 状态
+    - 编辑时隐藏正在编辑的 chip（返回 `null`）
+    - 在 `onChange` 中添加编辑模式检查，避免冲突
+    - 回车时更新数组中对应位置的值
+
+### 功能特点：
+- ✅ 双击用户输入的 chip 时，输入框会显示该值
+- ✅ 回车键确认编辑并更新值
+- ✅ 失焦时取消编辑
+- ✅ 编辑期间隐藏下拉选项和正在编辑的 chip
+- ✅ 用户输入值有特殊样式提示
+
+现在双击 chip 时，其值会正确显示在输入框中，可以进行编辑了。

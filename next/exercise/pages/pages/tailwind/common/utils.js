@@ -42,3 +42,5 @@ export const decorateAndGroupClasses = (tailwind_classes, decorations = ['', 'ho
 
   return classes;
 }
+
+export const decorations = ['', 'hover', 'focus', 'md', 'lg'];

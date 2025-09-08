@@ -53,7 +53,6 @@ export default function SamplePage() {
     // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
 
     if (item !== 'header') {
-
       textClasses.header = Object.entries(textClasses)
                                  .filter(([attribute, options]) => attribute.startsWith("header_") && options)
                                  .flatMap(([key, options]) => options)
