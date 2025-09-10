@@ -42,15 +42,19 @@ export default function SamplePage() {
   /**
    * 把控件的值更新到 React 的 State。
    */
-  const classNames =
+  const extractClassNames =
     (prefix) => (Object.entries(textClasses)
-                       .filter(([attribute, value]) => attribute.startsWith(prefix) && value)
+                       .filter(([attribute, value]) => attribute.startsWith(prefix) && value) // 取出来的格式：[[attribute, [fieldValues]], ...]
+                       .flatMap(([attribute, options]) => options)  // [...fieldValues, ...fieldValues, ...] 解一层数组
                        .map((option) => typeof option === 'string' ? option : option.name)
                        .join(" "));
 
   const updateStateTextClasses = (item, value) => {
     textClasses[item] = value;
-    // textClasses.text = [textClasses.text_size, textClasses.text_align].join(' ');
+    console.log('updateStateTextClasses:', Object.entries(textClasses)
+                                                 .filter(([attribute, value]) => attribute.startsWith('text_') && value)
+                                                 .flatMap(([key, options]) => options)
+    );
 
     if (item !== 'header') {
       textClasses.header = Object.entries(textClasses)
