@@ -119,3 +119,81 @@ export const tailwind_classes_vertical_align = [
   {name: 'align-super', description: 'vertical-align: super;'},
   {name: 'align-[4px]', description: ''}
 ]
+
+// @see https://v3.tailwindcss.com/docs/margin
+export const tailwind_classes_boxing_margin = [
+  {name: 'box-border', description: 'box-sizing: border-box;', group: 'box-sizing', default: true},
+  {name: 'box-content', description: 'box-sizing: content-box;', group: 'box-sizing'},
+
+  {name: 'm-0', description: 'margin: 0;', group: 'margin'},
+  {name: 'm-px', description: 'margin: 1px;', group: 'margin'},
+  {name: 'm-0.5', description: 'margin: 0.125rem;', group: 'margin'},
+  {name: 'm-4', description: 'margin: 1rem;', group: 'margin'},
+  {name: 'm-96', description: 'margin: 24rem;', group: 'margin'},
+  {name: 'm-auto', description: 'margin: auto;', group: 'margin'},
+
+  {name: 'mx-0', description: 'margin-left: 0; margin-right: 0;', group: 'margin-x'},
+  {name: 'mx-px', description: 'margin-left: 1px; margin-right: 1px;', group: 'margin-x'},
+  {name: 'mx-0.5', description: 'margin-left: 0.125rem; margin-right: 0.125rem;', group: 'margin-x'},
+  {name: 'mx-4', description: 'margin-left: 1rem; margin-right: 1rem;', group: 'margin-x'},
+  {name: 'mx-96', description: 'margin-left: 24rem; margin-right: 24rem;', group: 'margin-x'},
+  {name: 'mx-auto', description: 'margin-left: auto; margin-right: auto;', group: 'margin-x'},
+
+  {name: 'my-0', description: 'margin-top: 0; margin-bottom: 0;', group: 'margin-y'},
+  {name: 'my-px', description: 'margin-top: 1px; margin-bottom: 1px;', group: 'margin-y'},
+  {name: 'my-0.5', description: 'margin-top: 0.125rem; margin-bottom: 0.125rem;', group: 'margin-y'},
+  {name: 'my-4', description: 'margin-top: 1rem; margin-bottom: 1rem;', group: 'margin-y'},
+  {name: 'my-96', description: 'margin-top: 24rem; margin-bottom: 24rem;', group: 'margin-y'},
+  {name: 'my-auto', description: 'margin-top: auto; margin-bottom: auto;', group: 'margin-y'},
+
+  {name: 'mt-0', description: 'margin-top: 0;', group: 'margin-top'},
+  {name: 'mt-px', description: 'margin-top: 1px;', group: 'margin-top'},
+  {name: 'mt-0.5', description: 'margin-top: 0.125rem;', group: 'margin-top'},
+  {name: 'mt-4', description: 'margin-top: 1rem;', group: 'margin-top'},
+  {name: 'mt-96', description: 'margin-top: 24rem;', group: 'margin-top'},
+  {name: 'mt-auto', description: 'margin-top: auto;', group: 'margin-top'},
+  {name: '-mt-10', description: '支持负值：margin-top: -2.5rem;', group: 'margin-top'},
+
+  {name: 'mr-0', description: 'margin-right: 0;', group: 'margin-right'},
+  {name: 'mr-px', description: 'margin-right: 1px;', group: 'margin-right'},
+  {name: 'mr-0.5', description: 'margin-right: 0.125rem;', group: 'margin-right'},
+
+  {name: 'mb-0', description: 'margin-bottom: 0;', group: 'margin-bottom'},
+  {name: 'mb-px', description: 'margin-bottom: 1px;', group: 'margin-bottom'},
+  {name: 'mb-0.5', description: 'margin-bottom: 0.125rem;', group: 'margin-bottom'},
+
+  {name: 'ml-0', description: 'margin-left: 0;', group: 'margin-left'},
+  {name: 'ml-px', description: 'margin-left: 1px;', group: 'margin-left'},
+  {name: 'ml-0.5', description: 'margin-left: 0.125rem;', group: 'margin-left'},
+
+  {name: 'ms-0', description: 'margin-inline-start: 0;', group: 'margin-inline-start'},
+  {name: 'ms-px', description: 'margin-inline-start: 1px;', group: 'margin-inline-start'},
+  {name: 'ms-0.5', description: 'margin-inline-start: 0.125rem;', group: 'margin-inline-start'},
+  {name: 'ms-4', description: 'margin-inline-start: 1rem;', group: 'margin-inline-start'},
+  {name: 'ms-96', description: 'margin-inline-start: 24rem;', group: 'margin-inline-start'},
+  {name: 'ms-auto', description: 'margin-inline-start: auto;', group: 'margin-inline-start'},
+
+  {name: 'me-0', description: 'margin-inline-end: 0;', group: 'margin-inline-end'},
+  {name: 'me-px', description: 'margin-inline-end: 1px;', group: 'margin-inline-end'},
+  {name: 'me-0.5', description: 'margin-inline-end: 0.125rem;', group: 'margin-inline-end'},
+]
+
+// @see https://v3.tailwindcss.com/docs/padding
+export const tailwind_classes_boxing_padding = []
+
+// @see https://v3.tailwindcss.com/docs/border-width
+export const tailwind_classes_boxing_border = [
+  {name: 'border', description: 'border-width: 1px;', group: 'border-default'},
+
+  {name: 'border-0', description: 'border-width: 0;', group: 'border-width'},
+  {name: 'border-2', description: 'border-width: 2px;', group: 'border-width'},
+  {name: 'border-4', description: 'border-width: 4px;', group: 'border-width'},
+
+  {name: 'border-x', description: 'border-left-width: 1px; border-right-width: 1px;', group: 'border-x-width'},
+  {name: 'border-x-0', description: 'border-left-width: 0; border-right-width: 0;', group: 'border-x-width'},
+  {name: 'border-x-2', description: 'border-left-width: 2px; border-right-width: 2px;', group: 'border-x-width'},
+  {name: 'border-x-4', description: 'border-left-width: 4px; border-right-width: 4px;', group: 'border-x-width'},
+  {name: 'border-x-8', description: 'border-left-width: 8px; border-right-width: 8px;', group: 'border-x-width'},
+
+  {name: 'border-t-0', description: 'border-top-width: 0;', group: 'border-top-width'},
+]
