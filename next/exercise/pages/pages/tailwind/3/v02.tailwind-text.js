@@ -183,6 +183,13 @@ export const tailwind_classes_boxing_margin = [
   {name: 'space-x-4', description: 'margin-left: 1rem; margin-right: 1rem;', group: 'margin-x'},
   {name: 'space-x-96', description: 'margin-left: 24rem; margin-right: 24rem;', group: 'margin-x'},
 
+  {name: 'space-y-0', description: 'margin-top: 0; margin-bottom: 0;', group: 'margin-y'},
+  {name: 'space-y-px', description: 'margin-top: 1px; margin-bottom: 1px;', group: 'margin-y'},
+  {name: 'space-y-0.5', description: 'margin-top: 0.125rem; margin-bottom: 0.125rem;', group: 'margin-y'},
+  {name: 'space-y-3.5', description: 'margin-top: 0.875rem; /* 14px */ margin-bottom: 0.875rem; /* 14px */', group: 'margin-y'},
+  {name: 'space-y-4', description: 'margin-top: 1rem; margin-bottom: 1rem;', group: 'margin-y'},
+  {name: 'space-y-96', description: 'margin-top: 24rem; margin-bottom: 24rem;', group: 'margin-y'},
+
   {name: 'space-x-reverse', description: 'margin-right: 0; margin-left: auto;', group: 'margin-x-reverse'},
   {name: 'space-y-reverse', description: 'margin-top: 0; margin-bottom: auto;', group: 'margin-y-reverse'},
 

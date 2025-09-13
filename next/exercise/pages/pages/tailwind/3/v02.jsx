@@ -22,6 +22,7 @@ import {
   TagFieldSingle,
 } from '@/lib/components/TagFields';
 import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
+import {Panel} from '@/lib/components/tailwind/panel/v01';
 
 import {
   tailwind_classes_text_smoothing,
@@ -76,7 +77,8 @@ export default function SamplePage() {
     // 有前缀的属性的值应该是：Array[option|string]
     textClasses.decoration = extractClassNames('decoration_');
     textClasses.vertical = extractClassNames('vertical_');
-    textClasses.boxing = extractClassNames('boxing_');
+    textClasses.container_boxing = extractClassNames('container_boxing_');
+    textClasses.container_items_boxing = extractClassNames('container_items_boxing_');
 
     setTextClasses({
       ...textClasses,
@@ -186,62 +188,121 @@ export default function SamplePage() {
         />
       </Stack>
 
+      <Panel title={'Container Properties'}>
 
-      <Stack spacing={2} direction="row" className={'mt-2'}>
-        <TagFieldGroupSingle label={'Boxing: Margin'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_margin', values);
-                             }}
-        />
-        <TagFieldGroupSingle label={'Boxing: Padding'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_padding', values);
-                             }}
-        />
-        <TagFieldGroupSingle label={'Boxing: Border'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_border', values);
-                             }}
-        />
-      </Stack>
+        <Stack spacing={2} direction="row" className={'mt-2'}>
+          <TagFieldGroupSingle label={'Boxing: Margin'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_boxing_margin', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Padding'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_boxing_padding', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Border'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_boxing_border', values);
+                               }}
+          />
+        </Stack>
 
-      <Stack spacing={2} direction="row" className={'mt-2'}>
-        <TagFieldGroupSingle label={'Boxing: Size'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_size', values);
-                             }}
-        />
-        <TagFieldGroupSingle label={'Boxing: Padding'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_padding', values);
-                             }}
-        />
-        <TagFieldGroupSingle label={'Boxing: Border'}
-                             options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
-                             width={400}
-                             limitTags={2}
-                             updateHandler={(values) => {
-                               updateStateTextClasses('boxing_border', values);
-                             }}
-        />
-      </Stack>
+        <Stack spacing={2} direction="row" className={'mt-2'}>
+          <TagFieldGroupSingle label={'Boxing: Size'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('boxing_size', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Padding'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('boxing_padding', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Border'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('boxing_border', values);
+                               }}
+          />
+        </Stack>
+      </Panel>
 
-      <LoremIpsumSectionNDiv n={4} sectionClasses={`border ${textClasses.boxing} `} contentClasses={`border ${textClasses.boxing}`}/>
+      <Panel title={'Items Properties'}>
+
+        <Stack spacing={2} direction="row" className={'mt-2'}>
+          <TagFieldGroupSingle label={'Boxing: Margin'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_margin', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Padding'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_padding', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Border'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_border', values);
+                               }}
+          />
+        </Stack>
+
+        <Stack spacing={2} direction="row" className={'mt-2'}>
+          <TagFieldGroupSingle label={'Boxing: Size'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_size', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Padding'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_padding', values);
+                               }}
+          />
+          <TagFieldGroupSingle label={'Boxing: Border'}
+                               options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                               width={400}
+                               limitTags={2}
+                               updateHandler={(values) => {
+                                 updateStateTextClasses('container_items_boxing_border', values);
+                               }}
+          />
+        </Stack>
+      </Panel>
+
+      <LoremIpsumSectionNDiv n={4} sectionClasses={`border ${textClasses.container_boxing} `} contentClasses={`border ${textClasses.container_items_boxing}`}/>
 
       <ExampleShowcase>
         <h1>Your content here</h1>
