@@ -122,8 +122,6 @@ export const tailwind_classes_vertical_align = [
 
 // @see https://v3.tailwindcss.com/docs/margin
 export const tailwind_classes_boxing_margin = [
-  {name: 'box-border', description: 'box-sizing: border-box;', group: 'box-sizing', default: true},
-  {name: 'box-content', description: 'box-sizing: content-box;', group: 'box-sizing'},
 
   {name: 'm-0', description: 'margin: 0;', group: 'margin'},
   {name: 'm-px', description: 'margin: 1px;', group: 'margin'},
@@ -176,14 +174,64 @@ export const tailwind_classes_boxing_margin = [
   {name: 'me-0', description: 'margin-inline-end: 0;', group: 'margin-inline-end'},
   {name: 'me-px', description: 'margin-inline-end: 1px;', group: 'margin-inline-end'},
   {name: 'me-0.5', description: 'margin-inline-end: 0.125rem;', group: 'margin-inline-end'},
+
+  // @see https://v3.tailwindcss.com/docs/space
+  {name: 'space-x-0', description: 'margin-left: 0; margin-right: 0;', group: 'margin-x'},
+  {name: 'space-x-px', description: 'margin-left: 1px; margin-right: 1px;', group: 'margin-x'},
+  {name: 'space-x-0.5', description: 'margin-left: 0.125rem; margin-right: 0.125rem;', group: 'margin-x'},
+  {name: 'space-x-3.5', description: 'margin-left: 0.875rem; /* 14px */ margin-right: 0.875rem; /* 14px */', group: 'margin-x'},
+  {name: 'space-x-4', description: 'margin-left: 1rem; margin-right: 1rem;', group: 'margin-x'},
+  {name: 'space-x-96', description: 'margin-left: 24rem; margin-right: 24rem;', group: 'margin-x'},
+
+  {name: 'space-x-reverse', description: 'margin-right: 0; margin-left: auto;', group: 'margin-x-reverse'},
+  {name: 'space-y-reverse', description: 'margin-top: 0; margin-bottom: auto;', group: 'margin-y-reverse'},
+
+
 ]
 
 // @see https://v3.tailwindcss.com/docs/padding
-export const tailwind_classes_boxing_padding = []
+export const tailwind_classes_boxing_padding = [
+  {name: 'box-border', description: 'box-sizing: border-box;', group: 'box-sizing', default: true},
+  {name: 'box-content', description: 'box-sizing: content-box;', group: 'box-sizing'},
+
+  {name: 'p-0', description: 'padding: 0;', group: 'padding'},
+  {name: 'p-px', description: 'padding: 1px;', group: 'padding'},
+  {name: 'p-0.5', description: 'padding: 0.125rem;', group: 'padding'},
+  {name: 'p-4', description: 'padding: 1rem;', group: 'padding'},
+  {name: 'p-96', description: 'padding: 24rem;', group: 'padding'},
+
+  {name: 'px-0', description: 'padding-left: 0; padding-right: 0;', group: 'padding-x'},
+  {name: 'px-px', description: 'padding-left: 1px; padding-right: 1px;', group: 'padding-x'},
+  {name: 'px-0.5', description: 'padding-left: 0.125rem; padding-right: 0.125rem;', group: 'padding-x'},
+  {name: 'px-3.5', description: 'padding-left: 0.875rem; /* 14px */ padding-right: 0.875rem; /* 14px */', group: 'padding-x'},
+  {name: 'px-4', description: 'padding-left: 1rem; padding-right: 1rem;', group: 'padding-x'},
+  {name: 'px-96', description: 'padding-left: 24rem; padding-right: 24rem;', group: 'padding-x'},
+
+  {name: 'py-0', description: 'padding-top: 0; padding-bottom: 0;', group: 'padding-y'},
+  {name: 'py-px', description: 'padding-top: 1px; padding-bottom: 1px;', group: 'padding-y'},
+  {name: 'py-0.5', description: 'padding-top: 0.125rem; padding-bottom: 0.125rem;', group: 'padding-y'},
+  {name: 'py-3.5', description: 'padding-top: 0.875rem; /* 14px */ padding-bottom: 0.875rem; /* 14px */', group: 'padding-y'},
+  {name: 'py-4', description: 'padding-top: 1rem; padding-bottom: 1rem;', group: 'padding-y'},
+  {name: 'py-96', description: 'padding-top: 24rem; padding-bottom: 24rem;', group: 'padding-y'},
+
+  {name: 'pt-0', description: 'padding-top: 0;', group: 'padding-top'},
+  {name: 'pt-px', description: 'padding-top: 1px;', group: 'padding-top'},
+  {name: 'pt-0.5', description: 'padding-top: 0.125rem;', group: 'padding-top'},
+  {name: 'pt-3.5', description: 'padding-top: 0.875rem; /* 14px */', group: 'padding-top'},
+  {name: 'pt-4', description: 'padding-top: 1rem;', group: 'padding-top'},
+  {name: 'pt-96', description: 'padding-top: 24rem;', group: 'padding-top'},
+
+  {name: 'pr-0', description: 'padding-right: 0;', group: 'padding-right'},
+  {name: 'pr-px', description: 'padding-right: 1px;', group: 'padding-right'},
+  {name: 'pr-0.5', description: 'padding-right: 0.125rem;', group: 'padding-right'},
+  {name: 'pr-3.5', description: 'padding-right: 0.875rem; /* 14px */', group: 'padding-right'},
+  {name: 'pr-4', description: 'padding-right: 1rem;', group: 'padding-right'},
+  {name: 'pr-96', description: 'padding-right: 24rem;', group: 'padding-right'},
+]
 
 // @see https://v3.tailwindcss.com/docs/border-width
 export const tailwind_classes_boxing_border = [
-  {name: 'border', description: 'border-width: 1px;', group: 'border-default'},
+  {name: 'border', description: 'border-width: 1px;', group: 'border-main'},
 
   {name: 'border-0', description: 'border-width: 0;', group: 'border-width'},
   {name: 'border-2', description: 'border-width: 2px;', group: 'border-width'},
@@ -196,4 +244,70 @@ export const tailwind_classes_boxing_border = [
   {name: 'border-x-8', description: 'border-left-width: 8px; border-right-width: 8px;', group: 'border-x-width'},
 
   {name: 'border-t-0', description: 'border-top-width: 0;', group: 'border-top-width'},
+  {name: 'border-t-2', description: 'border-top-width: 2px;', group: 'border-top-width'},
+  {name: 'border-t-4', description: 'border-top-width: 4px;', group: 'border-top-width'},
+  {name: 'border-t-8', description: 'border-top-width: 8px;', group: 'border-top-width'},
+
+  // 书写方向起始的一侧的边框宽度
+  {name: 'border-s', description: 'border-inline-start-width: 1px;', group: 'border-start-width'},
+  {name: 'border-s-0', description: 'border-inline-start-width: 0;', group: 'border-start-width'},
+  {name: 'border-s-2', description: 'border-inline-start-width: 2px;', group: 'border-start-width'},
+  {name: 'border-s-4', description: 'border-inline-start-width: 4px;', group: 'border-start-width'},
+  {name: 'border-s-8', description: 'border-inline-start-width: 8px;', group: 'border-start-width'},
+
+  {name: 'border-e', description: 'border-inline-end-width: 1px;', group: 'border-end-width'},
+  {name: 'border-e-0', description: 'border-inline-end-width: 0;', group: 'border-end-width'},
+  {name: 'border-e-2', description: 'border-inline-end-width: 2px;', group: 'border-end-width'},
+  {name: 'border-e-4', description: 'border-inline-end-width: 4px;', group: 'border-end-width'},
+  {name: 'border-e-8', description: 'border-inline-end-width: 8px;', group: 'border-end-width'},
+
+  // @see https://v3.tailwindcss.com/docs/border-color
+  {name: 'border-red-100', description: 'border-color: #fff5f5;', group: 'border-color'},
+  {name: 'border-red-200', description: 'border-color: #fed7d7;', group: 'border-color'},
+  {name: 'border-red-300', description: 'border-color: #feb2b2;', group: 'border-color'},
+  {name: 'border-red-400', description: 'border-color: #fc8181;', group: 'border-color'},
+  {name: 'border-red-600', description: 'border-color: #e53e3e;', group: 'border-color'},
+  {name: 'border-red-900', description: 'border-color: #b91c1c;', group: 'border-color'},
+  {name: 'border-red-950', description: 'border-color: #7f1d1d;', group: 'border-color'},
+
+  {name: 'border-slate-500', description: 'border-color: rgb(100 116 139 / var(--tw-border-opacity, 1));/*优先用变量 --tw-border-opacity 的值，若无用 1*/', group: 'border-color'},
+  {name: 'border-gray-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-zinc-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-neutral-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-stone-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-red-500', description: 'border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-orange-500', description: 'border-color: rgb(249 115 22 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-amber-500', description: 'border-color: rgb(245 158 11 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-yellow-500', description: 'border-color: rgb(234 179 8 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-lime-500', description: 'border-color: rgb(134 151 51 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-green-500', description: 'border-color: rgb(34 197 94 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-emerald-500', description: 'border-color: rgb(16 185 129 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-teal-500', description: 'border-color: rgb(20 184 166 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-cyan-500', description: 'border-color: rgb(6 182 212 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-sky-500', description: 'border-color: rgb(14 165 233 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-blue-500', description: 'border-color: rgb(59 130 246 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-indigo-500', description: 'border-color: rgb(99 102 241 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-violet-500', description: 'border-color: rgb(139 92 246 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-purple-500', description: 'border-color: rgb(168 85 247 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-fuchsia-500', description: 'border-color: rgb(217 70 239 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-pink-500', description: 'border-color: rgb(236 72 153 / var(--tw-border-opacity, 1));', group: 'border-color'},
+  {name: 'border-rose-500', description: 'border-color: rgb(244 63 94 / var(--tw-border-opacity, 1));', group: 'border-color'},
+
+]
+
+// @see https://v3.tailwindcss.com/docs/width
+export const tailwind_classes_boxing_size = [
+  {name: 'w-0', description: 'width: 0;', group: 'width'},
+
+  // @see https://v3.tailwindcss.com/docs/size
+  {name: 'size-0', description: 'width: 0; height: 0;', group: 'size'},
+  {name: 'size-96', description: 'width: 24rem; height: 24rem;', group: 'size'},
+  {name: 'size-min', description: 'width: min-content; height: min-content;', group: 'size'},
+  {name: 'size-fit', description: 'width: fit-content; height: fit-content;', group: 'size'},
+  {name: 'size-max', description: 'width: max-content; height: max-content;', group: 'size'},
+
+  {name: 'size-1/2', description: 'width: 50%; height: 50%;', group: 'size'},
+  {name: 'size-11/12', description: 'width: 91.666667%; height: 91.666667%;', group: 'size'},
+  {name: 'size-full', description: 'width: 100%; height: 100%;', group: 'size'},
+
 ]

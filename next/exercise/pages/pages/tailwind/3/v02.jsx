@@ -27,6 +27,7 @@ import {
   tailwind_classes_text_smoothing,
   tailwind_classes_text_size, tailwind_classes_text_weight, tailwind_classes_text_transform,
   tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration, tailwind_classes_vertical_align, tailwind_classes_boxing_margin,
+  tailwind_classes_boxing_padding, tailwind_classes_boxing_border, tailwind_classes_boxing_size,
 } from "./v02.tailwind-text";
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
 
@@ -72,16 +73,9 @@ export default function SamplePage() {
                              .map((option) => typeof option === 'string' ? option : option.name)
                              .join(" ");
 
-    if (item !== 'decoration') {
-      textClasses.decoration = Object.entries(textClasses)
-                                     .filter(([attribute, value]) => attribute.startsWith("decoration_") && value) // 只取 decoration_ 开头 & 有值的
-                                     .flatMap(([key, options]) => options)
-                                     .map((option) => typeof option === 'string' ? option : option.name)
-                                     .join(" ");
-    }
-
+    // 有前缀的属性的值应该是：Array[option|string]
+    textClasses.decoration = extractClassNames('decoration_');
     textClasses.vertical = extractClassNames('vertical_');
-
     textClasses.boxing = extractClassNames('boxing_');
 
     setTextClasses({
@@ -192,14 +186,7 @@ export default function SamplePage() {
         />
       </Stack>
 
-      <section className={`border`}>
-        <div className={`${textClasses.boxing}`}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-          printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </div>
-      </section>
+
       <Stack spacing={2} direction="row" className={'mt-2'}>
         <TagFieldGroupSingle label={'Boxing: Margin'}
                              options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
@@ -209,9 +196,52 @@ export default function SamplePage() {
                                updateStateTextClasses('boxing_margin', values);
                              }}
         />
+        <TagFieldGroupSingle label={'Boxing: Padding'}
+                             options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('boxing_padding', values);
+                             }}
+        />
+        <TagFieldGroupSingle label={'Boxing: Border'}
+                             options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('boxing_border', values);
+                             }}
+        />
       </Stack>
 
-      <LoremIpsumSectionNDiv n={4}/>
+      <Stack spacing={2} direction="row" className={'mt-2'}>
+        <TagFieldGroupSingle label={'Boxing: Size'}
+                             options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('boxing_size', values);
+                             }}
+        />
+        <TagFieldGroupSingle label={'Boxing: Padding'}
+                             options={decorateAndGroupClasses(tailwind_classes_boxing_padding)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('boxing_padding', values);
+                             }}
+        />
+        <TagFieldGroupSingle label={'Boxing: Border'}
+                             options={decorateAndGroupClasses(tailwind_classes_boxing_border)}
+                             width={400}
+                             limitTags={2}
+                             updateHandler={(values) => {
+                               updateStateTextClasses('boxing_border', values);
+                             }}
+        />
+      </Stack>
+
+      <LoremIpsumSectionNDiv n={4} sectionClasses={`border ${textClasses.boxing} `} contentClasses={`border ${textClasses.boxing}`}/>
 
       <ExampleShowcase>
         <h1>Your content here</h1>
