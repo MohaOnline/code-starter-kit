@@ -10,6 +10,7 @@ import Popper from '@mui/material/Popper';
 import {useTheme, styled} from '@mui/material/styles';
 import {VariableSizeList} from 'react-window';
 import Typography from '@mui/material/Typography';
+import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
 
 const LISTBOX_PADDING = 8; // px
 console.log(autocompleteClasses);
@@ -141,9 +142,10 @@ const OPTIONS = Array.from(new Array(10000))
 
 export default function Virtualize() {
   return (
-    <Autocomplete
-      sx={{width: 300}}
-      disableListWrap
+    <>
+      <ThemeToggle/>
+      <Autocomplete sx={{width: 300}}
+                    disableListWrap
       options={OPTIONS}
       groupBy={(option) => option[0].toUpperCase()}
       renderInput={(params) => <TextField {...params} label="10,000 options"/>}
@@ -158,5 +160,6 @@ export default function Virtualize() {
         },
       }}
     />
+    </>
   );
 }
