@@ -12,6 +12,7 @@ import {VariableSizeList} from 'react-window';
 import Typography from '@mui/material/Typography';
 
 const LISTBOX_PADDING = 8; // px
+console.log(autocompleteClasses);
 
 function renderRow(props) {
   const {data, index, style} = props;
@@ -30,6 +31,8 @@ function renderRow(props) {
   }
 
   const {key, ...optionProps} = dataSet[0];
+  // dataSet[1] 是 option
+  // dataSet[2] 是 state.index
 
   return (
     <Typography key={key} component="li" {...optionProps} noWrap style={inlineStyle}>
@@ -56,8 +59,8 @@ function useResetCache(data) {
 }
 
 // Adapter for react-window
-const ListboxComponent = React.forwardRef(function ListboxComponent(props, ref) {
-  const {children, ...other} = props;
+const ListboxComponent = (props) => {
+  const {children, ref, ...other} = props;
   const itemData = [];
   children.forEach((item) => {
     itemData.push(item);
@@ -107,11 +110,8 @@ const ListboxComponent = React.forwardRef(function ListboxComponent(props, ref) 
       </OuterElementContext.Provider>
     </div>
   );
-});
-
-ListboxComponent.propTypes = {
-  children: PropTypes.node,
 };
+
 
 function random(length) {
   const characters =

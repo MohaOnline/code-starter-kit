@@ -20,7 +20,7 @@ import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   TagFieldGroupSingle,
   TagFieldSingle,
-} from '@/lib/components/TagFields';
+} from '@/lib/components/mui/TagFields.jsx';
 import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
 
 

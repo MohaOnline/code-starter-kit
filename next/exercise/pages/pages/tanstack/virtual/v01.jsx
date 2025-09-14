@@ -22,7 +22,7 @@ import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   TagFieldGroupSingle,
   TagFieldSingle,
-} from '@/lib/components/TagFields';
+} from '@/lib/components/mui/TagFields.jsx';
 import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
 import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
@@ -41,6 +41,9 @@ export default function Pages() {
     estimateSize: () => 35,
   })
 
+  const [words, setWords] = useState([])
+  const [needWordsRefresh, setNeedWordsRefresh] = useState(false);
+
   // 获取单词
   useEffect(() => {
     fetch("/api/notebook-words-english", {
@@ -48,13 +51,13 @@ export default function Pages() {
     }).then((response) => response.json())
       .then((data) => {
         console.log("data:", data);
-        
+        setWords(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
 
-  }, []);
+  }, [needWordsRefresh]);
 
   return (
     <>

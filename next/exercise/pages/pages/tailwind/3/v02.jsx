@@ -14,7 +14,7 @@ import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 import {
   TagFieldGroupSingle,
   TagFieldSingle,
-} from '@/lib/components/TagFields';
+} from '@/lib/components/mui/TagFields';
 import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
 import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';

@@ -39,7 +39,7 @@
     "@emotion/styled": "^11.14.1",
     "@faker-js/faker": "^10.0.0",
     "@flmngr/flmngr-server-node": "^1.5.3",
-    "@fontsource/roboto": "^5.2.6",
+    "@fontsource/roboto": "^5.2.7",
     "@headlessui/react": "^2.2.6",
     "@heroicons/react": "^2.2.0",
     "@ionic/react": "^8.7.3",
