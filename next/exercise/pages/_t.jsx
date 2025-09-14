@@ -3,9 +3,9 @@
 import React from 'react';
 
 /**
- * @see /_
+ * @see /_t
  */
-export default function v0() {
+export default function Page() {
   return (
     <>
       <div>Temp</div>

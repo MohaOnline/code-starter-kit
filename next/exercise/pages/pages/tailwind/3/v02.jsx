@@ -5,32 +5,27 @@ import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
-import Chip from '@mui/material/Chip';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-
-import Checkbox from '@mui/material/Checkbox';
+import {Autocomplete, Checkbox, Chip, Stack, TextField} from '@mui/material';
+import {styled, lighten, darken} from '@mui/system';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import {styled, lighten, darken} from '@mui/system';
 
 import {useElement4HeadSupplement} from '@/lib/customHooks.js';
-import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   TagFieldGroupSingle,
   TagFieldSingle,
 } from '@/lib/components/TagFields';
-import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
 import {Panel} from '@/lib/components/tailwind/panel/v01';
+import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
+import {ExampleShowcase} from '@/lib/components/custom/showcase/v01';
 
+import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   tailwind_classes_text_smoothing,
   tailwind_classes_text_size, tailwind_classes_text_weight, tailwind_classes_text_transform,
   tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration, tailwind_classes_vertical_align, tailwind_classes_boxing_margin,
   tailwind_classes_boxing_padding, tailwind_classes_boxing_border, tailwind_classes_boxing_size,
 } from "./v02.tailwind-text";
-import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
@@ -54,25 +49,13 @@ export default function SamplePage() {
 
   const updateStateTextClasses = (item, value) => {
     textClasses[item] = value;
-    console.log('updateStateTextClasses:', Object.entries(textClasses)
-                                                 .filter(([attribute, value]) => attribute.startsWith('text_') && value)
-                                                 .flatMap(([key, options]) => options)
-    );
 
     if (item !== 'header') {
-      textClasses.header = Object.entries(textClasses)
-                                 .filter(([attribute, options]) => attribute.startsWith("header_") && options)
-                                 .flatMap(([key, options]) => options)
-                                 .map((option) => typeof option === 'string' ? option : option.name)
-                                 .join(' ');
+      textClasses.header = extractClassNames('header_');
     }
 
     // 遍历所有 key，筛选出 text_ 开头的，拼接起来
-    textClasses.text = Object.entries(textClasses)
-                             .filter(([attribute, value]) => attribute.startsWith("text_") && value) // 只取 text_ 开头 & 有值的
-                             .flatMap(([key, options]) => options)
-                             .map((option) => typeof option === 'string' ? option : option.name)
-                             .join(" ");
+    textClasses.text = extractClassNames('text_');
 
     // 有前缀的属性的值应该是：Array[option|string]
     textClasses.decoration = extractClassNames('decoration_');
