@@ -28,60 +28,78 @@ import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
 
 /**
- * @see /_t
+ * @uri /pages/tanstack/virtual/v02
  */
 export default function Pages() {
   // The scrollable element for your list
-  const parentRef = React.useRef(null)
+  const frameRef = React.useRef(null)
 
-  // The virtualizer
-  const rowVirtualizer = useVirtualizer({
-    count: 10000,
-    getScrollElement: () => parentRef.current,
+  const [words, setWords] = useState([])
+  const [needWordsRefresh, setNeedWordsRefresh] = useState(false);
+
+  // 获取单词
+  useEffect(() => {
+    fetch("/api/notebook-words-english", {
+      credentials: "include",
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log("data:", data);
+        if (words.length === 0) {
+          words.push(...data.data);
+        }
+        setWords(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
+  }, [needWordsRefresh]);
+
+  const fixedVirtualizer = useVirtualizer({
+    count: Math.max(words.length, 0),
     estimateSize: () => 35,
-  })
-
+    getScrollElement: () => frameRef.current,
+  });
+  
   return (
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}
       <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
 
-      <div>Temp</div>
       {/* The scrollable element for your list */}
-      <div className={'border'}
-           ref={parentRef}
-           style={{
-             height: `400px`,
-             overflow: 'auto', // Make it scroll!
-           }}
+      <section className={'border'}
+               ref={frameRef}
+               style={{
+                 height: `400px`,
+                 overflow: 'auto', // Make it scroll!
+               }}
       >
         {/* The large inner element to hold all of the items */}
-        <div className={''}
+        <div className={'inner-wrapper'}
              style={{
-               height: `${rowVirtualizer.getTotalSize()}px`,
+               height: fixedVirtualizer ? `${fixedVirtualizer.getTotalSize()}px` : '0',
                width: '100%',
-               position: 'relative',
+               position: 'relative',  // prepare for positioning the items: absolute
              }}
         >
           {/* Only the visible items in the virtualizer, manually positioned to be in view */}
-          {rowVirtualizer.getVirtualItems().map((virtualItem) => (
+          {fixedVirtualizer?.getVirtualItems().map((item) => (
             <div
-              key={virtualItem.key}
+              key={item.key}
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: `${virtualItem.size}px`,
-                transform: `translateY(${virtualItem.start}px)`,
+                height: `${item.size}px`,
+                transform: `translateY(${item.start}px)`,
               }}
             >
-              Row {virtualItem.index}
-              {console.log(virtualItem)}
+              Row {item.index}
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }
