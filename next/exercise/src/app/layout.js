@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
 
 export const metadata = {
   title: 'Create Next App',
@@ -17,6 +18,7 @@ export default function RootLayout ({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
       <link rel="stylesheet" href="/fonts/local.css"/>
     </head>
     <body

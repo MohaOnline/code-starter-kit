@@ -44,9 +44,6 @@ export default function Pages() {
     }).then((response) => response.json())
       .then((data) => {
         console.log("data:", data);
-        if (words.length === 0) {
-          words.push(...data.data);
-        }
         setWords(data.data);
       })
       .catch((error) => {
@@ -55,12 +52,14 @@ export default function Pages() {
 
   }, [needWordsRefresh]);
 
-  const fixedVirtualizer = useVirtualizer({
-    count: Math.max(words.length, 0),
+  const virtualizer = useVirtualizer({
+    count: words.length,
     estimateSize: () => 35,
     getScrollElement: () => frameRef.current,
+    overscan: 8,
+    measureElement: (el) => el.getBoundingClientRect().height,
   });
-  
+
   return (
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}
@@ -77,25 +76,29 @@ export default function Pages() {
         {/* The large inner element to hold all of the items */}
         <div className={'inner-wrapper'}
              style={{
-               height: fixedVirtualizer ? `${fixedVirtualizer.getTotalSize()}px` : '0',
+               height: virtualizer ? `${virtualizer.getTotalSize()}px` : '0',
                width: '100%',
                position: 'relative',  // prepare for positioning the items: absolute
              }}
         >
           {/* Only the visible items in the virtualizer, manually positioned to be in view */}
-          {fixedVirtualizer?.getVirtualItems().map((item) => (
+          {virtualizer?.getVirtualItems().map((item) => (
             <div
               key={item.key}
+              data-index={item.index}
+              ref={virtualizer.measureElement}
+              className={'border border-green-300'}
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: `${item.size}px`,
+                // height: `${item.size}px`,
                 transform: `translateY(${item.start}px)`,
               }}
             >
-              Row {item.index}
+              <div>{words[item.index].word}</div>
+              <div>{words[item.index].translation}</div>
             </div>
           ))}
         </div>
