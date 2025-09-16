@@ -13,7 +13,6 @@ import Typography from '@mui/material/Typography';
 import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
 
 const LISTBOX_PADDING = 8; // px
-console.log(autocompleteClasses);
 
 function renderRow(props) {
   const {data, index, style} = props;
@@ -146,19 +145,19 @@ export default function Virtualize() {
       <ThemeToggle/>
       <Autocomplete sx={{width: 300}}
                     disableListWrap
-      options={OPTIONS}
-      groupBy={(option) => option[0].toUpperCase()}
-      renderInput={(params) => <TextField {...params} label="10,000 options"/>}
-      renderOption={(props, option, state) => [props, option, state.index]}
-      renderGroup={(params) => params}
-      slots={{
-        popper: StyledPopper,
-      }}
-      slotProps={{
-        listbox: {
-          component: ListboxComponent,
-        },
-      }}
+                    options={OPTIONS}
+                    groupBy={(option) => option[0].toUpperCase()}
+                    renderInput={(params) => <TextField {...params} label="10,000 options"/>}
+                    renderOption={(props, option, state) => [props, option, state.index]}
+                    renderGroup={(params) => params}
+                    slots={{
+                      popper: StyledPopper,
+                    }}
+                    slotProps={{
+                      listbox: {
+                        component: ListboxComponent,
+                      },
+                    }}
     />
     </>
   );

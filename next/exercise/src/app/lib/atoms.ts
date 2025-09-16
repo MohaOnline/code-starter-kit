@@ -149,7 +149,7 @@ export function initStatusNote(): Note {
 }
 
 // 定义状态类型
-type StatusType = {
+export type StatusType = {
     notes: any[];
     note: Note;
     types: any[];
