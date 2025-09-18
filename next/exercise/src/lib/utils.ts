@@ -17,10 +17,9 @@ export function randomInt(min, max) {
 }
 
 /**
- * 计算排序权重。
+ * 计算排序权重，或批量计算排序权重。
  */
 export function getWeight(weight1: string = '', weight2: string = '') {
-
   if (!weight1 && !weight2) {
     return LexoRank.middle().format();
   } else if (!weight1) {
@@ -35,7 +34,6 @@ export function getWeight(weight1: string = '', weight2: string = '') {
     return lexoRank1.between(lexoRank2).format();
   }
 }
-
 export function getWeights(weight1: string = '', weight2: string = '', number: number = 3) {
   let weights = [];
   if (!weight1 && !weight2) {
