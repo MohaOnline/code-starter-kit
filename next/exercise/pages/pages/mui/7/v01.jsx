@@ -27,7 +27,7 @@ import {useElement4HeadSupplement} from '@/lib/customHooks.js';
 // 自定义自动完成组件的弹出层样式 - GitHub 风格
 const StyledAutocompletePopper = styled('div')(({theme}) => ({
   // 弹出层纸片容器样式
-  [`& .${autocompleteClasses.paper}`]: {
+  [`& .${autocompleteClasses.paper}`]: {  // &: 根选择器、即父选择器：div。方括号（+字符串模版）：计算对象属性名，否则需要 ["& ." + autocompleteClasses.paper]
     boxShadow: 'none', // 移除阴影
     margin: 0, // 移除外边距
     color: 'inherit', // 继承文字颜色
