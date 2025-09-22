@@ -35,7 +35,10 @@ const checkedIcon = <CheckBoxIcon fontSize="small"/>;
  * @see /pages/pages/libs/pagesExamplesLayout.tsx
  */
 export default function SamplePage() {
-  const [textClasses, setTextClasses] = useState({});
+  const [textClasses, setTextClasses] = useState({
+    container_boxing: 'border',
+    container_items_boxing: 'border',
+  });
 
   /**
    * 把控件的值更新到 React 的 State。
@@ -285,7 +288,7 @@ export default function SamplePage() {
         </Stack>
       </Panel>
 
-      <LoremIpsumSectionNDiv n={4} sectionClasses={`border ${textClasses.container_boxing} `} contentClasses={`border ${textClasses.container_items_boxing}`}/>
+      <LoremIpsumSectionNDiv n={4} sectionClasses={`${textClasses.container_boxing} `} contentClasses={`${textClasses.container_items_boxing}`}/>
 
       <ExampleShowcase>
         <h1>Your content here</h1>

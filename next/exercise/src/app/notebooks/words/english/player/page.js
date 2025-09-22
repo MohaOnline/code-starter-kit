@@ -916,7 +916,7 @@ export default function Page() {
       </div>
       <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
-          <div>
+          <div onClick={e => playCurrentWord()}>
             <span
               className={"phonetic"}
               dangerouslySetInnerHTML={{

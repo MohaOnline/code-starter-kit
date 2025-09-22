@@ -10,11 +10,11 @@ import king from '../icons/king.png';
 import pawn from '../icons/pawn.png';
 import {EmotionJSX} from "@emotion/react/src/jsx-namespace";
 
-export type Coord = [number, number];
+export type Coordinate = [number, number];
 
 export type PieceRecord = {
   type: PieceType;
-  location: Coord;
+  location: Coordinate;
 };
 
 export type PieceType = 'king' | 'pawn';
@@ -24,7 +24,7 @@ type PieceProps = {
   alt: string;
 };
 
-export function isEqualCoord(c1: Coord, c2: Coord): boolean {
+export function isEqualCoord(c1: Coordinate, c2: Coordinate): boolean {
   return c1[0] === c2[0] && c1[1] === c2[1];
 }
 
@@ -37,7 +37,7 @@ function renderSquares(pieces: PieceRecord[]) {
   const squares = [];
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
-      const squareCoord: Coord = [row, col];
+      const squareCoord: Coordinate = [row, col];
 
       const piece = pieces.find((piece) => isEqualCoord(piece.location, squareCoord));
 

@@ -238,9 +238,8 @@ export const tailwind_classes_boxing_padding = [
 
 // @see https://v3.tailwindcss.com/docs/border-width
 export const tailwind_classes_boxing_border = [
-  {name: 'border', description: 'border-width: 1px;', group: 'border-main'},
-
   {name: 'border-0', description: 'border-width: 0;', group: 'border-width'},
+  {name: 'border', description: 'border-width: 1px;', group: 'border-width'},
   {name: 'border-2', description: 'border-width: 2px;', group: 'border-width'},
   {name: 'border-4', description: 'border-width: 4px;', group: 'border-width'},
 
