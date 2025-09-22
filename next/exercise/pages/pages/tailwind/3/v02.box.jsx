@@ -43,7 +43,7 @@ export function BoxModel() {
   return (
     <>
       <Panel title={'Container Properties'}>
-        <Stack spacing={2} direction="row" className={'mt-2'}>
+        <Stack spacing={2} direction="row" className={'mt-2'} flexWrap={'wrap'} useFlexGap>
           <TagFieldGroupSingle label={'Boxing: Margin'}
                                options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
                                width={400}
@@ -68,9 +68,7 @@ export function BoxModel() {
                                  updateStateTextClasses('container_boxing_border', values);
                                }}
           />
-        </Stack>
 
-        <Stack spacing={2} direction="row" className={'mt-2'}>
           <TagFieldGroupSingle label={'Boxing: Size'}
                                options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
                                width={400}
@@ -99,7 +97,7 @@ export function BoxModel() {
       </Panel>
 
       <Panel title={'Items Properties'}>
-        <Stack spacing={2} direction="row" className={'mt-2'}>
+        <Stack spacing={2} direction="row" className={'mt-2'} flexWrap={'wrap'} useFlexGap>
           <TagFieldGroupSingle label={'Boxing: Margin'}
                                options={decorateAndGroupClasses(tailwind_classes_boxing_margin)}
                                width={400}
@@ -124,9 +122,7 @@ export function BoxModel() {
                                  updateStateTextClasses('container_items_boxing_border', values);
                                }}
           />
-        </Stack>
 
-        <Stack spacing={2} direction="row" className={'mt-2'}>
           <TagFieldGroupSingle label={'Boxing: Size'}
                                options={decorateAndGroupClasses(tailwind_classes_boxing_size)}
                                width={400}

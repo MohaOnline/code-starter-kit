@@ -73,7 +73,7 @@ export default function SamplePage() {
   }
 
   // 记录哪个 tab 被选中。
-  const [tabSelected, setTabSelected] = useState('box');
+  const [tabSelected, setTabSelected] = useState('spacing');
 
   /**
    * SamplePage 正式内容
@@ -186,14 +186,26 @@ export default function SamplePage() {
               }}
               value={tabSelected}
               aria-label="Vertical tabs example"
-              sx={{width: 180, borderRight: 1, borderColor: 'divider'}}
+              sx={{
+                width: 160, flexShrink: 0,
+                borderRight: 1, borderColor: 'divider',
+              }}
         >
-          <Tab label="Box" value={'box'} id={`vertical-tab-1`} aria-controls={`vertical-tabpanel-1`}/>
-          <Tab label="Item One" value={2} id={`vertical-tab-2`} aria-controls={`vertical-tabpanel-2`}/>
+          <Tab label="Spacing" value={'spacing'} id={`vertical-tab-1`} aria-controls={`vertical-tabpanel-1`}/>
+          <Tab label="Layout" value={'layout'} id={`vertical-tab-2`} aria-controls={`vertical-tabpanel-2`}/>
           <Tab label="Item One" value={3} id={`vertical-tab-3`} aria-controls={`vertical-tabpanel-3`}/>
         </Tabs>
-        <Box hidden={tabSelected !== 'box'} sx={{width: '100%'}}>
+        <Box hidden={tabSelected !== 'spacing'} sx={{
+          flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+        }}
+        >
           <BoxModel/>
+        </Box>
+
+        <Box hidden={tabSelected !== 'layout'} sx={{
+          flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+        }}
+        >
         </Box>
       </Box>
 

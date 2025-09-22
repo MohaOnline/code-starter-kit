@@ -243,16 +243,23 @@ export const tailwind_classes_boxing_border = [
   {name: 'border-2', description: 'border-width: 2px;', group: 'border-width'},
   {name: 'border-4', description: 'border-width: 4px;', group: 'border-width'},
 
-  {name: 'border-x', description: 'border-left-width: 1px; border-right-width: 1px;', group: 'border-x-width'},
   {name: 'border-x-0', description: 'border-left-width: 0; border-right-width: 0;', group: 'border-x-width'},
+  {name: 'border-x', description: 'border-left-width: 1px; border-right-width: 1px;', group: 'border-x-width'},
   {name: 'border-x-2', description: 'border-left-width: 2px; border-right-width: 2px;', group: 'border-x-width'},
   {name: 'border-x-4', description: 'border-left-width: 4px; border-right-width: 4px;', group: 'border-x-width'},
   {name: 'border-x-8', description: 'border-left-width: 8px; border-right-width: 8px;', group: 'border-x-width'},
 
   {name: 'border-t-0', description: 'border-top-width: 0;', group: 'border-top-width'},
+  {name: 'border-t', description: 'border-top-width: 1px;', group: 'border-top-width'},
   {name: 'border-t-2', description: 'border-top-width: 2px;', group: 'border-top-width'},
   {name: 'border-t-4', description: 'border-top-width: 4px;', group: 'border-top-width'},
   {name: 'border-t-8', description: 'border-top-width: 8px;', group: 'border-top-width'},
+
+  {name: 'border-b-0', description: 'border-bottom-width: 0;', group: 'border-bottom-width'},
+  {name: 'border-b', description: 'border-bottom-width: 1px;', group: 'border-bottom-width'},
+  {name: 'border-b-2', description: 'border-bottom-width: 2px;', group: 'border-bottom-width'},
+  {name: 'border-b-4', description: 'border-bottom-width: 4px;', group: 'border-bottom-width'},
+  {name: 'border-b-8', description: 'border-bottom-width: 8px;', group: 'border-bottom-width'},
 
   // 书写方向起始的一侧的边框宽度
   {name: 'border-s', description: 'border-inline-start-width: 1px;', group: 'border-start-width'},
