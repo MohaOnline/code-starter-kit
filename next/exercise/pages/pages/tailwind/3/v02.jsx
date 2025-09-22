@@ -5,7 +5,7 @@ import Script from "next/script";
 
 import React, {useEffect, memo, useMemo, useState} from 'react';
 
-import {autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip, ListSubheader, Stack, Tabs, Tab, TextField, useTheme} from '@mui/material';
+import {autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip, ListSubheader, Stack, Tabs, Tab, TextField, Typography, useTheme} from '@mui/material';
 import {styled, lighten, darken} from '@mui/system';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -27,6 +27,7 @@ import {
   tailwind_classes_boxing_padding, tailwind_classes_boxing_border, tailwind_classes_boxing_size,
 } from "./v02.tailwind-text";
 import {BoxModel} from "@/pages/tailwind/3/v02.box";
+import {Tailwind3V02Basic} from "@/pages/tailwind/3/v02.basic";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
@@ -71,6 +72,25 @@ export default function SamplePage() {
       ...textClasses,
     })
   }
+
+  // tailwind v3 CDN configuration.
+  // @see https://v3.tailwindcss.com/docs/installation/play-cdn
+  useElement4HeadSupplement({
+    element: 'script',
+    identifier: 'v02-tailwind-config'
+  }, `
+    // https://v3.tailwindcss.com/docs/configuration
+    tailwind.config = {
+      theme: {
+        extend: {
+          // https://v3.tailwindcss.com/docs/screens
+          screens: {
+            '3xl': '1600px',
+          },
+        }
+      }
+    }
+  `)
 
   // 记录哪个 tab 被选中。
   const [tabSelected, setTabSelected] = useState('spacing');
@@ -191,12 +211,20 @@ export default function SamplePage() {
                 borderRight: 1, borderColor: 'divider',
               }}
         >
-          <Tab label="Spacing" value={'spacing'} id={`vertical-tab-1`} aria-controls={`vertical-tabpanel-1`}/>
+          <Tab label="Basic" value={'basic'} id={`vertical-tab-basic`} aria-controls={`vertical-tabpanel-basic`}/>
+          <Tab label="Spacing" value={'spacing'} id={`vertical-tab-spacing`} aria-controls={`vertical-tabpanel-spacing`}/>
           <Tab label="Layout" value={'layout'} id={`vertical-tab-2`} aria-controls={`vertical-tabpanel-2`}/>
           <Tab label="Item One" value={3} id={`vertical-tab-3`} aria-controls={`vertical-tabpanel-3`}/>
         </Tabs>
+
+        <Box hidden={tabSelected !== 'basic'} sx={{
+          flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+        }}
+        ><Tailwind3V02Basic/></Box>
+
         <Box hidden={tabSelected !== 'spacing'} sx={{
           flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+          px: 2,
         }}
         >
           <BoxModel/>

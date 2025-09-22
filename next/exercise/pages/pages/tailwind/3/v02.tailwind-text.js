@@ -283,7 +283,7 @@ export const tailwind_classes_boxing_border = [
   {name: 'border-red-900', description: 'border-color: #b91c1c;', group: 'border-color'},
   {name: 'border-red-950', description: 'border-color: #7f1d1d;', group: 'border-color'},
 
-  {name: 'border-slate-500', description: 'border-color: rgb(100 116 139 / var(--tw-border-opacity, 1));/*优先用变量 --tw-border-opacity 的值，若无用 1*/', group: 'border-color'},
+  {name: 'border-slate-500', description: 'border-color: rgb(100 116 139 / var(--tw-border-opacity, 1)); /*优先用变量 --tw-border-opacity 的值，若无用 1*/', group: 'border-color'},
   {name: 'border-gray-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
   {name: 'border-zinc-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
   {name: 'border-neutral-500', description: 'border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));', group: 'border-color'},
@@ -306,11 +306,46 @@ export const tailwind_classes_boxing_border = [
   {name: 'border-pink-500', description: 'border-color: rgb(236 72 153 / var(--tw-border-opacity, 1));', group: 'border-color'},
   {name: 'border-rose-500', description: 'border-color: rgb(244 63 94 / var(--tw-border-opacity, 1));', group: 'border-color'},
 
+  // @see https://v3.tailwindcss.com/docs/border-radius
+  {name: 'rounded-none', description: 'border-radius: 0;', group: 'border-radius'},
+  {name: 'rounded-sm', description: 'border-radius: 0.125rem;', group: 'border-radius'},
+  {name: 'rounded', description: 'border-radius: 0.25rem;', group: 'border-radius'},
+  {name: 'rounded-md', description: 'border-radius: 0.375rem;', group: 'border-radius'},
+  {name: 'rounded-lg', description: 'border-radius: 0.5rem;', group: 'border-radius'},
+  {name: 'rounded-xl', description: 'border-radius: 0.75rem;', group: 'border-radius'},
+  {name: 'rounded-2xl', description: 'border-radius: 1rem;', group: 'border-radius'},
+  {name: 'rounded-3xl', description: 'border-radius: 1.5rem;', group: 'border-radius'},
+  {name: 'rounded-full', description: 'border-radius: 9999px;', group: 'border-radius'},
+
 ]
 
 // @see https://v3.tailwindcss.com/docs/width
 export const tailwind_classes_boxing_size = [
   {name: 'w-0', description: 'width: 0;', group: 'width'},
+  {name: 'w-px', description: 'width: 1px;', group: 'width'},
+  {name: 'w-1.5', description: 'width: 0.375rem;', group: 'width'},
+  {name: 'w-2', description: 'width: 0.5rem; /* 8px */', group: 'width'},
+  {name: 'w-3.5', description: 'width: 0.875rem; /* 14px */', group: 'width'},
+  {name: 'w-4', description: 'width: 1rem; /* 16px */', group: 'width'},
+  {name: 'w-5', description: 'width: 1.25rem; /* 20px */', group: 'width'},
+  {name: 'w-6', description: 'width: 1.5rem; /* 24px */', group: 'width'},
+  {name: 'w-96', description: 'width: 24rem; /* 384px */', group: 'width'},
+  {name: 'w-1/12', description: 'width: 8.333333%;', group: 'width'},
+  {name: 'w-1/2', description: 'width: 50%;', group: 'width'},
+  {name: 'w-1/3', description: 'width: 33.333333%;', group: 'width'},
+  {name: 'w-3/4', description: 'width: 75%;', group: 'width'},
+  {name: 'w-4/5', description: 'width: 60%;', group: 'width'},
+  {name: 'w-5/6', description: 'width: 83.333333%;', group: 'width'},
+  {name: 'w-11/12', description: 'width: 91.666667%;', group: 'width'},
+  {name: 'w-full', description: 'width: 100%;', group: 'width'},
+  {name: 'w-screen', description: 'width: 100vw;', group: 'width'},
+  {name: 'w-svw', description: 'width: 100svw;', group: 'width'},
+  {name: 'w-lvw', description: 'width: 100lvw;', group: 'width'},
+  {name: 'w-dvw', description: 'width: 100dvw;', group: 'width'},
+  {name: 'w-min', description: 'width: min-content;', group: 'width'},
+  {name: 'w-max', description: 'width: max-content;', group: 'width'},
+  {name: 'w-fit', description: 'width: fit-content;', group: 'width'},
+  {name: 'w-auto', description: 'width: auto;', group: 'width'},
 
   // @see https://v3.tailwindcss.com/docs/size
   {name: 'size-0', description: 'width: 0; height: 0;', group: 'size'},

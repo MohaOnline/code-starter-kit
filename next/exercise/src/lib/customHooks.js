@@ -24,25 +24,25 @@ export const useElement4HeadSupplement = (meta = {}, content) => {
       const existingElement = document.querySelector(`[data-head-supplement-id="${identifier}"]`);
       if (existingElement) return;
 
-      let element;
+      let elementObject;
 
       if (element === 'script') {
         // 创建 script 元素
-        element = document.createElement('script');
-        element.type = 'text/javascript';
-        element.innerHTML = content;
+        elementObject = document.createElement('script');
+        elementObject.type = 'text/javascript';
+        elementObject.innerHTML = content;
       }
       else if (element === 'style') {
         // 创建 style 元素
-        element = document.createElement('style');
-        element.type = type;
-        element.innerHTML = content;
+        elementObject = document.createElement('style');
+        elementObject.type = type;
+        elementObject.innerHTML = content;
       }
 
-      if (element) {
-        element.setAttribute('data-head-supplement-id', identifier);
+      if (elementObject) {
+        elementObject.setAttribute('data-head-supplement-id', identifier);
         // 追加到 head 最后
-        document.head.appendChild(element);
+        document.head.appendChild(elementObject);
       }
     };
 
