@@ -10,7 +10,7 @@ import {styled, lighten, darken} from '@mui/system';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
-import {useElement4HeadSupplement} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
 import {
   TagFieldGroupSingle,
   TagFieldSingle,
@@ -75,7 +75,7 @@ export default function SamplePage() {
 
   // tailwind v3 CDN configuration.
   // @see https://v3.tailwindcss.com/docs/installation/play-cdn
-  useElement4HeadSupplement({
+  useElementInjection2HTMLHead({
     element: 'script',
     identifier: 'v02-tailwind-config'
   }, `

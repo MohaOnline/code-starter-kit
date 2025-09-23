@@ -11,7 +11,7 @@ import {useEffect} from 'react';
  * @param {string} meta.identifier - 用于标识的属性值，避免重复注入
  * @param {string} meta.styleType - 样式类型，如 'text/css' 或 'text/tailwindcss'
  */
-export const useElement4HeadSupplement = (meta = {}, content) => {
+export const useElementInjection2HTMLHead = (meta = {}, content) => {
   const {
     element = 'style',
     type = 'text/css',
@@ -35,7 +35,7 @@ export const useElement4HeadSupplement = (meta = {}, content) => {
       else if (element === 'style') {
         // 创建 style 元素
         elementObject = document.createElement('style');
-        elementObject.type = type;
+        elementObject.type = type;  // type="text/tailwindcss"
         elementObject.innerHTML = content;
       }
 

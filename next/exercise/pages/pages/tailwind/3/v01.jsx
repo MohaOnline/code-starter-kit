@@ -5,7 +5,7 @@ import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
-import {useElement4HeadSupplement} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
 
 
 /**
@@ -20,7 +20,7 @@ export default function SamplePage() {
   });
 
   // Overwrite the default CSS color.
-  useElement4HeadSupplement({
+  useElementInjection2HTMLHead({
     element: 'style',
     type: 'text/tailwindcss',
     identifier: 'v01-tailwind-css'
@@ -48,7 +48,7 @@ export default function SamplePage() {
   `);
 
   // tailwind v3 configuration.
-  useElement4HeadSupplement({
+  useElementInjection2HTMLHead({
     element: 'script',
     identifier: 'v01-tailwind-config'
   }, `
