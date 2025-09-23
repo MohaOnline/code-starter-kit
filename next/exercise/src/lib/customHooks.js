@@ -35,7 +35,9 @@ export const useElementInjection2HTMLHead = (meta = {}, content) => {
       else if (element === 'style') {
         // 创建 style 元素
         elementObject = document.createElement('style');
-        elementObject.type = type;  // type="text/tailwindcss"
+        if (type === 'text/tailwindcss') {
+          elementObject.type = 'text/tailwindcss';
+        }
         elementObject.innerHTML = content;
       }
 
@@ -46,10 +48,31 @@ export const useElementInjection2HTMLHead = (meta = {}, content) => {
       }
     };
 
+    /**
+     * document.readyState 的值：
+     *
+     * | `"loading"` | 正在加载 | 文档仍在加载中，DOM还在构建 |
+     * | `"interactive"` | 交互式 | 文档加载完成，DOM构建完毕，但资源（图片、样式表等）可能还在加载 |
+     * | `"complete"` | 完成 | 文档和所有资源都已完全加载完成 |
+     *
+     * document.addEventListener 可添加事件
+     * - **`DOMContentLoaded`** - DOM 构建完成（相当于 `readyState === 'interactive'`）
+     * - **`readystatechange`** - `readyState` 状态改变时触发
+     */
     if (document.readyState === 'complete') {
       injectContent();
     }
     else {
+      /*
+      window.addEventListener 可添加事件：
+
+      - **`load`** - 页面及所有资源完全加载完成
+      - **`beforeunload`** - 页面即将卸载前
+      - **`unload`** - 页面卸载时
+      - **`resize`** - 窗口尺寸改变
+      - **`scroll`** - 页面滚动
+
+       */
       window.addEventListener('load', injectContent);
     }
 
