@@ -15,7 +15,7 @@ import invariant from 'tiny-invariant';
 import {draggable} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 import {preventUnhandled} from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
 
-import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/react/customHooks.js';
 import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   TagFieldGroupSingle,

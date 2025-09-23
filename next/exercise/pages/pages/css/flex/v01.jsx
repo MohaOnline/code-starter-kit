@@ -15,7 +15,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {styled, lighten, darken} from '@mui/system';
 
-import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/react/customHooks.js';
 import {decorateAndGroupClasses} from '@/pages/tailwind/common/utils';
 import {
   TagFieldGroupSingle,

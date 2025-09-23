@@ -22,7 +22,7 @@ import InputBase from '@mui/material/InputBase'; // 基础输入组件
 import Box from '@mui/material/Box'; // 布局容器组件
 
 // 自定义钩子
-import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/react/customHooks.js';
 
 // 自定义自动完成组件的弹出层样式 - GitHub 风格
 const StyledAutocompletePopper = styled('div')(({theme}) => ({

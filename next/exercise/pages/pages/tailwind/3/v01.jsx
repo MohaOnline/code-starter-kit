@@ -5,7 +5,7 @@ import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
-import {useElementInjection2HTMLHead} from '@/lib/customHooks.js';
+import {useElementInjection2HTMLHead} from '@/lib/react/customHooks.js';
 
 
 /**
