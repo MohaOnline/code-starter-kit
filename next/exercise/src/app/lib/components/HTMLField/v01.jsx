@@ -98,6 +98,8 @@ import {oneDark} from '@codemirror/theme-one-dark';
 
 import {getWeight, getWeights} from "@/lib/utils";
 
+import './v01.css';
+
 
 /**
  * @see /pages/codemirror/6/v01
@@ -111,15 +113,18 @@ export default function HTMLField({content, onChange}) {
     onChange(val);
   }, [setValue, onChange]);
 
+
   return (
     <>
       {/* [javascript({jsx: true})] */}
       <CodeMirror value={value}
                   extensions={[
-                    basicSetup,
+                    minimalSetup,
                     color,
                     EditorView.lineWrapping,
-                    html(),
+                    html({
+                      matchClosingTags: false,       // 无效
+                    }),
                   ]}
                   basicSetup={{
                     highlightSelectionMatches: true, // 高亮与选择相同内容
