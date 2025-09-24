@@ -359,3 +359,23 @@ export const tailwind_classes_boxing_size = [
   {name: 'size-full', description: 'width: 100%; height: 100%;', group: 'size'},
 
 ]
+
+// @see https://v3.tailwindcss.com/docs/display
+export const tailwind_classes_container_layout = [
+  {name: 'flex', description: 'display: flex;', group: 'container-layout'},
+  {name: 'inline-flex', description: 'display: inline-flex;', group: 'container-layout'},
+  {name: 'grid', description: 'display: grid;', group: 'container-layout'},
+  {name: 'inline-grid', description: 'display: inline-grid;', group: 'container-layout'},
+]
+
+export const tailwind_classes_container_justify = [
+  {name: 'justify-normal', description: 'justify-content: normal;', group: 'container-justify-content'},
+  {name: 'justify-start', description: 'justify-content: flex-start;', group: 'container-justify-content'},
+  {name: 'justify-end', description: 'justify-content: flex-end;', group: 'container-justify-content'},
+  {name: 'justify-center', description: 'justify-content: center;', group: 'container-justify-content'},
+  {name: 'justify-between', description: 'justify-content: space-between;', group: 'container-justify-content'},
+  {name: 'justify-around', description: 'justify-content: space-around;', group: 'container-justify-content'},
+  {name: 'justify-evenly', description: 'justify-content: space-evenly;', group: 'container-justify-content'},
+  {name: 'justify-stretch', description: 'justify-content: stretch;', group: 'container-justify-content'},
+
+]

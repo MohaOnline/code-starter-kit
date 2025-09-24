@@ -4,7 +4,7 @@ import React from "react";
 
 export function Tailwind3V02Basic() {
   return (<>
-    <Typography variant="h6" gutterBottom>Tailwind v3 待飞 <Link className={``} target={'_blank'}
+    <Typography variant="h6" gutterBottom>Tailwind v3 待飞预备 <Link className={``} target={'_blank'}
                                                                  href={`https://v3.tailwindcss.com/docs/preflight`}>preflight</Link> 样式重置</Typography>
     <ul className={`list-disc list-inside`}>
       <li>没有边距 margin</li>

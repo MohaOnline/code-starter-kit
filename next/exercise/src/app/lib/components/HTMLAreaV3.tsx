@@ -15,7 +15,7 @@ import { StateField, StateEffect, Range } from "@codemirror/state";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { Button } from "@/components/ui/button";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css"; // 引入highlight.js样式
+import "highlight.js/styles/atom-one-dark-reasonable.css"; // 引入highlight.js样式
 import he from "he"; // HTML实体编码/解码库
 
 // HTMLAreaV3组件属性接口
@@ -864,8 +864,8 @@ export const HTMLAreaV3: React.FC<HTMLAreaV3Props> = ({
               EditorView.theme({
                 ".cm-matching-tag": {
                   backgroundColor: "rgba(255, 255, 0, 0.2)",
-                  border: "1px solid rgba(255, 255, 0, 0.6)",
-                  borderRadius: "2px",
+                  // border: "1px solid rgba(255, 255, 0, 0.6)",
+                  // borderRadius: "2px",
                 },
               }),
               EditorView.lineWrapping,

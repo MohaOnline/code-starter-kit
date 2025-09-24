@@ -1,3 +1,4 @@
+
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
 import NextTopLoader from 'nextjs-toploader';
@@ -19,6 +20,7 @@ export default function RootLayout ({ children }) {
     <html lang="en" suppressHydrationWarning>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+      <meta name="emotion-insertion-point" content=""/>
       <link rel="stylesheet" href="/fonts/local.css"/>
     </head>
     <body

@@ -5,7 +5,10 @@ import Script from "next/script";
 
 import React, {useEffect, memo, useMemo, useState} from 'react';
 
-import {autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip, ListSubheader, Stack, Tabs, Tab, TextField, Typography, useTheme} from '@mui/material';
+import {
+  autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip,
+  ListSubheader, Stack, Tabs, Tab, TextField, Typography, useTheme
+} from '@mui/material';
 import {styled, lighten, darken} from '@mui/system';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -25,7 +28,7 @@ import {
   tailwind_classes_text_size, tailwind_classes_text_weight, tailwind_classes_text_transform,
   tailwind_classes_text_align, tailwind_classes_letter_spacing, tailwind_classes_decoration, tailwind_classes_vertical_align, tailwind_classes_boxing_margin,
   tailwind_classes_boxing_padding, tailwind_classes_boxing_border, tailwind_classes_boxing_size,
-} from "./v02.tailwind-text";
+} from "./v02.tailwind-utils";
 import {BoxModel} from "@/pages/tailwind/3/v02.box";
 import {Tailwind3V02Basic} from "@/pages/tailwind/3/v02.basic";
 
@@ -219,6 +222,7 @@ export default function SamplePage() {
 
         <Box hidden={tabSelected !== 'basic'} sx={{
           flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+          px: 2, pt: 2,
         }}
         ><Tailwind3V02Basic/></Box>
 
@@ -232,6 +236,7 @@ export default function SamplePage() {
 
         <Box hidden={tabSelected !== 'layout'} sx={{
           flex: 1, /* 使 Flex 项尽可能占用父容器的剩余空间，同时允许在空间不足时收缩，初始尺寸为 0（但会根据内容调整）。 */
+          px: 2,
         }}
         >
         </Box>
