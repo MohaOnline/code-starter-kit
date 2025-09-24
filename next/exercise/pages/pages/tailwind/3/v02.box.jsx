@@ -1,8 +1,12 @@
-import {Panel} from "@/lib/components/tailwind/panel/v01";
 import {Stack} from "@mui/material";
+
+import {Panel} from "@/lib/components/tailwind/panel/v01";
 import {TagFieldGroupSingle} from "@/lib/components/mui/TagFields";
 import {decorateAndGroupClasses} from "@/pages/tailwind/common/utils";
-import {tailwind_classes_boxing_border, tailwind_classes_boxing_margin, tailwind_classes_boxing_padding, tailwind_classes_boxing_size} from "@/pages/tailwind/3/v02.tailwind-utils";
+import {
+  tailwind_classes_boxing_border, tailwind_classes_boxing_margin,
+  tailwind_classes_boxing_padding, tailwind_classes_boxing_size
+} from "@/pages/tailwind/3/v02.tailwind-utils";
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01";
 import React, {useState} from "react";
 
