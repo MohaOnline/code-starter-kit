@@ -4,6 +4,7 @@ import React, {useMemo} from 'react';
 import {ThemeProvider as NextThemeProvider, useTheme as useNextTheme, type ThemeProviderProps} from 'next-themes'
 import {ThemeProvider as MuiThemeProvider, createTheme, CssBaseline} from '@mui/material';
 import {AppRouterCacheProvider} from '@mui/material-nextjs/v15-appRouter';
+import {CssVarsProvider} from '@mui/material/styles';
 
 
 function MuiThemeAdapter({children}: { children: React.ReactNode }) {
@@ -16,14 +17,18 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
   const muiTheme = useMemo(() => createTheme({
     // 参考该文档实现 Material UI Theme 和 Next Theme 的 mode 一致。
     // https://mui.com/material-ui/customization/css-theme-variables/configuration/#toggling-dark-mode-manually
-    colorSchemes: {light: true, dark: true},
+    colorSchemes: {
+      light: true,
+      dark:  {
+        palette: {
+          text: {
+            primary: 'rgb(120,210,120)',
+          },
+        },
+      }
+    },
     cssVariables: {
       colorSchemeSelector: 'class'
-    },
-    palette: {
-      text: {
-        // primary: mode === 'dark' ? 'rgb(120,210,120)' : '#000',
-      },
     },
     components: {
       MuiCssBaseline: {
@@ -36,7 +41,7 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
       },
     },
 
-  }), [mode]);
+  }), []);
 
   return (
     <MuiThemeProvider theme={muiTheme}>
