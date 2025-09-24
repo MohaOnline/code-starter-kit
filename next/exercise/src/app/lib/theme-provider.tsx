@@ -12,22 +12,26 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
 
   // @see https://mui.com/material-ui/customization/palette/#values
   // @see https://mui.com/material-ui/integrations/nextjs/#configuration Next JS 水合问题方案
-  // Material 默认颜色
+  // Material 默认颜色 https://mui.com/material-ui/customization/default-theme/ 切换 dark theme 可以看到所有颜色默认值。
   const muiTheme = useMemo(() => createTheme({
-    cssVariables: true,
+    // 参考该文档实现 Material UI Theme 和 Next Theme 的 mode 一致。
+    // https://mui.com/material-ui/customization/css-theme-variables/configuration/#toggling-dark-mode-manually
+    colorSchemes: {light: true, dark: true},
+    cssVariables: {
+      colorSchemeSelector: 'class'
+    },
     palette: {
-      mode,
       text: {
-        primary: mode === 'dark' ? 'rgb(120,210,120)' : '#000',
+        // primary: mode === 'dark' ? 'rgb(120,210,120)' : '#000',
       },
     },
     components: {
       MuiCssBaseline: {
         styleOverrides: {
-          // body: {
-          //   // 确保默认文字颜色使用你的变量（覆盖 CssBaseline 默认颜色）
-          //   color: 'var(--foreground)',
-          // },
+          body: {
+            // 确保默认文字颜色使用你的变量（覆盖 CssBaseline 默认颜色）
+            color: 'var(--foreground)',
+          },
         },
       },
     },
@@ -44,12 +48,12 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
 
 export function NextThemesProvider({children, ...props}) {
   return (
-    <AppRouterCacheProvider options={{enableCssLayer: true}}>
-    <NextThemeProvider {...props}>
+    // <AppRouterCacheProvider options={{enableCssLayer: true}}>
+    <NextThemeProvider enableSystem={true} {...props}>
       <MuiThemeAdapter>
         {children}
       </MuiThemeAdapter>
     </NextThemeProvider>
-    </AppRouterCacheProvider>
+    // </AppRouterCacheProvider>
   );
 }

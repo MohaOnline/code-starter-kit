@@ -4,18 +4,23 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import {ThemeProvider, createTheme, useColorScheme} from '@mui/material/styles';
 import {cn} from "@/lib/utils"
 
 
 export function ThemeToggle({className = "absolute top-0 right-0 w-0 h-5"}) {
   const {theme, setTheme} = useTheme()
+  const {mode, setMode} = useColorScheme();
 
   return (
     <Button
       variant="ghost"
       size="sm"
       className={cn("cursor-pointer", className)}
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => {
+        setTheme(theme === "light" ? "dark" : "light");
+        setMode(mode === "light" ? "dark" : "light");
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,3 +1,4 @@
+import {AppRouterCacheProvider} from '@mui/material-nextjs/v15-appRouter';
 
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
 import { NextThemesProvider } from '@/app/lib/theme-provider';
@@ -27,6 +28,7 @@ export default function RootLayout ({ children }) {
       className="antialiased font-sans"
       suppressHydrationWarning
     >
+    <AppRouterCacheProvider options={{enableCssLayer: true}}>
     <NextTopLoader
       color="#2299DD"
       initialPosition={0.08}
@@ -39,8 +41,6 @@ export default function RootLayout ({ children }) {
       shadow="0 0 10px #2299DD,0 0 5px #2299DD"
     />
     <NextThemesProvider attribute="class"
-                        defaultTheme="system"
-                        enableSystem
                         disableTransitionOnChange
     >
       <AuthSessionProvider>
@@ -62,6 +62,8 @@ export default function RootLayout ({ children }) {
         />
       </AuthSessionProvider>
     </NextThemesProvider>
+
+    </AppRouterCacheProvider>
     </body>
     </html>
   )
