@@ -158,6 +158,7 @@ export type StatusType = {
     isAdding: boolean;
     isProcessing: boolean;
     isPlaying: boolean;
+  currentNoteId: string;
     words: any[];
     currentWordIndex: number;
     notesListeningDialog: {
@@ -176,6 +177,7 @@ export const status = atom<StatusType>({
     isAdding: false,
     isProcessing: false,
     isPlaying: false,
+  currentNoteId: '',  /**/
 
     // Words announcing data:
     words: [],
