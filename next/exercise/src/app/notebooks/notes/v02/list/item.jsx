@@ -18,8 +18,11 @@ export function Item({note}) {
   }
 
   return (<>
-    <div className={'border p-2'} onClick={() => {
-
+    <div className={'border p-2 cursor-pointer'} onClick={() => {
+      setStatus((prev) => ({
+        ...prev,
+        currentNoteId: note.id,
+      }))
     }}>
       <Typography variant="h6" gutterBottom>{note.title}</Typography>
       <div className={'ps-8 line-clamp-2'}

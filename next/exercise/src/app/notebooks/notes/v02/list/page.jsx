@@ -13,6 +13,7 @@ import NavTop from '@/app/lib/components/NavTop';
 import {toast, ToastContainer} from "react-toastify";
 import {ProcessingMask} from "@/app/lib/components/ProcessingMask";
 import {Item} from "./item";
+import {Details} from "@/app/notebooks/notes/v02/list/details";
 
 
 export default function NotesList() {
@@ -48,15 +49,30 @@ export default function NotesList() {
 
         <div className={"flex flex-row w-full justify-center"}>
           {/* Note List & Detail */}
+          {!status.currentNoteId &&
           <div className={'basis-1/2'}>
             {status.notes?.map((note) => (
               <Item key={note.id} note={note}/>
             ))}
           </div>
+          }
+          {/* Certain Note is selected */}
+          {status.currentNoteId &&
+            <div className={'basis-1/2'}>
+              <Details note={status.notes.find(note => note.id === status.currentNoteId)}/>
+              <Button variant="contained" onClick={() => {
+                setStatus(prev => ({
+                  ...prev,
+                  currentNoteId: '',
+                }))
+              }}>Close</Button>
+              <Button variant="contained">Edit</Button>
+            </div>}
 
           {/* Editor */}
           <div className={'basis-1/2'}>
             <h2>editor</h2>
+            <Button variant="contained">Cancel</Button>
             <Button variant="contained">Save</Button>
           </div>
         </div>
