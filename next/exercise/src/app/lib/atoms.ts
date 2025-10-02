@@ -153,12 +153,13 @@ export function initStatusNote(): Note {
 // 定义状态类型
 export type StatusType = {
     notes: any[];
-    note: Note;
+  note: Note;               //
     types: any[];
     isAdding: boolean;
+  isEditing: boolean;       // Current Note Editing flag.
     isProcessing: boolean;
     isPlaying: boolean;
-  currentNoteId: string;
+  currentNoteId: string;    // 有值；无值。用 status.note 显示笔记。
     words: any[];
     currentWordIndex: number;
     notesListeningDialog: {
@@ -175,6 +176,7 @@ export const status = atom<StatusType>({
     note: initStatusNote(),
     types: [],
     isAdding: false,
+  isEditing: false,
     isProcessing: false,
     isPlaying: false,
   currentNoteId: '',  /**/

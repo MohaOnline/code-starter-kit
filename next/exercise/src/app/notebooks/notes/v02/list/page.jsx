@@ -14,6 +14,7 @@ import {toast, ToastContainer} from "react-toastify";
 import {ProcessingMask} from "@/app/lib/components/ProcessingMask";
 import {Item} from "./item";
 import {Details} from "@/app/notebooks/notes/v02/list/details";
+import {Editor} from "@/app/notebooks/notes/v02/list/editor";
 
 
 export default function NotesList() {
@@ -59,22 +60,47 @@ export default function NotesList() {
           {/* Certain Note is selected */}
           {status.currentNoteId &&
             <div className={'basis-1/2'}>
-              <Details note={status.notes.find(note => note.id === status.currentNoteId)}/>
-              <Button variant="contained" onClick={() => {
-                setStatus(prev => ({
-                  ...prev,
-                  currentNoteId: '',
-                }))
-              }}>Close</Button>
-              <Button variant="contained">Edit</Button>
+              <Details note={status.note}/>
+              {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
+                <div className={'gap-2 flex flex-row justify-end'}>
+                  <Button sx={{
+                    backgroundColor: 'success.light',
+                    '&:hover': {
+                      backgroundColor: 'success.dark',
+                      color: 'error.contrastText',
+                    },
+                  }} className={''} variant="contained"
+                          onClick={() => {
+                            setStatus(prev => ({
+                              ...prev,
+                              isEditing: true,
+                            }))
+                          }}
+                  >Edit</Button>
+                  <Button sx={{
+                    backgroundColor: 'grey.300',
+                    '&:hover': {
+                      backgroundColor: 'grey.500',
+                      color: 'error.contrastText',
+                    },
+                  }} variant="contained"
+                          onClick={() => {
+                            setStatus(prev => ({
+                              ...prev,
+                              currentNoteId: '',
+                            }))
+                          }}
+                  >Close</Button>
+                </div>
+              }
             </div>}
 
           {/* Editor */}
-          <div className={'basis-1/2'}>
-            <h2>editor</h2>
-            <Button variant="contained">Cancel</Button>
-            <Button variant="contained">Save</Button>
-          </div>
+          {status.isEditing &&
+            <div className={'basis-1/2'}>
+              <Editor/>
+            </div>
+          }
         </div>
       </div>
 

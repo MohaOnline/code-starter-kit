@@ -22,6 +22,7 @@ export function Item({note}) {
       setStatus((prev) => ({
         ...prev,
         currentNoteId: note.id,
+        note: note,
       }))
     }}>
       <Typography variant="h6" gutterBottom>{note.title}</Typography>
