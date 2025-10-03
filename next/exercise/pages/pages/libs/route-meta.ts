@@ -5,6 +5,11 @@ export const routeMeta = {
     description: '',
     keywords:    '',
   },
+  '/pages/mui/7/utils/v01': {
+    title:       'Utils: Material UI v7',
+    description: 'Versatile utilities as MUI Demos.',
+    keywords:    '',
+  },
   '/pages/tailwind/3/v01': {
     title:       'v01 Basic: Tailwind v3',
     description: 'Tailwind v3 CDN 演示页面。',

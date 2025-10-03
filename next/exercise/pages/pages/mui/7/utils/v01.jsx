@@ -15,6 +15,7 @@ import {html} from "@codemirror/lang-html"
 import {Tailwind3V02Basic} from "@/pages/tailwind/3/v02.basic";
 import {BoxModel} from "@/pages/tailwind/3/v02.box";
 import {Mui7Basic} from "@/pages/mui/7/utils/v01.basic";
+import {Mui7Navi} from "@/pages/mui/7/nav/v01";
 
 /**
  * @see /_t
@@ -26,6 +27,7 @@ export default function Page() {
   return (
     <>
       <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
+      <Mui7Navi/>
 
       <h1>MUI 7 Utils</h1>
       <Box sx={{display: 'flex', width: '100%', minHeight: 400, bgcolor: 'background.paper', border: 1, borderColor: 'divider'}}>

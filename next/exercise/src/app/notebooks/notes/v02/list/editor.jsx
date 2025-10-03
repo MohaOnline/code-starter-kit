@@ -7,14 +7,27 @@ import {
 
 import {useStatus} from "@/app/lib/atoms";
 
-export function Editor() {
+export function Editor({note}) {
   const [status, setStatus] = useStatus();
 
   return (
     <>
+      <Stack>
+        <TextField id="outlined-basic" label="Title" variant="outlined"/>
+        {/* body_script first */}
+        {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
+          <>
+
+          </>
+        }
+      </Stack>
+
+
+
       <div className={'gap-2 flex flex-row justify-end'}>
         <Button variant="contained">Save</Button>
-        <Button variant="contained"
+        <Button variant="outlined"
+                color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
                 onClick={() => {
                   setStatus(prev => ({
                     ...prev,

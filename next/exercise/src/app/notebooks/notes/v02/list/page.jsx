@@ -61,44 +61,12 @@ export default function NotesList() {
           {status.currentNoteId &&
             <div className={'basis-1/2'}>
               <Details note={status.note}/>
-              {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
-                <div className={'gap-2 flex flex-row justify-end'}>
-                  <Button sx={{
-                    backgroundColor: 'success.light',
-                    '&:hover': {
-                      backgroundColor: 'success.dark',
-                      color: 'error.contrastText',
-                    },
-                  }} className={''} variant="contained"
-                          onClick={() => {
-                            setStatus(prev => ({
-                              ...prev,
-                              isEditing: true,
-                            }))
-                          }}
-                  >Edit</Button>
-                  <Button sx={{
-                    backgroundColor: 'grey.300',
-                    '&:hover': {
-                      backgroundColor: 'grey.500',
-                      color: 'error.contrastText',
-                    },
-                  }} variant="contained"
-                          onClick={() => {
-                            setStatus(prev => ({
-                              ...prev,
-                              currentNoteId: '',
-                            }))
-                          }}
-                  >Close</Button>
-                </div>
-              }
             </div>}
 
           {/* Editor */}
           {status.isEditing &&
             <div className={'basis-1/2'}>
-              <Editor/>
+              <Editor note={status.note}/>
             </div>
           }
         </div>
