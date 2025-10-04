@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useRef, useEffect} from "react";
 import NextLink from "next/link";
 
 import {
@@ -17,6 +17,7 @@ import {updateObjectArray} from '@/lib/utils';
 
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
+  const saveButtonRef = useRef(null);
 
   const updateNote = useCallback(async () => {
     let action = "create";
@@ -74,6 +75,31 @@ export function Editor({note}) {
     }));
   }, [setStatus]);
 
+  // 键盘快捷键监听
+  useEffect(() => {
+    // 生成事件处理函数
+    const genBindCtrlCmdShortcut2ButtonClick = useCallback((buttonRef, key) => {
+      return (event) => {
+        // 检查是否按下了 Ctrl+S (Windows/Linux) 或 Cmd+S (Mac)
+        if ((event.ctrlKey || event.metaKey) && event.key === key) {
+          event.preventDefault(); // 阻止浏览器默认的保存行为
+          // 模拟点击保存按钮
+          if (buttonRef.current) {
+            buttonRef.current.click();
+          }
+        }
+      }
+    }, []);
+
+    // 添加事件监听器
+    document.addEventListener('keydown', genBindCtrlCmdShortcut2ButtonClick(saveButtonRef, 's'));
+
+    // 清理函数
+    return () => {
+      document.removeEventListener('keydown', genBindCtrlCmdShortcut2ButtonClick(saveButtonRef, 's'));
+    };
+  }, []); // 空依赖数组，只在组件挂载和卸载时执行
+
   return (
     <>
       <Stack paddingTop={2} paddingBottom={2} gap={2}>
@@ -94,7 +120,7 @@ export function Editor({note}) {
       </Stack>
 
       <div className={'gap-2 flex flex-row justify-end'}>
-        <Button variant="contained" onClick={updateNote}>Save</Button>
+        <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
         <Button variant="outlined"
                 color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
                 onClick={() => {
