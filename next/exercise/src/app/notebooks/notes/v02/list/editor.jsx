@@ -75,22 +75,22 @@ export function Editor({note}) {
     }));
   }, [setStatus]);
 
-  // 键盘快捷键监听
-  useEffect(() => {
-    // 生成事件处理函数
-    const genBindCtrlCmdShortcut2ButtonClick = useCallback((buttonRef, key) => {
-      return (event) => {
-        // 检查是否按下了 Ctrl+S (Windows/Linux) 或 Cmd+S (Mac)
-        if ((event.ctrlKey || event.metaKey) && event.key === key) {
-          event.preventDefault(); // 阻止浏览器默认的保存行为
-          // 模拟点击保存按钮
-          if (buttonRef.current) {
-            buttonRef.current.click();
-          }
+  // 生成事件处理函数
+  const genBindCtrlCmdShortcut2ButtonClick = useCallback((buttonRef, key) => {
+    return (event) => {
+      // 检查是否按下了 Ctrl+S (Windows/Linux) 或 Cmd+S (Mac)
+      if ((event.ctrlKey || event.metaKey) && event.key === key) {
+        event.preventDefault(); // 阻止浏览器默认的保存行为
+        // 模拟点击保存按钮
+        if (buttonRef.current) {
+          buttonRef.current.click();
         }
       }
-    }, []);
+    }
+  }, []);
 
+  // 键盘快捷键监听
+  useEffect(() => {
     // 添加事件监听器
     document.addEventListener('keydown', genBindCtrlCmdShortcut2ButtonClick(saveButtonRef, 's'));
 
