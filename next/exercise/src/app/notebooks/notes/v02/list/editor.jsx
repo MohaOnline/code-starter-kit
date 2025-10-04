@@ -18,6 +18,50 @@ import {updateObjectArray} from '@/lib/utils';
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
 
+  const updateNote = useCallback(async () => {
+    let action = "create";
+    if (status.note.id) {
+      action = "update";
+    }
+
+    try {
+      status.isProcessing = true;
+      setStatus({...status});
+      await fetch("/api/notebooks/v02/notes/crud", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            action: action,
+            note: status.note,
+          }),
+        }
+      ).then(res => res.json()).then(json => {
+          console.log("API Response:", json); // 更明确的日志标识
+
+          if (!json.success) {
+            toast.error("API Response: " + json.error);
+          }
+          else {
+            status.note = json.note;
+            status.notes = updateObjectArray(status.notes, json.note);
+            setStatus({...status});
+            toast.success("Note Updated.");
+          }
+        }
+      )
+    }
+    catch (error) {
+      console.log('Note Update Error...')
+      console.dir(error);
+    }
+    finally {
+      status.isProcessing = false;
+      setStatus({...status});
+    }
+  }, [status]);
+
   // 把 UI 的 content 更新到 status.note 。
   const updateStatusNoteAttribute = useCallback((val, attribute) => {
     console.log('val:', val);
@@ -50,50 +94,7 @@ export function Editor({note}) {
       </Stack>
 
       <div className={'gap-2 flex flex-row justify-end'}>
-        <Button variant="contained" onClick={async () => {
-          let action = "create";
-          if (status.note.id) {
-            action = "update";
-          }
-
-          try {
-            status.isProcessing = true;
-            setStatus({...status});
-            await fetch("/api/notebooks/v02/notes/crud", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  action: action,
-                  note: status.note,
-                }),
-              }
-            ).then(res => res.json()).then(json => {
-                console.log("API Response:", json); // 更明确的日志标识
-
-                if (!json.success) {
-                  toast.error("API Response: " + json.error);
-                }
-                else {
-                  status.note = json.note;
-                  status.notes = updateObjectArray(status.notes, json.note);
-                  setStatus({...status});
-                  toast.success("Note Updated.");
-                }
-              }
-            )
-          }
-          catch (e) {
-            console.log('Note Update Error...')
-            console.dir(e);
-          }
-          finally {
-            status.isProcessing = false;
-            setStatus({...status});
-          }
-        }
-        }>Save</Button>
+        <Button variant="contained" onClick={updateNote}>Save</Button>
         <Button variant="outlined"
                 color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
                 onClick={() => {
