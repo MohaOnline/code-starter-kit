@@ -18,6 +18,7 @@ import {updateObjectArray} from '@/lib/utils';
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
 
+  // 把 UI 的 content 更新到 status.note 。
   const updateStatusNoteAttribute = useCallback((val, attribute) => {
     console.log('val:', val);
     setStatus(prev => ({
@@ -49,7 +50,7 @@ export function Editor({note}) {
       </Stack>
 
       <div className={'gap-2 flex flex-row justify-end'}>
-        <Button variant="contained" onClick={() => {
+        <Button variant="contained" onClick={async () => {
           let action = "create";
           if (status.note.id) {
             action = "update";
@@ -58,7 +59,7 @@ export function Editor({note}) {
           try {
             status.isProcessing = true;
             setStatus({...status});
-            fetch("/api/notebooks/v02/notes/crud", {
+            await fetch("/api/notebooks/v02/notes/crud", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
