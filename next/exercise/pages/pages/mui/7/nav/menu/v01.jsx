@@ -12,12 +12,12 @@ import {Adb as AdbIcon, Menu as MenuIcon} from '@mui/icons-material';
 import NextLink from "next/link";
 import React, {useState, useCallback} from "react";
 
-export function Mui7NaviMenu({menus}) {
-  const [anchorEl, setAnchorEl] = useState(null);
+export function Mui7NaviMenu({menus, level = 0}) {
+  const [anchorEl, setAnchorEl] = useState(null); //
 
-  const menuClick = (event) => {
+  const openMenu = useCallback((event) => {
     setAnchorEl(event.currentTarget);
-  };
+  }, []);
 
   const closeMenu = useCallback((event) => {
     setAnchorEl(null);
@@ -25,21 +25,21 @@ export function Mui7NaviMenu({menus}) {
 
   return (<>
     {menus.map((menu) => (
-      <>
+      <React.Fragment key={level}>
         {!menu.children && (<>
-          <Button href={menu.href}>{menu.label}</Button>
+          <Button key={level + menu.href} href={menu.href}>{menu.label}</Button>
         </>)}
         {menu.children && (
           <>
-            <Button onClick={menuClick} key={menu.label} sx={{color: '#fff'}}>{menu.label}</Button>
+            <Button key={level + menu.href} onClick={openMenu} sx={{color: '#fff'}}>{menu.label}</Button>
             <Menu open={Boolean(anchorEl)} onClose={closeMenu} anchorEl={anchorEl}>
               {menu.children.map((menu) => (
-                <MenuItem onClick={closeMenu} component={Link} href={menu.href}>{menu.label}</MenuItem>
+                <MenuItem key={level + menu.href} onClick={closeMenu} component={Link} href={menu.href}>{menu.label}</MenuItem>
               ))}
             </Menu>
           </>
         )}
-      </>
+      </React.Fragment>
     ))}
   </>);
 }
