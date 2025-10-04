@@ -1,0 +1,13 @@
+.note-details h1, .note-details h2, .note-details h3, .note-details h4 {
+    color: var(--foreground);
+}
+
+.note-details h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.note-details h2 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}

@@ -1,5 +1,6 @@
 import {Button, Typography} from "@mui/material";
 import {useStatus} from "@/app/lib/atoms";
+import './details.css';
 
 export function Details(props) {
   const [status, setStatus] = useStatus();
@@ -8,7 +9,7 @@ export function Details(props) {
   return (<>
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
       <>
-        <Typography variant="h5" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
+        <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
         <article className={'prose text-inherit dark:text-primary m-auto max-w-4xl'}
                  dangerouslySetInnerHTML={{__html: note.body_script}}/>
       </>

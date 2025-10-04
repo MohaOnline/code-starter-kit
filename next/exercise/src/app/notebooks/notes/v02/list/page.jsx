@@ -61,7 +61,7 @@ export default function NotesList() {
           }
           {/* Certain Note is selected */}
           {status.currentNoteId &&
-            <div className={'basis-1/2'}>
+            <div className={'basis-1/2 note-details p-2'}>
               <Details note={status.note}/>
             </div>}
 
