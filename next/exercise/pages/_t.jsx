@@ -6,8 +6,10 @@ import Script from "next/script";
 
 import {css, Global} from '@emotion/react';
 import {
-  autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip,
-  ListSubheader, Stack, Tabs, Tab, TextField, Typography, useTheme
+  autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
+  Checkbox, Chip, Container,
+  Link, ListSubheader, Menu, MenuItem, IconButton, Stack,
+  Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
 } from '@mui/material';
 
 // 3rd part libs: CodeMirror

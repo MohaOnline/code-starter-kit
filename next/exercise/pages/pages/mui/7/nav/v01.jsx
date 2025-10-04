@@ -8,20 +8,28 @@ import {
 } from '@mui/material';
 import {Adb as AdbIcon, Menu as MenuIcon} from '@mui/icons-material';
 
-
 import NextLink from "next/link";
 import React from "react";
 
+import {Mui7NaviMenu} from "@/pages/mui/7/nav/menu/v01"
+
 export function Mui7Navi() {
 
+
   const menus = [
-    {label: 'Home', href: '/'},
-    {label: 'Utils', children: [{label: 'MUI', href: '/mui/7/utils/v01'},]}
+    {
+      label: 'Utils',
+      children: [
+        {label: 'MUI', href: '/pages/mui/7/utils/v01'},
+        {label: 'Tailwind v3', href: '/pages/tailwind/3/v02'},
+      ],
+    },
   ]
 
   return (<>
     <Box sx={{flexGrow: 1}}>
-      <AppBar position="static">
+      <AppBar position="static"
+              sx={{backgroundColor: '#000', color: 'white'}}>
         <Toolbar disableGutters>
           <IconButton size="small"
                       edge="start"
@@ -36,14 +44,7 @@ export function Mui7Navi() {
 
           {/* @see https://mui.com/material-ui/react-app-bar/#app-bar-with-responsive-menu */}
           <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-            {menus.map((menu) => (
-              <>
-                {menu.children && (
-                  <>
-                  </>
-                )}
-              </>
-            ))}
+            <Mui7NaviMenu menus={menus}/>
           </Box>
         </Toolbar>
       </AppBar>

@@ -31,6 +31,7 @@ import {
 } from "./v02.tailwind-utils";
 import {BoxModel} from "@/pages/tailwind/3/v02.box";
 import {Tailwind3V02Basic} from "@/pages/tailwind/3/v02.basic";
+import {Mui7Navi} from "@/pages/mui/7/nav/v01";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
@@ -107,6 +108,7 @@ export default function SamplePage() {
     <>
       {/* 不确定需要什么 class，用 CDN 全部引入。 */}
       <Script src={'https://cdn.tailwindcss.com'} strategy={'beforeInteractive'}/>
+      <Mui7Navi/>
 
       <Stack spacing={2} direction="row" className={'mt-2'}>
         <TagFieldGroupSingle label={'Header Transform'}
