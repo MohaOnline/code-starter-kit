@@ -8,10 +8,12 @@ import {
   Stack, Tabs, Tab, TextField, Toolbar, Tooltip, Typography,
   useTheme
 } from '@mui/material';
+import {toast} from "react-toastify";
 
 import {useStatus} from "@/app/lib/atoms";
 import HTMLField from "@/app/lib/components/HTMLField/v01";
 import {Panel} from '@/lib/components/tailwind/panel/v01';
+import {updateObjectArray} from '@/lib/utils';
 
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
@@ -46,10 +48,51 @@ export function Editor({note}) {
         }
       </Stack>
 
-
-
       <div className={'gap-2 flex flex-row justify-end'}>
-        <Button variant="contained">Save</Button>
+        <Button variant="contained" onClick={() => {
+          let action = "create";
+          if (status.note.id) {
+            action = "update";
+          }
+
+          try {
+            status.isProcessing = true;
+            setStatus({...status});
+            fetch("/api/notebooks/v02/notes/crud", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  action: action,
+                  note: status.note,
+                }),
+              }
+            ).then(res => res.json()).then(json => {
+                console.log("API Response:", json); // 更明确的日志标识
+
+                if (!json.success) {
+                  toast.error("API Response: " + json.error);
+                }
+                else {
+                  status.note = json.note;
+                  status.notes = updateObjectArray(status.notes, json.note);
+                  setStatus({...status});
+                  toast.success("Note Updated.");
+                }
+              }
+            )
+          }
+          catch (e) {
+            console.log('Note Update Error...')
+            console.dir(e);
+          }
+          finally {
+            status.isProcessing = false;
+            setStatus({...status});
+          }
+        }
+        }>Save</Button>
         <Button variant="outlined"
                 color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
                 onClick={() => {

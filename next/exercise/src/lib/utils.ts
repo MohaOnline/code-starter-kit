@@ -86,3 +86,16 @@ export function getWeights(weight1: string = '', weight2: string = '', number: n
 
   return weights;
 }
+
+export function updateObjectArray(array, obj, attribute = 'id') {
+  const index = array.findIndex((x) => x[attribute] === obj[attribute]);
+  if (index === -1) {
+    console.group('updateObjectArray');
+    console.dir(array);
+    console.dir(obj);
+    console.groupEnd();
+    return [...array]; // 返回原数组副本
+  }
+  console.log(`updateObjectArray Index:`, index);
+  return [...array.slice(0, index), obj, ...array.slice(index + 1)];
+}
