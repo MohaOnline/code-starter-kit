@@ -2,9 +2,10 @@ import {Panel} from "@/lib/components/tailwind/panel/v01";
 import {TagFieldGroupSingle} from "@/lib/components/mui/TagFields";
 import {
   autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
-  Checkbox, Chip, Container,
-  Link, ListSubheader, Menu, MenuItem, IconButton, Stack,
-  Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
+  Checkbox, Chip, Container, IconButton, Input,
+  Link, ListSubheader, Menu, MenuItem, OutlinedInput,
+  Stack, Tabs, Tab, TextField, Toolbar, Tooltip, Typography,
+  useTheme
 } from '@mui/material';
 import {Adb as AdbIcon, Menu as MenuIcon} from '@mui/icons-material';
 
@@ -23,6 +24,12 @@ export function Mui7Navi() {
         {label: 'MUI', href: '/pages/mui/7/utils/v01'},
         {label: 'Tailwind v3', href: '/pages/tailwind/3/v02'},
       ],
+    },
+    {
+      label: 'Notes',
+      children: [
+        {label: 'List', href: '/notebooks/notes/v02/list', target: '_blank'},
+      ]
     },
   ]
 

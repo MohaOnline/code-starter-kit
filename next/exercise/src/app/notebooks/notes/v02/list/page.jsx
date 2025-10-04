@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {
   autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip,
@@ -15,6 +15,7 @@ import {ProcessingMask} from "@/app/lib/components/ProcessingMask";
 import {Item} from "./item";
 import {Details} from "@/app/notebooks/notes/v02/list/details";
 import {Editor} from "@/app/notebooks/notes/v02/list/editor";
+import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
 
 
 export default function NotesList() {
@@ -44,9 +45,10 @@ export default function NotesList() {
   return (
     <>
       <NavTop/>
-
+      <ThemeToggle/>
       <div className={"flex flex-col items-center justify-center"}>
-        <h1 className={''}>Notes</h1>
+        {!status.currentNoteId &&
+          <h1 className={''}>Notes</h1>}
 
         <div className={"flex flex-row w-full justify-center"}>
           {/* Note List & Detail */}

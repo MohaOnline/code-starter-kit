@@ -8,7 +8,7 @@ export function Details(props) {
   return (<>
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
       <>
-        <Typography variant="h5" gutterBottom>{note.title}</Typography>
+        <Typography variant="h5" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
         <article className={'prose text-inherit'}
                  dangerouslySetInnerHTML={{__html: note.body_script}}/>
       </>

@@ -34,7 +34,7 @@ export function Mui7NaviMenu({menus, level = 0}) {
             <Button key={level + menu.href} onClick={openMenu} sx={{color: '#fff'}}>{menu.label}</Button>
             <Menu open={Boolean(anchorEl)} onClose={closeMenu} anchorEl={anchorEl}>
               {menu.children.map((menu) => (
-                <MenuItem key={level + menu.href} onClick={closeMenu} component={Link} href={menu.href}>{menu.label}</MenuItem>
+                <MenuItem key={level + menu.href} onClick={closeMenu} component={Link} href={menu.href} target={menu.target ? menu.target : "_self"}>{menu.label}</MenuItem>
               ))}
             </Menu>
           </>

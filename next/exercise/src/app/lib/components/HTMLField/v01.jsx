@@ -60,8 +60,7 @@ import {
   tooltips
 } from '@codemirror/view';
 import {
-  Annotation,
-  AnnotationType,
+  Annotation, AnnotationType,
   ChangeDesc,
   ChangeSet,
   CharCategory,
@@ -110,7 +109,7 @@ export default function HTMLField({content, onChange}) {
   const handleUpdate = React.useCallback((val, viewUpdate) => {
     console.log('val:', val);
     setValue(val);
-    onChange(val);
+    onChange?.(val);
   }, [setValue, onChange]);
 
 
