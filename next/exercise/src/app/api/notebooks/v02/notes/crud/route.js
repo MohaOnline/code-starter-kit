@@ -13,6 +13,9 @@ export async function POST(request) {
   try {
     const data = await request.json();
 
+    console.group("/api/notebooks/v02/notes/crud");
+    console.dir(data);
+    console.groupEnd()
 
     if (data?.action === "update") {
       await prisma.$transaction(async tx => {

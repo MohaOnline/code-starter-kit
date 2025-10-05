@@ -14,11 +14,14 @@ import {useStatus} from "@/app/lib/atoms";
 import HTMLField from "@/app/lib/components/HTMLField/v01";
 import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {updateObjectArray} from '@/lib/utils';
+import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory} from '@/lib/react/common';
 
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
   const saveButtonRef = useRef(null);
+  const cancelButtonRef = useRef(null);
 
+  // POST note to API
   const updateNote = useCallback(async () => {
     let action = "create";
     if (status.note.id) {
@@ -75,28 +78,18 @@ export function Editor({note}) {
     }));
   }, [setStatus]);
 
-  // 生成事件处理函数
-  const genBindCtrlCmdShortcut2ButtonClick = useCallback((buttonRef, key) => {
-    return (event) => {
-      // 检查是否按下了 Ctrl+S (Windows/Linux) 或 Cmd+S (Mac)
-      if ((event.ctrlKey || event.metaKey) && event.key === key) {
-        event.preventDefault(); // 阻止浏览器默认的保存行为
-        // 模拟点击保存按钮
-        if (buttonRef.current) {
-          buttonRef.current.click();
-        }
-      }
-    }
-  }, []);
-
+  const shortcutSaveButton = useCallback(bindCtrlCmdShortcut2ButtonClickFactory(saveButtonRef, 's'), []);
+  const shortcutCancelButton = useCallback(bindShortcut2ButtonClickFactory(cancelButtonRef, 'Escape'), []);
   // 键盘快捷键监听
   useEffect(() => {
-    // 添加事件监听器
-    document.addEventListener('keydown', genBindCtrlCmdShortcut2ButtonClick(saveButtonRef, 's'));
+    // 给保存、取消按钮设置快捷键
+    document.addEventListener('keydown', shortcutSaveButton);
+    document.addEventListener('keydown', shortcutCancelButton);
 
     // 清理函数
     return () => {
-      document.removeEventListener('keydown', genBindCtrlCmdShortcut2ButtonClick(saveButtonRef, 's'));
+      document.removeEventListener('keydown', shortcutSaveButton);
+      document.removeEventListener('keydown', shortcutCancelButton);
     };
   }, []); // 空依赖数组，只在组件挂载和卸载时执行
 
@@ -121,7 +114,7 @@ export function Editor({note}) {
 
       <div className={'gap-2 flex flex-row justify-end'}>
         <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
-        <Button variant="outlined"
+        <Button ref={cancelButtonRef} variant="outlined"
                 color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
                 onClick={() => {
                   setStatus(prev => ({
