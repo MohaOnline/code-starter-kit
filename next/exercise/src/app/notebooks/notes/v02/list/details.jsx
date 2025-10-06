@@ -2,7 +2,7 @@ import {Button, Typography} from "@mui/material";
 import {useStatus} from "@/app/lib/atoms";
 import './details.css';
 import {useCallback, useEffect, useRef} from "react";
-import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory} from "@/lib/react/common";
+import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory} from "@/lib/common";
 
 export function Details(props) {
   const [status, setStatus] = useStatus();

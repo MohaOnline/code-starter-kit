@@ -14,7 +14,10 @@ import {useStatus} from "@/app/lib/atoms";
 import HTMLField from "@/app/lib/components/HTMLField/v01";
 import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {updateObjectArray} from '@/lib/utils';
-import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory} from '@/lib/react/common';
+import {
+  bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory,
+  registerComposingMarker, unregisterComposingMarker
+} from '@/lib/common';
 
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
@@ -80,16 +83,18 @@ export function Editor({note}) {
 
   const shortcutSaveButton = useCallback(bindCtrlCmdShortcut2ButtonClickFactory(saveButtonRef, 's'), []);
   const shortcutCancelButton = useCallback(bindShortcut2ButtonClickFactory(cancelButtonRef, 'Escape'), []);
-  // 键盘快捷键监听
+  // 键盘快捷键监听 Keyboard related
   useEffect(() => {
     // 给保存、取消按钮设置快捷键
     document.addEventListener('keydown', shortcutSaveButton);
     document.addEventListener('keydown', shortcutCancelButton);
+    registerComposingMarker();
 
     // 清理函数
     return () => {
       document.removeEventListener('keydown', shortcutSaveButton);
       document.removeEventListener('keydown', shortcutCancelButton);
+      unregisterComposingMarker();
     };
   }, []); // 空依赖数组，只在组件挂载和卸载时执行
 
