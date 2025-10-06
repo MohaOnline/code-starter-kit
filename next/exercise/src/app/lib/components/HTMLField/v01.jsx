@@ -115,6 +115,7 @@ export default function HTMLField({content, onChange}) {
 
   return (
     <>
+      <Stack className={'sticky top-0 z-10'}>Toolbar</Stack>
       {/* [javascript({jsx: true})] */}
       <CodeMirror value={value}
                   extensions={[
