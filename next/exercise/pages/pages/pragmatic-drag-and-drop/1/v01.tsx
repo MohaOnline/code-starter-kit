@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import {type ReactElement} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from "react";
 
 // eslint-disable-next-line @atlaskit/ui-styling-standard/use-compiled -- Ignored via go/DSP-18766
 import {css, jsx} from '@emotion/react';
@@ -8,7 +8,16 @@ import Image, {StaticImageData} from 'next/image';
 
 import king from '../icons/king.png';
 import pawn from '../icons/pawn.png';
+
 import {EmotionJSX} from "@emotion/react/src/jsx-namespace";
+import invariant from 'tiny-invariant';
+
+import {
+  draggable,
+  dropTargetForElements,
+  type ElementDropTargetEventBasePayload,
+  monitorForElements,
+} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 
 export type Coordinate = [number, number];
 
@@ -24,7 +33,7 @@ type PieceProps = {
   alt: string;
 };
 
-export function isEqualCoord(c1: Coordinate, c2: Coordinate): boolean {
+export function isEqualCoordinate(c1: Coordinate, c2: Coordinate): boolean {
   return c1[0] === c2[0] && c1[1] === c2[1];
 }
 
@@ -39,7 +48,7 @@ function renderSquares(pieces: PieceRecord[]) {
     for (let col = 0; col < 8; col++) {
       const squareCoord: Coordinate = [row, col];
 
-      const piece = pieces.find((piece) => isEqualCoord(piece.location, squareCoord));
+      const piece = pieces.find((piece) => isEqualCoordinate(piece.location, squareCoord));
 
       const isDark = (row + col) % 2 === 1;
 
@@ -62,8 +71,22 @@ function Chessboard() {
   return <div css={chessboardStyles}>{renderSquares(pieces)}</div>;
 }
 
+// 渲染棋子
 function Piece({image, alt}: PieceProps) {
-  return <Image css={imageStyles} src={image} alt={alt} draggable="false"/>; // draggable set to false to prevent dragging of the images
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    invariant(el);
+
+    return draggable({
+      element: el,
+    });
+  }, []);
+
+  // next/image
+  return <Image ref={ref} css={imageStyles} src={image} alt={alt} draggable="false"/>; // draggable set to false to prevent dragging of the images
 }
 
 export function King() {

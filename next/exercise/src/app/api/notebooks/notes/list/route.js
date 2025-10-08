@@ -365,6 +365,7 @@ export async function GET() {
     let rows = await prisma.$queryRaw`
         SELECT *
         FROM notebooks_notes_summary
+        ORDER BY tid, weight
     `;
 
     console.log(rows);

@@ -1,8 +1,11 @@
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
-  autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip,
-  ListSubheader, Stack, Tabs, Tab, TextField, Typography, useTheme
+  autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
+  Checkbox, Chip, Container, IconButton, Input,
+  Link, ListSubheader, Menu, MenuItem, OutlinedInput,
+  Stack, Tabs, Tab, TextField, Toolbar, Tooltip, Typography,
+  useTheme
 } from '@mui/material';
 
 import {useStatus} from "@/app/lib/atoms";
@@ -10,15 +13,15 @@ import {useStatus} from "@/app/lib/atoms";
 export function Item({note}) {
   const [status, setStatus] = useStatus();
 
-  console.log('Item', note);
-  if (note.id !== '47') {
+  // 暂时仅处理 999 类型 notes
+  if (note.tid !== '999') {
     return (<>
 
     </>);
   }
 
   return (<>
-    <div className={'border p-2 cursor-pointer'} onClick={() => {
+    <div className={'border p-2 cursor-pointer'} draggable="false" onClick={() => {
       setStatus((prev) => ({
         ...prev,
         currentNoteId: note.id,
