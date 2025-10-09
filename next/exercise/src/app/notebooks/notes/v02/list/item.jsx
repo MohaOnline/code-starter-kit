@@ -1,4 +1,5 @@
 import NextLink from "next/link";
+import React, {useCallback} from "react";
 
 import {
   autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
@@ -20,16 +21,18 @@ export function Item({note}) {
     </>);
   }
 
+  const click2Details = useCallback(() => {
+    setStatus((prev) => ({
+      ...prev,
+      currentNoteId: note.id,
+      note: note,
+    }))
+  }, [note, setStatus]);
+
   return (<>
-    <div className={'border p-2 cursor-pointer'} draggable="false" onClick={() => {
-      setStatus((prev) => ({
-        ...prev,
-        currentNoteId: note.id,
-        note: note,
-      }))
-    }}>
-      <Typography variant="h6" gutterBottom>{note.title}</Typography>
-      <div className={'ps-8 line-clamp-2'}
+    <div className={'border p-2'} draggable="false">
+      <Typography className={'cursor-move'} variant="h6" gutterBottom>{note.title}</Typography>
+      <div className={'cursor-pointer ps-8 line-clamp-2'} onClick={click2Details}
            dangerouslySetInnerHTML={{__html: note.body_script}}/>
     </div>
   </>);

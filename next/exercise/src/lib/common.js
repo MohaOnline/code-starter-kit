@@ -41,6 +41,9 @@ export const bindCtrlCmdShortcut2ButtonClickFactory = (buttonRef, key) => {
   }
 };
 
+export const bindCtrlCmd2FunctionFactory = (func, key) => {
+}
+
 export const bindShortcut2ButtonClickFactory = (buttonRef, key, ctrl = false, meta = false, option = false, shift = false) => {
   return (event) => {
     const keys = (!ctrl || (ctrl && event.ctrlKey))

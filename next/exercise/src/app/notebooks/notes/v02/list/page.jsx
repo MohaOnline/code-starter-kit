@@ -61,13 +61,13 @@ export default function NotesList() {
           }
           {/* Certain Note is selected */}
           {status.currentNoteId &&
-            <div className={'basis-1/2 note-details p-2'}>
+            <div className={'note-details p-2 ' + (!status.isEditing ? 'basis-3/5' : 'basis-2/5')}>
               <Details note={status.note}/>
             </div>}
 
           {/* Editor */}
           {status.isEditing &&
-            <div className={'basis-1/2'}>
+            <div className={'basis-3/5'}>
               <Editor note={status.note}/>
             </div>
           }
