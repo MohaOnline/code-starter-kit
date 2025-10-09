@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useRef} from "react";
 import {Button, Typography} from "@mui/material";
 
+import he from 'he'
 import hljs from 'highlight.js';
 
 // Own libraries and css.
@@ -31,19 +32,28 @@ export function Details(props) {
     };
   }, []); // 空依赖数组，只在组件挂载和卸载时执行
 
+
   // 语法高亮
+  const getHTMLEntityEncodeBodyScript = useCallback(() => {
+    const regex = /<code><pre(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/pre><\/code>/gs;
+    return note?.body_script?.replace(regex, (match, content) => {
+      const encodedContent = he.encode(content, {useNamedReferences: true});
+      return match.replace(content, encodedContent);
+    });
+  }, [note.body_script]);
+
   const contentRef = useRef(null);
   const highlightHandler = useCallback(function () {
     const container = contentRef.current;
-    container?.querySelectorAll('code>pre').forEach(el => {
-      // 针对容器内的高亮
+    const all = [...container.querySelectorAll('code > pre:not([data-highlighted="yes"])')]
+    // const outermost = all.filter(el => !all.some(other => other !== el && other.contains(el)))
+    all.forEach(el => {
       hljs?.highlightElement(el); // 或 hljs.highlightAllUnder(container);
     });
-  }, [contentRef, note.body_script]);
-
+  }, [note.body_script]);
   useEffect(() => {
     highlightHandler();
-  })
+  });
 
   // 没有 currentNoteId 就显示笔记一览
   const click2List = useCallback(() => {
@@ -59,7 +69,7 @@ export function Details(props) {
       <>
         <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
         <article ref={contentRef} className={'prose text-inherit dark:text-primary m-auto max-w-4xl'}
-                 dangerouslySetInnerHTML={{__html: note.body_script}}/>
+                 dangerouslySetInnerHTML={{__html: getHTMLEntityEncodeBodyScript()}}/>
       </>
     }
 

@@ -23,6 +23,10 @@
     margin-bottom: 0.25rem;
 }
 
+.dark .note-details code:not(:has(pre)) {
+    color: #78d278;
+}
+
 .note-details code::before, .note-details code::after {
     content: "";
 }
