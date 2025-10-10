@@ -146,13 +146,22 @@ export default function HTMLField({content, onChange, cursorPosition}) {
                     html({
                       matchClosingTags: false,       // 无效
                     }),
-                    // 自定义当前行高亮背景色
+                    // 自定义当前行高亮背景色和光标颜色
                     EditorView.theme({
                       '.cm-activeLine': {
                         backgroundColor: '#ffff0025 !important', // 自定义背景色
                       },
                       '.cm-activeLineGutter': {
                         backgroundColor: '#ffff0025 !important', // 行号区域背景色
+                      },
+                      '.cm-cursor, .cm-dropCursor': {
+                        borderLeftColor: '#ff6b6b !important', // 光标颜色 - 红色
+                      },
+                      '.cm-cursor-primary': {
+                        borderLeftColor: '#43cdffff !important', // 主光标颜色 - 青色
+                      },
+                      '.cm-cursor-secondary': {
+                        borderLeftColor: '#ffe66d !important', // 次光标颜色 - 黄色
                       }
                     })
                   ]}
