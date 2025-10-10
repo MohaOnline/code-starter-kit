@@ -138,8 +138,7 @@ export default function HTMLField({content, onChange, cursorPosition}) {
     <>
       <Stack className={'sticky top-0 z-10'}>Toolbar</Stack>
       {/* [javascript({jsx: true})] */}
-      <CodeMirror ref={editorRef}
-                  value={value}
+      <CodeMirror ref={editorRef} value={value}
                   extensions={[
                     minimalSetup,
                     color,
@@ -147,6 +146,15 @@ export default function HTMLField({content, onChange, cursorPosition}) {
                     html({
                       matchClosingTags: false,       // 无效
                     }),
+                    // 自定义当前行高亮背景色
+                    EditorView.theme({
+                      '.cm-activeLine': {
+                        backgroundColor: '#ffff0025 !important', // 自定义背景色
+                      },
+                      '.cm-activeLineGutter': {
+                        backgroundColor: '#ffff0025 !important', // 行号区域背景色
+                      }
+                    })
                   ]}
                   basicSetup={{
                     highlightSelectionMatches: true, // 高亮与选择相同内容
