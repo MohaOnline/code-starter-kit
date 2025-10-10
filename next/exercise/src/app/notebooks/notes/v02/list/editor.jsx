@@ -69,6 +69,14 @@ export function Editor({note}) {
     }
   }, [status]);
 
+  
+  const cancelEditing = useCallback(() => {
+    setStatus(prev => ({
+      ...prev,
+      isEditing: false,
+    }))
+  }, [setStatus]);
+
   // 把 UI 的 content 更新到 status.note 。
   const updateStatusNoteAttribute = useCallback((val, attribute) => {
     console.log('val:', val);
@@ -109,9 +117,10 @@ export function Editor({note}) {
         {/* body_script first */}
         {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
           <Panel title={'body_script'}><>
-            <HTMLField content={note.body_script} onChange={(value) => {
-              updateStatusNoteAttribute(value, 'body_script')
-            }}/>
+            <HTMLField content={note.body_script} cursorPosition={status.cursorPosition}
+                       onChange={(value) => {
+                         updateStatusNoteAttribute(value, 'body_script')
+                       }}/>
           </>
           </Panel>
         }
@@ -119,14 +128,8 @@ export function Editor({note}) {
 
       <div className={'gap-2 flex flex-row justify-end'}>
         <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
-        <Button ref={cancelButtonRef} variant="outlined"
+        <Button ref={cancelButtonRef} variant="outlined" onClick={status.cancelEditing}
                 color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
-                onClick={() => {
-                  setStatus(prev => ({
-                    ...prev,
-                    isEditing: false,
-                  }))
-                }}
         >Cancel</Button>
       </div>
     </>

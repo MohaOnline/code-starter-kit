@@ -55,6 +55,100 @@ export function Details(props) {
     highlightHandler();
   });
 
+  // 计算点击位置在原始文本中的偏移量
+  const getTextOffsetFromClick = useCallback((event) => {
+    const range = document.caretRangeFromPoint(event.clientX, event.clientY);
+    const caretPosition = document.caretPositionFromPoint(event.clientX, event.clientY);
+    console.log(range);
+    console.log(caretPosition);
+
+    if (!range || !contentRef.current) return 0;
+
+    // 创建一个从容器开始到点击位置的范围
+    const containerRange = document.createRange();
+    containerRange.setStart(contentRef.current, 0);
+    containerRange.setEnd(range.startContainer, range.startOffset);
+
+    // 获取范围内的纯文本内容
+    const clickedText = containerRange.toString();
+    const htmlContent = note?.body_script || '';
+
+    // 更精确的文本位置映射算法
+    let htmlIndex = 0;
+    let textIndex = 0;
+    let inTag = false;
+    let inEntity = false;
+    let entityBuffer = '';
+
+    while (htmlIndex < htmlContent.length && textIndex < clickedText.length) {
+      const htmlChar = htmlContent[htmlIndex];
+
+      // 处理 HTML 标签
+      if (htmlChar === '<' && !inEntity) {
+        inTag = true;
+        htmlIndex++;
+        continue;
+      }
+
+      if (inTag && htmlChar === '>') {
+        inTag = false;
+        htmlIndex++;
+        continue;
+      }
+
+      if (inTag) {
+        htmlIndex++;
+        continue;
+      }
+
+      // 处理 HTML 实体
+      if (htmlChar === '&' && !inTag) {
+        inEntity = true;
+        entityBuffer = '&';
+        htmlIndex++;
+        continue;
+      }
+
+      if (inEntity) {
+        entityBuffer += htmlChar;
+        if (htmlChar === ';') {
+          // 实体结束，解码并比较
+          const decoded = he.decode(entityBuffer);
+          if (textIndex < clickedText.length && decoded === clickedText[textIndex]) {
+            textIndex++;
+          }
+          inEntity = false;
+          entityBuffer = '';
+        }
+        htmlIndex++;
+        continue;
+      }
+
+      // 普通字符比较
+      if (textIndex < clickedText.length && htmlChar === clickedText[textIndex]) {
+        textIndex++;
+      }
+
+      htmlIndex++;
+    }
+
+    // 返回在原始 HTML 中的位置
+    return Math.max(0, htmlIndex);
+  }, [note?.body_script]);
+
+  // 处理预览区域点击事件
+  const handlePreviewClick = useCallback((event) => {
+    if (!status.isEditing) return; // 只在编辑模式下响应
+
+    const offset = getTextOffsetFromClick(event);
+
+    // 将光标位置传递给编辑器
+    setStatus(prev => ({
+      ...prev,
+      cursorPosition: offset,
+    }));
+  }, [status.isEditing, getTextOffsetFromClick, setStatus]);
+
   // 没有 currentNoteId 就显示笔记一览
   const click2List = useCallback(() => {
     setStatus(prev => ({
@@ -68,37 +162,38 @@ export function Details(props) {
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
       <>
         <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
-        <article ref={contentRef} className={'prose text-inherit dark:text-primary m-auto max-w-4xl'}
+        <article contentEditable={true} ref={contentRef} onClick={handlePreviewClick}
+                 className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: getHTMLEntityEncodeBodyScript()}}/>
       </>
     }
 
-      <div className={'gap-2 flex flex-row justify-end'}>
-        {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
-          <Button ref={editButtonRef} sx={{
-            backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
-            '&:hover': { // 鼠标悬停
-              backgroundColor: 'success.dark',
-              color: 'error.contrastText',
-            },
-          }} className={''} variant="contained"
-                  onClick={() => {
-                    setStatus(prev => ({
-                      ...prev,
-                      isEditing: true,
-                    }))
-                  }}
-          >Edit</Button>
-        }
-        <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
-          backgroundColor: 'grey.300',
-          '&:hover': {
-            backgroundColor: 'grey.500',
+    <div className={'gap-2 flex flex-row justify-end'}>
+      {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
+        <Button ref={editButtonRef} sx={{
+          backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
+          '&:hover': { // 鼠标悬停
+            backgroundColor: 'success.dark',
             color: 'error.contrastText',
           },
-        }}
-        >List</Button>
-      </div>
+        }} className={''} variant="contained"
+                onClick={() => {
+                  setStatus(prev => ({
+                    ...prev,
+                    isEditing: true,
+                  }))
+                }}
+        >Edit</Button>
+      }
+      <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
+        backgroundColor: 'grey.300',
+        '&:hover': {
+          backgroundColor: 'grey.500',
+          color: 'error.contrastText',
+        },
+      }}
+      >List</Button>
+    </div>
 
   </>);
 }

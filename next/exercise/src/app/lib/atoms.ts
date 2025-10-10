@@ -1,6 +1,7 @@
 "use client"
 
-import { atom, useAtom } from 'jotai';
+import {useCallback} from "react";
+import {atom, useAtom} from 'jotai';
 
 /**
  * import { useStatus } from '@/app/lib/atoms';
@@ -160,6 +161,7 @@ export type StatusType = {
     isProcessing: boolean;
     isPlaying: boolean;
   currentNoteId: string;    // 有值；无值。用 status.note 显示笔记。
+  cursorPosition?: number;  // 光标位置，用于预览点击同步到编辑器
     words: any[];
     currentWordIndex: number;
     notesListeningDialog: {
@@ -167,6 +169,10 @@ export type StatusType = {
         currentNoteIndex: number;
         isPlaying: boolean;
     };
+  setEditing: any;
+  cancelEditing: any;
+  setProcessing: any;
+  cancelProcessing: any;
 };
 
 // 通用 status，所有数据在此周转。
@@ -190,7 +196,15 @@ export const status = atom<StatusType>({
         notes: [],
         currentNoteIndex: 0,
         isPlaying: false,
-    }
+    },
+  setEditing:             () => {
+  },
+  cancelEditing:          () => {
+  },
+  setProcessing:          () => {
+  },
+  cancelProcessing:       () => {
+  }
 });
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
@@ -237,7 +251,21 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
             setStatusValue(updater);
         }
     };
+
+  statusValue.cancelEditing = useCallback(function () {
+    statusValue.isEditing = false;
+    setStatusWithLog(prev => ({...prev, isEditing: false}));
+  }, [setStatusWithLog]);
+
+  statusValue.setProcessing = useCallback(function () {
+    statusValue.isProcessing = true;
+    setStatusWithLog(prev => ({...prev, isProcessing: true}));
+  }, [setStatusWithLog]);
+
+  statusValue.cancelProcessing = useCallback(function () {
+    statusValue.isProcessing = false;
+    setStatusWithLog(prev => ({...prev, isProcessing: false}));
+  }, [setStatusWithLog]);
     
     return [statusValue, setStatusWithLog];
 }
-

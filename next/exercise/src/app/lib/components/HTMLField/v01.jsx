@@ -103,8 +103,9 @@ import './v01.css';
 /**
  * @see /pages/codemirror/6/v01
  */
-export default function HTMLField({content, onChange}) {
+export default function HTMLField({content, onChange, cursorPosition}) {
   const [value, setValue] = React.useState(content);
+  const editorRef = React.useRef(null);
 
   const handleUpdate = React.useCallback((val, viewUpdate) => {
     console.log('val:', val);
@@ -112,12 +113,33 @@ export default function HTMLField({content, onChange}) {
     onChange?.(val);
   }, [setValue, onChange]);
 
+  // 处理光标位置设置
+  React.useEffect(() => {
+    if (cursorPosition !== undefined && editorRef.current && editorRef.current.view) {
+      const view = editorRef.current.view;
+      const doc = view.state.doc;
+
+      // 确保位置在有效范围内
+      const pos = Math.min(Math.max(0, cursorPosition), doc.length);
+      console.log('pos:', pos);
+      // 设置光标位置
+      view.dispatch({
+        selection: {anchor: pos, head: pos},
+        scrollIntoView: true
+      });
+
+      // 聚焦编辑器
+      view.focus();
+    }
+  }, [cursorPosition]);
+
 
   return (
     <>
       <Stack className={'sticky top-0 z-10'}>Toolbar</Stack>
       {/* [javascript({jsx: true})] */}
-      <CodeMirror value={value}
+      <CodeMirror ref={editorRef}
+                  value={value}
                   extensions={[
                     minimalSetup,
                     color,
