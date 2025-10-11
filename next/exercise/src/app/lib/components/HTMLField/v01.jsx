@@ -113,6 +113,67 @@ export default function HTMLField({content, onChange, cursorPosition}) {
     onChange?.(val);
   }, [setValue, onChange]);
 
+  // （工具条辅助）插入HTML标签的函数
+  const insertHtmlTag = React.useCallback((tagName, hasAttributes = false) => {
+    if (!editorRef.current?.view) return;
+
+    const view = editorRef.current.view;
+    const state = view.state;
+    const selection = state.selection.main;
+
+    let openTag, closeTag;
+
+    if (tagName === 'span' && hasAttributes) {
+      openTag = '<span data-voide-id="">';
+      closeTag = '</span>';
+    }
+    else if (tagName === 'code_block') {
+      openTag = '<pre><code class="language-">';
+      closeTag = '</code></pre>';
+    }
+    else {
+      openTag = `<${tagName}>`;
+      closeTag = `</${tagName}>`;
+    }
+
+    if (selection.empty) {
+      // 没有选中内容，在光标位置插入标签，光标定位在标签中间
+      const insertText = openTag + closeTag;
+      const cursorPos = selection.from + openTag.length;
+
+      view.dispatch({
+        changes: {
+          from: selection.from,
+          to: selection.to,
+          insert: insertText
+        },
+        selection: {
+          anchor: cursorPos,
+          head: cursorPos
+        }
+      });
+    }
+    else {
+      // 有选中内容，在选中内容前后添加标签，保持新内容被选中
+      const selectedText = state.doc.sliceString(selection.from, selection.to);
+      const insertText = openTag + selectedText + closeTag;
+
+      view.dispatch({
+        changes: {
+          from: selection.from,
+          to: selection.to,
+          insert: insertText
+        },
+        selection: {
+          anchor: selection.from,
+          head: selection.from + insertText.length
+        }
+      });
+    }
+
+    view.focus();
+  }, []);
+
   // 处理光标位置设置
   React.useEffect(() => {
     if (cursorPosition !== undefined && editorRef.current && editorRef.current.view) {
@@ -136,7 +197,65 @@ export default function HTMLField({content, onChange, cursorPosition}) {
 
   return (
     <>
-      <Stack className={'sticky top-0 z-10'}>Toolbar</Stack>
+      <Stack direction="row" spacing={1} className={'sticky toolbar top-0 z-10 dark:bg-black bg-white p-2 border'}>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('ol')}
+        >
+          ol
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('ul')}
+        >
+          ul
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('li')}
+        >
+          li
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('del')}
+        >
+          del
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('p')}
+        >
+          p
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('span', true)}
+        >
+          span
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('code', true)}
+        >
+          Code
+        </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => insertHtmlTag('code_block', true)}
+        >
+          Code Block
+        </Button>
+      </Stack>
+      
       {/* [javascript({jsx: true})] */}
       <CodeMirror ref={editorRef} value={value}
                   extensions={[
@@ -148,6 +267,10 @@ export default function HTMLField({content, onChange, cursorPosition}) {
                     }),
                     // 自定义当前行高亮背景色和光标颜色
                     EditorView.theme({
+                      '&': {
+                        color: '#78d278 !important',
+                        backgroundColor: '#000 !important',
+                      },
                       '.cm-activeLine': {
                         backgroundColor: '#ffff0025 !important', // 自定义背景色
                       },

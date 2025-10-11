@@ -34,10 +34,13 @@ export function Details(props) {
 
 
   // 语法高亮
-  const getHTMLEntityEncodeBodyScript = useCallback(() => {
+  //
+  const getBodyScriptWithHTMLEntityEncode = useCallback(() => {
     const regex = /<code><pre(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/pre><\/code>/gs;
     return note?.body_script?.replace(regex, (match, content) => {
       const encodedContent = he.encode(content, {useNamedReferences: true});
+      // const encodedContent = content;
+      console.log(encodedContent);
       return match.replace(content, encodedContent);
     });
   }, [note.body_script]);
@@ -56,11 +59,20 @@ export function Details(props) {
   });
 
   // 计算点击位置在原始文本中的偏移量
+  // 过滤掉 <...> 中的内容，折算 &...; 的内容。
   const getTextOffsetFromClick = useCallback((event) => {
-    const range = document.caretRangeFromPoint(event.clientX, event.clientY);
-    const caretPosition = document.caretPositionFromPoint(event.clientX, event.clientY);
+    let range;
+    if (document.caretRangeFromPoint) {
+      range = document.caretRangeFromPoint(event.clientX, event.clientY);
+    }
+    else if (document.caretPositionFromPoint) {
+      const pos = document.caretPositionFromPoint(event.clientX, event.clientY);
+      range = document.createRange();
+      range.setStart(pos.offsetNode, pos.offset);
+      range.collapse(true); // 变成一个光标（无长度的 Range）
+    }
+
     console.log(range);
-    console.log(caretPosition);
 
     if (!range || !contentRef.current) return 0;
 
@@ -70,17 +82,20 @@ export function Details(props) {
     containerRange.setEnd(range.startContainer, range.startOffset);
 
     // 获取范围内的纯文本内容
-    const clickedText = containerRange.toString();
+    const string2Caret = containerRange.toString();
+    console.log(string2Caret);
     const htmlContent = note?.body_script || '';
+    // const htmlContent = getBodyScriptWithHTMLEntityEncode() || '';
 
     // 更精确的文本位置映射算法
     let htmlIndex = 0;
     let textIndex = 0;
     let inTag = false;
     let inEntity = false;
+    let inCode = false;
     let entityBuffer = '';
 
-    while (htmlIndex < htmlContent.length && textIndex < clickedText.length) {
+    while (htmlIndex < htmlContent.length && textIndex < string2Caret.length) {
       const htmlChar = htmlContent[htmlIndex];
 
       // 处理 HTML 标签
@@ -111,10 +126,11 @@ export function Details(props) {
 
       if (inEntity) {
         entityBuffer += htmlChar;
+        console.log(entityBuffer);
         if (htmlChar === ';') {
           // 实体结束，解码并比较
           const decoded = he.decode(entityBuffer);
-          if (textIndex < clickedText.length && decoded === clickedText[textIndex]) {
+          if (textIndex < string2Caret.length && decoded === string2Caret[textIndex]) {
             textIndex++;
           }
           inEntity = false;
@@ -125,7 +141,7 @@ export function Details(props) {
       }
 
       // 普通字符比较
-      if (textIndex < clickedText.length && htmlChar === clickedText[textIndex]) {
+      if (textIndex < string2Caret.length && htmlChar === string2Caret[textIndex]) {
         textIndex++;
       }
 
@@ -164,7 +180,7 @@ export function Details(props) {
         <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
         <article contentEditable={true} ref={contentRef} onClick={handlePreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
-                 dangerouslySetInnerHTML={{__html: getHTMLEntityEncodeBodyScript()}}/>
+                 dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>
       </>
     }
 

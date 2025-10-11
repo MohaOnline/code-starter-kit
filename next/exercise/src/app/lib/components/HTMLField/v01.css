@@ -1,3 +1,12 @@
 .cm-matchingBracket {
-    background-color: rgba(255, 255, 0, 0.3)!important; /* Sets a light yellow background color */
+    background-color: transparent!important; /* Sets a light yellow background color */
+}
+
+.toolbar button {
+    min-width: 50px;
+}
+
+.dark .toolbar button {
+    border-color: #78d278;
+    color: #78d278;
 }
