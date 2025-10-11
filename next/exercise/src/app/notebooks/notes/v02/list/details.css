@@ -32,7 +32,7 @@
 }
 
 .note-details pre {
-    font-family: 'YaHei Consolas Hybrid', Inconsolata,  'SF Mono', Monospaced, Consolas, 'Courier New', monospace;
+    font-family: Inconsolata, 'YaHei Consolas Hybrid', 'SF Mono', Monospaced, Consolas, 'Courier New', monospace;
     padding: 0.8em;
 }
 

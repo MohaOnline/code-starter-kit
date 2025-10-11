@@ -1,5 +1,5 @@
 .cm-matchingBracket {
-    background-color: transparent!important; /* Sets a light yellow background color */
+    background-color: transparent !important; /* Sets a light yellow background color */
 }
 
 .toolbar button {
@@ -9,4 +9,10 @@
 .dark .toolbar button {
     border-color: #78d278;
     color: #78d278;
+}
+
+.cm-theme .cm-editor .cm-content .cm-line {
+    font-family: Inconsolata, Monaco, "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace !important;
+    font-size: 15px;
+    line-height: 1.5;
 }
