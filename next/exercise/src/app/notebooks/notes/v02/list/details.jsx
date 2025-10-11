@@ -34,26 +34,24 @@ export function Details(props) {
 
 
   // 语法高亮
-  //
+  // <pre><code> 里的内容没有做 < & 转义处理，显示前先做转义处理
   const getBodyScriptWithHTMLEntityEncode = useCallback(() => {
-    const regex = /<code><pre(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/pre><\/code>/gs;
+    // const regex = /<pre><code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code><\/pre>/gs;
+    const regex = /<code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code>/gs;
     return note?.body_script?.replace(regex, (match, content) => {
       const encodedContent = he.encode(content, {useNamedReferences: true});
-      // const encodedContent = content;
-      // console.log(encodedContent);
       return match.replace(content, encodedContent);
     });
   }, [note.body_script]);
-
   const contentRef = useRef(null);
   const highlightHandler = useCallback(function () {
     const container = contentRef.current;
-    const all = [...container.querySelectorAll('code > pre:not([data-highlighted="yes"])')]
-    // const outermost = all.filter(el => !all.some(other => other !== el && other.contains(el)))
-    all.forEach(el => {
+    const all = [...container.querySelectorAll('pre > code:not([data-highlighted="yes"])')]
+    const outermost = all.filter(el => !all.some(other => other !== el && other.contains(el)))
+    outermost.forEach(el => {
       hljs?.highlightElement(el); // 或 hljs.highlightAllUnder(container);
     });
-  }, [note.body_script]);
+  }, [contentRef.current]);
   useEffect(() => {
     highlightHandler();
   });
@@ -99,7 +97,7 @@ export function Details(props) {
     while (htmlIndex < htmlContent.length && textIndex < string2Caret.length) {
       const htmlChar = htmlContent[htmlIndex];
 
-      console.log(htmlChar, htmlIndex, textIndex, inTag, inEntity, tagLength);
+      // console.log(htmlChar, htmlIndex, textIndex, inTag, inEntity, tagLength);
 
       // 处理 HTML 标签
       if (htmlChar === '<' && !inEntity) {
@@ -110,9 +108,9 @@ export function Details(props) {
       }
 
       if (inTag && htmlChar === '>') {
-        // 回溯 tag 全部与
-        console.log(textIndex, tagLength + 1, string2Caret.slice(textIndex, textIndex + tagLength + 1));
-        console.log(htmlIndex, tagLength + 1, htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1));
+        // 回溯 tag 如果全部出现在页面文字中，则跳过这部分，应该是在 <code> 块里的代码没有转义 <...> 这类tag，算作代码中的可见字符串。
+        // console.log(textIndex, tagLength + 1, string2Caret.slice(textIndex, textIndex + tagLength + 1));
+        // console.log(htmlIndex, tagLength + 1, htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1));
         if (textIndex + tagLength < string2Caret.length
           && string2Caret.slice(textIndex, textIndex + tagLength + 1) === htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1)) {
           textIndex += tagLength + 1;
