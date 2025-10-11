@@ -95,6 +95,8 @@ import { html } from "@codemirror/lang-html"
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 
+import {v4 as genUUID} from 'uuid';
+
 import { getWeight, getWeights } from "@/lib/utils";
 
 import './v01.css';
@@ -124,7 +126,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
     let openTag, closeTag;
 
     if (tagName === 'span' && hasAttributes) {
-      openTag = '<span data-voide-id="">';
+      openTag = `<span data-voide-id="${genUUID()}">`;
       closeTag = '</span>';
     }
     else if (tagName === 'code_block') {

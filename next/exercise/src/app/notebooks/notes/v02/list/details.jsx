@@ -56,9 +56,9 @@ export function Details(props) {
     highlightHandler();
   });
 
-  // 计算点击位置在原始文本中的偏移量
+  // 计算点击位置在原始 HTML Code 中的偏移量
   // 原理：过滤掉 <...> 中的内容，折算 &...; 的内容。
-  const getTextOffsetFromClick = useCallback((event) => {
+  const getHTMLOffsetFromClick = useCallback((event) => {
     let range;
     if (document.caretRangeFromPoint) {
       range = document.caretRangeFromPoint(event.clientX, event.clientY);
@@ -168,14 +168,14 @@ export function Details(props) {
   const handlePreviewClick = useCallback((event) => {
     if (!status.isEditing) return; // 只在编辑模式下响应
 
-    const offset = getTextOffsetFromClick(event);
+    const offset = getHTMLOffsetFromClick(event);
 
     // 将光标位置传递给编辑器
     setStatus(prev => ({
       ...prev,
       cursorPosition: offset,
     }));
-  }, [status.isEditing, getTextOffsetFromClick, setStatus]);
+  }, [status.isEditing, getHTMLOffsetFromClick, setStatus]);
 
   // 没有 currentNoteId 就显示笔记一览
   const click2List = useCallback(() => {
@@ -190,7 +190,7 @@ export function Details(props) {
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
       <>
         <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
-        <article contentEditable={true} ref={contentRef} onClick={handlePreviewClick}
+        <article contentEditable={status.isEditing} ref={contentRef} onClick={handlePreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>
       </>
