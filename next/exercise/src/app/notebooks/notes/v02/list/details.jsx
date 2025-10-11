@@ -40,7 +40,7 @@ export function Details(props) {
     return note?.body_script?.replace(regex, (match, content) => {
       const encodedContent = he.encode(content, {useNamedReferences: true});
       // const encodedContent = content;
-      console.log(encodedContent);
+      // console.log(encodedContent);
       return match.replace(content, encodedContent);
     });
   }, [note.body_script]);
@@ -59,7 +59,7 @@ export function Details(props) {
   });
 
   // 计算点击位置在原始文本中的偏移量
-  // 过滤掉 <...> 中的内容，折算 &...; 的内容。
+  // 原理：过滤掉 <...> 中的内容，折算 &...; 的内容。
   const getTextOffsetFromClick = useCallback((event) => {
     let range;
     if (document.caretRangeFromPoint) {
@@ -83,7 +83,7 @@ export function Details(props) {
 
     // 获取范围内的纯文本内容
     const string2Caret = containerRange.toString();
-    console.log(string2Caret);
+
     const htmlContent = note?.body_script || '';
     // const htmlContent = getBodyScriptWithHTMLEntityEncode() || '';
 
@@ -91,6 +91,7 @@ export function Details(props) {
     let htmlIndex = 0;
     let textIndex = 0;
     let inTag = false;
+    let tagLength = 0;
     let inEntity = false;
     let inCode = false;
     let entityBuffer = '';
@@ -98,21 +99,34 @@ export function Details(props) {
     while (htmlIndex < htmlContent.length && textIndex < string2Caret.length) {
       const htmlChar = htmlContent[htmlIndex];
 
+      console.log(htmlChar, htmlIndex, textIndex, inTag, inEntity, tagLength);
+
       // 处理 HTML 标签
       if (htmlChar === '<' && !inEntity) {
         inTag = true;
         htmlIndex++;
+        tagLength++;
         continue;
       }
 
       if (inTag && htmlChar === '>') {
+        // 回溯 tag 全部与
+        console.log(textIndex, tagLength + 1, string2Caret.slice(textIndex, textIndex + tagLength + 1));
+        console.log(htmlIndex, tagLength + 1, htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1));
+        if (textIndex + tagLength < string2Caret.length
+          && string2Caret.slice(textIndex, textIndex + tagLength + 1) === htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1)) {
+          textIndex += tagLength + 1;
+        }
         inTag = false;
+        tagLength = 0;
         htmlIndex++;
         continue;
       }
 
       if (inTag) {
+
         htmlIndex++;
+        tagLength++;
         continue;
       }
 
