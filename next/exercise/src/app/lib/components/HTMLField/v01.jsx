@@ -228,13 +228,8 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
         >
           del
         </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('p')}
-        >
-          p
-        </Button>
+        <Button variant="outlined" size="small"
+                onClick={() => insertHtmlTag('p')}>P</Button>
         <Button
           variant="outlined"
           size="small"

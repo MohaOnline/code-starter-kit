@@ -186,42 +186,40 @@ export function Details(props) {
     }))
   }, [setStatus]);
 
+  const Operations = React.memo(() => {
+    return (
+      <div className={'gap-2 flex flex-row justify-end sticky top-0 z-10'}>
+        {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
+          <Button sx={{
+            backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
+            '&:hover': { // 鼠标悬停
+              backgroundColor: 'success.dark',
+              color: 'error.contrastText',
+            },
+          }} ref={editButtonRef} className={''} variant="contained" onClick={status.setEditing}>Edit</Button>
+        }
+        <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
+          backgroundColor: 'grey.300',
+          '&:hover': {
+            backgroundColor: 'grey.500',
+            color: 'error.contrastText',
+          },
+        }}
+        >List</Button>
+      </div>
+    );
+  })
+
   return (<>
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
       <>
         <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
+        <Operations/>
         <article contentEditable={status.isEditing} ref={contentRef} onClick={handlePreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>
       </>
     }
-
-    <div className={'gap-2 flex flex-row justify-end'}>
-      {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
-        <Button ref={editButtonRef} sx={{
-          backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
-          '&:hover': { // 鼠标悬停
-            backgroundColor: 'success.dark',
-            color: 'error.contrastText',
-          },
-        }} className={''} variant="contained"
-                onClick={() => {
-                  setStatus(prev => ({
-                    ...prev,
-                    isEditing: true,
-                  }))
-                }}
-        >Edit</Button>
-      }
-      <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
-        backgroundColor: 'grey.300',
-        '&:hover': {
-          backgroundColor: 'grey.500',
-          color: 'error.contrastText',
-        },
-      }}
-      >List</Button>
-    </div>
 
   </>);
 }

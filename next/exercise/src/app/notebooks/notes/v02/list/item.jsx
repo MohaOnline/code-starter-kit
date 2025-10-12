@@ -31,7 +31,9 @@ export function Item({note}) {
 
   return (<>
     <div className={'border p-2'} draggable="false">
-      <Typography className={'cursor-move'} variant="h6" gutterBottom>{note.title}</Typography>
+      <Typography className={'cursor-move flex justify-between'} variant="h6" gutterBottom>
+        {note.title}
+        <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button></Typography>
       <div className={'cursor-pointer ps-8 line-clamp-2'} onClick={click2Details}
            dangerouslySetInnerHTML={{__html: note.body_script}}/>
     </div>

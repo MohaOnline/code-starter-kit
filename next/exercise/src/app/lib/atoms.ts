@@ -252,6 +252,11 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
         }
     };
 
+  statusValue.setEditing = useCallback(function () {
+    statusValue.isEditing = true;
+    setStatusWithLog(prev => ({...prev, isEditing: true}));
+  }, [setStatusWithLog]);
+
   statusValue.cancelEditing = useCallback(function () {
     statusValue.isEditing = false;
     setStatusWithLog(prev => ({...prev, isEditing: false}));
