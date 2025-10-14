@@ -16,6 +16,7 @@ import {Item} from "./item";
 import {Details} from "@/app/notebooks/notes/v02/list/details";
 import {Editor} from "@/app/notebooks/notes/v02/list/editor";
 import {ThemeToggle} from "@/app/lib/components/ThemeToggle";
+import {Sidebar} from "@/app/notebooks/notes/v02/list/sidebar";
 
 
 export default function NotesList() {
@@ -51,6 +52,13 @@ export default function NotesList() {
           <h1 className={''}>Notes</h1>}
 
         <div className={"flex flex-row w-full justify-center"}>
+          {/* Sidebar: Type Filter, Topic Selector. */}
+          {!status.currentNoteId && !status.isEditing &&
+            <div className={'w-72'}>
+              <Sidebar/>
+            </div>
+          }
+
           {/* Note List & Detail */}
           {!status.currentNoteId &&
           <div className={'basis-1/2'}>

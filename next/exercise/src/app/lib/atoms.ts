@@ -5,7 +5,7 @@ import {atom, useAtom} from 'jotai';
 
 /**
  * import { useStatus } from '@/app/lib/atoms';
- * 
+ *
  * const [status, setStatus] = useStatus();
  */
 
@@ -62,33 +62,33 @@ export const playedWordIndexAtom = atom<number>(-1);
 // 音频配置状态
 export const audioConfigAtom = atom<AudioConfig>({
   alternatePlay: false,
-  volume: 100,
-  speed: 100,
+  volume:  100,
+  speed:   100,
   english: {
     repeatCount: 1,
     pauseTime: 0,
-    showText: true,
+    showText:  true,
     waitVoiceLength: true,
   },
   chinese: {
     repeatCount: 0,
     pauseTime: 0,
-    showText: true,
+    showText:  true,
     waitVoiceLength: true,
   },
 });
 
 // UI状态
 export const uiStateAtom = atom({
-  isPlaying: false,
+  isPlaying:    false,
   isDialogOpen: false,
   isConfigDialogOpen: false,
   isProcessing: false,
-  isComposing: false,
+  isComposing:  false,
   isTabPressed: false,
-  searchText: '',
-  onWheel: false,
-  mode: 'study' as 'study' | 'listen',
+  searchText:   '',
+  onWheel:      false,
+  mode:         'study' as 'study' | 'listen',
   processingMessage: '',
 });
 
@@ -107,68 +107,69 @@ export const dialogDataAtom = atom<{
 export const englishWordsAtom = atom({});
 
 export interface NoteType {
-    id: string;
-    title: string;
-    title_sub: string;
+  id: string;
+  title: string;
+  title_sub: string;
 }
 
 export interface Note {
-    id: string;
-    title: string;
-    body: string;
-    question: string;
-    answer: string;
-    type_id: string;
-    type_title: string;
-    type_title_sub: string;
-    note: string;
-    note_extra: string;
-    type: NoteType;
-    body_script: string;
-    body_extra: string;
+  id: string;
+  title: string;
+  body: string;
+  question: string;
+  answer: string;
+  type_id: string;
+  type_title: string;
+  type_title_sub: string;
+  note: string;
+  note_extra: string;
+  type: NoteType;
+  body_script: string;
+  body_extra: string;
 }
 
 // 初始化笔记状态的默认值
 export function initStatusNote(): Note {
-    return {
-        id: '',
-        title: '',
-        body: '',
-        question: '',
-        answer: '',
-        type_id: '',
-        type_title: '',
-        type_title_sub: '',
-        note: '',
-        note_extra: '',
-        type: {
-            id: '',
-            title: '',
-            title_sub: '',
-        },
-        body_script: '',
-        body_extra: '',
-    }
+  return {
+    id:             '',
+    title:          '',
+    body:           '',
+    question:       '',
+    answer:         '',
+    type_id:        '',
+    type_title:     '',
+    type_title_sub: '',
+    note:           '',
+    note_extra:     '',
+    type:           {
+      id:        '',
+      title:     '',
+      title_sub: '',
+    },
+    body_script:    '',
+    body_extra:     '',
+  }
 }
 
 // 定义状态类型
 export type StatusType = {
-    notes: any[];
+  notes: any[];
   note: Note;               //
-    types: any[];
-    isAdding: boolean;
+  types: any[];
+  isAdding: boolean;
   isEditing: boolean;       // Current Note Editing flag.
-    isProcessing: boolean;
-    isPlaying: boolean;
+  isProcessing: boolean;
+  isPlaying: boolean;
   currentNoteId: string;    // 有值；无值。用 status.note 显示笔记。
+  filteredTypeID: string;   // 选中的 TypeID。
   cursorPosition?: number;  // 光标位置，用于预览点击同步到编辑器
-    words: any[];
-    currentWordIndex: number;
-    notesListeningDialog: {
-        notes: any[];
-        currentNoteIndex: number;
-        isPlaying: boolean;
-    };
+  words: any[];
+  currentWordIndex: number;
+  notesListeningDialog: {
+    notes: any[];
+    currentNoteIndex: number;
+    isPlaying: boolean;
+  };
   setEditing: any;
   cancelEditing: any;
   setProcessing: any;
@@ -178,79 +179,80 @@ export type StatusType = {
 // 通用 status，所有数据在此周转。
 // Define the status atom with proper typing
 export const status = atom<StatusType>({
-    notes: [],
-    note: initStatusNote(),
-    types: [],
-    isAdding: false,
-  isEditing: false,
-    isProcessing: false,
-    isPlaying: false,
-  currentNoteId: '',  /**/
+  notes:          [],
+  note:           initStatusNote(),
+  types:          [],
+  filteredTypeID: '', // 默认无选中 Type ID
+  isAdding:       false,
+  isEditing:      false,
+  isProcessing:   false,
+  isPlaying:      false,
+  currentNoteId:  '',  /**/
 
-    // Words announcing data:
-    words: [],
-    currentWordIndex: 0,
+  // Words announcing data:
+  words:            [],
+  currentWordIndex: 0,
 
-    // listening dialog
-    notesListeningDialog: {
-        notes: [],
-        currentNoteIndex: 0,
-        isPlaying: false,
-    },
-  setEditing:             () => {
+  // listening dialog
+  notesListeningDialog: {
+    notes:            [],
+    currentNoteIndex: 0,
+    isPlaying:        false,
   },
-  cancelEditing:          () => {
+  setEditing:           () => {
   },
-  setProcessing:          () => {
+  cancelEditing:        () => {
   },
-  cancelProcessing:       () => {
+  setProcessing:        () => {
+  },
+  cancelProcessing:     () => {
   }
 });
 
 // 自定义 Hook 也是一个以 'use' 开头的函数
 // 提供状态管理和调试日志功能
 export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusType) => StatusType)) => void] {
-    // 在自定义 Hook 内部调用 useAtom 是允许的
-    const [statusValue, setStatusValue] = useAtom(status);
-    
-    // 包装 setStatus 函数，添加调试日志
-    const setStatusWithLog = (updater: StatusType | ((prev: StatusType) => StatusType)) => {
-        if (typeof updater === 'function') {
-            setStatusValue((prevStatus) => {
-                const newStatus = updater(prevStatus);
-                
-                // 检查 notesListeningDialog 相关的状态变化
-                if (newStatus.notesListeningDialog !== prevStatus.notesListeningDialog) {
-                    console.log('📊 [Status Update] notesListeningDialog 状态变化:', {
-                        previous: {
-                            currentNoteIndex: prevStatus.notesListeningDialog.currentNoteIndex,
-                            isPlaying: prevStatus.notesListeningDialog.isPlaying,
-                            notesCount: prevStatus.notesListeningDialog.notes.length
-                        },
-                        new: {
-                            currentNoteIndex: newStatus.notesListeningDialog.currentNoteIndex,
-                            isPlaying: newStatus.notesListeningDialog.isPlaying,
-                            notesCount: newStatus.notesListeningDialog.notes.length
-                        }
-                    });
-                }
-                
-                // 检查全局播放状态变化
-                if (newStatus.isPlaying !== prevStatus.isPlaying) {
-                    console.log('🎵 [Status Update] 全局播放状态变化:', {
-                        previous: prevStatus.isPlaying,
-                        new: newStatus.isPlaying
-                    });
-                }
-                
-                return newStatus;
-            });
-        } else {
-            // 直接设置状态值的情况
-            console.log('📊 [Status Update] 直接状态更新:', updater);
-            setStatusValue(updater);
+  // 在自定义 Hook 内部调用 useAtom 是允许的
+  const [statusValue, setStatusValue] = useAtom(status);
+
+  // 包装 setStatus 函数，添加调试日志
+  const setStatusWithLog = (updater: StatusType | ((prev: StatusType) => StatusType)) => {
+    if (typeof updater === 'function') {
+      setStatusValue((prevStatus) => {
+        const newStatus = updater(prevStatus);
+
+        // 检查 notesListeningDialog 相关的状态变化
+        if (newStatus.notesListeningDialog !== prevStatus.notesListeningDialog) {
+          console.log('📊 [Status Update] notesListeningDialog 状态变化:', {
+            previous: {
+              currentNoteIndex: prevStatus.notesListeningDialog.currentNoteIndex,
+              isPlaying:        prevStatus.notesListeningDialog.isPlaying,
+              notesCount:       prevStatus.notesListeningDialog.notes.length
+            },
+            new:      {
+              currentNoteIndex: newStatus.notesListeningDialog.currentNoteIndex,
+              isPlaying:        newStatus.notesListeningDialog.isPlaying,
+              notesCount:       newStatus.notesListeningDialog.notes.length
+            }
+          });
         }
-    };
+
+        // 检查全局播放状态变化
+        if (newStatus.isPlaying !== prevStatus.isPlaying) {
+          console.log('🎵 [Status Update] 全局播放状态变化:', {
+            previous: prevStatus.isPlaying,
+            new:      newStatus.isPlaying
+          });
+        }
+
+        return newStatus;
+      });
+    } else {
+      // 直接设置状态值的情况
+      console.log('📊 [Status Update] 直接状态更新:', updater);
+      setStatusValue(updater);
+    }
+  };
 
   statusValue.setEditing = useCallback(function () {
     statusValue.isEditing = true;
@@ -271,6 +273,6 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
     statusValue.isProcessing = false;
     setStatusWithLog(prev => ({...prev, isProcessing: false}));
   }, [setStatusWithLog]);
-    
-    return [statusValue, setStatusWithLog];
+
+  return [statusValue, setStatusWithLog];
 }

@@ -228,29 +228,10 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
         >
           del
         </Button>
-        <Button variant="outlined" size="small"
-                onClick={() => insertHtmlTag('p')}>P</Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('span', true)}
-        >
-          span
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('code', true)}
-        >
-          Code
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('code_block', true)}
-        >
-          Code Block
-        </Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('p')}>P</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('span', true)}>span</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code', true)}>Code</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code_block', true)}>Codes</Button>
       </Stack>
 
       {/* [javascript({jsx: true})] */}
