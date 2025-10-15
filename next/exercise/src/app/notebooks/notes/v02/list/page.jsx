@@ -54,7 +54,8 @@ export default function NotesList() {
         <div className={"flex flex-row w-full justify-center"}>
           {/* Sidebar: Type Filter, Topic Selector. */}
           {!status.currentNoteId && !status.isEditing &&
-            <div className={'w-72'}>
+            // https://v3.tailwindcss.com/docs/width
+            <div className={'w-64'}>
               <Sidebar/>
             </div>
           }

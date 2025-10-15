@@ -28,7 +28,7 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
       }
     },
     cssVariables: {
-      colorSchemeSelector: 'class'
+      colorSchemeSelector: 'class', // MUI 如何确定
     },
     components: {
       MuiCssBaseline: {
@@ -36,8 +36,25 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
           body: {
             // 确保默认文字颜色使用你的变量（覆盖 CssBaseline 默认颜色）
             color: 'var(--foreground)',
+            backgroundColor: 'var(--background)',
           },
         },
+      },
+      MuiInputLabel:  {
+        styleOverrides: {
+          root: ({theme}) => ({
+            color:           'var(--foreground)',
+            backgroundColor: 'var(--background)',
+          }),
+        },
+      },
+      MuiIconButton: {
+        styleOverrides: {
+          root: ({theme}) => {
+            console.log('theme-provider', theme);   // theme 是把当前主题所有配置内容传回
+            return ({});
+          }
+        }
       },
     },
 

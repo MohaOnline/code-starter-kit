@@ -22,12 +22,14 @@
   :root {
     --background: #000000;
     --foreground: rgb(120, 210, 120);
+      --IconButton-hoverBg: rgba(120, 210, 120, 0.2) !important;
   }
 }
 
 .dark {
   --background: #000000;
   --foreground: rgb(120, 210, 120);
+    --IconButton-hoverBg: rgba(120, 210, 120, 0.2) !important;
 }
 
 body {

@@ -12,6 +12,7 @@ import {
 
 import {useStatus} from "@/app/lib/atoms";
 import {toast} from "react-toastify";
+import {SelectFieldSingle} from "@/lib/components/mui/SelectFields";
 
 export function Sidebar() {
   const [status, setStatus] = useStatus();
@@ -40,10 +41,14 @@ export function Sidebar() {
 
   return (
     <>
-      <Stack className={'border'}>
-        {status.types.map((type) => (
-          <div key={type.id}>{`${type.id} ${type.title}`}</div>
-        ))}
+      <Stack className={'border pt-1'}>
+        <SelectFieldSingle label='Types' items={status.types.map((type) => ({value: type.id, label: type.title_sub ? `${type.title} - ${type.title_sub}` : type.title}))}
+                           updateValue={(value) => {
+                             setStatus(prev => ({...prev, filteredTypeID: value}))
+                           }}/>
+        {/*{status.types.map((type) => (*/}
+        {/*  <div key={type.id}>{`${type.id} ${type.title}`}</div>*/}
+        {/*))}*/}
       </Stack>
     </>
   );
