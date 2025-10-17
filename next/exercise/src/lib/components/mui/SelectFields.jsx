@@ -11,11 +11,11 @@ import {Clear} from '@mui/icons-material';
 import _ from "lodash";
 
 export function SelectFieldSingle({
-  label = '', items = [], updateValue = (value) => {
+  label = '', items = [], value = '', updateValue = (value) => {
   }
 }) {
 
-  const [selected, setSelected] = React.useState('');
+  const [selected, setSelected] = React.useState(value);
 
   const handleChange = (event) => {
     console.log('handleChange', selected, event);

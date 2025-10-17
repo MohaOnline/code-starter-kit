@@ -19,6 +19,7 @@ export function Sidebar() {
 
   // 加载 Types 数据
   useEffect(() => {
+    console.log('load type data:', 'sidebar.jsx');
     fetch('/api/notebooks/types/list')
       .then(res => res.json())
       .then(json => {
@@ -43,7 +44,7 @@ export function Sidebar() {
     <>
       <Stack className={'border pt-1'}>
         <SelectFieldSingle label='Types' items={status.types.map((type) => ({value: type.id, label: type.title_sub ? `${type.title} - ${type.title_sub}` : type.title}))}
-                           updateValue={(value) => {
+                           value={status.filteredTypeID} updateValue={(value) => {
                              setStatus(prev => ({...prev, filteredTypeID: value}))
                            }}/>
         {/*{status.types.map((type) => (*/}
