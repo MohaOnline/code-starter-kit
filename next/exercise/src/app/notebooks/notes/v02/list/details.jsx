@@ -46,6 +46,9 @@ export function Details(props) {
   const contentRef = useRef(null);
   const highlightHandler = useCallback(function () {
     const container = contentRef.current;
+    if (!container) {
+      return;
+    }
     const all = [...container.querySelectorAll('pre > code:not([data-highlighted="yes"])')]
     const outermost = all.filter(el => !all.some(other => other !== el && other.contains(el)))
     outermost.forEach(el => {
@@ -173,7 +176,7 @@ export function Details(props) {
     // 将光标位置传递给编辑器
     setStatus(prev => ({
       ...prev,
-      cursorPosition: offset,
+      cursorPositionBodyScript: offset,
     }));
   }, [status.isEditing, getHTMLOffsetFromClick, setStatus]);
 
@@ -211,10 +214,15 @@ export function Details(props) {
   })
 
   return (<>
-    {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
+    {/*Title*/}
+    <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}<sup>(ID: {note.id})</sup></Typography>
+    <Operations/>
+
+    {(note.tid === '999' || note.type_id === '999' || note.type_id === '997' ||
+        note.type_id === '61' || note.tid === '61' ||
+        note.type_id === '31' || note.tid === '31' ||
+        note.type_id === '21' || note.tid === '21') &&
       <>
-        <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}</Typography>
-        <Operations/>
         <article contentEditable={status.isEditing} ref={contentRef} onClick={handlePreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>

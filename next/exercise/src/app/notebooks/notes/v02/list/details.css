@@ -8,6 +8,11 @@
     font-weight: 600;
 }
 
+.note-details h1 sup {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
 .note-details h2 {
     margin-top: 1rem;
     margin-bottom: 0.5rem;

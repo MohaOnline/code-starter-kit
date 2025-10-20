@@ -110,7 +110,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
   const editorRef = React.useRef(null);
 
   const handleUpdate = React.useCallback((val, viewUpdate) => {
-    console.log('val:', val);
+    // console.log('val:', val);
     setValue(val);
     onChange?.(val);
   }, [setValue, onChange]);

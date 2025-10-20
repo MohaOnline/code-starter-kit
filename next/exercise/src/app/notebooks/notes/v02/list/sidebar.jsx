@@ -29,11 +29,7 @@ export function Sidebar() {
     fetch('/api/notebooks/types/list')
       .then(res => res.json())
       .then(json => {
-        const convertedTypes = json.types.map((type) => ({
-          ...type,
-          id: Number(type.id),
-          pid: Number(type.pid)
-        }));
+        const convertedTypes = json.types;
 
         setStatus((prev) => ({
           ...prev,
@@ -51,9 +47,7 @@ export function Sidebar() {
     <>
       <Stack className={'border pt-1'}>
         <SelectFieldSingle label='Types' items={status.types.map((type) => ({ value: type.id, label: type.title_sub ? `${type.title} - ${type.title_sub}` : type.title }))}
-                           value={status.filteredTypeID} updateValue={(value) => {
-                             setStatus(prev => ({ ...prev, filteredTypeID: value }))
-                           }} />
+                           value={status.selectedTypeID} updateValue={status.setSelectedTypeID}/>
         {/*{status.types.map((type) => (*/}
         {/*  <div key={type.id}>{`${type.id} ${type.title}`}</div>*/}
         {/*))}*/}

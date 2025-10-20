@@ -161,8 +161,8 @@ export type StatusType = {
   isProcessing: boolean;
   isPlaying: boolean;
   currentNoteId: string;    // 有值；无值。用 status.note 显示笔记。
-  filteredTypeID: string;   // 选中的 TypeID。
-  cursorPosition?: number;  // 光标位置，用于预览点击同步到编辑器
+  selectedTypeID: string;   // /notebooks/notes/v02/list 选中的 TypeID。
+  cursorPositionBodyScript?: number;  // 光标位置，用于预览点击同步到编辑器
   words: any[];
   currentWordIndex: number;
   notesListeningDialog: {
@@ -170,6 +170,7 @@ export type StatusType = {
     currentNoteIndex: number;
     isPlaying: boolean;
   };
+  setSelectedTypeID: (tid: string) => void;
   setEditing: any;
   cancelEditing: any;
   setProcessing: any;
@@ -182,7 +183,7 @@ export const status = atom<StatusType>({
   notes:          [],
   note:           initStatusNote(),
   types:          [],
-  filteredTypeID: '', // 默认无选中 Type ID
+  selectedTypeID:    '', // 默认无选中 Type ID
   isAdding:       false,
   isEditing:      false,
   isProcessing:   false,
@@ -198,6 +199,8 @@ export const status = atom<StatusType>({
     notes:            [],
     currentNoteIndex: 0,
     isPlaying:        false,
+  },
+  setSelectedTypeID: (tid: string) => {
   },
   setEditing:           () => {
   },
@@ -253,6 +256,11 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
       setStatusValue(updater);
     }
   };
+
+  statusValue.setSelectedTypeID = useCallback(function (tid) {
+    statusValue.selectedTypeID = tid;
+    setStatusWithLog(prev => ({...prev, selectedTypeID: tid}));
+  }, [setStatusWithLog]);
 
   statusValue.setEditing = useCallback(function () {
     statusValue.isEditing = true;

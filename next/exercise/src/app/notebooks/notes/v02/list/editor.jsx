@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useEffect} from "react";
+import React, {memo, useCallback, useRef, useEffect} from "react";
 import NextLink from "next/link";
 
 import {
@@ -69,13 +69,13 @@ export function Editor({note}) {
     }
   }, [status]);
 
-  
-  const cancelEditing = useCallback(() => {
-    setStatus(prev => ({
-      ...prev,
-      isEditing: false,
-    }))
-  }, [setStatus]);
+  const Operations = memo(() => (
+    <div className={'gap-2 flex flex-row justify-end'}>
+      <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
+      {/* @see https://mui.com/material-ui/customization/palette/#default-colors */}
+      <Button ref={cancelButtonRef} variant="outlined" onClick={status.cancelEditing} color="error">Cancel</Button>
+    </div>)
+  )
 
   // 把 UI 的 content 更新到 status.note 。
   const updateStatusNoteAttribute = useCallback((val, attribute) => {
@@ -114,10 +114,24 @@ export function Editor({note}) {
           updateStatusNoteAttribute(e.target.value, 'title')
         }}/>
 
+        {/*  */}
+        {(note.type_id === '21' || note.tid === '21' // 语文作文
+          ) &&
+          <Panel title={'question'}><>
+            <HTMLField content={note.question}
+                       onChange={(value) => {
+                         updateStatusNoteAttribute(value, 'question')
+                       }}/>
+          </>
+          </Panel>
+        }
+
         {/* body_script first */}
-        {(note.tid === '999' || note.type_id === '999' || note.type_id === '997') &&
+        {(note.type_id === '999' || note.tid === '999' || note.type_id === '997' || note.tid === '997' ||
+            note.type_id === '31' || note.tid === '31' || note.type_id === '61' || note.tid === '61' ||
+            note.type_id === '21' || note.tid === '21') &&
           <Panel title={'body_script'}><>
-            <HTMLField content={note.body_script} cursorPosition={status.cursorPosition}
+            <HTMLField content={note.body_script} cursorPosition={status.cursorPositionBodyScript}
                        onChange={(value) => {
                          updateStatusNoteAttribute(value, 'body_script')
                        }}/>
@@ -126,12 +140,7 @@ export function Editor({note}) {
         }
       </Stack>
 
-      <div className={'gap-2 flex flex-row justify-end'}>
-        <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
-        <Button ref={cancelButtonRef} variant="outlined" onClick={status.cancelEditing}
-                color="error"   // @see https://mui.com/material-ui/customization/palette/#default-colors
-        >Cancel</Button>
-      </div>
+      <Operations/>
     </>
   );
 }

@@ -63,7 +63,10 @@ export default function NotesList() {
           {/* Note List & Detail */}
           {!status.currentNoteId &&
           <div className={'basis-1/2'}>
-            {status.notes?.map((note) => (
+            {status.notes?.filter((note) => {
+              console.log(status.selectedTypeID, note.tid);
+              return (!status.selectedTypeID || status.selectedTypeID === note.tid);
+            }).map((note) => (
               <Item key={note.id} note={note}/>
             ))}
           </div>
