@@ -14,6 +14,7 @@ import React, {useState, useCallback} from "react";
 
 export function Mui7NaviMenu({menus, level = 0}) {
   const [parentElements, setParentElements] = useState({}); // Menu parent element.
+  let menu_id = 0;
 
   const openMenu = useCallback((event, base) => {
     setParentElements(prev => ({...prev, [base]: event.currentTarget}));
@@ -24,17 +25,21 @@ export function Mui7NaviMenu({menus, level = 0}) {
   }, []);
 
   const renderMenu = (menu, level) => {
+    if (level === 0) {
+
+    }
+
     return (
-      <React.Fragment key={level}>
+      <React.Fragment key={menu_id++}>
         {!menu.children && (<>
-          <Button key={level + menu.href} href={menu.href}>{menu.label}</Button>
+          <Button key={menu_id++} href={menu.href}>{menu.label}</Button>
         </>)}
         {menu.children && (
           <>
-            <Button key={level + menu.href} onClick={(event) => openMenu(event, menu.label)} sx={{color: '#fff'}}>{menu.label}</Button>
-            <Menu open={Boolean(parentElements?.[menu.label])} onClose={(event) => closeMenu(event, menu.label)} anchorEl={parentElements?.[menu.label]}>
+            <Button key={menu_id++} onClick={(event) => openMenu(event, menu.label)} sx={{color: '#fff'}}>{menu.label}</Button>
+            <Menu key={menu_id++} open={Boolean(parentElements?.[menu.label])} onClose={(event) => closeMenu(event, menu.label)} anchorEl={parentElements?.[menu.label]}>
               {menu.children.map((child) => (
-                <MenuItem component={Link} href={child.href} key={level + child.href} onClick={(event) => closeMenu(event, menu.label)}
+                <MenuItem component={Link} href={child.href} key={menu_id++} onClick={(event) => closeMenu(event, menu.label)}
                           target={child.target ? child.target : "_self"}>{child.label}</MenuItem>
               ))}
             </Menu>
@@ -46,7 +51,7 @@ export function Mui7NaviMenu({menus, level = 0}) {
 
   return (<>
     {menus.map((menu) => (
-      renderMenu(menu, level++)
+      renderMenu(menu, level)
     ))}
   </>);
 }
