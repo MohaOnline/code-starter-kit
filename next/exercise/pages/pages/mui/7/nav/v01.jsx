@@ -21,6 +21,14 @@ export function Mui7Navi() {
     {
       label: 'Utils',
       children: [
+        // {
+        //   label: 'Framework 7',
+        //   children: [
+        //     {label: 'basic', href: '/pages/framework7/basic'},
+        //     {label: 'advanced', href: '/pages/framework7/advanced'},
+        //     {label: 'extra', href: '/pages/framework7/extra'},
+        //   ],
+        // },
         {label: 'MUI', href: '/pages/mui/7/utils/v01'},
         {label: 'Tailwind v3', href: '/pages/tailwind/3/v02'},
       ],

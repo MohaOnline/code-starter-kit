@@ -21,11 +21,11 @@ export function Mui7NaviMenu({menus, level = 0}) {
 
   const closeMenu = useCallback((event, base) => {
     setParentElements(prev => ({...prev, [base]: null}));
-  }, [])
+  }, []);
 
   return (<>
     {menus.map((menu) => (
-      <React.Fragment key={level}>
+      <React.Fragment key={level++}>
         {!menu.children && (<>
           <Button key={level + menu.href} href={menu.href}>{menu.label}</Button>
         </>)}
