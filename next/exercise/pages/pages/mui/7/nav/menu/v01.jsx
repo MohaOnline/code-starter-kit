@@ -23,9 +23,9 @@ export function Mui7NaviMenu({menus, level = 0}) {
     setParentElements(prev => ({...prev, [base]: null}));
   }, []);
 
-  return (<>
-    {menus.map((menu) => (
-      <React.Fragment key={level++}>
+  const renderMenu = (menu, level) => {
+    return (
+      <React.Fragment key={level}>
         {!menu.children && (<>
           <Button key={level + menu.href} href={menu.href}>{menu.label}</Button>
         </>)}
@@ -41,6 +41,12 @@ export function Mui7NaviMenu({menus, level = 0}) {
           </>
         )}
       </React.Fragment>
+    );
+  }
+
+  return (<>
+    {menus.map((menu) => (
+      renderMenu(menu, level++)
     ))}
   </>);
 }
