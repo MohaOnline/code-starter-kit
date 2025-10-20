@@ -13,14 +13,14 @@ import NextLink from "next/link";
 import React, {useState, useCallback} from "react";
 
 export function Mui7NaviMenu({menus, level = 0}) {
-  const [anchorEl, setAnchorEl] = useState(null); //
+  const [parentElements, setParentElements] = useState({}); // Menu parent element.
 
-  const openMenu = useCallback((event) => {
-    setAnchorEl(event.currentTarget);
+  const openMenu = useCallback((event, base) => {
+    setParentElements(prev => ({...prev, [base]: event.currentTarget}));
   }, []);
 
-  const closeMenu = useCallback((event) => {
-    setAnchorEl(null);
+  const closeMenu = useCallback((event, base) => {
+    setParentElements(prev => ({...prev, [base]: null}));
   }, [])
 
   return (<>
@@ -31,10 +31,11 @@ export function Mui7NaviMenu({menus, level = 0}) {
         </>)}
         {menu.children && (
           <>
-            <Button key={level + menu.href} onClick={openMenu} sx={{color: '#fff'}}>{menu.label}</Button>
-            <Menu open={Boolean(anchorEl)} onClose={closeMenu} anchorEl={anchorEl}>
-              {menu.children.map((menu) => (
-                <MenuItem key={level + menu.href} onClick={closeMenu} component={Link} href={menu.href} target={menu.target ? menu.target : "_self"}>{menu.label}</MenuItem>
+            <Button key={level + menu.href} onClick={(event) => openMenu(event, menu.label)} sx={{color: '#fff'}}>{menu.label}</Button>
+            <Menu open={Boolean(parentElements?.[menu.label])} onClose={(event) => closeMenu(event, menu.label)} anchorEl={parentElements?.[menu.label]}>
+              {menu.children.map((child) => (
+                <MenuItem component={Link} href={child.href} key={level + child.href} onClick={(event) => closeMenu(event, menu.label)}
+                          target={child.target ? child.target : "_self"}>{child.label}</MenuItem>
               ))}
             </Menu>
           </>
