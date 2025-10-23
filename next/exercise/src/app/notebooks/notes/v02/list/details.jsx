@@ -1,5 +1,6 @@
-import React, {useCallback, useEffect, useRef} from "react";
+import React, {memo, useCallback, useEffect, useMemo, useRef} from "react";
 import {Button, Typography} from "@mui/material";
+import {useRouter} from 'next/navigation';
 
 import he from 'he'
 import hljs from 'highlight.js';
@@ -10,10 +11,20 @@ import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory}
 
 import './details.css';
 
+const classNamesFromType = (type_id) => {
+  let classNames = '';
+  switch (type_id) {
+    case '21':
+      classNames = ' chinese_article';
+      break;
+  }
+}
 
 export function Details(props) {
   const [status, setStatus] = useStatus();
+  const router = useRouter();
   const {note} = props;
+
 
   // 键盘快捷键监听
   const editButtonRef = useRef(null);
@@ -35,6 +46,15 @@ export function Details(props) {
 
   // 语法高亮
   // <pre><code> 里的内容没有做 < & 转义处理，显示前先做转义处理
+  const getHTMLContentsWithHTMLEntityEncode = useCallback((attribute) => {
+    // const regex = /<pre><code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code><\/pre>/gs;
+    const regex = /<code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code>/gs;
+    return note?.[attribute]?.replace(regex, (match, content) => {
+      const encodedContent = he.encode(content, {useNamedReferences: true});
+      return match.replace(content, encodedContent);
+    });
+  });
+  const questionWithHTMLEntityEncode = useMemo(() => getHTMLContentsWithHTMLEntityEncode('question'), [getHTMLContentsWithHTMLEntityEncode, note.question]);
   const getBodyScriptWithHTMLEntityEncode = useCallback(() => {
     // const regex = /<pre><code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code><\/pre>/gs;
     const regex = /<code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code>/gs;
@@ -182,12 +202,13 @@ export function Details(props) {
 
   // 没有 currentNoteId 就显示笔记一览
   const click2List = useCallback(() => {
-    setStatus(prev => ({
-      ...prev,
-      isEditing: false,
-      currentNoteId: '',
-    }))
-  }, [setStatus]);
+    router.push('/notebooks/notes/v02/list');
+  }, [router]);
+
+  // 点击编辑按钮
+  const click2Edit = useCallback(() => {
+    router.push(`/notebooks/notes/v02/list?noteId=${note.id}&mode=edit`);
+  }, [router, note.id]);
 
   const Operations = React.memo(() => {
     return (
@@ -199,7 +220,7 @@ export function Details(props) {
               backgroundColor: 'success.dark',
               color: 'error.contrastText',
             },
-          }} ref={editButtonRef} className={''} variant="contained" onClick={status.setEditing}>Edit</Button>
+          }} ref={editButtonRef} className={''} variant="contained" onClick={click2Edit}>Edit</Button>
         }
         <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
           backgroundColor: 'grey.300',
@@ -214,11 +235,23 @@ export function Details(props) {
   })
 
   return (<>
-    {/*Title*/}
+    {/* Title */}
     <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}<sup>(ID: {note.id})</sup></Typography>
     <Operations/>
 
-    {(note.tid === '999' || note.type_id === '999' || note.type_id === '997' ||
+    {/* question */}
+    {(note.type_id === '61' || note.tid === '61' ||
+        note.type_id === '31' || note.tid === '31' ||
+        note.type_id === '21' || note.tid === '21') &&
+      <>
+        <article contentEditable={status.isEditing} ref={contentRef}
+                 className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
+                 dangerouslySetInnerHTML={{__html: questionWithHTMLEntityEncode}}/>
+      </>
+    }
+
+    {/* body_script */}
+    {(note.tid === '999' || note.type_id === '999' || note.type_id === '997' || note.tid === '997' ||
         note.type_id === '61' || note.tid === '61' ||
         note.type_id === '31' || note.tid === '31' ||
         note.type_id === '21' || note.tid === '21') &&

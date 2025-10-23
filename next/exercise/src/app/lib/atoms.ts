@@ -67,28 +67,28 @@ export const audioConfigAtom = atom<AudioConfig>({
   english: {
     repeatCount: 1,
     pauseTime: 0,
-    showText:  true,
+    showText: true,
     waitVoiceLength: true,
   },
   chinese: {
     repeatCount: 0,
     pauseTime: 0,
-    showText:  true,
+    showText: true,
     waitVoiceLength: true,
   },
 });
 
 // UI状态
 export const uiStateAtom = atom({
-  isPlaying:    false,
+  isPlaying:   false,
   isDialogOpen: false,
   isConfigDialogOpen: false,
   isProcessing: false,
-  isComposing:  false,
+  isComposing: false,
   isTabPressed: false,
-  searchText:   '',
-  onWheel:      false,
-  mode:         'study' as 'study' | 'listen',
+  searchText:  '',
+  onWheel:     false,
+  mode:        'study' as 'study' | 'listen',
   processingMessage: '',
 });
 
@@ -131,23 +131,23 @@ export interface Note {
 // 初始化笔记状态的默认值
 export function initStatusNote(): Note {
   return {
-    id:             '',
-    title:          '',
-    body:           '',
-    question:       '',
-    answer:         '',
-    type_id:        '',
-    type_title:     '',
+    id:          '',
+    title:       '',
+    body:        '',
+    question:    '',
+    answer:      '',
+    type_id:     '',
+    type_title:  '',
     type_title_sub: '',
-    note:           '',
-    note_extra:     '',
-    type:           {
-      id:        '',
-      title:     '',
+    note:        '',
+    note_extra:  '',
+    type:        {
+      id:    '',
+      title: '',
       title_sub: '',
     },
-    body_script:    '',
-    body_extra:     '',
+    body_script: '',
+    body_extra:  '',
   }
 }
 
@@ -171,6 +171,7 @@ export type StatusType = {
     isPlaying: boolean;
   };
   setSelectedTypeID: (tid: string) => void;
+  setTypes: (loadedTypes: any[]) => void;
   setEditing: any;
   cancelEditing: any;
   setProcessing: any;
@@ -183,7 +184,7 @@ export const status = atom<StatusType>({
   notes:          [],
   note:           initStatusNote(),
   types:          [],
-  selectedTypeID:    '', // 默认无选中 Type ID
+  selectedTypeID: '', // 默认无选中 Type ID
   isAdding:       false,
   isEditing:      false,
   isProcessing:   false,
@@ -191,16 +192,18 @@ export const status = atom<StatusType>({
   currentNoteId:  '',  /**/
 
   // Words announcing data:
-  words:            [],
+  words: [],
   currentWordIndex: 0,
 
   // listening dialog
   notesListeningDialog: {
-    notes:            [],
+    notes:     [],
     currentNoteIndex: 0,
-    isPlaying:        false,
+    isPlaying: false,
   },
   setSelectedTypeID: (tid: string) => {
+  },
+  setTypes:             (loadedTypes: any[]) => {
   },
   setEditing:           () => {
   },
@@ -229,13 +232,13 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
           console.log('📊 [Status Update] notesListeningDialog 状态变化:', {
             previous: {
               currentNoteIndex: prevStatus.notesListeningDialog.currentNoteIndex,
-              isPlaying:        prevStatus.notesListeningDialog.isPlaying,
-              notesCount:       prevStatus.notesListeningDialog.notes.length
+              isPlaying:  prevStatus.notesListeningDialog.isPlaying,
+              notesCount: prevStatus.notesListeningDialog.notes.length
             },
             new:      {
               currentNoteIndex: newStatus.notesListeningDialog.currentNoteIndex,
-              isPlaying:        newStatus.notesListeningDialog.isPlaying,
-              notesCount:       newStatus.notesListeningDialog.notes.length
+              isPlaying:  newStatus.notesListeningDialog.isPlaying,
+              notesCount: newStatus.notesListeningDialog.notes.length
             }
           });
         }
@@ -244,7 +247,7 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
         if (newStatus.isPlaying !== prevStatus.isPlaying) {
           console.log('🎵 [Status Update] 全局播放状态变化:', {
             previous: prevStatus.isPlaying,
-            new:      newStatus.isPlaying
+            new: newStatus.isPlaying
           });
         }
 
@@ -259,6 +262,10 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
 
   statusValue.setSelectedTypeID = useCallback(function (tid) {
     statusValue.selectedTypeID = tid;
+    // 存储到 localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('selectedTypeID', tid);
+    }
     setStatusWithLog(prev => ({...prev, selectedTypeID: tid}));
   }, [setStatusWithLog]);
 
@@ -280,6 +287,37 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
   statusValue.cancelProcessing = useCallback(function () {
     statusValue.isProcessing = false;
     setStatusWithLog(prev => ({...prev, isProcessing: false}));
+  }, [setStatusWithLog]);
+
+  // 恢复选中的 Type ID 从 localStorage
+  statusValue.setTypes = useCallback(function (loadedTypes: any[]) {
+    if (typeof window !== 'undefined') {
+      const savedTypeID = localStorage.getItem('selectedTypeID');
+      if (savedTypeID) {
+        console.log('savedTypeID:', savedTypeID);
+        // 检查保存的 Type ID 是否在可用的 types 中
+        const isValidTypeID = loadedTypes.some(type => type.id === savedTypeID);
+        if (isValidTypeID) {
+          statusValue.selectedTypeID = savedTypeID;
+          setStatusWithLog(prev => ({
+            ...prev,
+            types:          loadedTypes,
+            selectedTypeID: savedTypeID,
+          }));
+
+          console.log('set valid Type ID:', savedTypeID);
+          return;
+        } else {
+          // 如果无效，清除 localStorage 中的值
+          localStorage.removeItem('selectedTypeID');
+        }
+      }
+    }
+    // 如果无法恢复 selectedTypeID，则仅保存已加载 Types。
+    setStatusWithLog(prev => ({
+      ...prev,
+      types: loadedTypes
+    }));
   }, [setStatusWithLog]);
 
   return [statusValue, setStatusWithLog];

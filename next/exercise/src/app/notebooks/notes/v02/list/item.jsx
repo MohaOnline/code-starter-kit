@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import React, {useCallback} from "react";
+import {useRouter} from 'next/navigation';
 
 import {
   autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
@@ -13,14 +14,11 @@ import {useStatus} from "@/app/lib/atoms";
 
 export function Item({note}) {
   const [status, setStatus] = useStatus();
+  const router = useRouter();
 
   const click2Details = useCallback(() => {
-    setStatus((prev) => ({
-      ...prev,
-      currentNoteId: note.id,
-      note: note,
-    }))
-  }, [note, setStatus]);
+    router.push(`/notebooks/notes/v02/list?noteId=${note.id}`);
+  }, [router, note.id]);
 
   return (<>
     <div className={'border p-2'} draggable="false">

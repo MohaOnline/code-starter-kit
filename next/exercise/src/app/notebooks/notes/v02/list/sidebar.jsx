@@ -29,13 +29,8 @@ export function Sidebar() {
     fetch('/api/notebooks/types/list')
       .then(res => res.json())
       .then(json => {
-        const convertedTypes = json.types;
-
-        setStatus((prev) => ({
-          ...prev,
-          types: convertedTypes,
-        }));
-        console.log('Types loaded successfully:', convertedTypes.length);
+        status.setTypes(json.types);
+        console.log('Types loaded successfully:', json.types.length);
       })
       .catch(err => {
         console.error('Fetch API error: /api/notebooks/types/list');
@@ -46,7 +41,8 @@ export function Sidebar() {
   return (
     <>
       <Stack className={'border pt-1'}>
-        <SelectFieldSingle label='Types' items={status.types.map((type) => ({ value: type.id, label: type.title_sub ? `${type.title} - ${type.title_sub}` : type.title }))}
+        <SelectFieldSingle label='Types'
+                           items={status.types.map((type) => ({value: type.id, label: type.id + '. ' + (type.title_sub ? `${type.title} - ${type.title_sub}` : type.title)}))}
                            value={status.selectedTypeID} updateValue={status.setSelectedTypeID}/>
         {/*{status.types.map((type) => (*/}
         {/*  <div key={type.id}>{`${type.id} ${type.title}`}</div>*/}

@@ -116,7 +116,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
   }, [setValue, onChange]);
 
   // （工具条辅助）插入HTML标签的函数
-  const insertHtmlTag = React.useCallback((tagName, hasAttributes = false) => {
+  const insertHtmlTag = React.useCallback((tagName) => {
     if (!editorRef.current?.view) return;
 
     const view = editorRef.current.view;
@@ -125,13 +125,17 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
 
     let openTag, closeTag;
 
-    if (tagName === 'span' && hasAttributes) {
-      openTag = `<span data-voide-id="${genUUID()}">`;
+    if (tagName === 'span_voice') {
+      openTag = `<span data-voice-id="${genUUID()}">`;
       closeTag = '</span>';
     }
     else if (tagName === 'code_block') {
       openTag = '<pre><code class="language-">';
       closeTag = '</code></pre>';
+    }
+    else if (tagName === 'uuid') {
+      openTag = `${genUUID()}`;
+      closeTag = '';
     }
     else {
       openTag = `<${tagName}>`;
@@ -200,85 +204,61 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
   return (
     <>
       <Stack direction="row" spacing={1} className={'sticky toolbar top-0 z-10 dark:bg-black bg-white p-2 border'}>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('ol')}
-        >
-          ol
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('ul')}
-        >
-          ul
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('li')}
-        >
-          li
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => insertHtmlTag('del')}
-        >
-          del
-        </Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('ol')}>ol</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('ul')}>ul</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('li')}>li</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('del')}>del</Button>
         <Button variant="outlined" size="small" onClick={() => insertHtmlTag('p')}>P</Button>
-        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('span', true)}>span</Button>
-        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code', true)}>Code</Button>
-        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code_block', true)}>Codes</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('span_voice')}>span voice</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code')}>Code</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('code_block')}>Codes</Button>
       </Stack>
 
       {/* [javascript({jsx: true})] */}
       <CodeMirror ref={editorRef} value={value}
-        extensions={[
-          minimalSetup,
-          color,
-          EditorView.lineWrapping,
-          html({
-            matchClosingTags: false,       // 无效
-          }),
-          // 自定义当前行高亮背景色和光标颜色
-          EditorView.theme({
-            '&': {
-              color: '#78d278 !important',
-              backgroundColor: '#000 !important',
-            },
-            '.cm-activeLine': {
-              backgroundColor: '#ffff0025 !important', // 自定义背景色
-            },
-            '.cm-activeLineGutter': {
-              backgroundColor: '#ffff0025 !important', // 行号区域背景色
-            },
-            '.cm-cursor, .cm-dropCursor': {
-              borderLeftColor: '#ff6b6b !important', // 光标颜色 - 红色
-            },
-            '.cm-cursor-primary': {
-              borderLeftColor: '#43cdffff !important', // 主光标颜色 - 青色
-            },
-            '.cm-cursor-secondary': {
-              borderLeftColor: '#ffe66d !important', // 次光标颜色 - 黄色
-            },
-            '.cm-editor': {
-              fontFamily: 'Monaco, "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace',
-              fontSize: '14px',
-            },
-            '.cm-content': {
-              fontFamily: 'inherit',
-              fontSize: 'inherit',
-            }
-          })
-        ]}
-        basicSetup={{
-          highlightSelectionMatches: true, // 高亮与选择相同内容
-        }}
-        theme={oneDark}
-        onChange={handleUpdate}
+                  extensions={[
+                    minimalSetup,
+                    color,
+                    EditorView.lineWrapping,
+                    html({
+                      matchClosingTags: false,       // 无效
+                    }),
+                    // 自定义当前行高亮背景色和光标颜色
+                    EditorView.theme({
+                      '&': {
+                        color: '#78d278 !important',
+                        backgroundColor: '#000 !important',
+                      },
+                      '.cm-activeLine': {
+                        backgroundColor: '#ffff0025 !important', // 自定义背景色
+                      },
+                      '.cm-activeLineGutter': {
+                        backgroundColor: '#ffff0025 !important', // 行号区域背景色
+                      },
+                      '.cm-cursor, .cm-dropCursor': {
+                        borderLeftColor: '#ff6b6b !important', // 光标颜色 - 红色
+                      },
+                      '.cm-cursor-primary': {
+                        borderLeftColor: '#43cdffff !important', // 主光标颜色 - 青色
+                      },
+                      '.cm-cursor-secondary': {
+                        borderLeftColor: '#ffe66d !important', // 次光标颜色 - 黄色
+                      },
+                      '.cm-editor': {
+                        fontFamily: 'Monaco, "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace',
+                        fontSize: '14px',
+                      },
+                      '.cm-content': {
+                        fontFamily: 'inherit',
+                        fontSize: 'inherit',
+                      }
+                    })
+                  ]}
+                  basicSetup={{
+                    highlightSelectionMatches: true, // 高亮与选择相同内容
+                  }}
+                  theme={oneDark}
+                  onChange={handleUpdate}
       />
     </>
   );

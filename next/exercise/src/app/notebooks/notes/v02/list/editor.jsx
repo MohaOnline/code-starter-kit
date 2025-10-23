@@ -1,5 +1,6 @@
 import React, {memo, useCallback, useRef, useEffect} from "react";
 import NextLink from "next/link";
+import {useRouter} from 'next/navigation';
 
 import {
   autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
@@ -21,8 +22,14 @@ import {
 
 export function Editor({note}) {
   const [status, setStatus] = useStatus();
+  const router = useRouter();
   const saveButtonRef = useRef(null);
   const cancelButtonRef = useRef(null);
+
+  // 取消编辑，返回详情页
+  const cancelEditing = useCallback(() => {
+    router.push(`/notebooks/notes/v02/list?noteId=${note.id}`);
+  }, [router, note.id]);
 
   // POST note to API
   const updateNote = useCallback(async () => {
@@ -55,6 +62,8 @@ export function Editor({note}) {
             status.notes = updateObjectArray(status.notes, json.note);
             setStatus({...status});
             toast.success("Note Updated.");
+            // [继续编辑更好, 不需要回到列表界面] 保存成功后跳转到详情页
+            //router.push(`/notebooks/notes/v02/list?noteId=${json.note.id}`);
           }
         }
       )
@@ -73,7 +82,7 @@ export function Editor({note}) {
     <div className={'gap-2 flex flex-row justify-end'}>
       <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
       {/* @see https://mui.com/material-ui/customization/palette/#default-colors */}
-      <Button ref={cancelButtonRef} variant="outlined" onClick={status.cancelEditing} color="error">Cancel</Button>
+      <Button ref={cancelButtonRef} variant="outlined" onClick={cancelEditing} color="error">Cancel</Button>
     </div>)
   )
 

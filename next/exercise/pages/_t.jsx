@@ -2,16 +2,20 @@
 
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
+import {useRouter, useSearchParams} from 'next/navigation';
 import Script from "next/script";
 
 import {css, Global} from '@emotion/react';
 import {
   autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
   Checkbox, Chip, Container, FormControl, InputLabel, InputAdornment,
-  Link, ListItemText, ListSubheader, Menu, MenuItem, IconButton, Stack, Select,
+  Link, ListItemText, ListSubheader, Menu, MenuItem, MenuList, IconButton, Stack, Select,
   Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
 } from '@mui/material';
-import {Clear} from '@mui/icons-material';
+import {
+  Adb as AdbIcon, ArrowRight as ArrowRightIcon, CheckBox as CheckBoxIcon, Clear as ClearIcon,
+  Menu as MenuIcon
+} from '@mui/icons-material';
 
 // 3rd part libs: CodeMirror
 import {EditorView, basicSetup} from "codemirror"

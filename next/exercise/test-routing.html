@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>测试笔记路由功能</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-link { display: block; margin: 10px 0; padding: 10px; background: #f0f0f0; text-decoration: none; color: #333; }
+        .test-link:hover { background: #e0e0e0; }
+    </style>
+</head>
+<body>
+    <h1>测试笔记路由功能</h1>
+    <p>点击以下链接测试不同的URL路由：</p>
+    
+    <a href="http://localhost:3001/notebooks/notes/v02/list" class="test-link">
+        📝 笔记列表页面
+    </a>
+    
+    <a href="http://localhost:3001/notebooks/notes/v02/list?noteId=1" class="test-link">
+        👁️ 查看笔记详情 (ID: 1)
+    </a>
+    
+    <a href="http://localhost:3001/notebooks/notes/v02/list?noteId=1&mode=edit" class="test-link">
+        ✏️ 编辑笔记 (ID: 1)
+    </a>
+    
+    <a href="http://localhost:3001/notebooks/notes/v02/list?noteId=2" class="test-link">
+        👁️ 查看笔记详情 (ID: 2)
+    </a>
+    
+    <a href="http://localhost:3001/notebooks/notes/v02/list?noteId=2&mode=edit" class="test-link">
+        ✏️ 编辑笔记 (ID: 2)
+    </a>
+
+    <h2>测试说明</h2>
+    <ul>
+        <li>每个链接都应该直接显示对应的界面状态</li>
+        <li>刷新页面应该保持当前状态</li>
+        <li>使用浏览器的前进后退按钮应该正常工作</li>
+        <li>在详情页点击Edit按钮应该更新URL为编辑模式</li>
+        <li>在编辑页点击Cancel按钮应该返回详情页</li>
+        <li>在详情页点击List按钮应该返回列表页</li>
+    </ul>
+</body>
+</html>

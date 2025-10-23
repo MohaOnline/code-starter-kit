@@ -1,6 +1,7 @@
 "use client"
 
 import React, {useEffect, useState} from "react";
+import {useRouter, useSearchParams} from 'next/navigation';
 
 import {
   autocompleteClasses, Autocomplete, Box, Button, Checkbox, Chip,
@@ -21,10 +22,94 @@ import {Sidebar} from "@/app/notebooks/notes/v02/list/sidebar";
 
 export default function NotesList() {
   const [status, setStatus] = useStatus();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // URL参数同步函数
+  const updateURL = (noteId, mode) => {
+    const params = new URLSearchParams();
+    if (noteId) {
+      params.set('noteId', noteId);
+    }
+    if (mode === 'edit') {
+      params.set('mode', 'edit');
+    }
+
+    const newURL = params.toString() ? `?${params.toString()}` : '';
+    router.push(`/notebooks/notes/v02/list${newURL}`, {scroll: false});
+  };
+
+  // 从URL参数恢复状态
+  useEffect(() => {
+    const noteId = searchParams.get('noteId');
+    const mode = searchParams.get('mode');
+
+    if (noteId && noteId !== status.currentNoteId) {
+      // 需要加载特定笔记
+      fetch(`/api/notebooks/notes/get?id=${noteId}`)
+        .then(res => res.json())
+        .then(json => {
+          if (json.success && json.note) {
+            setStatus(prev => ({
+              ...prev,
+              currentNoteId: noteId,
+              note: json.note,
+              isEditing: mode === 'edit'
+            }));
+          }
+          else {
+            // 笔记不存在，回到列表页
+            router.push('/notebooks/notes/v02/list');
+          }
+        })
+        .catch(err => {
+          console.error('Failed to load note:', err);
+          router.push('/notebooks/notes/v02/list');
+        });
+    }
+    else if (!noteId && status.currentNoteId) {
+      // URL没有noteId但状态有，清除状态
+      setStatus(prev => ({
+        ...prev,
+        currentNoteId: '',
+        isEditing: false
+      }));
+    }
+    else if (noteId && mode !== (status.isEditing ? 'edit' : undefined)) {
+      // 同步编辑状态
+      setStatus(prev => ({
+        ...prev,
+        isEditing: mode === 'edit'
+      }));
+    }
+  }, [searchParams, router]);
+
+  // 监听状态变化，同步到URL
+  useEffect(() => {
+    const currentNoteId = searchParams.get('noteId');
+    const currentMode = searchParams.get('mode');
+
+    const shouldUpdateURL =
+      currentNoteId !== status.currentNoteId ||
+      (status.currentNoteId && currentMode !== (status.isEditing ? 'edit' : null));
+
+    if (shouldUpdateURL) {
+      updateURL(status.currentNoteId, status.isEditing ? 'edit' : null);
+    }
+  }, [status.currentNoteId, status.isEditing]);
+
+  // 更新页面标题
+  useEffect(() => {
+    if (status.note?.title) {
+      document.title = `${status.note.title} - Notes`;
+    }
+    else {
+      document.title = 'Notes';
+    }
+  }, [status.note?.title]);
 
   // 加载所有 notes
   useEffect(() => {
-
     fetch('/api/notebooks/notes/list')
       .then(res => res.json())
       .then(json => {
@@ -37,7 +122,6 @@ export default function NotesList() {
         console.error('Fetch API error: /api/notebooks/notes/list');
         toast.error('cant load notes from API.');
       });
-
   }, []);
   if (status.notes?.length === 0) {
     return <div>Loading...</div>;
@@ -62,14 +146,14 @@ export default function NotesList() {
 
           {/* Note List & Detail */}
           {!status.currentNoteId &&
-          <div className={'basis-1/2'}>
-            {status.notes?.filter((note) => {
-              console.log(status.selectedTypeID, note.tid);
-              return (!status.selectedTypeID || status.selectedTypeID === note.tid);
-            }).map((note) => (
-              <Item key={note.id} note={note}/>
-            ))}
-          </div>
+            <div className={'basis-1/2'}>
+              {status.notes?.filter((note) => {
+                console.log(status.selectedTypeID, note.tid);
+                return (!status.selectedTypeID || status.selectedTypeID === note.tid);
+              }).map((note) => (
+                <Item key={note.id} note={note}/>
+              ))}
+            </div>
           }
           {/* Certain Note is selected */}
           {status.currentNoteId &&
