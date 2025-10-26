@@ -289,7 +289,7 @@ export function useStatus(): [StatusType, (updater: StatusType | ((prev: StatusT
     setStatusWithLog(prev => ({...prev, isProcessing: false}));
   }, [setStatusWithLog]);
 
-  // 恢复选中的 Type ID 从 localStorage
+  // 保存 Types 并从 localStorage 恢复选中的 Type ID
   statusValue.setTypes = useCallback(function (loadedTypes: any[]) {
     if (typeof window !== 'undefined') {
       const savedTypeID = localStorage.getItem('selectedTypeID');
