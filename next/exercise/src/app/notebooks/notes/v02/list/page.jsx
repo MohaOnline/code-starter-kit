@@ -45,50 +45,50 @@ export default function NotesList() {
     router.push(`/notebooks/notes/v02/list${newURL}`, {scroll: false});
   };
 
-  // 从URL参数恢复状态
-  useEffect(() => {
-    const noteId = searchParams.get('noteId');
-    const mode = searchParams.get('mode');
-
-    if (noteId && noteId !== status.currentNoteId) {
-      // 需要加载特定笔记
-      // fetch(`/api/notebooks/notes/get?id=${noteId}`)
-      //   .then(res => res.json())
-      //   .then(json => {
-      //     if (json.success && json.note) {
-      //       setStatus(prev => ({
-      //         ...prev,
-      //         currentNoteId: noteId,
-      //         note: json.note,
-      //         isEditing: mode === 'edit'
-      //       }));
-      //     }
-      //     else {
-      //       // 笔记不存在，回到列表页
-      //       router.push('/notebooks/notes/v02/list');
-      //     }
-      //   })
-      //   .catch(err => {
-      //     console.error('Failed to load note:', err);
-      //     router.push('/notebooks/notes/v02/list');
-      //   });
-    }
-    else if (!noteId && status.currentNoteId) {
-      // URL没有noteId但状态有，清除状态
-      setStatus(prev => ({
-        ...prev,
-        currentNoteId: '',
-        isEditing: false
-      }));
-    }
-    else if (noteId && mode !== (status.isEditing ? 'edit' : undefined)) {
-      // 同步编辑状态
-      setStatus(prev => ({
-        ...prev,
-        isEditing: mode === 'edit'
-      }));
-    }
-  }, [searchParams, router]);
+  // // 从URL参数恢复状态
+  // useEffect(() => {
+  //   const noteId = searchParams.get('noteId');
+  //   const mode = searchParams.get('mode');
+  //
+  //   if (noteId && noteId !== status.currentNoteId) {
+  //     // 需要加载特定笔记
+  //     // fetch(`/api/notebooks/notes/get?id=${noteId}`)
+  //     //   .then(res => res.json())
+  //     //   .then(json => {
+  //     //     if (json.success && json.note) {
+  //     //       setStatus(prev => ({
+  //     //         ...prev,
+  //     //         currentNoteId: noteId,
+  //     //         note: json.note,
+  //     //         isEditing: mode === 'edit'
+  //     //       }));
+  //     //     }
+  //     //     else {
+  //     //       // 笔记不存在，回到列表页
+  //     //       router.push('/notebooks/notes/v02/list');
+  //     //     }
+  //     //   })
+  //     //   .catch(err => {
+  //     //     console.error('Failed to load note:', err);
+  //     //     router.push('/notebooks/notes/v02/list');
+  //     //   });
+  //   }
+  //   else if (!noteId && status.currentNoteId) {
+  //     // URL没有noteId但状态有，清除状态
+  //     setStatus(prev => ({
+  //       ...prev,
+  //       currentNoteId: '',
+  //       isEditing: false
+  //     }));
+  //   }
+  //   else if (noteId && mode !== (status.isEditing ? 'edit' : undefined)) {
+  //     // 同步编辑状态
+  //     setStatus(prev => ({
+  //       ...prev,
+  //       isEditing: mode === 'edit'
+  //     }));
+  //   }
+  // }, [searchParams, router]);
 
   // 监听内部状态，同步到 URL
   // useEffect(() => {
@@ -189,7 +189,7 @@ export default function NotesList() {
           ...prev,
           notes: notes,
           currentNoteId: '',
-          note: {},
+          note: null,
           isEditing: false,
         }))
       }

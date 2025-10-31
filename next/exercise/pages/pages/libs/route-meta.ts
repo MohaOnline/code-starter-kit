@@ -30,4 +30,9 @@ export const routeMeta = {
     description: 'Tailwind v4 基本功能演示页面。',
     keywords:    'basic functionalities tailwind v4',
   },
+  '/pages/framework7/8/kitchen-sink': {
+    title:       'Framework7 v8.*',
+    description: '',
+    keywords:    'framework7 v8',
+  }
 };

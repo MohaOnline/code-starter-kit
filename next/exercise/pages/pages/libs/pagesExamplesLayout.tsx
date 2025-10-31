@@ -34,7 +34,7 @@ export default function PagesExamplesLayout(
         <title>{`${title} - Pages Examples`}</title>
         <meta name="description" content={description}/>
         <meta name="keywords" content={keywords}/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"/>
         <meta name="author" content="Pages Route"/>
 
         {/* Open Graph 标签 */}

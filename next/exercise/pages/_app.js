@@ -1,9 +1,11 @@
 // pages/_app.js
 import React from 'react';
 import {useRouter} from 'next/router';
+import 'react-toastify/dist/ReactToastify.css';
+
+// app commons:
 import {routeMeta} from '@/pages/libs/route-meta';
 import {withPagesExamplesLayout} from '@/pages/libs/pagesExamplesLayout'
-import 'react-toastify/dist/ReactToastify.css';
 
 /**
  * A functional component that wraps a given component with a designated layout
