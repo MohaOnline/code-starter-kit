@@ -1,4 +1,4 @@
-import { Page, Navbar, Block } from 'framework7-react';
+import {Block, Navbar, Page} from 'framework7-react';
 
 export default function Home() {
   return (

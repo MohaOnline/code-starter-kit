@@ -47,7 +47,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
   const [value, setValue] = React.useState(content);
   const editorRef = React.useRef(null);
 
-  const handleUpdate = React.useCallback((val, viewUpdate) => {
+  const handleCodeMirrorChange = React.useCallback((val) => {
     // console.log('val:', val);
     setValue(val);
     onChange?.(val);
@@ -197,7 +197,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
                     highlightSelectionMatches: true, // 高亮与选择相同内容
                   }}
                   theme={oneDark}
-                  onChange={handleUpdate}
+                  onChange={handleCodeMirrorChange}
       />
     </>
   );

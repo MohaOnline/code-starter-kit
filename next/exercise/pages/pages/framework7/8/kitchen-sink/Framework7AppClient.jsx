@@ -1,7 +1,7 @@
 // Import Framework7
 import Framework7 from 'framework7/lite-bundle';
 // Import Framework7-React and components
-import Framework7React, { App, View, Page, Navbar, Block } from 'framework7-react';
+import Framework7React, {App, Block, View, Page, Navbar} from 'framework7-react';
 
 // Import icons and styles
 import 'framework7/css/bundle';

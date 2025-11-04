@@ -28,6 +28,10 @@
     margin-bottom: 0.25rem;
 }
 
+.note-details a {
+    color: #2B98F0;
+}
+
 .dark .note-details code:not(:has(pre)) {
     color: #78d278;
 }
