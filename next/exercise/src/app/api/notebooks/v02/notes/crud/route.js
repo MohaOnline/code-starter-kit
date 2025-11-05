@@ -57,8 +57,9 @@ export async function POST(request) {
       console.log(rows);
 
       const weight = rows[0].weight;
-      const lexoRank = LexoRank.parse(weight);
-      const newWeight = lexoRank.genPrev().format();
+      const newWeight = getWeight(weight);
+      // const lexoRank = LexoRank.parse(weight);
+      // const newWeight = lexoRank.genPrev().format();
 
       // 使用Prisma模型API创建记录并获取插入ID
       // 这种方法更可靠，会自动返回插入的记录包括ID
@@ -69,12 +70,20 @@ export async function POST(request) {
           tid: data.note.type.id ? BigInt(data.note.type.id) : BigInt(0),
           title: data.note.title || "",
           body: data.note.body || "",
+          body_script: data.note.body_script || "",
           question: data.note.question || "",
           answer: data.note.answer || "",
           choise_a: data.note.choise_a || "",
           choise_b: data.note.choise_b || "",
           choise_c: data.note.choise_c || "",
           choise_d: data.note.choise_d || "",
+          choise_e: data.note.choise_e || "",
+          choise_f: data.note.choise_f || "",
+          choise_g: data.note.choise_g || "",
+          choise_h: data.note.choise_h || "",
+          choise_i: data.note.choise_i || "",
+          choise_j: data.note.choise_j || "",
+          choise_k: data.note.choise_k || "",
           figures: data.note.figures || "",
           weight: newWeight,
           note: data.note.note || "",

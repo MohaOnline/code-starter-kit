@@ -1,4 +1,5 @@
 import React from "react";
+import {InitColorSchemeScript} from '@mui/material';
 import {AppRouterCacheProvider} from '@mui/material-nextjs/v15-appRouter';
 
 import {JotaiProvider} from '@/app/lib/components/JotaiProvider';
@@ -26,6 +27,7 @@ export default function RootLayout ({ children }) {
       <link rel="stylesheet" href="/fonts/local.css"/>
     </head>
     <body className="antialiased font-sans" suppressHydrationWarning>
+    <InitColorSchemeScript attribute="class"/>
     <AppRouterCacheProvider options={{enableCssLayer: true}}>
       <NextTopLoader initialPosition={0.08} height={3}
                      crawlSpeed={200} speed={200} easing="ease"
@@ -33,25 +35,16 @@ export default function RootLayout ({ children }) {
                      showSpinner={true}
                      color="#2299DD" shadow="0 0 10px #2299DD,0 0 5px #2299DD"/>
     <NextThemesProvider attribute="class"
-                        disableTransitionOnChange
-    >
+                        disableTransitionOnChange>
       <AuthSessionProvider>
         <JotaiProvider>
           {children}
           <ProcessingMask />
         </JotaiProvider>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="auto"
-        />
+        <ToastContainer newestOnTop={true} position="top-right" rtl={false}
+                        autoClose={3000} hideProgressBar={false}
+                        draggable pauseOnHover pauseOnFocusLoss closeOnClick
+                        theme="auto"/>
       </AuthSessionProvider>
     </NextThemesProvider>
 

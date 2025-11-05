@@ -87,7 +87,8 @@ export function getWeights(weight1: string = '', weight2: string = '', number: n
   return weights;
 }
 
-export function updateObjectArray(array, obj, attribute = 'id') {
+// 默认根据 Object 指定属性（默认 id）更新 Object 到 Array
+export function updateObject2Array(array, obj, attribute = 'id') {
   const index = array.findIndex((x) => x[attribute] === obj[attribute]);
   if (index === -1) {
     console.group('updateObjectArray');

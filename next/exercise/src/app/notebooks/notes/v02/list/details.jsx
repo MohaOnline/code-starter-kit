@@ -213,25 +213,30 @@ export function Details(props) {
 
   const Operations = React.memo(() => {
     return (
-      <div className={'gap-2 flex flex-row justify-end sticky top-0 z-10'}>
-        {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
-          <Button sx={{
-            backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
-            '&:hover': { // 鼠标悬停
-              backgroundColor: 'success.dark',
+      <>
+        <div className={'border flex flex-row justify-start sticky top-0 z-10'}>
+          <button>🔄</button>
+        </div>
+        <div className={'gap-2 flex flex-row justify-end sticky top-0 z-10'}>
+          {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
+            <Button sx={{
+              backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
+              '&:hover': { // 鼠标悬停
+                backgroundColor: 'success.dark',
+                color: 'error.contrastText',
+              },
+            }} ref={editButtonRef} className={''} variant="contained" onClick={click2Edit}>Edit</Button>
+          }
+          <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
+            backgroundColor: 'grey.300',
+            '&:hover': {
+              backgroundColor: 'grey.500',
               color: 'error.contrastText',
             },
-          }} ref={editButtonRef} className={''} variant="contained" onClick={click2Edit}>Edit</Button>
-        }
-        <Button variant="contained" onClick={click2List} ref={listButtonRef} sx={{
-          backgroundColor: 'grey.300',
-          '&:hover': {
-            backgroundColor: 'grey.500',
-            color: 'error.contrastText',
-          },
-        }}
-        >List</Button>
-      </div>
+          }}
+          >List</Button>
+        </div>
+      </>
     );
   })
 

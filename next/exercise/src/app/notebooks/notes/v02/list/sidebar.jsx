@@ -9,6 +9,12 @@ import {
   Link, ListSubheader, Menu, MenuItem, IconButton, Stack,
   Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
 } from '@mui/material';
+import {
+  Adb as AdbIcon, ArrowRight as ArrowRightIcon, CheckBox as CheckBoxIcon, Clear as ClearIcon,
+  Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon,
+  PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon, PostAdd as PostAddIcon,
+  StopTwoTone as StopTwoToneIcon, Sync as SyncIcon
+} from '@mui/icons-material';
 
 import { useStatus } from "@/app/lib/atoms";
 import { toast } from "react-toastify";
@@ -40,6 +46,10 @@ export function Sidebar() {
 
   return (
     <>
+      <Stack className={'toolbar pb-2'} direction="row" spacing={2}>
+        <Button size={'small'} variant={'outlined'}><NoteAddOutlinedIcon/></Button>
+        
+      </Stack>
       <Stack className={'border pt-1'}>
         <SelectFieldSingle label='Types'
                            items={status.types.map((type) => ({value: type.id, label: type.id + '. ' + (type.title_sub ? `${type.title} - ${type.title_sub}` : type.title)}))}

@@ -13,10 +13,8 @@ import {EmotionJSX} from "@emotion/react/src/jsx-namespace";
 import invariant from 'tiny-invariant';
 
 import {
-  draggable,
-  dropTargetForElements,
+  draggable, dropTargetForElements, monitorForElements,
   type ElementDropTargetEventBasePayload,
-  monitorForElements,
 } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 
 export type Coordinate = [number, number];
@@ -62,7 +60,7 @@ function renderSquares(pieces: PieceRecord[]) {
   return squares;
 }
 
-function Chessboard() {
+export default function Chessboard() {
   const pieces: PieceRecord[] = [
     {type: 'king', location: [3, 2]},
     {type: 'pawn', location: [1, 6]},
@@ -124,5 +122,3 @@ const imageStyles = css({
     backgroundColor: 'rgba(168, 168, 168, 0.25)',
   },
 });
-
-export default Chessboard;

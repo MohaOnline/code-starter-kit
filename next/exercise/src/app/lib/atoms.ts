@@ -30,6 +30,25 @@ export interface AudioConfig {
   };
 }
 
+// 音频配置状态
+export const audioConfigAtom = atom<AudioConfig>({
+  alternatePlay: false,
+  volume:        100,
+  speed:         100,
+  english:       {
+    repeatCount:     1,
+    pauseTime:       0,
+    showText:        true,
+    waitVoiceLength: true,
+  },
+  chinese:       {
+    repeatCount:     0,
+    pauseTime:       0,
+    showText:        true,
+    waitVoiceLength: true,
+  },
+});
+
 export interface Word {
   id: string;
   word: string;
@@ -58,25 +77,6 @@ export interface Translation {
 export const wordsAtom = atom<Word[]>([]);
 export const currentWordIndexAtom = atom<number>(0);
 export const playedWordIndexAtom = atom<number>(-1);
-
-// 音频配置状态
-export const audioConfigAtom = atom<AudioConfig>({
-  alternatePlay: false,
-  volume:  100,
-  speed:   100,
-  english: {
-    repeatCount: 1,
-    pauseTime: 0,
-    showText: true,
-    waitVoiceLength: true,
-  },
-  chinese: {
-    repeatCount: 0,
-    pauseTime: 0,
-    showText: true,
-    waitVoiceLength: true,
-  },
-});
 
 // UI状态
 export const uiStateAtom = atom({
@@ -163,6 +163,18 @@ export type StatusType = {
   currentNoteId: string;    // 有值；无值。用 status.note 显示笔记。
   selectedTypeID: string;   // /notebooks/notes/v02/list 选中的 TypeID。
   cursorPositionBodyScript?: number;  // 光标位置，用于预览点击同步到编辑器
+  noteEditorCursorPositions: {
+    question: number;
+    answer: number;
+    body: number;
+    body_script: number;
+    note: number;
+    note_extra: number;
+  };
+  noteViewConfig: {
+    loopMode: string; // one; all; next; none
+    pagingSize: number;
+  }
   words: any[];
   currentWordIndex: number;
   notesListeningDialog: {
@@ -178,11 +190,27 @@ export type StatusType = {
   cancelProcessing: any;
 };
 
+export function initNoteCursorPositions() {
+  return {
+    question:    -1,
+    answer:      -1,
+    body:        -1,
+    body_script: -1,
+    note:        -1,
+    note_extra:  -1,
+  };
+}
+
 // 通用 status，所有数据在此周转。
 // Define the status atom with proper typing
 export const status = atom<StatusType>({
   notes:          [],
   note:           initStatusNote(),
+  noteEditorCursorPositions: initNoteCursorPositions(),
+  noteViewConfig:            {
+    loopMode:   'none',
+    pagingSize: 10,
+  },
   types:          [],
   selectedTypeID: '', // 默认无选中 Type ID
   isAdding:       false,

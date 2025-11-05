@@ -10,7 +10,8 @@ import {cn} from "@/lib/utils"
 
 export function ThemeToggle({className = "absolute top-0 right-0 w-0 h-5"}) {
   const {theme, setTheme} = useTheme()
-  const {mode, setMode} = useColorScheme();
+  const {mode, systemMode, setMode} = useColorScheme();
+  console.log('useColorScheme', mode, systemMode);
 
   return (
     <Button
@@ -18,8 +19,10 @@ export function ThemeToggle({className = "absolute top-0 right-0 w-0 h-5"}) {
       size="sm"
       className={cn("cursor-pointer", className)}
       onClick={() => {
+        // mode 取出来总是不一样, 调整的时候统一按 Next 的 Theme Cookie 调整。
+        // Cookie Names --- next: theme， mui: mui-mode
         setTheme(theme === "light" ? "dark" : "light");
-        setMode(mode === "light" ? "dark" : "light");
+        setMode(theme === "light" ? "dark" : "light");
       }}
     >
       <svg

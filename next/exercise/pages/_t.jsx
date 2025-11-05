@@ -14,10 +14,16 @@ import {
 } from '@mui/material';
 import {
   Adb as AdbIcon, ArrowRight as ArrowRightIcon, CheckBox as CheckBoxIcon, Clear as ClearIcon,
-  Menu as MenuIcon
+  Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon, 
+  PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon, PostAdd as PostAddIcon,
+  StopTwoTone as StopTwoToneIcon, Sync as SyncIcon
 } from '@mui/icons-material';
 
-// 3rd part libs: CodeMirror
+// 3rd part libs:
+// atlaskit/pragmatic-drag-and-drop
+import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
+
+// CodeMirror
 import {EditorView, basicSetup} from "codemirror"
 import {html} from "@codemirror/lang-html"
 

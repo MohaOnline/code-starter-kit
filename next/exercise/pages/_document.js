@@ -1,8 +1,6 @@
 import {Html, Head, Main, NextScript} from 'next/document';
-import {
-  DocumentHeadTags,
-  documentGetInitialProps,
-} from '@mui/material-nextjs/v15-pagesRouter';
+import {DocumentHeadTags, documentGetInitialProps,} from '@mui/material-nextjs/v15-pagesRouter';
+import {InitColorSchemeScript} from '@mui/material';
 
 export default function Document(props) {
   return (
@@ -18,6 +16,8 @@ export default function Document(props) {
 
       </Head>
       <body>
+      {/*https://mui.com/material-ui/customization/css-theme-variables/configuration/*/}
+      <InitColorSchemeScript attribute="class"/>
       <Main/>
       <NextScript/>
       </body>

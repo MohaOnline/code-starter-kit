@@ -14,7 +14,7 @@ import {toast} from "react-toastify";
 import {useStatus} from "@/app/lib/atoms";
 import HTMLField from "@/app/lib/components/HTMLField/v01";
 import {Panel} from '@/lib/components/tailwind/panel/v01';
-import {updateObjectArray} from '@/lib/utils';
+import {updateObject2Array} from '@/lib/utils';
 import {
   bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory,
   registerComposingMarker, unregisterComposingMarker
@@ -59,7 +59,7 @@ export function Editor({note}) {
           }
           else {
             status.note = json.note;
-            status.notes = updateObjectArray(status.notes, json.note);
+            status.notes = updateObject2Array(status.notes, json.note);
             setStatus({...status});
             toast.success("Note Updated.");
             // [继续编辑更好, 不需要回到列表界面] 保存成功后跳转到详情页

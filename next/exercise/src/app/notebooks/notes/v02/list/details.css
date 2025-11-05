@@ -32,6 +32,10 @@
     color: #2B98F0;
 }
 
+.dark .toolbar button {
+    color: #78d278;
+    border-color: #78d278;
+}
 .dark .note-details code:not(:has(pre)) {
     color: #78d278;
 }
