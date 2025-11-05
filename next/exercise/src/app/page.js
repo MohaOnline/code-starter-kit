@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import NavTop from '@/app/lib/components/NavTop';
 import Script from "next/script";
 
-export default function Home() {
+import NavTop from '@/app/lib/components/NavTop';
+
+export default function Homepage() {
   return (
     <>
       {/*<Script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" strategy="beforeInteractive"/>*/}
