@@ -1,18 +1,15 @@
 'use client';
 
+/**
+ *
+ */
+
 import Link from "next/link";
 import Script from "next/script";
 
 import React, {useState, useEffect} from 'react';
 
 import {css} from '@emotion/react';
-import Chip from '@mui/material/Chip';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Checkbox from '@mui/material/Checkbox';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {styled, lighten, darken} from '@mui/system';
 
 import {useVirtualizer} from '@tanstack/react-virtual';
@@ -34,7 +31,7 @@ export default function Pages() {
   // The scrollable element for your list
   const frameRef = React.useRef(null)
 
-  const [words, setWords] = useState([])
+  const [words, setWords] = useState([]) // 保存服务器获取的单词列表
   const [needWordsRefresh, setNeedWordsRefresh] = useState(false);
 
   // 获取单词
@@ -73,30 +70,27 @@ export default function Pages() {
                  overflow: 'auto', // Make it scroll!
                }}
       >
-        {/* The large inner element to hold all of the items */}
+        {/* The large inner element to hold all the items */}
         <div className={'inner-wrapper'}
              style={{
                height: virtualizer ? `${virtualizer.getTotalSize()}px` : '0',
                width: '100%',
                position: 'relative',  // prepare for positioning the items: absolute
-             }}
-        >
+             }}>
           {/* Only the visible items in the virtualizer, manually positioned to be in view */}
           {virtualizer?.getVirtualItems().map((item) => (
-            <div
-              key={item.key}
-              data-index={item.index}
-              ref={virtualizer.measureElement}
-              className={'border border-green-300'}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                // height: `${item.size}px`,
-                transform: `translateY(${item.start}px)`,
-              }}
-            >
+            <div key={item.key}
+                 data-index={item.index}
+                 ref={virtualizer.measureElement}
+                 className={'border border-green-300'}
+                 style={{
+                   position: 'absolute',
+                   top: 0,
+                   left: 0,
+                   width: '100%',
+                   // height: `${item.size}px`,
+                   transform: `translateY(${item.start}px)`,
+                 }}>
               <div>{words[item.index].word}</div>
               <div>{words[item.index].translation}</div>
             </div>

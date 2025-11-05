@@ -6,6 +6,7 @@ import {
   dropTargetForElements,
   monitorForElements,
 } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
 import {useVirtualizer} from '@tanstack/react-virtual';
 import {Input} from '@/components/ui/input';
 import {toast} from 'react-toastify';
@@ -56,7 +57,7 @@ function SortableWordItem({word, columnId, isHighlighted = false, style: virtual
       element,
       canDrop: ({source}) => {
         const sourceData = source.data;
-        return sourceData.type === 'word-item' && sourceData.word?.id !== word.id;
+        return sourceData.type === 'word-item' && (sourceData.word as Word)?.id !== word.id;
       },
       getData: () => ({
         word,
@@ -132,6 +133,16 @@ function WordColumn({
     overscan:         20,
   });
 
+  // Set up auto-scroll for this column
+  useEffect(() => {
+    const element = scrollRef.current;
+    if (!element) return;
+
+    return autoScrollForElements({
+      element,
+    });
+  }, [scrollRef]);
+
   return (
     <div className="flex-1 flex flex-col h-[90vh] border border-gray-600 rounded-lg bg-gray-900">
       <div className="p-4 border-b border-gray-600 bg-gray-900">
@@ -196,32 +207,19 @@ function WordColumn({
 
 // Custom drag overlay component
 function DragOverlay({draggedWord, isDragging}: {draggedWord: Word | null, isDragging: boolean}) {
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
 
   useEffect(() => {
     if (!isDragging || !draggedWord) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (overlayRef.current) {
-        overlayRef.current.style.left = `${e.clientX + 10}px`;
-        overlayRef.current.style.top = `${e.clientY + 10}px`;
-      }
-    };
-
-    // Set initial position
-    const handleMouseDown = (e: MouseEvent) => {
-      if (overlayRef.current) {
-        overlayRef.current.style.left = `${e.clientX + 10}px`;
-        overlayRef.current.style.top = `${e.clientY + 10}px`;
-      }
+      setMousePosition({x: e.clientX, y: e.clientY});
     };
 
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mousedown', handleMouseDown);
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mousedown', handleMouseDown);
     };
   }, [isDragging, draggedWord]);
 
@@ -229,9 +227,10 @@ function DragOverlay({draggedWord, isDragging}: {draggedWord: Word | null, isDra
 
   return (
     <div
-      ref={overlayRef}
       style={{
         position: 'fixed',
+        left: mousePosition.x + 10,
+        top: mousePosition.y + 10,
         pointerEvents: 'none',
         zIndex: 1000,
         transform: 'rotate(5deg)',
@@ -359,7 +358,7 @@ export default function WordListPage() {
     const len = words.length;
 
     for (let i = 0; i < len; i++) {
-      let index;
+      let index: number;
       if (direction === 'next') {
         index = (startIndex + i) % len;
       } else {

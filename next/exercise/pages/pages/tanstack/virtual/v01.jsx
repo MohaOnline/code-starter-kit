@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * 乱数生成的数据。
+ */
+
 import Link from "next/link";
 import Script from "next/script";
 
@@ -28,7 +32,7 @@ import {Panel} from '@/lib/components/tailwind/panel/v01';
 import {LoremIpsumSectionNDiv} from "@/lib/components/custom/lorem-ipsum/v01.jsx";
 
 /**
- * @see /_t
+ * @see /pages/tanstack/virtual/v01
  */
 export default function Pages() {
   // The scrollable element for your list
