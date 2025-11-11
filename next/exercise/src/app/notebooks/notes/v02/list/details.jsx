@@ -1,16 +1,32 @@
-import React, {memo, useCallback, useEffect, useMemo, useRef} from "react";
+import React, {memo, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {useRouter} from 'next/navigation';
 
-import {Button, Typography} from "@mui/material";
+import {
+  autocompleteClasses, AppBar, Autocomplete, Avatar, Box, Button,
+  Checkbox, Chip, Container, FormControl, IconButton, InputLabel, InputAdornment,
+  Link as MuiLink, ListItemText, ListSubheader, Menu, MenuItem, MenuList,
+  Paper, Popper,
+  Stack, Select, Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
+} from '@mui/material';
+import {
+  Adb as AdbIcon, ArrowRight as ArrowRightIcon,
+  CheckBox as CheckBoxIcon, CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon, Clear as ClearIcon,
+  FormatBold as FormatBoldIcon, Info as InfoIcon,
+  Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon,
+  PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
+  PostAdd as PostAddIcon,
+  StopTwoTone as StopTwoToneIcon, Sync as SyncIcon
+} from '@mui/icons-material';
 
 import he from 'he'
 import hljs from 'highlight.js';
 
 // Own libraries and css.
 import {useStatus} from "@/app/lib/atoms";
-import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory} from "@/lib/common";
+import {bindCtrlCmdShortcut2ButtonClickFactory, bindShortcut2ButtonClickFactory, calculateHTMLOffsetFromDomClick} from "@/lib/common";
 
 import './details.css';
+
 
 const classNamesFromType = (type_id) => {
   let classNames = '';
@@ -64,9 +80,10 @@ export function Details(props) {
       return match.replace(content, encodedContent);
     });
   }, [note.body_script]);
-  const contentRef = useRef(null);
+  const articleBodyScriptRef = useRef(null);
+  const articleQuestionRef = useRef(null);
   const highlightHandler = useCallback(function () {
-    const container = contentRef.current;
+    const container = articleBodyScriptRef.current;
     if (!container) {
       return;
     }
@@ -75,131 +92,25 @@ export function Details(props) {
     outermost.forEach(el => {
       hljs?.highlightElement(el); // 或 hljs.highlightAllUnder(container);
     });
-  }, [contentRef.current]);
+  }, [articleBodyScriptRef.current]);
   useEffect(() => {
     highlightHandler();
   });
 
   // 计算点击位置在原始 HTML Code 中的偏移量
   // 原理：过滤掉 <...> 中的内容，折算 &...; 的内容。
-  const getHTMLOffsetFromClick = useCallback((event) => {
-    let range;
-    if (document.caretRangeFromPoint) {
-      range = document.caretRangeFromPoint(event.clientX, event.clientY);
-    }
-    else if (document.caretPositionFromPoint) {
-      const pos = document.caretPositionFromPoint(event.clientX, event.clientY);
-      range = document.createRange();
-      range.setStart(pos.offsetNode, pos.offset);
-      range.collapse(true); // 变成一个光标（无长度的 Range）
-    }
-
-    console.log(range);
-
-    if (!range || !contentRef.current) return 0;
-
-    // 创建一个从容器开始到点击位置的范围
-    const containerRange = document.createRange();
-    containerRange.setStart(contentRef.current, 0);
-    containerRange.setEnd(range.startContainer, range.startOffset);
-
-    // 获取范围内的纯文本内容
-    const string2Caret = containerRange.toString();
-
-    const htmlContent = note?.body_script || '';
-    // const htmlContent = getBodyScriptWithHTMLEntityEncode() || '';
-
-    // 更精确的文本位置映射算法
-    let htmlIndex = 0;
-    let textIndex = 0;
-    let inTag = false;
-    let tagLength = 0;
-    let inEntity = false;
-    let inCode = false;
-    let entityBuffer = '';
-
-    while (htmlIndex < htmlContent.length && textIndex < string2Caret.length) {
-      const htmlChar = htmlContent[htmlIndex];
-
-      // console.log(htmlChar, htmlIndex, textIndex, inTag, inEntity, tagLength);
-
-      // 处理 HTML 标签
-      if (htmlChar === '<' && !inEntity) {
-        inTag = true;
-        htmlIndex++;
-        tagLength++;
-        continue;
-      }
-
-      if (inTag && htmlChar === '>') {
-        // 回溯 tag 如果全部出现在页面文字中，则跳过这部分，应该是在 <code> 块里的代码没有转义 <...> 这类tag，算作代码中的可见字符串。
-        // console.log(textIndex, tagLength + 1, string2Caret.slice(textIndex, textIndex + tagLength + 1));
-        // console.log(htmlIndex, tagLength + 1, htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1));
-        if (textIndex + tagLength < string2Caret.length
-          && string2Caret.slice(textIndex, textIndex + tagLength + 1) === htmlContent.slice(htmlIndex - tagLength, htmlIndex + 1)) {
-          textIndex += tagLength + 1;
-        }
-        inTag = false;
-        tagLength = 0;
-        htmlIndex++;
-        continue;
-      }
-
-      if (inTag) {
-
-        htmlIndex++;
-        tagLength++;
-        continue;
-      }
-
-      // 处理 HTML 实体
-      if (htmlChar === '&' && !inTag) {
-        inEntity = true;
-        entityBuffer = '&';
-        htmlIndex++;
-        continue;
-      }
-
-      if (inEntity) {
-        entityBuffer += htmlChar;
-        console.log(entityBuffer);
-        if (htmlChar === ';') {
-          // 实体结束，解码并比较
-          const decoded = he.decode(entityBuffer);
-          if (textIndex < string2Caret.length && decoded === string2Caret[textIndex]) {
-            textIndex++;
-          }
-          inEntity = false;
-          entityBuffer = '';
-        }
-        htmlIndex++;
-        continue;
-      }
-
-      // 普通字符比较
-      if (textIndex < string2Caret.length && htmlChar === string2Caret[textIndex]) {
-        textIndex++;
-      }
-
-      htmlIndex++;
-    }
-
-    // 返回在原始 HTML 中的位置
-    return Math.max(0, htmlIndex);
-  }, [note?.body_script]);
-
-  // 处理预览区域点击事件
-  const handlePreviewClick = useCallback((event) => {
+  // 处理 body_script 预览区域点击事件
+  const onBodyScriptPreviewClick = useCallback((event) => {
     if (!status.isEditing) return; // 只在编辑模式下响应
 
-    const offset = getHTMLOffsetFromClick(event);
+    const offset = calculateHTMLOffsetFromDomClick(event, articleBodyScriptRef.current, note?.body_script);
 
     // 将光标位置传递给编辑器
     setStatus(prev => ({
       ...prev,
       cursorPositionBodyScript: offset,
     }));
-  }, [status.isEditing, getHTMLOffsetFromClick, setStatus]);
+  }, [status.isEditing, setStatus, note?.body_script]);
 
   // 没有 currentNoteId 就显示笔记一览
   const click2List = useCallback(() => {
@@ -211,7 +122,8 @@ export function Details(props) {
     router.push(`/notebooks/notes/v02/list?noteId=${note.id}&mode=edit`);
   }, [router, note.id]);
 
-  const Operations = React.memo(() => {
+  // 详细页面操作面板：播放按钮、播放模式 Radio、Edit 按钮、List 按钮
+  const Operations = memo(() => {
     return (
       <>
         <div className={'border flex flex-row justify-start sticky top-0 z-10'}>
@@ -240,17 +152,113 @@ export function Details(props) {
     );
   })
 
+  // 工具条
+  const [popperAnchorEl, setPopperAnchorEl] = useState(null); // the hovered span element
+  const popperToolbarCloseTimerRef = useRef(null);
+  const handlePopperToolbarMouseEnter = () => {
+    clearTimeout(popperToolbarCloseTimerRef.current);
+  };
+  const handlePopperToolbarMouseLeave = (delay = 150) => {
+    clearTimeout(popperToolbarCloseTimerRef.current);
+    popperToolbarCloseTimerRef.current = setTimeout(() => {
+      setPopperAnchorEl(null);
+    }, delay);
+  };
+  const handleActionClick = useCallback((command)=>{},[]);
+  const PopperToolbar = memo(() => {
+    return (
+      <>
+        {popperAnchorEl && (
+          <Popper open={Boolean(popperAnchorEl)}
+                  anchorEl={popperAnchorEl}
+                  placement="top"
+                  modifiers={[
+                    {name: 'offset', options: {offset: [0, 8]}},
+                    {name: 'preventOverflow', options: {boundary: 'viewport'}}
+                  ]}
+                  sx={{zIndex: 1300}}
+          >
+            <Paper elevation={4}
+                   onMouseEnter={handlePopperToolbarMouseEnter}
+                   onMouseLeave={handlePopperToolbarMouseLeave}
+                   sx={{
+                     display: 'flex',
+                     alignItems: 'center',
+                     px: 0.5,
+                     py: 0.25,
+                     borderRadius: 1,
+                     pointerEvents: 'auto' // ensure popper can receive pointer
+                   }}
+            >
+              <Tooltip title="Play">
+                <IconButton size="small" onClick={() => handleActionClick('play')}>
+                  <PlayArrowIcon fontSize="small"/>
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Bold">
+                <IconButton size="small" onClick={() => handleActionClick('bold')}>
+                  <FormatBoldIcon fontSize="small"/>
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Info">
+                <IconButton size="small" onClick={() => handleActionClick('info')}>
+                  <InfoIcon fontSize="small"/>
+                </IconButton>
+              </Tooltip>
+            </Paper>
+          </Popper>)}
+      </>
+    );
+  })
+  const handleVoiceSpanMouseOver = useCallback((event) => {
+    console.log('handleVoiceSpanMouseOver', event);
+
+    if (event.target.tagName === 'SPAN' && event.target.dataset.voiceId) {
+      event.stopPropagation();
+      if (!(event.target instanceof Element)) return;
+      setPopperAnchorEl(event.target);
+      clearTimeout(popperToolbarCloseTimerRef.current);
+    }
+  }, []);
+  const handleVoiceSpanMouseOut = useCallback((event) => {
+    console.log('handleVoiceSpanMouseOut', event);
+
+    if (event.target.tagName === 'SPAN' && event.target.dataset.voiceId) {
+      event.stopPropagation();
+
+      clearTimeout(popperToolbarCloseTimerRef.current);
+      popperToolbarCloseTimerRef.current = setTimeout(() => {
+        setPopperAnchorEl(null);
+      }, 150);
+    }
+  }, []);
+
+  // 绑定 Popper 触发 到 span
+  useEffect(() => {
+    if (!note.body_script || !articleBodyScriptRef.current) return;
+
+    articleBodyScriptRef.current.addEventListener('mouseover', handleVoiceSpanMouseOver);
+    articleBodyScriptRef.current.addEventListener('mouseout', handleVoiceSpanMouseOut);
+
+    return () => {
+      articleBodyScriptRef.current?.removeEventListener('mouseover', handleVoiceSpanMouseOver);
+      articleBodyScriptRef.current?.removeEventListener('mouseout', handleVoiceSpanMouseOut);
+    }
+  }, [note.body_script]);
+
   return (<>
     {/* Title */}
     <Typography variant="h1" gutterBottom sx={{textAlign: "center"}}>{note.title}<sup>(ID: {note.id})</sup></Typography>
     <Operations/>
 
     {/* question */}
-    {(note.type_id === '61' || note.tid === '61' ||
-        note.type_id === '31' || note.tid === '31' ||
-        note.type_id === '21' || note.tid === '21') &&
+    {(note.type_id === '61' || note.tid === '61' ||     // 数学笔记
+        note.type_id === '31' || note.tid === '31' ||   // 物理笔记
+        note.type_id === '21' || note.tid === '21') &&  // 语文作文
       <>
-        <article contentEditable={status.isEditing} ref={contentRef}
+        <article key={`question: ${note.id}`} contentEditable={status.isEditing} ref={articleQuestionRef}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: questionWithHTMLEntityEncode}}/>
       </>
@@ -258,15 +266,16 @@ export function Details(props) {
 
     {/* body_script */}
     {(note.tid === '999' || note.type_id === '999' || note.type_id === '997' || note.tid === '997' ||
-        note.type_id === '61' || note.tid === '61' ||
-        note.type_id === '31' || note.tid === '31' ||
+        note.type_id === '61' || note.tid === '61' ||   // 数学笔记
+        note.type_id === '31' || note.tid === '31' ||   // 物理笔记
         note.type_id === '21' || note.tid === '21') &&
       <>
-        <article contentEditable={status.isEditing} ref={contentRef} onClick={handlePreviewClick}
+        <article key={`body_script: ${note.id}`} contentEditable={status.isEditing} ref={articleBodyScriptRef} onClick={onBodyScriptPreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>
       </>
     }
 
+    {/*<PopperToolbar/>*/}
   </>);
 }

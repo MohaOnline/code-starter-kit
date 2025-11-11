@@ -23,6 +23,11 @@
     margin-bottom: 0.25rem;
 }
 
+.note-details span[data-voice-id]:not([data-voice-id=""]) {
+    /* background-color: rgba(255, 255, 50, 0.3); */
+    background-color: rgba(255, 50, 50, 0.3);
+}
+
 .note-details pre {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
