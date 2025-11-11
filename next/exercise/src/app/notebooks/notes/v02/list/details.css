@@ -25,7 +25,12 @@
 
 .note-details span[data-voice-id]:not([data-voice-id=""]) {
     /* background-color: rgba(255, 255, 50, 0.3); */
-    background-color: rgba(255, 50, 50, 0.3);
+    background-color: rgba(255, 50, 50, 0.2);
+}
+
+.note-details span[data-voice-id]:not([data-voice-id=""]):hover {
+    /* background-color: rgba(255, 255, 50, 0.3); */
+    background-color: rgba(255, 50, 50, 0.35);
 }
 
 .note-details pre {

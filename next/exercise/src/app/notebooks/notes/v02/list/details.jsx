@@ -70,20 +70,24 @@ export function Details(props) {
       const encodedContent = he.encode(content, {useNamedReferences: true});
       return match.replace(content, encodedContent);
     });
-  });
+  }, [note]);
   const questionWithHTMLEntityEncode = useMemo(() => getHTMLContentsWithHTMLEntityEncode('question'), [getHTMLContentsWithHTMLEntityEncode, note.question]);
-  const getBodyScriptWithHTMLEntityEncode = useCallback(() => {
-    // const regex = /<pre><code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code><\/pre>/gs;
-    const regex = /<code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code>/gs;
-    return note?.body_script?.replace(regex, (match, content) => {
-      const encodedContent = he.encode(content, {useNamedReferences: true});
-      return match.replace(content, encodedContent);
-    });
-  }, [note.body_script]);
-  const articleBodyScriptRef = useRef(null);
-  const articleQuestionRef = useRef(null);
+  const questionArticleRef = useRef(null);
+
+  // const getBodyScriptWithHTMLEntityEncode = useMemo(()=>{__html: useMemo(() => {
+  //   // const regex = /<pre><code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code><\/pre>/gs;
+  //   const regex = /<code(?:\s+class=(?:"[^"]*"|'[^']*'))?>(.*?)<\/code>/gs;
+  //   return note?.body_script?.replace(regex, (match, content) => {
+  //     const encodedContent = he.encode(content, {useNamedReferences: true});
+  //     return match.replace(content, encodedContent);
+  //   });
+  // }, [note.body_script])}, [note.body_script]);
+  const bodyScriptWithHTMLEntityEncodeObject = useMemo(() => ({
+    __html: getHTMLContentsWithHTMLEntityEncode('body_script')
+  }), [getHTMLContentsWithHTMLEntityEncode, note.body_script]);
+  const bodyScriptArticleRef = useRef(null);
   const highlightHandler = useCallback(function () {
-    const container = articleBodyScriptRef.current;
+    const container = bodyScriptArticleRef.current;
     if (!container) {
       return;
     }
@@ -92,7 +96,7 @@ export function Details(props) {
     outermost.forEach(el => {
       hljs?.highlightElement(el); // 或 hljs.highlightAllUnder(container);
     });
-  }, [articleBodyScriptRef.current]);
+  }, [bodyScriptArticleRef.current]);
   useEffect(() => {
     highlightHandler();
   });
@@ -103,7 +107,7 @@ export function Details(props) {
   const onBodyScriptPreviewClick = useCallback((event) => {
     if (!status.isEditing) return; // 只在编辑模式下响应
 
-    const offset = calculateHTMLOffsetFromDomClick(event, articleBodyScriptRef.current, note?.body_script);
+    const offset = calculateHTMLOffsetFromDomClick(event, bodyScriptArticleRef.current, note?.body_script);
 
     // 将光标位置传递给编辑器
     setStatus(prev => ({
@@ -164,21 +168,32 @@ export function Details(props) {
       setPopperAnchorEl(null);
     }, delay);
   };
-  const handleActionClick = useCallback((command)=>{},[]);
+  const currentHoveredSpanRef = useRef(null);
+  const handleActionClick = useCallback((command) => {
+    console.log('handleActionClick', command, currentHoveredSpanRef, currentHoveredSpanRef.current);
+    if (currentHoveredSpanRef.current) {
+      console.log('handleActionClick', currentHoveredSpanRef.current.dataset.voiceId, command);
+    }
+  }, []);
   const PopperToolbar = memo(() => {
     return (
       <>
         {popperAnchorEl && (
           <Popper open={Boolean(popperAnchorEl)}
                   anchorEl={popperAnchorEl}
-                  placement="top"
-                  modifiers={[
-                    {name: 'offset', options: {offset: [0, 8]}},
+                  placement="top-start"
+            // anchorOrigin={{
+            //   vertical: 'bottom',
+            //   horizontal: 'left',
+            // }}
+                  modifiers={[  // https://popper.js.org/docs/v2/modifiers/
+                    {name: 'arrow', options: {element: '.MuiPopper-arrow'}},
+                    {name: 'offset', options: {offset: [0, 6]}},
                     {name: 'preventOverflow', options: {boundary: 'viewport'}}
                   ]}
                   sx={{zIndex: 1300}}
           >
-            <Paper elevation={4}
+            <Paper variant="outlined" component="div"
                    onMouseEnter={handlePopperToolbarMouseEnter}
                    onMouseLeave={handlePopperToolbarMouseLeave}
                    sx={{
@@ -213,38 +228,69 @@ export function Details(props) {
     );
   })
   const handleVoiceSpanMouseOver = useCallback((event) => {
-    console.log('handleVoiceSpanMouseOver', event);
-
     if (event.target.tagName === 'SPAN' && event.target.dataset.voiceId) {
+      console.log('handleVoiceSpanMouseOver', event);
+      if (currentHoveredSpanRef.current === event.target) {
+        return;
+      }
       event.stopPropagation();
       if (!(event.target instanceof Element)) return;
+      currentHoveredSpanRef.current = event.target;
       setPopperAnchorEl(event.target);
+
+      // const {clientX, clientY} = event;
+      // setPopperAnchorEl({
+      //   getBoundingClientRect: () => ({
+      //     width: 0,
+      //     height: 0,
+      //     top: clientY,
+      //     bottom: clientY,
+      //     left: clientX,
+      //     right: clientX,
+      //     x: clientX,
+      //     y: clientY,
+      //     // DOMRect 需要 toJSON（MUI 内部会调用）
+      //     toJSON: () => {
+      //     },
+      //   }),
+      //   nodeType: 1,
+      // })
       clearTimeout(popperToolbarCloseTimerRef.current);
     }
   }, []);
   const handleVoiceSpanMouseOut = useCallback((event) => {
-    console.log('handleVoiceSpanMouseOut', event);
-
     if (event.target.tagName === 'SPAN' && event.target.dataset.voiceId) {
-      event.stopPropagation();
+      console.log('handleVoiceSpanMouseOut', event);
 
-      clearTimeout(popperToolbarCloseTimerRef.current);
-      popperToolbarCloseTimerRef.current = setTimeout(() => {
-        setPopperAnchorEl(null);
-      }, 150);
+      // 检查鼠标是否移动到了 span 外部
+      const relatedTarget = event.relatedTarget;
+
+      // 如果移动到的新元素是当前 span 的子元素，忽略
+      if (relatedTarget && event.target.contains(relatedTarget)) {
+        return;
+      }
+
+      if (currentHoveredSpanRef.current === event.target) {
+        event.stopPropagation();
+        currentHoveredSpanRef.current = null;
+        clearTimeout(popperToolbarCloseTimerRef.current);
+        popperToolbarCloseTimerRef.current = setTimeout(() => {
+          setPopperAnchorEl(null);
+        }, 280);
+      }
     }
   }, []);
 
   // 绑定 Popper 触发 到 span
   useEffect(() => {
-    if (!note.body_script || !articleBodyScriptRef.current) return;
+    if (!note.body_script || !bodyScriptArticleRef.current) return;
 
-    articleBodyScriptRef.current.addEventListener('mouseover', handleVoiceSpanMouseOver);
-    articleBodyScriptRef.current.addEventListener('mouseout', handleVoiceSpanMouseOut);
+    bodyScriptArticleRef.current.addEventListener('mouseover', handleVoiceSpanMouseOver);
+    bodyScriptArticleRef.current.addEventListener('mouseout', handleVoiceSpanMouseOut);
 
     return () => {
-      articleBodyScriptRef.current?.removeEventListener('mouseover', handleVoiceSpanMouseOver);
-      articleBodyScriptRef.current?.removeEventListener('mouseout', handleVoiceSpanMouseOut);
+      bodyScriptArticleRef.current?.removeEventListener('mouseover', handleVoiceSpanMouseOver);
+      bodyScriptArticleRef.current?.removeEventListener('mouseout', handleVoiceSpanMouseOut);
     }
   }, [note.body_script]);
 
@@ -258,7 +304,7 @@ export function Details(props) {
         note.type_id === '31' || note.tid === '31' ||   // 物理笔记
         note.type_id === '21' || note.tid === '21') &&  // 语文作文
       <>
-        <article key={`question: ${note.id}`} contentEditable={status.isEditing} ref={articleQuestionRef}
+        <article key={`question: ${note.id}`} contentEditable={status.isEditing} ref={questionArticleRef}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
                  dangerouslySetInnerHTML={{__html: questionWithHTMLEntityEncode}}/>
       </>
@@ -270,12 +316,21 @@ export function Details(props) {
         note.type_id === '31' || note.tid === '31' ||   // 物理笔记
         note.type_id === '21' || note.tid === '21') &&
       <>
-        <article key={`body_script: ${note.id}`} contentEditable={status.isEditing} ref={articleBodyScriptRef} onClick={onBodyScriptPreviewClick}
+        <article key={`body_script: ${note.id}`} contentEditable={status.isEditing} ref={bodyScriptArticleRef} onClick={onBodyScriptPreviewClick}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}
-                 dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}}/>
+                 dangerouslySetInnerHTML={bodyScriptWithHTMLEntityEncodeObject}/>
+        {/*
+          dangerouslySetInnerHTML={{__html: getBodyScriptWithHTMLEntityEncode()}} 创建了一个新对象
+          React 检测到 dangerouslySetInnerHTML 的值变了（新对象引用）
+          React 重新设置 innerHTML，销毁旧 DOM，创建新 DOM
+          鼠标仍在原位置，新的 span 出现在鼠标下方
+          触发 mouseover 事件
+          调用 setPopperAnchorEl
+          回到步骤 1，无限循环！
+          */}
       </>
     }
 
-    {/*<PopperToolbar/>*/}
+    <PopperToolbar/>
   </>);
 }
