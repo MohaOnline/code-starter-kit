@@ -170,25 +170,26 @@ export function Details(props) {
   };
   const currentHoveredSpanRef = useRef(null);
   const handleActionClick = useCallback((command) => {
-    console.log('handleActionClick', command, currentHoveredSpanRef, currentHoveredSpanRef.current);
+    console.log('handleActionClick', command, popperAnchorEl);
     if (currentHoveredSpanRef.current) {
       console.log('handleActionClick', currentHoveredSpanRef.current.dataset.voiceId, command);
     }
-  }, []);
-  const PopperToolbar = memo(() => {
+  }, [popperAnchorEl]);
+  const [mouseOffsetX, setMouseOffsetX] = useState(0);
+  const PopperToolbar = memo(({mouseOffsetX}) => {
     return (
       <>
         {popperAnchorEl && (
           <Popper open={Boolean(popperAnchorEl)}
                   anchorEl={popperAnchorEl}
-                  placement="top-start"
+                  placement="top"
             // anchorOrigin={{
             //   vertical: 'bottom',
             //   horizontal: 'left',
             // }}
                   modifiers={[  // https://popper.js.org/docs/v2/modifiers/
                     {name: 'arrow', options: {element: '.MuiPopper-arrow'}},
-                    {name: 'offset', options: {offset: [0, 6]}},
+                    {name: 'offset', options: {offset: [mouseOffsetX, 5]}},
                     {name: 'preventOverflow', options: {boundary: 'viewport'}}
                   ]}
                   sx={{zIndex: 1300}}
@@ -235,6 +236,15 @@ export function Details(props) {
       }
       event.stopPropagation();
       if (!(event.target instanceof Element)) return;
+
+      // 计算鼠标相对于 span 中心的偏移
+      const spanRect = event.target.getBoundingClientRect();
+      console.log('handleVoiceSpanMouseOver spanRect:', spanRect);
+      const spanCenterX = spanRect.left + spanRect.width / 2;
+      const offsetX = event.clientX - spanCenterX;
+      console.log('handleVoiceSpanMouseOver', event.clientX, spanCenterX, offsetX);
+      setMouseOffsetX(offsetX);
+
       currentHoveredSpanRef.current = event.target;
       setPopperAnchorEl(event.target);
 
@@ -263,18 +273,26 @@ export function Details(props) {
       console.log('handleVoiceSpanMouseOut', event);
 
       // 检查鼠标是否移动到了 span 外部
-      const relatedTarget = event.relatedTarget;
+      // 场景分析：
+      // 1. relatedTarget 是 span 的子元素 → 忽略（鼠标还在 span 内）
+      // 2. relatedTarget 是 span 外的元素 → 处理（鼠标真的离开了）
+      // 3. relatedTarget 是 null → 处理（鼠标离开了文档）
+      const relatedTarget = event.relatedTarget; // 鼠标将进入的元素（到哪里去）
 
-      // 如果移动到的新元素是当前 span 的子元素，忽略
+      // 如果移动到的新元素是当前 span 的子元素，忽略（检查鼠标是否移动到了当前元素的子元素）
       if (relatedTarget && event.target.contains(relatedTarget)) {
+        // 鼠标移动到了 span 的子元素，还在 span 内部
         return;
       }
 
+      // 只处理当前追踪的 span
+      // 避免旧的/其他 span 的 mouseout 事件干扰当前状态
+      // 没有这个判断，鼠标快速在多个 span 之间移动时，Popper 会闪烁或错误关闭。
       if (currentHoveredSpanRef.current === event.target) {
         event.stopPropagation();
-        currentHoveredSpanRef.current = null;
         clearTimeout(popperToolbarCloseTimerRef.current);
         popperToolbarCloseTimerRef.current = setTimeout(() => {
+          currentHoveredSpanRef.current = null;
           setPopperAnchorEl(null);
         }, 280);
       }
@@ -331,6 +349,6 @@ export function Details(props) {
       </>
     }
 
-    <PopperToolbar/>
+    <PopperToolbar mouseOffsetX={mouseOffsetX}/>
   </>);
 }
