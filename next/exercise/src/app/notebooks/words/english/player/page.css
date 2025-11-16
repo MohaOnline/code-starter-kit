@@ -46,9 +46,19 @@ span.pos {
     opacity: 0.9;
 }
 
+.word-container .translation.no-show {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.word-container .translation.no-show:hover  {
+    opacity: 1;
+}
+
 .word-container .note {
     font-size: 18px;
     opacity: 1.0;
+    border-top: 1px dotted rgba(120,210,120,0.45);
 }
 
 svg {

@@ -15,13 +15,18 @@ import {
   Stack, Select, Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
 } from '@mui/material';
 import {
-  Adb as AdbIcon, ArrowRight as ArrowRightIcon,
+  Adb as AdbIcon, Add as AddIcon, ArrowRight as ArrowRightIcon,
   CheckBox as CheckBoxIcon, CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon, Clear as ClearIcon,
+  Edit as EditIcon, EditNote as EditNoteIcon, FastForward as FastForwardIcon, FastRewind as FastRewindIcon,
+  Filter1 as Filter1Icon, Filter2 as Filter2Icon, Filter3 as Filter3Icon, Filter4 as Filter4Icon, Filter5 as Filter5Icon, FilterNone as FilterNoneIcon,
+  Filter1TwoTone as Filter1TwoToneIcon, Filter2TwoTone as Filter2TwoToneIcon, Filter3TwoTone as Filter3TwoToneIcon, Filter4TwoTone as Filter4TwoToneIcon,
+  Filter5TwoTone as Filter5TwoToneIcon, FilterNoneTwoTone as FilterNoneTwoToneIcon,
   FormatBold as FormatBoldIcon, Info as InfoIcon,
   Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon,
-  PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
-  PostAdd as PostAddIcon,
-  StopTwoTone as StopTwoToneIcon, Sync as SyncIcon
+  Pause as PauseIcon, PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
+  PostAdd as PostAddIcon, Search as SearchIcon,
+  Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, SkipNext as SkipNextIcon, SkipPrevious as SkipPreviousIcon,
+  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon
 } from '@mui/icons-material';
 import {styled, lighten, darken} from '@mui/system';
 

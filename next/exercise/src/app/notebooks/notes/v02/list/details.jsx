@@ -9,13 +9,18 @@ import {
   Stack, Select, Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
 } from '@mui/material';
 import {
-  Adb as AdbIcon, ArrowRight as ArrowRightIcon,
+  Adb as AdbIcon, Add as AddIcon, ArrowRight as ArrowRightIcon,
   CheckBox as CheckBoxIcon, CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon, Clear as ClearIcon,
+  Edit as EditIcon, EditNote as EditNoteIcon, FastForward as FastForwardIcon, FastRewind as FastRewindIcon,
+  Filter1 as Filter1Icon, Filter2 as Filter2Icon, Filter3 as Filter3Icon, Filter4 as Filter4Icon, Filter5 as Filter5Icon, FilterNone as FilterNoneIcon,
+  Filter1TwoTone as Filter1TwoToneIcon, Filter2TwoTone as Filter2TwoToneIcon, Filter3TwoTone as Filter3TwoToneIcon, Filter4TwoTone as Filter4TwoToneIcon,
+  Filter5TwoTone as Filter5TwoToneIcon, FilterNoneTwoTone as FilterNoneTwoToneIcon,
   FormatBold as FormatBoldIcon, Info as InfoIcon,
   Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon,
-  PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
-  PostAdd as PostAddIcon,
-  StopTwoTone as StopTwoToneIcon, Sync as SyncIcon
+  Pause as PauseIcon, PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
+  PostAdd as PostAddIcon, Search as SearchIcon,
+  Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, SkipNext as SkipNextIcon, SkipPrevious as SkipPreviousIcon,
+  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon
 } from '@mui/icons-material';
 
 import he from 'he'
@@ -212,15 +217,15 @@ export function Details(props) {
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Bold">
-                <IconButton size="small" onClick={() => handleActionClick('bold')}>
-                  <FormatBoldIcon fontSize="small"/>
+              <Tooltip title="Pause">
+                <IconButton size="small" onClick={() => handleActionClick('pause')}>
+                  <PauseIcon fontSize="small"/>
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Info">
-                <IconButton size="small" onClick={() => handleActionClick('info')}>
-                  <InfoIcon fontSize="small"/>
+              <Tooltip title="Sync">
+                <IconButton size="small" onClick={() => handleActionClick('sync')}>
+                  <SyncIcon fontSize="small"/>
                 </IconButton>
               </Tooltip>
             </Paper>
@@ -238,8 +243,40 @@ export function Details(props) {
       if (!(event.target instanceof Element)) return;
 
       // 计算鼠标相对于 span 中心的偏移
-      const spanRect = event.target.getBoundingClientRect();
+      const spanRect = event.target.getBoundingClientRect();  // 返回元素相对于**视口（viewport）**的位置和尺寸信息。
       console.log('handleVoiceSpanMouseOver spanRect:', spanRect);
+      /*
+      // spanRect 是一个 DOMRect 对象，包含：
+      {
+        x: 100,        // 元素左边缘距离视口左边的距离（同 left）
+        y: 200,        // 元素上边缘距离视口顶部的距离（同 top）
+        width: 150,    // 元素的宽度（包括 padding 和 border）
+        height: 30,    // 元素的高度（包括 padding 和 border）
+        top: 200,      // 元素上边缘距离视口顶部的距离
+        right: 250,    // 元素右边缘距离视口左边的距离（left + width）
+        bottom: 230,   // 元素下边缘距离视口顶部的距离（top + height）
+        left: 100      // 元素左边缘距离视口左边的距离
+      }
+      浏览器视口（viewport）
+┌─────────────────────────────────────┐
+│                                     │
+│  (0, 0)                             │
+│    ↓                                │
+│    ┌─────────────────────┐          │
+│    │  left: 100          │          │
+│    │  top: 200           │          │
+│    │  width: 150         │          │
+│    │  height: 30         │          │
+│    │                     │          │
+│    │  <span>文本</span>   │          │
+│    │                     │          │
+│    └─────────────────────┘          │
+│         ↑                           │
+│         right: 250 (100 + 150)      │
+│         bottom: 230 (200 + 30)      │
+│                                     │
+└─────────────────────────────────────┘
+       */
       const spanCenterX = spanRect.left + spanRect.width / 2;
       const offsetX = event.clientX - spanCenterX;
       console.log('handleVoiceSpanMouseOver', event.clientX, spanCenterX, offsetX);

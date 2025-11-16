@@ -11,26 +11,8 @@ import {LuSquarePlay} from "react-icons/lu";
 import {GiPlayerPrevious, GiPlayerNext, GiGears} from "react-icons/gi";
 import {CiEdit} from "react-icons/ci";
 import {
-  Bs0SquareFill
-  , Bs1SquareFill
-  , Bs2SquareFill
-  , Bs3SquareFill
-  , Bs4SquareFill
-  , Bs5SquareFill
-  , Bs6SquareFill
-  , Bs7SquareFill
-  , Bs8SquareFill
-  , Bs9SquareFill
-  , Bs0Square
-  , Bs1Square
-  , Bs2Square
-  , Bs3Square
-  , Bs4Square
-  , Bs5Square
-  , Bs6Square
-  , Bs7Square
-  , Bs8Square
-  , Bs9Square
+  Bs0SquareFill, Bs1SquareFill, Bs2SquareFill, Bs3SquareFill, Bs4SquareFill, Bs5SquareFill, Bs6SquareFill, Bs7SquareFill, Bs8SquareFill, Bs9SquareFill,
+  Bs0Square, Bs1Square, Bs2Square, Bs3Square, Bs4Square, Bs5Square, Bs6Square, Bs7Square, Bs8Square, Bs9Square
 } from "react-icons/bs";
 
 
@@ -42,10 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 // Shadcn UI 组件
 import {
   Dialog as ShadcnDialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+  DialogContent, DialogHeader, DialogTitle, DialogTrigger,
 } from "@/components/ui/dialog";
 import {Slider} from "@/components/ui/slider";
 import {Switch} from "@/components/ui/switch";
@@ -533,8 +512,78 @@ export default function Page() {
       playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
     }
   };
-
   status.playCurrent = () => playCurrentWord();
+
+  const playCurrentWordOnly = (onCompleteCallback = () => {
+  }) => {
+    const word = status.words[status.currentWordIndex];
+
+    let voiceURLs = [];
+
+    if (word?.voice_id_uk) {
+      const firstChar = word.voice_id_uk[0].toLowerCase();
+      const englishURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${word.voice_id_uk}.wav`;
+      for (let i = 0; i < 1; i++) {
+        voiceURLs.push(englishURL);
+      }
+    }
+
+    if (voiceURLs.length > 0 && playerRef.current) {
+      const currentWord = status.words[status.currentWordIndex];
+      const wordData = {
+        word: currentWord.word,
+        translation: currentWord.translations?.[0]?.translation || "",
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+      };
+
+      playerRef.current.stop();
+      playerRef.current.setSpeed(status.audioConfig.speed / 100);
+      playerRef.current.setVolume(status.audioConfig.volume / 100);
+      playerRef.current.setVoiceInterval(
+        status.audioConfig.english.waitVoiceLength,
+        status.audioConfig.chinese.waitVoiceLength,
+        status.audioConfig.english.pauseTime * 1000,
+        status.audioConfig.chinese.pauseTime * 1000
+      );
+      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
+    }
+  };
+
+  const playCurrentTranslationOnly = (onCompleteCallback = () => {
+  }) => {
+    const word = status.words[status.currentWordIndex];
+
+    let voiceURLs = [];
+
+    if (word?.voice_id_translation) {
+      const firstCharChinese = word.voice_id_translation[0].toLowerCase();
+      const chineseURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstCharChinese}/${word.voice_id_translation}.wav`;
+      for (let i = 0; i < 1; i++) {
+        voiceURLs.push(chineseURL);
+      }
+    }
+
+    if (voiceURLs.length > 0 && playerRef.current) {
+      const currentWord = status.words[status.currentWordIndex];
+      const wordData = {
+        word: currentWord.word,
+        translation: currentWord.translations?.[0]?.translation || "",
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+      };
+
+      playerRef.current.stop();
+      playerRef.current.setSpeed(status.audioConfig.speed / 100);
+      playerRef.current.setVolume(status.audioConfig.volume / 100);
+      playerRef.current.setVoiceInterval(
+        status.audioConfig.english.waitVoiceLength,
+        status.audioConfig.chinese.waitVoiceLength,
+        status.audioConfig.english.pauseTime * 1000,
+        status.audioConfig.chinese.pauseTime * 1000
+      );
+      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
+    }
+  };
+
 
   // /**
   //  * 设置优先级。
@@ -917,14 +966,14 @@ export default function Page() {
       <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
           <div onClick={e => playCurrentWord()}>
-            <span
-              className={"phonetic"}
-              dangerouslySetInnerHTML={{
-                __html:
-                  status.words[status.currentWordIndex]?.phonetic_us ||
-                  status.words[status.currentWordIndex]?.phonetic_uk ||
-                  "&nbsp;",
-              }}
+            <span className={"phonetic"}
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      status.words[status.currentWordIndex]?.phonetic_us ||
+                      status.words[status.currentWordIndex]?.phonetic_uk ||
+                      "&nbsp;",
+                  }}
+                  onMouseEnter={e => playCurrentWordOnly()}
             ></span>
 
             <span className={"pos"}>
@@ -936,20 +985,17 @@ export default function Page() {
             </span>
           </div>
 
-          <div
-            className={"word"}
-            dangerouslySetInnerHTML={{
-              __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : "&nbsp;",
-            }}
+          <div className={"word"}
+               dangerouslySetInnerHTML={{
+                 __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : "&nbsp;",
+               }}
           ></div>
 
-          <div
-            className={"translation"}
-            dangerouslySetInnerHTML={{
-              __html: status.audioConfig.chinese.showText
-                ? status.words[status.currentWordIndex].translation
-                : "&nbsp;",
-            }}
+          <div className={`translation${status.audioConfig.chinese.showText ? "" : " no-show"}`}
+               dangerouslySetInnerHTML={{
+                 __html: status.words[status.currentWordIndex].translation,
+               }}
+               onMouseEnter={e => playCurrentTranslationOnly()}
           ></div>
 
           <div

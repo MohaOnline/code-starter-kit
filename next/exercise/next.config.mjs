@@ -35,6 +35,7 @@ const nextConfig = {
   allowedDevOrigins: allowedDevOrigins,
   experimental: { serverActions: { bodySizeLimit: "100mb" } },
   output: "standalone",
+  reactCompiler: true,
   transpilePackages: ["@prisma/client", "prisma"],
   images: {
     remotePatterns: [
