@@ -537,6 +537,75 @@ export default function Page() {
       playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
     }
   };
+  const playCurrentWordOnly = (onCompleteCallback = () => {
+  }) => {
+    const word = status.words[status.currentWordIndex];
+
+    let voiceURLs = [];
+
+    if (word?.voice_id_uk) {
+      const firstChar = word.voice_id_uk[0].toLowerCase();
+      const englishURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE}/${firstChar}/${word.voice_id_uk}.wav`;
+      for (let i = 0; i < 1; i++) {
+        voiceURLs.push(englishURL);
+      }
+    }
+
+    if (voiceURLs.length > 0 && playerRef.current) {
+      const currentWord = status.words[status.currentWordIndex];
+      const wordData = {
+        word: currentWord.word,
+        translation: currentWord.translations?.[0]?.translation || "",
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+      };
+
+      playerRef.current.stop();
+      playerRef.current.setSpeed(status.audioConfig.speed / 100);
+      playerRef.current.setVolume(status.audioConfig.volume / 100);
+      playerRef.current.setVoiceInterval(
+        status.audioConfig.english.waitVoiceLength,
+        status.audioConfig.chinese.waitVoiceLength,
+        status.audioConfig.english.pauseTime * 1000,
+        status.audioConfig.chinese.pauseTime * 1000
+      );
+      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
+    }
+  };
+
+  const playCurrentTranslationOnly = (onCompleteCallback = () => {
+  }) => {
+    const word = status.words[status.currentWordIndex];
+
+    let voiceURLs = [];
+
+    if (word?.voice_id_translation) {
+      const firstCharChinese = word.voice_id_translation[0].toLowerCase();
+      const chineseURL = `/refs/voices/${process.env.NEXT_PUBLIC_SPEECH_VOICE_CHINESE}/${firstCharChinese}/${word.voice_id_translation}.wav`;
+      for (let i = 0; i < 1; i++) {
+        voiceURLs.push(chineseURL);
+      }
+    }
+
+    if (voiceURLs.length > 0 && playerRef.current) {
+      const currentWord = status.words[status.currentWordIndex];
+      const wordData = {
+        word: currentWord.word,
+        translation: currentWord.translations?.[0]?.translation || "",
+        phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+      };
+
+      playerRef.current.stop();
+      playerRef.current.setSpeed(status.audioConfig.speed / 100);
+      playerRef.current.setVolume(status.audioConfig.volume / 100);
+      playerRef.current.setVoiceInterval(
+        status.audioConfig.english.waitVoiceLength,
+        status.audioConfig.chinese.waitVoiceLength,
+        status.audioConfig.english.pauseTime * 1000,
+        status.audioConfig.chinese.pauseTime * 1000
+      );
+      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
+    }
+  };
 
   status.playCurrent = () => playCurrentWord();
 
@@ -880,15 +949,15 @@ export default function Page() {
       </div>
       <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
-          <div>
-            <span
-              className={"phonetic"}
-              dangerouslySetInnerHTML={{
-                __html:
-                  status.words[status.currentWordIndex]?.phonetic_us ||
-                  status.words[status.currentWordIndex]?.phonetic_uk ||
-                  "&nbsp;",
-              }}
+          <div onClick={e => playCurrentWord()}>
+            <span className={"phonetic"}
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      status.words[status.currentWordIndex]?.phonetic_us ||
+                      status.words[status.currentWordIndex]?.phonetic_uk ||
+                      "&nbsp;",
+                  }}
+                  onMouseEnter={e => playCurrentWordOnly()}
             ></span>
 
             <span className={"pos"}>
@@ -907,13 +976,11 @@ export default function Page() {
             }}
           ></div>
 
-          <div
-            className={"translation"}
-            dangerouslySetInnerHTML={{
-              __html: status.audioConfig.chinese.showText
-                ? status.words[status.currentWordIndex].translation
-                : "&nbsp;",
-            }}
+          <div className={`translation${status.audioConfig.chinese.showText ? "" : " no-show"}`}
+               dangerouslySetInnerHTML={{
+                 __html: status.words[status.currentWordIndex].translation,
+               }}
+               onMouseEnter={e => playCurrentTranslationOnly()}
           ></div>
 
           <div
