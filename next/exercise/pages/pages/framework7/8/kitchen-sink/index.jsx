@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import ErrorBoundary from './ErrorBoundary';
 
-// 动态导入Framework7组件，禁用SSR
+// 异步导入Framework7 React 组件，禁用SSR
+// 等价于
+// import Framework7App from './Framework7AppClient';
 const Framework7App = dynamic(() => import('./Framework7AppClient'), {
   ssr: false,
   loading: () => (
