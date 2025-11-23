@@ -2,23 +2,22 @@
 import "./page.css";
 
 import React, {useEffect, useRef, useState} from "react";
-import {CgPlayTrackNextR, CgPlayTrackPrevR} from "react-icons/cg";
 
-import {FaEdit, FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync, FaSearch} from "react-icons/fa";
-import {PiHandWaving, PiRocket, PiGearFineLight, PiGear} from "react-icons/pi";
-import {RiFileSearchLine} from "react-icons/ri";
-import {LuSquarePlay} from "react-icons/lu";
-import {GiPlayerPrevious, GiPlayerNext, GiGears} from "react-icons/gi";
-import {CiEdit} from "react-icons/ci";
 import {
   Bs0SquareFill, Bs1SquareFill, Bs2SquareFill, Bs3SquareFill, Bs4SquareFill, Bs5SquareFill, Bs6SquareFill, Bs7SquareFill, Bs8SquareFill, Bs9SquareFill,
   Bs0Square, Bs1Square, Bs2Square, Bs3Square, Bs4Square, Bs5Square, Bs6Square, Bs7Square, Bs8Square, Bs9Square
 } from "react-icons/bs";
-
+import {CgPlayTrackNextR, CgPlayTrackPrevR} from "react-icons/cg";
+import {CiEdit} from "react-icons/ci";
+import {FaEdit, FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync, FaSearch} from "react-icons/fa";
+import {GiPlayerPrevious, GiPlayerNext, GiGears} from "react-icons/gi";
+import {LuSquarePlay} from "react-icons/lu";
+import {PiHandWaving, PiRocket, PiGearFineLight, PiGear} from "react-icons/pi";
+import {RiFileSearchLine} from "react-icons/ri";
 
 import {Dialog, Transition} from "@headlessui/react";
-import {toast} from "react-toastify";
-import {ToastContainer} from "react-toastify";
+
+import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Shadcn UI 组件
@@ -46,6 +45,7 @@ const DEFAULT_AUDIO_CONFIG = {
   alternatePlay: false, // 是否交错播放
   volume: 100, // 音量 50%, 75%, 100%, 125%, 150%
   speed: 100, // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
+  batch_quantity: 100, // 批量播放数量
   // 英文设置
   english: {
     repeatCount: 1, // 发音次数 0-5
@@ -74,6 +74,7 @@ const loadAudioConfig = () => {
         alternatePlay: parsed.alternatePlay ?? DEFAULT_AUDIO_CONFIG.alternatePlay,
         volume: parsed.volume ?? DEFAULT_AUDIO_CONFIG.volume,
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
+        batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
@@ -496,8 +497,9 @@ export default function Page() {
       const currentWord = status.words[status.currentWordIndex];
       const wordData = {
         word: currentWord.word,
-        translation: currentWord.translations?.[0]?.translation || "",
+        translation: currentWord.translations?.[0]?.translation || currentWord.translation || "",
         phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+        pos: currentWord.pos || '',
       };
 
       playerRef.current.stop();
@@ -532,8 +534,9 @@ export default function Page() {
       const currentWord = status.words[status.currentWordIndex];
       const wordData = {
         word: currentWord.word,
-        translation: currentWord.translations?.[0]?.translation || "",
+        translation: currentWord.translations?.[0]?.translation || currentWord.translation || "",
         phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+        pos: currentWord.pos || '',
       };
 
       playerRef.current.stop();
@@ -567,8 +570,9 @@ export default function Page() {
       const currentWord = status.words[status.currentWordIndex];
       const wordData = {
         word: currentWord.word,
-        translation: currentWord.translations?.[0]?.translation || "",
+        translation: currentWord.translations?.[0]?.translation || currentWord.translation || "",
         phonetic: currentWord.phonetic_uk || currentWord.phonetic_us || "",
+        pos: currentWord.pos || '',
       };
 
       playerRef.current.stop();

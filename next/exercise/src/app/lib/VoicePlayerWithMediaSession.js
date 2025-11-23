@@ -186,8 +186,9 @@ export class VoicePlayerWithMediaSession {
     
     const metadata = {
       title: wordData.word || 'Unknown Word',
-      artist: 'English Learning',
-      album: 'Vocabulary Practice',
+      // artist: 'English Learning',
+      artist: wordData.translation || '',
+      // album: 'Vocabulary Practice',
       artwork: [
         {
           src: '/favicon.ico',
@@ -196,11 +197,16 @@ export class VoicePlayerWithMediaSession {
         }
       ]
     };
-    
-    // 如果有中文翻译，添加到 title 中
-    if (wordData.translation) {
-      metadata.title = `${wordData.word} - ${wordData.translation}`;
+
+    if (wordData.pos && wordData.pos.length > 0) {
+      metadata.title = `[${wordData.pos}] ${wordData.word}`;
     }
+
+    // // 如果有中文翻译，添加到 title 中
+    // if (wordData.translation) {
+    //   // metadata.title = `${wordData.word} - ${wordData.translation}`;
+    //   metadata.artist = wordData.translation;
+    // }
     
     navigator.mediaSession.metadata = new MediaMetadata(metadata);
     console.log('Media Session metadata updated:', metadata);
