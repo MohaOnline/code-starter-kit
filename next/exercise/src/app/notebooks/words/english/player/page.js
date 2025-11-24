@@ -75,6 +75,7 @@ const loadAudioConfig = () => {
         volume: parsed.volume ?? DEFAULT_AUDIO_CONFIG.volume,
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
         batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
+        proficiency: parsed.proficiency ?? [1, 5],  // word priority
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
@@ -969,16 +970,14 @@ export default function Page() {
       </div>
       <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
-          <div onClick={e => playCurrentWord()}>
+          <div onMouseEnter={e => playCurrentWordOnly()} onClick={e => playCurrentWord()}>
             <span className={"phonetic"}
                   dangerouslySetInnerHTML={{
                     __html:
                       status.words[status.currentWordIndex]?.phonetic_us ||
                       status.words[status.currentWordIndex]?.phonetic_uk ||
                       "&nbsp;",
-                  }}
-                  onMouseEnter={e => playCurrentWordOnly()}
-            ></span>
+                  }}/>
 
             <span className={"pos"}>
               &nbsp;
@@ -989,28 +988,23 @@ export default function Page() {
             </span>
           </div>
 
-          <div className={"word"}
+          <div className={"word"} onClick={e => playCurrentWordOnly()}
                dangerouslySetInnerHTML={{
                  __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : "&nbsp;",
                }}
           ></div>
 
           <div className={`translation${status.audioConfig.chinese.showText ? "" : " no-show"}`}
+               onClick={e => playCurrentTranslationOnly()}
                dangerouslySetInnerHTML={{
                  __html: status.words[status.currentWordIndex].translation,
-               }}
-               onMouseEnter={e => playCurrentTranslationOnly()}
-          ></div>
+               }}/>
+          <hr/>
 
-          <div
-            className={"note"}
-            dangerouslySetInnerHTML={{
-              __html:
-                status.audioConfig.chinese.showText && status.words[status.currentWordIndex].note
-                  ? "📗 " + status.words[status.currentWordIndex].note
-                  : "&nbsp;",
-            }}
-          ></div>
+          <div className={`note${status.audioConfig.chinese.showText ? '' : ' no-show'}`}
+               dangerouslySetInnerHTML={{
+                 __html: status.words[status.currentWordIndex].note ? "📗 " + status.words[status.currentWordIndex].note : "&nbsp;",
+               }}/>
         </div>
       </div>
 
@@ -1696,12 +1690,10 @@ export default function Page() {
       </Transition>
 
       {/* 配置对话框 */}
-      <ShadcnDialog
-        open={status.isConfigDialogOpen}
-        onOpenChange={open => {
-          setStatus(prev => ({...prev, isConfigDialogOpen: open}));
-        }}
-      >
+      <ShadcnDialog open={status.isConfigDialogOpen}
+                    onOpenChange={open => {
+                      setStatus(prev => ({...prev, isConfigDialogOpen: open}));
+                    }}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>音频播放配置</DialogTitle>
@@ -1978,6 +1970,54 @@ export default function Page() {
                   <Label>显示中文</Label>
                 </div>
               </div>
+
+              <div className={`space-y-2`}>
+                <Label>每次播放单词量: {status.audioConfig.batch_quantity} 次</Label>
+                <Slider value={[status.audioConfig.batch_quantity]}
+                        onValueChange={([value]) => {
+                          updateAudioConfig({
+                            ...status.audioConfig,
+                            batch_quantity: value,
+                          });
+                        }}
+                        min={25}
+                        max={150}
+                        step={25}
+                        className="w-full"
+                />
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span> 25</span>
+                  <span> 50</span>
+                  <span> 75</span>
+                  <span>100</span>
+                  <span>125</span>
+                  <span>150</span>
+                </div>
+              </div>
+
+              <div className={`space-y-2`}>
+                <Label>显示单词的熟练度: </Label>
+                <Slider value={[1, 5]}
+                        onValueChange={([value]) => {
+                          updateAudioConfig({
+                            ...status.audioConfig,
+                            batch_quantity: value,
+                          });
+                        }}
+                        min={1}
+                        max={5}
+                        step={5}
+                        className="w-full"
+                />
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                  <span>5</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </DialogContent>

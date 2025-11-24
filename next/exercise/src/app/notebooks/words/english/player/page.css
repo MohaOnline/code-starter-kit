@@ -37,28 +37,41 @@ span.pos {
     font-size: 170px;
     letter-spacing: 10px;
     height: 400px;
-    line-height: 170px;
+    line-height: 160px;
+    cursor: pointer;
 }
 
 .word-container .translation {
     margin: 95px 0 0 0;
     font-size: 28px;
     opacity: 0.9;
+    /*border-bottom: 1px dotted rgba(120,210,120,0.45);*/
+    cursor: pointer;
+}
+.word-container .translation + hr {
+    opacity: 0.5;
 }
 
 .word-container .translation.no-show {
     opacity: 0;
-    cursor: pointer;
 }
 
 .word-container .translation.no-show:hover  {
     opacity: 1;
 }
 
+.word-container .note.no-show {
+    opacity: 0.25;
+}
+
+.word-container .translation.no-show:hover + hr + .note.no-show,
+.word-container .note.no-show:hover {
+    opacity: 1;
+}
+
 .word-container .note {
     font-size: 18px;
     opacity: 1.0;
-    border-top: 1px dotted rgba(120,210,120,0.45);
 }
 
 svg {
