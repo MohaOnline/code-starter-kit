@@ -115,6 +115,7 @@ export default function Page() {
   const [status, setStatus] = useState({
     currentWordIndex: 0,
     playedWordIndex: -1,
+    playedWordCounter: 0, // 已播放单词
     playCurrent: null,
     onWheel: false, // 滚动时，不播放录音。
     isPlaying: false,
@@ -263,16 +264,27 @@ export default function Page() {
   };
 
   const nextWord = () => {
-    if (status.currentWordIndex < status.words.length - 1) {
+    if (status.audioConfig.batch_quantity !== 175 && status.audioConfig.batch_quantity <= status.playedWordCounter) {
+      const nextIndex = status.currentWordIndex < status.audioConfig.batch_quantity ? status.currentWordIndex + status.words.length - status.audioConfig.batch_quantity
+        : status.currentWordIndex - status.audioConfig.batch_quantity;
+      setStatus(prev => ({
+        ...prev,
+        currentWordIndex: nextIndex,
+        playedWordCounter: 0,
+      }));
+    }
+    else if (status.currentWordIndex < status.words.length - 1) {
       setStatus(prev => ({
         ...prev,
         currentWordIndex: prev.currentWordIndex + 1,
+        playedWordCounter: prev.playedWordCounter + 1,
       }));
     }
     else {
       setStatus(prev => ({
         ...prev,
         currentWordIndex: 0,
+        playedWordCounter: prev.playedWordCounter + 1,
       }));
     }
   };
@@ -1972,7 +1984,7 @@ export default function Page() {
               </div>
 
               <div className={`space-y-2`}>
-                <Label>每次播放单词量: {status.audioConfig.batch_quantity} 次</Label>
+                <Label>每次播放单词量: {status.audioConfig.batch_quantity === 175 ? '∞' : status.audioConfig.batch_quantity} 次</Label>
                 <Slider value={[status.audioConfig.batch_quantity]}
                         onValueChange={([value]) => {
                           updateAudioConfig({
@@ -1981,17 +1993,18 @@ export default function Page() {
                           });
                         }}
                         min={25}
-                        max={150}
+                        max={175}
                         step={25}
                         className="w-full"
                 />
                 <div className="flex justify-between text-xs text-gray-500">
-                  <span> 25</span>
-                  <span> 50</span>
-                  <span> 75</span>
+                  <span>&nbsp;25</span>
+                  <span>&nbsp;50</span>
+                  <span>&nbsp;75</span>
                   <span>100</span>
                   <span>125</span>
                   <span>150</span>
+                  <span>∞</span>
                 </div>
               </div>
 
