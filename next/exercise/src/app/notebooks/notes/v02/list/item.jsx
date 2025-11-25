@@ -22,22 +22,31 @@ export function Item({note}) {
 
   return (<>
     <div className={'border p-2'} draggable="false">
-      {/* 有部分 note 没有 title */}
+      {/* Title 有部分 note 没有 title */}
       {(note.tid === '999' || note.tid === '997' || note.tid === '61' || note.tid === '31' || note.tid === '21') &&
       <Typography className={'cursor-move flex justify-between'} variant="h6" gutterBottom>
         {note.title}
-        <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button></Typography>
+        <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button>
+      </Typography>
       }
 
-      {/* 英语听力还不知道如何显示 */}
-      {note.tid !== '999' && note.tid !== '997' && note.tid !== '61' && note.tid !== '31' && note.tid !== '21' &&
+      {/* ID 英语听力还不知道如何显示 */}
+      {note.tid !== '999' && note.tid !== '997' && note.tid !== '61' && note.tid !== '31' && note.tid !== '21' && note.tid !== '16' &&
         <Typography className={'cursor-move flex justify-between'} variant="h6" gutterBottom dangerouslySetInnerHTML={{__html: note.id}}/>
       }
 
-      {/* 需要 body_script 的 note */}
+      {/* body_script */}
       {note.tid === '999' &&
       <div className={'cursor-pointer ps-8 line-clamp-2'} onClick={click2Details}
            dangerouslySetInnerHTML={{__html: note.body_script}}/>
+      }
+
+      {/* question */}
+      {note.tid === '16' &&
+        <div className={``}>
+          <Typography variant="h6" dangerouslySetInnerHTML={{__html: `翻译：<span>[ID: ${note.id}]</span> ${note.question}`}}/>
+          <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button>
+        </div>
       }
     </div>
   </>);
