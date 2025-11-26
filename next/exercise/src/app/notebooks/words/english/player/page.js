@@ -1985,7 +1985,7 @@ export default function Page() {
               </div>
 
               <div className={`space-y-2`}>
-                <Label>每次播放单词量: {status.audioConfig.batch_quantity === 175 ? '∞' : status.audioConfig.batch_quantity} 次</Label>
+                <Label>每次播放单词量: {status.audioConfig.batch_quantity === 175 ? '∞' : status.audioConfig.batch_quantity} 个</Label>
                 <Slider value={[status.audioConfig.batch_quantity]}
                         onValueChange={([value]) => {
                           updateAudioConfig({
