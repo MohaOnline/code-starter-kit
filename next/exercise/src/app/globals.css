@@ -2,11 +2,19 @@
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: 'Chinese Quotes';
+  src: local('SimHei'),
+       local('黑体'),
+       local('STHeiti');
+  unicode-range: U+201C, U+201D, U+2018, U+2019, U+300C, U+300D, U+300E, U+300F;
+}
+
 :root {
   --background: #fff;
   --foreground: #000;
-  --font-geist-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  --font-geist-sans: 'Chinese Quotes', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-geist-mono: 'Chinese Quotes', 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 }
 
 @theme inline {
@@ -35,6 +43,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 /* 暗黑模式配色 **/
 

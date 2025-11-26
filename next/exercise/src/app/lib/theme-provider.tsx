@@ -30,6 +30,29 @@ function MuiThemeAdapter({children}: { children: React.ReactNode }) {
     cssVariables: {
       colorSchemeSelector: 'class', // MUI 如何确定
     },
+    typography: {
+      // 使用系统字体替代 Roboto，避免 Edge 字体渲染问题
+      fontFamily: [
+        '"Chinese Quotes"',
+        '"PingFang SC"',
+        'SimHei',
+        'Helvetica',
+        'SimSun',
+        '"宋体"',
+        '"微软雅黑"',
+        '"Microsoft YaHei"',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Arial',
+        'sans-serif',
+      ].join(','),
+      // 调整默认字重，使其在 Edge 中显示更细
+    //   fontWeightLight: 300,
+    //   fontWeightRegular: 350,  // 从 400 降低到 350
+    //   fontWeightMedium: 450,   // 从 500 降低到 450
+    //   fontWeightBold: 600,     // 从 700 降低到 600
+    },
     components: {
       MuiCssBaseline: {
         styleOverrides: {

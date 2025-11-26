@@ -1616,7 +1616,7 @@ export default function Page() {
                               };
 
                               if (translation.new) { // api 设置返回
-                                // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
+                                // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。“”
                                 console.debug("trans has valid weight");
 
                                 if (!!data.data.weight1 && !data.data.weight2) {
