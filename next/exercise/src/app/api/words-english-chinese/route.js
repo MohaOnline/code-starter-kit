@@ -214,6 +214,7 @@ export async function GET(request) {
                notebook_words_english.note,
                notebook_words_english.note_explain,
                notebook_words_english.deleted,
+               notebook_words_english.priority,
                notebook_words_english.weight
         FROM words_english_chinese_summary
                  LEFT JOIN notebook_words_english
@@ -258,6 +259,7 @@ export async function GET(request) {
               weight: row.weight || '',
               note_explain: row.note_explain ? row.note_explain : '',
               deleted: !!row.chinese_deleted,
+              priority: row.priority ? row.priority : 3,
             },
           ],
         });
@@ -505,14 +507,16 @@ export async function POST(request) {
             translation.id = insertResult.insertId;
             translation.nid = 1;
             translation.new = true;
+            translation.priority = 3;
           }
         } else if (translation.id) {
 
           if (!translation.noted) {
             translation.weight = '';
           } else if (!!translation.noted && !translation.weight) {
-
+            // 新添加的解释，需要设置 priority
             translation.new = true;
+            translation.priority = 3;
             // 计算 weight，放入 translation。
             if (!!data.weight1 && !data.weight2) {
               const lexoRank = LexoRank.parse(data.weight1);

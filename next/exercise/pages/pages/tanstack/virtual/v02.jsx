@@ -3,11 +3,16 @@
 /**
  *
  */
-
+import React, {memo, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import Script from "next/script";
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 import {useVirtualizer} from '@tanstack/react-virtual';
+
+import {
+  draggable, dropTargetForElements, monitorForElements,
+} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 
 /**
  * @uri /pages/tanstack/virtual/v02

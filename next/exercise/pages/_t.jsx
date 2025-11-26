@@ -32,6 +32,10 @@ import {styled, lighten, darken} from '@mui/system';
 
 // 3rd part libs:
 // @atlaskit/pragmatic-drag-and-drop
+import {
+  draggable, dropTargetForElements, monitorForElements,
+} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 
 // CodeMirror

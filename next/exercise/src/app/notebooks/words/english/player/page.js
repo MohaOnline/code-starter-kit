@@ -44,7 +44,7 @@ const DEFAULT_AUDIO_CONFIG = {
   // 全局设置
   alternatePlay: false, // 是否交错播放
   volume: 100, // 音量 50%, 75%, 100%, 125%, 150%
-  speed: 100, // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
+  speed: 100,  // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
   batch_quantity: 100, // 批量播放数量
   // 英文设置
   english: {
@@ -1591,14 +1591,14 @@ export default function Page() {
                         if (data.success && data.data) {
                           toast.success("Successfully added to notebook!" + JSON.stringify(data.data));
 
-                          if (!!data.data.translations) {
+                          if (data.data.translations) {
                             data.data.translations.forEach(translation => {
                               const word = {
                                 id: translation.id,
                                 cid: translation.cid,
                                 nid: translation.nid,
-                                note: translation.note,
                                 pos: translation.pos,
+                                note: translation.note,
                                 note_explain: translation.note_explain,
                                 eid: data.data.eid,
                                 script: data.data.script,
@@ -1607,6 +1607,7 @@ export default function Page() {
                                 translation: translation.translation,
                                 translation_script: translation.script,
                                 weight: translation.weight,
+                                priority: translation.priority,
                                 phonetic_uk: translation.phonetic_uk,
                                 phonetic_us: translation.phonetic_us,
                                 voice_id_uk: translation.voice_id_uk,
@@ -1614,7 +1615,7 @@ export default function Page() {
                                 voice_id_translation: translation.voice_id_translation,
                               };
 
-                              if (translation.new) {
+                              if (translation.new) { // api 设置返回
                                 // 如果 translations 中有 weight，说明刚刚加入单词本。该词条需同时进入客户端单词本。
                                 console.debug("trans has valid weight");
 
@@ -1632,7 +1633,7 @@ export default function Page() {
 
                                 delete translation.new;
                               } // if (translation.weight)
-                              else if (!translation.noted) {
+                              else if (!translation.noted) { // 当前单词表里去掉该单词。
                                 for (let index = status.words.length - 1; index >= 0; index--) {
                                   if (status.words[index].eid === word.eid && status.words[index].cid === word.cid) {
                                     status.words.splice(index, 1);
