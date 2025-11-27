@@ -467,3 +467,6 @@ export function supplementVoiceID(htmlCode: string): string {
     return match;
   });
 }
+
+// No Operation function.
+export const NOOP = () => {};
