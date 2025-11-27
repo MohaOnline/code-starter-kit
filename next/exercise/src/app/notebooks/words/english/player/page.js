@@ -529,8 +529,12 @@ export default function Page() {
   };
   status.playCurrent = () => playCurrentWord();
 
-  const playCurrentWordOnly = (onCompleteCallback = () => {
-  }) => {
+  const playCurrentWordOnly = () => {
+
+    if (status.isPlaying) {
+      return;
+    }
+
     const word = status.words[status.currentWordIndex];
 
     let voiceURLs = [];
@@ -561,7 +565,7 @@ export default function Page() {
         status.audioConfig.english.pauseTime * 1000,
         status.audioConfig.chinese.pauseTime * 1000
       );
-      playerRef.current.play(voiceURLs, onCompleteCallback, wordData);
+      playerRef.current.play(voiceURLs, () => {}, wordData);
     }
   };
 
