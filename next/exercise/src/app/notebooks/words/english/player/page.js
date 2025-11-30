@@ -46,6 +46,7 @@ const DEFAULT_AUDIO_CONFIG = {
   volume: 100, // 音量 50%, 75%, 100%, 125%, 150%
   speed: 100,  // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
   batch_quantity: 100, // 批量播放数量
+  priorities: [1, 5],
   // 英文设置
   english: {
     repeatCount: 1, // 发音次数 0-5
@@ -75,7 +76,7 @@ const loadAudioConfig = () => {
         volume: parsed.volume ?? DEFAULT_AUDIO_CONFIG.volume,
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
         batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
-        proficiency: parsed.proficiency ?? [1, 5],  // word priority
+        priorities: parsed.priorities ?? [1, 5],  // word priority
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
@@ -115,11 +116,12 @@ export default function Page() {
   const [status, setStatus] = useState({
     currentWordIndex: 0,
     playedWordIndex: -1,
-    playedWordCounter: 0, // 已播放单词
+    playedWordCounter: 1, // 已播放单词, 当前显示单词会默认播放一遍。
     playCurrent: null,
     onWheel: false, // 滚动时，不播放录音。
     isPlaying: false,
     words: [],
+    originalWords: [],
     isDialogOpen: false,
     dialogData: {translations: []},
     isProcessing: false,
@@ -130,6 +132,7 @@ export default function Page() {
     isConfigDialogOpen: false,
     // 音频配置（初始化时使用默认值，将在 useEffect 中从 localStorage 读取）
     audioConfig: DEFAULT_AUDIO_CONFIG,
+    prioritiesIndices: {},
   });
 
   // 更新 priority
@@ -210,7 +213,12 @@ export default function Page() {
         catch (e) {
         }
 
-        status.words = json.data;
+        // status.words = json.data;
+        status.originalWords = json.data;
+        const [priority_from, priority_to] = status.audioConfig.priorities;
+        status.words = status.originalWords.filter(
+            word => (word.priority >= priority_from && word.priority <=
+                priority_to));
 
         if (status.words.length <= status.currentWordIndex) {
           status.currentWordIndex = status.words.length - 1;
@@ -218,7 +226,8 @@ export default function Page() {
         setStatus(prev => ({
           ...prev, // 复制现有状态
           currentWordIndex: status.currentWordIndex,
-          words: json.data,
+          originalWords: status.originalWords,
+          words: status.words,
         }));
       }
       else {
@@ -263,30 +272,72 @@ export default function Page() {
     }
   };
 
+  // const nextWord = () => {
+  //   playedWordCounter 从 0 到 25（指定播放个数），到了以后退回到起始单词再次播放。
+  //   if (status.audioConfig.batch_quantity !== 175 && status.audioConfig.batch_quantity <= status.playedWordCounter) {
+  //     const nextIndex = status.currentWordIndex < status.audioConfig.batch_quantity ? status.currentWordIndex + status.words.length - status.audioConfig.batch_quantity
+  //         : status.currentWordIndex - status.audioConfig.batch_quantity;
+  //     setStatus(prev => ({
+  //       ...prev,
+  //       currentWordIndex: nextIndex,
+  //       playedWordCounter: 0,
+  //     }));
+  //   }
+  //   else if (status.currentWordIndex < status.words.length - 1) {
+  //     setStatus(prev => ({
+  //       ...prev,
+  //       currentWordIndex: prev.currentWordIndex + 1,
+  //       playedWordCounter: prev.playedWordCounter + 1,
+  //     }));
+  //   }
+  //   else {
+  //     setStatus(prev => ({
+  //       ...prev,
+  //       currentWordIndex: 0,
+  //       playedWordCounter: prev.playedWordCounter + 1,
+  //     }));
+  //   }
+  // };
+
   const nextWord = () => {
-    if (status.audioConfig.batch_quantity !== 175 && status.audioConfig.batch_quantity <= status.playedWordCounter) {
-      const nextIndex = status.currentWordIndex < status.audioConfig.batch_quantity ? status.currentWordIndex + status.words.length - status.audioConfig.batch_quantity
-        : status.currentWordIndex - status.audioConfig.batch_quantity;
-      setStatus(prev => ({
+    setStatus(prev => {
+      const isInfiniteMode = prev.audioConfig.batch_quantity === 175;
+      const batchSize = prev.audioConfig.batch_quantity;
+      const totalWords = prev.words.length;
+
+      // 无限模式：顺序播放，到末尾循环
+      if (isInfiniteMode) {
+        const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+        return {
+          ...prev,
+          currentWordIndex: nextIndex,
+          playedWordCounter: prev.playedWordCounter + 1,
+        };
+      }
+
+      // 分批模式：播放指定数量后跳到下一批
+
+      // 当前批次还没播完
+      if (prev.playedWordCounter < batchSize) {
+        const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+        return {
+          ...prev,
+          currentWordIndex: nextIndex,
+          playedWordCounter: prev.playedWordCounter + 1,
+        };
+      }
+
+      // 当前批次播完了，回到该批次头部开始重放
+      const backTimes = batchSize % totalWords === 0 ? batchSize : batchSize % totalWords;
+      // const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+      const nextIndex = prev.currentWordIndex >= batchSize - 1 ? prev.currentWordIndex - (batchSize - 1) :
+          prev.currentWordIndex + totalWords - (backTimes - 1);
+      return {
         ...prev,
         currentWordIndex: nextIndex,
-        playedWordCounter: 0,
-      }));
-    }
-    else if (status.currentWordIndex < status.words.length - 1) {
-      setStatus(prev => ({
-        ...prev,
-        currentWordIndex: prev.currentWordIndex + 1,
-        playedWordCounter: prev.playedWordCounter + 1,
-      }));
-    }
-    else {
-      setStatus(prev => ({
-        ...prev,
-        currentWordIndex: 0,
-        playedWordCounter: prev.playedWordCounter + 1,
-      }));
-    }
+        playedWordCounter: 1, // 重置计数器
+      };
+    });
   };
 
   const playerRef = useRef(null);
@@ -326,7 +377,9 @@ export default function Page() {
   }, []);
   // 播放音频: 当 currentWordIndex 或 words 改变时
   useEffect(() => {
-    if (status.words.length > 0 && status.words[status.currentWordIndex]?.voice_id_uk) {
+    // 不播放单词的情况：配置窗口可见时、
+    if (!status.isConfigDialogOpen && status.words.length > 0 &&
+        status.words[status.currentWordIndex]?.voice_id_uk) {
       // 暂停时不播放声音
       if (status.isPlaying || status.playedWordIndex !== status.currentWordIndex) {
         playCurrentWord(autoNextWord);
@@ -711,7 +764,8 @@ export default function Page() {
     // }
   };
 
-  if (status.words?.length === 0) return <div>Loading...</div>;
+// 改变priority filter 单词时也会有无单词的情况，不需要单独loading界面。
+//  if (status.words?.length === 0) return <div>Loading...</div>;
 
   function addTranslation() {
     for (let i = status.dialogData.translations.length - 1; i >= 0; i--) {
@@ -984,9 +1038,10 @@ export default function Page() {
       <div className="text-right">
         <ThemeToggle/>
       </div>
+      {status.words.length > 0 && (
       <div className={"word-container"} onWheel={handleWordWheel}>
         <div>
-          <div onMouseEnter={e => playCurrentWordOnly()} onClick={e => playCurrentWord()}>
+          <div className={`pronunciation`} onClick={e => playCurrentWord()}>{/* onMouseEnter={e => playCurrentWordOnly()} */}
             <span className={"phonetic"}
                   dangerouslySetInnerHTML={{
                     __html:
@@ -1023,15 +1078,19 @@ export default function Page() {
                }}/>
         </div>
       </div>
+      )}
 
+      {status.words.length > 0 && (
       <div className={"operation text-center"} onWheel={handleWordWheel}>
         {status.currentWordIndex + 1} / {status.words.length}
       </div>
+      )}
 
       <div className={"operation text-center"}>
         {/*<span className={"put_top"} onClick={handlePutTop}>*/}
         {/*  <PiRocket/>*/}
         {/*</span>*/}
+        {false /* TODO: 以后改进，先隐藏 */ && (<>
         <span className={"put_previous"} onClick={handlePutPrevious}>
           {" "}
           <GiPlayerPrevious/>{" "}
@@ -1040,6 +1099,7 @@ export default function Page() {
           {" "}
           <GiPlayerNext/>{" "}
         </span>
+        </>)}
         <form
           className={"inline search-form"}
           onSubmit={event => {
@@ -1120,6 +1180,7 @@ export default function Page() {
         {/*<span onClick={e => playCurrentWord()}>*/}
         {/*  <Bs0SquareFill/>*/}
         {/*</span>*/}
+        {status.words?.length > 0 && (<>
         <span onClick={e => handlePriority(1)}>
           {(status.words[status.currentWordIndex].priority === 1) ? <Bs1SquareFill/> : <Bs1Square/>}
         </span>
@@ -1135,6 +1196,7 @@ export default function Page() {
         <span onClick={e => handlePriority(5)}>
           {(status.words[status.currentWordIndex].priority === 5) ? <Bs5SquareFill/> : <Bs5Square/>}
         </span>
+        </>)}
         {/*<span className={"put_end"} onClick={handlePutEnd}>*/}
         {/*  <PiRocket/>*/}
         {/*</span>*/}
@@ -1195,16 +1257,13 @@ export default function Page() {
         </button>
       </div>
 
-      <ToastContainer
-        position="top-right"
+      <ToastContainer position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
+                      pauseOnFocusLoss draggable pauseOnHover
         aria-label={undefined}
       />
 
@@ -1774,6 +1833,69 @@ export default function Page() {
                   </div>
                 </div>
 
+                <div className={`space-y-2`}>
+                  <Label>每次播放单词量: {status.audioConfig.batch_quantity ===
+                  175 ? '∞' : status.audioConfig.batch_quantity} 个</Label>
+                  <Slider value={[status.audioConfig.batch_quantity]}
+                          onValueChange={([value]) => {
+                            updateAudioConfig({
+                              ...status.audioConfig,
+                              batch_quantity: value,
+                            });
+                          }}
+                          min={25} max={175} step={25} className="w-full"/>
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>&nbsp;25</span>
+                    <span>&nbsp;50</span>
+                    <span>&nbsp;75</span>
+                    <span>100</span>
+                    <span>125</span>
+                    <span>150</span>
+                    <span>ALL</span>
+                  </div>
+                </div>
+
+                <div className={`space-y-2`}>
+                  <Label>显示单词的优先度: </Label>
+                  <Slider value={status.audioConfig.priorities || [1, 5]}
+                          onValueChange={(value) => { // value is array [].
+                            // console.log('222 value slider:', value);
+                            updateAudioConfig({
+                              ...status.audioConfig,
+                              priorities: value,
+                            });
+
+                            const indexKeyStore = status.audioConfig.priorities.join(',');
+                            const indexKeyLoad = value.join(',');
+                            const index = status.prioritiesIndices[indexKeyLoad] || 0;
+                            const [priority_from, priority_to] = value;
+                            // console.log(status.originalWords);
+                            const words = status.originalWords.filter(word => (word.priority >= priority_from && word.priority <= priority_to));
+                            // console.log(words);
+                            setStatus(prev => ({
+                              ...prev,
+                              words: prev.originalWords.filter(
+                                  word => (word.priority >= priority_from &&
+                                      word.priority <= priority_to)),
+                              prioritiesIndices: {
+                                ...prev.prioritiesIndices,
+                                [indexKeyStore]: status.currentWordIndex,
+                              },
+                              currentWordIndex: index >= words.length ? words.length - 1 : index,
+                            }));
+                          }}
+                          min={1} max={5} step={1}
+                          className="w-full"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                  </div>
+                </div>
+
                 {/* 交错播放 */}
                 <div className="flex items-center space-x-2">
                   <Switch
@@ -1988,53 +2110,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className={`space-y-2`}>
-                <Label>每次播放单词量: {status.audioConfig.batch_quantity === 175 ? '∞' : status.audioConfig.batch_quantity} 个</Label>
-                <Slider value={[status.audioConfig.batch_quantity]}
-                        onValueChange={([value]) => {
-                          updateAudioConfig({
-                            ...status.audioConfig,
-                            batch_quantity: value,
-                          });
-                        }}
-                        min={25}
-                        max={175}
-                        step={25}
-                        className="w-full"
-                />
-                <div className="flex justify-between text-xs text-gray-500">
-                  <span>&nbsp;25</span>
-                  <span>&nbsp;50</span>
-                  <span>&nbsp;75</span>
-                  <span>100</span>
-                  <span>125</span>
-                  <span>150</span>
-                  <span>∞</span>
-                </div>
-              </div>
 
-              <div className={`space-y-2`}>
-                <Label>显示单词的熟练度: </Label>
-                <Slider value={[1, 5]}
-                        onValueChange={([value]) => {
-                          updateAudioConfig({
-                            ...status.audioConfig,
-                            batch_quantity: value,
-                          });
-                        }}
-                        min={1}
-                        max={5}
-                        step={5}
-                        className="w-full"
-                />
-                <div className="flex justify-between text-xs text-gray-500">
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
-                  <span>4</span>
-                  <span>5</span>
-                </div>
-              </div>
 
             </div>
           </div>

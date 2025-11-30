@@ -100,8 +100,8 @@ export const handleKeyDown = (event, status, setStatus) => {
       currentWordIndex: nextIndex,
     });
   }
-  // 按 h 回到第一个单词。
-  else if (event.key === 'h' && !event.metaKey && !event.ctrlKey) {
+  // 按 t(top) 回到第一个单词。
+  else if (event.key === 't' && !event.metaKey && !event.ctrlKey) {
     setStatus({
       ...status, // 复制现有状态
       isPlaying: false,
@@ -117,7 +117,7 @@ export const handleKeyDown = (event, status, setStatus) => {
 
     setStatus({
       ...status, // 复制现有状态
-      playedWordCounter: 0,
+      playedWordCounter: 1,
       isPlaying: !status.isPlaying,
     });
     event?.preventDefault?.();

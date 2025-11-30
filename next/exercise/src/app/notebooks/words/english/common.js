@@ -28,15 +28,15 @@ export const useWordOperations = (status, setStatus) => {
 
       toast.success("Successfully set word priority.");
 
-      setStatus(prev => ({
-        ...prev,
-        isProcessing: false,
-        words: prev.words.map((word, index) =>
-          index === prev.currentWordIndex
-            ? {...word, priority}
-            : word
-        )
-      }));
+      setStatus(prev => (
+          {
+            ...prev,
+            isProcessing: false,
+            words: prev.words.map((word, index) => index === prev.currentWordIndex ? {...word, priority: priority} : word),
+            originalWords: prev.originalWords.map((word, index) => word.id === prev.words[prev.currentWordIndex].id
+                ? {...word, priority: priority} : word),
+          }
+      ));
 
     }
     catch (err) {
