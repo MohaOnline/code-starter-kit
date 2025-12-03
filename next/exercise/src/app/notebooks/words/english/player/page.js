@@ -1257,15 +1257,15 @@ export default function Page() {
         </button>
       </div>
 
-      <ToastContainer position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-                      pauseOnFocusLoss draggable pauseOnHover
-        aria-label={undefined}
-      />
+      {/*<ToastContainer position="top-right"*/}
+      {/*                autoClose={3000}*/}
+      {/*                hideProgressBar={false}*/}
+      {/*                newestOnTop={false}*/}
+      {/*                closeOnClick*/}
+      {/*                rtl={false}*/}
+      {/*                pauseOnFocusLoss draggable pauseOnHover*/}
+      {/*                aria-label={undefined}*/}
+      {/*/>*/}
 
       <Transition show={status.isDialogOpen}>
         <Dialog
