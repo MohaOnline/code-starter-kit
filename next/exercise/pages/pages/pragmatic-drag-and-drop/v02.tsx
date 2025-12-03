@@ -93,6 +93,7 @@ function ListItem({item, index}: { item: Item; index: number }) {
   const itemData = useMemo(() => ({index, instanceId, item}), [index, instanceId, item]);
 
   useEffect(() => {
+      // HTML Element
     const element = elementRef.current;
     const dragHandle = dragHandleRef.current;
     invariant(element && dragHandle);
@@ -160,8 +161,7 @@ function ListItem({item, index}: { item: Item; index: number }) {
 
   return (
     <Box sx={{position: 'relative', mb: 1}}>
-      <Paper
-        ref={elementRef}
+      <Paper ref={elementRef}
         elevation={isDragging ? 0 : 1}
         sx={{
           p:               2,
