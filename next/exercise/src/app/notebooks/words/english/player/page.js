@@ -1100,16 +1100,27 @@ export default function Page() {
           <GiPlayerNext/>{" "}
         </span>
         </>)}
-        <form
-          className={"inline search-form"}
-          onSubmit={event => {
+        <form className={"inline search-form"}
+              onKeyDown={event => {
+                if (event.key !== "Enter") {
+                  return
+                }
             event.preventDefault();
+                console.log(event.shiftKey);
+
             if (status.searchText && status.words?.length > 1) {
               let index = 0;
               for (index = 1; index < status.words.length; index++) {
                 let i = index + status.currentWordIndex;
                 if (i >= status.words.length) {
                   i = i - status.words.length;
+                }
+                if (event?.shiftKey) {
+                  i = -index + status.currentWordIndex;
+                  if (i < 0) {
+                    i = i + status.words.length;
+                  }
+                  console.log(i);
                 }
                 const word = status.words[i];
                 if (
@@ -1140,7 +1151,22 @@ export default function Page() {
                    setStatus({...status, searchText: event.target.value});
                  }}
           />
-          <button type="submit" className="ml-2">
+          <button type="button" className="ml-2" onClick={e => {
+            // 手动构造一个模拟的 KeyboardEvent，模拟“单独按下 Enter、不按 Shift”（除非用户真的按了 Shift）
+            const simulatedEvent = new KeyboardEvent('keydown', {
+              key: 'Enter',
+              code: 'Enter',
+              keyCode: 13,
+              which: 13,
+              shiftKey: e.shiftKey,   // 关键：把点击时的 shiftKey 状态传递进去
+              ctrlKey: e.ctrlKey,
+              altKey: e.altKey,
+              metaKey: e.metaKey,
+              bubbles: true,
+              cancelable: true
+            });
+            document.getElementById("search-input").dispatchEvent(simulatedEvent);
+          }}>
             <RiFileSearchLine/>
           </button>
         </form>

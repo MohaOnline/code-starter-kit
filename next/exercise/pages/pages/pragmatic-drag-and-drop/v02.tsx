@@ -39,28 +39,26 @@ const ListContext = createContext<ListContextValue | null>(null);
 // 当拖拽悬停时，显示这条线告诉用户会插入到哪里
 const DropIndicator = ({edge}: { edge: Edge }) => {
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        zIndex:   10,
-        height:   '2px',
-        backgroundColor: '#1976d2', // MUI Primary Blue
-        left:     0,
-        right:    0,
-        // 根据 edge 决定线是在顶部还是底部
-        top:    edge === 'top' ? '-1px' : undefined,
-        bottom: edge === 'bottom' ? '-1px' : undefined,
-        pointerEvents: 'none', // 防止线本身干扰鼠标事件
-      }}
-    />
+    <Box sx={{
+      position:        'absolute',
+      zIndex:          10,
+      height:          '2px',
+      backgroundColor: '#1976d2', // MUI Primary Blue
+      left:            0,
+      right:           0,
+      // 根据 edge 决定线是在顶部还是底部
+      top:           edge === 'top' ? '-5px' : undefined,
+      bottom:        edge === 'bottom' ? '-5px' : undefined,
+      pointerEvents: 'none', // 防止线本身干扰鼠标事件
+    }}/>
   );
 };
 
 // --- 子组件：列表项 (ListItem) ，拖动对象 ---
-function ListItem({item, index}: { item: Item; index: number }) {
+function ListItem({key, item, index}: { key: string, item: Item; index: number }) {
   const {reorderItem, instanceId} = useContext(ListContext)!;
 
-  const elementRef = useRef<HTMLDivElement>(null);        // 整个行
+  const elementRef = useRef<HTMLDivElement>(null);        // 整个行，效果层，取HTML ELEMENT
   const dragHandleRef = useRef<HTMLButtonElement>(null);  // 拖拽手柄
 
   const [closestEdge, setClosestEdge] = useState<Edge | null>(null);
@@ -70,6 +68,7 @@ function ListItem({item, index}: { item: Item; index: number }) {
   const itemData = useMemo(() => ({index, instanceId, item}), [index, instanceId, item]);
 
   useEffect(() => {
+    // HTML Element
     const element = elementRef.current;
     const dragHandle = dragHandleRef.current;
     invariant(element && dragHandle);
@@ -85,15 +84,14 @@ function ListItem({item, index}: { item: Item; index: number }) {
             nativeSetDragImage,
             getOffset: pointerOutsideOfPreview({x: '16px', y: '8px'}),
             render({container}) {
-              // 这里我们创建一个 Portal 渲染简单的预览
-              const root = createPortal(
-                <Paper sx={{p: 2, width: 300, bgcolor: 'background.paper'}}>
+              // 这里我们创建一个 React root 渲染拖拽预览
+              const root = createRoot(container);
+              root.render(
+                <Paper sx={{p: 2, width: 300, bgcolor: 'background.paper', boxShadow: 3}}>
                   <Typography>{item.label}</Typography>
-                </Paper>,
-                container
+                </Paper>
               );
-              return () => {
-              }; // 清理函数
+              return () => root.unmount(); // 清理函数：卸载 React root
             },
           });
         },
@@ -106,16 +104,18 @@ function ListItem({item, index}: { item: Item; index: number }) {
 
       // 2. 设置为放置目标 (Drop Target)
       dropTargetForElements({
-        element,
+        element,    // 设置自己作为 Drop Target。
         canDrop:     ({source}) => {
+          // draggable 的 getInitialData 设置的 source.data。
           // 安全检查：只允许同一个列表实例内的元素互相拖拽
-          return source.data.instanceId === instanceId;
+          return source.data.instanceId === instanceId && source.data.index !== index;
         },
         getData:     ({input}) => {
+          console.log(input);
           // 核心魔法：计算鼠标相对于元素的边缘 (Top/Bottom)
           return attachClosestEdge(itemData, {
             element,
-            input,
+            input, // 鼠标
             allowedEdges: ['top', 'bottom'],
           });
         },
@@ -137,17 +137,16 @@ function ListItem({item, index}: { item: Item; index: number }) {
 
   return (
     <Box sx={{position: 'relative', mb: 1}}>
-      <Paper
-        ref={elementRef}
-        elevation={isDragging ? 0 : 1}
-        sx={{
-          p:               2,
-          display:         'flex',
-          alignItems:      'center',
-          opacity:         isDragging ? 0.4 : 1, // 拖拽时变半透明
-          backgroundColor: isDragging ? 'grey.100' : 'white',
-          transition:      'background-color 0.2s',
-        }}
+      <Paper ref={elementRef}
+             elevation={isDragging ? 0 : 1}
+             sx={{
+               p:               2,
+               display:         'flex',
+               alignItems:      'center',
+               opacity:         isDragging ? 0.4 : 1, // 拖拽时变半透明
+               backgroundColor: isDragging ? 'grey.100' : 'white',
+               transition:      'background-color 0.2s',
+             }}
       >
         {/* 拖拽手柄 */}
         <IconButton ref={dragHandleRef} sx={{cursor: 'grab', mr: 1}}>
@@ -185,7 +184,7 @@ export default function DraggableList() {
   const [items, setItems] = useState(initialItems);
 
   // 用于隔离不同列表实例的 ID，区分同列拖放还是异列拖放。
-  const [instanceId] = useState(() => Symbol('list-instance'));
+  const [instanceId] = useState(() => Symbol('list-instance')); // 定义函数，是否执行交给 React
 
   // 核心排序逻辑
   const reorderItem = useCallback((startIndex: number, indexOfTarget: number, closestEdgeOfTarget: Edge | null) => {
@@ -251,3 +250,4 @@ export default function DraggableList() {
     </ListContext.Provider>
   );
 }
+
