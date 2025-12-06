@@ -1,4 +1,5 @@
 'use client'; // Next.js 15 必须声明，因为拖拽是纯前端交互
+// example 官方代码：https://github.com/atlassian/pragmatic-drag-and-drop/tree/main/packages/documentation
 
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
@@ -136,7 +137,7 @@ function ListItem({key, item, index}: { key: string, item: Item; index: number }
   }, [item, index, instanceId, itemData]);
 
   return (
-    <Box sx={{position: 'relative', mb: 1}}>
+    <Box sx={{position: 'relative', mb: 0}}>
       <Paper ref={elementRef}
              elevation={isDragging ? 0 : 1}
              sx={{
@@ -236,12 +237,12 @@ export default function DraggableList() {
   const contextValue = useMemo(() => ({reorderItem, instanceId}), [reorderItem, instanceId]);
   return (
     <ListContext.Provider value={contextValue}>
-      <Box sx={{maxWidth: 600, mx: 'auto', mt: 4, p: 2, bgcolor: '#f5f5f5', borderRadius: 2}}>
+      <Box sx={{maxWidth: 600, mx: 'auto', bgcolor: '#f5f5f5', borderRadius: 2}}>
         <Typography variant="h5" gutterBottom sx={{mb: 3}}>
           Next.js + MUI 拖拽排序
         </Typography>
 
-        <Box>
+        <Box sx={{gap: 2}}>
           {items.map((item, index) => (
             <ListItem key={item.id} item={item} index={index}/>
           ))}
