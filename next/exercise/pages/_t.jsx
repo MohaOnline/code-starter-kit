@@ -1,6 +1,7 @@
 'use client';
 
 import React, {createContext, memo, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
+import { createRoot } from 'react-dom/client';
 import {createPortal} from 'react-dom';
 
 import Link from "next/link";

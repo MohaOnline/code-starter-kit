@@ -3,7 +3,10 @@
 /**
  *
  */
-import React, {memo, useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {createContext, memo, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
+import { createRoot } from 'react-dom/client';
+import {createPortal} from 'react-dom';
+
 import Script from "next/script";
 
 import {useVirtualizer} from '@tanstack/react-virtual';

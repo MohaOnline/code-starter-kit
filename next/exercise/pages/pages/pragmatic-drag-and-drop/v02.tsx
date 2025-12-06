@@ -213,7 +213,7 @@ export default function DraggableList() {
   }, []);
 
   useEffect(() => {
-    // 启动全局监听器
+    // 启动全局监听器：https://atlassian.design/components/pragmatic-drag-and-drop/core-package/monitors
     return monitorForElements({
       canMonitor: ({source}) => source.data.instanceId === instanceId,
       onDrop:     ({location, source}) => {
