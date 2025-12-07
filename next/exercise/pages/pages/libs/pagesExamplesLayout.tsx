@@ -23,7 +23,10 @@ export default function PagesExamplesLayout(
 ) {
 
   const {pathname} = useRouter();
-  const needThemeProvider = pathname.startsWith('/pages/tailwind/4');
+  const needThemeProvider =
+          pathname.startsWith('/pages/tailwind/4')
+  // || pathname.startsWith('/pages/tanstack/virtual/')
+
   if (needThemeProvider) {
   }
 
@@ -132,7 +135,7 @@ export function withPagesExamplesLayout(
  * ```
  */
 export function getPagesExamplesLayout(layoutProps?: Omit<pagesExamplesLayoutProps, 'children'>) {
-  return function getLayout (page: React.ReactElement) {
+  return function getLayout(page: React.ReactElement) {
     return (
       <PagesExamplesLayout
         title={layoutProps?.title}

@@ -1,7 +1,7 @@
 'use client';
 
-import React, {createContext, memo, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
-import { createRoot } from 'react-dom/client';
+import React, {createContext, forwardRef, memo, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
+import {createRoot} from 'react-dom/client';
 import {createPortal} from 'react-dom';
 
 import Link from "next/link";
@@ -34,11 +34,13 @@ import {styled, lighten, darken} from '@mui/system';
 
 // 3rd part libs:
 // @atlaskit/pragmatic-drag-and-drop
-import {
-  draggable, dropTargetForElements, monitorForElements,
-} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {draggable, dropTargetForElements, monitorForElements} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';
+import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
 import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+import {preventUnhandled} from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
+
 
 // CodeMirror
 import {EditorView, basicSetup} from "codemirror"
