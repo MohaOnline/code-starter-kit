@@ -35,7 +35,11 @@ const nextConfig = {
   allowedDevOrigins: allowedDevOrigins,
   experimental: { serverActions: { bodySizeLimit: "100mb" } },
   output: "standalone",
-  transpilePackages: ["@prisma/client", "prisma"],
+  transpilePackages: [
+    '@prisma/client',
+    '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator',
+    'prisma',
+  ],
   images: {
     remotePatterns: [
       {

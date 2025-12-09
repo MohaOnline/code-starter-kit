@@ -23,7 +23,6 @@ import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/elem
 import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
 
 // --- 类型定义 ---
-
 type Item = {
   id: string;
   label: string;
@@ -48,9 +47,9 @@ const DropIndicator = ({edge}: { edge: Edge }) => {
       left:            0,
       right:           0,
       // 根据 edge 决定线是在顶部还是底部
-      top:           edge === 'top' ? '-5px' : undefined,
-      bottom:        edge === 'bottom' ? '-5px' : undefined,
-      pointerEvents: 'none', // 防止线本身干扰鼠标事件
+      top:             edge === 'top' ? '-5px' : undefined,
+      bottom:          edge === 'bottom' ? '-5px' : undefined,
+      pointerEvents:  'none', // 防止线本身干扰鼠标事件
     }}/>
   );
 };
@@ -100,7 +99,7 @@ function ListItem({key, item, index}: { key: string, item: Item; index: number }
           setIsDragging(true);
           console.log(`[Item] 开始拖拽: ${item.label} (Index: ${index})`);
         },
-        onDrop:      () => setIsDragging(false),
+        onDrop:      () => {setIsDragging(false)},
       }),
 
       // 2. 设置为放置目标 (Drop Target)
