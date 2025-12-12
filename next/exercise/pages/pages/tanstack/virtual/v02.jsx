@@ -279,7 +279,7 @@ export default function Pages() {
             // }
             // 从前往后移动，
             // if (sourceIndex < targetIndex && closestEdgeOfTarget === 'top') {
-            //   targetIndex = targetIndex + 1;
+            //   targetIndex = targetIndex - 1;
             // }
 
             const finishIndex = getReorderDestinationIndex({

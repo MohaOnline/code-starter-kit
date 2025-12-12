@@ -47,6 +47,9 @@ import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scro
 import {preventUnhandled} from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 import {DropIndicator} from '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box';
+import {attachClosestEdge, extractClosestEdge} from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
+import {getReorderDestinationIndex} from '@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index'; // 前后移动时重算 targetIndex
+import {reorder} from '@atlaskit/pragmatic-drag-and-drop/reorder';  // 移动数组元素
 
 // CodeMirror
 import {EditorView, basicSetup} from "codemirror"

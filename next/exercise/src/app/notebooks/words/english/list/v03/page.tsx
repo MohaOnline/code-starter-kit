@@ -166,16 +166,7 @@ interface WordColumnProps {
   highlightedIndex: number;
 }
 
-function WordColumn({
-                      title,
-                      words,
-                      searchTerm,
-                      onSearchChange,
-                      onSearchSubmit,
-                      columnId,
-                      scrollRef,
-                      highlightedIndex
-                    }: WordColumnProps) {
+function WordColumn({title, words, searchTerm, onSearchChange, onSearchSubmit, columnId, scrollRef, highlightedIndex}: WordColumnProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -187,7 +178,7 @@ function WordColumn({
     count:            words.length,
     getScrollElement: () => scrollRef.current,
     estimateSize:     () => 80,
-    overscan:         20,
+    overscan:         10,
   });
 
   // Set up auto-scroll for this column
@@ -404,7 +395,9 @@ export default function WordListPage() {
     console.log(`📥 目标: ${targetWord.word} (ID: ${targetWord.id})`);
     
     const oldIndex = words.findIndex(w => w.id === sourceWord.id);
-    const newIndex = words.findIndex(w => w.id === targetWord.id);
+    let newIndex = words.findIndex(w => w.id === targetWord.id);
+
+    if (oldIndex<newIndex) newIndex = newIndex-1;
 
     console.log(`📍 索引变化: ${oldIndex} → ${newIndex}`);
 
@@ -569,18 +562,18 @@ export default function WordListPage() {
     <>
       <NavTop/>
       <div className="container mx-auto p-4 bg-gray-900 min-h-screen">
-        <h1 className="text-2xl font-bold mb-4 text-green-400">单词排序管理 (Pragmatic DnD)</h1>
+        {/*<h1 className="text-2xl font-bold mb-4 text-green-400">单词排序管理 (Pragmatic DnD)</h1>*/}
 
         {/* 📋 使用说明 */}
-        <div className="mb-4 p-3 bg-gray-800 rounded-lg border border-gray-600">
-          <h3 className="text-sm font-semibold text-yellow-400 mb-2">🔧 Pragmatic DnD 工作原理演示</h3>
-          <div className="text-xs text-gray-300 space-y-1">
-            <p>• 打开浏览器控制台查看详细的拖拽日志</p>
-            <p>• 每个单词都是 draggable + dropTarget</p>
-            <p>• 全局 monitor 处理跨列表拖拽逻辑</p>
-            <p>• 通过 columnId 区分不同列表来源</p>
-          </div>
-        </div>
+        {/*<div className="mb-4 p-3 bg-gray-800 rounded-lg border border-gray-600">*/}
+        {/*  <h3 className="text-sm font-semibold text-yellow-400 mb-2">🔧 Pragmatic DnD 工作原理演示</h3>*/}
+        {/*  <div className="text-xs text-gray-300 space-y-1">*/}
+        {/*    <p>• 打开浏览器控制台查看详细的拖拽日志</p>*/}
+        {/*    <p>• 每个单词都是 draggable + dropTarget</p>*/}
+        {/*    <p>• 全局 monitor 处理跨列表拖拽逻辑</p>*/}
+        {/*    <p>• 通过 columnId 区分不同列表来源</p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         <div className="flex gap-4">
           <WordColumn
