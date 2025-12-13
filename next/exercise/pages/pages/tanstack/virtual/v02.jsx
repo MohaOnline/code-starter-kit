@@ -3,7 +3,7 @@
 /**
  *
  */
-import React, {createContext, forwardRef, memo, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
+import React, {createContext, forwardRef, memo, startTransition, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {createPortal} from 'react-dom';
 
@@ -293,17 +293,21 @@ export default function Pages() {
 
             if (startIndex === indexOfTarget) return;
 
-            setWords(prev => {
-              return reorder({list: prev, startIndex: startIndex, finishIndex: finishIndex});
+            // setWords(prev => {
+            //   return reorder({list: prev, startIndex: startIndex, finishIndex: finishIndex});
+            // });
+            // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
+            queueMicrotask(() => {
+              startTransition(() => {
+                setWords(prev => reorder({list: prev, startIndex, finishIndex}));
+              });
             });
-
           },
         }),
     );
   }, []);
 
-
-  const virtualizer = useVirtualizer({
+  const virtualizer = useVirtualizer(useMemo(() => ({
     count: words.length,
     estimateSize: /*estimateItemSize*/ () => 40,
     getScrollElement: () => wordWindowRef.current,
@@ -322,7 +326,7 @@ export default function Pages() {
       // console.log(`Measured item ${index}: ${height}px`);
       return height;
     },
-  });
+  }), [words]));
 
   // // ✅ 监听 words 变化，强制虚拟器重新计算
   // useEffect(() => {
