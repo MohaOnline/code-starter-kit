@@ -117,6 +117,7 @@
     "material-ui-popup-state": "^5.3.6",
     "mathjax": "^3.2.2",
     "mathlive": "^0.106.0",
+    "mermaid": "^11.12.2",
     "microsoft-cognitiveservices-speech-sdk": "^1.45.0",
     "mui-chips-input": "^7.0.1",
     "mui-color-input": "^7.0.0",

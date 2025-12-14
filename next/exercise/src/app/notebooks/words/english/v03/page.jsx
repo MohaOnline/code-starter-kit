@@ -5,9 +5,9 @@ import {createRoot} from 'react-dom/client';
 import {createPortal} from 'react-dom';
 
 import dynamic from 'next/dynamic';
-import Link from "next/link";
+import Link from 'next/link';
 import {useRouter, useSearchParams} from 'next/navigation';
-import Script from "next/script";
+import Script from 'next/script';
 
 import {css, Global} from '@emotion/react';
 import {
@@ -15,7 +15,7 @@ import {
   Checkbox, Chip, Container, FormControl, IconButton, InputLabel, InputAdornment,
   Link as MuiLink, ListItemText, ListSubheader, Menu, MenuItem, MenuList,
   Paper, Popper,
-  Stack, Select, Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme
+  Stack, Select, Tabs, Tab, TextField, Toolbar, Tooltip, Typography, useTheme,
 } from '@mui/material';
 import {
   Adb as AdbIcon, Add as AddIcon, ArrowRight as ArrowRightIcon,
@@ -29,7 +29,7 @@ import {
   Pause as PauseIcon, PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
   PostAdd as PostAddIcon, Search as SearchIcon,
   Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, SkipNext as SkipNextIcon, SkipPrevious as SkipPreviousIcon,
-  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon
+  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon,
 } from '@mui/icons-material';
 import {styled, lighten, darken} from '@mui/system';
 
@@ -44,7 +44,7 @@ import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/ada
 import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
 import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
 import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
-import {preventUnhandled} from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
+import {preventUnhandled} from '@atlaskit/pragmatic-drag-and-drop/prevent-unhandled';
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 import {DropIndicator} from '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box';
 import {attachClosestEdge, extractClosestEdge} from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
@@ -52,24 +52,28 @@ import {getReorderDestinationIndex} from '@atlaskit/pragmatic-drag-and-drop-hitb
 import {reorder} from '@atlaskit/pragmatic-drag-and-drop/reorder';  // 移动数组元素
 
 // CodeMirror
-import {EditorView, basicSetup} from "codemirror"
-import {html} from "@codemirror/lang-html"
+import {EditorView, basicSetup} from 'codemirror';
+import {html} from '@codemirror/lang-html';
 
 ///////// Own libraries //////////////
-import {useStatus} from "@/app/lib/atoms";
+import {useStatus} from '@/app/lib/atoms';
+import NavTop from '@/app/lib/components/NavTop';
+import {ThemeToggle} from '@/app/lib/components/ThemeToggle';
 
 // Comment Template//
 // ①②③④⑤⑥⑦⑧⑨⑩
 
 /**
- * @see pages/_t
+ * @see notebooks/words/english/v03
  */
 export default function Page() {
-
-  // == DEFAULT ==
   return (
-    <>
-      <div>Temp</div>
-    </>
+      <>
+        <NavTop/>
+        <div className="text-right">
+          <ThemeToggle/>
+        </div>
+
+      </>
   );
 }
