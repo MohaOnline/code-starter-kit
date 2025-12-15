@@ -10,6 +10,9 @@ div.nav {
     gap: 12px;
 }
 
+/* 黑暗模式下提高些 icon 亮度：透明度与hover关系有待弄清。 */
+.dark div.nav { opacity: 0.6; }
+
 div.nav:hover {
     opacity: 1;
 }

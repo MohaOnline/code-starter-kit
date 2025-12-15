@@ -1,0 +1,22 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=WebStorm
+
+###
+
+POST https://localhost:3030/api/words/update-weight-safe
+Content-Type: application/json
+
+{
+  "words": [
+    {
+      "id": "word-id-1",
+      "weight": 0.75
+    },
+    {
+      "id": "word-id-2",
+      "weight": 0.85
+    }
+  ]
+}
+
