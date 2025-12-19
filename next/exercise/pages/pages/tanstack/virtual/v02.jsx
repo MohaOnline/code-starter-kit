@@ -299,24 +299,30 @@ export default function Pages() {
             let post = {position: '', words: []};
             if (finishIndex === 0) {
               post.position = 'top';
-
               post.words = [
-                {id: words[finishIndex].id, weight: words[finishIndex].weight},
-                {id: words[startIndex].id, weight: words[startIndex].weight},
+                {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
+                {id: words[startIndex].id, weight: words[startIndex].weight, word: words[startIndex].word},
               ];
             } else if (finishIndex === (words.length - 1)) {
               post.position = 'bottom';
               post.words = [
-                {id: words[startIndex].id, weight: words[startIndex].weight},
-                {id: words[finishIndex].id, weight: words[finishIndex].weight},
+                {id: words[startIndex].id, weight: words[startIndex].weight, word: words[startIndex].word},
+                {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
               ];
             } else {
               post.position = 'between';
               if (startIndex < finishIndex) {
                 post.words = [
-                  {id: words[startIndex].id, weight: words[startIndex].weight},
-                  {id: words[finishIndex - 1].id, weight: words[finishIndex - 1].weight},
-                  {id: words[finishIndex].id, weight: words[finishIndex].weight},
+                  {id: words[startIndex].id, weight: words[startIndex].weight, word: words[startIndex].word},
+                  {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
+                  {id: words[finishIndex + 1].id, weight: words[finishIndex + 1].weight, word: words[finishIndex + 1].word},
+                ];
+              }
+              else {
+                post.words = [
+                  {id: words[startIndex].id, weight: words[startIndex].weight, word: words[startIndex].word},
+                  {id: words[finishIndex - 1].id, weight: words[finishIndex - 1].weight, word: words[finishIndex - 1].word},
+                  {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
                 ];
               }
             }

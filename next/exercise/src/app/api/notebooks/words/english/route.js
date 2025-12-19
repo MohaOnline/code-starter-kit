@@ -90,17 +90,17 @@ export async function POST(request) {
 
     console.log('weight update:');
     console.dir(data);
-    let sql;
 
+    let rows;
     if (data.position === 'top' || data.position === 'bottom') {
-      sql = `
+      rows = await prisma.$queryRaw`
           SELECT id
           FROM notebook_words_english_summary
           WHERE id = ${data.words[0].id} AND weight = ${data.words[0].weight}
              OR id = ${data.words[1].id} AND weight = ${data.words[1].weight}
       `;
     } else {
-      sql = `
+      rows = await prisma.$queryRaw`
           SELECT id
           FROM notebook_words_english_summary
           WHERE id = ${data.words[0].id} AND weight = ${data.words[0].weight}
@@ -108,11 +108,11 @@ export async function POST(request) {
              OR id = ${data.words[2].id} AND weight = ${data.words[2].weight}
       `;
     }
+
+    console.log(rows);
+
     return jsonResponse({success: true, wordsNeedUpdate: false}, 200);
 
-    let rows = await prisma.$queryRaw`
-        ${sql}
-    `;
 
     console.log(rows);
 
