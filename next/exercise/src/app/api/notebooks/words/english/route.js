@@ -1,8 +1,11 @@
 import {NextResponse} from 'next/server';
-import mysql from 'mysql2/promise';
-
 import {getServerSession} from 'next-auth'
 import {getToken} from 'next-auth/jwt'
+
+import mysql from 'mysql2/promise';
+import {LexoRank} from 'lexorank';
+
+import {prisma, jsonResponse} from '@/lib/prisma';
 import {authOptions} from '@/app/api/auth/[...nextauth]/route'
 import {dbConfig} from '@/app/lib/db.js';
 
@@ -66,6 +69,109 @@ export async function GET(request) {
   }
   catch (error) {
     console.error('Database query error:', error);
+    return NextResponse.json({
+      success: false,
+      error: 'Internal Server Error',
+    }, {status: 500});
+  }
+}
+
+export async function POST(request) {
+  const contentType = request.headers.get('Content-Type');
+  if (!contentType || !contentType.includes('application/json')) {
+    return jsonResponse({success: false, error: 'Invalid invoking...'}, 403);
+  }
+  let result = null;
+
+  try {
+    const session = await getServerSession(authOptions);
+
+    const data = await request.json();
+
+    console.log('weight update:');
+    console.dir(data);
+    let sql;
+
+    if (data.position === 'top' || data.position === 'bottom') {
+      sql = `
+          SELECT id
+          FROM notebook_words_english_summary
+          WHERE id = ${data.words[0].id} AND weight = ${data.words[0].weight}
+             OR id = ${data.words[1].id} AND weight = ${data.words[1].weight}
+      `;
+    } else {
+      sql = `
+          SELECT id
+          FROM notebook_words_english_summary
+          WHERE id = ${data.words[0].id} AND weight = ${data.words[0].weight}
+             OR id = ${data.words[1].id} AND weight = ${data.words[1].weight}
+             OR id = ${data.words[2].id} AND weight = ${data.words[2].weight}
+      `;
+    }
+    return jsonResponse({success: true, wordsNeedUpdate: false}, 200);
+
+    let rows = await prisma.$queryRaw`
+        ${sql}
+    `;
+
+    console.log(rows);
+
+    const weight = rows[0].weight;
+
+    console.log('note crud:' + JSON.stringify(data.note));
+    return jsonResponse({success: true, action: data.action, note: data.note});
+  } catch (error) {
+    console.error('Query error:', error);
+    return jsonResponse({success: false, error: 'DB Error'}, 500);
+  }
+
+  try {
+    const {wordId, targetPosition, referenceWeights} = await request.json();
+
+    if (!wordId || targetPosition === undefined) {
+      return NextResponse.json({
+        success: false,
+        error: 'Missing required parameters',
+      }, {status: 400});
+    }
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    let newWeight;
+
+    // Calculate new weight based on position
+    if (targetPosition === 'start' && referenceWeights.after) {
+      // Insert at the beginning
+      const lexoRank = LexoRank.parse(referenceWeights.after);
+      newWeight = lexoRank.genPrev().format();
+    } else if (targetPosition === 'end' && referenceWeights.before) {
+      // Insert at the end
+      const lexoRank = LexoRank.parse(referenceWeights.before);
+      newWeight = lexoRank.genNext().format();
+    } else if (referenceWeights.before && referenceWeights.after) {
+      // Insert between two items
+      const lexoRank1 = LexoRank.parse(referenceWeights.before);
+      const lexoRank2 = LexoRank.parse(referenceWeights.after);
+      newWeight = lexoRank1.between(lexoRank2).format();
+    } else {
+      throw new Error('Invalid position parameters');
+    }
+
+    // Update the word's weight in database
+    await connection.execute(
+        'UPDATE notebook_words_english SET weight = ? WHERE id = ?',
+        [newWeight, wordId],
+    );
+
+    await connection.end();
+
+    return NextResponse.json({
+      success: true,
+      newWeight,
+    }, {status: 200});
+
+  } catch (error) {
+    console.error('Update weight error:', error);
     return NextResponse.json({
       success: false,
       error: 'Internal Server Error',

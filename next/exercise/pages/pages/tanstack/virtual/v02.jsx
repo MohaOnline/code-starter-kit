@@ -154,8 +154,8 @@ export default function Pages() {
   // The scrollable element for your list
   const wordWindowRef = React.useRef(null)
 
-  const [words, setWords] = useState([]) // 保存服务器获取的单词列表
-  const [needWordsRefresh, setNeedWordsRefresh] = useState(false);
+  const [words, setWords] = useState([]);                         // 保存服务器获取的单词列表
+  const [wordsNeedUpdate, setWordsNeedUpdate] = useState(false);  //
   const [wordsSize, setWordsSize] = useState(new Map()); // 缓存实际测量的尺寸
   const measureRef = React.useRef(null); // 用于测量的隐藏容器
 
@@ -170,7 +170,7 @@ export default function Pages() {
       console.error('Error fetching data:', error);
     });
 
-  }, [needWordsRefresh]);
+  }, [wordsNeedUpdate]);
 
   // 使用虚拟元素实际测量项目高度
   const measureItemHeight = useCallback((word, index) => {
@@ -291,7 +291,54 @@ export default function Pages() {
 
             console.log({startIndex, indexOfTarget, finishIndex, closestEdgeOfTarget});
 
-            if (startIndex === indexOfTarget) return;
+            if (startIndex === finishIndex) {
+                
+              return;
+            }
+
+            let post = {position: '', words: []};
+            if (finishIndex === 0) {
+              post.position = 'top';
+
+              post.words = [
+                {id: words[finishIndex].id, weight: words[finishIndex].weight},
+                {id: words[startIndex].id, weight: words[startIndex].weight},
+              ];
+            } else if (finishIndex === (words.length - 1)) {
+              post.position = 'bottom';
+              post.words = [
+                {id: words[startIndex].id, weight: words[startIndex].weight},
+                {id: words[finishIndex].id, weight: words[finishIndex].weight},
+              ];
+            } else {
+              post.position = 'between';
+              if (startIndex < finishIndex) {
+                post.words = [
+                  {id: words[startIndex].id, weight: words[startIndex].weight},
+                  {id: words[finishIndex - 1].id, weight: words[finishIndex - 1].weight},
+                  {id: words[finishIndex].id, weight: words[finishIndex].weight},
+                ];
+              }
+            }
+
+            // DB check
+            fetch('/api/notebooks/words/english', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(post),
+            }).then((response) => response.json()).then((data) => {
+              console.log('data:', data);
+              // {
+              //     "success": true,
+              //     "wordsNeedUpdate": false
+              // }
+              if (data.wordsNeedUpdate === true) {
+                setWordsNeedUpdate(true);
+              }
+            });
+
 
             // setWords(prev => {
             //   return reorder({list: prev, startIndex: startIndex, finishIndex: finishIndex});
@@ -299,13 +346,14 @@ export default function Pages() {
             // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
             queueMicrotask(() => {
               startTransition(() => {
+                // 只是改了位置，weight 没有更新。
                 setWords(prev => reorder({list: prev, startIndex, finishIndex}));
               });
             });
           },
         }),
     );
-  }, []);
+  }, [words]);
 
   const virtualizer = useVirtualizer(useMemo(() => ({
     count: words.length,

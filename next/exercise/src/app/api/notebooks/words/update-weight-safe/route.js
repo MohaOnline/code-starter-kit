@@ -5,7 +5,6 @@ import mysql from 'mysql2/promise';
 import {LexoRank} from 'lexorank';
 
 import {prisma, jsonResponse} from '@/lib/prisma';
-
 import {authOptions} from '@/app/api/auth/[...nextauth]/route';
 
 // Database configuration
