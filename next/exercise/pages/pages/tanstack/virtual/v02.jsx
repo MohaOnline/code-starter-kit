@@ -300,8 +300,8 @@ export default function Pages() {
             if (finishIndex === 0) {
               post.position = 'top';
               post.words = [
-                {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
                 {id: words[startIndex].id, weight: words[startIndex].weight, word: words[startIndex].word},
+                {id: words[finishIndex].id, weight: words[finishIndex].weight, word: words[finishIndex].word},
               ];
             } else if (finishIndex === (words.length - 1)) {
               post.position = 'bottom';
@@ -340,8 +340,19 @@ export default function Pages() {
               //     "success": true,
               //     "wordsNeedUpdate": false
               // }
-              if (data.wordsNeedUpdate === true) {
+              if (data.wordsNeedUpdate === true || data.success === false) {
                 setWordsNeedUpdate(true);
+              } else {
+                // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
+                queueMicrotask(() => {
+                  startTransition(() => {
+                    // 只是改了位置，weight 没有更新。
+                    setWords(prev => {
+                      prev[startIndex].weight = data.weight;
+                      return reorder({list: prev, startIndex, finishIndex});
+                    });
+                  });
+                });
               }
             });
 
@@ -349,13 +360,7 @@ export default function Pages() {
             // setWords(prev => {
             //   return reorder({list: prev, startIndex: startIndex, finishIndex: finishIndex});
             // });
-            // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
-            queueMicrotask(() => {
-              startTransition(() => {
-                // 只是改了位置，weight 没有更新。
-                setWords(prev => reorder({list: prev, startIndex, finishIndex}));
-              });
-            });
+
           },
         }),
     );
