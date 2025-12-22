@@ -1,5 +1,5 @@
+import React, {useCallback} from 'react';
 import NextLink from "next/link";
-import React, {useCallback} from "react";
 import {useRouter} from 'next/navigation';
 
 import {
@@ -20,6 +20,7 @@ export function Item({note}) {
     router.push(`/notebooks/notes/v02/list?noteId=${note.id}`);
   }, [router, note.id]);
 
+  // Template Default
   return (<>
     <div className={'border p-2'} draggable="false">
       {/* Title 有部分 note 没有 title */}

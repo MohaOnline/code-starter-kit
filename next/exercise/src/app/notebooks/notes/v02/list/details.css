@@ -18,11 +18,84 @@
     margin-bottom: 0.5rem;
 }
 
+.note-details ul {
+    padding-inline-start: 20px;
+}
+
+.note-details ul > ul {
+    margin-top: 5px;
+    margin-left: 8px; /* 稍微向右偏移 */
+    padding-left: 20px; /* 给线条留出空间 */
+    border-left: 1px solid rgba(120, 210, 120, 0.5); /* 关键：左侧的竖线 */
+}
+
+.note-details ul > ul > li {
+    list-style-type: none; /* 1. 禁用原生的圈圈 */
+    position: relative;
+}
+
+.note-details ul ul li::before {
+    content: "";
+    position: absolute;
+    left: -20px; /* 连到左边的竖线上 */
+    top: 50%; /* top: 50% 将元素的顶端移到父容器正中间，translateY(-50%) */
+    transform: translateY(-50%);
+    width: 12px; /* 横线长度 */
+    height: 1px; /* 横线厚度 */
+    background-color: rgba(120, 210, 120, 0.5);
+
+    /* 无用：如果你是想根据背景颜色自动调整横线的颜色（比如在深色模式下自动变反色），可以使用 filter: invert(1) 或 mix-blend-mode: differenc*/
+    /*filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(100deg) brightness(100%) contrast(100%);*/
+}
+
+/* 2. 用 ::after 手画这个圈圈，这样你可以像素级控制它的左右位置 */
+.note-details ul > ul > li::after {
+    content: "";
+    position: absolute;
+    /* 通过调整 left 的值，你可以让它左右移动 */
+    /* -20px 是横线起点，-8px 左右差不多就在横线末端了 */
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;  /* 圈圈大小 */
+    height: 6px; /* 圈圈大小 */
+    border: 1px solid rgba(120, 210, 120, 0.5); /* 这里的 circle 样式 */
+    border-radius: 50%;
+    background-color: transparent; /* 如果想要实心，可以改颜色 */
+}
+
+/* 子项目的详细步骤 */
+.note-details ul > ul > ol {
+    margin-top: 5px;
+    margin-left: 8px; /* 稍微向右偏移 */
+    padding-left: 40px; /* 给线条留出空间 */
+    border-left: 1px solid rgba(120, 210, 120, 0.5); /* 关键：左侧的竖线 */
+}
+
+.note-details ul > ul > ol > li {
+    position: relative;
+}
+
+.note-details ul > ul > ol > li::before {
+    content: "";
+    position: absolute;
+    left: -40px; /* 连到左边的竖线上 */
+    top: 50%; /* top: 50% 将元素的顶端移到父容器正中间，translateY(-50%) */
+    transform: translateY(-50%);
+    width: 12px; /* 横线长度 */
+    height: 1px; /* 横线厚度 */
+    background-color: rgba(120, 210, 120, 0.5);
+
+    /* 无用：如果你是想根据背景颜色自动调整横线的颜色（比如在深色模式下自动变反色），可以使用 filter: invert(1) 或 mix-blend-mode: differenc*/
+    /*filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(100deg) brightness(100%) contrast(100%);*/
+}
+
 .note-details p {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
 }
 
+/* 标记可播放 SPAN */
 .note-details span[data-voice-id]:not([data-voice-id=""]) {
     /* background-color: rgba(255, 255, 50, 0.3); */
     background-color: rgba(255, 50, 50, 0.2);
@@ -36,6 +109,10 @@
 .note-details pre {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+.note-details li + pre {
+    margin-left: 6px;
 }
 
 .note-details a {
