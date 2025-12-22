@@ -1,3 +1,8 @@
+body.is-dragging,
+body.is-dragging * {
+    cursor: grabbing !important;
+}
+
 .note-details h1, .note-details h2, .note-details h3, .note-details h4,
 .note-details ol li::marker, .note-details ul li::marker {
     color: var(--foreground);

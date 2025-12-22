@@ -28,6 +28,19 @@ import {styled, lighten, darken} from '@mui/system';
 
 import {toast, ToastContainer} from "react-toastify";
 
+// @atlaskit/pragmatic-drag-and-drop
+import {draggable, dropTargetForElements, monitorForElements} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';
+import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
+import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
+import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+import {preventUnhandled} from '@atlaskit/pragmatic-drag-and-drop/prevent-unhandled';
+import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
+import {DropIndicator} from '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box';
+import {attachClosestEdge, extractClosestEdge} from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
+import {getReorderDestinationIndex} from '@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index'; // 前后移动时重算 targetIndex
+import {reorder} from '@atlaskit/pragmatic-drag-and-drop/reorder';  // 移动数组元素
+
 import {useStatus} from "@/app/lib/atoms";
 import NavTop from '@/app/lib/components/NavTop';
 import {ProcessingMask} from "@/app/lib/components/ProcessingMask";
@@ -229,32 +242,33 @@ export default function NotesList() {
 
   return (
     <>
+      <ProcessingMask/>
       <NavTop/>
       <ThemeToggle/>
+
       <div className={"flex flex-col items-center justify-center"}>
         {!status.currentNoteId &&
           <h1 className={''}>Notes</h1>}
 
-        <div className={"flex flex-row w-full justify-center"}>
+        <div className={'flex flex-col item-center xl:flex-row xl:item-start w-full justify-center gap-4'}>
           {/* Sidebar: Type Filter, Topic Selector. */}
           {!status.currentNoteId && !status.isEditing &&
-            // https://v3.tailwindcss.com/docs/width
-            <div className={'w-64'}>
+              // https://v3.tailwindcss.com/docs/width
+              <div className={'w-full xl:w-64'}>
               <Sidebar/>
-            </div>
-          }
+              </div>}
 
           {/* Note List */}
           {!status.currentNoteId &&
-            <div className={'basis-1/2'}>
-              {status.notes?.filter((note) => {
-                console.log(status.selectedTypeID, note.tid);
-                return (!status.selectedTypeID || status.selectedTypeID === note.tid);
-              }).map((note) => (
-                <Item key={note.id} note={note}/>
-              ))}
-            </div>
-          }
+              <div className={'w-full xl:basis-1/2'}>
+                {status.notes?.filter((note) => {
+                  console.log(status.selectedTypeID, note.tid);
+                  return (!status.selectedTypeID || status.selectedTypeID === note.tid);
+                }).map((note) => (
+                    <Item key={note.id} note={note}/>
+                ))}
+              </div>}
+
           {/* Certain Note is selected */}
           {status.currentNoteId &&
             <div className={'note-details p-2 ' + (!status.isEditing ? 'basis-3/5' : 'basis-5/12')}>
@@ -270,7 +284,6 @@ export default function NotesList() {
         </div>
       </div>
 
-      <ProcessingMask/>
       <ToastContainer position="top-right" newestOnTop={false} draggable
                       autoClose={3000} hideProgressBar={false} closeOnClick pauseOnFocusLoss pauseOnHover
                       rtl={false}/>
