@@ -1,6 +1,14 @@
 body.is-dragging,
-body.is-dragging * {
+body.is-dragging *,
+body.is-dragging *:hover,
+body.is-dragging *:active,
+body.is-dragging *:focus {
     cursor: grabbing !important;
+    /* -webkit-user-drag: none !important;
+    -moz-user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important; */
 }
 
 .note-details h1, .note-details h2, .note-details h3, .note-details h4,
@@ -21,6 +29,10 @@ body.is-dragging * {
 .note-details h2 {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+}
+
+.note-details > p {
+    text-indent: 2em;
 }
 
 .note-details ul {

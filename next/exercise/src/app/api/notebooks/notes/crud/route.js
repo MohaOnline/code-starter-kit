@@ -189,9 +189,11 @@ export async function POST(request) {
 
     // 预处理文本
     // 听力对话：Question
-    data.note.question = preprocessText(data.note.question);
-    data.note.note = preprocessText(data.note.note);
-    data.note.body = preprocessText(data.note.body);
+    if (data?.note?.type?.id === 11 || data?.note?.tid === 11) {
+      data.note.question = preprocessText(data.note.question);
+      data.note.note = preprocessText(data.note.note);
+      data.note.body = preprocessText(data.note.body);
+    }
 
     if (data?.action === "update") {
       await prisma.$transaction(async tx => {
@@ -272,6 +274,9 @@ export async function POST(request) {
         console.log('Inserted with ID:', insertId);
       });
       */
+    }
+    else if (data?.action === 'weight') {
+
     }
 
     console.log("note crud:" + JSON.stringify(data.note));

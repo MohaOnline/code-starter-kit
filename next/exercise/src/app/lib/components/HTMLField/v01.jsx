@@ -74,6 +74,9 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
     else if (tagName === 'uuid') {
       openTag = `${genUUID()}`;
       closeTag = '';
+    } else if (tagName === 'p') {
+      openTag = `<${tagName}>`;
+      closeTag = `。</${tagName}>`;
     }
     else {
       openTag = `<${tagName}>`;

@@ -1,6 +1,6 @@
 "use client"
 
-import React, {memo, useCallback, useEffect, useState, useMemo} from "react";
+import React, {memo, useCallback, useEffect, useState, useMemo, useRef} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
 
 import {
@@ -236,6 +236,69 @@ export default function NotesList() {
       restoreStatus(status.notes);
     }
   }, [searchParams, useRouter]);
+
+  const notesWindowRef = useRef(null);
+
+  useEffect(() => {
+    // 🛡️ 安全检查：如果 ref 还没有绑定到元素（比如正在加载中），则不执行初始化
+    // 如果是 detail 页面，不需要 monitor 拖动
+    if (!notesWindowRef.current || status.currentNoteId) {
+      return;
+    }
+
+    return combine(
+        // 👇 注册自动滚动
+        autoScrollForElements({
+          // element: notesWindowRef.current, // 指定滚动的容器，比如 tanstack inner DIV element。
+          element: document.body, // Window 滚动
+        }),
+
+        // https://atlassian.design/components/pragmatic-drag-and-drop/core-package/monitors/
+        monitorForElements({
+          canMonitor({initial, source}) {
+            console.log('canMonitor:', '(initial)', initial, '(source)', source);
+            return true;
+          },
+
+          onDrop({location, source}) {
+            console.log('onDrop:', '(location)', location, '(source)', source);
+
+          //   const target = location.current.dropTargets[0];
+          //   if (!target) return;
+          //
+          //   // DB check
+          //   fetch('/api/notebooks/words/english', {
+          //     method: 'POST',
+          //     headers: {
+          //       'Content-Type': 'application/json',
+          //     },
+          //     body: JSON.stringify(post),
+          //   }).then((response) => response.json()).then((data) => {
+          //     console.log('data:', data);
+          //
+          //     if (data.wordsNeedUpdate === true || data.success === false) {
+          //       setWordsNeedUpdate(true);
+          //     }
+          //     else {
+          //       // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
+          //       queueMicrotask(() => {
+          //         startTransition(() => {
+          //           // 只是改了位置，weight 没有更新。
+          //           setWords(prev => {
+          //             prev[startIndex].weight = data.weight;
+          //             return reorder({list: prev, startIndex, finishIndex});
+          //           });
+          //         });
+          //       });
+          //     }
+          //   });
+          }, // onDrop
+
+        }),
+    );
+  }, [status.notes, status.currentNoteId]);
+
+  // 需优化，load 数据后可以为空。
   if (status.notes?.length === 0) {
     return <div>Loading...</div>;
   }
@@ -260,7 +323,7 @@ export default function NotesList() {
 
           {/* Note List */}
           {!status.currentNoteId &&
-              <div className={'w-full xl:basis-1/2'}>
+              <div ref={notesWindowRef} className={'w-full xl:basis-1/2'}>
                 {status.notes?.filter((note) => {
                   console.log(status.selectedTypeID, note.tid);
                   return (!status.selectedTypeID || status.selectedTypeID === note.tid);
