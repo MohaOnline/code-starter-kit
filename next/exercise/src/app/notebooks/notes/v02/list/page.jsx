@@ -263,9 +263,29 @@ export default function NotesList() {
           onDrop({location, source}) {
             console.log('onDrop:', '(location)', location, '(source)', source);
 
-          //   const target = location.current.dropTargets[0];
-          //   if (!target) return;
-          //
+            const target = location.current.dropTargets[0];
+            if (!target) return;
+
+            let startIndex = source.data?.item?.index;
+            let indexOfTarget = target.data?.item?.index;
+            if (startIndex === undefined || indexOfTarget === undefined || startIndex === indexOfTarget) return;
+
+            // 提取目标边缘信息 (top/bottom)
+            const closestEdgeOfTarget = extractClosestEdge(target.data);
+            const finishIndex = getReorderDestinationIndex({
+              startIndex,
+              indexOfTarget,
+              closestEdgeOfTarget,
+              axis: 'vertical',
+            });
+
+            console.dir({startIndex, indexOfTarget, finishIndex, closestEdgeOfTarget});
+
+            if (startIndex === finishIndex) {
+              return;
+            }
+
+
           //   // DB check
           //   fetch('/api/notebooks/words/english', {
           //     method: 'POST',
@@ -280,7 +300,7 @@ export default function NotesList() {
           //       setWordsNeedUpdate(true);
           //     }
           //     else {
-          //       // ✅ 关键：把状态更新延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
+            //       // ✅ 关键：把状态更新(state setFu)延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
           //       queueMicrotask(() => {
           //         startTransition(() => {
           //           // 只是改了位置，weight 没有更新。
@@ -324,11 +344,11 @@ export default function NotesList() {
           {/* Note List */}
           {!status.currentNoteId &&
               <div ref={notesWindowRef} className={'w-full xl:basis-1/2'}>
-                {status.notes?.filter((note) => {
+                {status.notes?.filter((note, index) => {
                   console.log(status.selectedTypeID, note.tid);
                   return (!status.selectedTypeID || status.selectedTypeID === note.tid);
-                }).map((note) => (
-                    <Item key={note.id} note={note}/>
+                }).map((note, index) => (
+                  <Item key={note.id} note={note} item={{index}}/>
                 ))}
               </div>}
 
