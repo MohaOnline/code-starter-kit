@@ -1,6 +1,6 @@
 "use client"
 
-import React, {memo, useCallback, useEffect, useState, useMemo, useRef} from 'react';
+import React, {memo, useCallback, useEffect, useState, useMemo, useRef, startTransition} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
 
 import {
@@ -172,6 +172,7 @@ export default function NotesList() {
   //   }
   // }, [status.note?.title]);
 
+  // 选中的 notes
   const [selectedTypeNotes, setSelectedTypeNotes] = useState(null);
 
   useEffect(() => {
@@ -295,6 +296,39 @@ export default function NotesList() {
               return;
             }
 
+            let post = {position: '', notes: []};
+
+            if (finishIndex === 0) {
+              post.position = 'top';
+              post.notes = [
+                {id: selectedTypeNotes[startIndex].id, weight: selectedTypeNotes[startIndex].weight, note: selectedTypeNotes[startIndex]},
+                {id: selectedTypeNotes[finishIndex].id, weight: selectedTypeNotes[finishIndex].weight, note: selectedTypeNotes[finishIndex]},
+              ];
+            }
+            else if (finishIndex === selectedTypeNotes.length - 1) {
+              post.position = 'bottom';
+              post.notes = [
+                {id: selectedTypeNotes[startIndex].id, weight: selectedTypeNotes[startIndex].weight, note: selectedTypeNotes[startIndex]},
+                {id: selectedTypeNotes[finishIndex].id, weight: selectedTypeNotes[finishIndex].weight, note: selectedTypeNotes[finishIndex]},
+              ];
+            }
+            else {
+              post.position = 'between';
+              if (startIndex < finishIndex) {
+                post.notes = [
+                  {id: selectedTypeNotes[startIndex].id, weight: selectedTypeNotes[startIndex].weight, note: selectedTypeNotes[startIndex]},
+                  {id: selectedTypeNotes[finishIndex].id, weight: selectedTypeNotes[finishIndex].weight, note: selectedTypeNotes[finishIndex]},
+                  {id: selectedTypeNotes[finishIndex + 1].id, weight: selectedTypeNotes[finishIndex + 1].weight, note: selectedTypeNotes[finishIndex + 1]},
+                ];
+              }
+              else {
+                post.notes = [
+                  {id: selectedTypeNotes[startIndex].id, weight: selectedTypeNotes[startIndex].weight, note: selectedTypeNotes[startIndex]},
+                  {id: selectedTypeNotes[finishIndex - 1].id, weight: selectedTypeNotes[finishIndex - 1].weight, note: selectedTypeNotes[finishIndex - 1]},
+                  {id: selectedTypeNotes[finishIndex].id, weight: selectedTypeNotes[finishIndex].weight, note: selectedTypeNotes[finishIndex]},
+                ];
+              }
+            }
 
           //   // DB check
           //   fetch('/api/notebooks/words/english', {
@@ -310,23 +344,23 @@ export default function NotesList() {
           //       setWordsNeedUpdate(true);
           //     }
           //     else {
-            //       // ✅ 关键：把状态更新(state setFu)延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
-          //       queueMicrotask(() => {
-          //         startTransition(() => {
-          //           // 只是改了位置，weight 没有更新。
-          //           setWords(prev => {
-          //             prev[startIndex].weight = data.weight;
-          //             return reorder({list: prev, startIndex, finishIndex});
-          //           });
-          //         });
-          //       });
+            // ✅ 关键：把状态更新(state setFu)延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
+            queueMicrotask(() => {
+              startTransition(() => {
+                // 只是改了位置，weight 没有更新。
+                setSelectedTypeNotes(prev => {
+                  // prev[startIndex].weight = data.weight;
+                  return reorder({list: prev, startIndex, finishIndex});
+                });
+              });
+            });
           //     }
           //   });
           }, // onDrop
 
         }),
     );
-  }, [status.notes, status.currentNoteId]);
+  }, [status.notes, status.currentNoteId, selectedTypeNotes]);
 
   // 需优化，load 数据后可以为空。
   if (status.notes?.length === 0) {
@@ -354,10 +388,13 @@ export default function NotesList() {
           {/* Note List */}
           {!status.currentNoteId &&
               <div ref={notesWindowRef} className={'w-full xl:basis-1/2'}>
-                {status.notes?.filter((note, index) => {
-                  console.log(status.selectedTypeID, note.tid);
-                  return (!status.selectedTypeID || status.selectedTypeID === note.tid);
-                }).map((note, index) => (
+                {/*{status.notes?.filter((note, index) => {*/}
+                {/*  console.log(status.selectedTypeID, note.tid);*/}
+                {/*  return (!status.selectedTypeID || status.selectedTypeID === note.tid);*/}
+                {/*}).map((note, index) => (*/}
+                {/*  <Item key={note.id} note={note} item={{index}}/>*/}
+                {/*))}*/}
+                {selectedTypeNotes?.map((note, index) => (
                   <Item key={note.id} note={note} item={{index}}/>
                 ))}
               </div>}
