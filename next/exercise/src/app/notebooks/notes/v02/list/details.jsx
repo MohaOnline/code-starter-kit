@@ -140,7 +140,7 @@ export function Details(props) {
             <button><SkipPreviousIcon/><PlayArrowIcon/><PauseIcon/><SkipNextIcon/><SyncIcon/><SettingsIcon/><SearchIcon/></button>
           </div>
           <div className={` text-center grow`}>Loop:</div>
-          <div className={' justify-self-end'}>
+          <div className={`gap-2 justify-self-end flex flex-row`}>
             {!status.isEditing && // 编辑的时候不需要操作按钮，整个 Details 变成预览。
               <Button sx={{
                 backgroundColor: 'success.light', // @see https://mui.com/material-ui/customization/default-theme/
@@ -271,7 +271,7 @@ export function Details(props) {
 │    │  width: 150         │          │
 │    │  height: 30         │          │
 │    │                     │          │
-│    │  <span>文本</span>   │          │
+│    │  <span>文本</span>  │          │
 │    │                     │          │
 │    └─────────────────────┘          │
 │         ↑                           │

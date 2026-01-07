@@ -160,7 +160,7 @@ body.is-dragging *:focus {
 .dark .hljs {
     /*color: #abb2bf;*/
     color: #78d278;
-    background: #282c34
+    /*background: #282c34*/
 }
 .dark .hljs-keyword,
 .dark .hljs-operator {

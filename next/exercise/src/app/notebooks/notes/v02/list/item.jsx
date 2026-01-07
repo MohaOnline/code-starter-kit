@@ -50,8 +50,8 @@ export function Item({item, note}) {
         // https://atlassian.design/components/pragmatic-drag-and-drop/core-package/adapters/element/about#draggable
         draggable({
           canDrag(args) {
-            console.log('canDrag:', args);
-            return true;
+            console.log('canDrag:', args, status.selectedTypeID);
+            return !!status.selectedTypeID; // 强制返回 true / false
           },
           element: draggerRef.current, // 只有点击这个手柄才能拖动
           onDragStart() {
@@ -146,7 +146,7 @@ export function Item({item, note}) {
         </div>
       }
       {/* gap 两个 item 中间的距离：有 border 所以正好 2px */}
-      {indicatorEdge && (<DropIndicator edge={indicatorEdge} gap={'1px'}/>)}
+      {indicatorEdge && (<DropIndicator edge={indicatorEdge} gap={'2px'}/>)}
     </div>
   </>);
 }
