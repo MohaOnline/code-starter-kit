@@ -121,7 +121,7 @@ export function Item({item, note}) {
     <div ref={containerRef} className={'relative border p-2'} draggable="false">
       {/* Title。 有部分 note 没有 title */}
       {(note.tid === '999' || note.tid === '997' || note.tid === '61' || note.tid === '31' || note.tid === '21') &&
-          <Typography ref={draggerRef} className={'cursor-grab active:cursor-grabbing flex justify-between'} variant="h6" gutterBottom>
+          <Typography ref={draggerRef} className={`${status.selectedTypeID ? 'cursor-grab active:cursor-grabbing' : ''} flex justify-between`} variant="h6" gutterBottom>
             {note.title}
             <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button>
           </Typography>
@@ -129,7 +129,8 @@ export function Item({item, note}) {
 
       {/* ID 英语听力还不知道如何显示 */}
       {note.tid !== '999' && note.tid !== '997' && note.tid !== '61' && note.tid !== '31' && note.tid !== '21' && note.tid !== '16' &&
-          <Typography ref={draggerRef} className={'cursor-grab active:cursor-grabbing flex justify-between'} variant="h6" gutterBottom dangerouslySetInnerHTML={{__html: note.id}}/>
+          <Typography ref={draggerRef} className={`${status.selectedTypeID ? 'cursor-grab active:cursor-grabbing' : ''} flex justify-between`} variant="h6" gutterBottom
+                      dangerouslySetInnerHTML={{__html: note.id}}/>
       }
 
       {/* body_script */}
