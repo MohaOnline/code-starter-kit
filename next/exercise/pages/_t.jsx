@@ -45,7 +45,7 @@ import {draggable, dropTargetForElements, monitorForElements} from '@atlaskit/pr
 import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';
 import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
 import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
-import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+import {autoScrollForElements, autoScrollWindowForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
 import {preventUnhandled} from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 import {DropIndicator} from '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box';

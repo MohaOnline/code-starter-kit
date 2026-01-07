@@ -110,7 +110,7 @@ export function Item({item, note}) {
         }),
 
     );
-  }, []);
+  }, [status.selectedTypeID]);
 
   const click2Details = useCallback(() => {
     router.push(`/notebooks/notes/v02/list?noteId=${note.id}`);

@@ -33,7 +33,7 @@ import {draggable, dropTargetForElements, monitorForElements} from '@atlaskit/pr
 import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';
 import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
 import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
-import {autoScrollForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+import {autoScrollForElements, autoScrollWindowForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
 import {preventUnhandled} from '@atlaskit/pragmatic-drag-and-drop/prevent-unhandled';
 import {combine} from '@atlaskit/pragmatic-drag-and-drop/combine';
 import {DropIndicator} from '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator/box';
@@ -172,6 +172,14 @@ export default function NotesList() {
   //   }
   // }, [status.note?.title]);
 
+  const [selectedTypeNotes, setSelectedTypeNotes] = useState(null);
+
+  useEffect(() => {
+    if (status.selectedTypeID || status.notes?.length > 0) {
+      const selectedTypeNotes = status.notes.filter((note) => note.tid === status.selectedTypeID);
+      setSelectedTypeNotes(selectedTypeNotes);
+    }
+  }, [status.selectedTypeID, status.notes?.length]);
 
   // 加载所有 notes 处理 URL 参数
   useEffect(() => {
@@ -242,16 +250,18 @@ export default function NotesList() {
   useEffect(() => {
     // 🛡️ 安全检查：如果 ref 还没有绑定到元素（比如正在加载中），则不执行初始化
     // 如果是 detail 页面，不需要 monitor 拖动
-    if (!notesWindowRef.current || status.currentNoteId) {
+    if (status.notes?.length === 0 || !notesWindowRef.current || status.currentNoteId) {
       return;
     }
 
     return combine(
         // 👇 注册自动滚动
-        autoScrollForElements({
-          // element: notesWindowRef.current, // 指定滚动的容器，比如 tanstack inner DIV element。
-          element: document.body, // Window 滚动
-        }),
+        // autoScrollForElements({
+        //   // element: notesWindowRef.current, // 指定滚动的容器，比如 tanstack inner DIV element。
+        //   element: document.body, // Window 滚动
+        // }),
+        // https://atlassian.design/components/pragmatic-drag-and-drop/optional-packages/auto-scroll/about
+        autoScrollWindowForElements(), // Window 滚动用这个 API
 
         // https://atlassian.design/components/pragmatic-drag-and-drop/core-package/monitors/
         monitorForElements({
