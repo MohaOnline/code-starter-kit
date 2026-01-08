@@ -176,9 +176,12 @@ export default function NotesList() {
   const [selectedTypeNotes, setSelectedTypeNotes] = useState(null);
 
   useEffect(() => {
-    if (status.selectedTypeID || status.notes?.length > 0) {
+    if (status.selectedTypeID && status.notes?.length > 0) {
       const selectedTypeNotes = status.notes.filter((note) => note.tid === status.selectedTypeID);
       setSelectedTypeNotes(selectedTypeNotes);
+    }
+    else if (status.notes?.length > 0) {
+      setSelectedTypeNotes(status.notes);
     }
   }, [status.selectedTypeID, status.notes?.length]);
 
@@ -347,10 +350,21 @@ export default function NotesList() {
             // ✅ 关键：把状态更新(state setFu)延后，避免和虚拟列表滚动/测量的同步更新撞在同一 render/commit 周期里
             queueMicrotask(() => {
               startTransition(() => {
+                const startIndexNotes = status.notes.findIndex(note => note.id === selectedTypeNotes[startIndex].id);
+                const finishIndexNotes = status.notes.findIndex(note => note.id === selectedTypeNotes[finishIndex].id);
+
                 // 只是改了位置，weight 没有更新。
                 setSelectedTypeNotes(prev => {
-                  // prev[startIndex].weight = data.weight;
+                  // prev[startIndex].weight = data.weight; // 把原来的 weight 先更新掉
                   return reorder({list: prev, startIndex, finishIndex});
+                });
+
+                setStatus(prev => {
+                  // prev.notes[startIndexNotes].weight = data.weight;
+                  return {
+                    ...prev,
+                    notes: reorder({list: prev.notes, startIndex: startIndexNotes, finishIndex: finishIndexNotes}),
+                  };
                 });
               });
             });

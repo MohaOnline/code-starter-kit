@@ -35,7 +35,7 @@ export function Item({item, note}) {
   // draggable
   const draggerRef = useRef(null);
   const [isSelfDragging, setIsSelfDragging] = useState(false);
-  const itemData = useMemo(() => ({note, item}), [note]);
+  const itemData = useMemo(() => ({note, item}), [note, item.index]);
 
   // dropTargets
   const [indicatorEdge, setIndicatorEdge] = useState(null); // top / bottom
@@ -110,7 +110,7 @@ export function Item({item, note}) {
         }),
 
     );
-  }, [status.selectedTypeID]);
+  }, [status.selectedTypeID, itemData]);
 
   const click2Details = useCallback(() => {
     router.push(`/notebooks/notes/v02/list?noteId=${note.id}`);
