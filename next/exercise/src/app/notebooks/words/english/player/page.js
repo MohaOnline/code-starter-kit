@@ -1090,56 +1090,56 @@ export default function Page() {
         {/*<span className={"put_top"} onClick={handlePutTop}>*/}
         {/*  <PiRocket/>*/}
         {/*</span>*/}
-        {false /* TODO: 以后改进，先隐藏 */ && (<>
+        {status.audioConfig?.priorities?.length === 2 && status.audioConfig?.priorities[0] === 1 && status.audioConfig?.priorities[1] === 5 /* TODO: 以后改进，先隐藏 */ && (<>
         <span className={"put_previous"} onClick={handlePutPrevious}>
           {" "}
           <GiPlayerPrevious/>{" "}
         </span>
         <span className={"put_next"} onClick={handlePutNext}>
           {" "}
-          <GiPlayerNext/>{" "}
+          <GiPlayerNext/>
         </span>
         </>)}
         <form className={"inline search-form"}
               onKeyDown={event => {
-                if (event.key !== "Enter") {
-                  return
+                if (event.key !== 'Enter') {
+                  return;
                 }
-            event.preventDefault();
+                event.preventDefault();
                 console.log(event.shiftKey);
 
-            if (status.searchText && status.words?.length > 1) {
-              let index = 0;
-              for (index = 1; index < status.words.length; index++) {
-                let i = index + status.currentWordIndex;
-                if (i >= status.words.length) {
-                  i = i - status.words.length;
-                }
-                if (event?.shiftKey) {
-                  i = -index + status.currentWordIndex;
-                  if (i < 0) {
-                    i = i + status.words.length;
+                if (status.searchText && status.words?.length > 1) {
+                  let index = 0;
+                  for (index = 1; index < status.words.length; index++) {
+                    let i = index + status.currentWordIndex;
+                    if (i >= status.words.length) {
+                      i = i - status.words.length;
+                    }
+                    if (event?.shiftKey) {
+                      i = -index + status.currentWordIndex;
+                      if (i < 0) {
+                        i = i + status.words.length;
+                      }
+                      console.log(i);
+                    }
+                    const word = status.words[i];
+                    if (
+                        word.word.toLowerCase().includes(status.searchText.toLowerCase()) ||
+                        word.translation.toLowerCase().includes(status.searchText.toLowerCase()) ||
+                        i + 1 + '' === status.searchText
+                    ) {
+                      setStatus({
+                        ...status,
+                        currentWordIndex: i,
+                      });
+                      break;
+                    }
                   }
-                  console.log(i);
+                  if (index === status.words.length) {
+                    toast.error('Not found.');
+                  }
                 }
-                const word = status.words[i];
-                if (
-                  word.word.toLowerCase().includes(status.searchText.toLowerCase()) ||
-                  word.translation.toLowerCase().includes(status.searchText.toLowerCase()) ||
-                  i + 1 + "" === status.searchText
-                ) {
-                  setStatus({
-                    ...status,
-                    currentWordIndex: i,
-                  });
-                  break;
-                }
-              }
-              if (index === status.words.length) {
-                toast.error("Not found.");
-              }
-            }
-          }}
+              }}
         >
           <input id={"search-input"}
                  className={"focus:outline-none border"}
