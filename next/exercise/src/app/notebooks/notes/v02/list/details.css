@@ -31,7 +31,8 @@ body.is-dragging *:focus {
     margin-bottom: 0.5rem;
 }
 
-.note-details > p {
+.note-details > p,
+.note-details > article > p {
     text-indent: 2em;
 }
 

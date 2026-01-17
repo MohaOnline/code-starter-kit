@@ -1,4 +1,5 @@
 import React, {memo, useCallback, useRef, useEffect} from "react";
+import {FaBan, FaSave} from 'react-icons/fa';
 import NextLink from "next/link";
 import {useRouter} from 'next/navigation';
 
@@ -79,10 +80,10 @@ export function Editor({note}) {
   }, [status]);
 
   const Operations = memo(() => (
-    <div className={'gap-2 flex flex-row justify-end'}>
-      <Button ref={saveButtonRef} variant="contained" onClick={updateNote}>Save</Button>
+      <div className={'gap-2 flex flex-row justify-end sticky top-0 z-20'}>
+        <Button ref={saveButtonRef} variant="contained" onClick={updateNote}><FaSave/></Button>
       {/* @see https://mui.com/material-ui/customization/palette/#default-colors */}
-      <Button ref={cancelButtonRef} variant="outlined" onClick={cancelEditing} color="error">Cancel</Button>
+        <Button ref={cancelButtonRef} variant="outlined" onClick={cancelEditing} color="error"><FaBan/></Button>
     </div>)
   )
 
@@ -117,6 +118,8 @@ export function Editor({note}) {
 
   return (
     <>
+      <Operations/>
+
       <Stack paddingTop={2} paddingBottom={2} gap={2}>
         {/* title */}
         <TextField id="outlined-basic" label="Title" variant="outlined" value={note.title} onChange={(e) => {
@@ -148,8 +151,6 @@ export function Editor({note}) {
           </Panel>
         }
       </Stack>
-
-      <Operations/>
     </>
   );
 }

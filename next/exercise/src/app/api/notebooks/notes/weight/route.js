@@ -47,6 +47,7 @@ export async function POST(request) {
 
     if ((data.position === 'top' || data.position === 'bottom') && rows.length !== 2
         || data.position === 'between' && rows.length !== 3) {
+      console.log('rows.length', rows.length);
       return jsonResponse({success: false, notesNeedUpdate: true}, 200);
     }
 

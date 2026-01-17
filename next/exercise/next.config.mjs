@@ -36,6 +36,7 @@ const nextConfig = {
   experimental: { serverActions: { bodySizeLimit: "100mb" } },
   output: "standalone",
   transpilePackages: [
+    // '.prisma/client',
     '@prisma/client',
     '@atlaskit/pragmatic-drag-and-drop-react-drop-indicator',
     'prisma',

@@ -334,7 +334,7 @@ export default function NotesList() {
             }
 
             // DB check: src/app/api/notebooks/notes/weight/route.js
-            fetch('/api/notebooks/notes/weight', {
+            fetch('/api/notebooks/weight', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -343,7 +343,7 @@ export default function NotesList() {
             }).then((response) => response.json()).then((data) => {
               console.log('data:', data);
 
-              if (data.wordsNeedUpdate === true || data.success === false) {
+              if (data.notesNeedUpdate === true || data.success === false) {
                 // setWordsNeedUpdate(true);
                 console.log('weight update failed.');
               }
