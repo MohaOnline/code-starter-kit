@@ -2,7 +2,7 @@
 
 import {getServerSession} from 'next-auth';
 import {prisma, jsonResponse} from '@/lib/prisma';
-import {Prisma} from '@/prisma/client';
+import {Prisma} from '@/prisma/client'; // 要重启 next 应用。
 
 import {authOptions} from '@/app/api/auth/[...nextauth]/route';
 import {getWeight} from '@/lib/utils';
@@ -25,7 +25,7 @@ export async function POST(request) {
     let related_table = '';
     let relate_data_name_in_json = '';
     if (data.notes) { // 如果有 notes 数据就当 notes 处理
-      related_table = Prisma.raw(`notebooks_notes`);
+      related_table = 'notebooks_notes';
       relate_data_name_in_json = 'notes';
     }
     else {
@@ -36,18 +36,18 @@ export async function POST(request) {
     if (data.position === 'top' || data.position === 'bottom') {
       rows = await prisma.$queryRaw`
           SELECT id
-          FROM ${related_table}
-          WHERE id = ${data[relate_data_name_in_json][0].id} AND weight = ${data[relate_data_name_in_json][0].weight}
-             OR id = ${data[relate_data_name_in_json][1].id} AND weight = ${data[relate_data_name_in_json][1].weight}
+          FROM ${Prisma.raw(related_table)}
+          WHERE (id = ${data[relate_data_name_in_json][0].id} AND weight = ${data[relate_data_name_in_json][0].weight})
+             OR (id = ${data[relate_data_name_in_json][1].id} AND weight = ${data[relate_data_name_in_json][1].weight})
       `;
     }
     else {
       rows = await prisma.$queryRaw`
           SELECT id
-          FROM ${related_table}
-          WHERE id = ${data[relate_data_name_in_json][0].id} AND weight = ${data[relate_data_name_in_json][0].weight}
-             OR id = ${data[relate_data_name_in_json][1].id} AND weight = ${data[relate_data_name_in_json][1].weight}
-             OR id = ${data[relate_data_name_in_json][2].id} AND weight = ${data[relate_data_name_in_json][2].weight}
+          FROM ${Prisma.raw(related_table)}
+          WHERE (id = ${data[relate_data_name_in_json][0].id} AND weight = ${data[relate_data_name_in_json][0].weight})
+             OR (id = ${data[relate_data_name_in_json][1].id} AND weight = ${data[relate_data_name_in_json][1].weight})
+             OR (id = ${data[relate_data_name_in_json][2].id} AND weight = ${data[relate_data_name_in_json][2].weight})
       `;
     }
 
@@ -73,7 +73,7 @@ export async function POST(request) {
     console.log('weight: ' + weight);
 
     // result === 1;
-    result = await prisma.$executeRaw`UPDATE ${related_table}
+    result = await prisma.$executeRaw`UPDATE ${Prisma.raw(related_table)}
                                       SET weight = ${weight}
                                       WHERE id = ${data[relate_data_name_in_json][0].id}`;
 
