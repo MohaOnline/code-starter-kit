@@ -1309,7 +1309,7 @@ export default function Page() {
 
           <div className="fixed inset-0 flex items-center justify-center p-4 ">
             {/* Scrollable */}
-            <Dialog.Panel className="bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
+            <Dialog.Panel className="bg-white dark:bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
               <div className={"flex"}>
                 <input
                   type="text"
@@ -1385,7 +1385,7 @@ export default function Page() {
                 if (translation.deleted) return null;
 
                 return (
-                  <div key={index} className="translation mt-2 bg-gray-950/70">
+                  <div key={index} className="translation mt-2 bg-gray-100 dark:bg-gray-950/70">
                     <div className={"flex items-center gap-2"}>
                       <input name={"note-word-id"} type={"hidden"} value={translation.id || ""}/>
                       <input name={"notebook-id"} type={"hidden"} value={translation.nid || ""}/>
