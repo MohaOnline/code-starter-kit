@@ -1,5 +1,7 @@
 'use client';
 
+// ①②③④⑤⑥⑦⑧⑨⑩
+
 import React, {useEffect, useState} from 'react';
 import {FaPlay, FaPause} from 'react-icons/fa';
 
@@ -55,21 +57,35 @@ export default function Words() {
 
   return (
       <React.Fragment>
-        <div>{list[status.currentWordIndex].name}</div>
-        <div>{list[status.currentWordIndex].trans.join(', ')}</div>
-        rɪˈsɔːs
-        <div onClick={(event) => {
-          event.key = ' ';
-          keyDownCallback(event);
-        }}>{status.isPlaying ?
-            <FaPause/> : <FaPlay/>}</div>
+        <div className="flex h-screen w-screen
+              flex-col
+              orientation-landscape:flex-row
+              lg:flex-row"
+        >
+          {/* 主内容 */}
+          <div className="flex-1 flex flex-col">
+            <div className="flex-1 border-b">top</div>
+            <div className="flex-1 border-b">middle</div>
+            <div className="flex-1">bottom</div>
+          </div>
 
-        <p>
-          <span data-type="sentence">红海早过了。</span>
-          <span data-type="sentence">船在印度洋面上开驶着。</span>
-          <span
-              data-type="sentence">但是太阳依然不饶人地迟落早起侵占去大部分的夜。</span>
-        </p>
+          {/* 工具条 */}
+          <div className="
+          flex shrink-0
+          flex-row items-center justify-around
+          h-16 w-full
+          orientation-landscape:flex-col
+          orientation-landscape:w-16 orientation-landscape:h-full
+          lg:flex-col lg:w-16 lg:h-full
+          bg-slate-900 text-white
+        "
+          >
+            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">A</button>
+            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">B</button>
+            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">C</button>
+          </div>
+        </div>
+
       </React.Fragment>
   );
 }

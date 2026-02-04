@@ -23,7 +23,7 @@ import {
   Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon
 } from '@mui/icons-material';
 
-import he from 'he'
+import he from 'he'; //
 import hljs from 'highlight.js';
 
 // Own libraries and css.
@@ -358,9 +358,10 @@ export function Details(props) {
     <Operations/>
 
     {/* question */}
-    {(note.type_id === '61' || note.tid === '61' ||     // 数学笔记
-        note.type_id === '31' || note.tid === '31' ||   // 物理笔记
-        note.type_id === '21' || note.tid === '21') &&  // 语文作文
+    {(note.type_id === '61' || note.tid === '61' ||         // 数学笔记
+            note.type_id === '16' || note.tid === '16' ||   // 英语翻译：单句
+            note.type_id === '31' || note.tid === '31' ||   // 物理笔记
+            note.type_id === '21' || note.tid === '21') &&  // 语文作文
       <>
         <article key={`question: ${note.id}`} contentEditable={status.isEditing} ref={questionArticleRef}
                  className={`prose text-inherit dark:text-primary m-auto max-w-4xl ${status.isEditing ? 'cursor-text transition-colors' : ''}`}

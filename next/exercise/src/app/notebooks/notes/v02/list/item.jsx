@@ -142,10 +142,12 @@ export function Item({item, note}) {
       {/* question */}
       {note.tid === '16' &&
         <div className={``}>
-          <Typography variant="h6" dangerouslySetInnerHTML={{__html: `翻译：<span>[ID: ${note.id}]</span> ${note.question}`}}/>
+          <Typography ref={draggerRef} variant="h6" dangerouslySetInnerHTML={{__html: `翻译：<span>[ID: ${note.id}]</span> ${note.question}`}}/>
           <Button className={'absolut mr-0'} size="small" onClick={click2Details}>Show</Button>
         </div>
       }
+      {/* Answer */}
+
       {/* gap 两个 item 中间的距离：有 border 所以正好 2px */}
       {indicatorEdge && (<DropIndicator edge={indicatorEdge} gap={'2px'}/>)}
     </div>

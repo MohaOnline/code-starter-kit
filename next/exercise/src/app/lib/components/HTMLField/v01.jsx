@@ -74,7 +74,12 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
     else if (tagName === 'uuid') {
       openTag = `${genUUID()}`;
       closeTag = '';
-    } else if (tagName === 'p') {
+    }
+    else if (tagName === 'p') {
+      openTag = `<${tagName}>`;
+      closeTag = `。</${tagName}>`;
+    }
+    else if (tagName.startsWith('h')) {
       openTag = `<${tagName}>`;
       closeTag = `。</${tagName}>`;
     }
@@ -146,6 +151,7 @@ export default function HTMLField({ content, onChange, cursorPosition }) {
     <>
       <Stack direction="row" spacing={1} className={'sticky toolbar top-0 z-10 dark:bg-black bg-white p-2 border'}>
         <Button variant="outlined" size="small" onClick={() => insertHtmlTag('h2')}>h2</Button>
+        <Button variant="outlined" size="small" onClick={() => insertHtmlTag('h3')}>h3</Button>
         <Button variant="outlined" size="small" onClick={() => insertHtmlTag('ol')}>ol</Button>
         <Button variant="outlined" size="small" onClick={() => insertHtmlTag('ul')}>ul</Button>
         <Button variant="outlined" size="small" onClick={() => insertHtmlTag('li')}>li</Button>
