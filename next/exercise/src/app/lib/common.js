@@ -115,8 +115,24 @@ export const handleKeyDown = (event, status, setStatus) => {
   } else if (event.key === ' ') {
     console.debug('play pronunciation');
 
+    // 修正错误的起背单词序号：
+    let wordStartIndex = status.audioConfig.wordStartIndex - 1;
+    // 长度够长的情况下，current 光标跑去了起始光标之前
+    // 全部可背单词长度从当前需要开始背但不够背，current 光标跑去了能跑到的位置之后
+    if (!status.isPlaying && (wordStartIndex + status.audioConfig.batch_quantity <= status.words.length
+        && status.currentWordIndex < wordStartIndex
+        || wordStartIndex + status.audioConfig.batch_quantity > status.words.length
+        && status.currentWordIndex > (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex)))) {
+
+      wordStartIndex = status.currentWordIndex + 1;
+    }
+    else {
+      wordStartIndex += 1;
+    }
+
     setStatus({
       ...status, // 复制现有状态
+      audioConfig: {...status.audioConfig, wordStartIndex},
       playedWordCounter: 1,
       isPlaying: !status.isPlaying,
     });

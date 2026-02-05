@@ -153,7 +153,7 @@ export default function Page() {
 
   // 打印单词函数
   const handlePrint = () => {
-    const startIndex = status.audioConfig.wordStartIndex;
+    const startIndex = status.audioConfig.wordStartIndex - 1;
     const quantity = status.audioConfig.batch_quantity;
     const wordsToPrint = status.words.slice(startIndex, startIndex + quantity);
 
@@ -202,9 +202,9 @@ export default function Page() {
           }
           th, td {
             border: 1px solid #333;
-            padding: 8px;
+            padding: 4px;
             text-align: left;
-            font-size: 14px;
+            font-size: 18px;
           }
           th {
             background-color: #f0f0f0;
@@ -216,16 +216,15 @@ export default function Page() {
         </style>
       </head>
       <body>
-        <h2>单词列表（第 ${startIndex + 1} - ${startIndex + wordsToPrint.length} 个）</h2>
         <table>
           <thead>
             <tr>
-              <th>序号</th>
+              <th>#</th>
               <th>音标</th>
               <th>拼写</th>
-              <th>词性</th>
-              <th>中文意思</th>
-              <th>笔记</th>
+              <th>P</th>
+              <th>中文</th>
+              <th>Notes</th>
             </tr>
           </thead>
           <tbody>
@@ -419,9 +418,10 @@ export default function Page() {
       }
 
       // 分批模式：播放指定数量后跳到下一批
+      const startWordIndex = status.audioConfig.wordStartIndex - 1;
 
       // 当前批次还没播完
-      if (prev.playedWordCounter < batchSize) {
+      if ((prev.playedWordCounter) < batchSize) {
         const nextIndex = (prev.currentWordIndex + 1) % totalWords;
         return {
           ...prev,
@@ -1353,7 +1353,7 @@ export default function Page() {
             ...prev,
             audioConfig: {
               ...prev.audioConfig,
-              wordStartIndex: prev.currentWordIndex,
+              wordStartIndex: prev.currentWordIndex + 1,
             },
             isPrintDialogOpen: true,
           }));
@@ -1990,7 +1990,7 @@ export default function Page() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Label className="whitespace-nowrap">起始单词编号: </Label>
+                  <Label className="whitespace-nowrap">起背单词编号: </Label>
                   <input type="number" min={0} step={1}
                       className="w-24 border rounded px-2 py-1"
                       value={status.audioConfig.wordStartIndex ?? 0}
