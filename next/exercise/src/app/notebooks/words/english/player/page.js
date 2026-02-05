@@ -49,6 +49,7 @@ const DEFAULT_AUDIO_CONFIG = {
   speed: 100,  // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
   batch_quantity: 100, // 批量播放数量
   priorities: [1, 5],
+  wordStartIndex: 0,
   // 英文设置
   english: {
     repeatCount: 1, // 发音次数 0-5
@@ -79,6 +80,7 @@ const loadAudioConfig = () => {
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
         batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
         priorities: parsed.priorities ?? [1, 5],  // word priority
+        wordStartIndex: 0,
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
@@ -1261,16 +1263,13 @@ export default function Page() {
       {/*/>*/}
 
       <Transition show={status.isDialogOpen}>
-        <Dialog
-          onClose={() =>
+        <Dialog onClose={() =>
             setStatus({
               ...status, // 复制现有状态
               isDialogOpen: false,
               dialogData: {translations: []},
-            })
-          }
-          className="relative z-50"
-        >
+            })} className="relative z-50">
+
           {/* Shade */}
           <div className="fixed inset-0 bg-black/30" aria-hidden="true"/>
 
@@ -1881,6 +1880,25 @@ export default function Page() {
                   />
                   <Label>交错播放</Label>
                 </div>
+
+                <div className="flex items-center space-x-2">
+                  <Label className="whitespace-nowrap">起始单词编号: </Label>
+                  <input
+                      type="number"
+                      min={0}
+                      step={1}
+                      className="w-24 border rounded px-2 py-1"
+                      value={status.audioConfig.wordStartIndex ?? 0}
+                      onChange={e => {
+                        const value = Number.parseInt(e.target.value, 10);
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          wordStartIndex: Number.isNaN(value) ? 0 : Math.max(0, value),
+                        });
+                      }}
+                  />
+                </div>
+
               </div>
             </div>
 
