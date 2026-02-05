@@ -1883,10 +1883,7 @@ export default function Page() {
 
                 <div className="flex items-center space-x-2">
                   <Label className="whitespace-nowrap">起始单词编号: </Label>
-                  <input
-                      type="number"
-                      min={0}
-                      step={1}
+                  <input type="number" min={0} step={1}
                       className="w-24 border rounded px-2 py-1"
                       value={status.audioConfig.wordStartIndex ?? 0}
                       onChange={e => {
