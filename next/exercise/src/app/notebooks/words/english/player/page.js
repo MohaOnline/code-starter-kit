@@ -184,12 +184,12 @@ export default function Page() {
         <style>
           @media print {
             @page {
-              margin: 1cm;
+              margin: 0.5cm;
             }
           }
           body {
             font-family: Arial, "Microsoft YaHei", sans-serif;
-            margin: 20px;
+            margin: 10px;
           }
           h2 {
             text-align: center;
