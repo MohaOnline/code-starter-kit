@@ -420,26 +420,41 @@ export default function Page() {
       // 分批模式：播放指定数量后跳到下一批
       const startWordIndex = status.audioConfig.wordStartIndex - 1;
 
-      // 当前批次还没播完
-      if ((prev.playedWordCounter) < batchSize) {
-        const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+      // // 当前批次还没播完
+      // if ((prev.playedWordCounter) < batchSize) {
+      //   const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+      //   return {
+      //     ...prev,
+      //     currentWordIndex: nextIndex,
+      //     playedWordCounter: prev.playedWordCounter + 1,
+      //   };
+      // }
+      //
+      // // 当前批次播完了，回到该批次头部开始重放
+      // const backTimes = batchSize % totalWords === 0 ? batchSize : batchSize % totalWords;
+      // // const nextIndex = (prev.currentWordIndex + 1) % totalWords;
+      // const nextIndex = prev.currentWordIndex >= batchSize - 1 ? prev.currentWordIndex - (batchSize - 1) :
+      //     prev.currentWordIndex + totalWords - (backTimes - 1);
+      // return {
+      //   ...prev,
+      //   currentWordIndex: nextIndex,
+      //   playedWordCounter: 1, // 重置计数器
+      // };
+
+      if (prev.currentWordIndex >= startWordIndex && prev.currentWordIndex < startWordIndex + batchSize - 1) {
         return {
           ...prev,
-          currentWordIndex: nextIndex,
-          playedWordCounter: prev.playedWordCounter + 1,
+          currentWordIndex: prev.currentWordIndex + 1,
+          playedWordCounter: prev.playedWordCounter + 1, // 重置计数器
         };
       }
-
-      // 当前批次播完了，回到该批次头部开始重放
-      const backTimes = batchSize % totalWords === 0 ? batchSize : batchSize % totalWords;
-      // const nextIndex = (prev.currentWordIndex + 1) % totalWords;
-      const nextIndex = prev.currentWordIndex >= batchSize - 1 ? prev.currentWordIndex - (batchSize - 1) :
-          prev.currentWordIndex + totalWords - (backTimes - 1);
-      return {
-        ...prev,
-        currentWordIndex: nextIndex,
-        playedWordCounter: 1, // 重置计数器
-      };
+      else {
+        return {
+          ...prev,
+          currentWordIndex: startWordIndex,
+          playedWordCounter: 1, // 重置计数器
+        };
+      }
     });
   };
 
