@@ -151,6 +151,105 @@ export default function Page() {
     saveAudioConfig(newConfig);
   };
 
+  // 打印单词函数
+  const handlePrint = () => {
+    const startIndex = status.audioConfig.wordStartIndex;
+    const quantity = status.audioConfig.batch_quantity;
+    const wordsToPrint = status.words.slice(startIndex, startIndex + quantity);
+
+    if (wordsToPrint.length === 0) {
+      toast.error('没有可打印的单词');
+      return;
+    }
+
+    // 创建打印内容
+    const printWindow = window.open('', '_blank');
+    const tableRows = wordsToPrint.map((word, index) => `
+      <tr>
+        <td>${startIndex + index + 1}</td>
+        <td>${word.phonetic_uk || word.phonetic_us || ''}</td>
+        <td><strong>${word.word}</strong></td>
+        <td>${word.pos || ''}</td>
+        <td>${word.translation || ''}</td>
+        <td>${word.note || ''}</td>
+      </tr>
+    `).join('');
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>单词打印 - 第 ${startIndex + 1} 到 ${startIndex + wordsToPrint.length} 个</title>
+        <style>
+          @media print {
+            @page {
+              margin: 1cm;
+            }
+          }
+          body {
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            margin: 20px;
+          }
+          h2 {
+            text-align: center;
+            margin-bottom: 20px;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+          }
+          th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+          }
+          th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+          }
+          tr:nth-child(even) {
+            background-color: #f9f9f9;
+          }
+        </style>
+      </head>
+      <body>
+        <h2>单词列表（第 ${startIndex + 1} - ${startIndex + wordsToPrint.length} 个）</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>音标</th>
+              <th>拼写</th>
+              <th>词性</th>
+              <th>中文意思</th>
+              <th>笔记</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tableRows}
+          </tbody>
+        </table>
+        <script>
+          window.onload = function() {
+            window.print();
+            // 打印完成后关闭窗口（可选）
+            // window.onafterprint = function() { window.close(); };
+          };
+        </script>
+      </body>
+      </html>
+    `;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+
+    // 关闭对话框
+    setStatus(prev => ({...prev, isPrintDialogOpen: false}));
+  };
+
   const keyDownCallback = event => handleKeyDown(event, status, setStatus);
   const keyUpCallback = event => handleKeyUp(event, status, setStatus);
 
@@ -1249,7 +1348,16 @@ export default function Page() {
                   }
                 }}><CiEdit/></button>
 
-        <button><BsPrinter/></button>
+        <button onClick={() => {
+          setStatus(prev => ({
+            ...prev,
+            audioConfig: {
+              ...prev.audioConfig,
+              wordStartIndex: prev.currentWordIndex,
+            },
+            isPrintDialogOpen: true,
+          }));
+        }}><BsPrinter/></button>
       </div>
 
       {/*<ToastContainer position="top-right"*/}
@@ -2064,8 +2172,7 @@ export default function Page() {
 
                 {/* 等待音频时长 */}
                 <div className="flex items-center space-x-2">
-                  <Switch
-                    checked={status.audioConfig.chinese.waitVoiceLength}
+                  <Switch checked={status.audioConfig.chinese.waitVoiceLength}
                     onCheckedChange={checked => {
                       updateAudioConfig({
                         ...status.audioConfig,
@@ -2081,24 +2188,72 @@ export default function Page() {
 
                 {/* 显示中文 */}
                 <div className="flex items-center space-x-2">
-                  <Switch
-                    checked={status.audioConfig.chinese.showText}
-                    onCheckedChange={checked => {
-                      updateAudioConfig({
-                        ...status.audioConfig,
-                        chinese: {
-                          ...status.audioConfig.chinese,
-                          showText: checked,
-                        },
-                      });
-                    }}
-                  />
+                  <Switch checked={status.audioConfig.chinese.showText}
+                          onCheckedChange={checked => {
+                            updateAudioConfig({
+                              ...status.audioConfig,
+                              chinese: {
+                                ...status.audioConfig.chinese,
+                                showText: checked,
+                              },
+                            });
+                          }}/>
                   <Label>显示中文</Label>
                 </div>
               </div>
+            </div>
+          </div>
+        </DialogContent>
+      </ShadcnDialog>
 
+      {/* 打印确认对话框 */}
+      <ShadcnDialog open={status.isPrintDialogOpen}
+                    onOpenChange={open => {
+                      setStatus(prev => ({...prev, isPrintDialogOpen: open}));
+                    }}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>打印单词确认</DialogTitle>
+          </DialogHeader>
 
+          <div className="space-y-4">
+            <p className="text-sm">
+              是否打印从 <strong>{status.currentWordIndex + 1}</strong> 号开始的{' '}
+              <strong>{status.audioConfig.batch_quantity === 175 ? '所有' : status.audioConfig.batch_quantity}</strong> 个单词？
+            </p>
 
+            <div className="space-y-2">
+              <Label>打印单词量: {status.audioConfig.batch_quantity === 175 ? '∞' : status.audioConfig.batch_quantity} 个</Label>
+              <Slider value={[status.audioConfig.batch_quantity]}
+                      onValueChange={([value]) => {
+                        updateAudioConfig({
+                          ...status.audioConfig,
+                          batch_quantity: value,
+                        });
+                      }}
+                      min={25}
+                      max={175}
+                      step={25}
+                      className="w-full"
+              />
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>&nbsp;25</span>
+                <span>&nbsp;50</span>
+                <span>&nbsp;75</span>
+                <span>100</span>
+                <span>125</span>
+                <span>150</span>
+                <span>ALL</span>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-2 mt-4">
+              <button onClick={() => {setStatus(prev => ({...prev, isPrintDialogOpen: false}));}}
+                      className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">取消
+              </button>
+              <button onClick={handlePrint}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">确认打印
+              </button>
             </div>
           </div>
         </DialogContent>
