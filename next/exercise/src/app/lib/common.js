@@ -122,11 +122,11 @@ export const handleKeyDown = (event, status, setStatus) => {
     // 全部可背单词长度从当前需要开始背但不够背，current 光标跑去了能跑到的位置之后
     if (!isInfiniteMode && !status.isPlaying &&
         (
-            wordStartIndex + status.audioConfig.batch_quantity <= status.words.length &&
+            wordStartIndex + status.audioConfig.batch_quantity < status.words.length &&
             (status.currentWordIndex < wordStartIndex || status.currentWordIndex >= wordStartIndex + status.audioConfig.batch_quantity)
             ||
             wordStartIndex + status.audioConfig.batch_quantity > status.words.length &&
-            status.currentWordIndex > (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex))
+            status.currentWordIndex > (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex)) && status.currentWordIndex < wordStartIndex
         )) {
       wordStartIndex = status.currentWordIndex + 1;
     }

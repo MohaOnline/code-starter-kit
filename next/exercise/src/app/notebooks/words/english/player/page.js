@@ -450,7 +450,20 @@ export default function Page() {
       //   playedWordCounter: 1, // 重置计数器
       // };
 
-      if (prev.currentWordIndex >= startWordIndex && prev.currentWordIndex < startWordIndex + batchSize - 1) {
+      if ((startWordIndex + prev.audioConfig.batch_quantity) > (prev.words.length - 1)
+          && (prev.currentWordIndex === prev.words.length - 1)) {
+        return {
+          ...prev,
+          currentWordIndex: 0,
+          playedWordCounter: prev.playedWordCounter + 1,
+        };
+      }
+      /* 0 1 2 3 4 5
+                 ^     4 => [0,1,4,5] */
+      else if ((startWordIndex + prev.audioConfig.batch_quantity) <= prev.words.length - 1
+          && prev.currentWordIndex >= startWordIndex && prev.currentWordIndex < startWordIndex + batchSize - 1
+          || (startWordIndex + prev.audioConfig.batch_quantity) > prev.words.length - 1
+          && prev.currentWordIndex < startWordIndex + prev.audioConfig.batch_quantity - prev.words.length - 1 || prev.currentWordIndex >= startWordIndex) { // < 4+4-6-1
         return {
           ...prev,
           currentWordIndex: prev.currentWordIndex + 1,
@@ -458,6 +471,7 @@ export default function Page() {
         };
       }
       else {
+
         return {
           ...prev,
           currentWordIndex: startWordIndex,
