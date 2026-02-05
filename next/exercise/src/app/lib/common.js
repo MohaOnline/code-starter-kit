@@ -318,22 +318,26 @@ function preciseTimeoutFallback(callback, delay) {
     port2 = channel.port2;
 
     function checkTime() {
-      if (cancelled) return;
+      try {
+        if (cancelled) return;
 
-      const elapsed = performance.now() - start;
-      if (elapsed >= delay) {
-        callback();
-        return;
-      }
-
-      const remaining = delay - elapsed;
-      const nextCheck = Math.min(remaining, 16); // 最多16ms间隔
-
-      timeoutId = setTimeout(() => {
-        if (!cancelled) {
-          port2.postMessage(null);
+        const elapsed = performance.now() - start;
+        if (elapsed >= delay) {
+          callback();
+          return;
         }
-      }, nextCheck);
+
+        const remaining = delay - elapsed;
+        const nextCheck = Math.min(remaining, 16); // 最多16ms间隔
+
+        timeoutId = setTimeout(() => {
+          if (!cancelled) {
+            port2.postMessage(null);
+          }
+        }, nextCheck);
+      } catch (error) {
+        console.warn('MessageChannel check failed:', error);
+      }
     }
 
     port1.onmessage = checkTime;

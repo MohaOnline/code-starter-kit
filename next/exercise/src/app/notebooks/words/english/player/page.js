@@ -5,13 +5,15 @@ import React, {useEffect, useRef, useState} from "react";
 
 import {
   Bs0SquareFill, Bs1SquareFill, Bs2SquareFill, Bs3SquareFill, Bs4SquareFill, Bs5SquareFill, Bs6SquareFill, Bs7SquareFill, Bs8SquareFill, Bs9SquareFill,
-  Bs0Square, Bs1Square, Bs2Square, Bs3Square, Bs4Square, Bs5Square, Bs6Square, Bs7Square, Bs8Square, Bs9Square
-} from "react-icons/bs";
+  Bs0Square, Bs1Square, Bs2Square, Bs3Square, Bs4Square, Bs5Square, Bs6Square, Bs7Square, Bs8Square, Bs9Square, BsPrinter,
+} from 'react-icons/bs';
 import {CgPlayTrackNextR, CgPlayTrackPrevR} from "react-icons/cg";
 import {CiEdit} from "react-icons/ci";
-import {FaEdit, FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync, FaSearch} from "react-icons/fa";
+import {FaEdit, FaPlay, FaPause, FaTrash, FaVolumeUp, FaSync, FaSearch, FaPrint} from 'react-icons/fa';
+import {FiPrinter} from 'react-icons/fi';
 import {GiPlayerPrevious, GiPlayerNext, GiGears} from "react-icons/gi";
 import {LuSquarePlay} from "react-icons/lu";
+import {MdOutlineRecordVoiceOver} from 'react-icons/md';
 import {PiHandWaving, PiRocket, PiGearFineLight, PiGear} from "react-icons/pi";
 import {RiFileSearchLine} from "react-icons/ri";
 
@@ -1139,8 +1141,7 @@ export default function Page() {
                     toast.error('Not found.');
                   }
                 }
-              }}
-        >
+              }}>
           <input id={"search-input"}
                  className={"focus:outline-none border"}
                  type={"text"}
@@ -1149,9 +1150,8 @@ export default function Page() {
                  onFocus={e => e.target.select()}
                  onChange={event => {
                    setStatus({...status, searchText: event.target.value});
-                 }}
-          />
-          <button type="button" className="ml-2" onClick={e => {
+                 }}/>
+          <button type="button" className="" onClick={e => {
             // 手动构造一个模拟的 KeyboardEvent，模拟“单独按下 Enter、不按 Shift”（除非用户真的按了 Shift）
             const simulatedEvent = new KeyboardEvent('keydown', {
               key: 'Enter',
@@ -1163,49 +1163,19 @@ export default function Page() {
               altKey: e.altKey,
               metaKey: e.metaKey,
               bubbles: true,
-              cancelable: true
+              cancelable: true,
             });
-            document.getElementById("search-input").dispatchEvent(simulatedEvent);
-          }}>
-            <RiFileSearchLine/>
-          </button>
+            document.getElementById('search-input').dispatchEvent(simulatedEvent);
+          }}><RiFileSearchLine/></button>
         </form>
-        <span
-          onClick={event => {
-            keyDownCallback({...event, key: " "});
-          }}
-        >
-          {" "}
-          {status.isPlaying ? <FaPause/> : <LuSquarePlay/>}
-        </span>
-        <span
-          onClick={event => {
-            keyDownCallback({...event, key: "ArrowLeft"});
-          }}
-        >
-          <CgPlayTrackPrevR/>
-        </span>
-        <span
-          onClick={event => {
-            keyDownCallback({...event, key: "ArrowRight"});
-          }}
-        >
-          {" "}
-          <CgPlayTrackNextR/>{" "}
-        </span>
-        <span onClick={e => playCurrentWord()}>
-          <FaVolumeUp/>
-        </span>
-        <span
-          onClick={() => {
-            setStatus(prev => ({...prev, isConfigDialogOpen: true}));
-          }}
-        >
-          <PiGear/>
-        </span>
-        {/*<span onClick={e => playCurrentWord()}>*/}
-        {/*  <Bs0SquareFill/>*/}
-        {/*</span>*/}
+        {' '}
+        <span onClick={event => {keyDownCallback({...event, key: ' '});}}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>
+        <span onClick={event => {keyDownCallback({...event, key: 'ArrowLeft'});}}><CgPlayTrackPrevR/></span>
+        <span onClick={event => {keyDownCallback({...event, key: 'ArrowRight'});}}><CgPlayTrackNextR/></span>
+        <span onClick={playCurrentWord}><MdOutlineRecordVoiceOver/></span> {/* 发声按钮 */}
+
+        <span onClick={() => {setStatus(prev => ({...prev, isConfigDialogOpen: true}));}}><PiGear/></span> {/* 配置按钮 */}
+
         {status.words?.length > 0 && (<>
         <span onClick={e => handlePriority(1)}>
           {(status.words[status.currentWordIndex].priority === 1) ? <Bs1SquareFill/> : <Bs1Square/>}
@@ -1228,59 +1198,56 @@ export default function Page() {
         {/*</span>*/}
 
         {/* Open Editor Dialog */}
-        <button
-          onClick={async () => {
-            // search current word
-            try {
-              const response = await fetch(
-                `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`
-              );
-              const data = await response.json();
-              console.log(data);
+        <button className="cursor-pointer"
+                onClick={async () => {
+                  // search current word
+                  try {
+                    const response = await fetch(
+                        `/api/words-english-chinese?word=${status.words[status.currentWordIndex].word}`,
+                    );
+                    const data = await response.json();
+                    console.log(data);
 
-              if (data?.data.length > 0) {
-                setStatus({
-                  ...status, // 复制现有状态
-                  isDialogOpen: true,
-                  dialogData: data.data[0],
-                });
-              }
-              else {
-                setStatus({
-                  ...status, // 复制现有状态
-                  isDialogOpen: true,
-                  dialogData: {
-                    id: status.words[status.currentWordIndex].id,
-                    nid: status.words[status.currentWordIndex].nid,
-                    weight: status.words[status.currentWordIndex].weight,
-                    eid: status.words[status.currentWordIndex].eid,
-                    word: status.words[status.currentWordIndex].word,
-                    translations: [
-                      {
-                        cid: status.words[status.currentWordIndex].cid,
-                        pos: status.words[status.currentWordIndex].pos,
-                        phonetic_us: status.words[status.currentWordIndex].phonetic_us,
-                        phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
-                        translation: status.words[status.currentWordIndex].translation,
-                        script: status.words[status.currentWordIndex].translation_script,
-                        note: status.words[status.currentWordIndex].note,
-                        note_explain: status.words[status.currentWordIndex].note_explain,
-                      },
-                    ],
-                  },
-                });
-              }
-              // if data.
-            }
-            catch (error) {
-              console.error("Failed to search english-chinese:", error);
-              toast.error("查询失败，请检查网络或稍后再试");
-            }
-          }}
-          className="cursor-pointer"
-        >
-          <CiEdit/>
-        </button>
+                    if (data?.data.length > 0) {
+                      setStatus({
+                        ...status, // 复制现有状态
+                        isDialogOpen: true,
+                        dialogData: data.data[0],
+                      });
+                    }
+                    else {
+                      setStatus({
+                        ...status, // 复制现有状态
+                        isDialogOpen: true,
+                        dialogData: {
+                          id: status.words[status.currentWordIndex].id,
+                          nid: status.words[status.currentWordIndex].nid,
+                          weight: status.words[status.currentWordIndex].weight,
+                          eid: status.words[status.currentWordIndex].eid,
+                          word: status.words[status.currentWordIndex].word,
+                          translations: [
+                            {
+                              cid: status.words[status.currentWordIndex].cid,
+                              pos: status.words[status.currentWordIndex].pos,
+                              phonetic_us: status.words[status.currentWordIndex].phonetic_us,
+                              phonetic_uk: status.words[status.currentWordIndex].phonetic_uk,
+                              translation: status.words[status.currentWordIndex].translation,
+                              script: status.words[status.currentWordIndex].translation_script,
+                              note: status.words[status.currentWordIndex].note,
+                              note_explain: status.words[status.currentWordIndex].note_explain,
+                            },
+                          ],
+                        },
+                      });
+                    }
+                    // if data.
+                  } catch (error) {
+                    console.error('Failed to search english-chinese:', error);
+                    toast.error('查询失败，请检查网络或稍后再试');
+                  }
+                }}><CiEdit/></button>
+
+        <button><BsPrinter/></button>
       </div>
 
       {/*<ToastContainer position="top-right"*/}
@@ -1311,77 +1278,57 @@ export default function Page() {
             {/* Scrollable */}
             <Dialog.Panel className="bg-white dark:bg-gray-700/95 rounded-lg p-6 max-w-2/3 w-full max-h-[80vh] overflow-y-auto">
               <div className={"flex"}>
-                <input
-                  type="text"
-                  value={status.dialogData.word || ""}
-                  onChange={e =>
-                    setStatus({
-                      ...status,
-                      dialogData: {
-                        ...status.dialogData,
-                        word: e.target.value,
-                      },
-                    })
-                  }
-                  onBlur={e => searchExistingWordsEnglishChinese(e.target.value)}
-                  className="flex-1 p-2 border rounded"
-                  onFocus={e => e.target.select()}
-                  placeholder="Word..."
-                />
-                <input
-                  name={"eid"}
-                  type={"text"}
-                  value={status.dialogData.eid || ""}
-                  readOnly={true}
-                  className={"w-auto p-2 border pointer-events-none"}
-                />
+                <input value={status.dialogData.word || ''} type="text"
+                       onChange={e =>
+                           setStatus({
+                             ...status,
+                             dialogData: {
+                               ...status.dialogData,
+                               word: e.target.value,
+                             },
+                           })
+                       }
+                       onBlur={e => searchExistingWordsEnglishChinese(e.target.value)}
+                       className="flex-1 p-2 border rounded"
+                       onFocus={e => e.target.select()}
+                       placeholder="Word..."/>
+                <input name={'eid'} value={status.dialogData.eid || ''}
+                       type={'text'} readOnly={true} className={'w-auto p-2 border pointer-events-none'}/>
               </div>
-              <input
-                type="text"
-                value={status.dialogData.accent || ""}
-                onChange={e =>
-                  setStatus({
-                    ...status,
-                    dialogData: {
-                      ...status.dialogData,
-                      accent: e.target.value,
-                    },
-                  })
-                }
-                className="w-full mt-2 p-2 border rounded"
-                placeholder="Accent..."
-              />
-              <input
-                type="text"
-                value={status.dialogData.syllable || ""}
-                onChange={e =>
-                  setStatus({
-                    ...status,
-                    dialogData: {
-                      ...status.dialogData,
-                      syllable: e.target.value,
-                    },
-                  })
-                }
-                className="w-full mt-2 p-2 border rounded"
-                placeholder="Syllable..."
-              />
-              <input
-                type="text"
-                value={status.dialogData.script || ""}
-                onChange={e =>
-                  setStatus({
-                    ...status,
-                    dialogData: {
-                      ...status.dialogData,
-                      script: e.target.value,
-                    },
-                  })
-                }
-                className="w-full mt-2 p-2 border rounded"
-                placeholder="Script..."
-              />
-              {status.dialogData.translations.map((translation, index) => {
+              <input value={status.dialogData.accent || ''} type="text"
+                     onChange={e =>
+                         setStatus({
+                           ...status,
+                           dialogData: {
+                             ...status.dialogData,
+                             accent: e.target.value,
+                           },
+                         })
+                     }
+                     className="w-full mt-2 p-2 border rounded" placeholder="Accent..."/>
+              <input value={status.dialogData.syllable || ''} type="text"
+                     onChange={e =>
+                         setStatus({
+                           ...status,
+                           dialogData: {
+                             ...status.dialogData,
+                             syllable: e.target.value,
+                           },
+                         })
+                     }
+                     className="w-full mt-2 p-2 border rounded"
+                     placeholder="Syllable..."/>
+              <input value={status.dialogData.script || ''} type="text"
+                     onChange={e => setStatus({
+                       ...status,
+                       dialogData: {
+                         ...status.dialogData,
+                         script: e.target.value,
+                       },
+                     })}
+                     className="w-full mt-2 p-2 border rounded" placeholder="Script..."/>
+
+              {/* 翻译部分 */ status.dialogData.translations.map((translation, index) => {
                 if (translation.deleted) return null;
 
                 return (
@@ -1517,8 +1464,7 @@ export default function Page() {
                         className="flex-1 p-2 pl-1 pr-1 border rounded"
                         placeholder="Translation"
                       />
-                      <button
-                        className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
+                      <button className="px-4 py-3 bg-green-950 text-white rounded hover:bg-green-600 active:bg-green-700 border flex justify-center items-center"
                         onClick={async () => {
                           try {
                             if (translation.cid) {
