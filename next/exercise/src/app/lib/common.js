@@ -126,7 +126,7 @@ export const handleKeyDown = (event, status, setStatus) => {
             (status.currentWordIndex < wordStartIndex || status.currentWordIndex >= wordStartIndex + status.audioConfig.batch_quantity)
             ||
             wordStartIndex + status.audioConfig.batch_quantity > status.words.length &&
-            status.currentWordIndex > (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex)) && status.currentWordIndex < wordStartIndex
+            status.currentWordIndex >= (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex)) && status.currentWordIndex < wordStartIndex
         )) {
       wordStartIndex = status.currentWordIndex + 1;
     }
