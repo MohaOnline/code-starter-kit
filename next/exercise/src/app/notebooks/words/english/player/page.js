@@ -164,8 +164,12 @@ export default function Page() {
 
     // 创建打印内容
     const printWindow = window.open('', '_blank');
-    const tableRows = wordsToPrint.map((word, index) => `
-      <tr>
+    const tableRows = wordsToPrint.map((word, index) => {
+      const rowNumber = index + 1;
+      const shouldBreak = rowNumber % 25 === 0 && rowNumber !== wordsToPrint.length;
+
+      return `
+      <tr class="${shouldBreak ? 'page-break' : ''}">
         <td>${startIndex + index + 1}</td>
         <td>${word.phonetic_uk || word.phonetic_us || ''}</td>
         <td><strong>${word.word}</strong></td>
@@ -173,7 +177,8 @@ export default function Page() {
         <td>${word.translation || ''}</td>
         <td>${word.note || ''}</td>
       </tr>
-    `).join('');
+      `;
+    }).join('');
 
     const htmlContent = `
       <!DOCTYPE html>
@@ -185,6 +190,10 @@ export default function Page() {
           @media print {
             @page {
               margin: 0.5cm;
+            }
+            .page-break {
+              page-break-after: always;
+              break-after: page;
             }
           }
           body {
@@ -204,7 +213,7 @@ export default function Page() {
             border: 1px solid #333;
             padding: 4px;
             text-align: left;
-            font-size: 18px;
+            font-size: 16px;
           }
           th {
             background-color: #f0f0f0;
