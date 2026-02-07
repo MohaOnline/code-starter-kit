@@ -7,6 +7,66 @@ import {Prisma} from '@/prisma/client'; // 要重启 next 应用。
 import {authOptions} from '@/app/api/auth/[...nextauth]/route';
 import {getWeight} from '@/lib/utils';
 
+export async function PUT(request, {params}) {
+  const contentType = request.headers.get('Content-Type');
+  if (!contentType || !contentType.includes('application/json')) {
+    return jsonResponse({success: false, error: 'Invalid invoking...'}, 403);
+  }
+
+  try {
+    const {tid} = await params;
+    const tidNum = BigInt(tid);
+
+    // 验证 tid 是否存在于 notebooks_types 表
+    const typeExists = await prisma.notebooks_types.findUnique({
+      where: { id: tidNum }
+    });
+
+    if (!typeExists) {
+      return jsonResponse({success: false, error: 'tid 不存在'}, 404);
+    }
+
+    // 查找 notebooks_notes 中 tid=tid 的记录
+    const existingNotes = await prisma.notebooks_notes.findMany({
+      where: { tid: tidNum },
+      orderBy: { weight: 'asc' }
+    });
+
+    let weight;
+    if (existingNotes.length === 0) {
+      // 不存在记录，生成一个新的 weight
+      weight = getWeight();
+    } else {
+      // 存在记录，获取最小的 weight，然后生成前一个 weight
+      const minWeight = existingNotes[0].weight;
+      weight = getWeight(minWeight, '');
+    }
+
+    // 插入新记录到 notebooks_notes
+    const newNote = await prisma.notebooks_notes.create({
+      data: {
+        tid: tidNum,
+        weight: weight
+      }
+    });
+
+    return jsonResponse({
+      success: true,
+      note: {
+        id: newNote.id.toString(),
+        tid: newNote.tid.toString(),
+        weight: newNote.weight,
+        created: newNote.created,
+        updated: newNote.updated,
+      }
+    });
+
+  } catch (error) {
+    console.error('PUT error:', error);
+    return jsonResponse({success: false, error: 'DB Error'}, 500);
+  }
+}
+
 export async function POST(request, {params}) {
 
   const contentType = request.headers.get('Content-Type');
