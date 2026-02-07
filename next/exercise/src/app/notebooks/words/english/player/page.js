@@ -460,10 +460,10 @@ export default function Page() {
       }
       /* 0 1 2 3 4 5
                  ^     4 => [0,1,4,5] */
-      else if ((startWordIndex + prev.audioConfig.batch_quantity) <= prev.words.length - 1
+      else if ((startWordIndex + batchSize) <= totalWords - 1
           && prev.currentWordIndex >= startWordIndex && prev.currentWordIndex < startWordIndex + batchSize - 1
-          || (startWordIndex + prev.audioConfig.batch_quantity) > prev.words.length - 1
-          && prev.currentWordIndex < startWordIndex + prev.audioConfig.batch_quantity - prev.words.length - 1 || prev.currentWordIndex >= startWordIndex) { // < 4+4-6-1
+          || (startWordIndex + batchSize) > prev.words.length - 1
+          && (prev.currentWordIndex < startWordIndex + batchSize - totalWords - 1 || prev.currentWordIndex >= startWordIndex)) { // < 4+4-6-1
         return {
           ...prev,
           currentWordIndex: prev.currentWordIndex + 1,
@@ -1233,13 +1233,13 @@ export default function Page() {
         {/*</span>*/}
         {status.audioConfig?.priorities?.length === 2 && status.audioConfig?.priorities[0] === 1 && status.audioConfig?.priorities[1] === 5 /* TODO: 以后改进，先隐藏 */ && (<>
         <span className={"put_previous"} onClick={handlePutPrevious}>
-          {" "}
+
           <GiPlayerPrevious/>{" "}
         </span>
         <span className={"put_next"} onClick={handlePutNext}>
-          {" "}
+
           <GiPlayerNext/>
-        </span>
+        </span>{' '}
         </>)}
         <form className={"inline search-form"}
               onKeyDown={event => {
@@ -1391,7 +1391,7 @@ export default function Page() {
             ...prev,
             audioConfig: {
               ...prev.audioConfig,
-              wordStartIndex: prev.currentWordIndex + 1,
+              wordStartIndex: prev.currentWordIndex + 1, // 选择打印后，总是标记起背单词序号
             },
             isPrintDialogOpen: true,
           }));
