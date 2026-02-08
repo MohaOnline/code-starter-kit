@@ -198,7 +198,7 @@ export default function Page() {
           }
           body {
             font-family: Arial, "Microsoft YaHei", sans-serif;
-            margin: 10px;
+            margin: 5px;
           }
           h2 {
             text-align: center;
@@ -207,11 +207,11 @@ export default function Page() {
           table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            /*margin-top: 5px;*/
           }
           th, td {
             border: 1px solid #333;
-            padding: 4px;
+            padding: 2px;
             text-align: left;
             font-size: 16px;
           }
@@ -226,16 +226,16 @@ export default function Page() {
       </head>
       <body>
         <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>音标</th>
-              <th>拼写</th>
-              <th>P</th>
-              <th>中文</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>#</th>-->
+<!--              <th>音标</th>-->
+<!--              <th>拼写</th>-->
+<!--              <th>P</th>-->
+<!--              <th>中文</th>-->
+<!--              <th>Notes</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
           <tbody>
             ${tableRows}
           </tbody>

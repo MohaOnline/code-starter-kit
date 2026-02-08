@@ -1,4 +1,6 @@
-// 共通化拖动修改 DB 相关表中的 weight。
+/**
+ *
+ */
 
 import {getServerSession} from 'next-auth';
 import {prisma, jsonResponse} from '@/lib/prisma';
