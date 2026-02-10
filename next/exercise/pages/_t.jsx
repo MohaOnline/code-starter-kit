@@ -42,7 +42,8 @@ import {useMergeRefs} from '@floating-ui/react';
 
 // @atlaskit/pragmatic-drag-and-drop
 import {draggable, dropTargetForElements, monitorForElements} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
-import {monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';
+import {dropTargetForExternal, monitorForExternal} from '@atlaskit/pragmatic-drag-and-drop/external/adapter';  // 标记可投放区域。
+import {dropTargetForTextSelection, monitorForTextSelection} from '@atlaskit/pragmatic-drag-and-drop/text-selection/adapter';
 import {setCustomNativeDragPreview} from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
 import {pointerOutsideOfPreview} from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
 import {autoScrollForElements, autoScrollWindowForElements} from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
