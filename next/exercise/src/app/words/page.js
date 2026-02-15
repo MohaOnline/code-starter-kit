@@ -57,11 +57,9 @@ export default function Words() {
 
   return (
       <React.Fragment>
-        <div className="flex h-screen w-screen
-              flex-col
-              orientation-landscape:flex-row
-              lg:flex-row"
-        >
+        <div className={'flex h-screen w-screen' +
+            'flex-col lg:flex-row orientation-landscape:flex-row' /**/}>
+
           {/* 主内容 */}
           <div className="flex-1 flex flex-col">
             <div className="flex-1 border-b">top</div>
@@ -70,8 +68,7 @@ export default function Words() {
           </div>
 
           {/* 工具条 */}
-          <div className="
-          flex shrink-0
+          <div className="flex shrink-0
           flex-row items-center justify-around
           h-16 w-full
           orientation-landscape:flex-col
