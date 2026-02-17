@@ -105,8 +105,8 @@ export default function Page() {
           <div className={'shrink-0 relative ' /* DIV 不收缩，relative 用于定位搜索框 */
               /* 配置工具条布局：主轴均铺（两端不留白）、交叉轴方向居中对齐 */
               + 'flex flex-row lg:flex-col orientation-landscape:flex-col justify-between items-center '
-              + 'h-16 w-full' /* 手机竖屏底部工具条 */
-              + 'lg:w-16 lg:h-full  orientation-landscape:w-16 orientation-landscape:h-full '  /* 手机竖屏底部工具条 */
+              + 'h-10 w-full' /* 手机竖屏底部工具条 */
+              + 'lg:w-14 lg:h-full  orientation-landscape:w-14 orientation-landscape:h-full '  /* 手机竖屏底部工具条 */
               + 'bg-slate-900 text-white'}
               ref={searchRef}>
 
@@ -122,13 +122,13 @@ export default function Page() {
             {showSearch && (
               <div className={'absolute z-50 '
                               /* 底部工具栏时：在按钮上方显示 */
-                              + 'bottom-full mb-px left-1/2 -translate-x-1/2 w-full p-0.5 '
+                              + 'bottom-full left-1/2 -translate-x-1/2 w-full p-0.5 '
                               /* 右侧工具栏时：在按钮左侧显示 */
                               + 'lg:bottom-auto lg:left-auto lg:right-full lg:mr-2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 '
                               + 'orientation-landscape:bottom-auto orientation-landscape:left-auto orientation-landscape:right-full orientation-landscape:mr-2 orientation-landscape:top-1/2 orientation-landscape:-translate-y-1/2 orientation-landscape:translate-x-0'}>
                 <input placeholder="搜索..." type="text" autoFocus
                        // width: 100%  
-                       className="w-full px-2 py-2 bg-white text-gray-900 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#78d278]" />
+                       className="w-full p-2 bg-white text-gray-900 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#78d278]" />
               </div>
             )}
           </div>
