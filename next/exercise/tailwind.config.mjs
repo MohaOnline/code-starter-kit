@@ -9,7 +9,11 @@ export default {
     './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'eye-friendly-green': '#78d278',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
