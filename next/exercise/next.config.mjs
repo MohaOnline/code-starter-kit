@@ -65,12 +65,12 @@ const nextConfig = {
   },
 };
 
-// PWA 配置
-const pwaConfig = withPWA({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-});
+// // PWA 配置
+// const pwaConfig = withPWA({
+//   dest: "public",
+//   register: true,
+//   skipWaiting: true,
+//   disable: process.env.NODE_ENV === "development",
+// });
 
-export default pwaConfig(nextConfig);
+// export default pwaConfig(nextConfig);
