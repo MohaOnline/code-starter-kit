@@ -25,6 +25,9 @@ export default function RootLayout ({ children }) {
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
       <meta name="emotion-insertion-point" content=""/>
       <link rel="stylesheet" href="/fonts/local.css"/>
+      <link rel="manifest" href="/manifest.json"/>
+      <meta name="theme-color" content="#2299DD"/>
+      <link rel="apple-touch-icon" href="/icons/icon-192x192.png"/>
     </head>
     <body className="antialiased font-sans" suppressHydrationWarning>
     <InitColorSchemeScript attribute="class"/>

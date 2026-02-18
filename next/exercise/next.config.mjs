@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import os from "node:os";
+import withPWA from "next-pwa";
 
 const isDev = process.env.NODE_ENV === "development";
 let allowedDevOrigins = [];
@@ -64,4 +65,12 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// PWA 配置
+const pwaConfig = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
+
+export default pwaConfig(nextConfig);
