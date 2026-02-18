@@ -60,6 +60,7 @@ import {html} from "@codemirror/lang-html"
 
 ///////// Own libraries //////////////
 import {useStatus} from "@/app/lib/atoms";
+import NavTop from '@/app/lib/components/NavTop';
 
 // Comment Template//
 // ①②③④⑤⑥⑦⑧⑨⑩

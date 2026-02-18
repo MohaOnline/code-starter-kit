@@ -1,12 +1,12 @@
 // @ts-nocheck
 import Link from "next/link";
 import {BsPostcard} from 'react-icons/bs';
-import { FaHome, FaListUl } from "react-icons/fa";
+import { FaHome, FaListUl, FaUsers } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import {GiMaterialsScience, GiNotebook} from "react-icons/gi";
 import { GrDocument, GrAssistListening } from "react-icons/gr";
 import {MdEditNote, MdOutlineBiotech} from "react-icons/md";
-import {RiTailwindCssFill, RiTranslate} from 'react-icons/ri';
+import {RiLayout2Line, RiTailwindCssFill, RiTranslate} from 'react-icons/ri';
 
 import React from "react";
 import "./NavTop.css";
@@ -31,9 +31,9 @@ export default function NavTop() {
       <Link href={"/notebooks/editor"}>
         <MdEditNote />
       </Link>
-      <Link href={"/notebooks/se/cards"}>
-        <MdOutlineBiotech />
-      </Link>
+      <Link href={"/notebooks/se/cards"}><MdOutlineBiotech /></Link>
+      <Link href={"/layout/responsive/v01"}><RiLayout2Line /></Link>
+      <Link href={"/user/simulate"}><FaUsers/></Link>
       <RiTranslate/>
     </div>
   );

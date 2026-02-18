@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import NavTop from '@/app/lib/components/NavTop';
+
 export default function SimulateLoginPage() {
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +56,8 @@ export default function SimulateLoginPage() {
 
   // 如果用户已登录，显示已登录状态
   if (session?.user) {
-    return (
+    return (<>
+      <NavTop/>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="max-w-md w-full space-y-8 p-8">
           <div className="text-center">
@@ -103,10 +106,11 @@ export default function SimulateLoginPage() {
           theme="auto"
         />
       </div>
-    );
+    </>);
   }
 
-  return (
+  return (<>
+    <NavTop/>
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
       <div className="max-w-md w-full space-y-8 p-8">
         <div className="text-center">
@@ -163,5 +167,5 @@ export default function SimulateLoginPage() {
         theme="auto"
       />
     </div>
-  );
+  </>);
 }

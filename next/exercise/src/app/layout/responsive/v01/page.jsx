@@ -60,6 +60,7 @@ import {html} from '@codemirror/lang-html';
 
 ///////// Own libraries //////////////
 import {useStatus} from '@/app/lib/atoms';
+import NavTop from '@/app/lib/components/NavTop';
 
 // Comment Template//
 // ①②③④⑤⑥⑦⑧⑨⑩
@@ -88,6 +89,7 @@ export default function Page() {
   // == DEFAULT ==
   return (
       <React.Fragment>
+        <NavTop/>
         <div className={'flex '
             + 'flex-col lg:flex-row orientation-landscape:flex-row ' /* 手机竖直排列 */
             + 'w-screen h-screen ' /* 宽高随屏幕 */}>
