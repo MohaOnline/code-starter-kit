@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
+    "devs": "next dev --turbopack --experimental-https",
     "bun-dev": "bun --bun next dev",
     "build": "next build",
     "bun-build": "bun --bun next build",
