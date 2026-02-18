@@ -1,6 +1,6 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: ['src/app/notebooks/words/english/player/page.js']
+fileMatchPattern: '**/notebooks/words/english/player/page.js'
 ---
 
 # 英文单词播放器架构说明
