@@ -92,11 +92,11 @@ export default function Page() {
         <NavTop/>
         <div className={'flex '
             + 'flex-col lg:flex-row orientation-landscape:flex-row ' /* 手机竖直排列 */
-            + 'w-screen h-screen ' /* 宽高随屏幕 */}>
+            + 'w-screen h-[100dvh] ' /* 宽高随屏幕 */}>
 
           {/* 主内容 */}
           <div className={'flex-1 ' /*  */
-              + 'flex flex-col items-stretch'     /**/}>
+              + 'flex flex-col items-stretch'     /*  */}>
 
             <div className="flex-1 border-b text-center flex items-center justify-center">top</div>
             <div className="flex-2 border-b text-center flex items-center justify-center">middle</div>
@@ -107,17 +107,17 @@ export default function Page() {
           <div className={'shrink-0 relative ' /* DIV 不收缩，relative 用于定位搜索框 */
               /* 配置工具条布局：主轴均铺（两端不留白）、交叉轴方向居中对齐 */
               + 'flex flex-row lg:flex-col orientation-landscape:flex-col justify-between items-center '
-              + 'h-10 w-full' /* 手机竖屏底部工具条 */
+              + 'h-12 w-full' /* 手机竖屏底部工具条 */
               + 'lg:w-14 lg:h-full  orientation-landscape:w-14 orientation-landscape:h-full '  /* 手机竖屏底部工具条 */
               + 'bg-slate-900 text-white'}
               ref={searchRef}>
 
-            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">A</button>
-            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">B</button>
-            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">C</button>
+            <button className="size-12 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">A</button>
+            <button className="size-12 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">B</button>
+            <button className="size-12 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded">C</button>
             
             {/* S 搜索按钮 */}
-            <button className="size-10 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded hover:bg-slate-600 transition-colors"
+            <button className="size-12 orientation-landscape:size-12 lg:size-10 bg-slate-700 rounded hover:bg-slate-600 transition-colors"
                     onClick={() => setShowSearch(!showSearch)}>搜</button>
 
             {/* 悬浮搜索框 */}

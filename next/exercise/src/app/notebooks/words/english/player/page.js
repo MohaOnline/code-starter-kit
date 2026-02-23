@@ -80,7 +80,7 @@ const loadAudioConfig = () => {
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
         batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
         priorities: parsed.priorities ?? [1, 5],  // word priority
-        wordStartIndex: 1,
+        wordStartIndex: 1,  // 起背单词编号：读取/加载后总是从 1 号单词开始。
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
