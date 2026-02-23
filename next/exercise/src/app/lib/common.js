@@ -120,17 +120,21 @@ export const handleKeyDown = (event, status, setStatus) => {
     let wordStartIndex = status.audioConfig.wordStartIndex - 1;
     // 长度够长的情况下，current 光标跑去了起始光标之前
     // 全部可背单词长度从当前需要开始背但不够背，current 光标跑去了能跑到的位置之后
-    if (!isInfiniteMode && !status.isPlaying &&
-        (
+    if (!isInfiniteMode && !status.isPlaying && (
+            //
             wordStartIndex + status.audioConfig.batch_quantity < status.words.length &&
             (status.currentWordIndex < wordStartIndex || status.currentWordIndex >= wordStartIndex + status.audioConfig.batch_quantity)
             ||
             wordStartIndex + status.audioConfig.batch_quantity > status.words.length &&
             status.currentWordIndex >= (status.audioConfig.batch_quantity - (status.words.length - wordStartIndex)) && status.currentWordIndex < wordStartIndex
+            ||
+            wordStartIndex <= -1 // 起背单词序号直接异常
         )) {
+
       wordStartIndex = status.currentWordIndex + 1;
     }
     else {
+      // 无需修正，复原后保存回 audioConfig
       wordStartIndex += 1;
     }
 

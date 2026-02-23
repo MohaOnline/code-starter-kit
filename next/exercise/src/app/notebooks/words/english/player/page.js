@@ -49,7 +49,7 @@ const DEFAULT_AUDIO_CONFIG = {
   speed: 100,  // 播放速度 50%, 75%, 100%, 125%, 150%, 175%, 200%, 225%
   batch_quantity: 100, // 批量播放数量
   priorities: [1, 5],
-  wordStartIndex: 0,
+  wordStartIndex: 1,
   // 英文设置
   english: {
     repeatCount: 1, // 发音次数 0-5
@@ -80,7 +80,7 @@ const loadAudioConfig = () => {
         speed: parsed.speed ?? DEFAULT_AUDIO_CONFIG.speed,
         batch_quantity: parsed.batch_quantity ?? DEFAULT_AUDIO_CONFIG.batch_quantity,
         priorities: parsed.priorities ?? [1, 5],  // word priority
-        wordStartIndex: 0,
+        wordStartIndex: 1,
         english: {
           repeatCount: parsed.english?.repeatCount ?? DEFAULT_AUDIO_CONFIG.english.repeatCount,
           pauseTime: parsed.english?.pauseTime ?? DEFAULT_AUDIO_CONFIG.english.pauseTime,
@@ -1233,14 +1233,8 @@ export default function Page() {
         {/*  <PiRocket/>*/}
         {/*</span>*/}
         {status.audioConfig?.priorities?.length === 2 && status.audioConfig?.priorities[0] === 1 && status.audioConfig?.priorities[1] === 5 /* TODO: 以后改进，先隐藏 */ && (<>
-        <span className={"put_previous"} onClick={handlePutPrevious}>
-
-          <GiPlayerPrevious/>{" "}
-        </span>
-        <span className={"put_next"} onClick={handlePutNext}>
-
-          <GiPlayerNext/>
-        </span>{' '}
+        <span className={"put_previous"} onClick={handlePutPrevious}><GiPlayerPrevious/></span>{" "}
+        <span className={"put_next"} onClick={handlePutNext}><GiPlayerNext/></span>{" "}
         </>)}
         <form className={"inline search-form"}
               onKeyDown={event => {
@@ -1307,12 +1301,11 @@ export default function Page() {
             });
             document.getElementById('search-input').dispatchEvent(simulatedEvent);
           }}><RiFileSearchLine/></button>
-        </form>
-        {' '}
-        <span onClick={event => {keyDownCallback({...event, key: ' '});}}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>
+        </form>{' '}
+        {/* 播放按钮 */}<span onClick={event => {keyDownCallback({...event, key: ' '});}}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>{' '}
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowLeft'});}}><CgPlayTrackPrevR/></span>
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowRight'});}}><CgPlayTrackNextR/></span>
-        <span onClick={playCurrentWord}><MdOutlineRecordVoiceOver/></span> {/* 发声按钮 */}
+        {/* 发声按钮 */}<span onClick={playCurrentWord}><MdOutlineRecordVoiceOver/></span>
 
         <span onClick={() => {setStatus(prev => ({...prev, isConfigDialogOpen: true}));}}><PiGear/></span> {/* 配置按钮 */}
 

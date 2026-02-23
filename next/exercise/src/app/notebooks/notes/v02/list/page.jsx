@@ -183,7 +183,7 @@ export default function NotesList() {
     else if (status.notes?.length > 0) {
       setSelectedTypeNotes(status.notes);
     }
-  }, [status.selectedTypeID, status.notes?.length]);
+  }, [status.selectedTypeID, status.notes, status.notes?.length]);
 
   // 加载所有 notes 处理 URL 参数
   useEffect(() => {
