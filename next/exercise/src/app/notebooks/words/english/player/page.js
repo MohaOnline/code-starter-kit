@@ -1305,14 +1305,12 @@ export default function Page() {
         {/* 播放按钮 */}<span onClick={event => {keyDownCallback({...event, key: ' '});}}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>{' '}
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowLeft'});}}><CgPlayTrackPrevR/></span>
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowRight'});}}><CgPlayTrackNextR/></span>
-        {/* 发声按钮 */}<span onClick={playCurrentWord}><MdOutlineRecordVoiceOver/></span>
+        {/* 发声按钮 */}<span onClick={playCurrentWord} onMouseEnter={status.isPlaying?undefined:playCurrentWord}><MdOutlineRecordVoiceOver/></span>
 
         <span onClick={() => {setStatus(prev => ({...prev, isConfigDialogOpen: true}));}}><PiGear/></span> {/* 配置按钮 */}
 
         {status.words?.length > 0 && (<>
-        <span onClick={e => handlePriority(1)}>
-          {(status.words[status.currentWordIndex].priority === 1) ? <Bs1SquareFill/> : <Bs1Square/>}
-        </span>
+        <span onClick={e => handlePriority(1)}>{(status.words[status.currentWordIndex].priority === 1) ? <Bs1SquareFill/> : <Bs1Square/>}</span>
         <span onClick={e => handlePriority(2)}>
           {(status.words[status.currentWordIndex].priority === 2) ? <Bs2SquareFill/> : <Bs2Square/>}
         </span>

@@ -2,6 +2,7 @@
 
 import { Howl, Howler } from 'howler';
 import { preciseTimeout } from '@/app/lib/common';
+import { isFunction } from 'lodash';
 
 /**
  * 增强版音频播放器，支持 Media Session API
@@ -525,7 +526,7 @@ export class VoicePlayerWithMediaSession {
               // 播放完成
               this.deactivateMediaSession();
               const cancelTimeout = preciseTimeout(() => {
-                if (this.onCompleteCallback) {
+                if (this.onCompleteCallback && isFunction(this.onCompleteCallback)) {
                   this.onCompleteCallback();
                 }
                 console.log('Audio playlist ended, Media Session updated');
