@@ -107,14 +107,14 @@ export default function Page() {
             </div>
             <div className="flex-[3_3_0%] text-center flex items-center justify-center">
               <div className='flex items-start'>
-                <span className=' tracking-wider text-3xl lg:text-[10rem] lg:leading-[9rem]'>global norms and standards development</span>
-                <span className='opacity-70 hidden lg:inline'><VolumeUpIcon sx={{ verticalAlign: 'top' }}/></span>
+                <span className='flex-auto flex-wrap tracking-wider text-3xl lg:text-[10rem] lg:leading-[9rem]'>global norms and standards development</span>
+                <span className='opacity-70 hidden lg:inline cursor-wait'><VolumeUpIcon sx={{ verticalAlign: 'top' }}/></span>
               </div>
             </div>
             <div className="flex-1 text-center">
-              <div className='flex justify-center items-start tracking-wider text-2xl lg:text-3xl opacity-75'>
-                <span className="">废除；取消（法律、制度、习俗等）</span>
-                <span className='opacity-70 hidden lg:inline align-top'><VolumeUpIcon sx={{ verticalAlign: 'top' }}/></span>
+              <div className='flex items-start mb-3'>
+                <span className="flex-auto tracking-wider text-2xl lg:text-3xl opacity-75">废除；取消（法律、制度、习俗等）</span>
+                <span className='opacity-70 hidden lg:inline cursor-wait'><VolumeUpIcon sx={{ verticalAlign: 'top' }}/></span>
               </div>
               <div className="lg:text-2xl opacity-70">📗 向内拉紧 &gt; 密集 &gt; 彻底</div>
             </div>
