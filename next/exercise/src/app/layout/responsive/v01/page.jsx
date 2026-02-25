@@ -27,9 +27,10 @@ import {
   FormatBold as FormatBoldIcon, Info as InfoIcon,
   MeetingRoomTwoTone as MeetingRoomIcon, Menu as MenuIcon, NoteAdd as NoteAddIcon, NoteAddOutlined as NoteAddOutlinedIcon,
   Pause as PauseIcon, PlayArrow as PlayArrowIcon, PlaylistAdd as PlaylistAddIcon, PlayCircleFilledTwoTone as PlayCircleFilledTwoToneIcon,
-  PostAdd as PostAddIcon, Search as SearchIcon,
+  PostAdd as PostAddIcon,
+  RecordVoiceOver as RecordVoiceOverIcon, Search as SearchIcon,
   Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, SkipNext as SkipNextIcon, SkipPrevious as SkipPreviousIcon,
-  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon,
+  Stop as StopIcon, StopTwoTone as StopTwoToneIcon, Sync as SyncIcon, Tune as TuneIcon, VolumeUp as VolumeUpIcon,
 } from '@mui/icons-material';
 import {styled, lighten, darken} from '@mui/system';
 
@@ -96,11 +97,25 @@ export default function Page() {
 
           {/* 主内容 */}
           <div className={'flex-1 ' /*  */
-              + 'flex flex-col items-stretch'     /*  */}>
+                         + 'flex flex-col items-stretch '     /*  */
+                         + 'font-serif'}>
 
-            <div className="flex-1 border-b text-center flex items-center justify-center">top</div>
-            <div className="flex-2 border-b text-center flex items-center justify-center">middle</div>
-            <div className="flex-1 text-center">bottom</div>
+            <div className="flex-1 text-center flex items-end justify-center">
+              <div className="tracking-wider text-2xl lg:text-[4rem] opacity-75">
+                <span className="">əˈbɒlɪʃ</span>
+                <span className="">&nbsp;[v]&nbsp;</span></div>
+            </div>
+            <div className="flex-[3_3_0%] text-center flex items-center justify-center">
+              <div className='flex items-start'>
+                <span className='tracking-wider text-3xl lg:text-[10rem] lg:leading-[9rem]'>global norms and standards development</span>
+                <span><VolumeUpIcon/></span>
+              </div>
+            </div>
+            <div className="flex-1 text-center">
+              <div className='tracking-wider text-2xl lg:text-3xl opacity-75'>
+                <span class="translation">废除；取消（法律、制度、习俗等）</span>
+              </div>
+            </div>
           </div>
 
           {/* 工具条 */}

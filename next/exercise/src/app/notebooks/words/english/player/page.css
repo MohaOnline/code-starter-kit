@@ -46,6 +46,7 @@ span.pos {
     opacity: 0.4;
     font-size: 0.2em;
     cursor: wait;
+    vertical-align: top;
 }
 
 .word-container .word-voice:hover {
@@ -75,6 +76,7 @@ span.pos {
     opacity: 0.4;
     font-size: 0.6em;
     cursor: wait;
+    vertical-align: top;
 }
 
 .word-container .translate-voice:hover {
