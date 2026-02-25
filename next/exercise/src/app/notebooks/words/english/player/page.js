@@ -697,8 +697,7 @@ export default function Page() {
   };
 
   /** 播放当前单词音频。 */
-  const playCurrentWord = (onCompleteCallback = () => {
-  }) => {
+  const playCurrentWord = (onCompleteCallback = () => {}) => {
     const voiceURLs = generateVoiceURLs(status.currentWordIndex);
     if (voiceURLs.length > 0 && playerRef.current) {
       const currentWord = status.words[status.currentWordIndex];
@@ -1201,17 +1200,18 @@ export default function Page() {
             </span>
           </div>
 
-          <div className={"word"} onClick={e => playCurrentWordOnly()}
+          <div className={"word"}><span onClick={e => playCurrentWordOnly()}
                dangerouslySetInnerHTML={{
                  __html: status.audioConfig.english.showText ? status.words[status.currentWordIndex].word : "&nbsp;",
-               }}
-          ></div>
+               }}></span>
+               <span className="word-voice" onMouseEnter={e => playCurrentWordOnly()}><FaVolumeUp/></span>
+               </div>
 
-          <div className={`translation${status.audioConfig.chinese.showText ? "" : " no-show"}`}
+          <div><span className={`translation${status.audioConfig.chinese.showText ? "" : " no-show"}`}
                onClick={e => playCurrentTranslationOnly()}
                dangerouslySetInnerHTML={{
                  __html: status.words[status.currentWordIndex].translation,
-               }}/>
+               }}></span><span className="translate-voice" onMouseEnter={e => playCurrentTranslationOnly()}><FaVolumeUp/></span></div>
           <hr/>
 
           <div className={`note${status.audioConfig.chinese.showText ? '' : ' no-show'}`}
@@ -1305,7 +1305,8 @@ export default function Page() {
         {/* 播放按钮 */}<span onClick={event => {keyDownCallback({...event, key: ' '});}}>{status.isPlaying ? <FaPause/> : <LuSquarePlay/>}</span>{' '}
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowLeft'});}}><CgPlayTrackPrevR/></span>
         <span onClick={event => {keyDownCallback({...event, key: 'ArrowRight'});}}><CgPlayTrackNextR/></span>
-        {/* 发声按钮 */}<span onClick={playCurrentWord} onMouseEnter={status.isPlaying?undefined:playCurrentWord}><MdOutlineRecordVoiceOver/></span>
+        {/* 发声按钮 */}
+        <span onClick={() => playCurrentWord()} onMouseEnter={status.isPlaying?null:() =>playCurrentWord()}><MdOutlineRecordVoiceOver/></span>
 
         <span onClick={() => {setStatus(prev => ({...prev, isConfigDialogOpen: true}));}}><PiGear/></span> {/* 配置按钮 */}
 

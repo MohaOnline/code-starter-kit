@@ -529,6 +529,9 @@ export class VoicePlayerWithMediaSession {
                 if (this.onCompleteCallback && isFunction(this.onCompleteCallback)) {
                   this.onCompleteCallback();
                 }
+                else {
+                  console.log(this.onCompleteCallback);
+                }
                 console.log('Audio playlist ended, Media Session updated');
               }, pauseTime);
               this.activeTimeouts.push(cancelTimeout);

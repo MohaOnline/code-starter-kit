@@ -39,6 +39,17 @@ span.pos {
     height: 400px;
     line-height: 160px;
     cursor: pointer;
+    /* display: inline-block; */
+}
+
+.word-container .word-voice {
+    opacity: 0.4;
+    font-size: 0.2em;
+    cursor: wait;
+}
+
+.word-container .word-voice:hover {
+    opacity: 0.8;
 }
 
 .word-container .translation {
@@ -58,6 +69,16 @@ span.pos {
 
 .word-container .translation.no-show:hover  {
     opacity: 1;
+}
+
+.word-container .translate-voice {
+    opacity: 0.4;
+    font-size: 0.6em;
+    cursor: wait;
+}
+
+.word-container .translate-voice:hover {
+    opacity: 0.8;
 }
 
 .word-container .note.no-show {
