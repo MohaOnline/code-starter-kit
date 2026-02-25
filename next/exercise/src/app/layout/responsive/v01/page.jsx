@@ -108,13 +108,15 @@ export default function Page() {
             <div className="flex-[3_3_0%] text-center flex items-center justify-center">
               <div className='flex items-start'>
                 <span className='tracking-wider text-3xl lg:text-[10rem] lg:leading-[9rem]'>global norms and standards development</span>
-                <span><VolumeUpIcon/></span>
+                <span className='opacity-70 hidden lg:inline'><VolumeUpIcon/></span>
               </div>
             </div>
             <div className="flex-1 text-center">
-              <div className='tracking-wider text-2xl lg:text-3xl opacity-75'>
-                <span class="translation">废除；取消（法律、制度、习俗等）</span>
+              <div className='flex justify-center item-start tracking-wider text-2xl lg:text-3xl opacity-75'>
+                <span className="">废除；取消（法律、制度、习俗等）</span>
+                <span className='opacity-70 hidden lg:inline'><VolumeUpIcon/></span>
               </div>
+              <div className="lg:text-2xl opacity-70">📗 向内拉紧 &gt; 密集 &gt; 彻底</div>
             </div>
           </div>
 
