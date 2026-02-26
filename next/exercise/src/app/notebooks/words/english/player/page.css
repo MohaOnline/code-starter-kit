@@ -34,19 +34,34 @@ span.pos {
 }
 
 .word-container .word {
-    font-size: 170px;
-    letter-spacing: 10px;
     height: 400px;
     line-height: 160px;
     cursor: pointer;
     /* display: inline-block; */
+    position: relative;
 }
+
+.word-container .word > span {
+    font-size: 170px;
+    letter-spacing: 10px;
+    display: inline-block;
+}
+
 
 .word-container .word-voice {
     opacity: 0.4;
-    font-size: 0.2em;
     cursor: wait;
     vertical-align: top;
+    font-size: 2rem;
+    line-height: 1; /* 让行高等于字体大小 */
+    height: 2rem;
+    position: absolute;
+}
+
+.word-container .word-voice svg {
+    width: 2rem;  /* 等于 font-size，确保正方形 */
+    height: 2rem;
+    /* display: block; 去除 inline 元素的额外空间 */
 }
 
 .word-container .word-voice:hover {
